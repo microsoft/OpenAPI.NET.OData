@@ -1,0 +1,1478 @@
+﻿openapi: 3.0.0
+info:
+  title: OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models
+  description: This OData service is located at http://services.odata.org/TrippinRESTierService/
+  version: 1.0.1
+servers:
+  - url: http://services.odata.org/TrippinRESTierService/
+paths:
+  /People:
+    get:
+      summary: Get entities from People
+      tags:
+        - People
+      parameters:
+        - $ref: '#/components/parameters/top',
+        - $ref: '#/components/parameters/skip',
+        - $ref: '#/components/parameters/search',
+        - $ref: '#/components/parameters/filter',
+        - $ref: '#/components/parameters/count',
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+                - Friends
+                - BestFriend
+                - Trips
+      responses:
+        200:
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Collection of People
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      summary: Add new entity to People
+      tags:
+        - People
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        201:
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+  /People('{UserName}'):
+    get:
+      summary: Get entity from People by key
+      tags:
+        - People
+      parameters:
+        - name: UserName
+          in: path
+          description: key: UserName
+          required: true
+          style: simple,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+                - Friends
+                - BestFriend
+                - Trips
+      responses:
+        200:
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+    delete:
+      summary: Delete entity from People
+      tags:
+        - People
+      parameters:
+        - name: UserName
+          in: path
+          description: key: UserName
+          required: true
+          style: simple,
+        - name: If-Match
+          in: header
+          description: ETag
+          style: simple
+          schema:
+            type: string
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      summary: Update entity in People
+      tags:
+        - People
+      parameters:
+        - name: UserName
+          in: path
+          description: key: UserName
+          required: true
+          style: simple
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /People('{UserName}')/GetFavoriteAirline(person={person}):
+    get:
+      summary: Invoke function GetFavoriteAirline
+      tags:
+        - person
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        default:
+          $ref: '#/components/responses/error'
+  /People('{UserName}')/GetFriendsTrips(person={person},userName={userName}):
+    get:
+      summary: Invoke function GetFriendsTrips
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: userName
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/components/responses/error'
+  /People('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName}):
+    get:
+      summary: Invoke function UpdatePersonLastName
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: lastName
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+        default:
+          $ref: '#/components/responses/error'
+  /People('{UserName}')/ShareTrip:
+    post:
+      summary: Invoke action ShareTrip
+      parameters:
+        - name: personInstance
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: userName
+          in: path
+          required: true
+          style: simple,
+        - name: tripId
+          in: path
+          required: true
+          style: simple
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /Airlines:
+    get:
+      summary: Get entities from Airlines
+      tags:
+        - Airlines
+      parameters:
+        - $ref: '#/components/parameters/top',
+        - $ref: '#/components/parameters/skip',
+        - $ref: '#/components/parameters/search',
+        - $ref: '#/components/parameters/filter',
+        - $ref: '#/components/parameters/count',
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - AirlineCode
+                - AirlineCode desc
+                - Name
+                - Name desc,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - AirlineCode
+                - Name,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+      responses:
+        200:
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Collection of Airlines
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      summary: Add new entity to Airlines
+      tags:
+        - Airlines
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        required: true
+      responses:
+        201:
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        default:
+          $ref: '#/components/responses/error'
+  /Airlines('{AirlineCode}'):
+    get:
+      summary: Get entity from Airlines by key
+      tags:
+        - Airlines
+      parameters:
+        - name: AirlineCode
+          in: path
+          description: key: AirlineCode
+          required: true
+          style: simple,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - AirlineCode
+                - Name,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+      responses:
+        200:
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        default:
+          $ref: '#/components/responses/error'
+    delete:
+      summary: Delete entity from Airlines
+      tags:
+        - Airlines
+      parameters:
+        - name: AirlineCode
+          in: path
+          description: key: AirlineCode
+          required: true
+          style: simple,
+        - name: If-Match
+          in: header
+          description: ETag
+          style: simple
+          schema:
+            type: string
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      summary: Update entity in Airlines
+      tags:
+        - Airlines
+      parameters:
+        - name: AirlineCode
+          in: path
+          description: key: AirlineCode
+          required: true
+          style: simple
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        required: true
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /Airports:
+    get:
+      summary: Get entities from Airports
+      tags:
+        - Airports
+      parameters:
+        - $ref: '#/components/parameters/top',
+        - $ref: '#/components/parameters/skip',
+        - $ref: '#/components/parameters/search',
+        - $ref: '#/components/parameters/filter',
+        - $ref: '#/components/parameters/count',
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - Name
+                - Name desc
+                - IcaoCode
+                - IcaoCode desc
+                - IataCode
+                - IataCode desc
+                - Location
+                - Location desc,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - Name
+                - IcaoCode
+                - IataCode
+                - Location,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+      responses:
+        200:
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Collection of Airports
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      summary: Add new entity to Airports
+      tags:
+        - Airports
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+        required: true
+      responses:
+        201:
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+        default:
+          $ref: '#/components/responses/error'
+  /Airports('{IcaoCode}'):
+    get:
+      summary: Get entity from Airports by key
+      tags:
+        - Airports
+      parameters:
+        - name: IcaoCode
+          in: path
+          description: key: IcaoCode
+          required: true
+          style: simple,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - Name
+                - IcaoCode
+                - IataCode
+                - Location,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+      responses:
+        200:
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+        default:
+          $ref: '#/components/responses/error'
+    delete:
+      summary: Delete entity from Airports
+      tags:
+        - Airports
+      parameters:
+        - name: IcaoCode
+          in: path
+          description: key: IcaoCode
+          required: true
+          style: simple,
+        - name: If-Match
+          in: header
+          description: ETag
+          style: simple
+          schema:
+            type: string
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      summary: Update entity in Airports
+      tags:
+        - Airports
+      parameters:
+        - name: IcaoCode
+          in: path
+          description: key: IcaoCode
+          required: true
+          style: simple
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+        required: true
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /NewComePeople:
+    get:
+      summary: Get entities from NewComePeople
+      tags:
+        - NewComePeople
+      parameters:
+        - $ref: '#/components/parameters/top',
+        - $ref: '#/components/parameters/skip',
+        - $ref: '#/components/parameters/search',
+        - $ref: '#/components/parameters/filter',
+        - $ref: '#/components/parameters/count',
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+                - Friends
+                - BestFriend
+                - Trips
+      responses:
+        200:
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Collection of NewComePeople
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+    post:
+      summary: Add new entity to NewComePeople
+      tags:
+        - NewComePeople
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        201:
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+  /NewComePeople('{UserName}'):
+    get:
+      summary: Get entity from NewComePeople by key
+      tags:
+        - NewComePeople
+      parameters:
+        - name: UserName
+          in: path
+          description: key: UserName
+          required: true
+          style: simple,
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+                - Friends
+                - BestFriend
+                - Trips
+      responses:
+        200:
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+    delete:
+      summary: Delete entity from NewComePeople
+      tags:
+        - NewComePeople
+      parameters:
+        - name: UserName
+          in: path
+          description: key: UserName
+          required: true
+          style: simple,
+        - name: If-Match
+          in: header
+          description: ETag
+          style: simple
+          schema:
+            type: string
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      summary: Update entity in NewComePeople
+      tags:
+        - NewComePeople
+      parameters:
+        - name: UserName
+          in: path
+          description: key: UserName
+          required: true
+          style: simple
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /NewComePeople('{UserName}')/GetFavoriteAirline(person={person}):
+    get:
+      summary: Invoke function GetFavoriteAirline
+      tags:
+        - person
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        default:
+          $ref: '#/components/responses/error'
+  /NewComePeople('{UserName}')/GetFriendsTrips(person={person},userName={userName}):
+    get:
+      summary: Invoke function GetFriendsTrips
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: userName
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/components/responses/error'
+  /NewComePeople('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName}):
+    get:
+      summary: Invoke function UpdatePersonLastName
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: lastName
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+        default:
+          $ref: '#/components/responses/error'
+  /NewComePeople('{UserName}')/ShareTrip:
+    post:
+      summary: Invoke action ShareTrip
+      parameters:
+        - name: personInstance
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: userName
+          in: path
+          required: true
+          style: simple,
+        - name: tripId
+          in: path
+          required: true
+          style: simple
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /Me:
+    get:
+      summary: Get Me
+      tags:
+        - Me
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features,
+        - name: $expand
+          in: query
+          description: Expand related entities
+          style: form
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - *
+                - Friends
+                - BestFriend
+                - Trips
+      responses:
+        200:
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+    patch:
+      summary: Update Me
+      tags:
+        - Me
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /Me/GetFavoriteAirline(person={person}):
+    get:
+      summary: Invoke function GetFavoriteAirline
+      tags:
+        - person
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+        default:
+          $ref: '#/components/responses/error'
+  /Me/GetFriendsTrips(person={person},userName={userName}):
+    get:
+      summary: Invoke function GetFriendsTrips
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: userName
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/components/responses/error'
+  /Me/UpdatePersonLastName(person={person},lastName={lastName}):
+    get:
+      summary: Invoke function UpdatePersonLastName
+      parameters:
+        - name: person
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: lastName
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+        default:
+          $ref: '#/components/responses/error'
+  /Me/ShareTrip:
+    post:
+      summary: Invoke action ShareTrip
+      parameters:
+        - name: personInstance
+          in: path
+          required: true
+          style: simple
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - name: userName
+          in: path
+          required: true
+          style: simple,
+        - name: tripId
+          in: path
+          required: true
+          style: simple
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+  /GetPersonWithMostFriends():
+    get:
+      summary: Invoke function GetPersonWithMostFriends
+      parameters:
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+  /GetNearestAirport(lat={lat},lon={lon}):
+    get:
+      summary: Invoke function GetNearestAirport
+      parameters:
+        - name: lat
+          in: path
+          required: true
+          style: simple,
+        - name: lon
+          in: path
+          required: true
+          style: simple
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+        default:
+          $ref: '#/components/responses/error'
+  /ResetDataSource:
+    post:
+      summary: Invoke action ResetDataSource
+      parameters:
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+components:
+  schemas:
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person:
+      type: object
+      title: Person
+      properties:
+        UserName:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+          nullable: true
+        MiddleName:
+          type: string
+          nullable: true
+        Gender:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
+        Age:
+          oneOf:
+            - type: integer,
+            - type: string
+          format: int64
+          nullable: true
+        Emails:
+          type: array
+          items:
+            type: string
+            nullable: true
+        AddressInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+        HomeAddress:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+        FavoriteFeature:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
+        Features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
+        Friends:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        BestFriend:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        Trips:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline:
+      type: object
+      title: Airline
+      properties:
+        AirlineCode:
+          type: string
+        Name:
+          type: string
+          nullable: true
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport:
+      type: object
+      title: Airport
+      properties:
+        Name:
+          type: string
+          nullable: true
+        IcaoCode:
+          type: string
+        IataCode:
+          type: string
+          nullable: true
+        Location:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location:
+      type: object
+      title: Location
+      properties:
+        Address:
+          type: string
+          nullable: true
+        City:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.City:
+      type: object
+      title: City
+      properties:
+        Name:
+          type: string
+          nullable: true
+        CountryRegion:
+          type: string
+          nullable: true
+        Region:
+          type: string
+          nullable: true
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location',
+        - type: object
+          title: AirportLocation
+          properties:
+            Loc:
+              type: string
+              nullable: true
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location',
+        - type: object
+          title: EventLocation
+          properties:
+            BuildingInfo:
+              type: string
+              nullable: true
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip:
+      type: object
+      title: Trip
+      properties:
+        TripId:
+          type: integer
+        ShareId:
+          type: string
+        Name:
+          type: string
+          nullable: true
+        Budget:
+          type: float
+        Description:
+          type: string
+          nullable: true
+        Tags:
+          type: array
+          items:
+            type: string
+            nullable: true
+        StartsAt:
+          type: dateTime
+        EndsAt:
+          type: dateTime
+        PlanItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
+      type: object
+      title: PlanItem
+      properties:
+        PlanItemId:
+          type: integer
+        ConfirmationCode:
+          type: string
+          nullable: true
+        StartsAt:
+          type: dateTime
+        EndsAt:
+          type: dateTime
+        Duration:
+          type: dateTime
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem',
+        - type: object
+          title: Event
+          properties:
+            OccursAt:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
+            Description:
+              type: string
+              nullable: true
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem',
+        - type: object
+          title: PublicTransportation
+          properties:
+            SeatNumber:
+              type: string
+              nullable: true
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation',
+        - type: object
+          title: Flight
+          properties:
+            FlightNumber:
+              type: string
+              nullable: true
+            Airline:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+            From:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+            To:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - type: object
+          title: Employee
+          properties:
+            Cost:
+              oneOf:
+                - type: integer,
+                - type: string
+              format: int64
+            Peers:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
+      allOf:
+        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person',
+        - type: object
+          title: Manager
+          properties:
+            Budget:
+              oneOf:
+                - type: integer,
+                - type: string
+              format: int64
+            BossOffice:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+            DirectReports:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender:
+      type: string
+      title: PersonGender
+      enum:
+        - Male
+        - Female
+        - Unknow
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature:
+      type: string
+      title: Feature
+      enum:
+        - Feature1
+        - Feature2
+        - Feature3
+        - Feature4
+    odata.error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          $ref: '#/components/schemas/odata.error.main'
+    odata.error.main:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/odata.error.detail'
+        innererror:
+          type: object
+          description: The structure of this object is service-specific
+    odata.error.detail:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        target:
+          type: string
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: Show only the first n items
+      style: form
+      schema:
+        type: integer
+        minimum: 0
+      example:
+        example: 50
+    skip:
+      name: $skip
+      in: query
+      description: Skip only the first n items
+      style: form
+      schema:
+        type: integer
+        minimum: 0
+    count:
+      name: $count
+      in: query
+      description: Include count of items
+      style: form
+      schema:
+        type: boolean
+    filter:
+      name: $filter
+      in: query
+      description: Filter items by property values
+      style: form
+      schema:
+        type: string
+    search:
+      name: $search
+      in: query
+      description: Search items by search phrases
+      style: form
+      schema:
+        type: string
+tags:
+  - name: People,
+  - name: Airlines,
+  - name: Airports,
+  - name: NewComePeople

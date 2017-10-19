@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader", "src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj", "{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader.Tests", "test\Microsoft.OpenApi.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj", "{90A98718-75EB-4E2B-A51E-66ACF66F15B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A98718-75EB-4E2B-A51E-66ACF66F15B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A98718-75EB-4E2B-A51E-66ACF66F15B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A98718-75EB-4E2B-A51E-66ACF66F15B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A98718-75EB-4E2B-A51E-66ACF66F15B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AE22713-F94E-45CA-81F4-0806CA195B69}
+	EndGlobalSection
+EndGlobal

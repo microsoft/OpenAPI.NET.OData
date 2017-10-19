@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.OpenAPI.OData.Reader.Tests</AssemblyName>
+    <RootNamespace>Microsoft.OpenAPI.OData.Reader.Tests</RootNamespace>
+    <TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Basic.OpenApi.json" />
+    <None Remove="Resources\Basic.OpenApi.yaml" />
+    <None Remove="Resources\Empty.OpenApi.json" />
+    <None Remove="Resources\Empty.OpenApi.yaml" />
+    <None Remove="Resources\TripService.OpenApi.json" />
+    <None Remove="Resources\TripService.OpenApi.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Basic.OpenApi.json" />
+    <EmbeddedResource Include="Resources\Basic.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.json" />
+    <EmbeddedResource Include="Resources\Empty.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\TripService.OData.xml" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.json" />
+    <EmbeddedResource Include="Resources\TripService.OpenApi.yaml" />
+    <EmbeddedResource Include="Resources\YamlWriterTest.yaml.txt" />
+    <EmbeddedResource Include="Resources\JsonWriterTest.json.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="xunit" Version="2.3.0-beta5-build3769" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta5-build3769" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj" />
+  </ItemGroup>
+
+</Project>

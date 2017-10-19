@@ -1,0 +1,15 @@
+﻿//---------------------------------------------------------------------
+// <copyright file="OpenApiEncodingTest.cs" company="Microsoft">
+//      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// </copyright>
+//---------------------------------------------------------------------
+
+using System.Collections.Generic;
+using Xunit;
+
+namespace Microsoft.OData.OpenAPI.Tests
+{
+    public class OpenApiEncodingTest
+    {
+    }
+}
