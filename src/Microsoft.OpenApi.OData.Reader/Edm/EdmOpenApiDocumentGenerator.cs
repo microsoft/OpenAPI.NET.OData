@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OData.OpenAPI
 {
@@ -49,7 +50,7 @@ namespace Microsoft.OData.OpenAPI
 
                     Components = CreateComponents(),
 
-                    Security = CreateSecurity(),
+                    SecurityRequirements = CreateSecurity(),
 
                     Tags = CreateTags()
                 };
@@ -82,7 +83,7 @@ namespace Microsoft.OData.OpenAPI
             {
                 new OpenApiServer
                 {
-                    Url = Settings.BaseUri
+                    Url = string.Empty
                 }
             };
         }
@@ -109,7 +110,7 @@ namespace Microsoft.OData.OpenAPI
         /// Create the collection of <see cref="OpenApiSecurity"/> object.
         /// </summary>
         /// <returns>The security object.</returns>
-        private IList<OpenApiSecurity> CreateSecurity()
+        private IList<OpenApiSecurityRequirement> CreateSecurity()
         {
             return null;
         }

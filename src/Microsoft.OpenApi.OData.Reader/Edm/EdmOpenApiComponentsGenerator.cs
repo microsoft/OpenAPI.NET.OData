@@ -6,6 +6,8 @@
 
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OData.OpenAPI
 {
@@ -89,12 +91,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "string",
-                Enum = new List<string>()
+                Enum = new List<IOpenApiAny>()
             };
 
             foreach (IEdmEnumMember member in enumType.Members)
             {
-                schema.Enum.Add(member.Name);
+                schema.Enum.Add(new OpenApiString(member.Name));
             }
 
             schema.Title = (enumType as IEdmSchemaElement).Name;
@@ -111,7 +113,7 @@ namespace Microsoft.OData.OpenAPI
                     {
                         new OpenApiSchema
                         {
-                            Reference = new OpenApiReference("#/components/schemas/" + structuredType.BaseType.FullTypeName())
+                            Pointer = new OpenApiReference("#/components/schemas/" + structuredType.BaseType.FullTypeName())
                         },
 
                         VisitStructuredType(structuredType, false)
@@ -163,7 +165,7 @@ namespace Microsoft.OData.OpenAPI
                 case EdmTypeKind.Entity:
                 case EdmTypeKind.EntityReference:
                 case EdmTypeKind.Enum:
-                    schema.Reference = new OpenApiReference("#/components/schemas/" + reference.Definition.FullTypeName());
+                    schema.Pointer = new OpenApiReference("#/components/schemas/" + reference.Definition.FullTypeName());
                     break;
 
                 case EdmTypeKind.Primitive:
@@ -180,13 +182,13 @@ namespace Microsoft.OData.OpenAPI
                                 Type = "string"
                             }
                         };
-                        schema.Nullable = reference.IsNullable ? (bool?)true : null;
+                        schema.Nullable = reference.IsNullable ? true : false;
                         schema.Format = "int64";
                     }
                     else
                     {
                         schema.Type = reference.AsPrimitive().GetOpenApiDataType().GetCommonName();
-                        schema.Nullable = reference.IsNullable ? (bool?)true : null;
+                        schema.Nullable = reference.IsNullable ? true : false;
                     }
                     break;
 
@@ -218,17 +220,14 @@ namespace Microsoft.OData.OpenAPI
             return new OpenApiParameter
             {
                 Name = "$top",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Show only the first n items",
                 Schema = new OpenApiSchema
                 {
                     Type = "integer",
                     Minimum = 0,
                 },
-                Example = new OpenApiAny
-                {
-                    { "example", 50 } // TODO: it looks wrong here.
-                }
+                Example = new OpenApiInteger(50)
             };
         }
 
@@ -237,7 +236,7 @@ namespace Microsoft.OData.OpenAPI
             return new OpenApiParameter
             {
                 Name = "$skip",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Skip only the first n items",
                 Schema = new OpenApiSchema
                 {
@@ -252,7 +251,7 @@ namespace Microsoft.OData.OpenAPI
             return new OpenApiParameter
             {
                 Name = "$count",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Include count of items",
                 Schema = new OpenApiSchema
                 {
@@ -266,7 +265,7 @@ namespace Microsoft.OData.OpenAPI
             return new OpenApiParameter
             {
                 Name = "$filter",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Filter items by property values",
                 Schema = new OpenApiSchema
                 {
@@ -280,7 +279,7 @@ namespace Microsoft.OData.OpenAPI
             return new OpenApiParameter
             {
                 Name = "$search",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Search items by search phrases",
                 Schema = new OpenApiSchema
                 {
@@ -304,7 +303,7 @@ namespace Microsoft.OData.OpenAPI
                         "error",
                         new OpenApiSchema
                         {
-                            Reference = new OpenApiReference("#/components/schemas/odata.error.main")
+                            Pointer = new OpenApiReference("#/components/schemas/odata.error.main")
                         }
                     }
                 }
@@ -335,7 +334,7 @@ namespace Microsoft.OData.OpenAPI
                             Type = "array",
                             Items = new OpenApiSchema
                             {
-                                Reference = new OpenApiReference("#/components/schemas/odata.error.detail")
+                                Pointer = new OpenApiReference("#/components/schemas/odata.error.detail")
                             }
                         }
                     },

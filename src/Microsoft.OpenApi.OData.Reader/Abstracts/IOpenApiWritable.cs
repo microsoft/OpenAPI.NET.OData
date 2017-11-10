@@ -15,6 +15,6 @@ namespace Microsoft.OData.OpenAPI
         /// Write Open API element.
         /// </summary>
         /// <param name="writer">The writer.</param>
-        void Write(IOpenApiWriter writer);
+        // void Write(IOpenApiWriter writer);
     }
 }

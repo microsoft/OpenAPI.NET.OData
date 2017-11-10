@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OData.OpenAPI
 {
@@ -23,7 +24,7 @@ namespace Microsoft.OData.OpenAPI
                 { "default",
                     new OpenApiResponse
                     {
-                        Reference = new OpenApiReference("#/components/responses/error")
+                        Pointer = new OpenApiReference("#/components/responses/error")
                     }
                 },
                 { "204", new OpenApiResponse { Description = "Success"} },
@@ -56,7 +57,7 @@ namespace Microsoft.OData.OpenAPI
                 case EdmTypeKind.Enum:
                     return new OpenApiSchema
                     {
-                        Reference = new OpenApiReference("#/components/schemas/" + reference.Definition.FullTypeName())
+                        Pointer = new OpenApiReference("#/components/schemas/" + reference.Definition.FullTypeName())
                     };
 
                 case EdmTypeKind.Primitive:
@@ -71,7 +72,7 @@ namespace Microsoft.OData.OpenAPI
                                 new OpenApiSchema { Type = "string" }
                             },
                             Format = "int64",
-                            Nullable = reference.IsNullable ? (bool?)true : null
+                            Nullable = reference.IsNullable ? true : false
                         };
                     }
                     else if (reference.IsDouble())
@@ -93,7 +94,7 @@ namespace Microsoft.OData.OpenAPI
                             Type = reference.AsPrimitive().GetOpenApiDataType().GetCommonName()
                         };
                     }
-                    schema.Nullable = reference.IsNullable ? (bool?)true : null;
+                    schema.Nullable = reference.IsNullable ? true : false;
                     break;
 
                 case EdmTypeKind.TypeDefinition:
@@ -132,16 +133,18 @@ namespace Microsoft.OData.OpenAPI
 
         public static OpenApiPathItem CreatePathItem(this IEdmAction action)
         {
-            return new OpenApiPathItem
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            OpenApiOperation post = new OpenApiOperation
             {
-                Post = new OpenApiOperation
-                {
-                    Summary = "Invoke action " + action.Name,
-                    Tags = CreateTags(action),
-                    Parameters = CreateParameters(action),
-                    Responses = CreateResponses(action)
-                }
+                Summary = "Invoke action " + action.Name,
+                Tags = CreateTags(action),
+                Parameters = CreateParameters(action),
+                Responses = CreateResponses(action)
             };
+
+            pathItem.AddOperation(OperationType.Post, post);
+            return pathItem;
         }
 
         public static OpenApiPathItem CreatePathItem(this IEdmFunctionImport functionImport)
@@ -151,16 +154,17 @@ namespace Microsoft.OData.OpenAPI
 
         public static OpenApiPathItem CreatePathItem(this IEdmFunction function)
         {
-            return new OpenApiPathItem
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+            OpenApiOperation get = new OpenApiOperation
             {
-                Get = new OpenApiOperation
-                {
-                    Summary = "Invoke function " + function.Name,
-                    Tags = CreateTags(function),
-                    Parameters = CreateParameters(function),
-                    Responses = CreateResponses(function)
-                }
+                Summary = "Invoke function " + function.Name,
+                Tags = CreateTags(function),
+                Parameters = CreateParameters(function),
+                Responses = CreateResponses(function)
             };
+
+            pathItem.AddOperation(OperationType.Get, get);
+            return pathItem;
         }
 
         public static string CreatePathItemName(this IEdmActionImport actionImport)
@@ -258,16 +262,19 @@ namespace Microsoft.OData.OpenAPI
             return null;
         }
 
-        private static IList<string> CreateTags(this IEdmOperation operation)
+        private static IList<OpenApiTag> CreateTags(this IEdmOperation operation)
         {
             if (operation.EntitySetPath != null)
             {
                 var pathExpression = operation.EntitySetPath as IEdmPathExpression;
                 if (pathExpression != null)
                 {
-                    return new List<string>
+                    return new List<OpenApiTag>
                     {
-                        PathAsString(pathExpression.PathSegments)
+                        new OpenApiTag
+                        {
+                            Name = PathAsString(pathExpression.PathSegments)
+                        }
                     };
                 }
             }
@@ -284,7 +291,7 @@ namespace Microsoft.OData.OpenAPI
                 parameters.Add(new OpenApiParameter
                 {
                     Name = edmParameter.Name,
-                    In = ParameterLocation.path,
+                    In = ParameterLocation.Path,
                     Required = true,
                     Schema = edmParameter.Type.CreateSchema()
                 });

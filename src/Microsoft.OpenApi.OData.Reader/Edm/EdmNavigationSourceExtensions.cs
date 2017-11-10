@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OData.OpenAPI
 {
@@ -21,9 +23,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get entities from " + entitySet.Name,
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    entitySet.Name
+                    new OpenApiTag
+                    {
+                        Name = entitySet.Name
+                    }
                 }
             };
 
@@ -31,23 +36,23 @@ namespace Microsoft.OData.OpenAPI
             {
                 new OpenApiParameter
                 {
-                    Reference = new OpenApiReference("#/components/parameters/top")
+                    Pointer = new OpenApiReference("#/components/parameters/top")
                 },
                 new OpenApiParameter
                 {
-                    Reference = new OpenApiReference("#/components/parameters/skip")
+                    Pointer = new OpenApiReference("#/components/parameters/skip")
                 },
                 new OpenApiParameter
                 {
-                    Reference = new OpenApiReference("#/components/parameters/search")
+                    Pointer = new OpenApiReference("#/components/parameters/search")
                 },
                 new OpenApiParameter
                 {
-                    Reference = new OpenApiReference("#/components/parameters/filter")
+                    Pointer = new OpenApiReference("#/components/parameters/filter")
                 },
                 new OpenApiParameter
                 {
-                    Reference = new OpenApiReference("#/components/parameters/count")
+                    Pointer = new OpenApiReference("#/components/parameters/count")
                 },
 
                 CreateOrderByParameter(entitySet),
@@ -83,7 +88,7 @@ namespace Microsoft.OData.OpenAPI
                                                     Type = "array",
                                                     Items = new OpenApiSchema
                                                     {
-                                                        Reference = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                                        Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
                                                     }
                                                 }
                                             }
@@ -106,9 +111,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Add new entity to " + entitySet.Name,
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    entitySet.Name
+                    new OpenApiTag
+                    {
+                        Name = entitySet.Name
+                    }
                 },
                 RequestBody = new OpenApiRequestBody
                 {
@@ -121,7 +129,7 @@ namespace Microsoft.OData.OpenAPI
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Reference = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                    Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
                                 }
                             }
                         }
@@ -144,7 +152,7 @@ namespace Microsoft.OData.OpenAPI
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Reference = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                        Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
                                     }
                                 }
                             }
@@ -188,9 +196,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get entity from " + entitySet.Name + " by key",
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    entitySet.Name
+                    new OpenApiTag
+                    {
+                        Name = entitySet.Name
+                    }
                 }
             };
 
@@ -215,7 +226,7 @@ namespace Microsoft.OData.OpenAPI
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Reference = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                        Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
                                     }
                                 }
                             }
@@ -233,9 +244,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get " + singleton.Name,
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    singleton.Name
+                    new OpenApiTag
+                    {
+                        Name = singleton.Name
+                    }
                 }
             };
 
@@ -259,7 +273,7 @@ namespace Microsoft.OData.OpenAPI
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Reference = new OpenApiReference("#/components/schemas/" + singleton.EntityType().FullName())
+                                        Pointer = new OpenApiReference("#/components/schemas/" + singleton.EntityType().FullName())
                                     }
                                 }
                             }
@@ -277,9 +291,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Update entity in " + entitySet.Name,
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    entitySet.Name
+                    new OpenApiTag
+                    {
+                        Name= entitySet.Name
+                    }
                 }
             };
 
@@ -296,7 +313,7 @@ namespace Microsoft.OData.OpenAPI
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Reference = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                    Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
                                 }
                             }
                         }
@@ -316,9 +333,12 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Update " + singleton.Name,
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    singleton.Name
+                    new OpenApiTag
+                    {
+                        Name = singleton.Name
+                    }
                 }
             };
 
@@ -333,7 +353,7 @@ namespace Microsoft.OData.OpenAPI
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Reference = new OpenApiReference("#/components/schemas/" + singleton.EntityType().FullName())
+                                    Pointer = new OpenApiReference("#/components/schemas/" + singleton.EntityType().FullName())
                                 }
                             }
                         }
@@ -353,16 +373,19 @@ namespace Microsoft.OData.OpenAPI
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Delete entity from " + entitySet.Name,
-                Tags = new List<string>
+                Tags = new List<OpenApiTag>
                 {
-                    entitySet.Name
+                    new OpenApiTag
+                    {
+                        Name = entitySet.Name
+                    }
                 }
             };
             operation.Parameters = CreateKeyParameters(entitySet.EntityType());
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",
-                In = ParameterLocation.header,
+                In = ParameterLocation.Header,
                 Description = "ETag",
                 Schema = new OpenApiSchema
                 {
@@ -383,7 +406,7 @@ namespace Microsoft.OData.OpenAPI
             OpenApiParameter parameter = new OpenApiParameter
             {
                 Name = "$orderby",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Order items by property values",
                 Schema = new OpenApiSchema
                 {
@@ -400,16 +423,16 @@ namespace Microsoft.OData.OpenAPI
             return parameter;
         }
 
-        public static IList<string> CreateOrderbyItems(this IEdmEntitySet entitySet)
+        public static IList<IOpenApiAny> CreateOrderbyItems(this IEdmEntitySet entitySet)
         {
-            IList<string> orderByItems = new List<string>();
+            IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
 
             IEdmEntityType entityType = entitySet.EntityType();
 
             foreach (var property in entityType.StructuralProperties())
             {
-                orderByItems.Add(property.Name);
-                orderByItems.Add(property.Name + " desc");
+                orderByItems.Add(new OpenApiString(property.Name));
+                orderByItems.Add(new OpenApiString(property.Name + " desc"));
             }
 
             return orderByItems;
@@ -420,7 +443,7 @@ namespace Microsoft.OData.OpenAPI
             OpenApiParameter parameter = new OpenApiParameter
             {
                 Name = "$select",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Select properties to be returned",
                 Schema = new OpenApiSchema
                 {
@@ -437,13 +460,13 @@ namespace Microsoft.OData.OpenAPI
             return parameter;
         }
 
-        public static IList<string> CreateSelectItems(this IEdmEntityType entityType)
+        public static IList<IOpenApiAny> CreateSelectItems(this IEdmEntityType entityType)
         {
-            IList<string> selectItems = new List<string>();
+            IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
 
             foreach (var property in entityType.StructuralProperties())
             {
-                selectItems.Add(property.Name);
+                selectItems.Add(new OpenApiString(property.Name));
             }
 
             return selectItems;
@@ -454,7 +477,7 @@ namespace Microsoft.OData.OpenAPI
             OpenApiParameter parameter = new OpenApiParameter
             {
                 Name = "$expand",
-                In = ParameterLocation.query,
+                In = ParameterLocation.Query,
                 Description = "Expand related entities",
                 Schema = new OpenApiSchema
                 {
@@ -471,16 +494,16 @@ namespace Microsoft.OData.OpenAPI
             return parameter;
         }
 
-        public static IList<string> CreateExpandItems(this IEdmEntityType entityType)
+        public static IList<IOpenApiAny> CreateExpandItems(this IEdmEntityType entityType)
         {
-            IList<string> expandItems = new List<string>
+            IList<IOpenApiAny> expandItems = new List<IOpenApiAny>
             {
-                "*"
+                new OpenApiString("*")
             };
 
             foreach (var property in entityType.NavigationProperties())
             {
-                expandItems.Add(property.Name);
+                expandItems.Add(new OpenApiString(property.Name));
             }
 
             return expandItems;
@@ -496,7 +519,7 @@ namespace Microsoft.OData.OpenAPI
                 OpenApiParameter parameter = new OpenApiParameter
                 {
                     Name = keyProperty.Name,
-                    In = ParameterLocation.path,
+                    In = ParameterLocation.Path,
                     Required = true,
                     Description = "key: " + keyProperty.Name,
                     Schema = keyProperty.Type.CreateSchema()

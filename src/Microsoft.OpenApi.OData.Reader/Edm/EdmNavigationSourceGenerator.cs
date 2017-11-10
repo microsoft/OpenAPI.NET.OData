@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OData.OpenAPI
 {
@@ -35,24 +36,24 @@ namespace Microsoft.OData.OpenAPI
             IDictionary<string, OpenApiPathItem> paths = new Dictionary<string, OpenApiPathItem>();
 
             // itself
-            OpenApiPathItem pathItem = new OpenApiPathItem
-            {
-                Get = entitySet.CreateGetOperationForEntitySet(),
+            OpenApiPathItem pathItem = new OpenApiPathItem();
 
-                Post = entitySet.CreatePostOperationForEntitySet()
-            };
+            pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntitySet());
+
+            pathItem.AddOperation(OperationType.Post, entitySet.CreatePostOperationForEntitySet());
+
             paths.Add("/" + entitySet.Name, pathItem);
 
             // entity
             string entityPathName = entitySet.CreatePathNameForEntity();
-            pathItem = new OpenApiPathItem
-            {
-                Get = entitySet.CreateGetOperationForEntity(),
+            pathItem = new OpenApiPathItem();
 
-                Patch = entitySet.CreatePatchOperationForEntity(),
+            pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntity());
 
-                Delete = entitySet.CreateDeleteOperationForEntity()
-            };
+            pathItem.AddOperation(OperationType.Patch, entitySet.CreatePatchOperationForEntity());
+
+            pathItem.AddOperation(OperationType.Delete, entitySet.CreateDeleteOperationForEntity());
+
             paths.Add(entityPathName, pathItem);
 
             // bound operations
@@ -71,14 +72,10 @@ namespace Microsoft.OData.OpenAPI
 
             // Singleton
             string entityPathName = singleton.CreatePathNameForSingleton();
-            OpenApiPathItem pathItem = new OpenApiPathItem
-            {
-                Get = singleton.CreateGetOperationForSingleton(),
-
-                Patch = singleton.CreatePatchOperationForSingleton(),
-            };
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+            pathItem.AddOperation(OperationType.Get, singleton.CreateGetOperationForSingleton());
+            pathItem.AddOperation(OperationType.Patch, singleton.CreatePatchOperationForSingleton());
             paths.Add(entityPathName, pathItem);
-
 
             IDictionary<string, OpenApiPathItem> operations = CreatePathItemsWithOperations(singleton);
             foreach (var operation in operations)

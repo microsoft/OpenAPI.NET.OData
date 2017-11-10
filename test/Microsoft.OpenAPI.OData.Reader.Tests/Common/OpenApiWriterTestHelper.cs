@@ -4,6 +4,8 @@
 // </copyright>
 //---------------------------------------------------------------------
 
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Writers;
 using System;
 using System.IO;
 
@@ -18,12 +20,12 @@ namespace Microsoft.OData.OpenAPI.Tests
             Action<IOpenApiWriter> action = writer =>
             {
                 before?.Invoke(writer, element);
-                element?.Write(writer);
+                // element?(writer);
                 after?.Invoke(writer, element);
                 writer?.Flush();
             };
 
-            return Write(OpenApiTarget.Json, action);
+            return Write(OpenApiFormat.Json, action);
         }
 
         internal static string WriteToYaml(this IOpenApiWritable element,
@@ -33,23 +35,23 @@ namespace Microsoft.OData.OpenAPI.Tests
             Action<IOpenApiWriter> action = writer =>
             {
                 before?.Invoke(writer, element);
-                element?.Write(writer);
+                //element?.Write(writer);
                 after?.Invoke(writer, element);
                 writer?.Flush();
             };
 
-            return Write(OpenApiTarget.Yaml, action);
+            return Write(OpenApiFormat.Yaml, action);
         }
 
         internal static string Write(this IOpenApiWritable element,
-            OpenApiTarget target,
+            OpenApiFormat target,
             Action<IOpenApiWriter, IOpenApiWritable> before = null,
             Action<IOpenApiWriter, IOpenApiWritable> after = null)
         {
             Action<IOpenApiWriter> action = writer =>
             {
                 before?.Invoke(writer, element);
-                element?.Write(writer);
+               // element?.Write(writer);
                 after?.Invoke(writer, element);
                 writer?.Flush();
             };
@@ -57,11 +59,11 @@ namespace Microsoft.OData.OpenAPI.Tests
             return Write(target, action);
         }
 
-        internal static string Write(this Action<IOpenApiWriter> action, OpenApiTarget target)
+        internal static string Write(this Action<IOpenApiWriter> action, OpenApiFormat target)
         {
             MemoryStream stream = new MemoryStream();
             IOpenApiWriter writer;
-            if (target == OpenApiTarget.Yaml)
+            if (target == OpenApiFormat.Yaml)
             {
                 writer = new OpenApiYamlWriter(new StreamWriter(stream));
             }
@@ -77,11 +79,11 @@ namespace Microsoft.OData.OpenAPI.Tests
         }
 
 
-        internal static string Write(OpenApiTarget target, Action<IOpenApiWriter> action)
+        internal static string Write(OpenApiFormat target, Action<IOpenApiWriter> action)
         {
             MemoryStream stream = new MemoryStream();
             IOpenApiWriter writer;
-            if (target == OpenApiTarget.Yaml)
+            if (target == OpenApiFormat.Yaml)
             {
                 writer = new OpenApiYamlWriter(new StreamWriter(stream));
             }

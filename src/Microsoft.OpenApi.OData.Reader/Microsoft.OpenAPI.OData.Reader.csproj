@@ -23,6 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\OpenAPI.NET\src\Microsoft.OpenApi\Microsoft.OpenApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\SRResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

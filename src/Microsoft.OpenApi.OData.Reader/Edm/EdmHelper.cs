@@ -5,6 +5,8 @@
 //---------------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Commons;
 using System.Diagnostics;
 
 namespace Microsoft.OData.OpenAPI
@@ -25,21 +27,21 @@ namespace Microsoft.OData.OpenAPI
             switch (edmType.TypeKind)
             {
                 case EdmTypeKind.Collection:
-                    return OpenApiTypeKind.Array.GetDisplayName();
+                    return AnyTypeKind.Array.GetDisplayName();
 
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Entity:
                 case EdmTypeKind.EntityReference:
-                    return OpenApiTypeKind.Object.GetDisplayName();
+                    return AnyTypeKind.Object.GetDisplayName();
 
                 case EdmTypeKind.Enum:
-                    return OpenApiTypeKind.String.GetDisplayName();
+                    return "string";
 
                 case EdmTypeKind.Primitive:
                     return ((IEdmPrimitiveType)(edmType)).GetOpenApiDataType().GetCommonName();
 
                 default:
-                    return OpenApiTypeKind.None.GetDisplayName();
+                    return AnyTypeKind.Null.GetDisplayName();
             }
         }
     }

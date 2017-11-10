@@ -16,6 +16,6 @@ namespace Microsoft.OData.OpenAPI
         /// <summary>
         /// Specification extensions.
         /// </summary>
-        IList<OpenApiExtension> Extensions { get; }
+        // IList<OpenApiExtension> Extensions { get; }
     }
 }

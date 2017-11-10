@@ -14,6 +14,6 @@ namespace Microsoft.OData.OpenAPI
         /// <summary>
         /// Reference object.
         /// </summary>
-        OpenApiReference Reference { get; }
+        // OpenApiReference Reference { get; }
     }
 }

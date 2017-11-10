@@ -6,6 +6,9 @@
 
 using System.IO;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Writers;
 
 namespace Microsoft.OData.OpenAPI
 {
@@ -21,7 +24,7 @@ namespace Microsoft.OData.OpenAPI
         /// <param name="stream">The output stream.</param>
         /// <param name="target">The Open API target.</param>
         /// <param name="settings">Settings for the generated Open API.</param>
-        public static void WriteOpenApi(this IEdmModel model, Stream stream, OpenApiTarget target, OpenApiWriterSettings settings = null)
+        public static void WriteOpenApi(this IEdmModel model, Stream stream, OpenApiFormat target, OpenApiWriterSettings settings = null)
         {
             if (model == null)
             {
@@ -44,7 +47,7 @@ namespace Microsoft.OData.OpenAPI
         /// <param name="writer">The output text writer.</param>
         /// <param name="target">The Open API target.</param>
         /// <param name="settings">Settings for the generated Open API.</param>
-        public static void WriteOpenApi(this IEdmModel model, TextWriter writer, OpenApiTarget target, OpenApiWriterSettings settings = null)
+        public static void WriteOpenApi(this IEdmModel model, TextWriter writer, OpenApiFormat target, OpenApiWriterSettings settings = null)
         {
             if (model == null)
             {
@@ -85,10 +88,10 @@ namespace Microsoft.OData.OpenAPI
 
             EdmOpenApiDocumentGenerator converter = new EdmOpenApiDocumentGenerator(model, settings);
             OpenApiDocument doc = converter.Generate();
-            doc.Write(writer);
+            doc.Serialize(writer);
         }
 
-        private static IOpenApiWriter BuildWriter(Stream stream, OpenApiTarget target)
+        private static IOpenApiWriter BuildWriter(Stream stream, OpenApiFormat target)
         {
             StreamWriter writer = new StreamWriter(stream)
             {
@@ -98,9 +101,9 @@ namespace Microsoft.OData.OpenAPI
             return BuildWriter(writer, target);
         }
 
-        private static IOpenApiWriter BuildWriter(TextWriter writer, OpenApiTarget target)
+        private static IOpenApiWriter BuildWriter(TextWriter writer, OpenApiFormat target)
         {
-            if (target == OpenApiTarget.Json)
+            if (target == OpenApiFormat.Json)
             {
                 return new OpenApiJsonWriter(writer);
             }
