@@ -14,17 +14,16 @@ namespace Microsoft.OpenApi.OData
     /// <summary>
     /// Visit Edm model to generate <see cref="OpenApiComponents"/>
     /// </summary>
-    internal class EdmOpenApiComponentsGenerator : EdmOpenApiGenerator
+    internal class OpenApiComponentsGenerator
     {
         private OpenApiComponents _components;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdmOpenApiComponentsGenerator" /> class.
+        /// Initializes a new instance of the <see cref="OpenApiComponentsGenerator" /> class.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="settings">The Open Api writer settings.</param>
-        public EdmOpenApiComponentsGenerator(IEdmModel model, OpenApiWriterSettings settings)
-            : base(model, settings)
+        public OpenApiComponentsGenerator(IEdmModel model)
         {
         }
 

@@ -4,12 +4,15 @@
 // </copyright>
 //---------------------------------------------------------------------
 
+using Microsoft.OpenApi.Models;
+
 namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Represents an Open API document element.
     /// </summary>
-    internal interface IOpenApiElement
+    internal interface IOpenApiDocumentGenerator
     {
+        OpenApiDocument Generate();
     }
 }

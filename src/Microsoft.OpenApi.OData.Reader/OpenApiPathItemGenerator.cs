@@ -11,18 +11,20 @@ using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData
 {
-    internal class EdmNavigationSourceGenerator : EdmOpenApiGenerator
+    internal class OpenApiPathItemGenerator
     {
-        public IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
+        private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
+        private IEdmModel _model;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdmNavigationSourceGenerator" /> class.
+        /// Initializes a new instance of the <see cref="OpenApiPathItemGenerator" /> class.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="settings">The Open Api writer settings.</param>
-        public EdmNavigationSourceGenerator(IEdmModel model, OpenApiWriterSettings settings)
-            : base(model, settings)
+        public OpenApiPathItemGenerator(IEdmModel model)
         {
+            _model = model;
+
             _boundOperations = new Dictionary<IEdmTypeReference, IEdmOperation>();
             foreach (var edmOperation in model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
             {
@@ -31,11 +33,25 @@ namespace Microsoft.OpenApi.OData
             }
         }
 
+        /// <summary>
+        /// Path items for Entity Sets.
+        /// Each entity set is represented as a name/value pair
+        /// whose name is the service-relative resource path of the entity set prepended with a forward slash,
+        /// and whose value is a Path Item Object, see [OpenAPI].
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="entitySet">The Edm entity set.</param>
+        /// <returns>The path items.</returns>
         public IDictionary<string, OpenApiPathItem> CreatePaths(IEdmEntitySet entitySet)
         {
+            if (entitySet == null)
+            {
+                return null;
+            }
+
             IDictionary<string, OpenApiPathItem> paths = new Dictionary<string, OpenApiPathItem>();
 
-            // itself
+            // entity set
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
             pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntitySet());

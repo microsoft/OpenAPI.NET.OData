@@ -1,0 +1,121 @@
+﻿//---------------------------------------------------------------------
+// <copyright file="EdmModelOpenApiExtensions.cs" company="Microsoft">
+//      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
+// </copyright>
+//---------------------------------------------------------------------
+
+using System.IO;
+using Microsoft.OData.Edm;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Writers;
+using System;
+
+namespace Microsoft.OpenApi.OData
+{
+    /// <summary>
+    /// Extension methods to write Entity Data Model (EDM) to Open API.
+    /// </summary>
+    public static class EdmModelOpenApiMappingExtensions
+    {
+        /// <summary>
+        /// Outputs Edm model to an Open API artifact to the give stream.
+        /// </summary>
+        /// <param name="model">Edm model to be written.</param>
+        /// <param name="stream">The output stream.</param>
+        /// <param name="target">The Open API target.</param>
+        /// <param name="settings">Settings for the generated Open API.</param>
+        public static OpenApiDocument Mapping(this IEdmModel model)
+        {
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            return new OpenApiDocument();
+        }
+
+        public static OpenApiDocument Mapping(this IEdmModel model, Action<OpenApiDocument> configure)
+        {
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            return new OpenApiDocument();
+        }
+
+        /// <summary>
+        /// Outputs Edm model to an Open API artifact to the give text writer.
+        /// </summary>
+        /// <param name="model">Edm model to be written.</param>
+        /// <param name="writer">The output text writer.</param>
+        /// <param name="target">The Open API target.</param>
+        /// <param name="settings">Settings for the generated Open API.</param>
+        public static void WriteOpenApi(this IEdmModel model, TextWriter writer, OpenApiFormat target, OpenApiWriterSettings settings = null)
+        {
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            if (writer == null)
+            {
+                throw Error.ArgumentNull(nameof(writer));
+            }
+
+            IOpenApiWriter openApiWriter = BuildWriter(writer, target);
+            model.WriteOpenApi(openApiWriter, settings);
+        }
+
+        /// <summary>
+        /// Outputs an Open API artifact to the provided Open Api writer.
+        /// </summary>
+        /// <param name="model">Model to be written.</param>
+        /// <param name="writer">The generated Open API writer <see cref="IOpenApiWriter"/>.</param>
+        /// <param name="settings">Settings for the generated Open API.</param>
+        public static void WriteOpenApi(this IEdmModel model, IOpenApiWriter writer, OpenApiWriterSettings settings = null)
+        {
+            if (model == null)
+            {
+                throw Error.ArgumentNull("model");
+            }
+
+            if (writer == null)
+            {
+                throw Error.ArgumentNull("writer");
+            }
+
+            if (settings == null)
+            {
+                settings = new OpenApiWriterSettings();
+            }
+
+            EdmOpenApiDocumentGenerator converter = new EdmOpenApiDocumentGenerator(model, settings);
+            OpenApiDocument doc = converter.Generate();
+            doc.Serialize(writer);
+        }
+
+        private static IOpenApiWriter BuildWriter(Stream stream, OpenApiFormat target)
+        {
+            StreamWriter writer = new StreamWriter(stream)
+            {
+                NewLine = "\n"
+            };
+
+            return BuildWriter(writer, target);
+        }
+
+        private static IOpenApiWriter BuildWriter(TextWriter writer, OpenApiFormat target)
+        {
+            if (target == OpenApiFormat.Json)
+            {
+                return new OpenApiJsonWriter(writer);
+            }
+            else
+            {
+                return new OpenApiYamlWriter(writer);
+            }
+        }
+    }
+}

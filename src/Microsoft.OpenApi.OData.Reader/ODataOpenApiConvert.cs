@@ -6,19 +6,23 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace Microsoft.OpenApi.OData
 {
-    internal static class ODataOpenApiConvert
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class EdmOpenApiExtensions
     {
-        public static OpenApiDocument ConvertTo(this IEdmModel model)
+        public static OpenApiDocument Convert(this IEdmModel model)
         {
-            return model.ConvertTo(new OpenApiWriterSettings());
+            return model.Convert(configure: null);
         }
 
-        public static OpenApiDocument ConvertTo(this IEdmModel model, OpenApiWriterSettings settings)
+        public static OpenApiDocument Convert(this IEdmModel model, Action<OpenApiDocument> configure)
         {
-            return new EdmOpenApiDocumentGenerator(model, settings).Generate();
+            return new OpenApiDocumentGenerator(model, settings).Generate();
         }
     }
 }

@@ -20,6 +20,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EdmModelOpenApiMappingExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="OpenApiPathsGenerator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.3.1" />
   </ItemGroup>
 
