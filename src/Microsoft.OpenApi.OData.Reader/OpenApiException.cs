@@ -5,9 +5,9 @@
 //---------------------------------------------------------------------
 
 using System;
-using Microsoft.OData.OpenAPI.Properties;
+using Microsoft.OpenApi.OData.Properties;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Exception type representing exceptions in the Open API library.

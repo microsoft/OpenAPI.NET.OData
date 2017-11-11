@@ -11,7 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Entension methods for navigation source

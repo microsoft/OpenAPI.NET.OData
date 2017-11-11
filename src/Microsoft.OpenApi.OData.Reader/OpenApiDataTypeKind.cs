@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Represents the Open Api Data type metadata attribute.

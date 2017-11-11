@@ -4,10 +4,11 @@
 // </copyright>
 //---------------------------------------------------------------------
 
+using Microsoft.OpenApi.OData;
 using System;
 using System.IO;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData.Tests
 {
     internal static class Resources
     {

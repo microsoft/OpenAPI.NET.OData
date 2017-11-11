@@ -6,4 +6,4 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Microsoft.OpenAPI.OData.Reader.Tests")]
+[assembly: InternalsVisibleTo("Microsoft.OpenApi.OData.Reader.Tests")]

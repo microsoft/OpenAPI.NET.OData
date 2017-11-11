@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Configuration settings for OData to Open API writers.

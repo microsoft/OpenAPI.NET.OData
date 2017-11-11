@@ -9,7 +9,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     internal class EdmNavigationSourceGenerator : EdmOpenApiGenerator
     {

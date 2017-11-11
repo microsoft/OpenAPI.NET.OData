@@ -6,7 +6,7 @@
 
 using Microsoft.OData.Edm;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Base class for Edm to Open Api generator.

@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Represents an Extensible Open API element.

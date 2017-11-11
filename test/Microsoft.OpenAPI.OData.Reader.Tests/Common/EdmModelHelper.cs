@@ -8,7 +8,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 
-namespace Microsoft.OData.OpenAPI.Tests
+namespace Microsoft.OpenApi.OData.Tests
 {
     /// <summary>
     /// Edm model helpers

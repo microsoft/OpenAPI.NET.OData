@@ -9,7 +9,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Commons;
 using System.Diagnostics;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     internal static class EdmHelper
     {

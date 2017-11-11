@@ -8,9 +8,8 @@ using System;
 using System.IO;
 using Microsoft.OData.Edm;
 using Xunit;
-using Microsoft.OpenApi;
 
-namespace Microsoft.OData.OpenAPI.Tests
+namespace Microsoft.OpenApi.OData.Tests
 {
     public class EdmModelOpenApiExtensionsTest
     {

@@ -7,7 +7,7 @@
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Edm primitive type extension methods.

@@ -5,11 +5,12 @@
 //---------------------------------------------------------------------
 
 using Microsoft.OpenApi;
+using Microsoft.OpenApi.OData;
 using Microsoft.OpenApi.Writers;
 using System;
 using System.IO;
 
-namespace Microsoft.OData.OpenAPI.Tests
+namespace Microsoft.OpenApi.OData.Tests
 {
     internal static class OpenApiWriterTestHelper
     {

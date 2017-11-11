@@ -10,7 +10,7 @@ using System.Xml;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Contains methods to convert primitive values to their string representation.

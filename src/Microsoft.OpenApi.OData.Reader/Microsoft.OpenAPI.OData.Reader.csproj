@@ -1,13 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>Microsoft.OpenAPI.OData.Reader</AssemblyName>
-    <RootNamespace>Microsoft.OpenAPI.OData.Reader</RootNamespace>
+    <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
+    <RootNamespace>Microsoft.OpenApi.OData.Reader</RootNamespace>
     <TargetFrameworks>net46; netstandard2.0</TargetFrameworks>
     <Company>Microsoft</Company>
-    <Product>Microsoft.OpenAPI.OData.Reader</Product>
-    <PackageId>Microsoft.OpenAPI.OData.Reader</PackageId>
+    <Product>Microsoft.OpenApi.OData.Reader</Product>
+    <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
     <Version>0.1.0</Version>
+    <Authors>Microsoft.OpenApi.OData.Reader</Authors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

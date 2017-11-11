@@ -4,7 +4,7 @@
 // </copyright>
 //---------------------------------------------------------------------
 
-namespace Microsoft.OData.OpenAPI.Tests
+namespace Microsoft.OpenApi.OData.Tests
 {
     public static class StringHelper
     {

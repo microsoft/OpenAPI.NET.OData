@@ -7,7 +7,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OData.OpenAPI
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Visit Edm model to generate <see cref="OpenApiPaths"/>

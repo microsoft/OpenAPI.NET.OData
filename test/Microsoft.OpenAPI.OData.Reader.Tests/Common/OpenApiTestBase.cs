@@ -6,7 +6,7 @@
 
 using Xunit.Abstractions;
 
-namespace Microsoft.OData.OpenAPI.Tests
+namespace Microsoft.OpenApi.OData.Tests
 {
     public class OpenApiTestBase
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.OData.OpenAPI.Properties {
+namespace Microsoft.OpenApi.OData.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Microsoft.OData.OpenAPI.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.OData.OpenAPI.Properties.SRResource", typeof(SRResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.OData.OpenApi.Properties.SRResource", typeof(SRResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
