@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData
         }
 
         /// <summary>
-        /// Create the <see cref="OpenApiComponents"/>
+        /// Generate the <see cref="OpenApiComponents"/>
         /// </summary>
         /// <returns>the components object.</returns>
         public OpenApiComponents Generate()
@@ -38,6 +38,9 @@ namespace Microsoft.OpenApi.OData
             {
                 Schemas = VisitSchemas(),
                 Parameters = VisitParameters(),
+
+                // The value of responses is a map of Response Objects.
+                // It allows defining responses that can be reused across operations of the service.
                 Responses = VisitResponses()
             };
         }
@@ -367,6 +370,11 @@ namespace Microsoft.OpenApi.OData
             });
         }
 
+        /// <summary>
+        /// It contains one name/value pair for the standard OData error response
+        /// that is referenced from all operations of the service.
+        /// </summary>
+        /// <returns>Teh name/value pairs for the standard OData error response</returns>
         private IDictionary<string, OpenApiResponse> VisitResponses()
         {
             return new Dictionary<string, OpenApiResponse>
