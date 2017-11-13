@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     internal class OpenApiComponentsGenerator
     {
-        private OpenApiComponents _components;
+        private IEdmModel _model;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenApiComponentsGenerator" /> class.
@@ -25,6 +25,7 @@ namespace Microsoft.OpenApi.OData
         /// <param name="settings">The Open Api writer settings.</param>
         public OpenApiComponentsGenerator(IEdmModel model)
         {
+            _model = model ?? throw Error.ArgumentNull(nameof(model));
         }
 
         /// <summary>
@@ -33,23 +34,18 @@ namespace Microsoft.OpenApi.OData
         /// <returns>the components object.</returns>
         public OpenApiComponents Generate()
         {
-            if (_components == null)
+            return new OpenApiComponents
             {
-                _components = new OpenApiComponents
-                {
-                    Schemas = VisitSchemas(),
-                    Parameters = VisitParameters()
-                };
-            }
-
-            return _components;
+                Schemas = VisitSchemas(),
+                Parameters = VisitParameters()
+            };
         }
 
         private IDictionary<string, OpenApiSchema> VisitSchemas()
         {
             IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
 
-            foreach (var element in Model.SchemaElements)
+            foreach (var element in _model.SchemaElements)
             {
                 switch (element.SchemaElementKind)
                 {

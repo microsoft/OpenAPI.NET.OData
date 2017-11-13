@@ -11,18 +11,18 @@ using System;
 namespace Microsoft.OpenApi.OData
 {
     /// <summary>
-    /// 
+    /// Convert <see cref="IEdmModel"/> to Open API document, <see cref="OpenApiDocument"/>.
     /// </summary>
-    public static class EdmOpenApiExtensions
+    public static class EdmModelOpenApiExtensions
     {
         public static OpenApiDocument Convert(this IEdmModel model)
         {
-            return model.Convert(configure: null);
+            return new OpenApiDocumentGenerator(model).Generate();
         }
 
         public static OpenApiDocument Convert(this IEdmModel model, Action<OpenApiDocument> configure)
         {
-            return new OpenApiDocumentGenerator(model, settings).Generate();
+            return new OpenApiDocumentGenerator(model, configure).Generate();
         }
     }
 }

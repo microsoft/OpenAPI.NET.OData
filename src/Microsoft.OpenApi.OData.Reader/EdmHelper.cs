@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData
     {
         public static string GetDescription(this IEdmModel model, IEdmEntitySet entitySet)
         {
-            
+            return null;
         }
 
         public static string GetDescription(this IEdmModel model, IEdmVocabularyAnnotatable element)
@@ -79,12 +79,12 @@ namespace Microsoft.OpenApi.OData
             switch (edmType.TypeKind)
             {
                 case EdmTypeKind.Collection:
-                    return AnyTypeKind.Array.GetDisplayName();
+                    return AnyType.Array.GetDisplayName();
 
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Entity:
                 case EdmTypeKind.EntityReference:
-                    return AnyTypeKind.Object.GetDisplayName();
+                    return AnyType.Object.GetDisplayName();
 
                 case EdmTypeKind.Enum:
                     return "string";
@@ -93,7 +93,7 @@ namespace Microsoft.OpenApi.OData
                     return ((IEdmPrimitiveType)(edmType)).GetOpenApiDataType().GetCommonName();
 
                 default:
-                    return AnyTypeKind.Null.GetDisplayName();
+                    return AnyType.Null.GetDisplayName();
             }
         }
     }

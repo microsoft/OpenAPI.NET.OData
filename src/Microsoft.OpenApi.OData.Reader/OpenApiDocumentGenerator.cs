@@ -17,7 +17,6 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     internal class OpenApiDocumentGenerator
     {
-        private OpenApiDocument _openApiDoc;
         private OpenApiComponentsGenerator _componentsGenerator;
         private OpenApiPathsGenerator _pathsGenerator;
 
@@ -26,7 +25,19 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         protected IEdmModel Model { get; }
 
+        /// <summary>
+        /// The Open Api document external configuration action.
+        /// </summary>
         private Action<OpenApiDocument> _configure;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        public OpenApiDocumentGenerator(IEdmModel model)
+            : this(model, null)
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EdmOpenApiDocumentGenerator" /> class.
@@ -35,7 +46,7 @@ namespace Microsoft.OpenApi.OData
         /// <param name="settings">The Open Api writer settings.</param>
         public OpenApiDocumentGenerator(IEdmModel model, Action<OpenApiDocument> configure)
         {
-            Model = model;
+            Model = model ?? throw Error.ArgumentNull(nameof(model));
             _configure = configure;
             _componentsGenerator = new OpenApiComponentsGenerator(model);
             _pathsGenerator = new OpenApiPathsGenerator(model);
@@ -73,7 +84,7 @@ namespace Microsoft.OpenApi.OData
         /// <returns>The info object.</returns>
         private OpenApiInfo CreateInfo()
         {
-            // The value of info is an Info Object, 
+            // The value of info is an Info Object,
             // It contains the fields title and version, and optionally the field description.
             return new OpenApiInfo
             {
@@ -84,13 +95,13 @@ namespace Microsoft.OpenApi.OData
 
                 // The value of version is the value of the annotation Core.SchemaVersion(see[OData - VocCore]) of the main schema.
                 // If no Core.SchemaVersion is present, a default version has to be provided as this is a required OpenAPI field.
-                Version = new Version(1, 0, 0),
+                Version = "1.0.0",
 
                 // The value of description is the value of the annotation Core.LongDescription
                 // of the main schema or the entity container.
                 // While this field is optional, it prominently appears in OpenAPI exploration tools,
                 // so a default description should be provided if no Core.LongDescription annotation is present.
-                Description = "This OData service is located at " + Settings.BaseUri?.OriginalString
+                // Description = "This OData service is located at " + Settings.BaseUri?.OriginalString
             };
         }
 

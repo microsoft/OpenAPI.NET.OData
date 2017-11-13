@@ -9,7 +9,7 @@ namespace Microsoft.OpenApi.OData
     /// <summary>
     /// Represents an Open API element is writable.
     /// </summary>
-    internal interface IOpenApiWritable : IOpenApiElement
+    internal interface IOpenApiWritable //: IOpenApiElement
     {
         /// <summary>
         /// Write Open API element.

@@ -13,6 +13,7 @@ namespace Microsoft.OpenApi.OData.Tests
 {
     public class EdmModelOpenApiExtensionsTest
     {
+#if false
         [Fact]
         public void EmptyEdmModelToOpenApiJsonWorks()
         {
@@ -110,5 +111,6 @@ namespace Microsoft.OpenApi.OData.Tests
             stream.Position = 0;
             return new StreamReader(stream).ReadToEnd();
         }
+#endif
     }
 }
