@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Compile Remove="EdmModelOpenApiExtensions2.cs" />
+    <Compile Remove="ODataOpenApiConvert.cs" />
   </ItemGroup>
 
   <ItemGroup>

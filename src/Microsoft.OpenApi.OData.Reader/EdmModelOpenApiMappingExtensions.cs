@@ -11,26 +11,27 @@ using Microsoft.OpenApi.Models;
 namespace Microsoft.OpenApi.OData
 {
     /// <summary>
-    /// Extension methods to write Entity Data Model (EDM) to Open API.
+    /// Extension methods to convert <see cref="IEdmModel"/>
+    /// to Open API document, <see cref="OpenApiDocument"/>.
     /// </summary>
     public static class EdmModelOpenApiMappingExtensions
     {
         /// <summary>
-        /// 
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/>.
         /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+        /// <param name="model">The Edm model.</param>
+        /// <returns>The converted Open API document object.</returns>
         public static OpenApiDocument Convert(this IEdmModel model)
         {
             return new OpenApiDocumentGenerator(model).Generate();
         }
 
         /// <summary>
-        /// 
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> using a configure action.
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="configure"></param>
-        /// <returns></returns>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="configure">The configure action.</param>
+        /// <returns>The converted Open API document object.</returns>
         public static OpenApiDocument Convert(this IEdmModel model, Action<OpenApiDocument> configure)
         {
             return new OpenApiDocumentGenerator(model, configure).Generate();
