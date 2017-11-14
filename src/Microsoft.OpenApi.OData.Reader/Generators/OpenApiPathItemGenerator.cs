@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Commons;
 
 namespace Microsoft.OpenApi.OData.Generators
 {

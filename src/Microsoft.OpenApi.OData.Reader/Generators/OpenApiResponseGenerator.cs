@@ -3,9 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
-using System.Collections.Generic;
+using Microsoft.OpenApi.OData.Commons;
 
 namespace Microsoft.OpenApi.OData.Generators
 {

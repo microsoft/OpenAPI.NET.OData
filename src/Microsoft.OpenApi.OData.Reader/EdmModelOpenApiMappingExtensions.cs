@@ -7,6 +7,7 @@
 using System;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Commons;
 using Microsoft.OpenApi.OData.Generators;
 
 namespace Microsoft.OpenApi.OData

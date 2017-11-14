@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Commons;
 
 namespace Microsoft.OpenApi.OData.Generators
 {
