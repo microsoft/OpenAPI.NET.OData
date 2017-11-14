@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Schema\SchemaExtensions.cs" />
+    <Compile Remove="EdmElementOpenApiElementExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>

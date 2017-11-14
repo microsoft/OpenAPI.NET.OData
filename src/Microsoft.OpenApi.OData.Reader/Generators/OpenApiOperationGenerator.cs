@@ -1,25 +1,34 @@
-﻿//---------------------------------------------------------------------
-// <copyright file="EdmNavigationSourceExtensions.cs" company="Microsoft">
-//      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-// </copyright>
-//---------------------------------------------------------------------
+﻿// ------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation.  All rights reserved.
+//  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// ------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Generators
 {
     /// <summary>
-    /// Entension methods for navigation source
+    /// Extension methods to create <see cref="OpenApiOperation"/> by Edm elements.
     /// </summary>
-    internal static class EdmNavigationSourceExtensions
+    internal static class OpenApiOperationGenerator
     {
+        /// <summary>
+        /// The Path Item Object for the entity set contains the keyword get with an Operation Object as value
+        /// that describes the capabilities for querying the entity set.
+        /// </summary>
+        /// <param name="entitySet">The entity set.</param>
+        /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateGetOperationForEntitySet(this IEdmEntitySet entitySet)
         {
+            if (entitySet == null)
+            {
+                throw Error.ArgumentNull(nameof(entitySet));
+            }
+
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get entities from " + entitySet.Name,
@@ -32,36 +41,45 @@ namespace Microsoft.OpenApi.OData
                 }
             };
 
+            // The parameters array contains Parameter Objects for system query options allowed for this entity set,
+            // and it does not list system query options not allowed for this entity set.
             operation.Parameters = new List<OpenApiParameter>
             {
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference("#/components/parameters/top")
+                    Pointer = new OpenApiReference(ReferenceType.Parameter, "top")
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference("#/components/parameters/skip")
+                    Pointer = new OpenApiReference(ReferenceType.Parameter, "skip")
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference("#/components/parameters/search")
+                    Pointer = new OpenApiReference(ReferenceType.Parameter, "search")
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference("#/components/parameters/filter")
+                    Pointer = new OpenApiReference(ReferenceType.Parameter, "filter")
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference("#/components/parameters/count")
+                    Pointer = new OpenApiReference(ReferenceType.Parameter, "count")
                 },
 
-                CreateOrderByParameter(entitySet),
+                // the syntax of the system query options $expand, $select, and $orderby is too flexible
+                // to be formally described with OpenAPI Specification means, yet the typical use cases
+                // of just providing a comma-separated list of properties can be expressed via an array-valued
+                // parameter with an enum constraint
+                entitySet.CreateOrderByParameter(),
 
-                CreateSelectParameter(entitySet),
+                entitySet.CreateSelectParameter(),
 
-                CreateExpandParameter(entitySet),
+                entitySet.CreateExpandParameter(),
             };
 
+            // The value of responses is a Responses Object.
+            // It contains a name/value pair for the success case (HTTP response code 200)
+            // describing the structure of a successful response referencing the schema of the entity set’s entity type in the global schemas
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -88,7 +106,7 @@ namespace Microsoft.OpenApi.OData
                                                     Type = "array",
                                                     Items = new OpenApiSchema
                                                     {
-                                                        Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                                        Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
                                                     }
                                                 }
                                             }
@@ -205,11 +223,11 @@ namespace Microsoft.OpenApi.OData
                 }
             };
 
-            operation.Parameters = CreateKeyParameters(entitySet.EntityType());
+            operation.Parameters = entitySet.EntityType().CreateKeyParameters();
 
-            operation.Parameters.Add(CreateSelectParameter(entitySet));
+            operation.Parameters.Add(entitySet.CreateSelectParameter());
 
-            operation.Parameters.Add(CreateExpandParameter(entitySet));
+            operation.Parameters.Add(entitySet.CreateExpandParameter());
 
             operation.Responses = new OpenApiResponses
             {
@@ -226,7 +244,7 @@ namespace Microsoft.OpenApi.OData
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                        Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
                                     }
                                 }
                             }
@@ -254,9 +272,9 @@ namespace Microsoft.OpenApi.OData
             };
 
             operation.Parameters = new List<OpenApiParameter>();
-            operation.Parameters.Add(CreateSelectParameter(singleton));
+            operation.Parameters.Add(singleton.CreateSelectParameter());
 
-            operation.Parameters.Add(CreateExpandParameter(singleton));
+            operation.Parameters.Add(singleton.CreateExpandParameter());
 
             operation.Responses = new OpenApiResponses
             {
@@ -273,7 +291,7 @@ namespace Microsoft.OpenApi.OData
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Pointer = new OpenApiReference("#/components/schemas/" + singleton.EntityType().FullName())
+                                        Pointer = new OpenApiReference(ReferenceType.Schema, singleton.EntityType().FullName())
                                     }
                                 }
                             }
@@ -300,7 +318,7 @@ namespace Microsoft.OpenApi.OData
                 }
             };
 
-            operation.Parameters = CreateKeyParameters(entitySet.EntityType());
+            operation.Parameters = entitySet.EntityType().CreateKeyParameters();
 
             operation.RequestBody = new OpenApiRequestBody
             {
@@ -313,7 +331,7 @@ namespace Microsoft.OpenApi.OData
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                    Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
                                 }
                             }
                         }
@@ -353,7 +371,7 @@ namespace Microsoft.OpenApi.OData
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Pointer = new OpenApiReference("#/components/schemas/" + singleton.EntityType().FullName())
+                                    Pointer = new OpenApiReference(ReferenceType.Schema, singleton.EntityType().FullName())
                                 }
                             }
                         }
@@ -381,7 +399,7 @@ namespace Microsoft.OpenApi.OData
                     }
                 }
             };
-            operation.Parameters = CreateKeyParameters(entitySet.EntityType());
+            operation.Parameters = entitySet.EntityType().CreateKeyParameters();
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",
@@ -399,136 +417,6 @@ namespace Microsoft.OpenApi.OData
                 "default".GetResponse()
             };
             return operation;
-        }
-
-        public static OpenApiParameter CreateOrderByParameter(this IEdmEntitySet entitySet)
-        {
-            OpenApiParameter parameter = new OpenApiParameter
-            {
-                Name = "$orderby",
-                In = ParameterLocation.Query,
-                Description = "Order items by property values",
-                Schema = new OpenApiSchema
-                {
-                    Type = "array",
-                    UniqueItems = true,
-                    Items = new OpenApiSchema
-                    {
-                        Type = "string",
-                        Enum = CreateOrderbyItems(entitySet)
-                    }
-                }
-            };
-
-            return parameter;
-        }
-
-        public static IList<IOpenApiAny> CreateOrderbyItems(this IEdmEntitySet entitySet)
-        {
-            IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
-
-            IEdmEntityType entityType = entitySet.EntityType();
-
-            foreach (var property in entityType.StructuralProperties())
-            {
-                orderByItems.Add(new OpenApiString(property.Name));
-                orderByItems.Add(new OpenApiString(property.Name + " desc"));
-            }
-
-            return orderByItems;
-        }
-
-        public static OpenApiParameter CreateSelectParameter(this IEdmNavigationSource navigationSource)
-        {
-            OpenApiParameter parameter = new OpenApiParameter
-            {
-                Name = "$select",
-                In = ParameterLocation.Query,
-                Description = "Select properties to be returned",
-                Schema = new OpenApiSchema
-                {
-                    Type = "array",
-                    UniqueItems = true,
-                    Items = new OpenApiSchema
-                    {
-                        Type = "string",
-                        Enum = CreateSelectItems(navigationSource.EntityType())
-                    }
-                }
-            };
-
-            return parameter;
-        }
-
-        public static IList<IOpenApiAny> CreateSelectItems(this IEdmEntityType entityType)
-        {
-            IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
-
-            foreach (var property in entityType.StructuralProperties())
-            {
-                selectItems.Add(new OpenApiString(property.Name));
-            }
-
-            return selectItems;
-        }
-
-        public static OpenApiParameter CreateExpandParameter(this IEdmNavigationSource navigationSource)
-        {
-            OpenApiParameter parameter = new OpenApiParameter
-            {
-                Name = "$expand",
-                In = ParameterLocation.Query,
-                Description = "Expand related entities",
-                Schema = new OpenApiSchema
-                {
-                    Type = "array",
-                    UniqueItems = true,
-                    Items = new OpenApiSchema
-                    {
-                        Type = "string",
-                        Enum = CreateExpandItems(navigationSource.EntityType())
-                    }
-                }
-            };
-
-            return parameter;
-        }
-
-        public static IList<IOpenApiAny> CreateExpandItems(this IEdmEntityType entityType)
-        {
-            IList<IOpenApiAny> expandItems = new List<IOpenApiAny>
-            {
-                new OpenApiString("*")
-            };
-
-            foreach (var property in entityType.NavigationProperties())
-            {
-                expandItems.Add(new OpenApiString(property.Name));
-            }
-
-            return expandItems;
-        }
-
-        public static IList<OpenApiParameter> CreateKeyParameters(this IEdmEntityType entityType)
-        {
-            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
-
-            // append key parameter
-            foreach (var keyProperty in entityType.Key())
-            {
-                OpenApiParameter parameter = new OpenApiParameter
-                {
-                    Name = keyProperty.Name,
-                    In = ParameterLocation.Path,
-                    Required = true,
-                    Description = "key: " + keyProperty.Name,
-                    Schema = keyProperty.Type.CreateSchema()
-                };
-
-                parameters.Add(parameter);
-            }
-
-            return parameters;
         }
     }
 }

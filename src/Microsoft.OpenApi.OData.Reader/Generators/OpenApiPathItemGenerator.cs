@@ -1,38 +1,137 @@
-﻿//---------------------------------------------------------------------
-// <copyright file="EdmElementOpenApiElementExtensions.cs" company="Microsoft">
-//      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-// </copyright>
-//---------------------------------------------------------------------
+﻿// ------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation.  All rights reserved.
+//  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// ------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Generators
 {
     /// <summary>
-    /// Extension methods for Edm Elements to Open Api Elements.
+    /// Extension methods to create <see cref="OpenApiPathItem"/> by Edm elements.
     /// </summary>
-    internal static class EdmElementOpenApiElementExtensions
+    internal static class OpenApiPathItemGenerator
     {
-        private static IDictionary<string, OpenApiResponse> Responses =
-           new Dictionary<string, OpenApiResponse>
-           {
-                { "default",
-                    new OpenApiResponse
-                    {
-                        Pointer = new OpenApiReference("#/components/responses/error")
-                    }
-                },
-                { "204", new OpenApiResponse { Description = "Success"} },
-           };
-
-        public static KeyValuePair<string, OpenApiResponse> GetResponse(this string statusCode)
+        /// <summary>
+        /// Path items for Entity Sets.
+        /// Each entity set is represented as a name/value pair
+        /// whose name is the service-relative resource path of the entity set prepended with a forward slash,
+        /// and whose value is a Path Item Object.
+        /// </summary>
+        /// <param name="entitySet">The Edm entity set.</param>
+        /// <returns>The path items.</returns>
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this IEdmEntitySet entitySet)
         {
-            return new KeyValuePair<string, OpenApiResponse>(statusCode, Responses[statusCode]);
+            if (entitySet == null)
+            {
+                throw Error.ArgumentNull(nameof(entitySet));
+            }
+
+            IDictionary<string, OpenApiPathItem> paths = new Dictionary<string, OpenApiPathItem>();
+
+            // entity set
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntitySet());
+
+            pathItem.AddOperation(OperationType.Post, entitySet.CreatePostOperationForEntitySet());
+
+            paths.Add("/" + entitySet.Name, pathItem);
+
+            // entity
+            string entityPathName = entitySet.CreatePathNameForEntity();
+            pathItem = new OpenApiPathItem();
+
+            pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntity());
+
+            pathItem.AddOperation(OperationType.Patch, entitySet.CreatePatchOperationForEntity());
+
+            pathItem.AddOperation(OperationType.Delete, entitySet.CreateDeleteOperationForEntity());
+
+            paths.Add(entityPathName, pathItem);
+
+            return paths;
+        }
+
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this IEdmSingleton singleton)
+        {
+            if (singleton == null)
+            {
+                throw Error.ArgumentNull(nameof(singleton));
+            }
+
+            IDictionary<string, OpenApiPathItem> paths = new Dictionary<string, OpenApiPathItem>();
+
+            // Singleton
+            string entityPathName = singleton.CreatePathNameForSingleton();
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+            pathItem.AddOperation(OperationType.Get, singleton.CreateGetOperationForSingleton());
+            pathItem.AddOperation(OperationType.Patch, singleton.CreatePatchOperationForSingleton());
+            paths.Add(entityPathName, pathItem);
+
+            return paths;
+        }
+
+        public static IDictionary<string, OpenApiPathItem> CreateOperationPathItems(this IEdmNavigationSource navigationSource,
+            IDictionary<IEdmTypeReference, IEdmOperation> boundOperations)
+        {
+            IDictionary<string, OpenApiPathItem> operationPathItems = new Dictionary<string, OpenApiPathItem>();
+
+            IEnumerable<IEdmOperation> operations;
+            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
+            // collection bound
+            if (entitySet != null)
+            {
+                operations = FindOperations(navigationSource.EntityType(), boundOperations, collection: true);
+                foreach (var operation in operations)
+                {
+                    OpenApiPathItem openApiOperation = operation.CreatePathItem();
+                    string operationPathName = operation.CreatePathItemName();
+                    operationPathItems.Add("/" + navigationSource.Name + operationPathName, openApiOperation);
+                }
+            }
+
+            // non-collection bound
+            operations = FindOperations(navigationSource.EntityType(), boundOperations, collection: false);
+            foreach (var operation in operations)
+            {
+                OpenApiPathItem openApiOperation = operation.CreatePathItem();
+                string operationPathName = operation.CreatePathItemName();
+
+                string temp;
+                if (entitySet != null)
+                {
+                    temp = entitySet.CreatePathNameForEntity();
+                }
+                else
+                {
+                    temp = "/" + navigationSource.Name;
+                }
+                operationPathItems.Add(temp + operationPathName, openApiOperation);
+            }
+
+            return operationPathItems;
+        }
+
+        private static IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType,
+            IDictionary<IEdmTypeReference, IEdmOperation> boundOperations,
+            bool collection)
+        {
+            string fullTypeName = collection ? "Collection(" + entityType.FullName() + ")" :
+                entityType.FullName();
+
+            foreach (var item in boundOperations)
+            {
+                if (item.Key.FullName() == fullTypeName)
+                {
+                    yield return item.Value;
+                }
+            }
         }
 
         public static OpenApiPathItem CreatePathItem(this IEdmOperationImport operationImport)
@@ -68,8 +167,8 @@ namespace Microsoft.OpenApi.OData
             {
                 Summary = "Invoke action " + action.Name,
                 Tags = CreateTags(action),
-                Parameters = CreateParameters(action),
-                Responses = CreateResponses(action)
+                Parameters = action.CreateParameters(),
+                Responses = action.CreateResponses()
             };
 
             pathItem.AddOperation(OperationType.Post, post);
@@ -88,8 +187,8 @@ namespace Microsoft.OpenApi.OData
             {
                 Summary = "Invoke function " + function.Name,
                 Tags = CreateTags(function),
-                Parameters = CreateParameters(function),
-                Responses = CreateResponses(function)
+                Parameters = function.CreateParameters(),
+                Responses = function.CreateResponses()
             };
 
             pathItem.AddOperation(OperationType.Get, get);
@@ -140,38 +239,6 @@ namespace Microsoft.OpenApi.OData
             }
 
             return ((IEdmFunction)operation).CreatePathItemName();
-        }
-
-        private static OpenApiResponses CreateResponses(this IEdmAction actionImport)
-        {
-            return new OpenApiResponses
-            {
-                "204".GetResponse(),
-                "default".GetResponse()
-            };
-        }
-
-        private static OpenApiResponses CreateResponses(this IEdmFunction function)
-        {
-            OpenApiResponses responses = new OpenApiResponses();
-
-            OpenApiResponse response = new OpenApiResponse
-            {
-                Description = "Success",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        "application/json",
-                        new OpenApiMediaType
-                        {
-                            Schema = function.ReturnType.CreateSchema()
-                        }
-                    }
-                }
-            };
-            responses.Add("200", response);
-            responses.Add("default".GetResponse());
-            return responses;
         }
 
         private static IList<string> CreateTags(this IEdmOperationImport operationImport)

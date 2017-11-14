@@ -9,7 +9,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OData.Edm;
 
-namespace Microsoft.OpenApi.OData.Schema
+namespace Microsoft.OpenApi.OData.Generators
 {
     /// <summary>
     /// See https://github.com/oasis-tcs/odata-openapi/blob/master/examples/odata-definitions.json
@@ -285,13 +285,21 @@ namespace Microsoft.OpenApi.OData.Schema
             return schema;
         }
 
-        private static void InitErrors()
+        public static void AppendODataErrors(this IDictionary<string, OpenApiSchema> schemas)
         {
-            _errors = new Dictionary<string, OpenApiSchema>();
+            if (schemas == null)
+            {
+                return;
+            }
 
-            _errors.Add("odata.error", new OpenApiSchema
+            // odata.error
+            schemas.Add("odata.error", new OpenApiSchema
             {
                 Type = "object",
+                Required = new List<string>
+                {
+                    "error"
+                },
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
@@ -304,31 +312,24 @@ namespace Microsoft.OpenApi.OData.Schema
                 }
             });
 
-            _errors.Add("odata.error.main", new OpenApiSchema
+            // odata.error.main
+            schemas.Add("odata.error.main", new OpenApiSchema
             {
-                Type = SchemaType.Object.GetMetadataName(),
+                Type = "object",
+                Required = new List<string>
+                {
+                    "code", "message"
+                },
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
-                        "code",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        }
+                        "code", new OpenApiSchema { Type = "string" }
                     },
                     {
-                        "message",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        }
+                        "message", new OpenApiSchema { Type = "string" }
                     },
                     {
-                        "target",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        }
+                        "target", new OpenApiSchema { Type = "string" }
                     },
                     {
                         "details",
@@ -352,31 +353,20 @@ namespace Microsoft.OpenApi.OData.Schema
                 }
             });
 
-            _errors.Add("odata.error.detail", new OpenApiSchema
+            // odata.error.detail
+            schemas.Add("odata.error.detail", new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
-                        "code",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        }
+                        "code", new OpenApiSchema { Type = "string" }
                     },
                     {
-                        "message",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        }
+                        "message", new OpenApiSchema { Type = "string" }
                     },
                     {
-                        "target",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        }
+                        "target", new OpenApiSchema { Type = "string" }
                     }
                 }
             });
