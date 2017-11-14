@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
         private static string GetPath(string fileName)
         {
-            const string projectDefaultNamespace = "Microsoft.OData.OpenAPI.Tests";
+            const string projectDefaultNamespace = "Microsoft.OpenApi.OData.Reader.Tests";
             const string resourcesFolderName = "Resources";
             const string pathSeparator = ".";
             return projectDefaultNamespace + pathSeparator + resourcesFolderName + pathSeparator + fileName;
