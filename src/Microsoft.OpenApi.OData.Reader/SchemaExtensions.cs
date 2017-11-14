@@ -8,9 +8,8 @@ using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Commons;
 
-namespace Microsoft.OpenApi.OData.Generators
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// See https://github.com/oasis-tcs/odata-openapi/blob/master/examples/odata-definitions.json

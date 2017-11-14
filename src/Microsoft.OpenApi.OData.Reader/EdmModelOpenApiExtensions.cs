@@ -1,20 +1,16 @@
-﻿//---------------------------------------------------------------------
-// <copyright file="EdmModelOpenApiExtensions.cs" company="Microsoft">
-//      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-// </copyright>
-//---------------------------------------------------------------------
+﻿// ------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation.  All rights reserved.
+//  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// ------------------------------------------------------------
 
 using System;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Commons;
-using Microsoft.OpenApi.OData.Generators;
 
 namespace Microsoft.OpenApi.OData
 {
     /// <summary>
-    /// Extension methods to convert <see cref="IEdmModel"/>
-    /// to Open API document, <see cref="OpenApiDocument"/>.
+    /// Extension methods to convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/>.
     /// </summary>
     public static class EdmModelOpenApiMappingExtensions
     {
@@ -37,9 +33,7 @@ namespace Microsoft.OpenApi.OData
             }
 
             OpenApiDocument document = model.CreateDocument();
-
             configure(document);
-
             return document;
         }
 

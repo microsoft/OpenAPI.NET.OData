@@ -20,7 +20,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Schema\**" />
+    <EmbeddedResource Remove="Schema\**" />
+    <None Remove="Schema\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="EdmElementOpenApiElementExtensions.cs" />
+    <Compile Remove="EdmPrimitiveExtensions.cs" />
+    <Compile Remove="OpenApiWriterSettings.cs" />
   </ItemGroup>
 
   <ItemGroup>

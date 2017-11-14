@@ -4,19 +4,18 @@
 // </copyright>
 //---------------------------------------------------------------------
 
-using Microsoft.OpenApi;
-using Microsoft.OpenApi.OData;
-using Microsoft.OpenApi.Writers;
 using System;
 using System.IO;
+using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Writers;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
     internal static class OpenApiWriterTestHelper
     {
-        internal static string WriteToJson(this IOpenApiWritable element,
-            Action<IOpenApiWriter, IOpenApiWritable> before = null,
-            Action<IOpenApiWriter, IOpenApiWritable> after = null)
+        internal static string WriteToJson(this IOpenApiElement element,
+            Action<IOpenApiWriter, IOpenApiElement> before = null,
+            Action<IOpenApiWriter, IOpenApiElement> after = null)
         {
             Action<IOpenApiWriter> action = writer =>
             {
@@ -29,9 +28,9 @@ namespace Microsoft.OpenApi.OData.Tests
             return Write(OpenApiFormat.Json, action);
         }
 
-        internal static string WriteToYaml(this IOpenApiWritable element,
-            Action<IOpenApiWriter, IOpenApiWritable> before = null,
-            Action<IOpenApiWriter, IOpenApiWritable> after = null)
+        internal static string WriteToYaml(this IOpenApiElement element,
+            Action<IOpenApiWriter, IOpenApiElement> before = null,
+            Action<IOpenApiWriter, IOpenApiElement> after = null)
         {
             Action<IOpenApiWriter> action = writer =>
             {
@@ -44,10 +43,10 @@ namespace Microsoft.OpenApi.OData.Tests
             return Write(OpenApiFormat.Yaml, action);
         }
 
-        internal static string Write(this IOpenApiWritable element,
+        internal static string Write(this IOpenApiElement element,
             OpenApiFormat target,
-            Action<IOpenApiWriter, IOpenApiWritable> before = null,
-            Action<IOpenApiWriter, IOpenApiWritable> after = null)
+            Action<IOpenApiWriter, IOpenApiElement> before = null,
+            Action<IOpenApiWriter, IOpenApiElement> after = null)
         {
             Action<IOpenApiWriter> action = writer =>
             {

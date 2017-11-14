@@ -8,9 +8,8 @@ using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Commons;
 
-namespace Microsoft.OpenApi.OData.Generators
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Extension methods to create <see cref="OpenApiSchema"/> by <see cref="IEdmModel"/>.

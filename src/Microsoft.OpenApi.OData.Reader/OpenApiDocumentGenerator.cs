@@ -6,9 +6,8 @@
 using System;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Commons;
 
-namespace Microsoft.OpenApi.OData.Generators
+namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Extension methods to create <see cref="OpenApiDocument"/> by <see cref="IEdmModel"/>.
@@ -16,7 +15,7 @@ namespace Microsoft.OpenApi.OData.Generators
     internal static class OpenApiDocumentGenerator
     {
         /// <summary>
-        /// Create a <see cref="OpenApiDocument"/>.
+        /// Create a <see cref="OpenApiDocument"/>, it's a single Open API Object
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <returns>The <see cref="OpenApiDocument"/> object.</returns>
@@ -44,11 +43,11 @@ namespace Microsoft.OpenApi.OData.Generators
 
                 Servers = model.CreateServers(),
 
+                Tags = model.CreateTags(),
+
                 Paths = model.CreatePaths(),
 
                 Components = model.CreateComponents(),
-
-                Tags = model.CreateTags()
             };
         }
     }

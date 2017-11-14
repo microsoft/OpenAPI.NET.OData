@@ -6,7 +6,6 @@
 
 using System;
 using System.IO;
-using Microsoft.OpenApi.OData.Commons;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
