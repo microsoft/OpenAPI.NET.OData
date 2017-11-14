@@ -29,5 +29,19 @@ namespace Microsoft.OpenApi.OData
             IEnumerable<T> attributes = memInfo.GetCustomAttributes<T>(false);
             return attributes.FirstOrDefault();
         }
+
+        /// <summary>
+        /// Gets the enum display name.
+        /// </summary>
+        /// <param name="enumValue">The enum value.</param>
+        /// <returns>
+        /// Use <see cref="MetadataAttribute"/> if exists.
+        /// Otherwise, use the standard string representation.
+        /// </returns>
+        public static string GetMetadataName(this Enum enumValue)
+        {
+            var attribute = enumValue.GetAttributeOfType<MetadataAttribute>();
+            return attribute == null ? enumValue.ToString() : attribute.Name;
+        }
     }
 }

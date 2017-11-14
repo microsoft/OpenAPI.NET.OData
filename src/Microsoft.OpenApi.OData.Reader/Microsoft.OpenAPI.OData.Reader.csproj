@@ -20,8 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="EdmModelOpenApiExtensions2.cs" />
-    <Compile Remove="ODataOpenApiConvert.cs" />
+    <Compile Include="Schema\SchemaExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>

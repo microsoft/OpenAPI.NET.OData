@@ -16,11 +16,6 @@ namespace Microsoft.OpenApi.OData
 {
     internal static class EdmHelper
     {
-        public static string GetDescription(this IEdmModel model, IEdmEntitySet entitySet)
-        {
-            return null;
-        }
-
         public static string GetDescription(this IEdmModel model, IEdmVocabularyAnnotatable element)
         {
             if (model == null || element == null)
