@@ -27,13 +27,8 @@ namespace Microsoft.OpenApi.OData
                 throw Error.ArgumentNull(nameof(model));
             }
 
-            if (configure == null)
-            {
-                throw Error.ArgumentNull(nameof(configure));
-            }
-
             OpenApiDocument document = model.CreateDocument();
-            configure(document);
+            configure?.Invoke(document);
             return document;
         }
 

@@ -2,8 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "OData Service for namespace DefaultNs",
-    "description": "This OData service is located at http://localhost",
-    "version": "1.0.1"
+    "version": "0.1.0"
   },
   "servers": [
     {
@@ -13,10 +12,12 @@
   "paths": {
     "/People": {
       "get": {
-        "summary": "Get entities from People",
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Get entities from People",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -37,12 +38,10 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "UserName desc",
@@ -52,7 +51,8 @@
                   "WorkAddress desc",
                   "Addresses",
                   "Addresses desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -60,18 +60,17 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "HomeAddress",
                   "WorkAddress",
                   "Addresses"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -79,15 +78,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -98,8 +96,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of People",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -115,13 +113,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to People",
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Add new entity to People",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -147,39 +148,43 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/People('{UserName}')": {
       "get": {
-        "summary": "Get entity from People by key",
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Get entity from People by key",
         "parameters": [
           {
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "HomeAddress",
                   "WorkAddress",
                   "Addresses"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -187,15 +192,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -214,52 +218,25 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from People",
+      "patch": {
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Update entity in People",
         "parameters": [
           {
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
             "required": true,
-            "style": "simple"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in People",
-        "tags": [
-          "People"
-        ],
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "style": "simple"
           }
         ],
         "requestBody": {
@@ -280,15 +257,54 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "People"
+          }
+        ],
+        "summary": "Delete entity from People",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
       }
     },
     "/City": {
       "get": {
-        "summary": "Get entities from City",
         "tags": [
-          "City"
+          {
+            "name": "City"
+          }
         ],
+        "summary": "Get entities from City",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -309,16 +325,15 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name",
                   "Name desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -326,15 +341,14 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -342,15 +356,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -361,8 +374,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of City",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -378,13 +391,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to City",
         "tags": [
-          "City"
+          {
+            "name": "City"
+          }
         ],
+        "summary": "Add new entity to City",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -410,36 +426,40 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/City('{Name}')": {
       "get": {
-        "summary": "Get entity from City by key",
         "tags": [
-          "City"
+          {
+            "name": "City"
+          }
         ],
+        "summary": "Get entity from City by key",
         "parameters": [
           {
             "name": "Name",
             "in": "path",
             "description": "key: Name",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -447,15 +467,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -474,52 +493,25 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from City",
+      "patch": {
         "tags": [
-          "City"
+          {
+            "name": "City"
+          }
         ],
+        "summary": "Update entity in City",
         "parameters": [
           {
             "name": "Name",
             "in": "path",
             "description": "key: Name",
             "required": true,
-            "style": "simple"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in City",
-        "tags": [
-          "City"
-        ],
-        "parameters": [
-          {
-            "name": "Name",
-            "in": "path",
-            "description": "key: Name",
-            "required": true,
-            "style": "simple"
           }
         ],
         "requestBody": {
@@ -540,15 +532,54 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "City"
+          }
+        ],
+        "summary": "Delete entity from City",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "path",
+            "description": "key: Name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
       }
     },
     "/CountryOrRegion": {
       "get": {
-        "summary": "Get entities from CountryOrRegion",
         "tags": [
-          "CountryOrRegion"
+          {
+            "name": "CountryOrRegion"
+          }
         ],
+        "summary": "Get entities from CountryOrRegion",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -569,16 +600,15 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name",
                   "Name desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -586,15 +616,14 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -602,15 +631,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -621,8 +649,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of CountryOrRegion",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -638,13 +666,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to CountryOrRegion",
         "tags": [
-          "CountryOrRegion"
+          {
+            "name": "CountryOrRegion"
+          }
         ],
+        "summary": "Add new entity to CountryOrRegion",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -670,36 +701,40 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/CountryOrRegion('{Name}')": {
       "get": {
-        "summary": "Get entity from CountryOrRegion by key",
         "tags": [
-          "CountryOrRegion"
+          {
+            "name": "CountryOrRegion"
+          }
         ],
+        "summary": "Get entity from CountryOrRegion by key",
         "parameters": [
           {
             "name": "Name",
             "in": "path",
             "description": "key: Name",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -707,15 +742,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -734,52 +768,25 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from CountryOrRegion",
+      "patch": {
         "tags": [
-          "CountryOrRegion"
+          {
+            "name": "CountryOrRegion"
+          }
         ],
+        "summary": "Update entity in CountryOrRegion",
         "parameters": [
           {
             "name": "Name",
             "in": "path",
             "description": "key: Name",
             "required": true,
-            "style": "simple"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in CountryOrRegion",
-        "tags": [
-          "CountryOrRegion"
-        ],
-        "parameters": [
-          {
-            "name": "Name",
-            "in": "path",
-            "description": "key: Name",
-            "required": true,
-            "style": "simple"
           }
         ],
         "requestBody": {
@@ -800,23 +807,60 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "CountryOrRegion"
+          }
+        ],
+        "summary": "Delete entity from CountryOrRegion",
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "path",
+            "description": "key: Name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
       }
     }
   },
   "components": {
     "schemas": {
       "DefaultNs.Color": {
-        "type": "string",
         "title": "Color",
         "enum": [
           "Blue",
           "White"
-        ]
+        ],
+        "type": "string"
       },
       "DefaultNs.Person": {
-        "type": "object",
         "title": "Person",
+        "type": "object",
         "properties": {
           "UserName": {
             "type": "string"
@@ -836,8 +880,8 @@
         }
       },
       "DefaultNs.City": {
-        "type": "object",
         "title": "City",
+        "type": "object",
         "properties": {
           "Name": {
             "type": "string"
@@ -845,8 +889,8 @@
         }
       },
       "DefaultNs.CountryOrRegion": {
-        "type": "object",
         "title": "CountryOrRegion",
+        "type": "object",
         "properties": {
           "Name": {
             "type": "string"
@@ -854,11 +898,14 @@
         }
       },
       "DefaultNs.Address": {
-        "type": "object",
         "title": "Address",
+        "type": "object",
         "properties": {
           "Id": {
-            "type": "integer"
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "type": "integer",
+            "format": "int32"
           },
           "City": {
             "$ref": "#/components/schemas/DefaultNs.City"
@@ -871,8 +918,8 @@
             "$ref": "#/components/schemas/DefaultNs.Address"
           },
           {
-            "type": "object",
             "title": "WorkAddress",
+            "type": "object",
             "properties": {
               "CountryOrRegion": {
                 "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
@@ -882,10 +929,10 @@
         ]
       },
       "odata.error": {
-        "type": "object",
         "required": [
           "error"
         ],
+        "type": "object",
         "properties": {
           "error": {
             "$ref": "#/components/schemas/odata.error.main"
@@ -893,11 +940,11 @@
         }
       },
       "odata.error.main": {
-        "type": "object",
         "required": [
           "code",
           "message"
         ],
+        "type": "object",
         "properties": {
           "code": {
             "type": "string"
@@ -921,11 +968,11 @@
         }
       },
       "odata.error.detail": {
-        "type": "object",
         "required": [
           "code",
           "message"
         ],
+        "type": "object",
         "properties": {
           "code": {
             "type": "string"
@@ -939,35 +986,42 @@
         }
       }
     },
+    "responses": {
+      "error": {
+        "description": "error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/odata.error"
+            }
+          }
+        }
+      }
+    },
     "parameters": {
       "top": {
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items",
-        "style": "form",
         "schema": {
-          "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "type": "integer"
         },
-        "example": {
-          "example": 50
-        }
+        "example": 50
       },
       "skip": {
         "name": "$skip",
         "in": "query",
-        "description": "Skip only the first n items",
-        "style": "form",
+        "description": "Skip the first n items",
         "schema": {
-          "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "type": "integer"
         }
       },
       "count": {
         "name": "$count",
         "in": "query",
         "description": "Include count of items",
-        "style": "form",
         "schema": {
           "type": "boolean"
         }
@@ -976,7 +1030,6 @@
         "name": "$filter",
         "in": "query",
         "description": "Filter items by property values",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -985,7 +1038,6 @@
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases",
-        "style": "form",
         "schema": {
           "type": "string"
         }

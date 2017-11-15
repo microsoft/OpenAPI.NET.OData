@@ -7,13 +7,20 @@
 using System;
 using System.IO;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
     public class EdmModelOpenApiExtensionsTest
     {
-#if false
+        private ITestOutputHelper _output;
+        public EdmModelOpenApiExtensionsTest(ITestOutputHelper output)
+        {
+            _output = output;
+        }
+
         [Fact]
         public void EmptyEdmModelToOpenApiJsonWorks()
         {
@@ -21,7 +28,8 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.EmptyModel;
 
             // Act
-            string json = WriteEdmModelToOpenApi(model, OpenApiFormat.Json);
+            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json);
+            _output.WriteLine(json);
 
             // Assert
             Assert.Equal(Resources.GetString("Empty.OpenApi.json").Replace(), json);
@@ -34,7 +42,8 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.EmptyModel;
 
             // Act
-            string yaml = WriteEdmModelToOpenApi(model, OpenApiFormat.Yaml);
+            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml);
+            _output.WriteLine(yaml);
 
             // Assert
             Assert.Equal(Resources.GetString("Empty.OpenApi.yaml").Replace(), yaml);
@@ -47,7 +56,8 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.BasicEdmModel;
 
             // Act
-            string json = WriteEdmModelToOpenApi(model, OpenApiFormat.Json);
+            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json);
+            _output.WriteLine(json);
 
             // Assert
             Assert.Equal(Resources.GetString("Basic.OpenApi.json").Replace(), json);
@@ -60,7 +70,8 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.BasicEdmModel;
 
             // Act
-            string yaml = WriteEdmModelToOpenApi(model, OpenApiFormat.Yaml);
+            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml);
+            _output.WriteLine(yaml);
 
             // Assert
             Assert.Equal(Resources.GetString("Basic.OpenApi.yaml").Replace(), yaml);
@@ -71,14 +82,15 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            OpenApiWriterSettings settings = new OpenApiWriterSettings
+            Action<OpenApiDocument> action = (d) =>
             {
-                Version = new Version(1, 0, 1),
-                BaseUri = new Uri("http://services.odata.org/TrippinRESTierService/")
+                d.Info.Version = "1.0.1";
+                d.Servers[0].Url = "http://services.odata.org/TrippinRESTierService/";
             };
 
             // Act
-            string json = WriteEdmModelToOpenApi(model, OpenApiFormat.Json, settings);
+            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, action);
+            _output.WriteLine(json);
 
             // Assert
             Assert.Equal(Resources.GetString("TripService.OpenApi.json").Replace(), json);
@@ -89,28 +101,29 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            OpenApiWriterSettings settings = new OpenApiWriterSettings
+            Action<OpenApiDocument> action = (d) =>
             {
-                Version = new Version(1, 0, 1),
-                BaseUri = new Uri("http://services.odata.org/TrippinRESTierService/")
+                d.Info.Version = "1.0.1";
+                d.Servers[0].Url = "http://services.odata.org/TrippinRESTierService/";
             };
 
             // Act
-            string yaml = WriteEdmModelToOpenApi(model, OpenApiFormat.Yaml, settings);
+            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, action);
+            _output.WriteLine(yaml);
 
             // Assert
             Assert.Equal(Resources.GetString("TripService.OpenApi.yaml").Replace(), yaml);
         }
 
-        private static string WriteEdmModelToOpenApi(IEdmModel model, OpenApiFormat target,
-            OpenApiWriterSettings settings = null)
+        private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
+            Action<OpenApiDocument> action = null)
         {
+            var document = model.Convert(action);
             MemoryStream stream = new MemoryStream();
-            model.WriteOpenApi(stream, target, settings);
+            document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, target);
             stream.Flush();
             stream.Position = 0;
             return new StreamReader(stream).ReadToEnd();
         }
-#endif
     }
 }

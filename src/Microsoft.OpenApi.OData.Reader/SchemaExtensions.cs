@@ -357,6 +357,10 @@ namespace Microsoft.OpenApi.OData
             schemas.Add("odata.error.detail", new OpenApiSchema
             {
                 Type = "object",
+                Required = new List<string>
+                {
+                    "code", "message"
+                },
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {

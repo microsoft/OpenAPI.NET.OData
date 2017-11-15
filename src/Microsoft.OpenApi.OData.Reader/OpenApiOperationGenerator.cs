@@ -147,7 +147,7 @@ namespace Microsoft.OpenApi.OData
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                    Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
                                 }
                             }
                         }
@@ -170,7 +170,7 @@ namespace Microsoft.OpenApi.OData
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Pointer = new OpenApiReference("#/components/schemas/" + entitySet.EntityType().FullName())
+                                        Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
                                     }
                                 }
                             }

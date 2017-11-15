@@ -1,25 +1,24 @@
 ﻿openapi: 3.0.0
 info:
   title: OData Service for namespace 
-  description: This OData service is located at http://localhost
-  version: 1.0.1
+  version: 0.1.0
 servers:
   - url: http://localhost
-paths:
+paths: { }
 components:
   schemas:
     odata.error:
-      type: object
       required:
         - error
+      type: object
       properties:
         error:
           $ref: '#/components/schemas/odata.error.main'
     odata.error.main:
-      type: object
       required:
         - code
         - message
+      type: object
       properties:
         code:
           type: string
@@ -35,10 +34,10 @@ components:
           type: object
           description: The structure of this object is service-specific
     odata.error.detail:
-      type: object
       required:
         - code
         - message
+      type: object
       properties:
         code:
           type: string
@@ -46,44 +45,44 @@ components:
           type: string
         target:
           type: string
+  responses:
+    error:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/odata.error'
   parameters:
     top:
       name: $top
       in: query
       description: Show only the first n items
-      style: form
       schema:
-        type: integer
         minimum: 0
-      example:
-        example: 50
+        type: integer
+      example: 50
     skip:
       name: $skip
       in: query
-      description: Skip only the first n items
-      style: form
+      description: Skip the first n items
       schema:
-        type: integer
         minimum: 0
+        type: integer
     count:
       name: $count
       in: query
       description: Include count of items
-      style: form
       schema:
         type: boolean
     filter:
       name: $filter
       in: query
       description: Filter items by property values
-      style: form
       schema:
         type: string
     search:
       name: $search
       in: query
       description: Search items by search phrases
-      style: form
       schema:
         type: string
-tags:

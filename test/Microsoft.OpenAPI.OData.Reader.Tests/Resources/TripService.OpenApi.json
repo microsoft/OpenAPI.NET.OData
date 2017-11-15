@@ -2,7 +2,6 @@
   "openapi": "3.0.0",
   "info": {
     "title": "OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models",
-    "description": "This OData service is located at http://services.odata.org/TrippinRESTierService/",
     "version": "1.0.1"
   },
   "servers": [
@@ -13,10 +12,12 @@
   "paths": {
     "/People": {
       "get": {
-        "summary": "Get entities from People",
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Get entities from People",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -37,12 +38,10 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "UserName desc",
@@ -66,7 +65,8 @@
                   "FavoriteFeature desc",
                   "Features",
                   "Features desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -74,12 +74,10 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "FirstName",
@@ -92,7 +90,8 @@
                   "HomeAddress",
                   "FavoriteFeature",
                   "Features"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -100,18 +99,17 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*",
                   "Friends",
                   "BestFriend",
                   "Trips"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -122,8 +120,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of People",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -139,13 +137,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to People",
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Add new entity to People",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -171,33 +172,36 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/People('{UserName}')": {
       "get": {
-        "summary": "Get entity from People by key",
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Get entity from People by key",
         "parameters": [
           {
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "FirstName",
@@ -210,7 +214,8 @@
                   "HomeAddress",
                   "FavoriteFeature",
                   "Features"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -218,18 +223,17 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*",
                   "Friends",
                   "BestFriend",
                   "Trips"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -248,52 +252,25 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from People",
+      "patch": {
         "tags": [
-          "People"
+          {
+            "name": "People"
+          }
         ],
+        "summary": "Update entity in People",
         "parameters": [
           {
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
             "required": true,
-            "style": "simple"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in People",
-        "tags": [
-          "People"
-        ],
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "style": "simple"
           }
         ],
         "requestBody": {
@@ -314,21 +291,59 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "People"
+          }
+        ],
+        "summary": "Delete entity from People",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
       }
     },
     "/People('{UserName}')/GetFavoriteAirline(person={person})": {
       "get": {
-        "summary": "Invoke function GetFavoriteAirline",
         "tags": [
-          "person"
+          {
+            "name": "person"
+          }
         ],
+        "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
           {
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -348,7 +363,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/People('{UserName}')/GetFriendsTrips(person={person},userName={userName})": {
@@ -359,7 +375,6 @@
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -368,7 +383,9 @@
             "name": "userName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -388,7 +405,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/People('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName})": {
@@ -399,7 +417,6 @@
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -408,20 +425,28 @@
             "name": "lastName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
-              "application/json": { }
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
             }
           },
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/People('{UserName}')/ShareTrip": {
@@ -432,7 +457,6 @@
             "name": "personInstance",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -441,13 +465,20 @@
             "name": "userName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "tripId",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -457,15 +488,18 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Airlines": {
       "get": {
-        "summary": "Get entities from Airlines",
         "tags": [
-          "Airlines"
+          {
+            "name": "Airlines"
+          }
         ],
+        "summary": "Get entities from Airlines",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -486,18 +520,17 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "AirlineCode",
                   "AirlineCode desc",
                   "Name",
                   "Name desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -505,16 +538,15 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "AirlineCode",
                   "Name"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -522,15 +554,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -541,8 +572,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of Airlines",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -558,13 +589,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to Airlines",
         "tags": [
-          "Airlines"
+          {
+            "name": "Airlines"
+          }
         ],
+        "summary": "Add new entity to Airlines",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -590,37 +624,41 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Airlines('{AirlineCode}')": {
       "get": {
-        "summary": "Get entity from Airlines by key",
         "tags": [
-          "Airlines"
+          {
+            "name": "Airlines"
+          }
         ],
+        "summary": "Get entity from Airlines by key",
         "parameters": [
           {
             "name": "AirlineCode",
             "in": "path",
             "description": "key: AirlineCode",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "AirlineCode",
                   "Name"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -628,15 +666,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -655,52 +692,25 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from Airlines",
+      "patch": {
         "tags": [
-          "Airlines"
+          {
+            "name": "Airlines"
+          }
         ],
+        "summary": "Update entity in Airlines",
         "parameters": [
           {
             "name": "AirlineCode",
             "in": "path",
             "description": "key: AirlineCode",
             "required": true,
-            "style": "simple"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in Airlines",
-        "tags": [
-          "Airlines"
-        ],
-        "parameters": [
-          {
-            "name": "AirlineCode",
-            "in": "path",
-            "description": "key: AirlineCode",
-            "required": true,
-            "style": "simple"
           }
         ],
         "requestBody": {
@@ -721,15 +731,54 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "Airlines"
+          }
+        ],
+        "summary": "Delete entity from Airlines",
+        "parameters": [
+          {
+            "name": "AirlineCode",
+            "in": "path",
+            "description": "key: AirlineCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
       }
     },
     "/Airports": {
       "get": {
-        "summary": "Get entities from Airports",
         "tags": [
-          "Airports"
+          {
+            "name": "Airports"
+          }
         ],
+        "summary": "Get entities from Airports",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -750,12 +799,10 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name",
                   "Name desc",
@@ -765,7 +812,8 @@
                   "IataCode desc",
                   "Location",
                   "Location desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -773,18 +821,17 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name",
                   "IcaoCode",
                   "IataCode",
                   "Location"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -792,15 +839,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -811,8 +857,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of Airports",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -828,13 +874,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to Airports",
         "tags": [
-          "Airports"
+          {
+            "name": "Airports"
+          }
         ],
+        "summary": "Add new entity to Airports",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -860,39 +909,43 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Airports('{IcaoCode}')": {
       "get": {
-        "summary": "Get entity from Airports by key",
         "tags": [
-          "Airports"
+          {
+            "name": "Airports"
+          }
         ],
+        "summary": "Get entity from Airports by key",
         "parameters": [
           {
             "name": "IcaoCode",
             "in": "path",
             "description": "key: IcaoCode",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "Name",
                   "IcaoCode",
                   "IataCode",
                   "Location"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -900,15 +953,14 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -927,52 +979,25 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from Airports",
+      "patch": {
         "tags": [
-          "Airports"
+          {
+            "name": "Airports"
+          }
         ],
+        "summary": "Update entity in Airports",
         "parameters": [
           {
             "name": "IcaoCode",
             "in": "path",
             "description": "key: IcaoCode",
             "required": true,
-            "style": "simple"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in Airports",
-        "tags": [
-          "Airports"
-        ],
-        "parameters": [
-          {
-            "name": "IcaoCode",
-            "in": "path",
-            "description": "key: IcaoCode",
-            "required": true,
-            "style": "simple"
           }
         ],
         "requestBody": {
@@ -993,15 +1018,54 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "Airports"
+          }
+        ],
+        "summary": "Delete entity from Airports",
+        "parameters": [
+          {
+            "name": "IcaoCode",
+            "in": "path",
+            "description": "key: IcaoCode",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
       }
     },
     "/NewComePeople": {
       "get": {
-        "summary": "Get entities from NewComePeople",
         "tags": [
-          "NewComePeople"
+          {
+            "name": "NewComePeople"
+          }
         ],
+        "summary": "Get entities from NewComePeople",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1022,12 +1086,10 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "UserName desc",
@@ -1051,7 +1113,8 @@
                   "FavoriteFeature desc",
                   "Features",
                   "Features desc"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -1059,12 +1122,10 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "FirstName",
@@ -1077,7 +1138,8 @@
                   "HomeAddress",
                   "FavoriteFeature",
                   "Features"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -1085,18 +1147,17 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*",
                   "Friends",
                   "BestFriend",
                   "Trips"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -1107,8 +1168,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
                   "title": "Collection of NewComePeople",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -1124,13 +1185,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "post": {
-        "summary": "Add new entity to NewComePeople",
         "tags": [
-          "NewComePeople"
+          {
+            "name": "NewComePeople"
+          }
         ],
+        "summary": "Add new entity to NewComePeople",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -1156,33 +1220,36 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/NewComePeople('{UserName}')": {
       "get": {
-        "summary": "Get entity from NewComePeople by key",
         "tags": [
-          "NewComePeople"
+          {
+            "name": "NewComePeople"
+          }
         ],
+        "summary": "Get entity from NewComePeople by key",
         "parameters": [
           {
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "FirstName",
@@ -1195,7 +1262,8 @@
                   "HomeAddress",
                   "FavoriteFeature",
                   "Features"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -1203,18 +1271,17 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*",
                   "Friends",
                   "BestFriend",
                   "Trips"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -1233,26 +1300,69 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
-      "delete": {
-        "summary": "Delete entity from NewComePeople",
+      "patch": {
         "tags": [
-          "NewComePeople"
+          {
+            "name": "NewComePeople"
+          }
         ],
+        "summary": "Update entity in NewComePeople",
         "parameters": [
           {
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "callbacks": { }
+      },
+      "delete": {
+        "tags": [
+          {
+            "name": "NewComePeople"
+          }
+        ],
+        "summary": "Delete entity from NewComePeople",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1265,55 +1375,23 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
-      },
-      "patch": {
-        "summary": "Update entity in NewComePeople",
-        "tags": [
-          "NewComePeople"
-        ],
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "style": "simple"
-          }
-        ],
-        "requestBody": {
-          "description": "New property values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        }
+        "callbacks": { }
       }
     },
     "/NewComePeople('{UserName}')/GetFavoriteAirline(person={person})": {
       "get": {
-        "summary": "Invoke function GetFavoriteAirline",
         "tags": [
-          "person"
+          {
+            "name": "person"
+          }
         ],
+        "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
           {
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1333,7 +1411,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/NewComePeople('{UserName}')/GetFriendsTrips(person={person},userName={userName})": {
@@ -1344,7 +1423,6 @@
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1353,7 +1431,9 @@
             "name": "userName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1373,7 +1453,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/NewComePeople('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName})": {
@@ -1384,7 +1465,6 @@
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1393,20 +1473,28 @@
             "name": "lastName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
-              "application/json": { }
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
             }
           },
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/NewComePeople('{UserName}')/ShareTrip": {
@@ -1417,7 +1505,6 @@
             "name": "personInstance",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1426,13 +1513,20 @@
             "name": "userName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "tripId",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1442,26 +1536,27 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Me": {
       "get": {
-        "summary": "Get Me",
         "tags": [
-          "Me"
+          {
+            "name": "Me"
+          }
         ],
+        "summary": "Get Me",
         "parameters": [
           {
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "UserName",
                   "FirstName",
@@ -1474,7 +1569,8 @@
                   "HomeAddress",
                   "FavoriteFeature",
                   "Features"
-                ]
+                ],
+                "type": "string"
               }
             }
           },
@@ -1482,18 +1578,17 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "form",
             "schema": {
-              "type": "array",
               "uniqueItems": true,
+              "type": "array",
               "items": {
-                "type": "string",
                 "enum": [
                   "*",
                   "Friends",
                   "BestFriend",
                   "Trips"
-                ]
+                ],
+                "type": "string"
               }
             }
           }
@@ -1512,13 +1607,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       },
       "patch": {
-        "summary": "Update Me",
         "tags": [
-          "Me"
+          {
+            "name": "Me"
+          }
         ],
+        "summary": "Update Me",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -1537,21 +1635,23 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Me/GetFavoriteAirline(person={person})": {
       "get": {
-        "summary": "Invoke function GetFavoriteAirline",
         "tags": [
-          "person"
+          {
+            "name": "person"
+          }
         ],
+        "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
           {
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1571,7 +1671,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Me/GetFriendsTrips(person={person},userName={userName})": {
@@ -1582,7 +1683,6 @@
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1591,7 +1691,9 @@
             "name": "userName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1611,7 +1713,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Me/UpdatePersonLastName(person={person},lastName={lastName})": {
@@ -1622,7 +1725,6 @@
             "name": "person",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1631,20 +1733,28 @@
             "name": "lastName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
-              "application/json": { }
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
             }
           },
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/Me/ShareTrip": {
@@ -1655,7 +1765,6 @@
             "name": "personInstance",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1664,13 +1773,20 @@
             "name": "userName",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "tripId",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -1680,13 +1796,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/GetPersonWithMostFriends()": {
       "get": {
         "summary": "Invoke function GetPersonWithMostFriends",
-        "parameters": [ ],
         "responses": {
           "200": {
             "description": "Success",
@@ -1701,7 +1817,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/GetNearestAirport(lat={lat},lon={lon})": {
@@ -1712,13 +1829,47 @@
             "name": "lat",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "enum": [
+                    "-INF",
+                    "INF",
+                    "NaN"
+                  ]
+                }
+              ],
+              "format": "double"
+            }
           },
           {
             "name": "lon",
             "in": "path",
             "required": true,
-            "style": "simple"
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "enum": [
+                    "-INF",
+                    "INF",
+                    "NaN"
+                  ]
+                }
+              ],
+              "format": "double"
+            }
           }
         ],
         "responses": {
@@ -1735,13 +1886,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     },
     "/ResetDataSource": {
       "post": {
         "summary": "Invoke action ResetDataSource",
-        "parameters": [ ],
         "responses": {
           "204": {
             "description": "Success"
@@ -1749,15 +1900,16 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "callbacks": { }
       }
     }
   },
   "components": {
     "schemas": {
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
-        "type": "object",
         "title": "Person",
+        "type": "object",
         "properties": {
           "UserName": {
             "type": "string"
@@ -1831,8 +1983,8 @@
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
-        "type": "object",
         "title": "Airline",
+        "type": "object",
         "properties": {
           "AirlineCode": {
             "type": "string"
@@ -1844,8 +1996,8 @@
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
-        "type": "object",
         "title": "Airport",
+        "type": "object",
         "properties": {
           "Name": {
             "type": "string",
@@ -1864,8 +2016,8 @@
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
-        "type": "object",
         "title": "Location",
+        "type": "object",
         "properties": {
           "Address": {
             "type": "string",
@@ -1877,8 +2029,8 @@
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City": {
-        "type": "object",
         "title": "City",
+        "type": "object",
         "properties": {
           "Name": {
             "type": "string",
@@ -1900,11 +2052,10 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
           {
-            "type": "object",
             "title": "AirportLocation",
+            "type": "object",
             "properties": {
               "Loc": {
-                "type": "string",
                 "nullable": true
               }
             }
@@ -1917,8 +2068,8 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },
           {
-            "type": "object",
             "title": "EventLocation",
+            "type": "object",
             "properties": {
               "BuildingInfo": {
                 "type": "string",
@@ -1929,21 +2080,41 @@
         ]
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
-        "type": "object",
         "title": "Trip",
+        "type": "object",
         "properties": {
           "TripId": {
-            "type": "integer"
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "type": "integer",
+            "format": "int32"
           },
           "ShareId": {
-            "type": "string"
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
           },
           "Name": {
             "type": "string",
             "nullable": true
           },
           "Budget": {
-            "type": "float"
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "enum": [
+                  "-INF",
+                  "INF",
+                  "NaN"
+                ]
+              }
+            ],
+            "format": "float"
           },
           "Description": {
             "type": "string",
@@ -1957,10 +2128,14 @@
             }
           },
           "StartsAt": {
-            "type": "dateTime"
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+            "type": "string",
+            "format": "date-time"
           },
           "EndsAt": {
-            "type": "dateTime"
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+            "type": "string",
+            "format": "date-time"
           },
           "PlanItems": {
             "type": "array",
@@ -1971,24 +2146,33 @@
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
-        "type": "object",
         "title": "PlanItem",
+        "type": "object",
         "properties": {
           "PlanItemId": {
-            "type": "integer"
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "type": "integer",
+            "format": "int32"
           },
           "ConfirmationCode": {
             "type": "string",
             "nullable": true
           },
           "StartsAt": {
-            "type": "dateTime"
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+            "type": "string",
+            "format": "date-time"
           },
           "EndsAt": {
-            "type": "dateTime"
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+            "type": "string",
+            "format": "date-time"
           },
           "Duration": {
-            "type": "dateTime"
+            "pattern": "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$",
+            "type": "string",
+            "format": "duration"
           }
         }
       },
@@ -1998,8 +2182,8 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
           },
           {
-            "type": "object",
             "title": "Event",
+            "type": "object",
             "properties": {
               "OccursAt": {
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
@@ -2018,8 +2202,8 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
           },
           {
-            "type": "object",
             "title": "PublicTransportation",
+            "type": "object",
             "properties": {
               "SeatNumber": {
                 "type": "string",
@@ -2035,8 +2219,8 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation"
           },
           {
-            "type": "object",
             "title": "Flight",
+            "type": "object",
             "properties": {
               "FlightNumber": {
                 "type": "string",
@@ -2061,8 +2245,8 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
           },
           {
-            "type": "object",
             "title": "Employee",
+            "type": "object",
             "properties": {
               "Cost": {
                 "oneOf": [
@@ -2091,8 +2275,8 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
           },
           {
-            "type": "object",
             "title": "Manager",
+            "type": "object",
             "properties": {
               "Budget": {
                 "oneOf": [
@@ -2119,29 +2303,29 @@
         ]
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender": {
-        "type": "string",
         "title": "PersonGender",
         "enum": [
           "Male",
           "Female",
           "Unknow"
-        ]
+        ],
+        "type": "string"
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature": {
-        "type": "string",
         "title": "Feature",
         "enum": [
           "Feature1",
           "Feature2",
           "Feature3",
           "Feature4"
-        ]
+        ],
+        "type": "string"
       },
       "odata.error": {
-        "type": "object",
         "required": [
           "error"
         ],
+        "type": "object",
         "properties": {
           "error": {
             "$ref": "#/components/schemas/odata.error.main"
@@ -2149,11 +2333,11 @@
         }
       },
       "odata.error.main": {
-        "type": "object",
         "required": [
           "code",
           "message"
         ],
+        "type": "object",
         "properties": {
           "code": {
             "type": "string"
@@ -2177,11 +2361,11 @@
         }
       },
       "odata.error.detail": {
-        "type": "object",
         "required": [
           "code",
           "message"
         ],
+        "type": "object",
         "properties": {
           "code": {
             "type": "string"
@@ -2195,35 +2379,42 @@
         }
       }
     },
+    "responses": {
+      "error": {
+        "description": "error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/odata.error"
+            }
+          }
+        }
+      }
+    },
     "parameters": {
       "top": {
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items",
-        "style": "form",
         "schema": {
-          "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "type": "integer"
         },
-        "example": {
-          "example": 50
-        }
+        "example": 50
       },
       "skip": {
         "name": "$skip",
         "in": "query",
-        "description": "Skip only the first n items",
-        "style": "form",
+        "description": "Skip the first n items",
         "schema": {
-          "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "type": "integer"
         }
       },
       "count": {
         "name": "$count",
         "in": "query",
         "description": "Include count of items",
-        "style": "form",
         "schema": {
           "type": "boolean"
         }
@@ -2232,7 +2423,6 @@
         "name": "$filter",
         "in": "query",
         "description": "Filter items by property values",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2241,7 +2431,6 @@
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases",
-        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -2260,6 +2449,9 @@
     },
     {
       "name": "NewComePeople"
+    },
+    {
+      "name": "Me"
     }
   ]
 }

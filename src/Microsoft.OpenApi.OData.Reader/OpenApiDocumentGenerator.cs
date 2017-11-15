@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData
     internal static class OpenApiDocumentGenerator
     {
         /// <summary>
-        /// Create a <see cref="OpenApiDocument"/>, it's a single Open API Object
+        /// Create a <see cref="OpenApiDocument"/>, it's a single Open API Object.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <returns>The <see cref="OpenApiDocument"/> object.</returns>
@@ -48,6 +48,8 @@ namespace Microsoft.OpenApi.OData
                 Paths = model.CreatePaths(),
 
                 Components = model.CreateComponents(),
+
+                ExternalDocs = null
             };
         }
     }
