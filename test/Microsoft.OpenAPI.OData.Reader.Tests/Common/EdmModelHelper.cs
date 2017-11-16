@@ -1,12 +1,13 @@
-﻿//---------------------------------------------------------------------
-// <copyright file="EdmModelHelper.cs" company="Microsoft">
-//      Copyright (C) Microsoft Corporation. All rights reserved. See License.txt in the project root for license information.
-// </copyright>
-//---------------------------------------------------------------------
+﻿// ------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation.  All rights reserved.
+//  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// ------------------------------------------------------------
 
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OData.Edm.Vocabularies.V1;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
@@ -86,6 +87,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             var entityContainer = new EdmEntityContainer("DefaultNs", "Container");
             model.AddElement(entityContainer);
+            EdmSingleton me = new EdmSingleton(entityContainer, "Me", person);
             EdmEntitySet people = new EdmEntitySet(entityContainer, "People", person);
             EdmEntitySet cities = new EdmEntitySet(entityContainer, "City", city);
             EdmEntitySet countriesOrRegions = new EdmEntitySet(entityContainer, "CountryOrRegion", countryOrRegion);
@@ -96,6 +98,15 @@ namespace Microsoft.OpenApi.OData.Tests
             entityContainer.AddElement(people);
             entityContainer.AddElement(cities);
             entityContainer.AddElement(countriesOrRegions);
+            entityContainer.AddElement(me);
+
+            var coreDescription = CoreVocabularyModel.DescriptionTerm;
+            var annotation = new EdmVocabularyAnnotation(people, coreDescription, new EdmStringConstant("People's description."));
+            model.AddVocabularyAnnotation(annotation);
+
+            var coreLongDescription = CoreVocabularyModel.LongDescriptionTerm;
+            annotation = new EdmVocabularyAnnotation(people, coreLongDescription, new EdmStringConstant("People's Long description."));
+            model.AddVocabularyAnnotation(annotation);
 
             return model;
         }

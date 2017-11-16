@@ -35,7 +35,7 @@ namespace Microsoft.OpenApi.OData
                 // If no Core.Description is present, a default title has to be provided as this is a required OpenAPI field.
                 Title = "OData Service for namespace " + model.DeclaredNamespaces.FirstOrDefault(),
 
-                // The value of version is the value of the annotation Core.SchemaVersion(see[OData - VocCore]) of the main schema.
+                // The value of version is the value of the annotation Core.SchemaVersion of the main schema.
                 // If no Core.SchemaVersion is present, a default version has to be provided as this is a required OpenAPI field.
                 Version = "0.1.0",
 

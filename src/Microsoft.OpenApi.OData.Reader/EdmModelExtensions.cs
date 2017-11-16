@@ -24,24 +24,7 @@ namespace Microsoft.OpenApi.OData
         /// <returns>null or the description annotation.</returns>
         public static string GetDescription(this IEdmModel model, IEdmVocabularyAnnotatable element)
         {
-            if (model == null || element == null)
-            {
-                return null;
-            }
-
-            IEdmVocabularyAnnotation annotation =
-                model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(
-                    element, CoreVocabularyModel.DescriptionTerm).FirstOrDefault();
-            if (annotation != null)
-            {
-                IEdmStringConstantExpression stringConstant = annotation.Value as IEdmStringConstantExpression;
-                if (stringConstant != null)
-                {
-                    return stringConstant.Value;
-                }
-            }
-
-            return null;
+            return model.GetAnnotationValue(element, CoreVocabularyModel.DescriptionTerm);
         }
 
         /// <summary>
@@ -52,14 +35,19 @@ namespace Microsoft.OpenApi.OData
         /// <returns>null or the description annotation.</returns>
         public static string GetLongDescription(this IEdmModel model, IEdmVocabularyAnnotatable element)
         {
+            return model.GetAnnotationValue(element, CoreVocabularyModel.LongDescriptionTerm);
+        }
+
+        private static string GetAnnotationValue(this IEdmModel model, IEdmVocabularyAnnotatable element,
+            IEdmTerm term)
+        {
             if (model == null || element == null)
             {
                 return null;
             }
 
             IEdmVocabularyAnnotation annotation =
-                model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(
-                    element, CoreVocabularyModel.LongDescriptionTerm).FirstOrDefault();
+                model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(element, term).FirstOrDefault();
             if (annotation != null)
             {
                 IEdmStringConstantExpression stringConstant = annotation.Value as IEdmStringConstantExpression;
