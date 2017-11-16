@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Rea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi", "tool\Microsoft.OpenApi\Microsoft.OpenApi.csproj", "{3C31B79A-776F-4199-899F-3DC7AA767003}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OoasUtil", "src\OoasUtil\OoasUtil.csproj", "{2D06C660-B550-432C-8062-D4070F7C371F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3C31B79A-776F-4199-899F-3DC7AA767003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C31B79A-776F-4199-899F-3DC7AA767003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C31B79A-776F-4199-899F-3DC7AA767003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D06C660-B550-432C-8062-D4070F7C371F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D06C660-B550-432C-8062-D4070F7C371F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D06C660-B550-432C-8062-D4070F7C371F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D06C660-B550-432C-8062-D4070F7C371F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
