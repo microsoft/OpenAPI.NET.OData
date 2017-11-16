@@ -2056,7 +2056,7 @@
             "type": "object",
             "properties": {
               "Loc": {
-                "nullable": true
+                "$ref": "https://raw.githubusercontent.com/oasis-tcs/odata-openapi/master/examples/odata-definitions.json#/definitions/Edm.GeographyPoint"
               }
             }
           }

@@ -1310,7 +1310,7 @@ components:
           type: object
           properties:
             Loc:
-              nullable: true
+              $ref: https://raw.githubusercontent.com/oasis-tcs/odata-openapi/master/examples/odata-definitions.json#/definitions/Edm.GeographyPoint
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
