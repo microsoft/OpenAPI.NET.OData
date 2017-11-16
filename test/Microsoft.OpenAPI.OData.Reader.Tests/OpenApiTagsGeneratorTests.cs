@@ -40,8 +40,8 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(tags);
-            Assert.Equal(3, tags.Count);
-            Assert.Equal(new[] { "People", "City", "CountryOrRegion" }, tags.Select(t => t.Name));
+            Assert.Equal(4, tags.Count);
+            Assert.Equal(new[] { "People", "City", "CountryOrRegion", "Me" }, tags.Select(t => t.Name));
         }
 
         [Fact]

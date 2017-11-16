@@ -518,6 +518,62 @@ paths:
         default:
           $ref: '#/components/responses/error'
       callbacks: { }
+  /Me:
+    get:
+      tags:
+        - name: Me
+      summary: Get Me
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - HomeAddress
+                - WorkAddress
+                - Addresses
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - *
+              type: string
+      responses:
+        200:
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultNs.Person'
+        default:
+          $ref: '#/components/responses/error'
+      callbacks: { }
+    patch:
+      tags:
+        - name: Me
+      summary: Update Me
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DefaultNs.Person'
+        required: true
+      responses:
+        204:
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      callbacks: { }
 components:
   schemas:
     DefaultNs.Color:
@@ -652,5 +708,7 @@ components:
         type: string
 tags:
   - name: People
+    description: People's description.
   - name: City
   - name: CountryOrRegion
+  - name: Me

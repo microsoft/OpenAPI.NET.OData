@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(6, paths.Count);
+            Assert.Equal(7, paths.Count);
 
             Assert.Contains("/People", paths.Keys);
             Assert.Contains("/People('{UserName}')", paths.Keys);
@@ -54,6 +54,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Contains("/City('{Name}')", paths.Keys);
             Assert.Contains("/CountryOrRegion", paths.Keys);
             Assert.Contains("/CountryOrRegion('{Name}')", paths.Keys);
+            Assert.Contains("/Me", paths.Keys);
         }
     }
 }
