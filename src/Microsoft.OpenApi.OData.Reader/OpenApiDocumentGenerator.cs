@@ -47,9 +47,7 @@ namespace Microsoft.OpenApi.OData
 
                 Paths = model.CreatePaths(),
 
-                Components = model.CreateComponents(),
-
-                ExternalDocs = null
+                Components = model.CreateComponents()
             };
         }
     }

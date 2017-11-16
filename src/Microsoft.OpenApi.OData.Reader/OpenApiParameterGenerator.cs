@@ -15,6 +15,26 @@ namespace Microsoft.OpenApi.OData
     /// </summary>
     internal static class OpenApiParameterGenerator
     {
+        // 4.6.2 Field parameters in components
+        public static IDictionary<string, OpenApiParameter> CreateParameters(this IEdmModel model)
+        {
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            // It allows defining query options and headers that can be reused across operations of the service.
+            // The value of parameters is a map of Parameter Objects
+            return new Dictionary<string, OpenApiParameter>
+            {
+                { "top", CreateTop() },
+                { "skip", CreateSkip() },
+                { "count", CreateCount() },
+                { "filter", CreateFilter() },
+                { "search", CreateSearch() },
+            };
+        }
+
         /// <summary>
         /// Create key parameters for the <see cref="IEdmEntityType"/>.
         /// </summary>
@@ -141,26 +161,6 @@ namespace Microsoft.OpenApi.OData
             };
 
             return parameter;
-        }
-
-        // 4.6.2 Field parameters in components
-        public static IDictionary<string, OpenApiParameter> CreateParameters(this IEdmModel model)
-        {
-            if (model == null)
-            {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            // It allows defining query options and headers that can be reused across operations of the service.
-            // The value of parameters is a map of Parameter Objects
-            return new Dictionary<string, OpenApiParameter>
-            {
-                { "top", CreateTop() },
-                { "skip", CreateSkip() },
-                { "count", CreateCount() },
-                { "filter", CreateFilter() },
-                { "search", CreateSearch() },
-            };
         }
 
         // #top

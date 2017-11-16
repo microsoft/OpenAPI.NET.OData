@@ -154,9 +154,9 @@ namespace Microsoft.OpenApi.OData
             // structure properties
             foreach (var property in structuredType.DeclaredStructuralProperties())
             {
-                OpenApiSchema propertySchema = property.Type.CreateSchema();
-                propertySchema.Default = property.DefaultValueString != null ? new OpenApiString(property.DefaultValueString) : null;
-                properties.Add(property.Name, propertySchema);
+                // OpenApiSchema propertySchema = property.Type.CreateSchema();
+                // propertySchema.Default = property.DefaultValueString != null ? new OpenApiString(property.DefaultValueString) : null;
+                properties.Add(property.Name, property.CreateSchema());
             }
 
             // navigation properties
@@ -167,6 +167,71 @@ namespace Microsoft.OpenApi.OData
             }
 
             return properties;
+        }
+
+        public static OpenApiSchema CreateSchema(this IEdmStructuralProperty property)
+        {
+            if (property == null)
+            {
+                throw Error.ArgumentNull(nameof(property));
+            }
+
+            OpenApiSchema schema = property.Type.CreateSchema();
+            schema.Default = property.CreateDefault();
+
+            return schema;
+        }
+
+        private static IOpenApiAny CreateDefault(this IEdmStructuralProperty property)
+        {
+            if (property == null ||
+                property.DefaultValueString == null ||
+                !property.Type.IsPrimitive())
+            {
+                return null;
+            }
+
+            IEdmPrimitiveTypeReference primitiveTypeReference = property.Type.AsPrimitive();
+            switch(primitiveTypeReference.PrimitiveKind())
+            {
+                case EdmPrimitiveTypeKind.Boolean:
+                    {
+                        bool result;
+                        if (Boolean.TryParse(property.DefaultValueString, out result))
+                        {
+                            return new OpenApiBoolean(result);
+                        }
+                    }
+                    break;
+
+                case EdmPrimitiveTypeKind.Int16:
+                case EdmPrimitiveTypeKind.Int32:
+                    {
+                        int result;
+                        if (Int32.TryParse(property.DefaultValueString, out result))
+                        {
+                            return new OpenApiInteger(result);
+                        }
+                    }
+                    break;
+
+                case EdmPrimitiveTypeKind.Int64:
+                    break;
+
+                // The type 'System.Double' is not supported in Open API document.
+                case EdmPrimitiveTypeKind.Double:
+                    /*
+                    {
+                        double result;
+                        if (Double.TryParse(property.DefaultValueString, out result))
+                        {
+                            return new OpenApiDouble((float)result);
+                        }
+                    }*/
+                    break;
+            }
+
+            return new OpenApiString(property.DefaultValueString);
         }
     }
 }
