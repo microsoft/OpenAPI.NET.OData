@@ -53,7 +53,7 @@ namespace OoasUtil
 
                 using (FileStream fs = File.Create(Output))
                 {
-                    OpenApiDocument document = edmModel.Convert(config);
+                    OpenApiDocument document = edmModel.ConvertToOpenApi(config);
                     document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0, Format);
                     fs.Flush();
                 }

@@ -117,7 +117,7 @@ namespace Microsoft.OpenApi.OData.Tests
         private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
             Action<OpenApiDocument> action = null)
         {
-            var document = model.Convert(action);
+            var document = model.ConvertToOpenApi(action);
             MemoryStream stream = new MemoryStream();
             document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, target);
             stream.Flush();

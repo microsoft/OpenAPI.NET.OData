@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData
         /// <param name="model">The Edm model.</param>
         /// <param name="configure">The configure action.</param>
         /// <returns>The converted Open API document object.</returns>
-        public static OpenApiDocument Convert(this IEdmModel model, Action<OpenApiDocument> configure)
+        public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, Action<OpenApiDocument> configure)
         {
             if (model == null)
             {
@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <returns>The converted Open API document object.</returns>
-        public static OpenApiDocument Convert(this IEdmModel model)
+        public static OpenApiDocument ConvertToOpenApi(this IEdmModel model)
         {
             if (model == null)
             {
