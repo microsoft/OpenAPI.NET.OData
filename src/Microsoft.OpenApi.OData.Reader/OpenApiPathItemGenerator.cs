@@ -58,6 +58,13 @@ namespace Microsoft.OpenApi.OData
             return paths;
         }
 
+        /// <summary>
+        /// Each singleton is represented as a name/value pair whose name is the service-relative resource
+        /// paht of the singleton prepended with a forward slash, whose value is <see cref="OpenApiPathItem"/>
+        /// describing the allowed operations on this singleton.
+        /// </summary>
+        /// <param name="singleton">The singleton.</param>
+        /// <returns>The name/value pairs describing the allowed operations on this singleton.</returns>
         public static IDictionary<string, OpenApiPathItem> CreatePathItems(this IEdmSingleton singleton)
         {
             if (singleton == null)
@@ -70,8 +77,13 @@ namespace Microsoft.OpenApi.OData
             // Singleton
             string entityPathName = singleton.CreatePathNameForSingleton();
             OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            // Retrieve a singleton.
             pathItem.AddOperation(OperationType.Get, singleton.CreateGetOperationForSingleton());
+
+            // UPdate a singleton
             pathItem.AddOperation(OperationType.Patch, singleton.CreatePatchOperationForSingleton());
+
             paths.Add(entityPathName, pathItem);
 
             return paths;

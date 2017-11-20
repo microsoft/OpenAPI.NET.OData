@@ -275,10 +275,15 @@ namespace Microsoft.OpenApi.OData
 
         public static OpenApiOperation CreateGetOperationForSingleton(this IEdmSingleton singleton)
         {
+            if (singleton == null)
+            {
+                throw Error.ArgumentNull(nameof(singleton));
+            }
+
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get " + singleton.Name,
-                Tags = new List<OpenApiTag>
+                Tags = new List<OpenApiTag> // The tags array of the Operation Object includes the singleton’s name.
                 {
                     new OpenApiTag
                     {
@@ -289,7 +294,6 @@ namespace Microsoft.OpenApi.OData
 
             operation.Parameters = new List<OpenApiParameter>();
             operation.Parameters.Add(singleton.CreateSelectParameter());
-
             operation.Parameters.Add(singleton.CreateExpandParameter());
 
             operation.Responses = new OpenApiResponses
