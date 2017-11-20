@@ -42,7 +42,11 @@ namespace Microsoft.OpenApi.OData
                 case EdmTypeKind.Enum:
                     return new OpenApiSchema
                     {
-                        Pointer = new OpenApiReference(ReferenceType.Schema, reference.Definition.FullTypeName())
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = reference.Definition.FullTypeName()
+                        }
                     };
 
                 case EdmTypeKind.Primitive:
@@ -232,53 +236,117 @@ namespace Microsoft.OpenApi.OData
                     break;
 
                 case EdmPrimitiveTypeKind.Geography:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.Geography");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.Geography"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyPoint:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyPoint");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyPoint"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyLineString:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyLineString");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyLineString"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyPolygon:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyPolygon");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyPolygon"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyCollection:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyCollection");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyCollection"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiPolygon:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyMultiPolygon");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyMultiPolygon"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiLineString:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyMultiLineString");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyMultiLineString"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiPoint:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeographyMultiPoint");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeographyMultiPoint"
+                    };
                     break;
 
                 case EdmPrimitiveTypeKind.Geometry: // Geometry
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.Geometry");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.Geometry"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryPoint:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryPoint");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryPoint"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryLineString:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryLineString");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryLineString"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryPolygon:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryPolygon");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryPolygon"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryCollection:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryCollection");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryCollection"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiPolygon:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryMultiPolygon");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryMultiPolygon"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiLineString:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryMultiLineString");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryMultiLineString"
+                    };
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiPoint:
-                    schema.Pointer = new OpenApiReference(_externalResource, "definitions/Edm.GeometryMultiPoint");
+                    schema.Reference = new OpenApiReference
+                    {
+                        ExternalResource = _externalResource,
+                        Id = "definitions/Edm.GeometryMultiPoint"
+                    };
                     break;
 
                 case EdmPrimitiveTypeKind.None:
@@ -310,7 +378,11 @@ namespace Microsoft.OpenApi.OData
                         "error",
                         new OpenApiSchema
                         {
-                            Pointer = new OpenApiReference(ReferenceType.Schema, "odata.error.main")
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = "odata.error.main"
+                            }
                         }
                     }
                 }
@@ -342,7 +414,11 @@ namespace Microsoft.OpenApi.OData
                             Type = "array",
                             Items = new OpenApiSchema
                             {
-                                Pointer = new OpenApiReference(ReferenceType.Schema, "odata.error.detail")
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = "odata.error.detail"
+                                }
                             }
                         }
                     },

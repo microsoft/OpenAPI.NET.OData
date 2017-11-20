@@ -117,7 +117,11 @@ namespace Microsoft.OpenApi.OData
                         // 1. a JSON Reference to the Schema Object of the base type
                         new OpenApiSchema
                         {
-                            Pointer = new OpenApiReference(ReferenceType.Schema, structuredType.BaseType.FullTypeName())
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = structuredType.BaseType.FullTypeName()
+                            }
                         },
 
                         // 2. a Schema Object describing the derived type

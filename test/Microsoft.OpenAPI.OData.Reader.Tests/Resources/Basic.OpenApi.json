@@ -13,9 +13,7 @@
     "/People": {
       "get": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Get entities from People",
         "parameters": [
@@ -113,14 +111,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Add new entity to People",
         "requestBody": {
@@ -148,16 +143,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/People('{UserName}')": {
       "get": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Get entity from People by key",
         "parameters": [
@@ -218,14 +210,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Update entity in People",
         "parameters": [
@@ -257,14 +246,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Delete entity from People",
         "parameters": [
@@ -293,16 +279,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/City": {
       "get": {
         "tags": [
-          {
-            "name": "City"
-          }
+          "City"
         ],
         "summary": "Get entities from City",
         "parameters": [
@@ -391,14 +374,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "City"
-          }
+          "City"
         ],
         "summary": "Add new entity to City",
         "requestBody": {
@@ -426,16 +406,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/City('{Name}')": {
       "get": {
         "tags": [
-          {
-            "name": "City"
-          }
+          "City"
         ],
         "summary": "Get entity from City by key",
         "parameters": [
@@ -493,14 +470,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "City"
-          }
+          "City"
         ],
         "summary": "Update entity in City",
         "parameters": [
@@ -532,14 +506,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "City"
-          }
+          "City"
         ],
         "summary": "Delete entity from City",
         "parameters": [
@@ -568,16 +539,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/CountryOrRegion": {
       "get": {
         "tags": [
-          {
-            "name": "CountryOrRegion"
-          }
+          "CountryOrRegion"
         ],
         "summary": "Get entities from CountryOrRegion",
         "parameters": [
@@ -666,14 +634,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "CountryOrRegion"
-          }
+          "CountryOrRegion"
         ],
         "summary": "Add new entity to CountryOrRegion",
         "requestBody": {
@@ -701,16 +666,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/CountryOrRegion('{Name}')": {
       "get": {
         "tags": [
-          {
-            "name": "CountryOrRegion"
-          }
+          "CountryOrRegion"
         ],
         "summary": "Get entity from CountryOrRegion by key",
         "parameters": [
@@ -768,14 +730,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "CountryOrRegion"
-          }
+          "CountryOrRegion"
         ],
         "summary": "Update entity in CountryOrRegion",
         "parameters": [
@@ -807,14 +766,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "CountryOrRegion"
-          }
+          "CountryOrRegion"
         ],
         "summary": "Delete entity from CountryOrRegion",
         "parameters": [
@@ -843,16 +799,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Me": {
       "get": {
         "tags": [
-          {
-            "name": "Me"
-          }
+          "Me"
         ],
         "summary": "Get Me",
         "parameters": [
@@ -904,14 +857,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "Me"
-          }
+          "Me"
         ],
         "summary": "Update Me",
         "requestBody": {
@@ -932,8 +882,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     }
   },

@@ -13,8 +13,9 @@ using Microsoft.OData.Edm;
 using System.Collections.Generic;
 using Microsoft.OData.Edm.Validation;
 using System.Text;
-using Microsoft.OpenApi.OData;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData;
 using System.Net;
 using System.Xml;
 

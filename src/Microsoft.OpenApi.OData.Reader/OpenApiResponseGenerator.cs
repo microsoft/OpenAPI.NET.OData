@@ -20,15 +20,24 @@ namespace Microsoft.OpenApi.OData
                 { "default",
                     new OpenApiResponse
                     {
-                        Pointer = new OpenApiReference(ReferenceType.Response, "error")
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Response,
+                            Id = "error"
+                        }
                     }
                 },
                 { "204", new OpenApiResponse { Description = "Success"} },
            };
 
-        public static KeyValuePair<string, OpenApiResponse> GetResponse(this string statusCode)
+        public static KeyValuePair<string, OpenApiResponse> GetResponse1(this string statusCode)
         {
             return new KeyValuePair<string, OpenApiResponse>(statusCode, Responses[statusCode]);
+        }
+
+        public static OpenApiResponse GetResponse(this string statusCode)
+        {
+            return Responses[statusCode];
         }
 
         /// <summary>
@@ -55,8 +64,8 @@ namespace Microsoft.OpenApi.OData
         {
             return new OpenApiResponses
             {
-                "204".GetResponse(),
-                "default".GetResponse()
+                { "204", "204".GetResponse() },
+                { "default", "default".GetResponse() }
             };
         }
 
@@ -79,7 +88,7 @@ namespace Microsoft.OpenApi.OData
                 }
             };
             responses.Add("200", response);
-            responses.Add("default".GetResponse());
+            responses.Add("default", "default".GetResponse());
             return responses;
         }
 
@@ -96,7 +105,11 @@ namespace Microsoft.OpenApi.OData
                         {
                             Schema = new OpenApiSchema
                             {
-                                Pointer = new OpenApiReference(ReferenceType.Schema, "odata.error")
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = "odata.error"
+                                }
                             }
                         }
                     }

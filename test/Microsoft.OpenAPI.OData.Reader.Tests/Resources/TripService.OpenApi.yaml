@@ -8,7 +8,7 @@ paths:
   /People:
     get:
       tags:
-        - name: People
+        - People
       summary: Get entities from People
       parameters:
         - $ref: '#/components/parameters/top'
@@ -95,10 +95,9 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     post:
       tags:
-        - name: People
+        - People
       summary: Add new entity to People
       requestBody:
         description: New entity
@@ -116,11 +115,10 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /People('{UserName}'):
     get:
       tags:
-        - name: People
+        - People
       summary: Get entity from People by key
       parameters:
         - name: UserName
@@ -171,10 +169,9 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     patch:
       tags:
-        - name: People
+        - People
       summary: Update entity in People
       parameters:
         - name: UserName
@@ -195,10 +192,9 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     delete:
       tags:
-        - name: People
+        - People
       summary: Delete entity from People
       parameters:
         - name: UserName
@@ -217,11 +213,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /People('{UserName}')/GetFavoriteAirline(person={person}):
     get:
       tags:
-        - name: person
+        - person
       summary: Invoke function GetFavoriteAirline
       parameters:
         - name: person
@@ -238,7 +233,6 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /People('{UserName}')/GetFriendsTrips(person={person},userName={userName}):
     get:
       summary: Invoke function GetFriendsTrips
@@ -264,7 +258,6 @@ paths:
                   $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /People('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName}):
     get:
       summary: Invoke function UpdatePersonLastName
@@ -289,7 +282,6 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /People('{UserName}')/ShareTrip:
     post:
       summary: Invoke action ShareTrip
@@ -317,11 +309,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Airlines:
     get:
       tags:
-        - name: Airlines
+        - Airlines
       summary: Get entities from Airlines
       parameters:
         - $ref: '#/components/parameters/top'
@@ -378,10 +369,9 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     post:
       tags:
-        - name: Airlines
+        - Airlines
       summary: Add new entity to Airlines
       requestBody:
         description: New entity
@@ -399,11 +389,10 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Airlines('{AirlineCode}'):
     get:
       tags:
-        - name: Airlines
+        - Airlines
       summary: Get entity from Airlines by key
       parameters:
         - name: AirlineCode
@@ -442,10 +431,9 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     patch:
       tags:
-        - name: Airlines
+        - Airlines
       summary: Update entity in Airlines
       parameters:
         - name: AirlineCode
@@ -466,10 +454,9 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     delete:
       tags:
-        - name: Airlines
+        - Airlines
       summary: Delete entity from Airlines
       parameters:
         - name: AirlineCode
@@ -488,11 +475,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Airports:
     get:
       tags:
-        - name: Airports
+        - Airports
       summary: Get entities from Airports
       parameters:
         - $ref: '#/components/parameters/top'
@@ -555,10 +541,9 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     post:
       tags:
-        - name: Airports
+        - Airports
       summary: Add new entity to Airports
       requestBody:
         description: New entity
@@ -576,11 +561,10 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Airports('{IcaoCode}'):
     get:
       tags:
-        - name: Airports
+        - Airports
       summary: Get entity from Airports by key
       parameters:
         - name: IcaoCode
@@ -621,10 +605,9 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     patch:
       tags:
-        - name: Airports
+        - Airports
       summary: Update entity in Airports
       parameters:
         - name: IcaoCode
@@ -645,10 +628,9 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     delete:
       tags:
-        - name: Airports
+        - Airports
       summary: Delete entity from Airports
       parameters:
         - name: IcaoCode
@@ -667,11 +649,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /NewComePeople:
     get:
       tags:
-        - name: NewComePeople
+        - NewComePeople
       summary: Get entities from NewComePeople
       parameters:
         - $ref: '#/components/parameters/top'
@@ -758,10 +739,9 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     post:
       tags:
-        - name: NewComePeople
+        - NewComePeople
       summary: Add new entity to NewComePeople
       requestBody:
         description: New entity
@@ -779,11 +759,10 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /NewComePeople('{UserName}'):
     get:
       tags:
-        - name: NewComePeople
+        - NewComePeople
       summary: Get entity from NewComePeople by key
       parameters:
         - name: UserName
@@ -834,10 +813,9 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     patch:
       tags:
-        - name: NewComePeople
+        - NewComePeople
       summary: Update entity in NewComePeople
       parameters:
         - name: UserName
@@ -858,10 +836,9 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     delete:
       tags:
-        - name: NewComePeople
+        - NewComePeople
       summary: Delete entity from NewComePeople
       parameters:
         - name: UserName
@@ -880,11 +857,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /NewComePeople('{UserName}')/GetFavoriteAirline(person={person}):
     get:
       tags:
-        - name: person
+        - person
       summary: Invoke function GetFavoriteAirline
       parameters:
         - name: person
@@ -901,7 +877,6 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /NewComePeople('{UserName}')/GetFriendsTrips(person={person},userName={userName}):
     get:
       summary: Invoke function GetFriendsTrips
@@ -927,7 +902,6 @@ paths:
                   $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /NewComePeople('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName}):
     get:
       summary: Invoke function UpdatePersonLastName
@@ -952,7 +926,6 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /NewComePeople('{UserName}')/ShareTrip:
     post:
       summary: Invoke action ShareTrip
@@ -980,11 +953,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Me:
     get:
       tags:
-        - name: Me
+        - Me
       summary: Get Me
       parameters:
         - name: $select
@@ -1029,10 +1001,9 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
     patch:
       tags:
-        - name: Me
+        - Me
       summary: Update Me
       requestBody:
         description: New property values
@@ -1046,11 +1017,10 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Me/GetFavoriteAirline(person={person}):
     get:
       tags:
-        - name: person
+        - person
       summary: Invoke function GetFavoriteAirline
       parameters:
         - name: person
@@ -1067,7 +1037,6 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Me/GetFriendsTrips(person={person},userName={userName}):
     get:
       summary: Invoke function GetFriendsTrips
@@ -1093,7 +1062,6 @@ paths:
                   $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Me/UpdatePersonLastName(person={person},lastName={lastName}):
     get:
       summary: Invoke function UpdatePersonLastName
@@ -1118,7 +1086,6 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /Me/ShareTrip:
     post:
       summary: Invoke action ShareTrip
@@ -1146,7 +1113,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /GetPersonWithMostFriends():
     get:
       summary: Invoke function GetPersonWithMostFriends
@@ -1159,7 +1125,6 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /GetNearestAirport(lat={lat},lon={lon}):
     get:
       summary: Invoke function GetNearestAirport
@@ -1197,7 +1162,6 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
   /ResetDataSource:
     post:
       summary: Invoke action ResetDataSource
@@ -1206,7 +1170,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      callbacks: { }
 components:
   schemas:
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person:

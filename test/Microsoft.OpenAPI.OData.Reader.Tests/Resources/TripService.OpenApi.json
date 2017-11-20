@@ -13,9 +13,7 @@
     "/People": {
       "get": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Get entities from People",
         "parameters": [
@@ -137,14 +135,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Add new entity to People",
         "requestBody": {
@@ -172,16 +167,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/People('{UserName}')": {
       "get": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Get entity from People by key",
         "parameters": [
@@ -252,14 +244,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Update entity in People",
         "parameters": [
@@ -291,14 +280,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "People"
-          }
+          "People"
         ],
         "summary": "Delete entity from People",
         "parameters": [
@@ -327,16 +313,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/People('{UserName}')/GetFavoriteAirline(person={person})": {
       "get": {
         "tags": [
-          {
-            "name": "person"
-          }
+          "person"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
@@ -363,8 +346,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/People('{UserName}')/GetFriendsTrips(person={person},userName={userName})": {
@@ -405,8 +387,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/People('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName})": {
@@ -445,8 +426,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/People('{UserName}')/ShareTrip": {
@@ -488,16 +468,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Airlines": {
       "get": {
         "tags": [
-          {
-            "name": "Airlines"
-          }
+          "Airlines"
         ],
         "summary": "Get entities from Airlines",
         "parameters": [
@@ -589,14 +566,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "Airlines"
-          }
+          "Airlines"
         ],
         "summary": "Add new entity to Airlines",
         "requestBody": {
@@ -624,16 +598,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Airlines('{AirlineCode}')": {
       "get": {
         "tags": [
-          {
-            "name": "Airlines"
-          }
+          "Airlines"
         ],
         "summary": "Get entity from Airlines by key",
         "parameters": [
@@ -692,14 +663,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "Airlines"
-          }
+          "Airlines"
         ],
         "summary": "Update entity in Airlines",
         "parameters": [
@@ -731,14 +699,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "Airlines"
-          }
+          "Airlines"
         ],
         "summary": "Delete entity from Airlines",
         "parameters": [
@@ -767,16 +732,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Airports": {
       "get": {
         "tags": [
-          {
-            "name": "Airports"
-          }
+          "Airports"
         ],
         "summary": "Get entities from Airports",
         "parameters": [
@@ -874,14 +836,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "Airports"
-          }
+          "Airports"
         ],
         "summary": "Add new entity to Airports",
         "requestBody": {
@@ -909,16 +868,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Airports('{IcaoCode}')": {
       "get": {
         "tags": [
-          {
-            "name": "Airports"
-          }
+          "Airports"
         ],
         "summary": "Get entity from Airports by key",
         "parameters": [
@@ -979,14 +935,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "Airports"
-          }
+          "Airports"
         ],
         "summary": "Update entity in Airports",
         "parameters": [
@@ -1018,14 +971,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "Airports"
-          }
+          "Airports"
         ],
         "summary": "Delete entity from Airports",
         "parameters": [
@@ -1054,16 +1004,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/NewComePeople": {
       "get": {
         "tags": [
-          {
-            "name": "NewComePeople"
-          }
+          "NewComePeople"
         ],
         "summary": "Get entities from NewComePeople",
         "parameters": [
@@ -1185,14 +1132,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "post": {
         "tags": [
-          {
-            "name": "NewComePeople"
-          }
+          "NewComePeople"
         ],
         "summary": "Add new entity to NewComePeople",
         "requestBody": {
@@ -1220,16 +1164,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/NewComePeople('{UserName}')": {
       "get": {
         "tags": [
-          {
-            "name": "NewComePeople"
-          }
+          "NewComePeople"
         ],
         "summary": "Get entity from NewComePeople by key",
         "parameters": [
@@ -1300,14 +1241,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "NewComePeople"
-          }
+          "NewComePeople"
         ],
         "summary": "Update entity in NewComePeople",
         "parameters": [
@@ -1339,14 +1277,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "delete": {
         "tags": [
-          {
-            "name": "NewComePeople"
-          }
+          "NewComePeople"
         ],
         "summary": "Delete entity from NewComePeople",
         "parameters": [
@@ -1375,16 +1310,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/NewComePeople('{UserName}')/GetFavoriteAirline(person={person})": {
       "get": {
         "tags": [
-          {
-            "name": "person"
-          }
+          "person"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
@@ -1411,8 +1343,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/NewComePeople('{UserName}')/GetFriendsTrips(person={person},userName={userName})": {
@@ -1453,8 +1384,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/NewComePeople('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName})": {
@@ -1493,8 +1423,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/NewComePeople('{UserName}')/ShareTrip": {
@@ -1536,16 +1465,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Me": {
       "get": {
         "tags": [
-          {
-            "name": "Me"
-          }
+          "Me"
         ],
         "summary": "Get Me",
         "parameters": [
@@ -1607,14 +1533,11 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       },
       "patch": {
         "tags": [
-          {
-            "name": "Me"
-          }
+          "Me"
         ],
         "summary": "Update Me",
         "requestBody": {
@@ -1635,16 +1558,13 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Me/GetFavoriteAirline(person={person})": {
       "get": {
         "tags": [
-          {
-            "name": "person"
-          }
+          "person"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
@@ -1671,8 +1591,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Me/GetFriendsTrips(person={person},userName={userName})": {
@@ -1713,8 +1632,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Me/UpdatePersonLastName(person={person},lastName={lastName})": {
@@ -1753,8 +1671,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/Me/ShareTrip": {
@@ -1796,8 +1713,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/GetPersonWithMostFriends()": {
@@ -1817,8 +1733,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/GetNearestAirport(lat={lat},lon={lon})": {
@@ -1886,8 +1801,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     },
     "/ResetDataSource": {
@@ -1900,8 +1814,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "callbacks": { }
+        }
       }
     }
   },

@@ -8,8 +8,9 @@ using System;
 using System.IO;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.OData;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData;
 
 namespace OoasUtil
 {

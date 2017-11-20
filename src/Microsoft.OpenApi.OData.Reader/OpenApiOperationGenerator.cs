@@ -47,23 +47,23 @@ namespace Microsoft.OpenApi.OData
             {
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference(ReferenceType.Parameter, "top")
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference(ReferenceType.Parameter, "skip")
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference(ReferenceType.Parameter, "search")
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference(ReferenceType.Parameter, "filter")
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
                 },
                 new OpenApiParameter
                 {
-                    Pointer = new OpenApiReference(ReferenceType.Parameter, "count")
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
                 },
 
                 // the syntax of the system query options $expand, $select, and $orderby is too flexible
@@ -106,7 +106,11 @@ namespace Microsoft.OpenApi.OData
                                                     Type = "array",
                                                     Items = new OpenApiSchema
                                                     {
-                                                        Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
+                                                        Reference = new OpenApiReference
+                                                        {
+                                                            Type = ReferenceType.Schema,
+                                                            Id = entitySet.EntityType().FullName()
+                                                        }
                                                     }
                                                 }
                                             }
@@ -119,7 +123,7 @@ namespace Microsoft.OpenApi.OData
                 }
             };
 
-            operation.Responses.Add("default".GetResponse());
+            operation.Responses.Add("default", "default".GetResponse());
 
             return operation;
         }
@@ -147,7 +151,11 @@ namespace Microsoft.OpenApi.OData
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
+                                    Reference = new OpenApiReference
+                                    {
+                                        Type = ReferenceType.Schema,
+                                        Id = entitySet.EntityType().FullName()
+                                    }
                                 }
                             }
                         }
@@ -170,7 +178,11 @@ namespace Microsoft.OpenApi.OData
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
+                                        Reference = new OpenApiReference
+                                        {
+                                            Type = ReferenceType.Schema,
+                                            Id = entitySet.EntityType().FullName()
+                                        }
                                     }
                                 }
                             }
@@ -178,7 +190,7 @@ namespace Microsoft.OpenApi.OData
                     }
                 }
             };
-            operation.Responses.Add("default".GetResponse());
+            operation.Responses.Add("default", "default".GetResponse());
 
             return operation;
         }
@@ -244,7 +256,11 @@ namespace Microsoft.OpenApi.OData
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
+                                        Reference = new OpenApiReference
+                                        {
+                                            Type = ReferenceType.Schema,
+                                            Id = entitySet.EntityType().FullName()
+                                        }
                                     }
                                 }
                             }
@@ -252,7 +268,7 @@ namespace Microsoft.OpenApi.OData
                     }
                 }
             };
-            operation.Responses.Add("default".GetResponse());
+            operation.Responses.Add("default", "default".GetResponse());
 
             return operation;
         }
@@ -291,7 +307,11 @@ namespace Microsoft.OpenApi.OData
                                 {
                                     Schema = new OpenApiSchema
                                     {
-                                        Pointer = new OpenApiReference(ReferenceType.Schema, singleton.EntityType().FullName())
+                                        Reference = new OpenApiReference
+                                        {
+                                            Type = ReferenceType.Schema,
+                                            Id = singleton.EntityType().FullName()
+                                        }
                                     }
                                 }
                             }
@@ -299,7 +319,7 @@ namespace Microsoft.OpenApi.OData
                     }
                 },
             };
-            operation.Responses.Add("default".GetResponse());
+            operation.Responses.Add("default", "default".GetResponse());
 
             return operation;
         }
@@ -331,7 +351,11 @@ namespace Microsoft.OpenApi.OData
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Pointer = new OpenApiReference(ReferenceType.Schema, entitySet.EntityType().FullName())
+                                    Reference = new OpenApiReference
+                                    {
+                                        Type = ReferenceType.Schema,
+                                        Id = entitySet.EntityType().FullName()
+                                    }
                                 }
                             }
                         }
@@ -340,8 +364,8 @@ namespace Microsoft.OpenApi.OData
 
             operation.Responses = new OpenApiResponses
             {
-                "204".GetResponse(),
-                "default".GetResponse()
+                { "204", "204".GetResponse() },
+                { "default", "default".GetResponse() }
             };
             return operation;
         }
@@ -371,7 +395,11 @@ namespace Microsoft.OpenApi.OData
                             {
                                 Schema = new OpenApiSchema
                                 {
-                                    Pointer = new OpenApiReference(ReferenceType.Schema, singleton.EntityType().FullName())
+                                    Reference = new OpenApiReference
+                                    {
+                                        Type = ReferenceType.Schema,
+                                        Id = singleton.EntityType().FullName()
+                                    }
                                 }
                             }
                         }
@@ -380,8 +408,8 @@ namespace Microsoft.OpenApi.OData
 
             operation.Responses = new OpenApiResponses
             {
-                "204".GetResponse(),
-                "default".GetResponse()
+                { "204", "204".GetResponse() },
+                { "default", "default".GetResponse() }
             };
             return operation;
         }
@@ -413,8 +441,8 @@ namespace Microsoft.OpenApi.OData
 
             operation.Responses = new OpenApiResponses
             {
-                "204".GetResponse(),
-                "default".GetResponse()
+                { "204", "204".GetResponse() },
+                { "default", "default".GetResponse() }
             };
             return operation;
         }

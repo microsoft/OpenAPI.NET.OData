@@ -6,6 +6,7 @@
 using System;
 using System.IO;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Xunit;
 using Xunit.Abstractions;

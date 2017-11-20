@@ -6,8 +6,8 @@
 using System;
 using System.IO;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Writers;
-using Microsoft.OpenApi.Models;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Tests
@@ -79,7 +79,6 @@ namespace Microsoft.OpenApi.OData.Tests
             return new StreamReader(stream).ReadToEnd();
         }
 
-
         internal static string Write(OpenApiFormat target, Action<IOpenApiWriter> action)
         {
             MemoryStream stream = new MemoryStream();
@@ -100,19 +99,19 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         internal static string SerializeAsJson<T>(this T element)
-            where T : OpenApiElement
+            where T : IOpenApiSerializable
         {
             return element.Serialize(OpenApiFormat.Json);
         }
 
         internal static string SerializeAsYaml<T>(this T element)
-            where T : OpenApiElement
+            where T : IOpenApiSerializable
         {
             return element.Serialize(OpenApiFormat.Yaml);
         }
 
         internal static string Serialize<T>(this T element, OpenApiFormat format)
-            where T : OpenApiElement
+            where T : IOpenApiSerializable
         {
             Assert.NotNull(element);
             MemoryStream stream = new MemoryStream();
