@@ -8,28 +8,36 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create <see cref="OpenApiTag"/> by <see cref="IEdmModel"/>.
+    /// Class to create the collection of <see cref="OpenApiTag"/> by <see cref="IEdmModel"/>.
     /// </summary>
     internal static class OpenApiTagsGenerator
     {
         /// <summary>
         /// Create the collection of <see cref="OpenApiTag"/> object.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
         /// <returns>The collection of <see cref="OpenApiTag"/> object.</returns>
-        public static IList<OpenApiTag> CreateTags(this IEdmModel model)
+        public static IList<OpenApiTag> CreateTags(this IEdmModel model, OpenApiConvertSettings settings)
         {
             if (model == null)
             {
                 throw Error.ArgumentNull(nameof(model));
             }
 
+            if (settings == null)
+            {
+                throw Error.ArgumentNull(nameof(settings));
+            }
+
             // The value of tags is an array of Tag Objects.
             // For an OData service the natural groups are entity sets and singletons,
             // so the tags array contains one Tag Object per entity set and singleton in the entity container.
+
+            // A Tag Object has to contain the field name, whose value is the name of the entity set or singleton,
+            // and it optionally can contain the field description, whose value is the value of the unqualified annotation
+            // Core.Description of the entity set or singleton.
             IList<OpenApiTag> tags = new List<OpenApiTag>();
             if (model.EntityContainer != null)
             {
@@ -58,8 +66,19 @@ namespace Microsoft.OpenApi.OData
                         // The tags array can contain additional Tag Objects for other logical groups,
                         // e.g. for action imports or function imports that are not associated with an entity set.
                         case EdmContainerElementKind.ActionImport: // Action Import
+                            OpenApiTag actionImportTag = model.CreateOperationImportTag((IEdmActionImport)element);
+                            if (actionImportTag != null)
+                            {
+                                tags.Add(actionImportTag);
+                            }
                             break;
+
                         case EdmContainerElementKind.FunctionImport: // Function Import
+                            OpenApiTag functionImportTag = model.CreateOperationImportTag((IEdmFunctionImport)element);
+                            if (functionImportTag != null)
+                            {
+                                tags.Add(functionImportTag);
+                            }
                             break;
                     }
                 }
@@ -67,6 +86,20 @@ namespace Microsoft.OpenApi.OData
 
             // Tags is optional.
             return tags.Any() ? tags : null;
+        }
+
+        private static OpenApiTag CreateOperationImportTag(this IEdmModel model, IEdmOperationImport operationImport)
+        {
+            if (operationImport == null || operationImport.EntitySet != null)
+            {
+                return null;
+            }
+
+            return new OpenApiTag
+            {
+                Name = operationImport.Name,
+                Description = model.GetDescription(operationImport)
+            };
         }
     }
 }

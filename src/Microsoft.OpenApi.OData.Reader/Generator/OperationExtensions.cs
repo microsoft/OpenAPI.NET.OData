@@ -9,12 +9,12 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
     /// Extension methods to create <see cref="OpenApiOperation"/> by Edm elements.
     /// </summary>
-    internal static class OpenApiOperationGenerator
+    internal static class OperationExtensions
     {
         /// <summary>
         /// The Path Item Object for the entity set contains the keyword get with an Operation Object as value
@@ -273,7 +273,7 @@ namespace Microsoft.OpenApi.OData
             return operation;
         }
 
-        public static OpenApiOperation CreateGetOperationForSingleton(IEdmSingleton singleton)
+        public static OpenApiOperation CreateGetOperationForSingleton(this IEdmSingleton singleton)
         {
             if (singleton == null)
             {

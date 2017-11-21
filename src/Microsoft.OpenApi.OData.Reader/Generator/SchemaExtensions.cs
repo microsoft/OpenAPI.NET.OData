@@ -9,16 +9,146 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
     /// See https://github.com/oasis-tcs/odata-openapi/blob/master/examples/odata-definitions.json
     /// </summary>
     internal static class SchemaExtensions
     {
-        private static IDictionary<string, OpenApiSchema> _errors;
-
         private static string _externalResource = "https://raw.githubusercontent.com/oasis-tcs/odata-openapi/master/examples/odata-definitions.json";
+
+        public static OpenApiSchema CreateEdmTypeSchema(this IEdmModel model, IEdmType definition)
+        {
+            switch (definition.TypeKind)
+            {
+                case EdmTypeKind.Complex: // complex type
+                case EdmTypeKind.Entity: // entity type
+                    return model.CreateStructuredTypeSchema((IEdmStructuredType)definition, true);
+
+                case EdmTypeKind.Enum: // enum type
+                    return model.CreateEnumTypeSchema((IEdmEnumType)definition);
+
+                case EdmTypeKind.TypeDefinition: // type definition
+                    return model.CreateTypeDefinitionSchema((IEdmTypeDefinition)definition);
+
+                case EdmTypeKind.None:
+                default:
+                    throw Error.NotSupported(String.Format("Not supported {0} type kind.", definition.TypeKind));
+            }
+        }
+
+        public static OpenApiSchema CreateStructuredTypeSchema(this IEdmModel model, IEdmStructuredType structuredType, bool processBase)
+        {
+            if (processBase && structuredType.BaseType != null)
+            {
+                // A structured type with a base type is represented as a Schema Object
+                // that contains the keyword allOf whose value is an array with two items:
+                return new OpenApiSchema
+                {
+                    AllOf = new List<OpenApiSchema>
+                    {
+                        // 1. a JSON Reference to the Schema Object of the base type
+                        new OpenApiSchema
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = structuredType.BaseType.FullTypeName()
+                            }
+                        },
+
+                        // 2. a Schema Object describing the derived type
+                        model.CreateStructuredTypeSchema(structuredType, false)
+                    }
+                };
+            }
+            else
+            {
+                // A structured type without a base type is represented as a Schema Object of type object
+                return new OpenApiSchema
+                {
+                    Title = (structuredType as IEdmSchemaElement).Name,
+
+                    Type = "object",
+
+                    // Each structural property and navigation property is represented
+                    // as a name/value pair of the standard OpenAPI properties object.
+                    Properties = model.CreateStrucutredTypePropertiesSchema(structuredType),
+
+                    // It optionally can contain the field description,
+                    // whose value is the value of the unqualified annotation Core.Description of the structured type.
+                    // However, ODL doesn't support the Core.Description on structure type.
+                };
+            }
+        }
+
+        // 4.6.1.1 Properties
+        public static IDictionary<string, OpenApiSchema> CreateStrucutredTypePropertiesSchema(this IEdmModel model, IEdmStructuredType structuredType)
+        {
+            // The name is the property name, the value is a Schema Object describing the allowed values of the property.
+            IDictionary<string, OpenApiSchema> properties = new Dictionary<string, OpenApiSchema>();
+
+            // structure properties
+            foreach (var property in structuredType.DeclaredStructuralProperties())
+            {
+                // OpenApiSchema propertySchema = property.Type.CreateSchema();
+                // propertySchema.Default = property.DefaultValueString != null ? new OpenApiString(property.DefaultValueString) : null;
+                properties.Add(property.Name, property.CreatePropertySchema());
+            }
+
+            // navigation properties
+            foreach (var property in structuredType.DeclaredNavigationProperties())
+            {
+                OpenApiSchema propertySchema = property.Type.CreateSchema();
+                properties.Add(property.Name, propertySchema);
+            }
+
+            return properties;
+        }
+
+        public static OpenApiSchema CreateEnumTypeSchema(this IEdmModel model, IEdmEnumType enumType)
+        {
+            OpenApiSchema schema = new OpenApiSchema
+            {
+                // An enumeration type is represented as a Schema Object of type string
+                Type = "string",
+
+                // containing the OpenAPI Specification enum keyword.
+                Enum = new List<IOpenApiAny>(),
+
+                // It optionally can contain the field description,
+                // whose value is the value of the unqualified annotation Core.Description of the enumeration type.
+                Description = model.GetDescription(enumType)
+            };
+
+            // Enum value is an array that contains a string with the member name for each enumeration member.
+            foreach (IEdmEnumMember member in enumType.Members)
+            {
+                schema.Enum.Add(new OpenApiString(member.Name));
+            }
+
+            schema.Title = (enumType as IEdmSchemaElement)?.Name;
+            return schema;
+        }
+
+        public static OpenApiSchema CreateTypeDefinitionSchema(this IEdmModel model, IEdmTypeDefinition typeDefinition)
+        {
+            return typeDefinition?.UnderlyingType?.CreateSchema();
+        }
+
+        public static OpenApiSchema CreatePropertySchema(this IEdmStructuralProperty property)
+        {
+            if (property == null)
+            {
+                throw Error.ArgumentNull(nameof(property));
+            }
+
+            OpenApiSchema schema = property.Type.CreateSchema();
+            schema.Default = CreateDefault(property);
+
+            return schema;
+        }
 
         public static OpenApiSchema CreateSchema(this IEdmTypeReference reference)
         {
@@ -454,6 +584,58 @@ namespace Microsoft.OpenApi.OData
                     }
                 }
             });
+        }
+
+        private static IOpenApiAny CreateDefault(IEdmStructuralProperty property)
+        {
+            if (property == null ||
+                property.DefaultValueString == null ||
+                !property.Type.IsPrimitive())
+            {
+                return null;
+            }
+
+            IEdmPrimitiveTypeReference primitiveTypeReference = property.Type.AsPrimitive();
+            switch (primitiveTypeReference.PrimitiveKind())
+            {
+                case EdmPrimitiveTypeKind.Boolean:
+                    {
+                        bool result;
+                        if (Boolean.TryParse(property.DefaultValueString, out result))
+                        {
+                            return new OpenApiBoolean(result);
+                        }
+                    }
+                    break;
+
+                case EdmPrimitiveTypeKind.Int16:
+                case EdmPrimitiveTypeKind.Int32:
+                    {
+                        int result;
+                        if (Int32.TryParse(property.DefaultValueString, out result))
+                        {
+                            return new OpenApiInteger(result);
+                        }
+                    }
+                    break;
+
+                case EdmPrimitiveTypeKind.Int64:
+                    break;
+
+                // The type 'System.Double' is not supported in Open API document.
+                case EdmPrimitiveTypeKind.Double:
+                    /*
+                    {
+                        double result;
+                        if (Double.TryParse(property.DefaultValueString, out result))
+                        {
+                            return new OpenApiDouble((float)result);
+                        }
+                    }*/
+                    break;
+            }
+
+            return new OpenApiString(property.DefaultValueString);
         }
     }
 }

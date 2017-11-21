@@ -7,7 +7,7 @@ using System;
 using Microsoft.OData.Edm;
 using Xunit;
 
-namespace Microsoft.OpenApi.OData.Tests
+namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiParameterGeneratorTest
     {

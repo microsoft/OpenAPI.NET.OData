@@ -7,7 +7,6 @@ using System;
 using System.IO;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -82,14 +81,13 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            Action<OpenApiDocument> action = (d) =>
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                d.Info.Version = "1.0.1";
-                d.Servers[0].Url = "http://services.odata.org/TrippinRESTierService/";
+                Version = new Version(1, 0, 1),
+                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService")
             };
-
             // Act
-            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, action);
+            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
             _output.WriteLine(json);
 
             // Assert
@@ -101,14 +99,15 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            Action<OpenApiDocument> action = (d) =>
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                d.Info.Version = "1.0.1";
-                d.Servers[0].Url = "http://services.odata.org/TrippinRESTierService/";
+                Version = new Version(1, 0, 1),
+                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService")
             };
 
             // Act
-            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, action);
+            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, settings);
             _output.WriteLine(yaml);
 
             // Assert
@@ -116,9 +115,9 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
-            Action<OpenApiDocument> action = null)
+            OpenApiConvertSettings settings = null)
         {
-            var document = model.ConvertToOpenApi(action);
+            var document = model.ConvertToOpenApi(settings);
             MemoryStream stream = new MemoryStream();
             document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, target);
             stream.Flush();

@@ -3,35 +3,19 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData
 {
     /// <summary>
     /// Extension methods to convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/>.
     /// </summary>
-    public static class EdmModelOpenApiMappingExtensions
+    public static class EdmModelOpenApiExtensions
     {
-        /// <summary>
-        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> using a configure action.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="configure">The configure action.</param>
-        /// <returns>The converted Open API document object.</returns>
-        public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, Action<OpenApiDocument> configure)
-        {
-            if (model == null)
-            {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            OpenApiDocument document = model.CreateDocument();
-            configure?.Invoke(document);
-            return document;
-        }
-
         /// <summary>
         /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/>.
         /// </summary>
@@ -39,12 +23,62 @@ namespace Microsoft.OpenApi.OData
         /// <returns>The converted Open API document object.</returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model)
         {
+            return model.ConvertToOpenApi(new OpenApiConvertSettings());
+        }
+
+        public static OpenApiDocument ConvertToOpenApi(this IEdmModel model,
+            out IEnumerable<OpenApiDocument> referencedDocs)
+        {
+            return model.ConvertToOpenApi(new OpenApiConvertSettings(), out referencedDocs);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="referencedDocs"></param>
+        /// <returns></returns>
+        public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, OpenApiConvertSettings settings,
+            out IEnumerable<OpenApiDocument> referencedDocs)
+        {
             if (model == null)
             {
                 throw Error.ArgumentNull(nameof(model));
             }
 
-            return model.CreateDocument();
+            referencedDocs = null;
+            if (model.ReferencedModels != null && model.ReferencedModels.Any())
+            {
+                IList<OpenApiDocument> references = new List<OpenApiDocument>();
+                foreach (var referencedModel in model.ReferencedModels)
+                {
+                    references.Add(referencedModel.ConvertToOpenApi(settings));
+                }
+                referencedDocs = references;
+            }
+
+            return model.ConvertToOpenApi(settings);
+        }
+
+        /// <summary>
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> using a configure action.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="configure">The configure action.</param>
+        /// <returns>The converted Open API document object.</returns>
+        public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, OpenApiConvertSettings settings)
+        {
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            if (settings == null)
+            {
+                settings = new OpenApiConvertSettings(); // default
+            }
+
+            return new OpenApiDocumentGenerator(model, settings).CreateDocument();
         }
     }
 }

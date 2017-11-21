@@ -9,13 +9,14 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
     /// Extension methods to create <see cref="OpenApiOperation"/> by Edm elements.
     /// </summary>
     internal static class OpenApiOperationGenerator
     {
+#if false
         /// <summary>
         /// The Path Item Object for the entity set contains the keyword get with an Operation Object as value
         /// that describes the capabilities for querying the entity set.
@@ -450,5 +451,6 @@ namespace Microsoft.OpenApi.OData
             };
             return operation;
         }
+#endif
     }
 }
