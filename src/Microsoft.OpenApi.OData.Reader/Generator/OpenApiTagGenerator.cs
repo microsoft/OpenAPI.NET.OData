@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -18,19 +19,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <summary>
         /// Create the collection of <see cref="OpenApiTag"/> object.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The convert settings.</param>
+        /// <param name="context">The OData context.</param>
         /// <returns>The created collection of <see cref="OpenApiTag"/> object.</returns>
-        public static IList<OpenApiTag> CreateTags(this IEdmModel model, OpenApiConvertSettings settings)
+        public static IList<OpenApiTag> CreateTags(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             // The value of tags is an array of Tag Objects.
@@ -41,9 +36,9 @@ namespace Microsoft.OpenApi.OData.Generator
             // and it optionally can contain the field description, whose value is the value of the unqualified annotation
             // Core.Description of the entity set or singleton.
             IList<OpenApiTag> tags = new List<OpenApiTag>();
-            if (model.EntityContainer != null)
+            if (context.Model.EntityContainer != null)
             {
-                foreach (IEdmEntityContainerElement element in model.EntityContainer.Elements)
+                foreach (IEdmEntityContainerElement element in context.Model.EntityContainer.Elements)
                 {
                     switch (element.ContainerElementKind)
                     {
@@ -52,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             tags.Add(new OpenApiTag
                             {
                                 Name = entitySet.Name,
-                                Description = model.GetDescription(entitySet)
+                                Description = context.Model.GetDescription(entitySet)
                             });
                             break;
 
@@ -61,14 +56,14 @@ namespace Microsoft.OpenApi.OData.Generator
                             tags.Add(new OpenApiTag
                             {
                                 Name = singleton.Name,
-                                Description = model.GetDescription(singleton)
+                                Description = context.Model.GetDescription(singleton)
                             });
                             break;
 
                         // The tags array can contain additional Tag Objects for other logical groups,
                         // e.g. for action imports or function imports that are not associated with an entity set.
                         case EdmContainerElementKind.ActionImport: // Action Import
-                            OpenApiTag actionImportTag = model.CreateOperationImportTag((IEdmActionImport)element);
+                            OpenApiTag actionImportTag = context.CreateOperationImportTag((IEdmActionImport)element);
                             if (actionImportTag != null)
                             {
                                 tags.Add(actionImportTag);
@@ -76,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             break;
 
                         case EdmContainerElementKind.FunctionImport: // Function Import
-                            OpenApiTag functionImportTag = model.CreateOperationImportTag((IEdmFunctionImport)element);
+                            OpenApiTag functionImportTag = context.CreateOperationImportTag((IEdmFunctionImport)element);
                             if (functionImportTag != null)
                             {
                                 tags.Add(functionImportTag);
@@ -90,8 +85,10 @@ namespace Microsoft.OpenApi.OData.Generator
             return tags.Any() ? tags : null;
         }
 
-        private static OpenApiTag CreateOperationImportTag(this IEdmModel model, IEdmOperationImport operationImport)
+        private static OpenApiTag CreateOperationImportTag(this ODataContext context, IEdmOperationImport operationImport)
         {
+            Debug.Assert(context != null);
+
             if (operationImport == null || operationImport.EntitySet != null)
             {
                 return null;
@@ -100,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiTag
             {
                 Name = operationImport.Name,
-                Description = model.GetDescription(operationImport)
+                Description = context.Model.GetDescription(operationImport)
             };
         }
     }

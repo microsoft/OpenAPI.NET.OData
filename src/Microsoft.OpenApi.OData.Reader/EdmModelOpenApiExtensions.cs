@@ -84,7 +84,8 @@ namespace Microsoft.OpenApi.OData
                 settings = new OpenApiConvertSettings(); // default
             }
 
-            return model.CreateDocument(settings);
+            ODataContext context = new ODataContext(model, settings);
+            return context.CreateDocument();
         }
     }
 }

@@ -12,11 +12,19 @@ namespace Microsoft.OpenApi.OData.Generator
     /// <summary>
     /// The wrapper for the <see cref="IEdmModel"/>,.<see cref="OpenApiSerializerSettings"/>.
     /// </summary>
-    internal class OpenApiContext
+    internal class ODataContext
     {
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
 
         public IEdmModel Model { get; }
+
+        public IEdmEntityContainer EntityContainer
+        {
+            get
+            {
+                return Model.EntityContainer;
+            }
+        }
 
         public OpenApiConvertSettings Settings { get; }
 
@@ -28,24 +36,35 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     GenerateBoundOperations();
                 }
+
                 return _boundOperations;
             }
         }
 
-        private OpenApiContext(IEdmModel model, OpenApiConvertSettings settings)
+        public ODataContext(IEdmModel model)
+            : this(model, new OpenApiConvertSettings())
+        {
+
+        }
+
+        public ODataContext(IEdmModel model, OpenApiConvertSettings settings)
         {
             Model = model ?? throw Error.ArgumentNull(nameof(model));
             Settings = settings ?? throw Error.ArgumentNull(nameof(settings));
         }
 
-        public static OpenApiContext CreateContext(IEdmModel model)
+        public IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType, bool collection)
         {
-            return CreateContext(model, new OpenApiConvertSettings());
-        }
+            string fullTypeName = collection ? "Collection(" + entityType.FullName() + ")" :
+                entityType.FullName();
 
-        public static OpenApiContext CreateContext(IEdmModel model, OpenApiConvertSettings settings)
-        {
-            return new OpenApiContext(model, settings);
+            foreach (var item in BoundOperations)
+            {
+                if (item.Key.FullName() == fullTypeName)
+                {
+                    yield return item.Value;
+                }
+            }
         }
 
         private void GenerateBoundOperations()

@@ -12,26 +12,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiPathItemGeneratorTest
     {
-        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
-
         [Fact]
-        public void CreatePathItemsThrowArgumentNullModel()
+        public void CreatePathItemsThrowArgumentNullContext()
         {
             // Arrange
-            IEdmModel model = null;
+            ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreatePathItems(_settings));
-        }
-
-        [Fact]
-        public void CreatePathItemsThrowArgumentNullSettings()
-        {
-            // Arrange
-            IEdmModel model = EdmCoreModel.Instance;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("settings", () => model.CreatePathItems(settings: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreatePathItems());
         }
 
         [Fact]
@@ -39,9 +27,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
+            ODataContext context = new ODataContext(model);
 
             // Act
-            var pathItems = model.CreatePathItems(_settings);
+            var pathItems = context.CreatePathItems();
 
             // Assert
             Assert.NotNull(pathItems);
@@ -53,9 +42,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
 
             // Act
-            var pathItems = model.CreatePathItems(_settings);
+            var pathItems = context.CreatePathItems();
 
             // Assert
             Assert.NotNull(pathItems);

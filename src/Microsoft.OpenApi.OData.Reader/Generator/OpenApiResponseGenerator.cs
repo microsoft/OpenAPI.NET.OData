@@ -4,13 +4,12 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create <see cref="OpenApiResponse"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiResponse"/> by Edm model.
     /// </summary>
     internal static class OpenApiResponseGenerator
     {
@@ -20,18 +19,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// It contains one name/value pair for the standard OData error response
         /// that is referenced from all operations of the service.
         /// </summary>
+        /// <param name="context">The OData context.</param>
         /// <returns>The name/value pairs for the standard OData error response.</returns>
-        public static IDictionary<string, OpenApiResponse> CreateResponses(this IEdmModel model,
-            OpenApiConvertSettings settings)
+        public static IDictionary<string, OpenApiResponse> CreateResponses(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             return new Dictionary<string, OpenApiResponse>

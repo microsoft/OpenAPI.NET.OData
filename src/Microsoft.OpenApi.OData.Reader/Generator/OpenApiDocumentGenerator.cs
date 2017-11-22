@@ -4,32 +4,25 @@
 // ------------------------------------------------------------
 
 using System;
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create <see cref="OpenApiDocument"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiDocument"/> by Edm model.
     /// </summary>
     internal static class OpenApiDocumentGenerator
     {
         /// <summary>
         /// Create a <see cref="OpenApiDocument"/>, it's a single Open API Object.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The convert settings.</param>
+        /// <param name="context">The OData to Open API context.</param>
         /// <returns>The created <see cref="OpenApiDocument"/> object.</returns>
-        public static OpenApiDocument CreateDocument(this IEdmModel model, OpenApiConvertSettings settings)
+        public static OpenApiDocument CreateDocument(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             // An OAS document consists of a single OpenAPI Object represented as OpenApiDocument object.
@@ -45,15 +38,15 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 SpecVersion = new Version(3, 0, 0),
 
-                Info = model.CreateInfo(settings),
+                Info = context.CreateInfo(),
 
-                Servers = model.CreateServers(settings),
+                Servers = context.CreateServers(),
 
-                Tags = model.CreateTags(settings),
+                Tags = context.CreateTags(),
 
-                Paths = model.CreatePaths(settings),
+                Paths = context.CreatePaths(),
 
-                Components = model.CreateComponents(settings)
+                Components = context.CreateComponents()
             };
         }
     }

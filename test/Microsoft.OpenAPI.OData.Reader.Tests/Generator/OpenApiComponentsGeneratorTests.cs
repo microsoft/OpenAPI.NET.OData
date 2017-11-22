@@ -12,26 +12,14 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiComponentsGeneratorTest
     {
-        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
-
         [Fact]
-        public void CreateComponentsThrowArgumentNullModel()
+        public void CreateComponentsThrowArgumentNullContext()
         {
             // Arrange
-            IEdmModel model = null;
+            ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreateComponents(_settings));
-        }
-
-        [Fact]
-        public void CreateComponentsThrowArgumentNullSettings()
-        {
-            // Arrange
-            IEdmModel model = EdmCoreModel.Instance;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("settings", () => model.CreateComponents(settings: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateComponents());
         }
 
         [Fact]
@@ -39,9 +27,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
+            ODataContext context = new ODataContext(model);
 
             // Act
-            var components = model.CreateComponents(_settings);
+            var components = context.CreateComponents();
 
             // Assert
             Assert.NotNull(components);

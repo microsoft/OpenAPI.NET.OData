@@ -3,13 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create <see cref="OpenApiPaths"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiPaths"/> by Edm model.
     /// </summary>
     internal static class OpenApiPathsGenerator
     {
@@ -20,26 +19,20 @@ namespace Microsoft.OpenApi.OData.Generator
         /// It consists of name/value pairs whose name is a path template relative to the service root URL,
         /// and whose value is a Path Item Object.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The convert settings.</param>
+        /// <param name="context">The OData context.</param>
         /// <returns>The created <see cref="OpenApiPaths"/> object.</returns>
-        public static OpenApiPaths CreatePaths(this IEdmModel model, OpenApiConvertSettings settings)
+        public static OpenApiPaths CreatePaths(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             // Due to the power and flexibility of OData a full representation of all service capabilities
             // in the Paths Object is typically not feasible, so this mapping only describes the minimum
             // information desired in the Paths Object.
             OpenApiPaths paths = new OpenApiPaths();
-            foreach (var item in model.CreatePathItems(settings))
+            foreach (var item in context.CreatePathItems())
             {
                 paths.Add(item.Key, item.Value);
             }

@@ -17,23 +17,13 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
 
         [Fact]
-        public void CreateParametersThrowArgumentNullModel()
+        public void CreateParametersThrowArgumentNullContext()
         {
             // Arrange
-            IEdmModel model = null;
+            ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreateParameters(_settings));
-        }
-
-        [Fact]
-        public void CreateParametersThrowArgumentNullSettings()
-        {
-            // Arrange
-            IEdmModel model = EdmCoreModel.Instance;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("settings", () => model.CreateParameters(settings: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateParameters());
         }
 
         [Fact]
@@ -41,9 +31,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
+            ODataContext context = new ODataContext(model);
 
             // Act
-            var parameters = model.CreateParameters(_settings);
+            var parameters = context.CreateParameters();
 
             // Assert
             Assert.NotNull(parameters);
@@ -58,9 +49,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
+            ODataContext context = new ODataContext(model);
 
             // Act
-            var parameters = model.CreateParameters(_settings);
+            var parameters = context.CreateParameters();
 
             // Assert
             Assert.Contains("skip", parameters.Select(p => p.Key));

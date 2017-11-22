@@ -13,33 +13,24 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiTagGeneratorTest
     {
-        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
-
         [Fact]
-        public void CreateTagsThrowArgumentNullModel()
+        public void CreateTagsThrowArgumentNullContext()
         {
             // Arrange
-            IEdmModel model = null;
+            ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreateTags(_settings));
-        }
-
-        [Fact]
-        public void CreateTagsThrowArgumentNullSettings()
-        {
-            // Arrange
-            IEdmModel model = EdmCoreModel.Instance;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("settings", () => model.CreateTags(settings: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateTags());
         }
 
         [Fact]
         public void CreateTagsReturnsNullForEmptyModel()
         {
-            // Arrange & Act
-            var tags = EdmModelHelper.EmptyModel.CreateTags(_settings);
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
+
+            // Act
+            var tags = context.CreateTags();
 
             // Assert
             Assert.Null(tags);
@@ -48,8 +39,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         [Fact]
         public void CreateTagsReturnsTagsForBasicModel()
         {
-            // Arrange & Act
-            var tags = EdmModelHelper.BasicEdmModel.CreateTags(_settings);
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
+
+            // Act
+            var tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(tags);
@@ -60,13 +54,16 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         [Fact]
         public void CreateTagsReturnsTagsForTripModel()
         {
-            // Arrange & Act
-            var tags = EdmModelHelper.TripServiceModel.CreateTags(_settings);
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.TripServiceModel);
+
+            // Act
+            var tags = context.CreateTags();
 
             // Assert
             Assert.NotNull(tags);
-            Assert.Equal(5, tags.Count);
-            Assert.Equal(new[] { "People", "Airlines", "Airports", "NewComePeople", "Me" },
+            Assert.Equal(6, tags.Count);
+            Assert.Equal(new[] { "People", "Airlines", "Airports", "NewComePeople", "Me", "ResetDataSource" },
                 tags.Select(t => t.Name));
         }
     }

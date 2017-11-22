@@ -9,31 +9,29 @@ using Xunit;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
-    public class OpenApiServerGeneratorTest
+    public class OpenApiInfoGeneratorTest
     {
         [Fact]
-        public void CreateServersThrowArgumentNullContext()
+        public void CreateInfoThrowArgumentNullContext()
         {
             // Arrange
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateServers());
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateInfo());
         }
 
         [Fact]
-        public void CreateServersReturnsModel()
+        public void CreateInfoReturnsNullForEmptyModel()
         {
             // Arrange
-            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
 
             // Act
-            var servers = context.CreateServers();
+            var info = context.CreateInfo();
 
             // Assert
-            Assert.NotNull(servers);
-            var server = Assert.Single(servers);
-            Assert.Equal("http://localhost", server.Url);
+            Assert.NotNull(info);
         }
     }
 }

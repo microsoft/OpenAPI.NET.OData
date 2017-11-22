@@ -4,32 +4,25 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create <see cref="OpenApiServer"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiServer"/> by Edm model.
     /// </summary>
     internal static class OpenApiServerGenerator
     {
         /// <summary>
         /// Create the collection of <see cref="OpenApiServer"/> object.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The convert settings.</param>
+        /// <param name="context">The OData context.</param>
         /// <returns>The created collection of <see cref="OpenApiServer"/> object.</returns>
-        public static IList<OpenApiServer> CreateServers(this IEdmModel model, OpenApiConvertSettings settings)
+        public static IList<OpenApiServer> CreateServers(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             // The value of servers is an array of Server Objects.
@@ -39,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 new OpenApiServer
                 {
-                    Url = settings.ServiceRoot?.OriginalString
+                    Url = context.Settings.ServiceRoot?.OriginalString
                 }
             };
         }

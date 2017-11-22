@@ -4,14 +4,13 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create <see cref="OpenApiParameter"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiParameter"/> by Edm model.
     /// </summary>
     internal static class OpenApiParameterGenerator
     {
@@ -19,20 +18,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// 4.6.2 Field parameters in components
         /// Create a map of <see cref="OpenApiParameter"/> object.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The convert settings.</param>
+        /// <param name="context">The OData context.</param>
         /// <returns>The created map of <see cref="OpenApiParameter"/> object.</returns>
-        public static IDictionary<string, OpenApiParameter> CreateParameters(this IEdmModel model,
-            OpenApiConvertSettings settings)
+        public static IDictionary<string, OpenApiParameter> CreateParameters(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             // It allows defining query options and headers that can be reused across operations of the service.

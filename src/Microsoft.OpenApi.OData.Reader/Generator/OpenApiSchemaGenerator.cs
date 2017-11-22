@@ -19,31 +19,27 @@ namespace Microsoft.OpenApi.OData.Generator
         /// The name of each pair is the namespace-qualified name of the type. It uses the namespace instead of the alias.
         /// The value of each pair is a <see cref="OpenApiSchema"/>.
         /// </summary>
+        /// <param name="context">The OData to Open API context.</param>
         /// <returns>The string/schema dictionary.</returns>
-        public static IDictionary<string, OpenApiSchema> CreateSchemas(this IEdmModel model, OpenApiConvertSettings settings)
+        public static IDictionary<string, OpenApiSchema> CreateSchemas(this ODataContext context)
         {
-            if (model == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                throw Error.ArgumentNull(nameof(settings));
+                throw Error.ArgumentNull(nameof(context));
             }
 
             IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
 
             // Each entity type, complex type, enumeration type, and type definition directly
             // or indirectly used in the paths field is represented as a name / value pair of the schemas map.
-            foreach (var element in model.SchemaElements)
+            foreach (var element in context.Model.SchemaElements)
             {
                 switch (element.SchemaElementKind)
                 {
                     case EdmSchemaElementKind.TypeDefinition: // Type definition
                         {
                             IEdmType reference = (IEdmType)element;
-                            schemas.Add(reference.FullTypeName(), model.CreateEdmTypeSchema(reference));
+                            schemas.Add(reference.FullTypeName(), context.Model.CreateEdmTypeSchema(reference));
                         }
                         break;
                 }
