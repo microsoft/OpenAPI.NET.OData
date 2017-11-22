@@ -119,7 +119,7 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             var document = model.ConvertToOpenApi(settings);
             MemoryStream stream = new MemoryStream();
-            document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, target);
+            document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0_0, target);
             stream.Flush();
             stream.Position = 0;
             return new StreamReader(stream).ReadToEnd();

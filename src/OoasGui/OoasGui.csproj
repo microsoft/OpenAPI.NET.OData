@@ -35,6 +35,9 @@
     <Reference Include="Microsoft.OData.Edm, Version=7.3.1.10814, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.OData.Edm.7.3.1\lib\portable-net45+win8+wpa81\Microsoft.OData.Edm.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.OpenApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.OpenApi.1.0.0-beta004\lib\net46\Microsoft.OpenApi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -86,10 +89,6 @@
     <ProjectReference Include="..\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj">
       <Project>{ff3acd93-19e0-486c-9c0f-fa1c2e7fc8c2}</Project>
       <Name>Microsoft.OpenApi.OData.Reader</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\tool\Microsoft.OpenApi\Microsoft.OpenApi.csproj">
-      <Project>{3c31b79a-776f-4199-899f-3dc7aa767003}</Project>
-      <Name>Microsoft.OpenApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

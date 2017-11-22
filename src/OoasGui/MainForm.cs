@@ -163,7 +163,7 @@ namespace OoasGui
 
             OpenApiDocument document = EdmModel.ConvertToOpenApi();
             MemoryStream stream = new MemoryStream();
-            document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, Format);
+            document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0_0, Format);
             stream.Flush();
             stream.Position = 0;
             string openApi = new StreamReader(stream).ReadToEnd();
@@ -208,7 +208,7 @@ namespace OoasGui
                 using (FileStream fs = File.Create(output))
                 {
                     OpenApiDocument document = EdmModel.ConvertToOpenApi();
-                    document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0, Format);
+                    document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0_0, Format);
                     fs.Flush();
                 }
             }

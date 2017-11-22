@@ -114,7 +114,7 @@ namespace Microsoft.OpenApi.OData.Tests
             where T : IOpenApiSerializable
         {
             MemoryStream stream = new MemoryStream();
-            element.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, format);
+            element.Serialize(stream, OpenApiSpecVersion.OpenApi3_0_0, format);
             stream.Position = 0;
             return new StreamReader(stream).ReadToEnd();
         }

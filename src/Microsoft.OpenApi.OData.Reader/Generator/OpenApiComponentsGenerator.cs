@@ -44,7 +44,14 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 // The value of responses is a map of Response Objects.
                 // It allows defining responses that can be reused across operations of the service.
-                Responses = context.CreateResponses()
+                Responses = context.CreateResponses(),
+
+                RequestBodies = null,
+                Examples = null,
+                SecuritySchemes = null,
+                Links = null,
+                Callbacks = null,
+                Extensions = null
             };
         }
     }
