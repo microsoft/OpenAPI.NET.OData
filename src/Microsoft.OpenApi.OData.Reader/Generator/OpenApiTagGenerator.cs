@@ -11,14 +11,16 @@ using Microsoft.OpenApi.Models;
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Class to create the collection of <see cref="OpenApiTag"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiTag"/> by <see cref="IEdmModel"/>.
     /// </summary>
-    internal static class OpenApiTagsGenerator
+    internal static class OpenApiTagGenerator
     {
         /// <summary>
         /// Create the collection of <see cref="OpenApiTag"/> object.
         /// </summary>
-        /// <returns>The collection of <see cref="OpenApiTag"/> object.</returns>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The created collection of <see cref="OpenApiTag"/> object.</returns>
         public static IList<OpenApiTag> CreateTags(this IEdmModel model, OpenApiConvertSettings settings)
         {
             if (model == null)

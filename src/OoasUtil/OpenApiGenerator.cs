@@ -50,11 +50,11 @@ namespace OoasUtil
             {
                 IEdmModel edmModel = GetEdmModel();
 
-                Action<OpenApiDocument> config = GetConfig();
+                OpenApiConvertSettings settings = GetSettings();
 
                 using (FileStream fs = File.Create(Output))
                 {
-                    OpenApiDocument document = edmModel.ConvertToOpenApi(config);
+                    OpenApiDocument document = edmModel.ConvertToOpenApi(settings);
                     document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0, Format);
                     fs.Flush();
                 }
@@ -68,9 +68,9 @@ namespace OoasUtil
             return true;
         }
 
-        protected virtual Action<OpenApiDocument> GetConfig()
+        protected virtual OpenApiConvertSettings GetSettings()
         {
-            return null;
+            return new OpenApiConvertSettings();
         }
 
         protected abstract IEdmModel GetEdmModel();

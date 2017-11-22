@@ -12,7 +12,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData;
 
 namespace OoasUtil
 {
@@ -59,11 +59,11 @@ namespace OoasUtil
 
         }
 
-        protected override Action<OpenApiDocument> GetConfig()
+        protected override OpenApiConvertSettings GetSettings()
         {
-            return (d) =>
+            return new OpenApiConvertSettings
             {
-                d.Servers[0].Url = Input.AbsolutePath;
+                ServiceRoot = Input
             };
         }
     }

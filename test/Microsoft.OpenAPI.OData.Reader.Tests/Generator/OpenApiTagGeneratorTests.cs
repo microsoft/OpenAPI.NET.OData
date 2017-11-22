@@ -6,27 +6,40 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
-namespace Microsoft.OpenApi.OData.Tests
+namespace Microsoft.OpenApi.OData.Generator.Tests
 {
-    public class OpenApiTagsGeneratorTest
+    public class OpenApiTagGeneratorTest
     {
+        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
+
         [Fact]
-        public void CreateTagsThrowArgumentNull()
+        public void CreateTagsThrowArgumentNullModel()
         {
             // Arrange
             IEdmModel model = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreateTags());
+            Assert.Throws<ArgumentNullException>("model", () => model.CreateTags(_settings));
+        }
+
+        [Fact]
+        public void CreateTagsThrowArgumentNullSettings()
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("settings", () => model.CreateTags(settings: null));
         }
 
         [Fact]
         public void CreateTagsReturnsNullForEmptyModel()
         {
             // Arrange & Act
-            var tags = EdmModelHelper.EmptyModel.CreateTags();
+            var tags = EdmModelHelper.EmptyModel.CreateTags(_settings);
 
             // Assert
             Assert.Null(tags);
@@ -36,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateTagsReturnsTagsForBasicModel()
         {
             // Arrange & Act
-            var tags = EdmModelHelper.BasicEdmModel.CreateTags();
+            var tags = EdmModelHelper.BasicEdmModel.CreateTags(_settings);
 
             // Assert
             Assert.NotNull(tags);
@@ -48,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateTagsReturnsTagsForTripModel()
         {
             // Arrange & Act
-            var tags = EdmModelHelper.TripServiceModel.CreateTags();
+            var tags = EdmModelHelper.TripServiceModel.CreateTags(_settings);
 
             // Assert
             Assert.NotNull(tags);

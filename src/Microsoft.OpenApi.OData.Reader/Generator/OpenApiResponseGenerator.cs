@@ -10,28 +10,30 @@ using Microsoft.OpenApi.Models;
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Class to create <see cref="OpenApiResponse"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiResponse"/> by <see cref="IEdmModel"/>.
     /// </summary>
-    internal class OpenApiResponseGenerator : OpenApiGenerator
+    internal static class OpenApiResponseGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenApiResponseGenerator" /> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The Open Api convert settings.</param>
-        public OpenApiResponseGenerator(IEdmModel model, OpenApiConvertSettings settings)
-            : base(model, settings)
-        {
-        }
-
-        /// <summary>
+        /// 4.6.3 Field responses in components
         /// The value of responses is a map of Response Objects.
         /// It contains one name/value pair for the standard OData error response
         /// that is referenced from all operations of the service.
         /// </summary>
         /// <returns>The name/value pairs for the standard OData error response.</returns>
-        public IDictionary<string, OpenApiResponse> CreateResponses()
+        public static IDictionary<string, OpenApiResponse> CreateResponses(this IEdmModel model,
+            OpenApiConvertSettings settings)
         {
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            if (settings == null)
+            {
+                throw Error.ArgumentNull(nameof(settings));
+            }
+
             return new Dictionary<string, OpenApiResponse>
             {
                 { "error", CreateErrorResponse() }

@@ -5,20 +5,33 @@
 
 using System;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
-namespace Microsoft.OpenApi.OData.Tests
+namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiPathsGeneratorTest
     {
+        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
+
         [Fact]
-        public void CreatePathsThrowArgumentNull()
+        public void CreatePathsThrowArgumentNullModel()
         {
             // Arrange
             IEdmModel model = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreatePaths());
+            Assert.Throws<ArgumentNullException>("model", () => model.CreatePaths(_settings));
+        }
+
+        [Fact]
+        public void CreatePathsThrowArgumentNullSettings()
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("settings", () => model.CreatePaths(settings: null));
         }
 
         [Fact]
@@ -28,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.EmptyModel;
 
             // Act
-            var paths = model.CreatePaths();
+            var paths = model.CreatePaths(_settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -42,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.BasicEdmModel;
 
             // Act
-            var paths = model.CreatePaths();
+            var paths = model.CreatePaths(_settings);
 
             // Assert
             Assert.NotNull(paths);

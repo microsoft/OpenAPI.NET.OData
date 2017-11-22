@@ -16,7 +16,6 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiOperationGenerator
     {
-#if false
         /// <summary>
         /// The Path Item Object for the entity set contains the keyword get with an Operation Object as value
         /// that describes the capabilities for querying the entity set.
@@ -274,7 +273,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return operation;
         }
 
-        public static OpenApiOperation CreateGetOperationForSingleton(IEdmSingleton singleton)
+        public static OpenApiOperation CreateGetOperationForSingleton(this IEdmSingleton singleton)
         {
             if (singleton == null)
             {
@@ -451,6 +450,5 @@ namespace Microsoft.OpenApi.OData.Generator
             };
             return operation;
         }
-#endif
     }
 }

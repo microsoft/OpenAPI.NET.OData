@@ -20,24 +20,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Schema\**" />
-    <EmbeddedResource Remove="Schema\**" />
-    <None Remove="Schema\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="EdmElementOpenApiElementExtensions.cs" />
-    <Compile Remove="EdmPrimitiveExtensions.cs" />
-    <Compile Remove="OpenApiDocumentGenerator.cs" />
-    <Compile Remove="OpenApiOperationGenerator.cs" />
-    <Compile Remove="OpenApiParameterGenerator.cs" />
-    <Compile Remove="OpenApiPathItemGenerator.cs" />
-    <Compile Remove="OpenApiResponseGenerator.cs" />
-    <Compile Remove="OpenApiSchemaGenerator.cs" />
-    <Compile Remove="OpenApiWriterSettings.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.3.1" />
   </ItemGroup>
 

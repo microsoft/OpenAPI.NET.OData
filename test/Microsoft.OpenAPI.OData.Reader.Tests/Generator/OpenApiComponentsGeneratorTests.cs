@@ -5,8 +5,8 @@
 
 using System;
 using Microsoft.OData.Edm;
-using Xunit;
 using Microsoft.OpenApi.OData.Tests;
+using Xunit;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {
@@ -15,23 +15,23 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
 
         [Fact]
-        public void CtorThrowArgumentNullModel()
+        public void CreateComponentsThrowArgumentNullModel()
         {
             // Arrange
             IEdmModel model = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => new OpenApiComponentsGenerator(model, null));
+            Assert.Throws<ArgumentNullException>("model", () => model.CreateComponents(_settings));
         }
 
         [Fact]
-        public void CtorThrowArgumentNullSetting()
+        public void CreateComponentsThrowArgumentNullSettings()
         {
             // Arrange
             IEdmModel model = EdmCoreModel.Instance;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("settings", () => new OpenApiComponentsGenerator(model, null));
+            Assert.Throws<ArgumentNullException>("settings", () => model.CreateComponents(settings: null));
         }
 
         [Fact]
@@ -39,10 +39,9 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
-            OpenApiComponentsGenerator generator = new OpenApiComponentsGenerator(model, _settings);
 
             // Act
-            var components = generator.CreateComponents();
+            var components = model.CreateComponents(_settings);
 
             // Assert
             Assert.NotNull(components);

@@ -11,25 +11,32 @@ using Microsoft.OpenApi.Models;
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Class to create <see cref="OpenApiParameter"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiParameter"/> by <see cref="IEdmModel"/>.
     /// </summary>
-    internal class OpenApiParameterGenerator : OpenApiGenerator
+    internal static class OpenApiParameterGenerator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenApiParameterGenerator" /> class.
+        /// 4.6.2 Field parameters in components
+        /// Create a map of <see cref="OpenApiParameter"/> object.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The Open Api convert settings.</param>
-        public OpenApiParameterGenerator(IEdmModel model, OpenApiConvertSettings settings)
-            : base(model, settings)
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The created map of <see cref="OpenApiParameter"/> object.</returns>
+        public static IDictionary<string, OpenApiParameter> CreateParameters(this IEdmModel model,
+            OpenApiConvertSettings settings)
         {
-        }
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
 
-        // 4.6.2 Field parameters in components
-        public IDictionary<string, OpenApiParameter> CreateParameters()
-        {
+            if (settings == null)
+            {
+                throw Error.ArgumentNull(nameof(settings));
+            }
+
             // It allows defining query options and headers that can be reused across operations of the service.
-            // The value of parameters is a map of Parameter Objects
+            // The value of parameters is a map of Parameter Objects.
             return new Dictionary<string, OpenApiParameter>
             {
                 { "top", CreateTop() },

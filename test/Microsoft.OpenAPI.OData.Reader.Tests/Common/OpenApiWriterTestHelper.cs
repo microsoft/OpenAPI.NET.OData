@@ -113,7 +113,6 @@ namespace Microsoft.OpenApi.OData.Tests
         internal static string Serialize<T>(this T element, OpenApiFormat format)
             where T : IOpenApiSerializable
         {
-            Assert.NotNull(element);
             MemoryStream stream = new MemoryStream();
             element.Serialize(stream, OpenApiSpecVersion.OpenApi3_0, format);
             stream.Position = 0;

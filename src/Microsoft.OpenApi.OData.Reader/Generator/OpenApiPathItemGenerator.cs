@@ -15,44 +15,127 @@ namespace Microsoft.OpenApi.OData.Generator
     /// <summary>
     /// Class to create <see cref="OpenApiPathItem"/> by Edm elements.
     /// </summary>
-    internal class OpenApiPathItemGenerator : OpenApiGenerator
+    internal static class OpenApiPathItemGenerator
     {
-        public IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenApiPathItemGenerator" /> class.
+        /// Create a map of <see cref="OpenApiPathItem"/>.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="settings">The Open Api convert settings.</param>
-        public OpenApiPathItemGenerator(IEdmModel model, OpenApiConvertSettings settings)
-            : base(model, settings)
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The created map of <see cref="OpenApiPathItem"/>.</returns>
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this IEdmModel model,
+            OpenApiConvertSettings settings)
         {
-            _boundOperations = new Dictionary<IEdmTypeReference, IEdmOperation>();
+            if (model == null)
+            {
+                throw Error.ArgumentNull(nameof(model));
+            }
+
+            if (settings == null)
+            {
+                throw Error.ArgumentNull(nameof(settings));
+            }
+
+            IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
+            if (model.EntityContainer == null)
+            {
+                return pathItems;
+            }
+
+            var boundOperations = new Dictionary<IEdmTypeReference, IEdmOperation>();
             foreach (var edmOperation in model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
             {
                 IEdmOperationParameter bindingParameter = edmOperation.Parameters.First();
-                _boundOperations.Add(bindingParameter.Type, edmOperation);
+                boundOperations.Add(bindingParameter.Type, edmOperation);
             }
+            /*
+            // visit all elements in the container
+            foreach (var element in model.EntityContainer.Elements)
+            {
+                switch (element.ContainerElementKind)
+                {
+                    case EdmContainerElementKind.EntitySet:
+                        IEdmEntitySet entitySet = (IEdmEntitySet)element;
+                        foreach (var item in model.CreatePathItems(entitySet, settings))
+                        {
+                            pathItems.Add(item.Key, item.Value);
+                        }
+
+                        foreach (var item in entitySet.CreateOperationPathItems(entitySet, operations))
+                        {
+                            pathItems.Add(item.Key, item.Value);
+                        }
+                        break;
+
+                    case EdmContainerElementKind.Singleton:
+                        IEdmSingleton singleton = element as IEdmSingleton;
+                        if (singleton != null)
+                        {
+                            foreach (var item in _nsGenerator.CreatePaths(singleton))
+                            {
+                                _paths.Add(item.Key, item.Value);
+                            }
+                        }
+                        break;
+
+                    case EdmContainerElementKind.FunctionImport:
+                        IEdmFunctionImport functionImport = element as IEdmFunctionImport;
+                        if (functionImport != null)
+                        {
+                            var functionImportPathItem = functionImport.CreatePathItem();
+
+                            _paths.Add(functionImport.CreatePathItemName(), functionImportPathItem);
+                        }
+                        break;
+
+                    case EdmContainerElementKind.ActionImport:
+                        IEdmActionImport actionImport = element as IEdmActionImport;
+                        if (actionImport != null)
+                        {
+                            var functionImportPathItem = actionImport.CreatePathItem();
+                            _paths.Add(actionImport.CreatePathItemName(), functionImportPathItem);
+                        }
+                        break;
+                }
+            }*/
+
+                // entity set path items
+            foreach (var item in model.CreateEntitySetPathItems(settings, boundOperations))
+            {
+                pathItems.Add(item.Key, item.Value);
+            }
+
+            // singleton path items
+            foreach (var item in model.CreateSingletonPathItems(settings, boundOperations))
+            {
+                pathItems.Add(item.Key, item.Value);
+            }
+
+            // operation import path items
+            foreach (var item in model.CreateOperationImportPathItems(settings))
+            {
+                pathItems.Add(item.Key, item.Value);
+            }
+
+            return pathItems;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public IDictionary<string, OpenApiPathItem> CreateEntitySetPathItems()
+        private static IDictionary<string, OpenApiPathItem> CreateEntitySetPathItems(this IEdmModel model,
+            OpenApiConvertSettings settings,
+            IDictionary<IEdmTypeReference, IEdmOperation> operations)
         {
             IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
 
-            if (Model.EntityContainer != null)
+            if (model.EntityContainer != null)
             {
-                foreach (var entitySet in Model.EntityContainer.EntitySets())
+                foreach (var entitySet in model.EntityContainer.EntitySets())
                 {
                     foreach (var item in CreatePathItems(entitySet))
                     {
                         pathItems.Add(item.Key, item.Value);
                     }
 
-                    foreach (var item in CreateOperationPathItems(entitySet))
+                    foreach (var item in CreateOperationPathItems(entitySet, operations))
                     {
                         pathItems.Add(item.Key, item.Value);
                     }
@@ -62,24 +145,22 @@ namespace Microsoft.OpenApi.OData.Generator
             return pathItems;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public IDictionary<string, OpenApiPathItem> CreateSingletonPathItems()
+        private static IDictionary<string, OpenApiPathItem> CreateSingletonPathItems(this IEdmModel model,
+            OpenApiConvertSettings settings,
+            IDictionary<IEdmTypeReference, IEdmOperation> operations)
         {
             IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
 
-            if (Model.EntityContainer != null)
+            if (model.EntityContainer != null)
             {
-                foreach (var singleton in Model.EntityContainer.Singletons())
+                foreach (var singleton in model.EntityContainer.Singletons())
                 {
                     foreach (var item in CreatePathItems(singleton))
                     {
                         pathItems.Add(item.Key, item.Value);
                     }
 
-                    foreach (var item in CreateOperationPathItems(singleton))
+                    foreach (var item in CreateOperationPathItems(singleton, operations))
                     {
                         pathItems.Add(item.Key, item.Value);
                     }
@@ -89,17 +170,14 @@ namespace Microsoft.OpenApi.OData.Generator
             return pathItems;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public IDictionary<string, OpenApiPathItem> CreateOperationImportPathItems()
+        private static IDictionary<string, OpenApiPathItem> CreateOperationImportPathItems(this IEdmModel model,
+            OpenApiConvertSettings settings)
         {
             IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
 
-            if (Model.EntityContainer != null)
+            if (model.EntityContainer != null)
             {
-                foreach (var operationImport in Model.EntityContainer.OperationImports())
+                foreach (var operationImport in model.EntityContainer.OperationImports())
                 {
                     var operationPathItem = CreatePathItem(operationImport);
                     pathItems.Add(CreatePathItemName(operationImport), operationPathItem);
@@ -117,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="entitySet">The Edm entity set.</param>
         /// <returns>The path items.</returns>
-        private IDictionary<string, OpenApiPathItem> CreatePathItems(IEdmEntitySet entitySet)
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this IEdmEntitySet entitySet)
         {
             if (entitySet == null)
             {
@@ -157,7 +235,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="singleton">The singleton.</param>
         /// <returns>The name/value pairs describing the allowed operations on this singleton.</returns>
-        private IDictionary<string, OpenApiPathItem> CreatePathItems(IEdmSingleton singleton)
+        private static IDictionary<string, OpenApiPathItem> CreatePathItems(IEdmSingleton singleton)
         {
             if (singleton == null)
             {
@@ -181,7 +259,8 @@ namespace Microsoft.OpenApi.OData.Generator
             return paths;
         }
 
-        private IDictionary<string, OpenApiPathItem> CreateOperationPathItems(IEdmNavigationSource navigationSource)
+        private static IDictionary<string, OpenApiPathItem> CreateOperationPathItems(IEdmNavigationSource navigationSource,
+            IDictionary<IEdmTypeReference, IEdmOperation> boundOperations)
         {
             IDictionary<string, OpenApiPathItem> operationPathItems = new Dictionary<string, OpenApiPathItem>();
 
@@ -190,7 +269,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // collection bound
             if (entitySet != null)
             {
-                operations = FindOperations(navigationSource.EntityType(), collection: true);
+                operations = FindOperations(navigationSource.EntityType(), boundOperations, collection: true);
                 foreach (var operation in operations)
                 {
                     OpenApiPathItem openApiOperation = CreatePathItem(operation);
@@ -200,7 +279,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             // non-collection bound
-            operations = FindOperations(navigationSource.EntityType(), collection: false);
+            operations = FindOperations(navigationSource.EntityType(), boundOperations, collection: false);
             foreach (var operation in operations)
             {
                 OpenApiPathItem openApiOperation = CreatePathItem(operation);
@@ -221,12 +300,14 @@ namespace Microsoft.OpenApi.OData.Generator
             return operationPathItems;
         }
 
-        private IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType, bool collection)
+        private static IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType,
+            IDictionary<IEdmTypeReference, IEdmOperation> operations,
+            bool collection)
         {
             string fullTypeName = collection ? "Collection(" + entityType.FullName() + ")" :
                 entityType.FullName();
 
-            foreach (var item in _boundOperations)
+            foreach (var item in operations)
             {
                 if (item.Key.FullName() == fullTypeName)
                 {
@@ -235,7 +316,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private OpenApiPathItem CreatePathItem(IEdmOperationImport operationImport)
+        private static OpenApiPathItem CreatePathItem(this IEdmOperationImport operationImport)
         {
             if (operationImport.Operation.IsAction())
             {
@@ -245,7 +326,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return CreatePathItem((IEdmFunctionImport)operationImport);
         }
 
-        public static OpenApiPathItem CreatePathItem(IEdmOperation operation)
+        private static OpenApiPathItem CreatePathItem(this IEdmOperation operation)
         {
             if (operation.IsAction())
             {
@@ -296,7 +377,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return pathItem;
         }
 
-        public string CreatePathItemName(IEdmActionImport actionImport)
+        public static string CreatePathItemName(IEdmActionImport actionImport)
         {
             return CreatePathItemName(actionImport.Action);
         }
@@ -306,12 +387,12 @@ namespace Microsoft.OpenApi.OData.Generator
             return "/" + action.Name;
         }
 
-        public string CreatePathItemName(IEdmFunctionImport functionImport)
+        public static string CreatePathItemName(IEdmFunctionImport functionImport)
         {
             return CreatePathItemName(functionImport.Function);
         }
 
-        public string CreatePathItemName(IEdmFunction function)
+        public static string CreatePathItemName(IEdmFunction function)
         {
             StringBuilder functionName = new StringBuilder("/" + function.Name + "(");
 
@@ -322,7 +403,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return functionName.ToString();
         }
 
-        public string CreatePathItemName(IEdmOperationImport operationImport)
+        public static string CreatePathItemName(IEdmOperationImport operationImport)
         {
             if (operationImport.Operation.IsAction())
             {
@@ -332,7 +413,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return CreatePathItemName((IEdmFunctionImport)operationImport);
         }
 
-        public string CreatePathItemName(IEdmOperation operation)
+        public static string CreatePathItemName(IEdmOperation operation)
         {
             if (operation.IsAction())
             {
@@ -342,7 +423,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return CreatePathItemName((IEdmFunction)operation);
         }
 
-        private IList<string> CreateTags(IEdmOperationImport operationImport)
+        private static IList<string> CreateTags(IEdmOperationImport operationImport)
         {
             if (operationImport.EntitySet != null)
             {

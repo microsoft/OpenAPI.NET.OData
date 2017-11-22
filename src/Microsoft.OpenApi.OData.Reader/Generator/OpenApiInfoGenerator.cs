@@ -15,9 +15,11 @@ namespace Microsoft.OpenApi.OData.Generator
     internal static class OpenApiInfoGenerator
     {
         /// <summary>
-        /// Create <see cref="OpenApiInfo"/> object.
+        /// Create a <see cref="OpenApiInfo"/> object.
         /// </summary>
-        /// <returns>The info object.</returns>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The created <see cref="OpenApiInfo"/> object.</returns>
         public static OpenApiInfo CreateInfo(this IEdmModel model, OpenApiConvertSettings settings)
         {
             if (model == null)
@@ -44,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             // The value of title is the value of the unqualified annotation Core.Description
             // of the main schema or the entity container of the OData service.
-            // TODO:
+            // TODO: https://github.com/Microsoft/OpenAPI.NET.OData/issues/2
 
             //  or the entity container
             if (model.EntityContainer != null)
@@ -64,7 +66,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             // The value of version is the value of the annotation Core.SchemaVersion of the main schema.
             // If no Core.SchemaVersion is present, a default version has to be provided as this is a required OpenAPI field.
-            // TODO:
+            // TODO: https://github.com/Microsoft/OpenAPI.NET.OData/issues/2
 
             return settings.Version.ToString();
         }
@@ -72,7 +74,7 @@ namespace Microsoft.OpenApi.OData.Generator
         private static string GetDescription(this IEdmModel model, OpenApiConvertSettings settings)
         {
             // The value of description is the value of the annotation Core.LongDescription of the main schema.
-            // TODO:
+            // TODO: https://github.com/Microsoft/OpenAPI.NET.OData/issues/2
 
             //  or the entity container
             if (model.EntityContainer != null)

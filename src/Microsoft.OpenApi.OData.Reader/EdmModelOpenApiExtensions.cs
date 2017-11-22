@@ -26,6 +26,12 @@ namespace Microsoft.OpenApi.OData
             return model.ConvertToOpenApi(new OpenApiConvertSettings());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="referencedDocs"></param>
+        /// <returns></returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model,
             out IEnumerable<OpenApiDocument> referencedDocs)
         {
@@ -78,7 +84,7 @@ namespace Microsoft.OpenApi.OData
                 settings = new OpenApiConvertSettings(); // default
             }
 
-            return new OpenApiDocumentGenerator(model, settings).CreateDocument();
+            return model.CreateDocument(settings);
         }
     }
 }

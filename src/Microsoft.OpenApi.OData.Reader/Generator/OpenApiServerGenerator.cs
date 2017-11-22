@@ -10,14 +10,16 @@ using Microsoft.OpenApi.Models;
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Extension methods to create a collection of <see cref="OpenApiServer"/> by <see cref="IEdmModel"/>.
+    /// Extension methods to create <see cref="OpenApiServer"/> by <see cref="IEdmModel"/>.
     /// </summary>
-    internal static class OpenApiServersGenerator
+    internal static class OpenApiServerGenerator
     {
         /// <summary>
         /// Create the collection of <see cref="OpenApiServer"/> object.
         /// </summary>
-        /// <returns>The collection of <see cref="OpenApiServer"/> object.</returns>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The created collection of <see cref="OpenApiServer"/> object.</returns>
         public static IList<OpenApiServer> CreateServers(this IEdmModel model, OpenApiConvertSettings settings)
         {
             if (model == null)
@@ -37,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 new OpenApiServer
                 {
-                    Url = settings.ServiceRoot?.AbsolutePath
+                    Url = settings.ServiceRoot?.OriginalString
                 }
             };
         }

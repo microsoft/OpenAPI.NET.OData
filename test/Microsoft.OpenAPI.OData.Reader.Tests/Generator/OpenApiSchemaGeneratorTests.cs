@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 entitType, "BooleanValue", EdmCoreModel.Instance.GetBoolean(false), "false");
 
             // Act
-            var schema = property.CreateSchema();
+            var schema = property.CreatePropertySchema();
 
             // Assert
             Assert.NotNull(schema);
@@ -50,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 entitType, "BinaryValue", binaryType, "T0RhdGE");
 
             // Act
-            var schema = property.CreateSchema();
+            var schema = property.CreatePropertySchema();
 
             // Assert
             Assert.NotNull(schema);
@@ -74,7 +75,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 entitType, "IntegerValue", EdmCoreModel.Instance.GetInt32(false), "-128");
 
             // Act
-            var schema = property.CreateSchema();
+            var schema = property.CreatePropertySchema();
 
             // Assert
             Assert.NotNull(schema);
@@ -99,7 +100,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 entitType, "DoubleValue", EdmCoreModel.Instance.GetDouble(false), "3.1415926535897931");
 
             // Act
-            var schema = property.CreateSchema();
+            var schema = property.CreatePropertySchema();
 
             // Assert
             Assert.NotNull(schema);

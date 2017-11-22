@@ -5,27 +5,40 @@
 
 using System;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
-namespace Microsoft.OpenApi.OData.Tests
+namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiServersGeneratorTest
     {
+        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
+
         [Fact]
-        public void CreateServersThrowArgumentNull()
+        public void CreateServersThrowArgumentNullModel()
         {
             // Arrange
             IEdmModel model = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("model", () => model.CreateServers());
+            Assert.Throws<ArgumentNullException>("model", () => model.CreateServers(_settings));
+        }
+
+        [Fact]
+        public void CreateServersThrowArgumentNullSettings()
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("settings", () => model.CreateServers(settings: null));
         }
 
         [Fact]
         public void CreateServersReturnsModel()
         {
             // Arrange & Act
-            var servers = EdmModelHelper.BasicEdmModel.CreateServers();
+            var servers = EdmModelHelper.BasicEdmModel.CreateServers(_settings);
 
             // Assert
             Assert.NotNull(servers);
