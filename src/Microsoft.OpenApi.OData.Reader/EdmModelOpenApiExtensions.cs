@@ -27,11 +27,11 @@ namespace Microsoft.OpenApi.OData
         }
 
         /// <summary>
-        /// 
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> with referenced model.
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="referencedDocs"></param>
-        /// <returns></returns>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="referencedDocs">The referenced models.</param>
+        /// <returns>The converted Open API document object.</returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model,
             out IEnumerable<OpenApiDocument> referencedDocs)
         {
@@ -39,11 +39,12 @@ namespace Microsoft.OpenApi.OData
         }
 
         /// <summary>
-        /// 
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> with referenced model.
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="referencedDocs"></param>
-        /// <returns></returns>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="settings">The convert settings.</param>
+        /// <param name="referencedDocs">The referenced models.</param>
+        /// <returns>The converted Open API document object.</returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, OpenApiConvertSettings settings,
             out IEnumerable<OpenApiDocument> referencedDocs)
         {

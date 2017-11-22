@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi", "tool\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OoasUtil", "src\OoasUtil\OoasUtil.csproj", "{2D06C660-B550-432C-8062-D4070F7C371F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OoasGui", "OoasGui\OoasGui.csproj", "{79B190E8-EDB0-4C03-8FD8-EB48E4807CFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OoasGui", "src\OoasGui\OoasGui.csproj", "{79B190E8-EDB0-4C03-8FD8-EB48E4807CFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

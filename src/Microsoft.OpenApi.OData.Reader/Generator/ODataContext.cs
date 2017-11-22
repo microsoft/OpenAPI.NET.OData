@@ -10,14 +10,40 @@ using Microsoft.OData.Edm;
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// The wrapper for the <see cref="IEdmModel"/>,.<see cref="OpenApiSerializerSettings"/>.
+    /// Context information for the <see cref="IEdmModel"/>, configuration, etc.
     /// </summary>
     internal class ODataContext
     {
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataContext"/> class.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        public ODataContext(IEdmModel model)
+            : this(model, new OpenApiConvertSettings())
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataContext"/> class.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="settings">The convert setting.</param>
+        public ODataContext(IEdmModel model, OpenApiConvertSettings settings)
+        {
+            Model = model ?? throw Error.ArgumentNull(nameof(model));
+            Settings = settings ?? throw Error.ArgumentNull(nameof(settings));
+        }
+
+        /// <summary>
+        /// Gets the Edm model.
+        /// </summary>
         public IEdmModel Model { get; }
 
+        /// <summary>
+        /// Gets the Entity Container.
+        /// </summary>
         public IEdmEntityContainer EntityContainer
         {
             get
@@ -39,18 +65,6 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 return _boundOperations;
             }
-        }
-
-        public ODataContext(IEdmModel model)
-            : this(model, new OpenApiConvertSettings())
-        {
-
-        }
-
-        public ODataContext(IEdmModel model, OpenApiConvertSettings settings)
-        {
-            Model = model ?? throw Error.ArgumentNull(nameof(model));
-            Settings = settings ?? throw Error.ArgumentNull(nameof(settings));
         }
 
         public IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType, bool collection)

@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.OData.Edm, Version=7.3.1.10814, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.OData.Edm.7.3.1\lib\portable-net45+win8+wpa81\Microsoft.OData.Edm.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.OData.Edm.7.3.1\lib\portable-net45+win8+wpa81\Microsoft.OData.Edm.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,11 +83,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj">
+    <ProjectReference Include="..\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj">
       <Project>{ff3acd93-19e0-486c-9c0f-fa1c2e7fc8c2}</Project>
       <Name>Microsoft.OpenApi.OData.Reader</Name>
     </ProjectReference>
-    <ProjectReference Include="..\tool\Microsoft.OpenApi\Microsoft.OpenApi.csproj">
+    <ProjectReference Include="..\..\tool\Microsoft.OpenApi\Microsoft.OpenApi.csproj">
       <Project>{3c31b79a-776f-4199-899f-3dc7aa767003}</Project>
       <Name>Microsoft.OpenApi</Name>
     </ProjectReference>
