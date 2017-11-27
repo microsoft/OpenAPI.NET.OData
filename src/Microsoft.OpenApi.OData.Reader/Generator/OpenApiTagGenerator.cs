@@ -36,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // and it optionally can contain the field description, whose value is the value of the unqualified annotation
             // Core.Description of the entity set or singleton.
             IList<OpenApiTag> tags = new List<OpenApiTag>();
-            if (context.Model.EntityContainer != null)
+            if (context.EntityContainer != null)
             {
                 foreach (IEdmEntityContainerElement element in context.Model.EntityContainer.Elements)
                 {
@@ -81,8 +81,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             }
 
-            // Tags is optional.
-            return tags.Any() ? tags : null;
+            return tags;
         }
 
         private static OpenApiTag CreateOperationImportTag(this ODataContext context, IEdmOperationImport operationImport)

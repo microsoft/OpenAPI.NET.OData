@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // TODO: https://github.com/Microsoft/OpenAPI.NET.OData/issues/2
 
             //  or the entity container
-            if (context.Model.EntityContainer != null)
+            if (context.EntityContainer != null)
             {
                 string longDescription = context.Model.GetLongDescriptionAnnotation(context.Model.EntityContainer);
                 if (longDescription != null)

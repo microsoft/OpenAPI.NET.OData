@@ -46,7 +46,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 Paths = context.CreatePaths(),
 
-                Components = context.CreateComponents()
+                Components = context.CreateComponents(),
+
+                SecurityRequirements = null,
+
+                ExternalDocs = null
             };
         }
     }

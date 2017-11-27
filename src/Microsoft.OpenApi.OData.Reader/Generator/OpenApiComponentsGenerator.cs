@@ -46,11 +46,17 @@ namespace Microsoft.OpenApi.OData.Generator
                 // It allows defining responses that can be reused across operations of the service.
                 Responses = context.CreateResponses(),
 
+                // Make others as null.
                 RequestBodies = null,
+
                 Examples = null,
+
                 SecuritySchemes = null,
+
                 Links = null,
+
                 Callbacks = null,
+
                 Extensions = null
             };
         }

@@ -5,7 +5,6 @@
 
 using System;
 using System.Linq;
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
