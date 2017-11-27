@@ -111,9 +111,9 @@ namespace Microsoft.OpenApi.OData.Generator
             // entity set
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
-            pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntitySet());
+            pathItem.AddOperation(OperationType.Get, context.CreateEntitySetGetOperation(entitySet));
 
-            pathItem.AddOperation(OperationType.Post, entitySet.CreatePostOperationForEntitySet());
+            pathItem.AddOperation(OperationType.Post, context.CreateEntitySetPostOperation(entitySet));
 
             paths.Add("/" + entitySet.Name, pathItem);
 
@@ -121,11 +121,11 @@ namespace Microsoft.OpenApi.OData.Generator
             string entityPathName = entitySet.CreatePathNameForEntity();
             pathItem = new OpenApiPathItem();
 
-            pathItem.AddOperation(OperationType.Get, entitySet.CreateGetOperationForEntity());
+            pathItem.AddOperation(OperationType.Get, context.CreateEntityGetOperation(entitySet));
 
-            pathItem.AddOperation(OperationType.Patch, entitySet.CreatePatchOperationForEntity());
+            pathItem.AddOperation(OperationType.Patch, context.CreateEntityPatchOperation(entitySet));
 
-            pathItem.AddOperation(OperationType.Delete, entitySet.CreateDeleteOperationForEntity());
+            pathItem.AddOperation(OperationType.Delete, context.CreateEntityDeleteOperation(entitySet));
 
             paths.Add(entityPathName, pathItem);
 
@@ -159,10 +159,10 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
             // Retrieve a singleton.
-            pathItem.AddOperation(OperationType.Get, singleton.CreateGetOperationForSingleton());
+            pathItem.AddOperation(OperationType.Get, context.CreateSingletonGetOperation(singleton));
 
             // Update a singleton
-            pathItem.AddOperation(OperationType.Patch, singleton.CreatePatchOperationForSingleton());
+            pathItem.AddOperation(OperationType.Patch, context.CreateSingletonPatchOperation(singleton));
 
             paths.Add(entityPathName, pathItem);
 
@@ -215,6 +215,31 @@ namespace Microsoft.OpenApi.OData.Generator
             return operationPathItems;
         }
 
+        public static string CreatePathNameForEntity(this IEdmEntitySet entitySet)
+        {
+            string keyString;
+            IList<IEdmStructuralProperty> keys = entitySet.EntityType().Key().ToList();
+            if (keys.Count() == 1)
+            {
+                keyString = "{" + keys.First().Name + "}";
+            }
+            else
+            {
+                IList<string> temps = new List<string>();
+                foreach (var keyProperty in entitySet.EntityType().Key())
+                {
+                    temps.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
+                }
+                keyString = String.Join(",", temps);
+            }
+
+            return "/" + entitySet.Name + "('" + keyString + "')";
+        }
+
+        public static string CreatePathNameForSingleton(this IEdmSingleton singleton)
+        {
+            return "/" + singleton.Name;
+        }
         private static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmOperationImport operationImport)
         {
             if (operationImport.Operation.IsAction())
