@@ -32,7 +32,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var tags = context.CreateTags();
 
             // Assert
-            Assert.Null(tags);
+            Assert.NotNull(tags);
+            Assert.Empty(tags);
         }
 
         [Fact]
