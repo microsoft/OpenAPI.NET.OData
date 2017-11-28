@@ -42,10 +42,15 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     case EdmContainerElementKind.EntitySet: // entity set
                         IEdmEntitySet entitySet = (IEdmEntitySet)element;
-                        foreach (var item in context.CreatePathItems(entitySet))
-                        {
-                            pathItems.Add(item.Key, item.Value);
-                        }
+                        // entity set
+                        string entitySetPathName = "/" + entitySet.Name;
+                        var entitySetPathItem = context.CreateEntitySetPathItem(entitySet);
+                        pathItems.Add(entitySetPathName, entitySetPathItem);
+
+                        // entity
+                        string entityPathName = context.CreateEntityPathName(entitySet);
+                        var entityPathItem = context.CreateEntityPathItem(entitySet);
+                        pathItems.Add(entityPathName, entityPathItem);
 
                         foreach (var item in context.CreateOperationPathItems(entitySet))
                         {
@@ -55,10 +60,9 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     case EdmContainerElementKind.Singleton: // singleton
                         IEdmSingleton singleton = (IEdmSingleton)element;
-                        foreach (var item in context.CreatePathItems(singleton))
-                        {
-                            pathItems.Add(item.Key, item.Value);
-                        }
+                        string singletonPathName = "/" + singleton.Name;
+                        var singletonPathItem = context.CreateSingletonPathItem(singleton);
+                        pathItems.Add(singletonPathName, singletonPathItem);
 
                         foreach (var item in context.CreateOperationPathItems(singleton))
                         {
@@ -86,15 +90,12 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
-        /// Path items for Entity Sets.
-        /// Each entity set is represented as a name/value pair
-        /// whose name is the service-relative resource path of the entity set prepended with a forward slash,
-        /// and whose value is a Path Item Object.
+        /// Create a <see cref="OpenApiPathItem"/> for <see cref="IEdmEntitySet"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="entitySet">The Edm entity set.</param>
-        /// <returns>The path items.</returns>
-        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context, IEdmEntitySet entitySet)
+        /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
+        public static OpenApiPathItem CreateEntitySetPathItem(this ODataContext context, IEdmEntitySet entitySet)
         {
             if (context == null)
             {
@@ -106,20 +107,34 @@ namespace Microsoft.OpenApi.OData.Generator
                 throw Error.ArgumentNull(nameof(entitySet));
             }
 
-            IDictionary<string, OpenApiPathItem> paths = new Dictionary<string, OpenApiPathItem>();
-
-            // entity set
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
             pathItem.AddOperation(OperationType.Get, context.CreateEntitySetGetOperation(entitySet));
 
             pathItem.AddOperation(OperationType.Post, context.CreateEntitySetPostOperation(entitySet));
 
-            paths.Add("/" + entitySet.Name, pathItem);
+            return pathItem;
+        }
 
-            // entity
-            string entityPathName = entitySet.CreatePathNameForEntity();
-            pathItem = new OpenApiPathItem();
+        /// <summary>
+        /// Create a <see cref="OpenApiPathItem"/> for a single entity in <see cref="IEdmEntitySet"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="entitySet">The Edm entity set.</param>
+        /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
+        public static OpenApiPathItem CreateEntityPathItem(this ODataContext context, IEdmEntitySet entitySet)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (entitySet == null)
+            {
+                throw Error.ArgumentNull(nameof(entitySet));
+            }
+
+            OpenApiPathItem pathItem = new OpenApiPathItem();
 
             pathItem.AddOperation(OperationType.Get, context.CreateEntityGetOperation(entitySet));
 
@@ -127,20 +142,16 @@ namespace Microsoft.OpenApi.OData.Generator
 
             pathItem.AddOperation(OperationType.Delete, context.CreateEntityDeleteOperation(entitySet));
 
-            paths.Add(entityPathName, pathItem);
-
-            return paths;
+            return pathItem;
         }
 
         /// <summary>
-        /// Each singleton is represented as a name/value pair whose name is the service-relative resource
-        /// path of the singleton prepended with a forward slash, whose value is <see cref="OpenApiPathItem"/>
-        /// describing the allowed operations on this singleton.
+        /// Create a <see cref="OpenApiPathItem"/> for <see cref="IEdmSingleton"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="singleton">The singleton.</param>
-        /// <returns>The name/value pairs describing the allowed operations on this singleton.</returns>
-        private static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context, IEdmSingleton singleton)
+        /// <returns>The created <see cref="OpenApiPathItem"/> on this singleton.</returns>
+        public static OpenApiPathItem CreateSingletonPathItem(this ODataContext context, IEdmSingleton singleton)
         {
             if (context == null)
             {
@@ -152,10 +163,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 throw Error.ArgumentNull(nameof(singleton));
             }
 
-            IDictionary<string, OpenApiPathItem> paths = new Dictionary<string, OpenApiPathItem>();
-
-            // Singleton
-            string entityPathName = singleton.CreatePathNameForSingleton();
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
             // Retrieve a singleton.
@@ -164,9 +171,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // Update a singleton
             pathItem.AddOperation(OperationType.Patch, context.CreateSingletonPatchOperation(singleton));
 
-            paths.Add(entityPathName, pathItem);
-
-            return paths;
+            return pathItem;
         }
 
         /// <summary>
@@ -203,7 +208,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 string temp;
                 if (entitySet != null)
                 {
-                    temp = entitySet.CreatePathNameForEntity();
+                    temp = context.CreateEntityPathName(entitySet);
                 }
                 else
                 {
@@ -215,13 +220,34 @@ namespace Microsoft.OpenApi.OData.Generator
             return operationPathItems;
         }
 
-        public static string CreatePathNameForEntity(this IEdmEntitySet entitySet)
+        /// <summary>
+        /// Create the path item name for the entity from <see cref="IEdmEntitySet"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="entitySet">The entity set.</param>
+        /// <returns>The created path item name.</returns>
+        public static string CreateEntityPathName(this ODataContext context, IEdmEntitySet entitySet)
         {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (entitySet == null)
+            {
+                throw Error.ArgumentNull(nameof(entitySet));
+            }
+
             string keyString;
             IList<IEdmStructuralProperty> keys = entitySet.EntityType().Key().ToList();
             if (keys.Count() == 1)
             {
                 keyString = "{" + keys.First().Name + "}";
+
+                if (context.Settings.KeyAsSegment)
+                {
+                    return "/" + entitySet.Name + "/" + keyString;
+                }
             }
             else
             {
@@ -236,10 +262,11 @@ namespace Microsoft.OpenApi.OData.Generator
             return "/" + entitySet.Name + "('" + keyString + "')";
         }
 
-        public static string CreatePathNameForSingleton(this IEdmSingleton singleton)
+        public static string CreateSingletonPathName(this ODataContext context, IEdmSingleton singleton)
         {
             return "/" + singleton.Name;
         }
+
         private static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmOperationImport operationImport)
         {
             if (operationImport.Operation.IsAction())

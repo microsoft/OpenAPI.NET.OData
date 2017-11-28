@@ -52,6 +52,9 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
+        /// <summary>
+        /// Gets the convert settings.
+        /// </summary>
         public OpenApiConvertSettings Settings { get; }
 
         public IDictionary<IEdmTypeReference, IEdmOperation> BoundOperations

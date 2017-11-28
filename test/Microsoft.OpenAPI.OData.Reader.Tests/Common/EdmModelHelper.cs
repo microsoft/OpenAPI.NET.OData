@@ -20,11 +20,14 @@ namespace Microsoft.OpenApi.OData.Tests
 
         public static IEdmModel BasicEdmModel { get; }
 
+        public static IEdmModel CompositeKeyModel { get; }
+
         public static IEdmModel TripServiceModel { get; }
 
         static EdmModelHelper()
         {
             BasicEdmModel = CreateEdmModel();
+            CompositeKeyModel = CreateCompositeKeyModel();
             TripServiceModel = LoadTripServiceModel();
         }
 
@@ -108,6 +111,22 @@ namespace Microsoft.OpenApi.OData.Tests
             annotation = new EdmVocabularyAnnotation(people, coreLongDescription, new EdmStringConstant("People's Long description."));
             model.AddVocabularyAnnotation(annotation);
 
+            return model;
+        }
+
+        private static IEdmModel CreateCompositeKeyModel()
+        {
+            var model = new EdmModel();
+
+            var customer = new EdmEntityType("NS", "Customer", null, false, true);
+            var customerId = customer.AddStructuralProperty("Id", EdmPrimitiveTypeKind.Int32, false);
+            var customerName = customer.AddStructuralProperty("Name", EdmPrimitiveTypeKind.String, true);
+            customer.AddKeys(customerId, customerName);
+            model.AddElement(customer);
+
+            var container = new EdmEntityContainer("NS", "Container");
+            var customers = container.AddEntitySet("Customers", customer);
+            model.AddElement(container);
             return model;
         }
     }
