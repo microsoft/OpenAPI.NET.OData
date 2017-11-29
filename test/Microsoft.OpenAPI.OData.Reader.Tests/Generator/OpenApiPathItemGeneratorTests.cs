@@ -229,6 +229,36 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Throws<ArgumentNullException>("edmOperation",
                 () => context.CreatePathItem(navigationSource: entitySet, edmOperation: null));
         }
+
+        [Theory]
+        [InlineData("GetFriendsTrips", "People", OperationType.Get)]
+        [InlineData("ShareTrip", "People", OperationType.Post)]
+        public void CreatePathItemForOperationReturnsCorrectPathItem(string operationName, string entitySet,
+            OperationType operationType)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmNavigationSource navigationSource = model.EntityContainer.FindEntitySet(entitySet);
+            Assert.NotNull(navigationSource); // guard
+            IEdmOperation edmOperation = model.SchemaElements.OfType<IEdmOperation>()
+                .FirstOrDefault(o => o.Name == operationName);
+            Assert.NotNull(edmOperation); // guard
+            string expectSummary = "Invoke " +
+                (edmOperation.IsAction() ? "action " : "function ") + operationName;
+
+            // Act
+            OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, edmOperation);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            var operationKeyValue = Assert.Single(pathItem.Operations);
+            Assert.Equal(operationType, operationKeyValue.Key);
+            Assert.NotNull(operationKeyValue.Value);
+
+            Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
+        }
         #endregion
 
         #region Edm OperationImport PathItem
@@ -253,7 +283,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Theory]
-   //     [InlineData("GetNearestAirport", OperationType.Get)]
+        [InlineData("GetNearestAirport", OperationType.Get)]
         [InlineData("ResetDataSource", OperationType.Post)]
         public void CreatePathItemForOperationImportReturnsCorrectPathItem(string operationImport,
             OperationType operationType)
