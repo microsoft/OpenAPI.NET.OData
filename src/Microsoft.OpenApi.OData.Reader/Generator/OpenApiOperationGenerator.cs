@@ -597,7 +597,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             OpenApiOperation operation = new OpenApiOperation();
-            operation.Summary = edmOperation.IsAction() ? "Invoke action " : "Invoke function " + edmOperation.Name;
+            operation.Summary = "Invoke " + (edmOperation.IsAction() ? "action " : "function ") + edmOperation.Name;
 
             // The tags array of the Operation Object includes the entity set name.
             operation.Tags = new List<OpenApiTag>
@@ -682,7 +682,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             OpenApiOperation operation = new OpenApiOperation();
-            operation.Summary = operationImport.IsActionImport() ? "Invoke action " : "Invoke function " + operationImport.Name;
+            operation.Summary = "Invoke " + (operationImport.IsActionImport() ? "action " : "function ") + operationImport.Name;
 
             // If the action or function import specifies the EntitySet attribute,
             // the tags array of the Operation Object includes the entity set name.

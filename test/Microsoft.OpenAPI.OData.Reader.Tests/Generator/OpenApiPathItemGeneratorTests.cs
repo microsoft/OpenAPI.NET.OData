@@ -192,87 +192,93 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch },
                 pathItem.Operations.Select(o => o.Key));
         }
-
         #endregion
 
+        #region Bound Edm Operation PathItem
         [Fact]
-        public void CreateEntityPathNameThrowArgumentNullContext()
+        public void CreatePathItemForOperationThrowArgumentNullContext()
         {
             // Arrange
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateEntityPathName(entitySet: null));
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreatePathItem(navigationSource: null, edmOperation: null));
         }
 
         [Fact]
-        public void CreateEntityPathNameThrowArgumentNullEntitySet()
+        public void CreatePathItemForOperationThrowArgumentNullNavigationSource()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("entitySet", () => context.CreateEntityPathName(entitySet: null));
+            Assert.Throws<ArgumentNullException>("navigationSource",
+                () => context.CreatePathItem(navigationSource: null, edmOperation: null));
         }
 
         [Fact]
-        public void CreateEntityPathNameReturnsCorrectPathItemName()
+        public void CreatePathItemForOperationThrowArgumentNulledmOperation()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             ODataContext context = new ODataContext(model);
-            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
-            Assert.NotNull(people); // guard
+            IEdmEntitySet entitySet = model.EntityContainer.EntitySets().First();
 
-            // Act
-            string name = context.CreateEntityPathName(people);
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("edmOperation",
+                () => context.CreatePathItem(navigationSource: entitySet, edmOperation: null));
+        }
+        #endregion
 
-            // Assert
-            Assert.NotNull(name);
-            Assert.Equal("/People('{UserName}')", name);
+        #region Edm OperationImport PathItem
+        [Fact]
+        public void CreatePathItemForOperationImportThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context", () => context.CreatePathItem(operationImport: null));
         }
 
         [Fact]
-        public void CreateEntityPathNameReturnsCorrectPathItemNameWithKeyAsSegment()
+        public void CreatePathItemForOperationImportThrowArgumentNullOperationImport()
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
-            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
-            {
-                KeyAsSegment = true
-            });
-            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
-            Assert.NotNull(people); // guard
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
 
-            // Act
-            string name = context.CreateEntityPathName(people);
-
-            // Assert
-            Assert.NotNull(name);
-            Assert.Equal("/People/{UserName}", name);
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreatePathItem(operationImport: null));
         }
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateEntityPathNameReturnsCorrectPathItemNameForCompositeKeys(bool keyAsSegment)
+   //     [InlineData("GetNearestAirport", OperationType.Get)]
+        [InlineData("ResetDataSource", OperationType.Post)]
+        public void CreatePathItemForOperationImportReturnsCorrectPathItem(string operationImport,
+            OperationType operationType)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.CompositeKeyModel;
-            OpenApiConvertSettings settings = new OpenApiConvertSettings
-            {
-                KeyAsSegment = keyAsSegment
-            };
-            ODataContext context = new ODataContext(model, settings);
-            IEdmEntitySet customers = model.EntityContainer.FindEntitySet("Customers");
-            Assert.NotNull(customers); // guard
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmOperationImport edmOperationImport = model.EntityContainer
+                .OperationImports().FirstOrDefault(o => o.Name == operationImport);
+            Assert.NotNull(edmOperationImport); // guard
+            string expectSummary = "Invoke " +
+                (edmOperationImport.IsActionImport() ? "action " : "function ") + operationImport;
 
             // Act
-            string name = context.CreateEntityPathName(customers);
+            OpenApiPathItem pathItem = context.CreatePathItem(edmOperationImport);
 
             // Assert
-            Assert.NotNull(name);
-            Assert.Equal("/Customers('Id={Id},Name={Name}')", name);
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            var operationKeyValue = Assert.Single(pathItem.Operations);
+            Assert.Equal(operationType, operationKeyValue.Key);
+            Assert.NotNull(operationKeyValue.Value);
+
+            Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
         }
+        #endregion
     }
 }

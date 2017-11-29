@@ -428,7 +428,7 @@
         "tags": [
           "People"
         ],
-        "summary": "Invoke action ",
+        "summary": "Invoke action ShareTrip",
         "parameters": [
           {
             "name": "UserName",
@@ -1425,7 +1425,7 @@
         "tags": [
           "NewComePeople"
         ],
-        "summary": "Invoke action ",
+        "summary": "Invoke action ShareTrip",
         "parameters": [
           {
             "name": "UserName",
@@ -1660,7 +1660,7 @@
         "tags": [
           "Me"
         ],
-        "summary": "Invoke action ",
+        "summary": "Invoke action ShareTrip",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -1741,7 +1741,7 @@
     },
     "/ResetDataSource": {
       "post": {
-        "summary": "Invoke action ",
+        "summary": "Invoke action ResetDataSource",
         "responses": {
           "204": {
             "description": "Success"
