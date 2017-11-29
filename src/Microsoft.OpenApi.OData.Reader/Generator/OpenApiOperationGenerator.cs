@@ -668,6 +668,12 @@ namespace Microsoft.OpenApi.OData.Generator
             return operation;
         }
 
+        /// <summary>
+        /// Create a <see cref="OpenApiOperation"/> for a <see cref="IEdmOperationImport"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="operationImport">The Edm operation import.</param>
+        /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateOperation(this ODataContext context,
             IEdmOperationImport operationImport)
         {

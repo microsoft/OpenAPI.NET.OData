@@ -5,7 +5,6 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 

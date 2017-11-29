@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
-        public void CreateTagsReturnsNullForEmptyModel()
+        public void CreateTagsReturnsEmptyTagsForEmptyModel()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);

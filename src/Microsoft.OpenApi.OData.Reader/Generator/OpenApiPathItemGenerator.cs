@@ -51,6 +51,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         var entityPathItem = context.CreateEntityPathItem(entitySet);
                         pathItems.Add(entityPathName, entityPathItem);
 
+                        // bound operations to entity set or entity
                         foreach (var item in context.CreateOperationPathItems(entitySet))
                         {
                             pathItems.Add(item.Key, item.Value);
@@ -63,6 +64,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         var singletonPathItem = context.CreateSingletonPathItem(singleton);
                         pathItems.Add(singletonPathName, singletonPathItem);
 
+                        // bound operations to singleton
                         foreach (var item in context.CreateOperationPathItems(singleton))
                         {
                             pathItems.Add(item.Key, item.Value);
