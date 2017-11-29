@@ -135,8 +135,34 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             functionName.Append("(");
 
-            functionName.Append(String.Join(",",
-                function.Parameters.Select(p => p.Name + "=" + "{" + p.Name + "}")));
+            // Structured or collection-valued parameters are represented as a parameter alias in the path template
+            // and the parameters array contains a Parameter Object for the parameter alias as a query option of type string.
+            int skip = function.IsBound ? 1 : 0;
+            int index = 0;
+            int parameterAliasIndex = 1;
+            foreach (IEdmOperationParameter edmParameter in function.Parameters.Skip(skip))
+            {
+                if (index == 0)
+                {
+                    index++;
+                }
+                else
+                {
+                    functionName.Append(",");
+                }
+
+                if (edmParameter.Type.IsStructured() ||
+                    edmParameter.Type.IsCollection())
+                {
+                    functionName.Append(edmParameter.Name).Append("=")
+                        .Append(context.Settings.ParameterAlias).Append(parameterAliasIndex++);
+                }
+                else
+                {
+                    functionName.Append(edmParameter.Name).Append("={").Append(edmParameter.Name).Append("}");
+                }
+            }
+
             functionName.Append(")");
 
             return functionName.ToString();

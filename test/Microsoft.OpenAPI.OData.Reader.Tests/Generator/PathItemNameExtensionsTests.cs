@@ -181,9 +181,9 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         [InlineData(true, EdmSchemaElementKind.Action, "ShareTrip", "/ShareTrip")]
         [InlineData(false, EdmSchemaElementKind.Action, "ShareTrip",
             "/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip")]
-        [InlineData(true, EdmSchemaElementKind.Function, "GetFriendsTrips", "/GetFriendsTrips(person={person},userName={userName})")]
+        [InlineData(true, EdmSchemaElementKind.Function, "GetFriendsTrips", "/GetFriendsTrips(userName={userName})")]
         [InlineData(false, EdmSchemaElementKind.Function, "GetFriendsTrips",
-            "/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})")]
+            "/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})")]
         [InlineData(true, EdmSchemaElementKind.Function, "GetNearestAirport", "/GetNearestAirport(lat={lat},lon={lon})")]
         [InlineData(false, EdmSchemaElementKind.Function, "GetNearestAirport",
             "/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetNearestAirport(lat={lat},lon={lon})")]

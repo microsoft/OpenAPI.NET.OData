@@ -25,5 +25,7 @@ namespace Microsoft.OpenApi.OData
         public bool EnumPrefixFree { get; set; }
 
         public int MaxNavPropertyPathDepth { get; set; }
+
+        public string ParameterAlias { get; set; } = "@p";
     }
 }

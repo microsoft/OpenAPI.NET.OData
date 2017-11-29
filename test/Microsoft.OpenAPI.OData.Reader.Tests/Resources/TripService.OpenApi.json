@@ -317,7 +317,7 @@
         }
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline(person={person})": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
           "People"
@@ -351,7 +351,7 @@
         }
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
         "tags": [
           "People"
@@ -388,7 +388,7 @@
         }
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(person={person},lastName={lastName})": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
           "People"
@@ -1314,7 +1314,7 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline(person={person})": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
           "NewComePeople"
@@ -1348,7 +1348,7 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
         "tags": [
           "NewComePeople"
@@ -1385,7 +1385,7 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(person={person},lastName={lastName})": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
           "NewComePeople"
@@ -1562,7 +1562,7 @@
         }
       }
     },
-    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline(person={person})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
           "Me"
@@ -1585,7 +1585,7 @@
         }
       }
     },
-    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
         "tags": [
           "Me"
@@ -1621,7 +1621,7 @@
         }
       }
     },
-    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(person={person},lastName={lastName})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
           "Me"
@@ -1722,6 +1722,54 @@
           "Airports"
         ],
         "summary": "Invoke function GetNearestAirport",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "enum": [
+                    "-INF",
+                    "INF",
+                    "NaN"
+                  ]
+                }
+              ],
+              "format": "double"
+            }
+          },
+          {
+            "name": "lon",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "enum": [
+                    "-INF",
+                    "INF",
+                    "NaN"
+                  ]
+                }
+              ],
+              "format": "double"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",

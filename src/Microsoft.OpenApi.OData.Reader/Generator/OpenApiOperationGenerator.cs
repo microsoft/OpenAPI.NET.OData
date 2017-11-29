@@ -702,24 +702,21 @@ namespace Microsoft.OpenApi.OData.Generator
                 // Its schema value follows the rules for Schema Objects for complex types, with one property per action parameter.
                 operation.RequestBody = context.CreateRequestBody(actionImport);
 
-                operation.Responses = context.CreateResponses(actionImport);
             }
             else
             {
                 IEdmFunctionImport functionImport = (IEdmFunctionImport)operationImport;
 
-                operation.Responses = context.CreateResponses(functionImport);
+                //The parameters array contains a Parameter Object for each parameter of the function overload,
+                // and it contains specific Parameter Objects for the allowed system query options.
+                operation.Parameters = context.CreateParameters(functionImport);
             }
 
             // The responses object contains a name/value pair for the success case (HTTP response code 200)
             // describing the structure of the success response by referencing an appropriate schema
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
-            //operation.Responses = new OpenApiResponses
-            //{
-            //    { "204", "204".GetResponse() },
-            //    { "default", "default".GetResponse() }
-            //};
+            operation.Responses = context.CreateResponses(operationImport);
 
             return operation;
         }
