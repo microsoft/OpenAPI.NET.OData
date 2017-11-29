@@ -638,7 +638,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
 
-                operation.Responses = function.CreateResponses();
+                operation.Responses = context.CreateResponses(function);
             }
             else
             {
@@ -649,7 +649,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // i.e. require ETags for modification operations, the parameters array contains
                 // a Parameter Object for the If-Match header.
 
-                operation.Responses = action.CreateResponses();
+                operation.Responses = context.CreateResponses(action);
             }
 
             // TODO: Depending on the result type of the bound action or function the parameters
@@ -702,13 +702,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 // Its schema value follows the rules for Schema Objects for complex types, with one property per action parameter.
                 operation.RequestBody = context.CreateRequestBody(actionImport);
 
-                operation.Responses = actionImport.Action.CreateResponses();
+                operation.Responses = context.CreateResponses(actionImport);
             }
             else
             {
                 IEdmFunctionImport functionImport = (IEdmFunctionImport)operationImport;
 
-                operation.Responses = functionImport.Function.CreateResponses();
+                operation.Responses = context.CreateResponses(functionImport);
             }
 
             // The responses object contains a name/value pair for the success case (HTTP response code 200)
