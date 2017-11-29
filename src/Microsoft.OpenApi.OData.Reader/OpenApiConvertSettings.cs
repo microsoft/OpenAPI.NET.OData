@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData
 
         public bool KeyAsSegment { get; set; }
 
-        public bool UnqualifiedFunction { get; set; }
+        public bool UnqualifiedCall { get; set; }
 
         public bool CaseInsensitive { get; set; }
 

@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -60,6 +61,52 @@ namespace Microsoft.OpenApi.OData.Generator
                     Required = true,
                     Schema = edmParameter.Type.CreateSchema()
                 });
+            }
+
+            return parameters;
+        }
+
+        public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunction function)
+        {
+            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
+
+            foreach (IEdmOperationParameter edmParameter in function.Parameters.Skip(1))
+            {
+                // Structured or collection-valued parameters are represented as a parameter alias
+                // in the path template and the parameters array contains a Parameter Object for
+                // the parameter alias as a query option of type string.
+                if (edmParameter.Type.IsStructured() ||
+                    edmParameter.Type.IsCollection())
+                {
+                    parameters.Add(new OpenApiParameter
+                    {
+                        Name = edmParameter.Name,
+                        In = ParameterLocation.Query, // as query option
+                        Required = true,
+                        Schema = new OpenApiSchema
+                        {
+                            Type = "string",
+
+                            // These Parameter Objects optionally can contain the field description,
+                            // whose value is the value of the unqualified annotation Core.Description of the parameter.
+                            Description = context.Model.GetDescriptionAnnotation(edmParameter)
+                        },
+
+                        // The parameter description describes the format this URL-encoded JSON object or array, and/or reference to [OData-URL].
+                        Description = "The URL-encoded JSON " + (edmParameter.Type.IsStructured() ? "array" : "object")
+                    });
+                }
+                else
+                {
+                    // Primitive parameters use the same type mapping as described for primitive properties.
+                    parameters.Add(new OpenApiParameter
+                    {
+                        Name = edmParameter.Name,
+                        In = ParameterLocation.Path,
+                        Required = true,
+                        Schema = edmParameter.Type.CreateSchema()
+                    });
+                }
             }
 
             return parameters;

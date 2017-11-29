@@ -317,19 +317,20 @@
         }
       }
     },
-    "/People('{UserName}')/GetFavoriteAirline(person={person})": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline(person={person})": {
       "get": {
         "tags": [
-          "person"
+          "People"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
           {
-            "name": "person",
+            "name": "UserName",
             "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "type": "string"
             }
           }
         ],
@@ -350,21 +351,17 @@
         }
       }
     },
-    "/People('{UserName}')/GetFriendsTrips(person={person},userName={userName})": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})": {
       "get": {
+        "tags": [
+          "People"
+        ],
         "summary": "Invoke function GetFriendsTrips",
         "parameters": [
           {
-            "name": "person",
+            "name": "UserName",
             "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "userName",
-            "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
               "type": "string"
@@ -391,21 +388,17 @@
         }
       }
     },
-    "/People('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName})": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(person={person},lastName={lastName})": {
       "get": {
+        "tags": [
+          "People"
+        ],
         "summary": "Invoke function UpdatePersonLastName",
         "parameters": [
           {
-            "name": "person",
+            "name": "UserName",
             "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "lastName",
-            "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
               "type": "string"
@@ -430,38 +423,45 @@
         }
       }
     },
-    "/People('{UserName}')/ShareTrip": {
+    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
-        "summary": "Invoke action ShareTrip",
+        "tags": [
+          "People"
+        ],
+        "summary": "Invoke action ",
         "parameters": [
           {
-            "name": "personInstance",
+            "name": "UserName",
             "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "userName",
-            "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "tripId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": -2147483648,
-              "type": "integer",
-              "format": "int32"
-            }
           }
         ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Success"
@@ -1314,19 +1314,20 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/GetFavoriteAirline(person={person})": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline(person={person})": {
       "get": {
         "tags": [
-          "person"
+          "NewComePeople"
         ],
         "summary": "Invoke function GetFavoriteAirline",
         "parameters": [
           {
-            "name": "person",
+            "name": "UserName",
             "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "type": "string"
             }
           }
         ],
@@ -1347,21 +1348,17 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/GetFriendsTrips(person={person},userName={userName})": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})": {
       "get": {
+        "tags": [
+          "NewComePeople"
+        ],
         "summary": "Invoke function GetFriendsTrips",
         "parameters": [
           {
-            "name": "person",
+            "name": "UserName",
             "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "userName",
-            "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
               "type": "string"
@@ -1388,21 +1385,17 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/UpdatePersonLastName(person={person},lastName={lastName})": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(person={person},lastName={lastName})": {
       "get": {
+        "tags": [
+          "NewComePeople"
+        ],
         "summary": "Invoke function UpdatePersonLastName",
         "parameters": [
           {
-            "name": "person",
+            "name": "UserName",
             "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "lastName",
-            "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
               "type": "string"
@@ -1427,38 +1420,45 @@
         }
       }
     },
-    "/NewComePeople('{UserName}')/ShareTrip": {
+    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
-        "summary": "Invoke action ShareTrip",
+        "tags": [
+          "NewComePeople"
+        ],
+        "summary": "Invoke action ",
         "parameters": [
           {
-            "name": "personInstance",
+            "name": "UserName",
             "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "userName",
-            "in": "path",
+            "description": "key: UserName",
             "required": true,
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "tripId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": -2147483648,
-              "type": "integer",
-              "format": "int32"
-            }
           }
         ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Success"
@@ -1562,22 +1562,12 @@
         }
       }
     },
-    "/Me/GetFavoriteAirline(person={person})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline(person={person})": {
       "get": {
         "tags": [
-          "person"
+          "Me"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "parameters": [
-          {
-            "name": "person",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -1595,18 +1585,13 @@
         }
       }
     },
-    "/Me/GetFriendsTrips(person={person},userName={userName})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(person={person},userName={userName})": {
       "get": {
+        "tags": [
+          "Me"
+        ],
         "summary": "Invoke function GetFriendsTrips",
         "parameters": [
-          {
-            "name": "person",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
           {
             "name": "userName",
             "in": "path",
@@ -1636,18 +1621,13 @@
         }
       }
     },
-    "/Me/UpdatePersonLastName(person={person},lastName={lastName})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(person={person},lastName={lastName})": {
       "get": {
+        "tags": [
+          "Me"
+        ],
         "summary": "Invoke function UpdatePersonLastName",
         "parameters": [
-          {
-            "name": "person",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
           {
             "name": "lastName",
             "in": "path",
@@ -1675,38 +1655,34 @@
         }
       }
     },
-    "/Me/ShareTrip": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
-        "summary": "Invoke action ShareTrip",
-        "parameters": [
-          {
-            "name": "personInstance",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-            }
-          },
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tripId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": -2147483648,
-              "type": "integer",
-              "format": "int32"
-            }
-          }
+        "tags": [
+          "Me"
         ],
+        "summary": "Invoke action ",
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "204": {
             "description": "Success"
@@ -1719,6 +1695,9 @@
     },
     "/GetPersonWithMostFriends()": {
       "get": {
+        "tags": [
+          "People"
+        ],
         "summary": "Invoke function GetPersonWithMostFriends",
         "responses": {
           "200": {
@@ -1739,55 +1718,10 @@
     },
     "/GetNearestAirport(lat={lat},lon={lon})": {
       "get": {
-        "summary": "Invoke function GetNearestAirport",
-        "parameters": [
-          {
-            "name": "lat",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "string"
-                },
-                {
-                  "enum": [
-                    "-INF",
-                    "INF",
-                    "NaN"
-                  ]
-                }
-              ],
-              "format": "double"
-            }
-          },
-          {
-            "name": "lon",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "string"
-                },
-                {
-                  "enum": [
-                    "-INF",
-                    "INF",
-                    "NaN"
-                  ]
-                }
-              ],
-              "format": "double"
-            }
-          }
+        "tags": [
+          "Airports"
         ],
+        "summary": "Invoke function GetNearestAirport",
         "responses": {
           "200": {
             "description": "Success",
@@ -1807,7 +1741,7 @@
     },
     "/ResetDataSource": {
       "post": {
-        "summary": "Invoke action ResetDataSource",
+        "summary": "Invoke action ",
         "responses": {
           "204": {
             "description": "Success"

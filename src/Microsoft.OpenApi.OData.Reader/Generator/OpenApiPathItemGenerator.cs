@@ -3,10 +3,9 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 
@@ -178,23 +177,35 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the bound operations for the navigation source.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <param name="singleton">The singleton.</param>
+        /// <param name="navigationSource">The navigation source.</param>
         /// <returns>The name/value pairs describing the allowed operations on this navigation source.</returns>
-        public static IDictionary<string, OpenApiPathItem> CreateOperationPathItems(this ODataContext context, IEdmNavigationSource navigationSource)
+        public static IDictionary<string, OpenApiPathItem> CreateOperationPathItems(this ODataContext context,
+            IEdmNavigationSource navigationSource)
         {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
             IDictionary<string, OpenApiPathItem> operationPathItems = new Dictionary<string, OpenApiPathItem>();
 
             IEnumerable<IEdmOperation> operations;
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
+
             // collection bound
             if (entitySet != null)
             {
                 operations = context.FindOperations(navigationSource.EntityType(), collection: true);
                 foreach (var operation in operations)
                 {
-                    OpenApiPathItem openApiOperation = context.CreatePathItem(operation);
-                    string operationPathName = context.CreatePathItemName(operation);
-                    operationPathItems.Add("/" + navigationSource.Name + operationPathName, openApiOperation);
+                    OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation);
+                    string pathName = context.CreatePathItemName(operation);
+                    operationPathItems.Add("/" + navigationSource.Name + pathName, pathItem);
                 }
             }
 
@@ -202,219 +213,113 @@ namespace Microsoft.OpenApi.OData.Generator
             operations = context.FindOperations(navigationSource.EntityType(), collection: false);
             foreach (var operation in operations)
             {
-                OpenApiPathItem openApiOperation = context.CreatePathItem(operation);
-                string operationPathName = context.CreatePathItemName(operation);
+                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation);
+                string pathName = context.CreatePathItemName(operation);
 
                 string temp;
                 if (entitySet != null)
                 {
                     temp = context.CreateEntityPathName(entitySet);
+
+                    OpenApiOperation openApiOperation = pathItem.Operations.First().Value;
+                    Debug.Assert(openApiOperation != null);
+                    openApiOperation.Parameters = entitySet.EntityType().CreateKeyParameters();
                 }
                 else
                 {
                     temp = "/" + navigationSource.Name;
                 }
-                operationPathItems.Add(temp + operationPathName, openApiOperation);
+
+                operationPathItems.Add(temp + pathName, pathItem);
             }
 
             return operationPathItems;
         }
 
         /// <summary>
-        /// Create the path item name for the entity from <see cref="IEdmEntitySet"/>.
+        /// Create a <see cref="OpenApiPathItem"/> for a single <see cref="IEdmOperation"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <param name="entitySet">The entity set.</param>
-        /// <returns>The created path item name.</returns>
-        public static string CreateEntityPathName(this ODataContext context, IEdmEntitySet entitySet)
+        /// <param name="navigationSource">The binding navigation source.</param>
+        /// <param name="edmOperation">The Edm opeation.</param>
+        /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
+        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource, IEdmOperation edmOperation)
         {
             if (context == null)
             {
                 throw Error.ArgumentNull(nameof(context));
             }
 
-            if (entitySet == null)
+            if (navigationSource == null)
             {
-                throw Error.ArgumentNull(nameof(entitySet));
+                throw Error.ArgumentNull(nameof(navigationSource));
             }
 
-            string keyString;
-            IList<IEdmStructuralProperty> keys = entitySet.EntityType().Key().ToList();
-            if (keys.Count() == 1)
+            if (edmOperation == null)
             {
-                keyString = "{" + keys.First().Name + "}";
+                throw Error.ArgumentNull(nameof(edmOperation));
+            }
 
-                if (context.Settings.KeyAsSegment)
-                {
-                    return "/" + entitySet.Name + "/" + keyString;
-                }
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            OpenApiOperation operation = context.CreateOperation(navigationSource, edmOperation);
+
+            if (edmOperation.IsAction())
+            {
+                // The Path Item Object for a bound action contains the keyword post,
+                // The value of the operation keyword is an Operation Object that describes how to invoke the action.
+                pathItem.AddOperation(OperationType.Post, operation);
             }
             else
             {
-                IList<string> temps = new List<string>();
-                foreach (var keyProperty in entitySet.EntityType().Key())
-                {
-                    temps.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
-                }
-                keyString = String.Join(",", temps);
+                // The Path Item Object for a bound function contains the keyword get,
+                // The value of the operation keyword is an Operation Object that describes how to invoke the function.
+                pathItem.AddOperation(OperationType.Get, operation);
             }
 
-            return "/" + entitySet.Name + "('" + keyString + "')";
-        }
-
-        public static string CreateSingletonPathName(this ODataContext context, IEdmSingleton singleton)
-        {
-            return "/" + singleton.Name;
-        }
-
-        private static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmOperationImport operationImport)
-        {
-            if (operationImport.Operation.IsAction())
-            {
-                return context.CreatePathItem((IEdmActionImport)operationImport);
-            }
-
-            return context.CreatePathItem((IEdmFunctionImport)operationImport);
-        }
-
-        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmActionImport actionImport)
-        {
-            return context.CreatePathItem(actionImport.Action);
-        }
-
-        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmFunctionImport functionImport)
-        {
-            return context.CreatePathItem(functionImport.Function);
-        }
-
-
-        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmOperation operation)
-        {
-            if (operation.IsAction())
-            {
-                return context.CreatePathItem((IEdmAction)operation);
-            }
-
-            return context.CreatePathItem((IEdmFunction)operation);
-        }
-
-        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmAction action)
-        {
-            OpenApiPathItem pathItem = new OpenApiPathItem();
-
-            OpenApiOperation post = new OpenApiOperation
-            {
-                Summary = "Invoke action " + action.Name,
-                Tags = CreateTags(action),
-                Parameters = action.CreateParameters(),
-                Responses = action.CreateResponses()
-            };
-
-            pathItem.AddOperation(OperationType.Post, post);
             return pathItem;
         }
 
-        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmFunction function)
+        /// <summary>
+        /// Create a <see cref="OpenApiPathItem"/> for a single <see cref="IEdmOperationImport"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="operationImport">The Edm operation import.</param>
+        /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
+        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmOperationImport operationImport)
         {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (operationImport == null)
+            {
+                throw Error.ArgumentNull(nameof(operationImport));
+            }
+
             OpenApiPathItem pathItem = new OpenApiPathItem();
-            OpenApiOperation get = new OpenApiOperation
-            {
-                Summary = "Invoke function " + function.Name,
-                Tags = CreateTags(function),
-                Parameters = function.CreateParameters(),
-                Responses = function.CreateResponses()
-            };
 
-            pathItem.AddOperation(OperationType.Get, get);
+            OpenApiOperation operation = context.CreateOperation(operationImport);
+
+            if (operationImport.IsActionImport())
+            {
+                // Each action import is represented as a name/value pair whose name is the service-relative
+                // resource path of the action import prepended with a forward slash, and whose value is a Path
+                // Item Object containing the keyword post with an Operation Object as value that describes
+                // how to invoke the action import.
+                pathItem.AddOperation(OperationType.Post, operation);
+            }
+            else
+            {
+                // Each function import is represented as a name/value pair whose name is the service-relative
+                // resource path of the function import prepended with a forward slash, and whose value is a Path
+                // Item Object containing the keyword get with an Operation Object as value that describes
+                // how to invoke the function import.
+                pathItem.AddOperation(OperationType.Get, operation);
+            }
+
             return pathItem;
-        }
-
-        public static string CreatePathItemName(this ODataContext context, IEdmActionImport actionImport)
-        {
-            return context.CreatePathItemName(actionImport.Action);
-        }
-
-        public static string CreatePathItemName(this ODataContext context, IEdmAction action)
-        {
-            return "/" + action.Name;
-        }
-
-        private static string CreatePathItemName(this ODataContext context, IEdmFunctionImport functionImport)
-        {
-            return context.CreatePathItemName(functionImport.Function);
-        }
-
-        public static string CreatePathItemName(this ODataContext context, IEdmFunction function)
-        {
-            StringBuilder functionName = new StringBuilder("/" + function.Name + "(");
-
-            functionName.Append(String.Join(",",
-                function.Parameters.Select(p => p.Name + "=" + "{" + p.Name + "}")));
-            functionName.Append(")");
-
-            return functionName.ToString();
-        }
-
-        public static string CreatePathItemName(this ODataContext context, IEdmOperationImport operationImport)
-        {
-            if (operationImport.Operation.IsAction())
-            {
-                return context.CreatePathItemName((IEdmActionImport)operationImport);
-            }
-
-            return context.CreatePathItemName((IEdmFunctionImport)operationImport);
-        }
-
-        public static string CreatePathItemName(this ODataContext context, IEdmOperation operation)
-        {
-            if (operation.IsAction())
-            {
-                return context.CreatePathItemName((IEdmAction)operation);
-            }
-
-            return context.CreatePathItemName((IEdmFunction)operation);
-        }
-
-        private static IList<string> CreateTags(this ODataContext context, IEdmOperationImport operationImport)
-        {
-            if (operationImport.EntitySet != null)
-            {
-                var pathExpression = operationImport.EntitySet as IEdmPathExpression;
-                if (pathExpression != null)
-                {
-                    return new List<string>
-                    {
-                        PathAsString(pathExpression.PathSegments)
-                    };
-                }
-            }
-
-            return null;
-        }
-
-        private static IList<OpenApiTag> CreateTags(IEdmOperation operation)
-        {
-            if (operation.EntitySetPath != null)
-            {
-                var pathExpression = operation.EntitySetPath as IEdmPathExpression;
-                if (pathExpression != null)
-                {
-                    return new List<OpenApiTag>
-                    {
-                        new OpenApiTag
-                        {
-                            Name = PathAsString(pathExpression.PathSegments)
-                        }
-                    };
-                }
-            }
-
-            return null;
-        }
-
-        internal static string PathAsString(IEnumerable<string> path)
-        {
-            return String.Join("/", path);
         }
     }
 }

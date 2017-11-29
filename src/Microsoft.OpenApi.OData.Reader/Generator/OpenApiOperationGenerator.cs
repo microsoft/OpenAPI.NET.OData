@@ -3,6 +3,8 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
@@ -564,6 +566,181 @@ namespace Microsoft.OpenApi.OData.Generator
             };
 
             return operation;
+        }
+        #endregion
+
+        #region EdmOperation Operations
+
+        /// <summary>
+        /// Create a <see cref="OpenApiOperation"/> for a <see cref="IEdmOperation"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The binding navigation source.</param>
+        /// <param name="edmOperation">The Edm operation.</param>
+        /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
+        public static OpenApiOperation CreateOperation(this ODataContext context, IEdmNavigationSource navigationSource,
+            IEdmOperation edmOperation)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            if (edmOperation == null)
+            {
+                throw Error.ArgumentNull(nameof(edmOperation));
+            }
+
+            OpenApiOperation operation = new OpenApiOperation();
+            operation.Summary = edmOperation.IsAction() ? "Invoke action " : "Invoke function " + edmOperation.Name;
+
+            // The tags array of the Operation Object includes the entity set name.
+            operation.Tags = new List<OpenApiTag>
+            {
+                new OpenApiTag { Name = navigationSource.Name }
+            };
+
+            // For actions and functions bound to a single entity within an entity
+            // set the parameters array contains a Parameter Object for each key property,
+            // using the same type mapping as described for primitive properties.
+            IEdmSingleton singleton = navigationSource as IEdmSingleton;
+            if (singleton == null && edmOperation.IsBound)
+            {
+                IEdmOperationParameter bindingParameter = edmOperation.Parameters.FirstOrDefault();
+                if (bindingParameter !=null &&
+                    !bindingParameter.Type.IsCollection() && // bound to a single entity
+                    bindingParameter.Type.IsEntity())
+                {
+                    operation.Parameters = bindingParameter
+                        .Type.AsEntity().EntityDefinition().CreateKeyParameters();
+                }
+            }
+
+            if (edmOperation.IsFunction())
+            {
+                // For bound functions, the parameters array contains a Parameter Object for each non-binding parameter.
+                IEdmFunction function = (IEdmFunction)edmOperation;
+                IList<OpenApiParameter> parameters = context.CreateParameters(function);
+                if (operation.Parameters == null)
+                {
+                    operation.Parameters = parameters;
+                }
+                else
+                {
+                    foreach(var parameter in parameters)
+                    {
+                        operation.Parameters.Add(parameter);
+                    }
+                }
+
+                operation.Responses = function.CreateResponses();
+            }
+            else
+            {
+                IEdmAction action = (IEdmAction)edmOperation;
+                operation.RequestBody = context.CreateRequestBody(action);
+
+                // TODO: For bound actions on entities that use optimistic concurrency control,
+                // i.e. require ETags for modification operations, the parameters array contains
+                // a Parameter Object for the If-Match header.
+
+                operation.Responses = action.CreateResponses();
+            }
+
+            // TODO: Depending on the result type of the bound action or function the parameters
+            // array contains specific Parameter Objects for the allowed system query options.
+
+            // The responses object contains a name/value pair for the success case (HTTP response code 200)
+            // describing the structure of the success response by referencing an appropriate schema
+            // in the global schemas. In addition, it contains a default name/value pair for
+            // the OData error response referencing the global responses.
+            //operation.Responses = new OpenApiResponses
+            //{
+            //    { "204", "204".GetResponse() },
+            //    { "default", "default".GetResponse() }
+            //};
+
+            return operation;
+        }
+
+        public static OpenApiOperation CreateOperation(this ODataContext context,
+            IEdmOperationImport operationImport)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (operationImport == null)
+            {
+                throw Error.ArgumentNull(nameof(operationImport));
+            }
+
+            OpenApiOperation operation = new OpenApiOperation();
+            operation.Summary = operationImport.IsActionImport() ? "Invoke action " : "Invoke function " + operationImport.Name;
+
+            // If the action or function import specifies the EntitySet attribute,
+            // the tags array of the Operation Object includes the entity set name.
+            operation.Tags = CreateTags(operationImport);
+
+            if (operationImport.IsActionImport())
+            {
+                IEdmActionImport actionImport = (IEdmActionImport)operationImport;
+
+                // The requestBody field contains a Request Body Object describing the structure of the request body.
+                // Its schema value follows the rules for Schema Objects for complex types, with one property per action parameter.
+                operation.RequestBody = context.CreateRequestBody(actionImport);
+
+                operation.Responses = actionImport.Action.CreateResponses();
+            }
+            else
+            {
+                IEdmFunctionImport functionImport = (IEdmFunctionImport)operationImport;
+
+                operation.Responses = functionImport.Function.CreateResponses();
+            }
+
+            // The responses object contains a name/value pair for the success case (HTTP response code 200)
+            // describing the structure of the success response by referencing an appropriate schema
+            // in the global schemas. In addition, it contains a default name/value pair for
+            // the OData error response referencing the global responses.
+            //operation.Responses = new OpenApiResponses
+            //{
+            //    { "204", "204".GetResponse() },
+            //    { "default", "default".GetResponse() }
+            //};
+
+            return operation;
+        }
+
+        private static IList<OpenApiTag> CreateTags(IEdmOperationImport operationImport)
+        {
+            if (operationImport.EntitySet != null)
+            {
+                var pathExpression = operationImport.EntitySet as IEdmPathExpression;
+                if (pathExpression != null)
+                {
+                    return new List<OpenApiTag>
+                    {
+                        new OpenApiTag
+                        {
+                            Name = PathAsString(pathExpression.PathSegments)
+                        }
+                    };
+                }
+            }
+
+            return null;
+        }
+
+        internal static string PathAsString(IEnumerable<string> path)
+        {
+            return String.Join("/", path);
         }
         #endregion
     }
