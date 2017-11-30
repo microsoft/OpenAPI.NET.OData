@@ -8,6 +8,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
 using Xunit.Abstractions;
@@ -32,9 +33,273 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Throws<ArgumentNullException>("context", () => context.CreateSchemas());
         }
 
+        #region StructuredTypeSchema
+        [Fact]
+        public void CreateStructuredTypeSchemaThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateStructuredTypeSchema(structuredType: null));
+        }
+
+        [Fact]
+        public void CreateStructuredTypeSchemaThrowArgumentNullEnumType()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmCoreModel.Instance);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("structuredType", () => context.CreateStructuredTypeSchema(structuredType: null));
+        }
+
+        [Fact]
+        public void CreateComplexTypeWithoutBaseSchemaReturnCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "Address");
+            Assert.NotNull(complex); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(complex);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.Equal("object", schema.Type);
+            Assert.Null(schema.AllOf);
+
+            Assert.NotNull(schema.Properties);
+            Assert.Equal(2, schema.Properties.Count);
+            Assert.Equal(new string[] { "Street", "City" }, schema.Properties.Select(e => e.Key));
+            Assert.Equal("Complex type 'Address' description.", schema.Description);
+            Assert.Equal("Address", schema.Title);
+
+            // Act
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""title"": ""Address"",
+  ""type"": ""object"",
+  ""properties"": {
+    ""Street"": {
+      ""type"": ""string"",
+      ""nullable"": true
+    },
+    ""City"": {
+      ""type"": ""string"",
+      ""nullable"": true
+    }
+  },
+  ""description"": ""Complex type 'Address' description.""
+}"
+.Replace(), json);
+        }
+
+        [Fact]
+        public void CreateComplexTypeWithBaseSchemaReturnCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "Tree");
+            Assert.NotNull(complex); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(complex);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.True(String.IsNullOrEmpty(schema.Type));
+
+            Assert.NotNull(schema.AllOf);
+            Assert.Null(schema.AnyOf);
+            Assert.Null(schema.OneOf);
+            Assert.Null(schema.Properties);
+
+            Assert.Equal(2, schema.AllOf.Count);
+            var baseSchema = schema.AllOf.First();
+            Assert.NotNull(baseSchema.Reference);
+            Assert.Equal(ReferenceType.Schema, baseSchema.Reference.Type);
+            Assert.Equal("NS.LandPlant", baseSchema.Reference.Id);
+
+            var declaredSchema = schema.AllOf.Last();
+            Assert.Equal("object", declaredSchema.Type);
+            Assert.Null(declaredSchema.AllOf);
+            Assert.Null(declaredSchema.AnyOf);
+            Assert.Null(declaredSchema.OneOf);
+
+            Assert.NotNull(declaredSchema.Properties);
+            Assert.Equal(1, declaredSchema.Properties.Count);
+            var property = Assert.Single(declaredSchema.Properties);
+            Assert.Equal("Price", property.Key);
+            Assert.Equal("decimal", property.Value.Format);
+            Assert.NotNull(property.Value.OneOf);
+            Assert.Equal(new string[] { "number", "string" }, property.Value.OneOf.Select(e => e.Type));
+
+            Assert.Equal("Complex type 'Tree' description.", declaredSchema.Description);
+            Assert.Equal("Tree", declaredSchema.Title);
+
+            // Act
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""allOf"": [
+    {
+      ""$ref"": ""#/components/schemas/NS.LandPlant""
+    },
+    {
+      ""title"": ""Tree"",
+      ""type"": ""object"",
+      ""properties"": {
+        ""Price"": {
+          ""multipleOf"": 1,
+          ""oneOf"": [
+            {
+              ""type"": ""number""
+            },
+            {
+              ""type"": ""string""
+            }
+          ],
+          ""format"": ""decimal""
+        }
+      },
+      ""description"": ""Complex type 'Tree' description.""
+    }
+  ]
+}"
+.Replace(), json);
+        }
+
+        [Fact]
+        public void CreateEntityTypeWithoutBaseSchemaReturnCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "Zoo");
+            Assert.NotNull(entity); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(entity);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.Equal("object", schema.Type);
+            Assert.Null(schema.AllOf);
+
+            Assert.NotNull(schema.Properties);
+            Assert.Equal(2, schema.Properties.Count);
+            Assert.Equal(new string[] { "Id", "Creatures" }, schema.Properties.Select(e => e.Key));
+            Assert.Equal("Entity type 'Zoo' description.", schema.Description);
+            Assert.Equal("Zoo", schema.Title);
+
+            // Act
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""title"": ""Zoo"",
+  ""type"": ""object"",
+  ""properties"": {
+    ""Id"": {
+      ""maximum"": 2147483647,
+      ""minimum"": -2147483648,
+      ""type"": ""integer"",
+      ""format"": ""int32""
+    },
+    ""Creatures"": {
+      ""type"": ""array"",
+      ""items"": {
+        ""$ref"": ""#/components/schemas/NS.Creature""
+      }
+    }
+  },
+  ""description"": ""Entity type 'Zoo' description.""
+}"
+.Replace(), json);
+        }
+
+        [Fact]
+        public void CreateEntityTypeWithBaseSchemaReturnCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "Human");
+            Assert.NotNull(entity); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(entity);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.True(String.IsNullOrEmpty(schema.Type));
+
+            Assert.NotNull(schema.AllOf);
+            Assert.Null(schema.AnyOf);
+            Assert.Null(schema.OneOf);
+            Assert.Null(schema.Properties);
+
+            Assert.Equal(2, schema.AllOf.Count);
+            var baseSchema = schema.AllOf.First();
+            Assert.NotNull(baseSchema.Reference);
+            Assert.Equal(ReferenceType.Schema, baseSchema.Reference.Type);
+            Assert.Equal("NS.Animal", baseSchema.Reference.Id);
+
+            var declaredSchema = schema.AllOf.Last();
+            Assert.Equal("object", declaredSchema.Type);
+            Assert.Null(declaredSchema.AllOf);
+            Assert.Null(declaredSchema.AnyOf);
+            Assert.Null(declaredSchema.OneOf);
+
+            Assert.NotNull(declaredSchema.Properties);
+            Assert.Equal(1, declaredSchema.Properties.Count);
+            var property = Assert.Single(declaredSchema.Properties);
+            Assert.Equal("Name", property.Key);
+            Assert.Equal("string", property.Value.Type);
+            Assert.Null(property.Value.OneOf);
+
+            Assert.Equal("Entity type 'Human' description.", declaredSchema.Description);
+            Assert.Equal("Human", declaredSchema.Title);
+
+            // Act
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            _output.WriteLine(json);
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""allOf"": [
+    {
+      ""$ref"": ""#/components/schemas/NS.Animal""
+    },
+    {
+      ""title"": ""Human"",
+      ""type"": ""object"",
+      ""properties"": {
+        ""Name"": {
+          ""type"": ""string""
+        }
+      },
+      ""description"": ""Entity type 'Human' description.""
+    }
+  ]
+}"
+.Replace(), json);
+        }
+        #endregion
+
         #region EnumTypeSchema
         [Fact]
-        public void CreateEnumTypeThrowArgumentNullContext()
+        public void CreateEnumTypeSchemaThrowArgumentNullContext()
         {
             // Arrange
             ODataContext context = null;
@@ -44,7 +309,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEnumTypeThrowArgumentNullEnumType()
+        public void CreateEnumTypeSchemaThrowArgumentNullEnumType()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
@@ -54,7 +319,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateEnumTypeReturnCorrectSchema()
+        public void CreateEnumTypeSchemaReturnCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
@@ -78,7 +343,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
-            // Act
+            // Assert
             Assert.NotNull(json);
             Assert.Equal(@"{
   ""title"": ""Color"",

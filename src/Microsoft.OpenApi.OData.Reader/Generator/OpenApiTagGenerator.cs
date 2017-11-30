@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             tags.Add(new OpenApiTag
                             {
                                 Name = entitySet.Name,
-                                Description = context.Model.GetDescription(entitySet)
+                                Description = context.Model.GetDescriptionAnnotation(entitySet)
                             });
                             break;
 
@@ -55,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             tags.Add(new OpenApiTag
                             {
                                 Name = singleton.Name,
-                                Description = context.Model.GetDescription(singleton)
+                                Description = context.Model.GetDescriptionAnnotation(singleton)
                             });
                             break;
 
@@ -95,7 +95,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiTag
             {
                 Name = operationImport.Name,
-                Description = context.Model.GetDescription(operationImport)
+                Description = context.Model.GetDescriptionAnnotation(operationImport)
             };
         }
     }

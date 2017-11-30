@@ -129,7 +129,12 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             // Spec has different configure for double, AnyOf or OneOf?
-            OpenApiSchema schema = new OpenApiSchema();
+            OpenApiSchema schema = new OpenApiSchema
+            {
+                AllOf = null,
+                OneOf = null,
+                AnyOf = null
+            };
             switch (primitiveType.PrimitiveKind)
             {
                 case EdmPrimitiveTypeKind.Binary: // binary

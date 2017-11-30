@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.OData.Properties;
@@ -90,58 +91,6 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
-        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmStructuredType"/>.
-        /// </summary>
-        /// <param name="context">The OData context.</param>
-        /// <param name="structuredType">The Edm structured type.</param>
-        /// <param name="processBase">The process the based.</param>
-        /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase)
-        {
-            if (processBase && structuredType.BaseType != null)
-            {
-                // A structured type with a base type is represented as a Schema Object
-                // that contains the keyword allOf whose value is an array with two items:
-                return new OpenApiSchema
-                {
-                    AllOf = new List<OpenApiSchema>
-                    {
-                        // 1. a JSON Reference to the Schema Object of the base type
-                        new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = structuredType.BaseType.FullTypeName()
-                            }
-                        },
-
-                        // 2. a Schema Object describing the derived type
-                        context.CreateStructuredTypeSchema(structuredType, false)
-                    }
-                };
-            }
-            else
-            {
-                // A structured type without a base type is represented as a Schema Object of type object
-                return new OpenApiSchema
-                {
-                    Title = (structuredType as IEdmSchemaElement).Name,
-
-                    Type = "object",
-
-                    // Each structural property and navigation property is represented
-                    // as a name/value pair of the standard OpenAPI properties object.
-                    Properties = context.CreateStructuredTypePropertiesSchema(structuredType),
-
-                    // It optionally can contain the field description,
-                    // whose value is the value of the unqualified annotation Core.Description of the structured type.
-                    // However, ODL doesn't support the Core.Description on structure type.
-                };
-            }
-        }
-
-        /// <summary>
         /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmEnumType"/>.
         /// An enumeration type is represented as a Schema Object of type string containing the OpenAPI Specification enum keyword.
         /// Its value is an array that contains a string with the member name for each enumeration member.
@@ -184,6 +133,27 @@ namespace Microsoft.OpenApi.OData.Generator
             return schema;
         }
 
+        /// <summary>
+        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmStructuredType"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="structuredType">The Edm structured type.</param>
+        /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
+        public static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (structuredType == null)
+            {
+                throw Error.ArgumentNull(nameof(structuredType));
+            }
+
+            return context.CreateStructuredTypeSchema(structuredType, true);
+        }
+
         // 4.6.1.1 Properties
         public static IDictionary<string, OpenApiSchema> CreateStructuredTypePropertiesSchema(this ODataContext context, IEdmStructuredType structuredType)
         {
@@ -211,6 +181,74 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiSchema CreateTypeDefinitionSchema(this ODataContext context, IEdmTypeDefinition typeDefinition)
         {
             return typeDefinition?.UnderlyingType?.CreateSchema();
+        }
+
+        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase)
+        {
+            Debug.Assert(context != null);
+            Debug.Assert(structuredType != null);
+
+            if (processBase && structuredType.BaseType != null)
+            {
+                // A structured type with a base type is represented as a Schema Object
+                // that contains the keyword allOf whose value is an array with two items:
+                return new OpenApiSchema
+                {
+                    AllOf = new List<OpenApiSchema>
+                    {
+                        // 1. a JSON Reference to the Schema Object of the base type
+                        new OpenApiSchema
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = structuredType.BaseType.FullTypeName()
+                            }
+                        },
+
+                        // 2. a Schema Object describing the derived type
+                        context.CreateStructuredTypeSchema(structuredType, false)
+                    },
+
+                    AnyOf = null,
+                    OneOf = null,
+                    Properties = null
+                };
+            }
+            else
+            {
+                // A structured type without a base type is represented as a Schema Object of type object
+                OpenApiSchema schema = new OpenApiSchema
+                {
+                    Title = (structuredType as IEdmSchemaElement)?.Name,
+
+                    Type = "object",
+
+                    // Each structural property and navigation property is represented
+                    // as a name/value pair of the standard OpenAPI properties object.
+                    Properties = context.CreateStructuredTypePropertiesSchema(structuredType),
+
+                    // make others null
+                    AllOf = null,
+                    OneOf = null,
+                    AnyOf = null
+                };
+
+                // It optionally can contain the field description,
+                // whose value is the value of the unqualified annotation Core.Description of the structured type.
+                if (structuredType.TypeKind == EdmTypeKind.Complex)
+                {
+                    IEdmComplexType complex = (IEdmComplexType)structuredType;
+                    schema.Description = context.Model.GetDescriptionAnnotation(complex);
+                }
+                else if (structuredType.TypeKind == EdmTypeKind.Entity)
+                {
+                    IEdmEntityType entity = (IEdmEntityType)structuredType;
+                    schema.Description = context.Model.GetDescriptionAnnotation(entity);
+                }
+
+                return schema;
+            }
         }
     }
 }

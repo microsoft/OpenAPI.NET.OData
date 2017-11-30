@@ -3,23 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
-using System.IO;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Microsoft.OpenApi.OData.Tests
 {
-    public class EdmModelExtensionsTests
+    public class EdmModelExtensionsTest
     {
-        private ITestOutputHelper _output;
-        public EdmModelExtensionsTests(ITestOutputHelper output)
-        {
-            _output = output;
-        }
-
         [Fact]
         public void GetDescriptionReturnsNullForElementWithoutCoreDescription()
         {
@@ -29,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(me); // Guard
 
             // Act
-            string description = model.GetDescription(me);
+            string description = model.GetDescriptionAnnotation(me);
 
             // Assert
             Assert.Null(description);
@@ -44,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(people); // Guard
 
             // Act
-            string description = model.GetDescription(people);
+            string description = model.GetDescriptionAnnotation(people);
 
             // Assert
             Assert.Equal("People's description.", description);
@@ -59,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(people); // Guard
 
             // Act
-            string description = model.GetLongDescription(people);
+            string description = model.GetLongDescriptionAnnotation(people);
 
             // Assert
             Assert.Equal("People's Long description.", description);
