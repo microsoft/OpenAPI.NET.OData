@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.OData.OpenApi.Properties.SRResource", typeof(SRResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.OpenApi.OData.Reader.Properties.SRResource", typeof(SRResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,6 +75,15 @@ namespace Microsoft.OpenApi.OData.Properties {
         internal static string ExtensionFieldNameMustBeginWithXMinus {
             get {
                 return ResourceManager.GetString("ExtensionFieldNameMustBeginWithXMinus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not supported {0} Edm type kind..
+        /// </summary>
+        internal static string NotSupportedEdmTypeKind {
+            get {
+                return ResourceManager.GetString("NotSupportedEdmTypeKind", resourceCulture);
             }
         }
         

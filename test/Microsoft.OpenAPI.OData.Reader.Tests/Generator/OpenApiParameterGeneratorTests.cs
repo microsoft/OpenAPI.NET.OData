@@ -14,8 +14,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiParameterGeneratorTest
     {
-        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
-
         [Fact]
         public void CreateParametersThrowArgumentNullContext()
         {

@@ -895,7 +895,8 @@
           "Blue",
           "White"
         ],
-        "type": "string"
+        "type": "string",
+        "description": "Enum type 'Color' description."
       },
       "DefaultNs.Person": {
         "title": "Person",

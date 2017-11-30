@@ -41,10 +41,15 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             var model = new EdmModel();
 
+            var coreDescription = CoreVocabularyModel.DescriptionTerm;
+
             var enumType = new EdmEnumType("DefaultNs", "Color");
             var blue = enumType.AddMember("Blue", new EdmEnumMemberValue(0));
             enumType.AddMember("White", new EdmEnumMemberValue(1));
             model.AddElement(enumType);
+
+            var annotation = new EdmVocabularyAnnotation(enumType, coreDescription, new EdmStringConstant("Enum type 'Color' description."));
+            model.AddVocabularyAnnotation(annotation);
 
             var person = new EdmEntityType("DefaultNs", "Person");
             var entityId = person.AddStructuralProperty("UserName", EdmCoreModel.Instance.GetString(false));
@@ -103,8 +108,7 @@ namespace Microsoft.OpenApi.OData.Tests
             entityContainer.AddElement(countriesOrRegions);
             entityContainer.AddElement(me);
 
-            var coreDescription = CoreVocabularyModel.DescriptionTerm;
-            var annotation = new EdmVocabularyAnnotation(people, coreDescription, new EdmStringConstant("People's description."));
+            annotation = new EdmVocabularyAnnotation(people, coreDescription, new EdmStringConstant("People's description."));
             model.AddVocabularyAnnotation(annotation);
 
             var coreLongDescription = CoreVocabularyModel.LongDescriptionTerm;

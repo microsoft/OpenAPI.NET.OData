@@ -3,7 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
+using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
 using Xunit.Abstractions;
@@ -17,6 +21,76 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             _output = output;
         }
+
+        [Fact]
+        public void CreateSchemasThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateSchemas());
+        }
+
+        #region EnumTypeSchema
+        [Fact]
+        public void CreateEnumTypeThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateEnumTypeSchema(enumType: null));
+        }
+
+        [Fact]
+        public void CreateEnumTypeThrowArgumentNullEnumType()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmCoreModel.Instance);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("enumType", () => context.CreateEnumTypeSchema(enumType: null));
+        }
+
+        [Fact]
+        public void CreateEnumTypeReturnCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(t => t.Name == "Color");
+            Assert.NotNull(enumType); // Guard
+
+            // Act
+            var schema = context.CreateEnumTypeSchema(enumType);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.Equal("string", schema.Type);
+            Assert.Equal("Enum type 'Color' description.", schema.Description);
+            Assert.Equal("Color", schema.Title);
+
+            Assert.NotNull(schema.Enum);
+            Assert.Equal(2, schema.Enum.Count);
+            Assert.Equal(new string[] { "Blue", "White" }, schema.Enum.Select(e => ((OpenApiString)e).Value));
+
+            // Act
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+
+            // Act
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""title"": ""Color"",
+  ""enum"": [
+    ""Blue"",
+    ""White""
+  ],
+  ""type"": ""string"",
+  ""description"": ""Enum type 'Color' description.""
+}".Replace(), json);
+        }
+        #endregion
 
         [Fact]
         public void NonNullableBooleanPropertyWithDefaultValueWorks()

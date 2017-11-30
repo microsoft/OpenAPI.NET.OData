@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
-    <RootNamespace>Microsoft.OpenApi.OData.Reader</RootNamespace>
+    <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
     <TargetFrameworks>net46; netstandard2.0</TargetFrameworks>
     <Company>Microsoft</Company>
     <Product>Microsoft.OpenApi.OData.Reader</Product>
