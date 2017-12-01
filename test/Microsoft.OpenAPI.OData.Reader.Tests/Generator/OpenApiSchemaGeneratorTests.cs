@@ -361,12 +361,13 @@ namespace Microsoft.OpenApi.OData.Tests
         public void NonNullableBooleanPropertyWithDefaultValueWorks()
         {
             // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
             IEdmStructuralProperty property = new EdmStructuralProperty(
                 entitType, "BooleanValue", EdmCoreModel.Instance.GetBoolean(false), "false");
 
             // Act
-            var schema = property.CreatePropertySchema();
+            var schema = context.CreatePropertySchema(property);
 
             // Assert
             Assert.NotNull(schema);
@@ -383,6 +384,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void NonNullableBinaryPropertyWithBothMaxLengthAndDefaultValueWorks()
         {
             // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
             var binaryType = new EdmBinaryTypeReference(EdmCoreModel.Instance.GetPrimitiveType(EdmPrimitiveTypeKind.Binary),
                 false, false, 44);
@@ -390,7 +392,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 entitType, "BinaryValue", binaryType, "T0RhdGE");
 
             // Act
-            var schema = property.CreatePropertySchema();
+            var schema = context.CreatePropertySchema(property);
 
             // Assert
             Assert.NotNull(schema);
@@ -409,12 +411,13 @@ namespace Microsoft.OpenApi.OData.Tests
         public void NonNullableIntegerPropertyWithDefaultValueWorks()
         {
             // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
             IEdmStructuralProperty property = new EdmStructuralProperty(
                 entitType, "IntegerValue", EdmCoreModel.Instance.GetInt32(false), "-128");
 
             // Act
-            var schema = property.CreatePropertySchema();
+            var schema = context.CreatePropertySchema(property);
 
             // Assert
             Assert.NotNull(schema);
@@ -434,12 +437,13 @@ namespace Microsoft.OpenApi.OData.Tests
         public void NonNullableDoublePropertyWithDefaultStringWorks()
         {
             // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
             IEdmStructuralProperty property = new EdmStructuralProperty(
                 entitType, "DoubleValue", EdmCoreModel.Instance.GetDouble(false), "3.1415926535897931");
 
             // Act
-            var schema = property.CreatePropertySchema();
+            var schema = context.CreatePropertySchema(property);
 
             // Assert
             Assert.NotNull(schema);

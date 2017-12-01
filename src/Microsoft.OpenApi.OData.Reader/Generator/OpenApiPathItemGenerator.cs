@@ -225,7 +225,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     OpenApiOperation openApiOperation = pathItem.Operations.First().Value;
                     Debug.Assert(openApiOperation != null);
-                    openApiOperation.Parameters = entitySet.EntityType().CreateKeyParameters();
+                    openApiOperation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
                 }
                 else
                 {

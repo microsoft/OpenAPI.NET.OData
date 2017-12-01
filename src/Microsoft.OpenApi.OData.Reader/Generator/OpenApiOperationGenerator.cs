@@ -265,7 +265,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 RequestBody = null
             };
 
-            operation.Parameters = entitySet.EntityType().CreateKeyParameters();
+            operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
             operation.Parameters.Add(entitySet.CreateSelectParameter());
 
@@ -337,7 +337,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
-            operation.Parameters = entitySet.EntityType().CreateKeyParameters();
+            operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
             // TODO: If the entity set uses optimistic concurrency control,
             // i.e. requires ETags for modification operations, the parameters array contains
@@ -409,7 +409,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 RequestBody = null
             };
 
-            operation.Parameters = entitySet.EntityType().CreateKeyParameters();
+            operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",
@@ -616,8 +616,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     !bindingParameter.Type.IsCollection() && // bound to a single entity
                     bindingParameter.Type.IsEntity())
                 {
-                    operation.Parameters = bindingParameter
-                        .Type.AsEntity().EntityDefinition().CreateKeyParameters();
+                    operation.Parameters = context.CreateKeyParameters(bindingParameter
+                        .Type.AsEntity().EntityDefinition());
                 }
             }
 

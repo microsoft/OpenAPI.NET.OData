@@ -116,7 +116,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Name = edmParameter.Name,
                         In = ParameterLocation.Path,
                         Required = true,
-                        Schema = edmParameter.Type.CreateSchema()
+                        Schema = context.CreateSchema(edmParameter.Type)
                     });
                 }
             }
@@ -129,7 +129,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="entityType">The entity type.</param>
         /// <returns>The created the list of <see cref="OpenApiParameter"/>.</returns>
-        public static IList<OpenApiParameter> CreateKeyParameters(this IEdmEntityType entityType)
+        public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, IEdmEntityType entityType)
         {
             if (entityType == null)
             {
@@ -147,7 +147,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     In = ParameterLocation.Path,
                     Required = true,
                     Description = "key: " + keyProperty.Name,
-                    Schema = keyProperty.Type.CreateSchema()
+                    Schema = context.CreateSchema(keyProperty.Type)
                 };
 
                 parameters.Add(parameter);

@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var parameter in action.Parameters.Skip(skip))
             {
-                parametersSchema.Properties.Add(parameter.Name, parameter.Type.CreateSchema());
+                parametersSchema.Properties.Add(parameter.Name, context.CreateSchema(parameter.Type));
             }
 
             OpenApiRequestBody requestBody = new OpenApiRequestBody

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Properties;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -18,35 +19,38 @@ namespace Microsoft.OpenApi.OData.Generator
     {
         private static string _externalResource = "https://raw.githubusercontent.com/oasis-tcs/odata-openapi/master/examples/odata-definitions.json";
 
-        public static OpenApiSchema CreatePropertySchema(this IEdmStructuralProperty property)
+        /// <summary>
+        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmTypeReference"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="edmTypeReference">The Edm type reference.</param>
+        /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
+        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmTypeReference edmTypeReference)
         {
-            if (property == null)
+            if (context == null)
             {
-                throw Error.ArgumentNull(nameof(property));
+                throw Error.ArgumentNull(nameof(context));
             }
 
-            OpenApiSchema schema = property.Type.CreateSchema();
-            schema.Default = CreateDefault(property);
-
-            return schema;
-        }
-
-        public static OpenApiSchema CreateSchema(this IEdmTypeReference reference)
-        {
-            if (reference == null)
+            if (edmTypeReference == null)
             {
-                return null;
+                throw Error.ArgumentNull(nameof(edmTypeReference));
             }
 
-            switch (reference.TypeKind())
+            switch (edmTypeReference.TypeKind())
             {
                 case EdmTypeKind.Collection:
+                    // Collection-valued structural and navigation are represented as Schema Objects of type array.
+                    // The value of the items keyword is a Schema Object specifying the type of the items. 
                     return new OpenApiSchema
                     {
                         Type = "array",
-                        Items = CreateSchema(reference.AsCollection().ElementType())
+                        Items = context.CreateSchema(edmTypeReference.AsCollection().ElementType())
                     };
 
+                // Complex, enum, entity, entity reference are represented as JSON References to the Schema Object of the complex,
+                // enum, entity and entity reference type, either as local references for types directly defined in the CSDL document,
+                // or as external references for types defined in referenced CSDL documents.
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Entity:
                 case EdmTypeKind.EntityReference:
@@ -56,26 +60,44 @@ namespace Microsoft.OpenApi.OData.Generator
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Schema,
-                            Id = reference.Definition.FullTypeName()
+                            Id = edmTypeReference.Definition.FullTypeName()
                         }
                     };
 
+                // Primitive properties of type Edm.PrimitiveType, Edm.Stream, and any of the Edm.Geo* types are
+                // represented as Schema Objects that are JSON References to definitions in the Definitions Object
                 case EdmTypeKind.Primitive:
-                    IEdmPrimitiveTypeReference primitiveTypeReference = (IEdmPrimitiveTypeReference)reference;
-                    return primitiveTypeReference.CreateSchema();
+                    IEdmPrimitiveTypeReference primitiveTypeReference = (IEdmPrimitiveTypeReference)edmTypeReference;
+                    return context.CreateSchema(primitiveTypeReference);
 
                 case EdmTypeKind.TypeDefinition:
-                    return ((IEdmTypeDefinitionReference)reference).TypeDefinition().UnderlyingType.CreateSchema();
+                    return context.CreateSchema(((IEdmTypeDefinitionReference)edmTypeReference).TypeDefinition().UnderlyingType);
 
                 case EdmTypeKind.None:
                 default:
-                    throw Error.NotSupported(String.Format("Not supported {0} type kind.", reference.TypeKind()));
+                    throw Error.NotSupported(String.Format(SRResource.NotSupportedEdmTypeKind, edmTypeReference.TypeKind()));
             }
         }
 
-        public static OpenApiSchema CreateSchema(this IEdmPrimitiveTypeReference primitiveType)
+        /// <summary>
+        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmPrimitiveTypeReference"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="primitiveType">The Edm primitive reference.</param>
+        /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
+        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveTypeReference primitiveType)
         {
-            OpenApiSchema schema = primitiveType.PrimitiveDefinition().CreateSchema();
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (primitiveType == null)
+            {
+                throw Error.ArgumentNull(nameof(primitiveType));
+            }
+
+            OpenApiSchema schema = context.CreateSchema(primitiveType.PrimitiveDefinition());
             if (schema != null)
             {
                 switch(primitiveType.PrimitiveKind())
@@ -114,6 +136,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         schema.MaxLength = stringTypeReference.MaxLength;
                         break;
                 }
+
                 // Nullable properties are marked with the keyword nullable and a value of true.
                 schema.Nullable = primitiveType.IsNullable ? true : false;
             }
@@ -121,11 +144,22 @@ namespace Microsoft.OpenApi.OData.Generator
             return schema;
         }
 
-        public static OpenApiSchema CreateSchema(this IEdmPrimitiveType primitiveType)
+        /// <summary>
+        /// Create a <see cref="OpenApiSchema"/> for a <see cref="IEdmPrimitiveType"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="primitiveType">The Edm primitive type.</param>
+        /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
+        public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveType primitiveType)
         {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
             if (primitiveType == null)
             {
-                return null;
+                throw Error.ArgumentNull(nameof(primitiveType));
             }
 
             // Spec has different configure for double, AnyOf or OneOf?
@@ -367,161 +401,10 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 case EdmPrimitiveTypeKind.None:
                 default:
-                    throw new OpenApiException("Not supported primitive type.");
+                    throw new OpenApiException(String.Format(SRResource.NotSupportedEdmTypeKind, primitiveType.PrimitiveKind));
             }
 
             return schema;
-        }
-
-        public static void AppendODataErrors(this IDictionary<string, OpenApiSchema> schemas)
-        {
-            if (schemas == null)
-            {
-                return;
-            }
-
-            // odata.error
-            schemas.Add("odata.error", new OpenApiSchema
-            {
-                Type = "object",
-                Required = new List<string>
-                {
-                    "error"
-                },
-                Properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "error",
-                        new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = "odata.error.main"
-                            }
-                        }
-                    }
-                }
-            });
-
-            // odata.error.main
-            schemas.Add("odata.error.main", new OpenApiSchema
-            {
-                Type = "object",
-                Required = new List<string>
-                {
-                    "code", "message"
-                },
-                Properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "code", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "message", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "target", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "details",
-                        new OpenApiSchema
-                        {
-                            Type = "array",
-                            Items = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = "odata.error.detail"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "innererror",
-                        new OpenApiSchema
-                        {
-                            Type = "object",
-                            Description = "The structure of this object is service-specific"
-                        }
-                    }
-                }
-            });
-
-            // odata.error.detail
-            schemas.Add("odata.error.detail", new OpenApiSchema
-            {
-                Type = "object",
-                Required = new List<string>
-                {
-                    "code", "message"
-                },
-                Properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "code", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "message", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "target", new OpenApiSchema { Type = "string" }
-                    }
-                }
-            });
-        }
-
-        private static IOpenApiAny CreateDefault(IEdmStructuralProperty property)
-        {
-            if (property == null ||
-                property.DefaultValueString == null ||
-                !property.Type.IsPrimitive())
-            {
-                return null;
-            }
-
-            IEdmPrimitiveTypeReference primitiveTypeReference = property.Type.AsPrimitive();
-            switch (primitiveTypeReference.PrimitiveKind())
-            {
-                case EdmPrimitiveTypeKind.Boolean:
-                    {
-                        bool result;
-                        if (Boolean.TryParse(property.DefaultValueString, out result))
-                        {
-                            return new OpenApiBoolean(result);
-                        }
-                    }
-                    break;
-
-                case EdmPrimitiveTypeKind.Int16:
-                case EdmPrimitiveTypeKind.Int32:
-                    {
-                        int result;
-                        if (Int32.TryParse(property.DefaultValueString, out result))
-                        {
-                            return new OpenApiInteger(result);
-                        }
-                    }
-                    break;
-
-                case EdmPrimitiveTypeKind.Int64:
-                    break;
-
-                // The type 'System.Double' is not supported in Open API document.
-                case EdmPrimitiveTypeKind.Double:
-                    /*
-                    {
-                        double result;
-                        if (Double.TryParse(property.DefaultValueString, out result))
-                        {
-                            return new OpenApiDouble((float)result);
-                        }
-                    }*/
-                    break;
-            }
-
-            return new OpenApiString(property.DefaultValueString);
         }
     }
 }
