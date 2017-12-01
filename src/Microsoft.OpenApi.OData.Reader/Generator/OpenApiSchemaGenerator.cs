@@ -43,13 +43,23 @@ namespace Microsoft.OpenApi.OData.Generator
                     case EdmSchemaElementKind.TypeDefinition: // Type definition
                         {
                             IEdmType reference = (IEdmType)element;
-                            schemas.Add(reference.FullTypeName(), context.CreateEdmTypeSchema(reference));
+                            schemas.Add(reference.FullTypeName(), context.CreateSchemaTypeSchema(reference));
                         }
                         break;
                 }
             }
 
-            schemas.AppendODataErrorSchemas();
+            // append the Edm.Spatial
+            foreach(var schema in context.CreateSpatialSchemas())
+            {
+                schemas[schema.Key] = schema.Value;
+            }
+
+            // append the OData errors
+            foreach(var schema in context.CreateODataErrorSchemas())
+            {
+                schemas[schema.Key] = schema.Value;
+            }
 
             return schemas;
         }
@@ -139,9 +149,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 throw Error.ArgumentNull(nameof(property));
             }
 
-            OpenApiSchema schema = context.CreateSchema(property.Type);
+            OpenApiSchema schema = context.CreateEdmTypeSchema(property.Type);
 
-            switch(property.PropertyKind)
+            switch (property.PropertyKind)
             {
                 case EdmPropertyKind.Structural:
                     IEdmStructuralProperty structuralProperty = (IEdmStructuralProperty)property;
@@ -173,19 +183,19 @@ namespace Microsoft.OpenApi.OData.Generator
             // navigation properties
             foreach (var property in structuredType.DeclaredNavigationProperties())
             {
-                OpenApiSchema propertySchema = context.CreateSchema(property.Type);
+                OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type);
                 properties.Add(property.Name, propertySchema);
             }
 
             return properties;
         }
 
-        public static OpenApiSchema CreateTypeDefinitionSchema(this ODataContext context, IEdmTypeDefinition typeDefinition)
+        public static OpenApiSchema CreateSchemaTypeDefinitionSchema(this ODataContext context, IEdmTypeDefinition typeDefinition)
         {
             return context.CreateSchema(typeDefinition.UnderlyingType);
         }
 
-        private static OpenApiSchema CreateEdmTypeSchema(this ODataContext context, IEdmType edmType)
+        private static OpenApiSchema CreateSchemaTypeSchema(this ODataContext context, IEdmType edmType)
         {
             Debug.Assert(context != null);
             Debug.Assert(edmType != null);
@@ -200,7 +210,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     return context.CreateEnumTypeSchema((IEdmEnumType)edmType);
 
                 case EdmTypeKind.TypeDefinition: // type definition
-                    return context.CreateTypeDefinitionSchema((IEdmTypeDefinition)edmType);
+                    return context.CreateSchemaTypeDefinitionSchema((IEdmTypeDefinition)edmType);
 
                 case EdmTypeKind.None:
                 default:
@@ -279,8 +289,17 @@ namespace Microsoft.OpenApi.OData.Generator
         private static IOpenApiAny CreateDefault(this IEdmStructuralProperty property)
         {
             if (property == null ||
-                property.DefaultValueString == null ||
-                !property.Type.IsPrimitive())
+                property.DefaultValueString == null)
+            {
+                return null;
+            }
+
+            if (property.Type.IsEnum())
+            {
+                return new OpenApiString(property.DefaultValueString);
+            }
+
+            if (!property.Type.IsPrimitive())
             {
                 return null;
             }
@@ -326,105 +345,6 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             return new OpenApiString(property.DefaultValueString);
-        }
-
-        private static void AppendODataErrorSchemas(this IDictionary<string, OpenApiSchema> schemas)
-        {
-            if (schemas == null)
-            {
-                return;
-            }
-
-            // odata.error
-            schemas.Add("odata.error", new OpenApiSchema
-            {
-                Type = "object",
-                Required = new List<string>
-                {
-                    "error"
-                },
-                Properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "error",
-                        new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = "odata.error.main"
-                            }
-                        }
-                    }
-                }
-            });
-
-            // odata.error.main
-            schemas.Add("odata.error.main", new OpenApiSchema
-            {
-                Type = "object",
-                Required = new List<string>
-                {
-                    "code", "message"
-                },
-                Properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "code", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "message", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "target", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "details",
-                        new OpenApiSchema
-                        {
-                            Type = "array",
-                            Items = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = "odata.error.detail"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "innererror",
-                        new OpenApiSchema
-                        {
-                            Type = "object",
-                            Description = "The structure of this object is service-specific"
-                        }
-                    }
-                }
-            });
-
-            // odata.error.detail
-            schemas.Add("odata.error.detail", new OpenApiSchema
-            {
-                Type = "object",
-                Required = new List<string>
-                {
-                    "code", "message"
-                },
-                Properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "code", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "message", new OpenApiSchema { Type = "string" }
-                    },
-                    {
-                        "target", new OpenApiSchema { Type = "string" }
-                    }
-                }
-            });
         }
     }
 }

@@ -116,7 +116,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Name = edmParameter.Name,
                         In = ParameterLocation.Path,
                         Required = true,
-                        Schema = context.CreateSchema(edmParameter.Type)
+                        Schema = context.CreateEdmTypeSchema(edmParameter.Type)
                     });
                 }
             }
@@ -147,7 +147,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     In = ParameterLocation.Path,
                     Required = true,
                     Description = "key: " + keyProperty.Name,
-                    Schema = context.CreateSchema(keyProperty.Type)
+                    Schema = context.CreateEdmTypeSchema(keyProperty.Type)
                 };
 
                 parameters.Add(parameter);

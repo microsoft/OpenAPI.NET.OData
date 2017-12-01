@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ODataOpenApiConvertTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\Basic.OpenApi.json" />
     <None Remove="Resources\Basic.OpenApi.yaml" />
     <None Remove="Resources\Empty.OpenApi.json" />

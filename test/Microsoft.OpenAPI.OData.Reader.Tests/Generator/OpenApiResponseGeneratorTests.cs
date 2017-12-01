@@ -172,8 +172,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             OpenApiMediaType mediaType = response.Content["application/json"];
 
             Assert.NotNull(mediaType.Schema);
-            Assert.NotNull(mediaType.Schema.Reference);
-            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaType.Schema.Reference.Id);
+            Assert.True(mediaType.Schema.Nullable);
+            Assert.Null(mediaType.Schema.Reference);
+            Assert.NotNull(mediaType.Schema.AnyOf);
+            var anyOf = Assert.Single(mediaType.Schema.AnyOf);
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOf.Reference.Id);
         }
 
         [Theory]

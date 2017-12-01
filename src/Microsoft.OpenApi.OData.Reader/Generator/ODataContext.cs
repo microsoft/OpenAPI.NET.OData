@@ -34,6 +34,10 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Model = model ?? throw Error.ArgumentNull(nameof(model));
             Settings = settings ?? throw Error.ArgumentNull(nameof(settings));
+
+            EdmModelVisitor visitor = new EdmModelVisitor();
+            visitor.Visit(model);
+            IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
         }
 
         /// <summary>
@@ -51,6 +55,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 return Model.EntityContainer;
             }
         }
+
+        /// <summary>
+        /// Gets the value indicating the Edm spatial type used.
+        /// </summary>
+        public bool IsSpatialTypeUsed { get; private set; }
 
         /// <summary>
         /// Gets the convert settings.

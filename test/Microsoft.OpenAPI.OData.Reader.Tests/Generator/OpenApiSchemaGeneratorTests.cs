@@ -357,6 +357,61 @@ namespace Microsoft.OpenApi.OData.Tests
         }
         #endregion
 
+        #region EdmPropertySchema
+        [Fact]
+        public void CreatePropertySchemaForNonNullableEnumPropertyReturnSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(e => e.Name == "Color");
+            EdmEntityType entitType = new EdmEntityType("NS", "Entity");
+            IEdmProperty property = new EdmStructuralProperty(entitType, "ColorEnumValue", new EdmEnumTypeReference(enumType, false), "yellow");
+
+            // Act
+            var schema = context.CreatePropertySchema(property);
+            Assert.NotNull(schema);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+
+            // Assert
+            Assert.Equal(@"{
+  ""anyOf"": [
+    {
+      ""$ref"": ""#/components/schemas/DefaultNs.Color""
+    }
+  ],
+  ""default"": ""yellow""
+}".Replace(), json);
+        }
+
+        [Fact]
+        public void CreatePropertySchemaForNullableEnumPropertyReturnSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(e => e.Name == "Color");
+            EdmEntityType entitType = new EdmEntityType("NS", "Entity");
+            IEdmProperty property = new EdmStructuralProperty(entitType, "ColorEnumValue", new EdmEnumTypeReference(enumType, true), "yellow");
+
+            // Act
+            var schema = context.CreatePropertySchema(property);
+            Assert.NotNull(schema);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            _output.WriteLine(json);
+            // Assert
+            Assert.Equal(@"{
+  ""anyOf"": [
+    {
+      ""$ref"": ""#/components/schemas/DefaultNs.Color""
+    }
+  ],
+  ""default"": ""yellow"",
+  ""nullable"": true
+}".Replace(), json);
+        }
+        #endregion
+
         [Fact]
         public void NonNullableBooleanPropertyWithDefaultValueWorks()
         {

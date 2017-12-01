@@ -124,7 +124,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             "application/json",
                             new OpenApiMediaType
                             {
-                                Schema = context.CreateSchema(operation.ReturnType)
+                                Schema = context.CreateEdmTypeSchema(operation.ReturnType)
                             }
                         }
                     }

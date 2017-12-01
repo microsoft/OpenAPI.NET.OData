@@ -232,7 +232,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
   /People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName}):
@@ -255,7 +257,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  nullable: true
         default:
           $ref: '#/components/responses/error'
   /People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName}):
@@ -878,7 +882,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
   /NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName}):
@@ -901,7 +907,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  nullable: true
         default:
           $ref: '#/components/responses/error'
   /NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName}):
@@ -1033,7 +1041,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName}):
@@ -1055,7 +1065,9 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  nullable: true
         default:
           $ref: '#/components/responses/error'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName}):
@@ -1115,7 +1127,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
   /GetNearestAirport(lat={lat},lon={lon}):
@@ -1154,7 +1168,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
   /ResetDataSource:
@@ -1182,7 +1198,8 @@ components:
           type: string
           nullable: true
         Gender:
-          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
+          anyOf:
+            - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
         Age:
           oneOf:
             - type: integer
@@ -1197,21 +1214,29 @@ components:
         AddressInfo:
           type: array
           items:
-            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+            anyOf:
+              - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+            nullable: true
         HomeAddress:
-          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+          anyOf:
+            - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+          nullable: true
         FavoriteFeature:
-          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
+          anyOf:
+            - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
         Features:
           type: array
           items:
-            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
+            anyOf:
+              - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature'
         Friends:
           type: array
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         BestFriend:
-          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          anyOf:
+            - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          nullable: true
         Trips:
           type: array
           items:
@@ -1238,7 +1263,9 @@ components:
           type: string
           nullable: true
         Location:
-          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
+          anyOf:
+            - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
+          nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location:
       title: Location
       type: object
@@ -1247,7 +1274,9 @@ components:
           type: string
           nullable: true
         City:
-          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
+          anyOf:
+            - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
+          nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.City:
       title: City
       type: object
@@ -1268,7 +1297,7 @@ components:
           type: object
           properties:
             Loc:
-              $ref: https://raw.githubusercontent.com/oasis-tcs/odata-openapi/master/examples/odata-definitions.json#/definitions/Edm.GeographyPoint
+              $ref: '#/components/schemas/Edm.GeographyPoint'
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -1354,7 +1383,9 @@ components:
           type: object
           properties:
             OccursAt:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
+              anyOf:
+                - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation'
+              nullable: true
             Description:
               type: string
               nullable: true
@@ -1377,11 +1408,17 @@ components:
               type: string
               nullable: true
             Airline:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+              anyOf:
+                - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+              nullable: true
             From:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+              anyOf:
+                - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+              nullable: true
             To:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+              anyOf:
+                - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+              nullable: true
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
@@ -1409,7 +1446,9 @@ components:
                 - type: string
               format: int64
             BossOffice:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+              anyOf:
+                - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
+              nullable: true
             DirectReports:
               type: array
               items:
@@ -1429,6 +1468,140 @@ components:
         - Feature3
         - Feature4
       type: string
+    Edm.Geography:
+      $ref: '#/components/schemas/Edm.Geometry'
+    Edm.GeographyPoint:
+      $ref: '#/components/schemas/Edm.GeometryPoint'
+    Edm.GeographyLineString:
+      $ref: '#/components/schemas/Edm.GeometryLineString'
+    Edm.GeographyPolygon:
+      $ref: '#/components/schemas/Edm.GeometryPolygon'
+    Edm.GeographyMultiPoint:
+      $ref: '#/components/schemas/Edm.GeometryMultiPoint'
+    Edm.GeographyMultiLineString:
+      $ref: '#/components/schemas/Edm.GeometryMultiLineString'
+    Edm.GeographyMultiPolygon:
+      $ref: '#/components/schemas/Edm.GeometryMultiPolygon'
+    Edm.GeographyCollection:
+      $ref: '#/components/schemas/Edm.GeometryCollection'
+    Edm.Geometry:
+      type: object
+      anyOf:
+        - $ref: '#/components/schemas/Edm.GeometryPoint'
+        - $ref: '#/components/schemas/Edm.GeometryLineString'
+        - $ref: '#/components/schemas/Edm.GeometryPolygon'
+        - $ref: '#/components/schemas/Edm.GeometryMultiPoint'
+        - $ref: '#/components/schemas/Edm.GeometryMultiLineString'
+        - $ref: '#/components/schemas/Edm.GeometryMultiPolygon'
+        - $ref: '#/components/schemas/Edm.GeometryCollection'
+    Edm.GeometryPoint:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - Point
+          type: string
+          default: Point
+        coordinates:
+          $ref: '#/components/schemas/GeoJSON.position'
+    Edm.GeometryLineString:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - LineString
+        coordinates:
+          minItems: 2
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoJSON.position'
+    Edm.GeometryPolygon:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - Polygon
+        coordinates:
+          minItems: 4
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/GeoJSON.position'
+    Edm.GeometryMultiPoint:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - MultiPoint
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoJSON.position'
+    Edm.GeometryMultiLineString:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - MultiLineString
+        coordinates:
+          minItems: 2
+          type: array
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/GeoJSON.position'
+    Edm.GeometryMultiPolygon:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - MultiPolygon
+        coordinates:
+          minItems: 4
+          type: array
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/GeoJSON.position'
+    Edm.GeometryCollection:
+      required:
+        - type
+        - coordinates
+      type: object
+      properties:
+        type:
+          enum:
+            - GeometryCollection
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Edm.Geometry'
+    GeoJSON.position:
+      minItems: 2
+      type: array
+      items:
+        type: number
     odata.error:
       required:
         - error
