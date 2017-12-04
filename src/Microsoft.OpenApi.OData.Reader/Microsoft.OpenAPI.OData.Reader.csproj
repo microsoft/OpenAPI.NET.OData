@@ -9,14 +9,8 @@
     <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
     <Version>0.1.0</Version>
     <Authors>Microsoft.OpenApi.OData.Reader</Authors>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <LangVersion>latest</LangVersion>
+    <LangVersion Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">latest</LangVersion>
+    <LangVersion Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
