@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
 using System.Diagnostics;
