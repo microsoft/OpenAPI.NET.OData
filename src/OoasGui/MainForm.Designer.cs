@@ -34,10 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.v3RadioButton = new System.Windows.Forms.RadioButton();
             this.yamlRadioBtn = new System.Windows.Forms.RadioButton();
-            this.v2RadioButton = new System.Windows.Forms.RadioButton();
             this.jsonRadioBtn = new System.Windows.Forms.RadioButton();
+            this.v3RadioButton = new System.Windows.Forms.RadioButton();
+            this.v2RadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.loadBtn = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
@@ -46,6 +46,7 @@
             this.fromUrlRadioBtn = new System.Windows.Forms.RadioButton();
             this.fromFileRadioBtn = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.operationIdcheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -107,18 +108,6 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             // 
-            // v3RadioButton
-            // 
-            this.v3RadioButton.AutoSize = true;
-            this.v3RadioButton.Location = new System.Drawing.Point(85, 18);
-            this.v3RadioButton.Name = "v3RadioButton";
-            this.v3RadioButton.Size = new System.Drawing.Size(47, 17);
-            this.v3RadioButton.TabIndex = 0;
-            this.v3RadioButton.TabStop = true;
-            this.v3RadioButton.Text = "V3.0";
-            this.v3RadioButton.UseVisualStyleBackColor = true;
-            this.v3RadioButton.CheckedChanged += new System.EventHandler(this.v3RadioBtn_CheckedChanged);
-            // 
             // yamlRadioBtn
             // 
             this.yamlRadioBtn.AutoSize = true;
@@ -131,18 +120,6 @@
             this.yamlRadioBtn.UseVisualStyleBackColor = true;
             this.yamlRadioBtn.CheckedChanged += new System.EventHandler(this.yamlRadioBtn_CheckedChanged);
             // 
-            // v2RadioButton
-            // 
-            this.v2RadioButton.AutoSize = true;
-            this.v2RadioButton.Location = new System.Drawing.Point(19, 18);
-            this.v2RadioButton.Name = "v2RadioButton";
-            this.v2RadioButton.Size = new System.Drawing.Size(47, 17);
-            this.v2RadioButton.TabIndex = 0;
-            this.v2RadioButton.TabStop = true;
-            this.v2RadioButton.Text = "V2.0";
-            this.v2RadioButton.UseVisualStyleBackColor = true;
-            this.v2RadioButton.CheckedChanged += new System.EventHandler(this.v2RadioBtn_CheckedChanged);
-            // 
             // jsonRadioBtn
             // 
             this.jsonRadioBtn.AutoSize = true;
@@ -154,6 +131,30 @@
             this.jsonRadioBtn.Text = "JSON";
             this.jsonRadioBtn.UseVisualStyleBackColor = true;
             this.jsonRadioBtn.CheckedChanged += new System.EventHandler(this.jsonRadioBtn_CheckedChanged);
+            // 
+            // v3RadioButton
+            // 
+            this.v3RadioButton.AutoSize = true;
+            this.v3RadioButton.Location = new System.Drawing.Point(85, 18);
+            this.v3RadioButton.Name = "v3RadioButton";
+            this.v3RadioButton.Size = new System.Drawing.Size(47, 17);
+            this.v3RadioButton.TabIndex = 0;
+            this.v3RadioButton.TabStop = true;
+            this.v3RadioButton.Text = "V3.0";
+            this.v3RadioButton.UseVisualStyleBackColor = true;
+            this.v3RadioButton.CheckedChanged += new System.EventHandler(this.v3RadioBtn_CheckedChanged);
+            // 
+            // v2RadioButton
+            // 
+            this.v2RadioButton.AutoSize = true;
+            this.v2RadioButton.Location = new System.Drawing.Point(19, 18);
+            this.v2RadioButton.Name = "v2RadioButton";
+            this.v2RadioButton.Size = new System.Drawing.Size(47, 17);
+            this.v2RadioButton.TabIndex = 0;
+            this.v2RadioButton.TabStop = true;
+            this.v2RadioButton.Text = "V2.0";
+            this.v2RadioButton.UseVisualStyleBackColor = true;
+            this.v2RadioButton.CheckedChanged += new System.EventHandler(this.v2RadioBtn_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -237,11 +238,23 @@
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             // 
+            // operationIdcheckBox
+            // 
+            this.operationIdcheckBox.AutoSize = true;
+            this.operationIdcheckBox.Location = new System.Drawing.Point(647, 658);
+            this.operationIdcheckBox.Name = "operationIdcheckBox";
+            this.operationIdcheckBox.Size = new System.Drawing.Size(81, 17);
+            this.operationIdcheckBox.TabIndex = 10;
+            this.operationIdcheckBox.Text = "OperationId";
+            this.operationIdcheckBox.UseVisualStyleBackColor = true;
+            this.operationIdcheckBox.CheckedChanged += new System.EventHandler(this.operationIdcheckBox_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 687);
+            this.Controls.Add(this.operationIdcheckBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label2);
@@ -282,6 +295,7 @@
         private System.Windows.Forms.RadioButton v3RadioButton;
         private System.Windows.Forms.RadioButton v2RadioButton;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox operationIdcheckBox;
     }
 }
 

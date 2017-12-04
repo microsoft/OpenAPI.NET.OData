@@ -27,6 +27,7 @@ namespace OoasGui
 
         private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0_0;
 
+        private bool OperationId { get; set; } = true;
 
         private IEdmModel EdmModel { get; set; }
 
@@ -39,7 +40,7 @@ namespace OoasGui
             fromFileRadioBtn.Checked = true;
             urlTextBox.Text = "http://services.odata.org/TrippinRESTierService";
             loadBtn.Enabled = false;
-
+            operationIdcheckBox.Checked = true;
             csdlRichTextBox.WordWrap = false;
             oasRichTextBox.WordWrap = false;
         }
@@ -177,8 +178,12 @@ namespace OoasGui
             {
                 return;
             }
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = OperationId
+            };
 
-            OpenApiDocument document = EdmModel.ConvertToOpenApi();
+            OpenApiDocument document = EdmModel.ConvertToOpenApi(settings);
             document.SpecVersion = Version == OpenApiSpecVersion.OpenApi2_0 ? new Version(2, 0) : new Version(3, 0, 0);
             MemoryStream stream = new MemoryStream();
             document.Serialize(stream, Version, Format);
@@ -220,12 +225,17 @@ namespace OoasGui
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
 
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = OperationId
+            };
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string output = saveFileDialog.FileName;
                 using (FileStream fs = File.Create(output))
                 {
-                    OpenApiDocument document = EdmModel.ConvertToOpenApi();
+                    OpenApiDocument document = EdmModel.ConvertToOpenApi(settings);
                     document.SpecVersion = Version == OpenApiSpecVersion.OpenApi2_0 ? new Version(2, 0) : new Version(3, 0, 0);
                     document.Serialize(fs, Version, Format);
                     fs.Flush();
@@ -233,6 +243,12 @@ namespace OoasGui
             }
 
             MessageBox.Show("Saved successful!");
+        }
+
+        private void operationIdcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            OperationId = !OperationId;
+            Convert();
         }
     }
 }

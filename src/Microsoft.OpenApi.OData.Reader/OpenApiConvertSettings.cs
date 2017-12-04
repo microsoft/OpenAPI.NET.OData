@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -27,5 +28,10 @@ namespace Microsoft.OpenApi.OData
         public int MaxNavPropertyPathDepth { get; set; }
 
         public string ParameterAlias { get; set; } = "@p";
+
+        /// <summary>
+        /// Gets/sets a value indicating to set the OperationId on <see cref="OpenApiOperation"/>.
+        /// </summary>
+        public bool OperationId { get; set; } = false;
     }
 }

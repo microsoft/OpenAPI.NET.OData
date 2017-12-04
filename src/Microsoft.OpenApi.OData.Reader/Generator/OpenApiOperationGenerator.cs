@@ -51,6 +51,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
             // The parameters array contains Parameter Objects for system query options allowed for this entity set,
             // and it does not list system query options not allowed for this entity set.
             operation.Parameters = new List<OpenApiParameter>
@@ -225,6 +230,11 @@ namespace Microsoft.OpenApi.OData.Generator
             };
             operation.Responses.Add("default", "default".GetResponse());
 
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
             return operation;
         }
         #endregion
@@ -262,6 +272,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
                 RequestBody = null
             };
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
@@ -335,6 +350,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
             // TODO: If the entity set uses optimistic concurrency control,
@@ -407,6 +427,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 RequestBody = null
             };
 
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
             operation.Parameters.Add(new OpenApiParameter
             {
@@ -463,6 +488,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
                 RequestBody = null
             };
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
 
             operation.Parameters = new List<OpenApiParameter>();
             operation.Parameters.Add(singleton.CreateSelectParameter());
@@ -534,6 +564,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -595,6 +630,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiOperation operation = new OpenApiOperation();
             operation.Summary = "Invoke " + (edmOperation.IsAction() ? "action " : "function ") + edmOperation.Name;
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
 
             // The tags array of the Operation Object includes the entity set name.
             operation.Tags = new List<OpenApiTag>
@@ -686,6 +726,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiOperation operation = new OpenApiOperation();
             operation.Summary = "Invoke " + (operationImport.IsActionImport() ? "action " : "function ") + operationImport.Name;
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
 
             // If the action or function import specifies the EntitySet attribute,
             // the tags array of the Operation Object includes the entity set name.
