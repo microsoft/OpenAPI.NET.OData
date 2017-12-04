@@ -34,7 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.v3RadioButton = new System.Windows.Forms.RadioButton();
             this.yamlRadioBtn = new System.Windows.Forms.RadioButton();
+            this.v2RadioButton = new System.Windows.Forms.RadioButton();
             this.jsonRadioBtn = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.loadBtn = new System.Windows.Forms.Button();
@@ -43,8 +45,10 @@
             this.fileTextBox = new System.Windows.Forms.TextBox();
             this.fromUrlRadioBtn = new System.Windows.Forms.RadioButton();
             this.fromFileRadioBtn = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // csdlRichTextBox
@@ -67,9 +71,9 @@
             // 
             this.saveBtn.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveBtn.Location = new System.Drawing.Point(17, 51);
+            this.saveBtn.Location = new System.Drawing.Point(772, 658);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(125, 27);
+            this.saveBtn.Size = new System.Drawing.Size(124, 24);
             this.saveBtn.TabIndex = 5;
             this.saveBtn.Text = "Save...";
             this.saveBtn.UseVisualStyleBackColor = false;
@@ -95,19 +99,30 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.saveBtn);
             this.groupBox2.Controls.Add(this.yamlRadioBtn);
             this.groupBox2.Controls.Add(this.jsonRadioBtn);
             this.groupBox2.Location = new System.Drawing.Point(744, 558);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(152, 93);
+            this.groupBox2.Size = new System.Drawing.Size(152, 44);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
+            // 
+            // v3RadioButton
+            // 
+            this.v3RadioButton.AutoSize = true;
+            this.v3RadioButton.Location = new System.Drawing.Point(85, 18);
+            this.v3RadioButton.Name = "v3RadioButton";
+            this.v3RadioButton.Size = new System.Drawing.Size(47, 17);
+            this.v3RadioButton.TabIndex = 0;
+            this.v3RadioButton.TabStop = true;
+            this.v3RadioButton.Text = "V3.0";
+            this.v3RadioButton.UseVisualStyleBackColor = true;
+            this.v3RadioButton.CheckedChanged += new System.EventHandler(this.v3RadioBtn_CheckedChanged);
             // 
             // yamlRadioBtn
             // 
             this.yamlRadioBtn.AutoSize = true;
-            this.yamlRadioBtn.Location = new System.Drawing.Point(80, 23);
+            this.yamlRadioBtn.Location = new System.Drawing.Point(80, 17);
             this.yamlRadioBtn.Name = "yamlRadioBtn";
             this.yamlRadioBtn.Size = new System.Drawing.Size(54, 17);
             this.yamlRadioBtn.TabIndex = 0;
@@ -116,10 +131,22 @@
             this.yamlRadioBtn.UseVisualStyleBackColor = true;
             this.yamlRadioBtn.CheckedChanged += new System.EventHandler(this.yamlRadioBtn_CheckedChanged);
             // 
+            // v2RadioButton
+            // 
+            this.v2RadioButton.AutoSize = true;
+            this.v2RadioButton.Location = new System.Drawing.Point(19, 18);
+            this.v2RadioButton.Name = "v2RadioButton";
+            this.v2RadioButton.Size = new System.Drawing.Size(47, 17);
+            this.v2RadioButton.TabIndex = 0;
+            this.v2RadioButton.TabStop = true;
+            this.v2RadioButton.Text = "V2.0";
+            this.v2RadioButton.UseVisualStyleBackColor = true;
+            this.v2RadioButton.CheckedChanged += new System.EventHandler(this.v2RadioBtn_CheckedChanged);
+            // 
             // jsonRadioBtn
             // 
             this.jsonRadioBtn.AutoSize = true;
-            this.jsonRadioBtn.Location = new System.Drawing.Point(21, 23);
+            this.jsonRadioBtn.Location = new System.Drawing.Point(21, 16);
             this.jsonRadioBtn.Name = "jsonRadioBtn";
             this.jsonRadioBtn.Size = new System.Drawing.Size(53, 17);
             this.jsonRadioBtn.TabIndex = 0;
@@ -200,11 +227,23 @@
             this.fromFileRadioBtn.UseVisualStyleBackColor = true;
             this.fromFileRadioBtn.CheckedChanged += new System.EventHandler(this.fromFileRadioBtn_CheckedChanged);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.v3RadioButton);
+            this.groupBox3.Controls.Add(this.v2RadioButton);
+            this.groupBox3.Location = new System.Drawing.Point(746, 608);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(152, 44);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 663);
+            this.ClientSize = new System.Drawing.Size(910, 687);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
@@ -217,6 +256,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +279,9 @@
         private System.Windows.Forms.TextBox fileTextBox;
         private System.Windows.Forms.RadioButton fromUrlRadioBtn;
         private System.Windows.Forms.RadioButton fromFileRadioBtn;
+        private System.Windows.Forms.RadioButton v3RadioButton;
+        private System.Windows.Forms.RadioButton v2RadioButton;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 

@@ -96,7 +96,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var tag = Assert.Single(post.Tags);
             Assert.Equal(entitySet.Name, tag.Name);
 
-            Assert.Null(post.Parameters);
+            Assert.Empty(post.Parameters);
             Assert.NotNull(post.RequestBody);
 
             Assert.NotNull(post.Responses);
@@ -332,7 +332,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var tag = Assert.Single(patch.Tags);
             Assert.Equal("Me", tag.Name);
 
-            Assert.Null(patch.Parameters);
+            Assert.Empty(patch.Parameters);
             Assert.NotNull(patch.RequestBody);
 
             Assert.NotNull(patch.Responses);

@@ -1,6 +1,6 @@
 ﻿openapi: 3.0.0
 info:
-  title: OData Service for namespace 
+  title: 'OData Service for namespace '
   description: This OData service is located at http://localhost
   version: 1.0.1
 servers:

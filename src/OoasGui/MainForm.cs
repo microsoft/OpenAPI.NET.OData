@@ -23,7 +23,11 @@ namespace OoasGui
 {
     public partial class MainForm : Form
     {
-        private OpenApiFormat Format { get; set; }
+        private OpenApiFormat Format { get; set; } = OpenApiFormat.Json;
+
+        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0_0;
+
+
         private IEdmModel EdmModel { get; set; }
 
         public MainForm()
@@ -31,6 +35,7 @@ namespace OoasGui
             InitializeComponent();
 
             jsonRadioBtn.Checked = true;
+            v3RadioButton.Checked = true;
             fromFileRadioBtn.Checked = true;
             urlTextBox.Text = "http://services.odata.org/TrippinRESTierService";
             loadBtn.Enabled = false;
@@ -48,6 +53,18 @@ namespace OoasGui
         private void yamlRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             Format = OpenApiFormat.Yaml;
+            Convert();
+        }
+
+        private void v2RadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            Version = OpenApiSpecVersion.OpenApi2_0;
+            Convert();
+        }
+
+        private void v3RadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            Version = OpenApiSpecVersion.OpenApi3_0_0;
             Convert();
         }
 
@@ -163,7 +180,7 @@ namespace OoasGui
 
             OpenApiDocument document = EdmModel.ConvertToOpenApi();
             MemoryStream stream = new MemoryStream();
-            document.Serialize(stream, OpenApiSpecVersion.OpenApi3_0_0, Format);
+            document.Serialize(stream, Version, Format);
             stream.Flush();
             stream.Position = 0;
             string openApi = new StreamReader(stream).ReadToEnd();
@@ -208,7 +225,7 @@ namespace OoasGui
                 using (FileStream fs = File.Create(output))
                 {
                     OpenApiDocument document = EdmModel.ConvertToOpenApi();
-                    document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0_0, Format);
+                    document.Serialize(fs, Version, Format);
                     fs.Flush();
                 }
             }

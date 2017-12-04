@@ -76,13 +76,13 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
                 - Friends
                 - BestFriend
                 - Trips
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -108,7 +108,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -116,7 +116,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-  /People('{UserName}'):
+  '/People(''{UserName}'')':
     get:
       tags:
         - People
@@ -124,7 +124,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -156,13 +156,13 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
                 - Friends
                 - BestFriend
                 - Trips
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -177,7 +177,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -189,7 +189,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -200,7 +200,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -210,11 +210,11 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
-  /People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
+  '/People(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
         - People
@@ -222,12 +222,12 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -237,7 +237,7 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-  /People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName}):
+  '/People(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
         - People
@@ -245,12 +245,12 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -262,7 +262,7 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-  /People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName}):
+  '/People(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
     get:
       tags:
         - People
@@ -270,12 +270,12 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -284,7 +284,7 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-  /People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
+  '/People(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     post:
       tags:
         - People
@@ -292,7 +292,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -312,7 +312,7 @@ paths:
                   format: int32
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -359,10 +359,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -388,7 +388,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -396,7 +396,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/components/responses/error'
-  /Airlines('{AirlineCode}'):
+  '/Airlines(''{AirlineCode}'')':
     get:
       tags:
         - Airlines
@@ -404,7 +404,7 @@ paths:
       parameters:
         - name: AirlineCode
           in: path
-          description: key: AirlineCode
+          description: 'key: AirlineCode'
           required: true
           schema:
             type: string
@@ -427,10 +427,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -445,7 +445,7 @@ paths:
       parameters:
         - name: AirlineCode
           in: path
-          description: key: AirlineCode
+          description: 'key: AirlineCode'
           required: true
           schema:
             type: string
@@ -457,7 +457,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -468,7 +468,7 @@ paths:
       parameters:
         - name: AirlineCode
           in: path
-          description: key: AirlineCode
+          description: 'key: AirlineCode'
           required: true
           schema:
             type: string
@@ -478,7 +478,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -531,10 +531,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -560,7 +560,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -568,7 +568,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         default:
           $ref: '#/components/responses/error'
-  /Airports('{IcaoCode}'):
+  '/Airports(''{IcaoCode}'')':
     get:
       tags:
         - Airports
@@ -576,7 +576,7 @@ paths:
       parameters:
         - name: IcaoCode
           in: path
-          description: key: IcaoCode
+          description: 'key: IcaoCode'
           required: true
           schema:
             type: string
@@ -601,10 +601,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -619,7 +619,7 @@ paths:
       parameters:
         - name: IcaoCode
           in: path
-          description: key: IcaoCode
+          description: 'key: IcaoCode'
           required: true
           schema:
             type: string
@@ -631,7 +631,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -642,7 +642,7 @@ paths:
       parameters:
         - name: IcaoCode
           in: path
-          description: key: IcaoCode
+          description: 'key: IcaoCode'
           required: true
           schema:
             type: string
@@ -652,7 +652,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -726,13 +726,13 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
                 - Friends
                 - BestFriend
                 - Trips
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -758,7 +758,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -766,7 +766,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
-  /NewComePeople('{UserName}'):
+  '/NewComePeople(''{UserName}'')':
     get:
       tags:
         - NewComePeople
@@ -774,7 +774,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -806,13 +806,13 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
                 - Friends
                 - BestFriend
                 - Trips
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -827,7 +827,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -839,7 +839,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -850,7 +850,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -860,11 +860,11 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
-  /NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
+  '/NewComePeople(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
         - NewComePeople
@@ -872,12 +872,12 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -887,7 +887,7 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-  /NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName}):
+  '/NewComePeople(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
         - NewComePeople
@@ -895,12 +895,12 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -912,7 +912,7 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-  /NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName}):
+  '/NewComePeople(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
     get:
       tags:
         - NewComePeople
@@ -920,12 +920,12 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -934,7 +934,7 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-  /NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
+  '/NewComePeople(''{UserName}'')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     post:
       tags:
         - NewComePeople
@@ -942,7 +942,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -962,7 +962,7 @@ paths:
                   format: int32
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -1000,13 +1000,13 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
                 - Friends
                 - BestFriend
                 - Trips
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -1026,7 +1026,7 @@ paths:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -1036,7 +1036,7 @@ paths:
         - Me
       summary: Invoke function GetFavoriteAirline
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -1046,7 +1046,7 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName}):
+  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
         - Me
@@ -1058,7 +1058,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -1070,7 +1070,7 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName}):
+  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
     get:
       tags:
         - Me
@@ -1082,7 +1082,7 @@ paths:
           schema:
             type: string
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -1112,7 +1112,7 @@ paths:
                   format: int32
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -1122,7 +1122,7 @@ paths:
         - People
       summary: Invoke function GetPersonWithMostFriends
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -1132,7 +1132,7 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-  /GetNearestAirport(lat={lat},lon={lon}):
+  '/GetNearestAirport(lat={lat},lon={lon})':
     get:
       tags:
         - Airports
@@ -1146,7 +1146,7 @@ paths:
               - type: number
               - type: string
               - enum:
-                  - -INF
+                  - '-INF'
                   - INF
                   - NaN
             format: double
@@ -1158,12 +1158,12 @@ paths:
               - type: number
               - type: string
               - enum:
-                  - -INF
+                  - '-INF'
                   - INF
                   - NaN
             format: double
       responses:
-        200:
+        '200':
           description: Success
           content:
             application/json:
@@ -1177,7 +1177,7 @@ paths:
     post:
       summary: Invoke action ResetDataSource
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -1317,7 +1317,7 @@ components:
           type: integer
           format: int32
         ShareId:
-          pattern: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$
+          pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
           type: string
           format: uuid
         Name:
@@ -1328,7 +1328,7 @@ components:
             - type: number
             - type: string
             - enum:
-                - -INF
+                - '-INF'
                 - INF
                 - NaN
           format: float
@@ -1341,11 +1341,11 @@ components:
             type: string
             nullable: true
         StartsAt:
-          pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
           format: date-time
         EndsAt:
-          pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
           format: date-time
         PlanItems:
@@ -1365,15 +1365,15 @@ components:
           type: string
           nullable: true
         StartsAt:
-          pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
           format: date-time
         EndsAt:
-          pattern: ^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
           type: string
           format: date-time
         Duration:
-          pattern: ^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$
+          pattern: '^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$'
           type: string
           format: duration
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event:

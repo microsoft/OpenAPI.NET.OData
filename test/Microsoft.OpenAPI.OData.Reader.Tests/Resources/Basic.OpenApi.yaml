@@ -55,10 +55,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -84,7 +84,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.Person'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -92,7 +92,7 @@ paths:
                 $ref: '#/components/schemas/DefaultNs.Person'
         default:
           $ref: '#/components/responses/error'
-  /People('{UserName}'):
+  '/People(''{UserName}'')':
     get:
       tags:
         - People
@@ -100,7 +100,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -125,10 +125,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -143,7 +143,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -155,7 +155,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.Person'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -166,7 +166,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: key: UserName
+          description: 'key: UserName'
           required: true
           schema:
             type: string
@@ -176,7 +176,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -220,10 +220,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -249,7 +249,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.City'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -257,7 +257,7 @@ paths:
                 $ref: '#/components/schemas/DefaultNs.City'
         default:
           $ref: '#/components/responses/error'
-  /City('{Name}'):
+  '/City(''{Name}'')':
     get:
       tags:
         - City
@@ -265,7 +265,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: key: Name
+          description: 'key: Name'
           required: true
           schema:
             type: string
@@ -287,10 +287,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -305,7 +305,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: key: Name
+          description: 'key: Name'
           required: true
           schema:
             type: string
@@ -317,7 +317,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.City'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -328,7 +328,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: key: Name
+          description: 'key: Name'
           required: true
           schema:
             type: string
@@ -338,7 +338,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -382,10 +382,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entities
           content:
             application/json:
@@ -411,7 +411,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
         required: true
       responses:
-        201:
+        '201':
           description: Created entity
           content:
             application/json:
@@ -419,7 +419,7 @@ paths:
                 $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
         default:
           $ref: '#/components/responses/error'
-  /CountryOrRegion('{Name}'):
+  '/CountryOrRegion(''{Name}'')':
     get:
       tags:
         - CountryOrRegion
@@ -427,7 +427,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: key: Name
+          description: 'key: Name'
           required: true
           schema:
             type: string
@@ -449,10 +449,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -467,7 +467,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: key: Name
+          description: 'key: Name'
           required: true
           schema:
             type: string
@@ -479,7 +479,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -490,7 +490,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: key: Name
+          description: 'key: Name'
           required: true
           schema:
             type: string
@@ -500,7 +500,7 @@ paths:
           schema:
             type: string
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'
@@ -531,10 +531,10 @@ paths:
             type: array
             items:
               enum:
-                - *
+                - '*'
               type: string
       responses:
-        200:
+        '200':
           description: Retrieved entity
           content:
             application/json:
@@ -554,7 +554,7 @@ paths:
               $ref: '#/components/schemas/DefaultNs.Person'
         required: true
       responses:
-        204:
+        '204':
           description: Success
         default:
           $ref: '#/components/responses/error'

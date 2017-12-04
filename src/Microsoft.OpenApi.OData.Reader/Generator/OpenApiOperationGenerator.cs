@@ -171,8 +171,6 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 },
 
-                Parameters = null,
-
                 // The requestBody field contains a Request Body Object for the request body
                 // that references the schema of the entity set’s entity type in the global schemas.
                 RequestBody = new OpenApiRequestBody
@@ -533,8 +531,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         Name = singleton.Name
                     }
-                },
-                Parameters = null
+                }
             };
 
             operation.RequestBody = new OpenApiRequestBody
