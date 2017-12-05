@@ -279,7 +279,7 @@ namespace OoasUtil
         public static string Copyright()
         {
             return
-                "Microsoft (R) OData To Open API Utitlity, Version " + version.ToString() + " \n" +
+                "Microsoft (R) OData To Open API Utilities, Version " + version.ToString() + " \n" +
                 "Copyright(C) Microsoft Corporation.  All rights reserved.\n\n";
         }
 
