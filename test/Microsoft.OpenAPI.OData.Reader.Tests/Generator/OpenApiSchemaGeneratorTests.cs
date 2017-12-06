@@ -97,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Tests
   },
   ""description"": ""Complex type 'Address' description.""
 }"
-.Replace(), json);
+.ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -175,7 +175,7 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ]
 }"
-.Replace(), json);
+.ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -225,7 +225,7 @@ namespace Microsoft.OpenApi.OData.Tests
   },
   ""description"": ""Entity type 'Zoo' description.""
 }"
-.Replace(), json);
+.ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -293,7 +293,7 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ]
 }"
-.Replace(), json);
+.ChangeLineBreaks(), json);
         }
         #endregion
 
@@ -353,7 +353,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ],
   ""type"": ""string"",
   ""description"": ""Enum type 'Color' description.""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
         #endregion
 
@@ -381,7 +381,7 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""default"": ""yellow""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -408,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ],
   ""default"": ""yellow"",
   ""nullable"": true
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
         #endregion
 
@@ -428,11 +428,11 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal("boolean", schema.Type);
 
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
             Assert.Equal(@"{
   ""type"": ""boolean"",
   ""default"": false
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -453,13 +453,13 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal("string", schema.Type);
 
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
             Assert.Equal(@"{
   ""maxLength"": 44,
   ""type"": ""string"",
   ""format"": ""base64url"",
   ""default"": ""T0RhdGE""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -478,14 +478,14 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal("integer", schema.Type);
 
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
             Assert.Equal(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
   ""type"": ""integer"",
   ""format"": ""int32"",
   ""default"": -128
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -504,7 +504,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Null(schema.Type);
 
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             Assert.Equal(@"{
   ""oneOf"": [
@@ -524,7 +524,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ],
   ""format"": ""double"",
   ""default"": ""3.1415926535897931""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
     }
 }

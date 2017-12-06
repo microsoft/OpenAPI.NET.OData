@@ -64,7 +64,7 @@ description: Skip the first n items
 schema:
   minimum: 0
   type: integer
-".Replace(), yaml);
+".ChangeLineBreaks(), yaml);
         }
     }
 }

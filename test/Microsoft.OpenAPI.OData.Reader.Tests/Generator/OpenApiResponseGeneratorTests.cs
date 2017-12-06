@@ -93,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
       }
     }
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]

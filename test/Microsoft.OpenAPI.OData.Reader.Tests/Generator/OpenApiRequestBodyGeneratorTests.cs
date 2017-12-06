@@ -121,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
     }
   },
   ""required"": true
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]

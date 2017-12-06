@@ -68,7 +68,7 @@ namespace Microsoft.OpenApi.OData.Tests
     ],
     ""nullable"": true
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -92,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""items"": {
     ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""items"": {
     ""type"": ""string""
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -142,7 +142,7 @@ namespace Microsoft.OpenApi.OData.Tests
     ""format"": ""int32"",
     ""nullable"": true
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Theory]
@@ -267,13 +267,13 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Equal(@"{
   ""type"": ""string"",
   ""nullable"": true
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
             }
             else
             {
                 Assert.Equal(@"{
   ""type"": ""string""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
             }
         }
 
@@ -301,7 +301,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""type"": ""integer"",
   ""format"": ""int32"",
   ""nullable"": true
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
             }
             else
             {
@@ -310,7 +310,7 @@ namespace Microsoft.OpenApi.OData.Tests
   ""minimum"": -2147483648,
   ""type"": ""integer"",
   ""format"": ""int32""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
             }
         }
     }

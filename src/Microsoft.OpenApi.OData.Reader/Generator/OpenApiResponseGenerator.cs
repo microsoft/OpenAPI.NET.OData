@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Generator
         private static IDictionary<string, OpenApiResponse> _responses =
            new Dictionary<string, OpenApiResponse>
            {
-                { "default",
+                { Constants.StatusCodeDefault,
                     new OpenApiResponse
                     {
                         Reference = new OpenApiReference
@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 },
 
-                { "204", new OpenApiResponse { Description = "Success"} },
+                { Constants.StatusCode204, new OpenApiResponse { Description = "Success"} },
            };
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (operation.IsAction())
             {
-                responses.Add("204", "204".GetResponse());
+                responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
             }
             else
             {
@@ -121,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Content = new Dictionary<string, OpenApiMediaType>
                     {
                         {
-                            "application/json",
+                            Constants.ApplicationJsonMediaType,
                             new OpenApiMediaType
                             {
                                 Schema = context.CreateEdmTypeSchema(operation.ReturnType)
@@ -129,11 +129,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 };
-                responses.Add("200", response);
+                responses.Add(Constants.StatusCode200, response);
             }
 
             // both action & function has the default response.
-            responses.Add("default", "default".GetResponse());
+            responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return responses;
         }
@@ -146,7 +146,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Content = new Dictionary<string, OpenApiMediaType>
                 {
                     {
-                        "application/json",
+                        Constants.ApplicationJsonMediaType,
                         new OpenApiMediaType
                         {
                             Schema = new OpenApiSchema

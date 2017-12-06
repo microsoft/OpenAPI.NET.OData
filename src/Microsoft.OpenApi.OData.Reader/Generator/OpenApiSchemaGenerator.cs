@@ -166,7 +166,12 @@ namespace Microsoft.OpenApi.OData.Generator
             return schema;
         }
 
-        // 4.6.1.1 Properties
+        /// <summary>
+        /// Create a map of string/<see cref="OpenApiSchema"/> map for a <see cref="IEdmStructuredType"/>'s all properties.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="structuredType">The Edm structured type.</param>
+        /// <returns>The created map of <see cref="OpenApiSchema"/>.</returns>
         public static IDictionary<string, OpenApiSchema> CreateStructuredTypePropertiesSchema(this ODataContext context, IEdmStructuredType structuredType)
         {
             // The name is the property name, the value is a Schema Object describing the allowed values of the property.

@@ -218,10 +218,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation);
                 string pathName = context.CreatePathItemName(operation);
 
-                string temp;
+                string entityPathName;
                 if (entitySet != null)
                 {
-                    temp = context.CreateEntityPathName(entitySet);
+                    entityPathName = context.CreateEntityPathName(entitySet);
 
                     OpenApiOperation openApiOperation = pathItem.Operations.First().Value;
                     Debug.Assert(openApiOperation != null);
@@ -229,10 +229,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
                 else
                 {
-                    temp = "/" + navigationSource.Name;
+                    entityPathName = "/" + navigationSource.Name;
                 }
 
-                operationPathItems.Add(temp + pathName, pathItem);
+                operationPathItems.Add(entityPathName + pathName, pathItem);
             }
 
             return operationPathItems;

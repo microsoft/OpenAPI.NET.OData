@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ODataOpenApiConvertTest.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Resources\Basic.OpenApi.json" />
     <None Remove="Resources\Basic.OpenApi.yaml" />
     <None Remove="Resources\Empty.OpenApi.json" />
@@ -34,8 +30,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.0.0-beta007" />
-    <PackageReference Include="xunit" Version="2.3.0-beta5-build3769" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta5-build3769" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>

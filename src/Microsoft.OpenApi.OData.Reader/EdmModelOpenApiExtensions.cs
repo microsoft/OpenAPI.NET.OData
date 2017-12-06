@@ -18,18 +18,18 @@ namespace Microsoft.OpenApi.OData
         /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/>.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <returns>The converted Open API document object.</returns>
+        /// <returns>The converted Open API document object, <see cref="OpenApiDocument"/>.</returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model)
         {
             return model.ConvertToOpenApi(new OpenApiConvertSettings());
         }
 
         /// <summary>
-        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> using a configure action.
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> using a convert settings.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="configure">The configure action.</param>
-        /// <returns>The converted Open API document object.</returns>
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The converted Open API document object, <see cref="OpenApiDocument"/>.</returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, OpenApiConvertSettings settings)
         {
             if (model == null)

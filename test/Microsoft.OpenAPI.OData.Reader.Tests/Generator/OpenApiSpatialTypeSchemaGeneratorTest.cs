@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
 
@@ -87,12 +88,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.Geometry""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -103,12 +104,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryPoint""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -119,12 +120,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryLineString""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -135,12 +136,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryPolygon""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -151,12 +152,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryMultiPoint""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -167,12 +168,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryMultiLineString""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -183,12 +184,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryMultiPolygon""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -199,12 +200,12 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
   ""$ref"": ""#/components/schemas/Edm.GeometryCollection""
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -215,7 +216,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -243,7 +244,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""$ref"": ""#/components/schemas/Edm.GeometryCollection""
     }
   ]
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -254,7 +255,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string yaml = schema.SerializeAsYaml();
+            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(
@@ -269,7 +270,7 @@ properties:
     type: string
     default: Point
   coordinates:
-    $ref: '#/components/schemas/GeoJSON.position'".Replace(), yaml);
+    $ref: '#/components/schemas/GeoJSON.position'".ChangeLineBreaks(), yaml);
         }
 
         [Fact]
@@ -280,7 +281,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -303,7 +304,7 @@ properties:
       }
     }
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -314,7 +315,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -340,7 +341,7 @@ properties:
       }
     }
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -351,7 +352,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -373,7 +374,7 @@ properties:
       }
     }
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -384,7 +385,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string yaml = schema.SerializeAsYaml();
+            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"required:
@@ -401,7 +402,7 @@ properties:
     items:
       type: array
       items:
-        $ref: '#/components/schemas/GeoJSON.position'".Replace(), yaml);
+        $ref: '#/components/schemas/GeoJSON.position'".ChangeLineBreaks(), yaml);
         }
 
         [Fact]
@@ -412,7 +413,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -441,7 +442,7 @@ properties:
       }
     }
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -452,7 +453,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -474,7 +475,7 @@ properties:
       }
     }
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -485,7 +486,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson();
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
 
             // Assert
             Assert.Equal(@"{
@@ -494,7 +495,7 @@ properties:
   ""items"": {
     ""type"": ""number""
   }
-}".Replace(), json);
+}".ChangeLineBreaks(), json);
         }
     }
 }

@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Content = new Dictionary<string, OpenApiMediaType>()
             };
 
-            requestBody.Content.Add("application/json", new OpenApiMediaType
+            requestBody.Content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
             {
                 Schema = parametersSchema
             });

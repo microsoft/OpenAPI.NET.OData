@@ -35,28 +35,30 @@ namespace Microsoft.OpenApi.OData.Generator
                 throw Error.ArgumentNull(nameof(entitySet));
             }
 
-            string keyString;
+            StringBuilder sb = new StringBuilder("/" + entitySet.Name);
             IList<IEdmStructuralProperty> keys = entitySet.EntityType().Key().ToList();
             if (keys.Count() == 1)
             {
-                keyString = "{" + keys.First().Name + "}";
-
                 if (context.Settings.KeyAsSegment)
                 {
-                    return "/" + entitySet.Name + "/" + keyString;
+                    sb.Append("/{").Append(keys.First().Name).Append("}");
+                }
+                else
+                {
+                    sb.Append("('{").Append(keys.First().Name).Append("}')");
                 }
             }
             else
             {
-                IList<string> temps = new List<string>();
+                IList<string> keyStrings = new List<string>();
                 foreach (var keyProperty in entitySet.EntityType().Key())
                 {
-                    temps.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
+                    keyStrings.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
                 }
-                keyString = String.Join(",", temps);
+                sb.Append("('").Append(String.Join(",", keyStrings)).Append("')");
             }
 
-            return "/" + entitySet.Name + "('" + keyString + "')";
+            return sb.ToString();
         }
 
         /// <summary>

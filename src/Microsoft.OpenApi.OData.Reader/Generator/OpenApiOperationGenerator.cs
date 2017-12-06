@@ -98,14 +98,14 @@ namespace Microsoft.OpenApi.OData.Generator
             operation.Responses = new OpenApiResponses
             {
                 {
-                    "200",
+                    Constants.StatusCode200,
                     new OpenApiResponse
                     {
                         Description = "Retrieved entities",
                         Content = new Dictionary<string, OpenApiMediaType>
                         {
                             {
-                                "application/json",
+                                Constants.ApplicationJsonMediaType,
                                 new OpenApiMediaType
                                 {
                                     Schema = new OpenApiSchema
@@ -138,7 +138,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
-            operation.Responses.Add("default", "default".GetResponse());
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return operation;
         }
@@ -185,7 +185,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Content = new Dictionary<string, OpenApiMediaType>
                     {
                         {
-                            "application/json", new OpenApiMediaType
+                            Constants.ApplicationJsonMediaType, new OpenApiMediaType
                             {
                                 Schema = new OpenApiSchema
                                 {
@@ -211,7 +211,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Content = new Dictionary<string, OpenApiMediaType>
                         {
                             {
-                                "application/json",
+                                Constants.ApplicationJsonMediaType,
                                 new OpenApiMediaType
                                 {
                                     Schema = new OpenApiSchema
@@ -228,7 +228,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
-            operation.Responses.Add("default", "default".GetResponse());
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             if (context.Settings.OperationId)
             {
@@ -287,14 +287,14 @@ namespace Microsoft.OpenApi.OData.Generator
             operation.Responses = new OpenApiResponses
             {
                 {
-                    "200",
+                    Constants.StatusCode200,
                     new OpenApiResponse
                     {
                         Description = "Retrieved entity",
                         Content = new Dictionary<string, OpenApiMediaType>
                         {
                             {
-                                "application/json",
+                                Constants.ApplicationJsonMediaType,
                                 new OpenApiMediaType
                                 {
                                     Schema = new OpenApiSchema
@@ -311,7 +311,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
-            operation.Responses.Add("default", "default".GetResponse());
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return operation;
         }
@@ -368,7 +368,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Content = new Dictionary<string, OpenApiMediaType>
                 {
                     {
-                        "application/json", new OpenApiMediaType
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
                             Schema = new OpenApiSchema
                             {
@@ -385,8 +385,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             operation.Responses = new OpenApiResponses
             {
-                { "204", "204".GetResponse() },
-                { "default", "default".GetResponse() }
+                { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
+                { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
             };
 
             return operation;
@@ -446,8 +446,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             operation.Responses = new OpenApiResponses
             {
-                { "204", "204".GetResponse() },
-                { "default", "default".GetResponse() }
+                { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
+                { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
             };
             return operation;
         }
@@ -501,14 +501,14 @@ namespace Microsoft.OpenApi.OData.Generator
             operation.Responses = new OpenApiResponses
             {
                 {
-                    "200",
+                    Constants.StatusCode200,
                     new OpenApiResponse
                     {
                         Description = "Retrieved entity",
                         Content = new Dictionary<string, OpenApiMediaType>
                         {
                             {
-                                "application/json",
+                                Constants.ApplicationJsonMediaType,
                                 new OpenApiMediaType
                                 {
                                     Schema = new OpenApiSchema
@@ -525,7 +525,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 },
             };
-            operation.Responses.Add("default", "default".GetResponse());
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return operation;
         }
@@ -576,7 +576,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Content = new Dictionary<string, OpenApiMediaType>
                 {
                     {
-                        "application/json", new OpenApiMediaType
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
                             Schema = new OpenApiSchema
                             {
@@ -593,8 +593,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             operation.Responses = new OpenApiResponses
             {
-                { "204", "204".GetResponse() },
-                { "default", "default".GetResponse() }
+                { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
+                { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
             };
 
             return operation;
@@ -674,8 +674,6 @@ namespace Microsoft.OpenApi.OData.Generator
                         operation.Parameters.Add(parameter);
                     }
                 }
-
-                operation.Responses = context.CreateResponses(function);
             }
             else
             {
@@ -685,8 +683,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 // TODO: For bound actions on entities that use optimistic concurrency control,
                 // i.e. require ETags for modification operations, the parameters array contains
                 // a Parameter Object for the If-Match header.
-
-                operation.Responses = context.CreateResponses(action);
             }
 
             // TODO: Depending on the result type of the bound action or function the parameters
@@ -696,11 +692,7 @@ namespace Microsoft.OpenApi.OData.Generator
             // describing the structure of the success response by referencing an appropriate schema
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
-            //operation.Responses = new OpenApiResponses
-            //{
-            //    { "204", "204".GetResponse() },
-            //    { "default", "default".GetResponse() }
-            //};
+            operation.Responses = context.CreateResponses(edmOperation);
 
             return operation;
         }
