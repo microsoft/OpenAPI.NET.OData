@@ -27,7 +27,7 @@ namespace OoasGui
 
         private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0_0;
 
-        private bool OperationId { get; set; } = true;
+        private OpenApiConvertSettings Settings = new OpenApiConvertSettings();
 
         private IEdmModel EdmModel { get; set; }
 
@@ -41,6 +41,11 @@ namespace OoasGui
             urlTextBox.Text = "http://services.odata.org/TrippinRESTierService";
             loadBtn.Enabled = false;
             operationIdcheckBox.Checked = true;
+            Settings.OperationId = true;
+
+            verifyEdmModelcheckBox.Checked = true;
+            Settings.VerifyEdmModel = true;
+
             csdlRichTextBox.WordWrap = false;
             oasRichTextBox.WordWrap = false;
         }
@@ -178,12 +183,8 @@ namespace OoasGui
             {
                 return;
             }
-            OpenApiConvertSettings settings = new OpenApiConvertSettings
-            {
-                OperationId = OperationId
-            };
 
-            OpenApiDocument document = EdmModel.ConvertToOpenApi(settings);
+            OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
             document.SpecVersion = Version == OpenApiSpecVersion.OpenApi2_0 ? new Version(2, 0) : new Version(3, 0, 0);
             MemoryStream stream = new MemoryStream();
             document.Serialize(stream, Version, Format);
@@ -225,17 +226,12 @@ namespace OoasGui
             saveFileDialog.FilterIndex = 2;
             saveFileDialog.RestoreDirectory = true;
 
-            OpenApiConvertSettings settings = new OpenApiConvertSettings
-            {
-                OperationId = OperationId
-            };
-
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string output = saveFileDialog.FileName;
                 using (FileStream fs = File.Create(output))
                 {
-                    OpenApiDocument document = EdmModel.ConvertToOpenApi(settings);
+                    OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
                     document.SpecVersion = Version == OpenApiSpecVersion.OpenApi2_0 ? new Version(2, 0) : new Version(3, 0, 0);
                     document.Serialize(fs, Version, Format);
                     fs.Flush();
@@ -247,7 +243,19 @@ namespace OoasGui
 
         private void operationIdcheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            OperationId = !OperationId;
+            Settings.OperationId = !Settings.OperationId;
+            Convert();
+        }
+
+        private void VerifyEdmModelcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.VerifyEdmModel = !Settings.VerifyEdmModel;
+            Convert();
+        }
+
+        private void NavPathcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.NavigationPropertyPathItem = !Settings.NavigationPropertyPathItem;
             Convert();
         }
     }

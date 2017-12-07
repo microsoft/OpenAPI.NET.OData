@@ -47,6 +47,8 @@
             this.fromFileRadioBtn = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.operationIdcheckBox = new System.Windows.Forms.CheckBox();
+            this.verifyEdmModelcheckBox = new System.Windows.Forms.CheckBox();
+            this.navPathCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -241,7 +243,7 @@
             // operationIdcheckBox
             // 
             this.operationIdcheckBox.AutoSize = true;
-            this.operationIdcheckBox.Location = new System.Drawing.Point(647, 658);
+            this.operationIdcheckBox.Location = new System.Drawing.Point(429, 663);
             this.operationIdcheckBox.Name = "operationIdcheckBox";
             this.operationIdcheckBox.Size = new System.Drawing.Size(81, 17);
             this.operationIdcheckBox.TabIndex = 10;
@@ -249,11 +251,35 @@
             this.operationIdcheckBox.UseVisualStyleBackColor = true;
             this.operationIdcheckBox.CheckedChanged += new System.EventHandler(this.operationIdcheckBox_CheckedChanged);
             // 
+            // verifyEdmModelcheckBox
+            // 
+            this.verifyEdmModelcheckBox.AutoSize = true;
+            this.verifyEdmModelcheckBox.Location = new System.Drawing.Point(516, 663);
+            this.verifyEdmModelcheckBox.Name = "verifyEdmModelcheckBox";
+            this.verifyEdmModelcheckBox.Size = new System.Drawing.Size(102, 17);
+            this.verifyEdmModelcheckBox.TabIndex = 10;
+            this.verifyEdmModelcheckBox.Text = "VerifyEdmModel";
+            this.verifyEdmModelcheckBox.UseVisualStyleBackColor = true;
+            this.verifyEdmModelcheckBox.CheckedChanged += new System.EventHandler(this.VerifyEdmModelcheckBox_CheckedChanged);
+            // 
+            // navPathCheckBox
+            // 
+            this.navPathCheckBox.AutoSize = true;
+            this.navPathCheckBox.Location = new System.Drawing.Point(635, 663);
+            this.navPathCheckBox.Name = "navPathCheckBox";
+            this.navPathCheckBox.Size = new System.Drawing.Size(68, 17);
+            this.navPathCheckBox.TabIndex = 10;
+            this.navPathCheckBox.Text = "NavPath";
+            this.navPathCheckBox.UseVisualStyleBackColor = true;
+            this.navPathCheckBox.CheckedChanged += new System.EventHandler(this.NavPathcheckBox_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(910, 687);
+            this.Controls.Add(this.navPathCheckBox);
+            this.Controls.Add(this.verifyEdmModelcheckBox);
             this.Controls.Add(this.operationIdcheckBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.saveBtn);
@@ -296,6 +322,8 @@
         private System.Windows.Forms.RadioButton v2RadioButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox operationIdcheckBox;
+        private System.Windows.Forms.CheckBox verifyEdmModelcheckBox;
+        private System.Windows.Forms.CheckBox navPathCheckBox;
     }
 }
 
