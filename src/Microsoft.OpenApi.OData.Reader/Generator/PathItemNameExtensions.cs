@@ -121,6 +121,45 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreatePathItemName((IEdmFunction)operation);
         }
 
+        /// <summary>
+        /// Create the path item name for a <see cref="IEdmNavigationProperty"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The Edm navigation source.</param>
+        /// <param name="navigationProperty">The Edm navigation property.</param>
+        /// <returns>The created path item name</returns>
+        public static string CreateNavigationPathItemName(this ODataContext context,
+            IEdmNavigationSource navigationSource, IEdmNavigationProperty navigationProperty)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            if (navigationProperty == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationProperty));
+            }
+
+            string pathItemName;
+            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
+            if (entitySet != null)
+            {
+                pathItemName = context.CreateEntityPathName(entitySet);
+            }
+            else // singleton
+            {
+                pathItemName = "/" + navigationSource.Name;
+            }
+
+            return pathItemName + "/" + navigationProperty.Name;
+        }
+
         private static string CreatePathItemName(this ODataContext context, IEdmFunction function)
         {
             Debug.Assert(context != null);

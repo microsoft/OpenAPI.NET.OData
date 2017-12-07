@@ -51,11 +51,18 @@ namespace Microsoft.OpenApi.OData.Generator
                         var entityPathItem = context.CreateEntityPathItem(entitySet);
                         pathItems.Add(entityPathName, entityPathItem);
 
+                        // navigation property
+                        foreach (var item in context.CreateNavigationPathItems(entitySet))
+                        {
+                            pathItems.Add(item.Key, item.Value);
+                        }
+
                         // bound operations to entity set or entity
                         foreach (var item in context.CreateOperationPathItems(entitySet))
                         {
                             pathItems.Add(item.Key, item.Value);
                         }
+
                         break;
 
                     case EdmContainerElementKind.Singleton: // singleton
@@ -63,6 +70,12 @@ namespace Microsoft.OpenApi.OData.Generator
                         string singletonPathName = "/" + singleton.Name;
                         var singletonPathItem = context.CreateSingletonPathItem(singleton);
                         pathItems.Add(singletonPathName, singletonPathItem);
+
+                        // navigation property
+                        foreach (var item in context.CreateNavigationPathItems(singleton))
+                        {
+                            pathItems.Add(item.Key, item.Value);
+                        }
 
                         // bound operations to singleton
                         foreach (var item in context.CreateOperationPathItems(singleton))
@@ -236,6 +249,84 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             return operationPathItems;
+        }
+
+        /// <summary>
+        /// Create the navigation property path item for the navigation source.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The navigation source.</param>
+        /// <returns>The name/value pairs describing the allowed operations on this navigation source.</returns>
+        public static IDictionary<string, OpenApiPathItem> CreateNavigationPathItems(this ODataContext context,
+            IEdmNavigationSource navigationSource)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            IDictionary<string, OpenApiPathItem> navPathItems = new Dictionary<string, OpenApiPathItem>();
+            if (!context.Settings.NavigationPropertyPathItem)
+            {
+                return navPathItems;
+            }
+
+            IEdmEntityType entityType = navigationSource.EntityType();
+            foreach (var navProperty in entityType.DeclaredNavigationProperties())
+            {
+                string pathItemName = context.CreateNavigationPathItemName(navigationSource, navProperty);
+                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, navProperty);
+
+                navPathItems.Add(pathItemName, pathItem);
+            }
+
+            return navPathItems;
+        }
+
+        /// <summary>
+        /// Create a <see cref="OpenApiPathItem"/> for a single <see cref="IEdmNavigationProperty"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The binding navigation source.</param>
+        /// <param name="navigationProperty">The Edm navigation property.</param>
+        /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
+        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource,
+            IEdmNavigationProperty navigationProperty)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            if (navigationProperty == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationProperty));
+            }
+
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            pathItem.AddOperation(OperationType.Get, context.CreateNavigationGetOperation(navigationSource, navigationProperty));
+
+            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                pathItem.AddOperation(OperationType.Post, context.CreateNavigationPostOperation(navigationSource, navigationProperty));
+            }
+            else
+            {
+                pathItem.AddOperation(OperationType.Patch, context.CreateNavigationPatchOperation(navigationSource, navigationProperty));
+            }
+
+            return pathItem;
         }
 
         /// <summary>

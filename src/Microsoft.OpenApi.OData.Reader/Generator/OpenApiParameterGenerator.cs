@@ -159,13 +159,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <summary>
         /// Create $orderby parameter for the <see cref="IEdmEntitySet"/>.
         /// </summary>
-        /// <param name="entitySet">The entity set.</param>
+        /// <param name="entityType">The Edm entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/>.</returns>
-        public static OpenApiParameter CreateOrderByParameter(this IEdmEntitySet entitySet)
+        public static OpenApiParameter CreateOrderByParameter(this IEdmEntityType entityType)
         {
-            if (entitySet == null)
+            if (entityType == null)
             {
-                throw Error.ArgumentNull(nameof(entitySet));
+                throw Error.ArgumentNull(nameof(entityType));
             }
 
             return new OpenApiParameter
@@ -180,7 +180,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = VisitOrderbyItems(entitySet.EntityType())
+                        Enum = VisitOrderbyItems(entityType)
                     }
                 }
             };
@@ -189,13 +189,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <summary>
         /// Create $select parameter for the <see cref="IEdmNavigationSource"/>.
         /// </summary>
-        /// <param name="navigationSource">The navigation source.</param>
+        /// <param name="entityType">The Edm entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/>.</returns>
-        public static OpenApiParameter CreateSelectParameter(this IEdmNavigationSource navigationSource)
+        public static OpenApiParameter CreateSelectParameter(this IEdmEntityType entityType)
         {
-            if (navigationSource == null)
+            if (entityType == null)
             {
-                throw Error.ArgumentNull(nameof(navigationSource));
+                throw Error.ArgumentNull(nameof(entityType));
             }
 
             return new OpenApiParameter
@@ -210,7 +210,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = VisitSelectItems(navigationSource.EntityType())
+                        Enum = VisitSelectItems(entityType)
                     }
                 }
             };
@@ -219,13 +219,13 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <summary>
         /// Create $expand parameter for the <see cref="IEdmNavigationSource"/>.
         /// </summary>
-        /// <param name="navigationSource">The navigation source.</param>
+        /// <param name="entityType">The edm entity path.</param>
         /// <returns>The created <see cref="OpenApiParameter"/>.</returns>
-        public static OpenApiParameter CreateExpandParameter(this IEdmNavigationSource navigationSource)
+        public static OpenApiParameter CreateExpandParameter(this IEdmEntityType entityType)
         {
-            if (navigationSource == null)
+            if (entityType == null)
             {
-                throw Error.ArgumentNull(nameof(navigationSource));
+                throw Error.ArgumentNull(nameof(entityType));
             }
 
             return new OpenApiParameter
@@ -240,7 +240,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = VisitExpandItems(navigationSource.EntityType())
+                        Enum = VisitExpandItems(entityType)
                     }
                 }
             };

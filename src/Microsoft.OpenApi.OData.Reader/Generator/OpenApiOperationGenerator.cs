@@ -7,7 +7,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Properties;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -56,6 +58,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 operation.OperationId = operation.Summary;
             }
 
+            IEdmEntityType entityType = entitySet.EntityType();
+
             // The parameters array contains Parameter Objects for system query options allowed for this entity set,
             // and it does not list system query options not allowed for this entity set.
             operation.Parameters = new List<OpenApiParameter>
@@ -85,11 +89,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 // to be formally described with OpenAPI Specification means, yet the typical use cases
                 // of just providing a comma-separated list of properties can be expressed via an array-valued
                 // parameter with an enum constraint
-                entitySet.CreateOrderByParameter(),
+                entityType.CreateOrderByParameter(),
 
-                entitySet.CreateSelectParameter(),
+                entityType.CreateSelectParameter(),
 
-                entitySet.CreateExpandParameter(),
+                entityType.CreateExpandParameter(),
             };
 
             // The value of responses is a Responses Object.
@@ -204,7 +208,7 @@ namespace Microsoft.OpenApi.OData.Generator
             operation.Responses = new OpenApiResponses
             {
                 {
-                    "201",
+                    Constants.StatusCode201,
                     new OpenApiResponse
                     {
                         Description = "Created entity",
@@ -278,11 +282,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 operation.OperationId = operation.Summary;
             }
 
+            IEdmEntityType entityType = entitySet.EntityType();
+
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
-            operation.Parameters.Add(entitySet.CreateSelectParameter());
+            operation.Parameters.Add(entityType.CreateSelectParameter());
 
-            operation.Parameters.Add(entitySet.CreateExpandParameter());
+            operation.Parameters.Add(entityType.CreateExpandParameter());
 
             operation.Responses = new OpenApiResponses
             {
@@ -495,8 +501,9 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             operation.Parameters = new List<OpenApiParameter>();
-            operation.Parameters.Add(singleton.CreateSelectParameter());
-            operation.Parameters.Add(singleton.CreateExpandParameter());
+            IEdmEntityType entityType = singleton.EntityType();
+            operation.Parameters.Add(entityType.CreateSelectParameter());
+            operation.Parameters.Add(entityType.CreateExpandParameter());
 
             operation.Responses = new OpenApiResponses
             {
@@ -601,6 +608,335 @@ namespace Microsoft.OpenApi.OData.Generator
         }
         #endregion
 
+        #region NavigationOperations
+
+        /// <summary>
+        /// Retrieve a navigation property from a navigation source.
+        /// The Path Item Object for the entity contains the keyword get with an Operation Object as value
+        /// that describes the capabilities for retrieving a navigation property form a navigation source.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The Edm navigation source.</param>
+        /// <param name="property">The Edm navigation property.</param>
+        /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
+        public static OpenApiOperation CreateNavigationGetOperation(this ODataContext context, IEdmNavigationSource navigationSource,
+            IEdmNavigationProperty property)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            if (property == null)
+            {
+                throw Error.ArgumentNull(nameof(property));
+            }
+
+            OpenApiOperation operation = new OpenApiOperation
+            {
+                Summary = "Get " + property.Name + " from " + navigationSource.Name,
+                Tags = new List<OpenApiTag>
+                {
+                    new OpenApiTag
+                    {
+                        Name = navigationSource.Name
+                    }
+                },
+                RequestBody = null
+            };
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
+            IEdmEntityType declaringEntityType = property.DeclaringEntityType();
+            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
+            if (entitySet != null)
+            {
+                operation.Parameters = context.CreateKeyParameters(declaringEntityType);
+            }
+
+            IEdmEntityType navEntityType = property.ToEntityType();
+
+            if (property.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                // The parameters array contains Parameter Objects for system query options allowed for this entity set,
+                // and it does not list system query options not allowed for this entity set.
+                operation.Parameters = new List<OpenApiParameter>
+                {
+                    new OpenApiParameter
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
+                    },
+                    new OpenApiParameter
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
+                    },
+                    new OpenApiParameter
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
+                    },
+                    new OpenApiParameter
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
+                    },
+                    new OpenApiParameter
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
+                    },
+
+                    // the syntax of the system query options $expand, $select, and $orderby is too flexible
+                    // to be formally described with OpenAPI Specification means, yet the typical use cases
+                    // of just providing a comma-separated list of properties can be expressed via an array-valued
+                    // parameter with an enum constraint
+                    navEntityType.CreateOrderByParameter(),
+
+                    navEntityType.CreateSelectParameter(),
+
+                    navEntityType.CreateExpandParameter(),
+                };
+            }
+            else
+            {
+                operation.Parameters.Add(navEntityType.CreateSelectParameter());
+
+                operation.Parameters.Add(navEntityType.CreateExpandParameter());
+            }
+
+            operation.Responses = new OpenApiResponses
+            {
+                {
+                    Constants.StatusCode200,
+                    new OpenApiResponse
+                    {
+                        Description = "Retrieved navigation property",
+                        Content = new Dictionary<string, OpenApiMediaType>
+                        {
+                            {
+                                Constants.ApplicationJsonMediaType,
+                                new OpenApiMediaType
+                                {
+                                    Schema = new OpenApiSchema
+                                    {
+                                        Reference = new OpenApiReference
+                                        {
+                                            Type = ReferenceType.Schema,
+                                            Id = navEntityType.FullName()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            return operation;
+        }
+
+        /// <summary>
+        /// Update a navigation property for a navigation source.
+        /// The Path Item Object for the entity set contains the keyword patch with an Operation Object as value
+        /// that describes the capabilities for updating the navigation property for a navigation source.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The Edm navigation source.</param>
+        /// <param name="property">The Edm navigation property.</param>
+        /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
+        public static OpenApiOperation CreateNavigationPatchOperation(this ODataContext context, IEdmNavigationSource navigationSource,
+            IEdmNavigationProperty property)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            if (property == null)
+            {
+                throw Error.ArgumentNull(nameof(property));
+            }
+
+            if (property.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                throw new OpenApiException(String.Format(SRResource.UpdateCollectionNavigationPropertyInvalid, property.Name));
+            }
+
+            OpenApiOperation operation = new OpenApiOperation
+            {
+                Summary = "Update the navigation property " + property.Name + " in " + navigationSource.Name,
+
+                // The tags array of the Operation Object includes the entity set name.
+                Tags = new List<OpenApiTag>
+                {
+                    new OpenApiTag
+                    {
+                        Name= navigationSource.Name
+                    }
+                }
+            };
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
+            operation.Parameters = context.CreateKeyParameters(navigationSource.EntityType());
+
+            // TODO: If the entity set uses optimistic concurrency control,
+            // i.e. requires ETags for modification operations, the parameters array contains
+            // a Parameter Object for the If-Match header.
+
+            operation.RequestBody = new OpenApiRequestBody
+            {
+                Required = true,
+                Description = "New navigation property values",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                        {
+                            Schema = new OpenApiSchema
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = navigationSource.EntityType().FullName()
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            operation.Responses = new OpenApiResponses
+            {
+                { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
+                { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
+            };
+
+            return operation;
+        }
+
+        /// <summary>
+        /// Create a navigation for a navigation source.
+        /// The Path Item Object for the entity set contains the keyword delete with an Operation Object as value
+        /// that describes the capabilities for create a navigation for a navigation source.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The Edm navigation source.</param>
+        /// <param name="property">The Edm navigation property.</param>
+        /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
+        public static OpenApiOperation CreateNavigationPostOperation(this ODataContext context, IEdmNavigationSource navigationSource,
+            IEdmNavigationProperty property)
+        {
+            if (context == null)
+            {
+                throw Error.ArgumentNull(nameof(context));
+            }
+
+            if (navigationSource == null)
+            {
+                throw Error.ArgumentNull(nameof(navigationSource));
+            }
+
+            if (property == null)
+            {
+                throw Error.ArgumentNull(nameof(property));
+            }
+
+            if (property.TargetMultiplicity() != EdmMultiplicity.Many)
+            {
+                throw new OpenApiException(String.Format(SRResource.PostToNonCollectionNavigationPropertyInvalid, property.Name));
+            }
+
+            OpenApiOperation operation = new OpenApiOperation
+            {
+                Summary = "Add new navigation property to " + property.Name + " for "  + navigationSource.Name,
+
+                // The tags array of the Operation Object includes the entity set name.
+                Tags = new List<OpenApiTag>
+                {
+                    new OpenApiTag
+                    {
+                        Name = navigationSource.Name
+                    }
+                },
+
+                // The requestBody field contains a Request Body Object for the request body
+                // that references the schema of the entity set’s entity type in the global schemas.
+                RequestBody = new OpenApiRequestBody
+                {
+                    Required = true,
+                    Description = "New navigation property",
+                    Content = new Dictionary<string, OpenApiMediaType>
+                    {
+                        {
+                            Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                            {
+                                Schema = new OpenApiSchema
+                                {
+                                    Reference = new OpenApiReference
+                                    {
+                                        Type = ReferenceType.Schema,
+                                        Id = navigationSource.EntityType().FullName()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            operation.Responses = new OpenApiResponses
+            {
+                {
+                    Constants.StatusCode201,
+                    new OpenApiResponse
+                    {
+                        Description = "Created navigation property.",
+                        Content = new Dictionary<string, OpenApiMediaType>
+                        {
+                            {
+                                Constants.ApplicationJsonMediaType,
+                                new OpenApiMediaType
+                                {
+                                    Schema = new OpenApiSchema
+                                    {
+                                        Reference = new OpenApiReference
+                                        {
+                                            Type = ReferenceType.Schema,
+                                            Id = navigationSource.EntityType().FullName()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            if (context.Settings.OperationId)
+            {
+                operation.OperationId = operation.Summary;
+            }
+
+            return operation;
+        }
+        #endregion
+
         #region EdmOperation Operations
 
         /// <summary>
@@ -649,7 +985,7 @@ namespace Microsoft.OpenApi.OData.Generator
             if (singleton == null && edmOperation.IsBound)
             {
                 IEdmOperationParameter bindingParameter = edmOperation.Parameters.FirstOrDefault();
-                if (bindingParameter !=null &&
+                if (bindingParameter != null &&
                     !bindingParameter.Type.IsCollection() && // bound to a single entity
                     bindingParameter.Type.IsEntity())
                 {

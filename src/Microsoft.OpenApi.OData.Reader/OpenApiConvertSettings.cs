@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/set a value indicating the navigation property depth.
         /// </summary>
-        public int MaxNavPropertyPathDepth { get; set; }
+        public bool NavigationPropertyPathItem { get; set; }
 
         /// <summary>
         /// Gets/set a value indicating the prefix for the parameter alias.
@@ -57,5 +57,10 @@ namespace Microsoft.OpenApi.OData
         /// Gets/sets a value indicating to set the OperationId on <see cref="OpenApiOperation"/>.
         /// </summary>
         public bool OperationId { get; set; } = false;
+
+        /// <summary>
+        /// Gets/sets a value indicating whether to verify the edm model before converter.
+        /// </summary>
+        public bool VerifyEdmModel { get; set; }
     }
 }

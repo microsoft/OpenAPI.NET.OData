@@ -21,6 +21,11 @@ namespace Microsoft.OpenApi.OData.Generator
         public static string StatusCode200 = "200";
 
         /// <summary>
+        /// Status code: 201
+        /// </summary>
+        public static string StatusCode201 = "201";
+
+        /// <summary>
         /// Status code: 204
         /// </summary>
         public static string StatusCode204 = "204";

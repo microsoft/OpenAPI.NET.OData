@@ -4,8 +4,11 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Generator;
+using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -40,6 +43,22 @@ namespace Microsoft.OpenApi.OData
             if (settings == null)
             {
                 settings = new OpenApiConvertSettings(); // default
+            }
+
+            if (settings.VerifyEdmModel)
+            {
+                IEnumerable<EdmError> errors;
+                if (!model.Validate(out errors))
+                {
+                    OpenApiDocument document = new OpenApiDocument();
+                    int index = 1;
+                    foreach (var error in errors)
+                    {
+                        document.Extensions.Add("x-edm-error-" + index++, new OpenApiString(error.ToString()));
+                    }
+
+                    return document;
+                }
             }
 
             ODataContext context = new ODataContext(model, settings);

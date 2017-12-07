@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.OpenApi.OData.Reader.Properties.SRResource", typeof(SRResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.OpenApi.OData.Properties.SRResource", typeof(SRResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -147,6 +147,24 @@ namespace Microsoft.OpenApi.OData.Properties {
         internal static string OpenApiWriterMustHaveActiveScope {
             get {
                 return ResourceManager.GetString("OpenApiWriterMustHaveActiveScope", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is not valid to Post to any non-collection valued navigation property &apos;{0}&apos;..
+        /// </summary>
+        internal static string PostToNonCollectionNavigationPropertyInvalid {
+            get {
+                return ResourceManager.GetString("PostToNonCollectionNavigationPropertyInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is not valid to update any collection valued navigation property &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateCollectionNavigationPropertyInvalid {
+            get {
+                return ResourceManager.GetString("UpdateCollectionNavigationPropertyInvalid", resourceCulture);
             }
         }
     }

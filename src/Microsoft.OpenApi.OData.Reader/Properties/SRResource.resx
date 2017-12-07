@@ -147,4 +147,10 @@
   <data name="OpenApiWriterMustHaveActiveScope" xml:space="preserve">
     <value>There must be an active scope for name '{0}' to be written.</value>
   </data>
+  <data name="PostToNonCollectionNavigationPropertyInvalid" xml:space="preserve">
+    <value>It is not valid to Post to any non-collection valued navigation property '{0}'.</value>
+  </data>
+  <data name="UpdateCollectionNavigationPropertyInvalid" xml:space="preserve">
+    <value>It is not valid to update any collection valued navigation property '{0}'.</value>
+  </data>
 </root>

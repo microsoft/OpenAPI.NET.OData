@@ -95,6 +95,107 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
         #endregion
 
+        #region NavigationProperty PathItem Name
+        [Fact]
+        public void CreateNavigationPathItemNameThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreateNavigationPathItemName(navigationSource: null, navigationProperty: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPathItemNameThrowArgumentNullNavigationSource()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationSource",
+                () => context.CreateNavigationPathItemName(navigationSource: null, navigationProperty: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPathItemNameThrowArgumentNullNavigationProperty()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationProperty",
+                () => context.CreateNavigationPathItemName(people, navigationProperty: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPathItemNameOnEntitySetReturnsCorrectPathItemName()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people); // guard
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
+            Assert.NotNull(navProperty);
+
+            // Act
+            string name = context.CreateNavigationPathItemName(people, navProperty);
+
+            // Assert
+            Assert.NotNull(name);
+            Assert.Equal("/People('{UserName}')/Trips", name);
+        }
+
+        [Fact]
+        public void CreateNavigationPathItemNameOnSingletonReturnsCorrectPathItemName()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmSingleton me = model.EntityContainer.FindSingleton("Me");
+            Assert.NotNull(me); // guard
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
+            Assert.NotNull(navProperty);
+
+            // Act
+            string name = context.CreateNavigationPathItemName(me, navProperty);
+
+            // Assert
+            Assert.NotNull(name);
+            Assert.Equal("/Me/Trips", name);
+        }
+
+        [Fact]
+        public void CreateNavigationPathItemNameOnEntitySetReturnsCorrectPathItemNameWithKeyAsSegment()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people); // guard
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
+            Assert.NotNull(navProperty);
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
+            {
+                KeyAsSegment = true
+            });
+
+            // Act
+            string name = context.CreateNavigationPathItemName(people, navProperty);
+
+            // Assert
+            Assert.NotNull(name);
+            Assert.Equal("/People/{UserName}/Trips", name);
+        }
+
+        #endregion
+
         #region OperationImport PathItem Name
         [Fact]
         public void CreatePathItemNameForOperationImportThrowArgumentNullContext()

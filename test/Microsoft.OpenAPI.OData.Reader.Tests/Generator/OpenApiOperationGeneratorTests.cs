@@ -6,6 +6,7 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -13,6 +14,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiOperationGeneratorTest
     {
+        #region EntitySet Operation
         [Fact]
         public void CreateEntitySetGetOperationThrowArgumentNullContext()
         {
@@ -149,6 +151,9 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, get.Responses.Count);
             Assert.Equal(new[] { "200", "default" }, get.Responses.Select(r => r.Key));
         }
+        #endregion
+
+        #region Entity Operation
 
         [Fact]
         public void CreateEntityPatchOperationThrowArgumentNullContext()
@@ -245,7 +250,9 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, delete.Responses.Count);
             Assert.Equal(new[] { "204", "default" }, delete.Responses.Select(r => r.Key));
         }
+        #endregion
 
+        #region Singleton
         [Fact]
         public void CreateSingletonGetOperationThrowArgumentNullContext()
         {
@@ -339,5 +346,427 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, patch.Responses.Count);
             Assert.Equal(new[] { "204", "default" }, patch.Responses.Select(r => r.Key));
         }
+        #endregion
+
+        #region EdmNavigationProperty
+        [Fact]
+        public void CreateNavigationGetOperationThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreateNavigationGetOperation(navigationSource: null, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationGetOperationThrowArgumentNullNavigationSource()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationSource",
+                () => context.CreateNavigationGetOperation(navigationSource: null, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationGetOperationThrowArgumentNullProperty()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("property",
+                () => context.CreateNavigationGetOperation(people, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationGetOperationReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
+
+            // Act
+            var operation = context.CreateNavigationGetOperation(people, navProperty);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Get Trips from People", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal("People", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(8, operation.Parameters.Count);
+
+            Assert.Null(operation.RequestBody);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
+        [Fact]
+        public void CreateNavigationPatchOperationThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreateNavigationPatchOperation(navigationSource: null, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPatchOperationThrowArgumentNullNavigationSource()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationSource",
+                () => context.CreateNavigationPatchOperation(navigationSource: null, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPatchOperationThrowArgumentNullProperty()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("property",
+                () => context.CreateNavigationPatchOperation(people, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPatchOperationThrowExceptionForCollectionNavigationProperty()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
+
+            // Act & Assert
+            var exception = Assert.Throws<OpenApiException>(() => context.CreateNavigationPatchOperation(people, navProperty));
+            Assert.Equal("It is not valid to update any collection valued navigation property 'Trips'.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNavigationPatchOperationReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "BestFriend");
+
+            // Act
+            var operation = context.CreateNavigationPatchOperation(people, navProperty);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Update the navigation property BestFriend in People", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal("People", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(1, operation.Parameters.Count);
+
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("New navigation property values", operation.RequestBody.Description);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
+        [Fact]
+        public void CreateNavigationPostOperationThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreateNavigationPostOperation(navigationSource: null, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPostOperationThrowArgumentNullNavigationSource()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationSource",
+                () => context.CreateNavigationPostOperation(navigationSource: null, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPostOperationThrowArgumentNullProperty()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("property",
+                () => context.CreateNavigationPostOperation(people, property: null));
+        }
+
+        [Fact]
+        public void CreateNavigationPostOperationThrowExceptionForNonCollectionNavigationProperty()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "BestFriend");
+
+            // Act & Assert
+            var exception = Assert.Throws<OpenApiException>(() => context.CreateNavigationPostOperation(people, navProperty));
+            Assert.Equal("It is not valid to Post to any non-collection valued navigation property 'BestFriend'.", exception.Message);
+        }
+
+        [Fact]
+        public void CreateNavigationPostOperationReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+            IEdmNavigationProperty navProperty = person.DeclaredNavigationProperties().First(c => c.Name == "Trips");
+
+            // Act
+            var operation = context.CreateNavigationPostOperation(people, navProperty);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Add new navigation property to Trips for People", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal("People", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Empty(operation.Parameters);
+
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("New navigation property", operation.RequestBody.Description);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "201", "default" }, operation.Responses.Select(e => e.Key));
+        }
+        #endregion
+
+        #region EdmOperation
+        [Fact]
+        public void CreateOperationForEdmOperationThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreateOperation(navigationSource: null, edmOperation: null));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmOperationThrowArgumentNullNavigationSource()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationSource",
+                () => context.CreateOperation(navigationSource: null, edmOperation: null));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmOperationThrowArgumentNullEdmOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("edmOperation",
+                () => context.CreateOperation(people, edmOperation: null));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmFunctionReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "GetFavoriteAirline");
+            Assert.NotNull(function);
+
+            // Act
+            var operation = context.CreateOperation(people, function);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Invoke function GetFavoriteAirline", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal("People", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
+
+            Assert.Null(operation.RequestBody);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmActionReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(people);
+
+            IEdmAction action = model.SchemaElements.OfType<IEdmAction>().First(f => f.Name == "ShareTrip");
+            Assert.NotNull(action);
+
+            // Act
+            var operation = context.CreateOperation(people, action);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Invoke action ShareTrip", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal("People", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Equal(new string[] { "UserName" }, operation.Parameters.Select(p => p.Name));
+
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("Action parameters", operation.RequestBody.Description);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
+        }
+        #endregion
+
+        #region EdmOperationImport
+        [Fact]
+        public void CreateOperationForEdmOperationImportThrowArgumentNullContext()
+        {
+            // Arrange
+            ODataContext context = null;
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("context",
+                () => context.CreateOperation(operationImport: null));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmOperationImportThrowArgumentNullOperationImport()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            ODataContext context = new ODataContext(model);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateOperation(operationImport: null));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmFunctionImportReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+            var functionImport = model.EntityContainer.FindOperationImports("GetPersonWithMostFriends").FirstOrDefault();
+            Assert.NotNull(functionImport);
+
+            // Act
+            var operation = context.CreateOperation(functionImport);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Invoke function GetPersonWithMostFriends", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal("People", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Empty(operation.Parameters);
+
+            Assert.Null(operation.RequestBody);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
+        [Fact]
+        public void CreateOperationForEdmActionImportReturnsCorrectOperation()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new ODataContext(model);
+
+            var actionImport = model.EntityContainer.FindOperationImports("ResetDataSource").FirstOrDefault();
+            Assert.NotNull(actionImport);
+
+            // Act
+            var operation = context.CreateOperation(actionImport);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal("Invoke action ResetDataSource", operation.Summary);
+            Assert.Null(operation.Tags);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Empty(operation.Parameters);
+
+            Assert.Null(operation.RequestBody);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
+        }
+        #endregion
     }
 }
