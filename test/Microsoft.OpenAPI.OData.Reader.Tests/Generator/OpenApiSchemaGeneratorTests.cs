@@ -105,7 +105,10 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
-            ODataContext context = new ODataContext(model);
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
+            {
+                IEEE754Compatible = true
+            });
             IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "Tree");
             Assert.NotNull(complex); // Guard
 
@@ -138,8 +141,8 @@ namespace Microsoft.OpenApi.OData.Tests
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Price", property.Key);
             Assert.Equal("decimal", property.Value.Format);
-            Assert.NotNull(property.Value.OneOf);
-            Assert.Equal(new string[] { "number", "string" }, property.Value.OneOf.Select(e => e.Type));
+            Assert.NotNull(property.Value.AnyOf);
+            Assert.Equal(new string[] { "number", "string" }, property.Value.AnyOf.Select(e => e.Type));
 
             Assert.Equal("Complex type 'Tree' description.", declaredSchema.Description);
             Assert.Equal("Tree", declaredSchema.Title);
@@ -160,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""properties"": {
         ""Price"": {
           ""multipleOf"": 1,
-          ""oneOf"": [
+          ""anyOf"": [
             {
               ""type"": ""number""
             },

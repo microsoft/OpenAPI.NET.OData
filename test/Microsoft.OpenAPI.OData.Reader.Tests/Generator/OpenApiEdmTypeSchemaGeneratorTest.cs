@@ -246,6 +246,8 @@ namespace Microsoft.OpenApi.OData.Tests
             }
         }
 
+        #region Primitive type schema
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -313,5 +315,165 @@ namespace Microsoft.OpenApi.OData.Tests
 }".ChangeLineBreaks(), json);
             }
         }
+
+        [Theory]
+        [InlineData(true, true)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        [InlineData(false, false)]
+        public void CreateEdmTypeSchemaReturnSchemaForDecimal(bool isNullable, bool IEEE754Compatible)
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                IEEE754Compatible = IEEE754Compatible
+            };
+
+            ODataContext context = new ODataContext(model, settings);
+            IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetDecimal(isNullable);
+
+            // Act
+            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            Assert.NotNull(schema); // guard
+
+            // & Assert
+            if (IEEE754Compatible)
+            {
+                Assert.Null(schema.Type);
+                Assert.NotNull(schema.AnyOf);
+                Assert.Equal(2, schema.AnyOf.Count);
+                Assert.Equal(new[] { "number", "string" }, schema.AnyOf.Select(a => a.Type));
+            }
+            else
+            {
+                Assert.Equal("number", schema.Type);
+                Assert.Null(schema.AnyOf);
+            }
+
+            Assert.Equal(isNullable, schema.Nullable);
+        }
+
+        [Theory]
+        [InlineData(true, true)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        [InlineData(false, false)]
+        public void CreateEdmTypeSchemaReturnSchemaForInt64(bool isNullable, bool IEEE754Compatible)
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                IEEE754Compatible = IEEE754Compatible
+            };
+
+            ODataContext context = new ODataContext(model, settings);
+            IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetInt64(isNullable);
+
+            // Act
+            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            Assert.NotNull(schema); // guard
+
+            // & Assert
+            if (IEEE754Compatible)
+            {
+                Assert.Null(schema.Type);
+                Assert.NotNull(schema.AnyOf);
+                Assert.Equal(2, schema.AnyOf.Count);
+                Assert.Equal(new[] { "integer", "string" }, schema.AnyOf.Select(a => a.Type));
+            }
+            else
+            {
+                Assert.Equal("integer", schema.Type);
+                Assert.Null(schema.AnyOf);
+            }
+
+            Assert.Equal(isNullable, schema.Nullable);
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEdmTypeSchemaReturnSchemaForGuid(bool isNullable)
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+            ODataContext context = new ODataContext(model);
+            IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetGuid(isNullable);
+
+            // Act
+            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            Assert.NotNull(schema); // guard
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+
+            // & Assert
+            if (isNullable)
+            {
+                Assert.Equal(@"{
+  ""pattern"": ""^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"",
+  ""type"": ""string"",
+  ""format"": ""uuid"",
+  ""nullable"": true
+}".ChangeLineBreaks(), json);
+            }
+            else
+            {
+                Assert.Equal(@"{
+  ""pattern"": ""^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"",
+  ""type"": ""string"",
+  ""format"": ""uuid""
+}".ChangeLineBreaks(), json);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEdmTypeSchemaReturnSchemaForDouble(bool isNullable)
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+            ODataContext context = new ODataContext(model);
+            IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetDouble(isNullable);
+
+            // Act
+            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            Assert.NotNull(schema); // guard
+
+            // & Assert
+            Assert.Null(schema.Type);
+
+            Assert.Equal("double", schema.Format);
+            Assert.Equal(isNullable, schema.Nullable);
+
+            Assert.NotNull(schema.OneOf);
+            Assert.Equal(3, schema.OneOf.Count);
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEdmTypeSchemaReturnSchemaForSingle(bool isNullable)
+        {
+            // Arrange
+            IEdmModel model = EdmCoreModel.Instance;
+            ODataContext context = new ODataContext(model);
+            IEdmTypeReference edmTypeReference = EdmCoreModel.Instance.GetSingle(isNullable);
+
+            // Act
+            var schema = context.CreateEdmTypeSchema(edmTypeReference);
+            Assert.NotNull(schema); // guard
+
+            // & Assert
+            Assert.Null(schema.Type);
+
+            Assert.Equal("float", schema.Format);
+            Assert.Equal(isNullable, schema.Nullable);
+
+            Assert.NotNull(schema.OneOf);
+            Assert.Equal(3, schema.OneOf.Count);
+        }
+        #endregion
     }
 }

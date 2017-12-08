@@ -1201,7 +1201,7 @@ components:
           anyOf:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
         Age:
-          oneOf:
+          anyOf:
             - type: integer
             - type: string
           format: int64
@@ -1426,7 +1426,7 @@ components:
           type: object
           properties:
             Cost:
-              oneOf:
+              anyOf:
                 - type: integer
                 - type: string
               format: int64
@@ -1441,7 +1441,7 @@ components:
           type: object
           properties:
             Budget:
-              oneOf:
+              anyOf:
                 - type: integer
                 - type: string
               format: int64

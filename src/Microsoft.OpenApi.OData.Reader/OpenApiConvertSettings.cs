@@ -62,5 +62,12 @@ namespace Microsoft.OpenApi.OData
         /// Gets/sets a value indicating whether to verify the edm model before converter.
         /// </summary>
         public bool VerifyEdmModel { get; set; }
+
+        /// <summary>
+        /// Gets/sets a value indicating whether the server is IEEE754 compatible.
+        /// If it is IEEE754Compatible, the server will write quoted string for INT64 and decimal to prevent data loss;
+        /// otherwise keep number without quotes.
+        /// </summary>
+        public bool IEEE754Compatible { get; set; } = false;
     }
 }

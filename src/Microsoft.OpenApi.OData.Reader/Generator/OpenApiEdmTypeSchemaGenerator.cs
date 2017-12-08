@@ -186,12 +186,18 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Pattern = "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$";
                     break;
                 case EdmPrimitiveTypeKind.Decimal: // decimal
-                    
-                    schema.OneOf = new List<OpenApiSchema>
+                    if (context.Settings.IEEE754Compatible)
                     {
-                        new OpenApiSchema { Type = "number" },
-                        new OpenApiSchema { Type = "string" },
-                    };
+                        schema.AnyOf = new List<OpenApiSchema>
+                        {
+                            new OpenApiSchema { Type = "number" },
+                            new OpenApiSchema { Type = "string" },
+                        };
+                    }
+                    else
+                    {
+                        schema.Type = "number";
+                    }
                     schema.Format = "decimal";
                     break;
                 case EdmPrimitiveTypeKind.Double: // double
@@ -246,11 +252,19 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Maximum = Int32.MaxValue; // 2147483647
                     break;
                 case EdmPrimitiveTypeKind.Int64:
-                    schema.OneOf = new List<OpenApiSchema>
+                    if (context.Settings.IEEE754Compatible)
                     {
-                        new OpenApiSchema { Type = "integer" },
-                        new OpenApiSchema { Type = "string" }
-                    };
+                        schema.AnyOf = new List<OpenApiSchema>
+                        {
+                            new OpenApiSchema { Type = "integer" },
+                            new OpenApiSchema { Type = "string" }
+                        };
+                    }
+                    else
+                    {
+                        schema.Type = "integer";
+                    }
+
                     schema.Format = "int64";
                     break;
                 case EdmPrimitiveTypeKind.SByte:

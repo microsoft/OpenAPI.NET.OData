@@ -95,7 +95,8 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 Version = new Version(1, 0, 1),
-                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService")
+                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
+                IEEE754Compatible = true
             };
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
@@ -114,7 +115,8 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 Version = new Version(1, 0, 1),
-                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService")
+                ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
+                IEEE754Compatible = true
             };
 
             // Act

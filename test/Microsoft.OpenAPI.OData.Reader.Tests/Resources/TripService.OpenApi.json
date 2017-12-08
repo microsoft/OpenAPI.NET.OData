@@ -1869,7 +1869,7 @@
             ]
           },
           "Age": {
-            "oneOf": [
+            "anyOf": [
               {
                 "type": "integer"
               },
@@ -2242,7 +2242,7 @@
             "type": "object",
             "properties": {
               "Cost": {
-                "oneOf": [
+                "anyOf": [
                   {
                     "type": "integer"
                   },
@@ -2272,7 +2272,7 @@
             "type": "object",
             "properties": {
               "Budget": {
-                "oneOf": [
+                "anyOf": [
                   {
                     "type": "integer"
                   },
