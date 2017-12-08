@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a value indicating to set the OperationId on <see cref="OpenApiOperation"/>.
         /// </summary>
-        public bool OperationId { get; set; } = false;
+        public bool OperationId { get; set; }
 
         /// <summary>
         /// Gets/sets a value indicating whether to verify the edm model before converter.
@@ -68,6 +68,6 @@ namespace Microsoft.OpenApi.OData
         /// If it is IEEE754Compatible, the server will write quoted string for INT64 and decimal to prevent data loss;
         /// otherwise keep number without quotes.
         /// </summary>
-        public bool IEEE754Compatible { get; set; } = false;
+        public bool IEEE754Compatible { get; set; }
     }
 }
