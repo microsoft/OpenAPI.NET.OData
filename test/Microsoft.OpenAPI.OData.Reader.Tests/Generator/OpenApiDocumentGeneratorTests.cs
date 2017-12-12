@@ -34,7 +34,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(document);
-            Assert.Equal("3.0.0", document.SpecVersion.ToString());
             Assert.NotNull(document.Info);
             Assert.NotNull(document.Tags);
             Assert.NotNull(document.Servers);

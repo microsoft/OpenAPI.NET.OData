@@ -185,7 +185,6 @@ namespace OoasGui
             }
 
             OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
-            document.SpecVersion = Version == OpenApiSpecVersion.OpenApi2_0 ? new Version(2, 0) : new Version(3, 0, 0);
             MemoryStream stream = new MemoryStream();
             document.Serialize(stream, Version, Format);
             stream.Flush();
@@ -232,7 +231,6 @@ namespace OoasGui
                 using (FileStream fs = File.Create(output))
                 {
                     OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
-                    document.SpecVersion = Version == OpenApiSpecVersion.OpenApi2_0 ? new Version(2, 0) : new Version(3, 0, 0);
                     document.Serialize(fs, Version, Format);
                     fs.Flush();
                 }

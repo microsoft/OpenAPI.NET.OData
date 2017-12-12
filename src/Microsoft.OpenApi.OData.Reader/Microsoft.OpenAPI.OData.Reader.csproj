@@ -11,11 +11,13 @@
     <Authors>Microsoft.OpenApi.OData.Reader</Authors>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">latest</LangVersion>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">latest</LangVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Microsoft.OpenApi.OData.Reader.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.3.1" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.0.0-beta007" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.0.0-beta008" />
   </ItemGroup>
 
   <ItemGroup>

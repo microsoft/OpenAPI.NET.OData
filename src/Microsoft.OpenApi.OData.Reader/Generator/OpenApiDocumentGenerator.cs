@@ -36,8 +36,6 @@ namespace Microsoft.OpenApi.OData.Generator
             // }
             return new OpenApiDocument
             {
-                SpecVersion = new Version(3, 0, 0),
-
                 Info = context.CreateInfo(),
 
                 Servers = context.CreateServers(),
