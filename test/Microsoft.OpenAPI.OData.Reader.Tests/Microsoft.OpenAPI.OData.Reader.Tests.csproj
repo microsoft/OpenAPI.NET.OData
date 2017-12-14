@@ -5,7 +5,8 @@
     <RootNamespace>Microsoft.OpenApi.OData.Reader.Tests</RootNamespace>
     <TargetFramework>net46</TargetFramework>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\src\Microsoft.OpenApi.OData.Reader.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\tool\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>

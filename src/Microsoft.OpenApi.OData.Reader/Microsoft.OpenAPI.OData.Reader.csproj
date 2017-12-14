@@ -12,7 +12,8 @@
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">latest</LangVersion>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">latest</LangVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\Microsoft.OpenApi.OData.Reader.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\tool\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
