@@ -1,4 +1,4 @@
-﻿openapi: 3.0.0
+﻿openapi: 3.0.1
 info:
   title: OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models
   description: This OData service is located at http://services.odata.org/TrippinRESTierService
@@ -1468,22 +1468,14 @@ components:
         - Feature3
         - Feature4
       type: string
-    Edm.Geography:
-      $ref: '#/components/schemas/Edm.Geometry'
-    Edm.GeographyPoint:
-      $ref: '#/components/schemas/Edm.GeometryPoint'
-    Edm.GeographyLineString:
-      $ref: '#/components/schemas/Edm.GeometryLineString'
-    Edm.GeographyPolygon:
-      $ref: '#/components/schemas/Edm.GeometryPolygon'
-    Edm.GeographyMultiPoint:
-      $ref: '#/components/schemas/Edm.GeometryMultiPoint'
-    Edm.GeographyMultiLineString:
-      $ref: '#/components/schemas/Edm.GeometryMultiLineString'
-    Edm.GeographyMultiPolygon:
-      $ref: '#/components/schemas/Edm.GeometryMultiPolygon'
-    Edm.GeographyCollection:
-      $ref: '#/components/schemas/Edm.GeometryCollection'
+    Edm.Geography: { }
+    Edm.GeographyPoint: { }
+    Edm.GeographyLineString: { }
+    Edm.GeographyPolygon: { }
+    Edm.GeographyMultiPoint: { }
+    Edm.GeographyMultiLineString: { }
+    Edm.GeographyMultiPolygon: { }
+    Edm.GeographyCollection: { }
     Edm.Geometry:
       type: object
       anyOf:

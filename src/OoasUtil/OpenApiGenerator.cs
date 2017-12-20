@@ -55,7 +55,7 @@ namespace OoasUtil
                 using (FileStream fs = File.Create(Output))
                 {
                     OpenApiDocument document = edmModel.ConvertToOpenApi(settings);
-                    document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0_0, Format);
+                    document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0, Format);
                     fs.Flush();
                 }
             }

@@ -55,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             Assert.Equal(@"{
@@ -84,7 +84,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             Assert.Equal(@"{
@@ -107,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             Assert.Equal(@"{
@@ -130,7 +130,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(collectionType);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             Assert.Equal(@"{
@@ -261,7 +261,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference);
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             if (isNullable)
@@ -292,7 +292,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference);
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             if (isNullable)
@@ -405,7 +405,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreateEdmTypeSchema(edmTypeReference);
             Assert.NotNull(schema); // guard
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // & Assert
             if (isNullable)

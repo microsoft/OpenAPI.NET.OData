@@ -25,7 +25,7 @@ namespace OoasGui
     {
         private OpenApiFormat Format { get; set; } = OpenApiFormat.Json;
 
-        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0_0;
+        private OpenApiSpecVersion Version { get; set; } = OpenApiSpecVersion.OpenApi3_0;
 
         private OpenApiConvertSettings Settings = new OpenApiConvertSettings();
 
@@ -70,7 +70,7 @@ namespace OoasGui
 
         private void v3RadioBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Version = OpenApiSpecVersion.OpenApi3_0_0;
+            Version = OpenApiSpecVersion.OpenApi3_0;
             Convert();
         }
 

@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             var response = Assert.Single(responses).Value;
-            string json = response.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = response.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal(@"{
   ""description"": ""error"",

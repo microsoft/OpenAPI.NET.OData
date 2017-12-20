@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("skip", parameters.Select(p => p.Key));
             var skip = parameters.First(c => c.Key == "skip").Value;
 
-            string yaml = skip.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0_0);
+            string yaml = skip.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(
 @"name: $skip
 in: query

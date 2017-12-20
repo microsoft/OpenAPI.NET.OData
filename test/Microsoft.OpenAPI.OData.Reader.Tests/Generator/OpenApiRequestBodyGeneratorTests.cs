@@ -103,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var requestBody = context.CreateRequestBody(_actionImport);
 
             // Assert
-            string json = requestBody.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = requestBody.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal(@"{
   ""description"": ""Action parameters"",

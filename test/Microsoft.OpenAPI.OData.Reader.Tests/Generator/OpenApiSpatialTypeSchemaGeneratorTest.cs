@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -104,7 +104,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -120,7 +120,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -152,7 +152,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -168,7 +168,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -184,7 +184,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -200,7 +200,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -216,7 +216,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -255,7 +255,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema); // guard
 
             // Act
-            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0_0);
+            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(
@@ -281,7 +281,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -315,7 +315,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -352,7 +352,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -385,7 +385,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0_0);
+            string yaml = schema.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"required:
@@ -413,7 +413,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -453,7 +453,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -486,7 +486,7 @@ properties:
             Assert.NotNull(schema); // guard
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{

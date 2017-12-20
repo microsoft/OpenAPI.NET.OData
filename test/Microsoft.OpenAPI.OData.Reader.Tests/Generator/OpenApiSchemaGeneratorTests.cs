@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Address", schema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -148,7 +148,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Tree", declaredSchema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -205,7 +205,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Zoo", schema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -275,7 +275,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Human", declaredSchema.Title);
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             _output.WriteLine(json);
             // Assert
             Assert.NotNull(json);
@@ -344,7 +344,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(new string[] { "Blue", "White" }, schema.Enum.Select(e => ((OpenApiString)e).Value));
 
             // Act
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.NotNull(json);
@@ -374,7 +374,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
             Assert.Equal(@"{
@@ -400,7 +400,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             _output.WriteLine(json);
             // Assert
             Assert.Equal(@"{
@@ -431,7 +431,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal("boolean", schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
   ""type"": ""boolean"",
   ""default"": false
@@ -456,7 +456,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal("string", schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
   ""maxLength"": 44,
   ""type"": ""string"",
@@ -481,7 +481,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Equal("integer", schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             Assert.Equal(@"{
   ""maximum"": 2147483647,
   ""minimum"": -2147483648,
@@ -507,7 +507,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(schema);
             Assert.Null(schema.Type);
 
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0_0);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal(@"{
   ""oneOf"": [
