@@ -6,7 +6,7 @@
         <version>$VersionFullSemantic$-Nightly$NightlyBuildVersion$</version>
         <authors>Microsoft</authors>
         <copyright>&#169; Microsoft Corporation. All rights reserved.</copyright>
-        <description>This package contains contains the codes you need to convert OData CSDL to Open API Document of Model.</description>
+        <description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</description>
         <summary>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</summary>
         <language>en-US</language>
         <projectUrl>http://github.com/Microsoft/OpenApi.Net.OData</projectUrl>
