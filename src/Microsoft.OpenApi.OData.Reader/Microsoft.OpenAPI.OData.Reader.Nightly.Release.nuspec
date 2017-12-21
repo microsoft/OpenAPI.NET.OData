@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+    <metadata>
+        <id>Microsoft.OpenApi.OData</id>
+        <title>Microsoft Open API OData Reader</title>
+        <version>$VersionFullSemantic$-Nightly$NightlyBuildVersion$</version>
+        <authors>Microsoft</authors>
+        <copyright>&#169; Microsoft Corporation. All rights reserved.</copyright>
+        <description>This package contains contains the codes you need to convert OData CSDL to Open API Document of Model.</description>
+        <summary>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</summary>
+        <language>en-US</language>
+        <projectUrl>http://github.com/Microsoft/OpenApi.Net.OData</projectUrl>
+        <licenseUrl>http://www.microsoft.com/web/webpi/eula/net_library_eula_ENU.htm</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <tags>Microsoft OpenApi OData EDM</tags>
+        <dependencies>
+            <dependency id="Microsoft.OpenApi" version="$OpenApiCorePackageDependency$" />
+            <dependency id="Microsoft.OData.Edm" version="$ODataEdmPackageDependency$" />
+        </dependencies>
+    </metadata>
+  <files>
+    <file src="$ProductRoot$\net46\Microsoft.OpenApi.OData.Reader.dll" target="lib\net46" />
+	<file src="$ProductRoot$\net46\Microsoft.OpenApi.OData.Reader.pdb" target="lib\net46" />
+    <file src="$ProductRoot$\netstandard2.0\Microsoft.OpenApi.OData.Reader.dll" target="lib\netstandard2.0" />
+	<file src="$ProductRoot$\netstandard2.0\Microsoft.OpenApi.OData.Reader.pdb" target="lib\netstandard2.0" />
+  </files>
+</package>

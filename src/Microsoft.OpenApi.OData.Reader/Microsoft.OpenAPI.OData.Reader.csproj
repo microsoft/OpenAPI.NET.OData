@@ -16,6 +16,7 @@
     <DelaySign>true</DelaySign>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\Debug\</OutputPath>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">..\..\bin\Release\</OutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
