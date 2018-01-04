@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData
 {
