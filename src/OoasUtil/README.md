@@ -25,13 +25,9 @@ Output the "JSON" format Open API document;
 
 Output the "YAML" format Open API document;
 
-### [--url|-u Uri]
+### [--input|-i file]
 
-Indicate to get CSDL from Uri.
-
-### [--file|-f file]
-
-Indicate to get CSDL from file.
+Indicate to where to get CSDL, from file or from Uri.
 
 ### [--output|-o file]
 
@@ -40,7 +36,7 @@ Indicate to output file name.
 
 ## Examples
 
-`OoasUtil.exe -j -u http://services.odata.org/TrippinRESTierService -o trip.json`
+`OoasUtil.exe -j -i http://services.odata.org/TrippinRESTierService -o trip.json`
 
 The content of `trip.json` is similiar at https://github.com/xuzhg/OData.OpenAPI/blob/master/Microsoft.OData.OpenAPI/Microsoft.OData.OpenAPI.Tests/Resources/TripService.OpenApi.json
 

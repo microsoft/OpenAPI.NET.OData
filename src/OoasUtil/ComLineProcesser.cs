@@ -36,14 +36,9 @@ namespace OoasUtil
         public bool CanContinue { get { return _continue; } }
 
         /// <summary>
-        /// Input file with the CSDL
+        /// Input FilePath or Url with the CSDL.
         /// </summary>
-        public string InputFile { get; private set; }
-
-        /// <summary>
-        /// Input Url with the CSDL
-        /// </summary>
-        public string InputUri { get; private set; }
+        public string Input { get; private set; }
 
         /// <summary>
         /// Output format.
@@ -58,13 +53,7 @@ namespace OoasUtil
         /// <summary>
         /// Is input Url
         /// </summary>
-        public bool IsUrl
-        {
-            get
-            {
-                return InputUri != null;
-            }
-        }
+        public bool IsLocalFile { get; private set; }
 
         /// <summary>
         /// Process the arguments.
@@ -95,18 +84,9 @@ namespace OoasUtil
                             PrintUsage();
                             return true;
 
-                        case "--url":
-                        case "-u":
-                            if (!ProcessUrl(_args[i+1]))
-                            {
-                                return false;
-                            }
-                            i++;
-                            break;
-
-                        case "--file":
-                        case "-f":
-                            if (!ProcessFile(_args[i + 1]))
+                        case "--input":
+                        case "-i":
+                            if (!ProcessInput(_args[i+1]))
                             {
                                 return false;
                             }
@@ -156,48 +136,20 @@ namespace OoasUtil
                 Format = OpenApiFormat.Json;
             }
 
-            ValidateArguments();
-            _continue = true;
-            return true;
+            _continue = ValidateArguments();
+            return _continue;
         }
 
-        private bool ProcessUrl(string uri)
+        private bool ProcessInput(string input)
         {
-            if (InputUri != null)
+            if (Input != null)
             {
-                Console.WriteLine("[Error:] Multiple [--url|-u] are not allowed.\n");
+                Console.WriteLine("[Error:] Multiple [--input|-i] are not allowed.\n");
                 PrintUsage();
                 return false;
             }
 
-            if (InputFile != null)
-            {
-                Console.WriteLine("[Error:] Already [--file|-f] is used.\n");
-                PrintUsage();
-                return false;
-            }
-
-            InputUri = uri;
-            return true;
-        }
-
-        private bool ProcessFile(string file)
-        {
-            if (InputFile != null)
-            {
-                Console.WriteLine("[Error:] Multiple [--file|-f] are not allowed.\n");
-                PrintUsage();
-                return false;
-            }
-
-            if (InputUri != null)
-            {
-                Console.WriteLine("[Error:] Already [--url|-u] is used.\n");
-                PrintUsage();
-                return false;
-            }
-
-            InputFile = file;
+            Input = input;
             return true;
         }
 
@@ -229,18 +181,19 @@ namespace OoasUtil
 
         private bool ValidateArguments()
         {
-            if (String.IsNullOrEmpty(InputUri) && String.IsNullOrEmpty(InputFile))
+            if (String.IsNullOrEmpty(Input))
             {
-                Console.WriteLine("[Error:] At least one of [--url|-u|--file|-f] is required.\n");
+                Console.WriteLine("[Error:] At least one of [--input|-i] is required.\n");
                 PrintUsage();
                 return false;
             }
 
-            if (!String.IsNullOrEmpty(InputFile))
+            IsLocalFile = IsLocalPath(Input);
+            if (IsLocalFile)
             {
-                if (!File.Exists(InputFile))
+                if (!File.Exists(Input))
                 {
-                    Console.WriteLine("[Error]: File (" + InputFile + ") is not existed.\n");
+                    Console.WriteLine("[Error]: File (" + Input + ") is not existed.\n");
                     return false;
                 }
             }
@@ -263,15 +216,14 @@ namespace OoasUtil
             sb.Append("\nOptions:\n");
             sb.Append("  --help|-h\t\t\tDisplay help.\n");
             sb.Append("  --version|-v\t\t\tDisplay version.\n");
-            sb.Append("  --url|-u ServiceUrl\t\tSet the OData Service Url.\n");
-            sb.Append("  --file|-f CsdlFile\t\tSet the CSDL file name.\n");
-            sb.Append("  --output|-o CsdlFile\t\tSet the output file name.\n");
+            sb.Append("  --input|-i CsdlFileOrUrl\t\tSet the CSDL file name or the OData Service Url.\n");
+            sb.Append("  --output|-o OutputFile\t\tSet the output file name.\n");
             sb.Append("  --json|-j\t\t\tSet the output format as JSON.\n");
             sb.Append("  --yaml|-y\t\t\tSet the output format as YAML.\n");
 
             sb.Append("\nExamples:\n");
-            sb.Append("    OoasUtil.exe -y -u http://services.odata.org/TrippinRESTierService -o trip.yaml\n");
-            sb.Append("    OoasUtil.exe -j -u c:\\csdl.xml -o trip.json\n");
+            sb.Append("    OoasUtil.exe -y -i http://services.odata.org/TrippinRESTierService -o trip.yaml\n");
+            sb.Append("    OoasUtil.exe -j -i c:\\csdl.xml -o trip.json\n");
 
             Console.WriteLine(sb.ToString());
         } 
@@ -286,6 +238,27 @@ namespace OoasUtil
         public static void PrintVersion()
         {
             Console.WriteLine(version.ToString());
+        }
+
+        private static bool IsLocalPath(string path)
+        {
+            bool ret = true;
+            try
+            {
+                ret = new Uri(path).IsFile;
+            }
+            catch
+            {
+                if (path.StartsWith("http://") ||
+                    path.StartsWith(@"http:\\") ||
+                    path.StartsWith("https://") ||
+                    path.StartsWith(@"https:\\"))
+                {
+                    return false;
+                }
+            }
+
+            return ret;
         }
     }
 }

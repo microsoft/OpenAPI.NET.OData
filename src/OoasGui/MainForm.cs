@@ -105,7 +105,7 @@ namespace OoasGui
 
                     fileTextBox.Text = openFileDialog.FileName;
                     csdlRichTextBox.Text = text;
-
+                    Settings.ServiceRoot = new Uri(openFileDialog.FileName);
                     Convert();
                 }
                 catch (Exception ex)
@@ -146,6 +146,7 @@ namespace OoasGui
                 string csdl = reader.ReadToEnd();
                 LoadEdm(url, csdl);
                 csdlRichTextBox.Text = FormatXml(csdl);
+                Settings.ServiceRoot = requestUri;
                 Convert();
             }
             catch(Exception ex)

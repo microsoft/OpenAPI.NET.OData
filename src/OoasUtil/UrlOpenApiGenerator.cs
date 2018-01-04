@@ -56,7 +56,6 @@ namespace OoasUtil
             string csdl = reader.ReadToEnd();
 
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
-
         }
 
         protected override OpenApiConvertSettings GetSettings()

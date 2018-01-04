@@ -12,10 +12,10 @@ namespace OoasUtil
     {
         static int Main(string[] args)
         {
-            // args = new[] { "--json", "--file", @"E:\work\OneApi Design\test\TripService.OData.xml", "-o", @"E:\work\OneApi Design\test\Trip.json" };
-            // args = new[] { "--yaml", "--file", @"E:\work\OneApi Design\test\TripService.OData.xml", "-o", @"E:\work\OneApi Design\test\Trip.yaml" };
-            // args = new[] { "--yaml", "--url", @"http://services.odata.org/TrippinRESTierService", "-o", @"E:\work\OneApi Design\test\TripUrl.yaml" };
-            // args = new[] { "--json", "--url", @"http://services.odata.org/TrippinRESTierService", "-o", @"E:\work\OneApi Design\test\TripUrl.json" };
+            // args = new[] { "--json", "--input", @"E:\work\OneApiDesign\test\TripService.OData.xml", "-o", @"E:\work\OneApiDesign\test1\Trip.json" };
+            // args = new[] { "--yaml", "-i", @"E:\work\OneApiDesign\test\TripService.OData.xml", "-o", @"E:\work\OneApiDesign\test1\Trip.yaml" };
+            // args = new[] { "--yaml", "--input", @"http://services.odata.org/TrippinRESTierService", "-o", @"E:\work\OneApiDesign\test1\TripUrl.yaml" };
+            // args = new[] { "--json", "-i", @"http://services.odata.org/TrippinRESTierService", "-o", @"E:\work\OneApiDesign\test1\TripUrl.json" };
 
             ComLineProcesser processer = new ComLineProcesser(args);
             if (!processer.Process())
@@ -29,13 +29,13 @@ namespace OoasUtil
             }
 
             OpenApiGenerator generator;
-            if (processer.IsUrl)
+            if (processer.IsLocalFile)
             {
-                generator = new UrlOpenApiGenerator(new Uri(processer.InputUri), processer.Output, processer.Format.Value);
+                generator = new FileOpenApiGenerator(processer.Input, processer.Output, processer.Format.Value);
             }
             else
             {
-                generator = new FileOpenApiGenerator(processer.InputFile, processer.Output, processer.Format.Value);
+                generator = new UrlOpenApiGenerator(new Uri(processer.Input), processer.Output, processer.Format.Value);
             }
 
             if (generator.Generate())
