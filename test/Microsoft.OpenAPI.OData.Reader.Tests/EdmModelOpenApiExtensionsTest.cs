@@ -73,7 +73,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(Resources.GetString("Basic.OpenApi.json").ChangeLineBreaks(), json);
         }
 
-        [Fact(Skip = "See: https://github.com/Microsoft/OpenAPI.NET/issues/157")]
+        [Fact]
         public void BasicEdmModelToOpenApiYamlWorks()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(Resources.GetString("Basic.OpenApi.yaml").ChangeLineBreaks(), yaml);
         }
 
-        [Fact(Skip = "See: https://github.com/Microsoft/OpenAPI.NET/issues/157")]
+        [Fact]
         public void TripServiceMetadataToOpenApiJsonWorks()
         {
             // Arrange

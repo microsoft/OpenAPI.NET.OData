@@ -1,4 +1,4 @@
-﻿openapi: 3.0.0
+﻿openapi: 3.0.1
 info:
   title: OData Service for namespace DefaultNs
   description: This OData service is located at http://localhost
@@ -64,7 +64,7 @@ paths:
             application/json:
               schema:
                 title: Collection of People
-                type: object
+                type: array
                 properties:
                   value:
                     type: array
@@ -229,7 +229,7 @@ paths:
             application/json:
               schema:
                 title: Collection of City
-                type: object
+                type: array
                 properties:
                   value:
                     type: array
@@ -391,7 +391,7 @@ paths:
             application/json:
               schema:
                 title: Collection of CountryOrRegion
-                type: object
+                type: array
                 properties:
                   value:
                     type: array

@@ -88,7 +88,7 @@ paths:
             application/json:
               schema:
                 title: Collection of People
-                type: object
+                type: array
                 properties:
                   value:
                     type: array
@@ -368,7 +368,7 @@ paths:
             application/json:
               schema:
                 title: Collection of Airlines
-                type: object
+                type: array
                 properties:
                   value:
                     type: array
@@ -540,7 +540,7 @@ paths:
             application/json:
               schema:
                 title: Collection of Airports
-                type: object
+                type: array
                 properties:
                   value:
                     type: array
@@ -738,7 +738,7 @@ paths:
             application/json:
               schema:
                 title: Collection of NewComePeople
-                type: object
+                type: array
                 properties:
                   value:
                     type: array
@@ -1468,14 +1468,22 @@ components:
         - Feature3
         - Feature4
       type: string
-    Edm.Geography: { }
-    Edm.GeographyPoint: { }
-    Edm.GeographyLineString: { }
-    Edm.GeographyPolygon: { }
-    Edm.GeographyMultiPoint: { }
-    Edm.GeographyMultiLineString: { }
-    Edm.GeographyMultiPolygon: { }
-    Edm.GeographyCollection: { }
+    Edm.Geography:
+      $ref: '#/components/schemas/Edm.Geometry'
+    Edm.GeographyPoint:
+      $ref: '#/components/schemas/Edm.GeometryPoint'
+    Edm.GeographyLineString:
+      $ref: '#/components/schemas/Edm.GeometryLineString'
+    Edm.GeographyPolygon:
+      $ref: '#/components/schemas/Edm.GeometryPolygon'
+    Edm.GeographyMultiPoint:
+      $ref: '#/components/schemas/Edm.GeometryMultiPoint'
+    Edm.GeographyMultiLineString:
+      $ref: '#/components/schemas/Edm.GeometryMultiLineString'
+    Edm.GeographyMultiPolygon:
+      $ref: '#/components/schemas/Edm.GeometryMultiPolygon'
+    Edm.GeographyCollection:
+      $ref: '#/components/schemas/Edm.GeometryCollection'
     Edm.Geometry:
       type: object
       anyOf:

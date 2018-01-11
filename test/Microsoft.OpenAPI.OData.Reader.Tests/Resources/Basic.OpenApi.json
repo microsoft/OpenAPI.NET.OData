@@ -96,7 +96,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of People",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -359,7 +359,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of City",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -619,7 +619,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of CountryOrRegion",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",

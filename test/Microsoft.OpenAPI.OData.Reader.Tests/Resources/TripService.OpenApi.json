@@ -120,7 +120,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of People",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -561,7 +561,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of Airlines",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -831,7 +831,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of Airports",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -1127,7 +1127,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of NewComePeople",
-                  "type": "object",
+                  "type": "array",
                   "properties": {
                     "value": {
                       "type": "array",
