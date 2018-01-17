@@ -2,13 +2,13 @@
   "swagger": "2.0",
   "info": {
     "title": "OData Service for namespace microsoft.graph",
-    "description": "This OData service is located at http://localhost",
+    "description": "This OData service is located at https://graph.microsoft.com/v1.0/$metadata",
     "version": "1.0.1"
   },
-  "host": "localhost",
-  "basePath": "/",
+  "host": "graph.microsoft.com",
+  "basePath": "/v1.0/$metadata",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/directoryObjects": {
@@ -17,6 +17,7 @@
           "directoryObjects"
         ],
         "summary": "Get entities from directoryObjects",
+        "operationId": "Get entities from directoryObjects",
         "produces": [
           "application/json"
         ],
@@ -38,7 +39,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -51,7 +52,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -63,7 +64,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -79,7 +80,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of directoryObjects",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -100,6 +101,7 @@
           "directoryObjects"
         ],
         "summary": "Add new entity to directoryObjects",
+        "operationId": "Add new entity to directoryObjects",
         "consumes": [
           "application/json"
         ],
@@ -135,20 +137,21 @@
           "directoryObjects"
         ],
         "summary": "Get entity from directoryObjects by key",
+        "operationId": "Get entity from directoryObjects by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -160,7 +163,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -188,13 +191,14 @@
           "directoryObjects"
         ],
         "summary": "Update entity in directoryObjects",
+        "operationId": "Update entity in directoryObjects",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -222,17 +226,18 @@
           "directoryObjects"
         ],
         "summary": "Delete entity from directoryObjects",
+        "operationId": "Delete entity from directoryObjects",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -253,6 +258,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getByIds",
+        "operationId": "Invoke action getByIds",
         "consumes": [
           "application/json"
         ],
@@ -296,13 +302,14 @@
           "directoryObjects"
         ],
         "summary": "Invoke action checkMemberGroups",
+        "operationId": "Invoke action checkMemberGroups",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -340,13 +347,14 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberGroups",
+        "operationId": "Invoke action getMemberGroups",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -382,13 +390,14 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberObjects",
+        "operationId": "Invoke action getMemberObjects",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -424,6 +433,7 @@
           "devices"
         ],
         "summary": "Get entities from devices",
+        "operationId": "Get entities from devices",
         "produces": [
           "application/json"
         ],
@@ -445,7 +455,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -488,7 +498,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -515,7 +525,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -534,7 +544,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of devices",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -555,6 +565,7 @@
           "devices"
         ],
         "summary": "Add new entity to devices",
+        "operationId": "Add new entity to devices",
         "consumes": [
           "application/json"
         ],
@@ -590,20 +601,21 @@
           "devices"
         ],
         "summary": "Get entity from devices by key",
+        "operationId": "Get entity from devices by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -630,7 +642,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -661,13 +673,14 @@
           "devices"
         ],
         "summary": "Update entity in devices",
+        "operationId": "Update entity in devices",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -695,17 +708,18 @@
           "devices"
         ],
         "summary": "Delete entity from devices",
+        "operationId": "Delete entity from devices",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -726,6 +740,7 @@
           "domains"
         ],
         "summary": "Get entities from domains",
+        "operationId": "Get entities from domains",
         "produces": [
           "application/json"
         ],
@@ -747,7 +762,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -778,7 +793,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -799,7 +814,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -818,7 +833,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of domains",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -839,6 +854,7 @@
           "domains"
         ],
         "summary": "Add new entity to domains",
+        "operationId": "Add new entity to domains",
         "consumes": [
           "application/json"
         ],
@@ -874,20 +890,21 @@
           "domains"
         ],
         "summary": "Get entity from domains by key",
+        "operationId": "Get entity from domains by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -908,7 +925,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -939,13 +956,14 @@
           "domains"
         ],
         "summary": "Update entity in domains",
+        "operationId": "Update entity in domains",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -973,17 +991,18 @@
           "domains"
         ],
         "summary": "Delete entity from domains",
+        "operationId": "Delete entity from domains",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -1004,10 +1023,11 @@
           "domains"
         ],
         "summary": "Invoke action verify",
+        "operationId": "Invoke action verify",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1029,6 +1049,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entities from domainDnsRecords",
+        "operationId": "Get entities from domainDnsRecords",
         "produces": [
           "application/json"
         ],
@@ -1050,7 +1071,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1073,7 +1094,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1090,7 +1111,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1106,7 +1127,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of domainDnsRecords",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -1127,6 +1148,7 @@
           "domainDnsRecords"
         ],
         "summary": "Add new entity to domainDnsRecords",
+        "operationId": "Add new entity to domainDnsRecords",
         "consumes": [
           "application/json"
         ],
@@ -1162,20 +1184,21 @@
           "domainDnsRecords"
         ],
         "summary": "Get entity from domainDnsRecords by key",
+        "operationId": "Get entity from domainDnsRecords by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1192,7 +1215,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1220,13 +1243,14 @@
           "domainDnsRecords"
         ],
         "summary": "Update entity in domainDnsRecords",
+        "operationId": "Update entity in domainDnsRecords",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1254,17 +1278,18 @@
           "domainDnsRecords"
         ],
         "summary": "Delete entity from domainDnsRecords",
+        "operationId": "Delete entity from domainDnsRecords",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -1285,6 +1310,7 @@
           "groups"
         ],
         "summary": "Get entities from groups",
+        "operationId": "Get entities from groups",
         "produces": [
           "application/json"
         ],
@@ -1306,7 +1332,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1315,6 +1341,8 @@
                 "id desc",
                 "classification",
                 "classification desc",
+                "createdDateTime",
+                "createdDateTime desc",
                 "description",
                 "description desc",
                 "displayName",
@@ -1335,6 +1363,8 @@
                 "onPremisesSyncEnabled desc",
                 "proxyAddresses",
                 "proxyAddresses desc",
+                "renewedDateTime",
+                "renewedDateTime desc",
                 "securityEnabled",
                 "securityEnabled desc",
                 "visibility",
@@ -1353,13 +1383,14 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
               "enum": [
                 "id",
                 "classification",
+                "createdDateTime",
                 "description",
                 "displayName",
                 "groupTypes",
@@ -1370,6 +1401,7 @@
                 "onPremisesSecurityIdentifier",
                 "onPremisesSyncEnabled",
                 "proxyAddresses",
+                "renewedDateTime",
                 "securityEnabled",
                 "visibility",
                 "allowExternalSenders",
@@ -1382,7 +1414,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1418,7 +1450,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of groups",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -1439,6 +1471,7 @@
           "groups"
         ],
         "summary": "Add new entity to groups",
+        "operationId": "Add new entity to groups",
         "consumes": [
           "application/json"
         ],
@@ -1474,26 +1507,28 @@
           "groups"
         ],
         "summary": "Get entity from groups by key",
+        "operationId": "Get entity from groups by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
               "enum": [
                 "id",
                 "classification",
+                "createdDateTime",
                 "description",
                 "displayName",
                 "groupTypes",
@@ -1504,6 +1539,7 @@
                 "onPremisesSecurityIdentifier",
                 "onPremisesSyncEnabled",
                 "proxyAddresses",
+                "renewedDateTime",
                 "securityEnabled",
                 "visibility",
                 "allowExternalSenders",
@@ -1516,7 +1552,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1564,13 +1600,14 @@
           "groups"
         ],
         "summary": "Update entity in groups",
+        "operationId": "Update entity in groups",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1598,17 +1635,18 @@
           "groups"
         ],
         "summary": "Delete entity from groups",
+        "operationId": "Delete entity from groups",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -1629,6 +1667,7 @@
           "groups"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invoke function delta",
         "produces": [
           "application/json"
         ],
@@ -1652,10 +1691,11 @@
           "groups"
         ],
         "summary": "Invoke action subscribeByMail",
+        "operationId": "Invoke action subscribeByMail",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1677,10 +1717,11 @@
           "groups"
         ],
         "summary": "Invoke action unsubscribeByMail",
+        "operationId": "Invoke action unsubscribeByMail",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1702,10 +1743,11 @@
           "groups"
         ],
         "summary": "Invoke action addFavorite",
+        "operationId": "Invoke action addFavorite",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1727,10 +1769,11 @@
           "groups"
         ],
         "summary": "Invoke action removeFavorite",
+        "operationId": "Invoke action removeFavorite",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1752,10 +1795,11 @@
           "groups"
         ],
         "summary": "Invoke action resetUnseenCount",
+        "operationId": "Invoke action resetUnseenCount",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1777,6 +1821,7 @@
           "directoryRoles"
         ],
         "summary": "Get entities from directoryRoles",
+        "operationId": "Get entities from directoryRoles",
         "produces": [
           "application/json"
         ],
@@ -1798,7 +1843,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1817,7 +1862,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1832,7 +1877,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1849,7 +1894,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of directoryRoles",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -1870,6 +1915,7 @@
           "directoryRoles"
         ],
         "summary": "Add new entity to directoryRoles",
+        "operationId": "Add new entity to directoryRoles",
         "consumes": [
           "application/json"
         ],
@@ -1905,20 +1951,21 @@
           "directoryRoles"
         ],
         "summary": "Get entity from directoryRoles by key",
+        "operationId": "Get entity from directoryRoles by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1933,7 +1980,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1962,13 +2009,14 @@
           "directoryRoles"
         ],
         "summary": "Update entity in directoryRoles",
+        "operationId": "Update entity in directoryRoles",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1996,17 +2044,18 @@
           "directoryRoles"
         ],
         "summary": "Delete entity from directoryRoles",
+        "operationId": "Delete entity from directoryRoles",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -2027,6 +2076,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entities from directoryRoleTemplates",
+        "operationId": "Get entities from directoryRoleTemplates",
         "produces": [
           "application/json"
         ],
@@ -2048,7 +2098,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2065,7 +2115,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2079,7 +2129,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2095,7 +2145,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of directoryRoleTemplates",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -2116,6 +2166,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Add new entity to directoryRoleTemplates",
+        "operationId": "Add new entity to directoryRoleTemplates",
         "consumes": [
           "application/json"
         ],
@@ -2151,20 +2202,21 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entity from directoryRoleTemplates by key",
+        "operationId": "Get entity from directoryRoleTemplates by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2178,7 +2230,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2206,13 +2258,14 @@
           "directoryRoleTemplates"
         ],
         "summary": "Update entity in directoryRoleTemplates",
+        "operationId": "Update entity in directoryRoleTemplates",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -2240,17 +2293,18 @@
           "directoryRoleTemplates"
         ],
         "summary": "Delete entity from directoryRoleTemplates",
+        "operationId": "Delete entity from directoryRoleTemplates",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -2271,6 +2325,7 @@
           "organization"
         ],
         "summary": "Get entities from organization",
+        "operationId": "Get entities from organization",
         "produces": [
           "application/json"
         ],
@@ -2292,7 +2347,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2341,7 +2396,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2371,7 +2426,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2388,7 +2443,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of organization",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -2409,6 +2464,7 @@
           "organization"
         ],
         "summary": "Add new entity to organization",
+        "operationId": "Add new entity to organization",
         "consumes": [
           "application/json"
         ],
@@ -2444,20 +2500,21 @@
           "organization"
         ],
         "summary": "Get entity from organization by key",
+        "operationId": "Get entity from organization by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2487,7 +2544,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2516,13 +2573,14 @@
           "organization"
         ],
         "summary": "Update entity in organization",
+        "operationId": "Update entity in organization",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -2550,17 +2608,18 @@
           "organization"
         ],
         "summary": "Delete entity from organization",
+        "operationId": "Delete entity from organization",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -2581,6 +2640,7 @@
           "groupSettings"
         ],
         "summary": "Get entities from groupSettings",
+        "operationId": "Get entities from groupSettings",
         "produces": [
           "application/json"
         ],
@@ -2602,7 +2662,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2621,7 +2681,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2636,7 +2696,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2652,7 +2712,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of groupSettings",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -2673,6 +2733,7 @@
           "groupSettings"
         ],
         "summary": "Add new entity to groupSettings",
+        "operationId": "Add new entity to groupSettings",
         "consumes": [
           "application/json"
         ],
@@ -2708,20 +2769,21 @@
           "groupSettings"
         ],
         "summary": "Get entity from groupSettings by key",
+        "operationId": "Get entity from groupSettings by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2736,7 +2798,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2764,13 +2826,14 @@
           "groupSettings"
         ],
         "summary": "Update entity in groupSettings",
+        "operationId": "Update entity in groupSettings",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -2798,17 +2861,18 @@
           "groupSettings"
         ],
         "summary": "Delete entity from groupSettings",
+        "operationId": "Delete entity from groupSettings",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -2829,6 +2893,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Get entities from groupSettingTemplates",
+        "operationId": "Get entities from groupSettingTemplates",
         "produces": [
           "application/json"
         ],
@@ -2850,7 +2915,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2869,7 +2934,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2884,7 +2949,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2900,7 +2965,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of groupSettingTemplates",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -2921,6 +2986,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Add new entity to groupSettingTemplates",
+        "operationId": "Add new entity to groupSettingTemplates",
         "consumes": [
           "application/json"
         ],
@@ -2956,20 +3022,21 @@
           "groupSettingTemplates"
         ],
         "summary": "Get entity from groupSettingTemplates by key",
+        "operationId": "Get entity from groupSettingTemplates by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2984,7 +3051,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -3012,13 +3079,14 @@
           "groupSettingTemplates"
         ],
         "summary": "Update entity in groupSettingTemplates",
+        "operationId": "Update entity in groupSettingTemplates",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3046,17 +3114,18 @@
           "groupSettingTemplates"
         ],
         "summary": "Delete entity from groupSettingTemplates",
+        "operationId": "Delete entity from groupSettingTemplates",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -3077,6 +3146,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entities from subscribedSkus",
+        "operationId": "Get entities from subscribedSkus",
         "produces": [
           "application/json"
         ],
@@ -3098,7 +3168,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -3125,7 +3195,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3144,7 +3214,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -3160,7 +3230,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of subscribedSkus",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -3181,6 +3251,7 @@
           "subscribedSkus"
         ],
         "summary": "Add new entity to subscribedSkus",
+        "operationId": "Add new entity to subscribedSkus",
         "consumes": [
           "application/json"
         ],
@@ -3216,20 +3287,21 @@
           "subscribedSkus"
         ],
         "summary": "Get entity from subscribedSkus by key",
+        "operationId": "Get entity from subscribedSkus by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3248,7 +3320,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -3276,13 +3348,14 @@
           "subscribedSkus"
         ],
         "summary": "Update entity in subscribedSkus",
+        "operationId": "Update entity in subscribedSkus",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3310,17 +3383,18 @@
           "subscribedSkus"
         ],
         "summary": "Delete entity from subscribedSkus",
+        "operationId": "Delete entity from subscribedSkus",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -3341,6 +3415,7 @@
           "users"
         ],
         "summary": "Get entities from users",
+        "operationId": "Get entities from users",
         "produces": [
           "application/json"
         ],
@@ -3362,7 +3437,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -3461,7 +3536,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3516,7 +3591,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -3558,7 +3633,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of users",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -3579,6 +3654,7 @@
           "users"
         ],
         "summary": "Add new entity to users",
+        "operationId": "Add new entity to users",
         "consumes": [
           "application/json"
         ],
@@ -3614,20 +3690,21 @@
           "users"
         ],
         "summary": "Get entity from users by key",
+        "operationId": "Get entity from users by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3682,7 +3759,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -3736,13 +3813,14 @@
           "users"
         ],
         "summary": "Update entity in users",
+        "operationId": "Update entity in users",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3770,17 +3848,18 @@
           "users"
         ],
         "summary": "Delete entity from users",
+        "operationId": "Delete entity from users",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -3801,6 +3880,7 @@
           "users"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invoke function delta",
         "produces": [
           "application/json"
         ],
@@ -3824,13 +3904,14 @@
           "users"
         ],
         "summary": "Invoke action assignLicense",
+        "operationId": "Invoke action assignLicense",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3876,13 +3957,14 @@
           "users"
         ],
         "summary": "Invoke action changePassword",
+        "operationId": "Invoke action changePassword",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3920,13 +4002,14 @@
           "users"
         ],
         "summary": "Invoke action sendMail",
+        "operationId": "Invoke action sendMail",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3965,13 +4048,14 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimes",
+        "operationId": "Invoke action findMeetingTimes",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4031,13 +4115,14 @@
           "users"
         ],
         "summary": "Invoke function reminderView",
+        "operationId": "Invoke function reminderView",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4065,6 +4150,7 @@
           "contracts"
         ],
         "summary": "Get entities from contracts",
+        "operationId": "Get entities from contracts",
         "produces": [
           "application/json"
         ],
@@ -4086,7 +4172,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4107,7 +4193,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4123,7 +4209,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4139,7 +4225,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of contracts",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -4160,6 +4246,7 @@
           "contracts"
         ],
         "summary": "Add new entity to contracts",
+        "operationId": "Add new entity to contracts",
         "consumes": [
           "application/json"
         ],
@@ -4195,20 +4282,21 @@
           "contracts"
         ],
         "summary": "Get entity from contracts by key",
+        "operationId": "Get entity from contracts by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4224,7 +4312,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4252,13 +4340,14 @@
           "contracts"
         ],
         "summary": "Update entity in contracts",
+        "operationId": "Update entity in contracts",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4286,17 +4375,18 @@
           "contracts"
         ],
         "summary": "Delete entity from contracts",
+        "operationId": "Delete entity from contracts",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -4317,6 +4407,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entities from schemaExtensions",
+        "operationId": "Get entities from schemaExtensions",
         "produces": [
           "application/json"
         ],
@@ -4338,7 +4429,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4361,7 +4452,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4378,7 +4469,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4394,7 +4485,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of schemaExtensions",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -4415,6 +4506,7 @@
           "schemaExtensions"
         ],
         "summary": "Add new entity to schemaExtensions",
+        "operationId": "Add new entity to schemaExtensions",
         "consumes": [
           "application/json"
         ],
@@ -4450,20 +4542,21 @@
           "schemaExtensions"
         ],
         "summary": "Get entity from schemaExtensions by key",
+        "operationId": "Get entity from schemaExtensions by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4480,7 +4573,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4508,13 +4601,14 @@
           "schemaExtensions"
         ],
         "summary": "Update entity in schemaExtensions",
+        "operationId": "Update entity in schemaExtensions",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4542,17 +4636,18 @@
           "schemaExtensions"
         ],
         "summary": "Delete entity from schemaExtensions",
+        "operationId": "Delete entity from schemaExtensions",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -4573,6 +4668,7 @@
           "drives"
         ],
         "summary": "Get entities from drives",
+        "operationId": "Get entities from drives",
         "produces": [
           "application/json"
         ],
@@ -4594,7 +4690,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4635,7 +4731,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4661,7 +4757,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4683,7 +4779,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of drives",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -4704,6 +4800,7 @@
           "drives"
         ],
         "summary": "Add new entity to drives",
+        "operationId": "Add new entity to drives",
         "consumes": [
           "application/json"
         ],
@@ -4739,20 +4836,21 @@
           "drives"
         ],
         "summary": "Get entity from drives by key",
+        "operationId": "Get entity from drives by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4778,7 +4876,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4812,13 +4910,14 @@
           "drives"
         ],
         "summary": "Update entity in drives",
+        "operationId": "Update entity in drives",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4846,17 +4945,18 @@
           "drives"
         ],
         "summary": "Delete entity from drives",
+        "operationId": "Delete entity from drives",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -4877,13 +4977,14 @@
           "drives"
         ],
         "summary": "Invoke function recent",
+        "operationId": "Invoke function recent",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4909,13 +5010,14 @@
           "drives"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invoke function search",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4941,13 +5043,14 @@
           "drives"
         ],
         "summary": "Invoke function sharedWithMe",
+        "operationId": "Invoke function sharedWithMe",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4973,6 +5076,7 @@
           "shares"
         ],
         "summary": "Get entities from shares",
+        "operationId": "Get entities from shares",
         "produces": [
           "application/json"
         ],
@@ -4994,7 +5098,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -5027,7 +5131,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5049,7 +5153,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5073,7 +5177,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of shares",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -5094,6 +5198,7 @@
           "shares"
         ],
         "summary": "Add new entity to shares",
+        "operationId": "Add new entity to shares",
         "consumes": [
           "application/json"
         ],
@@ -5129,20 +5234,21 @@
           "shares"
         ],
         "summary": "Get entity from shares by key",
+        "operationId": "Get entity from shares by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5164,7 +5270,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5200,13 +5306,14 @@
           "shares"
         ],
         "summary": "Update entity in shares",
+        "operationId": "Update entity in shares",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5234,17 +5341,18 @@
           "shares"
         ],
         "summary": "Delete entity from shares",
+        "operationId": "Delete entity from shares",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -5265,6 +5373,7 @@
           "sites"
         ],
         "summary": "Get entities from sites",
+        "operationId": "Get entities from sites",
         "produces": [
           "application/json"
         ],
@@ -5286,7 +5395,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -5325,7 +5434,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5350,7 +5459,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5376,7 +5485,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of sites",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -5397,6 +5506,7 @@
           "sites"
         ],
         "summary": "Add new entity to sites",
+        "operationId": "Add new entity to sites",
         "consumes": [
           "application/json"
         ],
@@ -5432,20 +5542,21 @@
           "sites"
         ],
         "summary": "Get entity from sites by key",
+        "operationId": "Get entity from sites by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5470,7 +5581,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5508,13 +5619,14 @@
           "sites"
         ],
         "summary": "Update entity in sites",
+        "operationId": "Update entity in sites",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5542,17 +5654,18 @@
           "sites"
         ],
         "summary": "Delete entity from sites",
+        "operationId": "Delete entity from sites",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -5573,13 +5686,14 @@
           "sites"
         ],
         "summary": "Invoke function getByPath",
+        "operationId": "Invoke function getByPath",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5602,6 +5716,7 @@
           "workbooks"
         ],
         "summary": "Get entities from workbooks",
+        "operationId": "Get entities from workbooks",
         "produces": [
           "application/json"
         ],
@@ -5623,7 +5738,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -5694,7 +5809,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5735,7 +5850,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5758,7 +5873,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of workbooks",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -5779,6 +5894,7 @@
           "workbooks"
         ],
         "summary": "Add new entity to workbooks",
+        "operationId": "Add new entity to workbooks",
         "consumes": [
           "application/json"
         ],
@@ -5814,20 +5930,21 @@
           "workbooks"
         ],
         "summary": "Get entity from workbooks by key",
+        "operationId": "Get entity from workbooks by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5868,7 +5985,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5903,13 +6020,14 @@
           "workbooks"
         ],
         "summary": "Update entity in workbooks",
+        "operationId": "Update entity in workbooks",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5937,17 +6055,18 @@
           "workbooks"
         ],
         "summary": "Delete entity from workbooks",
+        "operationId": "Delete entity from workbooks",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -5968,13 +6087,14 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invoke function delta",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6000,13 +6120,14 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invoke function delta",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6032,13 +6153,14 @@
           "workbooks"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invoke function search",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6064,13 +6186,14 @@
           "workbooks"
         ],
         "summary": "Invoke action copy",
+        "operationId": "Invoke action copy",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6106,13 +6229,14 @@
           "workbooks"
         ],
         "summary": "Invoke action createLink",
+        "operationId": "Invoke action createLink",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6150,13 +6274,14 @@
           "workbooks"
         ],
         "summary": "Invoke action createUploadSession",
+        "operationId": "Invoke action createUploadSession",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6189,13 +6314,14 @@
           "workbooks"
         ],
         "summary": "Invoke action invite",
+        "operationId": "Invoke action invite",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6250,6 +6376,7 @@
           "subscriptions"
         ],
         "summary": "Get entities from subscriptions",
+        "operationId": "Get entities from subscriptions",
         "produces": [
           "application/json"
         ],
@@ -6271,7 +6398,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -6294,7 +6421,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6311,7 +6438,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6327,7 +6454,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of subscriptions",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -6348,6 +6475,7 @@
           "subscriptions"
         ],
         "summary": "Add new entity to subscriptions",
+        "operationId": "Add new entity to subscriptions",
         "consumes": [
           "application/json"
         ],
@@ -6383,20 +6511,21 @@
           "subscriptions"
         ],
         "summary": "Get entity from subscriptions by key",
+        "operationId": "Get entity from subscriptions by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6413,7 +6542,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6441,13 +6570,14 @@
           "subscriptions"
         ],
         "summary": "Update entity in subscriptions",
+        "operationId": "Update entity in subscriptions",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6475,17 +6605,18 @@
           "subscriptions"
         ],
         "summary": "Delete entity from subscriptions",
+        "operationId": "Delete entity from subscriptions",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -6506,6 +6637,7 @@
           "invitations"
         ],
         "summary": "Get entities from invitations",
+        "operationId": "Get entities from invitations",
         "produces": [
           "application/json"
         ],
@@ -6527,7 +6659,7 @@
           },
           {
             "name": "$orderby",
-            "in": "Query",
+            "in": "query",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -6556,7 +6688,7 @@
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6576,7 +6708,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6593,7 +6725,7 @@
             "description": "Retrieved entities",
             "schema": {
               "title": "Collection of invitations",
-              "type": "object",
+              "type": "array",
               "properties": {
                 "value": {
                   "type": "array",
@@ -6614,6 +6746,7 @@
           "invitations"
         ],
         "summary": "Add new entity to invitations",
+        "operationId": "Add new entity to invitations",
         "consumes": [
           "application/json"
         ],
@@ -6649,20 +6782,21 @@
           "invitations"
         ],
         "summary": "Get entity from invitations by key",
+        "operationId": "Get entity from invitations by key",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6682,7 +6816,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6711,13 +6845,14 @@
           "invitations"
         ],
         "summary": "Update entity in invitations",
+        "operationId": "Update entity in invitations",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -6745,17 +6880,18 @@
           "invitations"
         ],
         "summary": "Delete entity from invitations",
+        "operationId": "Delete entity from invitations",
         "parameters": [
           {
             "name": "id",
-            "in": "Path",
+            "in": "path",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
             "name": "If-Match",
-            "in": "Header",
+            "in": "header",
             "description": "ETag",
             "type": "string"
           }
@@ -6776,13 +6912,14 @@
           "me"
         ],
         "summary": "Get me",
+        "operationId": "Get me",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6837,7 +6974,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6891,6 +7028,7 @@
           "me"
         ],
         "summary": "Update me",
+        "operationId": "Update me",
         "consumes": [
           "application/json"
         ],
@@ -6920,6 +7058,7 @@
           "me"
         ],
         "summary": "Invoke action assignLicense",
+        "operationId": "Invoke action assignLicense",
         "consumes": [
           "application/json"
         ],
@@ -6965,6 +7104,7 @@
           "me"
         ],
         "summary": "Invoke action changePassword",
+        "operationId": "Invoke action changePassword",
         "consumes": [
           "application/json"
         ],
@@ -7002,6 +7142,7 @@
           "me"
         ],
         "summary": "Invoke action sendMail",
+        "operationId": "Invoke action sendMail",
         "consumes": [
           "application/json"
         ],
@@ -7040,6 +7181,7 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimes",
+        "operationId": "Invoke action findMeetingTimes",
         "consumes": [
           "application/json"
         ],
@@ -7099,19 +7241,20 @@
           "me"
         ],
         "summary": "Invoke function reminderView",
+        "operationId": "Invoke function reminderView",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "StartDateTime",
-            "in": "Path",
+            "in": "path",
             "required": true,
             "type": "string"
           },
           {
             "name": "EndDateTime",
-            "in": "Path",
+            "in": "path",
             "required": true,
             "type": "string"
           }
@@ -7138,13 +7281,14 @@
           "drive"
         ],
         "summary": "Get drive",
+        "operationId": "Get drive",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -7170,7 +7314,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -7204,6 +7348,7 @@
           "drive"
         ],
         "summary": "Update drive",
+        "operationId": "Update drive",
         "consumes": [
           "application/json"
         ],
@@ -7233,6 +7378,7 @@
           "drive"
         ],
         "summary": "Invoke function recent",
+        "operationId": "Invoke function recent",
         "produces": [
           "application/json"
         ],
@@ -7256,13 +7402,14 @@
           "drive"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invoke function search",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "q",
-            "in": "Path",
+            "in": "path",
             "required": true,
             "type": "string"
           }
@@ -7287,6 +7434,7 @@
           "drive"
         ],
         "summary": "Invoke function sharedWithMe",
+        "operationId": "Invoke function sharedWithMe",
         "produces": [
           "application/json"
         ],
@@ -7310,13 +7458,14 @@
           "planner"
         ],
         "summary": "Get planner",
+        "operationId": "Get planner",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
             "name": "$select",
-            "in": "Query",
+            "in": "query",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -7328,7 +7477,7 @@
           },
           {
             "name": "$expand",
-            "in": "Query",
+            "in": "query",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -7359,6 +7508,7 @@
           "planner"
         ],
         "summary": "Update planner",
+        "operationId": "Update planner",
         "consumes": [
           "application/json"
         ],
@@ -7375,6 +7525,2410 @@
         "responses": {
           "204": {
             "description": "Success"
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Get reports",
+        "operationId": "Get reports",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "type": "array",
+            "items": {
+              "enum": [
+                "id"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "type": "array",
+            "items": {
+              "enum": [
+                "*"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.reportRoot"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Update reports",
+        "operationId": "Update reports",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "New property values",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.reportRoot"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ActivationsUserDetail()": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ActivationsUserDetail",
+        "operationId": "Invoke function getOffice365ActivationsUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ActivationCounts()": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ActivationCounts",
+        "operationId": "Invoke function getOffice365ActivationCounts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ActivationsUserCounts()": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ActivationsUserCounts",
+        "operationId": "Invoke function getOffice365ActivationsUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ActiveUserDetail",
+        "operationId": "Invoke function getOffice365ActiveUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ActiveUserDetail",
+        "operationId": "Invoke function getOffice365ActiveUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ServicesUserCounts",
+        "operationId": "Invoke function getOffice365ServicesUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365ActiveUserCounts",
+        "operationId": "Invoke function getOffice365ActiveUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365GroupsActivityDetail",
+        "operationId": "Invoke function getOffice365GroupsActivityDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365GroupsActivityDetail",
+        "operationId": "Invoke function getOffice365GroupsActivityDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365GroupsActivityCounts",
+        "operationId": "Invoke function getOffice365GroupsActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
+        "operationId": "Invoke function getOffice365GroupsActivityGroupCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365GroupsActivityStorage",
+        "operationId": "Invoke function getOffice365GroupsActivityStorage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOffice365GroupsActivityFileCounts",
+        "operationId": "Invoke function getOffice365GroupsActivityFileCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailActivityUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailActivityUserDetail",
+        "operationId": "Invoke function getEmailActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailActivityUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailActivityUserDetail",
+        "operationId": "Invoke function getEmailActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailActivityCounts",
+        "operationId": "Invoke function getEmailActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailActivityUserCounts",
+        "operationId": "Invoke function getEmailActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailAppUsageUserDetail",
+        "operationId": "Invoke function getEmailAppUsageUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailAppUsageUserDetail",
+        "operationId": "Invoke function getEmailAppUsageUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailAppUsageAppsUserCounts",
+        "operationId": "Invoke function getEmailAppUsageAppsUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailAppUsageUserCounts",
+        "operationId": "Invoke function getEmailAppUsageUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
+        "operationId": "Invoke function getEmailAppUsageVersionsUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getMailboxUsageDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getMailboxUsageDetail",
+        "operationId": "Invoke function getMailboxUsageDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getMailboxUsageMailboxCounts",
+        "operationId": "Invoke function getMailboxUsageMailboxCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getMailboxUsageStorage(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getMailboxUsageStorage",
+        "operationId": "Invoke function getMailboxUsageStorage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveActivityUserDetail",
+        "operationId": "Invoke function getOneDriveActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveActivityUserDetail",
+        "operationId": "Invoke function getOneDriveActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveActivityUserCounts",
+        "operationId": "Invoke function getOneDriveActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveActivityFileCounts",
+        "operationId": "Invoke function getOneDriveActivityFileCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveUsageAccountDetail",
+        "operationId": "Invoke function getOneDriveUsageAccountDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveUsageAccountDetail",
+        "operationId": "Invoke function getOneDriveUsageAccountDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveUsageAccountCounts",
+        "operationId": "Invoke function getOneDriveUsageAccountCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveUsageFileCounts",
+        "operationId": "Invoke function getOneDriveUsageFileCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getOneDriveUsageStorage(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getOneDriveUsageStorage",
+        "operationId": "Invoke function getOneDriveUsageStorage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointActivityUserDetail",
+        "operationId": "Invoke function getSharePointActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointActivityUserDetail",
+        "operationId": "Invoke function getSharePointActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointActivityFileCounts",
+        "operationId": "Invoke function getSharePointActivityFileCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointActivityUserCounts",
+        "operationId": "Invoke function getSharePointActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointActivityPages(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointActivityPages",
+        "operationId": "Invoke function getSharePointActivityPages",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointSiteUsageDetail",
+        "operationId": "Invoke function getSharePointSiteUsageDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointSiteUsageDetail",
+        "operationId": "Invoke function getSharePointSiteUsageDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointSiteUsageFileCounts",
+        "operationId": "Invoke function getSharePointSiteUsageFileCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointSiteUsageSiteCounts",
+        "operationId": "Invoke function getSharePointSiteUsageSiteCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointSiteUsageStorage",
+        "operationId": "Invoke function getSharePointSiteUsageStorage",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSharePointSiteUsagePages",
+        "operationId": "Invoke function getSharePointSiteUsagePages",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "operationId": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "operationId": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessActivityCounts",
+        "operationId": "Invoke function getSkypeForBusinessActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
+        "operationId": "Invoke function getSkypeForBusinessActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
+        "operationId": "Invoke function getSkypeForBusinessParticipantActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerActivityUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerActivityUserDetail",
+        "operationId": "Invoke function getYammerActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerActivityUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerActivityUserDetail",
+        "operationId": "Invoke function getYammerActivityUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerActivityCounts",
+        "operationId": "Invoke function getYammerActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerActivityUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerActivityUserCounts",
+        "operationId": "Invoke function getYammerActivityUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerDeviceUsageUserDetail",
+        "operationId": "Invoke function getYammerDeviceUsageUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerDeviceUsageUserDetail",
+        "operationId": "Invoke function getYammerDeviceUsageUserDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
+        "operationId": "Invoke function getYammerDeviceUsageDistributionUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerDeviceUsageUserCounts",
+        "operationId": "Invoke function getYammerDeviceUsageUserCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerGroupsActivityDetail",
+        "operationId": "Invoke function getYammerGroupsActivityDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "date",
+            "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerGroupsActivityDetail",
+        "operationId": "Invoke function getYammerGroupsActivityDetail",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerGroupsActivityGroupCounts",
+        "operationId": "Invoke function getYammerGroupsActivityGroupCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
+    "/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Invoke function getYammerGroupsActivityCounts",
+        "operationId": "Invoke function getYammerGroupsActivityCounts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/microsoft.graph.report"
+            }
           },
           "default": {
             "$ref": "#/responses/error"
@@ -7846,6 +10400,11 @@
             "classification": {
               "type": "string"
             },
+            "createdDateTime": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+              "type": "string"
+            },
             "description": {
               "type": "string"
             },
@@ -7883,6 +10442,11 @@
               "items": {
                 "type": "string"
               }
+            },
+            "renewedDateTime": {
+              "format": "date-time",
+              "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+              "type": "string"
             },
             "securityEnabled": {
               "type": "boolean"
@@ -10678,19 +13242,23 @@
       "type": "object",
       "properties": {
         "deleted": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "remaining": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "state": {
           "type": "string"
         },
         "total": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "used": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         }
       }
     },
@@ -10729,7 +13297,8 @@
             "shared": { },
             "sharepointIds": { },
             "size": {
-              "format": "int64"
+              "format": "int64",
+              "type": "integer"
             },
             "specialFolder": { },
             "video": { },
@@ -10812,7 +13381,8 @@
           "type": "string"
         },
         "bitrate": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "composers": {
           "type": "string"
@@ -10833,7 +13403,8 @@
           "type": "integer"
         },
         "duration": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "genre": {
           "type": "string"
@@ -11060,7 +13631,8 @@
         "shared": { },
         "sharepointIds": { },
         "size": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "specialFolder": { },
         "webDavUrl": {
@@ -11141,7 +13713,8 @@
           "type": "integer"
         },
         "duration": {
-          "format": "int64"
+          "format": "int64",
+          "type": "integer"
         },
         "fourCC": {
           "type": "string"
@@ -13388,6 +15961,27 @@
         "oneNoteWebUrl": { }
       }
     },
+    "microsoft.graph.reportRoot": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/microsoft.graph.entity"
+        },
+        {
+          "title": "reportRoot",
+          "type": "object"
+        }
+      ]
+    },
+    "microsoft.graph.report": {
+      "title": "report",
+      "type": "object",
+      "properties": {
+        "content": {
+          "format": "base64url",
+          "type": "string"
+        }
+      }
+    },
     "microsoft.graph.automaticRepliesStatus": {
       "title": "automaticRepliesStatus",
       "enum": [
@@ -13716,33 +16310,33 @@
   "parameters": {
     "top": {
       "name": "$top",
-      "in": "Query",
+      "in": "query",
       "description": "Show only the first n items",
       "type": "integer",
       "minimum": 0
     },
     "skip": {
       "name": "$skip",
-      "in": "Query",
+      "in": "query",
       "description": "Skip the first n items",
       "type": "integer",
       "minimum": 0
     },
     "count": {
       "name": "$count",
-      "in": "Query",
+      "in": "query",
       "description": "Include count of items",
       "type": "boolean"
     },
     "filter": {
       "name": "$filter",
-      "in": "Query",
+      "in": "query",
       "description": "Filter items by property values",
       "type": "string"
     },
     "search": {
       "name": "$search",
-      "in": "Query",
+      "in": "query",
       "description": "Search items by search phrases",
       "type": "string"
     }
@@ -13824,6 +16418,9 @@
     },
     {
       "name": "planner"
+    },
+    {
+      "name": "reports"
     }
   ]
 }
