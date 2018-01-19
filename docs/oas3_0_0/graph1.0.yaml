@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
   title: OData Service for namespace microsoft.graph
-  description: This OData service is located at https://graph.microsoft.com/1.0
+  description: This OData service is located at https://graph.microsoft.com/v1.0
   version: 1.0.1
 servers:
-  - url: https://graph.microsoft.com/1.0
+  - url: https://graph.microsoft.com/v1.0
 paths:
   /directoryObjects:
     get:

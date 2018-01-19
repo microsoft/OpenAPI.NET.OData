@@ -45,7 +45,7 @@ namespace UpdateDocs
                 }
                 else if (fileName.Contains("graph1.0"))
                 {
-                    settings.ServiceRoot = new Uri("https://graph.microsoft.com/1.0");
+                    settings.ServiceRoot = new Uri("https://graph.microsoft.com/v1.0");
                 }
 
                 OpenApiDocument document = model.ConvertToOpenApi(settings);

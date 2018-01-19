@@ -1,10 +1,10 @@
 swagger: '2.0'
 info:
   title: OData Service for namespace microsoft.graph
-  description: This OData service is located at https://graph.microsoft.com/1.0
+  description: This OData service is located at https://graph.microsoft.com/v1.0
   version: 1.0.1
 host: graph.microsoft.com
-basePath: /1.0
+basePath: /v1.0
 schemes:
   - https
 paths:
