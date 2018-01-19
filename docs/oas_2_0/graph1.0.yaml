@@ -1,10 +1,10 @@
 swagger: '2.0'
 info:
   title: OData Service for namespace microsoft.graph
-  description: This OData service is located at https://graph.microsoft.com/v1.0/$metadata
+  description: This OData service is located at https://graph.microsoft.com/1.0
   version: 1.0.1
 host: graph.microsoft.com
-basePath: /v1.0/$metadata
+basePath: /1.0
 schemes:
   - https
 paths:
@@ -13,7 +13,6 @@ paths:
       tags:
         - directoryObjects
       summary: Get entities from directoryObjects
-      operationId: Get entities from directoryObjects
       produces:
         - application/json
       parameters:
@@ -40,7 +39,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of directoryObjects
+            title: Collection of directoryObject
             type: object
             properties:
               value:
@@ -53,7 +52,6 @@ paths:
       tags:
         - directoryObjects
       summary: Add new entity to directoryObjects
-      operationId: Add new entity to directoryObjects
       consumes:
         - application/json
       produces:
@@ -76,7 +74,6 @@ paths:
       tags:
         - directoryObjects
       summary: Get entity from directoryObjects by key
-      operationId: Get entity from directoryObjects by key
       produces:
         - application/json
       parameters:
@@ -104,7 +101,6 @@ paths:
       tags:
         - directoryObjects
       summary: Update entity in directoryObjects
-      operationId: Update entity in directoryObjects
       consumes:
         - application/json
       parameters:
@@ -127,7 +123,6 @@ paths:
       tags:
         - directoryObjects
       summary: Delete entity from directoryObjects
-      operationId: Delete entity from directoryObjects
       parameters:
         - name: id
           in: path
@@ -148,7 +143,6 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getByIds
-      operationId: Invoke action getByIds
       consumes:
         - application/json
       parameters:
@@ -176,7 +170,6 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action checkMemberGroups
-      operationId: Invoke action checkMemberGroups
       consumes:
         - application/json
       parameters:
@@ -205,7 +198,6 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getMemberGroups
-      operationId: Invoke action getMemberGroups
       consumes:
         - application/json
       parameters:
@@ -233,7 +225,6 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getMemberObjects
-      operationId: Invoke action getMemberObjects
       consumes:
         - application/json
       parameters:
@@ -261,7 +252,6 @@ paths:
       tags:
         - devices
       summary: Get entities from devices
-      operationId: Get entities from devices
       produces:
         - application/json
       parameters:
@@ -336,7 +326,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of devices
+            title: Collection of device
             type: object
             properties:
               value:
@@ -349,7 +339,6 @@ paths:
       tags:
         - devices
       summary: Add new entity to devices
-      operationId: Add new entity to devices
       consumes:
         - application/json
       produces:
@@ -372,7 +361,6 @@ paths:
       tags:
         - devices
       summary: Get entity from devices by key
-      operationId: Get entity from devices by key
       produces:
         - application/json
       parameters:
@@ -418,7 +406,6 @@ paths:
       tags:
         - devices
       summary: Update entity in devices
-      operationId: Update entity in devices
       consumes:
         - application/json
       parameters:
@@ -441,7 +428,6 @@ paths:
       tags:
         - devices
       summary: Delete entity from devices
-      operationId: Delete entity from devices
       parameters:
         - name: id
           in: path
@@ -462,7 +448,6 @@ paths:
       tags:
         - domains
       summary: Get entities from domains
-      operationId: Get entities from domains
       produces:
         - application/json
       parameters:
@@ -533,7 +518,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of domains
+            title: Collection of domain
             type: object
             properties:
               value:
@@ -546,7 +531,6 @@ paths:
       tags:
         - domains
       summary: Add new entity to domains
-      operationId: Add new entity to domains
       consumes:
         - application/json
       produces:
@@ -569,7 +553,6 @@ paths:
       tags:
         - domains
       summary: Get entity from domains by key
-      operationId: Get entity from domains by key
       produces:
         - application/json
       parameters:
@@ -620,7 +603,6 @@ paths:
       tags:
         - domains
       summary: Update entity in domains
-      operationId: Update entity in domains
       consumes:
         - application/json
       parameters:
@@ -643,7 +625,6 @@ paths:
       tags:
         - domains
       summary: Delete entity from domains
-      operationId: Delete entity from domains
       parameters:
         - name: id
           in: path
@@ -664,7 +645,6 @@ paths:
       tags:
         - domains
       summary: Invoke action verify
-      operationId: Invoke action verify
       parameters:
         - name: id
           in: path
@@ -681,7 +661,6 @@ paths:
       tags:
         - domainDnsRecords
       summary: Get entities from domainDnsRecords
-      operationId: Get entities from domainDnsRecords
       produces:
         - application/json
       parameters:
@@ -734,7 +713,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of domainDnsRecords
+            title: Collection of domainDnsRecord
             type: object
             properties:
               value:
@@ -747,7 +726,6 @@ paths:
       tags:
         - domainDnsRecords
       summary: Add new entity to domainDnsRecords
-      operationId: Add new entity to domainDnsRecords
       consumes:
         - application/json
       produces:
@@ -770,7 +748,6 @@ paths:
       tags:
         - domainDnsRecords
       summary: Get entity from domainDnsRecords by key
-      operationId: Get entity from domainDnsRecords by key
       produces:
         - application/json
       parameters:
@@ -811,7 +788,6 @@ paths:
       tags:
         - domainDnsRecords
       summary: Update entity in domainDnsRecords
-      operationId: Update entity in domainDnsRecords
       consumes:
         - application/json
       parameters:
@@ -834,7 +810,6 @@ paths:
       tags:
         - domainDnsRecords
       summary: Delete entity from domainDnsRecords
-      operationId: Delete entity from domainDnsRecords
       parameters:
         - name: id
           in: path
@@ -855,7 +830,6 @@ paths:
       tags:
         - groups
       summary: Get entities from groups
-      operationId: Get entities from groups
       produces:
         - application/json
       parameters:
@@ -959,7 +933,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of groups
+            title: Collection of group
             type: object
             properties:
               value:
@@ -972,7 +946,6 @@ paths:
       tags:
         - groups
       summary: Add new entity to groups
-      operationId: Add new entity to groups
       consumes:
         - application/json
       produces:
@@ -995,7 +968,6 @@ paths:
       tags:
         - groups
       summary: Get entity from groups by key
-      operationId: Get entity from groups by key
       produces:
         - application/json
       parameters:
@@ -1062,7 +1034,6 @@ paths:
       tags:
         - groups
       summary: Update entity in groups
-      operationId: Update entity in groups
       consumes:
         - application/json
       parameters:
@@ -1085,7 +1056,6 @@ paths:
       tags:
         - groups
       summary: Delete entity from groups
-      operationId: Delete entity from groups
       parameters:
         - name: id
           in: path
@@ -1106,7 +1076,6 @@ paths:
       tags:
         - groups
       summary: Invoke function delta
-      operationId: Invoke function delta
       produces:
         - application/json
       responses:
@@ -1122,7 +1091,6 @@ paths:
       tags:
         - groups
       summary: Invoke action subscribeByMail
-      operationId: Invoke action subscribeByMail
       parameters:
         - name: id
           in: path
@@ -1139,7 +1107,6 @@ paths:
       tags:
         - groups
       summary: Invoke action unsubscribeByMail
-      operationId: Invoke action unsubscribeByMail
       parameters:
         - name: id
           in: path
@@ -1156,7 +1123,6 @@ paths:
       tags:
         - groups
       summary: Invoke action addFavorite
-      operationId: Invoke action addFavorite
       parameters:
         - name: id
           in: path
@@ -1173,7 +1139,6 @@ paths:
       tags:
         - groups
       summary: Invoke action removeFavorite
-      operationId: Invoke action removeFavorite
       parameters:
         - name: id
           in: path
@@ -1190,7 +1155,6 @@ paths:
       tags:
         - groups
       summary: Invoke action resetUnseenCount
-      operationId: Invoke action resetUnseenCount
       parameters:
         - name: id
           in: path
@@ -1207,7 +1171,6 @@ paths:
       tags:
         - directoryRoles
       summary: Get entities from directoryRoles
-      operationId: Get entities from directoryRoles
       produces:
         - application/json
       parameters:
@@ -1243,7 +1206,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of directoryRoles
+            title: Collection of directoryRole
             type: object
             properties:
               value:
@@ -1256,7 +1219,6 @@ paths:
       tags:
         - directoryRoles
       summary: Add new entity to directoryRoles
-      operationId: Add new entity to directoryRoles
       consumes:
         - application/json
       produces:
@@ -1279,7 +1241,6 @@ paths:
       tags:
         - directoryRoles
       summary: Get entity from directoryRoles by key
-      operationId: Get entity from directoryRoles by key
       produces:
         - application/json
       parameters:
@@ -1311,7 +1272,6 @@ paths:
       tags:
         - directoryRoles
       summary: Update entity in directoryRoles
-      operationId: Update entity in directoryRoles
       consumes:
         - application/json
       parameters:
@@ -1334,7 +1294,6 @@ paths:
       tags:
         - directoryRoles
       summary: Delete entity from directoryRoles
-      operationId: Delete entity from directoryRoles
       parameters:
         - name: id
           in: path
@@ -1355,7 +1314,6 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Get entities from directoryRoleTemplates
-      operationId: Get entities from directoryRoleTemplates
       produces:
         - application/json
       parameters:
@@ -1387,7 +1345,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of directoryRoleTemplates
+            title: Collection of directoryRoleTemplate
             type: object
             properties:
               value:
@@ -1400,7 +1358,6 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Add new entity to directoryRoleTemplates
-      operationId: Add new entity to directoryRoleTemplates
       consumes:
         - application/json
       produces:
@@ -1423,7 +1380,6 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Get entity from directoryRoleTemplates by key
-      operationId: Get entity from directoryRoleTemplates by key
       produces:
         - application/json
       parameters:
@@ -1453,7 +1409,6 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Update entity in directoryRoleTemplates
-      operationId: Update entity in directoryRoleTemplates
       consumes:
         - application/json
       parameters:
@@ -1476,7 +1431,6 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Delete entity from directoryRoleTemplates
-      operationId: Delete entity from directoryRoleTemplates
       parameters:
         - name: id
           in: path
@@ -1497,7 +1451,6 @@ paths:
       tags:
         - organization
       summary: Get entities from organization
-      operationId: Get entities from organization
       produces:
         - application/json
       parameters:
@@ -1592,7 +1545,6 @@ paths:
       tags:
         - organization
       summary: Add new entity to organization
-      operationId: Add new entity to organization
       consumes:
         - application/json
       produces:
@@ -1615,7 +1567,6 @@ paths:
       tags:
         - organization
       summary: Get entity from organization by key
-      operationId: Get entity from organization by key
       produces:
         - application/json
       parameters:
@@ -1662,7 +1613,6 @@ paths:
       tags:
         - organization
       summary: Update entity in organization
-      operationId: Update entity in organization
       consumes:
         - application/json
       parameters:
@@ -1685,7 +1635,6 @@ paths:
       tags:
         - organization
       summary: Delete entity from organization
-      operationId: Delete entity from organization
       parameters:
         - name: id
           in: path
@@ -1706,7 +1655,6 @@ paths:
       tags:
         - groupSettings
       summary: Get entities from groupSettings
-      operationId: Get entities from groupSettings
       produces:
         - application/json
       parameters:
@@ -1753,7 +1701,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of groupSettings
+            title: Collection of groupSetting
             type: object
             properties:
               value:
@@ -1766,7 +1714,6 @@ paths:
       tags:
         - groupSettings
       summary: Add new entity to groupSettings
-      operationId: Add new entity to groupSettings
       consumes:
         - application/json
       produces:
@@ -1789,7 +1736,6 @@ paths:
       tags:
         - groupSettings
       summary: Get entity from groupSettings by key
-      operationId: Get entity from groupSettings by key
       produces:
         - application/json
       parameters:
@@ -1828,7 +1774,6 @@ paths:
       tags:
         - groupSettings
       summary: Update entity in groupSettings
-      operationId: Update entity in groupSettings
       consumes:
         - application/json
       parameters:
@@ -1851,7 +1796,6 @@ paths:
       tags:
         - groupSettings
       summary: Delete entity from groupSettings
-      operationId: Delete entity from groupSettings
       parameters:
         - name: id
           in: path
@@ -1872,7 +1816,6 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Get entities from groupSettingTemplates
-      operationId: Get entities from groupSettingTemplates
       produces:
         - application/json
       parameters:
@@ -1908,7 +1851,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of groupSettingTemplates
+            title: Collection of groupSettingTemplate
             type: object
             properties:
               value:
@@ -1921,7 +1864,6 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Add new entity to groupSettingTemplates
-      operationId: Add new entity to groupSettingTemplates
       consumes:
         - application/json
       produces:
@@ -1944,7 +1886,6 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Get entity from groupSettingTemplates by key
-      operationId: Get entity from groupSettingTemplates by key
       produces:
         - application/json
       parameters:
@@ -1975,7 +1916,6 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Update entity in groupSettingTemplates
-      operationId: Update entity in groupSettingTemplates
       consumes:
         - application/json
       parameters:
@@ -1998,7 +1938,6 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Delete entity from groupSettingTemplates
-      operationId: Delete entity from groupSettingTemplates
       parameters:
         - name: id
           in: path
@@ -2019,7 +1958,6 @@ paths:
       tags:
         - subscribedSkus
       summary: Get entities from subscribedSkus
-      operationId: Get entities from subscribedSkus
       produces:
         - application/json
       parameters:
@@ -2066,7 +2004,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of subscribedSkus
+            title: Collection of subscribedSku
             type: object
             properties:
               value:
@@ -2079,7 +2017,6 @@ paths:
       tags:
         - subscribedSkus
       summary: Add new entity to subscribedSkus
-      operationId: Add new entity to subscribedSkus
       consumes:
         - application/json
       produces:
@@ -2102,7 +2039,6 @@ paths:
       tags:
         - subscribedSkus
       summary: Get entity from subscribedSkus by key
-      operationId: Get entity from subscribedSkus by key
       produces:
         - application/json
       parameters:
@@ -2137,7 +2073,6 @@ paths:
       tags:
         - subscribedSkus
       summary: Update entity in subscribedSkus
-      operationId: Update entity in subscribedSkus
       consumes:
         - application/json
       parameters:
@@ -2160,7 +2095,6 @@ paths:
       tags:
         - subscribedSkus
       summary: Delete entity from subscribedSkus
-      operationId: Delete entity from subscribedSkus
       parameters:
         - name: id
           in: path
@@ -2181,7 +2115,6 @@ paths:
       tags:
         - users
       summary: Get entities from users
-      operationId: Get entities from users
       produces:
         - application/json
       parameters:
@@ -2363,7 +2296,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of users
+            title: Collection of user
             type: object
             properties:
               value:
@@ -2376,7 +2309,6 @@ paths:
       tags:
         - users
       summary: Add new entity to users
-      operationId: Add new entity to users
       consumes:
         - application/json
       produces:
@@ -2399,7 +2331,6 @@ paths:
       tags:
         - users
       summary: Get entity from users by key
-      operationId: Get entity from users by key
       produces:
         - application/json
       parameters:
@@ -2496,7 +2427,6 @@ paths:
       tags:
         - users
       summary: Update entity in users
-      operationId: Update entity in users
       consumes:
         - application/json
       parameters:
@@ -2519,7 +2449,6 @@ paths:
       tags:
         - users
       summary: Delete entity from users
-      operationId: Delete entity from users
       parameters:
         - name: id
           in: path
@@ -2540,7 +2469,6 @@ paths:
       tags:
         - users
       summary: Invoke function delta
-      operationId: Invoke function delta
       produces:
         - application/json
       responses:
@@ -2556,7 +2484,6 @@ paths:
       tags:
         - users
       summary: Invoke action assignLicense
-      operationId: Invoke action assignLicense
       consumes:
         - application/json
       parameters:
@@ -2591,7 +2518,6 @@ paths:
       tags:
         - users
       summary: Invoke action changePassword
-      operationId: Invoke action changePassword
       consumes:
         - application/json
       parameters:
@@ -2620,7 +2546,6 @@ paths:
       tags:
         - users
       summary: Invoke action sendMail
-      operationId: Invoke action sendMail
       consumes:
         - application/json
       parameters:
@@ -2650,7 +2575,6 @@ paths:
       tags:
         - users
       summary: Invoke action findMeetingTimes
-      operationId: Invoke action findMeetingTimes
       consumes:
         - application/json
       parameters:
@@ -2697,7 +2621,6 @@ paths:
       tags:
         - users
       summary: Invoke function reminderView
-      operationId: Invoke function reminderView
       produces:
         - application/json
       parameters:
@@ -2720,7 +2643,6 @@ paths:
       tags:
         - contracts
       summary: Get entities from contracts
-      operationId: Get entities from contracts
       produces:
         - application/json
       parameters:
@@ -2759,7 +2681,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of contracts
+            title: Collection of contract
             type: object
             properties:
               value:
@@ -2772,7 +2694,6 @@ paths:
       tags:
         - contracts
       summary: Add new entity to contracts
-      operationId: Add new entity to contracts
       consumes:
         - application/json
       produces:
@@ -2795,7 +2716,6 @@ paths:
       tags:
         - contracts
       summary: Get entity from contracts by key
-      operationId: Get entity from contracts by key
       produces:
         - application/json
       parameters:
@@ -2827,7 +2747,6 @@ paths:
       tags:
         - contracts
       summary: Update entity in contracts
-      operationId: Update entity in contracts
       consumes:
         - application/json
       parameters:
@@ -2850,7 +2769,6 @@ paths:
       tags:
         - contracts
       summary: Delete entity from contracts
-      operationId: Delete entity from contracts
       parameters:
         - name: id
           in: path
@@ -2871,7 +2789,6 @@ paths:
       tags:
         - schemaExtensions
       summary: Get entities from schemaExtensions
-      operationId: Get entities from schemaExtensions
       produces:
         - application/json
       parameters:
@@ -2924,7 +2841,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of schemaExtensions
+            title: Collection of schemaExtension
             type: object
             properties:
               value:
@@ -2937,7 +2854,6 @@ paths:
       tags:
         - schemaExtensions
       summary: Add new entity to schemaExtensions
-      operationId: Add new entity to schemaExtensions
       consumes:
         - application/json
       produces:
@@ -2960,7 +2876,6 @@ paths:
       tags:
         - schemaExtensions
       summary: Get entity from schemaExtensions by key
-      operationId: Get entity from schemaExtensions by key
       produces:
         - application/json
       parameters:
@@ -3001,7 +2916,6 @@ paths:
       tags:
         - schemaExtensions
       summary: Update entity in schemaExtensions
-      operationId: Update entity in schemaExtensions
       consumes:
         - application/json
       parameters:
@@ -3024,7 +2938,6 @@ paths:
       tags:
         - schemaExtensions
       summary: Delete entity from schemaExtensions
-      operationId: Delete entity from schemaExtensions
       parameters:
         - name: id
           in: path
@@ -3045,7 +2958,6 @@ paths:
       tags:
         - drives
       summary: Get entities from drives
-      operationId: Get entities from drives
       produces:
         - application/json
       parameters:
@@ -3137,7 +3049,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of drives
+            title: Collection of drive
             type: object
             properties:
               value:
@@ -3150,7 +3062,6 @@ paths:
       tags:
         - drives
       summary: Add new entity to drives
-      operationId: Add new entity to drives
       consumes:
         - application/json
       produces:
@@ -3173,7 +3084,6 @@ paths:
       tags:
         - drives
       summary: Get entity from drives by key
-      operationId: Get entity from drives by key
       produces:
         - application/json
       parameters:
@@ -3235,7 +3145,6 @@ paths:
       tags:
         - drives
       summary: Update entity in drives
-      operationId: Update entity in drives
       consumes:
         - application/json
       parameters:
@@ -3258,7 +3167,6 @@ paths:
       tags:
         - drives
       summary: Delete entity from drives
-      operationId: Delete entity from drives
       parameters:
         - name: id
           in: path
@@ -3279,7 +3187,6 @@ paths:
       tags:
         - drives
       summary: Invoke function recent
-      operationId: Invoke function recent
       produces:
         - application/json
       parameters:
@@ -3301,7 +3208,6 @@ paths:
       tags:
         - drives
       summary: Invoke function search
-      operationId: Invoke function search
       produces:
         - application/json
       parameters:
@@ -3323,7 +3229,6 @@ paths:
       tags:
         - drives
       summary: Invoke function sharedWithMe
-      operationId: Invoke function sharedWithMe
       produces:
         - application/json
       parameters:
@@ -3345,7 +3250,6 @@ paths:
       tags:
         - shares
       summary: Get entities from shares
-      operationId: Get entities from shares
       produces:
         - application/json
       parameters:
@@ -3429,7 +3333,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of shares
+            title: Collection of sharedDriveItem
             type: object
             properties:
               value:
@@ -3442,7 +3346,6 @@ paths:
       tags:
         - shares
       summary: Add new entity to shares
-      operationId: Add new entity to shares
       consumes:
         - application/json
       produces:
@@ -3465,7 +3368,6 @@ paths:
       tags:
         - shares
       summary: Get entity from shares by key
-      operationId: Get entity from shares by key
       produces:
         - application/json
       parameters:
@@ -3527,7 +3429,6 @@ paths:
       tags:
         - shares
       summary: Update entity in shares
-      operationId: Update entity in shares
       consumes:
         - application/json
       parameters:
@@ -3550,7 +3451,6 @@ paths:
       tags:
         - shares
       summary: Delete entity from shares
-      operationId: Delete entity from shares
       parameters:
         - name: id
           in: path
@@ -3571,7 +3471,6 @@ paths:
       tags:
         - sites
       summary: Get entities from sites
-      operationId: Get entities from sites
       produces:
         - application/json
       parameters:
@@ -3668,7 +3567,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of sites
+            title: Collection of site
             type: object
             properties:
               value:
@@ -3681,7 +3580,6 @@ paths:
       tags:
         - sites
       summary: Add new entity to sites
-      operationId: Add new entity to sites
       consumes:
         - application/json
       produces:
@@ -3704,7 +3602,6 @@ paths:
       tags:
         - sites
       summary: Get entity from sites by key
-      operationId: Get entity from sites by key
       produces:
         - application/json
       parameters:
@@ -3773,7 +3670,6 @@ paths:
       tags:
         - sites
       summary: Update entity in sites
-      operationId: Update entity in sites
       consumes:
         - application/json
       parameters:
@@ -3796,7 +3692,6 @@ paths:
       tags:
         - sites
       summary: Delete entity from sites
-      operationId: Delete entity from sites
       parameters:
         - name: id
           in: path
@@ -3817,7 +3712,6 @@ paths:
       tags:
         - sites
       summary: Invoke function getByPath
-      operationId: Invoke function getByPath
       produces:
         - application/json
       parameters:
@@ -3837,7 +3731,6 @@ paths:
       tags:
         - workbooks
       summary: Get entities from workbooks
-      operationId: Get entities from workbooks
       produces:
         - application/json
       parameters:
@@ -3976,7 +3869,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of workbooks
+            title: Collection of driveItem
             type: object
             properties:
               value:
@@ -3989,7 +3882,6 @@ paths:
       tags:
         - workbooks
       summary: Add new entity to workbooks
-      operationId: Add new entity to workbooks
       consumes:
         - application/json
       produces:
@@ -4012,7 +3904,6 @@ paths:
       tags:
         - workbooks
       summary: Get entity from workbooks by key
-      operationId: Get entity from workbooks by key
       produces:
         - application/json
       parameters:
@@ -4091,7 +3982,6 @@ paths:
       tags:
         - workbooks
       summary: Update entity in workbooks
-      operationId: Update entity in workbooks
       consumes:
         - application/json
       parameters:
@@ -4114,7 +4004,6 @@ paths:
       tags:
         - workbooks
       summary: Delete entity from workbooks
-      operationId: Delete entity from workbooks
       parameters:
         - name: id
           in: path
@@ -4135,7 +4024,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke function delta
-      operationId: Invoke function delta
       produces:
         - application/json
       parameters:
@@ -4157,7 +4045,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke function delta
-      operationId: Invoke function delta
       produces:
         - application/json
       parameters:
@@ -4179,7 +4066,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke function search
-      operationId: Invoke function search
       produces:
         - application/json
       parameters:
@@ -4201,7 +4087,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke action copy
-      operationId: Invoke action copy
       consumes:
         - application/json
       parameters:
@@ -4229,7 +4114,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke action createLink
-      operationId: Invoke action createLink
       consumes:
         - application/json
       parameters:
@@ -4258,7 +4142,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke action createUploadSession
-      operationId: Invoke action createUploadSession
       consumes:
         - application/json
       parameters:
@@ -4284,7 +4167,6 @@ paths:
       tags:
         - workbooks
       summary: Invoke action invite
-      operationId: Invoke action invite
       consumes:
         - application/json
       parameters:
@@ -4325,7 +4207,6 @@ paths:
       tags:
         - subscriptions
       summary: Get entities from subscriptions
-      operationId: Get entities from subscriptions
       produces:
         - application/json
       parameters:
@@ -4347,7 +4228,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of subscriptions
+            title: Collection of subscription
             type: object
             properties:
               value:
@@ -4360,7 +4241,6 @@ paths:
       tags:
         - subscriptions
       summary: Add new entity to subscriptions
-      operationId: Add new entity to subscriptions
       consumes:
         - application/json
       produces:
@@ -4383,7 +4263,6 @@ paths:
       tags:
         - subscriptions
       summary: Get entity from subscriptions by key
-      operationId: Get entity from subscriptions by key
       produces:
         - application/json
       parameters:
@@ -4416,7 +4295,6 @@ paths:
       tags:
         - subscriptions
       summary: Update entity in subscriptions
-      operationId: Update entity in subscriptions
       consumes:
         - application/json
       parameters:
@@ -4439,7 +4317,6 @@ paths:
       tags:
         - subscriptions
       summary: Delete entity from subscriptions
-      operationId: Delete entity from subscriptions
       parameters:
         - name: id
           in: path
@@ -4460,7 +4337,6 @@ paths:
       tags:
         - invitations
       summary: Get entities from invitations
-      operationId: Get entities from invitations
       produces:
         - application/json
       parameters:
@@ -4524,7 +4400,7 @@ paths:
         '200':
           description: Retrieved entities
           schema:
-            title: Collection of invitations
+            title: Collection of invitation
             type: object
             properties:
               value:
@@ -4537,7 +4413,6 @@ paths:
       tags:
         - invitations
       summary: Add new entity to invitations
-      operationId: Add new entity to invitations
       consumes:
         - application/json
       produces:
@@ -4560,7 +4435,6 @@ paths:
       tags:
         - invitations
       summary: Get entity from invitations by key
-      operationId: Get entity from invitations by key
       produces:
         - application/json
       parameters:
@@ -4606,7 +4480,6 @@ paths:
       tags:
         - invitations
       summary: Update entity in invitations
-      operationId: Update entity in invitations
       consumes:
         - application/json
       parameters:
@@ -4629,7 +4502,6 @@ paths:
       tags:
         - invitations
       summary: Delete entity from invitations
-      operationId: Delete entity from invitations
       parameters:
         - name: id
           in: path
@@ -4650,7 +4522,6 @@ paths:
       tags:
         - me
       summary: Get me
-      operationId: Get me
       produces:
         - application/json
       parameters:
@@ -4742,7 +4613,6 @@ paths:
       tags:
         - me
       summary: Update me
-      operationId: Update me
       consumes:
         - application/json
       parameters:
@@ -4761,7 +4631,6 @@ paths:
       tags:
         - me
       summary: Invoke action assignLicense
-      operationId: Invoke action assignLicense
       consumes:
         - application/json
       parameters:
@@ -4791,7 +4660,6 @@ paths:
       tags:
         - me
       summary: Invoke action changePassword
-      operationId: Invoke action changePassword
       consumes:
         - application/json
       parameters:
@@ -4815,7 +4683,6 @@ paths:
       tags:
         - me
       summary: Invoke action sendMail
-      operationId: Invoke action sendMail
       consumes:
         - application/json
       parameters:
@@ -4840,7 +4707,6 @@ paths:
       tags:
         - me
       summary: Invoke action findMeetingTimes
-      operationId: Invoke action findMeetingTimes
       consumes:
         - application/json
       parameters:
@@ -4882,7 +4748,6 @@ paths:
       tags:
         - me
       summary: Invoke function reminderView
-      operationId: Invoke function reminderView
       produces:
         - application/json
       parameters:
@@ -4908,7 +4773,6 @@ paths:
       tags:
         - drive
       summary: Get drive
-      operationId: Get drive
       produces:
         - application/json
       parameters:
@@ -4965,7 +4829,6 @@ paths:
       tags:
         - drive
       summary: Update drive
-      operationId: Update drive
       consumes:
         - application/json
       parameters:
@@ -4984,7 +4847,6 @@ paths:
       tags:
         - drive
       summary: Invoke function recent
-      operationId: Invoke function recent
       produces:
         - application/json
       responses:
@@ -5000,7 +4862,6 @@ paths:
       tags:
         - drive
       summary: Invoke function search
-      operationId: Invoke function search
       produces:
         - application/json
       parameters:
@@ -5021,7 +4882,6 @@ paths:
       tags:
         - drive
       summary: Invoke function sharedWithMe
-      operationId: Invoke function sharedWithMe
       produces:
         - application/json
       responses:
@@ -5037,7 +4897,6 @@ paths:
       tags:
         - planner
       summary: Get planner
-      operationId: Get planner
       produces:
         - application/json
       parameters:
@@ -5074,7 +4933,6 @@ paths:
       tags:
         - planner
       summary: Update planner
-      operationId: Update planner
       consumes:
         - application/json
       parameters:
@@ -5093,7 +4951,6 @@ paths:
       tags:
         - reports
       summary: Get reports
-      operationId: Get reports
       produces:
         - application/json
       parameters:
@@ -5124,7 +4981,6 @@ paths:
       tags:
         - reports
       summary: Update reports
-      operationId: Update reports
       consumes:
         - application/json
       parameters:
@@ -5143,7 +4999,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationsUserDetail
-      operationId: Invoke function getOffice365ActivationsUserDetail
       produces:
         - application/json
       responses:
@@ -5158,7 +5013,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationCounts
-      operationId: Invoke function getOffice365ActivationCounts
       produces:
         - application/json
       responses:
@@ -5173,7 +5027,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationsUserCounts
-      operationId: Invoke function getOffice365ActivationsUserCounts
       produces:
         - application/json
       responses:
@@ -5188,7 +5041,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: Invoke function getOffice365ActiveUserDetail
       produces:
         - application/json
       parameters:
@@ -5210,7 +5062,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: Invoke function getOffice365ActiveUserDetail
       produces:
         - application/json
       parameters:
@@ -5230,7 +5081,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ServicesUserCounts
-      operationId: Invoke function getOffice365ServicesUserCounts
       produces:
         - application/json
       parameters:
@@ -5250,7 +5100,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserCounts
-      operationId: Invoke function getOffice365ActiveUserCounts
       produces:
         - application/json
       parameters:
@@ -5270,7 +5119,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: Invoke function getOffice365GroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -5292,7 +5140,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: Invoke function getOffice365GroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -5312,7 +5159,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityCounts
-      operationId: Invoke function getOffice365GroupsActivityCounts
       produces:
         - application/json
       parameters:
@@ -5332,7 +5178,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityGroupCounts
-      operationId: Invoke function getOffice365GroupsActivityGroupCounts
       produces:
         - application/json
       parameters:
@@ -5352,7 +5197,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityStorage
-      operationId: Invoke function getOffice365GroupsActivityStorage
       produces:
         - application/json
       parameters:
@@ -5372,7 +5216,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityFileCounts
-      operationId: Invoke function getOffice365GroupsActivityFileCounts
       produces:
         - application/json
       parameters:
@@ -5392,7 +5235,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserDetail
-      operationId: Invoke function getEmailActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5414,7 +5256,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserDetail
-      operationId: Invoke function getEmailActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5434,7 +5275,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityCounts
-      operationId: Invoke function getEmailActivityCounts
       produces:
         - application/json
       parameters:
@@ -5454,7 +5294,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserCounts
-      operationId: Invoke function getEmailActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -5474,7 +5313,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: Invoke function getEmailAppUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -5496,7 +5334,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: Invoke function getEmailAppUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -5516,7 +5353,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageAppsUserCounts
-      operationId: Invoke function getEmailAppUsageAppsUserCounts
       produces:
         - application/json
       parameters:
@@ -5536,7 +5372,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserCounts
-      operationId: Invoke function getEmailAppUsageUserCounts
       produces:
         - application/json
       parameters:
@@ -5556,7 +5391,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageVersionsUserCounts
-      operationId: Invoke function getEmailAppUsageVersionsUserCounts
       produces:
         - application/json
       parameters:
@@ -5576,7 +5410,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageDetail
-      operationId: Invoke function getMailboxUsageDetail
       produces:
         - application/json
       parameters:
@@ -5596,7 +5429,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageMailboxCounts
-      operationId: Invoke function getMailboxUsageMailboxCounts
       produces:
         - application/json
       parameters:
@@ -5616,7 +5448,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageQuotaStatusMailboxCounts
-      operationId: Invoke function getMailboxUsageQuotaStatusMailboxCounts
       produces:
         - application/json
       parameters:
@@ -5636,7 +5467,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageStorage
-      operationId: Invoke function getMailboxUsageStorage
       produces:
         - application/json
       parameters:
@@ -5656,7 +5486,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: Invoke function getOneDriveActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5678,7 +5507,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: Invoke function getOneDriveActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5698,7 +5526,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserCounts
-      operationId: Invoke function getOneDriveActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -5718,7 +5545,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityFileCounts
-      operationId: Invoke function getOneDriveActivityFileCounts
       produces:
         - application/json
       parameters:
@@ -5738,7 +5564,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: Invoke function getOneDriveUsageAccountDetail
       produces:
         - application/json
       parameters:
@@ -5760,7 +5585,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: Invoke function getOneDriveUsageAccountDetail
       produces:
         - application/json
       parameters:
@@ -5780,7 +5604,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountCounts
-      operationId: Invoke function getOneDriveUsageAccountCounts
       produces:
         - application/json
       parameters:
@@ -5800,7 +5623,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageFileCounts
-      operationId: Invoke function getOneDriveUsageFileCounts
       produces:
         - application/json
       parameters:
@@ -5820,7 +5642,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageStorage
-      operationId: Invoke function getOneDriveUsageStorage
       produces:
         - application/json
       parameters:
@@ -5840,7 +5661,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: Invoke function getSharePointActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5862,7 +5682,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: Invoke function getSharePointActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5882,7 +5701,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityFileCounts
-      operationId: Invoke function getSharePointActivityFileCounts
       produces:
         - application/json
       parameters:
@@ -5902,7 +5720,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserCounts
-      operationId: Invoke function getSharePointActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -5922,7 +5739,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityPages
-      operationId: Invoke function getSharePointActivityPages
       produces:
         - application/json
       parameters:
@@ -5942,7 +5758,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: Invoke function getSharePointSiteUsageDetail
       produces:
         - application/json
       parameters:
@@ -5964,7 +5779,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: Invoke function getSharePointSiteUsageDetail
       produces:
         - application/json
       parameters:
@@ -5984,7 +5798,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageFileCounts
-      operationId: Invoke function getSharePointSiteUsageFileCounts
       produces:
         - application/json
       parameters:
@@ -6004,7 +5817,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageSiteCounts
-      operationId: Invoke function getSharePointSiteUsageSiteCounts
       produces:
         - application/json
       parameters:
@@ -6024,7 +5836,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageStorage
-      operationId: Invoke function getSharePointSiteUsageStorage
       produces:
         - application/json
       parameters:
@@ -6044,7 +5855,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsagePages
-      operationId: Invoke function getSharePointSiteUsagePages
       produces:
         - application/json
       parameters:
@@ -6064,7 +5874,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: Invoke function getSkypeForBusinessActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6086,7 +5895,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: Invoke function getSkypeForBusinessActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6106,7 +5914,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityCounts
-      operationId: Invoke function getSkypeForBusinessActivityCounts
       produces:
         - application/json
       parameters:
@@ -6126,7 +5933,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserCounts
-      operationId: Invoke function getSkypeForBusinessActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6146,7 +5952,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
-      operationId: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
       produces:
         - application/json
       parameters:
@@ -6166,7 +5971,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
-      operationId: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6186,7 +5990,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
-      operationId: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
       produces:
         - application/json
       parameters:
@@ -6206,7 +6009,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityCounts
-      operationId: Invoke function getSkypeForBusinessOrganizerActivityCounts
       produces:
         - application/json
       parameters:
@@ -6226,7 +6028,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
-      operationId: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6246,7 +6047,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
-      operationId: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
       produces:
         - application/json
       parameters:
@@ -6266,7 +6066,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityCounts
-      operationId: Invoke function getSkypeForBusinessParticipantActivityCounts
       produces:
         - application/json
       parameters:
@@ -6286,7 +6085,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityUserCounts
-      operationId: Invoke function getSkypeForBusinessParticipantActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6306,7 +6104,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
-      operationId: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
       produces:
         - application/json
       parameters:
@@ -6326,7 +6123,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: Invoke function getSkypeForBusinessDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6348,7 +6144,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: Invoke function getSkypeForBusinessDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6368,7 +6163,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
-      operationId: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
       produces:
         - application/json
       parameters:
@@ -6388,7 +6182,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserCounts
-      operationId: Invoke function getSkypeForBusinessDeviceUsageUserCounts
       produces:
         - application/json
       parameters:
@@ -6408,7 +6201,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserDetail
-      operationId: Invoke function getYammerActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6430,7 +6222,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserDetail
-      operationId: Invoke function getYammerActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6450,7 +6241,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityCounts
-      operationId: Invoke function getYammerActivityCounts
       produces:
         - application/json
       parameters:
@@ -6470,7 +6260,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserCounts
-      operationId: Invoke function getYammerActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6490,7 +6279,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: Invoke function getYammerDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6512,7 +6300,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: Invoke function getYammerDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6532,7 +6319,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageDistributionUserCounts
-      operationId: Invoke function getYammerDeviceUsageDistributionUserCounts
       produces:
         - application/json
       parameters:
@@ -6552,7 +6338,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserCounts
-      operationId: Invoke function getYammerDeviceUsageUserCounts
       produces:
         - application/json
       parameters:
@@ -6572,7 +6357,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: Invoke function getYammerGroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -6594,7 +6378,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: Invoke function getYammerGroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -6614,7 +6397,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityGroupCounts
-      operationId: Invoke function getYammerGroupsActivityGroupCounts
       produces:
         - application/json
       parameters:
@@ -6634,7 +6416,6 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityCounts
-      operationId: Invoke function getYammerGroupsActivityCounts
       produces:
         - application/json
       parameters:
