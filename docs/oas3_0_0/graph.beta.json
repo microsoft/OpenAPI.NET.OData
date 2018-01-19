@@ -103,7 +103,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of schemaExtensions",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -308,16 +308,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -352,21 +343,6 @@
                 "type": "string"
               }
             }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -376,7 +352,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of directoryObjects",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -456,21 +432,6 @@
                 "enum": [
                   "id",
                   "deletedDateTime"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
                 ],
                 "type": "string"
               }
@@ -835,16 +796,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -922,22 +874,7 @@
                   "preAuthorizedApplications",
                   "requiredResourceAccess",
                   "tags",
-                  "web"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "web",
                   "extensionProperties",
                   "createdOnBehalfOf",
                   "owners",
@@ -956,7 +893,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of applications",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -1051,22 +988,7 @@
                   "preAuthorizedApplications",
                   "requiredResourceAccess",
                   "tags",
-                  "web"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "web",
                   "extensionProperties",
                   "createdOnBehalfOf",
                   "owners",
@@ -1178,16 +1100,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -1226,22 +1139,7 @@
                   "deletedDateTime",
                   "displayName",
                   "description",
-                  "visibility"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "visibility",
                   "extensions",
                   "members",
                   "scopedRoleMembers"
@@ -1258,7 +1156,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of administrativeUnits",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -1340,22 +1238,7 @@
                   "deletedDateTime",
                   "displayName",
                   "description",
-                  "visibility"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "visibility",
                   "extensions",
                   "members",
                   "scopedRoleMembers"
@@ -1574,7 +1457,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of allowedDataLocations",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -1861,7 +1744,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of appRoleAssignments",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -2067,16 +1950,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -2166,22 +2040,7 @@
                   "proxyAddresses",
                   "state",
                   "streetAddress",
-                  "surname"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "surname",
                   "manager",
                   "directReports",
                   "memberOf"
@@ -2198,7 +2057,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of contacts",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -2297,22 +2156,7 @@
                   "proxyAddresses",
                   "state",
                   "streetAddress",
-                  "surname"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "surname",
                   "manager",
                   "directReports",
                   "memberOf"
@@ -2454,16 +2298,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -2556,22 +2391,7 @@
                   "Model",
                   "Kind",
                   "Status",
-                  "Platform"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "Platform",
                   "extensions",
                   "registeredOwners",
                   "registeredUsers",
@@ -2589,7 +2409,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of devices",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -2689,22 +2509,7 @@
                   "Model",
                   "Kind",
                   "Status",
-                  "Platform"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "Platform",
                   "extensions",
                   "registeredOwners",
                   "registeredUsers",
@@ -2878,7 +2683,10 @@
                   "isRoot",
                   "isVerified",
                   "supportedServices",
-                  "state"
+                  "state",
+                  "serviceConfigurationRecords",
+                  "verificationDnsRecords",
+                  "domainNameReferences"
                 ],
                 "type": "string"
               }
@@ -2910,7 +2718,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of domains",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -2997,7 +2805,10 @@
                   "isRoot",
                   "isVerified",
                   "supportedServices",
-                  "state"
+                  "state",
+                  "serviceConfigurationRecords",
+                  "verificationDnsRecords",
+                  "domainNameReferences"
                 ],
                 "type": "string"
               }
@@ -3276,7 +3087,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of domainDnsRecords",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -3481,16 +3292,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -3610,22 +3412,7 @@
                   "isSubscribedByMail",
                   "unseenCount",
                   "unseenConversationsCount",
-                  "unseenMessagesCount"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "unseenMessagesCount",
                   "extensions",
                   "members",
                   "memberOf",
@@ -3663,7 +3450,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of groups",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -3772,22 +3559,7 @@
                   "isSubscribedByMail",
                   "unseenCount",
                   "unseenConversationsCount",
-                  "unseenMessagesCount"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "unseenMessagesCount",
                   "extensions",
                   "members",
                   "memberOf",
@@ -4170,19 +3942,7 @@
         "operationId": "Get entities from directoryRoles",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -4221,22 +3981,7 @@
                   "deletedDateTime",
                   "description",
                   "displayName",
-                  "roleTemplateId"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "roleTemplateId",
                   "members",
                   "scopedMembers"
                 ],
@@ -4252,7 +3997,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of directoryRoles",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -4334,22 +4079,7 @@
                   "deletedDateTime",
                   "description",
                   "displayName",
-                  "roleTemplateId"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "roleTemplateId",
                   "members",
                   "scopedMembers"
                 ],
@@ -4455,19 +4185,7 @@
         "operationId": "Get entities from directoryRoleTemplates",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -4508,21 +4226,6 @@
                 "type": "string"
               }
             }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -4532,7 +4235,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of directoryRoleTemplates",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -4614,21 +4317,6 @@
                   "deletedDateTime",
                   "description",
                   "displayName"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
                 ],
                 "type": "string"
               }
@@ -4735,16 +4423,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -4788,21 +4467,6 @@
                 "type": "string"
               }
             }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -4812,7 +4476,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of directorySettingTemplates",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -4895,21 +4559,6 @@
                   "displayName",
                   "description",
                   "values"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
                 ],
                 "type": "string"
               }
@@ -5016,16 +4665,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -5118,22 +4758,7 @@
                   "technicalNotificationMails",
                   "verifiedDomains",
                   "mobileDeviceManagementAuthority",
-                  "certificateConnectorSetting"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "certificateConnectorSetting",
                   "extensions",
                   "depOnboardingSettings",
                   "appleVolumePurchaseProgramTokens"
@@ -5150,7 +4775,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of organization",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -5250,22 +4875,7 @@
                   "technicalNotificationMails",
                   "verifiedDomains",
                   "mobileDeviceManagementAuthority",
-                  "certificateConnectorSetting"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "certificateConnectorSetting",
                   "extensions",
                   "depOnboardingSettings",
                   "appleVolumePurchaseProgramTokens"
@@ -5602,7 +5212,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of oauth2PermissionGrants",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -5883,7 +5493,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of scopedRoleMemberships",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -6086,16 +5696,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -6185,22 +5786,7 @@
                   "replyUrls",
                   "samlMetadataUrl",
                   "servicePrincipalNames",
-                  "tags"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "tags",
                   "appRoleAssignedTo",
                   "appRoleAssignments",
                   "oauth2PermissionGrants",
@@ -6224,7 +5810,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of servicePrincipals",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -6323,22 +5909,7 @@
                   "replyUrls",
                   "samlMetadataUrl",
                   "servicePrincipalNames",
-                  "tags"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "tags",
                   "appRoleAssignedTo",
                   "appRoleAssignments",
                   "oauth2PermissionGrants",
@@ -6529,7 +6100,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of settings",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -6729,19 +6300,7 @@
         "operationId": "Get entities from subscribedSkus",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -6794,21 +6353,6 @@
                 "type": "string"
               }
             }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -6818,7 +6362,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of subscribedSkus",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -6904,21 +6448,6 @@
                   "skuId",
                   "skuPartNumber",
                   "appliesTo"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
                 ],
                 "type": "string"
               }
@@ -7025,16 +6554,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -7226,22 +6746,7 @@
                   "schools",
                   "skills",
                   "identityUserRisk",
-                  "deviceEnrollmentLimit"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "deviceEnrollmentLimit",
                   "extensions",
                   "ownedDevices",
                   "registeredDevices",
@@ -7291,7 +6796,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of users",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -7424,22 +6929,7 @@
                   "schools",
                   "skills",
                   "identityUserRisk",
-                  "deviceEnrollmentLimit"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "deviceEnrollmentLimit",
                   "extensions",
                   "ownedDevices",
                   "registeredDevices",
@@ -8362,16 +7852,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -8419,22 +7900,7 @@
                   "displayName",
                   "isOrganizationDefault",
                   "keyCredentials",
-                  "type"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "type",
                   "appliesTo"
                 ],
                 "type": "string"
@@ -8449,7 +7915,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of policies",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -8534,22 +8000,7 @@
                   "displayName",
                   "isOrganizationDefault",
                   "keyCredentials",
-                  "type"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "type",
                   "appliesTo"
                 ],
                 "type": "string"
@@ -8657,16 +8108,7 @@
             "$ref": "#/components/parameters/top"
           },
           {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
           },
           {
             "name": "$orderby",
@@ -8713,21 +8155,6 @@
                 "type": "string"
               }
             }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -8737,7 +8164,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of contracts",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -8821,21 +8248,6 @@
                   "customerId",
                   "defaultDomainName",
                   "displayName"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
                 ],
                 "type": "string"
               }
@@ -9068,7 +8480,16 @@
                   "size",
                   "specialFolder",
                   "video",
-                  "webDavUrl"
+                  "webDavUrl",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "workbook",
+                  "activities",
+                  "children",
+                  "listItem",
+                  "permissions",
+                  "thumbnails",
+                  "versions"
                 ],
                 "type": "string"
               }
@@ -9106,7 +8527,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of workbooks",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -9214,7 +8635,16 @@
                   "size",
                   "specialFolder",
                   "video",
-                  "webDavUrl"
+                  "webDavUrl",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "workbook",
+                  "activities",
+                  "children",
+                  "listItem",
+                  "permissions",
+                  "thumbnails",
+                  "versions"
                 ],
                 "type": "string"
               }
@@ -9919,7 +9349,14 @@
                   "owner",
                   "quota",
                   "sharePointIds",
-                  "system"
+                  "system",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "activities",
+                  "items",
+                  "list",
+                  "root",
+                  "special"
                 ],
                 "type": "string"
               }
@@ -9955,7 +9392,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of drives",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -10047,7 +9484,14 @@
                   "owner",
                   "quota",
                   "sharePointIds",
-                  "system"
+                  "system",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "activities",
+                  "items",
+                  "list",
+                  "root",
+                  "special"
                 ],
                 "type": "string"
               }
@@ -10371,7 +9815,15 @@
                   "name",
                   "parentReference",
                   "webUrl",
-                  "owner"
+                  "owner",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "driveItem",
+                  "items",
+                  "list",
+                  "listItem",
+                  "root",
+                  "site"
                 ],
                 "type": "string"
               }
@@ -10408,7 +9860,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of shares",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -10496,7 +9948,15 @@
                   "name",
                   "parentReference",
                   "webUrl",
-                  "owner"
+                  "owner",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "driveItem",
+                  "items",
+                  "list",
+                  "listItem",
+                  "root",
+                  "site"
                 ],
                 "type": "string"
               }
@@ -10701,7 +10161,17 @@
                   "displayName",
                   "root",
                   "sharepointIds",
-                  "siteCollection"
+                  "siteCollection",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "columns",
+                  "contentTypes",
+                  "drive",
+                  "drives",
+                  "items",
+                  "lists",
+                  "sites",
+                  "onenote"
                 ],
                 "type": "string"
               }
@@ -10740,7 +10210,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of sites",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -10831,7 +10301,17 @@
                   "displayName",
                   "root",
                   "sharepointIds",
-                  "siteCollection"
+                  "siteCollection",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "columns",
+                  "contentTypes",
+                  "drive",
+                  "drives",
+                  "items",
+                  "lists",
+                  "sites",
+                  "onenote"
                 ],
                 "type": "string"
               }
@@ -11000,45 +10480,7 @@
         "operationId": "Get entities from subscriptions",
         "parameters": [
           {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
             "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "id",
-                  "id desc",
-                  "resource",
-                  "resource desc",
-                  "changeType",
-                  "changeType desc",
-                  "clientState",
-                  "clientState desc",
-                  "notificationUrl",
-                  "notificationUrl desc",
-                  "expirationDateTime",
-                  "expirationDateTime desc"
-                ],
-                "type": "string"
-              }
-            }
           },
           {
             "name": "$select",
@@ -11059,21 +10501,6 @@
                 "type": "string"
               }
             }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
           }
         ],
         "responses": {
@@ -11083,7 +10510,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of subscriptions",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -11167,21 +10594,6 @@
                   "clientState",
                   "notificationUrl",
                   "expirationDateTime"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
                 ],
                 "type": "string"
               }
@@ -11351,7 +10763,8 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId"
+                  "userId",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -11381,7 +10794,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of identityRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -11468,7 +10881,8 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId"
+                  "userId",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -11678,7 +11092,8 @@
                   "isAtypicalLocation",
                   "previousSigninDateTime",
                   "previousLocation",
-                  "previousIpAddress"
+                  "previousIpAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -11708,7 +11123,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of impossibleTravelRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -11803,7 +11218,8 @@
                   "isAtypicalLocation",
                   "previousSigninDateTime",
                   "previousLocation",
-                  "previousIpAddress"
+                  "previousIpAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -11989,7 +11405,8 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId"
+                  "userId",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12019,7 +11436,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of leakedCredentialsRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -12106,7 +11523,8 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId"
+                  "userId",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12298,7 +11716,8 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress"
+                  "ipAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12328,7 +11747,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of anonymousIpRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -12417,7 +11836,8 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress"
+                  "ipAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12609,7 +12029,8 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress"
+                  "ipAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12639,7 +12060,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of suspiciousIpRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -12728,7 +12149,8 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress"
+                  "ipAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12920,7 +12342,8 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress"
+                  "ipAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -12950,7 +12373,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of unfamiliarLocationRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -13039,7 +12462,8 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress"
+                  "ipAddress",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -13237,7 +12661,8 @@
                   "location",
                   "ipAddress",
                   "deviceInformation",
-                  "malwareName"
+                  "malwareName",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -13267,7 +12692,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of malwareRiskEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -13358,7 +12783,8 @@
                   "location",
                   "ipAddress",
                   "deviceInformation",
-                  "malwareName"
+                  "malwareName",
+                  "impactedUser"
                 ],
                 "type": "string"
               }
@@ -13520,7 +12946,10 @@
               "items": {
                 "enum": [
                   "id",
-                  "name"
+                  "name",
+                  "settings",
+                  "assignments",
+                  "summary"
                 ],
                 "type": "string"
               }
@@ -13552,7 +12981,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of privilegedRoles",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -13631,7 +13060,10 @@
               "items": {
                 "enum": [
                   "id",
-                  "name"
+                  "name",
+                  "settings",
+                  "assignments",
+                  "summary"
                 ],
                 "type": "string"
               }
@@ -13892,7 +13324,8 @@
                   "roleId",
                   "isElevated",
                   "expirationDateTime",
-                  "resultMessage"
+                  "resultMessage",
+                  "roleInfo"
                 ],
                 "type": "string"
               }
@@ -13922,7 +13355,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of privilegedRoleAssignments",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -14005,7 +13438,8 @@
                   "roleId",
                   "isElevated",
                   "expirationDateTime",
-                  "resultMessage"
+                  "resultMessage",
+                  "roleInfo"
                 ],
                 "type": "string"
               }
@@ -14348,7 +13782,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of privilegedOperationEvents",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -14633,7 +14067,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of privilegedSignupStatus",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -15003,7 +14437,8 @@
                   "requestorReason",
                   "approverReason",
                   "startDateTime",
-                  "endDateTime"
+                  "endDateTime",
+                  "roleInfo"
                 ],
                 "type": "string"
               }
@@ -15033,7 +14468,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of privilegedApproval",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -15120,7 +14555,8 @@
                   "requestorReason",
                   "approverReason",
                   "startDateTime",
-                  "endDateTime"
+                  "endDateTime",
+                  "roleInfo"
                 ],
                 "type": "string"
               }
@@ -15335,7 +14771,8 @@
                   "sendInvitationMessage",
                   "inviteRedirectUrl",
                   "inviteRedeemUrl",
-                  "status"
+                  "status",
+                  "invitedUser"
                 ],
                 "type": "string"
               }
@@ -15365,7 +14802,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of invitations",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -15451,7 +14888,8 @@
                   "sendInvitationMessage",
                   "inviteRedirectUrl",
                   "inviteRedeemUrl",
-                  "status"
+                  "status",
+                  "invitedUser"
                 ],
                 "type": "string"
               }
@@ -15645,7 +15083,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of appConfigurationGroupAssignments",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -15915,7 +15353,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of assignments",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -16217,7 +15655,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of vppTokens",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -16553,7 +15991,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of enrollmentConfigurationAssignment",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -16814,7 +16252,8 @@
                   "Error",
                   "Payload",
                   "PermissionTicket",
-                  "PostBackUri"
+                  "PostBackUri",
+                  "responsepayload"
                 ],
                 "type": "string"
               }
@@ -16844,7 +16283,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of commands",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -16930,7 +16369,8 @@
                   "Error",
                   "Payload",
                   "PermissionTicket",
-                  "PostBackUri"
+                  "PostBackUri",
+                  "responsepayload"
                 ],
                 "type": "string"
               }
@@ -17118,7 +16558,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of payloadResponse",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -17366,7 +16806,8 @@
                   "memberSettings",
                   "messagingSettings",
                   "funSettings",
-                  "guestSettings"
+                  "guestSettings",
+                  "channels"
                 ],
                 "type": "string"
               }
@@ -17396,7 +16837,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of team",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -17478,7 +16919,8 @@
                   "memberSettings",
                   "messagingSettings",
                   "funSettings",
-                  "guestSettings"
+                  "guestSettings",
+                  "channels"
                 ],
                 "type": "string"
               }
@@ -17643,7 +17085,8 @@
                 "enum": [
                   "id",
                   "displayName",
-                  "description"
+                  "description",
+                  "chatThreads"
                 ],
                 "type": "string"
               }
@@ -17673,7 +17116,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of channels",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -17753,7 +17196,8 @@
                 "enum": [
                   "id",
                   "displayName",
-                  "description"
+                  "description",
+                  "chatThreads"
                 ],
                 "type": "string"
               }
@@ -17912,7 +17356,9 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id"
+                  "id",
+                  "chatMessages",
+                  "rootMessage"
                 ],
                 "type": "string"
               }
@@ -17943,7 +17389,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of chatThreads",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -18021,7 +17467,9 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id"
+                  "id",
+                  "chatMessages",
+                  "rootMessage"
                 ],
                 "type": "string"
               }
@@ -18219,7 +17667,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of groupLifecyclePolicies",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -18620,7 +18068,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of identityProviders",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -18892,7 +18340,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of functions",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -19167,7 +18615,7 @@
               "application/json": {
                 "schema": {
                   "title": "Collection of filterOperators",
-                  "type": "array",
+                  "type": "object",
                   "properties": {
                     "value": {
                       "type": "array",
@@ -19430,22 +18878,7 @@
                   "schools",
                   "skills",
                   "identityUserRisk",
-                  "deviceEnrollmentLimit"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
+                  "deviceEnrollmentLimit",
                   "extensions",
                   "ownedDevices",
                   "registeredDevices",
@@ -20160,7 +19593,8 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id"
+                  "id",
+                  "deletedItems"
                 ],
                 "type": "string"
               }
@@ -20257,7 +19691,14 @@
                   "owner",
                   "quota",
                   "sharePointIds",
-                  "system"
+                  "system",
+                  "createdByUser",
+                  "lastModifiedByUser",
+                  "activities",
+                  "items",
+                  "list",
+                  "root",
+                  "special"
                 ],
                 "type": "string"
               }
@@ -20453,7 +19894,10 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id"
+                  "id",
+                  "tasks",
+                  "plans",
+                  "buckets"
                 ],
                 "type": "string"
               }
@@ -20546,7 +19990,53 @@
                   "settings",
                   "maximumDepTokens",
                   "intuneAccountId",
-                  "intuneBrand"
+                  "intuneBrand",
+                  "termsAndConditions",
+                  "androidForWorkSettings",
+                  "androidForWorkAppConfigurationSchemas",
+                  "androidForWorkEnrollmentProfiles",
+                  "enrollmentProfiles",
+                  "importedDeviceIdentities",
+                  "importedAppleDeviceIdentities",
+                  "remoteActionAudits",
+                  "applePushNotificationCertificate",
+                  "deviceManagementScripts",
+                  "managedDeviceOverview",
+                  "detectedApps",
+                  "managedDevices",
+                  "windowsMalwareInformation",
+                  "deviceConfigurations",
+                  "deviceCompliancePolicies",
+                  "deviceSetupConfigurations",
+                  "softwareUpdateStatusSummary",
+                  "deviceCompliancePolicyDeviceStateSummary",
+                  "deviceCompliancePolicySettingStateSummaries",
+                  "deviceConfigurationDeviceStateSummaries",
+                  "deviceConfigurationUserStateSummaries",
+                  "cartToClassAssociations",
+                  "iosUpdateStatuses",
+                  "ndesConnectors",
+                  "deviceCategories",
+                  "exchangeConnectors",
+                  "deviceEnrollmentConfigurations",
+                  "exchangeOnPremisesPolicy",
+                  "exchangeOnPremisesPolicies",
+                  "conditionalAccessSettings",
+                  "mobileThreatDefenseConnectors",
+                  "deviceManagementPartners",
+                  "depOnboardingSettings",
+                  "notificationMessageTemplates",
+                  "roleDefinitions",
+                  "roleAssignments",
+                  "resourceOperations",
+                  "telecomExpenseManagementPartners",
+                  "windowsAutopilotSettings",
+                  "windowsAutopilotDeviceIdentities",
+                  "windowsAutopilotDeploymentProfiles",
+                  "remoteAssistancePartners",
+                  "windowsInformationProtectionAppLearningSummaries",
+                  "auditEvents",
+                  "troubleshootingEvents"
                 ],
                 "type": "string"
               }
@@ -20785,7 +20275,26 @@
                   "microsoftStoreForBusinessLastSuccessfulSyncDateTime",
                   "isEnabledForMicrosoftStoreForBusiness",
                   "microsoftStoreForBusinessLanguage",
-                  "microsoftStoreForBusinessLastCompletedApplicationSyncTime"
+                  "microsoftStoreForBusinessLastCompletedApplicationSyncTime",
+                  "windowsManagementApp",
+                  "mobileApps",
+                  "mobileAppCategories",
+                  "enterpriseCodeSigningCertificates",
+                  "iosLobAppProvisioningConfigurations",
+                  "symantecCodeSigningCertificate",
+                  "mobileAppConfigurations",
+                  "sideLoadingKeys",
+                  "vppTokens",
+                  "managedAppPolicies",
+                  "iosManagedAppProtections",
+                  "androidManagedAppProtections",
+                  "defaultManagedAppProtections",
+                  "targetedManagedAppConfigurations",
+                  "mdmWindowsInformationProtectionPolicies",
+                  "windowsInformationProtectionPolicies",
+                  "managedAppRegistrations",
+                  "managedAppStatuses",
+                  "managedEBooks"
                 ],
                 "type": "string"
               }
@@ -24156,7 +23665,12 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id"
+                  "id",
+                  "synchronizationProfiles",
+                  "classes",
+                  "schools",
+                  "users",
+                  "me"
                 ],
                 "type": "string"
               }
@@ -64046,6 +63560,13 @@
           "name": {
             "type": "string",
             "nullable": true
+          },
+          "supportedApis": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "nullable": true
+            }
           }
         }
       },
@@ -64055,6 +63576,17 @@
         "properties": {
           "anchor": {
             "type": "boolean"
+          },
+          "apiExpressions": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/microsoft.graph.stringKeyStringValuePair"
+                }
+              ],
+              "nullable": true
+            }
           },
           "caseExact": {
             "type": "boolean"
@@ -64108,6 +63640,20 @@
                 "$ref": "#/components/schemas/microsoft.graph.attributeType"
               }
             ]
+          }
+        }
+      },
+      "microsoft.graph.stringKeyStringValuePair": {
+        "title": "stringKeyStringValuePair",
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -64173,20 +63719,6 @@
             "nullable": true
           },
           "targetDirectoryName": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "microsoft.graph.stringKeyStringValuePair": {
-        "title": "stringKeyStringValuePair",
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
             "type": "string",
             "nullable": true
           }
@@ -64881,6 +64413,14 @@
                   "$ref": "#/components/schemas/microsoft.graph.educationUser"
                 }
               },
+              "group": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/microsoft.graph.group"
+                  }
+                ],
+                "nullable": true
+              },
               "assignments": {
                 "type": "array",
                 "items": {
@@ -64991,6 +64531,14 @@
                 "items": {
                   "$ref": "#/components/schemas/microsoft.graph.educationUser"
                 }
+              },
+              "administrativeUnit": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/microsoft.graph.administrativeUnit"
+                  }
+                ],
+                "nullable": true
               }
             }
           }
@@ -65173,6 +64721,14 @@
                 "items": {
                   "$ref": "#/components/schemas/microsoft.graph.educationClass"
                 }
+              },
+              "user": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/microsoft.graph.user"
+                  }
+                ],
+                "nullable": true
               },
               "assignments": {
                 "type": "array",
@@ -69294,6 +68850,7 @@
       "microsoft.graph.attributeType": {
         "title": "attributeType",
         "enum": [
+          "DateTime",
           "Boolean",
           "Binary",
           "Reference",

@@ -18,10 +18,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -39,20 +36,12 @@ paths:
             enum:
               - id
             type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entities
           schema:
             title: Collection of directoryObjects
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -103,14 +92,6 @@ paths:
           items:
             enum:
               - id
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
             type: string
       responses:
         '200':
@@ -285,10 +266,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -350,14 +328,6 @@ paths:
               - operatingSystemVersion
               - physicalIds
               - trustType
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - registeredOwners
               - registeredUsers
               - extensions
@@ -367,7 +337,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of devices
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -433,14 +403,6 @@ paths:
               - operatingSystemVersion
               - physicalIds
               - trustType
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - registeredOwners
               - registeredUsers
               - extensions
@@ -552,6 +514,9 @@ paths:
               - isVerified
               - supportedServices
               - state
+              - serviceConfigurationRecords
+              - verificationDnsRecords
+              - domainNameReferences
             type: string
         - name: $expand
           in: query
@@ -569,7 +534,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of domains
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -629,6 +594,9 @@ paths:
               - isVerified
               - supportedServices
               - state
+              - serviceConfigurationRecords
+              - verificationDnsRecords
+              - domainNameReferences
             type: string
         - name: $expand
           in: query
@@ -767,7 +735,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of domainDnsRecords
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -892,10 +860,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -969,14 +934,6 @@ paths:
               - autoSubscribeNewMembers
               - isSubscribedByMail
               - unseenCount
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - members
               - memberOf
               - createdOnBehalfOf
@@ -1003,7 +960,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of groups
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -1073,14 +1030,6 @@ paths:
               - autoSubscribeNewMembers
               - isSubscribedByMail
               - unseenCount
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - members
               - memberOf
               - createdOnBehalfOf
@@ -1262,11 +1211,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -1292,14 +1237,6 @@ paths:
               - description
               - displayName
               - roleTemplateId
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - members
             type: string
       responses:
@@ -1307,7 +1244,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of directoryRoles
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -1361,14 +1298,6 @@ paths:
               - description
               - displayName
               - roleTemplateId
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - members
             type: string
       responses:
@@ -1430,11 +1359,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -1458,20 +1383,12 @@ paths:
               - description
               - displayName
             type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entities
           schema:
             title: Collection of directoryRoleTemplates
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -1524,14 +1441,6 @@ paths:
               - id
               - description
               - displayName
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
             type: string
       responses:
         '200':
@@ -1593,10 +1502,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -1667,14 +1573,6 @@ paths:
               - street
               - technicalNotificationMails
               - verifiedDomains
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - extensions
             type: string
       responses:
@@ -1682,7 +1580,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of organization
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -1751,14 +1649,6 @@ paths:
               - street
               - technicalNotificationMails
               - verifiedDomains
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - extensions
             type: string
       responses:
@@ -1864,7 +1754,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of groupSettings
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -1987,10 +1877,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -2017,20 +1904,12 @@ paths:
               - description
               - values
             type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entities
           schema:
             title: Collection of groupSettingTemplates
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -2084,14 +1963,6 @@ paths:
               - displayName
               - description
               - values
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
             type: string
       responses:
         '200':
@@ -2152,11 +2023,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -2195,20 +2062,12 @@ paths:
               - skuPartNumber
               - appliesTo
             type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entities
           schema:
             title: Collection of subscribedSkus
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -2266,14 +2125,6 @@ paths:
               - skuId
               - skuPartNumber
               - appliesTo
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
             type: string
       responses:
         '200':
@@ -2335,10 +2186,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -2484,14 +2332,6 @@ paths:
               - responsibilities
               - schools
               - skills
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - ownedDevices
               - registeredDevices
               - manager
@@ -2524,7 +2364,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of users
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -2618,14 +2458,6 @@ paths:
               - responsibilities
               - schools
               - skills
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - ownedDevices
               - registeredDevices
               - manager
@@ -2893,10 +2725,7 @@ paths:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
         - name: $orderby
           in: query
           description: Order items by property values
@@ -2926,20 +2755,12 @@ paths:
               - defaultDomainName
               - displayName
             type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entities
           schema:
             title: Collection of contracts
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -2994,14 +2815,6 @@ paths:
               - customerId
               - defaultDomainName
               - displayName
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
             type: string
       responses:
         '200':
@@ -3112,7 +2925,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of schemaExtensions
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -3299,6 +3112,12 @@ paths:
               - quota
               - sharePointIds
               - system
+              - createdByUser
+              - lastModifiedByUser
+              - items
+              - list
+              - root
+              - special
             type: string
         - name: $expand
           in: query
@@ -3319,7 +3138,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of drives
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -3384,6 +3203,12 @@ paths:
               - quota
               - sharePointIds
               - system
+              - createdByUser
+              - lastModifiedByUser
+              - items
+              - list
+              - root
+              - special
             type: string
         - name: $expand
           in: query
@@ -3575,6 +3400,14 @@ paths:
               - parentReference
               - webUrl
               - owner
+              - createdByUser
+              - lastModifiedByUser
+              - driveItem
+              - items
+              - list
+              - listItem
+              - root
+              - site
             type: string
         - name: $expand
           in: query
@@ -3597,7 +3430,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of shares
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -3658,6 +3491,14 @@ paths:
               - parentReference
               - webUrl
               - owner
+              - createdByUser
+              - lastModifiedByUser
+              - driveItem
+              - items
+              - list
+              - listItem
+              - root
+              - site
             type: string
         - name: $expand
           in: query
@@ -3794,6 +3635,16 @@ paths:
               - root
               - sharepointIds
               - siteCollection
+              - createdByUser
+              - lastModifiedByUser
+              - columns
+              - contentTypes
+              - drive
+              - drives
+              - items
+              - lists
+              - sites
+              - onenote
             type: string
         - name: $expand
           in: query
@@ -3818,7 +3669,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of sites
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -3882,6 +3733,16 @@ paths:
               - root
               - sharepointIds
               - siteCollection
+              - createdByUser
+              - lastModifiedByUser
+              - columns
+              - contentTypes
+              - drive
+              - drives
+              - items
+              - lists
+              - sites
+              - onenote
             type: string
         - name: $expand
           in: query
@@ -4088,6 +3949,13 @@ paths:
               - specialFolder
               - video
               - webDavUrl
+              - createdByUser
+              - lastModifiedByUser
+              - children
+              - listItem
+              - permissions
+              - thumbnails
+              - workbook
             type: string
         - name: $expand
           in: query
@@ -4109,7 +3977,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of workbooks
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -4189,6 +4057,13 @@ paths:
               - specialFolder
               - video
               - webDavUrl
+              - createdByUser
+              - lastModifiedByUser
+              - children
+              - listItem
+              - permissions
+              - thumbnails
+              - workbook
             type: string
         - name: $expand
           in: query
@@ -4454,30 +4329,7 @@ paths:
       produces:
         - application/json
       parameters:
-        - $ref: '#/parameters/top'
-        - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
-        - $ref: '#/parameters/filter'
-        - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
-          description: Order items by property values
-          type: array
-          items:
-            enum:
-              - id
-              - id desc
-              - resource
-              - resource desc
-              - changeType
-              - changeType desc
-              - clientState
-              - clientState desc
-              - notificationUrl
-              - notificationUrl desc
-              - expirationDateTime
-              - expirationDateTime desc
-            type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -4491,20 +4343,12 @@ paths:
               - notificationUrl
               - expirationDateTime
             type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-            type: string
       responses:
         '200':
           description: Retrieved entities
           schema:
             title: Collection of subscriptions
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -4560,14 +4404,6 @@ paths:
               - clientState
               - notificationUrl
               - expirationDateTime
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
             type: string
       responses:
         '200':
@@ -4673,6 +4509,7 @@ paths:
               - inviteRedirectUrl
               - inviteRedeemUrl
               - status
+              - invitedUser
             type: string
         - name: $expand
           in: query
@@ -4688,7 +4525,7 @@ paths:
           description: Retrieved entities
           schema:
             title: Collection of invitations
-            type: array
+            type: object
             properties:
               value:
                 type: array
@@ -4747,6 +4584,7 @@ paths:
               - inviteRedirectUrl
               - inviteRedeemUrl
               - status
+              - invitedUser
             type: string
         - name: $expand
           in: query
@@ -4866,14 +4704,6 @@ paths:
               - responsibilities
               - schools
               - skills
-            type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
               - ownedDevices
               - registeredDevices
               - manager
@@ -5103,6 +4933,12 @@ paths:
               - quota
               - sharePointIds
               - system
+              - createdByUser
+              - lastModifiedByUser
+              - items
+              - list
+              - root
+              - special
             type: string
         - name: $expand
           in: query
@@ -5212,6 +5048,9 @@ paths:
           items:
             enum:
               - id
+              - tasks
+              - plans
+              - buckets
             type: string
         - name: $expand
           in: query

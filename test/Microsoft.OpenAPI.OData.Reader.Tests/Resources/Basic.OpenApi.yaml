@@ -64,7 +64,7 @@ paths:
             application/json:
               schema:
                 title: Collection of People
-                type: array
+                type: object
                 properties:
                   value:
                     type: array
@@ -229,7 +229,7 @@ paths:
             application/json:
               schema:
                 title: Collection of City
-                type: array
+                type: object
                 properties:
                   value:
                     type: array
@@ -391,7 +391,7 @@ paths:
             application/json:
               schema:
                 title: Collection of CountryOrRegion
-                type: array
+                type: object
                 properties:
                   value:
                     type: array

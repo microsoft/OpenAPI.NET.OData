@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 title: Collection of People
-                type: array
+                type: object
                 properties:
                   value:
                     type: array
@@ -374,7 +374,7 @@ paths:
             application/json:
               schema:
                 title: Collection of Airlines
-                type: array
+                type: object
                 properties:
                   value:
                     type: array
@@ -546,7 +546,7 @@ paths:
             application/json:
               schema:
                 title: Collection of Airports
-                type: array
+                type: object
                 properties:
                   value:
                     type: array
@@ -747,7 +747,7 @@ paths:
             application/json:
               schema:
                 title: Collection of NewComePeople
-                type: array
+                type: object
                 properties:
                   value:
                     type: array

@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                     Schema = new OpenApiSchema
                                     {
                                         Title = "Collection of " + entitySet.Name,
-                                        Type = "array",
+                                        Type = "object",
                                         Properties = new Dictionary<string, OpenApiSchema>
                                         {
                                             {
