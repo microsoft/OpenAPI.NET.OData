@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public CapabilitiesRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
         {
             Model = model ?? throw Error.ArgumentNull(nameof(model));
-            Target = Target ?? throw Error.ArgumentNull(nameof(target));
+            Target = target ?? throw Error.ArgumentNull(nameof(target));
         }
 
         protected void Initialize()
@@ -56,8 +56,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
                 IEdmNavigationSource navigationSource = Target as IEdmNavigationSource;
 
                 // if not, search the entity type.
-                IEdmEntityType entityType = navigationSource.EntityType();
-                annotation = Model.GetCapabilitiesAnnotation(entityType, QualifiedName);
+                if (navigationSource != null)
+                {
+                    IEdmEntityType entityType = navigationSource.EntityType();
+                    annotation = Model.GetCapabilitiesAnnotation(entityType, QualifiedName);
+                }
             }
 
             Initialize(annotation);

@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class UpdateRestrictions : CapabilitiesRestrictions
     {
         private bool _updatable = true;
-        private IList<string> _nonUpdatableNavigationProperties;
+        private IList<string> _nonUpdatableNavigationProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

@@ -53,7 +53,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         private NavigationType _navigability = NavigationType.Single;
-        private IList<NavigationPropertyRestriction> _restrictedProperties;
+        private IList<NavigationPropertyRestriction> _restrictedProperties = new List<NavigationPropertyRestriction>();
 
         /// <summary>
         /// The Term type name.

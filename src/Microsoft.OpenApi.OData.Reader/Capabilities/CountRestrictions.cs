@@ -16,8 +16,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class CountRestrictions : CapabilitiesRestrictions
     {
         private bool _countable = true;
-        private IList<string> _nonCountableProperties;
-        private IList<string> _nonCountableNavigationProperties;
+        private IList<string> _nonCountableProperties = new List<string>();
+        private IList<string> _nonCountableNavigationProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

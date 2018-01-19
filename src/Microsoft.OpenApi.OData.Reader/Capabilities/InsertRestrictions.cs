@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class InsertRestrictions : CapabilitiesRestrictions
     {
         private bool _insertable = true;
-        private IList<string> _nonInsertableNavigationProperties;
+        private IList<string> _nonInsertableNavigationProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

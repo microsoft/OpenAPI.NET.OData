@@ -17,8 +17,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
     {
         private bool _filterable = true;
         private bool? _requiresFilter;
-        private IList<string> _requiredProperties;
-        private IList<string> _nonFilterableProperties;
+        private IList<string> _requiredProperties = new List<string>();
+        private IList<string> _nonFilterableProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

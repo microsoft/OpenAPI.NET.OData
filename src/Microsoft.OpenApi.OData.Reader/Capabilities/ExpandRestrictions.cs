@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class ExpandRestrictions : CapabilitiesRestrictions
     {
         private bool _expandable = true;
-        private IList<string> _nonExpandableProperties;
+        private IList<string> _nonExpandableProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

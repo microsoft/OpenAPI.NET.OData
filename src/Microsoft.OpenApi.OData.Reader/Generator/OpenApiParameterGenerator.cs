@@ -8,6 +8,9 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -157,15 +160,188 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
+        /// Create the $top parameter.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The Edm annotation target.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateTop(this ODataContext context, IEdmVocabularyAnnotatable target)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            TopSupported top = new TopSupported(context.Model, target);
+            if (top.Supported)
+            {
+                return new OpenApiParameter
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
+                };
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Create the $skip parameter.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The Edm annotation target.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateSkip(this ODataContext context, IEdmVocabularyAnnotatable target)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            SkipSupported skip = new SkipSupported(context.Model, target);
+            if (skip.Supported)
+            {
+                return new OpenApiParameter
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
+                };
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Create the $search parameter.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The Edm annotation target.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateSearch(this ODataContext context, IEdmVocabularyAnnotatable target)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            SearchRestrictions search = new SearchRestrictions(context.Model, target);
+            if (search.Searchable)
+            {
+                return new OpenApiParameter
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
+                };
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Create the $count parameter.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The Edm annotation target.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateCount(this ODataContext context, IEdmVocabularyAnnotatable target)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            CountRestrictions count = new CountRestrictions(context.Model, target);
+            if (count.Countable)
+            {
+                return new OpenApiParameter
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
+                };
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Create the $filter parameter.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The Edm annotation target.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateFilter(this ODataContext context, IEdmVocabularyAnnotatable target)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            FilterRestrictions filter = new FilterRestrictions(context.Model, target);
+            if (filter.Filterable)
+            {
+                return new OpenApiParameter
+                {
+                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
+                };
+            }
+
+            return null;
+        }
+
+        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmEntitySet entitySet)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
+
+            return context.CreateOrderBy(entitySet, entitySet.EntityType());
+        }
+
+        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmSingleton singleton)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(singleton, nameof(singleton));
+
+            return context.CreateOrderBy(singleton, singleton.EntityType());
+        }
+
+        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmNavigationProperty navigationProperty)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+
+            return context.CreateOrderBy(navigationProperty, navigationProperty.DeclaringEntityType());
+        }
+
+        /// <summary>
         /// Create $orderby parameter for the <see cref="IEdmEntitySet"/>.
         /// </summary>
-        /// <param name="entityType">The Edm entity type.</param>
-        /// <returns>The created <see cref="OpenApiParameter"/>.</returns>
-        public static OpenApiParameter CreateOrderByParameter(this IEdmEntityType entityType)
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The Edm annotation target.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         {
-            if (entityType == null)
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+
+            SortRestrictions sort = new SortRestrictions(context.Model, target);
+            if (!sort.Sortable)
             {
-                throw Error.ArgumentNull(nameof(entityType));
+                return null;
+            }
+
+            IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
+            foreach (var property in entityType.StructuralProperties())
+            {
+                if (sort.IsNonsortableProperty(property))
+                {
+                    continue;
+                }
+
+                bool isAscOnly = sort.IsAscendingOnlyProperty(property);
+                bool isDescOnly = sort.IsDescendingOnlyProperty(property);
+                if (isAscOnly || isDescOnly)
+                {
+                    if (isAscOnly)
+                    {
+                        orderByItems.Add(new OpenApiString(property.Name));
+                    }
+                    else
+                    {
+                        orderByItems.Add(new OpenApiString(property.Name + " desc"));
+                    }
+                }
+                else
+                {
+                    orderByItems.Add(new OpenApiString(property.Name));
+                    orderByItems.Add(new OpenApiString(property.Name + " desc"));
+                }
             }
 
             return new OpenApiParameter
@@ -180,22 +356,69 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = VisitOrderbyItems(entityType)
+                        Enum = orderByItems
                     }
                 }
             };
         }
 
-        /// <summary>
+        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmEntitySet entitySet)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
+
+            return context.CreateSelect(entitySet, entitySet.EntityType());
+        }
+
+        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmSingleton singleton)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(singleton, nameof(singleton));
+
+            return context.CreateSelect(singleton, singleton.EntityType());
+        }
+
+        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmNavigationProperty navigationProperty)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+
+            return context.CreateSelect(navigationProperty, navigationProperty.DeclaringEntityType());
+        }
+
+        // <summary>
         /// Create $select parameter for the <see cref="IEdmNavigationSource"/>.
         /// </summary>
-        /// <param name="entityType">The Edm entity type.</param>
-        /// <returns>The created <see cref="OpenApiParameter"/>.</returns>
-        public static OpenApiParameter CreateSelectParameter(this IEdmEntityType entityType)
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The Edm navigation source.</param>
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         {
-            if (entityType == null)
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+
+            NavigationRestrictions navigation = new NavigationRestrictions(context.Model, target);
+            if (navigation.Navigability == NavigationType.None)
             {
-                throw Error.ArgumentNull(nameof(entityType));
+                return null;
+            }
+
+            IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
+
+            foreach (var property in entityType.StructuralProperties())
+            {
+                selectItems.Add(new OpenApiString(property.Name));
+            }
+
+            foreach (var property in entityType.NavigationProperties())
+            {
+                if (navigation.IsNonNavigationProperty(property))
+                {
+                    continue;
+                }
+
+                selectItems.Add(new OpenApiString(property.Name));
             }
 
             return new OpenApiParameter
@@ -210,22 +433,68 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = VisitSelectItems(entityType)
+                        Enum = selectItems
                     }
                 }
             };
         }
 
+        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmEntitySet entitySet)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
+
+            return context.CreateExpand(entitySet, entitySet.EntityType());
+        }
+
+        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmSingleton singleton)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(singleton, nameof(singleton));
+
+            return context.CreateExpand(singleton, singleton.EntityType());
+        }
+
+        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmNavigationProperty navigationProperty)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+
+            return context.CreateExpand(navigationProperty, navigationProperty.DeclaringEntityType());
+        }
+
         /// <summary>
         /// Create $expand parameter for the <see cref="IEdmNavigationSource"/>.
         /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="target">The edm entity path.</param>
         /// <param name="entityType">The edm entity path.</param>
-        /// <returns>The created <see cref="OpenApiParameter"/>.</returns>
-        public static OpenApiParameter CreateExpandParameter(this IEdmEntityType entityType)
+        /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
+        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         {
-            if (entityType == null)
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(target, nameof(target));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+
+            ExpandRestrictions expand = new ExpandRestrictions(context.Model, target);
+            if (!expand.Expandable)
             {
-                throw Error.ArgumentNull(nameof(entityType));
+                return null;
+            }
+
+            IList<IOpenApiAny> expandItems = new List<IOpenApiAny>
+            {
+                new OpenApiString("*")
+            };
+
+            foreach (var property in entityType.NavigationProperties())
+            {
+                if (expand.IsNonExpandableProperty(property.Name))
+                {
+                    continue;
+                }
+
+                expandItems.Add(new OpenApiString(property.Name));
             }
 
             return new OpenApiParameter
@@ -240,7 +509,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Items = new OpenApiSchema
                     {
                         Type = "string",
-                        Enum = VisitExpandItems(entityType)
+                        Enum = expandItems
                     }
                 }
             };
@@ -322,46 +591,6 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = "string"
                 }
             };
-        }
-
-        private static IList<IOpenApiAny> VisitOrderbyItems(IEdmEntityType entityType)
-        {
-            IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
-
-            foreach (var property in entityType.StructuralProperties())
-            {
-                orderByItems.Add(new OpenApiString(property.Name));
-                orderByItems.Add(new OpenApiString(property.Name + " desc"));
-            }
-
-            return orderByItems;
-        }
-
-        private static IList<IOpenApiAny> VisitSelectItems(IEdmEntityType entityType)
-        {
-            IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
-
-            foreach (var property in entityType.StructuralProperties())
-            {
-                selectItems.Add(new OpenApiString(property.Name));
-            }
-
-            return selectItems;
-        }
-
-        private static IList<IOpenApiAny> VisitExpandItems(IEdmEntityType entityType)
-        {
-            IList<IOpenApiAny> expandItems = new List<IOpenApiAny>
-            {
-                new OpenApiString("*")
-            };
-
-            foreach (var property in entityType.NavigationProperties())
-            {
-                expandItems.Add(new OpenApiString(property.Name));
-            }
-
-            return expandItems;
         }
     }
 }

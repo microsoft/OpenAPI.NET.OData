@@ -52,43 +52,70 @@ namespace Microsoft.OpenApi.OData.Generator
                 operation.OperationId = operation.Summary;
             }
 
-            IEdmEntityType entityType = entitySet.EntityType();
-
-            // The parameters array contains Parameter Objects for system query options allowed for this entity set,
-            // and it does not list system query options not allowed for this entity set.
-            operation.Parameters = new List<OpenApiParameter>
+            // The parameters array contains Parameter Objects for all system query options allowed for this collection,
+            // and it does not list system query options not allowed for this collection, see terms
+            // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
+            // Capabilities.FilterRestrictions, and Capabilities.CountRestrictions
+            operation.Parameters = new List<OpenApiParameter>();
+            // $top
+            OpenApiParameter parameter = context.CreateTop(entitySet);
+            if (parameter != null)
             {
-                new OpenApiParameter
-                {
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
-                },
-                new OpenApiParameter
-                {
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
-                },
-                new OpenApiParameter
-                {
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
-                },
-                new OpenApiParameter
-                {
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
-                },
-                new OpenApiParameter
-                {
-                    Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
-                },
+                operation.Parameters.Add(parameter);
+            }
 
-                // the syntax of the system query options $expand, $select, and $orderby is too flexible
-                // to be formally described with OpenAPI Specification means, yet the typical use cases
-                // of just providing a comma-separated list of properties can be expressed via an array-valued
-                // parameter with an enum constraint
-                entityType.CreateOrderByParameter(),
+            // $skip
+            parameter = context.CreateSkip(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
 
-                entityType.CreateSelectParameter(),
+            // $search
+            parameter = context.CreateSearch(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
 
-                entityType.CreateExpandParameter(),
-            };
+            // $filter
+            parameter = context.CreateFilter(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            // $count
+            parameter = context.CreateCount(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            // the syntax of the system query options $expand, $select, and $orderby is too flexible
+            // to be formally described with OpenAPI Specification means, yet the typical use cases
+            // of just providing a comma-separated list of properties can be expressed via an array-valued
+            // parameter with an enum constraint
+            // $order
+            parameter = context.CreateOrderBy(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            // $select
+            parameter = context.CreateSelect(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            // $expand
+            parameter = context.CreateExpand(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
 
             // The value of responses is a Responses Object.
             // It contains a name/value pair for the success case (HTTP response code 200)
@@ -273,9 +300,19 @@ namespace Microsoft.OpenApi.OData.Generator
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
-            operation.Parameters.Add(entityType.CreateSelectParameter());
+            // $select
+            OpenApiParameter parameter = context.CreateSelect(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
 
-            operation.Parameters.Add(entityType.CreateExpandParameter());
+            // $expand
+            parameter = context.CreateExpand(entitySet);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
 
             operation.Responses = new OpenApiResponses
             {
@@ -482,8 +519,20 @@ namespace Microsoft.OpenApi.OData.Generator
 
             operation.Parameters = new List<OpenApiParameter>();
             IEdmEntityType entityType = singleton.EntityType();
-            operation.Parameters.Add(entityType.CreateSelectParameter());
-            operation.Parameters.Add(entityType.CreateExpandParameter());
+
+            // $select
+            OpenApiParameter parameter = context.CreateSelect(singleton);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
+
+            // $expand
+            parameter = context.CreateExpand(singleton);
+            if (parameter != null)
+            {
+                operation.Parameters.Add(parameter);
+            }
 
             operation.Responses = new OpenApiResponses
             {
@@ -637,45 +686,69 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 // The parameters array contains Parameter Objects for system query options allowed for this entity set,
                 // and it does not list system query options not allowed for this entity set.
-                operation.Parameters = new List<OpenApiParameter>
+                operation.Parameters = new List<OpenApiParameter>();
+
+                OpenApiParameter parameter = context.CreateTop(property);
+                if (parameter != null)
                 {
-                    new OpenApiParameter
-                    {
-                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
-                    },
-                    new OpenApiParameter
-                    {
-                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
-                    },
-                    new OpenApiParameter
-                    {
-                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
-                    },
-                    new OpenApiParameter
-                    {
-                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
-                    },
-                    new OpenApiParameter
-                    {
-                        Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
-                    },
+                    operation.Parameters.Add(parameter);
+                }
 
-                    // the syntax of the system query options $expand, $select, and $orderby is too flexible
-                    // to be formally described with OpenAPI Specification means, yet the typical use cases
-                    // of just providing a comma-separated list of properties can be expressed via an array-valued
-                    // parameter with an enum constraint
-                    navEntityType.CreateOrderByParameter(),
+                parameter = context.CreateSkip(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
 
-                    navEntityType.CreateSelectParameter(),
+                parameter = context.CreateSearch(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
 
-                    navEntityType.CreateExpandParameter(),
-                };
+                parameter = context.CreateFilter(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = context.CreateCount(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = context.CreateOrderBy(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = context.CreateSelect(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+
+                parameter = context.CreateExpand(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
             }
             else
             {
-                operation.Parameters.Add(navEntityType.CreateSelectParameter());
+                OpenApiParameter parameter = context.CreateSelect(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
 
-                operation.Parameters.Add(navEntityType.CreateExpandParameter());
+                parameter = context.CreateExpand(property);
+                if (parameter != null)
+                {
+                    operation.Parameters.Add(parameter);
+                }
             }
 
             operation.Responses = new OpenApiResponses

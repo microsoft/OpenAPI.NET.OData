@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class SortRestrictions : CapabilitiesRestrictions
     {
         private bool _sortable = true;
-        private IList<string> _ascendingOnlyProperties;
-        private IList<string> _descendingOnlyProperties;
-        private IList<string> _nonSortableProperties;
+        private IList<string> _ascendingOnlyProperties = new List<string>();
+        private IList<string> _descendingOnlyProperties = new List<string>();
+        private IList<string> _nonSortableProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

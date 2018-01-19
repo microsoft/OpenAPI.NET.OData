@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class DeleteRestrictions : CapabilitiesRestrictions
     {
         private bool _deletable = true;
-        private IList<string> _nonDeletableNavigationProperties;
+        private IList<string> _nonDeletableNavigationProperties = new List<string>();
 
         /// <summary>
         /// The Term type name.

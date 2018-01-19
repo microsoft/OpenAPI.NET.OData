@@ -67,6 +67,9 @@ paths:
                 - HomeAddress
                 - FavoriteFeature
                 - Features
+                - Friends
+                - BestFriend
+                - Trips
               type: string
         - name: $expand
           in: query
@@ -147,6 +150,9 @@ paths:
                 - HomeAddress
                 - FavoriteFeature
                 - Features
+                - Friends
+                - BestFriend
+                - Trips
               type: string
         - name: $expand
           in: query
@@ -717,6 +723,9 @@ paths:
                 - HomeAddress
                 - FavoriteFeature
                 - Features
+                - Friends
+                - BestFriend
+                - Trips
               type: string
         - name: $expand
           in: query
@@ -797,6 +806,9 @@ paths:
                 - HomeAddress
                 - FavoriteFeature
                 - Features
+                - Friends
+                - BestFriend
+                - Trips
               type: string
         - name: $expand
           in: query
@@ -991,6 +1003,9 @@ paths:
                 - HomeAddress
                 - FavoriteFeature
                 - Features
+                - Friends
+                - BestFriend
+                - Trips
               type: string
         - name: $expand
           in: query
