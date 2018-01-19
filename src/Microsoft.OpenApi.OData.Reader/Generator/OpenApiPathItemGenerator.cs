@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -23,10 +24,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created map of <see cref="OpenApiPathItem"/>.</returns>
         public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
             if (context.EntityContainer == null)
@@ -111,15 +109,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
         public static OpenApiPathItem CreateEntitySetPathItem(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
@@ -138,15 +129,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
         public static OpenApiPathItem CreateEntityPathItem(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
@@ -167,15 +151,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiPathItem"/> on this singleton.</returns>
         public static OpenApiPathItem CreateSingletonPathItem(this ODataContext context, IEdmSingleton singleton)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (singleton == null)
-            {
-                throw Error.ArgumentNull(nameof(singleton));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(singleton, nameof(singleton));
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
@@ -197,15 +174,8 @@ namespace Microsoft.OpenApi.OData.Generator
         public static IDictionary<string, OpenApiPathItem> CreateOperationPathItems(this ODataContext context,
             IEdmNavigationSource navigationSource)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
 
             IDictionary<string, OpenApiPathItem> operationPathItems = new Dictionary<string, OpenApiPathItem>();
 
@@ -260,15 +230,8 @@ namespace Microsoft.OpenApi.OData.Generator
         public static IDictionary<string, OpenApiPathItem> CreateNavigationPathItems(this ODataContext context,
             IEdmNavigationSource navigationSource)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
 
             IDictionary<string, OpenApiPathItem> navPathItems = new Dictionary<string, OpenApiPathItem>();
             if (!context.Settings.NavigationPropertyPathItem)
@@ -298,20 +261,9 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource,
             IEdmNavigationProperty navigationProperty)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (navigationProperty == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationProperty));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
@@ -338,20 +290,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
         public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource, IEdmOperation edmOperation)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (edmOperation == null)
-            {
-                throw Error.ArgumentNull(nameof(edmOperation));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(edmOperation, nameof(edmOperation));
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
@@ -381,15 +322,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
         public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmOperationImport operationImport)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (operationImport == null)
-            {
-                throw Error.ArgumentNull(nameof(operationImport));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(operationImport, nameof(operationImport));
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 

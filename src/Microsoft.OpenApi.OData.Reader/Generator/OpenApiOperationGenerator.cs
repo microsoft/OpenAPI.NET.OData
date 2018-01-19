@@ -10,6 +10,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -29,15 +30,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateEntitySetGetOperation(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -254,15 +248,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateEntityGetOperation(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -470,15 +457,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateSingletonGetOperation(this ODataContext context, IEdmSingleton singleton)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (singleton == null)
-            {
-                throw Error.ArgumentNull(nameof(singleton));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(singleton, nameof(singleton));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -622,20 +602,9 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiOperation CreateNavigationGetOperation(this ODataContext context, IEdmNavigationSource navigationSource,
             IEdmNavigationProperty property)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (property == null)
-            {
-                throw Error.ArgumentNull(nameof(property));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(property, nameof(property));
 
             OpenApiOperation operation = new OpenApiOperation
             {
