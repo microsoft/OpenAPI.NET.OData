@@ -90,7 +90,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Collection of People
+                title: Collection of Person
                 type: object
                 properties:
                   value:
@@ -373,7 +373,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Collection of Airlines
+                title: Collection of Airline
                 type: object
                 properties:
                   value:
@@ -545,7 +545,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Collection of Airports
+                title: Collection of Airport
                 type: object
                 properties:
                   value:
@@ -746,7 +746,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Collection of NewComePeople
+                title: Collection of Person
                 type: object
                 properties:
                   value:

@@ -63,7 +63,7 @@ paths:
           content:
             application/json:
               schema:
-                title: Collection of People
+                title: Collection of Person
                 type: object
                 properties:
                   value:
