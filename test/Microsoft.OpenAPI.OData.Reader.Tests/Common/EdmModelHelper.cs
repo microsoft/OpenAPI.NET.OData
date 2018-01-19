@@ -32,17 +32,20 @@ namespace Microsoft.OpenApi.OData.Tests
 
         public static IEdmModel TripServiceModel { get; }
 
+        public static IEdmModel GraphBetaModel { get; }
+
         static EdmModelHelper()
         {
             MultipleInheritanceEdmModel = CreateMultipleInheritanceEdmModel();
             BasicEdmModel = CreateEdmModel();
             CompositeKeyModel = CreateCompositeKeyModel();
-            TripServiceModel = LoadTripServiceModel();
+            TripServiceModel = LoadEdmModel("TripService.OData.xml");
+            GraphBetaModel = LoadEdmModel("Graph.Beta.OData.xml");
         }
 
-        private static IEdmModel LoadTripServiceModel()
+        private static IEdmModel LoadEdmModel(string source)
         {
-            string csdl = Resources.GetString("TripService.OData.xml");
+            string csdl = Resources.GetString(source);
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }
 
