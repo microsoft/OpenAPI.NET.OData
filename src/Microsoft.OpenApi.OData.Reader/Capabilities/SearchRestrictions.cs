@@ -6,6 +6,7 @@
 using System;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Capabilities
 {
@@ -52,7 +53,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class SearchRestrictions : CapabilitiesRestrictions
     {
         private bool _searchable = true;
-        private SearchExpressions _searchExpressions;
+        private SearchExpressions? _unsupportedExpressions;
 
         /// <summary>
         /// The Term type name.
@@ -74,12 +75,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the search expressions which can is supported in $search.
         /// </summary>
-        public SearchExpressions SearchExpressions
+        public SearchExpressions? UnsupportedExpressions
         {
             get
             {
                 Initialize();
-                return _searchExpressions;
+                return _unsupportedExpressions;
             }
         }
 
@@ -106,7 +107,28 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             _searchable = SetBoolProperty(record, "Searchable", true);
 
-            // add the enum
+            // read the "UnsupportedExpressions"
+            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "UnsupportedExpressions");
+            if (property != null)
+            {
+                IEdmEnumMemberExpression value = property.Value as IEdmEnumMemberExpression;
+                if (value != null && value.EnumMembers != null)
+                {
+                    SearchExpressions result;
+                    foreach (var v in value.EnumMembers)
+                    {
+                        if (_unsupportedExpressions == null)
+                        {
+                            _unsupportedExpressions = SearchExpressions.none;
+                        }
+
+                        if (Enum.TryParse(v.Name, out result))
+                        {
+                            _unsupportedExpressions = _unsupportedExpressions | result;
+                        }
+                    }
+                }
+            }
         }
     }
 }

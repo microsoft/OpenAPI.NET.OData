@@ -131,7 +131,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
             return properties;
         }
 
-        public IList<string> GetCollectNavigationProperty(IEdmRecordExpression record, string propertyName)
+        protected IList<string> GetCollectNavigationProperty(IEdmRecordExpression record, string propertyName)
         {
             IList<string> properties = new List<string>();
             if (record != null && record.Properties != null)
