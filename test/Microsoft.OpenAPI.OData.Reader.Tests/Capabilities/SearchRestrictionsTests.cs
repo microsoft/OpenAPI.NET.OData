@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
 
             // Act
@@ -71,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
 
             // Act
@@ -99,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
             IEdmNavigationProperty property = calendar.DeclaredNavigationProperties().First(d => d.Name == "RelatedEvents");
 
@@ -128,7 +128,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
 
             // Act
@@ -155,7 +155,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
 
             // Act
@@ -181,7 +181,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
             IEdmNavigationProperty property = calendar.DeclaredNavigationProperties().First(d => d.Name == "RelatedEvents");
 
@@ -209,7 +209,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
 
             // Act
@@ -237,7 +237,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
 
             // Act
@@ -265,7 +265,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
                   </Annotation>
               </Annotations>";
 
-            IEdmModel model = CapabilitiesModelHelper.GetModelInline(searchAnnotation);
+            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
             IEdmNavigationProperty property = calendar.DeclaredNavigationProperties().First(d => d.Name == "RelatedEvents");
 

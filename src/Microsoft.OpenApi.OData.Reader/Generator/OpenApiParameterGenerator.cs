@@ -399,7 +399,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
             NavigationRestrictions navigation = new NavigationRestrictions(context.Model, target);
-            if (navigation.Navigability == NavigationType.None)
+            if (navigation.Navigability != null && navigation.Navigability.Value == NavigationType.None)
             {
                 return null;
             }
@@ -413,7 +413,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var property in entityType.NavigationProperties())
             {
-                if (navigation.IsNonNavigationProperty(property))
+                if (navigation.IsRestrictedProperty(property))
                 {
                     continue;
                 }
