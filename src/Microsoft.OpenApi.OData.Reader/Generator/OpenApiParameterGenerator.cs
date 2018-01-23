@@ -477,7 +477,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
             ExpandRestrictions expand = new ExpandRestrictions(context.Model, target);
-            if (!expand.Expandable)
+            if (expand.Expandable != null && expand.Expandable.Value == false)
             {
                 return null;
             }
@@ -489,7 +489,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var property in entityType.NavigationProperties())
             {
-                if (expand.IsNonExpandableProperty(property.Name))
+                if (expand.IsNonExpandableProperty(property))
                 {
                     continue;
                 }

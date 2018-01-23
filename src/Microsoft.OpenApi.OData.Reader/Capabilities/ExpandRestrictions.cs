@@ -15,9 +15,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class ExpandRestrictions : CapabilitiesRestrictions
     {
-        private bool _expandable = true;
-        private IList<string> _nonExpandableProperties = new List<string>();
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -26,26 +23,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Expandable value.
         /// </summary>
-        public bool Expandable
-        {
-            get
-            {
-                Initialize();
-                return _expandable;
-            }
-        }
+        public bool? Expandable { get; private set; }
 
         /// <summary>
         /// Gets the properties which cannot be used in $expand expressions.
         /// </summary>
-        public IList<string> NonExpandableProperties
-        {
-            get
-            {
-                Initialize();
-                return _nonExpandableProperties;
-            }
-        }
+        public IList<string> NonExpandableProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="ExpandRestrictions"/> class.
@@ -60,11 +43,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input property cannot be used in $orderby expressions.
         /// </summary>
-        /// <param name="property">The input property name.</param>
+        /// <param name="property">The input navigation property.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonExpandableProperty(string property)
+        public bool IsNonExpandableProperty(IEdmNavigationProperty property)
         {
-            return NonExpandableProperties.Any(a => a == property);
+            return NonExpandableProperties != null ? NonExpandableProperties.Any(a => a == property.Name) : false;
         }
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
@@ -78,9 +61,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _expandable = SetBoolProperty(record, "Expandable", true);
+            // Expandable
+            Expandable = record.GetBoolean("Expandable");
 
-            _nonExpandableProperties = GetCollectNavigationProperty(record, "NonExpandableProperties");
+            // NonExpandableProperties
+            NonExpandableProperties = record.GetCollectionPropertyPath("NonExpandableProperties");
         }
     }
 }
