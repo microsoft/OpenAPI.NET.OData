@@ -15,9 +15,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class UpdateRestrictions : CapabilitiesRestrictions
     {
-        private bool _updatable = true;
-        private IList<string> _nonUpdatableNavigationProperties = new List<string>();
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -26,26 +23,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Updatable value.
         /// </summary>
-        public bool Updatable
-        {
-            get
-            {
-                Initialize();
-                return _updatable;
-            }
-        }
+        public bool? Updatable { get; private set; }
 
         /// <summary>
         /// Gets the navigation properties which do not allow rebinding.
         /// </summary>
-        public IList<string> NonUpdatableNavigationProperties
-        {
-            get
-            {
-                Initialize();
-                return _nonUpdatableNavigationProperties;
-            }
-        }
+        public IList<string> NonUpdatableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="UpdateRestrictions"/> class.
@@ -64,7 +47,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonUpdatableNavigationProperty(IEdmNavigationProperty property)
         {
-            return NonUpdatableNavigationProperties.Any(a => a == property.Name);
+            return NonUpdatableNavigationProperties != null ?
+                NonUpdatableNavigationProperties.Any(a => a == property.Name) :
+                false;
         }
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
@@ -78,9 +63,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _updatable = SetBoolProperty(record, "Updatable", true);
+            // Updatable
+            Updatable = record.GetBoolean("Updatable");
 
-            _nonUpdatableNavigationProperties = GetCollectNavigationProperty(record, "NonUpdatableNavigationProperties");
+            // NonUpdatableNavigationProperties
+            NonUpdatableNavigationProperties = record.GetCollectionPropertyPath("NonUpdatableNavigationProperties");
         }
     }
 }

@@ -15,9 +15,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class InsertRestrictions : CapabilitiesRestrictions
     {
-        private bool _insertable = true;
-        private IList<string> _nonInsertableNavigationProperties = new List<string>();
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -26,26 +23,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Insertable value.
         /// </summary>
-        public bool Insertable
-        {
-            get
-            {
-                Initialize();
-                return _insertable;
-            }
-        }
+        public bool? Insertable { get; private set; }
 
         /// <summary>
         /// Gets the navigation properties which do not allow deep inserts.
         /// </summary>
-        public IList<string> NonInsertableNavigationProperties
-        {
-            get
-            {
-                Initialize();
-                return _nonInsertableNavigationProperties;
-            }
-        }
+        public IList<string> NonInsertableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="InsertRestrictions"/> class.
@@ -64,7 +47,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonINsertableNavigationProperty(IEdmNavigationProperty property)
         {
-            return NonInsertableNavigationProperties.Any(a => a == property.Name);
+            return NonInsertableNavigationProperties != null ?
+                NonInsertableNavigationProperties.Any(a => a == property.Name) :
+                false;
         }
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
@@ -78,9 +63,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _insertable = SetBoolProperty(record, "Insertable", true);
+            // Insertable
+            Insertable = record.GetBoolean("Insertable");
 
-            _nonInsertableNavigationProperties = GetCollectNavigationProperty(record, "NonInsertableNavigationProperties");
+            // NonInsertableNavigationProperties
+            NonInsertableNavigationProperties = record.GetCollectionPropertyPath("NonInsertableNavigationProperties");
         }
     }
 }
