@@ -15,9 +15,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class DeleteRestrictions : CapabilitiesRestrictions
     {
-        private bool _deletable = true;
-        private IList<string> _nonDeletableNavigationProperties = new List<string>();
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -26,26 +23,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Deletable value.
         /// </summary>
-        public bool Deletable
-        {
-            get
-            {
-                Initialize();
-                return _deletable;
-            }
-        }
+        public bool? Deletable { get; private set; }
 
         /// <summary>
         /// Gets the navigation properties which do not allow DeleteLink requests.
         /// </summary>
-        public IList<string> NonDeletableNavigationProperties
-        {
-            get
-            {
-                Initialize();
-                return _nonDeletableNavigationProperties;
-            }
-        }
+        public IList<string> NonDeletableNavigationProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="DeleteRestrictions"/> class.
@@ -62,9 +45,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// </summary>
         /// <param name="property">The input property.</param>
         /// <returns>True/False.</returns>
-        public bool NonDeletableNavigationProperty(IEdmNavigationProperty property)
+        public bool IsNonDeletableNavigationProperty(IEdmNavigationProperty property)
         {
-            return NonDeletableNavigationProperties.Any(a => a == property.Name);
+            return NonDeletableNavigationProperties != null ?
+                NonDeletableNavigationProperties.Any(a => a == property.Name) :
+                false;
         }
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
@@ -78,9 +63,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _deletable = SetBoolProperty(record, "Deletable", true);
+            // Deletable
+            Deletable = record.GetBoolean("Deletable");
 
-            _nonDeletableNavigationProperties = GetCollectNavigationProperty(record, "NonDeletableNavigationProperties");
+            // NonDeletableNavigationProperties
+            NonDeletableNavigationProperties = record.GetCollectionPropertyPath("NonDeletableNavigationProperties");
         }
     }
 }
