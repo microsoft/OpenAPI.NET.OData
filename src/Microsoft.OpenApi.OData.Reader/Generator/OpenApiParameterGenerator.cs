@@ -263,7 +263,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             FilterRestrictions filter = new FilterRestrictions(context.Model, target);
-            if (filter.Filterable)
+            if (filter.Filterable == null || filter.Filterable.Value)
             {
                 return new OpenApiParameter
                 {

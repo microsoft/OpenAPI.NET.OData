@@ -15,11 +15,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class FilterRestrictions : CapabilitiesRestrictions
     {
-        private bool _filterable = true;
-        private bool? _requiresFilter;
-        private IList<string> _requiredProperties = new List<string>();
-        private IList<string> _nonFilterableProperties = new List<string>();
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -28,50 +23,22 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Filterable value.
         /// </summary>
-        public bool Filterable
-        {
-            get
-            {
-                Initialize();
-                return _filterable;
-            }
-        }
+        public bool? Filterable { get; private set; }
 
         /// <summary>
         /// Gets the RequiresFilter value.
         /// </summary>
-        public bool? RequiresFilter
-        {
-            get
-            {
-                Initialize();
-                return _requiresFilter;
-            }
-        }
+        public bool? RequiresFilter { get; private set; }
 
         /// <summary>
         /// Gets the properties which must be specified in the $filter clause.
         /// </summary>
-        public IList<string> RequiredProperties
-        {
-            get
-            {
-                Initialize();
-                return _requiredProperties;
-            }
-        }
+        public IList<string> RequiredProperties { get; private set; }
 
         /// <summary>
         /// Gets the properties which cannot be used in $filter expressions.
         /// </summary>
-        public IList<string> NonFilterableProperties
-        {
-            get
-            {
-                Initialize();
-                return _nonFilterableProperties;
-            }
-        }
+        public IList<string> NonFilterableProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="FilterRestrictions"/> class.
@@ -90,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>True/False.</returns>
         public bool IsRequiredProperty(IEdmProperty property)
         {
-            return RequiredProperties.Any(a => a == property.Name);
+            return RequiredProperties != null ? RequiredProperties.Any(a => a == property.Name) : false;
         }
 
         /// <summary>
@@ -100,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonFilterableProperty(IEdmProperty property)
         {
-            return NonFilterableProperties.Any(a => a == property.Name);
+            return NonFilterableProperties != null ? NonFilterableProperties.Any(a => a == property.Name) : false;
         }
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
@@ -114,13 +81,17 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _filterable = SetBoolProperty(record, "Filterable", true);
+            // Filterable
+            Filterable = record.GetBoolean("Filterable");
 
-            _requiresFilter = SetBoolProperty(record, "RequiresFilter");
+            // RequiresFilter
+            RequiresFilter = record.GetBoolean("RequiresFilter");
 
-            _requiredProperties = GetCollectProperty(record, "RequiredProperties");
+            // RequiredProperties
+            RequiredProperties = record.GetCollectionPropertyPath("RequiredProperties");
 
-            _nonFilterableProperties = GetCollectNavigationProperty(record, "NonFilterableProperties");
+            // NonFilterableProperties
+            NonFilterableProperties = record.GetCollectionPropertyPath("NonFilterableProperties");
         }
     }
 }
