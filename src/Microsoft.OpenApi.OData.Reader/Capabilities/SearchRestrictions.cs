@@ -52,9 +52,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class SearchRestrictions : CapabilitiesRestrictions
     {
-        private bool _searchable = true;
-        private SearchExpressions? _unsupportedExpressions;
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -63,26 +60,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Searchable value.
         /// </summary>
-        public bool Searchable
-        {
-            get
-            {
-                Initialize();
-                return _searchable;
-            }
-        }
+        public bool? Searchable { get; private set; }
 
         /// <summary>
         /// Gets the search expressions which can is supported in $search.
         /// </summary>
-        public SearchExpressions? UnsupportedExpressions
-        {
-            get
-            {
-                Initialize();
-                return _unsupportedExpressions;
-            }
-        }
+        public SearchExpressions? UnsupportedExpressions { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="SearchRestrictions"/> class.
@@ -105,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _searchable = SetBoolProperty(record, "Searchable", true);
+            Searchable = SetBoolProperty(record, "Searchable", true);
 
             // read the "UnsupportedExpressions"
             IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "UnsupportedExpressions");
@@ -117,14 +100,16 @@ namespace Microsoft.OpenApi.OData.Capabilities
                     SearchExpressions result;
                     foreach (var v in value.EnumMembers)
                     {
-                        if (_unsupportedExpressions == null)
-                        {
-                            _unsupportedExpressions = SearchExpressions.none;
-                        }
-
                         if (Enum.TryParse(v.Name, out result))
                         {
-                            _unsupportedExpressions = _unsupportedExpressions | result;
+                            if (UnsupportedExpressions == null)
+                            {
+                                UnsupportedExpressions = result;
+                            }
+                            else
+                            {
+                                UnsupportedExpressions = UnsupportedExpressions | result;
+                            }
                         }
                     }
                 }

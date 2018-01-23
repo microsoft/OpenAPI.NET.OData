@@ -217,7 +217,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             SearchRestrictions search = new SearchRestrictions(context.Model, target);
-            if (search.Searchable)
+            if (search.Searchable == null || search.Searchable.Value)
             {
                 return new OpenApiParameter
                 {

@@ -53,9 +53,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class NavigationRestrictions : CapabilitiesRestrictions
     {
-        private NavigationType? _navigability;
-        private IList<NavigationPropertyRestriction> _restrictedProperties;
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -64,26 +61,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Navigability value.
         /// </summary>
-        public NavigationType? Navigability
-        {
-            get
-            {
-                Initialize();
-                return _navigability;
-            }
-        }
+        public NavigationType? Navigability { get; private set; }
 
         /// <summary>
         /// Gets the navigation properties which has navigation restrictions.
         /// </summary>
-        public IList<NavigationPropertyRestriction> RestrictedProperties
-        {
-            get
-            {
-                Initialize();
-                return _restrictedProperties;
-            }
-        }
+        public IList<NavigationPropertyRestriction> RestrictedProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="NavigationRestrictions"/> class.
@@ -120,33 +103,10 @@ namespace Microsoft.OpenApi.OData.Capabilities
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
             // Navigability
-            _navigability = GetNavigability(record);
+            Navigability = record.GetEnum<NavigationType>("Navigability");
 
             // RestrictedProperties
-            _restrictedProperties = GetRestrictedProperties(record);
-        }
-
-        private static NavigationType? GetNavigability(IEdmRecordExpression record)
-        {
-            if (record != null)
-            {
-                IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "Navigability");
-                if (property != null)
-                {
-                    IEdmEnumMemberExpression value = property.Value as IEdmEnumMemberExpression;
-                    if (value != null && value.EnumMembers != null && value.EnumMembers.Any())
-                    {
-                        IEdmEnumMember member = value.EnumMembers.First();
-                        NavigationType result;
-                        if (Enum.TryParse(member.Name, out result))
-                        {
-                            return result;
-                        }
-                    }
-                }
-            }
-
-            return null;
+            RestrictedProperties = GetRestrictedProperties(record);
         }
 
         private static IList<NavigationPropertyRestriction> GetRestrictedProperties(IEdmRecordExpression record)

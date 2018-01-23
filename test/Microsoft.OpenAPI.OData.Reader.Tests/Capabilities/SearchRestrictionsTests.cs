@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
 
             // Assert
             Assert.Equal(CapabilitiesConstants.SearchRestrictions, search.QualifiedName);
-            Assert.True(search.Searchable);
+            Assert.Null(search.Searchable);
             Assert.Null(search.UnsupportedExpressions);
         }
 

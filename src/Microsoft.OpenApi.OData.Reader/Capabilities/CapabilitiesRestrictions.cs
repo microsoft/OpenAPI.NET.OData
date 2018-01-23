@@ -4,9 +4,11 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Capabilities
 {
@@ -15,8 +17,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal abstract class CapabilitiesRestrictions
     {
-        private bool _initialized;
-
         /// <summary>
         /// Gets the <see cref="IEdmModel"/>.
         /// </summary>
@@ -39,16 +39,18 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <param name="target">The Edm vocabulary annotatable.</param>
         public CapabilitiesRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
         {
-            Model = model ?? throw Error.ArgumentNull(nameof(model));
-            Target = target ?? throw Error.ArgumentNull(nameof(target));
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            Model = model;
+            Target = target;
+            Initialize();
         }
 
         protected void Initialize()
         {
-            if (_initialized)
-            {
-                return;
-            }
+            Debug.Assert(Model != null);
+            Debug.Assert(Target != null);
 
             IEdmVocabularyAnnotation annotation = Model.GetCapabilitiesAnnotation(Target, QualifiedName);
             if (annotation == null)
@@ -64,7 +66,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
             }
 
             Initialize(annotation);
-            _initialized = true;
         }
 
         protected abstract void Initialize(IEdmVocabularyAnnotation annotation);
