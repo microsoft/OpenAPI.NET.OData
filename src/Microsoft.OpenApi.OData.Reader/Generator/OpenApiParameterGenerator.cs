@@ -240,7 +240,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             CountRestrictions count = new CountRestrictions(context.Model, target);
-            if (count.Countable)
+            if (count.Countable == null || count.Countable.Value)
             {
                 return new OpenApiParameter
                 {

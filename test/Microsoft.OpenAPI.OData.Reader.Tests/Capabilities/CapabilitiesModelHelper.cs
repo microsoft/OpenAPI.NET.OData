@@ -88,6 +88,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""Emails"" Type=""Collection(Edm.String)"" />
         <NavigationProperty Name=""RelatedEvents"" Type=""Collection(NS.Event)"" >
           {0}
         </NavigationProperty>
