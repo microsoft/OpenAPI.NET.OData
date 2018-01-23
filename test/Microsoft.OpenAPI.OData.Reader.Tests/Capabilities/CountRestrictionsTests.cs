@@ -122,6 +122,9 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
             Assert.NotNull(calendar); // Guard
 
+            IEdmProperty id = calendar.DeclaredStructuralProperties().First(c => c.Name == "Id");
+            Assert.NotNull(id); // Guard
+
             IEdmProperty property = calendar.DeclaredStructuralProperties().First(c => c.Name == "Emails");
             Assert.NotNull(property); // Guard
 
@@ -134,6 +137,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             // Assert
             Assert.NotNull(count.Countable);
             Assert.False(count.Countable.Value);
+            Assert.False(count.IsNonCountableProperty(id));
             Assert.True(count.IsNonCountableProperty(property));
             Assert.True(count.IsNonCountableNavigationProperty(navigationProperty));
         }
