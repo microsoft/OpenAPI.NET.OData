@@ -17,12 +17,18 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal static class RecordExpressionExtensions
     {
+        /// <summary>
+        /// Get the boolean value from the record using the given property name.
+        /// </summary>
+        /// <param name="record">The record expression.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns>The boolean value or null.</returns>
         public static bool? GetBoolean(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record != null && record.Properties != null)
+            if (record.Properties != null)
             {
                 IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
                 if (property != null)
@@ -38,13 +44,20 @@ namespace Microsoft.OpenApi.OData.Capabilities
             return null;
         }
 
+        /// <summary>
+        /// Get the Enum value from the record using the given property name.
+        /// </summary>
+        /// <typeparam name="T">The output enum type.</typeparam>
+        /// <param name="record">The record expression.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns>The Enum value or null.</returns>
         public static T? GetEnum<T>(this IEdmRecordExpression record, string propertyName)
             where T : struct
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record != null && record.Properties != null)
+            if (record.Properties != null)
             {
                 IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
                 if (property != null)
@@ -65,12 +78,18 @@ namespace Microsoft.OpenApi.OData.Capabilities
             return null;
         }
 
+        /// <summary>
+        /// Get the property path from the record using the given property name.
+        /// </summary>
+        /// <param name="record">The record expression.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns>The property path or null.</returns>
         public static string GetPropertyPath(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record != null && record.Properties != null)
+            if (record.Properties != null)
             {
                 IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
                 if (property != null)
@@ -86,33 +105,18 @@ namespace Microsoft.OpenApi.OData.Capabilities
             return null;
         }
 
-        public static string GetNavigationPropertyPath(this IEdmRecordExpression record, string propertyName)
-        {
-            Utils.CheckArgumentNull(record, nameof(record));
-            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
-
-            if (record != null && record.Properties != null)
-            {
-                IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-                if (property != null)
-                {
-                    IEdmPathExpression value = property.Value as IEdmPathExpression;
-                    if (value != null)
-                    {
-                        return value.Path;
-                    }
-                }
-            }
-
-            return null;
-        }
-
+        /// <summary>
+        /// Get the collection of property path from the record using the given property name.
+        /// </summary>
+        /// <param name="record">The record expression.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns>The collection of property path or null.</returns>
         public static IList<string> GetCollectionPropertyPath(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Utils.CheckArgumentNull(propertyName, nameof(propertyName));
 
-            if (record != null && record.Properties != null)
+            if (record.Properties != null)
             {
                 IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
                 if (property != null)
