@@ -15,11 +15,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal class SortRestrictions : CapabilitiesRestrictions
     {
-        private bool _sortable = true;
-        private IList<string> _ascendingOnlyProperties = new List<string>();
-        private IList<string> _descendingOnlyProperties = new List<string>();
-        private IList<string> _nonSortableProperties = new List<string>();
-
         /// <summary>
         /// The Term type name.
         /// </summary>
@@ -28,50 +23,22 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Gets the Sortable value.
         /// </summary>
-        public bool Sortable
-        {
-            get
-            {
-                Initialize();
-                return _sortable;
-            }
-        }
+        public bool? Sortable { get; private set; }
 
         /// <summary>
         /// Gets the properties which can only be used for sorting in Ascending order.
         /// </summary>
-        public IList<string> AscendingOnlyProperties
-        {
-            get
-            {
-                Initialize();
-                return _ascendingOnlyProperties;
-            }
-        }
+        public IList<string> AscendingOnlyProperties { get; private set; }
 
         /// <summary>
         /// Gets the properties which can only be used for sorting in Descending order.
         /// </summary>
-        public IList<string> DescendingOnlyProperties
-        {
-            get
-            {
-                Initialize();
-                return _descendingOnlyProperties;
-            }
-        }
+        public IList<string> DescendingOnlyProperties { get; private set; }
 
         /// <summary>
         /// Gets the properties which cannot be used in $orderby expressions.
         /// </summary>
-        public IList<string> NonSortableProperties
-        {
-            get
-            {
-                Initialize();
-                return _nonSortableProperties;
-            }
-        }
+        public IList<string> NonSortableProperties { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="SortRestrictions"/> class.
@@ -90,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>True/False.</returns>
         public bool IsAscendingOnlyProperty(IEdmProperty property)
         {
-            return AscendingOnlyProperties.Any(a => a == property.Name);
+            return AscendingOnlyProperties != null ? AscendingOnlyProperties.Any(a => a == property.Name) : false;
         }
 
         /// <summary>
@@ -100,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>True/False.</returns>
         public bool IsDescendingOnlyProperty(IEdmProperty property)
         {
-            return DescendingOnlyProperties.Any(a => a == property.Name);
+            return DescendingOnlyProperties != null ? DescendingOnlyProperties.Any(a => a == property.Name) : false;
         }
 
         /// <summary>
@@ -108,9 +75,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// </summary>
         /// <param name="property">The input property.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonsortableProperty(IEdmProperty property)
+        public bool IsNonSortableProperty(IEdmProperty property)
         {
-            return NonSortableProperties.Any(a => a == property.Name);
+            return NonSortableProperties != null ? NonSortableProperties.Any(a => a == property.Name) : false;
         }
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
@@ -124,13 +91,17 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            _sortable = SetBoolProperty(record, "Sortable", true);
+            // Sortable
+            Sortable = record.GetBoolean("Sortable");
 
-            _ascendingOnlyProperties = GetCollectProperty(record, "AscendingOnlyProperties");
+            // AscendingOnlyProperties
+            AscendingOnlyProperties = record.GetCollectionPropertyPath("AscendingOnlyProperties");
 
-            _descendingOnlyProperties = GetCollectProperty(record, "DescendingOnlyProperties");
+            // DescendingOnlyProperties
+            DescendingOnlyProperties = record.GetCollectionPropertyPath("DescendingOnlyProperties");
 
-            _nonSortableProperties = GetCollectProperty(record, "NonSortablePropeties");
+            // NonSortablePropeties
+            NonSortableProperties = record.GetCollectionPropertyPath("NonSortableProperties");
         }
     }
 }

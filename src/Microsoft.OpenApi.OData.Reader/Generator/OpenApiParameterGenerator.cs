@@ -171,7 +171,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             TopSupported top = new TopSupported(context.Model, target);
-            if (top.Supported)
+            if (top.Supported == null || top.Supported.Value)
             {
                 return new OpenApiParameter
                 {
@@ -194,7 +194,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             SkipSupported skip = new SkipSupported(context.Model, target);
-            if (skip.Supported)
+            if (skip.Supported == null || skip.Supported.Value)
             {
                 return new OpenApiParameter
                 {
@@ -311,7 +311,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
             SortRestrictions sort = new SortRestrictions(context.Model, target);
-            if (!sort.Sortable)
+            if (sort.Sortable != null && sort.Sortable.Value == false)
             {
                 return null;
             }
@@ -319,7 +319,7 @@ namespace Microsoft.OpenApi.OData.Generator
             IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
             foreach (var property in entityType.StructuralProperties())
             {
-                if (sort.IsNonsortableProperty(property))
+                if (sort.IsNonSortableProperty(property))
                 {
                     continue;
                 }

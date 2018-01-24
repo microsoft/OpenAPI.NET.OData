@@ -13,19 +13,10 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal abstract class SupportedRestrictions : CapabilitiesRestrictions
     {
-        private bool _supported = true;
-
         /// <summary>
         /// Get the Supported boolean value.
         /// </summary>
-        public bool Supported
-        {
-            get
-            {
-                Initialize();
-                return _supported;
-            }
-        }
+        public bool? Supported { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="SupportedRestrictions"/> class.
@@ -46,10 +37,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
                 return;
             }
 
+            // supported
             IEdmBooleanConstantExpression boolConstant = (IEdmBooleanConstantExpression)annotation.Value;
             if (boolConstant != null)
             {
-                _supported = boolConstant.Value;
+                Supported = boolConstant.Value;
             }
         }
     }

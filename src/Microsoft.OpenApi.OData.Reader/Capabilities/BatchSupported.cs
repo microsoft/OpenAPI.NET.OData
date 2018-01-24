@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.Capabilities
 {
@@ -22,8 +21,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Initializes a new instance of <see cref="BatchSupported"/> class.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="target">The annotation target.</param>
-        public BatchSupported(IEdmModel model, IEdmVocabularyAnnotatable target)
+        /// <param name="target">The annotation target <see cref="IEdmEntityContainer"/>.</param>
+        public BatchSupported(IEdmModel model, IEdmEntityContainer target)
             : base(model, target)
         {
         }
