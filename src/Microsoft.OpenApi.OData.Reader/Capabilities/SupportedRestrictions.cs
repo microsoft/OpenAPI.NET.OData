@@ -28,6 +28,15 @@ namespace Microsoft.OpenApi.OData.Capabilities
         {
         }
 
+        /// <summary>
+        /// Test the target supports the corresponding restriction.
+        /// </summary>
+        /// <returns>True/false.</returns>
+        public bool IsSupported()
+        {
+            return Supported == null || Supported.Value == true;
+        }
+
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||

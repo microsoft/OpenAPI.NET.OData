@@ -139,7 +139,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
-            pathItem.AddOperation(OperationType.Get, context.CreateEntityGetOperation(entitySet));
+            IndexableByKey index = new IndexableByKey(context.Model, entitySet);
+            if (index.IsSupported())
+            {
+                pathItem.AddOperation(OperationType.Get, context.CreateEntityGetOperation(entitySet));
+            }
 
             UpdateRestrictions update = new UpdateRestrictions(context.Model, entitySet);
             if (update.IsUpdatable())

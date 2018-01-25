@@ -46,6 +46,15 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         /// <summary>
+        /// Test the target supports count.
+        /// </summary>
+        /// <returns>True/false.</returns>
+        public bool IsCountable()
+        {
+            return Countable == null || Countable.Value == true;
+        }
+
+        /// <summary>
         /// Test the input property which do not allow /$count segments.
         /// </summary>
         /// <param name="property">The input property.</param>
