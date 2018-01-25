@@ -857,12 +857,7 @@
                   "preAuthorizedApplications",
                   "requiredResourceAccess",
                   "tags",
-                  "web",
-                  "extensionProperties",
-                  "createdOnBehalfOf",
-                  "owners",
-                  "policies",
-                  "synchronization"
+                  "web"
                 ],
                 "type": "string"
               }
@@ -969,12 +964,7 @@
                   "preAuthorizedApplications",
                   "requiredResourceAccess",
                   "tags",
-                  "web",
-                  "extensionProperties",
-                  "createdOnBehalfOf",
-                  "owners",
-                  "policies",
-                  "synchronization"
+                  "web"
                 ],
                 "type": "string"
               }
@@ -1117,10 +1107,7 @@
                   "deletedDateTime",
                   "displayName",
                   "description",
-                  "visibility",
-                  "extensions",
-                  "members",
-                  "scopedRoleMembers"
+                  "visibility"
                 ],
                 "type": "string"
               }
@@ -1214,10 +1201,7 @@
                   "deletedDateTime",
                   "displayName",
                   "description",
-                  "visibility",
-                  "extensions",
-                  "members",
-                  "scopedRoleMembers"
+                  "visibility"
                 ],
                 "type": "string"
               }
@@ -2002,10 +1986,7 @@
                   "proxyAddresses",
                   "state",
                   "streetAddress",
-                  "surname",
-                  "manager",
-                  "directReports",
-                  "memberOf"
+                  "surname"
                 ],
                 "type": "string"
               }
@@ -2116,10 +2097,7 @@
                   "proxyAddresses",
                   "state",
                   "streetAddress",
-                  "surname",
-                  "manager",
-                  "directReports",
-                  "memberOf"
+                  "surname"
                 ],
                 "type": "string"
               }
@@ -2347,11 +2325,7 @@
                   "Model",
                   "Kind",
                   "Status",
-                  "Platform",
-                  "extensions",
-                  "registeredOwners",
-                  "registeredUsers",
-                  "commands"
+                  "Platform"
                 ],
                 "type": "string"
               }
@@ -2463,11 +2437,7 @@
                   "Model",
                   "Kind",
                   "Status",
-                  "Platform",
-                  "extensions",
-                  "registeredOwners",
-                  "registeredUsers",
-                  "commands"
+                  "Platform"
                 ],
                 "type": "string"
               }
@@ -2634,10 +2604,7 @@
                   "isRoot",
                   "isVerified",
                   "supportedServices",
-                  "state",
-                  "serviceConfigurationRecords",
-                  "verificationDnsRecords",
-                  "domainNameReferences"
+                  "state"
                 ],
                 "type": "string"
               }
@@ -2754,10 +2721,7 @@
                   "isRoot",
                   "isVerified",
                   "supportedServices",
-                  "state",
-                  "serviceConfigurationRecords",
-                  "verificationDnsRecords",
-                  "domainNameReferences"
+                  "state"
                 ],
                 "type": "string"
               }
@@ -3351,31 +3315,7 @@
                   "isSubscribedByMail",
                   "unseenCount",
                   "unseenConversationsCount",
-                  "unseenMessagesCount",
-                  "extensions",
-                  "members",
-                  "memberOf",
-                  "createdOnBehalfOf",
-                  "owners",
-                  "settings",
-                  "endpoints",
-                  "threads",
-                  "calendar",
-                  "calendarView",
-                  "events",
-                  "conversations",
-                  "photo",
-                  "photos",
-                  "acceptedSenders",
-                  "rejectedSenders",
-                  "drive",
-                  "drives",
-                  "sites",
-                  "planner",
-                  "onenote",
-                  "team",
-                  "channels",
-                  "groupLifecyclePolicies"
+                  "unseenMessagesCount"
                 ],
                 "type": "string"
               }
@@ -3496,31 +3436,7 @@
                   "isSubscribedByMail",
                   "unseenCount",
                   "unseenConversationsCount",
-                  "unseenMessagesCount",
-                  "extensions",
-                  "members",
-                  "memberOf",
-                  "createdOnBehalfOf",
-                  "owners",
-                  "settings",
-                  "endpoints",
-                  "threads",
-                  "calendar",
-                  "calendarView",
-                  "events",
-                  "conversations",
-                  "photo",
-                  "photos",
-                  "acceptedSenders",
-                  "rejectedSenders",
-                  "drive",
-                  "drives",
-                  "sites",
-                  "planner",
-                  "onenote",
-                  "team",
-                  "channels",
-                  "groupLifecyclePolicies"
+                  "unseenMessagesCount"
                 ],
                 "type": "string"
               }
@@ -3907,9 +3823,7 @@
                   "deletedDateTime",
                   "description",
                   "displayName",
-                  "roleTemplateId",
-                  "members",
-                  "scopedMembers"
+                  "roleTemplateId"
                 ],
                 "type": "string"
               }
@@ -4003,9 +3917,7 @@
                   "deletedDateTime",
                   "description",
                   "displayName",
-                  "roleTemplateId",
-                  "members",
-                  "scopedMembers"
+                  "roleTemplateId"
                 ],
                 "type": "string"
               }
@@ -4669,10 +4581,7 @@
                   "technicalNotificationMails",
                   "verifiedDomains",
                   "mobileDeviceManagementAuthority",
-                  "certificateConnectorSetting",
-                  "extensions",
-                  "depOnboardingSettings",
-                  "appleVolumePurchaseProgramTokens"
+                  "certificateConnectorSetting"
                 ],
                 "type": "string"
               }
@@ -4784,10 +4693,7 @@
                   "technicalNotificationMails",
                   "verifiedDomains",
                   "mobileDeviceManagementAuthority",
-                  "certificateConnectorSetting",
-                  "extensions",
-                  "depOnboardingSettings",
-                  "appleVolumePurchaseProgramTokens"
+                  "certificateConnectorSetting"
                 ],
                 "type": "string"
               }
@@ -5678,17 +5584,7 @@
                   "replyUrls",
                   "samlMetadataUrl",
                   "servicePrincipalNames",
-                  "tags",
-                  "appRoleAssignedTo",
-                  "appRoleAssignments",
-                  "oauth2PermissionGrants",
-                  "memberOf",
-                  "createdObjects",
-                  "licenseDetails",
-                  "owners",
-                  "ownedObjects",
-                  "policies",
-                  "synchronization"
+                  "tags"
                 ],
                 "type": "string"
               }
@@ -5799,17 +5695,7 @@
                   "replyUrls",
                   "samlMetadataUrl",
                   "servicePrincipalNames",
-                  "tags",
-                  "appRoleAssignedTo",
-                  "appRoleAssignments",
-                  "oauth2PermissionGrants",
-                  "memberOf",
-                  "createdObjects",
-                  "licenseDetails",
-                  "owners",
-                  "ownedObjects",
-                  "policies",
-                  "synchronization"
+                  "tags"
                 ],
                 "type": "string"
               }
@@ -6623,43 +6509,7 @@
                   "schools",
                   "skills",
                   "identityUserRisk",
-                  "deviceEnrollmentLimit",
-                  "extensions",
-                  "ownedDevices",
-                  "registeredDevices",
-                  "manager",
-                  "directReports",
-                  "memberOf",
-                  "createdObjects",
-                  "ownedObjects",
-                  "scopedRoleMemberOf",
-                  "licenseDetails",
-                  "activities",
-                  "outlook",
-                  "messages",
-                  "joinedGroups",
-                  "mailFolders",
-                  "calendar",
-                  "calendars",
-                  "calendarGroups",
-                  "calendarView",
-                  "events",
-                  "people",
-                  "contacts",
-                  "contactFolders",
-                  "inferenceClassification",
-                  "photo",
-                  "photos",
-                  "drive",
-                  "drives",
-                  "insights",
-                  "planner",
-                  "onenote",
-                  "managedDevices",
-                  "managedAppRegistrations",
-                  "devices",
-                  "joinedTeams",
-                  "deviceManagementTroubleshootingEvents"
+                  "deviceEnrollmentLimit"
                 ],
                 "type": "string"
               }
@@ -6804,43 +6654,7 @@
                   "schools",
                   "skills",
                   "identityUserRisk",
-                  "deviceEnrollmentLimit",
-                  "extensions",
-                  "ownedDevices",
-                  "registeredDevices",
-                  "manager",
-                  "directReports",
-                  "memberOf",
-                  "createdObjects",
-                  "ownedObjects",
-                  "scopedRoleMemberOf",
-                  "licenseDetails",
-                  "activities",
-                  "outlook",
-                  "messages",
-                  "joinedGroups",
-                  "mailFolders",
-                  "calendar",
-                  "calendars",
-                  "calendarGroups",
-                  "calendarView",
-                  "events",
-                  "people",
-                  "contacts",
-                  "contactFolders",
-                  "inferenceClassification",
-                  "photo",
-                  "photos",
-                  "drive",
-                  "drives",
-                  "insights",
-                  "planner",
-                  "onenote",
-                  "managedDevices",
-                  "managedAppRegistrations",
-                  "devices",
-                  "joinedTeams",
-                  "deviceManagementTroubleshootingEvents"
+                  "deviceEnrollmentLimit"
                 ],
                 "type": "string"
               }
@@ -7756,8 +7570,7 @@
                   "displayName",
                   "isOrganizationDefault",
                   "keyCredentials",
-                  "type",
-                  "appliesTo"
+                  "type"
                 ],
                 "type": "string"
               }
@@ -7854,8 +7667,7 @@
                   "displayName",
                   "isOrganizationDefault",
                   "keyCredentials",
-                  "type",
-                  "appliesTo"
+                  "type"
                 ],
                 "type": "string"
               }
@@ -8326,16 +8138,7 @@
                   "size",
                   "specialFolder",
                   "video",
-                  "webDavUrl",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "workbook",
-                  "activities",
-                  "children",
-                  "listItem",
-                  "permissions",
-                  "thumbnails",
-                  "versions"
+                  "webDavUrl"
                 ],
                 "type": "string"
               }
@@ -8479,16 +8282,7 @@
                   "size",
                   "specialFolder",
                   "video",
-                  "webDavUrl",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "workbook",
-                  "activities",
-                  "children",
-                  "listItem",
-                  "permissions",
-                  "thumbnails",
-                  "versions"
+                  "webDavUrl"
                 ],
                 "type": "string"
               }
@@ -9180,14 +8974,7 @@
                   "owner",
                   "quota",
                   "sharePointIds",
-                  "system",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "activities",
-                  "items",
-                  "list",
-                  "root",
-                  "special"
+                  "system"
                 ],
                 "type": "string"
               }
@@ -9313,14 +9100,7 @@
                   "owner",
                   "quota",
                   "sharePointIds",
-                  "system",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "activities",
-                  "items",
-                  "list",
-                  "root",
-                  "special"
+                  "system"
                 ],
                 "type": "string"
               }
@@ -9638,15 +9418,7 @@
                   "name",
                   "parentReference",
                   "webUrl",
-                  "owner",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "driveItem",
-                  "items",
-                  "list",
-                  "listItem",
-                  "root",
-                  "site"
+                  "owner"
                 ],
                 "type": "string"
               }
@@ -9769,15 +9541,7 @@
                   "name",
                   "parentReference",
                   "webUrl",
-                  "owner",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "driveItem",
-                  "items",
-                  "list",
-                  "listItem",
-                  "root",
-                  "site"
+                  "owner"
                 ],
                 "type": "string"
               }
@@ -9979,17 +9743,7 @@
                   "displayName",
                   "root",
                   "sharepointIds",
-                  "siteCollection",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "columns",
-                  "contentTypes",
-                  "drive",
-                  "drives",
-                  "items",
-                  "lists",
-                  "sites",
-                  "onenote"
+                  "siteCollection"
                 ],
                 "type": "string"
               }
@@ -10117,17 +9871,7 @@
                   "displayName",
                   "root",
                   "sharepointIds",
-                  "siteCollection",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "columns",
-                  "contentTypes",
-                  "drive",
-                  "drives",
-                  "items",
-                  "lists",
-                  "sites",
-                  "onenote"
+                  "siteCollection"
                 ],
                 "type": "string"
               }
@@ -10570,8 +10314,7 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId",
-                  "impactedUser"
+                  "userId"
                 ],
                 "type": "string"
               }
@@ -10686,8 +10429,7 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId",
-                  "impactedUser"
+                  "userId"
                 ],
                 "type": "string"
               }
@@ -10894,8 +10636,7 @@
                   "isAtypicalLocation",
                   "previousSigninDateTime",
                   "previousLocation",
-                  "previousIpAddress",
-                  "impactedUser"
+                  "previousIpAddress"
                 ],
                 "type": "string"
               }
@@ -11018,8 +10759,7 @@
                   "isAtypicalLocation",
                   "previousSigninDateTime",
                   "previousLocation",
-                  "previousIpAddress",
-                  "impactedUser"
+                  "previousIpAddress"
                 ],
                 "type": "string"
               }
@@ -11202,8 +10942,7 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId",
-                  "impactedUser"
+                  "userId"
                 ],
                 "type": "string"
               }
@@ -11318,8 +11057,7 @@
                   "riskEventStatus",
                   "closedDateTime",
                   "createdDateTime",
-                  "userId",
-                  "impactedUser"
+                  "userId"
                 ],
                 "type": "string"
               }
@@ -11508,8 +11246,7 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress",
-                  "impactedUser"
+                  "ipAddress"
                 ],
                 "type": "string"
               }
@@ -11626,8 +11363,7 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress",
-                  "impactedUser"
+                  "ipAddress"
                 ],
                 "type": "string"
               }
@@ -11816,8 +11552,7 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress",
-                  "impactedUser"
+                  "ipAddress"
                 ],
                 "type": "string"
               }
@@ -11934,8 +11669,7 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress",
-                  "impactedUser"
+                  "ipAddress"
                 ],
                 "type": "string"
               }
@@ -12124,8 +11858,7 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress",
-                  "impactedUser"
+                  "ipAddress"
                 ],
                 "type": "string"
               }
@@ -12242,8 +11975,7 @@
                   "createdDateTime",
                   "userId",
                   "location",
-                  "ipAddress",
-                  "impactedUser"
+                  "ipAddress"
                 ],
                 "type": "string"
               }
@@ -12438,8 +12170,7 @@
                   "location",
                   "ipAddress",
                   "deviceInformation",
-                  "malwareName",
-                  "impactedUser"
+                  "malwareName"
                 ],
                 "type": "string"
               }
@@ -12558,8 +12289,7 @@
                   "location",
                   "ipAddress",
                   "deviceInformation",
-                  "malwareName",
-                  "impactedUser"
+                  "malwareName"
                 ],
                 "type": "string"
               }
@@ -12718,10 +12448,7 @@
               "items": {
                 "enum": [
                   "id",
-                  "name",
-                  "settings",
-                  "assignments",
-                  "summary"
+                  "name"
                 ],
                 "type": "string"
               }
@@ -12830,10 +12557,7 @@
               "items": {
                 "enum": [
                   "id",
-                  "name",
-                  "settings",
-                  "assignments",
-                  "summary"
+                  "name"
                 ],
                 "type": "string"
               }
@@ -13089,8 +12813,7 @@
                   "roleId",
                   "isElevated",
                   "expirationDateTime",
-                  "resultMessage",
-                  "roleInfo"
+                  "resultMessage"
                 ],
                 "type": "string"
               }
@@ -13201,8 +12924,7 @@
                   "roleId",
                   "isElevated",
                   "expirationDateTime",
-                  "resultMessage",
-                  "roleInfo"
+                  "resultMessage"
                 ],
                 "type": "string"
               }
@@ -14180,8 +13902,7 @@
                   "requestorReason",
                   "approverReason",
                   "startDateTime",
-                  "endDateTime",
-                  "roleInfo"
+                  "endDateTime"
                 ],
                 "type": "string"
               }
@@ -14296,8 +14017,7 @@
                   "requestorReason",
                   "approverReason",
                   "startDateTime",
-                  "endDateTime",
-                  "roleInfo"
+                  "endDateTime"
                 ],
                 "type": "string"
               }
@@ -14508,8 +14228,7 @@
                   "sendInvitationMessage",
                   "inviteRedirectUrl",
                   "inviteRedeemUrl",
-                  "status",
-                  "invitedUser"
+                  "status"
                 ],
                 "type": "string"
               }
@@ -14623,8 +14342,7 @@
                   "sendInvitationMessage",
                   "inviteRedirectUrl",
                   "inviteRedeemUrl",
-                  "status",
-                  "invitedUser"
+                  "status"
                 ],
                 "type": "string"
               }
@@ -15962,8 +15680,7 @@
                   "Error",
                   "Payload",
                   "PermissionTicket",
-                  "PostBackUri",
-                  "responsepayload"
+                  "PostBackUri"
                 ],
                 "type": "string"
               }
@@ -16077,8 +15794,7 @@
                   "Error",
                   "Payload",
                   "PermissionTicket",
-                  "PostBackUri",
-                  "responsepayload"
+                  "PostBackUri"
                 ],
                 "type": "string"
               }
@@ -16506,8 +16222,7 @@
                   "memberSettings",
                   "messagingSettings",
                   "funSettings",
-                  "guestSettings",
-                  "channels"
+                  "guestSettings"
                 ],
                 "type": "string"
               }
@@ -16617,8 +16332,7 @@
                   "memberSettings",
                   "messagingSettings",
                   "funSettings",
-                  "guestSettings",
-                  "channels"
+                  "guestSettings"
                 ],
                 "type": "string"
               }
@@ -16780,8 +16494,7 @@
                 "enum": [
                   "id",
                   "displayName",
-                  "description",
-                  "chatThreads"
+                  "description"
                 ],
                 "type": "string"
               }
@@ -16889,8 +16602,7 @@
                 "enum": [
                   "id",
                   "displayName",
-                  "description",
-                  "chatThreads"
+                  "description"
                 ],
                 "type": "string"
               }
@@ -17046,9 +16758,7 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id",
-                  "chatMessages",
-                  "rootMessage"
+                  "id"
                 ],
                 "type": "string"
               }
@@ -17155,9 +16865,7 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id",
-                  "chatMessages",
-                  "rootMessage"
+                  "id"
                 ],
                 "type": "string"
               }
@@ -18540,43 +18248,7 @@
                   "schools",
                   "skills",
                   "identityUserRisk",
-                  "deviceEnrollmentLimit",
-                  "extensions",
-                  "ownedDevices",
-                  "registeredDevices",
-                  "manager",
-                  "directReports",
-                  "memberOf",
-                  "createdObjects",
-                  "ownedObjects",
-                  "scopedRoleMemberOf",
-                  "licenseDetails",
-                  "activities",
-                  "outlook",
-                  "messages",
-                  "joinedGroups",
-                  "mailFolders",
-                  "calendar",
-                  "calendars",
-                  "calendarGroups",
-                  "calendarView",
-                  "events",
-                  "people",
-                  "contacts",
-                  "contactFolders",
-                  "inferenceClassification",
-                  "photo",
-                  "photos",
-                  "drive",
-                  "drives",
-                  "insights",
-                  "planner",
-                  "onenote",
-                  "managedDevices",
-                  "managedAppRegistrations",
-                  "devices",
-                  "joinedTeams",
-                  "deviceManagementTroubleshootingEvents"
+                  "deviceEnrollmentLimit"
                 ],
                 "type": "string"
               }
@@ -19238,8 +18910,7 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id",
-                  "deletedItems"
+                  "id"
                 ],
                 "type": "string"
               }
@@ -19334,14 +19005,7 @@
                   "owner",
                   "quota",
                   "sharePointIds",
-                  "system",
-                  "createdByUser",
-                  "lastModifiedByUser",
-                  "activities",
-                  "items",
-                  "list",
-                  "root",
-                  "special"
+                  "system"
                 ],
                 "type": "string"
               }
@@ -19532,10 +19196,7 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id",
-                  "tasks",
-                  "plans",
-                  "buckets"
+                  "id"
                 ],
                 "type": "string"
               }
@@ -19626,53 +19287,7 @@
                   "settings",
                   "maximumDepTokens",
                   "intuneAccountId",
-                  "intuneBrand",
-                  "termsAndConditions",
-                  "androidForWorkSettings",
-                  "androidForWorkAppConfigurationSchemas",
-                  "androidForWorkEnrollmentProfiles",
-                  "enrollmentProfiles",
-                  "importedDeviceIdentities",
-                  "importedAppleDeviceIdentities",
-                  "remoteActionAudits",
-                  "applePushNotificationCertificate",
-                  "deviceManagementScripts",
-                  "managedDeviceOverview",
-                  "detectedApps",
-                  "managedDevices",
-                  "windowsMalwareInformation",
-                  "deviceConfigurations",
-                  "deviceCompliancePolicies",
-                  "deviceSetupConfigurations",
-                  "softwareUpdateStatusSummary",
-                  "deviceCompliancePolicyDeviceStateSummary",
-                  "deviceCompliancePolicySettingStateSummaries",
-                  "deviceConfigurationDeviceStateSummaries",
-                  "deviceConfigurationUserStateSummaries",
-                  "cartToClassAssociations",
-                  "iosUpdateStatuses",
-                  "ndesConnectors",
-                  "deviceCategories",
-                  "exchangeConnectors",
-                  "deviceEnrollmentConfigurations",
-                  "exchangeOnPremisesPolicy",
-                  "exchangeOnPremisesPolicies",
-                  "conditionalAccessSettings",
-                  "mobileThreatDefenseConnectors",
-                  "deviceManagementPartners",
-                  "depOnboardingSettings",
-                  "notificationMessageTemplates",
-                  "roleDefinitions",
-                  "roleAssignments",
-                  "resourceOperations",
-                  "telecomExpenseManagementPartners",
-                  "windowsAutopilotSettings",
-                  "windowsAutopilotDeviceIdentities",
-                  "windowsAutopilotDeploymentProfiles",
-                  "remoteAssistancePartners",
-                  "windowsInformationProtectionAppLearningSummaries",
-                  "auditEvents",
-                  "troubleshootingEvents"
+                  "intuneBrand"
                 ],
                 "type": "string"
               }
@@ -19906,26 +19521,7 @@
                   "microsoftStoreForBusinessLastSuccessfulSyncDateTime",
                   "isEnabledForMicrosoftStoreForBusiness",
                   "microsoftStoreForBusinessLanguage",
-                  "microsoftStoreForBusinessLastCompletedApplicationSyncTime",
-                  "windowsManagementApp",
-                  "mobileApps",
-                  "mobileAppCategories",
-                  "enterpriseCodeSigningCertificates",
-                  "iosLobAppProvisioningConfigurations",
-                  "symantecCodeSigningCertificate",
-                  "mobileAppConfigurations",
-                  "sideLoadingKeys",
-                  "vppTokens",
-                  "managedAppPolicies",
-                  "iosManagedAppProtections",
-                  "androidManagedAppProtections",
-                  "defaultManagedAppProtections",
-                  "targetedManagedAppConfigurations",
-                  "mdmWindowsInformationProtectionPolicies",
-                  "windowsInformationProtectionPolicies",
-                  "managedAppRegistrations",
-                  "managedAppStatuses",
-                  "managedEBooks"
+                  "microsoftStoreForBusinessLastCompletedApplicationSyncTime"
                 ],
                 "type": "string"
               }
@@ -23205,12 +22801,7 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "id",
-                  "synchronizationProfiles",
-                  "classes",
-                  "schools",
-                  "users",
-                  "me"
+                  "id"
                 ],
                 "type": "string"
               }

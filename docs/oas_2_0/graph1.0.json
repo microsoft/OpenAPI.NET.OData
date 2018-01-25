@@ -466,10 +466,7 @@
                 "operatingSystem",
                 "operatingSystemVersion",
                 "physicalIds",
-                "trustType",
-                "registeredOwners",
-                "registeredUsers",
-                "extensions"
+                "trustType"
               ],
               "type": "string"
             }
@@ -569,10 +566,7 @@
                 "operatingSystem",
                 "operatingSystemVersion",
                 "physicalIds",
-                "trustType",
-                "registeredOwners",
-                "registeredUsers",
-                "extensions"
+                "trustType"
               ],
               "type": "string"
             }
@@ -726,10 +720,7 @@
                 "isRoot",
                 "isVerified",
                 "supportedServices",
-                "state",
-                "serviceConfigurationRecords",
-                "verificationDnsRecords",
-                "domainNameReferences"
+                "state"
               ],
               "type": "string"
             }
@@ -838,10 +829,7 @@
                 "isRoot",
                 "isVerified",
                 "supportedServices",
-                "state",
-                "serviceConfigurationRecords",
-                "verificationDnsRecords",
-                "domainNameReferences"
+                "state"
               ],
               "type": "string"
             }
@@ -1312,27 +1300,7 @@
                 "allowExternalSenders",
                 "autoSubscribeNewMembers",
                 "isSubscribedByMail",
-                "unseenCount",
-                "members",
-                "memberOf",
-                "createdOnBehalfOf",
-                "owners",
-                "settings",
-                "extensions",
-                "threads",
-                "calendar",
-                "calendarView",
-                "events",
-                "conversations",
-                "photo",
-                "photos",
-                "acceptedSenders",
-                "rejectedSenders",
-                "drive",
-                "drives",
-                "sites",
-                "planner",
-                "onenote"
+                "unseenCount"
               ],
               "type": "string"
             }
@@ -1436,27 +1404,7 @@
                 "allowExternalSenders",
                 "autoSubscribeNewMembers",
                 "isSubscribedByMail",
-                "unseenCount",
-                "members",
-                "memberOf",
-                "createdOnBehalfOf",
-                "owners",
-                "settings",
-                "extensions",
-                "threads",
-                "calendar",
-                "calendarView",
-                "events",
-                "conversations",
-                "photo",
-                "photos",
-                "acceptedSenders",
-                "rejectedSenders",
-                "drive",
-                "drives",
-                "sites",
-                "planner",
-                "onenote"
+                "unseenCount"
               ],
               "type": "string"
             }
@@ -1728,8 +1676,7 @@
                 "id",
                 "description",
                 "displayName",
-                "roleTemplateId",
-                "members"
+                "roleTemplateId"
               ],
               "type": "string"
             }
@@ -1817,8 +1764,7 @@
                 "id",
                 "description",
                 "displayName",
-                "roleTemplateId",
-                "members"
+                "roleTemplateId"
               ],
               "type": "string"
             }
@@ -2198,8 +2144,7 @@
                 "state",
                 "street",
                 "technicalNotificationMails",
-                "verifiedDomains",
-                "extensions"
+                "verifiedDomains"
               ],
               "type": "string"
             }
@@ -2302,8 +2247,7 @@
                 "state",
                 "street",
                 "technicalNotificationMails",
-                "verifiedDomains",
-                "extensions"
+                "verifiedDomains"
               ],
               "type": "string"
             }
@@ -3241,33 +3185,7 @@
                 "preferredName",
                 "responsibilities",
                 "schools",
-                "skills",
-                "ownedDevices",
-                "registeredDevices",
-                "manager",
-                "directReports",
-                "memberOf",
-                "createdObjects",
-                "ownedObjects",
-                "licenseDetails",
-                "extensions",
-                "messages",
-                "mailFolders",
-                "calendar",
-                "calendars",
-                "calendarGroups",
-                "calendarView",
-                "events",
-                "people",
-                "contacts",
-                "contactFolders",
-                "inferenceClassification",
-                "photo",
-                "photos",
-                "drive",
-                "drives",
-                "planner",
-                "onenote"
+                "skills"
               ],
               "type": "string"
             }
@@ -3395,33 +3313,7 @@
                 "preferredName",
                 "responsibilities",
                 "schools",
-                "skills",
-                "ownedDevices",
-                "registeredDevices",
-                "manager",
-                "directReports",
-                "memberOf",
-                "createdObjects",
-                "ownedObjects",
-                "licenseDetails",
-                "extensions",
-                "messages",
-                "mailFolders",
-                "calendar",
-                "calendars",
-                "calendarGroups",
-                "calendarView",
-                "events",
-                "people",
-                "contacts",
-                "contactFolders",
-                "inferenceClassification",
-                "photo",
-                "photos",
-                "drive",
-                "drives",
-                "planner",
-                "onenote"
+                "skills"
               ],
               "type": "string"
             }
@@ -4329,13 +4221,7 @@
                 "owner",
                 "quota",
                 "sharePointIds",
-                "system",
-                "createdByUser",
-                "lastModifiedByUser",
-                "items",
-                "list",
-                "root",
-                "special"
+                "system"
               ],
               "type": "string"
             }
@@ -4452,13 +4338,7 @@
                 "owner",
                 "quota",
                 "sharePointIds",
-                "system",
-                "createdByUser",
-                "lastModifiedByUser",
-                "items",
-                "list",
-                "root",
-                "special"
+                "system"
               ],
               "type": "string"
             }
@@ -4729,15 +4609,7 @@
                 "name",
                 "parentReference",
                 "webUrl",
-                "owner",
-                "createdByUser",
-                "lastModifiedByUser",
-                "driveItem",
-                "items",
-                "list",
-                "listItem",
-                "root",
-                "site"
+                "owner"
               ],
               "type": "string"
             }
@@ -4852,15 +4724,7 @@
                 "name",
                 "parentReference",
                 "webUrl",
-                "owner",
-                "createdByUser",
-                "lastModifiedByUser",
-                "driveItem",
-                "items",
-                "list",
-                "listItem",
-                "root",
-                "site"
+                "owner"
               ],
               "type": "string"
             }
@@ -5046,17 +4910,7 @@
                 "displayName",
                 "root",
                 "sharepointIds",
-                "siteCollection",
-                "createdByUser",
-                "lastModifiedByUser",
-                "columns",
-                "contentTypes",
-                "drive",
-                "drives",
-                "items",
-                "lists",
-                "sites",
-                "onenote"
+                "siteCollection"
               ],
               "type": "string"
             }
@@ -5176,17 +5030,7 @@
                 "displayName",
                 "root",
                 "sharepointIds",
-                "siteCollection",
-                "createdByUser",
-                "lastModifiedByUser",
-                "columns",
-                "contentTypes",
-                "drive",
-                "drives",
-                "items",
-                "lists",
-                "sites",
-                "onenote"
+                "siteCollection"
               ],
               "type": "string"
             }
@@ -5451,14 +5295,7 @@
                 "size",
                 "specialFolder",
                 "video",
-                "webDavUrl",
-                "createdByUser",
-                "lastModifiedByUser",
-                "children",
-                "listItem",
-                "permissions",
-                "thumbnails",
-                "workbook"
+                "webDavUrl"
               ],
               "type": "string"
             }
@@ -5591,14 +5428,7 @@
                 "size",
                 "specialFolder",
                 "video",
-                "webDavUrl",
-                "createdByUser",
-                "lastModifiedByUser",
-                "children",
-                "listItem",
-                "permissions",
-                "thumbnails",
-                "workbook"
+                "webDavUrl"
               ],
               "type": "string"
             }
@@ -6247,8 +6077,7 @@
                 "sendInvitationMessage",
                 "inviteRedirectUrl",
                 "inviteRedeemUrl",
-                "status",
-                "invitedUser"
+                "status"
               ],
               "type": "string"
             }
@@ -6354,8 +6183,7 @@
                 "sendInvitationMessage",
                 "inviteRedirectUrl",
                 "inviteRedeemUrl",
-                "status",
-                "invitedUser"
+                "status"
               ],
               "type": "string"
             }
@@ -6510,33 +6338,7 @@
                 "preferredName",
                 "responsibilities",
                 "schools",
-                "skills",
-                "ownedDevices",
-                "registeredDevices",
-                "manager",
-                "directReports",
-                "memberOf",
-                "createdObjects",
-                "ownedObjects",
-                "licenseDetails",
-                "extensions",
-                "messages",
-                "mailFolders",
-                "calendar",
-                "calendars",
-                "calendarGroups",
-                "calendarView",
-                "events",
-                "people",
-                "contacts",
-                "contactFolders",
-                "inferenceClassification",
-                "photo",
-                "photos",
-                "drive",
-                "drives",
-                "planner",
-                "onenote"
+                "skills"
               ],
               "type": "string"
             }
@@ -6831,13 +6633,7 @@
                 "owner",
                 "quota",
                 "sharePointIds",
-                "system",
-                "createdByUser",
-                "lastModifiedByUser",
-                "items",
-                "list",
-                "root",
-                "special"
+                "system"
               ],
               "type": "string"
             }
@@ -6995,10 +6791,7 @@
             "type": "array",
             "items": {
               "enum": [
-                "id",
-                "tasks",
-                "plans",
-                "buckets"
+                "id"
               ],
               "type": "string"
             }

@@ -41,6 +41,15 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         /// <summary>
+        /// Test the target supports insert.
+        /// </summary>
+        /// <returns>True/false.</returns>
+        public bool IsInsertable()
+        {
+            return Insertable == null || Insertable.Value == true;
+        }
+
+        /// <summary>
         /// Test the input navigation property do not allow deep insert.
         /// </summary>
         /// <param name="property">The input property.</param>

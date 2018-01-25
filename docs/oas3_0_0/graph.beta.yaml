@@ -573,11 +573,6 @@ paths:
                 - requiredResourceAccess
                 - tags
                 - web
-                - extensionProperties
-                - createdOnBehalfOf
-                - owners
-                - policies
-                - synchronization
               type: string
       responses:
         '200':
@@ -652,11 +647,6 @@ paths:
                 - requiredResourceAccess
                 - tags
                 - web
-                - extensionProperties
-                - createdOnBehalfOf
-                - owners
-                - policies
-                - synchronization
               type: string
       responses:
         '200':
@@ -751,9 +741,6 @@ paths:
                 - displayName
                 - description
                 - visibility
-                - extensions
-                - members
-                - scopedRoleMembers
               type: string
       responses:
         '200':
@@ -815,9 +802,6 @@ paths:
                 - displayName
                 - description
                 - visibility
-                - extensions
-                - members
-                - scopedRoleMembers
               type: string
       responses:
         '200':
@@ -1345,9 +1329,6 @@ paths:
                 - state
                 - streetAddress
                 - surname
-                - manager
-                - directReports
-                - memberOf
               type: string
       responses:
         '200':
@@ -1426,9 +1407,6 @@ paths:
                 - state
                 - streetAddress
                 - surname
-                - manager
-                - directReports
-                - memberOf
               type: string
       responses:
         '200':
@@ -1595,10 +1573,6 @@ paths:
                 - Kind
                 - Status
                 - Platform
-                - extensions
-                - registeredOwners
-                - registeredUsers
-                - commands
               type: string
       responses:
         '200':
@@ -1678,10 +1652,6 @@ paths:
                 - Kind
                 - Status
                 - Platform
-                - extensions
-                - registeredOwners
-                - registeredUsers
-                - commands
               type: string
       responses:
         '200':
@@ -1794,9 +1764,6 @@ paths:
                 - isVerified
                 - supportedServices
                 - state
-                - serviceConfigurationRecords
-                - verificationDnsRecords
-                - domainNameReferences
               type: string
         - name: $expand
           in: query
@@ -1876,9 +1843,6 @@ paths:
                 - isVerified
                 - supportedServices
                 - state
-                - serviceConfigurationRecords
-                - verificationDnsRecords
-                - domainNameReferences
               type: string
         - name: $expand
           in: query
@@ -2295,30 +2259,6 @@ paths:
                 - unseenCount
                 - unseenConversationsCount
                 - unseenMessagesCount
-                - extensions
-                - members
-                - memberOf
-                - createdOnBehalfOf
-                - owners
-                - settings
-                - endpoints
-                - threads
-                - calendar
-                - calendarView
-                - events
-                - conversations
-                - photo
-                - photos
-                - acceptedSenders
-                - rejectedSenders
-                - drive
-                - drives
-                - sites
-                - planner
-                - onenote
-                - team
-                - channels
-                - groupLifecyclePolicies
               type: string
       responses:
         '200':
@@ -2407,30 +2347,6 @@ paths:
                 - unseenCount
                 - unseenConversationsCount
                 - unseenMessagesCount
-                - extensions
-                - members
-                - memberOf
-                - createdOnBehalfOf
-                - owners
-                - settings
-                - endpoints
-                - threads
-                - calendar
-                - calendarView
-                - events
-                - conversations
-                - photo
-                - photos
-                - acceptedSenders
-                - rejectedSenders
-                - drive
-                - drives
-                - sites
-                - planner
-                - onenote
-                - team
-                - channels
-                - groupLifecyclePolicies
               type: string
       responses:
         '200':
@@ -2680,8 +2596,6 @@ paths:
                 - description
                 - displayName
                 - roleTemplateId
-                - members
-                - scopedMembers
               type: string
       responses:
         '200':
@@ -2743,8 +2657,6 @@ paths:
                 - description
                 - displayName
                 - roleTemplateId
-                - members
-                - scopedMembers
               type: string
       responses:
         '200':
@@ -3198,9 +3110,6 @@ paths:
                 - verifiedDomains
                 - mobileDeviceManagementAuthority
                 - certificateConnectorSetting
-                - extensions
-                - depOnboardingSettings
-                - appleVolumePurchaseProgramTokens
               type: string
       responses:
         '200':
@@ -3280,9 +3189,6 @@ paths:
                 - verifiedDomains
                 - mobileDeviceManagementAuthority
                 - certificateConnectorSetting
-                - extensions
-                - depOnboardingSettings
-                - appleVolumePurchaseProgramTokens
               type: string
       responses:
         '200':
@@ -3879,16 +3785,6 @@ paths:
                 - samlMetadataUrl
                 - servicePrincipalNames
                 - tags
-                - appRoleAssignedTo
-                - appRoleAssignments
-                - oauth2PermissionGrants
-                - memberOf
-                - createdObjects
-                - licenseDetails
-                - owners
-                - ownedObjects
-                - policies
-                - synchronization
               type: string
       responses:
         '200':
@@ -3967,16 +3863,6 @@ paths:
                 - samlMetadataUrl
                 - servicePrincipalNames
                 - tags
-                - appRoleAssignedTo
-                - appRoleAssignments
-                - oauth2PermissionGrants
-                - memberOf
-                - createdObjects
-                - licenseDetails
-                - owners
-                - ownedObjects
-                - policies
-                - synchronization
               type: string
       responses:
         '200':
@@ -4564,42 +4450,6 @@ paths:
                 - skills
                 - identityUserRisk
                 - deviceEnrollmentLimit
-                - extensions
-                - ownedDevices
-                - registeredDevices
-                - manager
-                - directReports
-                - memberOf
-                - createdObjects
-                - ownedObjects
-                - scopedRoleMemberOf
-                - licenseDetails
-                - activities
-                - outlook
-                - messages
-                - joinedGroups
-                - mailFolders
-                - calendar
-                - calendars
-                - calendarGroups
-                - calendarView
-                - events
-                - people
-                - contacts
-                - contactFolders
-                - inferenceClassification
-                - photo
-                - photos
-                - drive
-                - drives
-                - insights
-                - planner
-                - onenote
-                - managedDevices
-                - managedAppRegistrations
-                - devices
-                - joinedTeams
-                - deviceManagementTroubleshootingEvents
               type: string
       responses:
         '200':
@@ -4712,42 +4562,6 @@ paths:
                 - skills
                 - identityUserRisk
                 - deviceEnrollmentLimit
-                - extensions
-                - ownedDevices
-                - registeredDevices
-                - manager
-                - directReports
-                - memberOf
-                - createdObjects
-                - ownedObjects
-                - scopedRoleMemberOf
-                - licenseDetails
-                - activities
-                - outlook
-                - messages
-                - joinedGroups
-                - mailFolders
-                - calendar
-                - calendars
-                - calendarGroups
-                - calendarView
-                - events
-                - people
-                - contacts
-                - contactFolders
-                - inferenceClassification
-                - photo
-                - photos
-                - drive
-                - drives
-                - insights
-                - planner
-                - onenote
-                - managedDevices
-                - managedAppRegistrations
-                - devices
-                - joinedTeams
-                - deviceManagementTroubleshootingEvents
               type: string
       responses:
         '200':
@@ -5329,7 +5143,6 @@ paths:
                 - isOrganizationDefault
                 - keyCredentials
                 - type
-                - appliesTo
               type: string
       responses:
         '200':
@@ -5394,7 +5207,6 @@ paths:
                 - isOrganizationDefault
                 - keyCredentials
                 - type
-                - appliesTo
               type: string
       responses:
         '200':
@@ -5729,15 +5541,6 @@ paths:
                 - specialFolder
                 - video
                 - webDavUrl
-                - createdByUser
-                - lastModifiedByUser
-                - workbook
-                - activities
-                - children
-                - listItem
-                - permissions
-                - thumbnails
-                - versions
               type: string
         - name: $expand
           in: query
@@ -5844,15 +5647,6 @@ paths:
                 - specialFolder
                 - video
                 - webDavUrl
-                - createdByUser
-                - lastModifiedByUser
-                - workbook
-                - activities
-                - children
-                - listItem
-                - permissions
-                - thumbnails
-                - versions
               type: string
         - name: $expand
           in: query
@@ -6304,13 +6098,6 @@ paths:
                 - quota
                 - sharePointIds
                 - system
-                - createdByUser
-                - lastModifiedByUser
-                - activities
-                - items
-                - list
-                - root
-                - special
               type: string
         - name: $expand
           in: query
@@ -6399,13 +6186,6 @@ paths:
                 - quota
                 - sharePointIds
                 - system
-                - createdByUser
-                - lastModifiedByUser
-                - activities
-                - items
-                - list
-                - root
-                - special
               type: string
         - name: $expand
           in: query
@@ -6613,14 +6393,6 @@ paths:
                 - parentReference
                 - webUrl
                 - owner
-                - createdByUser
-                - lastModifiedByUser
-                - driveItem
-                - items
-                - list
-                - listItem
-                - root
-                - site
               type: string
         - name: $expand
           in: query
@@ -6706,14 +6478,6 @@ paths:
                 - parentReference
                 - webUrl
                 - owner
-                - createdByUser
-                - lastModifiedByUser
-                - driveItem
-                - items
-                - list
-                - listItem
-                - root
-                - site
               type: string
         - name: $expand
           in: query
@@ -6856,16 +6620,6 @@ paths:
                 - root
                 - sharepointIds
                 - siteCollection
-                - createdByUser
-                - lastModifiedByUser
-                - columns
-                - contentTypes
-                - drive
-                - drives
-                - items
-                - lists
-                - sites
-                - onenote
               type: string
         - name: $expand
           in: query
@@ -6956,16 +6710,6 @@ paths:
                 - root
                 - sharepointIds
                 - siteCollection
-                - createdByUser
-                - lastModifiedByUser
-                - columns
-                - contentTypes
-                - drive
-                - drives
-                - items
-                - lists
-                - sites
-                - onenote
               type: string
         - name: $expand
           in: query
@@ -7258,7 +7002,6 @@ paths:
                 - closedDateTime
                 - createdDateTime
                 - userId
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7336,7 +7079,6 @@ paths:
                 - closedDateTime
                 - createdDateTime
                 - userId
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7484,7 +7226,6 @@ paths:
                 - previousSigninDateTime
                 - previousLocation
                 - previousIpAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7570,7 +7311,6 @@ paths:
                 - previousSigninDateTime
                 - previousLocation
                 - previousIpAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7694,7 +7434,6 @@ paths:
                 - closedDateTime
                 - createdDateTime
                 - userId
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7772,7 +7511,6 @@ paths:
                 - closedDateTime
                 - createdDateTime
                 - userId
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7902,7 +7640,6 @@ paths:
                 - userId
                 - location
                 - ipAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -7982,7 +7719,6 @@ paths:
                 - userId
                 - location
                 - ipAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8112,7 +7848,6 @@ paths:
                 - userId
                 - location
                 - ipAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8192,7 +7927,6 @@ paths:
                 - userId
                 - location
                 - ipAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8322,7 +8056,6 @@ paths:
                 - userId
                 - location
                 - ipAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8402,7 +8135,6 @@ paths:
                 - userId
                 - location
                 - ipAddress
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8538,7 +8270,6 @@ paths:
                 - ipAddress
                 - deviceInformation
                 - malwareName
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8620,7 +8351,6 @@ paths:
                 - ipAddress
                 - deviceInformation
                 - malwareName
-                - impactedUser
               type: string
         - name: $expand
           in: query
@@ -8720,9 +8450,6 @@ paths:
               enum:
                 - id
                 - name
-                - settings
-                - assignments
-                - summary
               type: string
         - name: $expand
           in: query
@@ -8794,9 +8521,6 @@ paths:
               enum:
                 - id
                 - name
-                - settings
-                - assignments
-                - summary
               type: string
         - name: $expand
           in: query
@@ -8964,7 +8688,6 @@ paths:
                 - isElevated
                 - expirationDateTime
                 - resultMessage
-                - roleInfo
               type: string
         - name: $expand
           in: query
@@ -9038,7 +8761,6 @@ paths:
                 - isElevated
                 - expirationDateTime
                 - resultMessage
-                - roleInfo
               type: string
         - name: $expand
           in: query
@@ -9681,7 +9403,6 @@ paths:
                 - approverReason
                 - startDateTime
                 - endDateTime
-                - roleInfo
               type: string
         - name: $expand
           in: query
@@ -9759,7 +9480,6 @@ paths:
                 - approverReason
                 - startDateTime
                 - endDateTime
-                - roleInfo
               type: string
         - name: $expand
           in: query
@@ -9898,7 +9618,6 @@ paths:
                 - inviteRedirectUrl
                 - inviteRedeemUrl
                 - status
-                - invitedUser
               type: string
         - name: $expand
           in: query
@@ -9975,7 +9694,6 @@ paths:
                 - inviteRedirectUrl
                 - inviteRedeemUrl
                 - status
-                - invitedUser
               type: string
         - name: $expand
           in: query
@@ -10842,7 +10560,6 @@ paths:
                 - Payload
                 - PermissionTicket
                 - PostBackUri
-                - responsepayload
               type: string
         - name: $expand
           in: query
@@ -10919,7 +10636,6 @@ paths:
                 - Payload
                 - PermissionTicket
                 - PostBackUri
-                - responsepayload
               type: string
         - name: $expand
           in: query
@@ -11190,7 +10906,6 @@ paths:
                 - messagingSettings
                 - funSettings
                 - guestSettings
-                - channels
               type: string
         - name: $expand
           in: query
@@ -11263,7 +10978,6 @@ paths:
                 - messagingSettings
                 - funSettings
                 - guestSettings
-                - channels
               type: string
         - name: $expand
           in: query
@@ -11366,7 +11080,6 @@ paths:
                 - id
                 - displayName
                 - description
-                - chatThreads
               type: string
         - name: $expand
           in: query
@@ -11437,7 +11150,6 @@ paths:
                 - id
                 - displayName
                 - description
-                - chatThreads
               type: string
         - name: $expand
           in: query
@@ -11534,8 +11246,6 @@ paths:
             items:
               enum:
                 - id
-                - chatMessages
-                - rootMessage
               type: string
         - name: $expand
           in: query
@@ -11605,8 +11315,6 @@ paths:
             items:
               enum:
                 - id
-                - chatMessages
-                - rootMessage
               type: string
         - name: $expand
           in: query
@@ -12509,42 +12217,6 @@ paths:
                 - skills
                 - identityUserRisk
                 - deviceEnrollmentLimit
-                - extensions
-                - ownedDevices
-                - registeredDevices
-                - manager
-                - directReports
-                - memberOf
-                - createdObjects
-                - ownedObjects
-                - scopedRoleMemberOf
-                - licenseDetails
-                - activities
-                - outlook
-                - messages
-                - joinedGroups
-                - mailFolders
-                - calendar
-                - calendars
-                - calendarGroups
-                - calendarView
-                - events
-                - people
-                - contacts
-                - contactFolders
-                - inferenceClassification
-                - photo
-                - photos
-                - drive
-                - drives
-                - insights
-                - planner
-                - onenote
-                - managedDevices
-                - managedAppRegistrations
-                - devices
-                - joinedTeams
-                - deviceManagementTroubleshootingEvents
               type: string
       responses:
         '200':
@@ -12959,7 +12631,6 @@ paths:
             items:
               enum:
                 - id
-                - deletedItems
               type: string
         - name: $expand
           in: query
@@ -13026,13 +12697,6 @@ paths:
                 - quota
                 - sharePointIds
                 - system
-                - createdByUser
-                - lastModifiedByUser
-                - activities
-                - items
-                - list
-                - root
-                - special
               type: string
         - name: $expand
           in: query
@@ -13152,9 +12816,6 @@ paths:
             items:
               enum:
                 - id
-                - tasks
-                - plans
-                - buckets
               type: string
         - name: $expand
           in: query
@@ -13217,52 +12878,6 @@ paths:
                 - maximumDepTokens
                 - intuneAccountId
                 - intuneBrand
-                - termsAndConditions
-                - androidForWorkSettings
-                - androidForWorkAppConfigurationSchemas
-                - androidForWorkEnrollmentProfiles
-                - enrollmentProfiles
-                - importedDeviceIdentities
-                - importedAppleDeviceIdentities
-                - remoteActionAudits
-                - applePushNotificationCertificate
-                - deviceManagementScripts
-                - managedDeviceOverview
-                - detectedApps
-                - managedDevices
-                - windowsMalwareInformation
-                - deviceConfigurations
-                - deviceCompliancePolicies
-                - deviceSetupConfigurations
-                - softwareUpdateStatusSummary
-                - deviceCompliancePolicyDeviceStateSummary
-                - deviceCompliancePolicySettingStateSummaries
-                - deviceConfigurationDeviceStateSummaries
-                - deviceConfigurationUserStateSummaries
-                - cartToClassAssociations
-                - iosUpdateStatuses
-                - ndesConnectors
-                - deviceCategories
-                - exchangeConnectors
-                - deviceEnrollmentConfigurations
-                - exchangeOnPremisesPolicy
-                - exchangeOnPremisesPolicies
-                - conditionalAccessSettings
-                - mobileThreatDefenseConnectors
-                - deviceManagementPartners
-                - depOnboardingSettings
-                - notificationMessageTemplates
-                - roleDefinitions
-                - roleAssignments
-                - resourceOperations
-                - telecomExpenseManagementPartners
-                - windowsAutopilotSettings
-                - windowsAutopilotDeviceIdentities
-                - windowsAutopilotDeploymentProfiles
-                - remoteAssistancePartners
-                - windowsInformationProtectionAppLearningSummaries
-                - auditEvents
-                - troubleshootingEvents
               type: string
         - name: $expand
           in: query
@@ -13428,25 +13043,6 @@ paths:
                 - isEnabledForMicrosoftStoreForBusiness
                 - microsoftStoreForBusinessLanguage
                 - microsoftStoreForBusinessLastCompletedApplicationSyncTime
-                - windowsManagementApp
-                - mobileApps
-                - mobileAppCategories
-                - enterpriseCodeSigningCertificates
-                - iosLobAppProvisioningConfigurations
-                - symantecCodeSigningCertificate
-                - mobileAppConfigurations
-                - sideLoadingKeys
-                - vppTokens
-                - managedAppPolicies
-                - iosManagedAppProtections
-                - androidManagedAppProtections
-                - defaultManagedAppProtections
-                - targetedManagedAppConfigurations
-                - mdmWindowsInformationProtectionPolicies
-                - windowsInformationProtectionPolicies
-                - managedAppRegistrations
-                - managedAppStatuses
-                - managedEBooks
               type: string
         - name: $expand
           in: query
@@ -15473,11 +15069,6 @@ paths:
             items:
               enum:
                 - id
-                - synchronizationProfiles
-                - classes
-                - schools
-                - users
-                - me
               type: string
         - name: $expand
           in: query

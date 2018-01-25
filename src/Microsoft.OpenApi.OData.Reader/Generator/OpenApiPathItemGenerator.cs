@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -116,7 +117,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             pathItem.AddOperation(OperationType.Get, context.CreateEntitySetGetOperation(entitySet));
 
-            pathItem.AddOperation(OperationType.Post, context.CreateEntitySetPostOperation(entitySet));
+            InsertRestrictions insert = new InsertRestrictions(context.Model, entitySet);
+            if (insert.IsInsertable())
+            {
+                pathItem.AddOperation(OperationType.Post, context.CreateEntitySetPostOperation(entitySet));
+            }
 
             return pathItem;
         }
@@ -136,9 +141,17 @@ namespace Microsoft.OpenApi.OData.Generator
 
             pathItem.AddOperation(OperationType.Get, context.CreateEntityGetOperation(entitySet));
 
-            pathItem.AddOperation(OperationType.Patch, context.CreateEntityPatchOperation(entitySet));
+            UpdateRestrictions update = new UpdateRestrictions(context.Model, entitySet);
+            if (update.IsUpdatable())
+            {
+                pathItem.AddOperation(OperationType.Patch, context.CreateEntityPatchOperation(entitySet));
+            }
 
-            pathItem.AddOperation(OperationType.Delete, context.CreateEntityDeleteOperation(entitySet));
+            DeleteRestrictions delete = new DeleteRestrictions(context.Model, entitySet);
+            if (delete.IsDeletable())
+            {
+                pathItem.AddOperation(OperationType.Delete, context.CreateEntityDeleteOperation(entitySet));
+            }
 
             return pathItem;
         }

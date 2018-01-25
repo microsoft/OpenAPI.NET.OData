@@ -41,6 +41,15 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         /// <summary>
+        /// Test the target supports update.
+        /// </summary>
+        /// <returns>True/false.</returns>
+        public bool IsUpdatable()
+        {
+            return Updatable == null || Updatable.Value == true;
+        }
+
+        /// <summary>
         /// Test the input navigation property do not allow rebinding.
         /// </summary>
         /// <param name="property">The input property.</param>

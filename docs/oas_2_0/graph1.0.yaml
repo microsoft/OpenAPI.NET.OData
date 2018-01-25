@@ -318,9 +318,6 @@ paths:
               - operatingSystemVersion
               - physicalIds
               - trustType
-              - registeredOwners
-              - registeredUsers
-              - extensions
             type: string
       responses:
         '200':
@@ -391,9 +388,6 @@ paths:
               - operatingSystemVersion
               - physicalIds
               - trustType
-              - registeredOwners
-              - registeredUsers
-              - extensions
             type: string
       responses:
         '200':
@@ -499,9 +493,6 @@ paths:
               - isVerified
               - supportedServices
               - state
-              - serviceConfigurationRecords
-              - verificationDnsRecords
-              - domainNameReferences
             type: string
         - name: $expand
           in: query
@@ -577,9 +568,6 @@ paths:
               - isVerified
               - supportedServices
               - state
-              - serviceConfigurationRecords
-              - verificationDnsRecords
-              - domainNameReferences
             type: string
         - name: $expand
           in: query
@@ -908,26 +896,6 @@ paths:
               - autoSubscribeNewMembers
               - isSubscribedByMail
               - unseenCount
-              - members
-              - memberOf
-              - createdOnBehalfOf
-              - owners
-              - settings
-              - extensions
-              - threads
-              - calendar
-              - calendarView
-              - events
-              - conversations
-              - photo
-              - photos
-              - acceptedSenders
-              - rejectedSenders
-              - drive
-              - drives
-              - sites
-              - planner
-              - onenote
             type: string
       responses:
         '200':
@@ -1002,26 +970,6 @@ paths:
               - autoSubscribeNewMembers
               - isSubscribedByMail
               - unseenCount
-              - members
-              - memberOf
-              - createdOnBehalfOf
-              - owners
-              - settings
-              - extensions
-              - threads
-              - calendar
-              - calendarView
-              - events
-              - conversations
-              - photo
-              - photos
-              - acceptedSenders
-              - rejectedSenders
-              - drive
-              - drives
-              - sites
-              - planner
-              - onenote
             type: string
       responses:
         '200':
@@ -1200,7 +1148,6 @@ paths:
               - description
               - displayName
               - roleTemplateId
-              - members
             type: string
       responses:
         '200':
@@ -1259,7 +1206,6 @@ paths:
               - description
               - displayName
               - roleTemplateId
-              - members
             type: string
       responses:
         '200':
@@ -1526,7 +1472,6 @@ paths:
               - street
               - technicalNotificationMails
               - verifiedDomains
-              - extensions
             type: string
       responses:
         '200':
@@ -1600,7 +1545,6 @@ paths:
               - street
               - technicalNotificationMails
               - verifiedDomains
-              - extensions
             type: string
       responses:
         '200':
@@ -2265,32 +2209,6 @@ paths:
               - responsibilities
               - schools
               - skills
-              - ownedDevices
-              - registeredDevices
-              - manager
-              - directReports
-              - memberOf
-              - createdObjects
-              - ownedObjects
-              - licenseDetails
-              - extensions
-              - messages
-              - mailFolders
-              - calendar
-              - calendars
-              - calendarGroups
-              - calendarView
-              - events
-              - people
-              - contacts
-              - contactFolders
-              - inferenceClassification
-              - photo
-              - photos
-              - drive
-              - drives
-              - planner
-              - onenote
             type: string
       responses:
         '200':
@@ -2389,32 +2307,6 @@ paths:
               - responsibilities
               - schools
               - skills
-              - ownedDevices
-              - registeredDevices
-              - manager
-              - directReports
-              - memberOf
-              - createdObjects
-              - ownedObjects
-              - licenseDetails
-              - extensions
-              - messages
-              - mailFolders
-              - calendar
-              - calendars
-              - calendarGroups
-              - calendarView
-              - events
-              - people
-              - contacts
-              - contactFolders
-              - inferenceClassification
-              - photo
-              - photos
-              - drive
-              - drives
-              - planner
-              - onenote
             type: string
       responses:
         '200':
@@ -3024,12 +2916,6 @@ paths:
               - quota
               - sharePointIds
               - system
-              - createdByUser
-              - lastModifiedByUser
-              - items
-              - list
-              - root
-              - special
             type: string
         - name: $expand
           in: query
@@ -3113,12 +2999,6 @@ paths:
               - quota
               - sharePointIds
               - system
-              - createdByUser
-              - lastModifiedByUser
-              - items
-              - list
-              - root
-              - special
             type: string
         - name: $expand
           in: query
@@ -3304,14 +3184,6 @@ paths:
               - parentReference
               - webUrl
               - owner
-              - createdByUser
-              - lastModifiedByUser
-              - driveItem
-              - items
-              - list
-              - listItem
-              - root
-              - site
             type: string
         - name: $expand
           in: query
@@ -3393,14 +3265,6 @@ paths:
               - parentReference
               - webUrl
               - owner
-              - createdByUser
-              - lastModifiedByUser
-              - driveItem
-              - items
-              - list
-              - listItem
-              - root
-              - site
             type: string
         - name: $expand
           in: query
@@ -3534,16 +3398,6 @@ paths:
               - root
               - sharepointIds
               - siteCollection
-              - createdByUser
-              - lastModifiedByUser
-              - columns
-              - contentTypes
-              - drive
-              - drives
-              - items
-              - lists
-              - sites
-              - onenote
             type: string
         - name: $expand
           in: query
@@ -3630,16 +3484,6 @@ paths:
               - root
               - sharepointIds
               - siteCollection
-              - createdByUser
-              - lastModifiedByUser
-              - columns
-              - contentTypes
-              - drive
-              - drives
-              - items
-              - lists
-              - sites
-              - onenote
             type: string
         - name: $expand
           in: query
@@ -3842,13 +3686,6 @@ paths:
               - specialFolder
               - video
               - webDavUrl
-              - createdByUser
-              - lastModifiedByUser
-              - children
-              - listItem
-              - permissions
-              - thumbnails
-              - workbook
             type: string
         - name: $expand
           in: query
@@ -3948,13 +3785,6 @@ paths:
               - specialFolder
               - video
               - webDavUrl
-              - createdByUser
-              - lastModifiedByUser
-              - children
-              - listItem
-              - permissions
-              - thumbnails
-              - workbook
             type: string
         - name: $expand
           in: query
@@ -4385,7 +4215,6 @@ paths:
               - inviteRedirectUrl
               - inviteRedeemUrl
               - status
-              - invitedUser
             type: string
         - name: $expand
           in: query
@@ -4458,7 +4287,6 @@ paths:
               - inviteRedirectUrl
               - inviteRedeemUrl
               - status
-              - invitedUser
             type: string
         - name: $expand
           in: query
@@ -4575,32 +4403,6 @@ paths:
               - responsibilities
               - schools
               - skills
-              - ownedDevices
-              - registeredDevices
-              - manager
-              - directReports
-              - memberOf
-              - createdObjects
-              - ownedObjects
-              - licenseDetails
-              - extensions
-              - messages
-              - mailFolders
-              - calendar
-              - calendars
-              - calendarGroups
-              - calendarView
-              - events
-              - people
-              - contacts
-              - contactFolders
-              - inferenceClassification
-              - photo
-              - photos
-              - drive
-              - drives
-              - planner
-              - onenote
             type: string
       responses:
         '200':
@@ -4797,12 +4599,6 @@ paths:
               - quota
               - sharePointIds
               - system
-              - createdByUser
-              - lastModifiedByUser
-              - items
-              - list
-              - root
-              - special
             type: string
         - name: $expand
           in: query
@@ -4907,9 +4703,6 @@ paths:
           items:
             enum:
               - id
-              - tasks
-              - plans
-              - buckets
             type: string
         - name: $expand
           in: query
