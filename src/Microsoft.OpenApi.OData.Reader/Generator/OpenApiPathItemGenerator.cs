@@ -284,11 +284,19 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                pathItem.AddOperation(OperationType.Post, context.CreateNavigationPostOperation(navigationSource, navigationProperty));
+                InsertRestrictions insert = new InsertRestrictions(context.Model, navigationProperty);
+                if (insert.IsInsertable())
+                {
+                    pathItem.AddOperation(OperationType.Post, context.CreateNavigationPostOperation(navigationSource, navigationProperty));
+                }
             }
             else
             {
-                pathItem.AddOperation(OperationType.Patch, context.CreateNavigationPatchOperation(navigationSource, navigationProperty));
+                UpdateRestrictions update = new UpdateRestrictions(context.Model, navigationProperty);
+                if (update.IsUpdatable())
+                {
+                    pathItem.AddOperation(OperationType.Patch, context.CreateNavigationPatchOperation(navigationSource, navigationProperty));
+                }
             }
 
             return pathItem;
