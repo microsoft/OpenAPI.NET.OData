@@ -17,6 +17,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entities from schemaExtensions",
+        "operationId": "GetEntitiesFromschemaExtensions",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -125,6 +126,7 @@
           "schemaExtensions"
         ],
         "summary": "Add new entity to schemaExtensions",
+        "operationId": "AddEntityToschemaExtensions",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -159,6 +161,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entity from schemaExtensions by key",
+        "operationId": "GetEntityFromschemaExtensionsByKey",
         "parameters": [
           {
             "name": "id",
@@ -226,6 +229,7 @@
           "schemaExtensions"
         ],
         "summary": "Update entity in schemaExtensions",
+        "operationId": "UpdateEntityInschemaExtensions",
         "parameters": [
           {
             "name": "id",
@@ -262,6 +266,7 @@
           "schemaExtensions"
         ],
         "summary": "Delete entity from schemaExtensions",
+        "operationId": "DeleteEntityFromschemaExtensions",
         "parameters": [
           {
             "name": "id",
@@ -297,6 +302,7 @@
           "directoryObjects"
         ],
         "summary": "Get entities from directoryObjects",
+        "operationId": "GetEntitiesFromdirectoryObjects",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -369,6 +375,7 @@
           "directoryObjects"
         ],
         "summary": "Add new entity to directoryObjects",
+        "operationId": "AddEntityTodirectoryObjects",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -403,6 +410,7 @@
           "directoryObjects"
         ],
         "summary": "Get entity from directoryObjects by key",
+        "operationId": "GetEntityFromdirectoryObjectsByKey",
         "parameters": [
           {
             "name": "id",
@@ -451,6 +459,7 @@
           "directoryObjects"
         ],
         "summary": "Update entity in directoryObjects",
+        "operationId": "UpdateEntityIndirectoryObjects",
         "parameters": [
           {
             "name": "id",
@@ -487,6 +496,7 @@
           "directoryObjects"
         ],
         "summary": "Delete entity from directoryObjects",
+        "operationId": "DeleteEntityFromdirectoryObjects",
         "parameters": [
           {
             "name": "id",
@@ -522,6 +532,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getByIds",
+        "operationId": "InvokegetByIds",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -564,6 +575,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action validateProperties",
+        "operationId": "InvokevalidateProperties",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -611,6 +623,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action checkMemberGroups",
+        "operationId": "InvokecheckMemberGroups",
         "parameters": [
           {
             "name": "id",
@@ -657,6 +670,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberGroups",
+        "operationId": "InvokegetMemberGroups",
         "parameters": [
           {
             "name": "id",
@@ -702,6 +716,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberObjects",
+        "operationId": "InvokegetMemberObjects",
         "parameters": [
           {
             "name": "id",
@@ -747,6 +762,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action restore",
+        "operationId": "Invokerestore",
         "parameters": [
           {
             "name": "id",
@@ -774,6 +790,7 @@
           "applications"
         ],
         "summary": "Get entities from applications",
+        "operationId": "GetEntitiesFromapplications",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -894,6 +911,7 @@
           "applications"
         ],
         "summary": "Add new entity to applications",
+        "operationId": "AddEntityToapplications",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -928,6 +946,7 @@
           "applications"
         ],
         "summary": "Get entity from applications by key",
+        "operationId": "GetEntityFromapplicationsByKey",
         "parameters": [
           {
             "name": "id",
@@ -992,6 +1011,7 @@
           "applications"
         ],
         "summary": "Update entity in applications",
+        "operationId": "UpdateEntityInapplications",
         "parameters": [
           {
             "name": "id",
@@ -1028,6 +1048,7 @@
           "applications"
         ],
         "summary": "Delete entity from applications",
+        "operationId": "DeleteEntityFromapplications",
         "parameters": [
           {
             "name": "id",
@@ -1063,6 +1084,7 @@
           "administrativeUnits"
         ],
         "summary": "Get entities from administrativeUnits",
+        "operationId": "GetEntitiesFromadministrativeUnits",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1144,6 +1166,7 @@
           "administrativeUnits"
         ],
         "summary": "Add new entity to administrativeUnits",
+        "operationId": "AddEntityToadministrativeUnits",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -1178,6 +1201,7 @@
           "administrativeUnits"
         ],
         "summary": "Get entity from administrativeUnits by key",
+        "operationId": "GetEntityFromadministrativeUnitsByKey",
         "parameters": [
           {
             "name": "id",
@@ -1229,6 +1253,7 @@
           "administrativeUnits"
         ],
         "summary": "Update entity in administrativeUnits",
+        "operationId": "UpdateEntityInadministrativeUnits",
         "parameters": [
           {
             "name": "id",
@@ -1265,6 +1290,7 @@
           "administrativeUnits"
         ],
         "summary": "Delete entity from administrativeUnits",
+        "operationId": "DeleteEntityFromadministrativeUnits",
         "parameters": [
           {
             "name": "id",
@@ -1300,6 +1326,7 @@
           "administrativeUnits"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "responses": {
           "200": {
             "description": "Success",
@@ -1331,6 +1358,7 @@
           "allowedDataLocations"
         ],
         "summary": "Get entities from allowedDataLocations",
+        "operationId": "GetEntitiesFromallowedDataLocations",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1436,6 +1464,7 @@
           "allowedDataLocations"
         ],
         "summary": "Add new entity to allowedDataLocations",
+        "operationId": "AddEntityToallowedDataLocations",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -1470,6 +1499,7 @@
           "allowedDataLocations"
         ],
         "summary": "Get entity from allowedDataLocations by key",
+        "operationId": "GetEntityFromallowedDataLocationsByKey",
         "parameters": [
           {
             "name": "id",
@@ -1536,6 +1566,7 @@
           "allowedDataLocations"
         ],
         "summary": "Update entity in allowedDataLocations",
+        "operationId": "UpdateEntityInallowedDataLocations",
         "parameters": [
           {
             "name": "id",
@@ -1572,6 +1603,7 @@
           "allowedDataLocations"
         ],
         "summary": "Delete entity from allowedDataLocations",
+        "operationId": "DeleteEntityFromallowedDataLocations",
         "parameters": [
           {
             "name": "id",
@@ -1607,6 +1639,7 @@
           "appRoleAssignments"
         ],
         "summary": "Get entities from appRoleAssignments",
+        "operationId": "GetEntitiesFromappRoleAssignments",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1718,6 +1751,7 @@
           "appRoleAssignments"
         ],
         "summary": "Add new entity to appRoleAssignments",
+        "operationId": "AddEntityToappRoleAssignments",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -1752,6 +1786,7 @@
           "appRoleAssignments"
         ],
         "summary": "Get entity from appRoleAssignments by key",
+        "operationId": "GetEntityFromappRoleAssignmentsByKey",
         "parameters": [
           {
             "name": "id",
@@ -1820,6 +1855,7 @@
           "appRoleAssignments"
         ],
         "summary": "Update entity in appRoleAssignments",
+        "operationId": "UpdateEntityInappRoleAssignments",
         "parameters": [
           {
             "name": "id",
@@ -1856,6 +1892,7 @@
           "appRoleAssignments"
         ],
         "summary": "Delete entity from appRoleAssignments",
+        "operationId": "DeleteEntityFromappRoleAssignments",
         "parameters": [
           {
             "name": "id",
@@ -1891,6 +1928,7 @@
           "contacts"
         ],
         "summary": "Get entities from contacts",
+        "operationId": "GetEntitiesFromcontacts",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2023,6 +2061,7 @@
           "contacts"
         ],
         "summary": "Add new entity to contacts",
+        "operationId": "AddEntityTocontacts",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -2057,6 +2096,7 @@
           "contacts"
         ],
         "summary": "Get entity from contacts by key",
+        "operationId": "GetEntityFromcontactsByKey",
         "parameters": [
           {
             "name": "id",
@@ -2125,6 +2165,7 @@
           "contacts"
         ],
         "summary": "Update entity in contacts",
+        "operationId": "UpdateEntityIncontacts",
         "parameters": [
           {
             "name": "id",
@@ -2161,6 +2202,7 @@
           "contacts"
         ],
         "summary": "Delete entity from contacts",
+        "operationId": "DeleteEntityFromcontacts",
         "parameters": [
           {
             "name": "id",
@@ -2196,6 +2238,7 @@
           "contacts"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "responses": {
           "200": {
             "description": "Success",
@@ -2227,6 +2270,7 @@
           "devices"
         ],
         "summary": "Get entities from devices",
+        "operationId": "GetEntitiesFromdevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2362,6 +2406,7 @@
           "devices"
         ],
         "summary": "Add new entity to devices",
+        "operationId": "AddEntityTodevices",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -2396,6 +2441,7 @@
           "devices"
         ],
         "summary": "Get entity from devices by key",
+        "operationId": "GetEntityFromdevicesByKey",
         "parameters": [
           {
             "name": "id",
@@ -2465,6 +2511,7 @@
           "devices"
         ],
         "summary": "Update entity in devices",
+        "operationId": "UpdateEntityIndevices",
         "parameters": [
           {
             "name": "id",
@@ -2501,6 +2548,7 @@
           "devices"
         ],
         "summary": "Delete entity from devices",
+        "operationId": "DeleteEntityFromdevices",
         "parameters": [
           {
             "name": "id",
@@ -2536,6 +2584,7 @@
           "domains"
         ],
         "summary": "Get entities from domains",
+        "operationId": "GetEntitiesFromdomains",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2659,6 +2708,7 @@
           "domains"
         ],
         "summary": "Add new entity to domains",
+        "operationId": "AddEntityTodomains",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -2693,6 +2743,7 @@
           "domains"
         ],
         "summary": "Get entity from domains by key",
+        "operationId": "GetEntityFromdomainsByKey",
         "parameters": [
           {
             "name": "id",
@@ -2767,6 +2818,7 @@
           "domains"
         ],
         "summary": "Update entity in domains",
+        "operationId": "UpdateEntityIndomains",
         "parameters": [
           {
             "name": "id",
@@ -2803,6 +2855,7 @@
           "domains"
         ],
         "summary": "Delete entity from domains",
+        "operationId": "DeleteEntityFromdomains",
         "parameters": [
           {
             "name": "id",
@@ -2838,6 +2891,7 @@
           "domains"
         ],
         "summary": "Invoke action forceDelete",
+        "operationId": "InvokeforceDelete",
         "parameters": [
           {
             "name": "id",
@@ -2883,6 +2937,7 @@
           "domains"
         ],
         "summary": "Invoke action verify",
+        "operationId": "Invokeverify",
         "parameters": [
           {
             "name": "id",
@@ -2910,6 +2965,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entities from domainDnsRecords",
+        "operationId": "GetEntitiesFromdomainDnsRecords",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3018,6 +3074,7 @@
           "domainDnsRecords"
         ],
         "summary": "Add new entity to domainDnsRecords",
+        "operationId": "AddEntityTodomainDnsRecords",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -3052,6 +3109,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entity from domainDnsRecords by key",
+        "operationId": "GetEntityFromdomainDnsRecordsByKey",
         "parameters": [
           {
             "name": "id",
@@ -3119,6 +3177,7 @@
           "domainDnsRecords"
         ],
         "summary": "Update entity in domainDnsRecords",
+        "operationId": "UpdateEntityIndomainDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -3155,6 +3214,7 @@
           "domainDnsRecords"
         ],
         "summary": "Delete entity from domainDnsRecords",
+        "operationId": "DeleteEntityFromdomainDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -3190,6 +3250,7 @@
           "groups"
         ],
         "summary": "Get entities from groups",
+        "operationId": "GetEntitiesFromgroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3352,6 +3413,7 @@
           "groups"
         ],
         "summary": "Add new entity to groups",
+        "operationId": "AddEntityTogroups",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -3386,6 +3448,7 @@
           "groups"
         ],
         "summary": "Get entity from groups by key",
+        "operationId": "GetEntityFromgroupsByKey",
         "parameters": [
           {
             "name": "id",
@@ -3464,6 +3527,7 @@
           "groups"
         ],
         "summary": "Update entity in groups",
+        "operationId": "UpdateEntityIngroups",
         "parameters": [
           {
             "name": "id",
@@ -3500,6 +3564,7 @@
           "groups"
         ],
         "summary": "Delete entity from groups",
+        "operationId": "DeleteEntityFromgroups",
         "parameters": [
           {
             "name": "id",
@@ -3535,6 +3600,7 @@
           "groups"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "responses": {
           "200": {
             "description": "Success",
@@ -3566,6 +3632,7 @@
           "groups"
         ],
         "summary": "Invoke action validateProperties",
+        "operationId": "InvokevalidateProperties",
         "parameters": [
           {
             "name": "id",
@@ -3620,6 +3687,7 @@
           "groups"
         ],
         "summary": "Invoke action renew",
+        "operationId": "Invokerenew",
         "parameters": [
           {
             "name": "id",
@@ -3647,6 +3715,7 @@
           "groups"
         ],
         "summary": "Invoke action subscribeByMail",
+        "operationId": "InvokesubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -3674,6 +3743,7 @@
           "groups"
         ],
         "summary": "Invoke action unsubscribeByMail",
+        "operationId": "InvokeunsubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -3701,6 +3771,7 @@
           "groups"
         ],
         "summary": "Invoke action addFavorite",
+        "operationId": "InvokeaddFavorite",
         "parameters": [
           {
             "name": "id",
@@ -3728,6 +3799,7 @@
           "groups"
         ],
         "summary": "Invoke action removeFavorite",
+        "operationId": "InvokeremoveFavorite",
         "parameters": [
           {
             "name": "id",
@@ -3755,6 +3827,7 @@
           "groups"
         ],
         "summary": "Invoke action resetUnseenCount",
+        "operationId": "InvokeresetUnseenCount",
         "parameters": [
           {
             "name": "id",
@@ -3782,6 +3855,7 @@
           "directoryRoles"
         ],
         "summary": "Get entities from directoryRoles",
+        "operationId": "GetEntitiesFromdirectoryRoles",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -3860,6 +3934,7 @@
           "directoryRoles"
         ],
         "summary": "Add new entity to directoryRoles",
+        "operationId": "AddEntityTodirectoryRoles",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -3894,6 +3969,7 @@
           "directoryRoles"
         ],
         "summary": "Get entity from directoryRoles by key",
+        "operationId": "GetEntityFromdirectoryRolesByKey",
         "parameters": [
           {
             "name": "id",
@@ -3945,6 +4021,7 @@
           "directoryRoles"
         ],
         "summary": "Update entity in directoryRoles",
+        "operationId": "UpdateEntityIndirectoryRoles",
         "parameters": [
           {
             "name": "id",
@@ -3981,6 +4058,7 @@
           "directoryRoles"
         ],
         "summary": "Delete entity from directoryRoles",
+        "operationId": "DeleteEntityFromdirectoryRoles",
         "parameters": [
           {
             "name": "id",
@@ -4016,6 +4094,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entities from directoryRoleTemplates",
+        "operationId": "GetEntitiesFromdirectoryRoleTemplates",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -4091,6 +4170,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Add new entity to directoryRoleTemplates",
+        "operationId": "AddEntityTodirectoryRoleTemplates",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -4125,6 +4205,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entity from directoryRoleTemplates by key",
+        "operationId": "GetEntityFromdirectoryRoleTemplatesByKey",
         "parameters": [
           {
             "name": "id",
@@ -4175,6 +4256,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Update entity in directoryRoleTemplates",
+        "operationId": "UpdateEntityIndirectoryRoleTemplates",
         "parameters": [
           {
             "name": "id",
@@ -4211,6 +4293,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Delete entity from directoryRoleTemplates",
+        "operationId": "DeleteEntityFromdirectoryRoleTemplates",
         "parameters": [
           {
             "name": "id",
@@ -4246,6 +4329,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Get entities from directorySettingTemplates",
+        "operationId": "GetEntitiesFromdirectorySettingTemplates",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4327,6 +4411,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Add new entity to directorySettingTemplates",
+        "operationId": "AddEntityTodirectorySettingTemplates",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -4361,6 +4446,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Get entity from directorySettingTemplates by key",
+        "operationId": "GetEntityFromdirectorySettingTemplatesByKey",
         "parameters": [
           {
             "name": "id",
@@ -4412,6 +4498,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Update entity in directorySettingTemplates",
+        "operationId": "UpdateEntityIndirectorySettingTemplates",
         "parameters": [
           {
             "name": "id",
@@ -4448,6 +4535,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Delete entity from directorySettingTemplates",
+        "operationId": "DeleteEntityFromdirectorySettingTemplates",
         "parameters": [
           {
             "name": "id",
@@ -4483,6 +4571,7 @@
           "organization"
         ],
         "summary": "Get entities from organization",
+        "operationId": "GetEntitiesFromorganization",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4618,6 +4707,7 @@
           "organization"
         ],
         "summary": "Add new entity to organization",
+        "operationId": "AddEntityToorganization",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -4652,6 +4742,7 @@
           "organization"
         ],
         "summary": "Get entity from organization by key",
+        "operationId": "GetEntityFromorganizationByKey",
         "parameters": [
           {
             "name": "id",
@@ -4721,6 +4812,7 @@
           "organization"
         ],
         "summary": "Update entity in organization",
+        "operationId": "UpdateEntityInorganization",
         "parameters": [
           {
             "name": "id",
@@ -4757,6 +4849,7 @@
           "organization"
         ],
         "summary": "Delete entity from organization",
+        "operationId": "DeleteEntityFromorganization",
         "parameters": [
           {
             "name": "id",
@@ -4792,6 +4885,7 @@
           "organization"
         ],
         "summary": "Invoke action setMobileDeviceManagementAuthority",
+        "operationId": "InvokesetMobileDeviceManagementAuthority",
         "parameters": [
           {
             "name": "id",
@@ -4819,6 +4913,7 @@
           "organization"
         ],
         "summary": "Invoke function getEncryptionPublicKey",
+        "operationId": "InvokegetEncryptionPublicKey",
         "parameters": [
           {
             "name": "id",
@@ -4854,6 +4949,7 @@
           "organization"
         ],
         "summary": "Invoke action uploadDepToken",
+        "operationId": "InvokeuploadDepToken",
         "parameters": [
           {
             "name": "id",
@@ -4902,6 +4998,7 @@
           "organization"
         ],
         "summary": "Invoke action syncWithAppleDeviceEnrollmentProgram",
+        "operationId": "InvokesyncWithAppleDeviceEnrollmentProgram",
         "parameters": [
           {
             "name": "id",
@@ -4929,6 +5026,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Get entities from oauth2PermissionGrants",
+        "operationId": "GetEntitiesFromoauth2PermissionGrants",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5043,6 +5141,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Add new entity to oauth2PermissionGrants",
+        "operationId": "AddEntityTooauth2PermissionGrants",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -5077,6 +5176,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Get entity from oauth2PermissionGrants by key",
+        "operationId": "GetEntityFromoauth2PermissionGrantsByKey",
         "parameters": [
           {
             "name": "id",
@@ -5146,6 +5246,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Update entity in oauth2PermissionGrants",
+        "operationId": "UpdateEntityInoauth2PermissionGrants",
         "parameters": [
           {
             "name": "id",
@@ -5182,6 +5283,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Delete entity from oauth2PermissionGrants",
+        "operationId": "DeleteEntityFromoauth2PermissionGrants",
         "parameters": [
           {
             "name": "id",
@@ -5217,6 +5319,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Get entities from scopedRoleMemberships",
+        "operationId": "GetEntitiesFromscopedRoleMemberships",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5319,6 +5422,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Add new entity to scopedRoleMemberships",
+        "operationId": "AddEntityToscopedRoleMemberships",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -5353,6 +5457,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Get entity from scopedRoleMemberships by key",
+        "operationId": "GetEntityFromscopedRoleMembershipsByKey",
         "parameters": [
           {
             "name": "id",
@@ -5418,6 +5523,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Update entity in scopedRoleMemberships",
+        "operationId": "UpdateEntityInscopedRoleMemberships",
         "parameters": [
           {
             "name": "id",
@@ -5454,6 +5560,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Delete entity from scopedRoleMemberships",
+        "operationId": "DeleteEntityFromscopedRoleMemberships",
         "parameters": [
           {
             "name": "id",
@@ -5489,6 +5596,7 @@
           "servicePrincipals"
         ],
         "summary": "Get entities from servicePrincipals",
+        "operationId": "GetEntitiesFromservicePrincipals",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5621,6 +5729,7 @@
           "servicePrincipals"
         ],
         "summary": "Add new entity to servicePrincipals",
+        "operationId": "AddEntityToservicePrincipals",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -5655,6 +5764,7 @@
           "servicePrincipals"
         ],
         "summary": "Get entity from servicePrincipals by key",
+        "operationId": "GetEntityFromservicePrincipalsByKey",
         "parameters": [
           {
             "name": "id",
@@ -5723,6 +5833,7 @@
           "servicePrincipals"
         ],
         "summary": "Update entity in servicePrincipals",
+        "operationId": "UpdateEntityInservicePrincipals",
         "parameters": [
           {
             "name": "id",
@@ -5759,6 +5870,7 @@
           "servicePrincipals"
         ],
         "summary": "Delete entity from servicePrincipals",
+        "operationId": "DeleteEntityFromservicePrincipals",
         "parameters": [
           {
             "name": "id",
@@ -5794,6 +5906,7 @@
           "settings"
         ],
         "summary": "Get entities from settings",
+        "operationId": "GetEntitiesFromsettings",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5896,6 +6009,7 @@
           "settings"
         ],
         "summary": "Add new entity to settings",
+        "operationId": "AddEntityTosettings",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -5930,6 +6044,7 @@
           "settings"
         ],
         "summary": "Get entity from settings by key",
+        "operationId": "GetEntityFromsettingsByKey",
         "parameters": [
           {
             "name": "id",
@@ -5995,6 +6110,7 @@
           "settings"
         ],
         "summary": "Update entity in settings",
+        "operationId": "UpdateEntityInsettings",
         "parameters": [
           {
             "name": "id",
@@ -6031,6 +6147,7 @@
           "settings"
         ],
         "summary": "Delete entity from settings",
+        "operationId": "DeleteEntityFromsettings",
         "parameters": [
           {
             "name": "id",
@@ -6066,6 +6183,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entities from subscribedSkus",
+        "operationId": "GetEntitiesFromsubscribedSkus",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -6153,6 +6271,7 @@
           "subscribedSkus"
         ],
         "summary": "Add new entity to subscribedSkus",
+        "operationId": "AddEntityTosubscribedSkus",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -6187,6 +6306,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entity from subscribedSkus by key",
+        "operationId": "GetEntityFromsubscribedSkusByKey",
         "parameters": [
           {
             "name": "id",
@@ -6241,6 +6361,7 @@
           "subscribedSkus"
         ],
         "summary": "Update entity in subscribedSkus",
+        "operationId": "UpdateEntityInsubscribedSkus",
         "parameters": [
           {
             "name": "id",
@@ -6277,6 +6398,7 @@
           "subscribedSkus"
         ],
         "summary": "Delete entity from subscribedSkus",
+        "operationId": "DeleteEntityFromsubscribedSkus",
         "parameters": [
           {
             "name": "id",
@@ -6312,6 +6434,7 @@
           "users"
         ],
         "summary": "Get entities from users",
+        "operationId": "GetEntitiesFromusers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -6546,6 +6669,7 @@
           "users"
         ],
         "summary": "Add new entity to users",
+        "operationId": "AddEntityTousers",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -6580,6 +6704,7 @@
           "users"
         ],
         "summary": "Get entity from users by key",
+        "operationId": "GetEntityFromusersByKey",
         "parameters": [
           {
             "name": "id",
@@ -6682,6 +6807,7 @@
           "users"
         ],
         "summary": "Update entity in users",
+        "operationId": "UpdateEntityInusers",
         "parameters": [
           {
             "name": "id",
@@ -6718,6 +6844,7 @@
           "users"
         ],
         "summary": "Delete entity from users",
+        "operationId": "DeleteEntityFromusers",
         "parameters": [
           {
             "name": "id",
@@ -6753,6 +6880,7 @@
           "users"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "responses": {
           "200": {
             "description": "Success",
@@ -6784,6 +6912,7 @@
           "users"
         ],
         "summary": "Invoke action assignLicense",
+        "operationId": "InvokeassignLicense",
         "parameters": [
           {
             "name": "id",
@@ -6838,6 +6967,7 @@
           "users"
         ],
         "summary": "Invoke action changePassword",
+        "operationId": "InvokechangePassword",
         "parameters": [
           {
             "name": "id",
@@ -6886,6 +7016,7 @@
           "users"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
+        "operationId": "InvokeinvalidateAllRefreshTokens",
         "parameters": [
           {
             "name": "id",
@@ -6913,6 +7044,7 @@
           "users"
         ],
         "summary": "Invoke action sendMail",
+        "operationId": "InvokesendMail",
         "parameters": [
           {
             "name": "id",
@@ -6961,6 +7093,7 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
+        "operationId": "InvokefindMeetingTimesOLD",
         "parameters": [
           {
             "name": "id",
@@ -7051,6 +7184,7 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimes",
+        "operationId": "InvokefindMeetingTimes",
         "parameters": [
           {
             "name": "id",
@@ -7160,6 +7294,7 @@
           "users"
         ],
         "summary": "Invoke action getMailTips",
+        "operationId": "InvokegetMailTips",
         "parameters": [
           {
             "name": "id",
@@ -7214,6 +7349,7 @@
           "users"
         ],
         "summary": "Invoke function reminderView",
+        "operationId": "InvokereminderView",
         "parameters": [
           {
             "name": "id",
@@ -7251,6 +7387,7 @@
           "users"
         ],
         "summary": "Invoke function findRoomLists",
+        "operationId": "InvokefindRoomLists",
         "parameters": [
           {
             "name": "id",
@@ -7288,6 +7425,7 @@
           "users"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "parameters": [
           {
             "name": "id",
@@ -7325,6 +7463,7 @@
           "users"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "parameters": [
           {
             "name": "id",
@@ -7362,6 +7501,7 @@
           "users"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
+        "operationId": "InvokeremoveAllDevicesFromManagement",
         "parameters": [
           {
             "name": "id",
@@ -7389,6 +7529,7 @@
           "users"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
+        "operationId": "InvokegetManagedAppDiagnosticStatuses",
         "parameters": [
           {
             "name": "id",
@@ -7431,6 +7572,7 @@
           "users"
         ],
         "summary": "Invoke function getManagedAppPolicies",
+        "operationId": "InvokegetManagedAppPolicies",
         "parameters": [
           {
             "name": "id",
@@ -7473,6 +7615,7 @@
           "users"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
+        "operationId": "InvokewipeManagedAppRegistrationByDeviceTag",
         "parameters": [
           {
             "name": "id",
@@ -7517,6 +7660,7 @@
           "policies"
         ],
         "summary": "Get entities from policies",
+        "operationId": "GetEntitiesFrompolicies",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -7607,6 +7751,7 @@
           "policies"
         ],
         "summary": "Add new entity to policies",
+        "operationId": "AddEntityTopolicies",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -7641,6 +7786,7 @@
           "policies"
         ],
         "summary": "Get entity from policies by key",
+        "operationId": "GetEntityFrompoliciesByKey",
         "parameters": [
           {
             "name": "id",
@@ -7695,6 +7841,7 @@
           "policies"
         ],
         "summary": "Update entity in policies",
+        "operationId": "UpdateEntityInpolicies",
         "parameters": [
           {
             "name": "id",
@@ -7731,6 +7878,7 @@
           "policies"
         ],
         "summary": "Delete entity from policies",
+        "operationId": "DeleteEntityFrompolicies",
         "parameters": [
           {
             "name": "id",
@@ -7766,6 +7914,7 @@
           "contracts"
         ],
         "summary": "Get entities from contracts",
+        "operationId": "GetEntitiesFromcontracts",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -7850,6 +7999,7 @@
           "contracts"
         ],
         "summary": "Add new entity to contracts",
+        "operationId": "AddEntityTocontracts",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -7884,6 +8034,7 @@
           "contracts"
         ],
         "summary": "Get entity from contracts by key",
+        "operationId": "GetEntityFromcontractsByKey",
         "parameters": [
           {
             "name": "id",
@@ -7936,6 +8087,7 @@
           "contracts"
         ],
         "summary": "Update entity in contracts",
+        "operationId": "UpdateEntityIncontracts",
         "parameters": [
           {
             "name": "id",
@@ -7972,6 +8124,7 @@
           "contracts"
         ],
         "summary": "Delete entity from contracts",
+        "operationId": "DeleteEntityFromcontracts",
         "parameters": [
           {
             "name": "id",
@@ -8007,6 +8160,7 @@
           "workbooks"
         ],
         "summary": "Get entities from workbooks",
+        "operationId": "GetEntitiesFromworkbooks",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -8199,6 +8353,7 @@
           "workbooks"
         ],
         "summary": "Add new entity to workbooks",
+        "operationId": "AddEntityToworkbooks",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -8233,6 +8388,7 @@
           "workbooks"
         ],
         "summary": "Get entity from workbooks by key",
+        "operationId": "GetEntityFromworkbooksByKey",
         "parameters": [
           {
             "name": "id",
@@ -8334,6 +8490,7 @@
           "workbooks"
         ],
         "summary": "Update entity in workbooks",
+        "operationId": "UpdateEntityInworkbooks",
         "parameters": [
           {
             "name": "id",
@@ -8370,6 +8527,7 @@
           "workbooks"
         ],
         "summary": "Delete entity from workbooks",
+        "operationId": "DeleteEntityFromworkbooks",
         "parameters": [
           {
             "name": "id",
@@ -8405,6 +8563,7 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "parameters": [
           {
             "name": "id",
@@ -8447,6 +8606,7 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "parameters": [
           {
             "name": "id",
@@ -8489,6 +8649,7 @@
           "workbooks"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invokesearch",
         "parameters": [
           {
             "name": "id",
@@ -8531,6 +8692,7 @@
           "workbooks"
         ],
         "summary": "Invoke action checkin",
+        "operationId": "Invokecheckin",
         "parameters": [
           {
             "name": "id",
@@ -8579,6 +8741,7 @@
           "workbooks"
         ],
         "summary": "Invoke action checkout",
+        "operationId": "Invokecheckout",
         "parameters": [
           {
             "name": "id",
@@ -8606,6 +8769,7 @@
           "workbooks"
         ],
         "summary": "Invoke action copy",
+        "operationId": "Invokecopy",
         "parameters": [
           {
             "name": "id",
@@ -8658,6 +8822,7 @@
           "workbooks"
         ],
         "summary": "Invoke action createLink",
+        "operationId": "InvokecreateLink",
         "parameters": [
           {
             "name": "id",
@@ -8730,6 +8895,7 @@
           "workbooks"
         ],
         "summary": "Invoke action createUploadSession",
+        "operationId": "InvokecreateUploadSession",
         "parameters": [
           {
             "name": "id",
@@ -8778,6 +8944,7 @@
           "workbooks"
         ],
         "summary": "Invoke action invite",
+        "operationId": "Invokeinvite",
         "parameters": [
           {
             "name": "id",
@@ -8845,6 +9012,7 @@
           "workbooks"
         ],
         "summary": "Invoke action validatePermission",
+        "operationId": "InvokevalidatePermission",
         "parameters": [
           {
             "name": "id",
@@ -8891,6 +9059,7 @@
           "drives"
         ],
         "summary": "Get entities from drives",
+        "operationId": "GetEntitiesFromdrives",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9033,6 +9202,7 @@
           "drives"
         ],
         "summary": "Add new entity to drives",
+        "operationId": "AddEntityTodrives",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -9067,6 +9237,7 @@
           "drives"
         ],
         "summary": "Get entity from drives by key",
+        "operationId": "GetEntityFromdrivesByKey",
         "parameters": [
           {
             "name": "id",
@@ -9150,6 +9321,7 @@
           "drives"
         ],
         "summary": "Update entity in drives",
+        "operationId": "UpdateEntityIndrives",
         "parameters": [
           {
             "name": "id",
@@ -9186,6 +9358,7 @@
           "drives"
         ],
         "summary": "Delete entity from drives",
+        "operationId": "DeleteEntityFromdrives",
         "parameters": [
           {
             "name": "id",
@@ -9221,6 +9394,7 @@
           "drives"
         ],
         "summary": "Invoke function recent",
+        "operationId": "Invokerecent",
         "parameters": [
           {
             "name": "id",
@@ -9263,6 +9437,7 @@
           "drives"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invokesearch",
         "parameters": [
           {
             "name": "id",
@@ -9305,6 +9480,7 @@
           "drives"
         ],
         "summary": "Invoke function sharedWithMe",
+        "operationId": "InvokesharedWithMe",
         "parameters": [
           {
             "name": "id",
@@ -9347,6 +9523,7 @@
           "shares"
         ],
         "summary": "Get entities from shares",
+        "operationId": "GetEntitiesFromshares",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9478,6 +9655,7 @@
           "shares"
         ],
         "summary": "Add new entity to shares",
+        "operationId": "AddEntityToshares",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -9512,6 +9690,7 @@
           "shares"
         ],
         "summary": "Get entity from shares by key",
+        "operationId": "GetEntityFromsharesByKey",
         "parameters": [
           {
             "name": "id",
@@ -9592,6 +9771,7 @@
           "shares"
         ],
         "summary": "Update entity in shares",
+        "operationId": "UpdateEntityInshares",
         "parameters": [
           {
             "name": "id",
@@ -9628,6 +9808,7 @@
           "shares"
         ],
         "summary": "Delete entity from shares",
+        "operationId": "DeleteEntityFromshares",
         "parameters": [
           {
             "name": "id",
@@ -9663,6 +9844,7 @@
           "sites"
         ],
         "summary": "Get entities from sites",
+        "operationId": "GetEntitiesFromsites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9805,6 +9987,7 @@
           "sites"
         ],
         "summary": "Add new entity to sites",
+        "operationId": "AddEntityTosites",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -9839,6 +10022,7 @@
           "sites"
         ],
         "summary": "Get entity from sites by key",
+        "operationId": "GetEntityFromsitesByKey",
         "parameters": [
           {
             "name": "id",
@@ -9924,6 +10108,7 @@
           "sites"
         ],
         "summary": "Update entity in sites",
+        "operationId": "UpdateEntityInsites",
         "parameters": [
           {
             "name": "id",
@@ -9960,6 +10145,7 @@
           "sites"
         ],
         "summary": "Delete entity from sites",
+        "operationId": "DeleteEntityFromsites",
         "parameters": [
           {
             "name": "id",
@@ -9995,6 +10181,7 @@
           "sites"
         ],
         "summary": "Invoke function getByPath",
+        "operationId": "InvokegetByPath",
         "parameters": [
           {
             "name": "id",
@@ -10034,6 +10221,7 @@
           "subscriptions"
         ],
         "summary": "Get entities from subscriptions",
+        "operationId": "GetEntitiesFromsubscriptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -10089,6 +10277,7 @@
           "subscriptions"
         ],
         "summary": "Add new entity to subscriptions",
+        "operationId": "AddEntityTosubscriptions",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -10123,6 +10312,7 @@
           "subscriptions"
         ],
         "summary": "Get entity from subscriptions by key",
+        "operationId": "GetEntityFromsubscriptionsByKey",
         "parameters": [
           {
             "name": "id",
@@ -10175,6 +10365,7 @@
           "subscriptions"
         ],
         "summary": "Update entity in subscriptions",
+        "operationId": "UpdateEntityInsubscriptions",
         "parameters": [
           {
             "name": "id",
@@ -10211,6 +10402,7 @@
           "subscriptions"
         ],
         "summary": "Delete entity from subscriptions",
+        "operationId": "DeleteEntityFromsubscriptions",
         "parameters": [
           {
             "name": "id",
@@ -10246,6 +10438,7 @@
           "identityRiskEvents"
         ],
         "summary": "Get entities from identityRiskEvents",
+        "operationId": "GetEntitiesFromidentityRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10367,6 +10560,7 @@
           "identityRiskEvents"
         ],
         "summary": "Add new entity to identityRiskEvents",
+        "operationId": "AddEntityToidentityRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -10401,6 +10595,7 @@
           "identityRiskEvents"
         ],
         "summary": "Get entity from identityRiskEvents by key",
+        "operationId": "GetEntityFromidentityRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -10473,6 +10668,7 @@
           "identityRiskEvents"
         ],
         "summary": "Update entity in identityRiskEvents",
+        "operationId": "UpdateEntityInidentityRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10509,6 +10705,7 @@
           "identityRiskEvents"
         ],
         "summary": "Delete entity from identityRiskEvents",
+        "operationId": "DeleteEntityFromidentityRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10544,6 +10741,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Get entities from impossibleTravelRiskEvents",
+        "operationId": "GetEntitiesFromimpossibleTravelRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10689,6 +10887,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Add new entity to impossibleTravelRiskEvents",
+        "operationId": "AddEntityToimpossibleTravelRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -10723,6 +10922,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Get entity from impossibleTravelRiskEvents by key",
+        "operationId": "GetEntityFromimpossibleTravelRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -10803,6 +11003,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Update entity in impossibleTravelRiskEvents",
+        "operationId": "UpdateEntityInimpossibleTravelRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10839,6 +11040,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Delete entity from impossibleTravelRiskEvents",
+        "operationId": "DeleteEntityFromimpossibleTravelRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10874,6 +11076,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Get entities from leakedCredentialsRiskEvents",
+        "operationId": "GetEntitiesFromleakedCredentialsRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10995,6 +11198,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Add new entity to leakedCredentialsRiskEvents",
+        "operationId": "AddEntityToleakedCredentialsRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -11029,6 +11233,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Get entity from leakedCredentialsRiskEvents by key",
+        "operationId": "GetEntityFromleakedCredentialsRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -11101,6 +11306,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Update entity in leakedCredentialsRiskEvents",
+        "operationId": "UpdateEntityInleakedCredentialsRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11137,6 +11343,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Delete entity from leakedCredentialsRiskEvents",
+        "operationId": "DeleteEntityFromleakedCredentialsRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11172,6 +11379,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Get entities from anonymousIpRiskEvents",
+        "operationId": "GetEntitiesFromanonymousIpRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11299,6 +11507,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Add new entity to anonymousIpRiskEvents",
+        "operationId": "AddEntityToanonymousIpRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -11333,6 +11542,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Get entity from anonymousIpRiskEvents by key",
+        "operationId": "GetEntityFromanonymousIpRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -11407,6 +11617,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Update entity in anonymousIpRiskEvents",
+        "operationId": "UpdateEntityInanonymousIpRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11443,6 +11654,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Delete entity from anonymousIpRiskEvents",
+        "operationId": "DeleteEntityFromanonymousIpRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11478,6 +11690,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Get entities from suspiciousIpRiskEvents",
+        "operationId": "GetEntitiesFromsuspiciousIpRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11605,6 +11818,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Add new entity to suspiciousIpRiskEvents",
+        "operationId": "AddEntityTosuspiciousIpRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -11639,6 +11853,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Get entity from suspiciousIpRiskEvents by key",
+        "operationId": "GetEntityFromsuspiciousIpRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -11713,6 +11928,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Update entity in suspiciousIpRiskEvents",
+        "operationId": "UpdateEntityInsuspiciousIpRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11749,6 +11965,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Delete entity from suspiciousIpRiskEvents",
+        "operationId": "DeleteEntityFromsuspiciousIpRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11784,6 +12001,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Get entities from unfamiliarLocationRiskEvents",
+        "operationId": "GetEntitiesFromunfamiliarLocationRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11911,6 +12129,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Add new entity to unfamiliarLocationRiskEvents",
+        "operationId": "AddEntityTounfamiliarLocationRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -11945,6 +12164,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Get entity from unfamiliarLocationRiskEvents by key",
+        "operationId": "GetEntityFromunfamiliarLocationRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -12019,6 +12239,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Update entity in unfamiliarLocationRiskEvents",
+        "operationId": "UpdateEntityInunfamiliarLocationRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -12055,6 +12276,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Delete entity from unfamiliarLocationRiskEvents",
+        "operationId": "DeleteEntityFromunfamiliarLocationRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -12090,6 +12312,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Get entities from malwareRiskEvents",
+        "operationId": "GetEntitiesFrommalwareRiskEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -12223,6 +12446,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Add new entity to malwareRiskEvents",
+        "operationId": "AddEntityTomalwareRiskEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -12257,6 +12481,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Get entity from malwareRiskEvents by key",
+        "operationId": "GetEntityFrommalwareRiskEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -12333,6 +12558,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Update entity in malwareRiskEvents",
+        "operationId": "UpdateEntityInmalwareRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -12369,6 +12595,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Delete entity from malwareRiskEvents",
+        "operationId": "DeleteEntityFrommalwareRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -12404,6 +12631,7 @@
           "privilegedRoles"
         ],
         "summary": "Get entities from privilegedRoles",
+        "operationId": "GetEntitiesFromprivilegedRoles",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -12503,6 +12731,7 @@
           "privilegedRoles"
         ],
         "summary": "Add new entity to privilegedRoles",
+        "operationId": "AddEntityToprivilegedRoles",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -12537,6 +12766,7 @@
           "privilegedRoles"
         ],
         "summary": "Get entity from privilegedRoles by key",
+        "operationId": "GetEntityFromprivilegedRolesByKey",
         "parameters": [
           {
             "name": "id",
@@ -12603,6 +12833,7 @@
           "privilegedRoles"
         ],
         "summary": "Update entity in privilegedRoles",
+        "operationId": "UpdateEntityInprivilegedRoles",
         "parameters": [
           {
             "name": "id",
@@ -12639,6 +12870,7 @@
           "privilegedRoles"
         ],
         "summary": "Delete entity from privilegedRoles",
+        "operationId": "DeleteEntityFromprivilegedRoles",
         "parameters": [
           {
             "name": "id",
@@ -12674,6 +12906,7 @@
           "privilegedRoles"
         ],
         "summary": "Invoke action selfActivate",
+        "operationId": "InvokeselfActivate",
         "parameters": [
           {
             "name": "id",
@@ -12730,6 +12963,7 @@
           "privilegedRoles"
         ],
         "summary": "Invoke action selfDeactivate",
+        "operationId": "InvokeselfDeactivate",
         "parameters": [
           {
             "name": "id",
@@ -12757,6 +12991,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Get entities from privilegedRoleAssignments",
+        "operationId": "GetEntitiesFromprivilegedRoleAssignments",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -12866,6 +13101,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Add new entity to privilegedRoleAssignments",
+        "operationId": "AddEntityToprivilegedRoleAssignments",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -12900,6 +13136,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Get entity from privilegedRoleAssignments by key",
+        "operationId": "GetEntityFromprivilegedRoleAssignmentsByKey",
         "parameters": [
           {
             "name": "id",
@@ -12968,6 +13205,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Update entity in privilegedRoleAssignments",
+        "operationId": "UpdateEntityInprivilegedRoleAssignments",
         "parameters": [
           {
             "name": "id",
@@ -13004,6 +13242,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Delete entity from privilegedRoleAssignments",
+        "operationId": "DeleteEntityFromprivilegedRoleAssignments",
         "parameters": [
           {
             "name": "id",
@@ -13039,6 +13278,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Invoke function my",
+        "operationId": "Invokemy",
         "responses": {
           "200": {
             "description": "Success",
@@ -13070,6 +13310,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Invoke action makePermanent",
+        "operationId": "InvokemakePermanent",
         "parameters": [
           {
             "name": "id",
@@ -13122,6 +13363,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Invoke action makeEligible",
+        "operationId": "InvokemakeEligible",
         "parameters": [
           {
             "name": "id",
@@ -13149,6 +13391,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Get entities from privilegedOperationEvents",
+        "operationId": "GetEntitiesFromprivilegedOperationEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -13284,6 +13527,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Add new entity to privilegedOperationEvents",
+        "operationId": "AddEntityToprivilegedOperationEvents",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -13318,6 +13562,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Get entity from privilegedOperationEvents by key",
+        "operationId": "GetEntityFromprivilegedOperationEventsByKey",
         "parameters": [
           {
             "name": "id",
@@ -13394,6 +13639,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Update entity in privilegedOperationEvents",
+        "operationId": "UpdateEntityInprivilegedOperationEvents",
         "parameters": [
           {
             "name": "id",
@@ -13430,6 +13676,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Delete entity from privilegedOperationEvents",
+        "operationId": "DeleteEntityFromprivilegedOperationEvents",
         "parameters": [
           {
             "name": "id",
@@ -13465,6 +13712,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Get entities from privilegedSignupStatus",
+        "operationId": "GetEntitiesFromprivilegedSignupStatus",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -13564,6 +13812,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Add new entity to privilegedSignupStatus",
+        "operationId": "AddEntityToprivilegedSignupStatus",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -13598,6 +13847,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Get entity from privilegedSignupStatus by key",
+        "operationId": "GetEntityFromprivilegedSignupStatusByKey",
         "parameters": [
           {
             "name": "id",
@@ -13662,6 +13912,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Update entity in privilegedSignupStatus",
+        "operationId": "UpdateEntityInprivilegedSignupStatus",
         "parameters": [
           {
             "name": "id",
@@ -13698,6 +13949,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Delete entity from privilegedSignupStatus",
+        "operationId": "DeleteEntityFromprivilegedSignupStatus",
         "parameters": [
           {
             "name": "id",
@@ -13733,6 +13985,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke action signUp",
+        "operationId": "InvokesignUp",
         "responses": {
           "204": {
             "description": "Success"
@@ -13749,6 +14002,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke function isSignedUp",
+        "operationId": "InvokeisSignedUp",
         "responses": {
           "200": {
             "description": "Success",
@@ -13773,6 +14027,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke function canSignUp",
+        "operationId": "InvokecanSignUp",
         "responses": {
           "200": {
             "description": "Success",
@@ -13797,6 +14052,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke action completeSetup",
+        "operationId": "InvokecompleteSetup",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -13834,6 +14090,7 @@
           "privilegedApproval"
         ],
         "summary": "Get entities from privilegedApproval",
+        "operationId": "GetEntitiesFromprivilegedApproval",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -13955,6 +14212,7 @@
           "privilegedApproval"
         ],
         "summary": "Add new entity to privilegedApproval",
+        "operationId": "AddEntityToprivilegedApproval",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -13989,6 +14247,7 @@
           "privilegedApproval"
         ],
         "summary": "Get entity from privilegedApproval by key",
+        "operationId": "GetEntityFromprivilegedApprovalByKey",
         "parameters": [
           {
             "name": "id",
@@ -14061,6 +14320,7 @@
           "privilegedApproval"
         ],
         "summary": "Update entity in privilegedApproval",
+        "operationId": "UpdateEntityInprivilegedApproval",
         "parameters": [
           {
             "name": "id",
@@ -14097,6 +14357,7 @@
           "privilegedApproval"
         ],
         "summary": "Delete entity from privilegedApproval",
+        "operationId": "DeleteEntityFromprivilegedApproval",
         "parameters": [
           {
             "name": "id",
@@ -14132,6 +14393,7 @@
           "privilegedApproval"
         ],
         "summary": "Invoke function myRequests",
+        "operationId": "InvokemyRequests",
         "responses": {
           "200": {
             "description": "Success",
@@ -14163,6 +14425,7 @@
           "invitations"
         ],
         "summary": "Get entities from invitations",
+        "operationId": "GetEntitiesFrominvitations",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -14281,6 +14544,7 @@
           "invitations"
         ],
         "summary": "Add new entity to invitations",
+        "operationId": "AddEntityToinvitations",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -14315,6 +14579,7 @@
           "invitations"
         ],
         "summary": "Get entity from invitations by key",
+        "operationId": "GetEntityFrominvitationsByKey",
         "parameters": [
           {
             "name": "id",
@@ -14386,6 +14651,7 @@
           "invitations"
         ],
         "summary": "Update entity in invitations",
+        "operationId": "UpdateEntityIninvitations",
         "parameters": [
           {
             "name": "id",
@@ -14422,6 +14688,7 @@
           "invitations"
         ],
         "summary": "Delete entity from invitations",
+        "operationId": "DeleteEntityFrominvitations",
         "parameters": [
           {
             "name": "id",
@@ -14457,6 +14724,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Get entities from appConfigurationGroupAssignments",
+        "operationId": "GetEntitiesFromappConfigurationGroupAssignments",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -14556,6 +14824,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Add new entity to appConfigurationGroupAssignments",
+        "operationId": "AddEntityToappConfigurationGroupAssignments",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -14590,6 +14859,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Get entity from appConfigurationGroupAssignments by key",
+        "operationId": "GetEntityFromappConfigurationGroupAssignmentsByKey",
         "parameters": [
           {
             "name": "id",
@@ -14654,6 +14924,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Update entity in appConfigurationGroupAssignments",
+        "operationId": "UpdateEntityInappConfigurationGroupAssignments",
         "parameters": [
           {
             "name": "id",
@@ -14690,6 +14961,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Delete entity from appConfigurationGroupAssignments",
+        "operationId": "DeleteEntityFromappConfigurationGroupAssignments",
         "parameters": [
           {
             "name": "id",
@@ -14725,6 +14997,7 @@
           "assignments"
         ],
         "summary": "Get entities from assignments",
+        "operationId": "GetEntitiesFromassignments",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -14821,6 +15094,7 @@
           "assignments"
         ],
         "summary": "Add new entity to assignments",
+        "operationId": "AddEntityToassignments",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -14855,6 +15129,7 @@
           "assignments"
         ],
         "summary": "Get entity from assignments by key",
+        "operationId": "GetEntityFromassignmentsByKey",
         "parameters": [
           {
             "name": "id",
@@ -14918,6 +15193,7 @@
           "assignments"
         ],
         "summary": "Update entity in assignments",
+        "operationId": "UpdateEntityInassignments",
         "parameters": [
           {
             "name": "id",
@@ -14954,6 +15230,7 @@
           "assignments"
         ],
         "summary": "Delete entity from assignments",
+        "operationId": "DeleteEntityFromassignments",
         "parameters": [
           {
             "name": "id",
@@ -14989,6 +15266,7 @@
           "vppTokens"
         ],
         "summary": "Get entities from vppTokens",
+        "operationId": "GetEntitiesFromvppTokens",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -15118,6 +15396,7 @@
           "vppTokens"
         ],
         "summary": "Add new entity to vppTokens",
+        "operationId": "AddEntityTovppTokens",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -15152,6 +15431,7 @@
           "vppTokens"
         ],
         "summary": "Get entity from vppTokens by key",
+        "operationId": "GetEntityFromvppTokensByKey",
         "parameters": [
           {
             "name": "id",
@@ -15226,6 +15506,7 @@
           "vppTokens"
         ],
         "summary": "Update entity in vppTokens",
+        "operationId": "UpdateEntityInvppTokens",
         "parameters": [
           {
             "name": "id",
@@ -15262,6 +15543,7 @@
           "vppTokens"
         ],
         "summary": "Delete entity from vppTokens",
+        "operationId": "DeleteEntityFromvppTokens",
         "parameters": [
           {
             "name": "id",
@@ -15297,6 +15579,7 @@
           "vppTokens"
         ],
         "summary": "Invoke action syncLicenses",
+        "operationId": "InvokesyncLicenses",
         "parameters": [
           {
             "name": "id",
@@ -15324,6 +15607,7 @@
           "vppTokens"
         ],
         "summary": "Invoke action revokeLicenses",
+        "operationId": "InvokerevokeLicenses",
         "parameters": [
           {
             "name": "id",
@@ -15351,6 +15635,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Get entities from enrollmentConfigurationAssignment",
+        "operationId": "GetEntitiesFromenrollmentConfigurationAssignment",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -15447,6 +15732,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Add new entity to enrollmentConfigurationAssignment",
+        "operationId": "AddEntityToenrollmentConfigurationAssignment",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -15481,6 +15767,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Get entity from enrollmentConfigurationAssignment by key",
+        "operationId": "GetEntityFromenrollmentConfigurationAssignmentByKey",
         "parameters": [
           {
             "name": "id",
@@ -15544,6 +15831,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Update entity in enrollmentConfigurationAssignment",
+        "operationId": "UpdateEntityInenrollmentConfigurationAssignment",
         "parameters": [
           {
             "name": "id",
@@ -15580,6 +15868,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Delete entity from enrollmentConfigurationAssignment",
+        "operationId": "DeleteEntityFromenrollmentConfigurationAssignment",
         "parameters": [
           {
             "name": "id",
@@ -15615,6 +15904,7 @@
           "commands"
         ],
         "summary": "Get entities from commands",
+        "operationId": "GetEntitiesFromcommands",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -15733,6 +16023,7 @@
           "commands"
         ],
         "summary": "Add new entity to commands",
+        "operationId": "AddEntityTocommands",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -15767,6 +16058,7 @@
           "commands"
         ],
         "summary": "Get entity from commands by key",
+        "operationId": "GetEntityFromcommandsByKey",
         "parameters": [
           {
             "name": "id",
@@ -15838,6 +16130,7 @@
           "commands"
         ],
         "summary": "Update entity in commands",
+        "operationId": "UpdateEntityIncommands",
         "parameters": [
           {
             "name": "id",
@@ -15874,6 +16167,7 @@
           "commands"
         ],
         "summary": "Delete entity from commands",
+        "operationId": "DeleteEntityFromcommands",
         "parameters": [
           {
             "name": "id",
@@ -15909,6 +16203,7 @@
           "payloadResponse"
         ],
         "summary": "Get entities from payloadResponse",
+        "operationId": "GetEntitiesFrompayloadResponse",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -16002,6 +16297,7 @@
           "payloadResponse"
         ],
         "summary": "Add new entity to payloadResponse",
+        "operationId": "AddEntityTopayloadResponse",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -16036,6 +16332,7 @@
           "payloadResponse"
         ],
         "summary": "Get entity from payloadResponse by key",
+        "operationId": "GetEntityFrompayloadResponseByKey",
         "parameters": [
           {
             "name": "id",
@@ -16098,6 +16395,7 @@
           "payloadResponse"
         ],
         "summary": "Update entity in payloadResponse",
+        "operationId": "UpdateEntityInpayloadResponse",
         "parameters": [
           {
             "name": "id",
@@ -16134,6 +16432,7 @@
           "payloadResponse"
         ],
         "summary": "Delete entity from payloadResponse",
+        "operationId": "DeleteEntityFrompayloadResponse",
         "parameters": [
           {
             "name": "id",
@@ -16169,6 +16468,7 @@
           "team"
         ],
         "summary": "Get entities from team",
+        "operationId": "GetEntitiesFromteam",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -16275,6 +16575,7 @@
           "team"
         ],
         "summary": "Add new entity to team",
+        "operationId": "AddEntityToteam",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -16309,6 +16610,7 @@
           "team"
         ],
         "summary": "Get entity from team by key",
+        "operationId": "GetEntityFromteamByKey",
         "parameters": [
           {
             "name": "id",
@@ -16376,6 +16678,7 @@
           "team"
         ],
         "summary": "Update entity in team",
+        "operationId": "UpdateEntityInteam",
         "parameters": [
           {
             "name": "id",
@@ -16412,6 +16715,7 @@
           "team"
         ],
         "summary": "Delete entity from team",
+        "operationId": "DeleteEntityFromteam",
         "parameters": [
           {
             "name": "id",
@@ -16447,6 +16751,7 @@
           "channels"
         ],
         "summary": "Get entities from channels",
+        "operationId": "GetEntitiesFromchannels",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -16547,6 +16852,7 @@
           "channels"
         ],
         "summary": "Add new entity to channels",
+        "operationId": "AddEntityTochannels",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -16581,6 +16887,7 @@
           "channels"
         ],
         "summary": "Get entity from channels by key",
+        "operationId": "GetEntityFromchannelsByKey",
         "parameters": [
           {
             "name": "id",
@@ -16646,6 +16953,7 @@
           "channels"
         ],
         "summary": "Update entity in channels",
+        "operationId": "UpdateEntityInchannels",
         "parameters": [
           {
             "name": "id",
@@ -16682,6 +16990,7 @@
           "channels"
         ],
         "summary": "Delete entity from channels",
+        "operationId": "DeleteEntityFromchannels",
         "parameters": [
           {
             "name": "id",
@@ -16717,6 +17026,7 @@
           "chatThreads"
         ],
         "summary": "Get entities from chatThreads",
+        "operationId": "GetEntitiesFromchatThreads",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -16812,6 +17122,7 @@
           "chatThreads"
         ],
         "summary": "Add new entity to chatThreads",
+        "operationId": "AddEntityTochatThreads",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -16846,6 +17157,7 @@
           "chatThreads"
         ],
         "summary": "Get entity from chatThreads by key",
+        "operationId": "GetEntityFromchatThreadsByKey",
         "parameters": [
           {
             "name": "id",
@@ -16910,6 +17222,7 @@
           "chatThreads"
         ],
         "summary": "Update entity in chatThreads",
+        "operationId": "UpdateEntityInchatThreads",
         "parameters": [
           {
             "name": "id",
@@ -16946,6 +17259,7 @@
           "chatThreads"
         ],
         "summary": "Delete entity from chatThreads",
+        "operationId": "DeleteEntityFromchatThreads",
         "parameters": [
           {
             "name": "id",
@@ -16981,6 +17295,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Get entities from groupLifecyclePolicies",
+        "operationId": "GetEntitiesFromgroupLifecyclePolicies",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17083,6 +17398,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Add new entity to groupLifecyclePolicies",
+        "operationId": "AddEntityTogroupLifecyclePolicies",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -17117,6 +17433,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Get entity from groupLifecyclePolicies by key",
+        "operationId": "GetEntityFromgroupLifecyclePoliciesByKey",
         "parameters": [
           {
             "name": "id",
@@ -17182,6 +17499,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Update entity in groupLifecyclePolicies",
+        "operationId": "UpdateEntityIngroupLifecyclePolicies",
         "parameters": [
           {
             "name": "id",
@@ -17218,6 +17536,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Delete entity from groupLifecyclePolicies",
+        "operationId": "DeleteEntityFromgroupLifecyclePolicies",
         "parameters": [
           {
             "name": "id",
@@ -17253,6 +17572,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Invoke action renewGroup",
+        "operationId": "InvokerenewGroup",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -17285,6 +17605,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Invoke action addGroup",
+        "operationId": "InvokeaddGroup",
         "parameters": [
           {
             "name": "id",
@@ -17328,6 +17649,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Invoke action removeGroup",
+        "operationId": "InvokeremoveGroup",
         "parameters": [
           {
             "name": "id",
@@ -17371,6 +17693,7 @@
           "identityProviders"
         ],
         "summary": "Get entities from identityProviders",
+        "operationId": "GetEntitiesFromidentityProviders",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17476,6 +17799,7 @@
           "identityProviders"
         ],
         "summary": "Add new entity to identityProviders",
+        "operationId": "AddEntityToidentityProviders",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -17510,6 +17834,7 @@
           "identityProviders"
         ],
         "summary": "Get entity from identityProviders by key",
+        "operationId": "GetEntityFromidentityProvidersByKey",
         "parameters": [
           {
             "name": "id",
@@ -17576,6 +17901,7 @@
           "identityProviders"
         ],
         "summary": "Update entity in identityProviders",
+        "operationId": "UpdateEntityInidentityProviders",
         "parameters": [
           {
             "name": "id",
@@ -17612,6 +17938,7 @@
           "identityProviders"
         ],
         "summary": "Delete entity from identityProviders",
+        "operationId": "DeleteEntityFromidentityProviders",
         "parameters": [
           {
             "name": "id",
@@ -17647,6 +17974,7 @@
           "functions"
         ],
         "summary": "Get entities from functions",
+        "operationId": "GetEntitiesFromfunctions",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17743,6 +18071,7 @@
           "functions"
         ],
         "summary": "Add new entity to functions",
+        "operationId": "AddEntityTofunctions",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -17777,6 +18106,7 @@
           "functions"
         ],
         "summary": "Get entity from functions by key",
+        "operationId": "GetEntityFromfunctionsByKey",
         "parameters": [
           {
             "name": "id",
@@ -17840,6 +18170,7 @@
           "functions"
         ],
         "summary": "Update entity in functions",
+        "operationId": "UpdateEntityInfunctions",
         "parameters": [
           {
             "name": "id",
@@ -17876,6 +18207,7 @@
           "functions"
         ],
         "summary": "Delete entity from functions",
+        "operationId": "DeleteEntityFromfunctions",
         "parameters": [
           {
             "name": "id",
@@ -17911,6 +18243,7 @@
           "filterOperators"
         ],
         "summary": "Get entities from filterOperators",
+        "operationId": "GetEntitiesFromfilterOperators",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -18013,6 +18346,7 @@
           "filterOperators"
         ],
         "summary": "Add new entity to filterOperators",
+        "operationId": "AddEntityTofilterOperators",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -18047,6 +18381,7 @@
           "filterOperators"
         ],
         "summary": "Get entity from filterOperators by key",
+        "operationId": "GetEntityFromfilterOperatorsByKey",
         "parameters": [
           {
             "name": "id",
@@ -18112,6 +18447,7 @@
           "filterOperators"
         ],
         "summary": "Update entity in filterOperators",
+        "operationId": "UpdateEntityInfilterOperators",
         "parameters": [
           {
             "name": "id",
@@ -18148,6 +18484,7 @@
           "filterOperators"
         ],
         "summary": "Delete entity from filterOperators",
+        "operationId": "DeleteEntityFromfilterOperators",
         "parameters": [
           {
             "name": "id",
@@ -18183,6 +18520,7 @@
           "me"
         ],
         "summary": "Get me",
+        "operationId": "Getme",
         "parameters": [
           {
             "name": "$select",
@@ -18276,6 +18614,7 @@
           "me"
         ],
         "summary": "Update me",
+        "operationId": "Updateme",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -18303,6 +18642,7 @@
           "me"
         ],
         "summary": "Invoke action assignLicense",
+        "operationId": "InvokeassignLicense",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18346,6 +18686,7 @@
           "me"
         ],
         "summary": "Invoke action changePassword",
+        "operationId": "InvokechangePassword",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18383,6 +18724,7 @@
           "me"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
+        "operationId": "InvokeinvalidateAllRefreshTokens",
         "responses": {
           "204": {
             "description": "Success"
@@ -18399,6 +18741,7 @@
           "me"
         ],
         "summary": "Invoke action sendMail",
+        "operationId": "InvokesendMail",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18436,6 +18779,7 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
+        "operationId": "InvokefindMeetingTimesOLD",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18515,6 +18859,7 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimes",
+        "operationId": "InvokefindMeetingTimes",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18613,6 +18958,7 @@
           "me"
         ],
         "summary": "Invoke action getMailTips",
+        "operationId": "InvokegetMailTips",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18656,6 +19002,7 @@
           "me"
         ],
         "summary": "Invoke function reminderView",
+        "operationId": "InvokereminderView",
         "parameters": [
           {
             "name": "StartDateTime",
@@ -18701,6 +19048,7 @@
           "me"
         ],
         "summary": "Invoke function findRoomLists",
+        "operationId": "InvokefindRoomLists",
         "responses": {
           "200": {
             "description": "Success",
@@ -18727,6 +19075,7 @@
           "me"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "parameters": [
           {
             "name": "RoomList",
@@ -18763,6 +19112,7 @@
           "me"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "responses": {
           "200": {
             "description": "Success",
@@ -18789,6 +19139,7 @@
           "me"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
+        "operationId": "InvokeremoveAllDevicesFromManagement",
         "responses": {
           "204": {
             "description": "Success"
@@ -18805,6 +19156,7 @@
           "me"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
+        "operationId": "InvokegetManagedAppDiagnosticStatuses",
         "responses": {
           "200": {
             "description": "Success",
@@ -18836,6 +19188,7 @@
           "me"
         ],
         "summary": "Invoke function getManagedAppPolicies",
+        "operationId": "InvokegetManagedAppPolicies",
         "responses": {
           "200": {
             "description": "Success",
@@ -18867,6 +19220,7 @@
           "me"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
+        "operationId": "InvokewipeManagedAppRegistrationByDeviceTag",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -18900,6 +19254,7 @@
           "directory"
         ],
         "summary": "Get directory",
+        "operationId": "Getdirectory",
         "parameters": [
           {
             "name": "$select",
@@ -18954,6 +19309,7 @@
           "directory"
         ],
         "summary": "Update directory",
+        "operationId": "Updatedirectory",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -18981,6 +19337,7 @@
           "drive"
         ],
         "summary": "Get drive",
+        "operationId": "Getdrive",
         "parameters": [
           {
             "name": "$select",
@@ -19055,6 +19412,7 @@
           "drive"
         ],
         "summary": "Update drive",
+        "operationId": "Updatedrive",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -19082,6 +19440,7 @@
           "drive"
         ],
         "summary": "Invoke function recent",
+        "operationId": "Invokerecent",
         "responses": {
           "200": {
             "description": "Success",
@@ -19113,6 +19472,7 @@
           "drive"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invokesearch",
         "parameters": [
           {
             "name": "q",
@@ -19155,6 +19515,7 @@
           "drive"
         ],
         "summary": "Invoke function sharedWithMe",
+        "operationId": "InvokesharedWithMe",
         "responses": {
           "200": {
             "description": "Success",
@@ -19186,6 +19547,7 @@
           "planner"
         ],
         "summary": "Get planner",
+        "operationId": "Getplanner",
         "parameters": [
           {
             "name": "$select",
@@ -19242,6 +19604,7 @@
           "planner"
         ],
         "summary": "Update planner",
+        "operationId": "Updateplanner",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -19269,6 +19632,7 @@
           "deviceManagement"
         ],
         "summary": "Get deviceManagement",
+        "operationId": "GetdeviceManagement",
         "parameters": [
           {
             "name": "$select",
@@ -19376,6 +19740,7 @@
           "deviceManagement"
         ],
         "summary": "Update deviceManagement",
+        "operationId": "UpdatedeviceManagement",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -19403,6 +19768,7 @@
           "deviceManagement"
         ],
         "summary": "Invoke function verifyWindowsEnrollmentAutoDiscovery",
+        "operationId": "InvokeverifyWindowsEnrollmentAutoDiscovery",
         "parameters": [
           {
             "name": "domainName",
@@ -19438,6 +19804,7 @@
           "deviceManagement"
         ],
         "summary": "Invoke function getEffectivePermissions",
+        "operationId": "InvokegetEffectivePermissions",
         "responses": {
           "200": {
             "description": "Success",
@@ -19465,6 +19832,7 @@
           "deviceManagement"
         ],
         "summary": "Invoke function getEffectivePermissions",
+        "operationId": "InvokegetEffectivePermissions",
         "parameters": [
           {
             "name": "scope",
@@ -19507,6 +19875,7 @@
           "deviceAppManagement"
         ],
         "summary": "Get deviceAppManagement",
+        "operationId": "GetdeviceAppManagement",
         "parameters": [
           {
             "name": "$select",
@@ -19583,6 +19952,7 @@
           "deviceAppManagement"
         ],
         "summary": "Update deviceAppManagement",
+        "operationId": "UpdatedeviceAppManagement",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -19610,6 +19980,7 @@
           "deviceAppManagement"
         ],
         "summary": "Invoke action syncMicrosoftStoreForBusinessApps",
+        "operationId": "InvokesyncMicrosoftStoreForBusinessApps",
         "responses": {
           "204": {
             "description": "Success"
@@ -19626,6 +19997,7 @@
           "reports"
         ],
         "summary": "Get reports",
+        "operationId": "Getreports",
         "parameters": [
           {
             "name": "$select",
@@ -19679,6 +20051,7 @@
           "reports"
         ],
         "summary": "Update reports",
+        "operationId": "Updatereports",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -19706,6 +20079,7 @@
           "reports"
         ],
         "summary": "Invoke function deviceConfigurationUserActivity",
+        "operationId": "InvokedeviceConfigurationUserActivity",
         "responses": {
           "200": {
             "description": "Success",
@@ -19734,6 +20108,7 @@
           "reports"
         ],
         "summary": "Invoke function deviceConfigurationDeviceActivity",
+        "operationId": "InvokedeviceConfigurationDeviceActivity",
         "responses": {
           "200": {
             "description": "Success",
@@ -19762,6 +20137,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
+        "operationId": "InvokegetOffice365ActivationsUserDetail",
         "responses": {
           "200": {
             "description": "Success",
@@ -19788,6 +20164,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
+        "operationId": "InvokegetOffice365ActivationCounts",
         "responses": {
           "200": {
             "description": "Success",
@@ -19814,6 +20191,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
+        "operationId": "InvokegetOffice365ActivationsUserCounts",
         "responses": {
           "200": {
             "description": "Success",
@@ -19840,6 +20218,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
+        "operationId": "InvokegetOffice365ActiveUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -19878,6 +20257,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
+        "operationId": "InvokegetOffice365ActiveUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -19914,6 +20294,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
+        "operationId": "InvokegetOffice365ServicesUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -19950,6 +20331,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
+        "operationId": "InvokegetOffice365ActiveUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -19986,6 +20368,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
+        "operationId": "InvokegetOffice365GroupsActivityDetail",
         "parameters": [
           {
             "name": "date",
@@ -20024,6 +20407,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
+        "operationId": "InvokegetOffice365GroupsActivityDetail",
         "parameters": [
           {
             "name": "period",
@@ -20060,6 +20444,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
+        "operationId": "InvokegetOffice365GroupsActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -20096,6 +20481,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
+        "operationId": "InvokegetOffice365GroupsActivityGroupCounts",
         "parameters": [
           {
             "name": "period",
@@ -20132,6 +20518,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
+        "operationId": "InvokegetOffice365GroupsActivityStorage",
         "parameters": [
           {
             "name": "period",
@@ -20168,6 +20555,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
+        "operationId": "InvokegetOffice365GroupsActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -20204,6 +20592,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
+        "operationId": "InvokegetEmailActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -20242,6 +20631,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
+        "operationId": "InvokegetEmailActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -20278,6 +20668,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityCounts",
+        "operationId": "InvokegetEmailActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -20314,6 +20705,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
+        "operationId": "InvokegetEmailActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -20350,6 +20742,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
+        "operationId": "InvokegetEmailAppUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -20388,6 +20781,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
+        "operationId": "InvokegetEmailAppUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -20424,6 +20818,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
+        "operationId": "InvokegetEmailAppUsageAppsUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -20460,6 +20855,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
+        "operationId": "InvokegetEmailAppUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -20496,6 +20892,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
+        "operationId": "InvokegetEmailAppUsageVersionsUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -20532,6 +20929,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
+        "operationId": "InvokegetMailboxUsageDetail",
         "parameters": [
           {
             "name": "period",
@@ -20568,6 +20966,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
+        "operationId": "InvokegetMailboxUsageMailboxCounts",
         "parameters": [
           {
             "name": "period",
@@ -20604,6 +21003,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "InvokegetMailboxUsageQuotaStatusMailboxCounts",
         "parameters": [
           {
             "name": "period",
@@ -20640,6 +21040,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
+        "operationId": "InvokegetMailboxUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -20676,6 +21077,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
+        "operationId": "InvokegetOneDriveActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -20714,6 +21116,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
+        "operationId": "InvokegetOneDriveActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -20750,6 +21153,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
+        "operationId": "InvokegetOneDriveActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -20786,6 +21190,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
+        "operationId": "InvokegetOneDriveActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -20822,6 +21227,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
+        "operationId": "InvokegetOneDriveUsageAccountDetail",
         "parameters": [
           {
             "name": "date",
@@ -20860,6 +21266,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
+        "operationId": "InvokegetOneDriveUsageAccountDetail",
         "parameters": [
           {
             "name": "period",
@@ -20896,6 +21303,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
+        "operationId": "InvokegetOneDriveUsageAccountCounts",
         "parameters": [
           {
             "name": "period",
@@ -20932,6 +21340,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
+        "operationId": "InvokegetOneDriveUsageFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -20968,6 +21377,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
+        "operationId": "InvokegetOneDriveUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -21004,6 +21414,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
+        "operationId": "InvokegetSharePointActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -21042,6 +21453,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
+        "operationId": "InvokegetSharePointActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -21078,6 +21490,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
+        "operationId": "InvokegetSharePointActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -21114,6 +21527,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
+        "operationId": "InvokegetSharePointActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -21150,6 +21564,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityPages",
+        "operationId": "InvokegetSharePointActivityPages",
         "parameters": [
           {
             "name": "period",
@@ -21186,6 +21601,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
+        "operationId": "InvokegetSharePointSiteUsageDetail",
         "parameters": [
           {
             "name": "date",
@@ -21224,6 +21640,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
+        "operationId": "InvokegetSharePointSiteUsageDetail",
         "parameters": [
           {
             "name": "period",
@@ -21260,6 +21677,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
+        "operationId": "InvokegetSharePointSiteUsageFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -21296,6 +21714,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
+        "operationId": "InvokegetSharePointSiteUsageSiteCounts",
         "parameters": [
           {
             "name": "period",
@@ -21332,6 +21751,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
+        "operationId": "InvokegetSharePointSiteUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -21368,6 +21788,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
+        "operationId": "InvokegetSharePointSiteUsagePages",
         "parameters": [
           {
             "name": "period",
@@ -21404,6 +21825,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -21442,6 +21864,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -21478,6 +21901,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -21514,6 +21938,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -21550,6 +21975,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -21586,6 +22012,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -21622,6 +22049,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -21658,6 +22086,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessOrganizerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -21694,6 +22123,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessOrganizerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -21730,6 +22160,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "InvokegetSkypeForBusinessOrganizerActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -21766,6 +22197,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessParticipantActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -21802,6 +22234,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessParticipantActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -21838,6 +22271,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "InvokegetSkypeForBusinessParticipantActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -21874,6 +22308,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -21912,6 +22347,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -21948,6 +22384,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -21984,6 +22421,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22020,6 +22458,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
+        "operationId": "InvokegetYammerActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -22058,6 +22497,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
+        "operationId": "InvokegetYammerActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -22094,6 +22534,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityCounts",
+        "operationId": "InvokegetYammerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -22130,6 +22571,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
+        "operationId": "InvokegetYammerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22166,6 +22608,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
+        "operationId": "InvokegetYammerDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -22204,6 +22647,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
+        "operationId": "InvokegetYammerDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -22240,6 +22684,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
+        "operationId": "InvokegetYammerDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22276,6 +22721,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
+        "operationId": "InvokegetYammerDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22312,6 +22758,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
+        "operationId": "InvokegetYammerGroupsActivityDetail",
         "parameters": [
           {
             "name": "date",
@@ -22350,6 +22797,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
+        "operationId": "InvokegetYammerGroupsActivityDetail",
         "parameters": [
           {
             "name": "period",
@@ -22386,6 +22834,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
+        "operationId": "InvokegetYammerGroupsActivityGroupCounts",
         "parameters": [
           {
             "name": "period",
@@ -22422,6 +22871,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
+        "operationId": "InvokegetYammerGroupsActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -22458,6 +22908,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
+        "operationId": "InvokegetTeamsUserActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -22496,6 +22947,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
+        "operationId": "InvokegetTeamsUserActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -22532,6 +22984,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityCounts",
+        "operationId": "InvokegetTeamsUserActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -22568,6 +23021,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityUserCounts",
+        "operationId": "InvokegetTeamsUserActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22604,6 +23058,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
+        "operationId": "InvokegetTeamsDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -22642,6 +23097,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
+        "operationId": "InvokegetTeamsDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -22678,6 +23134,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserCounts",
+        "operationId": "InvokegetTeamsDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22714,6 +23171,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageDistributionUserCounts",
+        "operationId": "InvokegetTeamsDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -22750,6 +23208,7 @@
           "reports"
         ],
         "summary": "Invoke function getTenantSecureScores",
+        "operationId": "InvokegetTenantSecureScores",
         "parameters": [
           {
             "name": "period",
@@ -22791,6 +23250,7 @@
           "education"
         ],
         "summary": "Get education",
+        "operationId": "Geteducation",
         "parameters": [
           {
             "name": "$select",
@@ -22849,6 +23309,7 @@
           "education"
         ],
         "summary": "Update education",
+        "operationId": "Updateeducation",
         "requestBody": {
           "description": "New property values",
           "content": {

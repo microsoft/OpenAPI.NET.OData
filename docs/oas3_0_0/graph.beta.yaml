@@ -11,6 +11,7 @@ paths:
       tags:
         - schemaExtensions
       summary: Get entities from schemaExtensions
+      operationId: GetEntitiesFromschemaExtensions
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -82,6 +83,7 @@ paths:
       tags:
         - schemaExtensions
       summary: Add new entity to schemaExtensions
+      operationId: AddEntityToschemaExtensions
       requestBody:
         description: New entity
         content:
@@ -103,6 +105,7 @@ paths:
       tags:
         - schemaExtensions
       summary: Get entity from schemaExtensions by key
+      operationId: GetEntityFromschemaExtensionsByKey
       parameters:
         - name: id
           in: path
@@ -148,6 +151,7 @@ paths:
       tags:
         - schemaExtensions
       summary: Update entity in schemaExtensions
+      operationId: UpdateEntityInschemaExtensions
       parameters:
         - name: id
           in: path
@@ -171,6 +175,7 @@ paths:
       tags:
         - schemaExtensions
       summary: Delete entity from schemaExtensions
+      operationId: DeleteEntityFromschemaExtensions
       parameters:
         - name: id
           in: path
@@ -193,6 +198,7 @@ paths:
       tags:
         - directoryObjects
       summary: Get entities from directoryObjects
+      operationId: GetEntitiesFromdirectoryObjects
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -239,6 +245,7 @@ paths:
       tags:
         - directoryObjects
       summary: Add new entity to directoryObjects
+      operationId: AddEntityTodirectoryObjects
       requestBody:
         description: New entity
         content:
@@ -260,6 +267,7 @@ paths:
       tags:
         - directoryObjects
       summary: Get entity from directoryObjects by key
+      operationId: GetEntityFromdirectoryObjectsByKey
       parameters:
         - name: id
           in: path
@@ -291,6 +299,7 @@ paths:
       tags:
         - directoryObjects
       summary: Update entity in directoryObjects
+      operationId: UpdateEntityIndirectoryObjects
       parameters:
         - name: id
           in: path
@@ -314,6 +323,7 @@ paths:
       tags:
         - directoryObjects
       summary: Delete entity from directoryObjects
+      operationId: DeleteEntityFromdirectoryObjects
       parameters:
         - name: id
           in: path
@@ -336,6 +346,7 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getByIds
+      operationId: InvokegetByIds
       requestBody:
         description: Action parameters
         content:
@@ -363,6 +374,7 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action validateProperties
+      operationId: InvokevalidateProperties
       requestBody:
         description: Action parameters
         content:
@@ -395,6 +407,7 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action checkMemberGroups
+      operationId: InvokecheckMemberGroups
       parameters:
         - name: id
           in: path
@@ -424,6 +437,7 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getMemberGroups
+      operationId: InvokegetMemberGroups
       parameters:
         - name: id
           in: path
@@ -453,6 +467,7 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getMemberObjects
+      operationId: InvokegetMemberObjects
       parameters:
         - name: id
           in: path
@@ -482,6 +497,7 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action restore
+      operationId: Invokerestore
       parameters:
         - name: id
           in: path
@@ -499,6 +515,7 @@ paths:
       tags:
         - applications
       summary: Get entities from applications
+      operationId: GetEntitiesFromapplications
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -593,6 +610,7 @@ paths:
       tags:
         - applications
       summary: Add new entity to applications
+      operationId: AddEntityToapplications
       requestBody:
         description: New entity
         content:
@@ -614,6 +632,7 @@ paths:
       tags:
         - applications
       summary: Get entity from applications by key
+      operationId: GetEntityFromapplicationsByKey
       parameters:
         - name: id
           in: path
@@ -661,6 +680,7 @@ paths:
       tags:
         - applications
       summary: Update entity in applications
+      operationId: UpdateEntityInapplications
       parameters:
         - name: id
           in: path
@@ -684,6 +704,7 @@ paths:
       tags:
         - applications
       summary: Delete entity from applications
+      operationId: DeleteEntityFromapplications
       parameters:
         - name: id
           in: path
@@ -706,6 +727,7 @@ paths:
       tags:
         - administrativeUnits
       summary: Get entities from administrativeUnits
+      operationId: GetEntitiesFromadministrativeUnits
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -761,6 +783,7 @@ paths:
       tags:
         - administrativeUnits
       summary: Add new entity to administrativeUnits
+      operationId: AddEntityToadministrativeUnits
       requestBody:
         description: New entity
         content:
@@ -782,6 +805,7 @@ paths:
       tags:
         - administrativeUnits
       summary: Get entity from administrativeUnits by key
+      operationId: GetEntityFromadministrativeUnitsByKey
       parameters:
         - name: id
           in: path
@@ -816,6 +840,7 @@ paths:
       tags:
         - administrativeUnits
       summary: Update entity in administrativeUnits
+      operationId: UpdateEntityInadministrativeUnits
       parameters:
         - name: id
           in: path
@@ -839,6 +864,7 @@ paths:
       tags:
         - administrativeUnits
       summary: Delete entity from administrativeUnits
+      operationId: DeleteEntityFromadministrativeUnits
       parameters:
         - name: id
           in: path
@@ -861,6 +887,7 @@ paths:
       tags:
         - administrativeUnits
       summary: Invoke function delta
+      operationId: Invokedelta
       responses:
         '200':
           description: Success
@@ -879,6 +906,7 @@ paths:
       tags:
         - allowedDataLocations
       summary: Get entities from allowedDataLocations
+      operationId: GetEntitiesFromallowedDataLocations
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -947,6 +975,7 @@ paths:
       tags:
         - allowedDataLocations
       summary: Add new entity to allowedDataLocations
+      operationId: AddEntityToallowedDataLocations
       requestBody:
         description: New entity
         content:
@@ -968,6 +997,7 @@ paths:
       tags:
         - allowedDataLocations
       summary: Get entity from allowedDataLocations by key
+      operationId: GetEntityFromallowedDataLocationsByKey
       parameters:
         - name: id
           in: path
@@ -1012,6 +1042,7 @@ paths:
       tags:
         - allowedDataLocations
       summary: Update entity in allowedDataLocations
+      operationId: UpdateEntityInallowedDataLocations
       parameters:
         - name: id
           in: path
@@ -1035,6 +1066,7 @@ paths:
       tags:
         - allowedDataLocations
       summary: Delete entity from allowedDataLocations
+      operationId: DeleteEntityFromallowedDataLocations
       parameters:
         - name: id
           in: path
@@ -1057,6 +1089,7 @@ paths:
       tags:
         - appRoleAssignments
       summary: Get entities from appRoleAssignments
+      operationId: GetEntitiesFromappRoleAssignments
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -1131,6 +1164,7 @@ paths:
       tags:
         - appRoleAssignments
       summary: Add new entity to appRoleAssignments
+      operationId: AddEntityToappRoleAssignments
       requestBody:
         description: New entity
         content:
@@ -1152,6 +1186,7 @@ paths:
       tags:
         - appRoleAssignments
       summary: Get entity from appRoleAssignments by key
+      operationId: GetEntityFromappRoleAssignmentsByKey
       parameters:
         - name: id
           in: path
@@ -1198,6 +1233,7 @@ paths:
       tags:
         - appRoleAssignments
       summary: Update entity in appRoleAssignments
+      operationId: UpdateEntityInappRoleAssignments
       parameters:
         - name: id
           in: path
@@ -1221,6 +1257,7 @@ paths:
       tags:
         - appRoleAssignments
       summary: Delete entity from appRoleAssignments
+      operationId: DeleteEntityFromappRoleAssignments
       parameters:
         - name: id
           in: path
@@ -1243,6 +1280,7 @@ paths:
       tags:
         - contacts
       summary: Get entities from contacts
+      operationId: GetEntitiesFromcontacts
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -1349,6 +1387,7 @@ paths:
       tags:
         - contacts
       summary: Add new entity to contacts
+      operationId: AddEntityTocontacts
       requestBody:
         description: New entity
         content:
@@ -1370,6 +1409,7 @@ paths:
       tags:
         - contacts
       summary: Get entity from contacts by key
+      operationId: GetEntityFromcontactsByKey
       parameters:
         - name: id
           in: path
@@ -1421,6 +1461,7 @@ paths:
       tags:
         - contacts
       summary: Update entity in contacts
+      operationId: UpdateEntityIncontacts
       parameters:
         - name: id
           in: path
@@ -1444,6 +1485,7 @@ paths:
       tags:
         - contacts
       summary: Delete entity from contacts
+      operationId: DeleteEntityFromcontacts
       parameters:
         - name: id
           in: path
@@ -1466,6 +1508,7 @@ paths:
       tags:
         - contacts
       summary: Invoke function delta
+      operationId: Invokedelta
       responses:
         '200':
           description: Success
@@ -1484,6 +1527,7 @@ paths:
       tags:
         - devices
       summary: Get entities from devices
+      operationId: GetEntitiesFromdevices
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -1593,6 +1637,7 @@ paths:
       tags:
         - devices
       summary: Add new entity to devices
+      operationId: AddEntityTodevices
       requestBody:
         description: New entity
         content:
@@ -1614,6 +1659,7 @@ paths:
       tags:
         - devices
       summary: Get entity from devices by key
+      operationId: GetEntityFromdevicesByKey
       parameters:
         - name: id
           in: path
@@ -1666,6 +1712,7 @@ paths:
       tags:
         - devices
       summary: Update entity in devices
+      operationId: UpdateEntityIndevices
       parameters:
         - name: id
           in: path
@@ -1689,6 +1736,7 @@ paths:
       tags:
         - devices
       summary: Delete entity from devices
+      operationId: DeleteEntityFromdevices
       parameters:
         - name: id
           in: path
@@ -1711,6 +1759,7 @@ paths:
       tags:
         - domains
       summary: Get entities from domains
+      operationId: GetEntitiesFromdomains
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -1797,6 +1846,7 @@ paths:
       tags:
         - domains
       summary: Add new entity to domains
+      operationId: AddEntityTodomains
       requestBody:
         description: New entity
         content:
@@ -1818,6 +1868,7 @@ paths:
       tags:
         - domains
       summary: Get entity from domains by key
+      operationId: GetEntityFromdomainsByKey
       parameters:
         - name: id
           in: path
@@ -1870,6 +1921,7 @@ paths:
       tags:
         - domains
       summary: Update entity in domains
+      operationId: UpdateEntityIndomains
       parameters:
         - name: id
           in: path
@@ -1893,6 +1945,7 @@ paths:
       tags:
         - domains
       summary: Delete entity from domains
+      operationId: DeleteEntityFromdomains
       parameters:
         - name: id
           in: path
@@ -1915,6 +1968,7 @@ paths:
       tags:
         - domains
       summary: Invoke action forceDelete
+      operationId: InvokeforceDelete
       parameters:
         - name: id
           in: path
@@ -1944,6 +1998,7 @@ paths:
       tags:
         - domains
       summary: Invoke action verify
+      operationId: Invokeverify
       parameters:
         - name: id
           in: path
@@ -1961,6 +2016,7 @@ paths:
       tags:
         - domainDnsRecords
       summary: Get entities from domainDnsRecords
+      operationId: GetEntitiesFromdomainDnsRecords
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -2032,6 +2088,7 @@ paths:
       tags:
         - domainDnsRecords
       summary: Add new entity to domainDnsRecords
+      operationId: AddEntityTodomainDnsRecords
       requestBody:
         description: New entity
         content:
@@ -2053,6 +2110,7 @@ paths:
       tags:
         - domainDnsRecords
       summary: Get entity from domainDnsRecords by key
+      operationId: GetEntityFromdomainDnsRecordsByKey
       parameters:
         - name: id
           in: path
@@ -2098,6 +2156,7 @@ paths:
       tags:
         - domainDnsRecords
       summary: Update entity in domainDnsRecords
+      operationId: UpdateEntityIndomainDnsRecords
       parameters:
         - name: id
           in: path
@@ -2121,6 +2180,7 @@ paths:
       tags:
         - domainDnsRecords
       summary: Delete entity from domainDnsRecords
+      operationId: DeleteEntityFromdomainDnsRecords
       parameters:
         - name: id
           in: path
@@ -2143,6 +2203,7 @@ paths:
       tags:
         - groups
       summary: Get entities from groups
+      operationId: GetEntitiesFromgroups
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -2279,6 +2340,7 @@ paths:
       tags:
         - groups
       summary: Add new entity to groups
+      operationId: AddEntityTogroups
       requestBody:
         description: New entity
         content:
@@ -2300,6 +2362,7 @@ paths:
       tags:
         - groups
       summary: Get entity from groups by key
+      operationId: GetEntityFromgroupsByKey
       parameters:
         - name: id
           in: path
@@ -2361,6 +2424,7 @@ paths:
       tags:
         - groups
       summary: Update entity in groups
+      operationId: UpdateEntityIngroups
       parameters:
         - name: id
           in: path
@@ -2384,6 +2448,7 @@ paths:
       tags:
         - groups
       summary: Delete entity from groups
+      operationId: DeleteEntityFromgroups
       parameters:
         - name: id
           in: path
@@ -2406,6 +2471,7 @@ paths:
       tags:
         - groups
       summary: Invoke function delta
+      operationId: Invokedelta
       responses:
         '200':
           description: Success
@@ -2424,6 +2490,7 @@ paths:
       tags:
         - groups
       summary: Invoke action validateProperties
+      operationId: InvokevalidateProperties
       parameters:
         - name: id
           in: path
@@ -2460,6 +2527,7 @@ paths:
       tags:
         - groups
       summary: Invoke action renew
+      operationId: Invokerenew
       parameters:
         - name: id
           in: path
@@ -2477,6 +2545,7 @@ paths:
       tags:
         - groups
       summary: Invoke action subscribeByMail
+      operationId: InvokesubscribeByMail
       parameters:
         - name: id
           in: path
@@ -2494,6 +2563,7 @@ paths:
       tags:
         - groups
       summary: Invoke action unsubscribeByMail
+      operationId: InvokeunsubscribeByMail
       parameters:
         - name: id
           in: path
@@ -2511,6 +2581,7 @@ paths:
       tags:
         - groups
       summary: Invoke action addFavorite
+      operationId: InvokeaddFavorite
       parameters:
         - name: id
           in: path
@@ -2528,6 +2599,7 @@ paths:
       tags:
         - groups
       summary: Invoke action removeFavorite
+      operationId: InvokeremoveFavorite
       parameters:
         - name: id
           in: path
@@ -2545,6 +2617,7 @@ paths:
       tags:
         - groups
       summary: Invoke action resetUnseenCount
+      operationId: InvokeresetUnseenCount
       parameters:
         - name: id
           in: path
@@ -2562,6 +2635,7 @@ paths:
       tags:
         - directoryRoles
       summary: Get entities from directoryRoles
+      operationId: GetEntitiesFromdirectoryRoles
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $orderby
@@ -2616,6 +2690,7 @@ paths:
       tags:
         - directoryRoles
       summary: Add new entity to directoryRoles
+      operationId: AddEntityTodirectoryRoles
       requestBody:
         description: New entity
         content:
@@ -2637,6 +2712,7 @@ paths:
       tags:
         - directoryRoles
       summary: Get entity from directoryRoles by key
+      operationId: GetEntityFromdirectoryRolesByKey
       parameters:
         - name: id
           in: path
@@ -2671,6 +2747,7 @@ paths:
       tags:
         - directoryRoles
       summary: Update entity in directoryRoles
+      operationId: UpdateEntityIndirectoryRoles
       parameters:
         - name: id
           in: path
@@ -2694,6 +2771,7 @@ paths:
       tags:
         - directoryRoles
       summary: Delete entity from directoryRoles
+      operationId: DeleteEntityFromdirectoryRoles
       parameters:
         - name: id
           in: path
@@ -2716,6 +2794,7 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Get entities from directoryRoleTemplates
+      operationId: GetEntitiesFromdirectoryRoleTemplates
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $orderby
@@ -2767,6 +2846,7 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Add new entity to directoryRoleTemplates
+      operationId: AddEntityTodirectoryRoleTemplates
       requestBody:
         description: New entity
         content:
@@ -2788,6 +2868,7 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Get entity from directoryRoleTemplates by key
+      operationId: GetEntityFromdirectoryRoleTemplatesByKey
       parameters:
         - name: id
           in: path
@@ -2821,6 +2902,7 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Update entity in directoryRoleTemplates
+      operationId: UpdateEntityIndirectoryRoleTemplates
       parameters:
         - name: id
           in: path
@@ -2844,6 +2926,7 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Delete entity from directoryRoleTemplates
+      operationId: DeleteEntityFromdirectoryRoleTemplates
       parameters:
         - name: id
           in: path
@@ -2866,6 +2949,7 @@ paths:
       tags:
         - directorySettingTemplates
       summary: Get entities from directorySettingTemplates
+      operationId: GetEntitiesFromdirectorySettingTemplates
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -2921,6 +3005,7 @@ paths:
       tags:
         - directorySettingTemplates
       summary: Add new entity to directorySettingTemplates
+      operationId: AddEntityTodirectorySettingTemplates
       requestBody:
         description: New entity
         content:
@@ -2942,6 +3027,7 @@ paths:
       tags:
         - directorySettingTemplates
       summary: Get entity from directorySettingTemplates by key
+      operationId: GetEntityFromdirectorySettingTemplatesByKey
       parameters:
         - name: id
           in: path
@@ -2976,6 +3062,7 @@ paths:
       tags:
         - directorySettingTemplates
       summary: Update entity in directorySettingTemplates
+      operationId: UpdateEntityIndirectorySettingTemplates
       parameters:
         - name: id
           in: path
@@ -2999,6 +3086,7 @@ paths:
       tags:
         - directorySettingTemplates
       summary: Delete entity from directorySettingTemplates
+      operationId: DeleteEntityFromdirectorySettingTemplates
       parameters:
         - name: id
           in: path
@@ -3021,6 +3109,7 @@ paths:
       tags:
         - organization
       summary: Get entities from organization
+      operationId: GetEntitiesFromorganization
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -3130,6 +3219,7 @@ paths:
       tags:
         - organization
       summary: Add new entity to organization
+      operationId: AddEntityToorganization
       requestBody:
         description: New entity
         content:
@@ -3151,6 +3241,7 @@ paths:
       tags:
         - organization
       summary: Get entity from organization by key
+      operationId: GetEntityFromorganizationByKey
       parameters:
         - name: id
           in: path
@@ -3203,6 +3294,7 @@ paths:
       tags:
         - organization
       summary: Update entity in organization
+      operationId: UpdateEntityInorganization
       parameters:
         - name: id
           in: path
@@ -3226,6 +3318,7 @@ paths:
       tags:
         - organization
       summary: Delete entity from organization
+      operationId: DeleteEntityFromorganization
       parameters:
         - name: id
           in: path
@@ -3248,6 +3341,7 @@ paths:
       tags:
         - organization
       summary: Invoke action setMobileDeviceManagementAuthority
+      operationId: InvokesetMobileDeviceManagementAuthority
       parameters:
         - name: id
           in: path
@@ -3265,6 +3359,7 @@ paths:
       tags:
         - organization
       summary: Invoke function getEncryptionPublicKey
+      operationId: InvokegetEncryptionPublicKey
       parameters:
         - name: id
           in: path
@@ -3287,6 +3382,7 @@ paths:
       tags:
         - organization
       summary: Invoke action uploadDepToken
+      operationId: InvokeuploadDepToken
       parameters:
         - name: id
           in: path
@@ -3318,6 +3414,7 @@ paths:
       tags:
         - organization
       summary: Invoke action syncWithAppleDeviceEnrollmentProgram
+      operationId: InvokesyncWithAppleDeviceEnrollmentProgram
       parameters:
         - name: id
           in: path
@@ -3335,6 +3432,7 @@ paths:
       tags:
         - oauth2PermissionGrants
       summary: Get entities from oauth2PermissionGrants
+      operationId: GetEntitiesFromoauth2PermissionGrants
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -3412,6 +3510,7 @@ paths:
       tags:
         - oauth2PermissionGrants
       summary: Add new entity to oauth2PermissionGrants
+      operationId: AddEntityTooauth2PermissionGrants
       requestBody:
         description: New entity
         content:
@@ -3433,6 +3532,7 @@ paths:
       tags:
         - oauth2PermissionGrants
       summary: Get entity from oauth2PermissionGrants by key
+      operationId: GetEntityFromoauth2PermissionGrantsByKey
       parameters:
         - name: id
           in: path
@@ -3480,6 +3580,7 @@ paths:
       tags:
         - oauth2PermissionGrants
       summary: Update entity in oauth2PermissionGrants
+      operationId: UpdateEntityInoauth2PermissionGrants
       parameters:
         - name: id
           in: path
@@ -3503,6 +3604,7 @@ paths:
       tags:
         - oauth2PermissionGrants
       summary: Delete entity from oauth2PermissionGrants
+      operationId: DeleteEntityFromoauth2PermissionGrants
       parameters:
         - name: id
           in: path
@@ -3525,6 +3627,7 @@ paths:
       tags:
         - scopedRoleMemberships
       summary: Get entities from scopedRoleMemberships
+      operationId: GetEntitiesFromscopedRoleMemberships
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -3590,6 +3693,7 @@ paths:
       tags:
         - scopedRoleMemberships
       summary: Add new entity to scopedRoleMemberships
+      operationId: AddEntityToscopedRoleMemberships
       requestBody:
         description: New entity
         content:
@@ -3611,6 +3715,7 @@ paths:
       tags:
         - scopedRoleMemberships
       summary: Get entity from scopedRoleMemberships by key
+      operationId: GetEntityFromscopedRoleMembershipsByKey
       parameters:
         - name: id
           in: path
@@ -3654,6 +3759,7 @@ paths:
       tags:
         - scopedRoleMemberships
       summary: Update entity in scopedRoleMemberships
+      operationId: UpdateEntityInscopedRoleMemberships
       parameters:
         - name: id
           in: path
@@ -3677,6 +3783,7 @@ paths:
       tags:
         - scopedRoleMemberships
       summary: Delete entity from scopedRoleMemberships
+      operationId: DeleteEntityFromscopedRoleMemberships
       parameters:
         - name: id
           in: path
@@ -3699,6 +3806,7 @@ paths:
       tags:
         - servicePrincipals
       summary: Get entities from servicePrincipals
+      operationId: GetEntitiesFromservicePrincipals
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -3805,6 +3913,7 @@ paths:
       tags:
         - servicePrincipals
       summary: Add new entity to servicePrincipals
+      operationId: AddEntityToservicePrincipals
       requestBody:
         description: New entity
         content:
@@ -3826,6 +3935,7 @@ paths:
       tags:
         - servicePrincipals
       summary: Get entity from servicePrincipals by key
+      operationId: GetEntityFromservicePrincipalsByKey
       parameters:
         - name: id
           in: path
@@ -3877,6 +3987,7 @@ paths:
       tags:
         - servicePrincipals
       summary: Update entity in servicePrincipals
+      operationId: UpdateEntityInservicePrincipals
       parameters:
         - name: id
           in: path
@@ -3900,6 +4011,7 @@ paths:
       tags:
         - servicePrincipals
       summary: Delete entity from servicePrincipals
+      operationId: DeleteEntityFromservicePrincipals
       parameters:
         - name: id
           in: path
@@ -3922,6 +4034,7 @@ paths:
       tags:
         - settings
       summary: Get entities from settings
+      operationId: GetEntitiesFromsettings
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -3987,6 +4100,7 @@ paths:
       tags:
         - settings
       summary: Add new entity to settings
+      operationId: AddEntityTosettings
       requestBody:
         description: New entity
         content:
@@ -4008,6 +4122,7 @@ paths:
       tags:
         - settings
       summary: Get entity from settings by key
+      operationId: GetEntityFromsettingsByKey
       parameters:
         - name: id
           in: path
@@ -4051,6 +4166,7 @@ paths:
       tags:
         - settings
       summary: Update entity in settings
+      operationId: UpdateEntityInsettings
       parameters:
         - name: id
           in: path
@@ -4074,6 +4190,7 @@ paths:
       tags:
         - settings
       summary: Delete entity from settings
+      operationId: DeleteEntityFromsettings
       parameters:
         - name: id
           in: path
@@ -4096,6 +4213,7 @@ paths:
       tags:
         - subscribedSkus
       summary: Get entities from subscribedSkus
+      operationId: GetEntitiesFromsubscribedSkus
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $orderby
@@ -4159,6 +4277,7 @@ paths:
       tags:
         - subscribedSkus
       summary: Add new entity to subscribedSkus
+      operationId: AddEntityTosubscribedSkus
       requestBody:
         description: New entity
         content:
@@ -4180,6 +4299,7 @@ paths:
       tags:
         - subscribedSkus
       summary: Get entity from subscribedSkus by key
+      operationId: GetEntityFromsubscribedSkusByKey
       parameters:
         - name: id
           in: path
@@ -4217,6 +4337,7 @@ paths:
       tags:
         - subscribedSkus
       summary: Update entity in subscribedSkus
+      operationId: UpdateEntityInsubscribedSkus
       parameters:
         - name: id
           in: path
@@ -4240,6 +4361,7 @@ paths:
       tags:
         - subscribedSkus
       summary: Delete entity from subscribedSkus
+      operationId: DeleteEntityFromsubscribedSkus
       parameters:
         - name: id
           in: path
@@ -4262,6 +4384,7 @@ paths:
       tags:
         - users
       summary: Get entities from users
+      operationId: GetEntitiesFromusers
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -4470,6 +4593,7 @@ paths:
       tags:
         - users
       summary: Add new entity to users
+      operationId: AddEntityTousers
       requestBody:
         description: New entity
         content:
@@ -4491,6 +4615,7 @@ paths:
       tags:
         - users
       summary: Get entity from users by key
+      operationId: GetEntityFromusersByKey
       parameters:
         - name: id
           in: path
@@ -4576,6 +4701,7 @@ paths:
       tags:
         - users
       summary: Update entity in users
+      operationId: UpdateEntityInusers
       parameters:
         - name: id
           in: path
@@ -4599,6 +4725,7 @@ paths:
       tags:
         - users
       summary: Delete entity from users
+      operationId: DeleteEntityFromusers
       parameters:
         - name: id
           in: path
@@ -4621,6 +4748,7 @@ paths:
       tags:
         - users
       summary: Invoke function delta
+      operationId: Invokedelta
       responses:
         '200':
           description: Success
@@ -4639,6 +4767,7 @@ paths:
       tags:
         - users
       summary: Invoke action assignLicense
+      operationId: InvokeassignLicense
       parameters:
         - name: id
           in: path
@@ -4674,6 +4803,7 @@ paths:
       tags:
         - users
       summary: Invoke action changePassword
+      operationId: InvokechangePassword
       parameters:
         - name: id
           in: path
@@ -4705,6 +4835,7 @@ paths:
       tags:
         - users
       summary: Invoke action invalidateAllRefreshTokens
+      operationId: InvokeinvalidateAllRefreshTokens
       parameters:
         - name: id
           in: path
@@ -4722,6 +4853,7 @@ paths:
       tags:
         - users
       summary: Invoke action sendMail
+      operationId: InvokesendMail
       parameters:
         - name: id
           in: path
@@ -4753,6 +4885,7 @@ paths:
       tags:
         - users
       summary: Invoke action findMeetingTimesOLD
+      operationId: InvokefindMeetingTimesOLD
       parameters:
         - name: id
           in: path
@@ -4811,6 +4944,7 @@ paths:
       tags:
         - users
       summary: Invoke action findMeetingTimes
+      operationId: InvokefindMeetingTimes
       parameters:
         - name: id
           in: path
@@ -4879,6 +5013,7 @@ paths:
       tags:
         - users
       summary: Invoke action getMailTips
+      operationId: InvokegetMailTips
       parameters:
         - name: id
           in: path
@@ -4912,6 +5047,7 @@ paths:
       tags:
         - users
       summary: Invoke function reminderView
+      operationId: InvokereminderView
       parameters:
         - name: id
           in: path
@@ -4935,6 +5071,7 @@ paths:
       tags:
         - users
       summary: Invoke function findRoomLists
+      operationId: InvokefindRoomLists
       parameters:
         - name: id
           in: path
@@ -4958,6 +5095,7 @@ paths:
       tags:
         - users
       summary: Invoke function findRooms
+      operationId: InvokefindRooms
       parameters:
         - name: id
           in: path
@@ -4981,6 +5119,7 @@ paths:
       tags:
         - users
       summary: Invoke function findRooms
+      operationId: InvokefindRooms
       parameters:
         - name: id
           in: path
@@ -5004,6 +5143,7 @@ paths:
       tags:
         - users
       summary: Invoke action removeAllDevicesFromManagement
+      operationId: InvokeremoveAllDevicesFromManagement
       parameters:
         - name: id
           in: path
@@ -5021,6 +5161,7 @@ paths:
       tags:
         - users
       summary: Invoke function getManagedAppDiagnosticStatuses
+      operationId: InvokegetManagedAppDiagnosticStatuses
       parameters:
         - name: id
           in: path
@@ -5046,6 +5187,7 @@ paths:
       tags:
         - users
       summary: Invoke function getManagedAppPolicies
+      operationId: InvokegetManagedAppPolicies
       parameters:
         - name: id
           in: path
@@ -5071,6 +5213,7 @@ paths:
       tags:
         - users
       summary: Invoke action wipeManagedAppRegistrationByDeviceTag
+      operationId: InvokewipeManagedAppRegistrationByDeviceTag
       parameters:
         - name: id
           in: path
@@ -5099,6 +5242,7 @@ paths:
       tags:
         - policies
       summary: Get entities from policies
+      operationId: GetEntitiesFrompolicies
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -5163,6 +5307,7 @@ paths:
       tags:
         - policies
       summary: Add new entity to policies
+      operationId: AddEntityTopolicies
       requestBody:
         description: New entity
         content:
@@ -5184,6 +5329,7 @@ paths:
       tags:
         - policies
       summary: Get entity from policies by key
+      operationId: GetEntityFrompoliciesByKey
       parameters:
         - name: id
           in: path
@@ -5221,6 +5367,7 @@ paths:
       tags:
         - policies
       summary: Update entity in policies
+      operationId: UpdateEntityInpolicies
       parameters:
         - name: id
           in: path
@@ -5244,6 +5391,7 @@ paths:
       tags:
         - policies
       summary: Delete entity from policies
+      operationId: DeleteEntityFrompolicies
       parameters:
         - name: id
           in: path
@@ -5266,6 +5414,7 @@ paths:
       tags:
         - contracts
       summary: Get entities from contracts
+      operationId: GetEntitiesFromcontracts
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -5324,6 +5473,7 @@ paths:
       tags:
         - contracts
       summary: Add new entity to contracts
+      operationId: AddEntityTocontracts
       requestBody:
         description: New entity
         content:
@@ -5345,6 +5495,7 @@ paths:
       tags:
         - contracts
       summary: Get entity from contracts by key
+      operationId: GetEntityFromcontractsByKey
       parameters:
         - name: id
           in: path
@@ -5380,6 +5531,7 @@ paths:
       tags:
         - contracts
       summary: Update entity in contracts
+      operationId: UpdateEntityIncontracts
       parameters:
         - name: id
           in: path
@@ -5403,6 +5555,7 @@ paths:
       tags:
         - contracts
       summary: Delete entity from contracts
+      operationId: DeleteEntityFromcontracts
       parameters:
         - name: id
           in: path
@@ -5425,6 +5578,7 @@ paths:
       tags:
         - workbooks
       summary: Get entities from workbooks
+      operationId: GetEntitiesFromworkbooks
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -5580,6 +5734,7 @@ paths:
       tags:
         - workbooks
       summary: Add new entity to workbooks
+      operationId: AddEntityToworkbooks
       requestBody:
         description: New entity
         content:
@@ -5601,6 +5756,7 @@ paths:
       tags:
         - workbooks
       summary: Get entity from workbooks by key
+      operationId: GetEntityFromworkbooksByKey
       parameters:
         - name: id
           in: path
@@ -5680,6 +5836,7 @@ paths:
       tags:
         - workbooks
       summary: Update entity in workbooks
+      operationId: UpdateEntityInworkbooks
       parameters:
         - name: id
           in: path
@@ -5703,6 +5860,7 @@ paths:
       tags:
         - workbooks
       summary: Delete entity from workbooks
+      operationId: DeleteEntityFromworkbooks
       parameters:
         - name: id
           in: path
@@ -5725,6 +5883,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke function delta
+      operationId: Invokedelta
       parameters:
         - name: id
           in: path
@@ -5750,6 +5909,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke function delta
+      operationId: Invokedelta
       parameters:
         - name: id
           in: path
@@ -5775,6 +5935,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke function search
+      operationId: Invokesearch
       parameters:
         - name: id
           in: path
@@ -5800,6 +5961,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action checkin
+      operationId: Invokecheckin
       parameters:
         - name: id
           in: path
@@ -5831,6 +5993,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action checkout
+      operationId: Invokecheckout
       parameters:
         - name: id
           in: path
@@ -5848,6 +6011,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action copy
+      operationId: Invokecopy
       parameters:
         - name: id
           in: path
@@ -5880,6 +6044,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action createLink
+      operationId: InvokecreateLink
       parameters:
         - name: id
           in: path
@@ -5927,6 +6092,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action createUploadSession
+      operationId: InvokecreateUploadSession
       parameters:
         - name: id
           in: path
@@ -5956,6 +6122,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action invite
+      operationId: Invokeinvite
       parameters:
         - name: id
           in: path
@@ -6001,6 +6168,7 @@ paths:
       tags:
         - workbooks
       summary: Invoke action validatePermission
+      operationId: InvokevalidatePermission
       parameters:
         - name: id
           in: path
@@ -6030,6 +6198,7 @@ paths:
       tags:
         - drives
       summary: Get entities from drives
+      operationId: GetEntitiesFromdrives
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -6135,6 +6304,7 @@ paths:
       tags:
         - drives
       summary: Add new entity to drives
+      operationId: AddEntityTodrives
       requestBody:
         description: New entity
         content:
@@ -6156,6 +6326,7 @@ paths:
       tags:
         - drives
       summary: Get entity from drives by key
+      operationId: GetEntityFromdrivesByKey
       parameters:
         - name: id
           in: path
@@ -6217,6 +6388,7 @@ paths:
       tags:
         - drives
       summary: Update entity in drives
+      operationId: UpdateEntityIndrives
       parameters:
         - name: id
           in: path
@@ -6240,6 +6412,7 @@ paths:
       tags:
         - drives
       summary: Delete entity from drives
+      operationId: DeleteEntityFromdrives
       parameters:
         - name: id
           in: path
@@ -6262,6 +6435,7 @@ paths:
       tags:
         - drives
       summary: Invoke function recent
+      operationId: Invokerecent
       parameters:
         - name: id
           in: path
@@ -6287,6 +6461,7 @@ paths:
       tags:
         - drives
       summary: Invoke function search
+      operationId: Invokesearch
       parameters:
         - name: id
           in: path
@@ -6312,6 +6487,7 @@ paths:
       tags:
         - drives
       summary: Invoke function sharedWithMe
+      operationId: InvokesharedWithMe
       parameters:
         - name: id
           in: path
@@ -6337,6 +6513,7 @@ paths:
       tags:
         - shares
       summary: Get entities from shares
+      operationId: GetEntitiesFromshares
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -6431,6 +6608,7 @@ paths:
       tags:
         - shares
       summary: Add new entity to shares
+      operationId: AddEntityToshares
       requestBody:
         description: New entity
         content:
@@ -6452,6 +6630,7 @@ paths:
       tags:
         - shares
       summary: Get entity from shares by key
+      operationId: GetEntityFromsharesByKey
       parameters:
         - name: id
           in: path
@@ -6510,6 +6689,7 @@ paths:
       tags:
         - shares
       summary: Update entity in shares
+      operationId: UpdateEntityInshares
       parameters:
         - name: id
           in: path
@@ -6533,6 +6713,7 @@ paths:
       tags:
         - shares
       summary: Delete entity from shares
+      operationId: DeleteEntityFromshares
       parameters:
         - name: id
           in: path
@@ -6555,6 +6736,7 @@ paths:
       tags:
         - sites
       summary: Get entities from sites
+      operationId: GetEntitiesFromsites
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -6660,6 +6842,7 @@ paths:
       tags:
         - sites
       summary: Add new entity to sites
+      operationId: AddEntityTosites
       requestBody:
         description: New entity
         content:
@@ -6681,6 +6864,7 @@ paths:
       tags:
         - sites
       summary: Get entity from sites by key
+      operationId: GetEntityFromsitesByKey
       parameters:
         - name: id
           in: path
@@ -6744,6 +6928,7 @@ paths:
       tags:
         - sites
       summary: Update entity in sites
+      operationId: UpdateEntityInsites
       parameters:
         - name: id
           in: path
@@ -6767,6 +6952,7 @@ paths:
       tags:
         - sites
       summary: Delete entity from sites
+      operationId: DeleteEntityFromsites
       parameters:
         - name: id
           in: path
@@ -6789,6 +6975,7 @@ paths:
       tags:
         - sites
       summary: Invoke function getByPath
+      operationId: InvokegetByPath
       parameters:
         - name: id
           in: path
@@ -6812,6 +6999,7 @@ paths:
       tags:
         - subscriptions
       summary: Get entities from subscriptions
+      operationId: GetEntitiesFromsubscriptions
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $select
@@ -6848,6 +7036,7 @@ paths:
       tags:
         - subscriptions
       summary: Add new entity to subscriptions
+      operationId: AddEntityTosubscriptions
       requestBody:
         description: New entity
         content:
@@ -6869,6 +7058,7 @@ paths:
       tags:
         - subscriptions
       summary: Get entity from subscriptions by key
+      operationId: GetEntityFromsubscriptionsByKey
       parameters:
         - name: id
           in: path
@@ -6904,6 +7094,7 @@ paths:
       tags:
         - subscriptions
       summary: Update entity in subscriptions
+      operationId: UpdateEntityInsubscriptions
       parameters:
         - name: id
           in: path
@@ -6927,6 +7118,7 @@ paths:
       tags:
         - subscriptions
       summary: Delete entity from subscriptions
+      operationId: DeleteEntityFromsubscriptions
       parameters:
         - name: id
           in: path
@@ -6949,6 +7141,7 @@ paths:
       tags:
         - identityRiskEvents
       summary: Get entities from identityRiskEvents
+      operationId: GetEntitiesFromidentityRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7033,6 +7226,7 @@ paths:
       tags:
         - identityRiskEvents
       summary: Add new entity to identityRiskEvents
+      operationId: AddEntityToidentityRiskEvents
       requestBody:
         description: New entity
         content:
@@ -7054,6 +7248,7 @@ paths:
       tags:
         - identityRiskEvents
       summary: Get entity from identityRiskEvents by key
+      operationId: GetEntityFromidentityRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -7104,6 +7299,7 @@ paths:
       tags:
         - identityRiskEvents
       summary: Update entity in identityRiskEvents
+      operationId: UpdateEntityInidentityRiskEvents
       parameters:
         - name: id
           in: path
@@ -7127,6 +7323,7 @@ paths:
       tags:
         - identityRiskEvents
       summary: Delete entity from identityRiskEvents
+      operationId: DeleteEntityFromidentityRiskEvents
       parameters:
         - name: id
           in: path
@@ -7149,6 +7346,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents
       summary: Get entities from impossibleTravelRiskEvents
+      operationId: GetEntitiesFromimpossibleTravelRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7257,6 +7455,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents
       summary: Add new entity to impossibleTravelRiskEvents
+      operationId: AddEntityToimpossibleTravelRiskEvents
       requestBody:
         description: New entity
         content:
@@ -7278,6 +7477,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents
       summary: Get entity from impossibleTravelRiskEvents by key
+      operationId: GetEntityFromimpossibleTravelRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -7336,6 +7536,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents
       summary: Update entity in impossibleTravelRiskEvents
+      operationId: UpdateEntityInimpossibleTravelRiskEvents
       parameters:
         - name: id
           in: path
@@ -7359,6 +7560,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents
       summary: Delete entity from impossibleTravelRiskEvents
+      operationId: DeleteEntityFromimpossibleTravelRiskEvents
       parameters:
         - name: id
           in: path
@@ -7381,6 +7583,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents
       summary: Get entities from leakedCredentialsRiskEvents
+      operationId: GetEntitiesFromleakedCredentialsRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7465,6 +7668,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents
       summary: Add new entity to leakedCredentialsRiskEvents
+      operationId: AddEntityToleakedCredentialsRiskEvents
       requestBody:
         description: New entity
         content:
@@ -7486,6 +7690,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents
       summary: Get entity from leakedCredentialsRiskEvents by key
+      operationId: GetEntityFromleakedCredentialsRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -7536,6 +7741,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents
       summary: Update entity in leakedCredentialsRiskEvents
+      operationId: UpdateEntityInleakedCredentialsRiskEvents
       parameters:
         - name: id
           in: path
@@ -7559,6 +7765,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents
       summary: Delete entity from leakedCredentialsRiskEvents
+      operationId: DeleteEntityFromleakedCredentialsRiskEvents
       parameters:
         - name: id
           in: path
@@ -7581,6 +7788,7 @@ paths:
       tags:
         - anonymousIpRiskEvents
       summary: Get entities from anonymousIpRiskEvents
+      operationId: GetEntitiesFromanonymousIpRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7671,6 +7879,7 @@ paths:
       tags:
         - anonymousIpRiskEvents
       summary: Add new entity to anonymousIpRiskEvents
+      operationId: AddEntityToanonymousIpRiskEvents
       requestBody:
         description: New entity
         content:
@@ -7692,6 +7901,7 @@ paths:
       tags:
         - anonymousIpRiskEvents
       summary: Get entity from anonymousIpRiskEvents by key
+      operationId: GetEntityFromanonymousIpRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -7744,6 +7954,7 @@ paths:
       tags:
         - anonymousIpRiskEvents
       summary: Update entity in anonymousIpRiskEvents
+      operationId: UpdateEntityInanonymousIpRiskEvents
       parameters:
         - name: id
           in: path
@@ -7767,6 +7978,7 @@ paths:
       tags:
         - anonymousIpRiskEvents
       summary: Delete entity from anonymousIpRiskEvents
+      operationId: DeleteEntityFromanonymousIpRiskEvents
       parameters:
         - name: id
           in: path
@@ -7789,6 +8001,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents
       summary: Get entities from suspiciousIpRiskEvents
+      operationId: GetEntitiesFromsuspiciousIpRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7879,6 +8092,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents
       summary: Add new entity to suspiciousIpRiskEvents
+      operationId: AddEntityTosuspiciousIpRiskEvents
       requestBody:
         description: New entity
         content:
@@ -7900,6 +8114,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents
       summary: Get entity from suspiciousIpRiskEvents by key
+      operationId: GetEntityFromsuspiciousIpRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -7952,6 +8167,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents
       summary: Update entity in suspiciousIpRiskEvents
+      operationId: UpdateEntityInsuspiciousIpRiskEvents
       parameters:
         - name: id
           in: path
@@ -7975,6 +8191,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents
       summary: Delete entity from suspiciousIpRiskEvents
+      operationId: DeleteEntityFromsuspiciousIpRiskEvents
       parameters:
         - name: id
           in: path
@@ -7997,6 +8214,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents
       summary: Get entities from unfamiliarLocationRiskEvents
+      operationId: GetEntitiesFromunfamiliarLocationRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8087,6 +8305,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents
       summary: Add new entity to unfamiliarLocationRiskEvents
+      operationId: AddEntityTounfamiliarLocationRiskEvents
       requestBody:
         description: New entity
         content:
@@ -8108,6 +8327,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents
       summary: Get entity from unfamiliarLocationRiskEvents by key
+      operationId: GetEntityFromunfamiliarLocationRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -8160,6 +8380,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents
       summary: Update entity in unfamiliarLocationRiskEvents
+      operationId: UpdateEntityInunfamiliarLocationRiskEvents
       parameters:
         - name: id
           in: path
@@ -8183,6 +8404,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents
       summary: Delete entity from unfamiliarLocationRiskEvents
+      operationId: DeleteEntityFromunfamiliarLocationRiskEvents
       parameters:
         - name: id
           in: path
@@ -8205,6 +8427,7 @@ paths:
       tags:
         - malwareRiskEvents
       summary: Get entities from malwareRiskEvents
+      operationId: GetEntitiesFrommalwareRiskEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8301,6 +8524,7 @@ paths:
       tags:
         - malwareRiskEvents
       summary: Add new entity to malwareRiskEvents
+      operationId: AddEntityTomalwareRiskEvents
       requestBody:
         description: New entity
         content:
@@ -8322,6 +8546,7 @@ paths:
       tags:
         - malwareRiskEvents
       summary: Get entity from malwareRiskEvents by key
+      operationId: GetEntityFrommalwareRiskEventsByKey
       parameters:
         - name: id
           in: path
@@ -8376,6 +8601,7 @@ paths:
       tags:
         - malwareRiskEvents
       summary: Update entity in malwareRiskEvents
+      operationId: UpdateEntityInmalwareRiskEvents
       parameters:
         - name: id
           in: path
@@ -8399,6 +8625,7 @@ paths:
       tags:
         - malwareRiskEvents
       summary: Delete entity from malwareRiskEvents
+      operationId: DeleteEntityFrommalwareRiskEvents
       parameters:
         - name: id
           in: path
@@ -8421,6 +8648,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Get entities from privilegedRoles
+      operationId: GetEntitiesFromprivilegedRoles
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8483,6 +8711,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Add new entity to privilegedRoles
+      operationId: AddEntityToprivilegedRoles
       requestBody:
         description: New entity
         content:
@@ -8504,6 +8733,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Get entity from privilegedRoles by key
+      operationId: GetEntityFromprivilegedRolesByKey
       parameters:
         - name: id
           in: path
@@ -8548,6 +8778,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Update entity in privilegedRoles
+      operationId: UpdateEntityInprivilegedRoles
       parameters:
         - name: id
           in: path
@@ -8571,6 +8802,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Delete entity from privilegedRoles
+      operationId: DeleteEntityFromprivilegedRoles
       parameters:
         - name: id
           in: path
@@ -8593,6 +8825,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Invoke action selfActivate
+      operationId: InvokeselfActivate
       parameters:
         - name: id
           in: path
@@ -8630,6 +8863,7 @@ paths:
       tags:
         - privilegedRoles
       summary: Invoke action selfDeactivate
+      operationId: InvokeselfDeactivate
       parameters:
         - name: id
           in: path
@@ -8647,6 +8881,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Get entities from privilegedRoleAssignments
+      operationId: GetEntitiesFromprivilegedRoleAssignments
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8719,6 +8954,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Add new entity to privilegedRoleAssignments
+      operationId: AddEntityToprivilegedRoleAssignments
       requestBody:
         description: New entity
         content:
@@ -8740,6 +8976,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Get entity from privilegedRoleAssignments by key
+      operationId: GetEntityFromprivilegedRoleAssignmentsByKey
       parameters:
         - name: id
           in: path
@@ -8786,6 +9023,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Update entity in privilegedRoleAssignments
+      operationId: UpdateEntityInprivilegedRoleAssignments
       parameters:
         - name: id
           in: path
@@ -8809,6 +9047,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Delete entity from privilegedRoleAssignments
+      operationId: DeleteEntityFromprivilegedRoleAssignments
       parameters:
         - name: id
           in: path
@@ -8831,6 +9070,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Invoke function my
+      operationId: Invokemy
       responses:
         '200':
           description: Success
@@ -8849,6 +9089,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Invoke action makePermanent
+      operationId: InvokemakePermanent
       parameters:
         - name: id
           in: path
@@ -8883,6 +9124,7 @@ paths:
       tags:
         - privilegedRoleAssignments
       summary: Invoke action makeEligible
+      operationId: InvokemakeEligible
       parameters:
         - name: id
           in: path
@@ -8900,6 +9142,7 @@ paths:
       tags:
         - privilegedOperationEvents
       summary: Get entities from privilegedOperationEvents
+      operationId: GetEntitiesFromprivilegedOperationEvents
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8998,6 +9241,7 @@ paths:
       tags:
         - privilegedOperationEvents
       summary: Add new entity to privilegedOperationEvents
+      operationId: AddEntityToprivilegedOperationEvents
       requestBody:
         description: New entity
         content:
@@ -9019,6 +9263,7 @@ paths:
       tags:
         - privilegedOperationEvents
       summary: Get entity from privilegedOperationEvents by key
+      operationId: GetEntityFromprivilegedOperationEventsByKey
       parameters:
         - name: id
           in: path
@@ -9073,6 +9318,7 @@ paths:
       tags:
         - privilegedOperationEvents
       summary: Update entity in privilegedOperationEvents
+      operationId: UpdateEntityInprivilegedOperationEvents
       parameters:
         - name: id
           in: path
@@ -9096,6 +9342,7 @@ paths:
       tags:
         - privilegedOperationEvents
       summary: Delete entity from privilegedOperationEvents
+      operationId: DeleteEntityFromprivilegedOperationEvents
       parameters:
         - name: id
           in: path
@@ -9118,6 +9365,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Get entities from privilegedSignupStatus
+      operationId: GetEntitiesFromprivilegedSignupStatus
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9180,6 +9428,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Add new entity to privilegedSignupStatus
+      operationId: AddEntityToprivilegedSignupStatus
       requestBody:
         description: New entity
         content:
@@ -9201,6 +9450,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Get entity from privilegedSignupStatus by key
+      operationId: GetEntityFromprivilegedSignupStatusByKey
       parameters:
         - name: id
           in: path
@@ -9243,6 +9493,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Update entity in privilegedSignupStatus
+      operationId: UpdateEntityInprivilegedSignupStatus
       parameters:
         - name: id
           in: path
@@ -9266,6 +9517,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Delete entity from privilegedSignupStatus
+      operationId: DeleteEntityFromprivilegedSignupStatus
       parameters:
         - name: id
           in: path
@@ -9288,6 +9540,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Invoke action signUp
+      operationId: InvokesignUp
       responses:
         '204':
           description: Success
@@ -9298,6 +9551,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Invoke function isSignedUp
+      operationId: InvokeisSignedUp
       responses:
         '200':
           description: Success
@@ -9313,6 +9567,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Invoke function canSignUp
+      operationId: InvokecanSignUp
       responses:
         '200':
           description: Success
@@ -9328,6 +9583,7 @@ paths:
       tags:
         - privilegedSignupStatus
       summary: Invoke action completeSetup
+      operationId: InvokecompleteSetup
       requestBody:
         description: Action parameters
         content:
@@ -9350,6 +9606,7 @@ paths:
       tags:
         - privilegedApproval
       summary: Get entities from privilegedApproval
+      operationId: GetEntitiesFromprivilegedApproval
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9434,6 +9691,7 @@ paths:
       tags:
         - privilegedApproval
       summary: Add new entity to privilegedApproval
+      operationId: AddEntityToprivilegedApproval
       requestBody:
         description: New entity
         content:
@@ -9455,6 +9713,7 @@ paths:
       tags:
         - privilegedApproval
       summary: Get entity from privilegedApproval by key
+      operationId: GetEntityFromprivilegedApprovalByKey
       parameters:
         - name: id
           in: path
@@ -9505,6 +9764,7 @@ paths:
       tags:
         - privilegedApproval
       summary: Update entity in privilegedApproval
+      operationId: UpdateEntityInprivilegedApproval
       parameters:
         - name: id
           in: path
@@ -9528,6 +9788,7 @@ paths:
       tags:
         - privilegedApproval
       summary: Delete entity from privilegedApproval
+      operationId: DeleteEntityFromprivilegedApproval
       parameters:
         - name: id
           in: path
@@ -9550,6 +9811,7 @@ paths:
       tags:
         - privilegedApproval
       summary: Invoke function myRequests
+      operationId: InvokemyRequests
       responses:
         '200':
           description: Success
@@ -9568,6 +9830,7 @@ paths:
       tags:
         - invitations
       summary: Get entities from invitations
+      operationId: GetEntitiesFrominvitations
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9649,6 +9912,7 @@ paths:
       tags:
         - invitations
       summary: Add new entity to invitations
+      operationId: AddEntityToinvitations
       requestBody:
         description: New entity
         content:
@@ -9670,6 +9934,7 @@ paths:
       tags:
         - invitations
       summary: Get entity from invitations by key
+      operationId: GetEntityFrominvitationsByKey
       parameters:
         - name: id
           in: path
@@ -9719,6 +9984,7 @@ paths:
       tags:
         - invitations
       summary: Update entity in invitations
+      operationId: UpdateEntityIninvitations
       parameters:
         - name: id
           in: path
@@ -9742,6 +10008,7 @@ paths:
       tags:
         - invitations
       summary: Delete entity from invitations
+      operationId: DeleteEntityFrominvitations
       parameters:
         - name: id
           in: path
@@ -9764,6 +10031,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments
       summary: Get entities from appConfigurationGroupAssignments
+      operationId: GetEntitiesFromappConfigurationGroupAssignments
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9826,6 +10094,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments
       summary: Add new entity to appConfigurationGroupAssignments
+      operationId: AddEntityToappConfigurationGroupAssignments
       requestBody:
         description: New entity
         content:
@@ -9847,6 +10116,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments
       summary: Get entity from appConfigurationGroupAssignments by key
+      operationId: GetEntityFromappConfigurationGroupAssignmentsByKey
       parameters:
         - name: id
           in: path
@@ -9889,6 +10159,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments
       summary: Update entity in appConfigurationGroupAssignments
+      operationId: UpdateEntityInappConfigurationGroupAssignments
       parameters:
         - name: id
           in: path
@@ -9912,6 +10183,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments
       summary: Delete entity from appConfigurationGroupAssignments
+      operationId: DeleteEntityFromappConfigurationGroupAssignments
       parameters:
         - name: id
           in: path
@@ -9934,6 +10206,7 @@ paths:
       tags:
         - assignments
       summary: Get entities from assignments
+      operationId: GetEntitiesFromassignments
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9993,6 +10266,7 @@ paths:
       tags:
         - assignments
       summary: Add new entity to assignments
+      operationId: AddEntityToassignments
       requestBody:
         description: New entity
         content:
@@ -10014,6 +10288,7 @@ paths:
       tags:
         - assignments
       summary: Get entity from assignments by key
+      operationId: GetEntityFromassignmentsByKey
       parameters:
         - name: id
           in: path
@@ -10055,6 +10330,7 @@ paths:
       tags:
         - assignments
       summary: Update entity in assignments
+      operationId: UpdateEntityInassignments
       parameters:
         - name: id
           in: path
@@ -10078,6 +10354,7 @@ paths:
       tags:
         - assignments
       summary: Delete entity from assignments
+      operationId: DeleteEntityFromassignments
       parameters:
         - name: id
           in: path
@@ -10100,6 +10377,7 @@ paths:
       tags:
         - vppTokens
       summary: Get entities from vppTokens
+      operationId: GetEntitiesFromvppTokens
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10192,6 +10470,7 @@ paths:
       tags:
         - vppTokens
       summary: Add new entity to vppTokens
+      operationId: AddEntityTovppTokens
       requestBody:
         description: New entity
         content:
@@ -10213,6 +10492,7 @@ paths:
       tags:
         - vppTokens
       summary: Get entity from vppTokens by key
+      operationId: GetEntityFromvppTokensByKey
       parameters:
         - name: id
           in: path
@@ -10265,6 +10545,7 @@ paths:
       tags:
         - vppTokens
       summary: Update entity in vppTokens
+      operationId: UpdateEntityInvppTokens
       parameters:
         - name: id
           in: path
@@ -10288,6 +10569,7 @@ paths:
       tags:
         - vppTokens
       summary: Delete entity from vppTokens
+      operationId: DeleteEntityFromvppTokens
       parameters:
         - name: id
           in: path
@@ -10310,6 +10592,7 @@ paths:
       tags:
         - vppTokens
       summary: Invoke action syncLicenses
+      operationId: InvokesyncLicenses
       parameters:
         - name: id
           in: path
@@ -10327,6 +10610,7 @@ paths:
       tags:
         - vppTokens
       summary: Invoke action revokeLicenses
+      operationId: InvokerevokeLicenses
       parameters:
         - name: id
           in: path
@@ -10344,6 +10628,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment
       summary: Get entities from enrollmentConfigurationAssignment
+      operationId: GetEntitiesFromenrollmentConfigurationAssignment
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10403,6 +10688,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment
       summary: Add new entity to enrollmentConfigurationAssignment
+      operationId: AddEntityToenrollmentConfigurationAssignment
       requestBody:
         description: New entity
         content:
@@ -10424,6 +10710,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment
       summary: Get entity from enrollmentConfigurationAssignment by key
+      operationId: GetEntityFromenrollmentConfigurationAssignmentByKey
       parameters:
         - name: id
           in: path
@@ -10465,6 +10752,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment
       summary: Update entity in enrollmentConfigurationAssignment
+      operationId: UpdateEntityInenrollmentConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -10488,6 +10776,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment
       summary: Delete entity from enrollmentConfigurationAssignment
+      operationId: DeleteEntityFromenrollmentConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -10510,6 +10799,7 @@ paths:
       tags:
         - commands
       summary: Get entities from commands
+      operationId: GetEntitiesFromcommands
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10591,6 +10881,7 @@ paths:
       tags:
         - commands
       summary: Add new entity to commands
+      operationId: AddEntityTocommands
       requestBody:
         description: New entity
         content:
@@ -10612,6 +10903,7 @@ paths:
       tags:
         - commands
       summary: Get entity from commands by key
+      operationId: GetEntityFromcommandsByKey
       parameters:
         - name: id
           in: path
@@ -10661,6 +10953,7 @@ paths:
       tags:
         - commands
       summary: Update entity in commands
+      operationId: UpdateEntityIncommands
       parameters:
         - name: id
           in: path
@@ -10684,6 +10977,7 @@ paths:
       tags:
         - commands
       summary: Delete entity from commands
+      operationId: DeleteEntityFromcommands
       parameters:
         - name: id
           in: path
@@ -10706,6 +11000,7 @@ paths:
       tags:
         - payloadResponse
       summary: Get entities from payloadResponse
+      operationId: GetEntitiesFrompayloadResponse
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10762,6 +11057,7 @@ paths:
       tags:
         - payloadResponse
       summary: Add new entity to payloadResponse
+      operationId: AddEntityTopayloadResponse
       requestBody:
         description: New entity
         content:
@@ -10783,6 +11079,7 @@ paths:
       tags:
         - payloadResponse
       summary: Get entity from payloadResponse by key
+      operationId: GetEntityFrompayloadResponseByKey
       parameters:
         - name: id
           in: path
@@ -10823,6 +11120,7 @@ paths:
       tags:
         - payloadResponse
       summary: Update entity in payloadResponse
+      operationId: UpdateEntityInpayloadResponse
       parameters:
         - name: id
           in: path
@@ -10846,6 +11144,7 @@ paths:
       tags:
         - payloadResponse
       summary: Delete entity from payloadResponse
+      operationId: DeleteEntityFrompayloadResponse
       parameters:
         - name: id
           in: path
@@ -10868,6 +11167,7 @@ paths:
       tags:
         - team
       summary: Get entities from team
+      operationId: GetEntitiesFromteam
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10937,6 +11237,7 @@ paths:
       tags:
         - team
       summary: Add new entity to team
+      operationId: AddEntityToteam
       requestBody:
         description: New entity
         content:
@@ -10958,6 +11259,7 @@ paths:
       tags:
         - team
       summary: Get entity from team by key
+      operationId: GetEntityFromteamByKey
       parameters:
         - name: id
           in: path
@@ -11003,6 +11305,7 @@ paths:
       tags:
         - team
       summary: Update entity in team
+      operationId: UpdateEntityInteam
       parameters:
         - name: id
           in: path
@@ -11026,6 +11329,7 @@ paths:
       tags:
         - team
       summary: Delete entity from team
+      operationId: DeleteEntityFromteam
       parameters:
         - name: id
           in: path
@@ -11048,6 +11352,7 @@ paths:
       tags:
         - channels
       summary: Get entities from channels
+      operationId: GetEntitiesFromchannels
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11111,6 +11416,7 @@ paths:
       tags:
         - channels
       summary: Add new entity to channels
+      operationId: AddEntityTochannels
       requestBody:
         description: New entity
         content:
@@ -11132,6 +11438,7 @@ paths:
       tags:
         - channels
       summary: Get entity from channels by key
+      operationId: GetEntityFromchannelsByKey
       parameters:
         - name: id
           in: path
@@ -11175,6 +11482,7 @@ paths:
       tags:
         - channels
       summary: Update entity in channels
+      operationId: UpdateEntityInchannels
       parameters:
         - name: id
           in: path
@@ -11198,6 +11506,7 @@ paths:
       tags:
         - channels
       summary: Delete entity from channels
+      operationId: DeleteEntityFromchannels
       parameters:
         - name: id
           in: path
@@ -11220,6 +11529,7 @@ paths:
       tags:
         - chatThreads
       summary: Get entities from chatThreads
+      operationId: GetEntitiesFromchatThreads
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11278,6 +11588,7 @@ paths:
       tags:
         - chatThreads
       summary: Add new entity to chatThreads
+      operationId: AddEntityTochatThreads
       requestBody:
         description: New entity
         content:
@@ -11299,6 +11610,7 @@ paths:
       tags:
         - chatThreads
       summary: Get entity from chatThreads by key
+      operationId: GetEntityFromchatThreadsByKey
       parameters:
         - name: id
           in: path
@@ -11341,6 +11653,7 @@ paths:
       tags:
         - chatThreads
       summary: Update entity in chatThreads
+      operationId: UpdateEntityInchatThreads
       parameters:
         - name: id
           in: path
@@ -11364,6 +11677,7 @@ paths:
       tags:
         - chatThreads
       summary: Delete entity from chatThreads
+      operationId: DeleteEntityFromchatThreads
       parameters:
         - name: id
           in: path
@@ -11386,6 +11700,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Get entities from groupLifecyclePolicies
+      operationId: GetEntitiesFromgroupLifecyclePolicies
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11451,6 +11766,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Add new entity to groupLifecyclePolicies
+      operationId: AddEntityTogroupLifecyclePolicies
       requestBody:
         description: New entity
         content:
@@ -11472,6 +11788,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Get entity from groupLifecyclePolicies by key
+      operationId: GetEntityFromgroupLifecyclePoliciesByKey
       parameters:
         - name: id
           in: path
@@ -11515,6 +11832,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Update entity in groupLifecyclePolicies
+      operationId: UpdateEntityIngroupLifecyclePolicies
       parameters:
         - name: id
           in: path
@@ -11538,6 +11856,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Delete entity from groupLifecyclePolicies
+      operationId: DeleteEntityFromgroupLifecyclePolicies
       parameters:
         - name: id
           in: path
@@ -11560,6 +11879,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Invoke action renewGroup
+      operationId: InvokerenewGroup
       requestBody:
         description: Action parameters
         content:
@@ -11580,6 +11900,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Invoke action addGroup
+      operationId: InvokeaddGroup
       parameters:
         - name: id
           in: path
@@ -11607,6 +11928,7 @@ paths:
       tags:
         - groupLifecyclePolicies
       summary: Invoke action removeGroup
+      operationId: InvokeremoveGroup
       parameters:
         - name: id
           in: path
@@ -11634,6 +11956,7 @@ paths:
       tags:
         - identityProviders
       summary: Get entities from identityProviders
+      operationId: GetEntitiesFromidentityProviders
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11702,6 +12025,7 @@ paths:
       tags:
         - identityProviders
       summary: Add new entity to identityProviders
+      operationId: AddEntityToidentityProviders
       requestBody:
         description: New entity
         content:
@@ -11723,6 +12047,7 @@ paths:
       tags:
         - identityProviders
       summary: Get entity from identityProviders by key
+      operationId: GetEntityFromidentityProvidersByKey
       parameters:
         - name: id
           in: path
@@ -11767,6 +12092,7 @@ paths:
       tags:
         - identityProviders
       summary: Update entity in identityProviders
+      operationId: UpdateEntityInidentityProviders
       parameters:
         - name: id
           in: path
@@ -11790,6 +12116,7 @@ paths:
       tags:
         - identityProviders
       summary: Delete entity from identityProviders
+      operationId: DeleteEntityFromidentityProviders
       parameters:
         - name: id
           in: path
@@ -11812,6 +12139,7 @@ paths:
       tags:
         - functions
       summary: Get entities from functions
+      operationId: GetEntitiesFromfunctions
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11871,6 +12199,7 @@ paths:
       tags:
         - functions
       summary: Add new entity to functions
+      operationId: AddEntityTofunctions
       requestBody:
         description: New entity
         content:
@@ -11892,6 +12221,7 @@ paths:
       tags:
         - functions
       summary: Get entity from functions by key
+      operationId: GetEntityFromfunctionsByKey
       parameters:
         - name: id
           in: path
@@ -11933,6 +12263,7 @@ paths:
       tags:
         - functions
       summary: Update entity in functions
+      operationId: UpdateEntityInfunctions
       parameters:
         - name: id
           in: path
@@ -11956,6 +12287,7 @@ paths:
       tags:
         - functions
       summary: Delete entity from functions
+      operationId: DeleteEntityFromfunctions
       parameters:
         - name: id
           in: path
@@ -11978,6 +12310,7 @@ paths:
       tags:
         - filterOperators
       summary: Get entities from filterOperators
+      operationId: GetEntitiesFromfilterOperators
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -12043,6 +12376,7 @@ paths:
       tags:
         - filterOperators
       summary: Add new entity to filterOperators
+      operationId: AddEntityTofilterOperators
       requestBody:
         description: New entity
         content:
@@ -12064,6 +12398,7 @@ paths:
       tags:
         - filterOperators
       summary: Get entity from filterOperators by key
+      operationId: GetEntityFromfilterOperatorsByKey
       parameters:
         - name: id
           in: path
@@ -12107,6 +12442,7 @@ paths:
       tags:
         - filterOperators
       summary: Update entity in filterOperators
+      operationId: UpdateEntityInfilterOperators
       parameters:
         - name: id
           in: path
@@ -12130,6 +12466,7 @@ paths:
       tags:
         - filterOperators
       summary: Delete entity from filterOperators
+      operationId: DeleteEntityFromfilterOperators
       parameters:
         - name: id
           in: path
@@ -12152,6 +12489,7 @@ paths:
       tags:
         - me
       summary: Get me
+      operationId: Getme
       parameters:
         - name: $select
           in: query
@@ -12231,6 +12569,7 @@ paths:
       tags:
         - me
       summary: Update me
+      operationId: Updateme
       requestBody:
         description: New property values
         content:
@@ -12248,6 +12587,7 @@ paths:
       tags:
         - me
       summary: Invoke action assignLicense
+      operationId: InvokeassignLicense
       requestBody:
         description: Action parameters
         content:
@@ -12276,6 +12616,7 @@ paths:
       tags:
         - me
       summary: Invoke action changePassword
+      operationId: InvokechangePassword
       requestBody:
         description: Action parameters
         content:
@@ -12300,6 +12641,7 @@ paths:
       tags:
         - me
       summary: Invoke action invalidateAllRefreshTokens
+      operationId: InvokeinvalidateAllRefreshTokens
       responses:
         '204':
           description: Success
@@ -12310,6 +12652,7 @@ paths:
       tags:
         - me
       summary: Invoke action sendMail
+      operationId: InvokesendMail
       requestBody:
         description: Action parameters
         content:
@@ -12334,6 +12677,7 @@ paths:
       tags:
         - me
       summary: Invoke action findMeetingTimesOLD
+      operationId: InvokefindMeetingTimesOLD
       requestBody:
         description: Action parameters
         content:
@@ -12385,6 +12729,7 @@ paths:
       tags:
         - me
       summary: Invoke action findMeetingTimes
+      operationId: InvokefindMeetingTimes
       requestBody:
         description: Action parameters
         content:
@@ -12446,6 +12791,7 @@ paths:
       tags:
         - me
       summary: Invoke action getMailTips
+      operationId: InvokegetMailTips
       requestBody:
         description: Action parameters
         content:
@@ -12472,6 +12818,7 @@ paths:
       tags:
         - me
       summary: Invoke function reminderView
+      operationId: InvokereminderView
       parameters:
         - name: StartDateTime
           in: path
@@ -12500,6 +12847,7 @@ paths:
       tags:
         - me
       summary: Invoke function findRoomLists
+      operationId: InvokefindRoomLists
       responses:
         '200':
           description: Success
@@ -12516,6 +12864,7 @@ paths:
       tags:
         - me
       summary: Invoke function findRooms
+      operationId: InvokefindRooms
       parameters:
         - name: RoomList
           in: path
@@ -12538,6 +12887,7 @@ paths:
       tags:
         - me
       summary: Invoke function findRooms
+      operationId: InvokefindRooms
       responses:
         '200':
           description: Success
@@ -12554,6 +12904,7 @@ paths:
       tags:
         - me
       summary: Invoke action removeAllDevicesFromManagement
+      operationId: InvokeremoveAllDevicesFromManagement
       responses:
         '204':
           description: Success
@@ -12564,6 +12915,7 @@ paths:
       tags:
         - me
       summary: Invoke function getManagedAppDiagnosticStatuses
+      operationId: InvokegetManagedAppDiagnosticStatuses
       responses:
         '200':
           description: Success
@@ -12582,6 +12934,7 @@ paths:
       tags:
         - me
       summary: Invoke function getManagedAppPolicies
+      operationId: InvokegetManagedAppPolicies
       responses:
         '200':
           description: Success
@@ -12600,6 +12953,7 @@ paths:
       tags:
         - me
       summary: Invoke action wipeManagedAppRegistrationByDeviceTag
+      operationId: InvokewipeManagedAppRegistrationByDeviceTag
       requestBody:
         description: Action parameters
         content:
@@ -12621,6 +12975,7 @@ paths:
       tags:
         - directory
       summary: Get directory
+      operationId: Getdirectory
       parameters:
         - name: $select
           in: query
@@ -12656,6 +13011,7 @@ paths:
       tags:
         - directory
       summary: Update directory
+      operationId: Updatedirectory
       requestBody:
         description: New property values
         content:
@@ -12673,6 +13029,7 @@ paths:
       tags:
         - drive
       summary: Get drive
+      operationId: Getdrive
       parameters:
         - name: $select
           in: query
@@ -12728,6 +13085,7 @@ paths:
       tags:
         - drive
       summary: Update drive
+      operationId: Updatedrive
       requestBody:
         description: New property values
         content:
@@ -12745,6 +13103,7 @@ paths:
       tags:
         - drive
       summary: Invoke function recent
+      operationId: Invokerecent
       responses:
         '200':
           description: Success
@@ -12763,6 +13122,7 @@ paths:
       tags:
         - drive
       summary: Invoke function search
+      operationId: Invokesearch
       parameters:
         - name: q
           in: path
@@ -12788,6 +13148,7 @@ paths:
       tags:
         - drive
       summary: Invoke function sharedWithMe
+      operationId: InvokesharedWithMe
       responses:
         '200':
           description: Success
@@ -12806,6 +13167,7 @@ paths:
       tags:
         - planner
       summary: Get planner
+      operationId: Getplanner
       parameters:
         - name: $select
           in: query
@@ -12843,6 +13205,7 @@ paths:
       tags:
         - planner
       summary: Update planner
+      operationId: Updateplanner
       requestBody:
         description: New property values
         content:
@@ -12860,6 +13223,7 @@ paths:
       tags:
         - deviceManagement
       summary: Get deviceManagement
+      operationId: GetdeviceManagement
       parameters:
         - name: $select
           in: query
@@ -12948,6 +13312,7 @@ paths:
       tags:
         - deviceManagement
       summary: Update deviceManagement
+      operationId: UpdatedeviceManagement
       requestBody:
         description: New property values
         content:
@@ -12965,6 +13330,7 @@ paths:
       tags:
         - deviceManagement
       summary: Invoke function verifyWindowsEnrollmentAutoDiscovery
+      operationId: InvokeverifyWindowsEnrollmentAutoDiscovery
       parameters:
         - name: domainName
           in: path
@@ -12987,6 +13353,7 @@ paths:
       tags:
         - deviceManagement
       summary: Invoke function getEffectivePermissions
+      operationId: InvokegetEffectivePermissions
       responses:
         '200':
           description: Success
@@ -13004,6 +13371,7 @@ paths:
       tags:
         - deviceManagement
       summary: Invoke function getEffectivePermissions
+      operationId: InvokegetEffectivePermissions
       parameters:
         - name: scope
           in: path
@@ -13029,6 +13397,7 @@ paths:
       tags:
         - deviceAppManagement
       summary: Get deviceAppManagement
+      operationId: GetdeviceAppManagement
       parameters:
         - name: $select
           in: query
@@ -13086,6 +13455,7 @@ paths:
       tags:
         - deviceAppManagement
       summary: Update deviceAppManagement
+      operationId: UpdatedeviceAppManagement
       requestBody:
         description: New property values
         content:
@@ -13103,6 +13473,7 @@ paths:
       tags:
         - deviceAppManagement
       summary: Invoke action syncMicrosoftStoreForBusinessApps
+      operationId: InvokesyncMicrosoftStoreForBusinessApps
       responses:
         '204':
           description: Success
@@ -13113,6 +13484,7 @@ paths:
       tags:
         - reports
       summary: Get reports
+      operationId: Getreports
       parameters:
         - name: $select
           in: query
@@ -13147,6 +13519,7 @@ paths:
       tags:
         - reports
       summary: Update reports
+      operationId: Updatereports
       requestBody:
         description: New property values
         content:
@@ -13164,6 +13537,7 @@ paths:
       tags:
         - reports
       summary: Invoke function deviceConfigurationUserActivity
+      operationId: InvokedeviceConfigurationUserActivity
       responses:
         '200':
           description: Success
@@ -13180,6 +13554,7 @@ paths:
       tags:
         - reports
       summary: Invoke function deviceConfigurationDeviceActivity
+      operationId: InvokedeviceConfigurationDeviceActivity
       responses:
         '200':
           description: Success
@@ -13196,6 +13571,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationsUserDetail
+      operationId: InvokegetOffice365ActivationsUserDetail
       responses:
         '200':
           description: Success
@@ -13212,6 +13588,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationCounts
+      operationId: InvokegetOffice365ActivationCounts
       responses:
         '200':
           description: Success
@@ -13228,6 +13605,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationsUserCounts
+      operationId: InvokegetOffice365ActivationsUserCounts
       responses:
         '200':
           description: Success
@@ -13244,6 +13622,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserDetail
+      operationId: InvokegetOffice365ActiveUserDetail
       parameters:
         - name: date
           in: path
@@ -13268,6 +13647,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserDetail
+      operationId: InvokegetOffice365ActiveUserDetail
       parameters:
         - name: period
           in: path
@@ -13290,6 +13670,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ServicesUserCounts
+      operationId: InvokegetOffice365ServicesUserCounts
       parameters:
         - name: period
           in: path
@@ -13312,6 +13693,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserCounts
+      operationId: InvokegetOffice365ActiveUserCounts
       parameters:
         - name: period
           in: path
@@ -13334,6 +13716,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityDetail
+      operationId: InvokegetOffice365GroupsActivityDetail
       parameters:
         - name: date
           in: path
@@ -13358,6 +13741,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityDetail
+      operationId: InvokegetOffice365GroupsActivityDetail
       parameters:
         - name: period
           in: path
@@ -13380,6 +13764,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityCounts
+      operationId: InvokegetOffice365GroupsActivityCounts
       parameters:
         - name: period
           in: path
@@ -13402,6 +13787,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityGroupCounts
+      operationId: InvokegetOffice365GroupsActivityGroupCounts
       parameters:
         - name: period
           in: path
@@ -13424,6 +13810,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityStorage
+      operationId: InvokegetOffice365GroupsActivityStorage
       parameters:
         - name: period
           in: path
@@ -13446,6 +13833,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityFileCounts
+      operationId: InvokegetOffice365GroupsActivityFileCounts
       parameters:
         - name: period
           in: path
@@ -13468,6 +13856,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserDetail
+      operationId: InvokegetEmailActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -13492,6 +13881,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserDetail
+      operationId: InvokegetEmailActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -13514,6 +13904,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityCounts
+      operationId: InvokegetEmailActivityCounts
       parameters:
         - name: period
           in: path
@@ -13536,6 +13927,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserCounts
+      operationId: InvokegetEmailActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -13558,6 +13950,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserDetail
+      operationId: InvokegetEmailAppUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -13582,6 +13975,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserDetail
+      operationId: InvokegetEmailAppUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -13604,6 +13998,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageAppsUserCounts
+      operationId: InvokegetEmailAppUsageAppsUserCounts
       parameters:
         - name: period
           in: path
@@ -13626,6 +14021,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserCounts
+      operationId: InvokegetEmailAppUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -13648,6 +14044,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageVersionsUserCounts
+      operationId: InvokegetEmailAppUsageVersionsUserCounts
       parameters:
         - name: period
           in: path
@@ -13670,6 +14067,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageDetail
+      operationId: InvokegetMailboxUsageDetail
       parameters:
         - name: period
           in: path
@@ -13692,6 +14090,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageMailboxCounts
+      operationId: InvokegetMailboxUsageMailboxCounts
       parameters:
         - name: period
           in: path
@@ -13714,6 +14113,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageQuotaStatusMailboxCounts
+      operationId: InvokegetMailboxUsageQuotaStatusMailboxCounts
       parameters:
         - name: period
           in: path
@@ -13736,6 +14136,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageStorage
+      operationId: InvokegetMailboxUsageStorage
       parameters:
         - name: period
           in: path
@@ -13758,6 +14159,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserDetail
+      operationId: InvokegetOneDriveActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -13782,6 +14184,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserDetail
+      operationId: InvokegetOneDriveActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -13804,6 +14207,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserCounts
+      operationId: InvokegetOneDriveActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -13826,6 +14230,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityFileCounts
+      operationId: InvokegetOneDriveActivityFileCounts
       parameters:
         - name: period
           in: path
@@ -13848,6 +14253,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountDetail
+      operationId: InvokegetOneDriveUsageAccountDetail
       parameters:
         - name: date
           in: path
@@ -13872,6 +14278,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountDetail
+      operationId: InvokegetOneDriveUsageAccountDetail
       parameters:
         - name: period
           in: path
@@ -13894,6 +14301,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountCounts
+      operationId: InvokegetOneDriveUsageAccountCounts
       parameters:
         - name: period
           in: path
@@ -13916,6 +14324,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageFileCounts
+      operationId: InvokegetOneDriveUsageFileCounts
       parameters:
         - name: period
           in: path
@@ -13938,6 +14347,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageStorage
+      operationId: InvokegetOneDriveUsageStorage
       parameters:
         - name: period
           in: path
@@ -13960,6 +14370,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserDetail
+      operationId: InvokegetSharePointActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -13984,6 +14395,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserDetail
+      operationId: InvokegetSharePointActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -14006,6 +14418,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityFileCounts
+      operationId: InvokegetSharePointActivityFileCounts
       parameters:
         - name: period
           in: path
@@ -14028,6 +14441,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserCounts
+      operationId: InvokegetSharePointActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14050,6 +14464,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityPages
+      operationId: InvokegetSharePointActivityPages
       parameters:
         - name: period
           in: path
@@ -14072,6 +14487,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageDetail
+      operationId: InvokegetSharePointSiteUsageDetail
       parameters:
         - name: date
           in: path
@@ -14096,6 +14512,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageDetail
+      operationId: InvokegetSharePointSiteUsageDetail
       parameters:
         - name: period
           in: path
@@ -14118,6 +14535,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageFileCounts
+      operationId: InvokegetSharePointSiteUsageFileCounts
       parameters:
         - name: period
           in: path
@@ -14140,6 +14558,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageSiteCounts
+      operationId: InvokegetSharePointSiteUsageSiteCounts
       parameters:
         - name: period
           in: path
@@ -14162,6 +14581,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageStorage
+      operationId: InvokegetSharePointSiteUsageStorage
       parameters:
         - name: period
           in: path
@@ -14184,6 +14604,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsagePages
+      operationId: InvokegetSharePointSiteUsagePages
       parameters:
         - name: period
           in: path
@@ -14206,6 +14627,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserDetail
+      operationId: InvokegetSkypeForBusinessActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -14230,6 +14652,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserDetail
+      operationId: InvokegetSkypeForBusinessActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -14252,6 +14675,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityCounts
+      operationId: InvokegetSkypeForBusinessActivityCounts
       parameters:
         - name: period
           in: path
@@ -14274,6 +14698,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserCounts
+      operationId: InvokegetSkypeForBusinessActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14296,6 +14721,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
+      operationId: InvokegetSkypeForBusinessPeerToPeerActivityCounts
       parameters:
         - name: period
           in: path
@@ -14318,6 +14744,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
+      operationId: InvokegetSkypeForBusinessPeerToPeerActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14340,6 +14767,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
+      operationId: InvokegetSkypeForBusinessPeerToPeerActivityMinuteCounts
       parameters:
         - name: period
           in: path
@@ -14362,6 +14790,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityCounts
+      operationId: InvokegetSkypeForBusinessOrganizerActivityCounts
       parameters:
         - name: period
           in: path
@@ -14384,6 +14813,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
+      operationId: InvokegetSkypeForBusinessOrganizerActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14406,6 +14836,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
+      operationId: InvokegetSkypeForBusinessOrganizerActivityMinuteCounts
       parameters:
         - name: period
           in: path
@@ -14428,6 +14859,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityCounts
+      operationId: InvokegetSkypeForBusinessParticipantActivityCounts
       parameters:
         - name: period
           in: path
@@ -14450,6 +14882,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityUserCounts
+      operationId: InvokegetSkypeForBusinessParticipantActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14472,6 +14905,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
+      operationId: InvokegetSkypeForBusinessParticipantActivityMinuteCounts
       parameters:
         - name: period
           in: path
@@ -14494,6 +14928,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
+      operationId: InvokegetSkypeForBusinessDeviceUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -14518,6 +14953,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
+      operationId: InvokegetSkypeForBusinessDeviceUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -14540,6 +14976,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
+      operationId: InvokegetSkypeForBusinessDeviceUsageDistributionUserCounts
       parameters:
         - name: period
           in: path
@@ -14562,6 +14999,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserCounts
+      operationId: InvokegetSkypeForBusinessDeviceUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -14584,6 +15022,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserDetail
+      operationId: InvokegetYammerActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -14608,6 +15047,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserDetail
+      operationId: InvokegetYammerActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -14630,6 +15070,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityCounts
+      operationId: InvokegetYammerActivityCounts
       parameters:
         - name: period
           in: path
@@ -14652,6 +15093,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserCounts
+      operationId: InvokegetYammerActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14674,6 +15116,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserDetail
+      operationId: InvokegetYammerDeviceUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -14698,6 +15141,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserDetail
+      operationId: InvokegetYammerDeviceUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -14720,6 +15164,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageDistributionUserCounts
+      operationId: InvokegetYammerDeviceUsageDistributionUserCounts
       parameters:
         - name: period
           in: path
@@ -14742,6 +15187,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserCounts
+      operationId: InvokegetYammerDeviceUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -14764,6 +15210,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityDetail
+      operationId: InvokegetYammerGroupsActivityDetail
       parameters:
         - name: date
           in: path
@@ -14788,6 +15235,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityDetail
+      operationId: InvokegetYammerGroupsActivityDetail
       parameters:
         - name: period
           in: path
@@ -14810,6 +15258,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityGroupCounts
+      operationId: InvokegetYammerGroupsActivityGroupCounts
       parameters:
         - name: period
           in: path
@@ -14832,6 +15281,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityCounts
+      operationId: InvokegetYammerGroupsActivityCounts
       parameters:
         - name: period
           in: path
@@ -14854,6 +15304,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsUserActivityUserDetail
+      operationId: InvokegetTeamsUserActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -14878,6 +15329,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsUserActivityUserDetail
+      operationId: InvokegetTeamsUserActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -14900,6 +15352,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsUserActivityCounts
+      operationId: InvokegetTeamsUserActivityCounts
       parameters:
         - name: period
           in: path
@@ -14922,6 +15375,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsUserActivityUserCounts
+      operationId: InvokegetTeamsUserActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -14944,6 +15398,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsDeviceUsageUserDetail
+      operationId: InvokegetTeamsDeviceUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -14968,6 +15423,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsDeviceUsageUserDetail
+      operationId: InvokegetTeamsDeviceUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -14990,6 +15446,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsDeviceUsageUserCounts
+      operationId: InvokegetTeamsDeviceUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -15012,6 +15469,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTeamsDeviceUsageDistributionUserCounts
+      operationId: InvokegetTeamsDeviceUsageDistributionUserCounts
       parameters:
         - name: period
           in: path
@@ -15034,6 +15492,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getTenantSecureScores
+      operationId: InvokegetTenantSecureScores
       parameters:
         - name: period
           in: path
@@ -15059,6 +15518,7 @@ paths:
       tags:
         - education
       summary: Get education
+      operationId: Geteducation
       parameters:
         - name: $select
           in: query
@@ -15098,6 +15558,7 @@ paths:
       tags:
         - education
       summary: Update education
+      operationId: Updateeducation
       requestBody:
         description: New property values
         content:

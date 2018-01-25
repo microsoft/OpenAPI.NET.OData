@@ -17,6 +17,7 @@
           "People"
         ],
         "summary": "Get entities from People",
+        "operationId": "GetEntitiesFromPeople",
         "produces": [
           "application/json"
         ],
@@ -133,6 +134,7 @@
           "People"
         ],
         "summary": "Add new entity to People",
+        "operationId": "AddEntityToPeople",
         "consumes": [
           "application/json"
         ],
@@ -168,6 +170,7 @@
           "People"
         ],
         "summary": "Get entity from People by key",
+        "operationId": "GetEntityFromPeopleByKey",
         "produces": [
           "application/json"
         ],
@@ -234,6 +237,7 @@
           "People"
         ],
         "summary": "Update entity in People",
+        "operationId": "UpdateEntityInPeople",
         "consumes": [
           "application/json"
         ],
@@ -268,6 +272,7 @@
           "People"
         ],
         "summary": "Delete entity from People",
+        "operationId": "DeleteEntityFromPeople",
         "parameters": [
           {
             "name": "UserName",
@@ -299,6 +304,7 @@
           "People"
         ],
         "summary": "Invoke function GetFavoriteAirline",
+        "operationId": "InvokeGetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -328,6 +334,7 @@
           "People"
         ],
         "summary": "Invoke function GetFriendsTrips",
+        "operationId": "InvokeGetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -360,6 +367,7 @@
           "People"
         ],
         "summary": "Invoke function UpdatePersonLastName",
+        "operationId": "InvokeUpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -392,6 +400,7 @@
           "People"
         ],
         "summary": "Invoke action ShareTrip",
+        "operationId": "InvokeShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -439,6 +448,7 @@
           "Airlines"
         ],
         "summary": "Get entities from Airlines",
+        "operationId": "GetEntitiesFromAirlines",
         "produces": [
           "application/json"
         ],
@@ -525,6 +535,7 @@
           "Airlines"
         ],
         "summary": "Add new entity to Airlines",
+        "operationId": "AddEntityToAirlines",
         "consumes": [
           "application/json"
         ],
@@ -560,6 +571,7 @@
           "Airlines"
         ],
         "summary": "Get entity from Airlines by key",
+        "operationId": "GetEntityFromAirlinesByKey",
         "produces": [
           "application/json"
         ],
@@ -614,6 +626,7 @@
           "Airlines"
         ],
         "summary": "Update entity in Airlines",
+        "operationId": "UpdateEntityInAirlines",
         "consumes": [
           "application/json"
         ],
@@ -648,6 +661,7 @@
           "Airlines"
         ],
         "summary": "Delete entity from Airlines",
+        "operationId": "DeleteEntityFromAirlines",
         "parameters": [
           {
             "name": "AirlineCode",
@@ -679,6 +693,7 @@
           "Airports"
         ],
         "summary": "Get entities from Airports",
+        "operationId": "GetEntitiesFromAirports",
         "produces": [
           "application/json"
         ],
@@ -771,6 +786,7 @@
           "Airports"
         ],
         "summary": "Add new entity to Airports",
+        "operationId": "AddEntityToAirports",
         "consumes": [
           "application/json"
         ],
@@ -806,6 +822,7 @@
           "Airports"
         ],
         "summary": "Get entity from Airports by key",
+        "operationId": "GetEntityFromAirportsByKey",
         "produces": [
           "application/json"
         ],
@@ -862,6 +879,7 @@
           "Airports"
         ],
         "summary": "Update entity in Airports",
+        "operationId": "UpdateEntityInAirports",
         "consumes": [
           "application/json"
         ],
@@ -896,6 +914,7 @@
           "Airports"
         ],
         "summary": "Delete entity from Airports",
+        "operationId": "DeleteEntityFromAirports",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -927,6 +946,7 @@
           "NewComePeople"
         ],
         "summary": "Get entities from NewComePeople",
+        "operationId": "GetEntitiesFromNewComePeople",
         "produces": [
           "application/json"
         ],
@@ -1043,6 +1063,7 @@
           "NewComePeople"
         ],
         "summary": "Add new entity to NewComePeople",
+        "operationId": "AddEntityToNewComePeople",
         "consumes": [
           "application/json"
         ],
@@ -1078,6 +1099,7 @@
           "NewComePeople"
         ],
         "summary": "Get entity from NewComePeople by key",
+        "operationId": "GetEntityFromNewComePeopleByKey",
         "produces": [
           "application/json"
         ],
@@ -1144,6 +1166,7 @@
           "NewComePeople"
         ],
         "summary": "Update entity in NewComePeople",
+        "operationId": "UpdateEntityInNewComePeople",
         "consumes": [
           "application/json"
         ],
@@ -1178,6 +1201,7 @@
           "NewComePeople"
         ],
         "summary": "Delete entity from NewComePeople",
+        "operationId": "DeleteEntityFromNewComePeople",
         "parameters": [
           {
             "name": "UserName",
@@ -1209,6 +1233,7 @@
           "NewComePeople"
         ],
         "summary": "Invoke function GetFavoriteAirline",
+        "operationId": "InvokeGetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -1238,6 +1263,7 @@
           "NewComePeople"
         ],
         "summary": "Invoke function GetFriendsTrips",
+        "operationId": "InvokeGetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -1270,6 +1296,7 @@
           "NewComePeople"
         ],
         "summary": "Invoke function UpdatePersonLastName",
+        "operationId": "InvokeUpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -1302,6 +1329,7 @@
           "NewComePeople"
         ],
         "summary": "Invoke action ShareTrip",
+        "operationId": "InvokeShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -1349,6 +1377,7 @@
           "Me"
         ],
         "summary": "Get Me",
+        "operationId": "GetMe",
         "produces": [
           "application/json"
         ],
@@ -1408,6 +1437,7 @@
           "Me"
         ],
         "summary": "Update Me",
+        "operationId": "UpdateMe",
         "consumes": [
           "application/json"
         ],
@@ -1437,6 +1467,7 @@
           "Me"
         ],
         "summary": "Invoke function GetFavoriteAirline",
+        "operationId": "InvokeGetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -1457,6 +1488,7 @@
           "Me"
         ],
         "summary": "Invoke function GetFriendsTrips",
+        "operationId": "InvokeGetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -1488,6 +1520,7 @@
           "Me"
         ],
         "summary": "Invoke function UpdatePersonLastName",
+        "operationId": "InvokeUpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -1519,6 +1552,7 @@
           "Me"
         ],
         "summary": "Invoke action ShareTrip",
+        "operationId": "InvokeShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -1559,6 +1593,7 @@
           "People"
         ],
         "summary": "Invoke function GetPersonWithMostFriends",
+        "operationId": "InvokeGetPersonWithMostFriends",
         "produces": [
           "application/json"
         ],
@@ -1579,6 +1614,7 @@
           "Airports"
         ],
         "summary": "Invoke function GetNearestAirport",
+        "operationId": "InvokeGetNearestAirport",
         "produces": [
           "application/json"
         ],
@@ -1610,6 +1646,7 @@
     "/ResetDataSource": {
       "post": {
         "summary": "Invoke action ResetDataSource",
+        "operationId": "InvokeResetDataSource",
         "responses": {
           "204": {
             "description": "Success"

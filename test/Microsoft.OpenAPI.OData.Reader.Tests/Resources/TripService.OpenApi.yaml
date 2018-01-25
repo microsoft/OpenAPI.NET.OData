@@ -11,6 +11,7 @@ paths:
       tags:
         - People
       summary: Get entities from People
+      operationId: GetEntitiesFromPeople
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -100,6 +101,7 @@ paths:
       tags:
         - People
       summary: Add new entity to People
+      operationId: AddEntityToPeople
       requestBody:
         description: New entity
         content:
@@ -121,6 +123,7 @@ paths:
       tags:
         - People
       summary: Get entity from People by key
+      operationId: GetEntityFromPeopleByKey
       parameters:
         - name: UserName
           in: path
@@ -174,6 +177,7 @@ paths:
       tags:
         - People
       summary: Update entity in People
+      operationId: UpdateEntityInPeople
       parameters:
         - name: UserName
           in: path
@@ -197,6 +201,7 @@ paths:
       tags:
         - People
       summary: Delete entity from People
+      operationId: DeleteEntityFromPeople
       parameters:
         - name: UserName
           in: path
@@ -219,6 +224,7 @@ paths:
       tags:
         - People
       summary: Invoke function GetFavoriteAirline
+      operationId: InvokeGetFavoriteAirline
       parameters:
         - name: UserName
           in: path
@@ -242,6 +248,7 @@ paths:
       tags:
         - People
       summary: Invoke function GetFriendsTrips
+      operationId: InvokeGetFriendsTrips
       parameters:
         - name: UserName
           in: path
@@ -267,6 +274,7 @@ paths:
       tags:
         - People
       summary: Invoke function UpdatePersonLastName
+      operationId: InvokeUpdatePersonLastName
       parameters:
         - name: UserName
           in: path
@@ -289,6 +297,7 @@ paths:
       tags:
         - People
       summary: Invoke action ShareTrip
+      operationId: InvokeShareTrip
       parameters:
         - name: UserName
           in: path
@@ -321,6 +330,7 @@ paths:
       tags:
         - Airlines
       summary: Get entities from Airlines
+      operationId: GetEntitiesFromAirlines
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -380,6 +390,7 @@ paths:
       tags:
         - Airlines
       summary: Add new entity to Airlines
+      operationId: AddEntityToAirlines
       requestBody:
         description: New entity
         content:
@@ -401,6 +412,7 @@ paths:
       tags:
         - Airlines
       summary: Get entity from Airlines by key
+      operationId: GetEntityFromAirlinesByKey
       parameters:
         - name: AirlineCode
           in: path
@@ -442,6 +454,7 @@ paths:
       tags:
         - Airlines
       summary: Update entity in Airlines
+      operationId: UpdateEntityInAirlines
       parameters:
         - name: AirlineCode
           in: path
@@ -465,6 +478,7 @@ paths:
       tags:
         - Airlines
       summary: Delete entity from Airlines
+      operationId: DeleteEntityFromAirlines
       parameters:
         - name: AirlineCode
           in: path
@@ -487,6 +501,7 @@ paths:
       tags:
         - Airports
       summary: Get entities from Airports
+      operationId: GetEntitiesFromAirports
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -552,6 +567,7 @@ paths:
       tags:
         - Airports
       summary: Add new entity to Airports
+      operationId: AddEntityToAirports
       requestBody:
         description: New entity
         content:
@@ -573,6 +589,7 @@ paths:
       tags:
         - Airports
       summary: Get entity from Airports by key
+      operationId: GetEntityFromAirportsByKey
       parameters:
         - name: IcaoCode
           in: path
@@ -616,6 +633,7 @@ paths:
       tags:
         - Airports
       summary: Update entity in Airports
+      operationId: UpdateEntityInAirports
       parameters:
         - name: IcaoCode
           in: path
@@ -639,6 +657,7 @@ paths:
       tags:
         - Airports
       summary: Delete entity from Airports
+      operationId: DeleteEntityFromAirports
       parameters:
         - name: IcaoCode
           in: path
@@ -661,6 +680,7 @@ paths:
       tags:
         - NewComePeople
       summary: Get entities from NewComePeople
+      operationId: GetEntitiesFromNewComePeople
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -750,6 +770,7 @@ paths:
       tags:
         - NewComePeople
       summary: Add new entity to NewComePeople
+      operationId: AddEntityToNewComePeople
       requestBody:
         description: New entity
         content:
@@ -771,6 +792,7 @@ paths:
       tags:
         - NewComePeople
       summary: Get entity from NewComePeople by key
+      operationId: GetEntityFromNewComePeopleByKey
       parameters:
         - name: UserName
           in: path
@@ -824,6 +846,7 @@ paths:
       tags:
         - NewComePeople
       summary: Update entity in NewComePeople
+      operationId: UpdateEntityInNewComePeople
       parameters:
         - name: UserName
           in: path
@@ -847,6 +870,7 @@ paths:
       tags:
         - NewComePeople
       summary: Delete entity from NewComePeople
+      operationId: DeleteEntityFromNewComePeople
       parameters:
         - name: UserName
           in: path
@@ -869,6 +893,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke function GetFavoriteAirline
+      operationId: InvokeGetFavoriteAirline
       parameters:
         - name: UserName
           in: path
@@ -892,6 +917,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke function GetFriendsTrips
+      operationId: InvokeGetFriendsTrips
       parameters:
         - name: UserName
           in: path
@@ -917,6 +943,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke function UpdatePersonLastName
+      operationId: InvokeUpdatePersonLastName
       parameters:
         - name: UserName
           in: path
@@ -939,6 +966,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke action ShareTrip
+      operationId: InvokeShareTrip
       parameters:
         - name: UserName
           in: path
@@ -971,6 +999,7 @@ paths:
       tags:
         - Me
       summary: Get Me
+      operationId: GetMe
       parameters:
         - name: $select
           in: query
@@ -1018,6 +1047,7 @@ paths:
       tags:
         - Me
       summary: Update Me
+      operationId: UpdateMe
       requestBody:
         description: New property values
         content:
@@ -1035,6 +1065,7 @@ paths:
       tags:
         - Me
       summary: Invoke function GetFavoriteAirline
+      operationId: InvokeGetFavoriteAirline
       responses:
         '200':
           description: Success
@@ -1051,6 +1082,7 @@ paths:
       tags:
         - Me
       summary: Invoke function GetFriendsTrips
+      operationId: InvokeGetFriendsTrips
       parameters:
         - name: userName
           in: path
@@ -1075,6 +1107,7 @@ paths:
       tags:
         - Me
       summary: Invoke function UpdatePersonLastName
+      operationId: InvokeUpdatePersonLastName
       parameters:
         - name: lastName
           in: path
@@ -1096,6 +1129,7 @@ paths:
       tags:
         - Me
       summary: Invoke action ShareTrip
+      operationId: InvokeShareTrip
       requestBody:
         description: Action parameters
         content:
@@ -1121,6 +1155,7 @@ paths:
       tags:
         - People
       summary: Invoke function GetPersonWithMostFriends
+      operationId: InvokeGetPersonWithMostFriends
       responses:
         '200':
           description: Success
@@ -1137,6 +1172,7 @@ paths:
       tags:
         - Airports
       summary: Invoke function GetNearestAirport
+      operationId: InvokeGetNearestAirport
       parameters:
         - name: lat
           in: path
@@ -1176,6 +1212,7 @@ paths:
   /ResetDataSource:
     post:
       summary: Invoke action ResetDataSource
+      operationId: InvokeResetDataSource
       responses:
         '204':
           description: Success

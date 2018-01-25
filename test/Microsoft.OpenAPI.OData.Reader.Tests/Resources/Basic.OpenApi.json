@@ -17,6 +17,7 @@
           "People"
         ],
         "summary": "Get entities from People",
+        "operationId": "GetEntitiesFromPeople",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -119,6 +120,7 @@
           "People"
         ],
         "summary": "Add new entity to People",
+        "operationId": "AddEntityToPeople",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -153,6 +155,7 @@
           "People"
         ],
         "summary": "Get entity from People by key",
+        "operationId": "GetEntityFromPeopleByKey",
         "parameters": [
           {
             "name": "UserName",
@@ -218,6 +221,7 @@
           "People"
         ],
         "summary": "Update entity in People",
+        "operationId": "UpdateEntityInPeople",
         "parameters": [
           {
             "name": "UserName",
@@ -254,6 +258,7 @@
           "People"
         ],
         "summary": "Delete entity from People",
+        "operationId": "DeleteEntityFromPeople",
         "parameters": [
           {
             "name": "UserName",
@@ -289,6 +294,7 @@
           "City"
         ],
         "summary": "Get entities from City",
+        "operationId": "GetEntitiesFromCity",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -382,6 +388,7 @@
           "City"
         ],
         "summary": "Add new entity to City",
+        "operationId": "AddEntityToCity",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -416,6 +423,7 @@
           "City"
         ],
         "summary": "Get entity from City by key",
+        "operationId": "GetEntityFromCityByKey",
         "parameters": [
           {
             "name": "Name",
@@ -478,6 +486,7 @@
           "City"
         ],
         "summary": "Update entity in City",
+        "operationId": "UpdateEntityInCity",
         "parameters": [
           {
             "name": "Name",
@@ -514,6 +523,7 @@
           "City"
         ],
         "summary": "Delete entity from City",
+        "operationId": "DeleteEntityFromCity",
         "parameters": [
           {
             "name": "Name",
@@ -549,6 +559,7 @@
           "CountryOrRegion"
         ],
         "summary": "Get entities from CountryOrRegion",
+        "operationId": "GetEntitiesFromCountryOrRegion",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -642,6 +653,7 @@
           "CountryOrRegion"
         ],
         "summary": "Add new entity to CountryOrRegion",
+        "operationId": "AddEntityToCountryOrRegion",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -676,6 +688,7 @@
           "CountryOrRegion"
         ],
         "summary": "Get entity from CountryOrRegion by key",
+        "operationId": "GetEntityFromCountryOrRegionByKey",
         "parameters": [
           {
             "name": "Name",
@@ -738,6 +751,7 @@
           "CountryOrRegion"
         ],
         "summary": "Update entity in CountryOrRegion",
+        "operationId": "UpdateEntityInCountryOrRegion",
         "parameters": [
           {
             "name": "Name",
@@ -774,6 +788,7 @@
           "CountryOrRegion"
         ],
         "summary": "Delete entity from CountryOrRegion",
+        "operationId": "DeleteEntityFromCountryOrRegion",
         "parameters": [
           {
             "name": "Name",
@@ -809,6 +824,7 @@
           "Me"
         ],
         "summary": "Get Me",
+        "operationId": "GetMe",
         "parameters": [
           {
             "name": "$select",
@@ -865,6 +881,7 @@
           "Me"
         ],
         "summary": "Update Me",
+        "operationId": "UpdateMe",
         "requestBody": {
           "description": "New property values",
           "content": {

@@ -17,6 +17,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entities from schemaExtensions",
+        "operationId": "GetEntitiesFromschemaExtensions",
         "produces": [
           "application/json"
         ],
@@ -115,6 +116,7 @@
           "schemaExtensions"
         ],
         "summary": "Add new entity to schemaExtensions",
+        "operationId": "AddEntityToschemaExtensions",
         "consumes": [
           "application/json"
         ],
@@ -150,6 +152,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entity from schemaExtensions by key",
+        "operationId": "GetEntityFromschemaExtensionsByKey",
         "produces": [
           "application/json"
         ],
@@ -208,6 +211,7 @@
           "schemaExtensions"
         ],
         "summary": "Update entity in schemaExtensions",
+        "operationId": "UpdateEntityInschemaExtensions",
         "consumes": [
           "application/json"
         ],
@@ -242,6 +246,7 @@
           "schemaExtensions"
         ],
         "summary": "Delete entity from schemaExtensions",
+        "operationId": "DeleteEntityFromschemaExtensions",
         "parameters": [
           {
             "name": "id",
@@ -273,6 +278,7 @@
           "directoryObjects"
         ],
         "summary": "Get entities from directoryObjects",
+        "operationId": "GetEntitiesFromdirectoryObjects",
         "produces": [
           "application/json"
         ],
@@ -338,6 +344,7 @@
           "directoryObjects"
         ],
         "summary": "Add new entity to directoryObjects",
+        "operationId": "AddEntityTodirectoryObjects",
         "consumes": [
           "application/json"
         ],
@@ -373,6 +380,7 @@
           "directoryObjects"
         ],
         "summary": "Get entity from directoryObjects by key",
+        "operationId": "GetEntityFromdirectoryObjectsByKey",
         "produces": [
           "application/json"
         ],
@@ -415,6 +423,7 @@
           "directoryObjects"
         ],
         "summary": "Update entity in directoryObjects",
+        "operationId": "UpdateEntityIndirectoryObjects",
         "consumes": [
           "application/json"
         ],
@@ -449,6 +458,7 @@
           "directoryObjects"
         ],
         "summary": "Delete entity from directoryObjects",
+        "operationId": "DeleteEntityFromdirectoryObjects",
         "parameters": [
           {
             "name": "id",
@@ -480,6 +490,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getByIds",
+        "operationId": "InvokegetByIds",
         "consumes": [
           "application/json"
         ],
@@ -523,6 +534,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action validateProperties",
+        "operationId": "InvokevalidateProperties",
         "consumes": [
           "application/json"
         ],
@@ -568,6 +580,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action checkMemberGroups",
+        "operationId": "InvokecheckMemberGroups",
         "consumes": [
           "application/json"
         ],
@@ -612,6 +625,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberGroups",
+        "operationId": "InvokegetMemberGroups",
         "consumes": [
           "application/json"
         ],
@@ -654,6 +668,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberObjects",
+        "operationId": "InvokegetMemberObjects",
         "consumes": [
           "application/json"
         ],
@@ -696,6 +711,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action restore",
+        "operationId": "Invokerestore",
         "parameters": [
           {
             "name": "id",
@@ -721,6 +737,7 @@
           "applications"
         ],
         "summary": "Get entities from applications",
+        "operationId": "GetEntitiesFromapplications",
         "produces": [
           "application/json"
         ],
@@ -834,6 +851,7 @@
           "applications"
         ],
         "summary": "Add new entity to applications",
+        "operationId": "AddEntityToapplications",
         "consumes": [
           "application/json"
         ],
@@ -869,6 +887,7 @@
           "applications"
         ],
         "summary": "Get entity from applications by key",
+        "operationId": "GetEntityFromapplicationsByKey",
         "produces": [
           "application/json"
         ],
@@ -927,6 +946,7 @@
           "applications"
         ],
         "summary": "Update entity in applications",
+        "operationId": "UpdateEntityInapplications",
         "consumes": [
           "application/json"
         ],
@@ -961,6 +981,7 @@
           "applications"
         ],
         "summary": "Delete entity from applications",
+        "operationId": "DeleteEntityFromapplications",
         "parameters": [
           {
             "name": "id",
@@ -992,6 +1013,7 @@
           "administrativeUnits"
         ],
         "summary": "Get entities from administrativeUnits",
+        "operationId": "GetEntitiesFromadministrativeUnits",
         "produces": [
           "application/json"
         ],
@@ -1066,6 +1088,7 @@
           "administrativeUnits"
         ],
         "summary": "Add new entity to administrativeUnits",
+        "operationId": "AddEntityToadministrativeUnits",
         "consumes": [
           "application/json"
         ],
@@ -1101,6 +1124,7 @@
           "administrativeUnits"
         ],
         "summary": "Get entity from administrativeUnits by key",
+        "operationId": "GetEntityFromadministrativeUnitsByKey",
         "produces": [
           "application/json"
         ],
@@ -1146,6 +1170,7 @@
           "administrativeUnits"
         ],
         "summary": "Update entity in administrativeUnits",
+        "operationId": "UpdateEntityInadministrativeUnits",
         "consumes": [
           "application/json"
         ],
@@ -1180,6 +1205,7 @@
           "administrativeUnits"
         ],
         "summary": "Delete entity from administrativeUnits",
+        "operationId": "DeleteEntityFromadministrativeUnits",
         "parameters": [
           {
             "name": "id",
@@ -1211,6 +1237,7 @@
           "administrativeUnits"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "produces": [
           "application/json"
         ],
@@ -1234,6 +1261,7 @@
           "allowedDataLocations"
         ],
         "summary": "Get entities from allowedDataLocations",
+        "operationId": "GetEntitiesFromallowedDataLocations",
         "produces": [
           "application/json"
         ],
@@ -1329,6 +1357,7 @@
           "allowedDataLocations"
         ],
         "summary": "Add new entity to allowedDataLocations",
+        "operationId": "AddEntityToallowedDataLocations",
         "consumes": [
           "application/json"
         ],
@@ -1364,6 +1393,7 @@
           "allowedDataLocations"
         ],
         "summary": "Get entity from allowedDataLocations by key",
+        "operationId": "GetEntityFromallowedDataLocationsByKey",
         "produces": [
           "application/json"
         ],
@@ -1421,6 +1451,7 @@
           "allowedDataLocations"
         ],
         "summary": "Update entity in allowedDataLocations",
+        "operationId": "UpdateEntityInallowedDataLocations",
         "consumes": [
           "application/json"
         ],
@@ -1455,6 +1486,7 @@
           "allowedDataLocations"
         ],
         "summary": "Delete entity from allowedDataLocations",
+        "operationId": "DeleteEntityFromallowedDataLocations",
         "parameters": [
           {
             "name": "id",
@@ -1486,6 +1518,7 @@
           "appRoleAssignments"
         ],
         "summary": "Get entities from appRoleAssignments",
+        "operationId": "GetEntitiesFromappRoleAssignments",
         "produces": [
           "application/json"
         ],
@@ -1587,6 +1620,7 @@
           "appRoleAssignments"
         ],
         "summary": "Add new entity to appRoleAssignments",
+        "operationId": "AddEntityToappRoleAssignments",
         "consumes": [
           "application/json"
         ],
@@ -1622,6 +1656,7 @@
           "appRoleAssignments"
         ],
         "summary": "Get entity from appRoleAssignments by key",
+        "operationId": "GetEntityFromappRoleAssignmentsByKey",
         "produces": [
           "application/json"
         ],
@@ -1681,6 +1716,7 @@
           "appRoleAssignments"
         ],
         "summary": "Update entity in appRoleAssignments",
+        "operationId": "UpdateEntityInappRoleAssignments",
         "consumes": [
           "application/json"
         ],
@@ -1715,6 +1751,7 @@
           "appRoleAssignments"
         ],
         "summary": "Delete entity from appRoleAssignments",
+        "operationId": "DeleteEntityFromappRoleAssignments",
         "parameters": [
           {
             "name": "id",
@@ -1746,6 +1783,7 @@
           "contacts"
         ],
         "summary": "Get entities from contacts",
+        "operationId": "GetEntitiesFromcontacts",
         "produces": [
           "application/json"
         ],
@@ -1871,6 +1909,7 @@
           "contacts"
         ],
         "summary": "Add new entity to contacts",
+        "operationId": "AddEntityTocontacts",
         "consumes": [
           "application/json"
         ],
@@ -1906,6 +1945,7 @@
           "contacts"
         ],
         "summary": "Get entity from contacts by key",
+        "operationId": "GetEntityFromcontactsByKey",
         "produces": [
           "application/json"
         ],
@@ -1968,6 +2008,7 @@
           "contacts"
         ],
         "summary": "Update entity in contacts",
+        "operationId": "UpdateEntityIncontacts",
         "consumes": [
           "application/json"
         ],
@@ -2002,6 +2043,7 @@
           "contacts"
         ],
         "summary": "Delete entity from contacts",
+        "operationId": "DeleteEntityFromcontacts",
         "parameters": [
           {
             "name": "id",
@@ -2033,6 +2075,7 @@
           "contacts"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "produces": [
           "application/json"
         ],
@@ -2056,6 +2099,7 @@
           "devices"
         ],
         "summary": "Get entities from devices",
+        "operationId": "GetEntitiesFromdevices",
         "produces": [
           "application/json"
         ],
@@ -2184,6 +2228,7 @@
           "devices"
         ],
         "summary": "Add new entity to devices",
+        "operationId": "AddEntityTodevices",
         "consumes": [
           "application/json"
         ],
@@ -2219,6 +2264,7 @@
           "devices"
         ],
         "summary": "Get entity from devices by key",
+        "operationId": "GetEntityFromdevicesByKey",
         "produces": [
           "application/json"
         ],
@@ -2282,6 +2328,7 @@
           "devices"
         ],
         "summary": "Update entity in devices",
+        "operationId": "UpdateEntityIndevices",
         "consumes": [
           "application/json"
         ],
@@ -2316,6 +2363,7 @@
           "devices"
         ],
         "summary": "Delete entity from devices",
+        "operationId": "DeleteEntityFromdevices",
         "parameters": [
           {
             "name": "id",
@@ -2347,6 +2395,7 @@
           "domains"
         ],
         "summary": "Get entities from domains",
+        "operationId": "GetEntitiesFromdomains",
         "produces": [
           "application/json"
         ],
@@ -2460,6 +2509,7 @@
           "domains"
         ],
         "summary": "Add new entity to domains",
+        "operationId": "AddEntityTodomains",
         "consumes": [
           "application/json"
         ],
@@ -2495,6 +2545,7 @@
           "domains"
         ],
         "summary": "Get entity from domains by key",
+        "operationId": "GetEntityFromdomainsByKey",
         "produces": [
           "application/json"
         ],
@@ -2560,6 +2611,7 @@
           "domains"
         ],
         "summary": "Update entity in domains",
+        "operationId": "UpdateEntityIndomains",
         "consumes": [
           "application/json"
         ],
@@ -2594,6 +2646,7 @@
           "domains"
         ],
         "summary": "Delete entity from domains",
+        "operationId": "DeleteEntityFromdomains",
         "parameters": [
           {
             "name": "id",
@@ -2625,6 +2678,7 @@
           "domains"
         ],
         "summary": "Invoke action forceDelete",
+        "operationId": "InvokeforceDelete",
         "consumes": [
           "application/json"
         ],
@@ -2667,6 +2721,7 @@
           "domains"
         ],
         "summary": "Invoke action verify",
+        "operationId": "Invokeverify",
         "parameters": [
           {
             "name": "id",
@@ -2692,6 +2747,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entities from domainDnsRecords",
+        "operationId": "GetEntitiesFromdomainDnsRecords",
         "produces": [
           "application/json"
         ],
@@ -2790,6 +2846,7 @@
           "domainDnsRecords"
         ],
         "summary": "Add new entity to domainDnsRecords",
+        "operationId": "AddEntityTodomainDnsRecords",
         "consumes": [
           "application/json"
         ],
@@ -2825,6 +2882,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entity from domainDnsRecords by key",
+        "operationId": "GetEntityFromdomainDnsRecordsByKey",
         "produces": [
           "application/json"
         ],
@@ -2883,6 +2941,7 @@
           "domainDnsRecords"
         ],
         "summary": "Update entity in domainDnsRecords",
+        "operationId": "UpdateEntityIndomainDnsRecords",
         "consumes": [
           "application/json"
         ],
@@ -2917,6 +2976,7 @@
           "domainDnsRecords"
         ],
         "summary": "Delete entity from domainDnsRecords",
+        "operationId": "DeleteEntityFromdomainDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -2948,6 +3008,7 @@
           "groups"
         ],
         "summary": "Get entities from groups",
+        "operationId": "GetEntitiesFromgroups",
         "produces": [
           "application/json"
         ],
@@ -3103,6 +3164,7 @@
           "groups"
         ],
         "summary": "Add new entity to groups",
+        "operationId": "AddEntityTogroups",
         "consumes": [
           "application/json"
         ],
@@ -3138,6 +3200,7 @@
           "groups"
         ],
         "summary": "Get entity from groups by key",
+        "operationId": "GetEntityFromgroupsByKey",
         "produces": [
           "application/json"
         ],
@@ -3210,6 +3273,7 @@
           "groups"
         ],
         "summary": "Update entity in groups",
+        "operationId": "UpdateEntityIngroups",
         "consumes": [
           "application/json"
         ],
@@ -3244,6 +3308,7 @@
           "groups"
         ],
         "summary": "Delete entity from groups",
+        "operationId": "DeleteEntityFromgroups",
         "parameters": [
           {
             "name": "id",
@@ -3275,6 +3340,7 @@
           "groups"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "produces": [
           "application/json"
         ],
@@ -3298,6 +3364,7 @@
           "groups"
         ],
         "summary": "Invoke action validateProperties",
+        "operationId": "InvokevalidateProperties",
         "consumes": [
           "application/json"
         ],
@@ -3347,6 +3414,7 @@
           "groups"
         ],
         "summary": "Invoke action renew",
+        "operationId": "Invokerenew",
         "parameters": [
           {
             "name": "id",
@@ -3372,6 +3440,7 @@
           "groups"
         ],
         "summary": "Invoke action subscribeByMail",
+        "operationId": "InvokesubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -3397,6 +3466,7 @@
           "groups"
         ],
         "summary": "Invoke action unsubscribeByMail",
+        "operationId": "InvokeunsubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -3422,6 +3492,7 @@
           "groups"
         ],
         "summary": "Invoke action addFavorite",
+        "operationId": "InvokeaddFavorite",
         "parameters": [
           {
             "name": "id",
@@ -3447,6 +3518,7 @@
           "groups"
         ],
         "summary": "Invoke action removeFavorite",
+        "operationId": "InvokeremoveFavorite",
         "parameters": [
           {
             "name": "id",
@@ -3472,6 +3544,7 @@
           "groups"
         ],
         "summary": "Invoke action resetUnseenCount",
+        "operationId": "InvokeresetUnseenCount",
         "parameters": [
           {
             "name": "id",
@@ -3497,6 +3570,7 @@
           "directoryRoles"
         ],
         "summary": "Get entities from directoryRoles",
+        "operationId": "GetEntitiesFromdirectoryRoles",
         "produces": [
           "application/json"
         ],
@@ -3568,6 +3642,7 @@
           "directoryRoles"
         ],
         "summary": "Add new entity to directoryRoles",
+        "operationId": "AddEntityTodirectoryRoles",
         "consumes": [
           "application/json"
         ],
@@ -3603,6 +3678,7 @@
           "directoryRoles"
         ],
         "summary": "Get entity from directoryRoles by key",
+        "operationId": "GetEntityFromdirectoryRolesByKey",
         "produces": [
           "application/json"
         ],
@@ -3648,6 +3724,7 @@
           "directoryRoles"
         ],
         "summary": "Update entity in directoryRoles",
+        "operationId": "UpdateEntityIndirectoryRoles",
         "consumes": [
           "application/json"
         ],
@@ -3682,6 +3759,7 @@
           "directoryRoles"
         ],
         "summary": "Delete entity from directoryRoles",
+        "operationId": "DeleteEntityFromdirectoryRoles",
         "parameters": [
           {
             "name": "id",
@@ -3713,6 +3791,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entities from directoryRoleTemplates",
+        "operationId": "GetEntitiesFromdirectoryRoleTemplates",
         "produces": [
           "application/json"
         ],
@@ -3781,6 +3860,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Add new entity to directoryRoleTemplates",
+        "operationId": "AddEntityTodirectoryRoleTemplates",
         "consumes": [
           "application/json"
         ],
@@ -3816,6 +3896,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entity from directoryRoleTemplates by key",
+        "operationId": "GetEntityFromdirectoryRoleTemplatesByKey",
         "produces": [
           "application/json"
         ],
@@ -3860,6 +3941,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Update entity in directoryRoleTemplates",
+        "operationId": "UpdateEntityIndirectoryRoleTemplates",
         "consumes": [
           "application/json"
         ],
@@ -3894,6 +3976,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Delete entity from directoryRoleTemplates",
+        "operationId": "DeleteEntityFromdirectoryRoleTemplates",
         "parameters": [
           {
             "name": "id",
@@ -3925,6 +4008,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Get entities from directorySettingTemplates",
+        "operationId": "GetEntitiesFromdirectorySettingTemplates",
         "produces": [
           "application/json"
         ],
@@ -3999,6 +4083,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Add new entity to directorySettingTemplates",
+        "operationId": "AddEntityTodirectorySettingTemplates",
         "consumes": [
           "application/json"
         ],
@@ -4034,6 +4119,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Get entity from directorySettingTemplates by key",
+        "operationId": "GetEntityFromdirectorySettingTemplatesByKey",
         "produces": [
           "application/json"
         ],
@@ -4079,6 +4165,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Update entity in directorySettingTemplates",
+        "operationId": "UpdateEntityIndirectorySettingTemplates",
         "consumes": [
           "application/json"
         ],
@@ -4113,6 +4200,7 @@
           "directorySettingTemplates"
         ],
         "summary": "Delete entity from directorySettingTemplates",
+        "operationId": "DeleteEntityFromdirectorySettingTemplates",
         "parameters": [
           {
             "name": "id",
@@ -4144,6 +4232,7 @@
           "organization"
         ],
         "summary": "Get entities from organization",
+        "operationId": "GetEntitiesFromorganization",
         "produces": [
           "application/json"
         ],
@@ -4272,6 +4361,7 @@
           "organization"
         ],
         "summary": "Add new entity to organization",
+        "operationId": "AddEntityToorganization",
         "consumes": [
           "application/json"
         ],
@@ -4307,6 +4397,7 @@
           "organization"
         ],
         "summary": "Get entity from organization by key",
+        "operationId": "GetEntityFromorganizationByKey",
         "produces": [
           "application/json"
         ],
@@ -4370,6 +4461,7 @@
           "organization"
         ],
         "summary": "Update entity in organization",
+        "operationId": "UpdateEntityInorganization",
         "consumes": [
           "application/json"
         ],
@@ -4404,6 +4496,7 @@
           "organization"
         ],
         "summary": "Delete entity from organization",
+        "operationId": "DeleteEntityFromorganization",
         "parameters": [
           {
             "name": "id",
@@ -4435,6 +4528,7 @@
           "organization"
         ],
         "summary": "Invoke action setMobileDeviceManagementAuthority",
+        "operationId": "InvokesetMobileDeviceManagementAuthority",
         "parameters": [
           {
             "name": "id",
@@ -4460,6 +4554,7 @@
           "organization"
         ],
         "summary": "Invoke function getEncryptionPublicKey",
+        "operationId": "InvokegetEncryptionPublicKey",
         "produces": [
           "application/json"
         ],
@@ -4491,6 +4586,7 @@
           "organization"
         ],
         "summary": "Invoke action uploadDepToken",
+        "operationId": "InvokeuploadDepToken",
         "consumes": [
           "application/json"
         ],
@@ -4535,6 +4631,7 @@
           "organization"
         ],
         "summary": "Invoke action syncWithAppleDeviceEnrollmentProgram",
+        "operationId": "InvokesyncWithAppleDeviceEnrollmentProgram",
         "parameters": [
           {
             "name": "id",
@@ -4560,6 +4657,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Get entities from oauth2PermissionGrants",
+        "operationId": "GetEntitiesFromoauth2PermissionGrants",
         "produces": [
           "application/json"
         ],
@@ -4664,6 +4762,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Add new entity to oauth2PermissionGrants",
+        "operationId": "AddEntityTooauth2PermissionGrants",
         "consumes": [
           "application/json"
         ],
@@ -4699,6 +4798,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Get entity from oauth2PermissionGrants by key",
+        "operationId": "GetEntityFromoauth2PermissionGrantsByKey",
         "produces": [
           "application/json"
         ],
@@ -4759,6 +4859,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Update entity in oauth2PermissionGrants",
+        "operationId": "UpdateEntityInoauth2PermissionGrants",
         "consumes": [
           "application/json"
         ],
@@ -4793,6 +4894,7 @@
           "oauth2PermissionGrants"
         ],
         "summary": "Delete entity from oauth2PermissionGrants",
+        "operationId": "DeleteEntityFromoauth2PermissionGrants",
         "parameters": [
           {
             "name": "id",
@@ -4824,6 +4926,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Get entities from scopedRoleMemberships",
+        "operationId": "GetEntitiesFromscopedRoleMemberships",
         "produces": [
           "application/json"
         ],
@@ -4916,6 +5019,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Add new entity to scopedRoleMemberships",
+        "operationId": "AddEntityToscopedRoleMemberships",
         "consumes": [
           "application/json"
         ],
@@ -4951,6 +5055,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Get entity from scopedRoleMemberships by key",
+        "operationId": "GetEntityFromscopedRoleMembershipsByKey",
         "produces": [
           "application/json"
         ],
@@ -5007,6 +5112,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Update entity in scopedRoleMemberships",
+        "operationId": "UpdateEntityInscopedRoleMemberships",
         "consumes": [
           "application/json"
         ],
@@ -5041,6 +5147,7 @@
           "scopedRoleMemberships"
         ],
         "summary": "Delete entity from scopedRoleMemberships",
+        "operationId": "DeleteEntityFromscopedRoleMemberships",
         "parameters": [
           {
             "name": "id",
@@ -5072,6 +5179,7 @@
           "servicePrincipals"
         ],
         "summary": "Get entities from servicePrincipals",
+        "operationId": "GetEntitiesFromservicePrincipals",
         "produces": [
           "application/json"
         ],
@@ -5197,6 +5305,7 @@
           "servicePrincipals"
         ],
         "summary": "Add new entity to servicePrincipals",
+        "operationId": "AddEntityToservicePrincipals",
         "consumes": [
           "application/json"
         ],
@@ -5232,6 +5341,7 @@
           "servicePrincipals"
         ],
         "summary": "Get entity from servicePrincipals by key",
+        "operationId": "GetEntityFromservicePrincipalsByKey",
         "produces": [
           "application/json"
         ],
@@ -5294,6 +5404,7 @@
           "servicePrincipals"
         ],
         "summary": "Update entity in servicePrincipals",
+        "operationId": "UpdateEntityInservicePrincipals",
         "consumes": [
           "application/json"
         ],
@@ -5328,6 +5439,7 @@
           "servicePrincipals"
         ],
         "summary": "Delete entity from servicePrincipals",
+        "operationId": "DeleteEntityFromservicePrincipals",
         "parameters": [
           {
             "name": "id",
@@ -5359,6 +5471,7 @@
           "settings"
         ],
         "summary": "Get entities from settings",
+        "operationId": "GetEntitiesFromsettings",
         "produces": [
           "application/json"
         ],
@@ -5451,6 +5564,7 @@
           "settings"
         ],
         "summary": "Add new entity to settings",
+        "operationId": "AddEntityTosettings",
         "consumes": [
           "application/json"
         ],
@@ -5486,6 +5600,7 @@
           "settings"
         ],
         "summary": "Get entity from settings by key",
+        "operationId": "GetEntityFromsettingsByKey",
         "produces": [
           "application/json"
         ],
@@ -5542,6 +5657,7 @@
           "settings"
         ],
         "summary": "Update entity in settings",
+        "operationId": "UpdateEntityInsettings",
         "consumes": [
           "application/json"
         ],
@@ -5576,6 +5692,7 @@
           "settings"
         ],
         "summary": "Delete entity from settings",
+        "operationId": "DeleteEntityFromsettings",
         "parameters": [
           {
             "name": "id",
@@ -5607,6 +5724,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entities from subscribedSkus",
+        "operationId": "GetEntitiesFromsubscribedSkus",
         "produces": [
           "application/json"
         ],
@@ -5687,6 +5805,7 @@
           "subscribedSkus"
         ],
         "summary": "Add new entity to subscribedSkus",
+        "operationId": "AddEntityTosubscribedSkus",
         "consumes": [
           "application/json"
         ],
@@ -5722,6 +5841,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entity from subscribedSkus by key",
+        "operationId": "GetEntityFromsubscribedSkusByKey",
         "produces": [
           "application/json"
         ],
@@ -5770,6 +5890,7 @@
           "subscribedSkus"
         ],
         "summary": "Update entity in subscribedSkus",
+        "operationId": "UpdateEntityInsubscribedSkus",
         "consumes": [
           "application/json"
         ],
@@ -5804,6 +5925,7 @@
           "subscribedSkus"
         ],
         "summary": "Delete entity from subscribedSkus",
+        "operationId": "DeleteEntityFromsubscribedSkus",
         "parameters": [
           {
             "name": "id",
@@ -5835,6 +5957,7 @@
           "users"
         ],
         "summary": "Get entities from users",
+        "operationId": "GetEntitiesFromusers",
         "produces": [
           "application/json"
         ],
@@ -6062,6 +6185,7 @@
           "users"
         ],
         "summary": "Add new entity to users",
+        "operationId": "AddEntityTousers",
         "consumes": [
           "application/json"
         ],
@@ -6097,6 +6221,7 @@
           "users"
         ],
         "summary": "Get entity from users by key",
+        "operationId": "GetEntityFromusersByKey",
         "produces": [
           "application/json"
         ],
@@ -6193,6 +6318,7 @@
           "users"
         ],
         "summary": "Update entity in users",
+        "operationId": "UpdateEntityInusers",
         "consumes": [
           "application/json"
         ],
@@ -6227,6 +6353,7 @@
           "users"
         ],
         "summary": "Delete entity from users",
+        "operationId": "DeleteEntityFromusers",
         "parameters": [
           {
             "name": "id",
@@ -6258,6 +6385,7 @@
           "users"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "produces": [
           "application/json"
         ],
@@ -6281,6 +6409,7 @@
           "users"
         ],
         "summary": "Invoke action assignLicense",
+        "operationId": "InvokeassignLicense",
         "consumes": [
           "application/json"
         ],
@@ -6333,6 +6462,7 @@
           "users"
         ],
         "summary": "Invoke action changePassword",
+        "operationId": "InvokechangePassword",
         "consumes": [
           "application/json"
         ],
@@ -6377,6 +6507,7 @@
           "users"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
+        "operationId": "InvokeinvalidateAllRefreshTokens",
         "parameters": [
           {
             "name": "id",
@@ -6402,6 +6533,7 @@
           "users"
         ],
         "summary": "Invoke action sendMail",
+        "operationId": "InvokesendMail",
         "consumes": [
           "application/json"
         ],
@@ -6447,6 +6579,7 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
+        "operationId": "InvokefindMeetingTimesOLD",
         "consumes": [
           "application/json"
         ],
@@ -6510,6 +6643,7 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimes",
+        "operationId": "InvokefindMeetingTimes",
         "consumes": [
           "application/json"
         ],
@@ -6576,6 +6710,7 @@
           "users"
         ],
         "summary": "Invoke action getMailTips",
+        "operationId": "InvokegetMailTips",
         "consumes": [
           "application/json"
         ],
@@ -6621,6 +6756,7 @@
           "users"
         ],
         "summary": "Invoke function reminderView",
+        "operationId": "InvokereminderView",
         "produces": [
           "application/json"
         ],
@@ -6655,6 +6791,7 @@
           "users"
         ],
         "summary": "Invoke function findRoomLists",
+        "operationId": "InvokefindRoomLists",
         "produces": [
           "application/json"
         ],
@@ -6689,6 +6826,7 @@
           "users"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "produces": [
           "application/json"
         ],
@@ -6723,6 +6861,7 @@
           "users"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "produces": [
           "application/json"
         ],
@@ -6757,6 +6896,7 @@
           "users"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
+        "operationId": "InvokeremoveAllDevicesFromManagement",
         "parameters": [
           {
             "name": "id",
@@ -6782,6 +6922,7 @@
           "users"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
+        "operationId": "InvokegetManagedAppDiagnosticStatuses",
         "produces": [
           "application/json"
         ],
@@ -6814,6 +6955,7 @@
           "users"
         ],
         "summary": "Invoke function getManagedAppPolicies",
+        "operationId": "InvokegetManagedAppPolicies",
         "produces": [
           "application/json"
         ],
@@ -6846,6 +6988,7 @@
           "users"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
+        "operationId": "InvokewipeManagedAppRegistrationByDeviceTag",
         "consumes": [
           "application/json"
         ],
@@ -6887,6 +7030,7 @@
           "policies"
         ],
         "summary": "Get entities from policies",
+        "operationId": "GetEntitiesFrompolicies",
         "produces": [
           "application/json"
         ],
@@ -6970,6 +7114,7 @@
           "policies"
         ],
         "summary": "Add new entity to policies",
+        "operationId": "AddEntityTopolicies",
         "consumes": [
           "application/json"
         ],
@@ -7005,6 +7150,7 @@
           "policies"
         ],
         "summary": "Get entity from policies by key",
+        "operationId": "GetEntityFrompoliciesByKey",
         "produces": [
           "application/json"
         ],
@@ -7053,6 +7199,7 @@
           "policies"
         ],
         "summary": "Update entity in policies",
+        "operationId": "UpdateEntityInpolicies",
         "consumes": [
           "application/json"
         ],
@@ -7087,6 +7234,7 @@
           "policies"
         ],
         "summary": "Delete entity from policies",
+        "operationId": "DeleteEntityFrompolicies",
         "parameters": [
           {
             "name": "id",
@@ -7118,6 +7266,7 @@
           "contracts"
         ],
         "summary": "Get entities from contracts",
+        "operationId": "GetEntitiesFromcontracts",
         "produces": [
           "application/json"
         ],
@@ -7195,6 +7344,7 @@
           "contracts"
         ],
         "summary": "Add new entity to contracts",
+        "operationId": "AddEntityTocontracts",
         "consumes": [
           "application/json"
         ],
@@ -7230,6 +7380,7 @@
           "contracts"
         ],
         "summary": "Get entity from contracts by key",
+        "operationId": "GetEntityFromcontractsByKey",
         "produces": [
           "application/json"
         ],
@@ -7276,6 +7427,7 @@
           "contracts"
         ],
         "summary": "Update entity in contracts",
+        "operationId": "UpdateEntityIncontracts",
         "consumes": [
           "application/json"
         ],
@@ -7310,6 +7462,7 @@
           "contracts"
         ],
         "summary": "Delete entity from contracts",
+        "operationId": "DeleteEntityFromcontracts",
         "parameters": [
           {
             "name": "id",
@@ -7341,6 +7494,7 @@
           "workbooks"
         ],
         "summary": "Get entities from workbooks",
+        "operationId": "GetEntitiesFromworkbooks",
         "produces": [
           "application/json"
         ],
@@ -7523,6 +7677,7 @@
           "workbooks"
         ],
         "summary": "Add new entity to workbooks",
+        "operationId": "AddEntityToworkbooks",
         "consumes": [
           "application/json"
         ],
@@ -7558,6 +7713,7 @@
           "workbooks"
         ],
         "summary": "Get entity from workbooks by key",
+        "operationId": "GetEntityFromworkbooksByKey",
         "produces": [
           "application/json"
         ],
@@ -7650,6 +7806,7 @@
           "workbooks"
         ],
         "summary": "Update entity in workbooks",
+        "operationId": "UpdateEntityInworkbooks",
         "consumes": [
           "application/json"
         ],
@@ -7684,6 +7841,7 @@
           "workbooks"
         ],
         "summary": "Delete entity from workbooks",
+        "operationId": "DeleteEntityFromworkbooks",
         "parameters": [
           {
             "name": "id",
@@ -7715,6 +7873,7 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "produces": [
           "application/json"
         ],
@@ -7747,6 +7906,7 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
+        "operationId": "Invokedelta",
         "produces": [
           "application/json"
         ],
@@ -7779,6 +7939,7 @@
           "workbooks"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invokesearch",
         "produces": [
           "application/json"
         ],
@@ -7811,6 +7972,7 @@
           "workbooks"
         ],
         "summary": "Invoke action checkin",
+        "operationId": "Invokecheckin",
         "consumes": [
           "application/json"
         ],
@@ -7855,6 +8017,7 @@
           "workbooks"
         ],
         "summary": "Invoke action checkout",
+        "operationId": "Invokecheckout",
         "parameters": [
           {
             "name": "id",
@@ -7880,6 +8043,7 @@
           "workbooks"
         ],
         "summary": "Invoke action copy",
+        "operationId": "Invokecopy",
         "consumes": [
           "application/json"
         ],
@@ -7922,6 +8086,7 @@
           "workbooks"
         ],
         "summary": "Invoke action createLink",
+        "operationId": "InvokecreateLink",
         "consumes": [
           "application/json"
         ],
@@ -7981,6 +8146,7 @@
           "workbooks"
         ],
         "summary": "Invoke action createUploadSession",
+        "operationId": "InvokecreateUploadSession",
         "consumes": [
           "application/json"
         ],
@@ -8020,6 +8186,7 @@
           "workbooks"
         ],
         "summary": "Invoke action invite",
+        "operationId": "Invokeinvite",
         "consumes": [
           "application/json"
         ],
@@ -8081,6 +8248,7 @@
           "workbooks"
         ],
         "summary": "Invoke action validatePermission",
+        "operationId": "InvokevalidatePermission",
         "consumes": [
           "application/json"
         ],
@@ -8125,6 +8293,7 @@
           "drives"
         ],
         "summary": "Get entities from drives",
+        "operationId": "GetEntitiesFromdrives",
         "produces": [
           "application/json"
         ],
@@ -8257,6 +8426,7 @@
           "drives"
         ],
         "summary": "Add new entity to drives",
+        "operationId": "AddEntityTodrives",
         "consumes": [
           "application/json"
         ],
@@ -8292,6 +8462,7 @@
           "drives"
         ],
         "summary": "Get entity from drives by key",
+        "operationId": "GetEntityFromdrivesByKey",
         "produces": [
           "application/json"
         ],
@@ -8366,6 +8537,7 @@
           "drives"
         ],
         "summary": "Update entity in drives",
+        "operationId": "UpdateEntityIndrives",
         "consumes": [
           "application/json"
         ],
@@ -8400,6 +8572,7 @@
           "drives"
         ],
         "summary": "Delete entity from drives",
+        "operationId": "DeleteEntityFromdrives",
         "parameters": [
           {
             "name": "id",
@@ -8431,6 +8604,7 @@
           "drives"
         ],
         "summary": "Invoke function recent",
+        "operationId": "Invokerecent",
         "produces": [
           "application/json"
         ],
@@ -8463,6 +8637,7 @@
           "drives"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invokesearch",
         "produces": [
           "application/json"
         ],
@@ -8495,6 +8670,7 @@
           "drives"
         ],
         "summary": "Invoke function sharedWithMe",
+        "operationId": "InvokesharedWithMe",
         "produces": [
           "application/json"
         ],
@@ -8527,6 +8703,7 @@
           "shares"
         ],
         "summary": "Get entities from shares",
+        "operationId": "GetEntitiesFromshares",
         "produces": [
           "application/json"
         ],
@@ -8648,6 +8825,7 @@
           "shares"
         ],
         "summary": "Add new entity to shares",
+        "operationId": "AddEntityToshares",
         "consumes": [
           "application/json"
         ],
@@ -8683,6 +8861,7 @@
           "shares"
         ],
         "summary": "Get entity from shares by key",
+        "operationId": "GetEntityFromsharesByKey",
         "produces": [
           "application/json"
         ],
@@ -8754,6 +8933,7 @@
           "shares"
         ],
         "summary": "Update entity in shares",
+        "operationId": "UpdateEntityInshares",
         "consumes": [
           "application/json"
         ],
@@ -8788,6 +8968,7 @@
           "shares"
         ],
         "summary": "Delete entity from shares",
+        "operationId": "DeleteEntityFromshares",
         "parameters": [
           {
             "name": "id",
@@ -8819,6 +9000,7 @@
           "sites"
         ],
         "summary": "Get entities from sites",
+        "operationId": "GetEntitiesFromsites",
         "produces": [
           "application/json"
         ],
@@ -8951,6 +9133,7 @@
           "sites"
         ],
         "summary": "Add new entity to sites",
+        "operationId": "AddEntityTosites",
         "consumes": [
           "application/json"
         ],
@@ -8986,6 +9169,7 @@
           "sites"
         ],
         "summary": "Get entity from sites by key",
+        "operationId": "GetEntityFromsitesByKey",
         "produces": [
           "application/json"
         ],
@@ -9062,6 +9246,7 @@
           "sites"
         ],
         "summary": "Update entity in sites",
+        "operationId": "UpdateEntityInsites",
         "consumes": [
           "application/json"
         ],
@@ -9096,6 +9281,7 @@
           "sites"
         ],
         "summary": "Delete entity from sites",
+        "operationId": "DeleteEntityFromsites",
         "parameters": [
           {
             "name": "id",
@@ -9127,6 +9313,7 @@
           "sites"
         ],
         "summary": "Invoke function getByPath",
+        "operationId": "InvokegetByPath",
         "produces": [
           "application/json"
         ],
@@ -9156,6 +9343,7 @@
           "subscriptions"
         ],
         "summary": "Get entities from subscriptions",
+        "operationId": "GetEntitiesFromsubscriptions",
         "produces": [
           "application/json"
         ],
@@ -9207,6 +9395,7 @@
           "subscriptions"
         ],
         "summary": "Add new entity to subscriptions",
+        "operationId": "AddEntityTosubscriptions",
         "consumes": [
           "application/json"
         ],
@@ -9242,6 +9431,7 @@
           "subscriptions"
         ],
         "summary": "Get entity from subscriptions by key",
+        "operationId": "GetEntityFromsubscriptionsByKey",
         "produces": [
           "application/json"
         ],
@@ -9288,6 +9478,7 @@
           "subscriptions"
         ],
         "summary": "Update entity in subscriptions",
+        "operationId": "UpdateEntityInsubscriptions",
         "consumes": [
           "application/json"
         ],
@@ -9322,6 +9513,7 @@
           "subscriptions"
         ],
         "summary": "Delete entity from subscriptions",
+        "operationId": "DeleteEntityFromsubscriptions",
         "parameters": [
           {
             "name": "id",
@@ -9353,6 +9545,7 @@
           "identityRiskEvents"
         ],
         "summary": "Get entities from identityRiskEvents",
+        "operationId": "GetEntitiesFromidentityRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -9464,6 +9657,7 @@
           "identityRiskEvents"
         ],
         "summary": "Add new entity to identityRiskEvents",
+        "operationId": "AddEntityToidentityRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -9499,6 +9693,7 @@
           "identityRiskEvents"
         ],
         "summary": "Get entity from identityRiskEvents by key",
+        "operationId": "GetEntityFromidentityRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -9562,6 +9757,7 @@
           "identityRiskEvents"
         ],
         "summary": "Update entity in identityRiskEvents",
+        "operationId": "UpdateEntityInidentityRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -9596,6 +9792,7 @@
           "identityRiskEvents"
         ],
         "summary": "Delete entity from identityRiskEvents",
+        "operationId": "DeleteEntityFromidentityRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -9627,6 +9824,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Get entities from impossibleTravelRiskEvents",
+        "operationId": "GetEntitiesFromimpossibleTravelRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -9762,6 +9960,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Add new entity to impossibleTravelRiskEvents",
+        "operationId": "AddEntityToimpossibleTravelRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -9797,6 +9996,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Get entity from impossibleTravelRiskEvents by key",
+        "operationId": "GetEntityFromimpossibleTravelRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -9868,6 +10068,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Update entity in impossibleTravelRiskEvents",
+        "operationId": "UpdateEntityInimpossibleTravelRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -9902,6 +10103,7 @@
           "impossibleTravelRiskEvents"
         ],
         "summary": "Delete entity from impossibleTravelRiskEvents",
+        "operationId": "DeleteEntityFromimpossibleTravelRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -9933,6 +10135,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Get entities from leakedCredentialsRiskEvents",
+        "operationId": "GetEntitiesFromleakedCredentialsRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -10044,6 +10247,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Add new entity to leakedCredentialsRiskEvents",
+        "operationId": "AddEntityToleakedCredentialsRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10079,6 +10283,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Get entity from leakedCredentialsRiskEvents by key",
+        "operationId": "GetEntityFromleakedCredentialsRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -10142,6 +10347,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Update entity in leakedCredentialsRiskEvents",
+        "operationId": "UpdateEntityInleakedCredentialsRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10176,6 +10382,7 @@
           "leakedCredentialsRiskEvents"
         ],
         "summary": "Delete entity from leakedCredentialsRiskEvents",
+        "operationId": "DeleteEntityFromleakedCredentialsRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10207,6 +10414,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Get entities from anonymousIpRiskEvents",
+        "operationId": "GetEntitiesFromanonymousIpRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -10324,6 +10532,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Add new entity to anonymousIpRiskEvents",
+        "operationId": "AddEntityToanonymousIpRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10359,6 +10568,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Get entity from anonymousIpRiskEvents by key",
+        "operationId": "GetEntityFromanonymousIpRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -10424,6 +10634,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Update entity in anonymousIpRiskEvents",
+        "operationId": "UpdateEntityInanonymousIpRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10458,6 +10669,7 @@
           "anonymousIpRiskEvents"
         ],
         "summary": "Delete entity from anonymousIpRiskEvents",
+        "operationId": "DeleteEntityFromanonymousIpRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10489,6 +10701,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Get entities from suspiciousIpRiskEvents",
+        "operationId": "GetEntitiesFromsuspiciousIpRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -10606,6 +10819,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Add new entity to suspiciousIpRiskEvents",
+        "operationId": "AddEntityTosuspiciousIpRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10641,6 +10855,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Get entity from suspiciousIpRiskEvents by key",
+        "operationId": "GetEntityFromsuspiciousIpRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -10706,6 +10921,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Update entity in suspiciousIpRiskEvents",
+        "operationId": "UpdateEntityInsuspiciousIpRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10740,6 +10956,7 @@
           "suspiciousIpRiskEvents"
         ],
         "summary": "Delete entity from suspiciousIpRiskEvents",
+        "operationId": "DeleteEntityFromsuspiciousIpRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -10771,6 +10988,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Get entities from unfamiliarLocationRiskEvents",
+        "operationId": "GetEntitiesFromunfamiliarLocationRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -10888,6 +11106,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Add new entity to unfamiliarLocationRiskEvents",
+        "operationId": "AddEntityTounfamiliarLocationRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -10923,6 +11142,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Get entity from unfamiliarLocationRiskEvents by key",
+        "operationId": "GetEntityFromunfamiliarLocationRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -10988,6 +11208,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Update entity in unfamiliarLocationRiskEvents",
+        "operationId": "UpdateEntityInunfamiliarLocationRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -11022,6 +11243,7 @@
           "unfamiliarLocationRiskEvents"
         ],
         "summary": "Delete entity from unfamiliarLocationRiskEvents",
+        "operationId": "DeleteEntityFromunfamiliarLocationRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11053,6 +11275,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Get entities from malwareRiskEvents",
+        "operationId": "GetEntitiesFrommalwareRiskEvents",
         "produces": [
           "application/json"
         ],
@@ -11176,6 +11399,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Add new entity to malwareRiskEvents",
+        "operationId": "AddEntityTomalwareRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -11211,6 +11435,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Get entity from malwareRiskEvents by key",
+        "operationId": "GetEntityFrommalwareRiskEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -11278,6 +11503,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Update entity in malwareRiskEvents",
+        "operationId": "UpdateEntityInmalwareRiskEvents",
         "consumes": [
           "application/json"
         ],
@@ -11312,6 +11538,7 @@
           "malwareRiskEvents"
         ],
         "summary": "Delete entity from malwareRiskEvents",
+        "operationId": "DeleteEntityFrommalwareRiskEvents",
         "parameters": [
           {
             "name": "id",
@@ -11343,6 +11570,7 @@
           "privilegedRoles"
         ],
         "summary": "Get entities from privilegedRoles",
+        "operationId": "GetEntitiesFromprivilegedRoles",
         "produces": [
           "application/json"
         ],
@@ -11432,6 +11660,7 @@
           "privilegedRoles"
         ],
         "summary": "Add new entity to privilegedRoles",
+        "operationId": "AddEntityToprivilegedRoles",
         "consumes": [
           "application/json"
         ],
@@ -11467,6 +11696,7 @@
           "privilegedRoles"
         ],
         "summary": "Get entity from privilegedRoles by key",
+        "operationId": "GetEntityFromprivilegedRolesByKey",
         "produces": [
           "application/json"
         ],
@@ -11524,6 +11754,7 @@
           "privilegedRoles"
         ],
         "summary": "Update entity in privilegedRoles",
+        "operationId": "UpdateEntityInprivilegedRoles",
         "consumes": [
           "application/json"
         ],
@@ -11558,6 +11789,7 @@
           "privilegedRoles"
         ],
         "summary": "Delete entity from privilegedRoles",
+        "operationId": "DeleteEntityFromprivilegedRoles",
         "parameters": [
           {
             "name": "id",
@@ -11589,6 +11821,7 @@
           "privilegedRoles"
         ],
         "summary": "Invoke action selfActivate",
+        "operationId": "InvokeselfActivate",
         "consumes": [
           "application/json"
         ],
@@ -11639,6 +11872,7 @@
           "privilegedRoles"
         ],
         "summary": "Invoke action selfDeactivate",
+        "operationId": "InvokeselfDeactivate",
         "parameters": [
           {
             "name": "id",
@@ -11664,6 +11898,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Get entities from privilegedRoleAssignments",
+        "operationId": "GetEntitiesFromprivilegedRoleAssignments",
         "produces": [
           "application/json"
         ],
@@ -11763,6 +11998,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Add new entity to privilegedRoleAssignments",
+        "operationId": "AddEntityToprivilegedRoleAssignments",
         "consumes": [
           "application/json"
         ],
@@ -11798,6 +12034,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Get entity from privilegedRoleAssignments by key",
+        "operationId": "GetEntityFromprivilegedRoleAssignmentsByKey",
         "produces": [
           "application/json"
         ],
@@ -11857,6 +12094,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Update entity in privilegedRoleAssignments",
+        "operationId": "UpdateEntityInprivilegedRoleAssignments",
         "consumes": [
           "application/json"
         ],
@@ -11891,6 +12129,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Delete entity from privilegedRoleAssignments",
+        "operationId": "DeleteEntityFromprivilegedRoleAssignments",
         "parameters": [
           {
             "name": "id",
@@ -11922,6 +12161,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Invoke function my",
+        "operationId": "Invokemy",
         "produces": [
           "application/json"
         ],
@@ -11945,6 +12185,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Invoke action makePermanent",
+        "operationId": "InvokemakePermanent",
         "consumes": [
           "application/json"
         ],
@@ -11992,6 +12233,7 @@
           "privilegedRoleAssignments"
         ],
         "summary": "Invoke action makeEligible",
+        "operationId": "InvokemakeEligible",
         "parameters": [
           {
             "name": "id",
@@ -12017,6 +12259,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Get entities from privilegedOperationEvents",
+        "operationId": "GetEntitiesFromprivilegedOperationEvents",
         "produces": [
           "application/json"
         ],
@@ -12142,6 +12385,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Add new entity to privilegedOperationEvents",
+        "operationId": "AddEntityToprivilegedOperationEvents",
         "consumes": [
           "application/json"
         ],
@@ -12177,6 +12421,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Get entity from privilegedOperationEvents by key",
+        "operationId": "GetEntityFromprivilegedOperationEventsByKey",
         "produces": [
           "application/json"
         ],
@@ -12244,6 +12489,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Update entity in privilegedOperationEvents",
+        "operationId": "UpdateEntityInprivilegedOperationEvents",
         "consumes": [
           "application/json"
         ],
@@ -12278,6 +12524,7 @@
           "privilegedOperationEvents"
         ],
         "summary": "Delete entity from privilegedOperationEvents",
+        "operationId": "DeleteEntityFromprivilegedOperationEvents",
         "parameters": [
           {
             "name": "id",
@@ -12309,6 +12556,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Get entities from privilegedSignupStatus",
+        "operationId": "GetEntitiesFromprivilegedSignupStatus",
         "produces": [
           "application/json"
         ],
@@ -12398,6 +12646,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Add new entity to privilegedSignupStatus",
+        "operationId": "AddEntityToprivilegedSignupStatus",
         "consumes": [
           "application/json"
         ],
@@ -12433,6 +12682,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Get entity from privilegedSignupStatus by key",
+        "operationId": "GetEntityFromprivilegedSignupStatusByKey",
         "produces": [
           "application/json"
         ],
@@ -12488,6 +12738,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Update entity in privilegedSignupStatus",
+        "operationId": "UpdateEntityInprivilegedSignupStatus",
         "consumes": [
           "application/json"
         ],
@@ -12522,6 +12773,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Delete entity from privilegedSignupStatus",
+        "operationId": "DeleteEntityFromprivilegedSignupStatus",
         "parameters": [
           {
             "name": "id",
@@ -12553,6 +12805,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke action signUp",
+        "operationId": "InvokesignUp",
         "responses": {
           "204": {
             "description": "Success"
@@ -12569,6 +12822,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke function isSignedUp",
+        "operationId": "InvokeisSignedUp",
         "produces": [
           "application/json"
         ],
@@ -12592,6 +12846,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke function canSignUp",
+        "operationId": "InvokecanSignUp",
         "produces": [
           "application/json"
         ],
@@ -12615,6 +12870,7 @@
           "privilegedSignupStatus"
         ],
         "summary": "Invoke action completeSetup",
+        "operationId": "InvokecompleteSetup",
         "consumes": [
           "application/json"
         ],
@@ -12647,6 +12903,7 @@
           "privilegedApproval"
         ],
         "summary": "Get entities from privilegedApproval",
+        "operationId": "GetEntitiesFromprivilegedApproval",
         "produces": [
           "application/json"
         ],
@@ -12758,6 +13015,7 @@
           "privilegedApproval"
         ],
         "summary": "Add new entity to privilegedApproval",
+        "operationId": "AddEntityToprivilegedApproval",
         "consumes": [
           "application/json"
         ],
@@ -12793,6 +13051,7 @@
           "privilegedApproval"
         ],
         "summary": "Get entity from privilegedApproval by key",
+        "operationId": "GetEntityFromprivilegedApprovalByKey",
         "produces": [
           "application/json"
         ],
@@ -12856,6 +13115,7 @@
           "privilegedApproval"
         ],
         "summary": "Update entity in privilegedApproval",
+        "operationId": "UpdateEntityInprivilegedApproval",
         "consumes": [
           "application/json"
         ],
@@ -12890,6 +13150,7 @@
           "privilegedApproval"
         ],
         "summary": "Delete entity from privilegedApproval",
+        "operationId": "DeleteEntityFromprivilegedApproval",
         "parameters": [
           {
             "name": "id",
@@ -12921,6 +13182,7 @@
           "privilegedApproval"
         ],
         "summary": "Invoke function myRequests",
+        "operationId": "InvokemyRequests",
         "produces": [
           "application/json"
         ],
@@ -12944,6 +13206,7 @@
           "invitations"
         ],
         "summary": "Get entities from invitations",
+        "operationId": "GetEntitiesFrominvitations",
         "produces": [
           "application/json"
         ],
@@ -13052,6 +13315,7 @@
           "invitations"
         ],
         "summary": "Add new entity to invitations",
+        "operationId": "AddEntityToinvitations",
         "consumes": [
           "application/json"
         ],
@@ -13087,6 +13351,7 @@
           "invitations"
         ],
         "summary": "Get entity from invitations by key",
+        "operationId": "GetEntityFrominvitationsByKey",
         "produces": [
           "application/json"
         ],
@@ -13149,6 +13414,7 @@
           "invitations"
         ],
         "summary": "Update entity in invitations",
+        "operationId": "UpdateEntityIninvitations",
         "consumes": [
           "application/json"
         ],
@@ -13183,6 +13449,7 @@
           "invitations"
         ],
         "summary": "Delete entity from invitations",
+        "operationId": "DeleteEntityFrominvitations",
         "parameters": [
           {
             "name": "id",
@@ -13214,6 +13481,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Get entities from appConfigurationGroupAssignments",
+        "operationId": "GetEntitiesFromappConfigurationGroupAssignments",
         "produces": [
           "application/json"
         ],
@@ -13303,6 +13571,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Add new entity to appConfigurationGroupAssignments",
+        "operationId": "AddEntityToappConfigurationGroupAssignments",
         "consumes": [
           "application/json"
         ],
@@ -13338,6 +13607,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Get entity from appConfigurationGroupAssignments by key",
+        "operationId": "GetEntityFromappConfigurationGroupAssignmentsByKey",
         "produces": [
           "application/json"
         ],
@@ -13393,6 +13663,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Update entity in appConfigurationGroupAssignments",
+        "operationId": "UpdateEntityInappConfigurationGroupAssignments",
         "consumes": [
           "application/json"
         ],
@@ -13427,6 +13698,7 @@
           "appConfigurationGroupAssignments"
         ],
         "summary": "Delete entity from appConfigurationGroupAssignments",
+        "operationId": "DeleteEntityFromappConfigurationGroupAssignments",
         "parameters": [
           {
             "name": "id",
@@ -13458,6 +13730,7 @@
           "assignments"
         ],
         "summary": "Get entities from assignments",
+        "operationId": "GetEntitiesFromassignments",
         "produces": [
           "application/json"
         ],
@@ -13544,6 +13817,7 @@
           "assignments"
         ],
         "summary": "Add new entity to assignments",
+        "operationId": "AddEntityToassignments",
         "consumes": [
           "application/json"
         ],
@@ -13579,6 +13853,7 @@
           "assignments"
         ],
         "summary": "Get entity from assignments by key",
+        "operationId": "GetEntityFromassignmentsByKey",
         "produces": [
           "application/json"
         ],
@@ -13633,6 +13908,7 @@
           "assignments"
         ],
         "summary": "Update entity in assignments",
+        "operationId": "UpdateEntityInassignments",
         "consumes": [
           "application/json"
         ],
@@ -13667,6 +13943,7 @@
           "assignments"
         ],
         "summary": "Delete entity from assignments",
+        "operationId": "DeleteEntityFromassignments",
         "parameters": [
           {
             "name": "id",
@@ -13698,6 +13975,7 @@
           "vppTokens"
         ],
         "summary": "Get entities from vppTokens",
+        "operationId": "GetEntitiesFromvppTokens",
         "produces": [
           "application/json"
         ],
@@ -13817,6 +14095,7 @@
           "vppTokens"
         ],
         "summary": "Add new entity to vppTokens",
+        "operationId": "AddEntityTovppTokens",
         "consumes": [
           "application/json"
         ],
@@ -13852,6 +14131,7 @@
           "vppTokens"
         ],
         "summary": "Get entity from vppTokens by key",
+        "operationId": "GetEntityFromvppTokensByKey",
         "produces": [
           "application/json"
         ],
@@ -13917,6 +14197,7 @@
           "vppTokens"
         ],
         "summary": "Update entity in vppTokens",
+        "operationId": "UpdateEntityInvppTokens",
         "consumes": [
           "application/json"
         ],
@@ -13951,6 +14232,7 @@
           "vppTokens"
         ],
         "summary": "Delete entity from vppTokens",
+        "operationId": "DeleteEntityFromvppTokens",
         "parameters": [
           {
             "name": "id",
@@ -13982,6 +14264,7 @@
           "vppTokens"
         ],
         "summary": "Invoke action syncLicenses",
+        "operationId": "InvokesyncLicenses",
         "parameters": [
           {
             "name": "id",
@@ -14007,6 +14290,7 @@
           "vppTokens"
         ],
         "summary": "Invoke action revokeLicenses",
+        "operationId": "InvokerevokeLicenses",
         "parameters": [
           {
             "name": "id",
@@ -14032,6 +14316,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Get entities from enrollmentConfigurationAssignment",
+        "operationId": "GetEntitiesFromenrollmentConfigurationAssignment",
         "produces": [
           "application/json"
         ],
@@ -14118,6 +14403,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Add new entity to enrollmentConfigurationAssignment",
+        "operationId": "AddEntityToenrollmentConfigurationAssignment",
         "consumes": [
           "application/json"
         ],
@@ -14153,6 +14439,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Get entity from enrollmentConfigurationAssignment by key",
+        "operationId": "GetEntityFromenrollmentConfigurationAssignmentByKey",
         "produces": [
           "application/json"
         ],
@@ -14207,6 +14494,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Update entity in enrollmentConfigurationAssignment",
+        "operationId": "UpdateEntityInenrollmentConfigurationAssignment",
         "consumes": [
           "application/json"
         ],
@@ -14241,6 +14529,7 @@
           "enrollmentConfigurationAssignment"
         ],
         "summary": "Delete entity from enrollmentConfigurationAssignment",
+        "operationId": "DeleteEntityFromenrollmentConfigurationAssignment",
         "parameters": [
           {
             "name": "id",
@@ -14272,6 +14561,7 @@
           "commands"
         ],
         "summary": "Get entities from commands",
+        "operationId": "GetEntitiesFromcommands",
         "produces": [
           "application/json"
         ],
@@ -14380,6 +14670,7 @@
           "commands"
         ],
         "summary": "Add new entity to commands",
+        "operationId": "AddEntityTocommands",
         "consumes": [
           "application/json"
         ],
@@ -14415,6 +14706,7 @@
           "commands"
         ],
         "summary": "Get entity from commands by key",
+        "operationId": "GetEntityFromcommandsByKey",
         "produces": [
           "application/json"
         ],
@@ -14477,6 +14769,7 @@
           "commands"
         ],
         "summary": "Update entity in commands",
+        "operationId": "UpdateEntityIncommands",
         "consumes": [
           "application/json"
         ],
@@ -14511,6 +14804,7 @@
           "commands"
         ],
         "summary": "Delete entity from commands",
+        "operationId": "DeleteEntityFromcommands",
         "parameters": [
           {
             "name": "id",
@@ -14542,6 +14836,7 @@
           "payloadResponse"
         ],
         "summary": "Get entities from payloadResponse",
+        "operationId": "GetEntitiesFrompayloadResponse",
         "produces": [
           "application/json"
         ],
@@ -14625,6 +14920,7 @@
           "payloadResponse"
         ],
         "summary": "Add new entity to payloadResponse",
+        "operationId": "AddEntityTopayloadResponse",
         "consumes": [
           "application/json"
         ],
@@ -14660,6 +14956,7 @@
           "payloadResponse"
         ],
         "summary": "Get entity from payloadResponse by key",
+        "operationId": "GetEntityFrompayloadResponseByKey",
         "produces": [
           "application/json"
         ],
@@ -14713,6 +15010,7 @@
           "payloadResponse"
         ],
         "summary": "Update entity in payloadResponse",
+        "operationId": "UpdateEntityInpayloadResponse",
         "consumes": [
           "application/json"
         ],
@@ -14747,6 +15045,7 @@
           "payloadResponse"
         ],
         "summary": "Delete entity from payloadResponse",
+        "operationId": "DeleteEntityFrompayloadResponse",
         "parameters": [
           {
             "name": "id",
@@ -14778,6 +15077,7 @@
           "team"
         ],
         "summary": "Get entities from team",
+        "operationId": "GetEntitiesFromteam",
         "produces": [
           "application/json"
         ],
@@ -14874,6 +15174,7 @@
           "team"
         ],
         "summary": "Add new entity to team",
+        "operationId": "AddEntityToteam",
         "consumes": [
           "application/json"
         ],
@@ -14909,6 +15210,7 @@
           "team"
         ],
         "summary": "Get entity from team by key",
+        "operationId": "GetEntityFromteamByKey",
         "produces": [
           "application/json"
         ],
@@ -14967,6 +15269,7 @@
           "team"
         ],
         "summary": "Update entity in team",
+        "operationId": "UpdateEntityInteam",
         "consumes": [
           "application/json"
         ],
@@ -15001,6 +15304,7 @@
           "team"
         ],
         "summary": "Delete entity from team",
+        "operationId": "DeleteEntityFromteam",
         "parameters": [
           {
             "name": "id",
@@ -15032,6 +15336,7 @@
           "channels"
         ],
         "summary": "Get entities from channels",
+        "operationId": "GetEntitiesFromchannels",
         "produces": [
           "application/json"
         ],
@@ -15122,6 +15427,7 @@
           "channels"
         ],
         "summary": "Add new entity to channels",
+        "operationId": "AddEntityTochannels",
         "consumes": [
           "application/json"
         ],
@@ -15157,6 +15463,7 @@
           "channels"
         ],
         "summary": "Get entity from channels by key",
+        "operationId": "GetEntityFromchannelsByKey",
         "produces": [
           "application/json"
         ],
@@ -15213,6 +15520,7 @@
           "channels"
         ],
         "summary": "Update entity in channels",
+        "operationId": "UpdateEntityInchannels",
         "consumes": [
           "application/json"
         ],
@@ -15247,6 +15555,7 @@
           "channels"
         ],
         "summary": "Delete entity from channels",
+        "operationId": "DeleteEntityFromchannels",
         "parameters": [
           {
             "name": "id",
@@ -15278,6 +15587,7 @@
           "chatThreads"
         ],
         "summary": "Get entities from chatThreads",
+        "operationId": "GetEntitiesFromchatThreads",
         "produces": [
           "application/json"
         ],
@@ -15363,6 +15673,7 @@
           "chatThreads"
         ],
         "summary": "Add new entity to chatThreads",
+        "operationId": "AddEntityTochatThreads",
         "consumes": [
           "application/json"
         ],
@@ -15398,6 +15709,7 @@
           "chatThreads"
         ],
         "summary": "Get entity from chatThreads by key",
+        "operationId": "GetEntityFromchatThreadsByKey",
         "produces": [
           "application/json"
         ],
@@ -15453,6 +15765,7 @@
           "chatThreads"
         ],
         "summary": "Update entity in chatThreads",
+        "operationId": "UpdateEntityInchatThreads",
         "consumes": [
           "application/json"
         ],
@@ -15487,6 +15800,7 @@
           "chatThreads"
         ],
         "summary": "Delete entity from chatThreads",
+        "operationId": "DeleteEntityFromchatThreads",
         "parameters": [
           {
             "name": "id",
@@ -15518,6 +15832,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Get entities from groupLifecyclePolicies",
+        "operationId": "GetEntitiesFromgroupLifecyclePolicies",
         "produces": [
           "application/json"
         ],
@@ -15610,6 +15925,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Add new entity to groupLifecyclePolicies",
+        "operationId": "AddEntityTogroupLifecyclePolicies",
         "consumes": [
           "application/json"
         ],
@@ -15645,6 +15961,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Get entity from groupLifecyclePolicies by key",
+        "operationId": "GetEntityFromgroupLifecyclePoliciesByKey",
         "produces": [
           "application/json"
         ],
@@ -15701,6 +16018,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Update entity in groupLifecyclePolicies",
+        "operationId": "UpdateEntityIngroupLifecyclePolicies",
         "consumes": [
           "application/json"
         ],
@@ -15735,6 +16053,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Delete entity from groupLifecyclePolicies",
+        "operationId": "DeleteEntityFromgroupLifecyclePolicies",
         "parameters": [
           {
             "name": "id",
@@ -15766,6 +16085,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Invoke action renewGroup",
+        "operationId": "InvokerenewGroup",
         "consumes": [
           "application/json"
         ],
@@ -15800,6 +16120,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Invoke action addGroup",
+        "operationId": "InvokeaddGroup",
         "consumes": [
           "application/json"
         ],
@@ -15841,6 +16162,7 @@
           "groupLifecyclePolicies"
         ],
         "summary": "Invoke action removeGroup",
+        "operationId": "InvokeremoveGroup",
         "consumes": [
           "application/json"
         ],
@@ -15882,6 +16204,7 @@
           "identityProviders"
         ],
         "summary": "Get entities from identityProviders",
+        "operationId": "GetEntitiesFromidentityProviders",
         "produces": [
           "application/json"
         ],
@@ -15977,6 +16300,7 @@
           "identityProviders"
         ],
         "summary": "Add new entity to identityProviders",
+        "operationId": "AddEntityToidentityProviders",
         "consumes": [
           "application/json"
         ],
@@ -16012,6 +16336,7 @@
           "identityProviders"
         ],
         "summary": "Get entity from identityProviders by key",
+        "operationId": "GetEntityFromidentityProvidersByKey",
         "produces": [
           "application/json"
         ],
@@ -16069,6 +16394,7 @@
           "identityProviders"
         ],
         "summary": "Update entity in identityProviders",
+        "operationId": "UpdateEntityInidentityProviders",
         "consumes": [
           "application/json"
         ],
@@ -16103,6 +16429,7 @@
           "identityProviders"
         ],
         "summary": "Delete entity from identityProviders",
+        "operationId": "DeleteEntityFromidentityProviders",
         "parameters": [
           {
             "name": "id",
@@ -16134,6 +16461,7 @@
           "functions"
         ],
         "summary": "Get entities from functions",
+        "operationId": "GetEntitiesFromfunctions",
         "produces": [
           "application/json"
         ],
@@ -16220,6 +16548,7 @@
           "functions"
         ],
         "summary": "Add new entity to functions",
+        "operationId": "AddEntityTofunctions",
         "consumes": [
           "application/json"
         ],
@@ -16255,6 +16584,7 @@
           "functions"
         ],
         "summary": "Get entity from functions by key",
+        "operationId": "GetEntityFromfunctionsByKey",
         "produces": [
           "application/json"
         ],
@@ -16309,6 +16639,7 @@
           "functions"
         ],
         "summary": "Update entity in functions",
+        "operationId": "UpdateEntityInfunctions",
         "consumes": [
           "application/json"
         ],
@@ -16343,6 +16674,7 @@
           "functions"
         ],
         "summary": "Delete entity from functions",
+        "operationId": "DeleteEntityFromfunctions",
         "parameters": [
           {
             "name": "id",
@@ -16374,6 +16706,7 @@
           "filterOperators"
         ],
         "summary": "Get entities from filterOperators",
+        "operationId": "GetEntitiesFromfilterOperators",
         "produces": [
           "application/json"
         ],
@@ -16466,6 +16799,7 @@
           "filterOperators"
         ],
         "summary": "Add new entity to filterOperators",
+        "operationId": "AddEntityTofilterOperators",
         "consumes": [
           "application/json"
         ],
@@ -16501,6 +16835,7 @@
           "filterOperators"
         ],
         "summary": "Get entity from filterOperators by key",
+        "operationId": "GetEntityFromfilterOperatorsByKey",
         "produces": [
           "application/json"
         ],
@@ -16557,6 +16892,7 @@
           "filterOperators"
         ],
         "summary": "Update entity in filterOperators",
+        "operationId": "UpdateEntityInfilterOperators",
         "consumes": [
           "application/json"
         ],
@@ -16591,6 +16927,7 @@
           "filterOperators"
         ],
         "summary": "Delete entity from filterOperators",
+        "operationId": "DeleteEntityFromfilterOperators",
         "parameters": [
           {
             "name": "id",
@@ -16622,6 +16959,7 @@
           "me"
         ],
         "summary": "Get me",
+        "operationId": "Getme",
         "produces": [
           "application/json"
         ],
@@ -16711,6 +17049,7 @@
           "me"
         ],
         "summary": "Update me",
+        "operationId": "Updateme",
         "consumes": [
           "application/json"
         ],
@@ -16740,6 +17079,7 @@
           "me"
         ],
         "summary": "Invoke action assignLicense",
+        "operationId": "InvokeassignLicense",
         "consumes": [
           "application/json"
         ],
@@ -16785,6 +17125,7 @@
           "me"
         ],
         "summary": "Invoke action changePassword",
+        "operationId": "InvokechangePassword",
         "consumes": [
           "application/json"
         ],
@@ -16822,6 +17163,7 @@
           "me"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
+        "operationId": "InvokeinvalidateAllRefreshTokens",
         "responses": {
           "204": {
             "description": "Success"
@@ -16838,6 +17180,7 @@
           "me"
         ],
         "summary": "Invoke action sendMail",
+        "operationId": "InvokesendMail",
         "consumes": [
           "application/json"
         ],
@@ -16876,6 +17219,7 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
+        "operationId": "InvokefindMeetingTimesOLD",
         "consumes": [
           "application/json"
         ],
@@ -16932,6 +17276,7 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimes",
+        "operationId": "InvokefindMeetingTimes",
         "consumes": [
           "application/json"
         ],
@@ -16991,6 +17336,7 @@
           "me"
         ],
         "summary": "Invoke action getMailTips",
+        "operationId": "InvokegetMailTips",
         "consumes": [
           "application/json"
         ],
@@ -17029,6 +17375,7 @@
           "me"
         ],
         "summary": "Invoke function reminderView",
+        "operationId": "InvokereminderView",
         "produces": [
           "application/json"
         ],
@@ -17068,6 +17415,7 @@
           "me"
         ],
         "summary": "Invoke function findRoomLists",
+        "operationId": "InvokefindRoomLists",
         "produces": [
           "application/json"
         ],
@@ -17093,6 +17441,7 @@
           "me"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "produces": [
           "application/json"
         ],
@@ -17126,6 +17475,7 @@
           "me"
         ],
         "summary": "Invoke function findRooms",
+        "operationId": "InvokefindRooms",
         "produces": [
           "application/json"
         ],
@@ -17151,6 +17501,7 @@
           "me"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
+        "operationId": "InvokeremoveAllDevicesFromManagement",
         "responses": {
           "204": {
             "description": "Success"
@@ -17167,6 +17518,7 @@
           "me"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
+        "operationId": "InvokegetManagedAppDiagnosticStatuses",
         "produces": [
           "application/json"
         ],
@@ -17190,6 +17542,7 @@
           "me"
         ],
         "summary": "Invoke function getManagedAppPolicies",
+        "operationId": "InvokegetManagedAppPolicies",
         "produces": [
           "application/json"
         ],
@@ -17213,6 +17566,7 @@
           "me"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
+        "operationId": "InvokewipeManagedAppRegistrationByDeviceTag",
         "consumes": [
           "application/json"
         ],
@@ -17247,6 +17601,7 @@
           "directory"
         ],
         "summary": "Get directory",
+        "operationId": "Getdirectory",
         "produces": [
           "application/json"
         ],
@@ -17294,6 +17649,7 @@
           "directory"
         ],
         "summary": "Update directory",
+        "operationId": "Updatedirectory",
         "consumes": [
           "application/json"
         ],
@@ -17323,6 +17679,7 @@
           "drive"
         ],
         "summary": "Get drive",
+        "operationId": "Getdrive",
         "produces": [
           "application/json"
         ],
@@ -17390,6 +17747,7 @@
           "drive"
         ],
         "summary": "Update drive",
+        "operationId": "Updatedrive",
         "consumes": [
           "application/json"
         ],
@@ -17419,6 +17777,7 @@
           "drive"
         ],
         "summary": "Invoke function recent",
+        "operationId": "Invokerecent",
         "produces": [
           "application/json"
         ],
@@ -17442,6 +17801,7 @@
           "drive"
         ],
         "summary": "Invoke function search",
+        "operationId": "Invokesearch",
         "produces": [
           "application/json"
         ],
@@ -17473,6 +17833,7 @@
           "drive"
         ],
         "summary": "Invoke function sharedWithMe",
+        "operationId": "InvokesharedWithMe",
         "produces": [
           "application/json"
         ],
@@ -17496,6 +17857,7 @@
           "planner"
         ],
         "summary": "Get planner",
+        "operationId": "Getplanner",
         "produces": [
           "application/json"
         ],
@@ -17545,6 +17907,7 @@
           "planner"
         ],
         "summary": "Update planner",
+        "operationId": "Updateplanner",
         "consumes": [
           "application/json"
         ],
@@ -17574,6 +17937,7 @@
           "deviceManagement"
         ],
         "summary": "Get deviceManagement",
+        "operationId": "GetdeviceManagement",
         "produces": [
           "application/json"
         ],
@@ -17674,6 +18038,7 @@
           "deviceManagement"
         ],
         "summary": "Update deviceManagement",
+        "operationId": "UpdatedeviceManagement",
         "consumes": [
           "application/json"
         ],
@@ -17703,6 +18068,7 @@
           "deviceManagement"
         ],
         "summary": "Invoke function verifyWindowsEnrollmentAutoDiscovery",
+        "operationId": "InvokeverifyWindowsEnrollmentAutoDiscovery",
         "produces": [
           "application/json"
         ],
@@ -17734,6 +18100,7 @@
           "deviceManagement"
         ],
         "summary": "Invoke function getEffectivePermissions",
+        "operationId": "InvokegetEffectivePermissions",
         "produces": [
           "application/json"
         ],
@@ -17759,6 +18126,7 @@
           "deviceManagement"
         ],
         "summary": "Invoke function getEffectivePermissions",
+        "operationId": "InvokegetEffectivePermissions",
         "produces": [
           "application/json"
         ],
@@ -17790,6 +18158,7 @@
           "deviceAppManagement"
         ],
         "summary": "Get deviceAppManagement",
+        "operationId": "GetdeviceAppManagement",
         "produces": [
           "application/json"
         ],
@@ -17859,6 +18228,7 @@
           "deviceAppManagement"
         ],
         "summary": "Update deviceAppManagement",
+        "operationId": "UpdatedeviceAppManagement",
         "consumes": [
           "application/json"
         ],
@@ -17888,6 +18258,7 @@
           "deviceAppManagement"
         ],
         "summary": "Invoke action syncMicrosoftStoreForBusinessApps",
+        "operationId": "InvokesyncMicrosoftStoreForBusinessApps",
         "responses": {
           "204": {
             "description": "Success"
@@ -17904,6 +18275,7 @@
           "reports"
         ],
         "summary": "Get reports",
+        "operationId": "Getreports",
         "produces": [
           "application/json"
         ],
@@ -17950,6 +18322,7 @@
           "reports"
         ],
         "summary": "Update reports",
+        "operationId": "Updatereports",
         "consumes": [
           "application/json"
         ],
@@ -17979,6 +18352,7 @@
           "reports"
         ],
         "summary": "Invoke function deviceConfigurationUserActivity",
+        "operationId": "InvokedeviceConfigurationUserActivity",
         "produces": [
           "application/json"
         ],
@@ -17999,6 +18373,7 @@
           "reports"
         ],
         "summary": "Invoke function deviceConfigurationDeviceActivity",
+        "operationId": "InvokedeviceConfigurationDeviceActivity",
         "produces": [
           "application/json"
         ],
@@ -18019,6 +18394,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
+        "operationId": "InvokegetOffice365ActivationsUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18044,6 +18420,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
+        "operationId": "InvokegetOffice365ActivationCounts",
         "produces": [
           "application/json"
         ],
@@ -18069,6 +18446,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
+        "operationId": "InvokegetOffice365ActivationsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18094,6 +18472,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
+        "operationId": "InvokegetOffice365ActiveUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18129,6 +18508,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
+        "operationId": "InvokegetOffice365ActiveUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18162,6 +18542,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
+        "operationId": "InvokegetOffice365ServicesUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18195,6 +18576,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
+        "operationId": "InvokegetOffice365ActiveUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18228,6 +18610,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
+        "operationId": "InvokegetOffice365GroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -18263,6 +18646,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
+        "operationId": "InvokegetOffice365GroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -18296,6 +18680,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
+        "operationId": "InvokegetOffice365GroupsActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -18329,6 +18714,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
+        "operationId": "InvokegetOffice365GroupsActivityGroupCounts",
         "produces": [
           "application/json"
         ],
@@ -18362,6 +18748,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
+        "operationId": "InvokegetOffice365GroupsActivityStorage",
         "produces": [
           "application/json"
         ],
@@ -18395,6 +18782,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
+        "operationId": "InvokegetOffice365GroupsActivityFileCounts",
         "produces": [
           "application/json"
         ],
@@ -18428,6 +18816,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
+        "operationId": "InvokegetEmailActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18463,6 +18852,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
+        "operationId": "InvokegetEmailActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18496,6 +18886,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityCounts",
+        "operationId": "InvokegetEmailActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -18529,6 +18920,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
+        "operationId": "InvokegetEmailActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18562,6 +18954,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
+        "operationId": "InvokegetEmailAppUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18597,6 +18990,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
+        "operationId": "InvokegetEmailAppUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18630,6 +19024,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
+        "operationId": "InvokegetEmailAppUsageAppsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18663,6 +19058,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
+        "operationId": "InvokegetEmailAppUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18696,6 +19092,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
+        "operationId": "InvokegetEmailAppUsageVersionsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18729,6 +19126,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
+        "operationId": "InvokegetMailboxUsageDetail",
         "produces": [
           "application/json"
         ],
@@ -18762,6 +19160,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
+        "operationId": "InvokegetMailboxUsageMailboxCounts",
         "produces": [
           "application/json"
         ],
@@ -18795,6 +19194,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "InvokegetMailboxUsageQuotaStatusMailboxCounts",
         "produces": [
           "application/json"
         ],
@@ -18828,6 +19228,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
+        "operationId": "InvokegetMailboxUsageStorage",
         "produces": [
           "application/json"
         ],
@@ -18861,6 +19262,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
+        "operationId": "InvokegetOneDriveActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18896,6 +19298,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
+        "operationId": "InvokegetOneDriveActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -18929,6 +19332,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
+        "operationId": "InvokegetOneDriveActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -18962,6 +19366,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
+        "operationId": "InvokegetOneDriveActivityFileCounts",
         "produces": [
           "application/json"
         ],
@@ -18995,6 +19400,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
+        "operationId": "InvokegetOneDriveUsageAccountDetail",
         "produces": [
           "application/json"
         ],
@@ -19030,6 +19436,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
+        "operationId": "InvokegetOneDriveUsageAccountDetail",
         "produces": [
           "application/json"
         ],
@@ -19063,6 +19470,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
+        "operationId": "InvokegetOneDriveUsageAccountCounts",
         "produces": [
           "application/json"
         ],
@@ -19096,6 +19504,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
+        "operationId": "InvokegetOneDriveUsageFileCounts",
         "produces": [
           "application/json"
         ],
@@ -19129,6 +19538,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
+        "operationId": "InvokegetOneDriveUsageStorage",
         "produces": [
           "application/json"
         ],
@@ -19162,6 +19572,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
+        "operationId": "InvokegetSharePointActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19197,6 +19608,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
+        "operationId": "InvokegetSharePointActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19230,6 +19642,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
+        "operationId": "InvokegetSharePointActivityFileCounts",
         "produces": [
           "application/json"
         ],
@@ -19263,6 +19676,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
+        "operationId": "InvokegetSharePointActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19296,6 +19710,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityPages",
+        "operationId": "InvokegetSharePointActivityPages",
         "produces": [
           "application/json"
         ],
@@ -19329,6 +19744,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
+        "operationId": "InvokegetSharePointSiteUsageDetail",
         "produces": [
           "application/json"
         ],
@@ -19364,6 +19780,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
+        "operationId": "InvokegetSharePointSiteUsageDetail",
         "produces": [
           "application/json"
         ],
@@ -19397,6 +19814,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
+        "operationId": "InvokegetSharePointSiteUsageFileCounts",
         "produces": [
           "application/json"
         ],
@@ -19430,6 +19848,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
+        "operationId": "InvokegetSharePointSiteUsageSiteCounts",
         "produces": [
           "application/json"
         ],
@@ -19463,6 +19882,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
+        "operationId": "InvokegetSharePointSiteUsageStorage",
         "produces": [
           "application/json"
         ],
@@ -19496,6 +19916,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
+        "operationId": "InvokegetSharePointSiteUsagePages",
         "produces": [
           "application/json"
         ],
@@ -19529,6 +19950,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19564,6 +19986,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19597,6 +20020,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -19630,6 +20054,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19663,6 +20088,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -19696,6 +20122,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19729,6 +20156,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
@@ -19762,6 +20190,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessOrganizerActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -19795,6 +20224,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessOrganizerActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19828,6 +20258,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "InvokegetSkypeForBusinessOrganizerActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
@@ -19861,6 +20292,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
+        "operationId": "InvokegetSkypeForBusinessParticipantActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -19894,6 +20326,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "InvokegetSkypeForBusinessParticipantActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19927,6 +20360,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "InvokegetSkypeForBusinessParticipantActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
@@ -19960,6 +20394,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19995,6 +20430,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20028,6 +20464,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20061,6 +20498,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20094,6 +20532,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
+        "operationId": "InvokegetYammerActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20129,6 +20568,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
+        "operationId": "InvokegetYammerActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20162,6 +20602,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityCounts",
+        "operationId": "InvokegetYammerActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -20195,6 +20636,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
+        "operationId": "InvokegetYammerActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20228,6 +20670,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
+        "operationId": "InvokegetYammerDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20263,6 +20706,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
+        "operationId": "InvokegetYammerDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20296,6 +20740,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
+        "operationId": "InvokegetYammerDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20329,6 +20774,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
+        "operationId": "InvokegetYammerDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20362,6 +20808,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
+        "operationId": "InvokegetYammerGroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -20397,6 +20844,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
+        "operationId": "InvokegetYammerGroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -20430,6 +20878,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
+        "operationId": "InvokegetYammerGroupsActivityGroupCounts",
         "produces": [
           "application/json"
         ],
@@ -20463,6 +20912,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
+        "operationId": "InvokegetYammerGroupsActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -20496,6 +20946,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
+        "operationId": "InvokegetTeamsUserActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20531,6 +20982,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
+        "operationId": "InvokegetTeamsUserActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20564,6 +21016,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityCounts",
+        "operationId": "InvokegetTeamsUserActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -20597,6 +21050,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsUserActivityUserCounts",
+        "operationId": "InvokegetTeamsUserActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20630,6 +21084,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
+        "operationId": "InvokegetTeamsDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20665,6 +21120,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
+        "operationId": "InvokegetTeamsDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20698,6 +21154,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserCounts",
+        "operationId": "InvokegetTeamsDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20731,6 +21188,7 @@
           "reports"
         ],
         "summary": "Invoke function getTeamsDeviceUsageDistributionUserCounts",
+        "operationId": "InvokegetTeamsDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20764,6 +21222,7 @@
           "reports"
         ],
         "summary": "Invoke function getTenantSecureScores",
+        "operationId": "InvokegetTenantSecureScores",
         "produces": [
           "application/json"
         ],
@@ -20795,6 +21254,7 @@
           "education"
         ],
         "summary": "Get education",
+        "operationId": "Geteducation",
         "produces": [
           "application/json"
         ],
@@ -20846,6 +21306,7 @@
           "education"
         ],
         "summary": "Update education",
+        "operationId": "Updateeducation",
         "consumes": [
           "application/json"
         ],

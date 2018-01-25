@@ -13,6 +13,7 @@ paths:
       tags:
         - People
       summary: Get entities from People
+      operationId: GetEntitiesFromPeople
       produces:
         - application/json
       parameters:
@@ -96,6 +97,7 @@ paths:
       tags:
         - People
       summary: Add new entity to People
+      operationId: AddEntityToPeople
       consumes:
         - application/json
       produces:
@@ -118,6 +120,7 @@ paths:
       tags:
         - People
       summary: Get entity from People by key
+      operationId: GetEntityFromPeopleByKey
       produces:
         - application/json
       parameters:
@@ -166,6 +169,7 @@ paths:
       tags:
         - People
       summary: Update entity in People
+      operationId: UpdateEntityInPeople
       consumes:
         - application/json
       parameters:
@@ -188,6 +192,7 @@ paths:
       tags:
         - People
       summary: Delete entity from People
+      operationId: DeleteEntityFromPeople
       parameters:
         - name: UserName
           in: path
@@ -208,6 +213,7 @@ paths:
       tags:
         - People
       summary: Invoke function GetFavoriteAirline
+      operationId: InvokeGetFavoriteAirline
       produces:
         - application/json
       parameters:
@@ -227,6 +233,7 @@ paths:
       tags:
         - People
       summary: Invoke function GetFriendsTrips
+      operationId: InvokeGetFriendsTrips
       produces:
         - application/json
       parameters:
@@ -248,6 +255,7 @@ paths:
       tags:
         - People
       summary: Invoke function UpdatePersonLastName
+      operationId: InvokeUpdatePersonLastName
       produces:
         - application/json
       parameters:
@@ -269,6 +277,7 @@ paths:
       tags:
         - People
       summary: Invoke action ShareTrip
+      operationId: InvokeShareTrip
       consumes:
         - application/json
       parameters:
@@ -300,6 +309,7 @@ paths:
       tags:
         - Airlines
       summary: Get entities from Airlines
+      operationId: GetEntitiesFromAirlines
       produces:
         - application/json
       parameters:
@@ -353,6 +363,7 @@ paths:
       tags:
         - Airlines
       summary: Add new entity to Airlines
+      operationId: AddEntityToAirlines
       consumes:
         - application/json
       produces:
@@ -375,6 +386,7 @@ paths:
       tags:
         - Airlines
       summary: Get entity from Airlines by key
+      operationId: GetEntityFromAirlinesByKey
       produces:
         - application/json
       parameters:
@@ -411,6 +423,7 @@ paths:
       tags:
         - Airlines
       summary: Update entity in Airlines
+      operationId: UpdateEntityInAirlines
       consumes:
         - application/json
       parameters:
@@ -433,6 +446,7 @@ paths:
       tags:
         - Airlines
       summary: Delete entity from Airlines
+      operationId: DeleteEntityFromAirlines
       parameters:
         - name: AirlineCode
           in: path
@@ -453,6 +467,7 @@ paths:
       tags:
         - Airports
       summary: Get entities from Airports
+      operationId: GetEntitiesFromAirports
       produces:
         - application/json
       parameters:
@@ -512,6 +527,7 @@ paths:
       tags:
         - Airports
       summary: Add new entity to Airports
+      operationId: AddEntityToAirports
       consumes:
         - application/json
       produces:
@@ -534,6 +550,7 @@ paths:
       tags:
         - Airports
       summary: Get entity from Airports by key
+      operationId: GetEntityFromAirportsByKey
       produces:
         - application/json
       parameters:
@@ -572,6 +589,7 @@ paths:
       tags:
         - Airports
       summary: Update entity in Airports
+      operationId: UpdateEntityInAirports
       consumes:
         - application/json
       parameters:
@@ -594,6 +612,7 @@ paths:
       tags:
         - Airports
       summary: Delete entity from Airports
+      operationId: DeleteEntityFromAirports
       parameters:
         - name: IcaoCode
           in: path
@@ -614,6 +633,7 @@ paths:
       tags:
         - NewComePeople
       summary: Get entities from NewComePeople
+      operationId: GetEntitiesFromNewComePeople
       produces:
         - application/json
       parameters:
@@ -697,6 +717,7 @@ paths:
       tags:
         - NewComePeople
       summary: Add new entity to NewComePeople
+      operationId: AddEntityToNewComePeople
       consumes:
         - application/json
       produces:
@@ -719,6 +740,7 @@ paths:
       tags:
         - NewComePeople
       summary: Get entity from NewComePeople by key
+      operationId: GetEntityFromNewComePeopleByKey
       produces:
         - application/json
       parameters:
@@ -767,6 +789,7 @@ paths:
       tags:
         - NewComePeople
       summary: Update entity in NewComePeople
+      operationId: UpdateEntityInNewComePeople
       consumes:
         - application/json
       parameters:
@@ -789,6 +812,7 @@ paths:
       tags:
         - NewComePeople
       summary: Delete entity from NewComePeople
+      operationId: DeleteEntityFromNewComePeople
       parameters:
         - name: UserName
           in: path
@@ -809,6 +833,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke function GetFavoriteAirline
+      operationId: InvokeGetFavoriteAirline
       produces:
         - application/json
       parameters:
@@ -828,6 +853,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke function GetFriendsTrips
+      operationId: InvokeGetFriendsTrips
       produces:
         - application/json
       parameters:
@@ -849,6 +875,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke function UpdatePersonLastName
+      operationId: InvokeUpdatePersonLastName
       produces:
         - application/json
       parameters:
@@ -870,6 +897,7 @@ paths:
       tags:
         - NewComePeople
       summary: Invoke action ShareTrip
+      operationId: InvokeShareTrip
       consumes:
         - application/json
       parameters:
@@ -901,6 +929,7 @@ paths:
       tags:
         - Me
       summary: Get Me
+      operationId: GetMe
       produces:
         - application/json
       parameters:
@@ -944,6 +973,7 @@ paths:
       tags:
         - Me
       summary: Update Me
+      operationId: UpdateMe
       consumes:
         - application/json
       parameters:
@@ -962,6 +992,7 @@ paths:
       tags:
         - Me
       summary: Invoke function GetFavoriteAirline
+      operationId: InvokeGetFavoriteAirline
       produces:
         - application/json
       responses:
@@ -975,6 +1006,7 @@ paths:
       tags:
         - Me
       summary: Invoke function GetFriendsTrips
+      operationId: InvokeGetFriendsTrips
       produces:
         - application/json
       parameters:
@@ -995,6 +1027,7 @@ paths:
       tags:
         - Me
       summary: Invoke function UpdatePersonLastName
+      operationId: InvokeUpdatePersonLastName
       produces:
         - application/json
       parameters:
@@ -1015,6 +1048,7 @@ paths:
       tags:
         - Me
       summary: Invoke action ShareTrip
+      operationId: InvokeShareTrip
       consumes:
         - application/json
       parameters:
@@ -1041,6 +1075,7 @@ paths:
       tags:
         - People
       summary: Invoke function GetPersonWithMostFriends
+      operationId: InvokeGetPersonWithMostFriends
       produces:
         - application/json
       responses:
@@ -1054,6 +1089,7 @@ paths:
       tags:
         - Airports
       summary: Invoke function GetNearestAirport
+      operationId: InvokeGetNearestAirport
       produces:
         - application/json
       parameters:
@@ -1074,6 +1110,7 @@ paths:
   /ResetDataSource:
     post:
       summary: Invoke action ResetDataSource
+      operationId: InvokeResetDataSource
       responses:
         '204':
           description: Success

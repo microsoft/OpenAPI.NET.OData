@@ -55,7 +55,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a value indicating to set the OperationId on <see cref="OpenApiOperation"/>.
         /// </summary>
-        public bool OperationId { get; set; }
+        public bool OperationId { get; set; } = true;
 
         /// <summary>
         /// Gets/sets a value indicating whether to verify the edm model before converter.
