@@ -3,9 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
@@ -49,9 +46,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
         protected void Initialize()
         {
-            Debug.Assert(Model != null);
-            Debug.Assert(Target != null);
-
             IEdmVocabularyAnnotation annotation = Model.GetCapabilitiesAnnotation(Target, QualifiedName);
             if (annotation == null)
             {
@@ -68,90 +62,10 @@ namespace Microsoft.OpenApi.OData.Capabilities
             Initialize(annotation);
         }
 
+        /// <summary>
+        /// Initialize the capabilities with the vocabulary annotation.
+        /// </summary>
+        /// <param name="annotation">The input vocabulary annotation.</param>
         protected abstract void Initialize(IEdmVocabularyAnnotation annotation);
-
-        protected static bool SetBoolProperty(IEdmRecordExpression record, string propertyName, bool defaultValue)
-        {
-            if (record == null || record.Properties == null)
-            {
-                return defaultValue;
-            }
-
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-            if (property != null)
-            {
-                IEdmBooleanConstantExpression value = property.Value as IEdmBooleanConstantExpression;
-                if (value != null)
-                {
-                    return value.Value;
-                }
-            }
-
-            return defaultValue;
-        }
-
-        protected static bool? SetBoolProperty(IEdmRecordExpression record, string propertyName)
-        {
-            if (record == null || record.Properties == null)
-            {
-                return null;
-            }
-
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-            if (property != null)
-            {
-                IEdmBooleanConstantExpression value = property.Value as IEdmBooleanConstantExpression;
-                if (value != null)
-                {
-                    return value.Value;
-                }
-            }
-
-            return null;
-        }
-
-        protected static IList<string> GetCollectProperty(IEdmRecordExpression record, string propertyName)
-        {
-            IList<string> properties = new List<string>();
-            if (record != null && record.Properties != null)
-            {
-                IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-                if (property != null)
-                {
-                    IEdmCollectionExpression value = property.Value as IEdmCollectionExpression;
-                    if (value != null)
-                    {
-                        foreach (var a in value.Elements.Select(e => e as EdmPropertyPathExpression))
-                        {
-                            properties.Add(a.Path);
-                        }
-                    }
-                }
-            }
-
-            return properties;
-        }
-
-        protected static IList<string> GetCollectNavigationProperty(IEdmRecordExpression record, string propertyName)
-        {
-            IList<string> properties = new List<string>();
-            if (record != null && record.Properties != null)
-            {
-                IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-                if (property != null)
-                {
-                    IEdmCollectionExpression value = property.Value as IEdmCollectionExpression;
-                    if (value != null)
-                    {
-                        foreach (var a in value.Elements.Select(e => e as EdmNavigationPropertyPathExpression))
-                        {
-                            properties.Add(a.Path);
-                        }
-                    }
-                }
-            }
-
-            return properties;
-        }
     }
 }

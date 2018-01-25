@@ -88,7 +88,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
 
-            Searchable = SetBoolProperty(record, "Searchable", true);
+            // Searchable
+            Searchable = record.GetBoolean("Searchable");
 
             // read the "UnsupportedExpressions"
             IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "UnsupportedExpressions");
