@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/set a value indicating whether to output key as segment path.
         /// </summary>
-        public bool KeyAsSegment { get; set; }
+        public bool? KeyAsSegment { get; set; }
 
         /// <summary>
         /// Gets/set a value indicating whether to output un-qualified operation call.

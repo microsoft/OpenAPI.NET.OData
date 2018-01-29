@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Generator
             IList<IEdmStructuralProperty> keys = entitySet.EntityType().Key().ToList();
             if (keys.Count() == 1)
             {
-                if (context.Settings.KeyAsSegment)
+                if (context.KeyAsSegment)
                 {
                     sb.Append("/{").Append(keys.First().Name).Append("}");
                 }

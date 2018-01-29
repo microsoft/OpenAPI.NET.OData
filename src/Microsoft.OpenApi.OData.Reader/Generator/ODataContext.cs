@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -15,6 +16,7 @@ namespace Microsoft.OpenApi.OData.Generator
     internal class ODataContext
     {
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
+        private bool _keyAsSegmentSupported = false;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -38,6 +40,8 @@ namespace Microsoft.OpenApi.OData.Generator
             EdmModelVisitor visitor = new EdmModelVisitor();
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
+
+            _keyAsSegmentSupported = settings.KeyAsSegment ?? model.GetKeyAsSegmentSupported();
         }
 
         /// <summary>
@@ -55,6 +59,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 return Model.EntityContainer;
             }
         }
+
+        /// <summary>
+        /// Gets the boolean value indicating to support key as segment.
+        /// </summary>
+        public bool KeyAsSegment => _keyAsSegmentSupported;
 
         /// <summary>
         /// Gets the value indicating the Edm spatial type used.

@@ -13,6 +13,24 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal static class CapabilitiesHelper
     {
         /// <summary>
+        /// Gets boolean value for term Org.OData.Core.V1.KeyAsSegmentSupported
+        /// </summary>
+        /// <param name="model">The model referenced to.</param>
+        /// <returns>Boolean for term Org.OData.Core.V1.KeyAsSegmentSupported</returns>
+        public static bool GetKeyAsSegmentSupported(this IEdmModel model)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+
+            if (model.EntityContainer == null)
+            {
+                return false;
+            }
+
+            KeyAsSegmentSupported keyAsSegment = new KeyAsSegmentSupported(model, model.EntityContainer);
+            return keyAsSegment.Supported ?? false;
+        }
+
+        /// <summary>
         /// Gets description for term Org.OData.Core.V1.Description from a target annotatable
         /// </summary>
         /// <param name="model">The model referenced to.</param>
