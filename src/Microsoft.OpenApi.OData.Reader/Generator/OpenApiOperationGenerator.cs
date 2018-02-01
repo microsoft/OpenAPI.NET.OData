@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Annotations;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -32,6 +33,9 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
+
+            HttpRequestsAnnotation httpRequests = new HttpRequestsAnnotation(context.Model, entitySet);
+            HttpRequest request = httpRequests.GetRequest("Get");
 
             OpenApiOperation operation = new OpenApiOperation
             {

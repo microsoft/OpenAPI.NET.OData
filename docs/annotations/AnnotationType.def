@@ -1,0 +1,35 @@
+<Schema Namespace="Org.Graph.Vocab" Alias="Graph" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+  <Term Name="HttpRequests" Type="Collection(Graph.HttpRequest)" AppliesTo="EntitySet Singleton ActionImport FunctionImport Action Function">
+    <Annotation Term="Core.Description" String="Describes possible HTTP requests" />
+    <Annotation Term="Core.LongDescription" String="The list need not be complete. It may be used to generate API documentation, so restricting it to the most common and most important responses may increase readability." />
+  </Term>
+  <ComplexType Name="HttpRequest">
+    <Property Name="Description" Type="Edm.String" />
+    <Property Name="Method" Type="Edm.String" />
+    <Property Name="CustomQueryOptions" Type="Collection(Graph.CustomParameter)" />
+    <Property Name="CustomHeaders" Type="Collection(Graph.CustomParameter)" />
+    <Property Name="HttpRequestBody" Type="Collection(Graph.CustomParameter)" />
+    <Property Name="HttpResponse" Type="Graph.HttpResponse" />
+  </ComplexType>
+  <ComplexType Name="HttpResponse">
+    <Property Name="ResponseCode" Type="Edm.String" />
+    <Property Name="Description" Type="Edm.String" />
+    <Property Name="Conditions" Type="Collection(Graph.HttpStatusCodeCondition)" />
+  </ComplexType>
+  <ComplexType Name="HttpStatusCodeCondition">
+    <Property Name="ODataErrorCode" Type="Edm.String" />
+    <Property Name="Description" Type="Edm.String" />
+  </ComplexType>
+  <ComplexType Name="CustomParameter">
+    <Property Name="Name" Type="Edm.String" Nullable="false" />
+    <Property Name="Type" Type="Edm.String" Nullable="false" />
+    <Property Name="Description" Type="Edm.String" />
+    <Property Name="DocumentationURL" Type="Edm.String" />
+    <Property Name="Required" Type="Edm.Boolean" Nullable="false" />
+    <Property Name="ExampleValues" Type="Collection(Graph.CustomParameterExampleValue)" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CustomParameterExampleValue">
+    <Property Name="Value" Type="Edm.String" Nullable="false" />
+    <Property Name="Description" Type="Edm.String" Nullable="false" />
+  </ComplexType>
+</Schema>

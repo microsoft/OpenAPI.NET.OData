@@ -13,11 +13,46 @@ using Microsoft.OpenApi.Extensions;
 using System;
 using System.IO;
 using System.Xml.Linq;
+using System.Collections.Generic;
+using Microsoft.OData.Edm.Validation;
 
 namespace UpdateDocs
 {
     class Program
     {
+        private static bool ProcessAnnotation(string path)
+        {
+            string csdlpath = path + "../../../../../../src/Microsoft.OpenApi.OData.Reader/Annotations";
+            foreach (var filePath in Directory.GetFiles(csdlpath, "*.xml"))
+            {
+                string csdl = File.ReadAllText(filePath);
+                if (CsdlReader.TryParse(XElement.Parse(csdl).CreateReader(), out IEdmModel model, out IEnumerable<EdmError> errors))
+                {
+                    Console.WriteLine("Read [" + filePath + "] OK!");
+                }
+                else
+                {
+                    Console.WriteLine("Read [" + filePath + "] Failed!");
+                    foreach (var error in errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage + ":" + error.ErrorLocation);
+                    }
+                }
+
+                foreach (var a in model.SchemaElements)
+                {
+                    Console.WriteLine(a.Name + ":" + a.SchemaElementKind);
+                }
+
+                foreach(var a in model.VocabularyAnnotations)
+                {
+                    Console.WriteLine(a.Qualifier + a.Term + a.Target);
+                }
+            }
+
+            return true;
+        }
+
         static int Main(string[] args)
         {
             // we assume the path are existed for simplicity.
@@ -26,6 +61,10 @@ namespace UpdateDocs
             string oas20 = path + "../../../../../../docs/oas_2_0";
             string oas30 = path + "../../../../../../docs/oas3_0_0";
 
+            if (ProcessAnnotation(path))
+            {
+                return 0;
+            }
 
             foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {

@@ -36,6 +36,16 @@ namespace OoasUtil
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FileOpenApiGenerator"/> class.
+        /// </summary>
+        /// <param name="cmmLine">The command line.</param>
+        public FileOpenApiGenerator(ComLineProcesser cmmLine)
+            : base(cmmLine)
+        {
+            Input = cmmLine.Input;
+        }
+
+        /// <summary>
         /// Process the arguments.
         /// </summary>
         protected override IEdmModel GetEdmModel()
@@ -43,6 +53,7 @@ namespace OoasUtil
             try
             {
                 string csdl = File.ReadAllText(Input);
+                csdl = MergeWithAnnotation(csdl);
                 return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
             }
             catch (Exception e)

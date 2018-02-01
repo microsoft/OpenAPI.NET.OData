@@ -5,8 +5,14 @@
 //---------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
@@ -30,6 +36,11 @@ namespace OoasUtil
         public string Output { get; }
 
         /// <summary>
+        /// Output file.
+        /// </summary>
+        public ComLineProcesser CommandLine { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="OpenApiGenerator"/> class.
         /// </summary>
         /// <param name="input">The input.</param>
@@ -39,6 +50,68 @@ namespace OoasUtil
         {
             Output = output;
             Format = format;
+        }
+
+        public OpenApiGenerator(ComLineProcesser cmmLine)
+        {
+            CommandLine = cmmLine;
+            Output = cmmLine.Output;
+            Format = cmmLine.Format.Value;
+        }
+
+        protected IEnumerable<string> GetAnnotations()
+        {
+            if (CommandLine.AnnotationPath != null)
+            {
+                foreach (var filePath in Directory.GetFiles(CommandLine.AnnotationPath, "*.xml"))
+                {
+                    string csdl = File.ReadAllText(filePath);
+                    /*
+                    if (!CsdlReader.TryParse(XElement.Parse(csdl).CreateReader(), out IEdmModel model, out IEnumerable<EdmError> errors))
+                    {
+                        Console.WriteLine("Skip: " + filePath + " Is not a valid CSDL files");
+                        continue;
+                    }
+                    */
+                    yield return csdl;
+                }
+            }
+        }
+
+        protected string GetAnnotationDefinition()
+        {
+            if (CommandLine.AnnotationPath != null)
+            {
+                var file = Directory.GetFiles(CommandLine.AnnotationPath, "AnnotationType.def").FirstOrDefault();
+                if (file != null)
+                {
+                    return File.ReadAllText(file);
+                }
+            }
+
+            return null;
+        }
+
+        protected string MergeWithAnnotation(string csdl)
+        {
+            IEnumerable<string> annotations = GetAnnotations();
+            if (!annotations.Any())
+            {
+                return csdl;
+            }
+
+            int last = csdl.LastIndexOf("</Schema>");
+            StringBuilder sb = new StringBuilder(csdl.Substring(0, last));
+            string lastString = csdl.Substring(last + 9);
+            foreach (string annotation in annotations)
+            {
+                sb.Append(annotation);
+            }
+
+            sb.Append("</Schema>");
+            sb.Append(GetAnnotationDefinition());
+            sb.Append("</edmx:DataServices></edmx:Edmx>");
+            return sb.ToString();
         }
 
         /// <summary>

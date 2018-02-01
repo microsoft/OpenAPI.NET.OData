@@ -56,6 +56,11 @@ namespace OoasUtil
         public bool IsLocalFile { get; private set; }
 
         /// <summary>
+        /// Annotation paths
+        /// </summary>
+        public string AnnotationPath { get; private set; }
+
+        /// <summary>
         /// Process the arguments.
         /// </summary>
         public bool Process()
@@ -118,6 +123,15 @@ namespace OoasUtil
                             i++;
                             break;
 
+                        case "--annotations":
+                        case "-a":
+                            if (!ProcessAnnotation(_args[i + 1]))
+                            {
+                                return false;
+                            }
+                            i++;
+                            break;
+
                         default:
                             PrintUsage();
                             return false;
@@ -138,6 +152,19 @@ namespace OoasUtil
 
             _continue = ValidateArguments();
             return _continue;
+        }
+
+        private bool ProcessAnnotation(string annotationFolder)
+        {
+            if (AnnotationPath != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--annotations|-a] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            AnnotationPath = annotationFolder;
+            return true;
         }
 
         private bool ProcessInput(string input)
@@ -203,6 +230,15 @@ namespace OoasUtil
                 Console.WriteLine("[Error:] [--output|-o] is required.\n");
                 PrintUsage();
                 return false;
+            }
+
+            if (AnnotationPath != null)
+            {
+                if (!Directory.Exists(AnnotationPath))
+                {
+                    Console.WriteLine("[Error]: Path (" + AnnotationPath + ") is not existed.\n");
+                    return false;
+                }
             }
 
             return true;

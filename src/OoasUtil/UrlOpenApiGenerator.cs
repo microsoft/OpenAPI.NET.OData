@@ -39,6 +39,16 @@ namespace OoasUtil
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="FileOpenApiGenerator"/> class.
+        /// </summary>
+        /// <param name="cmmLine">The command line.</param>
+        public UrlOpenApiGenerator(ComLineProcesser cmmLine)
+            : base(cmmLine)
+        {
+            Input = new Uri(cmmLine.Input);
+        }
+
+        /// <summary>
         /// Get the Edm model.
         /// </summary>
         protected override IEdmModel GetEdmModel()
@@ -54,6 +64,8 @@ namespace OoasUtil
             StreamReader reader = new StreamReader(receivedStream, Encoding.UTF8);
 
             string csdl = reader.ReadToEnd();
+
+            csdl = MergeWithAnnotation(csdl);
 
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }

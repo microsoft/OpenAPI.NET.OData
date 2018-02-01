@@ -17,6 +17,27 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// </summary>
     internal static class RecordExpressionExtensions
     {
+        public static string GetString(this IEdmRecordExpression record, string propertyName)
+        {
+            Utils.CheckArgumentNull(record, nameof(record));
+            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
+
+            if (record.Properties != null)
+            {
+                IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
+                if (property != null)
+                {
+                    IEdmStringConstantExpression value = property.Value as IEdmStringConstantExpression;
+                    if (value != null)
+                    {
+                        return value.Value;
+                    }
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Get the boolean value from the record using the given property name.
         /// </summary>
