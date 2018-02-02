@@ -7,8 +7,8 @@
     <Property Name="Description" Type="Edm.String" />
     <Property Name="Method" Type="Edm.String" />
     <Property Name="CustomQueryOptions" Type="Collection(Graph.CustomParameter)" />
-    <Property Name="CustomHeaders" Type="Collection(Graph.CustomParameter)" />
-    <Property Name="HttpRequestBody" Type="Collection(Graph.CustomParameter)" />
+    <Property Name="CustomHeaders" Type="Collection(Graph.CustomParameter)" />  <!-- Map to Paraemter in Operation as Header object.-->
+    <Property Name="RequestBody" Type="Graph.HttpRequestBody" /> <!-- Map to RequestBody object in Operation. -->
     <Property Name="HttpResponse" Type="Graph.HttpResponse" />
   </ComplexType>
   <ComplexType Name="HttpResponse">
@@ -20,6 +20,11 @@
     <Property Name="ODataErrorCode" Type="Edm.String" />
     <Property Name="Description" Type="Edm.String" />
   </ComplexType>
+  <ComplexType Name="HttpRequestBody">
+    <Property Name="Description" Type="Edm.String" />
+    <Property Name="Parameters" Type="Collection(Graph.CustomParameter)" />
+  </ComplexType>
+  
   <ComplexType Name="CustomParameter">
     <Property Name="Name" Type="Edm.String" Nullable="false" />
     <Property Name="Type" Type="Edm.String" Nullable="false" />

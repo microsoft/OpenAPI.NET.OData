@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Annotations;
+using Microsoft.OpenApi.Any;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -121,6 +122,21 @@ namespace Microsoft.OpenApi.OData.Generator
                 operation.Parameters.Add(parameter);
             }
 
+            if (request != null && request.CustomHeaders != null && request.CustomHeaders.Any())
+            {
+                AppendCustomerHeaders(operation.Parameters, request.CustomHeaders);
+            }
+
+            if (request != null && request.RequestBody != null)
+            {
+                if (operation.RequestBody == null)
+                {
+                    operation.RequestBody = new OpenApiRequestBody();
+                }
+
+                AppendHttpRequestBody(operation.RequestBody, request.RequestBody);
+            }
+
             // The value of responses is a Responses Object.
             // It contains a name/value pair for the success case (HTTP response code 200)
             // describing the structure of a successful response referencing the schema of the entity set’s entity type in the global schemas
@@ -170,6 +186,58 @@ namespace Microsoft.OpenApi.OData.Generator
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return operation;
+        }
+
+        private static void AppendHttpRequestBody(OpenApiRequestBody requestBody, HttpRequestBody requestBodyAnnotation)
+        {
+            requestBody.Description = requestBodyAnnotation.Description;
+            requestBody.Content = new Dictionary<string, OpenApiMediaType>();
+            foreach(var p in requestBodyAnnotation.Parameters)
+            {
+                OpenApiMediaType mediaType = new OpenApiMediaType
+                {
+                    Schema = new OpenApiSchema
+                    {
+                        Type = p.Type
+                    },
+                    Example = new OpenApiString(p.DocumentationURL),
+                };
+
+               // requestBody.Content[p.Name] = mediaType;
+            }
+        }
+
+        private static void AppendCustomerHeaders(IList<OpenApiParameter> parameters, IList<CustomParameter> headers)
+        {
+            foreach (var param in headers)
+            {
+                OpenApiParameter parameter = new OpenApiParameter
+                {
+                    In = ParameterLocation.Header,
+                    Name = param.Name,
+                    Description = param.Description,
+                    Schema = new OpenApiSchema
+                    {
+                        Type = param.Type
+                    },
+                    Required = param.Required ?? false,
+                    Example = new OpenApiString(param.DocumentationURL)
+                };
+
+                parameter.Examples = new List<OpenApiExample>();
+                foreach (var example in param.ExampleValues)
+                {
+                    OpenApiExample ex = new OpenApiExample
+                    {
+                        Value = new OpenApiString(example.Value),
+                        Description = example.Description
+                    };
+
+                    parameter.Examples.Add(ex);
+                }
+
+                parameters.Add(parameter);
+            }
         }
 
         /// <summary>

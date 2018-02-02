@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Annotations
     /// <summary>
     /// Org.Graph.Vocab.HttpRequests
     /// </summary>
-    internal class HttpRequest
+    internal class HttpRequestBody
     {
         /// <summary>
         /// </summary>
@@ -21,62 +21,22 @@ namespace Microsoft.OpenApi.OData.Annotations
 
         /// <summary>
         /// </summary>
-        public string Method { get; set; }
-
-        /// <summary>
-        /// </summary>
-        public IList<CustomParameter> CustomQueryOptions { get; set; }
-
-        /// <summary>
-        /// Gets the navigation properties which do not allow /$count segments.
-        /// </summary>
-        public IList<CustomParameter> CustomHeaders { get; set; }
-
-        public HttpRequestBody RequestBody { get; set; }
-
-        public HttpResponse Response { get; set; }
+        public IList<CustomParameter> Parameters { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
             Description = record.GetString("Description");
-            Method = record.GetString("Method");
 
-            IEdmCollectionExpression collection = GetCollection(record, "CustomQueryOptions");
+            IEdmCollectionExpression collection = GetCollection(record, "Parameters");
             if (collection != null)
             {
-                CustomQueryOptions = new List<CustomParameter>();
+                Parameters = new List<CustomParameter>();
                 foreach(var item in collection.Elements)
                 {
                     CustomParameter p = new CustomParameter();
                     p.Init(item as IEdmRecordExpression);
-                    CustomQueryOptions.Add(p);
+                    Parameters.Add(p);
                 }
-            }
-
-            collection = GetCollection(record, "CustomHeaders");
-            if (collection != null)
-            {
-                CustomHeaders = new List<CustomParameter>();
-                foreach (var item in collection.Elements)
-                {
-                    CustomParameter p = new CustomParameter();
-                    p.Init(item as IEdmRecordExpression);
-                    CustomHeaders.Add(p);
-                }
-            }
-
-            IEdmRecordExpression requestBodyRecord = GetRecord(record, "RequestBody");
-            if (collection != null)
-            {
-                RequestBody = new HttpRequestBody();
-                RequestBody.Init(requestBodyRecord);
-            }
-
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "HttpResponse");
-            if (property != null)
-            {
-                Response = new HttpResponse();
-                Response.Init(property.Value as IEdmRecordExpression);
             }
         }
 
