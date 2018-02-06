@@ -7,7 +7,7 @@
 	<Annotation Term="Org.OData.Core.V1.Description" String="Description for User resource"></Annotation>
 	<Annotation Term="Org.OData.Core.V1.LongDescription" String="Description for User resource"></Annotation>
 	<Annotation Term="Org.Graph.Vocab.HttpRequests">
-		<!-- This takes care of httprequest, query params, headers, request body, response -->
+		<!-- This takes care of httprequest, query params, headers, request body, response-->
 		<Collection>
 			<Record>
 				<PropertyValue Property="Description" String="Description for Http Request "></PropertyValue>
