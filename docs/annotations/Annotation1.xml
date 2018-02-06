@@ -110,13 +110,13 @@
 					<Collection>
 						<Record>
 							<PropertyValue Property="ResponseCode" String="200"></PropertyValue>
+							<PropertyValue Property="Description" String="Description of response content" />
 							<PropertyValue Property="ResponseContent">
 								<PropertyValue Property="Description" String="Description of response content" />
-								<PropertyValue Property="Content" String="application json content"></PropertyValue>
+								<PropertyValue Property="Content" String="application json content"/>
 							</PropertyValue>
 						</Record>
 					</Collection>
-					
 				</PropertyValue>
 			</Record>
 		</Collection>
