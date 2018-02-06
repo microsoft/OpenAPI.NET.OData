@@ -1,144 +1,140 @@
 <Annotations Target="microsoft.graph.GraphService/users">
-  <Annotation Term="Org.OData.Capabilities.V1.ChangeTracking">
-    <Record>
-      <PropertyValue Property="Supported" Bool="true" />
-    </Record>
-  </Annotation>
-  <Annotation Term="Org.OData.Core.V1.Description" String="Description for User resource">
-  </Annotation>
-  <Annotation Term="Org.OData.Core.V1.LongDescription" String="Description for User resource">
-  </Annotation>
-  <Annotation Term="Org.Graph.Vocab.HttpRequests">
-    <!-- This takes care of httprequest, query params, headers, request body, response -->
-    <Collection>
-      <Record>
-        <PropertyValue Property="Description" String="Description for Http Request "></PropertyValue>
-        <PropertyValue Property="Method" String="GET">
-          <!-- How are we going to describe the http request description text that's here https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_get -->
-        </PropertyValue>
-        <PropertyValue Property="CustomQueryOptions">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Name" String="accountEnabled"/>
-              <PropertyValue Property="Type" String="boolean" />
-              <PropertyValue Property="Description" String="N/A" />
-              <PropertyValue Property="DocumentationURL" String="N/A" />
-              <PropertyValue Property="Required" Bool="false" />
-              <PropertyValue Property="ExampleValues">
-                <Collection>
-                  <Record>
-                    <PropertyValue Property="Value" String="JSON example 1"/>
-                    <PropertyValue Property="Description" String="JSON example 2"/>
-                  </Record>
-                </Collection>
-              </PropertyValue>
-            </Record>
-          </Collection>
-        </PropertyValue>
-        <PropertyValue Property="CustomHeaders">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Name" String="accountEnabled"/>
-              <PropertyValue Property="Type" String="boolean" />
-              <PropertyValue Property="Description" String="N/A" />
-              <PropertyValue Property="DocumentationURL" String="N/A" />
-              <PropertyValue Property="Required" Bool="false" />
-              <PropertyValue Property="ExampleValues">
-                <Collection>
-                  <Record>
-                    <PropertyValue Property="Value" String="JSON example 1"/>
-                    <PropertyValue Property="Description" String="JSON example 2"/>
-                  </Record>
-                </Collection>
-              </PropertyValue>
-            </Record>
-			 <Record>
-              <PropertyValue Property="Name" String="accountEnabled"/>
-              <PropertyValue Property="Type" String="boolean" />
-              <PropertyValue Property="Description" String="N/A" />
-              <PropertyValue Property="DocumentationURL" String="N/A" />
-              <PropertyValue Property="Required" Bool="false" />
-              <PropertyValue Property="ExampleValues">
-                <Collection>
-                  <Record>
-                    <PropertyValue Property="Value" String="JSON example 3"/>
-                    <PropertyValue Property="Description" String="JSON example 4"/>
-                  </Record>
-                </Collection>
-              </PropertyValue>
-            </Record>
-          </Collection>
-        </PropertyValue>
-        <PropertyValue Property="HttpRequestBody">
-          <Record>
-		    <PropertyValue Property="Description" String="accountEnabled"/>
-			<PropertyValue Property="Parameters" >
-			 <Collection>
-			   <Record>
-                <PropertyValue Property="Name" String="accountEnabled"/>
-                <PropertyValue Property="Type" String="boolean" />
-                <PropertyValue Property="Description" String="N/A" />
-                <PropertyValue Property="DocumentationURL" String="N/A" />
-                <PropertyValue Property="Required" Bool="false" />
-                <PropertyValue Property="ExampleValues">
-				 <Collection>
-				  <Record>
-                   <PropertyValue Property="Value" String="JSON example 1"/>
-                   <PropertyValue Property="Description" String="JSON example 2"/>
-                  </Record>
-                </Collection>
-			   </PropertyValue>
-			  </Record>
-			  <Record>
-                <PropertyValue Property="Name" String="accountEnabled"/>
-                <PropertyValue Property="Type" String="boolean" />
-                <PropertyValue Property="Description" String="N/A" />
-                <PropertyValue Property="DocumentationURL" String="N/A" />
-                <PropertyValue Property="Required" Bool="false" />
-                <PropertyValue Property="ExampleValues">
-				 <Collection>
-				  <Record>
-                   <PropertyValue Property="Value" String="JSON example 3"/>
-                   <PropertyValue Property="Description" String="JSON example 4"/>
-                  </Record>
-                </Collection>
-			  </PropertyValue>
-			 </Record>
-            </Collection>
-		   </PropertyValue>
-		 </Record>
-        </PropertyValue>
-        <PropertyValue Property="HttpResponse">
-          <Record>
-            <PropertyValue Property="ResponseCode" String="200"></PropertyValue>
-            <PropertyValue Property="Description" String="200"></PropertyValue>
-            <PropertyValue Property="Conditions">
-              <Collection>
-                <Record>
-                  <PropertyValue Property="ODataErrorCode" String="" />
-                  <PropertyValue Property="Description" String="Description of the error code" />
-                </Record>
-              </Collection>
-            </PropertyValue>
-          </Record>
-        </PropertyValue>
-      </Record>
-    </Collection>
-  </Annotation>
-  <!-- Resource inheritance (description)
+	<Annotation Term="Org.OData.Capabilities.V1.ChangeTracking">
+		<Record>
+			<PropertyValue Property="Supported" Bool="true" />
+		</Record>
+	</Annotation>
+	<Annotation Term="Org.OData.Core.V1.Description" String="Description for User resource"></Annotation>
+	<Annotation Term="Org.OData.Core.V1.LongDescription" String="Description for User resource"></Annotation>
+	<Annotation Term="Org.Graph.Vocab.HttpRequests">
+		<!-- This takes care of httprequest, query params, headers, request body, response -->
+		<Collection>
+			<Record>
+				<PropertyValue Property="Description" String="Description for Http Request "></PropertyValue>
+				<PropertyValue Property="Method" String="GET">
+					<!-- How are we going to describe the http request description text that's here https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_get -->
+				</PropertyValue>
+				<PropertyValue Property="CustomQueryOptions">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Name" String="accountEnabled"/>
+							<PropertyValue Property="Type" String="boolean" />
+							<PropertyValue Property="Description" String="N/A" />
+							<PropertyValue Property="DocumentationURL" String="N/A" />
+							<PropertyValue Property="Required" Bool="false" />
+							<PropertyValue Property="ExampleValues">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Value" String="JSON example 1"/>
+										<PropertyValue Property="Description" String="JSON example 2"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="CustomHeaders">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Name" String="accountEnabled"/>
+							<PropertyValue Property="Type" String="boolean" />
+							<PropertyValue Property="Description" String="N/A" />
+							<PropertyValue Property="DocumentationURL" String="N/A" />
+							<PropertyValue Property="Required" Bool="false" />
+							<PropertyValue Property="ExampleValues">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Value" String="JSON example 1"/>
+										<PropertyValue Property="Description" String="JSON example 2"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="accountEnabled"/>
+							<PropertyValue Property="Type" String="boolean" />
+							<PropertyValue Property="Description" String="N/A" />
+							<PropertyValue Property="DocumentationURL" String="N/A" />
+							<PropertyValue Property="Required" Bool="false" />
+							<PropertyValue Property="ExampleValues">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Value" String="JSON example 3"/>
+										<PropertyValue Property="Description" String="JSON example 4"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="HttpRequestBody">
+					<Record>
+						<PropertyValue Property="Description" String="accountEnabled"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Name" String="accountEnabled"/>
+									<PropertyValue Property="Type" String="boolean" />
+									<PropertyValue Property="Description" String="N/A" />
+									<PropertyValue Property="DocumentationURL" String="N/A" />
+									<PropertyValue Property="Required" Bool="false" />
+									<PropertyValue Property="ExampleValues">
+										<Collection>
+											<Record>
+												<PropertyValue Property="Value" String="JSON example 1"/>
+												<PropertyValue Property="Description" String="JSON example 2"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+								<Record>
+									<PropertyValue Property="Name" String="accountEnabled"/>
+									<PropertyValue Property="Type" String="boolean" />
+									<PropertyValue Property="Description" String="N/A" />
+									<PropertyValue Property="DocumentationURL" String="N/A" />
+									<PropertyValue Property="Required" Bool="false" />
+									<PropertyValue Property="ExampleValues">
+										<Collection>
+											<Record>
+												<PropertyValue Property="Value" String="JSON example 3"/>
+												<PropertyValue Property="Description" String="JSON example 4"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</PropertyValue>
+				<PropertyValue Property="HttpResponse">
+					<Collection>
+						<Record>
+							<PropertyValue Property="ResponseCode" String="200"></PropertyValue>
+							<PropertyValue Property="ResponseContent">
+								<PropertyValue Property="Description" String="Description of response content" />
+								<PropertyValue Property="Content" String="application json content"></PropertyValue>
+							</PropertyValue>
+						</Record>
+					</Collection>
+					
+				</PropertyValue>
+			</Record>
+		</Collection>
+	</Annotation>
+	<!-- Resource inheritance (description)
     Look into if we should do anyOf/all of for this representation. 
     -->
-  <!-- Method extensions (description) 
+	<!-- Method extensions (description) 
     This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
     -->
-  <!-- Relationships  
+	<!-- Relationships  
     These need to be defined as 'link objects'
     -->
 </Annotations>
 <!-- Properties (description) -->
 <Annotations Target="microsoft.graph.user/aboutMe">
-  <Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
+	<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
 </Annotations>
 <Annotations Target="microsoft.graph.user/accountEnabled">
-  <Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
+	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
 </Annotations>
