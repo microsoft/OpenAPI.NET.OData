@@ -29,7 +29,6 @@
   <ComplexType Name="MediaType">
     <Property Name="Name" Type="Edm.String"/>
     <Property Name="Type" Type="Edm.String"/>
-    <Property Name="Description" Type="Edm.String" />
     <Property Name="ExampleValues" Type="Collection(Graph.CustomParameterExampleValue)" Nullable="false" />
   </ComplexType>
   <ComplexType Name="CustomParameter">
