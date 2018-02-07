@@ -1,4 +1,4 @@
-<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Org.Graph.Authorization" Alias="GraphAuth">
+<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Org.Graph.Authorization" Alias="Auth">
 	<Annotation Term="Core.Description" String="The Authorization Vocabulary provides terms for describing a web authorization flow" />
 	<Annotation Term="Core.Links">
 		<Collection>
