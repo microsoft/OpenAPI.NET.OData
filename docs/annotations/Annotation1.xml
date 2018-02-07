@@ -113,22 +113,21 @@
 							<PropertyValue Property="ResponseContent">
 								<Collection>
 									<Record>
-										<PropertyValue Property="Name" String="content" />
-										<PropertyValue Property="Type" String="application/json"/>
-										<PropertyValue Property="MediaBody" String="Schema" />
-										<PropertyValue Property="ExampleValues">
-											<Collection>
-												<Record>
-													<PropertyValue Property="Value" String="JSON example 3"/>
-													<PropertyValue Property="Description" String="JSON example 4"/>
-												</Record>
-											</Collection>
+										<PropertyValue Property="Name" String="content"/>
+											<PropertyValue Property="Type" String="application/json"/>
+											<PropertyValue Property="MediaBody" String="Schema" />
+											<PropertyValue Property="ExampleValues">
+												<Collection>
+													<Record>
+														<PropertyValue Property="Value" String="JSON example 3"/>
+														<PropertyValue Property="Description" String="JSON example 4"/>
+													</Record>
+												</Collection>
+											</PropertyValue>
 										</PropertyValue>
 									</Record>
 								</Collection>
 							</PropertyValue>
-							<PropertyValue Property="Description" String="Description of response content" />
-							<PropertyValue Property="Required" Bool="true" />
 						</Record>
 					</Collection>
 				</PropertyValue>
@@ -210,4 +209,39 @@
 <Annotations Target="microsoft.graph.user/accountEnabled">
 	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
 </Annotations>
-
+<Annotations Target="Graph.GraphService">
+	<Annotation Term="Auth.SecurityScheme">
+		<Collection>
+			<Record>
+				<PropertyValue Property="AuthorizationSchemeName" String="DelegatedWork"></PropertyValue>
+				<PropertyValue Property="RequiredScopes">
+					<Collection>
+						<Record>User.ReadAll</Record>
+						<Record>User.WriteAll</Record>
+						<Record>Directory.ReadAll</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+			<Record>
+				<PropertyValue Property="AuthorizationSchemeName" String="DelegatedPersonal"></PropertyValue>
+				<PropertyValue Property="RequiredScopes">
+					<Collection>
+						<Record>User.ReadAll</Record>
+						<Record>User.WriteAll</Record>
+						<Record>Directory.ReadAll</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+			<Record>
+				<PropertyValue Property="AuthorizationSchemeName" String="Application"></PropertyValue>
+				<PropertyValue Property="RequiredScopes">
+					<Collection>
+						<Record>User.ReadAll</Record>
+						<Record>User.WriteAll</Record>
+						<Record>Directory.ReadAll</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+		</Collection>
+	</Annotation>
+</Annotations>

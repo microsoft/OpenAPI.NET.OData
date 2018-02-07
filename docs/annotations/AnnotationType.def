@@ -9,7 +9,8 @@
     <Property Name="CustomQueryOptions" Type="Collection(Core.CustomParameter)" />
     <Property Name="CustomHeaders" Type="Collection(Core.CustomParameter)" />  <!-- Map to Parameter in Operation as Header object.-->
     <Property Name="RequestBody" Type="Core.HttpRequestBody" /> <!-- Map to RequestBody object in Operation. -->
-    <Property Name="HttpResponses" Type="Collection(Core.HttpResponse)" />  <!--  Map to Response object in Operation.     -->
+    <Property Name="HttpResponse" Type="Collection(Core.HttpResponse)" />  <!--  Map to Response object in Operation.     -->
+    <Property Name="SecuritySchemes" Type="Collection(Auth.SecurityScheme)"/> 
   </ComplexType>
   <ComplexType Name="HttpResponse">
     <Property Name="ResponseCode" Type="Edm.String" />
@@ -44,4 +45,4 @@
     <Property Name="Value" Type="Edm.String" Nullable="false" />
     <Property Name="Description" Type="Edm.String" Nullable="false" />
   </ComplexType>
-</Schema>
+ </Schema>
