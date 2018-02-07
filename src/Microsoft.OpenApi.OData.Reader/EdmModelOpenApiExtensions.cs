@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData
                 settings = new OpenApiConvertSettings(); // default
             }
 
-            model = model.GetAuthorizationEdmModel();
+            model = model.AppendAnnotations();
 
             if (settings.VerifyEdmModel)
             {

@@ -10,6 +10,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.Models;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -36,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             // Each entity type, complex type, enumeration type, and type definition directly
             // or indirectly used in the paths field is represented as a name / value pair of the schemas map.
-            foreach (var element in context.Model.SchemaElements)
+            foreach (var element in context.Model.SchemaElements.Where(c => !c.Namespace.StartsWith("Org.OData.")))
             {
                 switch (element.SchemaElementKind)
                 {

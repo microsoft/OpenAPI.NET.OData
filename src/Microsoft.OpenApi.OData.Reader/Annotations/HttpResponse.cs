@@ -21,41 +21,58 @@ namespace Microsoft.OpenApi.OData.Annotations
         /// </summary>
         public string Description { get; set; }
 
+        public bool? Required { get; set; }
+
         /// <summary>
         /// </summary>
-        public IList<HttpStatusCodeCondition> Conditions { get; set; }
+        public IList<MediaType> ResponseContent { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
             ResponseCode = record.GetString("ResponseCode");
             Description = record.GetString("Description");
+            Required = record.GetBoolean("Required");
 
-            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "Conditions");
+            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "ResponseContent");
             if (collection != null)
             {
-                Conditions = new List<HttpStatusCodeCondition>();
+                ResponseContent = new List<MediaType>();
                 foreach (var item in collection.Elements)
                 {
-                    HttpStatusCodeCondition p = new HttpStatusCodeCondition();
+                    MediaType p = new MediaType();
                     p.Init(item as IEdmRecordExpression);
-                    Conditions.Add(p);
+                    ResponseContent.Add(p);
                 }
             }
         }
     }
 
-    internal class HttpStatusCodeCondition
+    internal class MediaType
     {
-        public string ODataErrorCode { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// </summary>
-        public string Description { get; set; }
+        public string Type { get; set; }
+
+        public IList<CustomParameterExampleValue> ExampleValues { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
-            ODataErrorCode = record.GetString("ODataErrorCode");
-            Description = record.GetString("Description");
+            Name = record.GetString("Name");
+            Type = record.GetString("Type");
+
+            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "ExampleValues");
+            if (collection != null)
+            {
+                ExampleValues = new List<CustomParameterExampleValue>();
+                foreach (var item in collection.Elements)
+                {
+                    CustomParameterExampleValue p = new CustomParameterExampleValue();
+                    p.Init(item as IEdmRecordExpression);
+                    ExampleValues.Add(p);
+                }
+            }
         }
     }
 }

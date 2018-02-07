@@ -20,10 +20,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Annotations\Authorization.def" />
+    <None Remove="Annotations\GraphVocaburary.def" />
     <None Remove="Authorization\Authorization.def" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Annotations\Authorization.def" />
+    <EmbeddedResource Include="Annotations\GraphVocaburary.def" />
     <EmbeddedResource Include="Authorization\Authorization.def" />
   </ItemGroup>
 

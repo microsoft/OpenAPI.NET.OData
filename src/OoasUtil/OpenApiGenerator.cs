@@ -109,7 +109,7 @@ namespace OoasUtil
             }
 
             sb.Append("</Schema>");
-            sb.Append(GetAnnotationDefinition());
+//            sb.Append(GetAnnotationDefinition());
             sb.Append("</edmx:DataServices></edmx:Edmx>");
             return sb.ToString();
         }

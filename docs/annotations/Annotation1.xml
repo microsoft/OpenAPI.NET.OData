@@ -113,7 +113,7 @@
 							<PropertyValue Property="ResponseContent">
 									<Collection>
 										<Record>
-											<PropertyValue Property="Name" String="content">
+											<PropertyValue Property="Name" String="content" />
 											<PropertyValue Property="Type" String="application/json"/>
 											<PropertyValue Property="MediaBody" String="Schema" />
 											<PropertyValue Property="ExampleValues">
@@ -126,9 +126,9 @@
 											</PropertyValue>
 										</Record>
 									</Collection>
-								<PropertyValue Property="Description" String="Description of response content" />
-								<PropertyValue Property="Content" String="application json content"/></PropertyValue>
+								</PropertyValue>
 							<PropertyValue Property="Description" String="Description of response content" />
+							<PropertyValue Property="Required" Bool="true" />
 						</Record>           
 					</Collection>
 				</PropertyValue>

@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Annotations
 
         public HttpRequestBody RequestBody { get; set; }
 
-        public HttpResponse Response { get; set; }
+        public IList<HttpResponse> HttpResponse { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
@@ -72,11 +72,16 @@ namespace Microsoft.OpenApi.OData.Annotations
                 RequestBody.Init(requestBodyRecord);
             }
 
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == "HttpResponse");
-            if (property != null)
+            collection = GetCollection(record, "HttpResponse");
+            if (collection != null)
             {
-                Response = new HttpResponse();
-                Response.Init(property.Value as IEdmRecordExpression);
+                HttpResponse = new List<HttpResponse>();
+                foreach (var item in collection.Elements)
+                {
+                    HttpResponse p = new HttpResponse();
+                    p.Init(item as IEdmRecordExpression);
+                    HttpResponse.Add(p);
+                }
             }
         }
 

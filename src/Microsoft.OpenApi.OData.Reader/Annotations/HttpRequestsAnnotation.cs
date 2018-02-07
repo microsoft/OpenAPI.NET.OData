@@ -12,14 +12,14 @@ using Microsoft.OpenApi.OData.Capabilities;
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
-    /// Org.Graph.Vocab.HttpRequests
+    /// Org.Graph.Vocabulary.HttpRequests
     /// </summary>
     internal class HttpRequestsAnnotation
     {
         /// <summary>
         /// The Term type name.
         /// </summary>
-        public virtual string QualifiedName => "Org.Graph.Vocab.HttpRequests";
+        public virtual string QualifiedName => "Org.Graph.Vocabulary.HttpRequests";
 
         /// <summary>
         /// Gets the Countable value.
