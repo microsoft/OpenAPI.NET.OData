@@ -45,4 +45,12 @@
     <Property Name="Value" Type="Edm.String" Nullable="false" />
     <Property Name="Description" Type="Edm.String" Nullable="false" />
   </ComplexType>
+  <ComplexType Name="SecurityScheme">
+		<Property Name="AuthorizationSchemeName" Type="Edm.String">
+			<Annotation Term="Core.Description" String="The name of a required authorization scheme"/>
+		</Property>
+		<Property Name="RequiredScopes" Type="Collection(Edm.String">
+			<Annotation Term="Core.Description" String="The names of scopes required from this authorization scheme."/>
+		</Property>
+	</ComplexType>
  </Schema>

@@ -209,8 +209,8 @@
 <Annotations Target="microsoft.graph.user/accountEnabled">
 	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
 </Annotations>
-<Annotations Target="Graph.GraphService">
-	<Annotation Term="Auth.SecurityScheme">
+<!-- <Annotations Target="Graph.GraphService">
+	<Annotation Term="Graph.SecurityScheme">
 		<Collection>
 			<Record>
 				<PropertyValue Property="AuthorizationSchemeName" String="DelegatedWork"></PropertyValue>
@@ -244,4 +244,4 @@
 			</Record>
 		</Collection>
 	</Annotation>
-</Annotations>
+</Annotations> -->
