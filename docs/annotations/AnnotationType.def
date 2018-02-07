@@ -19,7 +19,7 @@
   </ComplexType>
   <ComplexType Name="HttpStatusCodeCondition">
     <Property Name="Description" Type="Edm.String" /> <!--This is the description for the response code. -->
-    <Property Name="Content" Type="Collection(Graph.MediaType)">
+    <Property Name="Content" Type="Collection(Graph.MediaType)"/>
   </ComplexType>
   <ComplexType Name="HttpRequestBody">
     <Property Name="Description" Type="Edm.String" />
@@ -29,6 +29,7 @@
   <ComplexType Name="MediaType">
     <Property Name="Name" Type="Edm.String"/>
     <Property Name="Type" Type="Edm.String"/>
+    <Property Name="MediaBody" Type="Edm.String" />
     <Property Name="ExampleValues" Type="Collection(Graph.CustomParameterExampleValue)" Nullable="false" />
   </ComplexType>
   <ComplexType Name="CustomParameter">
