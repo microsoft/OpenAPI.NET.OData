@@ -9,7 +9,7 @@
     <Property Name="CustomQueryOptions" Type="Collection(Core.CustomParameter)" />
     <Property Name="CustomHeaders" Type="Collection(Core.CustomParameter)" />  <!-- Map to Parameter in Operation as Header object.-->
     <Property Name="RequestBody" Type="Core.HttpRequestBody" /> <!-- Map to RequestBody object in Operation. -->
-    <Property Name="HttpResponse" Type="Collection(Core.HttpResponse)" />  <!--  Map to Response object in Operation.     -->
+    <Property Name="HttpResponses" Type="Collection(Core.HttpResponse)" />  <!--  Map to Response object in Operation.     -->
   </ComplexType>
   <ComplexType Name="HttpResponse">
     <Property Name="ResponseCode" Type="Edm.String" />
