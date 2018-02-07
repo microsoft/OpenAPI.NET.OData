@@ -6,7 +6,7 @@
 	</Annotation>
 	<Annotation Term="Org.OData.Core.V1.Description" String="Description for User resource"></Annotation>
 	<Annotation Term="Org.OData.Core.V1.LongDescription" String="Description for User resource"></Annotation>
-	<Annotation Term="Org.Graph.Vocab.HttpRequests">
+	<Annotation Term="Org.Graph.Vocabulary.HttpRequests">
 		<!-- This takes care of httprequest, query params, headers, request body, response-->
 		<Collection>
 			<Record>
@@ -111,9 +111,9 @@
 						<Record>
 							<PropertyValue Property="ResponseCode" String="200"/>
 							<PropertyValue Property="ResponseContent">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Name" String="content">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Name" String="content">
 											<PropertyValue Property="Type" String="application/json"/>
 											<PropertyValue Property="MediaBody" String="Schema" />
 											<PropertyValue Property="ExampleValues">
@@ -126,29 +126,85 @@
 											</PropertyValue>
 										</Record>
 									</Collection>
-								<PropertyValue Property="Description" String="Description of response content" />
-								<PropertyValue Property="Content" String="application json content"/></PropertyValue>
-							<PropertyValue Property="Description" String="Description of response content" />
-						</Record>           
-					</Collection>
-				</PropertyValue>
-			</Record>
-		</Collection>
-	</Annotation>
-	<!-- Resource inheritance (description)
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Collection>
+			</Annotation>
+			<!-- Resource inheritance (description)
     Look into if we should do anyOf/all of for this representation. 
     -->
-	<!-- Method extensions (description) 
+			<!-- Method extensions (description) 
     This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
     -->
-	<!-- Relationships  
+			<!-- Relationships  
     These need to be defined as 'link objects'
     -->
-</Annotations>
-<!-- Properties (description) -->
-<Annotations Target="microsoft.graph.user/aboutMe">
-	<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
-</Annotations>
-<Annotations Target="microsoft.graph.user/accountEnabled">
-	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
-</Annotations>
+			<Annotation Term="Auth.OAuth2Implicit">
+				<Collection>
+					<Record>
+						<PropertyValue Property="Name" String="DelegatedWork" />
+						<PropertyValue Property="Description" String="Description of auth type" />
+						<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
+						<PropertyValue Property="Scopes">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Scope" String="User.ReadAll"/>
+									<PropertyValue Property="Description" String="Scope Description"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+									<PropertyValue Property="Description" String="Scope Description"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
+									<PropertyValue Property="Description" String="Scope Description"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
+					</Record>
+					<Record>
+						<PropertyValue Property="Name" String="DelegatedPersonal" />
+						<PropertyValue Property="Description" String="Description of auth type" />
+						<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
+						<PropertyValue Property="Scopes">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Scope" String="N/A"/>
+									<PropertyValue Property="Description" String="Not Supported"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
+					</Record>
+					<Record>
+						<PropertyValue Property="Name" String="Application" />
+						<PropertyValue Property="Description" String="Description of auth type" />
+						<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
+						<PropertyValue Property="Scopes">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Scope" String="User.ReadAll"/>
+									<PropertyValue Property="Description" String="Scope Description"/>
+								</Record>
+								<Record>
+									<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+									<PropertyValue Property="Description" String="Scope Description"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
+					</Record>
+				</Collection>
+			</Annotation>
+		</Annotations>
+		<!-- Properties (description) -->
+		<Annotations Target="microsoft.graph.user/aboutMe">
+			<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
+		</Annotations>
+		<Annotations Target="microsoft.graph.user/accountEnabled">
+			<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
+		</Annotations>
+
