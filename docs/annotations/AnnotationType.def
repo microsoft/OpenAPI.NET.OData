@@ -10,6 +10,7 @@
     <Property Name="CustomHeaders" Type="Collection(Graph.CustomParameter)" />  <!-- Map to Parameter in Operation as Header object.-->
     <Property Name="RequestBody" Type="Graph.HttpRequestBody" /> <!-- Map to RequestBody object in Operation. -->
     <Property Name="HttpResponse" Type="Collection(Graph.HttpResponse)" />  <!--  Map to Response object in Operation.     -->
+    <Property Name="SecuritySchemes" Type="Collection(Auth.SecurityScheme)"/> 
   </ComplexType>
   <ComplexType Name="HttpResponse">
     <Property Name="ResponseCode" Type="Edm.String" />
@@ -44,4 +45,4 @@
     <Property Name="Value" Type="Edm.String" Nullable="false" />
     <Property Name="Description" Type="Edm.String" Nullable="false" />
   </ComplexType>
-</Schema>
+ </Schema>

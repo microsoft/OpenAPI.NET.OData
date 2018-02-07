@@ -1,4 +1,5 @@
-<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Org.Graph.Authorization" Alias="Auth">
+<Schema 
+	xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Org.Graph.Authorization" Alias="Auth">
 	<Annotation Term="Core.Description" String="The Authorization Vocabulary provides terms for describing a web authorization flow" />
 	<Annotation Term="Core.Links">
 		<Collection>
@@ -106,4 +107,13 @@
 			<Annotation Term="Core.Description" String="API Key is passed as a cookie" />
 		</Member>
 	</EnumType>
+	<ComplexType Name="SecurityScheme">
+		<Property Name="AuthorizationSchemeName" Type="Edm.String">
+			<Annotation Term="Core.Description" String="The name of a required authorization scheme"/>
+		</Property>
+		<Property Name="RequiredScopes" Type="Collection(Edm.String">
+			<Annotation Term="Core.Description" String="The names of scopes required from this authorization scheme."/>
+		</Property>
+	</ComplexType>
 </Schema>
+ 
