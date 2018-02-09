@@ -207,3 +207,75 @@
 	<Annotations Target="microsoft.graph.user/accountEnabled">
 		<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
 	</Annotations>
+	<Annotations Target="Graph.GraphService">
+		<Annotation Term="Auth.Authorizations">
+			<Collection>
+				<Record>
+					<PropertyValue Property="Name" String="DelegatedWork"/>
+					<PropertyValue Property="OAuth2Implicit">
+						<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
+						<PropertyValue Property="Scopes">
+							<Collection>
+								<Record>
+									<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+									<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+								</Record>
+								<Record>
+									<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+									<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+								</Record>
+								<Record>
+									<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+									<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
+				</Record>
+				<Record>
+					<PropertyValue Property="Name" String="DelegatedPersonal"/>
+					<PropertyValue Property="OAuth2Implicit">
+						<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
+						<PropertyValue Property="Scopes">
+							<Collection>
+	<Record>
+		<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+		<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+	</Record>
+	<Record>
+		<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+		<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+	</Record>
+	<Record>
+		<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+		<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+	</Record>
+</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
+				</Record>
+				<Record>
+					<PropertyValue Property="Name" String="Application"/>
+					<PropertyValue Property="OAuth2Implicit">
+						<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
+						<PropertyValue Property="Scopes">
+						<Collection>
+	<Record>
+		<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+		<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+	</Record>
+	<Record>
+		<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+		<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+	</Record>
+	<Record>
+		<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+		<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+	</Record>
+</Collection>
+						</PropertyValue>
+						<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
+				</Record>
+			</Collection>
+		</Annotation>
+	</Annotations>
