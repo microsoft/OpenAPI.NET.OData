@@ -23,7 +23,7 @@
     <Property Name="Description" Type="Edm.String" />
     <Property Name="DocumentationURL" Type="Edm.String" />
     <Property Name="Required" Type="Edm.Boolean" Nullable="false" />
-    <Property Name="ExampleValues" Type="Collection(Core.InlineExample)" Nullable="false" />
+    <Property Name="ExampleValues" Type="Collection(Core.CustomParameterExampleValue)" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Example" Abstract="true">
     <Property Name="Description" Type="Edm.String" Nullable="false" />
