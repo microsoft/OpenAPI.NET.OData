@@ -15,6 +15,9 @@
 					<!-- How are we going to describe the http request description text that's here https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_get -->
 				</PropertyValue>
 				<PropertyValue Property="CustomQueryOptions">
+					<Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 
+					By default, only a limited set of properties are returned ( businessPhones, displayName, givenName, id, jobTitle, mail, mobilePhone, officeLocation, preferredLanguage, surname, userPrincipalName ). 
+					To return an alternative property set, you must specify the desired set of user properties using the OData $select query parameter. For example, to return displayName, givenName, and postalCode, you would use the add the following to your query $select=displayName,givenName,postalCode"></Annotation>
 					<Collection>
 						<Record>
 							<PropertyValue Property="Name" String="accountEnabled"/>
@@ -22,11 +25,11 @@
 							<PropertyValue Property="Description" String="N/A" />
 							<PropertyValue Property="DocumentationURL" String="N/A" />
 							<PropertyValue Property="Required" Bool="false" />
-							<PropertyValue Property="ExampleValues">
+							<PropertyValue Property="Examples">
 								<Collection>
 									<Record>
-										<PropertyValue Property="Value" String="JSON example 1"/>
-										<PropertyValue Property="Description" String="JSON example 2"/>
+										<PropertyValue Property="InlineExample" String="JSON Example"/>
+										<PropertyValue Property="Description" String="application/json"/>
 									</Record>
 								</Collection>
 							</PropertyValue>
@@ -36,246 +39,199 @@
 				<PropertyValue Property="CustomHeaders">
 					<Collection>
 						<Record>
-							<PropertyValue Property="Name" String="accountEnabled"/>
-							<PropertyValue Property="Type" String="boolean" />
-							<PropertyValue Property="Description" String="N/A" />
-							<PropertyValue Property="DocumentationURL" String="N/A" />
-							<PropertyValue Property="Required" Bool="false" />
-							<PropertyValue Property="ExampleValues">
+							<PropertyValue Property="Name" String="Authorization"/>
+							<PropertyValue Property="Type" String="" />
+							<PropertyValue Property="Description" String="Bearer {token}. Required." />
+							<PropertyValue Property="DocumentationURL" String="" />
+							<PropertyValue Property="Required" Bool="true" />
+							<PropertyValue Property="Examples">
 								<Collection>
 									<Record>
-										<PropertyValue Property="Value" String="JSON example 1"/>
-										<PropertyValue Property="Description" String="JSON example 2"/>
+										<PropertyValue Property="ExternalExample" String="http://externalUrl"/>
+										<PropertyValue Property="Description" String="Example of authorization"/>
 									</Record>
 								</Collection>
 							</PropertyValue>
 						</Record>
 						<Record>
-							<PropertyValue Property="Name" String="accountEnabled"/>
-							<PropertyValue Property="Type" String="boolean" />
-							<PropertyValue Property="Description" String="N/A" />
-							<PropertyValue Property="DocumentationURL" String="N/A" />
-							<PropertyValue Property="Required" Bool="false" />
-							<PropertyValue Property="ExampleValues">
+							<PropertyValue Property="Name" String="content-type"/>
+							<PropertyValue Property="Type" String="" />
+							<PropertyValue Property="Description" String="application/json" />
+							<PropertyValue Property="DocumentationURL" String="" />
+							<PropertyValue Property="Required" Bool="true" />
+							<PropertyValue Property="Examples">
 								<Collection>
 									<Record>
-										<PropertyValue Property="Value" String="JSON example 3"/>
-										<PropertyValue Property="Description" String="JSON example 4"/>
+										<PropertyValue Property="ExternalExample" String="http://externalUrl"/>
+										<PropertyValue Property="Description" String="Example of content type"/>
 									</Record>
 								</Collection>
 							</PropertyValue>
 						</Record>
 					</Collection>
 				</PropertyValue>
-				<PropertyValue Property="HttpRequestBody">
-					<Record>
-						<PropertyValue Property="Description" String="accountEnabled"/>
-						<PropertyValue Property="Parameters">
-							<Collection>
-								<Record>
-									<PropertyValue Property="Name" String="accountEnabled"/>
-									<PropertyValue Property="Type" String="boolean" />
-									<PropertyValue Property="Description" String="N/A" />
-									<PropertyValue Property="DocumentationURL" String="N/A" />
-									<PropertyValue Property="Required" Bool="false" />
-									<PropertyValue Property="ExampleValues">
-										<Collection>
-											<Record>
-												<PropertyValue Property="Value" String="JSON example 1"/>
-												<PropertyValue Property="Description" String="JSON example 2"/>
-											</Record>
-										</Collection>
-									</PropertyValue>
-								</Record>
-								<Record>
-									<PropertyValue Property="Name" String="accountEnabled"/>
-									<PropertyValue Property="Type" String="boolean" />
-									<PropertyValue Property="Description" String="N/A" />
-									<PropertyValue Property="DocumentationURL" String="N/A" />
-									<PropertyValue Property="Required" Bool="false" />
-									<PropertyValue Property="ExampleValues">
-										<Collection>
-											<Record>
-												<PropertyValue Property="Value" String="JSON example 3"/>
-												<PropertyValue Property="Description" String="JSON example 4"/>
-											</Record>
-										</Collection>
-									</PropertyValue>
-								</Record>
-							</Collection>
-						</PropertyValue>
-					</Record>
-				</PropertyValue>
 				<PropertyValue Property="HttpResponse">
 					<Collection>
 						<Record>
 							<PropertyValue Property="ResponseCode" String="200"/>
-							<PropertyValue Property="ResponseContent">
+							<PropertyValue Property="Examples">
 								<Collection>
 									<Record>
-										<PropertyValue Property="Name" String="content"/>
-										<PropertyValue Property="Type" String="application/json"/>
-										<PropertyValue Property="MediaBody" String="Schema" />
-										<PropertyValue Property="ExampleValues">
-											<Collection>
-												<Record>
-													<PropertyValue Property="Value" String="JSON example 3"/>
-													<PropertyValue Property="Description" String="JSON example 4"/>
-												</Record>
-											</Collection>
-										</PropertyValue>
+										<PropertyValue Property="InlineExample" String="JSON Example"/>
+										<PropertyValue Property="Description" String="application/json"/>
 									</Record>
 								</Collection>
-							</Record>
-						</Collection>
-					</PropertyValue>
-					<PropertyValue Property="SecuritySchemes">
-						<Collection>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="Description of auth type" />
-								<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadAll"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedPersonal" />
-								<PropertyValue Property="Description" String="Description of auth type" />
-								<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="N/A"/>
-											<PropertyValue Property="Description" String="Not Supported"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="Application" />
-								<PropertyValue Property="Description" String="Description of auth type" />
-								<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadAll"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
-							</Record>
-						</Collection>
-					</PropertyValue>
-				</Record>
-			</Collection>
-		</Annotation>
-		<!-- Resource inheritance (description)
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="SecuritySchemes">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="Description of auth type" />
+							<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadAll"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedPersonal" />
+							<PropertyValue Property="Description" String="Description of auth type" />
+							<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="N/A"/>
+										<PropertyValue Property="Description" String="Not Supported"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="Application" />
+							<PropertyValue Property="Description" String="Description of auth type" />
+							<PropertyValue Property="AuthorizationUrl" String="http://authURL" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadAll"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="http://tokenURL"/>
+						</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+		</Collection>
+	</Annotation>
+	<!-- Resource inheritance (description)
     Look into if we should do anyOf/all of for this representation. 
     -->
-		<!-- Method extensions (description) 
+	<!-- Method extensions (description) 
     This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
     -->
-		<!-- Relationships  
+	<!-- Relationships  
     These need to be defined as 'link objects'
     -->
-	</Annotations>
-	<!-- Properties (description) -->
-	<Annotations Target="microsoft.graph.user/aboutMe">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/accountEnabled">
-		<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="Graph.GraphService">
-		<Annotation Term="Auth.Authorizations">
-			<Collection>
-				<Record>
-					<PropertyValue Property="Name" String="DelegatedWork"/>
-					<PropertyValue Property="OAuth2Implicit">
-						<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
-						<PropertyValue Property="Scopes">
-							<Collection>
-								<Record>
-									<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-									<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-								</Record>
-								<Record>
-									<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-									<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-								</Record>
-								<Record>
-									<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-									<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-								</Record>
-							</Collection>
-						</PropertyValue>
-						<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
-				</Record>
-				<Record>
-					<PropertyValue Property="Name" String="DelegatedPersonal"/>
-					<PropertyValue Property="OAuth2Implicit">
-						<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
-						<PropertyValue Property="Scopes">
-							<Collection>
-	<Record>
-		<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-		<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-	</Record>
-	<Record>
-		<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-		<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-	</Record>
-	<Record>
-		<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-		<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-	</Record>
-</Collection>
-						</PropertyValue>
-						<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
-				</Record>
-				<Record>
-					<PropertyValue Property="Name" String="Application"/>
-					<PropertyValue Property="OAuth2Implicit">
-						<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
-						<PropertyValue Property="Scopes">
+</Annotations>
+<!-- Properties (description) -->
+<Annotations Target="microsoft.graph.user/aboutMe">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/accountEnabled">
+	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="Graph.GraphService">
+	<Annotation Term="Auth.Authorizations">
+		<Collection>
+			<Record>
+				<PropertyValue Property="Name" String="DelegatedWork"/>
+				<PropertyValue Property="OAuth2Implicit">
+					<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
+					<PropertyValue Property="Scopes">
 						<Collection>
-	<Record>
-		<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-		<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-	</Record>
-	<Record>
-		<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-		<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-	</Record>
-	<Record>
-		<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-		<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-	</Record>
-</Collection>
-						</PropertyValue>
-						<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
-				</Record>
-			</Collection>
-		</Annotation>
-	</Annotations>
+							<Record>
+								<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+							</Record>
+							<Record>
+								<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+							</Record>
+							<Record>
+								<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+							</Record>
+						</Collection>
+					</PropertyValue>
+					<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
+			</Record>
+			<Record>
+				<PropertyValue Property="Name" String="DelegatedPersonal"/>
+				<PropertyValue Property="OAuth2Implicit">
+					<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
+					<PropertyValue Property="Scopes">
+						<Collection>
+							<Record>
+								<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+							</Record>
+							<Record>
+								<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+							</Record>
+							<Record>
+								<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+							</Record>
+						</Collection>
+					</PropertyValue>
+					<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
+			</Record>
+			<Record>
+				<PropertyValue Property="Name" String="Application"/>
+				<PropertyValue Property="OAuth2Implicit">
+					<PropertyValue Property="AuthorizationUrl" String="http://authUrl" />
+					<PropertyValue Property="Scopes">
+						<Collection>
+							<Record>
+								<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+							</Record>
+							<Record>
+								<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+							</Record>
+							<Record>
+								<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+								<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+							</Record>
+						</Collection>
+					</PropertyValue>
+					<PropertyValue Property="RefreshUrl" String="http://refreshUrl" /></PropertyValue>
+			</Record>
+		</Collection>
+	</Annotation>
+</Annotations>
