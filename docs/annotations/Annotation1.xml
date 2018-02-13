@@ -163,7 +163,7 @@
 <Annotations Target="microsoft.graph.user/accountEnabled">
 	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
 </Annotations>
-<Annotations Target="Graph.GraphService">
+<Annotations Target="microsoft.graph.GraphService">
 	<Annotation Term="Auth.Authorizations">
 		<Collection>
 			<Record>
