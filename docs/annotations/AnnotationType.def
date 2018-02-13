@@ -23,15 +23,15 @@
     <Property Name="Description" Type="Edm.String" />
     <Property Name="DocumentationURL" Type="Edm.String" />
     <Property Name="Required" Type="Edm.Boolean" Nullable="false" />
-    <Property Name="ExampleValues" Type="Collection(Core.CustomParameterExampleValue)" Nullable="false" />
+    <Property Name="ExampleValues" Type="Collection(Core.Example)" Nullable="false" />
   </ComplexType>
   <ComplexType Name="Example" Abstract="true">
     <Property Name="Description" Type="Edm.String" Nullable="false" />
   </ComplexType>
   <ComplexType Name="ExternalExample" BaseType="Core.Example">
-    <Property Name="InlineValue" Type="Edm.String" Nullable="false" />
+    <Property Name="ExternalValue" Type="Edm.String" Nullable="false" />
   </ComplexType>
   <ComplexType Name="InlineExample" BaseType="Core.Example">
-    <Property Name="ExternalValue" Type="Edm.String" Nullable="false" />
+    <Property Name="InlineValue" Type="Edm.String" Nullable="false" />
   </ComplexType>
 </Schema>
