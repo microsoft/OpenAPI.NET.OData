@@ -77,7 +77,7 @@
 				</PropertyValue>
 				<PropertyValue Property="HttpsResponse">
 					<!-- Maps to description for  -->
-					<Annotation Term="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
+					<Annotation  Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
 					<Collection>
 						<Record>
 							<PropertyValue Property="ResponseCode" String="200"/>
@@ -94,7 +94,9 @@
 				</PropertyValue>
 				<!-- maps to security -->
 				<PropertyValue Property="SecuritySchemes">
-				<Annotation Term="One of the following permissions is required to call this API. To learn more, including how to choose permissions, see Permissions."></Annotation>
+					<Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. 
+					To learn more, including how to choose permissions, see Permissions.">
+					</Annotation>
 					<Collection>
 						<Record>
 							<PropertyValue Property="Name" String="DelegatedWork" />
@@ -134,112 +136,6 @@
 									<Record>
 										<PropertyValue Property="Scope" String="User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All"/>
 										<PropertyValue Property="Description" String=""/>
-									</Record>
-								</Collection>
-							</PropertyValue>
-							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-						</Record>
-					</Collection>
-				</PropertyValue>
-			</Record>
-
-
-			<!-- ==================================================================== -->
-			<Record>
-				<PropertyValue Property="Description" String="Description for Https Request"></PropertyValue>
-				<PropertyValue Property="Method" String="GET">
-					<!-- How are we going to describe the https request description text that's here httpss://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_get -->
-				</PropertyValue>
-				<PropertyValue Property="CustomQueryOptions">
-					<Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 
-					By default, only a limited set of properties are returned ( businessPhones, displayName, givenName, id, jobTitle, mail, mobilePhone, officeLocation, preferredLanguage, surname, userPrincipalName ). 
-					To return an alternative property set, you must specify the desired set of user properties using the OData $select query parameter. For example, to return displayName, givenName, and postalCode, you would use the add the following to your query $select=displayName,givenName,postalCode"></Annotation>
-					<Collection>
-						<Record>
-							<PropertyValue Property="Name" String="Select"/>
-							<PropertyValue Property="Type" String="" />
-							<PropertyValue Property="Description" String="N/A" />
-							<PropertyValue Property="DocumentationURL" String="N/A" />
-							<PropertyValue Property="Required" Bool="false" />
-							<PropertyValue Property="Examples">
-								<Collection>
-									<Record>
-										<PropertyValue Property="InlineExample" String="JSON Example"/>
-										<PropertyValue Property="Description" String="application/json"/>
-									</Record>
-								</Collection>
-							</PropertyValue>
-						</Record>
-					</Collection>
-				</PropertyValue>
-				<PropertyValue Property="CustomHeaders">
-					<Collection>
-						<Record>
-							<PropertyValue Property="Name" String="Authorization"/>
-							<PropertyValue Property="Type" String="" />
-							<PropertyValue Property="Description" String="Bearer {token}. Required." />
-							<PropertyValue Property="DocumentationURL" String="" />
-							<PropertyValue Property="Required" Bool="true" />
-							<PropertyValue Property="Examples">
-								<Collection>
-									<Record>
-										<PropertyValue Property="ExternalExample" String="https://externalUrl"/>
-										<PropertyValue Property="Description" String="Example of authorization"/>
-									</Record>
-								</Collection>
-							</PropertyValue>
-						</Record>
-						<Record>
-							<PropertyValue Property="Name" String="content-type"/>
-							<PropertyValue Property="Type" String="" />
-							<PropertyValue Property="Description" String="application/json" />
-							<PropertyValue Property="DocumentationURL" String="" />
-							<PropertyValue Property="Required" Bool="true" />
-							<PropertyValue Property="Examples">
-								<Collection>
-									<Record>
-										<PropertyValue Property="ExternalExample" String="https://externalUrl"/>
-										<PropertyValue Property="Description" String="Example of content type"/>
-									</Record>
-								</Collection>
-							</PropertyValue>
-						</Record>
-					</Collection>
-				</PropertyValue>
-				<PropertyValue Property="HttpsResponse">
-					<Collection>
-						<Record>
-							<PropertyValue Property="ResponseCode" String="200"/>
-							<PropertyValue Property="Examples">
-								<Collection>
-									<Record>
-										<PropertyValue Property="InlineExample" String="JSON Example"/>
-										<PropertyValue Property="Description" String="application/json"/>
-									</Record>
-								</Collection>
-							</PropertyValue>
-						</Record>
-					</Collection>
-				</PropertyValue>
-				<PropertyValue Property="SecuritySchemes">
-					<Collection>
-						<Record>
-							<PropertyValue Property="Name" String="DelegatedWork" />
-							<PropertyValue Property="Description" String="Description of auth type" />
-							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-							<PropertyValue Property="Scopes">
-								<Collection>
-									<Record>
-										<PropertyValue Property="Scope" String="User.ReadAll"/>
-										<PropertyValue Property="Description" String="Scope Description"/>
-									</Record>
-									<Record>
-										<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-										<PropertyValue Property="Description" String="Scope Description"/>
-									</Record>
-									<Record>
-										<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
-										<PropertyValue Property="Description" String="Scope Description"/>
 									</Record>
 								</Collection>
 							</PropertyValue>
