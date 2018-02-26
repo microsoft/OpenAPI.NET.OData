@@ -43,12 +43,14 @@
 				</PropertyValue>
 				<PropertyValue Property="CustomHeaders">
 					<Collection>
+						<!-- Each record maps to the row in the headers table. -->
 						<Record>
-							<PropertyValue Property="Name" String="Authorization"/>
+							<PropertyValue Property="Name" String="Authorization"/> <!-- Maps to the Header Name column of the request headers section -->
 							<PropertyValue Property="Type" String="" />
-							<PropertyValue Property="Description" String="Bearer {token}. Required." />
-							<PropertyValue Property="DocumentationURL" String="" />
+							<PropertyValue Property="Description" String="Bearer {token}. Required." /> <!-- Maps to the value column of the request headers -->
+							<PropertyValue Property="DocumentationURL" String="" /> <!-- Currently there is not used -->
 							<PropertyValue Property="Required" Bool="true" />
+							<!--Currently we don't the examples section. -->
 							<PropertyValue Property="Examples">
 								<Collection>
 									<Record>
@@ -76,10 +78,11 @@
 					</Collection>
 				</PropertyValue>
 				<PropertyValue Property="HttpsResponse">
-					<!-- Maps to description for  -->
+					<!-- Maps to description for http response  -->
 					<Annotation  Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
 					<Collection>
 						<Record>
+							<!-- Will map to the table that define the response code, content type and sample for the http response -->
 							<PropertyValue Property="ResponseCode" String="200"/>
 							<PropertyValue Property="Examples">
 								<Collection>
@@ -92,7 +95,7 @@
 						</Record>
 					</Collection>
 				</PropertyValue>
-				<!-- maps to security -->
+				<!-- maps to security/permissions -->
 				<PropertyValue Property="SecuritySchemes">
 					<Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. 
 					To learn more, including how to choose permissions, see Permissions.">
@@ -108,7 +111,6 @@
 										<PropertyValue Property="Scope" String="User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All, Directory.AccessAsUser.All"/>
 										<PropertyValue Property="Description" String="Scope Description"/>
 									</Record>
-									
 								</Collection>
 							</PropertyValue>
 							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
@@ -153,8 +155,10 @@
     This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
     -->
 	<!-- Relationships  
-    These need to be defined as 'link objects'
-    -->
+    These need to be defined as 'link objects'.
+	We need to links for media, navigation and string properties.
+	For paths that return a single resource, we need to write navi properties
+	-->
 </Annotations>
 <!-- Properties (description) -->
 <Annotations Target="microsoft.graph.user/aboutMe">
