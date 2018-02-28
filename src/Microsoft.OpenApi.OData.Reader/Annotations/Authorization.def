@@ -24,6 +24,10 @@
     <Annotation Term="Core.Description" String="Lists the methods available to authorize access to the annotated resource" />
   </Term>
 
+  <Term Name="SecuritySchemes" Type="Collection(Auth.SecurityScheme)" AppliesTo="EntityContainer">
+    <Annotation Term="Core.Description" String="At least one of the specified security schemes are required to make a request against the service."/>
+  </Term>
+
   <ComplexType Name="Authorization" Abstract="true">
     <Annotation Term="Core.Description" String="Base type for all Authorization types" />
     <Property Name="Description" Type="Edm.String">
@@ -38,7 +42,7 @@
     <Property Name="IssuerUrl" Type="Edm.String" Nullable="false">
       <Annotation Term="Core.Description"
         String="Issuer location for the OpenID Provider. Configuration information can be obtained by appending `/.well-known/openid-configuration` to this Url." />
-      <Annotation Term="Core.IsURL" />
+      <Annotation Term="Core.IsURL" Bool="true"/>
     </Property>
   </ComplexType>
 
@@ -57,7 +61,7 @@
     </Property>
     <Property Name="RefreshUrl" Type="Edm.String">
       <Annotation Term="Core.Description" String="Refresh Url" />
-      <Annotation Term="Core.IsURL" />
+      <Annotation Term="Core.IsURL" Bool="true"/>
     </Property>
   </ComplexType>
 
@@ -71,14 +75,14 @@
   <ComplexType Name="OAuth2Implicit" BaseType="Auth.OAuthAuthorization">
     <Property Name="AuthorizationUrl" Type="Edm.String" Nullable="false">
       <Annotation Term="Core.Description" String="Authorization URL" />
-      <Annotation Term="Core.IsURL" />
+      <Annotation Term="Core.IsURL" Bool="true" />
     </Property>
   </ComplexType>
 
   <ComplexType Name="OAuth2Password" BaseType="Auth.OAuthAuthorization">
     <Property Name="TokenUrl" Type="Edm.String" Nullable="false">
       <Annotation Term="Core.Description" String="Token Url" />
-      <Annotation Term="Core.IsURL" />
+      <Annotation Term="Core.IsURL" Bool="true"/>
     </Property>
   </ComplexType>
 
@@ -89,7 +93,7 @@
     </Property>
     <Property Name="TokenUrl" Type="Edm.String" Nullable="false">
       <Annotation Term="Core.Description" String="Token Url" />
-      <Annotation Term="Core.IsURL" />
+      <Annotation Term="Core.IsURL" Bool="true"/>
     </Property>
   </ComplexType>
 

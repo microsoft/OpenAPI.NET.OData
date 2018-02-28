@@ -4,17 +4,17 @@
 // </copyright>
 //---------------------------------------------------------------------
 
-using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Csdl;
-using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData;
-using Microsoft.OpenApi.Extensions;
 using System;
 using System.IO;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData;
+using Microsoft.OpenApi.Extensions;
 
 namespace UpdateDocs
 {

@@ -3,11 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Csdl;
-using Microsoft.OData.Edm.Validation;
-using Microsoft.OpenApi.Exceptions;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +10,10 @@ using System.Reflection;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Exceptions;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
