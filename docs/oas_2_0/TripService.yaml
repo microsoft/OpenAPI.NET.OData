@@ -244,6 +244,10 @@ paths:
           description: 'key: UserName'
           required: true
           type: string
+        - in: path
+          name: userName
+          required: true
+          type: string
       responses:
         '200':
           description: Success
@@ -264,6 +268,10 @@ paths:
         - in: path
           name: UserName
           description: 'key: UserName'
+          required: true
+          type: string
+        - in: path
+          name: lastName
           required: true
           type: string
       responses:
@@ -871,6 +879,10 @@ paths:
           description: 'key: UserName'
           required: true
           type: string
+        - in: path
+          name: userName
+          required: true
+          type: string
       responses:
         '200':
           description: Success
@@ -891,6 +903,10 @@ paths:
         - in: path
           name: UserName
           description: 'key: UserName'
+          required: true
+          type: string
+        - in: path
+          name: lastName
           required: true
           type: string
       responses:

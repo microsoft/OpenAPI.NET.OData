@@ -347,6 +347,12 @@
             "description": "key: UserName",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -378,6 +384,12 @@
             "in": "path",
             "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -1283,6 +1295,12 @@
             "description": "key: UserName",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userName",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -1314,6 +1332,12 @@
             "in": "path",
             "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }

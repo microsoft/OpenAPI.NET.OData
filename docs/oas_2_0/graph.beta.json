@@ -6823,6 +6823,18 @@
             "description": "key: id",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "StartDateTime",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "EndDateTime",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -6891,6 +6903,12 @@
             "in": "path",
             "name": "id",
             "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "RoomList",
             "required": true,
             "type": "string"
           }
@@ -7947,6 +7965,12 @@
             "description": "key: id",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "token",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -8011,6 +8035,12 @@
             "in": "path",
             "name": "id",
             "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "q",
             "required": true,
             "type": "string"
           }
@@ -8719,6 +8749,12 @@
             "description": "key: id",
             "required": true,
             "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "q",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -9397,6 +9433,12 @@
             "in": "path",
             "name": "id",
             "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "path",
             "required": true,
             "type": "string"
           }

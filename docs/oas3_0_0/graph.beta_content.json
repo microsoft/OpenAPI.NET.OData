@@ -27106,6 +27106,23 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "StartDateTime",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "EndDateTime",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
           }
         ],
         "responses": {
@@ -27178,6 +27195,14 @@
             "name": "id",
             "in": "path",
             "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RoomList",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
@@ -29839,6 +29864,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
           }
         ],
         "responses": {
@@ -29924,6 +29958,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
             }
           }
         ],
@@ -31465,6 +31508,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
             }
           }
         ],
@@ -34231,6 +34283,15 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
             }
           }
         ],

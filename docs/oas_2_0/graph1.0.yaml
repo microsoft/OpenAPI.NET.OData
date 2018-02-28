@@ -2630,6 +2630,14 @@ paths:
           description: 'key: id'
           required: true
           type: string
+        - in: path
+          name: StartDateTime
+          required: true
+          type: string
+        - in: path
+          name: EndDateTime
+          required: true
+          type: string
       responses:
         '200':
           description: Success
@@ -3228,6 +3236,10 @@ paths:
           description: 'key: id'
           required: true
           type: string
+        - in: path
+          name: q
+          required: true
+          type: string
       responses:
         '200':
           description: Success
@@ -3712,6 +3724,10 @@ paths:
           description: 'key: id'
           required: true
           type: string
+        - in: path
+          name: path
+          required: true
+          type: string
       responses:
         '200':
           description: Success
@@ -4018,6 +4034,10 @@ paths:
           description: 'key: id'
           required: true
           type: string
+        - in: path
+          name: token
+          required: true
+          type: string
       responses:
         '200':
           description: Success
@@ -4060,6 +4080,10 @@ paths:
         - in: path
           name: id
           description: 'key: id'
+          required: true
+          type: string
+        - in: path
+          name: q
           required: true
           type: string
       responses:

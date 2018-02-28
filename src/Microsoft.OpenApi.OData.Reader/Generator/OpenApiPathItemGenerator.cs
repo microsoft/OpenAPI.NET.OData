@@ -223,9 +223,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     entityPathName = context.CreateEntityPathName(entitySet);
 
-                    OpenApiOperation openApiOperation = pathItem.Operations.First().Value;
-                    Debug.Assert(openApiOperation != null);
-                    openApiOperation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
+           //         OpenApiOperation openApiOperation = pathItem.Operations.First().Value;
+           //         Debug.Assert(openApiOperation != null);
+           //         openApiOperation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
                 }
                 else
                 {
