@@ -6,7 +6,9 @@
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Exceptions;
+using Microsoft.OpenApi.OData.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,10 +18,32 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace Microsoft.OpenApi.OData.Annotations
+namespace Microsoft.OpenApi.OData.Authorization
 {
     internal static class AuthorizationExtensions
     {
+        public static IList<Authorization> GetAuthorizationsVocabularyAnnotation(this IEdmModel model)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+
+            if (model.EntityContainer == null)
+            {
+                return null;
+            }
+
+            IEdmVocabularyAnnotation annotation = model.GetVocabularyAnnotation(model.EntityContainer, AuthorizationConstants.Authorizations);
+            if (annotation == null ||
+                annotation.Value == null ||
+                annotation.Value.ExpressionKind != EdmExpressionKind.Collection)
+            {
+                return null;
+            }
+
+
+            return null;
+        }
+
+        /*
         public static IEdmModel GetAuthorizationEdmModel(this IEdmModel model)
         {
             IEnumerable<EdmError> errors;
@@ -61,6 +85,6 @@ namespace Microsoft.OpenApi.OData.Annotations
             }
 
             return assmebly.GetManifestResourceStream(annotation);
-        }
+        }*/
     }
 }

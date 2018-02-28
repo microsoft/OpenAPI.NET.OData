@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Authorization;
 using Microsoft.OpenApi.OData.Capabilities;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +33,11 @@ namespace Microsoft.OpenApi.OData.Annotations
         /// </summary>
         public IList<CustomParameter> CustomHeaders { get; set; }
 
-        public HttpRequestBody RequestBody { get; set; }
+  //      public HttpRequestBody RequestBody { get; set; }
 
-        public IList<HttpResponse> HttpResponse { get; set; }
+        public IList<HttpResponse> HttpResponses { get; set; }
+
+        public IList<SecurityScheme> SecuritySchemes { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
@@ -64,23 +67,35 @@ namespace Microsoft.OpenApi.OData.Annotations
                     CustomHeaders.Add(p);
                 }
             }
-
+            /*
             IEdmRecordExpression requestBodyRecord = GetRecord(record, "RequestBody");
             if (collection != null)
             {
                 RequestBody = new HttpRequestBody();
                 RequestBody.Init(requestBodyRecord);
-            }
+            }*/
 
-            collection = GetCollection(record, "HttpResponse");
+            collection = GetCollection(record, "HttpResponses");
             if (collection != null)
             {
-                HttpResponse = new List<HttpResponse>();
+                HttpResponses = new List<HttpResponse>();
                 foreach (var item in collection.Elements)
                 {
                     HttpResponse p = new HttpResponse();
                     p.Init(item as IEdmRecordExpression);
-                    HttpResponse.Add(p);
+                    HttpResponses.Add(p);
+                }
+            }
+
+            collection = GetCollection(record, "SecuritySchemes");
+            if (collection != null)
+            {
+                SecuritySchemes = new List<SecurityScheme>();
+                foreach (var item in collection.Elements)
+                {
+                    SecurityScheme p = new SecurityScheme();
+                    p.Init(item as IEdmRecordExpression);
+                    SecuritySchemes.Add(p);
                 }
             }
         }

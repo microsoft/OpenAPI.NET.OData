@@ -126,7 +126,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 AppendCustomerHeaders(operation.Parameters, request.CustomHeaders);
             }
-
+            /*
             if (request != null && request.RequestBody != null)
             {
                 if (operation.RequestBody == null)
@@ -135,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
 
                 AppendHttpRequestBody(operation.RequestBody, request.RequestBody);
-            }
+            }*/
 
             // The value of responses is a Responses Object.
             // It contains a name/value pair for the success case (HTTP response code 200)
@@ -187,7 +187,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return operation;
         }
-
+        /*
         private static void AppendHttpRequestBody(OpenApiRequestBody requestBody, HttpRequestBody requestBodyAnnotation)
         {
             requestBody.Description = requestBodyAnnotation.Description;
@@ -198,14 +198,14 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Schema = new OpenApiSchema
                     {
-                        Type = p.Type
+ //                       Type = p.Type
                     },
                     Example = new OpenApiString(p.DocumentationURL),
                 };
 
                // requestBody.Content[p.Name] = mediaType;
             }
-        }
+        }*/
 
         private static void AppendCustomerHeaders(IList<OpenApiParameter> parameters, IList<CustomParameter> headers)
         {
@@ -218,7 +218,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Description = param.Description,
                     Schema = new OpenApiSchema
                     {
-                        Type = param.Type
+               //         Type = param.Type
                     },
                     Required = param.Required ?? false,
                     Example = new OpenApiString(param.DocumentationURL)
@@ -229,7 +229,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     OpenApiExample ex = new OpenApiExample
                     {
-                        Value = new OpenApiString(example.Value),
+                //        Value = new OpenApiString(example.Value),
                         Description = example.Description
                     };
 

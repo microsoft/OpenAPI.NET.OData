@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Annotations
 
         /// <summary>
         /// </summary>
-        public string Type { get; set; }
+ //       public string Type { get; set; }
 
         /// <summary>
         /// </summary>
@@ -31,12 +31,12 @@ namespace Microsoft.OpenApi.OData.Annotations
 
         public bool? Required { get; set; }
 
-        public IList<CustomParameterExampleValue> ExampleValues { get; set; }
+        public IList<Example> ExampleValues { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
             Name = record.GetString("Name");
-            Type = record.GetString("Type");
+  //          Type = record.GetString("Type");
             Description = record.GetString("Description");
             DocumentationURL = record.GetString("DocumentationURL");
             Required = record.GetBoolean("Required");
@@ -44,12 +44,20 @@ namespace Microsoft.OpenApi.OData.Annotations
             IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "ExampleValues");
             if (collection != null)
             {
-                ExampleValues = new List<CustomParameterExampleValue>();
+                ExampleValues = new List<Example>();
                 foreach (var item in collection.Elements)
                 {
-                    CustomParameterExampleValue p = new CustomParameterExampleValue();
-                    p.Init(item as IEdmRecordExpression);
-                    ExampleValues.Add(p);
+                    IEdmRecordExpression itemRecord = item as IEdmRecordExpression;
+                    if (itemRecord == null)
+                    {
+                        continue;
+                    }
+
+                    Example ex = Example.CreateExample(itemRecord);
+                    if (ex != null)
+                    {
+                        ExampleValues.Add(ex);
+                    }
                 }
             }
         }

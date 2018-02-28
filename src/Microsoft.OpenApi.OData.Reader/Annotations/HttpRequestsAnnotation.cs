@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Annotations
         /// <summary>
         /// The Term type name.
         /// </summary>
-        public virtual string QualifiedName => "Org.Graph.Vocabulary.HttpRequests";
+        public virtual string QualifiedName => "Org.OData.Core.V1.HttpRequests";
 
         /// <summary>
         /// Gets the Countable value.
@@ -55,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Annotations
 
         protected virtual void Initialize()
         {
-            IEdmVocabularyAnnotation annotation = Model.GetCapabilitiesAnnotation(Target, QualifiedName);
+            IEdmVocabularyAnnotation annotation = Model.GetVocabularyAnnotation(Target, QualifiedName);
             if (annotation == null)
             {
                 IEdmNavigationSource navigationSource = Target as IEdmNavigationSource;
@@ -64,7 +64,7 @@ namespace Microsoft.OpenApi.OData.Annotations
                 if (navigationSource != null)
                 {
                     IEdmEntityType entityType = navigationSource.EntityType();
-                    annotation = Model.GetCapabilitiesAnnotation(entityType, QualifiedName);
+                    annotation = Model.GetVocabularyAnnotation(entityType, QualifiedName);
                 }
             }
 

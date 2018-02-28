@@ -15,38 +15,48 @@ namespace Microsoft.OpenApi.OData.Annotations
     {
         /// <summary>
         /// </summary>
+        public string Description { get; set; }
+
         public string ResponseCode { get; set; }
 
         /// <summary>
         /// </summary>
-        public string Description { get; set; }
+        public IList<Example> Examples { get; set; }
 
-        public bool? Required { get; set; }
+     //   public bool? Required { get; set; }
 
         /// <summary>
         /// </summary>
-        public IList<MediaType> ResponseContent { get; set; }
+       // public IList<MediaType> ResponseContent { get; set; }
 
         public void Init(IEdmRecordExpression record)
         {
             ResponseCode = record.GetString("ResponseCode");
             Description = record.GetString("Description");
-            Required = record.GetBoolean("Required");
+     //       Required = record.GetBoolean("Required");
 
-            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "ResponseContent");
+            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "Examples");
             if (collection != null)
             {
-                ResponseContent = new List<MediaType>();
+                Examples = new List<Example>();
                 foreach (var item in collection.Elements)
                 {
-                    MediaType p = new MediaType();
-                    p.Init(item as IEdmRecordExpression);
-                    ResponseContent.Add(p);
+                    IEdmRecordExpression itemRecord = item as IEdmRecordExpression;
+                    if (itemRecord == null)
+                    {
+                        continue;
+                    }
+
+                    Example ex = Example.CreateExample(itemRecord);
+                    if (ex != null)
+                    {
+                        Examples.Add(ex);
+                    }
                 }
             }
         }
     }
-
+    /*
     internal class MediaType
     {
         public string Name { get; set; }
@@ -74,5 +84,5 @@ namespace Microsoft.OpenApi.OData.Annotations
                 }
             }
         }
-    }
+    }*/
 }
