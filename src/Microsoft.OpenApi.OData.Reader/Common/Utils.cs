@@ -13,6 +13,22 @@ namespace Microsoft.OpenApi.OData.Common
     public static class Utils
     {
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string UpperFirstChar(string input)
+        {
+            if (input == null)
+            {
+                return input;
+            }
+
+            char first = Char.ToUpper(input[0]);
+            return first + input.Substring(1);
+        }
+
+        /// <summary>
         /// Check the input argument whether its value is null or not.
         /// </summary>
         /// <typeparam name="T">The input value type.</typeparam>

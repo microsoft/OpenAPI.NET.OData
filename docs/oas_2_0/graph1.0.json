@@ -17,7 +17,7 @@
           "directoryObjects"
         ],
         "summary": "Get entities from directoryObjects",
-        "operationId": "GetEntitiesFromdirectoryObjects",
+        "operationId": "GetEntitiesFromDirectoryObjects",
         "produces": [
           "application/json"
         ],
@@ -29,8 +29,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -42,8 +42,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -80,7 +80,7 @@
           "directoryObjects"
         ],
         "summary": "Add new entity to directoryObjects",
-        "operationId": "AddEntityTodirectoryObjects",
+        "operationId": "AddEntityToDirectoryObjects",
         "consumes": [
           "application/json"
         ],
@@ -89,9 +89,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.directoryObject"
             }
@@ -116,21 +117,21 @@
           "directoryObjects"
         ],
         "summary": "Get entity from directoryObjects by key",
-        "operationId": "GetEntityFromdirectoryObjectsByKey",
+        "operationId": "GetEntityFromDirectoryObjectsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -158,22 +159,23 @@
           "directoryObjects"
         ],
         "summary": "Update entity in directoryObjects",
-        "operationId": "UpdateEntityIndirectoryObjects",
+        "operationId": "UpdateEntityInDirectoryObjects",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.directoryObject"
             }
@@ -193,18 +195,18 @@
           "directoryObjects"
         ],
         "summary": "Delete entity from directoryObjects",
-        "operationId": "DeleteEntityFromdirectoryObjects",
+        "operationId": "DeleteEntityFromDirectoryObjects",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -225,15 +227,16 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getByIds",
-        "operationId": "InvokegetByIds",
+        "operationId": "InvokeGetByIds",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -269,22 +272,23 @@
           "directoryObjects"
         ],
         "summary": "Invoke action checkMemberGroups",
-        "operationId": "InvokecheckMemberGroups",
+        "operationId": "InvokeCheckMemberGroups",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -314,22 +318,23 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberGroups",
-        "operationId": "InvokegetMemberGroups",
+        "operationId": "InvokeGetMemberGroups",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -357,22 +362,23 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberObjects",
-        "operationId": "InvokegetMemberObjects",
+        "operationId": "InvokeGetMemberObjects",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -400,7 +406,7 @@
           "devices"
         ],
         "summary": "Get entities from devices",
-        "operationId": "GetEntitiesFromdevices",
+        "operationId": "GetEntitiesFromDevices",
         "produces": [
           "application/json"
         ],
@@ -412,8 +418,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -455,8 +461,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -508,7 +514,7 @@
           "devices"
         ],
         "summary": "Add new entity to devices",
-        "operationId": "AddEntityTodevices",
+        "operationId": "AddEntityToDevices",
         "consumes": [
           "application/json"
         ],
@@ -517,9 +523,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.device"
             }
@@ -544,21 +551,21 @@
           "devices"
         ],
         "summary": "Get entity from devices by key",
-        "operationId": "GetEntityFromdevicesByKey",
+        "operationId": "GetEntityFromDevicesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -601,22 +608,23 @@
           "devices"
         ],
         "summary": "Update entity in devices",
-        "operationId": "UpdateEntityIndevices",
+        "operationId": "UpdateEntityInDevices",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.device"
             }
@@ -636,18 +644,18 @@
           "devices"
         ],
         "summary": "Delete entity from devices",
-        "operationId": "DeleteEntityFromdevices",
+        "operationId": "DeleteEntityFromDevices",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -668,7 +676,7 @@
           "domains"
         ],
         "summary": "Get entities from domains",
-        "operationId": "GetEntitiesFromdomains",
+        "operationId": "GetEntitiesFromDomains",
         "produces": [
           "application/json"
         ],
@@ -689,8 +697,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -720,8 +728,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -741,8 +749,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -782,7 +790,7 @@
           "domains"
         ],
         "summary": "Add new entity to domains",
-        "operationId": "AddEntityTodomains",
+        "operationId": "AddEntityToDomains",
         "consumes": [
           "application/json"
         ],
@@ -791,9 +799,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.domain"
             }
@@ -818,21 +827,21 @@
           "domains"
         ],
         "summary": "Get entity from domains by key",
-        "operationId": "GetEntityFromdomainsByKey",
+        "operationId": "GetEntityFromDomainsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -852,8 +861,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -884,22 +893,23 @@
           "domains"
         ],
         "summary": "Update entity in domains",
-        "operationId": "UpdateEntityIndomains",
+        "operationId": "UpdateEntityInDomains",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.domain"
             }
@@ -919,18 +929,18 @@
           "domains"
         ],
         "summary": "Delete entity from domains",
-        "operationId": "DeleteEntityFromdomains",
+        "operationId": "DeleteEntityFromDomains",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -951,11 +961,11 @@
           "domains"
         ],
         "summary": "Invoke action verify",
-        "operationId": "Invokeverify",
+        "operationId": "InvokeVerify",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -977,7 +987,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entities from domainDnsRecords",
-        "operationId": "GetEntitiesFromdomainDnsRecords",
+        "operationId": "GetEntitiesFromDomainDnsRecords",
         "produces": [
           "application/json"
         ],
@@ -998,8 +1008,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1021,8 +1031,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1038,8 +1048,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1076,7 +1086,7 @@
           "domainDnsRecords"
         ],
         "summary": "Add new entity to domainDnsRecords",
-        "operationId": "AddEntityTodomainDnsRecords",
+        "operationId": "AddEntityToDomainDnsRecords",
         "consumes": [
           "application/json"
         ],
@@ -1085,9 +1095,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.domainDnsRecord"
             }
@@ -1112,21 +1123,21 @@
           "domainDnsRecords"
         ],
         "summary": "Get entity from domainDnsRecords by key",
-        "operationId": "GetEntityFromdomainDnsRecordsByKey",
+        "operationId": "GetEntityFromDomainDnsRecordsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1142,8 +1153,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1171,22 +1182,23 @@
           "domainDnsRecords"
         ],
         "summary": "Update entity in domainDnsRecords",
-        "operationId": "UpdateEntityIndomainDnsRecords",
+        "operationId": "UpdateEntityInDomainDnsRecords",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.domainDnsRecord"
             }
@@ -1206,18 +1218,18 @@
           "domainDnsRecords"
         ],
         "summary": "Delete entity from domainDnsRecords",
-        "operationId": "DeleteEntityFromdomainDnsRecords",
+        "operationId": "DeleteEntityFromDomainDnsRecords",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -1238,7 +1250,7 @@
           "groups"
         ],
         "summary": "Get entities from groups",
-        "operationId": "GetEntitiesFromgroups",
+        "operationId": "GetEntitiesFromGroups",
         "produces": [
           "application/json"
         ],
@@ -1250,8 +1262,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1301,8 +1313,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1358,7 +1370,7 @@
           "groups"
         ],
         "summary": "Add new entity to groups",
-        "operationId": "AddEntityTogroups",
+        "operationId": "AddEntityToGroups",
         "consumes": [
           "application/json"
         ],
@@ -1367,9 +1379,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.group"
             }
@@ -1394,21 +1407,21 @@
           "groups"
         ],
         "summary": "Get entity from groups by key",
-        "operationId": "GetEntityFromgroupsByKey",
+        "operationId": "GetEntityFromGroupsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1455,22 +1468,23 @@
           "groups"
         ],
         "summary": "Update entity in groups",
-        "operationId": "UpdateEntityIngroups",
+        "operationId": "UpdateEntityInGroups",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.group"
             }
@@ -1490,18 +1504,18 @@
           "groups"
         ],
         "summary": "Delete entity from groups",
-        "operationId": "DeleteEntityFromgroups",
+        "operationId": "DeleteEntityFromGroups",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -1522,7 +1536,7 @@
           "groups"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -1546,11 +1560,11 @@
           "groups"
         ],
         "summary": "Invoke action subscribeByMail",
-        "operationId": "InvokesubscribeByMail",
+        "operationId": "InvokeSubscribeByMail",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1572,11 +1586,11 @@
           "groups"
         ],
         "summary": "Invoke action unsubscribeByMail",
-        "operationId": "InvokeunsubscribeByMail",
+        "operationId": "InvokeUnsubscribeByMail",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1598,11 +1612,11 @@
           "groups"
         ],
         "summary": "Invoke action addFavorite",
-        "operationId": "InvokeaddFavorite",
+        "operationId": "InvokeAddFavorite",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1624,11 +1638,11 @@
           "groups"
         ],
         "summary": "Invoke action removeFavorite",
-        "operationId": "InvokeremoveFavorite",
+        "operationId": "InvokeRemoveFavorite",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1650,11 +1664,11 @@
           "groups"
         ],
         "summary": "Invoke action resetUnseenCount",
-        "operationId": "InvokeresetUnseenCount",
+        "operationId": "InvokeResetUnseenCount",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -1676,7 +1690,7 @@
           "directoryRoles"
         ],
         "summary": "Get entities from directoryRoles",
-        "operationId": "GetEntitiesFromdirectoryRoles",
+        "operationId": "GetEntitiesFromDirectoryRoles",
         "produces": [
           "application/json"
         ],
@@ -1685,8 +1699,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1704,8 +1718,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1745,7 +1759,7 @@
           "directoryRoles"
         ],
         "summary": "Add new entity to directoryRoles",
-        "operationId": "AddEntityTodirectoryRoles",
+        "operationId": "AddEntityToDirectoryRoles",
         "consumes": [
           "application/json"
         ],
@@ -1754,9 +1768,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.directoryRole"
             }
@@ -1781,21 +1796,21 @@
           "directoryRoles"
         ],
         "summary": "Get entity from directoryRoles by key",
-        "operationId": "GetEntityFromdirectoryRolesByKey",
+        "operationId": "GetEntityFromDirectoryRolesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1826,22 +1841,23 @@
           "directoryRoles"
         ],
         "summary": "Update entity in directoryRoles",
-        "operationId": "UpdateEntityIndirectoryRoles",
+        "operationId": "UpdateEntityInDirectoryRoles",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.directoryRole"
             }
@@ -1861,18 +1877,18 @@
           "directoryRoles"
         ],
         "summary": "Delete entity from directoryRoles",
-        "operationId": "DeleteEntityFromdirectoryRoles",
+        "operationId": "DeleteEntityFromDirectoryRoles",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -1893,7 +1909,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entities from directoryRoleTemplates",
-        "operationId": "GetEntitiesFromdirectoryRoleTemplates",
+        "operationId": "GetEntitiesFromDirectoryRoleTemplates",
         "produces": [
           "application/json"
         ],
@@ -1902,8 +1918,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1919,8 +1935,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1959,7 +1975,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Add new entity to directoryRoleTemplates",
-        "operationId": "AddEntityTodirectoryRoleTemplates",
+        "operationId": "AddEntityToDirectoryRoleTemplates",
         "consumes": [
           "application/json"
         ],
@@ -1968,9 +1984,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.directoryRoleTemplate"
             }
@@ -1995,21 +2012,21 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entity from directoryRoleTemplates by key",
-        "operationId": "GetEntityFromdirectoryRoleTemplatesByKey",
+        "operationId": "GetEntityFromDirectoryRoleTemplatesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2039,22 +2056,23 @@
           "directoryRoleTemplates"
         ],
         "summary": "Update entity in directoryRoleTemplates",
-        "operationId": "UpdateEntityIndirectoryRoleTemplates",
+        "operationId": "UpdateEntityInDirectoryRoleTemplates",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.directoryRoleTemplate"
             }
@@ -2074,18 +2092,18 @@
           "directoryRoleTemplates"
         ],
         "summary": "Delete entity from directoryRoleTemplates",
-        "operationId": "DeleteEntityFromdirectoryRoleTemplates",
+        "operationId": "DeleteEntityFromDirectoryRoleTemplates",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -2106,7 +2124,7 @@
           "organization"
         ],
         "summary": "Get entities from organization",
-        "operationId": "GetEntitiesFromorganization",
+        "operationId": "GetEntitiesFromOrganization",
         "produces": [
           "application/json"
         ],
@@ -2118,8 +2136,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2167,8 +2185,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2223,7 +2241,7 @@
           "organization"
         ],
         "summary": "Add new entity to organization",
-        "operationId": "AddEntityToorganization",
+        "operationId": "AddEntityToOrganization",
         "consumes": [
           "application/json"
         ],
@@ -2232,9 +2250,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.organization"
             }
@@ -2259,21 +2278,21 @@
           "organization"
         ],
         "summary": "Get entity from organization by key",
-        "operationId": "GetEntityFromorganizationByKey",
+        "operationId": "GetEntityFromOrganizationByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2319,22 +2338,23 @@
           "organization"
         ],
         "summary": "Update entity in organization",
-        "operationId": "UpdateEntityInorganization",
+        "operationId": "UpdateEntityInOrganization",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.organization"
             }
@@ -2354,18 +2374,18 @@
           "organization"
         ],
         "summary": "Delete entity from organization",
-        "operationId": "DeleteEntityFromorganization",
+        "operationId": "DeleteEntityFromOrganization",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -2386,7 +2406,7 @@
           "groupSettings"
         ],
         "summary": "Get entities from groupSettings",
-        "operationId": "GetEntitiesFromgroupSettings",
+        "operationId": "GetEntitiesFromGroupSettings",
         "produces": [
           "application/json"
         ],
@@ -2407,8 +2427,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2426,8 +2446,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2441,8 +2461,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2479,7 +2499,7 @@
           "groupSettings"
         ],
         "summary": "Add new entity to groupSettings",
-        "operationId": "AddEntityTogroupSettings",
+        "operationId": "AddEntityToGroupSettings",
         "consumes": [
           "application/json"
         ],
@@ -2488,9 +2508,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.groupSetting"
             }
@@ -2515,21 +2536,21 @@
           "groupSettings"
         ],
         "summary": "Get entity from groupSettings by key",
-        "operationId": "GetEntityFromgroupSettingsByKey",
+        "operationId": "GetEntityFromGroupSettingsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2543,8 +2564,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -2572,22 +2593,23 @@
           "groupSettings"
         ],
         "summary": "Update entity in groupSettings",
-        "operationId": "UpdateEntityIngroupSettings",
+        "operationId": "UpdateEntityInGroupSettings",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.groupSetting"
             }
@@ -2607,18 +2629,18 @@
           "groupSettings"
         ],
         "summary": "Delete entity from groupSettings",
-        "operationId": "DeleteEntityFromgroupSettings",
+        "operationId": "DeleteEntityFromGroupSettings",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -2639,7 +2661,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Get entities from groupSettingTemplates",
-        "operationId": "GetEntitiesFromgroupSettingTemplates",
+        "operationId": "GetEntitiesFromGroupSettingTemplates",
         "produces": [
           "application/json"
         ],
@@ -2651,8 +2673,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2670,8 +2692,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2711,7 +2733,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Add new entity to groupSettingTemplates",
-        "operationId": "AddEntityTogroupSettingTemplates",
+        "operationId": "AddEntityToGroupSettingTemplates",
         "consumes": [
           "application/json"
         ],
@@ -2720,9 +2742,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.groupSettingTemplate"
             }
@@ -2747,21 +2770,21 @@
           "groupSettingTemplates"
         ],
         "summary": "Get entity from groupSettingTemplates by key",
-        "operationId": "GetEntityFromgroupSettingTemplatesByKey",
+        "operationId": "GetEntityFromGroupSettingTemplatesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2792,22 +2815,23 @@
           "groupSettingTemplates"
         ],
         "summary": "Update entity in groupSettingTemplates",
-        "operationId": "UpdateEntityIngroupSettingTemplates",
+        "operationId": "UpdateEntityInGroupSettingTemplates",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.groupSettingTemplate"
             }
@@ -2827,18 +2851,18 @@
           "groupSettingTemplates"
         ],
         "summary": "Delete entity from groupSettingTemplates",
-        "operationId": "DeleteEntityFromgroupSettingTemplates",
+        "operationId": "DeleteEntityFromGroupSettingTemplates",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -2859,7 +2883,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entities from subscribedSkus",
-        "operationId": "GetEntitiesFromsubscribedSkus",
+        "operationId": "GetEntitiesFromSubscribedSkus",
         "produces": [
           "application/json"
         ],
@@ -2868,8 +2892,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -2895,8 +2919,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -2940,7 +2964,7 @@
           "subscribedSkus"
         ],
         "summary": "Add new entity to subscribedSkus",
-        "operationId": "AddEntityTosubscribedSkus",
+        "operationId": "AddEntityToSubscribedSkus",
         "consumes": [
           "application/json"
         ],
@@ -2949,9 +2973,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.subscribedSku"
             }
@@ -2976,21 +3001,21 @@
           "subscribedSkus"
         ],
         "summary": "Get entity from subscribedSkus by key",
-        "operationId": "GetEntityFromsubscribedSkusByKey",
+        "operationId": "GetEntityFromSubscribedSkusByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3025,22 +3050,23 @@
           "subscribedSkus"
         ],
         "summary": "Update entity in subscribedSkus",
-        "operationId": "UpdateEntityInsubscribedSkus",
+        "operationId": "UpdateEntityInSubscribedSkus",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.subscribedSku"
             }
@@ -3060,18 +3086,18 @@
           "subscribedSkus"
         ],
         "summary": "Delete entity from subscribedSkus",
-        "operationId": "DeleteEntityFromsubscribedSkus",
+        "operationId": "DeleteEntityFromSubscribedSkus",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -3092,7 +3118,7 @@
           "users"
         ],
         "summary": "Get entities from users",
-        "operationId": "GetEntitiesFromusers",
+        "operationId": "GetEntitiesFromUsers",
         "produces": [
           "application/json"
         ],
@@ -3104,8 +3130,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -3203,8 +3229,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3284,7 +3310,7 @@
           "users"
         ],
         "summary": "Add new entity to users",
-        "operationId": "AddEntityTousers",
+        "operationId": "AddEntityToUsers",
         "consumes": [
           "application/json"
         ],
@@ -3293,9 +3319,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.user"
             }
@@ -3320,21 +3347,21 @@
           "users"
         ],
         "summary": "Get entity from users by key",
-        "operationId": "GetEntityFromusersByKey",
+        "operationId": "GetEntityFromUsersByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3405,22 +3432,23 @@
           "users"
         ],
         "summary": "Update entity in users",
-        "operationId": "UpdateEntityInusers",
+        "operationId": "UpdateEntityInUsers",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.user"
             }
@@ -3440,18 +3468,18 @@
           "users"
         ],
         "summary": "Delete entity from users",
-        "operationId": "DeleteEntityFromusers",
+        "operationId": "DeleteEntityFromUsers",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -3472,7 +3500,7 @@
           "users"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -3496,22 +3524,23 @@
           "users"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "InvokeassignLicense",
+        "operationId": "InvokeAssignLicense",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -3549,22 +3578,23 @@
           "users"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "InvokechangePassword",
+        "operationId": "InvokeChangePassword",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -3594,22 +3624,23 @@
           "users"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "InvokesendMail",
+        "operationId": "InvokeSendMail",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -3640,22 +3671,23 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "InvokefindMeetingTimes",
+        "operationId": "InvokeFindMeetingTimes",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -3707,14 +3739,14 @@
           "users"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "InvokereminderView",
+        "operationId": "InvokeReminderView",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -3742,7 +3774,7 @@
           "contracts"
         ],
         "summary": "Get entities from contracts",
-        "operationId": "GetEntitiesFromcontracts",
+        "operationId": "GetEntitiesFromContracts",
         "produces": [
           "application/json"
         ],
@@ -3754,8 +3786,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -3775,8 +3807,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3817,7 +3849,7 @@
           "contracts"
         ],
         "summary": "Add new entity to contracts",
-        "operationId": "AddEntityTocontracts",
+        "operationId": "AddEntityToContracts",
         "consumes": [
           "application/json"
         ],
@@ -3826,9 +3858,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.contract"
             }
@@ -3853,21 +3886,21 @@
           "contracts"
         ],
         "summary": "Get entity from contracts by key",
-        "operationId": "GetEntityFromcontractsByKey",
+        "operationId": "GetEntityFromContractsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -3899,22 +3932,23 @@
           "contracts"
         ],
         "summary": "Update entity in contracts",
-        "operationId": "UpdateEntityIncontracts",
+        "operationId": "UpdateEntityInContracts",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.contract"
             }
@@ -3934,18 +3968,18 @@
           "contracts"
         ],
         "summary": "Delete entity from contracts",
-        "operationId": "DeleteEntityFromcontracts",
+        "operationId": "DeleteEntityFromContracts",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -3966,7 +4000,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entities from schemaExtensions",
-        "operationId": "GetEntitiesFromschemaExtensions",
+        "operationId": "GetEntitiesFromSchemaExtensions",
         "produces": [
           "application/json"
         ],
@@ -3987,8 +4021,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4010,8 +4044,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4027,8 +4061,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4065,7 +4099,7 @@
           "schemaExtensions"
         ],
         "summary": "Add new entity to schemaExtensions",
-        "operationId": "AddEntityToschemaExtensions",
+        "operationId": "AddEntityToSchemaExtensions",
         "consumes": [
           "application/json"
         ],
@@ -4074,9 +4108,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.schemaExtension"
             }
@@ -4101,21 +4136,21 @@
           "schemaExtensions"
         ],
         "summary": "Get entity from schemaExtensions by key",
-        "operationId": "GetEntityFromschemaExtensionsByKey",
+        "operationId": "GetEntityFromSchemaExtensionsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4131,8 +4166,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4160,22 +4195,23 @@
           "schemaExtensions"
         ],
         "summary": "Update entity in schemaExtensions",
-        "operationId": "UpdateEntityInschemaExtensions",
+        "operationId": "UpdateEntityInSchemaExtensions",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.schemaExtension"
             }
@@ -4195,18 +4231,18 @@
           "schemaExtensions"
         ],
         "summary": "Delete entity from schemaExtensions",
-        "operationId": "DeleteEntityFromschemaExtensions",
+        "operationId": "DeleteEntityFromSchemaExtensions",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -4227,7 +4263,7 @@
           "drives"
         ],
         "summary": "Get entities from drives",
-        "operationId": "GetEntitiesFromdrives",
+        "operationId": "GetEntitiesFromDrives",
         "produces": [
           "application/json"
         ],
@@ -4248,8 +4284,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4289,8 +4325,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4315,8 +4351,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4359,7 +4395,7 @@
           "drives"
         ],
         "summary": "Add new entity to drives",
-        "operationId": "AddEntityTodrives",
+        "operationId": "AddEntityToDrives",
         "consumes": [
           "application/json"
         ],
@@ -4368,9 +4404,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.drive"
             }
@@ -4395,21 +4432,21 @@
           "drives"
         ],
         "summary": "Get entity from drives by key",
-        "operationId": "GetEntityFromdrivesByKey",
+        "operationId": "GetEntityFromDrivesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4434,8 +4471,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4469,22 +4506,23 @@
           "drives"
         ],
         "summary": "Update entity in drives",
-        "operationId": "UpdateEntityIndrives",
+        "operationId": "UpdateEntityInDrives",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.drive"
             }
@@ -4504,18 +4542,18 @@
           "drives"
         ],
         "summary": "Delete entity from drives",
-        "operationId": "DeleteEntityFromdrives",
+        "operationId": "DeleteEntityFromDrives",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -4536,14 +4574,14 @@
           "drives"
         ],
         "summary": "Invoke function recent",
-        "operationId": "Invokerecent",
+        "operationId": "InvokeRecent",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4569,14 +4607,14 @@
           "drives"
         ],
         "summary": "Invoke function search",
-        "operationId": "Invokesearch",
+        "operationId": "InvokeSearch",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4602,14 +4640,14 @@
           "drives"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "InvokesharedWithMe",
+        "operationId": "InvokeSharedWithMe",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -4635,7 +4673,7 @@
           "shares"
         ],
         "summary": "Get entities from shares",
-        "operationId": "GetEntitiesFromshares",
+        "operationId": "GetEntitiesFromShares",
         "produces": [
           "application/json"
         ],
@@ -4656,8 +4694,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4689,8 +4727,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4711,8 +4749,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4757,7 +4795,7 @@
           "shares"
         ],
         "summary": "Add new entity to shares",
-        "operationId": "AddEntityToshares",
+        "operationId": "AddEntityToShares",
         "consumes": [
           "application/json"
         ],
@@ -4766,9 +4804,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.sharedDriveItem"
             }
@@ -4793,21 +4832,21 @@
           "shares"
         ],
         "summary": "Get entity from shares by key",
-        "operationId": "GetEntityFromsharesByKey",
+        "operationId": "GetEntityFromSharesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -4828,8 +4867,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -4865,22 +4904,23 @@
           "shares"
         ],
         "summary": "Update entity in shares",
-        "operationId": "UpdateEntityInshares",
+        "operationId": "UpdateEntityInShares",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.sharedDriveItem"
             }
@@ -4900,18 +4940,18 @@
           "shares"
         ],
         "summary": "Delete entity from shares",
-        "operationId": "DeleteEntityFromshares",
+        "operationId": "DeleteEntityFromShares",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -4932,7 +4972,7 @@
           "sites"
         ],
         "summary": "Get entities from sites",
-        "operationId": "GetEntitiesFromsites",
+        "operationId": "GetEntitiesFromSites",
         "produces": [
           "application/json"
         ],
@@ -4953,8 +4993,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -4992,8 +5032,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5017,8 +5057,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5065,7 +5105,7 @@
           "sites"
         ],
         "summary": "Add new entity to sites",
-        "operationId": "AddEntityTosites",
+        "operationId": "AddEntityToSites",
         "consumes": [
           "application/json"
         ],
@@ -5074,9 +5114,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.site"
             }
@@ -5101,21 +5142,21 @@
           "sites"
         ],
         "summary": "Get entity from sites by key",
-        "operationId": "GetEntityFromsitesByKey",
+        "operationId": "GetEntityFromSitesByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5139,8 +5180,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5178,22 +5219,23 @@
           "sites"
         ],
         "summary": "Update entity in sites",
-        "operationId": "UpdateEntityInsites",
+        "operationId": "UpdateEntityInSites",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.site"
             }
@@ -5213,18 +5255,18 @@
           "sites"
         ],
         "summary": "Delete entity from sites",
-        "operationId": "DeleteEntityFromsites",
+        "operationId": "DeleteEntityFromSites",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -5245,14 +5287,14 @@
           "sites"
         ],
         "summary": "Invoke function getByPath",
-        "operationId": "InvokegetByPath",
+        "operationId": "InvokeGetByPath",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5275,7 +5317,7 @@
           "workbooks"
         ],
         "summary": "Get entities from workbooks",
-        "operationId": "GetEntitiesFromworkbooks",
+        "operationId": "GetEntitiesFromWorkbooks",
         "produces": [
           "application/json"
         ],
@@ -5296,8 +5338,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -5367,8 +5409,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5408,8 +5450,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5453,7 +5495,7 @@
           "workbooks"
         ],
         "summary": "Add new entity to workbooks",
-        "operationId": "AddEntityToworkbooks",
+        "operationId": "AddEntityToWorkbooks",
         "consumes": [
           "application/json"
         ],
@@ -5462,9 +5504,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.driveItem"
             }
@@ -5489,21 +5532,21 @@
           "workbooks"
         ],
         "summary": "Get entity from workbooks by key",
-        "operationId": "GetEntityFromworkbooksByKey",
+        "operationId": "GetEntityFromWorkbooksByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5543,8 +5586,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -5579,22 +5622,23 @@
           "workbooks"
         ],
         "summary": "Update entity in workbooks",
-        "operationId": "UpdateEntityInworkbooks",
+        "operationId": "UpdateEntityInWorkbooks",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.driveItem"
             }
@@ -5614,18 +5658,18 @@
           "workbooks"
         ],
         "summary": "Delete entity from workbooks",
-        "operationId": "DeleteEntityFromworkbooks",
+        "operationId": "DeleteEntityFromWorkbooks",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -5646,14 +5690,14 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5679,14 +5723,14 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5712,14 +5756,14 @@
           "workbooks"
         ],
         "summary": "Invoke function search",
-        "operationId": "Invokesearch",
+        "operationId": "InvokeSearch",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
@@ -5745,22 +5789,23 @@
           "workbooks"
         ],
         "summary": "Invoke action copy",
-        "operationId": "Invokecopy",
+        "operationId": "InvokeCopy",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -5788,22 +5833,23 @@
           "workbooks"
         ],
         "summary": "Invoke action createLink",
-        "operationId": "InvokecreateLink",
+        "operationId": "InvokeCreateLink",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -5833,22 +5879,23 @@
           "workbooks"
         ],
         "summary": "Invoke action createUploadSession",
-        "operationId": "InvokecreateUploadSession",
+        "operationId": "InvokeCreateUploadSession",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -5873,22 +5920,23 @@
           "workbooks"
         ],
         "summary": "Invoke action invite",
-        "operationId": "Invokeinvite",
+        "operationId": "InvokeInvite",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -5935,7 +5983,7 @@
           "subscriptions"
         ],
         "summary": "Get entities from subscriptions",
-        "operationId": "GetEntitiesFromsubscriptions",
+        "operationId": "GetEntitiesFromSubscriptions",
         "produces": [
           "application/json"
         ],
@@ -5944,8 +5992,8 @@
             "$ref": "#/parameters/search"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -5987,7 +6035,7 @@
           "subscriptions"
         ],
         "summary": "Add new entity to subscriptions",
-        "operationId": "AddEntityTosubscriptions",
+        "operationId": "AddEntityToSubscriptions",
         "consumes": [
           "application/json"
         ],
@@ -5996,9 +6044,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.subscription"
             }
@@ -6023,21 +6072,21 @@
           "subscriptions"
         ],
         "summary": "Get entity from subscriptions by key",
-        "operationId": "GetEntityFromsubscriptionsByKey",
+        "operationId": "GetEntityFromSubscriptionsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6070,22 +6119,23 @@
           "subscriptions"
         ],
         "summary": "Update entity in subscriptions",
-        "operationId": "UpdateEntityInsubscriptions",
+        "operationId": "UpdateEntityInSubscriptions",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.subscription"
             }
@@ -6105,18 +6155,18 @@
           "subscriptions"
         ],
         "summary": "Delete entity from subscriptions",
-        "operationId": "DeleteEntityFromsubscriptions",
+        "operationId": "DeleteEntityFromSubscriptions",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -6137,7 +6187,7 @@
           "invitations"
         ],
         "summary": "Get entities from invitations",
-        "operationId": "GetEntitiesFrominvitations",
+        "operationId": "GetEntitiesFromInvitations",
         "produces": [
           "application/json"
         ],
@@ -6158,8 +6208,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -6187,8 +6237,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6207,8 +6257,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6246,7 +6296,7 @@
           "invitations"
         ],
         "summary": "Add new entity to invitations",
-        "operationId": "AddEntityToinvitations",
+        "operationId": "AddEntityToInvitations",
         "consumes": [
           "application/json"
         ],
@@ -6255,9 +6305,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.invitation"
             }
@@ -6282,21 +6333,21 @@
           "invitations"
         ],
         "summary": "Get entity from invitations by key",
-        "operationId": "GetEntityFrominvitationsByKey",
+        "operationId": "GetEntityFromInvitationsByKey",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6315,8 +6366,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6345,22 +6396,23 @@
           "invitations"
         ],
         "summary": "Update entity in invitations",
-        "operationId": "UpdateEntityIninvitations",
+        "operationId": "UpdateEntityInInvitations",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.invitation"
             }
@@ -6380,18 +6432,18 @@
           "invitations"
         ],
         "summary": "Delete entity from invitations",
-        "operationId": "DeleteEntityFrominvitations",
+        "operationId": "DeleteEntityFromInvitations",
         "parameters": [
           {
-            "name": "id",
             "in": "path",
+            "name": "id",
             "description": "key: id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -6412,14 +6464,14 @@
           "me"
         ],
         "summary": "Get me",
-        "operationId": "Getme",
+        "operationId": "GetMe",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6490,15 +6542,16 @@
           "me"
         ],
         "summary": "Update me",
-        "operationId": "Updateme",
+        "operationId": "UpdateMe",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.user"
             }
@@ -6520,15 +6573,16 @@
           "me"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "InvokeassignLicense",
+        "operationId": "InvokeAssignLicense",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -6566,15 +6620,16 @@
           "me"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "InvokechangePassword",
+        "operationId": "InvokeChangePassword",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -6604,15 +6659,16 @@
           "me"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "InvokesendMail",
+        "operationId": "InvokeSendMail",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -6643,15 +6699,16 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "InvokefindMeetingTimes",
+        "operationId": "InvokeFindMeetingTimes",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -6703,20 +6760,20 @@
           "me"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "InvokereminderView",
+        "operationId": "InvokeReminderView",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "StartDateTime",
             "in": "path",
+            "name": "StartDateTime",
             "required": true,
             "type": "string"
           },
           {
-            "name": "EndDateTime",
             "in": "path",
+            "name": "EndDateTime",
             "required": true,
             "type": "string"
           }
@@ -6743,14 +6800,14 @@
           "drive"
         ],
         "summary": "Get drive",
-        "operationId": "Getdrive",
+        "operationId": "GetDrive",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6775,8 +6832,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6810,15 +6867,16 @@
           "drive"
         ],
         "summary": "Update drive",
-        "operationId": "Updatedrive",
+        "operationId": "UpdateDrive",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.drive"
             }
@@ -6840,7 +6898,7 @@
           "drive"
         ],
         "summary": "Invoke function recent",
-        "operationId": "Invokerecent",
+        "operationId": "InvokeRecent",
         "produces": [
           "application/json"
         ],
@@ -6864,14 +6922,14 @@
           "drive"
         ],
         "summary": "Invoke function search",
-        "operationId": "Invokesearch",
+        "operationId": "InvokeSearch",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "q",
             "in": "path",
+            "name": "q",
             "required": true,
             "type": "string"
           }
@@ -6896,7 +6954,7 @@
           "drive"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "InvokesharedWithMe",
+        "operationId": "InvokeSharedWithMe",
         "produces": [
           "application/json"
         ],
@@ -6920,14 +6978,14 @@
           "planner"
         ],
         "summary": "Get planner",
-        "operationId": "Getplanner",
+        "operationId": "GetPlanner",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -6938,8 +6996,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -6970,15 +7028,16 @@
           "planner"
         ],
         "summary": "Update planner",
-        "operationId": "Updateplanner",
+        "operationId": "UpdatePlanner",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.planner"
             }
@@ -7000,14 +7059,14 @@
           "reports"
         ],
         "summary": "Get reports",
-        "operationId": "Getreports",
+        "operationId": "GetReports",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -7018,8 +7077,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -7047,15 +7106,16 @@
           "reports"
         ],
         "summary": "Update reports",
-        "operationId": "Updatereports",
+        "operationId": "UpdateReports",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/microsoft.graph.reportRoot"
             }
@@ -7077,7 +7137,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
-        "operationId": "InvokegetOffice365ActivationsUserDetail",
+        "operationId": "InvokeGetOffice365ActivationsUserDetail",
         "produces": [
           "application/json"
         ],
@@ -7100,7 +7160,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
-        "operationId": "InvokegetOffice365ActivationCounts",
+        "operationId": "InvokeGetOffice365ActivationCounts",
         "produces": [
           "application/json"
         ],
@@ -7123,7 +7183,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
-        "operationId": "InvokegetOffice365ActivationsUserCounts",
+        "operationId": "InvokeGetOffice365ActivationsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -7146,14 +7206,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "InvokegetOffice365ActiveUserDetail",
+        "operationId": "InvokeGetOffice365ActiveUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -7179,14 +7239,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "InvokegetOffice365ActiveUserDetail",
+        "operationId": "InvokeGetOffice365ActiveUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7210,14 +7270,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
-        "operationId": "InvokegetOffice365ServicesUserCounts",
+        "operationId": "InvokeGetOffice365ServicesUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7241,14 +7301,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
-        "operationId": "InvokegetOffice365ActiveUserCounts",
+        "operationId": "InvokeGetOffice365ActiveUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7272,14 +7332,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "InvokegetOffice365GroupsActivityDetail",
+        "operationId": "InvokeGetOffice365GroupsActivityDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -7305,14 +7365,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "InvokegetOffice365GroupsActivityDetail",
+        "operationId": "InvokeGetOffice365GroupsActivityDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7336,14 +7396,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
-        "operationId": "InvokegetOffice365GroupsActivityCounts",
+        "operationId": "InvokeGetOffice365GroupsActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7367,14 +7427,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
-        "operationId": "InvokegetOffice365GroupsActivityGroupCounts",
+        "operationId": "InvokeGetOffice365GroupsActivityGroupCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7398,14 +7458,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
-        "operationId": "InvokegetOffice365GroupsActivityStorage",
+        "operationId": "InvokeGetOffice365GroupsActivityStorage",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7429,14 +7489,14 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
-        "operationId": "InvokegetOffice365GroupsActivityFileCounts",
+        "operationId": "InvokeGetOffice365GroupsActivityFileCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7460,14 +7520,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "InvokegetEmailActivityUserDetail",
+        "operationId": "InvokeGetEmailActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -7493,14 +7553,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "InvokegetEmailActivityUserDetail",
+        "operationId": "InvokeGetEmailActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7524,14 +7584,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityCounts",
-        "operationId": "InvokegetEmailActivityCounts",
+        "operationId": "InvokeGetEmailActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7555,14 +7615,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
-        "operationId": "InvokegetEmailActivityUserCounts",
+        "operationId": "InvokeGetEmailActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7586,14 +7646,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "InvokegetEmailAppUsageUserDetail",
+        "operationId": "InvokeGetEmailAppUsageUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -7619,14 +7679,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "InvokegetEmailAppUsageUserDetail",
+        "operationId": "InvokeGetEmailAppUsageUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7650,14 +7710,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
-        "operationId": "InvokegetEmailAppUsageAppsUserCounts",
+        "operationId": "InvokeGetEmailAppUsageAppsUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7681,14 +7741,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
-        "operationId": "InvokegetEmailAppUsageUserCounts",
+        "operationId": "InvokeGetEmailAppUsageUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7712,14 +7772,14 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
-        "operationId": "InvokegetEmailAppUsageVersionsUserCounts",
+        "operationId": "InvokeGetEmailAppUsageVersionsUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7743,14 +7803,14 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
-        "operationId": "InvokegetMailboxUsageDetail",
+        "operationId": "InvokeGetMailboxUsageDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7774,14 +7834,14 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
-        "operationId": "InvokegetMailboxUsageMailboxCounts",
+        "operationId": "InvokeGetMailboxUsageMailboxCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7805,14 +7865,14 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
-        "operationId": "InvokegetMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "InvokeGetMailboxUsageQuotaStatusMailboxCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7836,14 +7896,14 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
-        "operationId": "InvokegetMailboxUsageStorage",
+        "operationId": "InvokeGetMailboxUsageStorage",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7867,14 +7927,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "InvokegetOneDriveActivityUserDetail",
+        "operationId": "InvokeGetOneDriveActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -7900,14 +7960,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "InvokegetOneDriveActivityUserDetail",
+        "operationId": "InvokeGetOneDriveActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7931,14 +7991,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
-        "operationId": "InvokegetOneDriveActivityUserCounts",
+        "operationId": "InvokeGetOneDriveActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7962,14 +8022,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
-        "operationId": "InvokegetOneDriveActivityFileCounts",
+        "operationId": "InvokeGetOneDriveActivityFileCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -7993,14 +8053,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "InvokegetOneDriveUsageAccountDetail",
+        "operationId": "InvokeGetOneDriveUsageAccountDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -8026,14 +8086,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "InvokegetOneDriveUsageAccountDetail",
+        "operationId": "InvokeGetOneDriveUsageAccountDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8057,14 +8117,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
-        "operationId": "InvokegetOneDriveUsageAccountCounts",
+        "operationId": "InvokeGetOneDriveUsageAccountCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8088,14 +8148,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
-        "operationId": "InvokegetOneDriveUsageFileCounts",
+        "operationId": "InvokeGetOneDriveUsageFileCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8119,14 +8179,14 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
-        "operationId": "InvokegetOneDriveUsageStorage",
+        "operationId": "InvokeGetOneDriveUsageStorage",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8150,14 +8210,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "InvokegetSharePointActivityUserDetail",
+        "operationId": "InvokeGetSharePointActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -8183,14 +8243,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "InvokegetSharePointActivityUserDetail",
+        "operationId": "InvokeGetSharePointActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8214,14 +8274,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
-        "operationId": "InvokegetSharePointActivityFileCounts",
+        "operationId": "InvokeGetSharePointActivityFileCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8245,14 +8305,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
-        "operationId": "InvokegetSharePointActivityUserCounts",
+        "operationId": "InvokeGetSharePointActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8276,14 +8336,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityPages",
-        "operationId": "InvokegetSharePointActivityPages",
+        "operationId": "InvokeGetSharePointActivityPages",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8307,14 +8367,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "InvokegetSharePointSiteUsageDetail",
+        "operationId": "InvokeGetSharePointSiteUsageDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -8340,14 +8400,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "InvokegetSharePointSiteUsageDetail",
+        "operationId": "InvokeGetSharePointSiteUsageDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8371,14 +8431,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
-        "operationId": "InvokegetSharePointSiteUsageFileCounts",
+        "operationId": "InvokeGetSharePointSiteUsageFileCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8402,14 +8462,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
-        "operationId": "InvokegetSharePointSiteUsageSiteCounts",
+        "operationId": "InvokeGetSharePointSiteUsageSiteCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8433,14 +8493,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
-        "operationId": "InvokegetSharePointSiteUsageStorage",
+        "operationId": "InvokeGetSharePointSiteUsageStorage",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8464,14 +8524,14 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
-        "operationId": "InvokegetSharePointSiteUsagePages",
+        "operationId": "InvokeGetSharePointSiteUsagePages",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8495,14 +8555,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -8528,14 +8588,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8559,14 +8619,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8590,14 +8650,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8621,14 +8681,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessPeerToPeerActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8652,14 +8712,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8683,14 +8743,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
-        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8714,14 +8774,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessOrganizerActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8745,14 +8805,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessOrganizerActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8776,14 +8836,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
-        "operationId": "InvokegetSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8807,14 +8867,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessParticipantActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessParticipantActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8838,14 +8898,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessParticipantActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8869,14 +8929,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
-        "operationId": "InvokegetSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "InvokeGetSkypeForBusinessParticipantActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8900,14 +8960,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -8933,14 +8993,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8964,14 +9024,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -8995,14 +9055,14 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9026,14 +9086,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "InvokegetYammerActivityUserDetail",
+        "operationId": "InvokeGetYammerActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -9059,14 +9119,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "InvokegetYammerActivityUserDetail",
+        "operationId": "InvokeGetYammerActivityUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9090,14 +9150,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityCounts",
-        "operationId": "InvokegetYammerActivityCounts",
+        "operationId": "InvokeGetYammerActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9121,14 +9181,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
-        "operationId": "InvokegetYammerActivityUserCounts",
+        "operationId": "InvokeGetYammerActivityUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9152,14 +9212,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "InvokegetYammerDeviceUsageUserDetail",
+        "operationId": "InvokeGetYammerDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -9185,14 +9245,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "InvokegetYammerDeviceUsageUserDetail",
+        "operationId": "InvokeGetYammerDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9216,14 +9276,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
-        "operationId": "InvokegetYammerDeviceUsageDistributionUserCounts",
+        "operationId": "InvokeGetYammerDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9247,14 +9307,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
-        "operationId": "InvokegetYammerDeviceUsageUserCounts",
+        "operationId": "InvokeGetYammerDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9278,14 +9338,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "InvokegetYammerGroupsActivityDetail",
+        "operationId": "InvokeGetYammerGroupsActivityDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "date",
             "in": "path",
+            "name": "date",
             "required": true,
             "type": "string",
             "format": "date",
@@ -9311,14 +9371,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "InvokegetYammerGroupsActivityDetail",
+        "operationId": "InvokeGetYammerGroupsActivityDetail",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9342,14 +9402,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
-        "operationId": "InvokegetYammerGroupsActivityGroupCounts",
+        "operationId": "InvokeGetYammerGroupsActivityGroupCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -9373,14 +9433,14 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
-        "operationId": "InvokegetYammerGroupsActivityCounts",
+        "operationId": "InvokeGetYammerGroupsActivityCounts",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "period",
             "in": "path",
+            "name": "period",
             "required": true,
             "type": "string"
           }
@@ -15771,34 +15831,34 @@
   },
   "parameters": {
     "top": {
-      "name": "$top",
       "in": "query",
+      "name": "$top",
       "description": "Show only the first n items",
       "type": "integer",
       "minimum": 0
     },
     "skip": {
-      "name": "$skip",
       "in": "query",
+      "name": "$skip",
       "description": "Skip the first n items",
       "type": "integer",
       "minimum": 0
     },
     "count": {
-      "name": "$count",
       "in": "query",
+      "name": "$count",
       "description": "Include count of items",
       "type": "boolean"
     },
     "filter": {
-      "name": "$filter",
       "in": "query",
+      "name": "$filter",
       "description": "Filter items by property values",
       "type": "string"
     },
     "search": {
-      "name": "$search",
       "in": "query",
+      "name": "$search",
       "description": "Search items by search phrases",
       "type": "string"
     }

@@ -13,14 +13,14 @@ paths:
       tags:
         - directoryObjects
       summary: Get entities from directoryObjects
-      operationId: GetEntitiesFromdirectoryObjects
+      operationId: GetEntitiesFromDirectoryObjects
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -28,8 +28,8 @@ paths:
               - id
               - id desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -53,15 +53,16 @@ paths:
       tags:
         - directoryObjects
       summary: Add new entity to directoryObjects
-      operationId: AddEntityTodirectoryObjects
+      operationId: AddEntityToDirectoryObjects
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.directoryObject'
       responses:
@@ -76,17 +77,17 @@ paths:
       tags:
         - directoryObjects
       summary: Get entity from directoryObjects by key
-      operationId: GetEntityFromdirectoryObjectsByKey
+      operationId: GetEntityFromDirectoryObjectsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -104,18 +105,19 @@ paths:
       tags:
         - directoryObjects
       summary: Update entity in directoryObjects
-      operationId: UpdateEntityIndirectoryObjects
+      operationId: UpdateEntityInDirectoryObjects
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.directoryObject'
       responses:
@@ -127,15 +129,15 @@ paths:
       tags:
         - directoryObjects
       summary: Delete entity from directoryObjects
-      operationId: DeleteEntityFromdirectoryObjects
+      operationId: DeleteEntityFromDirectoryObjects
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -148,13 +150,14 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getByIds
-      operationId: InvokegetByIds
+      operationId: InvokeGetByIds
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -176,18 +179,19 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action checkMemberGroups
-      operationId: InvokecheckMemberGroups
+      operationId: InvokeCheckMemberGroups
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -205,18 +209,19 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getMemberGroups
-      operationId: InvokegetMemberGroups
+      operationId: InvokeGetMemberGroups
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -233,18 +238,19 @@ paths:
       tags:
         - directoryObjects
       summary: Invoke action getMemberObjects
-      operationId: InvokegetMemberObjects
+      operationId: InvokeGetMemberObjects
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -261,14 +267,14 @@ paths:
       tags:
         - devices
       summary: Get entities from devices
-      operationId: GetEntitiesFromdevices
+      operationId: GetEntitiesFromDevices
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -306,8 +312,8 @@ paths:
               - trustType
               - trustType desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -346,15 +352,16 @@ paths:
       tags:
         - devices
       summary: Add new entity to devices
-      operationId: AddEntityTodevices
+      operationId: AddEntityToDevices
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.device'
       responses:
@@ -369,17 +376,17 @@ paths:
       tags:
         - devices
       summary: Get entity from devices by key
-      operationId: GetEntityFromdevicesByKey
+      operationId: GetEntityFromDevicesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -412,18 +419,19 @@ paths:
       tags:
         - devices
       summary: Update entity in devices
-      operationId: UpdateEntityIndevices
+      operationId: UpdateEntityInDevices
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.device'
       responses:
@@ -435,15 +443,15 @@ paths:
       tags:
         - devices
       summary: Delete entity from devices
-      operationId: DeleteEntityFromdevices
+      operationId: DeleteEntityFromDevices
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -456,7 +464,7 @@ paths:
       tags:
         - domains
       summary: Get entities from domains
-      operationId: GetEntitiesFromdomains
+      operationId: GetEntitiesFromDomains
       produces:
         - application/json
       parameters:
@@ -465,8 +473,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -492,8 +500,8 @@ paths:
               - state
               - state desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -509,8 +517,8 @@ paths:
               - supportedServices
               - state
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -537,15 +545,16 @@ paths:
       tags:
         - domains
       summary: Add new entity to domains
-      operationId: AddEntityTodomains
+      operationId: AddEntityToDomains
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.domain'
       responses:
@@ -560,17 +569,17 @@ paths:
       tags:
         - domains
       summary: Get entity from domains by key
-      operationId: GetEntityFromdomainsByKey
+      operationId: GetEntityFromDomainsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -586,8 +595,8 @@ paths:
               - supportedServices
               - state
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -608,18 +617,19 @@ paths:
       tags:
         - domains
       summary: Update entity in domains
-      operationId: UpdateEntityIndomains
+      operationId: UpdateEntityInDomains
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.domain'
       responses:
@@ -631,15 +641,15 @@ paths:
       tags:
         - domains
       summary: Delete entity from domains
-      operationId: DeleteEntityFromdomains
+      operationId: DeleteEntityFromDomains
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -652,10 +662,10 @@ paths:
       tags:
         - domains
       summary: Invoke action verify
-      operationId: Invokeverify
+      operationId: InvokeVerify
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -669,7 +679,7 @@ paths:
       tags:
         - domainDnsRecords
       summary: Get entities from domainDnsRecords
-      operationId: GetEntitiesFromdomainDnsRecords
+      operationId: GetEntitiesFromDomainDnsRecords
       produces:
         - application/json
       parameters:
@@ -678,8 +688,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -697,8 +707,8 @@ paths:
               - ttl
               - ttl desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -710,8 +720,8 @@ paths:
               - supportedService
               - ttl
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -735,15 +745,16 @@ paths:
       tags:
         - domainDnsRecords
       summary: Add new entity to domainDnsRecords
-      operationId: AddEntityTodomainDnsRecords
+      operationId: AddEntityToDomainDnsRecords
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.domainDnsRecord'
       responses:
@@ -758,17 +769,17 @@ paths:
       tags:
         - domainDnsRecords
       summary: Get entity from domainDnsRecords by key
-      operationId: GetEntityFromdomainDnsRecordsByKey
+      operationId: GetEntityFromDomainDnsRecordsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -780,8 +791,8 @@ paths:
               - supportedService
               - ttl
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -799,18 +810,19 @@ paths:
       tags:
         - domainDnsRecords
       summary: Update entity in domainDnsRecords
-      operationId: UpdateEntityIndomainDnsRecords
+      operationId: UpdateEntityInDomainDnsRecords
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.domainDnsRecord'
       responses:
@@ -822,15 +834,15 @@ paths:
       tags:
         - domainDnsRecords
       summary: Delete entity from domainDnsRecords
-      operationId: DeleteEntityFromdomainDnsRecords
+      operationId: DeleteEntityFromDomainDnsRecords
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -843,14 +855,14 @@ paths:
       tags:
         - groups
       summary: Get entities from groups
-      operationId: GetEntitiesFromgroups
+      operationId: GetEntitiesFromGroups
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -896,8 +908,8 @@ paths:
               - unseenCount
               - unseenCount desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -940,15 +952,16 @@ paths:
       tags:
         - groups
       summary: Add new entity to groups
-      operationId: AddEntityTogroups
+      operationId: AddEntityToGroups
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.group'
       responses:
@@ -963,17 +976,17 @@ paths:
       tags:
         - groups
       summary: Get entity from groups by key
-      operationId: GetEntityFromgroupsByKey
+      operationId: GetEntityFromGroupsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1010,18 +1023,19 @@ paths:
       tags:
         - groups
       summary: Update entity in groups
-      operationId: UpdateEntityIngroups
+      operationId: UpdateEntityInGroups
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.group'
       responses:
@@ -1033,15 +1047,15 @@ paths:
       tags:
         - groups
       summary: Delete entity from groups
-      operationId: DeleteEntityFromgroups
+      operationId: DeleteEntityFromGroups
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -1054,7 +1068,7 @@ paths:
       tags:
         - groups
       summary: Invoke function delta
-      operationId: Invokedelta
+      operationId: InvokeDelta
       produces:
         - application/json
       responses:
@@ -1070,10 +1084,10 @@ paths:
       tags:
         - groups
       summary: Invoke action subscribeByMail
-      operationId: InvokesubscribeByMail
+      operationId: InvokeSubscribeByMail
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -1087,10 +1101,10 @@ paths:
       tags:
         - groups
       summary: Invoke action unsubscribeByMail
-      operationId: InvokeunsubscribeByMail
+      operationId: InvokeUnsubscribeByMail
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -1104,10 +1118,10 @@ paths:
       tags:
         - groups
       summary: Invoke action addFavorite
-      operationId: InvokeaddFavorite
+      operationId: InvokeAddFavorite
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -1121,10 +1135,10 @@ paths:
       tags:
         - groups
       summary: Invoke action removeFavorite
-      operationId: InvokeremoveFavorite
+      operationId: InvokeRemoveFavorite
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -1138,10 +1152,10 @@ paths:
       tags:
         - groups
       summary: Invoke action resetUnseenCount
-      operationId: InvokeresetUnseenCount
+      operationId: InvokeResetUnseenCount
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -1155,13 +1169,13 @@ paths:
       tags:
         - directoryRoles
       summary: Get entities from directoryRoles
-      operationId: GetEntitiesFromdirectoryRoles
+      operationId: GetEntitiesFromDirectoryRoles
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -1175,8 +1189,8 @@ paths:
               - roleTemplateId
               - roleTemplateId desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1203,15 +1217,16 @@ paths:
       tags:
         - directoryRoles
       summary: Add new entity to directoryRoles
-      operationId: AddEntityTodirectoryRoles
+      operationId: AddEntityToDirectoryRoles
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.directoryRole'
       responses:
@@ -1226,17 +1241,17 @@ paths:
       tags:
         - directoryRoles
       summary: Get entity from directoryRoles by key
-      operationId: GetEntityFromdirectoryRolesByKey
+      operationId: GetEntityFromDirectoryRolesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1257,18 +1272,19 @@ paths:
       tags:
         - directoryRoles
       summary: Update entity in directoryRoles
-      operationId: UpdateEntityIndirectoryRoles
+      operationId: UpdateEntityInDirectoryRoles
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.directoryRole'
       responses:
@@ -1280,15 +1296,15 @@ paths:
       tags:
         - directoryRoles
       summary: Delete entity from directoryRoles
-      operationId: DeleteEntityFromdirectoryRoles
+      operationId: DeleteEntityFromDirectoryRoles
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -1301,13 +1317,13 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Get entities from directoryRoleTemplates
-      operationId: GetEntitiesFromdirectoryRoleTemplates
+      operationId: GetEntitiesFromDirectoryRoleTemplates
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -1319,8 +1335,8 @@ paths:
               - displayName
               - displayName desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1346,15 +1362,16 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Add new entity to directoryRoleTemplates
-      operationId: AddEntityTodirectoryRoleTemplates
+      operationId: AddEntityToDirectoryRoleTemplates
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.directoryRoleTemplate'
       responses:
@@ -1369,17 +1386,17 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Get entity from directoryRoleTemplates by key
-      operationId: GetEntityFromdirectoryRoleTemplatesByKey
+      operationId: GetEntityFromDirectoryRoleTemplatesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1399,18 +1416,19 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Update entity in directoryRoleTemplates
-      operationId: UpdateEntityIndirectoryRoleTemplates
+      operationId: UpdateEntityInDirectoryRoleTemplates
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.directoryRoleTemplate'
       responses:
@@ -1422,15 +1440,15 @@ paths:
       tags:
         - directoryRoleTemplates
       summary: Delete entity from directoryRoleTemplates
-      operationId: DeleteEntityFromdirectoryRoleTemplates
+      operationId: DeleteEntityFromDirectoryRoleTemplates
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -1443,14 +1461,14 @@ paths:
       tags:
         - organization
       summary: Get entities from organization
-      operationId: GetEntitiesFromorganization
+      operationId: GetEntitiesFromOrganization
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -1494,8 +1512,8 @@ paths:
               - verifiedDomains
               - verifiedDomains desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1537,15 +1555,16 @@ paths:
       tags:
         - organization
       summary: Add new entity to organization
-      operationId: AddEntityToorganization
+      operationId: AddEntityToOrganization
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.organization'
       responses:
@@ -1560,17 +1579,17 @@ paths:
       tags:
         - organization
       summary: Get entity from organization by key
-      operationId: GetEntityFromorganizationByKey
+      operationId: GetEntityFromOrganizationByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1606,18 +1625,19 @@ paths:
       tags:
         - organization
       summary: Update entity in organization
-      operationId: UpdateEntityInorganization
+      operationId: UpdateEntityInOrganization
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.organization'
       responses:
@@ -1629,15 +1649,15 @@ paths:
       tags:
         - organization
       summary: Delete entity from organization
-      operationId: DeleteEntityFromorganization
+      operationId: DeleteEntityFromOrganization
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -1650,7 +1670,7 @@ paths:
       tags:
         - groupSettings
       summary: Get entities from groupSettings
-      operationId: GetEntitiesFromgroupSettings
+      operationId: GetEntitiesFromGroupSettings
       produces:
         - application/json
       parameters:
@@ -1659,8 +1679,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -1674,8 +1694,8 @@ paths:
               - values
               - values desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1685,8 +1705,8 @@ paths:
               - templateId
               - values
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -1710,15 +1730,16 @@ paths:
       tags:
         - groupSettings
       summary: Add new entity to groupSettings
-      operationId: AddEntityTogroupSettings
+      operationId: AddEntityToGroupSettings
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.groupSetting'
       responses:
@@ -1733,17 +1754,17 @@ paths:
       tags:
         - groupSettings
       summary: Get entity from groupSettings by key
-      operationId: GetEntityFromgroupSettingsByKey
+      operationId: GetEntityFromGroupSettingsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1753,8 +1774,8 @@ paths:
               - templateId
               - values
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -1772,18 +1793,19 @@ paths:
       tags:
         - groupSettings
       summary: Update entity in groupSettings
-      operationId: UpdateEntityIngroupSettings
+      operationId: UpdateEntityInGroupSettings
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.groupSetting'
       responses:
@@ -1795,15 +1817,15 @@ paths:
       tags:
         - groupSettings
       summary: Delete entity from groupSettings
-      operationId: DeleteEntityFromgroupSettings
+      operationId: DeleteEntityFromGroupSettings
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -1816,14 +1838,14 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Get entities from groupSettingTemplates
-      operationId: GetEntitiesFromgroupSettingTemplates
+      operationId: GetEntitiesFromGroupSettingTemplates
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -1837,8 +1859,8 @@ paths:
               - values
               - values desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1865,15 +1887,16 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Add new entity to groupSettingTemplates
-      operationId: AddEntityTogroupSettingTemplates
+      operationId: AddEntityToGroupSettingTemplates
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.groupSettingTemplate'
       responses:
@@ -1888,17 +1911,17 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Get entity from groupSettingTemplates by key
-      operationId: GetEntityFromgroupSettingTemplatesByKey
+      operationId: GetEntityFromGroupSettingTemplatesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -1919,18 +1942,19 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Update entity in groupSettingTemplates
-      operationId: UpdateEntityIngroupSettingTemplates
+      operationId: UpdateEntityInGroupSettingTemplates
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.groupSettingTemplate'
       responses:
@@ -1942,15 +1966,15 @@ paths:
       tags:
         - groupSettingTemplates
       summary: Delete entity from groupSettingTemplates
-      operationId: DeleteEntityFromgroupSettingTemplates
+      operationId: DeleteEntityFromGroupSettingTemplates
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -1963,13 +1987,13 @@ paths:
       tags:
         - subscribedSkus
       summary: Get entities from subscribedSkus
-      operationId: GetEntitiesFromsubscribedSkus
+      operationId: GetEntitiesFromSubscribedSkus
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -1991,8 +2015,8 @@ paths:
               - appliesTo
               - appliesTo desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2023,15 +2047,16 @@ paths:
       tags:
         - subscribedSkus
       summary: Add new entity to subscribedSkus
-      operationId: AddEntityTosubscribedSkus
+      operationId: AddEntityToSubscribedSkus
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.subscribedSku'
       responses:
@@ -2046,17 +2071,17 @@ paths:
       tags:
         - subscribedSkus
       summary: Get entity from subscribedSkus by key
-      operationId: GetEntityFromsubscribedSkusByKey
+      operationId: GetEntityFromSubscribedSkusByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2081,18 +2106,19 @@ paths:
       tags:
         - subscribedSkus
       summary: Update entity in subscribedSkus
-      operationId: UpdateEntityInsubscribedSkus
+      operationId: UpdateEntityInSubscribedSkus
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.subscribedSku'
       responses:
@@ -2104,15 +2130,15 @@ paths:
       tags:
         - subscribedSkus
       summary: Delete entity from subscribedSkus
-      operationId: DeleteEntityFromsubscribedSkus
+      operationId: DeleteEntityFromSubscribedSkus
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -2125,14 +2151,14 @@ paths:
       tags:
         - users
       summary: Get entities from users
-      operationId: GetEntitiesFromusers
+      operationId: GetEntitiesFromUsers
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -2226,8 +2252,8 @@ paths:
               - skills
               - skills desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2294,15 +2320,16 @@ paths:
       tags:
         - users
       summary: Add new entity to users
-      operationId: AddEntityTousers
+      operationId: AddEntityToUsers
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.user'
       responses:
@@ -2317,17 +2344,17 @@ paths:
       tags:
         - users
       summary: Get entity from users by key
-      operationId: GetEntityFromusersByKey
+      operationId: GetEntityFromUsersByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2388,18 +2415,19 @@ paths:
       tags:
         - users
       summary: Update entity in users
-      operationId: UpdateEntityInusers
+      operationId: UpdateEntityInUsers
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.user'
       responses:
@@ -2411,15 +2439,15 @@ paths:
       tags:
         - users
       summary: Delete entity from users
-      operationId: DeleteEntityFromusers
+      operationId: DeleteEntityFromUsers
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -2432,7 +2460,7 @@ paths:
       tags:
         - users
       summary: Invoke function delta
-      operationId: Invokedelta
+      operationId: InvokeDelta
       produces:
         - application/json
       responses:
@@ -2448,18 +2476,19 @@ paths:
       tags:
         - users
       summary: Invoke action assignLicense
-      operationId: InvokeassignLicense
+      operationId: InvokeAssignLicense
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -2483,18 +2512,19 @@ paths:
       tags:
         - users
       summary: Invoke action changePassword
-      operationId: InvokechangePassword
+      operationId: InvokeChangePassword
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -2512,18 +2542,19 @@ paths:
       tags:
         - users
       summary: Invoke action sendMail
-      operationId: InvokesendMail
+      operationId: InvokeSendMail
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -2542,18 +2573,19 @@ paths:
       tags:
         - users
       summary: Invoke action findMeetingTimes
-      operationId: InvokefindMeetingTimes
+      operationId: InvokeFindMeetingTimes
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -2589,12 +2621,12 @@ paths:
       tags:
         - users
       summary: Invoke function reminderView
-      operationId: InvokereminderView
+      operationId: InvokeReminderView
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -2612,14 +2644,14 @@ paths:
       tags:
         - contracts
       summary: Get entities from contracts
-      operationId: GetEntitiesFromcontracts
+      operationId: GetEntitiesFromContracts
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/search'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -2635,8 +2667,8 @@ paths:
               - displayName
               - displayName desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2664,15 +2696,16 @@ paths:
       tags:
         - contracts
       summary: Add new entity to contracts
-      operationId: AddEntityTocontracts
+      operationId: AddEntityToContracts
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.contract'
       responses:
@@ -2687,17 +2720,17 @@ paths:
       tags:
         - contracts
       summary: Get entity from contracts by key
-      operationId: GetEntityFromcontractsByKey
+      operationId: GetEntityFromContractsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2719,18 +2752,19 @@ paths:
       tags:
         - contracts
       summary: Update entity in contracts
-      operationId: UpdateEntityIncontracts
+      operationId: UpdateEntityInContracts
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.contract'
       responses:
@@ -2742,15 +2776,15 @@ paths:
       tags:
         - contracts
       summary: Delete entity from contracts
-      operationId: DeleteEntityFromcontracts
+      operationId: DeleteEntityFromContracts
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -2763,7 +2797,7 @@ paths:
       tags:
         - schemaExtensions
       summary: Get entities from schemaExtensions
-      operationId: GetEntitiesFromschemaExtensions
+      operationId: GetEntitiesFromSchemaExtensions
       produces:
         - application/json
       parameters:
@@ -2772,8 +2806,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -2791,8 +2825,8 @@ paths:
               - owner
               - owner desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2804,8 +2838,8 @@ paths:
               - status
               - owner
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -2829,15 +2863,16 @@ paths:
       tags:
         - schemaExtensions
       summary: Add new entity to schemaExtensions
-      operationId: AddEntityToschemaExtensions
+      operationId: AddEntityToSchemaExtensions
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.schemaExtension'
       responses:
@@ -2852,17 +2887,17 @@ paths:
       tags:
         - schemaExtensions
       summary: Get entity from schemaExtensions by key
-      operationId: GetEntityFromschemaExtensionsByKey
+      operationId: GetEntityFromSchemaExtensionsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -2874,8 +2909,8 @@ paths:
               - status
               - owner
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -2893,18 +2928,19 @@ paths:
       tags:
         - schemaExtensions
       summary: Update entity in schemaExtensions
-      operationId: UpdateEntityInschemaExtensions
+      operationId: UpdateEntityInSchemaExtensions
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.schemaExtension'
       responses:
@@ -2916,15 +2952,15 @@ paths:
       tags:
         - schemaExtensions
       summary: Delete entity from schemaExtensions
-      operationId: DeleteEntityFromschemaExtensions
+      operationId: DeleteEntityFromSchemaExtensions
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -2937,7 +2973,7 @@ paths:
       tags:
         - drives
       summary: Get entities from drives
-      operationId: GetEntitiesFromdrives
+      operationId: GetEntitiesFromDrives
       produces:
         - application/json
       parameters:
@@ -2946,8 +2982,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -2983,8 +3019,8 @@ paths:
               - system
               - system desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3005,8 +3041,8 @@ paths:
               - sharePointIds
               - system
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3036,15 +3072,16 @@ paths:
       tags:
         - drives
       summary: Add new entity to drives
-      operationId: AddEntityTodrives
+      operationId: AddEntityToDrives
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.drive'
       responses:
@@ -3059,17 +3096,17 @@ paths:
       tags:
         - drives
       summary: Get entity from drives by key
-      operationId: GetEntityFromdrivesByKey
+      operationId: GetEntityFromDrivesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3090,8 +3127,8 @@ paths:
               - sharePointIds
               - system
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3115,18 +3152,19 @@ paths:
       tags:
         - drives
       summary: Update entity in drives
-      operationId: UpdateEntityIndrives
+      operationId: UpdateEntityInDrives
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.drive'
       responses:
@@ -3138,15 +3176,15 @@ paths:
       tags:
         - drives
       summary: Delete entity from drives
-      operationId: DeleteEntityFromdrives
+      operationId: DeleteEntityFromDrives
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -3159,12 +3197,12 @@ paths:
       tags:
         - drives
       summary: Invoke function recent
-      operationId: Invokerecent
+      operationId: InvokeRecent
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -3181,12 +3219,12 @@ paths:
       tags:
         - drives
       summary: Invoke function search
-      operationId: Invokesearch
+      operationId: InvokeSearch
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -3203,12 +3241,12 @@ paths:
       tags:
         - drives
       summary: Invoke function sharedWithMe
-      operationId: InvokesharedWithMe
+      operationId: InvokeSharedWithMe
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -3225,7 +3263,7 @@ paths:
       tags:
         - shares
       summary: Get entities from shares
-      operationId: GetEntitiesFromshares
+      operationId: GetEntitiesFromShares
       produces:
         - application/json
       parameters:
@@ -3234,8 +3272,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -3263,8 +3301,8 @@ paths:
               - owner
               - owner desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3281,8 +3319,8 @@ paths:
               - webUrl
               - owner
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3314,15 +3352,16 @@ paths:
       tags:
         - shares
       summary: Add new entity to shares
-      operationId: AddEntityToshares
+      operationId: AddEntityToShares
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.sharedDriveItem'
       responses:
@@ -3337,17 +3376,17 @@ paths:
       tags:
         - shares
       summary: Get entity from shares by key
-      operationId: GetEntityFromsharesByKey
+      operationId: GetEntityFromSharesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3364,8 +3403,8 @@ paths:
               - webUrl
               - owner
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3391,18 +3430,19 @@ paths:
       tags:
         - shares
       summary: Update entity in shares
-      operationId: UpdateEntityInshares
+      operationId: UpdateEntityInShares
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.sharedDriveItem'
       responses:
@@ -3414,15 +3454,15 @@ paths:
       tags:
         - shares
       summary: Delete entity from shares
-      operationId: DeleteEntityFromshares
+      operationId: DeleteEntityFromShares
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -3435,7 +3475,7 @@ paths:
       tags:
         - sites
       summary: Get entities from sites
-      operationId: GetEntitiesFromsites
+      operationId: GetEntitiesFromSites
       produces:
         - application/json
       parameters:
@@ -3444,8 +3484,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -3479,8 +3519,8 @@ paths:
               - siteCollection
               - siteCollection desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3500,8 +3540,8 @@ paths:
               - sharepointIds
               - siteCollection
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3535,15 +3575,16 @@ paths:
       tags:
         - sites
       summary: Add new entity to sites
-      operationId: AddEntityTosites
+      operationId: AddEntityToSites
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.site'
       responses:
@@ -3558,17 +3599,17 @@ paths:
       tags:
         - sites
       summary: Get entity from sites by key
-      operationId: GetEntityFromsitesByKey
+      operationId: GetEntityFromSitesByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3588,8 +3629,8 @@ paths:
               - sharepointIds
               - siteCollection
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3617,18 +3658,19 @@ paths:
       tags:
         - sites
       summary: Update entity in sites
-      operationId: UpdateEntityInsites
+      operationId: UpdateEntityInSites
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.site'
       responses:
@@ -3640,15 +3682,15 @@ paths:
       tags:
         - sites
       summary: Delete entity from sites
-      operationId: DeleteEntityFromsites
+      operationId: DeleteEntityFromSites
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -3661,12 +3703,12 @@ paths:
       tags:
         - sites
       summary: Invoke function getByPath
-      operationId: InvokegetByPath
+      operationId: InvokeGetByPath
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -3681,7 +3723,7 @@ paths:
       tags:
         - workbooks
       summary: Get entities from workbooks
-      operationId: GetEntitiesFromworkbooks
+      operationId: GetEntitiesFromWorkbooks
       produces:
         - application/json
       parameters:
@@ -3690,8 +3732,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -3757,8 +3799,8 @@ paths:
               - webDavUrl
               - webDavUrl desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3794,8 +3836,8 @@ paths:
               - video
               - webDavUrl
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3826,15 +3868,16 @@ paths:
       tags:
         - workbooks
       summary: Add new entity to workbooks
-      operationId: AddEntityToworkbooks
+      operationId: AddEntityToWorkbooks
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.driveItem'
       responses:
@@ -3849,17 +3892,17 @@ paths:
       tags:
         - workbooks
       summary: Get entity from workbooks by key
-      operationId: GetEntityFromworkbooksByKey
+      operationId: GetEntityFromWorkbooksByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -3895,8 +3938,8 @@ paths:
               - video
               - webDavUrl
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -3921,18 +3964,19 @@ paths:
       tags:
         - workbooks
       summary: Update entity in workbooks
-      operationId: UpdateEntityInworkbooks
+      operationId: UpdateEntityInWorkbooks
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.driveItem'
       responses:
@@ -3944,15 +3988,15 @@ paths:
       tags:
         - workbooks
       summary: Delete entity from workbooks
-      operationId: DeleteEntityFromworkbooks
+      operationId: DeleteEntityFromWorkbooks
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -3965,12 +4009,12 @@ paths:
       tags:
         - workbooks
       summary: Invoke function delta
-      operationId: Invokedelta
+      operationId: InvokeDelta
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -3987,12 +4031,12 @@ paths:
       tags:
         - workbooks
       summary: Invoke function delta
-      operationId: Invokedelta
+      operationId: InvokeDelta
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -4009,12 +4053,12 @@ paths:
       tags:
         - workbooks
       summary: Invoke function search
-      operationId: Invokesearch
+      operationId: InvokeSearch
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
@@ -4031,18 +4075,19 @@ paths:
       tags:
         - workbooks
       summary: Invoke action copy
-      operationId: Invokecopy
+      operationId: InvokeCopy
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4059,18 +4104,19 @@ paths:
       tags:
         - workbooks
       summary: Invoke action createLink
-      operationId: InvokecreateLink
+      operationId: InvokeCreateLink
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4088,18 +4134,19 @@ paths:
       tags:
         - workbooks
       summary: Invoke action createUploadSession
-      operationId: InvokecreateUploadSession
+      operationId: InvokeCreateUploadSession
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4114,18 +4161,19 @@ paths:
       tags:
         - workbooks
       summary: Invoke action invite
-      operationId: Invokeinvite
+      operationId: InvokeInvite
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4155,13 +4203,13 @@ paths:
       tags:
         - subscriptions
       summary: Get entities from subscriptions
-      operationId: GetEntitiesFromsubscriptions
+      operationId: GetEntitiesFromSubscriptions
       produces:
         - application/json
       parameters:
         - $ref: '#/parameters/search'
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -4190,15 +4238,16 @@ paths:
       tags:
         - subscriptions
       summary: Add new entity to subscriptions
-      operationId: AddEntityTosubscriptions
+      operationId: AddEntityToSubscriptions
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.subscription'
       responses:
@@ -4213,17 +4262,17 @@ paths:
       tags:
         - subscriptions
       summary: Get entity from subscriptions by key
-      operationId: GetEntityFromsubscriptionsByKey
+      operationId: GetEntityFromSubscriptionsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -4246,18 +4295,19 @@ paths:
       tags:
         - subscriptions
       summary: Update entity in subscriptions
-      operationId: UpdateEntityInsubscriptions
+      operationId: UpdateEntityInSubscriptions
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.subscription'
       responses:
@@ -4269,15 +4319,15 @@ paths:
       tags:
         - subscriptions
       summary: Delete entity from subscriptions
-      operationId: DeleteEntityFromsubscriptions
+      operationId: DeleteEntityFromSubscriptions
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -4290,7 +4340,7 @@ paths:
       tags:
         - invitations
       summary: Get entities from invitations
-      operationId: GetEntitiesFrominvitations
+      operationId: GetEntitiesFromInvitations
       produces:
         - application/json
       parameters:
@@ -4299,8 +4349,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -4324,8 +4374,8 @@ paths:
               - status
               - status desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -4340,8 +4390,8 @@ paths:
               - inviteRedeemUrl
               - status
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -4366,15 +4416,16 @@ paths:
       tags:
         - invitations
       summary: Add new entity to invitations
-      operationId: AddEntityToinvitations
+      operationId: AddEntityToInvitations
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.invitation'
       responses:
@@ -4389,17 +4440,17 @@ paths:
       tags:
         - invitations
       summary: Get entity from invitations by key
-      operationId: GetEntityFrominvitationsByKey
+      operationId: GetEntityFromInvitationsByKey
       produces:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -4414,8 +4465,8 @@ paths:
               - inviteRedeemUrl
               - status
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -4434,18 +4485,19 @@ paths:
       tags:
         - invitations
       summary: Update entity in invitations
-      operationId: UpdateEntityIninvitations
+      operationId: UpdateEntityInInvitations
       consumes:
         - application/json
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.invitation'
       responses:
@@ -4457,15 +4509,15 @@ paths:
       tags:
         - invitations
       summary: Delete entity from invitations
-      operationId: DeleteEntityFrominvitations
+      operationId: DeleteEntityFromInvitations
       parameters:
-        - name: id
-          in: path
+        - in: path
+          name: id
           description: 'key: id'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -4478,12 +4530,12 @@ paths:
       tags:
         - me
       summary: Get me
-      operationId: Getme
+      operationId: GetMe
       produces:
         - application/json
       parameters:
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -4544,13 +4596,14 @@ paths:
       tags:
         - me
       summary: Update me
-      operationId: Updateme
+      operationId: UpdateMe
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.user'
       responses:
@@ -4563,13 +4616,14 @@ paths:
       tags:
         - me
       summary: Invoke action assignLicense
-      operationId: InvokeassignLicense
+      operationId: InvokeAssignLicense
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4593,13 +4647,14 @@ paths:
       tags:
         - me
       summary: Invoke action changePassword
-      operationId: InvokechangePassword
+      operationId: InvokeChangePassword
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4617,13 +4672,14 @@ paths:
       tags:
         - me
       summary: Invoke action sendMail
-      operationId: InvokesendMail
+      operationId: InvokeSendMail
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4642,13 +4698,14 @@ paths:
       tags:
         - me
       summary: Invoke action findMeetingTimes
-      operationId: InvokefindMeetingTimes
+      operationId: InvokeFindMeetingTimes
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -4684,16 +4741,16 @@ paths:
       tags:
         - me
       summary: Invoke function reminderView
-      operationId: InvokereminderView
+      operationId: InvokeReminderView
       produces:
         - application/json
       parameters:
-        - name: StartDateTime
-          in: path
+        - in: path
+          name: StartDateTime
           required: true
           type: string
-        - name: EndDateTime
-          in: path
+        - in: path
+          name: EndDateTime
           required: true
           type: string
       responses:
@@ -4710,12 +4767,12 @@ paths:
       tags:
         - drive
       summary: Get drive
-      operationId: Getdrive
+      operationId: GetDrive
       produces:
         - application/json
       parameters:
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -4736,8 +4793,8 @@ paths:
               - sharePointIds
               - system
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -4761,13 +4818,14 @@ paths:
       tags:
         - drive
       summary: Update drive
-      operationId: Updatedrive
+      operationId: UpdateDrive
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.drive'
       responses:
@@ -4780,7 +4838,7 @@ paths:
       tags:
         - drive
       summary: Invoke function recent
-      operationId: Invokerecent
+      operationId: InvokeRecent
       produces:
         - application/json
       responses:
@@ -4796,12 +4854,12 @@ paths:
       tags:
         - drive
       summary: Invoke function search
-      operationId: Invokesearch
+      operationId: InvokeSearch
       produces:
         - application/json
       parameters:
-        - name: q
-          in: path
+        - in: path
+          name: q
           required: true
           type: string
       responses:
@@ -4817,7 +4875,7 @@ paths:
       tags:
         - drive
       summary: Invoke function sharedWithMe
-      operationId: InvokesharedWithMe
+      operationId: InvokeSharedWithMe
       produces:
         - application/json
       responses:
@@ -4833,20 +4891,20 @@ paths:
       tags:
         - planner
       summary: Get planner
-      operationId: Getplanner
+      operationId: GetPlanner
       produces:
         - application/json
       parameters:
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
             enum:
               - id
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -4867,13 +4925,14 @@ paths:
       tags:
         - planner
       summary: Update planner
-      operationId: Updateplanner
+      operationId: UpdatePlanner
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.planner'
       responses:
@@ -4886,20 +4945,20 @@ paths:
       tags:
         - reports
       summary: Get reports
-      operationId: Getreports
+      operationId: GetReports
       produces:
         - application/json
       parameters:
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
             enum:
               - id
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -4917,13 +4976,14 @@ paths:
       tags:
         - reports
       summary: Update reports
-      operationId: Updatereports
+      operationId: UpdateReports
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/microsoft.graph.reportRoot'
       responses:
@@ -4936,7 +4996,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationsUserDetail
-      operationId: InvokegetOffice365ActivationsUserDetail
+      operationId: InvokeGetOffice365ActivationsUserDetail
       produces:
         - application/json
       responses:
@@ -4951,7 +5011,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationCounts
-      operationId: InvokegetOffice365ActivationCounts
+      operationId: InvokeGetOffice365ActivationCounts
       produces:
         - application/json
       responses:
@@ -4966,7 +5026,7 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActivationsUserCounts
-      operationId: InvokegetOffice365ActivationsUserCounts
+      operationId: InvokeGetOffice365ActivationsUserCounts
       produces:
         - application/json
       responses:
@@ -4981,12 +5041,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: InvokegetOffice365ActiveUserDetail
+      operationId: InvokeGetOffice365ActiveUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5003,12 +5063,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: InvokegetOffice365ActiveUserDetail
+      operationId: InvokeGetOffice365ActiveUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5023,12 +5083,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ServicesUserCounts
-      operationId: InvokegetOffice365ServicesUserCounts
+      operationId: InvokeGetOffice365ServicesUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5043,12 +5103,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365ActiveUserCounts
-      operationId: InvokegetOffice365ActiveUserCounts
+      operationId: InvokeGetOffice365ActiveUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5063,12 +5123,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: InvokegetOffice365GroupsActivityDetail
+      operationId: InvokeGetOffice365GroupsActivityDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5085,12 +5145,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: InvokegetOffice365GroupsActivityDetail
+      operationId: InvokeGetOffice365GroupsActivityDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5105,12 +5165,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityCounts
-      operationId: InvokegetOffice365GroupsActivityCounts
+      operationId: InvokeGetOffice365GroupsActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5125,12 +5185,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityGroupCounts
-      operationId: InvokegetOffice365GroupsActivityGroupCounts
+      operationId: InvokeGetOffice365GroupsActivityGroupCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5145,12 +5205,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityStorage
-      operationId: InvokegetOffice365GroupsActivityStorage
+      operationId: InvokeGetOffice365GroupsActivityStorage
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5165,12 +5225,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOffice365GroupsActivityFileCounts
-      operationId: InvokegetOffice365GroupsActivityFileCounts
+      operationId: InvokeGetOffice365GroupsActivityFileCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5185,12 +5245,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserDetail
-      operationId: InvokegetEmailActivityUserDetail
+      operationId: InvokeGetEmailActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5207,12 +5267,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserDetail
-      operationId: InvokegetEmailActivityUserDetail
+      operationId: InvokeGetEmailActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5227,12 +5287,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityCounts
-      operationId: InvokegetEmailActivityCounts
+      operationId: InvokeGetEmailActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5247,12 +5307,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailActivityUserCounts
-      operationId: InvokegetEmailActivityUserCounts
+      operationId: InvokeGetEmailActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5267,12 +5327,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: InvokegetEmailAppUsageUserDetail
+      operationId: InvokeGetEmailAppUsageUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5289,12 +5349,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: InvokegetEmailAppUsageUserDetail
+      operationId: InvokeGetEmailAppUsageUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5309,12 +5369,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageAppsUserCounts
-      operationId: InvokegetEmailAppUsageAppsUserCounts
+      operationId: InvokeGetEmailAppUsageAppsUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5329,12 +5389,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageUserCounts
-      operationId: InvokegetEmailAppUsageUserCounts
+      operationId: InvokeGetEmailAppUsageUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5349,12 +5409,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getEmailAppUsageVersionsUserCounts
-      operationId: InvokegetEmailAppUsageVersionsUserCounts
+      operationId: InvokeGetEmailAppUsageVersionsUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5369,12 +5429,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageDetail
-      operationId: InvokegetMailboxUsageDetail
+      operationId: InvokeGetMailboxUsageDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5389,12 +5449,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageMailboxCounts
-      operationId: InvokegetMailboxUsageMailboxCounts
+      operationId: InvokeGetMailboxUsageMailboxCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5409,12 +5469,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageQuotaStatusMailboxCounts
-      operationId: InvokegetMailboxUsageQuotaStatusMailboxCounts
+      operationId: InvokeGetMailboxUsageQuotaStatusMailboxCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5429,12 +5489,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getMailboxUsageStorage
-      operationId: InvokegetMailboxUsageStorage
+      operationId: InvokeGetMailboxUsageStorage
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5449,12 +5509,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: InvokegetOneDriveActivityUserDetail
+      operationId: InvokeGetOneDriveActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5471,12 +5531,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: InvokegetOneDriveActivityUserDetail
+      operationId: InvokeGetOneDriveActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5491,12 +5551,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityUserCounts
-      operationId: InvokegetOneDriveActivityUserCounts
+      operationId: InvokeGetOneDriveActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5511,12 +5571,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveActivityFileCounts
-      operationId: InvokegetOneDriveActivityFileCounts
+      operationId: InvokeGetOneDriveActivityFileCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5531,12 +5591,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: InvokegetOneDriveUsageAccountDetail
+      operationId: InvokeGetOneDriveUsageAccountDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5553,12 +5613,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: InvokegetOneDriveUsageAccountDetail
+      operationId: InvokeGetOneDriveUsageAccountDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5573,12 +5633,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageAccountCounts
-      operationId: InvokegetOneDriveUsageAccountCounts
+      operationId: InvokeGetOneDriveUsageAccountCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5593,12 +5653,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageFileCounts
-      operationId: InvokegetOneDriveUsageFileCounts
+      operationId: InvokeGetOneDriveUsageFileCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5613,12 +5673,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getOneDriveUsageStorage
-      operationId: InvokegetOneDriveUsageStorage
+      operationId: InvokeGetOneDriveUsageStorage
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5633,12 +5693,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: InvokegetSharePointActivityUserDetail
+      operationId: InvokeGetSharePointActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5655,12 +5715,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: InvokegetSharePointActivityUserDetail
+      operationId: InvokeGetSharePointActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5675,12 +5735,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityFileCounts
-      operationId: InvokegetSharePointActivityFileCounts
+      operationId: InvokeGetSharePointActivityFileCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5695,12 +5755,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityUserCounts
-      operationId: InvokegetSharePointActivityUserCounts
+      operationId: InvokeGetSharePointActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5715,12 +5775,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointActivityPages
-      operationId: InvokegetSharePointActivityPages
+      operationId: InvokeGetSharePointActivityPages
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5735,12 +5795,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: InvokegetSharePointSiteUsageDetail
+      operationId: InvokeGetSharePointSiteUsageDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5757,12 +5817,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: InvokegetSharePointSiteUsageDetail
+      operationId: InvokeGetSharePointSiteUsageDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5777,12 +5837,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageFileCounts
-      operationId: InvokegetSharePointSiteUsageFileCounts
+      operationId: InvokeGetSharePointSiteUsageFileCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5797,12 +5857,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageSiteCounts
-      operationId: InvokegetSharePointSiteUsageSiteCounts
+      operationId: InvokeGetSharePointSiteUsageSiteCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5817,12 +5877,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsageStorage
-      operationId: InvokegetSharePointSiteUsageStorage
+      operationId: InvokeGetSharePointSiteUsageStorage
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5837,12 +5897,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSharePointSiteUsagePages
-      operationId: InvokegetSharePointSiteUsagePages
+      operationId: InvokeGetSharePointSiteUsagePages
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5857,12 +5917,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: InvokegetSkypeForBusinessActivityUserDetail
+      operationId: InvokeGetSkypeForBusinessActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -5879,12 +5939,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: InvokegetSkypeForBusinessActivityUserDetail
+      operationId: InvokeGetSkypeForBusinessActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5899,12 +5959,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityCounts
-      operationId: InvokegetSkypeForBusinessActivityCounts
+      operationId: InvokeGetSkypeForBusinessActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5919,12 +5979,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessActivityUserCounts
-      operationId: InvokegetSkypeForBusinessActivityUserCounts
+      operationId: InvokeGetSkypeForBusinessActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5939,12 +5999,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
-      operationId: InvokegetSkypeForBusinessPeerToPeerActivityCounts
+      operationId: InvokeGetSkypeForBusinessPeerToPeerActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5959,12 +6019,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
-      operationId: InvokegetSkypeForBusinessPeerToPeerActivityUserCounts
+      operationId: InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5979,12 +6039,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
-      operationId: InvokegetSkypeForBusinessPeerToPeerActivityMinuteCounts
+      operationId: InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -5999,12 +6059,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityCounts
-      operationId: InvokegetSkypeForBusinessOrganizerActivityCounts
+      operationId: InvokeGetSkypeForBusinessOrganizerActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6019,12 +6079,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
-      operationId: InvokegetSkypeForBusinessOrganizerActivityUserCounts
+      operationId: InvokeGetSkypeForBusinessOrganizerActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6039,12 +6099,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
-      operationId: InvokegetSkypeForBusinessOrganizerActivityMinuteCounts
+      operationId: InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6059,12 +6119,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityCounts
-      operationId: InvokegetSkypeForBusinessParticipantActivityCounts
+      operationId: InvokeGetSkypeForBusinessParticipantActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6079,12 +6139,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityUserCounts
-      operationId: InvokegetSkypeForBusinessParticipantActivityUserCounts
+      operationId: InvokeGetSkypeForBusinessParticipantActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6099,12 +6159,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
-      operationId: InvokegetSkypeForBusinessParticipantActivityMinuteCounts
+      operationId: InvokeGetSkypeForBusinessParticipantActivityMinuteCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6119,12 +6179,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: InvokegetSkypeForBusinessDeviceUsageUserDetail
+      operationId: InvokeGetSkypeForBusinessDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -6141,12 +6201,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: InvokegetSkypeForBusinessDeviceUsageUserDetail
+      operationId: InvokeGetSkypeForBusinessDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6161,12 +6221,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
-      operationId: InvokegetSkypeForBusinessDeviceUsageDistributionUserCounts
+      operationId: InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6181,12 +6241,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getSkypeForBusinessDeviceUsageUserCounts
-      operationId: InvokegetSkypeForBusinessDeviceUsageUserCounts
+      operationId: InvokeGetSkypeForBusinessDeviceUsageUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6201,12 +6261,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserDetail
-      operationId: InvokegetYammerActivityUserDetail
+      operationId: InvokeGetYammerActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -6223,12 +6283,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserDetail
-      operationId: InvokegetYammerActivityUserDetail
+      operationId: InvokeGetYammerActivityUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6243,12 +6303,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityCounts
-      operationId: InvokegetYammerActivityCounts
+      operationId: InvokeGetYammerActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6263,12 +6323,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerActivityUserCounts
-      operationId: InvokegetYammerActivityUserCounts
+      operationId: InvokeGetYammerActivityUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6283,12 +6343,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: InvokegetYammerDeviceUsageUserDetail
+      operationId: InvokeGetYammerDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -6305,12 +6365,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: InvokegetYammerDeviceUsageUserDetail
+      operationId: InvokeGetYammerDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6325,12 +6385,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageDistributionUserCounts
-      operationId: InvokegetYammerDeviceUsageDistributionUserCounts
+      operationId: InvokeGetYammerDeviceUsageDistributionUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6345,12 +6405,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerDeviceUsageUserCounts
-      operationId: InvokegetYammerDeviceUsageUserCounts
+      operationId: InvokeGetYammerDeviceUsageUserCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6365,12 +6425,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: InvokegetYammerGroupsActivityDetail
+      operationId: InvokeGetYammerGroupsActivityDetail
       produces:
         - application/json
       parameters:
-        - name: date
-          in: path
+        - in: path
+          name: date
           required: true
           type: string
           format: date
@@ -6387,12 +6447,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: InvokegetYammerGroupsActivityDetail
+      operationId: InvokeGetYammerGroupsActivityDetail
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6407,12 +6467,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityGroupCounts
-      operationId: InvokegetYammerGroupsActivityGroupCounts
+      operationId: InvokeGetYammerGroupsActivityGroupCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -6427,12 +6487,12 @@ paths:
       tags:
         - reports
       summary: Invoke function getYammerGroupsActivityCounts
-      operationId: InvokegetYammerGroupsActivityCounts
+      operationId: InvokeGetYammerGroupsActivityCounts
       produces:
         - application/json
       parameters:
-        - name: period
-          in: path
+        - in: path
+          name: period
           required: true
           type: string
       responses:
@@ -10605,30 +10665,30 @@ definitions:
         type: string
 parameters:
   top:
-    name: $top
     in: query
+    name: $top
     description: Show only the first n items
     type: integer
     minimum: 0
   skip:
-    name: $skip
     in: query
+    name: $skip
     description: Skip the first n items
     type: integer
     minimum: 0
   count:
-    name: $count
     in: query
+    name: $count
     description: Include count of items
     type: boolean
   filter:
-    name: $filter
     in: query
+    name: $filter
     description: Filter items by property values
     type: string
   search:
-    name: $search
     in: query
+    name: $search
     description: Search items by search phrases
     type: string
 responses:

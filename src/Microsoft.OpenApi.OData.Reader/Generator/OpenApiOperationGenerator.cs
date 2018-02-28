@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "GetEntitiesFrom" + entitySet.Name;
+                operation.OperationId = "GetEntitiesFrom" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
@@ -329,7 +329,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "AddEntityTo" + entitySet.Name;
+                operation.OperationId = "AddEntityTo" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             return operation;
@@ -365,7 +365,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "GetEntityFrom" + entitySet.Name + "ByKey";
+                operation.OperationId = "GetEntityFrom" + Utils.UpperFirstChar(entitySet.Name) + "ByKey";
             }
 
             IEdmEntityType entityType = entitySet.EntityType();
@@ -454,7 +454,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "UpdateEntityIn" + entitySet.Name;
+                operation.OperationId = "UpdateEntityIn" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -531,7 +531,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "DeleteEntityFrom" + entitySet.Name;
+                operation.OperationId = "DeleteEntityFrom" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -586,7 +586,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Get" + singleton.Name;
+                operation.OperationId = "Get" + Utils.UpperFirstChar(singleton.Name);
             }
 
             operation.Parameters = new List<OpenApiParameter>();
@@ -674,7 +674,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Update" + singleton.Name;
+                operation.OperationId = "Update" + Utils.UpperFirstChar(singleton.Name);
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -742,7 +742,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Get" + property.Name + "From" + navigationSource.Name;
+                operation.OperationId = "Get" + Utils.UpperFirstChar(property.Name) + "From" + Utils.UpperFirstChar(navigationSource.Name);
             }
 
             IEdmEntityType declaringEntityType = property.DeclaringEntityType();
@@ -903,7 +903,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Update" + property.Name + "In" + navigationSource.Name;
+                operation.OperationId = "Update" + Utils.UpperFirstChar(property.Name) + "In" + Utils.UpperFirstChar(navigationSource.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(navigationSource.EntityType());
@@ -1044,7 +1044,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Add" + property.Name + "To" + navigationSource.Name;
+                operation.OperationId = "Add" + Utils.UpperFirstChar(property.Name) + "To" + Utils.UpperFirstChar(navigationSource.Name);
             }
 
             return operation;
@@ -1083,7 +1083,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + edmOperation.Name;
+                operation.OperationId = "Invoke" + Utils.UpperFirstChar(edmOperation.Name);
             }
 
             // The tags array of the Operation Object includes the entity set name.
@@ -1171,7 +1171,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + operationImport.Name;
+                operation.OperationId = "Invoke" + Utils.UpperFirstChar(operationImport.Name);
             }
 
             // If the action or function import specifies the EntitySet attribute,

@@ -22,8 +22,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -51,8 +51,8 @@ paths:
               - Features
               - Features desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -69,8 +69,8 @@ paths:
               - FavoriteFeature
               - Features
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -103,9 +103,10 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       responses:
@@ -124,13 +125,13 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -147,8 +148,8 @@ paths:
               - FavoriteFeature
               - Features
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -173,14 +174,15 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       responses:
@@ -194,13 +196,13 @@ paths:
       summary: Delete entity from People
       operationId: DeleteEntityFromPeople
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -217,8 +219,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
@@ -237,8 +239,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
@@ -259,8 +261,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
@@ -281,14 +283,15 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -318,8 +321,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -329,8 +332,8 @@ paths:
               - Name
               - Name desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -338,8 +341,8 @@ paths:
               - AirlineCode
               - Name
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -369,9 +372,10 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
       responses:
@@ -390,13 +394,13 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: AirlineCode
-          in: path
+        - in: path
+          name: AirlineCode
           description: 'key: AirlineCode'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -404,8 +408,8 @@ paths:
               - AirlineCode
               - Name
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -427,14 +431,15 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: AirlineCode
-          in: path
+        - in: path
+          name: AirlineCode
           description: 'key: AirlineCode'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
       responses:
@@ -448,13 +453,13 @@ paths:
       summary: Delete entity from Airlines
       operationId: DeleteEntityFromAirlines
       parameters:
-        - name: AirlineCode
-          in: path
+        - in: path
+          name: AirlineCode
           description: 'key: AirlineCode'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -476,8 +481,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -491,8 +496,8 @@ paths:
               - Location
               - Location desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -502,8 +507,8 @@ paths:
               - IataCode
               - Location
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -533,9 +538,10 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
       responses:
@@ -554,13 +560,13 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: IcaoCode
-          in: path
+        - in: path
+          name: IcaoCode
           description: 'key: IcaoCode'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -570,8 +576,8 @@ paths:
               - IataCode
               - Location
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -593,14 +599,15 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: IcaoCode
-          in: path
+        - in: path
+          name: IcaoCode
           description: 'key: IcaoCode'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
       responses:
@@ -614,13 +621,13 @@ paths:
       summary: Delete entity from Airports
       operationId: DeleteEntityFromAirports
       parameters:
-        - name: IcaoCode
-          in: path
+        - in: path
+          name: IcaoCode
           description: 'key: IcaoCode'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -642,8 +649,8 @@ paths:
         - $ref: '#/parameters/search'
         - $ref: '#/parameters/filter'
         - $ref: '#/parameters/count'
-        - name: $orderby
-          in: query
+        - in: query
+          name: $orderby
           description: Order items by property values
           type: array
           items:
@@ -671,8 +678,8 @@ paths:
               - Features
               - Features desc
             type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -689,8 +696,8 @@ paths:
               - FavoriteFeature
               - Features
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -723,9 +730,10 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New entity
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       responses:
@@ -744,13 +752,13 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -767,8 +775,8 @@ paths:
               - FavoriteFeature
               - Features
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -793,14 +801,15 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       responses:
@@ -814,13 +823,13 @@ paths:
       summary: Delete entity from NewComePeople
       operationId: DeleteEntityFromNewComePeople
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: If-Match
-          in: header
+        - in: header
+          name: If-Match
           description: ETag
           type: string
       responses:
@@ -837,8 +846,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
@@ -857,8 +866,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
@@ -879,8 +888,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
@@ -901,14 +910,15 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: UserName
-          in: path
+        - in: path
+          name: UserName
           description: 'key: UserName'
           required: true
           type: string
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -933,8 +943,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: $select
-          in: query
+        - in: query
+          name: $select
           description: Select properties to be returned
           type: array
           items:
@@ -951,8 +961,8 @@ paths:
               - FavoriteFeature
               - Features
             type: string
-        - name: $expand
-          in: query
+        - in: query
+          name: $expand
           description: Expand related entities
           type: array
           items:
@@ -977,9 +987,10 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: New property values
+          required: true
           schema:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       responses:
@@ -1010,8 +1021,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: userName
-          in: path
+        - in: path
+          name: userName
           required: true
           type: string
       responses:
@@ -1031,8 +1042,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: lastName
-          in: path
+        - in: path
+          name: lastName
           required: true
           type: string
       responses:
@@ -1052,9 +1063,10 @@ paths:
       consumes:
         - application/json
       parameters:
-        - name: body
-          in: body
+        - in: body
+          name: body
           description: Action parameters
+          required: true
           schema:
             type: object
             properties:
@@ -1093,12 +1105,12 @@ paths:
       produces:
         - application/json
       parameters:
-        - name: lat
-          in: path
+        - in: path
+          name: lat
           required: true
           format: double
-        - name: lon
-          in: path
+        - in: path
+          name: lon
           required: true
           format: double
       responses:
@@ -1500,30 +1512,30 @@ definitions:
         type: string
 parameters:
   top:
-    name: $top
     in: query
+    name: $top
     description: Show only the first n items
     type: integer
     minimum: 0
   skip:
-    name: $skip
     in: query
+    name: $skip
     description: Skip the first n items
     type: integer
     minimum: 0
   count:
-    name: $count
     in: query
+    name: $count
     description: Include count of items
     type: boolean
   filter:
-    name: $filter
     in: query
+    name: $filter
     description: Filter items by property values
     type: string
   search:
-    name: $search
     in: query
+    name: $search
     description: Search items by search phrases
     type: string
 responses:

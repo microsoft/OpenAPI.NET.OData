@@ -60,11 +60,11 @@ namespace UpdateDocs
             string csdl = path + "../../../../../../docs/csdl";
             string oas20 = path + "../../../../../../docs/oas_2_0";
             string oas30 = path + "../../../../../../docs/oas3_0_0";
-
+            /*
             if (ProcessAnnotation(path))
             {
                 return 0;
-            }
+            }*/
 
             foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {

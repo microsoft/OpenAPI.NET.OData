@@ -17,7 +17,7 @@
           "directoryObjects"
         ],
         "summary": "Get entities from directoryObjects",
-        "operationId": "GetEntitiesFromdirectoryObjects",
+        "operationId": "GetEntitiesFromDirectoryObjects",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -87,7 +87,7 @@
           "directoryObjects"
         ],
         "summary": "Add new entity to directoryObjects",
-        "operationId": "AddEntityTodirectoryObjects",
+        "operationId": "AddEntityToDirectoryObjects",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -122,7 +122,7 @@
           "directoryObjects"
         ],
         "summary": "Get entity from directoryObjects by key",
-        "operationId": "GetEntityFromdirectoryObjectsByKey",
+        "operationId": "GetEntityFromDirectoryObjectsByKey",
         "parameters": [
           {
             "name": "id",
@@ -170,7 +170,7 @@
           "directoryObjects"
         ],
         "summary": "Update entity in directoryObjects",
-        "operationId": "UpdateEntityIndirectoryObjects",
+        "operationId": "UpdateEntityInDirectoryObjects",
         "parameters": [
           {
             "name": "id",
@@ -207,7 +207,7 @@
           "directoryObjects"
         ],
         "summary": "Delete entity from directoryObjects",
-        "operationId": "DeleteEntityFromdirectoryObjects",
+        "operationId": "DeleteEntityFromDirectoryObjects",
         "parameters": [
           {
             "name": "id",
@@ -243,7 +243,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getByIds",
-        "operationId": "InvokegetByIds",
+        "operationId": "InvokeGetByIds",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -286,7 +286,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action checkMemberGroups",
-        "operationId": "InvokecheckMemberGroups",
+        "operationId": "InvokeCheckMemberGroups",
         "parameters": [
           {
             "name": "id",
@@ -333,7 +333,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberGroups",
-        "operationId": "InvokegetMemberGroups",
+        "operationId": "InvokeGetMemberGroups",
         "parameters": [
           {
             "name": "id",
@@ -379,7 +379,7 @@
           "directoryObjects"
         ],
         "summary": "Invoke action getMemberObjects",
-        "operationId": "InvokegetMemberObjects",
+        "operationId": "InvokeGetMemberObjects",
         "parameters": [
           {
             "name": "id",
@@ -425,7 +425,7 @@
           "devices"
         ],
         "summary": "Get entities from devices",
-        "operationId": "GetEntitiesFromdevices",
+        "operationId": "GetEntitiesFromDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -540,7 +540,7 @@
           "devices"
         ],
         "summary": "Add new entity to devices",
-        "operationId": "AddEntityTodevices",
+        "operationId": "AddEntityToDevices",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -575,7 +575,7 @@
           "devices"
         ],
         "summary": "Get entity from devices by key",
-        "operationId": "GetEntityFromdevicesByKey",
+        "operationId": "GetEntityFromDevicesByKey",
         "parameters": [
           {
             "name": "id",
@@ -638,7 +638,7 @@
           "devices"
         ],
         "summary": "Update entity in devices",
-        "operationId": "UpdateEntityIndevices",
+        "operationId": "UpdateEntityInDevices",
         "parameters": [
           {
             "name": "id",
@@ -675,7 +675,7 @@
           "devices"
         ],
         "summary": "Delete entity from devices",
-        "operationId": "DeleteEntityFromdevices",
+        "operationId": "DeleteEntityFromDevices",
         "parameters": [
           {
             "name": "id",
@@ -711,7 +711,7 @@
           "devices"
         ],
         "summary": "Get registeredOwners from devices",
-        "operationId": "GetregisteredOwnersFromdevices",
+        "operationId": "GetRegisteredOwnersFromDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -844,7 +844,7 @@
           "devices"
         ],
         "summary": "Add new navigation property to registeredOwners for devices",
-        "operationId": "AddregisteredOwnersTodevices",
+        "operationId": "AddRegisteredOwnersToDevices",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -879,7 +879,7 @@
           "devices"
         ],
         "summary": "Get registeredUsers from devices",
-        "operationId": "GetregisteredUsersFromdevices",
+        "operationId": "GetRegisteredUsersFromDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1012,7 +1012,7 @@
           "devices"
         ],
         "summary": "Add new navigation property to registeredUsers for devices",
-        "operationId": "AddregisteredUsersTodevices",
+        "operationId": "AddRegisteredUsersToDevices",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -1047,7 +1047,7 @@
           "devices"
         ],
         "summary": "Get extensions from devices",
-        "operationId": "GetextensionsFromdevices",
+        "operationId": "GetExtensionsFromDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1180,7 +1180,7 @@
           "devices"
         ],
         "summary": "Add new navigation property to extensions for devices",
-        "operationId": "AddextensionsTodevices",
+        "operationId": "AddExtensionsToDevices",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -1215,7 +1215,7 @@
           "domains"
         ],
         "summary": "Get entities from domains",
-        "operationId": "GetEntitiesFromdomains",
+        "operationId": "GetEntitiesFromDomains",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1339,7 +1339,7 @@
           "domains"
         ],
         "summary": "Add new entity to domains",
-        "operationId": "AddEntityTodomains",
+        "operationId": "AddEntityToDomains",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -1374,7 +1374,7 @@
           "domains"
         ],
         "summary": "Get entity from domains by key",
-        "operationId": "GetEntityFromdomainsByKey",
+        "operationId": "GetEntityFromDomainsByKey",
         "parameters": [
           {
             "name": "id",
@@ -1449,7 +1449,7 @@
           "domains"
         ],
         "summary": "Update entity in domains",
-        "operationId": "UpdateEntityIndomains",
+        "operationId": "UpdateEntityInDomains",
         "parameters": [
           {
             "name": "id",
@@ -1486,7 +1486,7 @@
           "domains"
         ],
         "summary": "Delete entity from domains",
-        "operationId": "DeleteEntityFromdomains",
+        "operationId": "DeleteEntityFromDomains",
         "parameters": [
           {
             "name": "id",
@@ -1522,7 +1522,7 @@
           "domains"
         ],
         "summary": "Get serviceConfigurationRecords from domains",
-        "operationId": "GetserviceConfigurationRecordsFromdomains",
+        "operationId": "GetServiceConfigurationRecordsFromDomains",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1637,7 +1637,7 @@
           "domains"
         ],
         "summary": "Add new navigation property to serviceConfigurationRecords for domains",
-        "operationId": "AddserviceConfigurationRecordsTodomains",
+        "operationId": "AddServiceConfigurationRecordsToDomains",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -1672,7 +1672,7 @@
           "domains"
         ],
         "summary": "Get verificationDnsRecords from domains",
-        "operationId": "GetverificationDnsRecordsFromdomains",
+        "operationId": "GetVerificationDnsRecordsFromDomains",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1787,7 +1787,7 @@
           "domains"
         ],
         "summary": "Add new navigation property to verificationDnsRecords for domains",
-        "operationId": "AddverificationDnsRecordsTodomains",
+        "operationId": "AddVerificationDnsRecordsToDomains",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -1822,7 +1822,7 @@
           "domains"
         ],
         "summary": "Get domainNameReferences from domains",
-        "operationId": "GetdomainNameReferencesFromdomains",
+        "operationId": "GetDomainNameReferencesFromDomains",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -1937,7 +1937,7 @@
           "domains"
         ],
         "summary": "Add new navigation property to domainNameReferences for domains",
-        "operationId": "AdddomainNameReferencesTodomains",
+        "operationId": "AddDomainNameReferencesToDomains",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -1972,7 +1972,7 @@
           "domains"
         ],
         "summary": "Invoke action verify",
-        "operationId": "Invokeverify",
+        "operationId": "InvokeVerify",
         "parameters": [
           {
             "name": "id",
@@ -2000,7 +2000,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entities from domainDnsRecords",
-        "operationId": "GetEntitiesFromdomainDnsRecords",
+        "operationId": "GetEntitiesFromDomainDnsRecords",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2109,7 +2109,7 @@
           "domainDnsRecords"
         ],
         "summary": "Add new entity to domainDnsRecords",
-        "operationId": "AddEntityTodomainDnsRecords",
+        "operationId": "AddEntityToDomainDnsRecords",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -2144,7 +2144,7 @@
           "domainDnsRecords"
         ],
         "summary": "Get entity from domainDnsRecords by key",
-        "operationId": "GetEntityFromdomainDnsRecordsByKey",
+        "operationId": "GetEntityFromDomainDnsRecordsByKey",
         "parameters": [
           {
             "name": "id",
@@ -2212,7 +2212,7 @@
           "domainDnsRecords"
         ],
         "summary": "Update entity in domainDnsRecords",
-        "operationId": "UpdateEntityIndomainDnsRecords",
+        "operationId": "UpdateEntityInDomainDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -2249,7 +2249,7 @@
           "domainDnsRecords"
         ],
         "summary": "Delete entity from domainDnsRecords",
-        "operationId": "DeleteEntityFromdomainDnsRecords",
+        "operationId": "DeleteEntityFromDomainDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -2285,7 +2285,7 @@
           "groups"
         ],
         "summary": "Get entities from groups",
-        "operationId": "GetEntitiesFromgroups",
+        "operationId": "GetEntitiesFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2412,7 +2412,7 @@
           "groups"
         ],
         "summary": "Add new entity to groups",
-        "operationId": "AddEntityTogroups",
+        "operationId": "AddEntityToGroups",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -2447,7 +2447,7 @@
           "groups"
         ],
         "summary": "Get entity from groups by key",
-        "operationId": "GetEntityFromgroupsByKey",
+        "operationId": "GetEntityFromGroupsByKey",
         "parameters": [
           {
             "name": "id",
@@ -2514,7 +2514,7 @@
           "groups"
         ],
         "summary": "Update entity in groups",
-        "operationId": "UpdateEntityIngroups",
+        "operationId": "UpdateEntityInGroups",
         "parameters": [
           {
             "name": "id",
@@ -2551,7 +2551,7 @@
           "groups"
         ],
         "summary": "Delete entity from groups",
-        "operationId": "DeleteEntityFromgroups",
+        "operationId": "DeleteEntityFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -2587,7 +2587,7 @@
           "groups"
         ],
         "summary": "Get members from groups",
-        "operationId": "GetmembersFromgroups",
+        "operationId": "GetMembersFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2749,7 +2749,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to members for groups",
-        "operationId": "AddmembersTogroups",
+        "operationId": "AddMembersToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -2784,7 +2784,7 @@
           "groups"
         ],
         "summary": "Get memberOf from groups",
-        "operationId": "GetmemberOfFromgroups",
+        "operationId": "GetMemberOfFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -2946,7 +2946,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to memberOf for groups",
-        "operationId": "AddmemberOfTogroups",
+        "operationId": "AddMemberOfToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -2981,7 +2981,7 @@
           "groups"
         ],
         "summary": "Get createdOnBehalfOf from groups",
-        "operationId": "GetcreatedOnBehalfOfFromgroups",
+        "operationId": "GetCreatedOnBehalfOfFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -3083,7 +3083,7 @@
           "groups"
         ],
         "summary": "Update the navigation property createdOnBehalfOf in groups",
-        "operationId": "UpdatecreatedOnBehalfOfIngroups",
+        "operationId": "UpdateCreatedOnBehalfOfInGroups",
         "parameters": [
           {
             "name": "id",
@@ -3122,7 +3122,7 @@
           "groups"
         ],
         "summary": "Get owners from groups",
-        "operationId": "GetownersFromgroups",
+        "operationId": "GetOwnersFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3284,7 +3284,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to owners for groups",
-        "operationId": "AddownersTogroups",
+        "operationId": "AddOwnersToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -3319,7 +3319,7 @@
           "groups"
         ],
         "summary": "Get settings from groups",
-        "operationId": "GetsettingsFromgroups",
+        "operationId": "GetSettingsFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3481,7 +3481,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to settings for groups",
-        "operationId": "AddsettingsTogroups",
+        "operationId": "AddSettingsToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -3516,7 +3516,7 @@
           "groups"
         ],
         "summary": "Get extensions from groups",
-        "operationId": "GetextensionsFromgroups",
+        "operationId": "GetExtensionsFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3678,7 +3678,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to extensions for groups",
-        "operationId": "AddextensionsTogroups",
+        "operationId": "AddExtensionsToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -3713,7 +3713,7 @@
           "groups"
         ],
         "summary": "Get threads from groups",
-        "operationId": "GetthreadsFromgroups",
+        "operationId": "GetThreadsFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -3837,7 +3837,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to threads for groups",
-        "operationId": "AddthreadsTogroups",
+        "operationId": "AddThreadsToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -3872,7 +3872,7 @@
           "groups"
         ],
         "summary": "Get calendar from groups",
-        "operationId": "GetcalendarFromgroups",
+        "operationId": "GetCalendarFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -3941,7 +3941,7 @@
           "groups"
         ],
         "summary": "Get calendarView from groups",
-        "operationId": "GetcalendarViewFromgroups",
+        "operationId": "GetCalendarViewFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4067,7 +4067,7 @@
           "groups"
         ],
         "summary": "Get events from groups",
-        "operationId": "GeteventsFromgroups",
+        "operationId": "GetEventsFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4191,7 +4191,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to events for groups",
-        "operationId": "AddeventsTogroups",
+        "operationId": "AddEventsToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -4226,7 +4226,7 @@
           "groups"
         ],
         "summary": "Get conversations from groups",
-        "operationId": "GetconversationsFromgroups",
+        "operationId": "GetConversationsFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4353,7 +4353,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to conversations for groups",
-        "operationId": "AddconversationsTogroups",
+        "operationId": "AddConversationsToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -4388,7 +4388,7 @@
           "groups"
         ],
         "summary": "Get photo from groups",
-        "operationId": "GetphotoFromgroups",
+        "operationId": "GetPhotoFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -4455,7 +4455,7 @@
           "groups"
         ],
         "summary": "Update the navigation property photo in groups",
-        "operationId": "UpdatephotoIngroups",
+        "operationId": "UpdatePhotoInGroups",
         "parameters": [
           {
             "name": "id",
@@ -4494,7 +4494,7 @@
           "groups"
         ],
         "summary": "Get photos from groups",
-        "operationId": "GetphotosFromgroups",
+        "operationId": "GetPhotosFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4620,7 +4620,7 @@
           "groups"
         ],
         "summary": "Get acceptedSenders from groups",
-        "operationId": "GetacceptedSendersFromgroups",
+        "operationId": "GetAcceptedSendersFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4744,7 +4744,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to acceptedSenders for groups",
-        "operationId": "AddacceptedSendersTogroups",
+        "operationId": "AddAcceptedSendersToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -4779,7 +4779,7 @@
           "groups"
         ],
         "summary": "Get rejectedSenders from groups",
-        "operationId": "GetrejectedSendersFromgroups",
+        "operationId": "GetRejectedSendersFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -4903,7 +4903,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to rejectedSenders for groups",
-        "operationId": "AddrejectedSendersTogroups",
+        "operationId": "AddRejectedSendersToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -4938,7 +4938,7 @@
           "groups"
         ],
         "summary": "Get drive from groups",
-        "operationId": "GetdriveFromgroups",
+        "operationId": "GetDriveFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -5040,7 +5040,7 @@
           "groups"
         ],
         "summary": "Update the navigation property drive in groups",
-        "operationId": "UpdatedriveIngroups",
+        "operationId": "UpdateDriveInGroups",
         "parameters": [
           {
             "name": "id",
@@ -5079,7 +5079,7 @@
           "groups"
         ],
         "summary": "Get drives from groups",
-        "operationId": "GetdrivesFromgroups",
+        "operationId": "GetDrivesFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5241,7 +5241,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to drives for groups",
-        "operationId": "AdddrivesTogroups",
+        "operationId": "AddDrivesToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -5276,7 +5276,7 @@
           "groups"
         ],
         "summary": "Get sites from groups",
-        "operationId": "GetsitesFromgroups",
+        "operationId": "GetSitesFromGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -5438,7 +5438,7 @@
           "groups"
         ],
         "summary": "Add new navigation property to sites for groups",
-        "operationId": "AddsitesTogroups",
+        "operationId": "AddSitesToGroups",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -5473,7 +5473,7 @@
           "groups"
         ],
         "summary": "Get planner from groups",
-        "operationId": "GetplannerFromgroups",
+        "operationId": "GetPlannerFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -5575,7 +5575,7 @@
           "groups"
         ],
         "summary": "Update the navigation property planner in groups",
-        "operationId": "UpdateplannerIngroups",
+        "operationId": "UpdatePlannerInGroups",
         "parameters": [
           {
             "name": "id",
@@ -5614,7 +5614,7 @@
           "groups"
         ],
         "summary": "Get onenote from groups",
-        "operationId": "GetonenoteFromgroups",
+        "operationId": "GetOnenoteFromGroups",
         "parameters": [
           {
             "name": "id",
@@ -5716,7 +5716,7 @@
           "groups"
         ],
         "summary": "Update the navigation property onenote in groups",
-        "operationId": "UpdateonenoteIngroups",
+        "operationId": "UpdateOnenoteInGroups",
         "parameters": [
           {
             "name": "id",
@@ -5755,7 +5755,7 @@
           "groups"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "responses": {
           "200": {
             "description": "Success",
@@ -5787,7 +5787,7 @@
           "groups"
         ],
         "summary": "Invoke action subscribeByMail",
-        "operationId": "InvokesubscribeByMail",
+        "operationId": "InvokeSubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -5815,7 +5815,7 @@
           "groups"
         ],
         "summary": "Invoke action unsubscribeByMail",
-        "operationId": "InvokeunsubscribeByMail",
+        "operationId": "InvokeUnsubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -5843,7 +5843,7 @@
           "groups"
         ],
         "summary": "Invoke action addFavorite",
-        "operationId": "InvokeaddFavorite",
+        "operationId": "InvokeAddFavorite",
         "parameters": [
           {
             "name": "id",
@@ -5871,7 +5871,7 @@
           "groups"
         ],
         "summary": "Invoke action removeFavorite",
-        "operationId": "InvokeremoveFavorite",
+        "operationId": "InvokeRemoveFavorite",
         "parameters": [
           {
             "name": "id",
@@ -5899,7 +5899,7 @@
           "groups"
         ],
         "summary": "Invoke action resetUnseenCount",
-        "operationId": "InvokeresetUnseenCount",
+        "operationId": "InvokeResetUnseenCount",
         "parameters": [
           {
             "name": "id",
@@ -5927,7 +5927,7 @@
           "directoryRoles"
         ],
         "summary": "Get entities from directoryRoles",
-        "operationId": "GetEntitiesFromdirectoryRoles",
+        "operationId": "GetEntitiesFromDirectoryRoles",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -6003,7 +6003,7 @@
           "directoryRoles"
         ],
         "summary": "Add new entity to directoryRoles",
-        "operationId": "AddEntityTodirectoryRoles",
+        "operationId": "AddEntityToDirectoryRoles",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -6038,7 +6038,7 @@
           "directoryRoles"
         ],
         "summary": "Get entity from directoryRoles by key",
-        "operationId": "GetEntityFromdirectoryRolesByKey",
+        "operationId": "GetEntityFromDirectoryRolesByKey",
         "parameters": [
           {
             "name": "id",
@@ -6089,7 +6089,7 @@
           "directoryRoles"
         ],
         "summary": "Update entity in directoryRoles",
-        "operationId": "UpdateEntityIndirectoryRoles",
+        "operationId": "UpdateEntityInDirectoryRoles",
         "parameters": [
           {
             "name": "id",
@@ -6126,7 +6126,7 @@
           "directoryRoles"
         ],
         "summary": "Delete entity from directoryRoles",
-        "operationId": "DeleteEntityFromdirectoryRoles",
+        "operationId": "DeleteEntityFromDirectoryRoles",
         "parameters": [
           {
             "name": "id",
@@ -6162,7 +6162,7 @@
           "directoryRoles"
         ],
         "summary": "Get members from directoryRoles",
-        "operationId": "GetmembersFromdirectoryRoles",
+        "operationId": "GetMembersFromDirectoryRoles",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -6257,7 +6257,7 @@
           "directoryRoles"
         ],
         "summary": "Add new navigation property to members for directoryRoles",
-        "operationId": "AddmembersTodirectoryRoles",
+        "operationId": "AddMembersToDirectoryRoles",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -6292,7 +6292,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entities from directoryRoleTemplates",
-        "operationId": "GetEntitiesFromdirectoryRoleTemplates",
+        "operationId": "GetEntitiesFromDirectoryRoleTemplates",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -6365,7 +6365,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Add new entity to directoryRoleTemplates",
-        "operationId": "AddEntityTodirectoryRoleTemplates",
+        "operationId": "AddEntityToDirectoryRoleTemplates",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -6400,7 +6400,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Get entity from directoryRoleTemplates by key",
-        "operationId": "GetEntityFromdirectoryRoleTemplatesByKey",
+        "operationId": "GetEntityFromDirectoryRoleTemplatesByKey",
         "parameters": [
           {
             "name": "id",
@@ -6450,7 +6450,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Update entity in directoryRoleTemplates",
-        "operationId": "UpdateEntityIndirectoryRoleTemplates",
+        "operationId": "UpdateEntityInDirectoryRoleTemplates",
         "parameters": [
           {
             "name": "id",
@@ -6487,7 +6487,7 @@
           "directoryRoleTemplates"
         ],
         "summary": "Delete entity from directoryRoleTemplates",
-        "operationId": "DeleteEntityFromdirectoryRoleTemplates",
+        "operationId": "DeleteEntityFromDirectoryRoleTemplates",
         "parameters": [
           {
             "name": "id",
@@ -6523,7 +6523,7 @@
           "organization"
         ],
         "summary": "Get entities from organization",
-        "operationId": "GetEntitiesFromorganization",
+        "operationId": "GetEntitiesFromOrganization",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -6647,7 +6647,7 @@
           "organization"
         ],
         "summary": "Add new entity to organization",
-        "operationId": "AddEntityToorganization",
+        "operationId": "AddEntityToOrganization",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -6682,7 +6682,7 @@
           "organization"
         ],
         "summary": "Get entity from organization by key",
-        "operationId": "GetEntityFromorganizationByKey",
+        "operationId": "GetEntityFromOrganizationByKey",
         "parameters": [
           {
             "name": "id",
@@ -6748,7 +6748,7 @@
           "organization"
         ],
         "summary": "Update entity in organization",
-        "operationId": "UpdateEntityInorganization",
+        "operationId": "UpdateEntityInOrganization",
         "parameters": [
           {
             "name": "id",
@@ -6785,7 +6785,7 @@
           "organization"
         ],
         "summary": "Delete entity from organization",
-        "operationId": "DeleteEntityFromorganization",
+        "operationId": "DeleteEntityFromOrganization",
         "parameters": [
           {
             "name": "id",
@@ -6821,7 +6821,7 @@
           "organization"
         ],
         "summary": "Get extensions from organization",
-        "operationId": "GetextensionsFromorganization",
+        "operationId": "GetExtensionsFromOrganization",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -6961,7 +6961,7 @@
           "organization"
         ],
         "summary": "Add new navigation property to extensions for organization",
-        "operationId": "AddextensionsToorganization",
+        "operationId": "AddExtensionsToOrganization",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -6996,7 +6996,7 @@
           "groupSettings"
         ],
         "summary": "Get entities from groupSettings",
-        "operationId": "GetEntitiesFromgroupSettings",
+        "operationId": "GetEntitiesFromGroupSettings",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -7099,7 +7099,7 @@
           "groupSettings"
         ],
         "summary": "Add new entity to groupSettings",
-        "operationId": "AddEntityTogroupSettings",
+        "operationId": "AddEntityToGroupSettings",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -7134,7 +7134,7 @@
           "groupSettings"
         ],
         "summary": "Get entity from groupSettings by key",
-        "operationId": "GetEntityFromgroupSettingsByKey",
+        "operationId": "GetEntityFromGroupSettingsByKey",
         "parameters": [
           {
             "name": "id",
@@ -7200,7 +7200,7 @@
           "groupSettings"
         ],
         "summary": "Update entity in groupSettings",
-        "operationId": "UpdateEntityIngroupSettings",
+        "operationId": "UpdateEntityInGroupSettings",
         "parameters": [
           {
             "name": "id",
@@ -7237,7 +7237,7 @@
           "groupSettings"
         ],
         "summary": "Delete entity from groupSettings",
-        "operationId": "DeleteEntityFromgroupSettings",
+        "operationId": "DeleteEntityFromGroupSettings",
         "parameters": [
           {
             "name": "id",
@@ -7273,7 +7273,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Get entities from groupSettingTemplates",
-        "operationId": "GetEntitiesFromgroupSettingTemplates",
+        "operationId": "GetEntitiesFromGroupSettingTemplates",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -7352,7 +7352,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Add new entity to groupSettingTemplates",
-        "operationId": "AddEntityTogroupSettingTemplates",
+        "operationId": "AddEntityToGroupSettingTemplates",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -7387,7 +7387,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Get entity from groupSettingTemplates by key",
-        "operationId": "GetEntityFromgroupSettingTemplatesByKey",
+        "operationId": "GetEntityFromGroupSettingTemplatesByKey",
         "parameters": [
           {
             "name": "id",
@@ -7438,7 +7438,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Update entity in groupSettingTemplates",
-        "operationId": "UpdateEntityIngroupSettingTemplates",
+        "operationId": "UpdateEntityInGroupSettingTemplates",
         "parameters": [
           {
             "name": "id",
@@ -7475,7 +7475,7 @@
           "groupSettingTemplates"
         ],
         "summary": "Delete entity from groupSettingTemplates",
-        "operationId": "DeleteEntityFromgroupSettingTemplates",
+        "operationId": "DeleteEntityFromGroupSettingTemplates",
         "parameters": [
           {
             "name": "id",
@@ -7511,7 +7511,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entities from subscribedSkus",
-        "operationId": "GetEntitiesFromsubscribedSkus",
+        "operationId": "GetEntitiesFromSubscribedSkus",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -7599,7 +7599,7 @@
           "subscribedSkus"
         ],
         "summary": "Add new entity to subscribedSkus",
-        "operationId": "AddEntityTosubscribedSkus",
+        "operationId": "AddEntityToSubscribedSkus",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -7634,7 +7634,7 @@
           "subscribedSkus"
         ],
         "summary": "Get entity from subscribedSkus by key",
-        "operationId": "GetEntityFromsubscribedSkusByKey",
+        "operationId": "GetEntityFromSubscribedSkusByKey",
         "parameters": [
           {
             "name": "id",
@@ -7689,7 +7689,7 @@
           "subscribedSkus"
         ],
         "summary": "Update entity in subscribedSkus",
-        "operationId": "UpdateEntityInsubscribedSkus",
+        "operationId": "UpdateEntityInSubscribedSkus",
         "parameters": [
           {
             "name": "id",
@@ -7726,7 +7726,7 @@
           "subscribedSkus"
         ],
         "summary": "Delete entity from subscribedSkus",
-        "operationId": "DeleteEntityFromsubscribedSkus",
+        "operationId": "DeleteEntityFromSubscribedSkus",
         "parameters": [
           {
             "name": "id",
@@ -7762,7 +7762,7 @@
           "users"
         ],
         "summary": "Get entities from users",
-        "operationId": "GetEntitiesFromusers",
+        "operationId": "GetEntitiesFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -7961,7 +7961,7 @@
           "users"
         ],
         "summary": "Add new entity to users",
-        "operationId": "AddEntityTousers",
+        "operationId": "AddEntityToUsers",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -7996,7 +7996,7 @@
           "users"
         ],
         "summary": "Get entity from users by key",
-        "operationId": "GetEntityFromusersByKey",
+        "operationId": "GetEntityFromUsersByKey",
         "parameters": [
           {
             "name": "id",
@@ -8087,7 +8087,7 @@
           "users"
         ],
         "summary": "Update entity in users",
-        "operationId": "UpdateEntityInusers",
+        "operationId": "UpdateEntityInUsers",
         "parameters": [
           {
             "name": "id",
@@ -8124,7 +8124,7 @@
           "users"
         ],
         "summary": "Delete entity from users",
-        "operationId": "DeleteEntityFromusers",
+        "operationId": "DeleteEntityFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -8160,7 +8160,7 @@
           "users"
         ],
         "summary": "Get ownedDevices from users",
-        "operationId": "GetownedDevicesFromusers",
+        "operationId": "GetOwnedDevicesFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -8400,7 +8400,7 @@
           "users"
         ],
         "summary": "Add new navigation property to ownedDevices for users",
-        "operationId": "AddownedDevicesTousers",
+        "operationId": "AddOwnedDevicesToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -8435,7 +8435,7 @@
           "users"
         ],
         "summary": "Get registeredDevices from users",
-        "operationId": "GetregisteredDevicesFromusers",
+        "operationId": "GetRegisteredDevicesFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -8675,7 +8675,7 @@
           "users"
         ],
         "summary": "Add new navigation property to registeredDevices for users",
-        "operationId": "AddregisteredDevicesTousers",
+        "operationId": "AddRegisteredDevicesToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -8710,7 +8710,7 @@
           "users"
         ],
         "summary": "Get manager from users",
-        "operationId": "GetmanagerFromusers",
+        "operationId": "GetManagerFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -8842,7 +8842,7 @@
           "users"
         ],
         "summary": "Update the navigation property manager in users",
-        "operationId": "UpdatemanagerInusers",
+        "operationId": "UpdateManagerInUsers",
         "parameters": [
           {
             "name": "id",
@@ -8881,7 +8881,7 @@
           "users"
         ],
         "summary": "Get directReports from users",
-        "operationId": "GetdirectReportsFromusers",
+        "operationId": "GetDirectReportsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9121,7 +9121,7 @@
           "users"
         ],
         "summary": "Add new navigation property to directReports for users",
-        "operationId": "AdddirectReportsTousers",
+        "operationId": "AddDirectReportsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -9156,7 +9156,7 @@
           "users"
         ],
         "summary": "Get memberOf from users",
-        "operationId": "GetmemberOfFromusers",
+        "operationId": "GetMemberOfFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9396,7 +9396,7 @@
           "users"
         ],
         "summary": "Add new navigation property to memberOf for users",
-        "operationId": "AddmemberOfTousers",
+        "operationId": "AddMemberOfToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -9431,7 +9431,7 @@
           "users"
         ],
         "summary": "Get createdObjects from users",
-        "operationId": "GetcreatedObjectsFromusers",
+        "operationId": "GetCreatedObjectsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9671,7 +9671,7 @@
           "users"
         ],
         "summary": "Add new navigation property to createdObjects for users",
-        "operationId": "AddcreatedObjectsTousers",
+        "operationId": "AddCreatedObjectsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -9706,7 +9706,7 @@
           "users"
         ],
         "summary": "Get ownedObjects from users",
-        "operationId": "GetownedObjectsFromusers",
+        "operationId": "GetOwnedObjectsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -9946,7 +9946,7 @@
           "users"
         ],
         "summary": "Add new navigation property to ownedObjects for users",
-        "operationId": "AddownedObjectsTousers",
+        "operationId": "AddOwnedObjectsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -9981,7 +9981,7 @@
           "users"
         ],
         "summary": "Get licenseDetails from users",
-        "operationId": "GetlicenseDetailsFromusers",
+        "operationId": "GetLicenseDetailsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10221,7 +10221,7 @@
           "users"
         ],
         "summary": "Add new navigation property to licenseDetails for users",
-        "operationId": "AddlicenseDetailsTousers",
+        "operationId": "AddLicenseDetailsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -10256,7 +10256,7 @@
           "users"
         ],
         "summary": "Get extensions from users",
-        "operationId": "GetextensionsFromusers",
+        "operationId": "GetExtensionsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10496,7 +10496,7 @@
           "users"
         ],
         "summary": "Add new navigation property to extensions for users",
-        "operationId": "AddextensionsTousers",
+        "operationId": "AddExtensionsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -10531,7 +10531,7 @@
           "users"
         ],
         "summary": "Get messages from users",
-        "operationId": "GetmessagesFromusers",
+        "operationId": "GetMessagesFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10730,7 +10730,7 @@
           "users"
         ],
         "summary": "Add new navigation property to messages for users",
-        "operationId": "AddmessagesTousers",
+        "operationId": "AddMessagesToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -10765,7 +10765,7 @@
           "users"
         ],
         "summary": "Get mailFolders from users",
-        "operationId": "GetmailFoldersFromusers",
+        "operationId": "GetMailFoldersFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -10961,7 +10961,7 @@
           "users"
         ],
         "summary": "Add new navigation property to mailFolders for users",
-        "operationId": "AddmailFoldersTousers",
+        "operationId": "AddMailFoldersToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -10996,7 +10996,7 @@
           "users"
         ],
         "summary": "Get calendar from users",
-        "operationId": "GetcalendarFromusers",
+        "operationId": "GetCalendarFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -11089,7 +11089,7 @@
           "users"
         ],
         "summary": "Get calendars from users",
-        "operationId": "GetcalendarsFromusers",
+        "operationId": "GetCalendarsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11285,7 +11285,7 @@
           "users"
         ],
         "summary": "Add new navigation property to calendars for users",
-        "operationId": "AddcalendarsTousers",
+        "operationId": "AddCalendarsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -11320,7 +11320,7 @@
           "users"
         ],
         "summary": "Get calendarGroups from users",
-        "operationId": "GetcalendarGroupsFromusers",
+        "operationId": "GetCalendarGroupsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11516,7 +11516,7 @@
           "users"
         ],
         "summary": "Add new navigation property to calendarGroups for users",
-        "operationId": "AddcalendarGroupsTousers",
+        "operationId": "AddCalendarGroupsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -11551,7 +11551,7 @@
           "users"
         ],
         "summary": "Get calendarView from users",
-        "operationId": "GetcalendarViewFromusers",
+        "operationId": "GetCalendarViewFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11790,7 +11790,7 @@
           "users"
         ],
         "summary": "Get events from users",
-        "operationId": "GeteventsFromusers",
+        "operationId": "GetEventsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -11986,7 +11986,7 @@
           "users"
         ],
         "summary": "Add new navigation property to events for users",
-        "operationId": "AddeventsTousers",
+        "operationId": "AddEventsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -12021,7 +12021,7 @@
           "users"
         ],
         "summary": "Get people from users",
-        "operationId": "GetpeopleFromusers",
+        "operationId": "GetPeopleFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -12222,7 +12222,7 @@
           "users"
         ],
         "summary": "Get contacts from users",
-        "operationId": "GetcontactsFromusers",
+        "operationId": "GetContactsFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -12421,7 +12421,7 @@
           "users"
         ],
         "summary": "Add new navigation property to contacts for users",
-        "operationId": "AddcontactsTousers",
+        "operationId": "AddContactsToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -12456,7 +12456,7 @@
           "users"
         ],
         "summary": "Get contactFolders from users",
-        "operationId": "GetcontactFoldersFromusers",
+        "operationId": "GetContactFoldersFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -12652,7 +12652,7 @@
           "users"
         ],
         "summary": "Add new navigation property to contactFolders for users",
-        "operationId": "AddcontactFoldersTousers",
+        "operationId": "AddContactFoldersToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -12687,7 +12687,7 @@
           "users"
         ],
         "summary": "Get inferenceClassification from users",
-        "operationId": "GetinferenceClassificationFromusers",
+        "operationId": "GetInferenceClassificationFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -12778,7 +12778,7 @@
           "users"
         ],
         "summary": "Update the navigation property inferenceClassification in users",
-        "operationId": "UpdateinferenceClassificationInusers",
+        "operationId": "UpdateInferenceClassificationInUsers",
         "parameters": [
           {
             "name": "id",
@@ -12817,7 +12817,7 @@
           "users"
         ],
         "summary": "Get photo from users",
-        "operationId": "GetphotoFromusers",
+        "operationId": "GetPhotoFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -12908,7 +12908,7 @@
           "users"
         ],
         "summary": "Update the navigation property photo in users",
-        "operationId": "UpdatephotoInusers",
+        "operationId": "UpdatePhotoInUsers",
         "parameters": [
           {
             "name": "id",
@@ -12947,7 +12947,7 @@
           "users"
         ],
         "summary": "Get photos from users",
-        "operationId": "GetphotosFromusers",
+        "operationId": "GetPhotosFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -13145,7 +13145,7 @@
           "users"
         ],
         "summary": "Get drive from users",
-        "operationId": "GetdriveFromusers",
+        "operationId": "GetDriveFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -13277,7 +13277,7 @@
           "users"
         ],
         "summary": "Update the navigation property drive in users",
-        "operationId": "UpdatedriveInusers",
+        "operationId": "UpdateDriveInUsers",
         "parameters": [
           {
             "name": "id",
@@ -13316,7 +13316,7 @@
           "users"
         ],
         "summary": "Get drives from users",
-        "operationId": "GetdrivesFromusers",
+        "operationId": "GetDrivesFromUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -13556,7 +13556,7 @@
           "users"
         ],
         "summary": "Add new navigation property to drives for users",
-        "operationId": "AdddrivesTousers",
+        "operationId": "AddDrivesToUsers",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -13591,7 +13591,7 @@
           "users"
         ],
         "summary": "Get planner from users",
-        "operationId": "GetplannerFromusers",
+        "operationId": "GetPlannerFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -13723,7 +13723,7 @@
           "users"
         ],
         "summary": "Update the navigation property planner in users",
-        "operationId": "UpdateplannerInusers",
+        "operationId": "UpdatePlannerInUsers",
         "parameters": [
           {
             "name": "id",
@@ -13762,7 +13762,7 @@
           "users"
         ],
         "summary": "Get onenote from users",
-        "operationId": "GetonenoteFromusers",
+        "operationId": "GetOnenoteFromUsers",
         "parameters": [
           {
             "name": "id",
@@ -13894,7 +13894,7 @@
           "users"
         ],
         "summary": "Update the navigation property onenote in users",
-        "operationId": "UpdateonenoteInusers",
+        "operationId": "UpdateOnenoteInUsers",
         "parameters": [
           {
             "name": "id",
@@ -13933,7 +13933,7 @@
           "users"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "responses": {
           "200": {
             "description": "Success",
@@ -13965,7 +13965,7 @@
           "users"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "InvokeassignLicense",
+        "operationId": "InvokeAssignLicense",
         "parameters": [
           {
             "name": "id",
@@ -14020,7 +14020,7 @@
           "users"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "InvokechangePassword",
+        "operationId": "InvokeChangePassword",
         "parameters": [
           {
             "name": "id",
@@ -14069,7 +14069,7 @@
           "users"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "InvokesendMail",
+        "operationId": "InvokeSendMail",
         "parameters": [
           {
             "name": "id",
@@ -14118,7 +14118,7 @@
           "users"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "InvokefindMeetingTimes",
+        "operationId": "InvokeFindMeetingTimes",
         "parameters": [
           {
             "name": "id",
@@ -14228,7 +14228,7 @@
           "users"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "InvokereminderView",
+        "operationId": "InvokeReminderView",
         "parameters": [
           {
             "name": "id",
@@ -14266,7 +14266,7 @@
           "contracts"
         ],
         "summary": "Get entities from contracts",
-        "operationId": "GetEntitiesFromcontracts",
+        "operationId": "GetEntitiesFromContracts",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -14348,7 +14348,7 @@
           "contracts"
         ],
         "summary": "Add new entity to contracts",
-        "operationId": "AddEntityTocontracts",
+        "operationId": "AddEntityToContracts",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -14383,7 +14383,7 @@
           "contracts"
         ],
         "summary": "Get entity from contracts by key",
-        "operationId": "GetEntityFromcontractsByKey",
+        "operationId": "GetEntityFromContractsByKey",
         "parameters": [
           {
             "name": "id",
@@ -14435,7 +14435,7 @@
           "contracts"
         ],
         "summary": "Update entity in contracts",
-        "operationId": "UpdateEntityIncontracts",
+        "operationId": "UpdateEntityInContracts",
         "parameters": [
           {
             "name": "id",
@@ -14472,7 +14472,7 @@
           "contracts"
         ],
         "summary": "Delete entity from contracts",
-        "operationId": "DeleteEntityFromcontracts",
+        "operationId": "DeleteEntityFromContracts",
         "parameters": [
           {
             "name": "id",
@@ -14508,7 +14508,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entities from schemaExtensions",
-        "operationId": "GetEntitiesFromschemaExtensions",
+        "operationId": "GetEntitiesFromSchemaExtensions",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -14617,7 +14617,7 @@
           "schemaExtensions"
         ],
         "summary": "Add new entity to schemaExtensions",
-        "operationId": "AddEntityToschemaExtensions",
+        "operationId": "AddEntityToSchemaExtensions",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -14652,7 +14652,7 @@
           "schemaExtensions"
         ],
         "summary": "Get entity from schemaExtensions by key",
-        "operationId": "GetEntityFromschemaExtensionsByKey",
+        "operationId": "GetEntityFromSchemaExtensionsByKey",
         "parameters": [
           {
             "name": "id",
@@ -14720,7 +14720,7 @@
           "schemaExtensions"
         ],
         "summary": "Update entity in schemaExtensions",
-        "operationId": "UpdateEntityInschemaExtensions",
+        "operationId": "UpdateEntityInSchemaExtensions",
         "parameters": [
           {
             "name": "id",
@@ -14757,7 +14757,7 @@
           "schemaExtensions"
         ],
         "summary": "Delete entity from schemaExtensions",
-        "operationId": "DeleteEntityFromschemaExtensions",
+        "operationId": "DeleteEntityFromSchemaExtensions",
         "parameters": [
           {
             "name": "id",
@@ -14793,7 +14793,7 @@
           "drives"
         ],
         "summary": "Get entities from drives",
-        "operationId": "GetEntitiesFromdrives",
+        "operationId": "GetEntitiesFromDrives",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -14935,7 +14935,7 @@
           "drives"
         ],
         "summary": "Add new entity to drives",
-        "operationId": "AddEntityTodrives",
+        "operationId": "AddEntityToDrives",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -14970,7 +14970,7 @@
           "drives"
         ],
         "summary": "Get entity from drives by key",
-        "operationId": "GetEntityFromdrivesByKey",
+        "operationId": "GetEntityFromDrivesByKey",
         "parameters": [
           {
             "name": "id",
@@ -15053,7 +15053,7 @@
           "drives"
         ],
         "summary": "Update entity in drives",
-        "operationId": "UpdateEntityIndrives",
+        "operationId": "UpdateEntityInDrives",
         "parameters": [
           {
             "name": "id",
@@ -15090,7 +15090,7 @@
           "drives"
         ],
         "summary": "Delete entity from drives",
-        "operationId": "DeleteEntityFromdrives",
+        "operationId": "DeleteEntityFromDrives",
         "parameters": [
           {
             "name": "id",
@@ -15126,7 +15126,7 @@
           "drives"
         ],
         "summary": "Get items from drives",
-        "operationId": "GetitemsFromdrives",
+        "operationId": "GetItemsFromDrives",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -15259,7 +15259,7 @@
           "drives"
         ],
         "summary": "Add new navigation property to items for drives",
-        "operationId": "AdditemsTodrives",
+        "operationId": "AddItemsToDrives",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -15294,7 +15294,7 @@
           "drives"
         ],
         "summary": "Get list from drives",
-        "operationId": "GetlistFromdrives",
+        "operationId": "GetListFromDrives",
         "parameters": [
           {
             "name": "id",
@@ -15377,7 +15377,7 @@
           "drives"
         ],
         "summary": "Update the navigation property list in drives",
-        "operationId": "UpdatelistIndrives",
+        "operationId": "UpdateListInDrives",
         "parameters": [
           {
             "name": "id",
@@ -15416,7 +15416,7 @@
           "drives"
         ],
         "summary": "Get root from drives",
-        "operationId": "GetrootFromdrives",
+        "operationId": "GetRootFromDrives",
         "parameters": [
           {
             "name": "id",
@@ -15499,7 +15499,7 @@
           "drives"
         ],
         "summary": "Update the navigation property root in drives",
-        "operationId": "UpdaterootIndrives",
+        "operationId": "UpdateRootInDrives",
         "parameters": [
           {
             "name": "id",
@@ -15538,7 +15538,7 @@
           "drives"
         ],
         "summary": "Get special from drives",
-        "operationId": "GetspecialFromdrives",
+        "operationId": "GetSpecialFromDrives",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -15671,7 +15671,7 @@
           "drives"
         ],
         "summary": "Add new navigation property to special for drives",
-        "operationId": "AddspecialTodrives",
+        "operationId": "AddSpecialToDrives",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -15706,7 +15706,7 @@
           "drives"
         ],
         "summary": "Invoke function recent",
-        "operationId": "Invokerecent",
+        "operationId": "InvokeRecent",
         "parameters": [
           {
             "name": "id",
@@ -15749,7 +15749,7 @@
           "drives"
         ],
         "summary": "Invoke function search",
-        "operationId": "Invokesearch",
+        "operationId": "InvokeSearch",
         "parameters": [
           {
             "name": "id",
@@ -15792,7 +15792,7 @@
           "drives"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "InvokesharedWithMe",
+        "operationId": "InvokeSharedWithMe",
         "parameters": [
           {
             "name": "id",
@@ -15835,7 +15835,7 @@
           "shares"
         ],
         "summary": "Get entities from shares",
-        "operationId": "GetEntitiesFromshares",
+        "operationId": "GetEntitiesFromShares",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -15967,7 +15967,7 @@
           "shares"
         ],
         "summary": "Add new entity to shares",
-        "operationId": "AddEntityToshares",
+        "operationId": "AddEntityToShares",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -16002,7 +16002,7 @@
           "shares"
         ],
         "summary": "Get entity from shares by key",
-        "operationId": "GetEntityFromsharesByKey",
+        "operationId": "GetEntityFromSharesByKey",
         "parameters": [
           {
             "name": "id",
@@ -16083,7 +16083,7 @@
           "shares"
         ],
         "summary": "Update entity in shares",
-        "operationId": "UpdateEntityInshares",
+        "operationId": "UpdateEntityInShares",
         "parameters": [
           {
             "name": "id",
@@ -16120,7 +16120,7 @@
           "shares"
         ],
         "summary": "Delete entity from shares",
-        "operationId": "DeleteEntityFromshares",
+        "operationId": "DeleteEntityFromShares",
         "parameters": [
           {
             "name": "id",
@@ -16156,7 +16156,7 @@
           "shares"
         ],
         "summary": "Get driveItem from shares",
-        "operationId": "GetdriveItemFromshares",
+        "operationId": "GetDriveItemFromShares",
         "parameters": [
           {
             "name": "id",
@@ -16237,7 +16237,7 @@
           "shares"
         ],
         "summary": "Update the navigation property driveItem in shares",
-        "operationId": "UpdatedriveItemInshares",
+        "operationId": "UpdateDriveItemInShares",
         "parameters": [
           {
             "name": "id",
@@ -16276,7 +16276,7 @@
           "shares"
         ],
         "summary": "Get items from shares",
-        "operationId": "GetitemsFromshares",
+        "operationId": "GetItemsFromShares",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -16399,7 +16399,7 @@
           "shares"
         ],
         "summary": "Add new navigation property to items for shares",
-        "operationId": "AdditemsToshares",
+        "operationId": "AddItemsToShares",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -16434,7 +16434,7 @@
           "shares"
         ],
         "summary": "Get list from shares",
-        "operationId": "GetlistFromshares",
+        "operationId": "GetListFromShares",
         "parameters": [
           {
             "name": "id",
@@ -16515,7 +16515,7 @@
           "shares"
         ],
         "summary": "Update the navigation property list in shares",
-        "operationId": "UpdatelistInshares",
+        "operationId": "UpdateListInShares",
         "parameters": [
           {
             "name": "id",
@@ -16554,7 +16554,7 @@
           "shares"
         ],
         "summary": "Get listItem from shares",
-        "operationId": "GetlistItemFromshares",
+        "operationId": "GetListItemFromShares",
         "parameters": [
           {
             "name": "id",
@@ -16635,7 +16635,7 @@
           "shares"
         ],
         "summary": "Update the navigation property listItem in shares",
-        "operationId": "UpdatelistItemInshares",
+        "operationId": "UpdateListItemInShares",
         "parameters": [
           {
             "name": "id",
@@ -16674,7 +16674,7 @@
           "shares"
         ],
         "summary": "Get root from shares",
-        "operationId": "GetrootFromshares",
+        "operationId": "GetRootFromShares",
         "parameters": [
           {
             "name": "id",
@@ -16755,7 +16755,7 @@
           "shares"
         ],
         "summary": "Update the navigation property root in shares",
-        "operationId": "UpdaterootInshares",
+        "operationId": "UpdateRootInShares",
         "parameters": [
           {
             "name": "id",
@@ -16794,7 +16794,7 @@
           "shares"
         ],
         "summary": "Get site from shares",
-        "operationId": "GetsiteFromshares",
+        "operationId": "GetSiteFromShares",
         "parameters": [
           {
             "name": "id",
@@ -16875,7 +16875,7 @@
           "shares"
         ],
         "summary": "Update the navigation property site in shares",
-        "operationId": "UpdatesiteInshares",
+        "operationId": "UpdateSiteInShares",
         "parameters": [
           {
             "name": "id",
@@ -16914,7 +16914,7 @@
           "sites"
         ],
         "summary": "Get entities from sites",
-        "operationId": "GetEntitiesFromsites",
+        "operationId": "GetEntitiesFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17057,7 +17057,7 @@
           "sites"
         ],
         "summary": "Add new entity to sites",
-        "operationId": "AddEntityTosites",
+        "operationId": "AddEntityToSites",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -17092,7 +17092,7 @@
           "sites"
         ],
         "summary": "Get entity from sites by key",
-        "operationId": "GetEntityFromsitesByKey",
+        "operationId": "GetEntityFromSitesByKey",
         "parameters": [
           {
             "name": "id",
@@ -17178,7 +17178,7 @@
           "sites"
         ],
         "summary": "Update entity in sites",
-        "operationId": "UpdateEntityInsites",
+        "operationId": "UpdateEntityInSites",
         "parameters": [
           {
             "name": "id",
@@ -17215,7 +17215,7 @@
           "sites"
         ],
         "summary": "Delete entity from sites",
-        "operationId": "DeleteEntityFromsites",
+        "operationId": "DeleteEntityFromSites",
         "parameters": [
           {
             "name": "id",
@@ -17251,7 +17251,7 @@
           "sites"
         ],
         "summary": "Get columns from sites",
-        "operationId": "GetcolumnsFromsites",
+        "operationId": "GetColumnsFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17385,7 +17385,7 @@
           "sites"
         ],
         "summary": "Add new navigation property to columns for sites",
-        "operationId": "AddcolumnsTosites",
+        "operationId": "AddColumnsToSites",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -17420,7 +17420,7 @@
           "sites"
         ],
         "summary": "Get contentTypes from sites",
-        "operationId": "GetcontentTypesFromsites",
+        "operationId": "GetContentTypesFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17554,7 +17554,7 @@
           "sites"
         ],
         "summary": "Add new navigation property to contentTypes for sites",
-        "operationId": "AddcontentTypesTosites",
+        "operationId": "AddContentTypesToSites",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -17589,7 +17589,7 @@
           "sites"
         ],
         "summary": "Get drive from sites",
-        "operationId": "GetdriveFromsites",
+        "operationId": "GetDriveFromSites",
         "parameters": [
           {
             "name": "id",
@@ -17675,7 +17675,7 @@
           "sites"
         ],
         "summary": "Update the navigation property drive in sites",
-        "operationId": "UpdatedriveInsites",
+        "operationId": "UpdateDriveInSites",
         "parameters": [
           {
             "name": "id",
@@ -17714,7 +17714,7 @@
           "sites"
         ],
         "summary": "Get drives from sites",
-        "operationId": "GetdrivesFromsites",
+        "operationId": "GetDrivesFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -17848,7 +17848,7 @@
           "sites"
         ],
         "summary": "Add new navigation property to drives for sites",
-        "operationId": "AdddrivesTosites",
+        "operationId": "AddDrivesToSites",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -17883,7 +17883,7 @@
           "sites"
         ],
         "summary": "Get items from sites",
-        "operationId": "GetitemsFromsites",
+        "operationId": "GetItemsFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -18017,7 +18017,7 @@
           "sites"
         ],
         "summary": "Add new navigation property to items for sites",
-        "operationId": "AdditemsTosites",
+        "operationId": "AddItemsToSites",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -18052,7 +18052,7 @@
           "sites"
         ],
         "summary": "Get lists from sites",
-        "operationId": "GetlistsFromsites",
+        "operationId": "GetListsFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -18186,7 +18186,7 @@
           "sites"
         ],
         "summary": "Add new navigation property to lists for sites",
-        "operationId": "AddlistsTosites",
+        "operationId": "AddListsToSites",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -18221,7 +18221,7 @@
           "sites"
         ],
         "summary": "Get sites from sites",
-        "operationId": "GetsitesFromsites",
+        "operationId": "GetSitesFromSites",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -18355,7 +18355,7 @@
           "sites"
         ],
         "summary": "Add new navigation property to sites for sites",
-        "operationId": "AddsitesTosites",
+        "operationId": "AddSitesToSites",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -18390,7 +18390,7 @@
           "sites"
         ],
         "summary": "Get onenote from sites",
-        "operationId": "GetonenoteFromsites",
+        "operationId": "GetOnenoteFromSites",
         "parameters": [
           {
             "name": "id",
@@ -18476,7 +18476,7 @@
           "sites"
         ],
         "summary": "Update the navigation property onenote in sites",
-        "operationId": "UpdateonenoteInsites",
+        "operationId": "UpdateOnenoteInSites",
         "parameters": [
           {
             "name": "id",
@@ -18515,7 +18515,7 @@
           "sites"
         ],
         "summary": "Invoke function getByPath",
-        "operationId": "InvokegetByPath",
+        "operationId": "InvokeGetByPath",
         "parameters": [
           {
             "name": "id",
@@ -18555,7 +18555,7 @@
           "workbooks"
         ],
         "summary": "Get entities from workbooks",
-        "operationId": "GetEntitiesFromworkbooks",
+        "operationId": "GetEntitiesFromWorkbooks",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -18743,7 +18743,7 @@
           "workbooks"
         ],
         "summary": "Add new entity to workbooks",
-        "operationId": "AddEntityToworkbooks",
+        "operationId": "AddEntityToWorkbooks",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -18778,7 +18778,7 @@
           "workbooks"
         ],
         "summary": "Get entity from workbooks by key",
-        "operationId": "GetEntityFromworkbooksByKey",
+        "operationId": "GetEntityFromWorkbooksByKey",
         "parameters": [
           {
             "name": "id",
@@ -18877,7 +18877,7 @@
           "workbooks"
         ],
         "summary": "Update entity in workbooks",
-        "operationId": "UpdateEntityInworkbooks",
+        "operationId": "UpdateEntityInWorkbooks",
         "parameters": [
           {
             "name": "id",
@@ -18914,7 +18914,7 @@
           "workbooks"
         ],
         "summary": "Delete entity from workbooks",
-        "operationId": "DeleteEntityFromworkbooks",
+        "operationId": "DeleteEntityFromWorkbooks",
         "parameters": [
           {
             "name": "id",
@@ -18950,7 +18950,7 @@
           "workbooks"
         ],
         "summary": "Get children from workbooks",
-        "operationId": "GetchildrenFromworkbooks",
+        "operationId": "GetChildrenFromWorkbooks",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -19129,7 +19129,7 @@
           "workbooks"
         ],
         "summary": "Add new navigation property to children for workbooks",
-        "operationId": "AddchildrenToworkbooks",
+        "operationId": "AddChildrenToWorkbooks",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -19164,7 +19164,7 @@
           "workbooks"
         ],
         "summary": "Get listItem from workbooks",
-        "operationId": "GetlistItemFromworkbooks",
+        "operationId": "GetListItemFromWorkbooks",
         "parameters": [
           {
             "name": "id",
@@ -19263,7 +19263,7 @@
           "workbooks"
         ],
         "summary": "Update the navigation property listItem in workbooks",
-        "operationId": "UpdatelistItemInworkbooks",
+        "operationId": "UpdateListItemInWorkbooks",
         "parameters": [
           {
             "name": "id",
@@ -19302,7 +19302,7 @@
           "workbooks"
         ],
         "summary": "Get permissions from workbooks",
-        "operationId": "GetpermissionsFromworkbooks",
+        "operationId": "GetPermissionsFromWorkbooks",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -19481,7 +19481,7 @@
           "workbooks"
         ],
         "summary": "Add new navigation property to permissions for workbooks",
-        "operationId": "AddpermissionsToworkbooks",
+        "operationId": "AddPermissionsToWorkbooks",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -19516,7 +19516,7 @@
           "workbooks"
         ],
         "summary": "Get thumbnails from workbooks",
-        "operationId": "GetthumbnailsFromworkbooks",
+        "operationId": "GetThumbnailsFromWorkbooks",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -19695,7 +19695,7 @@
           "workbooks"
         ],
         "summary": "Add new navigation property to thumbnails for workbooks",
-        "operationId": "AddthumbnailsToworkbooks",
+        "operationId": "AddThumbnailsToWorkbooks",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -19730,7 +19730,7 @@
           "workbooks"
         ],
         "summary": "Get workbook from workbooks",
-        "operationId": "GetworkbookFromworkbooks",
+        "operationId": "GetWorkbookFromWorkbooks",
         "parameters": [
           {
             "name": "id",
@@ -19829,7 +19829,7 @@
           "workbooks"
         ],
         "summary": "Update the navigation property workbook in workbooks",
-        "operationId": "UpdateworkbookInworkbooks",
+        "operationId": "UpdateWorkbookInWorkbooks",
         "parameters": [
           {
             "name": "id",
@@ -19868,7 +19868,7 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "parameters": [
           {
             "name": "id",
@@ -19911,7 +19911,7 @@
           "workbooks"
         ],
         "summary": "Invoke function delta",
-        "operationId": "Invokedelta",
+        "operationId": "InvokeDelta",
         "parameters": [
           {
             "name": "id",
@@ -19954,7 +19954,7 @@
           "workbooks"
         ],
         "summary": "Invoke function search",
-        "operationId": "Invokesearch",
+        "operationId": "InvokeSearch",
         "parameters": [
           {
             "name": "id",
@@ -19997,7 +19997,7 @@
           "workbooks"
         ],
         "summary": "Invoke action copy",
-        "operationId": "Invokecopy",
+        "operationId": "InvokeCopy",
         "parameters": [
           {
             "name": "id",
@@ -20050,7 +20050,7 @@
           "workbooks"
         ],
         "summary": "Invoke action createLink",
-        "operationId": "InvokecreateLink",
+        "operationId": "InvokeCreateLink",
         "parameters": [
           {
             "name": "id",
@@ -20098,7 +20098,7 @@
           "workbooks"
         ],
         "summary": "Invoke action createUploadSession",
-        "operationId": "InvokecreateUploadSession",
+        "operationId": "InvokeCreateUploadSession",
         "parameters": [
           {
             "name": "id",
@@ -20147,7 +20147,7 @@
           "workbooks"
         ],
         "summary": "Invoke action invite",
-        "operationId": "Invokeinvite",
+        "operationId": "InvokeInvite",
         "parameters": [
           {
             "name": "id",
@@ -20215,7 +20215,7 @@
           "subscriptions"
         ],
         "summary": "Get entities from subscriptions",
-        "operationId": "GetEntitiesFromsubscriptions",
+        "operationId": "GetEntitiesFromSubscriptions",
         "parameters": [
           {
             "$ref": "#/components/parameters/search"
@@ -20271,7 +20271,7 @@
           "subscriptions"
         ],
         "summary": "Add new entity to subscriptions",
-        "operationId": "AddEntityTosubscriptions",
+        "operationId": "AddEntityToSubscriptions",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -20306,7 +20306,7 @@
           "subscriptions"
         ],
         "summary": "Get entity from subscriptions by key",
-        "operationId": "GetEntityFromsubscriptionsByKey",
+        "operationId": "GetEntityFromSubscriptionsByKey",
         "parameters": [
           {
             "name": "id",
@@ -20359,7 +20359,7 @@
           "subscriptions"
         ],
         "summary": "Update entity in subscriptions",
-        "operationId": "UpdateEntityInsubscriptions",
+        "operationId": "UpdateEntityInSubscriptions",
         "parameters": [
           {
             "name": "id",
@@ -20396,7 +20396,7 @@
           "subscriptions"
         ],
         "summary": "Delete entity from subscriptions",
-        "operationId": "DeleteEntityFromsubscriptions",
+        "operationId": "DeleteEntityFromSubscriptions",
         "parameters": [
           {
             "name": "id",
@@ -20432,7 +20432,7 @@
           "invitations"
         ],
         "summary": "Get entities from invitations",
-        "operationId": "GetEntitiesFrominvitations",
+        "operationId": "GetEntitiesFromInvitations",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -20551,7 +20551,7 @@
           "invitations"
         ],
         "summary": "Add new entity to invitations",
-        "operationId": "AddEntityToinvitations",
+        "operationId": "AddEntityToInvitations",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -20586,7 +20586,7 @@
           "invitations"
         ],
         "summary": "Get entity from invitations by key",
-        "operationId": "GetEntityFrominvitationsByKey",
+        "operationId": "GetEntityFromInvitationsByKey",
         "parameters": [
           {
             "name": "id",
@@ -20658,7 +20658,7 @@
           "invitations"
         ],
         "summary": "Update entity in invitations",
-        "operationId": "UpdateEntityIninvitations",
+        "operationId": "UpdateEntityInInvitations",
         "parameters": [
           {
             "name": "id",
@@ -20695,7 +20695,7 @@
           "invitations"
         ],
         "summary": "Delete entity from invitations",
-        "operationId": "DeleteEntityFrominvitations",
+        "operationId": "DeleteEntityFromInvitations",
         "parameters": [
           {
             "name": "id",
@@ -20731,7 +20731,7 @@
           "invitations"
         ],
         "summary": "Get invitedUser from invitations",
-        "operationId": "GetinvitedUserFrominvitations",
+        "operationId": "GetInvitedUserFromInvitations",
         "parameters": [
           {
             "name": "id",
@@ -20803,7 +20803,7 @@
           "invitations"
         ],
         "summary": "Update the navigation property invitedUser in invitations",
-        "operationId": "UpdateinvitedUserIninvitations",
+        "operationId": "UpdateInvitedUserInInvitations",
         "parameters": [
           {
             "name": "id",
@@ -20842,7 +20842,7 @@
           "me"
         ],
         "summary": "Get me",
-        "operationId": "Getme",
+        "operationId": "GetMe",
         "parameters": [
           {
             "name": "$select",
@@ -20924,7 +20924,7 @@
           "me"
         ],
         "summary": "Update me",
-        "operationId": "Updateme",
+        "operationId": "UpdateMe",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -20952,7 +20952,7 @@
           "me"
         ],
         "summary": "Get ownedDevices from me",
-        "operationId": "GetownedDevicesFromme",
+        "operationId": "GetOwnedDevicesFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -21192,7 +21192,7 @@
           "me"
         ],
         "summary": "Add new navigation property to ownedDevices for me",
-        "operationId": "AddownedDevicesTome",
+        "operationId": "AddOwnedDevicesToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -21227,7 +21227,7 @@
           "me"
         ],
         "summary": "Get registeredDevices from me",
-        "operationId": "GetregisteredDevicesFromme",
+        "operationId": "GetRegisteredDevicesFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -21467,7 +21467,7 @@
           "me"
         ],
         "summary": "Add new navigation property to registeredDevices for me",
-        "operationId": "AddregisteredDevicesTome",
+        "operationId": "AddRegisteredDevicesToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -21502,7 +21502,7 @@
           "me"
         ],
         "summary": "Get manager from me",
-        "operationId": "GetmanagerFromme",
+        "operationId": "GetManagerFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -21625,7 +21625,7 @@
           "me"
         ],
         "summary": "Update the navigation property manager in me",
-        "operationId": "UpdatemanagerInme",
+        "operationId": "UpdateManagerInMe",
         "parameters": [
           {
             "name": "id",
@@ -21664,7 +21664,7 @@
           "me"
         ],
         "summary": "Get directReports from me",
-        "operationId": "GetdirectReportsFromme",
+        "operationId": "GetDirectReportsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -21904,7 +21904,7 @@
           "me"
         ],
         "summary": "Add new navigation property to directReports for me",
-        "operationId": "AdddirectReportsTome",
+        "operationId": "AddDirectReportsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -21939,7 +21939,7 @@
           "me"
         ],
         "summary": "Get memberOf from me",
-        "operationId": "GetmemberOfFromme",
+        "operationId": "GetMemberOfFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -22179,7 +22179,7 @@
           "me"
         ],
         "summary": "Add new navigation property to memberOf for me",
-        "operationId": "AddmemberOfTome",
+        "operationId": "AddMemberOfToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -22214,7 +22214,7 @@
           "me"
         ],
         "summary": "Get createdObjects from me",
-        "operationId": "GetcreatedObjectsFromme",
+        "operationId": "GetCreatedObjectsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -22454,7 +22454,7 @@
           "me"
         ],
         "summary": "Add new navigation property to createdObjects for me",
-        "operationId": "AddcreatedObjectsTome",
+        "operationId": "AddCreatedObjectsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -22489,7 +22489,7 @@
           "me"
         ],
         "summary": "Get ownedObjects from me",
-        "operationId": "GetownedObjectsFromme",
+        "operationId": "GetOwnedObjectsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -22729,7 +22729,7 @@
           "me"
         ],
         "summary": "Add new navigation property to ownedObjects for me",
-        "operationId": "AddownedObjectsTome",
+        "operationId": "AddOwnedObjectsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -22764,7 +22764,7 @@
           "me"
         ],
         "summary": "Get licenseDetails from me",
-        "operationId": "GetlicenseDetailsFromme",
+        "operationId": "GetLicenseDetailsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -23004,7 +23004,7 @@
           "me"
         ],
         "summary": "Add new navigation property to licenseDetails for me",
-        "operationId": "AddlicenseDetailsTome",
+        "operationId": "AddLicenseDetailsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -23039,7 +23039,7 @@
           "me"
         ],
         "summary": "Get extensions from me",
-        "operationId": "GetextensionsFromme",
+        "operationId": "GetExtensionsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -23279,7 +23279,7 @@
           "me"
         ],
         "summary": "Add new navigation property to extensions for me",
-        "operationId": "AddextensionsTome",
+        "operationId": "AddExtensionsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -23314,7 +23314,7 @@
           "me"
         ],
         "summary": "Get messages from me",
-        "operationId": "GetmessagesFromme",
+        "operationId": "GetMessagesFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -23513,7 +23513,7 @@
           "me"
         ],
         "summary": "Add new navigation property to messages for me",
-        "operationId": "AddmessagesTome",
+        "operationId": "AddMessagesToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -23548,7 +23548,7 @@
           "me"
         ],
         "summary": "Get mailFolders from me",
-        "operationId": "GetmailFoldersFromme",
+        "operationId": "GetMailFoldersFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -23744,7 +23744,7 @@
           "me"
         ],
         "summary": "Add new navigation property to mailFolders for me",
-        "operationId": "AddmailFoldersTome",
+        "operationId": "AddMailFoldersToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -23779,7 +23779,7 @@
           "me"
         ],
         "summary": "Get calendar from me",
-        "operationId": "GetcalendarFromme",
+        "operationId": "GetCalendarFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -23863,7 +23863,7 @@
           "me"
         ],
         "summary": "Get calendars from me",
-        "operationId": "GetcalendarsFromme",
+        "operationId": "GetCalendarsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -24059,7 +24059,7 @@
           "me"
         ],
         "summary": "Add new navigation property to calendars for me",
-        "operationId": "AddcalendarsTome",
+        "operationId": "AddCalendarsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -24094,7 +24094,7 @@
           "me"
         ],
         "summary": "Get calendarGroups from me",
-        "operationId": "GetcalendarGroupsFromme",
+        "operationId": "GetCalendarGroupsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -24290,7 +24290,7 @@
           "me"
         ],
         "summary": "Add new navigation property to calendarGroups for me",
-        "operationId": "AddcalendarGroupsTome",
+        "operationId": "AddCalendarGroupsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -24325,7 +24325,7 @@
           "me"
         ],
         "summary": "Get calendarView from me",
-        "operationId": "GetcalendarViewFromme",
+        "operationId": "GetCalendarViewFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -24564,7 +24564,7 @@
           "me"
         ],
         "summary": "Get events from me",
-        "operationId": "GeteventsFromme",
+        "operationId": "GetEventsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -24760,7 +24760,7 @@
           "me"
         ],
         "summary": "Add new navigation property to events for me",
-        "operationId": "AddeventsTome",
+        "operationId": "AddEventsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -24795,7 +24795,7 @@
           "me"
         ],
         "summary": "Get people from me",
-        "operationId": "GetpeopleFromme",
+        "operationId": "GetPeopleFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -24996,7 +24996,7 @@
           "me"
         ],
         "summary": "Get contacts from me",
-        "operationId": "GetcontactsFromme",
+        "operationId": "GetContactsFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -25195,7 +25195,7 @@
           "me"
         ],
         "summary": "Add new navigation property to contacts for me",
-        "operationId": "AddcontactsTome",
+        "operationId": "AddContactsToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -25230,7 +25230,7 @@
           "me"
         ],
         "summary": "Get contactFolders from me",
-        "operationId": "GetcontactFoldersFromme",
+        "operationId": "GetContactFoldersFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -25426,7 +25426,7 @@
           "me"
         ],
         "summary": "Add new navigation property to contactFolders for me",
-        "operationId": "AddcontactFoldersTome",
+        "operationId": "AddContactFoldersToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -25461,7 +25461,7 @@
           "me"
         ],
         "summary": "Get inferenceClassification from me",
-        "operationId": "GetinferenceClassificationFromme",
+        "operationId": "GetInferenceClassificationFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -25543,7 +25543,7 @@
           "me"
         ],
         "summary": "Update the navigation property inferenceClassification in me",
-        "operationId": "UpdateinferenceClassificationInme",
+        "operationId": "UpdateInferenceClassificationInMe",
         "parameters": [
           {
             "name": "id",
@@ -25582,7 +25582,7 @@
           "me"
         ],
         "summary": "Get photo from me",
-        "operationId": "GetphotoFromme",
+        "operationId": "GetPhotoFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -25664,7 +25664,7 @@
           "me"
         ],
         "summary": "Update the navigation property photo in me",
-        "operationId": "UpdatephotoInme",
+        "operationId": "UpdatePhotoInMe",
         "parameters": [
           {
             "name": "id",
@@ -25703,7 +25703,7 @@
           "me"
         ],
         "summary": "Get photos from me",
-        "operationId": "GetphotosFromme",
+        "operationId": "GetPhotosFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -25901,7 +25901,7 @@
           "me"
         ],
         "summary": "Get drive from me",
-        "operationId": "GetdriveFromme",
+        "operationId": "GetDriveFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -26024,7 +26024,7 @@
           "me"
         ],
         "summary": "Update the navigation property drive in me",
-        "operationId": "UpdatedriveInme",
+        "operationId": "UpdateDriveInMe",
         "parameters": [
           {
             "name": "id",
@@ -26063,7 +26063,7 @@
           "me"
         ],
         "summary": "Get drives from me",
-        "operationId": "GetdrivesFromme",
+        "operationId": "GetDrivesFromMe",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -26303,7 +26303,7 @@
           "me"
         ],
         "summary": "Add new navigation property to drives for me",
-        "operationId": "AdddrivesTome",
+        "operationId": "AddDrivesToMe",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -26338,7 +26338,7 @@
           "me"
         ],
         "summary": "Get planner from me",
-        "operationId": "GetplannerFromme",
+        "operationId": "GetPlannerFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -26461,7 +26461,7 @@
           "me"
         ],
         "summary": "Update the navigation property planner in me",
-        "operationId": "UpdateplannerInme",
+        "operationId": "UpdatePlannerInMe",
         "parameters": [
           {
             "name": "id",
@@ -26500,7 +26500,7 @@
           "me"
         ],
         "summary": "Get onenote from me",
-        "operationId": "GetonenoteFromme",
+        "operationId": "GetOnenoteFromMe",
         "parameters": [
           {
             "name": "$select",
@@ -26623,7 +26623,7 @@
           "me"
         ],
         "summary": "Update the navigation property onenote in me",
-        "operationId": "UpdateonenoteInme",
+        "operationId": "UpdateOnenoteInMe",
         "parameters": [
           {
             "name": "id",
@@ -26662,7 +26662,7 @@
           "me"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "InvokeassignLicense",
+        "operationId": "InvokeAssignLicense",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -26706,7 +26706,7 @@
           "me"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "InvokechangePassword",
+        "operationId": "InvokeChangePassword",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -26744,7 +26744,7 @@
           "me"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "InvokesendMail",
+        "operationId": "InvokeSendMail",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -26782,7 +26782,7 @@
           "me"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "InvokefindMeetingTimes",
+        "operationId": "InvokeFindMeetingTimes",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -26881,7 +26881,7 @@
           "me"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "InvokereminderView",
+        "operationId": "InvokeReminderView",
         "parameters": [
           {
             "name": "StartDateTime",
@@ -26927,7 +26927,7 @@
           "drive"
         ],
         "summary": "Get drive",
-        "operationId": "Getdrive",
+        "operationId": "GetDrive",
         "parameters": [
           {
             "name": "$select",
@@ -27001,7 +27001,7 @@
           "drive"
         ],
         "summary": "Update drive",
-        "operationId": "Updatedrive",
+        "operationId": "UpdateDrive",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -27029,7 +27029,7 @@
           "drive"
         ],
         "summary": "Get items from drive",
-        "operationId": "GetitemsFromdrive",
+        "operationId": "GetItemsFromDrive",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -27162,7 +27162,7 @@
           "drive"
         ],
         "summary": "Add new navigation property to items for drive",
-        "operationId": "AdditemsTodrive",
+        "operationId": "AddItemsToDrive",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -27197,7 +27197,7 @@
           "drive"
         ],
         "summary": "Get list from drive",
-        "operationId": "GetlistFromdrive",
+        "operationId": "GetListFromDrive",
         "parameters": [
           {
             "name": "$select",
@@ -27271,7 +27271,7 @@
           "drive"
         ],
         "summary": "Update the navigation property list in drive",
-        "operationId": "UpdatelistIndrive",
+        "operationId": "UpdateListInDrive",
         "parameters": [
           {
             "name": "id",
@@ -27310,7 +27310,7 @@
           "drive"
         ],
         "summary": "Get root from drive",
-        "operationId": "GetrootFromdrive",
+        "operationId": "GetRootFromDrive",
         "parameters": [
           {
             "name": "$select",
@@ -27384,7 +27384,7 @@
           "drive"
         ],
         "summary": "Update the navigation property root in drive",
-        "operationId": "UpdaterootIndrive",
+        "operationId": "UpdateRootInDrive",
         "parameters": [
           {
             "name": "id",
@@ -27423,7 +27423,7 @@
           "drive"
         ],
         "summary": "Get special from drive",
-        "operationId": "GetspecialFromdrive",
+        "operationId": "GetSpecialFromDrive",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -27556,7 +27556,7 @@
           "drive"
         ],
         "summary": "Add new navigation property to special for drive",
-        "operationId": "AddspecialTodrive",
+        "operationId": "AddSpecialToDrive",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -27591,7 +27591,7 @@
           "drive"
         ],
         "summary": "Invoke function recent",
-        "operationId": "Invokerecent",
+        "operationId": "InvokeRecent",
         "responses": {
           "200": {
             "description": "Success",
@@ -27623,7 +27623,7 @@
           "drive"
         ],
         "summary": "Invoke function search",
-        "operationId": "Invokesearch",
+        "operationId": "InvokeSearch",
         "parameters": [
           {
             "name": "q",
@@ -27666,7 +27666,7 @@
           "drive"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "InvokesharedWithMe",
+        "operationId": "InvokeSharedWithMe",
         "responses": {
           "200": {
             "description": "Success",
@@ -27698,7 +27698,7 @@
           "planner"
         ],
         "summary": "Get planner",
-        "operationId": "Getplanner",
+        "operationId": "GetPlanner",
         "parameters": [
           {
             "name": "$select",
@@ -27755,7 +27755,7 @@
           "planner"
         ],
         "summary": "Update planner",
-        "operationId": "Updateplanner",
+        "operationId": "UpdatePlanner",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -27783,7 +27783,7 @@
           "planner"
         ],
         "summary": "Get tasks from planner",
-        "operationId": "GettasksFromplanner",
+        "operationId": "GetTasksFromPlanner",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -27871,7 +27871,7 @@
           "planner"
         ],
         "summary": "Add new navigation property to tasks for planner",
-        "operationId": "AddtasksToplanner",
+        "operationId": "AddTasksToPlanner",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -27906,7 +27906,7 @@
           "planner"
         ],
         "summary": "Get plans from planner",
-        "operationId": "GetplansFromplanner",
+        "operationId": "GetPlansFromPlanner",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -27994,7 +27994,7 @@
           "planner"
         ],
         "summary": "Add new navigation property to plans for planner",
-        "operationId": "AddplansToplanner",
+        "operationId": "AddPlansToPlanner",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -28029,7 +28029,7 @@
           "planner"
         ],
         "summary": "Get buckets from planner",
-        "operationId": "GetbucketsFromplanner",
+        "operationId": "GetBucketsFromPlanner",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -28117,7 +28117,7 @@
           "planner"
         ],
         "summary": "Add new navigation property to buckets for planner",
-        "operationId": "AddbucketsToplanner",
+        "operationId": "AddBucketsToPlanner",
         "requestBody": {
           "description": "New navigation property",
           "content": {
@@ -28152,7 +28152,7 @@
           "reports"
         ],
         "summary": "Get reports",
-        "operationId": "Getreports",
+        "operationId": "GetReports",
         "parameters": [
           {
             "name": "$select",
@@ -28206,7 +28206,7 @@
           "reports"
         ],
         "summary": "Update reports",
-        "operationId": "Updatereports",
+        "operationId": "UpdateReports",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -28234,7 +28234,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
-        "operationId": "InvokegetOffice365ActivationsUserDetail",
+        "operationId": "InvokeGetOffice365ActivationsUserDetail",
         "responses": {
           "200": {
             "description": "Success",
@@ -28258,7 +28258,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
-        "operationId": "InvokegetOffice365ActivationCounts",
+        "operationId": "InvokeGetOffice365ActivationCounts",
         "responses": {
           "200": {
             "description": "Success",
@@ -28282,7 +28282,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
-        "operationId": "InvokegetOffice365ActivationsUserCounts",
+        "operationId": "InvokeGetOffice365ActivationsUserCounts",
         "responses": {
           "200": {
             "description": "Success",
@@ -28306,7 +28306,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "InvokegetOffice365ActiveUserDetail",
+        "operationId": "InvokeGetOffice365ActiveUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -28342,7 +28342,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "InvokegetOffice365ActiveUserDetail",
+        "operationId": "InvokeGetOffice365ActiveUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -28376,7 +28376,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
-        "operationId": "InvokegetOffice365ServicesUserCounts",
+        "operationId": "InvokeGetOffice365ServicesUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -28410,7 +28410,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
-        "operationId": "InvokegetOffice365ActiveUserCounts",
+        "operationId": "InvokeGetOffice365ActiveUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -28444,7 +28444,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "InvokegetOffice365GroupsActivityDetail",
+        "operationId": "InvokeGetOffice365GroupsActivityDetail",
         "parameters": [
           {
             "name": "date",
@@ -28480,7 +28480,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "InvokegetOffice365GroupsActivityDetail",
+        "operationId": "InvokeGetOffice365GroupsActivityDetail",
         "parameters": [
           {
             "name": "period",
@@ -28514,7 +28514,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
-        "operationId": "InvokegetOffice365GroupsActivityCounts",
+        "operationId": "InvokeGetOffice365GroupsActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -28548,7 +28548,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
-        "operationId": "InvokegetOffice365GroupsActivityGroupCounts",
+        "operationId": "InvokeGetOffice365GroupsActivityGroupCounts",
         "parameters": [
           {
             "name": "period",
@@ -28582,7 +28582,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
-        "operationId": "InvokegetOffice365GroupsActivityStorage",
+        "operationId": "InvokeGetOffice365GroupsActivityStorage",
         "parameters": [
           {
             "name": "period",
@@ -28616,7 +28616,7 @@
           "reports"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
-        "operationId": "InvokegetOffice365GroupsActivityFileCounts",
+        "operationId": "InvokeGetOffice365GroupsActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -28650,7 +28650,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "InvokegetEmailActivityUserDetail",
+        "operationId": "InvokeGetEmailActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -28686,7 +28686,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "InvokegetEmailActivityUserDetail",
+        "operationId": "InvokeGetEmailActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -28720,7 +28720,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityCounts",
-        "operationId": "InvokegetEmailActivityCounts",
+        "operationId": "InvokeGetEmailActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -28754,7 +28754,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
-        "operationId": "InvokegetEmailActivityUserCounts",
+        "operationId": "InvokeGetEmailActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -28788,7 +28788,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "InvokegetEmailAppUsageUserDetail",
+        "operationId": "InvokeGetEmailAppUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -28824,7 +28824,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "InvokegetEmailAppUsageUserDetail",
+        "operationId": "InvokeGetEmailAppUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -28858,7 +28858,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
-        "operationId": "InvokegetEmailAppUsageAppsUserCounts",
+        "operationId": "InvokeGetEmailAppUsageAppsUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -28892,7 +28892,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
-        "operationId": "InvokegetEmailAppUsageUserCounts",
+        "operationId": "InvokeGetEmailAppUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -28926,7 +28926,7 @@
           "reports"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
-        "operationId": "InvokegetEmailAppUsageVersionsUserCounts",
+        "operationId": "InvokeGetEmailAppUsageVersionsUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -28960,7 +28960,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
-        "operationId": "InvokegetMailboxUsageDetail",
+        "operationId": "InvokeGetMailboxUsageDetail",
         "parameters": [
           {
             "name": "period",
@@ -28994,7 +28994,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
-        "operationId": "InvokegetMailboxUsageMailboxCounts",
+        "operationId": "InvokeGetMailboxUsageMailboxCounts",
         "parameters": [
           {
             "name": "period",
@@ -29028,7 +29028,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
-        "operationId": "InvokegetMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "InvokeGetMailboxUsageQuotaStatusMailboxCounts",
         "parameters": [
           {
             "name": "period",
@@ -29062,7 +29062,7 @@
           "reports"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
-        "operationId": "InvokegetMailboxUsageStorage",
+        "operationId": "InvokeGetMailboxUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -29096,7 +29096,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "InvokegetOneDriveActivityUserDetail",
+        "operationId": "InvokeGetOneDriveActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -29132,7 +29132,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "InvokegetOneDriveActivityUserDetail",
+        "operationId": "InvokeGetOneDriveActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -29166,7 +29166,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
-        "operationId": "InvokegetOneDriveActivityUserCounts",
+        "operationId": "InvokeGetOneDriveActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -29200,7 +29200,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
-        "operationId": "InvokegetOneDriveActivityFileCounts",
+        "operationId": "InvokeGetOneDriveActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -29234,7 +29234,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "InvokegetOneDriveUsageAccountDetail",
+        "operationId": "InvokeGetOneDriveUsageAccountDetail",
         "parameters": [
           {
             "name": "date",
@@ -29270,7 +29270,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "InvokegetOneDriveUsageAccountDetail",
+        "operationId": "InvokeGetOneDriveUsageAccountDetail",
         "parameters": [
           {
             "name": "period",
@@ -29304,7 +29304,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
-        "operationId": "InvokegetOneDriveUsageAccountCounts",
+        "operationId": "InvokeGetOneDriveUsageAccountCounts",
         "parameters": [
           {
             "name": "period",
@@ -29338,7 +29338,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
-        "operationId": "InvokegetOneDriveUsageFileCounts",
+        "operationId": "InvokeGetOneDriveUsageFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -29372,7 +29372,7 @@
           "reports"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
-        "operationId": "InvokegetOneDriveUsageStorage",
+        "operationId": "InvokeGetOneDriveUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -29406,7 +29406,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "InvokegetSharePointActivityUserDetail",
+        "operationId": "InvokeGetSharePointActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -29442,7 +29442,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "InvokegetSharePointActivityUserDetail",
+        "operationId": "InvokeGetSharePointActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -29476,7 +29476,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
-        "operationId": "InvokegetSharePointActivityFileCounts",
+        "operationId": "InvokeGetSharePointActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -29510,7 +29510,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
-        "operationId": "InvokegetSharePointActivityUserCounts",
+        "operationId": "InvokeGetSharePointActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -29544,7 +29544,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointActivityPages",
-        "operationId": "InvokegetSharePointActivityPages",
+        "operationId": "InvokeGetSharePointActivityPages",
         "parameters": [
           {
             "name": "period",
@@ -29578,7 +29578,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "InvokegetSharePointSiteUsageDetail",
+        "operationId": "InvokeGetSharePointSiteUsageDetail",
         "parameters": [
           {
             "name": "date",
@@ -29614,7 +29614,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "InvokegetSharePointSiteUsageDetail",
+        "operationId": "InvokeGetSharePointSiteUsageDetail",
         "parameters": [
           {
             "name": "period",
@@ -29648,7 +29648,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
-        "operationId": "InvokegetSharePointSiteUsageFileCounts",
+        "operationId": "InvokeGetSharePointSiteUsageFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -29682,7 +29682,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
-        "operationId": "InvokegetSharePointSiteUsageSiteCounts",
+        "operationId": "InvokeGetSharePointSiteUsageSiteCounts",
         "parameters": [
           {
             "name": "period",
@@ -29716,7 +29716,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
-        "operationId": "InvokegetSharePointSiteUsageStorage",
+        "operationId": "InvokeGetSharePointSiteUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -29750,7 +29750,7 @@
           "reports"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
-        "operationId": "InvokegetSharePointSiteUsagePages",
+        "operationId": "InvokeGetSharePointSiteUsagePages",
         "parameters": [
           {
             "name": "period",
@@ -29784,7 +29784,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -29820,7 +29820,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "InvokegetSkypeForBusinessActivityUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -29854,7 +29854,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -29888,7 +29888,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -29922,7 +29922,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessPeerToPeerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -29956,7 +29956,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -29990,7 +29990,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
-        "operationId": "InvokegetSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -30024,7 +30024,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessOrganizerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -30058,7 +30058,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessOrganizerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30092,7 +30092,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
-        "operationId": "InvokegetSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -30126,7 +30126,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
-        "operationId": "InvokegetSkypeForBusinessParticipantActivityCounts",
+        "operationId": "InvokeGetSkypeForBusinessParticipantActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -30160,7 +30160,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
-        "operationId": "InvokegetSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessParticipantActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30194,7 +30194,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
-        "operationId": "InvokegetSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "InvokeGetSkypeForBusinessParticipantActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -30228,7 +30228,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -30264,7 +30264,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -30298,7 +30298,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30332,7 +30332,7 @@
           "reports"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
-        "operationId": "InvokegetSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "InvokeGetSkypeForBusinessDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30366,7 +30366,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "InvokegetYammerActivityUserDetail",
+        "operationId": "InvokeGetYammerActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -30402,7 +30402,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "InvokegetYammerActivityUserDetail",
+        "operationId": "InvokeGetYammerActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -30436,7 +30436,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityCounts",
-        "operationId": "InvokegetYammerActivityCounts",
+        "operationId": "InvokeGetYammerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -30470,7 +30470,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
-        "operationId": "InvokegetYammerActivityUserCounts",
+        "operationId": "InvokeGetYammerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30504,7 +30504,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "InvokegetYammerDeviceUsageUserDetail",
+        "operationId": "InvokeGetYammerDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -30540,7 +30540,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "InvokegetYammerDeviceUsageUserDetail",
+        "operationId": "InvokeGetYammerDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -30574,7 +30574,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
-        "operationId": "InvokegetYammerDeviceUsageDistributionUserCounts",
+        "operationId": "InvokeGetYammerDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30608,7 +30608,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
-        "operationId": "InvokegetYammerDeviceUsageUserCounts",
+        "operationId": "InvokeGetYammerDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -30642,7 +30642,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "InvokegetYammerGroupsActivityDetail",
+        "operationId": "InvokeGetYammerGroupsActivityDetail",
         "parameters": [
           {
             "name": "date",
@@ -30678,7 +30678,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "InvokegetYammerGroupsActivityDetail",
+        "operationId": "InvokeGetYammerGroupsActivityDetail",
         "parameters": [
           {
             "name": "period",
@@ -30712,7 +30712,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
-        "operationId": "InvokegetYammerGroupsActivityGroupCounts",
+        "operationId": "InvokeGetYammerGroupsActivityGroupCounts",
         "parameters": [
           {
             "name": "period",
@@ -30746,7 +30746,7 @@
           "reports"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
-        "operationId": "InvokegetYammerGroupsActivityCounts",
+        "operationId": "InvokeGetYammerGroupsActivityCounts",
         "parameters": [
           {
             "name": "period",
