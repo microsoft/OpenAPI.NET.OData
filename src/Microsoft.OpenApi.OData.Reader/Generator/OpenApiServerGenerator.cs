@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
@@ -20,10 +21,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created collection of <see cref="OpenApiServer"/> object.</returns>
         public static IList<OpenApiServer> CreateServers(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             // The value of servers is an array of Server Objects.
             // It contains one object with a field url.
