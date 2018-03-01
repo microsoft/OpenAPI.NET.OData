@@ -280,6 +280,70 @@
         }
       }
     },
+    "/directoryObjects/microsoft.graph.user/microsoft.graph.delta()": {
+      "get": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke function delta",
+        "operationId": "InvokeDelta",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/microsoft.graph.user"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/microsoft.graph.group/microsoft.graph.delta()": {
+      "get": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke function delta",
+        "operationId": "InvokeDelta",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/microsoft.graph.group"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/directoryObjects/{id}/microsoft.graph.checkMemberGroups": {
       "post": {
         "tags": [
@@ -409,6 +473,464 @@
           },
           "required": true
         },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action assignLicense",
+        "operationId": "InvokeAssignLicense",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "addLicenses": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/microsoft.graph.assignedLicense"
+                    }
+                  },
+                  "removeLicenses": {
+                    "type": "array",
+                    "items": {
+                      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.changePassword": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action changePassword",
+        "operationId": "InvokeChangePassword",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "currentPassword": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "newPassword": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action sendMail",
+        "operationId": "InvokeSendMail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Message": {
+                    "$ref": "#/components/schemas/microsoft.graph.message"
+                  },
+                  "SaveToSentItems": {
+                    "type": "boolean",
+                    "default": false,
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action findMeetingTimes",
+        "operationId": "InvokeFindMeetingTimes",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Attendees": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/components/schemas/microsoft.graph.attendeeBase"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "LocationConstraint": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/microsoft.graph.locationConstraint"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "TimeConstraint": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/microsoft.graph.timeConstraint"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "MeetingDuration": {
+                    "pattern": "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$",
+                    "type": "string",
+                    "format": "duration",
+                    "nullable": true
+                  },
+                  "MaxCandidates": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32",
+                    "nullable": true
+                  },
+                  "IsOrganizerOptional": {
+                    "type": "boolean",
+                    "default": false,
+                    "nullable": true
+                  },
+                  "ReturnSuggestionReasons": {
+                    "type": "boolean",
+                    "default": false,
+                    "nullable": true
+                  },
+                  "MinimumAttendeePercentage": {
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "enum": [
+                          "-INF",
+                          "INF",
+                          "NaN"
+                        ]
+                      }
+                    ],
+                    "format": "double",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
+      "get": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke function reminderView",
+        "operationId": "InvokeReminderView",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StartDateTime",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "EndDateTime",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/microsoft.graph.reminder"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action subscribeByMail",
+        "operationId": "InvokeSubscribeByMail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action unsubscribeByMail",
+        "operationId": "InvokeUnsubscribeByMail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action addFavorite",
+        "operationId": "InvokeAddFavorite",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action removeFavorite",
+        "operationId": "InvokeRemoveFavorite",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount": {
+      "post": {
+        "tags": [
+          "directoryObjects"
+        ],
+        "summary": "Invoke action resetUnseenCount",
+        "operationId": "InvokeResetUnseenCount",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success"

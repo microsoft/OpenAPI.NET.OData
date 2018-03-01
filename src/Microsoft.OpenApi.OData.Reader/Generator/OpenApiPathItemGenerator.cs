@@ -4,12 +4,11 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Capabilities;
+using System;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -196,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             IDictionary<string, OpenApiPathItem> operationPathItems = new Dictionary<string, OpenApiPathItem>();
 
-            IEnumerable<IEdmOperation> operations;
+            IEnumerable<Tuple<IEdmEntityType, IEdmOperation>> operations;
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
 
             // collection bound
@@ -205,8 +204,14 @@ namespace Microsoft.OpenApi.OData.Generator
                 operations = context.FindOperations(navigationSource.EntityType(), collection: true);
                 foreach (var operation in operations)
                 {
-                    OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation);
-                    string pathName = context.CreatePathItemName(operation);
+                    OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation.Item2);
+                    string pathName = context.CreatePathItemName(operation.Item2);
+
+                    // Append the type cast
+                    if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
+                    {
+                        pathName = "/" + operation.Item1.FullTypeName() + pathName;
+                    }
                     operationPathItems.Add("/" + navigationSource.Name + pathName, pathItem);
                 }
             }
@@ -215,23 +220,24 @@ namespace Microsoft.OpenApi.OData.Generator
             operations = context.FindOperations(navigationSource.EntityType(), collection: false);
             foreach (var operation in operations)
             {
-                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation);
-                string pathName = context.CreatePathItemName(operation);
+                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation.Item2);
+                string pathName = context.CreatePathItemName(operation.Item2);
 
                 string entityPathName;
                 if (entitySet != null)
                 {
                     entityPathName = context.CreateEntityPathName(entitySet);
-
-           //         OpenApiOperation openApiOperation = pathItem.Operations.First().Value;
-           //         Debug.Assert(openApiOperation != null);
-           //         openApiOperation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
                 }
                 else
                 {
                     entityPathName = "/" + navigationSource.Name;
                 }
 
+                // Append the type cast
+                if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
+                {
+                    pathName = "/" + operation.Item1.FullTypeName() + pathName;
+                }
                 operationPathItems.Add(entityPathName + pathName, pathItem);
             }
 
@@ -251,18 +257,17 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
 
             IDictionary<string, OpenApiPathItem> navPathItems = new Dictionary<string, OpenApiPathItem>();
-            if (!context.Settings.NavigationPropertyPathItem)
-            {
-                return navPathItems;
-            }
 
             IEdmEntityType entityType = navigationSource.EntityType();
             foreach (var navProperty in entityType.DeclaredNavigationProperties())
             {
-                string pathItemName = context.CreateNavigationPathItemName(navigationSource, navProperty);
-                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, navProperty);
+                if (navProperty.ContainsTarget || context.Settings.NavigationPropertyPathItem)
+                {
+                    string pathItemName = context.CreateNavigationPathItemName(navigationSource, navProperty);
+                    OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, navProperty);
 
-                navPathItems.Add(pathItemName, pathItem);
+                    navPathItems.Add(pathItemName, pathItem);
+                }
             }
 
             return navPathItems;

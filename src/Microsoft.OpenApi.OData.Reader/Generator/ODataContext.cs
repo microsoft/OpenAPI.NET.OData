@@ -3,10 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -75,6 +77,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         public OpenApiConvertSettings Settings { get; }
 
+        /// <summary>
+        /// Gets the bound operations (functions & actions).
+        /// </summary>
         public IDictionary<IEdmTypeReference, IEdmOperation> BoundOperations
         {
             get
@@ -88,17 +93,48 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        public IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType, bool collection)
+        /// <summary>
+        /// Finds the operations using the <see cref="IEdmEntityType"/>
+        /// </summary>
+        /// <param name="entityType">The entity type.</param>
+        /// <param name="collection">The collection flag.</param>
+        /// <returns>The found operations.</returns>
+        public IEnumerable<Tuple<IEdmEntityType, IEdmOperation>> FindOperations(IEdmEntityType entityType, bool collection)
         {
             string fullTypeName = collection ? "Collection(" + entityType.FullName() + ")" :
                 entityType.FullName();
 
             foreach (var item in BoundOperations)
             {
+                IEdmEntityType operationBindingType;
+                if (collection)
+                {
+                    if (!item.Key.IsCollection())
+                    {
+                        continue;
+                    }
+
+                    operationBindingType = item.Key.AsCollection().ElementType().AsEntity().EntityDefinition();
+                }
+                else
+                {
+                    if (item.Key.IsCollection())
+                    {
+                        continue;
+                    }
+
+                    operationBindingType = item.Key.AsEntity().EntityDefinition();
+                }
+
+                if (entityType.IsAssignableFrom(operationBindingType))
+                {
+                    yield return Tuple.Create(operationBindingType, item.Value);
+                }
+                /*
                 if (item.Key.FullName() == fullTypeName)
                 {
                     yield return item.Value;
-                }
+                }*/
             }
         }
 
