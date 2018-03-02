@@ -13,10 +13,10 @@ namespace Microsoft.OpenApi.OData.Common
     public static class Utils
     {
         /// <summary>
-        /// 
+        /// Upper the first character of the string.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
+        /// <param name="input">The input string.</param>
+        /// <returns>The changed string.</returns>
         public static string UpperFirstChar(string input)
         {
             if (input == null)

@@ -22,21 +22,30 @@ namespace Microsoft.OpenApi.OData.Annotations
         public virtual string QualifiedName => "Org.OData.Core.V1.HttpRequests";
 
         /// <summary>
-        /// Gets the Countable value.
+        /// Gets the http request array.
         /// </summary>
         public IList<HttpRequest> Requests { get; private set; }
 
+        /// <summary>
+        /// Gets the Edm mode.
+        /// </summary>
         public IEdmModel Model { get; }
 
+        /// <summary>
+        /// Gets the vocabulary annotatble.
+        /// </summary>
         public IEdmVocabularyAnnotatable Target { get; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CountRestrictions"/> class.
+        /// Initializes a new instance of <see cref="HttpRequestsAnnotation"/> class.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="target">The Edm annotation target.</param>
         public HttpRequestsAnnotation(IEdmModel model, IEdmVocabularyAnnotatable target)
         {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(target, nameof(target));
+
             Model = model;
             Target = target;
 
