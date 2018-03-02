@@ -6,11 +6,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Capabilities;
-using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -27,10 +27,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created map of <see cref="OpenApiParameter"/> object.</returns>
         public static IDictionary<string, OpenApiParameter> CreateParameters(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             // It allows defining query options and headers that can be reused across operations of the service.
             // The value of parameters is a map of Parameter Objects.
@@ -52,15 +49,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunctionImport functionImport)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (functionImport == null)
-            {
-                throw Error.ArgumentNull(nameof(functionImport));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(functionImport, nameof(functionImport));
 
             return context.CreateParameters(functionImport.Function);
         }
@@ -73,15 +63,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunction function)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (function == null)
-            {
-                throw Error.ArgumentNull(nameof(function));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(function, nameof(function));
 
             IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
             int skip = function.IsBound ? 1 : 0;
@@ -134,10 +117,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created the list of <see cref="OpenApiParameter"/>.</returns>
         public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, IEdmEntityType entityType)
         {
-            if (entityType == null)
-            {
-                throw Error.ArgumentNull(nameof(entityType));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
 
             IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
 
