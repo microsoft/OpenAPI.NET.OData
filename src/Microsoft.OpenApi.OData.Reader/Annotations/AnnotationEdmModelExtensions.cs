@@ -34,6 +34,11 @@ namespace Microsoft.OpenApi.OData.Annotations
             string outputCsdl = sw.ToString();
 
             int last = outputCsdl.LastIndexOf("</Schema>");
+            if (last == -1)
+            {
+                return model;
+            }
+
             StringBuilder sb = new StringBuilder(outputCsdl.Substring(0, last + 9));
 
             foreach (var def in GetDefs())

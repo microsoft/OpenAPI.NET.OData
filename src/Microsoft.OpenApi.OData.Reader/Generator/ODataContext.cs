@@ -130,11 +130,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     yield return Tuple.Create(operationBindingType, item.Value);
                 }
-                /*
-                if (item.Key.FullName() == fullTypeName)
-                {
-                    yield return item.Value;
-                }*/
             }
         }
 
