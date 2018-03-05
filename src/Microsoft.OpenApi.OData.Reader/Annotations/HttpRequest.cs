@@ -12,114 +12,65 @@ using System.Linq;
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
-    /// Org.Graph.Vocab.HttpRequests
+    /// Org.OData.Core.V1.HttpRequest
     /// </summary>
     internal class HttpRequest
     {
         /// <summary>
+        /// The description.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
+        /// The Method.
         /// </summary>
         public string Method { get; set; }
 
         /// <summary>
+        /// The Custom Query Options.
         /// </summary>
         public IList<CustomParameter> CustomQueryOptions { get; set; }
 
         /// <summary>
-        /// Gets the navigation properties which do not allow /$count segments.
+        /// The custom Headers.
         /// </summary>
         public IList<CustomParameter> CustomHeaders { get; set; }
 
-  //      public HttpRequestBody RequestBody { get; set; }
-
+        /// <summary>
+        /// The http responses.
+        /// </summary>
         public IList<HttpResponse> HttpResponses { get; set; }
 
+        /// <summary>
+        /// The security sechems.
+        /// </summary>
         public IList<SecurityScheme> SecuritySchemes { get; set; }
 
-        public void Init(IEdmRecordExpression record)
+        /// <summary>
+        /// Init the <see cref="HttpRequest"/>.
+        /// </summary>
+        /// <param name="record">The input record.</param>
+        public virtual void Init(IEdmRecordExpression record)
         {
+            Utils.CheckArgumentNull(record, nameof(record));
+
+            // Description.
             Description = record.GetString("Description");
+
+            // Method.
             Method = record.GetString("Method");
 
-            IEdmCollectionExpression collection = GetCollection(record, "CustomQueryOptions");
-            if (collection != null)
-            {
-                CustomQueryOptions = new List<CustomParameter>();
-                foreach(var item in collection.Elements)
-                {
-                    CustomParameter p = new CustomParameter();
-                    p.Init(item as IEdmRecordExpression);
-                    CustomQueryOptions.Add(p);
-                }
-            }
+            // CustomQueryOptions
+            CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions", (s, r) => s.Init(r as IEdmRecordExpression));
 
-            collection = GetCollection(record, "CustomHeaders");
-            if (collection != null)
-            {
-                CustomHeaders = new List<CustomParameter>();
-                foreach (var item in collection.Elements)
-                {
-                    CustomParameter p = new CustomParameter();
-                    p.Init(item as IEdmRecordExpression);
-                    CustomHeaders.Add(p);
-                }
-            }
-            /*
-            IEdmRecordExpression requestBodyRecord = GetRecord(record, "RequestBody");
-            if (collection != null)
-            {
-                RequestBody = new HttpRequestBody();
-                RequestBody.Init(requestBodyRecord);
-            }*/
+            // CustomHeaders
+            CustomHeaders = record.GetCollection<CustomParameter>("CustomHeaders", (s, r) => s.Init(r as IEdmRecordExpression));
 
-            collection = GetCollection(record, "HttpResponses");
-            if (collection != null)
-            {
-                HttpResponses = new List<HttpResponse>();
-                foreach (var item in collection.Elements)
-                {
-                    HttpResponse p = new HttpResponse();
-                    p.Init(item as IEdmRecordExpression);
-                    HttpResponses.Add(p);
-                }
-            }
+            // HttpResponses
+            HttpResponses = record.GetCollection<HttpResponse>("HttpResponses", (s, r) => s.Init(r as IEdmRecordExpression));
 
-            collection = GetCollection(record, "SecuritySchemes");
-            if (collection != null)
-            {
-                SecuritySchemes = new List<SecurityScheme>();
-                foreach (var item in collection.Elements)
-                {
-                    SecurityScheme p = new SecurityScheme();
-                    p.Init(item as IEdmRecordExpression);
-                    SecuritySchemes.Add(p);
-                }
-            }
-        }
-
-        public static IEdmCollectionExpression GetCollection(IEdmRecordExpression record, string propertyName)
-        {
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-            if (property != null)
-            {
-                return property.Value as IEdmCollectionExpression;
-            }
-
-            return null;
-        }
-
-        public static IEdmRecordExpression GetRecord(IEdmRecordExpression record, string propertyName)
-        {
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-            if (property != null)
-            {
-                return property.Value as IEdmRecordExpression;
-            }
-
-            return null;
+            // SecuritySchemes
+            SecuritySchemes = record.GetCollection<SecurityScheme>("SecuritySchemes", (s, r) => s.Init(r as IEdmRecordExpression));
         }
     }
 }

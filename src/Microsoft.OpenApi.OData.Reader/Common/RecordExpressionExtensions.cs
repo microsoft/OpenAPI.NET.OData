@@ -202,6 +202,30 @@ namespace Microsoft.OpenApi.OData.Common
             return null;
         }
 
+        public static IEnumerable<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName, Func<IEdmExpression, T> elementFunc)
+        {
+            Utils.CheckArgumentNull(record, nameof(record));
+            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
+
+            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
+            if (property != null)
+            {
+                IEdmCollectionExpression collection = property.Value as IEdmCollectionExpression;
+                if (collection != null && collection.Elements != null)
+                {
+                    return collection.Elements.Select(e => elementFunc(e));
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="record"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         public static IList<string> GetCollection(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));

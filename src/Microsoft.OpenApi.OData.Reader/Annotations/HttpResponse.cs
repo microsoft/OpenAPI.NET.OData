@@ -10,79 +10,48 @@ using Microsoft.OpenApi.OData.Common;
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
+    /// The Org.OData.Core.v1.HttpResponse
     /// </summary>
     internal class HttpResponse
     {
         /// <summary>
+        /// Description.
         /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// ResponseCode
+        /// </summary>
         public string ResponseCode { get; set; }
 
         /// <summary>
+        /// Examples
         /// </summary>
-        public IList<Example> Examples { get; set; }
-
-     //   public bool? Required { get; set; }
+        public IEnumerable<Example> Examples { get; set; }
 
         /// <summary>
+        /// Int the <see cref="HttpResponse"/>.
         /// </summary>
-       // public IList<MediaType> ResponseContent { get; set; }
-
+        /// <param name="record">The input record.</param>
         public void Init(IEdmRecordExpression record)
         {
+            // ResponseCode
             ResponseCode = record.GetString("ResponseCode");
+
+            // Description
             Description = record.GetString("Description");
-     //       Required = record.GetBoolean("Required");
 
-            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "Examples");
-            if (collection != null)
+            // Examples
+            Examples = record.GetCollection("Examples", r =>
             {
-                Examples = new List<Example>();
-                foreach (var item in collection.Elements)
+                IEdmRecordExpression itemRecord = r as IEdmRecordExpression;
+                if (itemRecord != null)
                 {
-                    IEdmRecordExpression itemRecord = item as IEdmRecordExpression;
-                    if (itemRecord == null)
-                    {
-                        continue;
-                    }
-
-                    Example ex = Example.CreateExample(itemRecord);
-                    if (ex != null)
-                    {
-                        Examples.Add(ex);
-                    }
+                    return Example.CreateExample(itemRecord);
                 }
-            }
+
+                return null;
+            });
         }
     }
-    /*
-    internal class MediaType
-    {
-        public string Name { get; set; }
-
-        /// <summary>
-        /// </summary>
-        public string Type { get; set; }
-
-        public IList<CustomParameterExampleValue> ExampleValues { get; set; }
-
-        public void Init(IEdmRecordExpression record)
-        {
-            Name = record.GetString("Name");
-            Type = record.GetString("Type");
-
-            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "ExampleValues");
-            if (collection != null)
-            {
-                ExampleValues = new List<CustomParameterExampleValue>();
-                foreach (var item in collection.Elements)
-                {
-                    CustomParameterExampleValue p = new CustomParameterExampleValue();
-                    p.Init(item as IEdmRecordExpression);
-                    ExampleValues.Add(p);
-                }
-            }
-        }
-    }*/
 }

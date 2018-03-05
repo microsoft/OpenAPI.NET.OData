@@ -10,23 +10,35 @@ using Microsoft.OpenApi.OData.Common;
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
-    /// Org.Graph.Vocab.HttpRequests
+    /// Org.OData.Core.V1.Example
     /// </summary>
     internal abstract class Example
     {
-      //  public string Value { get; set; }
-
+        /// <summary>
+        /// Description.
+        /// </summary>
         public string Description { get; set; }
 
+        /// <summary>
+        /// Init the <see cref="Example"/>.
+        /// </summary>
+        /// <param name="record">The input record.</param>
         public virtual void Init(IEdmRecordExpression record)
         {
-       //     Value = record.GetString("Value");
+            Utils.CheckArgumentNull(record, nameof(record));
+
+            // Description
             Description = record.GetString("Description");
         }
 
+        /// <summary>
+        /// Creat the corresponding example object.
+        /// </summary>
+        /// <param name="record">The input record.</param>
+        /// <returns>The created example object.</returns>
         public static Example CreateExample(IEdmRecordExpression record)
         {
-            if (record.DeclaredType == null)
+            if (record == null || record.DeclaredType == null)
             {
                 return null;
             }
@@ -43,8 +55,12 @@ namespace Microsoft.OpenApi.OData.Annotations
                 case "Org.OData.Core.V1.ExternalExample":
                     example = new ExternalExample();
                     break;
+
                 case "Org.OData.Core.V1.InlineExample":
                     example = new InlineExample();
+                    break;
+
+                default:
                     break;
             }
 
@@ -54,30 +70,6 @@ namespace Microsoft.OpenApi.OData.Annotations
             }
 
             return example;
-        }
-    }
-
-    internal class ExternalExample : Example
-    {
-        public string ExternalValue { get; set; }
-
-        public override void Init(IEdmRecordExpression record)
-        {
-            ExternalValue = record.GetString("ExternalValue");
-
-            base.Init(record);
-        }
-    }
-
-    internal class InlineExample : Example
-    {
-        public string InlineValue { get; set; }
-
-        public override void Init(IEdmRecordExpression record)
-        {
-            InlineValue = record.GetString("InlineValue");
-
-            base.Init(record);
         }
     }
 }
