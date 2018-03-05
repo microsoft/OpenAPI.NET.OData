@@ -44,5 +44,21 @@ namespace Microsoft.OpenApi.OData.Common
 
             return value;
         }
+
+        /// <summary>
+        /// Check the input string null or empty.
+        /// </summary>
+        /// <param name="value">The input string</param>
+        /// <param name="parameterName">The input parameter name.</param>
+        /// <returns>The input value.</returns>
+        internal static string CheckArgumentNullOrEmpty(string value, string parameterName)
+        {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw Error.ArgumentNullOrEmpty(parameterName);
+            }
+
+            return value;
+        }
     }
 }

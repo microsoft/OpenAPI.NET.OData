@@ -19,6 +19,30 @@ namespace Microsoft.OpenApi.OData.Annotations
 {
     internal static class AnnotationEdmModelExtensions
     {
+        public static IEdmModel AppendAnnotations(this string outputCsdl)
+        {
+            int last = outputCsdl.LastIndexOf("</Schema>");
+            if (last != -1)
+            {
+                StringBuilder sb = new StringBuilder(outputCsdl.Substring(0, last + 9));
+
+                foreach (var def in GetDefs())
+                {
+                    using (Stream stream = typeof(Resources).Assembly.GetManifestResourceStream(def))
+                    using (TextReader reader = new StreamReader(stream))
+                    {
+                        string annotationDef = reader.ReadToEnd();
+                        sb.Append(annotationDef);
+                    }
+                }
+
+                sb.Append("</edmx:DataServices>\n</edmx:Edmx>");
+                outputCsdl = sb.ToString();
+            }
+            File.WriteAllText("c:\\b.xml", outputCsdl);
+            return CsdlReader.Parse(XElement.Parse(outputCsdl).CreateReader());
+        }
+
         public static IEdmModel AppendAnnotations(this IEdmModel model)
         {
             IEnumerable<EdmError> errors;
@@ -51,7 +75,7 @@ namespace Microsoft.OpenApi.OData.Annotations
                 }
             }
 
-            sb.Append("</edmx:DataServices></edmx:Edmx>");
+            sb.Append("\n  </edmx:DataServices>\n</edmx:Edmx>");
             outputCsdl = sb.ToString();
 
             return CsdlReader.Parse(XElement.Parse(outputCsdl).CreateReader());

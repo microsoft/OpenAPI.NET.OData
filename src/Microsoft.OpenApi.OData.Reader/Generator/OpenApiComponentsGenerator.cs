@@ -49,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 Examples = null,
 
-                SecuritySchemes = null,
+                SecuritySchemes = context.CreateSecuritySchemes(),
 
                 Links = null,
 

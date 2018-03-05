@@ -8,15 +8,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Common;
 
-namespace Microsoft.OpenApi.OData.Capabilities
+namespace Microsoft.OpenApi.OData.Common
 {
     /// <summary>
     /// Extension methods for <see cref="IEdmRecordExpression"/>
     /// </summary>
     internal static class RecordExpressionExtensions
     {
+        /// <summary>
+        /// Gets the string value of a property in the given record expression.
+        /// </summary>
+        /// <param name="record">The given record.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns>The property string value.</returns>
         public static string GetString(this IEdmRecordExpression record, string propertyName)
         {
             Utils.CheckArgumentNull(record, nameof(record));
@@ -156,6 +161,66 @@ namespace Microsoft.OpenApi.OData.Capabilities
                             return properties;
                         }
                     }
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="record"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="elementAction"></param>
+        /// <returns></returns>
+        public static IList<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName, Action<T, IEdmExpression> elementAction)
+            where T: new()
+        {
+            Utils.CheckArgumentNull(record, nameof(record));
+            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
+
+            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
+            if (property != null)
+            {
+                IEdmCollectionExpression collection = property.Value as IEdmCollectionExpression;
+                if (collection != null && collection.Elements != null)
+                {
+                    IList<T> items = new List<T>();
+                    foreach (var item in collection.Elements)
+                    {
+                        T a = new T();
+                        elementAction(a, item);
+                        items.Add(a);
+                    }
+
+                    return items;
+                }
+            }
+
+            return null;
+        }
+
+        public static IList<string> GetCollection(this IEdmRecordExpression record, string propertyName)
+        {
+            Utils.CheckArgumentNull(record, nameof(record));
+            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
+
+            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
+            if (property != null)
+            {
+                IEdmCollectionExpression collection = property.Value as IEdmCollectionExpression;
+                if (collection != null && collection.Elements != null)
+                {
+                    IList<string> items = new List<string>();
+                    foreach (var item in collection.Elements)
+                    {
+                        IEdmStringConstantExpression itemRecord = item as IEdmStringConstantExpression;
+                        items.Add(itemRecord.Value);
+                    }
+
+                    return items;
                 }
             }
 

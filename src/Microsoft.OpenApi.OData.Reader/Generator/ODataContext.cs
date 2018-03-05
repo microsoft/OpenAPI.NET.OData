@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Common;
 
@@ -145,6 +147,58 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 IEdmOperationParameter bindingParameter = edmOperation.Parameters.First();
                 _boundOperations.Add(bindingParameter.Type, edmOperation);
+            }
+        }
+
+        public IList<Authorization> Authorizations
+        {
+            get
+            {
+                if (_authorizations == null)
+                {
+                    RetrieveAuthorizations();
+                }
+
+                return _authorizations;
+            }
+        }
+        private IList<Authorization> _authorizations;
+
+        private void RetrieveAuthorizations()
+        {
+            if (_authorizations != null)
+            {
+                return;
+            }
+            _authorizations = new List<Authorization>();
+            if (Model.EntityContainer == null)
+            {
+                return;
+            }
+
+            IEdmVocabularyAnnotation annotation = Model.GetVocabularyAnnotation(Model.EntityContainer, AuthorizationConstants.Authorizations);
+            if (annotation == null ||
+                annotation.Value == null ||
+                annotation.Value.ExpressionKind != EdmExpressionKind.Collection)
+            {
+                return;
+            }
+
+            IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;
+
+            foreach (var item in collection.Elements)
+            {
+                IEdmRecordExpression record = item as IEdmRecordExpression;
+                if (record == null || record.DeclaredType == null)
+                {
+                    continue;
+                }
+
+                Authorization auth = Authorization.CreateAuthorization(record);
+                if (auth != null)
+                {
+                    _authorizations.Add(auth);
+                }
             }
         }
     }

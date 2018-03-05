@@ -4,8 +4,8 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Authorization;
-using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Authorizations;
+using Microsoft.OpenApi.OData.Common;
 using System.Collections.Generic;
 using System.Linq;
 

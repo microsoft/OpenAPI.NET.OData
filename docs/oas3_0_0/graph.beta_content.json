@@ -72477,40 +72477,48 @@
             "properties": {
               "accountEnabled": {
                 "type": "boolean",
+                "description": "true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.",
                 "nullable": true
               },
               "assignedLicenses": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/microsoft.graph.assignedLicense"
-                }
+                },
+                "description": "The licenses that are assigned to the user. Not nullable."
               },
               "assignedPlans": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/microsoft.graph.assignedPlan"
-                }
+                },
+                "description": "The plans that are assigned to the user. Read-only. Not nullable."
               },
               "businessPhones": {
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "The telephone numbers for the user. NOTE: Although this is a string collection, only one number can be set for this property."
               },
               "city": {
                 "type": "string",
+                "description": "The city in which the user is located. Supports $filter.",
                 "nullable": true
               },
               "companyName": {
                 "type": "string",
+                "description": "The company name which the user is associated. Read-only.",
                 "nullable": true
               },
               "country": {
                 "type": "string",
+                "description": "The country/region in which the user is located; for example, “US” or “UK”. Supports $filter.",
                 "nullable": true
               },
               "department": {
                 "type": "string",
+                "description": "The name for the department in which the user works. Supports $filter.",
                 "nullable": true
               },
               "deviceKeys": {
@@ -72521,6 +72529,7 @@
               },
               "displayName": {
                 "type": "string",
+                "description": "The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.",
                 "nullable": true
               },
               "employeeId": {
@@ -72529,6 +72538,7 @@
               },
               "givenName": {
                 "type": "string",
+                "description": "The given name (first name) of the user. Supports $filter.",
                 "nullable": true
               },
               "imAddresses": {
@@ -72536,31 +72546,38 @@
                 "items": {
                   "type": "string",
                   "nullable": true
-                }
+                },
+                "description": "The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only."
               },
               "jobTitle": {
                 "type": "string",
+                "description": "The user’s job title. Supports $filter.",
                 "nullable": true
               },
               "mail": {
                 "type": "string",
+                "description": "The SMTP address for the user, for example, 'jeff@contoso.onmicrosoft.com'. Read-Only. Supports $filter.",
                 "nullable": true
               },
               "mailNickname": {
                 "type": "string",
+                "description": "The mail alias for the user. This property must be specified when a user is created. Supports $filter.",
                 "nullable": true
               },
               "mobilePhone": {
                 "type": "string",
+                "description": "The primary cellular telephone number for the user.",
                 "nullable": true
               },
               "onPremisesImmutableId": {
                 "type": "string",
+                "description": "This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user’s userPrincipalName (UPN) property. Important: The $ and **_** characters cannot be used when specifying this property. Supports $filter.",
                 "nullable": true
               },
               "onPremisesLastSyncDateTime": {
                 "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
                 "type": "string",
+                "description": "Indicates the last time at which the object was synced with the on-premises directory; for example: '2013-02-16T03:04:54Z'. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'. Read-only.",
                 "format": "date-time",
                 "nullable": true
               },
@@ -72577,10 +72594,12 @@
               },
               "onPremisesSecurityIdentifier": {
                 "type": "string",
+                "description": "Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only.",
                 "nullable": true
               },
               "onPremisesSyncEnabled": {
                 "type": "boolean",
+                "description": "true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only",
                 "nullable": true
               },
               "onPremisesDomainName": {
@@ -72597,6 +72616,7 @@
               },
               "passwordPolicies": {
                 "type": "string",
+                "description": "Specifies password policies for the user. This value is an enumeration with one possible value being “DisableStrongPassword”, which allows weaker passwords than the default policy to be specified. 'DisablePasswordExpiration' can also be specified. The two may be specified together; for example: 'DisablePasswordExpiration, DisableStrongPassword'.",
                 "nullable": true
               },
               "passwordProfile": {
@@ -72605,14 +72625,17 @@
                     "$ref": "#/components/schemas/microsoft.graph.passwordProfile"
                   }
                 ],
+                "description": "Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required.",
                 "nullable": true
               },
               "officeLocation": {
                 "type": "string",
+                "description": "The office location in the user's place of business.",
                 "nullable": true
               },
               "postalCode": {
                 "type": "string",
+                "description": "The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.",
                 "nullable": true
               },
               "preferredDataLocation": {
@@ -72621,19 +72644,22 @@
               },
               "preferredLanguage": {
                 "type": "string",
+                "description": "The preferred language for the user. Should follow ISO 639-1 Code; for example 'en-US'.",
                 "nullable": true
               },
               "provisionedPlans": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/microsoft.graph.provisionedPlan"
-                }
+                },
+                "description": "The plans that are provisioned for the user. Read-only. Not nullable."
               },
               "proxyAddresses": {
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "For example: ['SMTP:bob@contoso.com', 'smtp:bob@sales.contoso.com'] The any operator is required for filter expressions on multi-valued properties. Read-only, Not nullable. Supports $filter."
               },
               "refreshTokensValidFromDateTime": {
                 "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
@@ -72647,26 +72673,32 @@
               },
               "state": {
                 "type": "string",
+                "description": "The state or province in the user's address. Supports $filter.",
                 "nullable": true
               },
               "streetAddress": {
                 "type": "string",
+                "description": "The street address of the user's place of business.",
                 "nullable": true
               },
               "surname": {
                 "type": "string",
+                "description": "The user's surname (family name or last name). Supports $filter.",
                 "nullable": true
               },
               "usageLocation": {
                 "type": "string",
+                "description": "A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. Examples include: 'US', 'JP', and 'GB'. Not nullable. Supports $filter.",
                 "nullable": true
               },
               "userPrincipalName": {
                 "type": "string",
+                "description": "The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant’s collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization. Supports $filter and $orderby.",
                 "nullable": true
               },
               "userType": {
                 "type": "string",
+                "description": "A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'. Supports $filter.",
                 "nullable": true
               },
               "mailboxSettings": {
@@ -72675,20 +72707,24 @@
                     "$ref": "#/components/schemas/microsoft.graph.mailboxSettings"
                   }
                 ],
+                "description": "Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone.",
                 "nullable": true
               },
               "aboutMe": {
                 "type": "string",
+                "description": "A freeform text entry field for the user to describe themselves.",
                 "nullable": true
               },
               "birthday": {
                 "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
                 "type": "string",
+                "description": "The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'",
                 "format": "date-time"
               },
               "hireDate": {
                 "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
                 "type": "string",
+                "description": "The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'",
                 "format": "date-time"
               },
               "interests": {
@@ -72696,10 +72732,12 @@
                 "items": {
                   "type": "string",
                   "nullable": true
-                }
+                },
+                "description": "A list for the user to describe their interests."
               },
               "mySite": {
                 "type": "string",
+                "description": "The URL for the user's personal site.",
                 "nullable": true
               },
               "pastProjects": {
@@ -72707,10 +72745,12 @@
                 "items": {
                   "type": "string",
                   "nullable": true
-                }
+                },
+                "description": "A list for the user to enumerate their past projects."
               },
               "preferredName": {
                 "type": "string",
+                "description": "The preferred name for the user.",
                 "nullable": true
               },
               "responsibilities": {
@@ -72718,21 +72758,24 @@
                 "items": {
                   "type": "string",
                   "nullable": true
-                }
+                },
+                "description": "A list for the user to enumerate their responsibilities."
               },
               "schools": {
                 "type": "array",
                 "items": {
                   "type": "string",
                   "nullable": true
-                }
+                },
+                "description": "A list for the user to enumerate the schools they have attended."
               },
               "skills": {
                 "type": "array",
                 "items": {
                   "type": "string",
                   "nullable": true
-                }
+                },
+                "description": "A list for the user to enumerate their skills."
               },
               "identityUserRisk": {
                 "anyOf": [
@@ -117909,7 +117952,8 @@
       "name": "subscribedSkus"
     },
     {
-      "name": "users"
+      "name": "users",
+      "description": "Use this API to create a new User. The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties."
     },
     {
       "name": "policies"

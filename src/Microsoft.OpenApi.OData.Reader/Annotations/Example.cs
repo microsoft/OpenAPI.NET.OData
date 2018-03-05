@@ -5,7 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
