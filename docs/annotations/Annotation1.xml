@@ -17,517 +17,518 @@
 				<PropertyValue Property="Method" String="Get User"></PropertyValue>
 				<!-- Maps to the custom query options section -->
 				<PropertyValue Property="CustomQueryOptions">
-					<Annotation DocumentationURL="
-				/">
-						<Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 					By default, only a limited set of properties are returned ( businessPhones, displayName, givenName, id, jobTitle, mail, mobilePhone, officeLocation, preferredLanguage, surname, userPrincipalName ). 					To return an alternative property set, you must specify the desired set of user properties using the OData $select query parameter. For example, to return displayName, givenName, and postalCode, you would use the add the following to your query $select=displayName,givenName,postalCode"></Annotation>
-						<Collection>
-							<Record>
-								<PropertyValue Property="Name" String="Select"/>
-								<PropertyValue Property="Type" String="" />
-								<PropertyValue Property="Description" String="N/A" />
-								<PropertyValue Property="DocumentationURL" String="N/A" />
-								<PropertyValue Property="Required" Bool="false" />
-								<PropertyValue Property="Examples">
-									<Collection>
-										<Record>
-											<PropertyValue Property="InlineExample" String="JSON Example"/>
-											<PropertyValue Property="Description" String="application/json"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-							</Record>
-						</Collection>
-					</PropertyValue>
-					<PropertyValue Property="CustomHeaders">
-						<Collection>
-							<!-- Each record maps to the row in the headers table. -->
-							<Record>
-								<PropertyValue Property="Name" String="Authorization"/>
-								<!-- Maps to the Header Name column of the request headers section -->
-								<PropertyValue Property="Type" String="" />
-								<PropertyValue Property="Description" String="Bearer {token}. Required." />
-								<!-- Maps to the value column of the request headers -->
-								<PropertyValue Property="DocumentationURL" String="" />
-								<!-- Currently there is not used -->
-								<PropertyValue Property="Required" Bool="true" />
-								<!--Currently we don't the examples section. -->
-								<PropertyValue Property="Examples">
-									<Collection>
-										<Record>
-											<PropertyValue Property="ExternalExample" String=""/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="content-type"/>
-								<PropertyValue Property="Type" String="" />
-								<PropertyValue Property="Description" String="application/json" />
-								<PropertyValue Property="DocumentationURL" String="" />
-								<PropertyValue Property="Required" Bool="true" />
-								<PropertyValue Property="Examples">
-									<Collection>
-										<Record>
-											<PropertyValue Property="ExternalExample" String=""/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-							</Record>
-						</Collection>
-					</PropertyValue>
-					<PropertyValue Property="HttpsResponse">
-						<!-- Maps to description for http response  -->
-						<Annotation Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
-						<Collection>
-							<Record>
-								<!-- Will map to the table that define the response code, content type and sample for the http response -->
-								<PropertyValue Property="ResponseCode" String="200"/>
-								<PropertyValue Property="Examples">
-									<Collection>
-										<Record>
-											<PropertyValue Property="InlineExample" String="{"businessPhones":["businessPhones-value"],"displayName":"displayName-value","givenName":"givenName-value","jobTitle":"jobTitle-value","mail":"mail-value","mobilePhone":"mobilePhone-value","officeLocation":"officeLocation-value","preferredLanguage":"preferredLanguage-value","surname":"surname-value","userPrincipalName":"userPrincipalName-value","id": "id-value"}"/>
-											<PropertyValue Property="Description" String="application/json"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-							</Record>
-						</Collection>
-					</PropertyValue>
-					<!-- maps to security/permissions -->
-					<PropertyValue Property="SecuritySchemes">
-						<!-- This maps to the description for the permissions section on the current graph documentation.  -->
-						<Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. 					To learn more, including how to choose permissions, see Permissions."></Annotation>
-						<Collection>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.Read"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All, Directory.AccessAsUser.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadWrite"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadBasic.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.Read.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.Read.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedWork" />
-								<PropertyValue Property="Description" String="DelegatedWork" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
-											<PropertyValue Property="Description" String="Scope Description"/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedPersonal" />
-								<PropertyValue Property="Description" String="DelegatedPersonal" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.Read"/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="DelegatedPersonal" />
-								<PropertyValue Property="Description" String="DelegatedPersonal" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadWrite"/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="Application" />
-								<PropertyValue Property="Description" String="Application" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.Read.All"/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="Application" />
-								<PropertyValue Property="Description" String="Application" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="Application" />
-								<PropertyValue Property="Description" String="Application" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.Read.All"/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-							<Record>
-								<PropertyValue Property="Name" String="Application" />
-								<PropertyValue Property="Description" String="Application" />
-								<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-								<PropertyValue Property="Scopes">
-									<Collection>
-										<Record>
-											<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-											<PropertyValue Property="Description" String=""/>
-										</Record>
-									</Collection>
-								</PropertyValue>
-								<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-							</Record>
-						</Collection>
-					</PropertyValue>
-				</Record>
-			</Collection>
-		</Annotation>
-		<!-- Resource inheritance (description)
-    Look into if we should do anyOf/all of for this representation. 
-    -->
-		<!-- Method extensions (description) 
-    This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
-    -->
-		<!-- Relationships  
-    These need to be defined as 'link objects'.
-	We need to links for media, navigation and string properties.
-	For paths that return a single resource, we need to write navi properties
-	-->
-	</Annotations>
-	<!-- Properties (description) -->
-	<!-- Properties -->
-	<Annotations Target="microsoft.graph.user/aboutMe">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/accountEnabled">
-		<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/assignedLicenses">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The licenses that are assigned to the user. Not nullable."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/assignedPlans">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The plans that are assigned to the user. Read-only. Not nullable."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/birthday">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'"></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/businessPhones">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The telephone numbers for the user. NOTE: Although this is a string collection, only one number can be set for this property."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/city">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The city in which the user is located. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/companyName">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The company name which the user is associated. Read-only."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/country">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The country/region in which the user is located; for example, “US” or “UK”. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/department">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The name for the department in which the user works. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/displayName">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/givenName">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The given name (first name) of the user. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/hireDate">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'"></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/id">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The unique identifier for the user. Inherited from directoryObject. Key. Not nullable. Read-only."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/imAddresses">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/interests">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to describe their interests."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/jobTitle">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The user’s job title. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/mail">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The SMTP address for the user, for example, "jeff@contoso.onmicrosoft.com". Read-Only. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/mailboxSettings">
-		<Annotation Term="Org.OData.Core.V1.Description" String="Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/mailNickname">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The mail alias for the user. This property must be specified when a user is created. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/mobilePhone">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The primary cellular telephone number for the user."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/mySite">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The URL for the user's personal site."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/officeLocation">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The office location in the user's place of business."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/onPremisesImmutableId">
-		<Annotation Term="Org.OData.Core.V1.Description" String="This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user’s userPrincipalName (UPN) property. Important: The $ and **_** characters cannot be used when specifying this property. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/onPremisesLastSyncDateTime">
-		<Annotation Term="Org.OData.Core.V1.Description" String="Indicates the last time at which the object was synced with the on-premises directory; for example: "2013-02-16T03:04:54Z". The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'. Read-only."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/onPremisesSecurityIdentifier">
-		<Annotation Term="Org.OData.Core.V1.Description" String="Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/onPremisesSyncEnabled">
-		<Annotation Term="Org.OData.Core.V1.Description" String="true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only"></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/passwordPolicies">
-		<Annotation Term="Org.OData.Core.V1.Description" String="Specifies password policies for the user. This value is an enumeration with one possible value being “DisableStrongPassword”, which allows weaker passwords than the default policy to be specified. “DisablePasswordExpiration” can also be specified. The two may be specified together; for example: "DisablePasswordExpiration, DisableStrongPassword"."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/passwordProfile">
-		<Annotation Term="Org.OData.Core.V1.Description" String="Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/pastProjects">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate their past projects."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/postalCode">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/preferredLanguage">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The preferred language for the user. Should follow ISO 639-1 Code; for example "en-US"."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/preferredName">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The preferred name for the user."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/provisionedPlans">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The plans that are provisioned for the user. Read-only. Not nullable."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/proxyAddresses">
-		<Annotation Term="Org.OData.Core.V1.Description" String="For example: ["SMTP: bob@contoso.com", "smtp: bob@sales.contoso.com"] The any operator is required for filter expressions on multi-valued properties. Read-only, Not nullable. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/responsibilities">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate their responsibilities."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/schools">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate the schools they have attended."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/skills">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate their skills."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/state">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The state or province in the user's address. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/streetAddress">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The street address of the user's place of business."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/surname">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The user's surname (family name or last name). Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/usageLocation">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. Examples include: "US", "JP", and "GB". Not nullable. Supports $filter."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/userPrincipalName">
-		<Annotation Term="Org.OData.Core.V1.Description" String="The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant’s collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization. Supports $filter and $orderby."></Annotation>
-	</Annotations>
-	<Annotations Target="microsoft.graph.user/userType">
-		<Annotation Term="Org.OData.Core.V1.Description" String="A string value that can be used to classify user types in your directory, such as “Member” and “Guest”. Supports $filter."></Annotation>
-	</Annotations>
-	<!-- Properties -->
-	<Annotations Target="microsoft.graph.GraphService">
-		<Annotation Term="Org.OData.Authorization.V1.Authorizations">
-			<Collection>
-				<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-					<PropertyValue Property="Name" String="DelegatedWork"/>
-					<PropertyValue Property="Description" String="DelegatedWork"/>
-					<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
-					<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-					<PropertyValue Property="Scopes">
-						<Collection>
-							<Record>
-								<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-								<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-							</Record>
-							<Record>
-								<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-								<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-							</Record>
-							<Record>
-								<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-								<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-							</Record>
-						</Collection>
-					</Record>
-					<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-						<PropertyValue Property="Name" String="DelegatedPersonal"/>
-						<PropertyValue Property="Description" String="DelegatedPersonal"/>
-						<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
-						<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-						<PropertyValue Property="Scopes">
-							<Collection>
-								<Record>
-									<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-									<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-								</Record>
-								<Record>
-									<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-									<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-								</Record>
-								<Record>
-									<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-									<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-								</Record>
-							</Collection>
+					<Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 					By default, only a limited set of properties are returned ( businessPhones, displayName, givenName, id, jobTitle, mail, mobilePhone, officeLocation, preferredLanguage, surname, userPrincipalName ). 					To return an alternative property set, you must specify the desired set of user properties using the OData $select query parameter. For example, to return displayName, givenName, and postalCode, you would use the add the following to your query $select=displayName,givenName,postalCode"></Annotation>
+					<Collection>
+						<Record>
+							<PropertyValue Property="Name" String="Select"/>
+							<PropertyValue Property="Type" String="" />
+							<PropertyValue Property="Description" String="N/A" />
+							<PropertyValue Property="DocumentationURL" String="N/A" />
+							<PropertyValue Property="Required" Bool="false" />
+							<PropertyValue Property="Examples">
+								<Collection>
+									<Record>
+										<PropertyValue Property="InlineExample" String="JSON Example"/>
+										<PropertyValue Property="Description" String="application/json"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
 						</Record>
-						<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-							<PropertyValue Property="Name" String="Application"/>
-							<PropertyValue Property="Description" String="Application"/>
-							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="CustomHeaders">
+					<Collection>
+						<!-- Each record maps to the row in the headers table. -->
+						<Record>
+							<PropertyValue Property="Name" String="Authorization"/>
+							<!-- Maps to the Header Name column of the request headers section -->
+							<PropertyValue Property="Type" String="" />
+							<PropertyValue Property="Description" String="Bearer {token}. Required." />
+							<!-- Maps to the value column of the request headers -->
+							<PropertyValue Property="DocumentationURL" String="" />
+							<!-- Currently there is not used -->
+							<PropertyValue Property="Required" Bool="true" />
+							<!--Currently we don't the examples section. -->
+							<PropertyValue Property="Examples">
+								<Collection>
+									<Record>
+										<PropertyValue Property="ExternalExample" String=""/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="content-type"/>
+							<PropertyValue Property="Type" String="" />
+							<PropertyValue Property="Description" String="application/json" />
+							<PropertyValue Property="DocumentationURL" String="" />
+							<PropertyValue Property="Required" Bool="true" />
+							<PropertyValue Property="Examples">
+								<Collection>
+									<Record>
+										<PropertyValue Property="ExternalExample" String=""/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="HttpsResponse">
+					<!-- Maps to description for http response  -->
+					<Annotation Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
+					<Collection>
+						<Record>
+							<!-- Will map to the table that define the response code, content type and sample for the http response -->
+							<PropertyValue Property="ResponseCode" String="200"/>
+							<PropertyValue Property="Examples">
+								<Collection>
+									<Record>
+										<PropertyValue Property="InlineExample" String="{"businessPhones":["businessPhones-value"],"displayName":"displayName-value","givenName":"givenName-value","jobTitle":"jobTitle-value","mail":"mail-value","mobilePhone":"mobilePhone-value","officeLocation":"officeLocation-value","preferredLanguage":"preferredLanguage-value","surname":"surname-value","userPrincipalName":"userPrincipalName-value","id": "id-value"}"/>
+										<PropertyValue Property="Description" String="application/json"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<!-- maps to security/permissions -->
+				<PropertyValue Property="SecuritySchemes">
+					<!-- This maps to the description for the permissions section on the current graph documentation.  -->
+					<Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. 					To learn more, including how to choose permissions, see Permissions."></Annotation>
+					<Collection>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
 							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
 							<PropertyValue Property="Scopes">
 								<Collection>
 									<Record>
-										<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-										<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-									</Record>
-									<Record>
-										<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-										<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-									</Record>
-									<Record>
-										<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-										<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+										<PropertyValue Property="Scope" String="User.Read"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
 									</Record>
 								</Collection>
-							</Record>
-						</Collection>
-					</Annotation>
-				</Annotations>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All, Directory.AccessAsUser.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadWrite"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadBasic.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.Read.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.Read.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedWork" />
+							<PropertyValue Property="Description" String="DelegatedWork" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
+										<PropertyValue Property="Description" String="Scope Description"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedPersonal" />
+							<PropertyValue Property="Description" String="DelegatedPersonal" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.Read"/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="DelegatedPersonal" />
+							<PropertyValue Property="Description" String="DelegatedPersonal" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadWrite"/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="Application" />
+							<PropertyValue Property="Description" String="Application" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.Read.All"/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="Application" />
+							<PropertyValue Property="Description" String="Application" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="Application" />
+							<PropertyValue Property="Description" String="Application" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.Read.All"/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Name" String="Application" />
+							<PropertyValue Property="Description" String="Application" />
+							<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+							<PropertyValue Property="Scopes">
+								<Collection>
+									<Record>
+										<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+										<PropertyValue Property="Description" String=""/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+							<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+						</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+		</Collection>
+	</Annotation>
+	<!-- Resource inheritance (description)
+    Look into if we should do anyOf/all of for this representation. 
+    -->
+	<!-- Method extensions (description) 
+    This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
+    -->
+	<!-- Relationships  
+    These need to be defined as 'link objects'.
+	We need to links for media, navigation and string properties.
+	For paths that return a single resource, we need to write navi properties
+	-->
+</Annotations>
+<!-- Properties (description) -->
+<!-- Properties -->
+<Annotations Target="microsoft.graph.user/aboutMe">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A freeform text entry field for the user to describe themselves."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/accountEnabled">
+	<Annotation Term="Org.OData.Core.V1.Description" String="true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/assignedLicenses">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The licenses that are assigned to the user. Not nullable."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/assignedPlans">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The plans that are assigned to the user. Read-only. Not nullable."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/birthday">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'"></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/businessPhones">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The telephone numbers for the user. NOTE: Although this is a string collection, only one number can be set for this property."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/city">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The city in which the user is located. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/companyName">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The company name which the user is associated. Read-only."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/country">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The country/region in which the user is located; for example, “US” or “UK”. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/department">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The name for the department in which the user works. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/displayName">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/givenName">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The given name (first name) of the user. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/hireDate">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'"></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/id">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The unique identifier for the user. Inherited from directoryObject. Key. Not nullable. Read-only."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/imAddresses">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/interests">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to describe their interests."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/jobTitle">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The user’s job title. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/mail">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The SMTP address for the user, for example, "jeff@contoso.onmicrosoft.com". Read-Only. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/mailboxSettings">
+	<Annotation Term="Org.OData.Core.V1.Description" String="Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/mailNickname">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The mail alias for the user. This property must be specified when a user is created. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/mobilePhone">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The primary cellular telephone number for the user."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/mySite">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The URL for the user's personal site."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/officeLocation">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The office location in the user's place of business."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/onPremisesImmutableId">
+	<Annotation Term="Org.OData.Core.V1.Description" String="This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user’s userPrincipalName (UPN) property. Important: The $ and **_** characters cannot be used when specifying this property. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/onPremisesLastSyncDateTime">
+	<Annotation Term="Org.OData.Core.V1.Description" String="Indicates the last time at which the object was synced with the on-premises directory; for example: "2013-02-16T03:04:54Z". The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 would look like this: '2014-01-01T00:00:00Z'. Read-only."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/onPremisesSecurityIdentifier">
+	<Annotation Term="Org.OData.Core.V1.Description" String="Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/onPremisesSyncEnabled">
+	<Annotation Term="Org.OData.Core.V1.Description" String="true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only"></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/passwordPolicies">
+	<Annotation Term="Org.OData.Core.V1.Description" String="Specifies password policies for the user. This value is an enumeration with one possible value being “DisableStrongPassword”, which allows weaker passwords than the default policy to be specified. “DisablePasswordExpiration” can also be specified. The two may be specified together; for example: "DisablePasswordExpiration, DisableStrongPassword"."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/passwordProfile">
+	<Annotation Term="Org.OData.Core.V1.Description" String="Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/pastProjects">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate their past projects."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/postalCode">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/preferredLanguage">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The preferred language for the user. Should follow ISO 639-1 Code; for example "en-US"."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/preferredName">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The preferred name for the user."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/provisionedPlans">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The plans that are provisioned for the user. Read-only. Not nullable."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/proxyAddresses">
+	<Annotation Term="Org.OData.Core.V1.Description" String="For example: ["SMTP: bob@contoso.com", "smtp: bob@sales.contoso.com"] The any operator is required for filter expressions on multi-valued properties. Read-only, Not nullable. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/responsibilities">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate their responsibilities."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/schools">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate the schools they have attended."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/skills">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A list for the user to enumerate their skills."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/state">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The state or province in the user's address. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/streetAddress">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The street address of the user's place of business."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/surname">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The user's surname (family name or last name). Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/usageLocation">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. Examples include: "US", "JP", and "GB". Not nullable. Supports $filter."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/userPrincipalName">
+	<Annotation Term="Org.OData.Core.V1.Description" String="The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant’s collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization. Supports $filter and $orderby."></Annotation>
+</Annotations>
+<Annotations Target="microsoft.graph.user/userType">
+	<Annotation Term="Org.OData.Core.V1.Description" String="A string value that can be used to classify user types in your directory, such as “Member” and “Guest”. Supports $filter."></Annotation>
+</Annotations>
+<!-- Properties -->
+<Annotations Target="microsoft.graph.GraphService">
+	<Annotation Term="Org.OData.Authorization.V1.Authorizations">
+		<Collection>
+			<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+				<PropertyValue Property="Name" String="DelegatedWork"/>
+				<PropertyValue Property="Description" String="DelegatedWork"/>
+				<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="Scopes">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+			<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+				<PropertyValue Property="Name" String="DelegatedPersonal"/>
+				<PropertyValue Property="Description" String="DelegatedPersonal"/>
+				<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="Scopes">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+						</Record>
+					</Collection>
+				</PropertyValue>
+			</Record>
+			<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+				<PropertyValue Property="Name" String="Application"/>
+				<PropertyValue Property="Description" String="Application"/>
+				<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="Scopes">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+							<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+						</Record>
+					</Collection>
+				</Record>
+			</Collection>
+		</PropertyValue>
+	</Annotation>
+</Annotations>
