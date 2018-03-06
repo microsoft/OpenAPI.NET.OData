@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Generator
@@ -22,10 +23,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created collection of <see cref="OpenApiTag"/> object.</returns>
         public static IList<OpenApiTag> CreateTags(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             // The value of tags is an array of Tag Objects.
             // For an OData service the natural groups are entity sets and singletons,

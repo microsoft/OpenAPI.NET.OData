@@ -378,6 +378,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -417,6 +425,14 @@
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
@@ -1404,6 +1420,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -1443,6 +1467,14 @@
             "name": "UserName",
             "in": "path",
             "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lastName",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"

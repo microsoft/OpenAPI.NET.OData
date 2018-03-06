@@ -4,23 +4,26 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
-    /// Org.Graph.Vocab.HttpRequests
+    /// Complex type Org.OData.Core.V1.InlineExample
     /// </summary>
-    internal class CustomParameterExampleValue
+    internal class InlineExample : Example
     {
-        public string Value { get; set; }
+        /// <summary>
+        /// InlineValue
+        /// </summary>
+        public string InlineValue { get; set; }
 
-        public string Description { get; set; }
-
-        public void Init(IEdmRecordExpression record)
+        public override void Init(IEdmRecordExpression record)
         {
-            Value = record.GetString("Value");
-            Description = record.GetString("Description");
+            base.Init(record);
+
+            // InlineValue
+            InlineValue = record.GetString("InlineValue");
         }
     }
 }

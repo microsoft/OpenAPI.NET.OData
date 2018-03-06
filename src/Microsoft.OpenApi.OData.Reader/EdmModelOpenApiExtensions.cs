@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Annotations;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData
@@ -69,6 +70,31 @@ namespace Microsoft.OpenApi.OData
             }
 
             ODataContext context = new ODataContext(model, settings);
+            return context.CreateDocument();
+        }
+
+        /// <summary>
+        /// Convert CSDL to <see cref="OpenApiDocument"/> using a convert settings.
+        /// </summary>
+        /// <param name="csdl">The Edm CSDL.</param>
+        /// <param name="settings">The convert settings.</param>
+        /// <returns>The converted Open API document object, <see cref="OpenApiDocument"/>.</returns>
+        public static OpenApiDocument ConvertToOpenApi(this string csdl, OpenApiConvertSettings settings)
+        {
+            if (csdl == null)
+            {
+                throw Error.ArgumentNull(nameof(csdl));
+            }
+
+            if (settings == null)
+            {
+                settings = new OpenApiConvertSettings(); // default
+            }
+
+            IEdmModel model = csdl.AppendAnnotations();
+
+            ODataContext context = new ODataContext(model, settings);
+            var a = context.Authorizations;
             return context.CreateDocument();
         }
     }

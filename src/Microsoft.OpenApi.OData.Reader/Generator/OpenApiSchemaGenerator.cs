@@ -6,11 +6,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.Models;
-using System.Linq;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -28,10 +29,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The string/schema dictionary.</returns>
         public static IDictionary<string, OpenApiSchema> CreateSchemas(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
 
@@ -75,15 +73,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEnumTypeSchema(this ODataContext context, IEdmEnumType enumType)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (enumType == null)
-            {
-                throw Error.ArgumentNull(nameof(enumType));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(enumType, nameof(enumType));
 
             OpenApiSchema schema = new OpenApiSchema
             {
@@ -116,15 +107,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (structuredType == null)
-            {
-                throw Error.ArgumentNull(nameof(structuredType));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
             return context.CreateStructuredTypeSchema(structuredType, true);
         }
@@ -140,15 +124,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreatePropertySchema(this ODataContext context, IEdmProperty property)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (property == null)
-            {
-                throw Error.ArgumentNull(nameof(property));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(property, nameof(property));
 
             OpenApiSchema schema = context.CreateEdmTypeSchema(property.Type);
 
@@ -175,6 +152,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created map of <see cref="OpenApiSchema"/>.</returns>
         public static IDictionary<string, OpenApiSchema> CreateStructuredTypePropertiesSchema(this ODataContext context, IEdmStructuredType structuredType)
         {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(structuredType, nameof(structuredType));
+
             // The name is the property name, the value is a Schema Object describing the allowed values of the property.
             IDictionary<string, OpenApiSchema> properties = new Dictionary<string, OpenApiSchema>();
 

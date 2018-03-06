@@ -3,10 +3,14 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -75,6 +79,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         public OpenApiConvertSettings Settings { get; }
 
+        /// <summary>
+        /// Gets the bound operations (functions & actions).
+        /// </summary>
         public IDictionary<IEdmTypeReference, IEdmOperation> BoundOperations
         {
             get
@@ -88,16 +95,42 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        public IEnumerable<IEdmOperation> FindOperations(IEdmEntityType entityType, bool collection)
+        /// <summary>
+        /// Finds the operations using the <see cref="IEdmEntityType"/>
+        /// </summary>
+        /// <param name="entityType">The entity type.</param>
+        /// <param name="collection">The collection flag.</param>
+        /// <returns>The found operations.</returns>
+        public IEnumerable<Tuple<IEdmEntityType, IEdmOperation>> FindOperations(IEdmEntityType entityType, bool collection)
         {
             string fullTypeName = collection ? "Collection(" + entityType.FullName() + ")" :
                 entityType.FullName();
 
             foreach (var item in BoundOperations)
             {
-                if (item.Key.FullName() == fullTypeName)
+                IEdmEntityType operationBindingType;
+                if (collection)
                 {
-                    yield return item.Value;
+                    if (!item.Key.IsCollection())
+                    {
+                        continue;
+                    }
+
+                    operationBindingType = item.Key.AsCollection().ElementType().AsEntity().EntityDefinition();
+                }
+                else
+                {
+                    if (item.Key.IsCollection())
+                    {
+                        continue;
+                    }
+
+                    operationBindingType = item.Key.AsEntity().EntityDefinition();
+                }
+
+                if (entityType.IsAssignableFrom(operationBindingType))
+                {
+                    yield return Tuple.Create(operationBindingType, item.Value);
                 }
             }
         }
@@ -114,6 +147,58 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 IEdmOperationParameter bindingParameter = edmOperation.Parameters.First();
                 _boundOperations.Add(bindingParameter.Type, edmOperation);
+            }
+        }
+
+        public IList<Authorization> Authorizations
+        {
+            get
+            {
+                if (_authorizations == null)
+                {
+                    RetrieveAuthorizations();
+                }
+
+                return _authorizations;
+            }
+        }
+        private IList<Authorization> _authorizations;
+
+        private void RetrieveAuthorizations()
+        {
+            if (_authorizations != null)
+            {
+                return;
+            }
+            _authorizations = new List<Authorization>();
+            if (Model.EntityContainer == null)
+            {
+                return;
+            }
+
+            IEdmVocabularyAnnotation annotation = Model.GetVocabularyAnnotation(Model.EntityContainer, AuthorizationConstants.Authorizations);
+            if (annotation == null ||
+                annotation.Value == null ||
+                annotation.Value.ExpressionKind != EdmExpressionKind.Collection)
+            {
+                return;
+            }
+
+            IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;
+
+            foreach (var item in collection.Elements)
+            {
+                IEdmRecordExpression record = item as IEdmRecordExpression;
+                if (record == null || record.DeclaredType == null)
+                {
+                    continue;
+                }
+
+                Authorization auth = Authorization.CreateAuthorization(record);
+                if (auth != null)
+                {
+                    _authorizations.Add(auth);
+                }
             }
         }
     }

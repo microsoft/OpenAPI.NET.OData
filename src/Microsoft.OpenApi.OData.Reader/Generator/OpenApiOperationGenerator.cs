@@ -7,12 +7,12 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Annotations;
-using Microsoft.OpenApi.Any;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "GetEntitiesFrom" + entitySet.Name;
+                operation.OperationId = "GetEntitiesFrom" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
@@ -126,7 +126,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 AppendCustomerHeaders(operation.Parameters, request.CustomHeaders);
             }
-
+            /*
             if (request != null && request.RequestBody != null)
             {
                 if (operation.RequestBody == null)
@@ -135,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
 
                 AppendHttpRequestBody(operation.RequestBody, request.RequestBody);
-            }
+            }*/
 
             // The value of responses is a Responses Object.
             // It contains a name/value pair for the success case (HTTP response code 200)
@@ -187,7 +187,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return operation;
         }
-
+        /*
         private static void AppendHttpRequestBody(OpenApiRequestBody requestBody, HttpRequestBody requestBodyAnnotation)
         {
             requestBody.Description = requestBodyAnnotation.Description;
@@ -198,14 +198,14 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Schema = new OpenApiSchema
                     {
-                        Type = p.Type
+ //                       Type = p.Type
                     },
                     Example = new OpenApiString(p.DocumentationURL),
                 };
 
                // requestBody.Content[p.Name] = mediaType;
             }
-        }
+        }*/
 
         private static void AppendCustomerHeaders(IList<OpenApiParameter> parameters, IList<CustomParameter> headers)
         {
@@ -218,7 +218,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Description = param.Description,
                     Schema = new OpenApiSchema
                     {
-                        Type = param.Type
+               //         Type = param.Type
                     },
                     Required = param.Required ?? false,
                     Example = new OpenApiString(param.DocumentationURL)
@@ -229,7 +229,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     OpenApiExample ex = new OpenApiExample
                     {
-                        Value = new OpenApiString(example.Value),
+                //        Value = new OpenApiString(example.Value),
                         Description = example.Description
                     };
 
@@ -250,15 +250,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateEntitySetPostOperation(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -329,7 +322,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "AddEntityTo" + entitySet.Name;
+                operation.OperationId = "AddEntityTo" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             return operation;
@@ -365,7 +358,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "GetEntityFrom" + entitySet.Name + "ByKey";
+                operation.OperationId = "GetEntityFrom" + Utils.UpperFirstChar(entitySet.Name) + "ByKey";
             }
 
             IEdmEntityType entityType = entitySet.EntityType();
@@ -428,15 +421,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateEntityPatchOperation(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -454,7 +440,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "UpdateEntityIn" + entitySet.Name;
+                operation.OperationId = "UpdateEntityIn" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -504,15 +490,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateEntityDeleteOperation(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -531,7 +510,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "DeleteEntityFrom" + entitySet.Name;
+                operation.OperationId = "DeleteEntityFrom" + Utils.UpperFirstChar(entitySet.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -586,7 +565,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Get" + singleton.Name;
+                operation.OperationId = "Get" + Utils.UpperFirstChar(singleton.Name);
             }
 
             operation.Parameters = new List<OpenApiParameter>();
@@ -648,15 +627,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
         public static OpenApiOperation CreateSingletonPatchOperation(this ODataContext context, IEdmSingleton singleton)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (singleton == null)
-            {
-                throw Error.ArgumentNull(nameof(singleton));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(singleton, nameof(singleton));
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -674,7 +646,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Update" + singleton.Name;
+                operation.OperationId = "Update" + Utils.UpperFirstChar(singleton.Name);
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -742,7 +714,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Get" + property.Name + "From" + navigationSource.Name;
+                operation.OperationId = "Get" + Utils.UpperFirstChar(property.Name) + "From" + Utils.UpperFirstChar(navigationSource.Name);
             }
 
             IEdmEntityType declaringEntityType = property.DeclaringEntityType();
@@ -867,20 +839,9 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiOperation CreateNavigationPatchOperation(this ODataContext context, IEdmNavigationSource navigationSource,
             IEdmNavigationProperty property)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (property == null)
-            {
-                throw Error.ArgumentNull(nameof(property));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(property, nameof(property));
 
             if (property.TargetMultiplicity() == EdmMultiplicity.Many)
             {
@@ -903,7 +864,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Update" + property.Name + "In" + navigationSource.Name;
+                operation.OperationId = "Update" + Utils.UpperFirstChar(property.Name) + "In" + Utils.UpperFirstChar(navigationSource.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(navigationSource.EntityType());
@@ -955,20 +916,9 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiOperation CreateNavigationPostOperation(this ODataContext context, IEdmNavigationSource navigationSource,
             IEdmNavigationProperty property)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (property == null)
-            {
-                throw Error.ArgumentNull(nameof(property));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(property, nameof(property));
 
             if (property.TargetMultiplicity() != EdmMultiplicity.Many)
             {
@@ -1044,7 +994,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Add" + property.Name + "To" + navigationSource.Name;
+                operation.OperationId = "Add" + Utils.UpperFirstChar(property.Name) + "To" + Utils.UpperFirstChar(navigationSource.Name);
             }
 
             return operation;
@@ -1063,27 +1013,16 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiOperation CreateOperation(this ODataContext context, IEdmNavigationSource navigationSource,
             IEdmOperation edmOperation)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (edmOperation == null)
-            {
-                throw Error.ArgumentNull(nameof(edmOperation));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(edmOperation, nameof(edmOperation));
 
             OpenApiOperation operation = new OpenApiOperation();
             operation.Summary = "Invoke " + (edmOperation.IsAction() ? "action " : "function ") + edmOperation.Name;
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + edmOperation.Name;
+                operation.OperationId = "Invoke" + Utils.UpperFirstChar(edmOperation.Name);
             }
 
             // The tags array of the Operation Object includes the entity set name.
@@ -1156,22 +1095,15 @@ namespace Microsoft.OpenApi.OData.Generator
         public static OpenApiOperation CreateOperation(this ODataContext context,
             IEdmOperationImport operationImport)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (operationImport == null)
-            {
-                throw Error.ArgumentNull(nameof(operationImport));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(operationImport, nameof(operationImport));
 
             OpenApiOperation operation = new OpenApiOperation();
             operation.Summary = "Invoke " + (operationImport.IsActionImport() ? "action " : "function ") + operationImport.Name;
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + operationImport.Name;
+                operation.OperationId = "Invoke" + Utils.UpperFirstChar(operationImport.Name);
             }
 
             // If the action or function import specifies the EntitySet attribute,

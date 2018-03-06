@@ -7,7 +7,7 @@ using System;
 using System.Globalization;
 using Microsoft.OpenApi.OData.Properties;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Common
 {
     /// <summary>
     /// Utility class for creating and unwrapping <see cref="Exception"/> instances.

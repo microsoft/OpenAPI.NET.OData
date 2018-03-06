@@ -3,55 +3,73 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Capabilities;
 using System.Collections.Generic;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
+    /// Complex type Org.OData.Core.V1.CustomParameter
     /// </summary>
     internal class CustomParameter
     {
         /// <summary>
+        /// The Name.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// </summary>
-        public string Type { get; set; }
-
-        /// <summary>
+        /// The Description.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
+        /// The DocumentationURL.
         /// </summary>
         public string DocumentationURL { get; set; }
 
+        /// <summary>
+        /// The Required.
+        /// </summary>
         public bool? Required { get; set; }
 
-        public IList<CustomParameterExampleValue> ExampleValues { get; set; }
+        /// <summary>
+        /// The ExampleValues.
+        /// </summary>
+        public IEnumerable<Example> ExampleValues { get; set; }
 
-        public void Init(IEdmRecordExpression record)
+        /// <summary>
+        /// Init the <see cref="CustomParameter"/>
+        /// </summary>
+        /// <param name="record">The input record.</param>
+        public virtual void Init(IEdmRecordExpression record)
         {
+            Utils.CheckArgumentNull(record, nameof(record));
+
+            // Name
             Name = record.GetString("Name");
-            Type = record.GetString("Type");
+
+            // Description
             Description = record.GetString("Description");
+
+            // DocumentationURL
             DocumentationURL = record.GetString("DocumentationURL");
+
+            // Required
             Required = record.GetBoolean("Required");
 
-            IEdmCollectionExpression collection = HttpRequest.GetCollection(record, "ExampleValues");
-            if (collection != null)
+            // ExampleValues
+            ExampleValues = record.GetCollection("ExampleValues", r =>
             {
-                ExampleValues = new List<CustomParameterExampleValue>();
-                foreach (var item in collection.Elements)
+                IEdmRecordExpression itemRecord = r as IEdmRecordExpression;
+                if (itemRecord != null)
                 {
-                    CustomParameterExampleValue p = new CustomParameterExampleValue();
-                    p.Init(item as IEdmRecordExpression);
-                    ExampleValues.Add(p);
+                    return Example.CreateExample(itemRecord);
                 }
-            }
+
+                return null;
+            });
         }
     }
 }

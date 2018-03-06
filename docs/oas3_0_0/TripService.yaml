@@ -256,6 +256,11 @@ paths:
           required: true
           schema:
             type: string
+        - name: userName
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -279,6 +284,11 @@ paths:
         - name: UserName
           in: path
           description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+        - name: lastName
+          in: path
           required: true
           schema:
             type: string
@@ -925,6 +935,11 @@ paths:
           required: true
           schema:
             type: string
+        - name: userName
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -948,6 +963,11 @@ paths:
         - name: UserName
           in: path
           description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+        - name: lastName
+          in: path
           required: true
           schema:
             type: string

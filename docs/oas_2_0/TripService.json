@@ -38,8 +38,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -71,8 +71,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -93,8 +93,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -143,9 +143,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -176,15 +177,15 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -205,8 +206,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -243,16 +244,17 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -275,15 +277,15 @@
         "operationId": "DeleteEntityFromPeople",
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -310,8 +312,8 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
@@ -340,9 +342,15 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userName",
             "required": true,
             "type": "string"
           }
@@ -373,9 +381,15 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -406,16 +420,17 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -469,8 +484,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -484,8 +499,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -497,8 +512,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -544,9 +559,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
             }
@@ -577,15 +593,15 @@
         ],
         "parameters": [
           {
-            "name": "AirlineCode",
             "in": "path",
+            "name": "AirlineCode",
             "description": "key: AirlineCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -597,8 +613,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -632,16 +648,17 @@
         ],
         "parameters": [
           {
-            "name": "AirlineCode",
             "in": "path",
+            "name": "AirlineCode",
             "description": "key: AirlineCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
             }
@@ -664,15 +681,15 @@
         "operationId": "DeleteEntityFromAirlines",
         "parameters": [
           {
-            "name": "AirlineCode",
             "in": "path",
+            "name": "AirlineCode",
             "description": "key: AirlineCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -714,8 +731,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -733,8 +750,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -748,8 +765,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -795,9 +812,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
             }
@@ -828,15 +846,15 @@
         ],
         "parameters": [
           {
-            "name": "IcaoCode",
             "in": "path",
+            "name": "IcaoCode",
             "description": "key: IcaoCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -850,8 +868,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -885,16 +903,17 @@
         ],
         "parameters": [
           {
-            "name": "IcaoCode",
             "in": "path",
+            "name": "IcaoCode",
             "description": "key: IcaoCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
             }
@@ -917,15 +936,15 @@
         "operationId": "DeleteEntityFromAirports",
         "parameters": [
           {
-            "name": "IcaoCode",
             "in": "path",
+            "name": "IcaoCode",
             "description": "key: IcaoCode",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -967,8 +986,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1000,8 +1019,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1022,8 +1041,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1072,9 +1091,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1105,15 +1125,15 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1134,8 +1154,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1172,16 +1192,17 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1204,15 +1225,15 @@
         "operationId": "DeleteEntityFromNewComePeople",
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -1239,8 +1260,8 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
@@ -1269,9 +1290,15 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "userName",
             "required": true,
             "type": "string"
           }
@@ -1302,9 +1329,15 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -1335,16 +1368,17 @@
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1383,8 +1417,8 @@
         ],
         "parameters": [
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1405,8 +1439,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1443,9 +1477,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1494,8 +1529,8 @@
         ],
         "parameters": [
           {
-            "name": "userName",
             "in": "path",
+            "name": "userName",
             "required": true,
             "type": "string"
           }
@@ -1526,8 +1561,8 @@
         ],
         "parameters": [
           {
-            "name": "lastName",
             "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -1558,9 +1593,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1620,14 +1656,14 @@
         ],
         "parameters": [
           {
-            "name": "lat",
             "in": "path",
+            "name": "lat",
             "required": true,
             "format": "double"
           },
           {
-            "name": "lon",
             "in": "path",
+            "name": "lon",
             "required": true,
             "format": "double"
           }
@@ -2241,34 +2277,34 @@
   },
   "parameters": {
     "top": {
-      "name": "$top",
       "in": "query",
+      "name": "$top",
       "description": "Show only the first n items",
       "type": "integer",
       "minimum": 0
     },
     "skip": {
-      "name": "$skip",
       "in": "query",
+      "name": "$skip",
       "description": "Skip the first n items",
       "type": "integer",
       "minimum": 0
     },
     "count": {
-      "name": "$count",
       "in": "query",
+      "name": "$count",
       "description": "Include count of items",
       "type": "boolean"
     },
     "filter": {
-      "name": "$filter",
       "in": "query",
+      "name": "$filter",
       "description": "Filter items by property values",
       "type": "string"
     },
     "search": {
-      "name": "$search",
       "in": "query",
+      "name": "$search",
       "description": "Search items by search phrases",
       "type": "string"
     }

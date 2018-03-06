@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Generator
         public static string StatusCode204 = "204";
 
         /// <summary>
-        /// Status code: 204
+        /// Status code: default
         /// </summary>
         public static string StatusCodeDefault = "default";
     }

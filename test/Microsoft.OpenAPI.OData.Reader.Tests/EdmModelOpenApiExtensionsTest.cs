@@ -141,11 +141,32 @@ namespace Microsoft.OpenApi.OData.Tests
             };
 
             // Act
+            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
+            _output.WriteLine(json);
+
+            // Assert
+            Assert.Equal(Resources.GetString("Graph.Beta.OpenApi.json").ChangeLineBreaks(), json);
+        }
+
+        [Fact]
+        public void GraphBetaMetadataToOpenApiYamlWorks()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                Version = new Version(1, 0, 1),
+                ServiceRoot = new Uri("http://graph.microsoft.com/beta"),
+                IEEE754Compatible = true
+            };
+
+            // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, settings);
             _output.WriteLine(yaml);
 
             // Assert
-            Assert.Equal(Resources.GetString("Graph.Beta.OData.xml").ChangeLineBreaks(), yaml);
+            Assert.Equal(Resources.GetString("Graph.Beta.OpenApi.yaml").ChangeLineBreaks(), yaml);
         }
 
         private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,

@@ -5,12 +5,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Properties;
-using System.Diagnostics;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -27,15 +28,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmTypeSchema(this ODataContext context, IEdmTypeReference edmTypeReference)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (edmTypeReference == null)
-            {
-                throw Error.ArgumentNull(nameof(edmTypeReference));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(edmTypeReference, nameof(edmTypeReference));
 
             switch (edmTypeReference.TypeKind())
             {
@@ -84,15 +78,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveTypeReference primitiveType)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (primitiveType == null)
-            {
-                throw Error.ArgumentNull(nameof(primitiveType));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(primitiveType, nameof(primitiveType));
 
             OpenApiSchema schema = context.CreateSchema(primitiveType.PrimitiveDefinition());
             if (schema != null)
@@ -149,15 +136,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateSchema(this ODataContext context, IEdmPrimitiveType primitiveType)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (primitiveType == null)
-            {
-                throw Error.ArgumentNull(nameof(primitiveType));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(primitiveType, nameof(primitiveType));
 
             // Spec has different configure for double, AnyOf or OneOf?
             OpenApiSchema schema = new OpenApiSchema

@@ -20,15 +20,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Authorization\**" />
+    <EmbeddedResource Remove="Authorization\**" />
+    <None Remove="Authorization\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Annotations\Authorization.def" />
     <None Remove="Annotations\GraphVocaburary.def" />
-    <None Remove="Authorization\Authorization.def" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Annotations\Authorization.def" />
     <EmbeddedResource Include="Annotations\GraphVocaburary.def" />
-    <EmbeddedResource Include="Authorization\Authorization.def" />
   </ItemGroup>
 
   <ItemGroup>
