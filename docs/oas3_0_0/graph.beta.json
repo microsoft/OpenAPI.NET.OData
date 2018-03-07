@@ -2346,7 +2346,7 @@
     "/applications('{id}')/extensionProperties": {
       "get": {
         "tags": [
-          "applications"
+          "applications##extensionProperties"
         ],
         "summary": "Get extensionProperties from applications",
         "operationId": "GetExtensionPropertiesFromApplications",
@@ -2496,7 +2496,7 @@
       },
       "post": {
         "tags": [
-          "applications"
+          "applications##extensionProperties"
         ],
         "summary": "Add new navigation property to extensionProperties for applications",
         "operationId": "AddExtensionPropertiesToApplications",
@@ -2531,7 +2531,7 @@
     "/applications('{id}')/synchronization": {
       "get": {
         "tags": [
-          "applications"
+          "applications##synchronization"
         ],
         "summary": "Get synchronization from applications",
         "operationId": "GetSynchronizationFromApplications",
@@ -2616,7 +2616,7 @@
       },
       "patch": {
         "tags": [
-          "applications"
+          "applications##synchronization"
         ],
         "summary": "Update the navigation property synchronization in applications",
         "operationId": "UpdateSynchronizationInApplications",
@@ -2897,7 +2897,7 @@
     "/administrativeUnits('{id}')/extensions": {
       "get": {
         "tags": [
-          "administrativeUnits"
+          "administrativeUnits##extensions"
         ],
         "summary": "Get extensions from administrativeUnits",
         "operationId": "GetExtensionsFromAdministrativeUnits",
@@ -3006,7 +3006,7 @@
       },
       "post": {
         "tags": [
-          "administrativeUnits"
+          "administrativeUnits##extensions"
         ],
         "summary": "Add new navigation property to extensions for administrativeUnits",
         "operationId": "AddExtensionsToAdministrativeUnits",
@@ -3041,7 +3041,7 @@
     "/administrativeUnits('{id}')/scopedRoleMembers": {
       "get": {
         "tags": [
-          "administrativeUnits"
+          "administrativeUnits##scopedRoleMembers"
         ],
         "summary": "Get scopedRoleMembers from administrativeUnits",
         "operationId": "GetScopedRoleMembersFromAdministrativeUnits",
@@ -3150,7 +3150,7 @@
       },
       "post": {
         "tags": [
-          "administrativeUnits"
+          "administrativeUnits##scopedRoleMembers"
         ],
         "summary": "Add new navigation property to scopedRoleMembers for administrativeUnits",
         "operationId": "AddScopedRoleMembersToAdministrativeUnits",
@@ -4443,7 +4443,7 @@
     "/devices('{id}')/extensions": {
       "get": {
         "tags": [
-          "devices"
+          "devices##extensions"
         ],
         "summary": "Get extensions from devices",
         "operationId": "GetExtensionsFromDevices",
@@ -4607,7 +4607,7 @@
       },
       "post": {
         "tags": [
-          "devices"
+          "devices##extensions"
         ],
         "summary": "Add new navigation property to extensions for devices",
         "operationId": "AddExtensionsToDevices",
@@ -4642,7 +4642,7 @@
     "/devices('{id}')/commands": {
       "get": {
         "tags": [
-          "devices"
+          "devices##commands"
         ],
         "summary": "Get commands from devices",
         "operationId": "GetCommandsFromDevices",
@@ -4806,7 +4806,7 @@
       },
       "post": {
         "tags": [
-          "devices"
+          "devices##commands"
         ],
         "summary": "Add new navigation property to commands for devices",
         "operationId": "AddCommandsToDevices",
@@ -5148,7 +5148,7 @@
     "/domains('{id}')/serviceConfigurationRecords": {
       "get": {
         "tags": [
-          "domains"
+          "domains##serviceConfigurationRecords"
         ],
         "summary": "Get serviceConfigurationRecords from domains",
         "operationId": "GetServiceConfigurationRecordsFromDomains",
@@ -5272,7 +5272,7 @@
       },
       "post": {
         "tags": [
-          "domains"
+          "domains##serviceConfigurationRecords"
         ],
         "summary": "Add new navigation property to serviceConfigurationRecords for domains",
         "operationId": "AddServiceConfigurationRecordsToDomains",
@@ -5307,7 +5307,7 @@
     "/domains('{id}')/verificationDnsRecords": {
       "get": {
         "tags": [
-          "domains"
+          "domains##verificationDnsRecords"
         ],
         "summary": "Get verificationDnsRecords from domains",
         "operationId": "GetVerificationDnsRecordsFromDomains",
@@ -5431,7 +5431,7 @@
       },
       "post": {
         "tags": [
-          "domains"
+          "domains##verificationDnsRecords"
         ],
         "summary": "Add new navigation property to verificationDnsRecords for domains",
         "operationId": "AddVerificationDnsRecordsToDomains",
@@ -6175,7 +6175,7 @@
     "/groups('{id}')/extensions": {
       "get": {
         "tags": [
-          "groups"
+          "groups##extensions"
         ],
         "summary": "Get extensions from groups",
         "operationId": "GetExtensionsFromGroups",
@@ -6386,7 +6386,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##extensions"
         ],
         "summary": "Add new navigation property to extensions for groups",
         "operationId": "AddExtensionsToGroups",
@@ -6421,7 +6421,7 @@
     "/groups('{id}')/settings": {
       "get": {
         "tags": [
-          "groups"
+          "groups##settings"
         ],
         "summary": "Get settings from groups",
         "operationId": "GetSettingsFromGroups",
@@ -6632,7 +6632,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##settings"
         ],
         "summary": "Add new navigation property to settings for groups",
         "operationId": "AddSettingsToGroups",
@@ -6667,7 +6667,7 @@
     "/groups('{id}')/endpoints": {
       "get": {
         "tags": [
-          "groups"
+          "groups##endpoints"
         ],
         "summary": "Get endpoints from groups",
         "operationId": "GetEndpointsFromGroups",
@@ -6878,7 +6878,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##endpoints"
         ],
         "summary": "Add new navigation property to endpoints for groups",
         "operationId": "AddEndpointsToGroups",
@@ -6913,7 +6913,7 @@
     "/groups('{id}')/threads": {
       "get": {
         "tags": [
-          "groups"
+          "groups##threads"
         ],
         "summary": "Get threads from groups",
         "operationId": "GetThreadsFromGroups",
@@ -7082,7 +7082,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##threads"
         ],
         "summary": "Add new navigation property to threads for groups",
         "operationId": "AddThreadsToGroups",
@@ -7117,7 +7117,7 @@
     "/groups('{id}')/calendar": {
       "get": {
         "tags": [
-          "groups"
+          "groups##calendar"
         ],
         "summary": "Get calendar from groups",
         "operationId": "GetCalendarFromGroups",
@@ -7198,7 +7198,7 @@
     "/groups('{id}')/calendarView": {
       "get": {
         "tags": [
-          "groups"
+          "groups##calendarView"
         ],
         "summary": "Get calendarView from groups",
         "operationId": "GetCalendarViewFromGroups",
@@ -7369,7 +7369,7 @@
     "/groups('{id}')/events": {
       "get": {
         "tags": [
-          "groups"
+          "groups##events"
         ],
         "summary": "Get events from groups",
         "operationId": "GetEventsFromGroups",
@@ -7538,7 +7538,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##events"
         ],
         "summary": "Add new navigation property to events for groups",
         "operationId": "AddEventsToGroups",
@@ -7573,7 +7573,7 @@
     "/groups('{id}')/conversations": {
       "get": {
         "tags": [
-          "groups"
+          "groups##conversations"
         ],
         "summary": "Get conversations from groups",
         "operationId": "GetConversationsFromGroups",
@@ -7745,7 +7745,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##conversations"
         ],
         "summary": "Add new navigation property to conversations for groups",
         "operationId": "AddConversationsToGroups",
@@ -7780,7 +7780,7 @@
     "/groups('{id}')/photo": {
       "get": {
         "tags": [
-          "groups"
+          "groups##photo"
         ],
         "summary": "Get photo from groups",
         "operationId": "GetPhotoFromGroups",
@@ -7859,7 +7859,7 @@
       },
       "patch": {
         "tags": [
-          "groups"
+          "groups##photo"
         ],
         "summary": "Update the navigation property photo in groups",
         "operationId": "UpdatePhotoInGroups",
@@ -7898,7 +7898,7 @@
     "/groups('{id}')/photos": {
       "get": {
         "tags": [
-          "groups"
+          "groups##photos"
         ],
         "summary": "Get photos from groups",
         "operationId": "GetPhotosFromGroups",
@@ -8069,7 +8069,7 @@
     "/groups('{id}')/acceptedSenders": {
       "get": {
         "tags": [
-          "groups"
+          "groups##acceptedSenders"
         ],
         "summary": "Get acceptedSenders from groups",
         "operationId": "GetAcceptedSendersFromGroups",
@@ -8238,7 +8238,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##acceptedSenders"
         ],
         "summary": "Add new navigation property to acceptedSenders for groups",
         "operationId": "AddAcceptedSendersToGroups",
@@ -8273,7 +8273,7 @@
     "/groups('{id}')/rejectedSenders": {
       "get": {
         "tags": [
-          "groups"
+          "groups##rejectedSenders"
         ],
         "summary": "Get rejectedSenders from groups",
         "operationId": "GetRejectedSendersFromGroups",
@@ -8442,7 +8442,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##rejectedSenders"
         ],
         "summary": "Add new navigation property to rejectedSenders for groups",
         "operationId": "AddRejectedSendersToGroups",
@@ -8477,7 +8477,7 @@
     "/groups('{id}')/drive": {
       "get": {
         "tags": [
-          "groups"
+          "groups##drive"
         ],
         "summary": "Get drive from groups",
         "operationId": "GetDriveFromGroups",
@@ -8595,7 +8595,7 @@
       },
       "patch": {
         "tags": [
-          "groups"
+          "groups##drive"
         ],
         "summary": "Update the navigation property drive in groups",
         "operationId": "UpdateDriveInGroups",
@@ -8634,7 +8634,7 @@
     "/groups('{id}')/drives": {
       "get": {
         "tags": [
-          "groups"
+          "groups##drives"
         ],
         "summary": "Get drives from groups",
         "operationId": "GetDrivesFromGroups",
@@ -8845,7 +8845,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##drives"
         ],
         "summary": "Add new navigation property to drives for groups",
         "operationId": "AddDrivesToGroups",
@@ -8880,7 +8880,7 @@
     "/groups('{id}')/sites": {
       "get": {
         "tags": [
-          "groups"
+          "groups##sites"
         ],
         "summary": "Get sites from groups",
         "operationId": "GetSitesFromGroups",
@@ -9091,7 +9091,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##sites"
         ],
         "summary": "Add new navigation property to sites for groups",
         "operationId": "AddSitesToGroups",
@@ -9126,7 +9126,7 @@
     "/groups('{id}')/planner": {
       "get": {
         "tags": [
-          "groups"
+          "groups##planner"
         ],
         "summary": "Get planner from groups",
         "operationId": "GetPlannerFromGroups",
@@ -9244,7 +9244,7 @@
       },
       "patch": {
         "tags": [
-          "groups"
+          "groups##planner"
         ],
         "summary": "Update the navigation property planner in groups",
         "operationId": "UpdatePlannerInGroups",
@@ -9283,7 +9283,7 @@
     "/groups('{id}')/onenote": {
       "get": {
         "tags": [
-          "groups"
+          "groups##onenote"
         ],
         "summary": "Get onenote from groups",
         "operationId": "GetOnenoteFromGroups",
@@ -9401,7 +9401,7 @@
       },
       "patch": {
         "tags": [
-          "groups"
+          "groups##onenote"
         ],
         "summary": "Update the navigation property onenote in groups",
         "operationId": "UpdateOnenoteInGroups",
@@ -9440,7 +9440,7 @@
     "/groups('{id}')/team": {
       "get": {
         "tags": [
-          "groups"
+          "groups##team"
         ],
         "summary": "Get team from groups",
         "operationId": "GetTeamFromGroups",
@@ -9558,7 +9558,7 @@
       },
       "patch": {
         "tags": [
-          "groups"
+          "groups##team"
         ],
         "summary": "Update the navigation property team in groups",
         "operationId": "UpdateTeamInGroups",
@@ -9597,7 +9597,7 @@
     "/groups('{id}')/channels": {
       "get": {
         "tags": [
-          "groups"
+          "groups##channels"
         ],
         "summary": "Get channels from groups",
         "operationId": "GetChannelsFromGroups",
@@ -9808,7 +9808,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##channels"
         ],
         "summary": "Add new navigation property to channels for groups",
         "operationId": "AddChannelsToGroups",
@@ -9843,7 +9843,7 @@
     "/groups('{id}')/groupLifecyclePolicies": {
       "get": {
         "tags": [
-          "groups"
+          "groups##groupLifecyclePolicies"
         ],
         "summary": "Get groupLifecyclePolicies from groups",
         "operationId": "GetGroupLifecyclePoliciesFromGroups",
@@ -10054,7 +10054,7 @@
       },
       "post": {
         "tags": [
-          "groups"
+          "groups##groupLifecyclePolicies"
         ],
         "summary": "Add new navigation property to groupLifecyclePolicies for groups",
         "operationId": "AddGroupLifecyclePoliciesToGroups",
@@ -10583,7 +10583,7 @@
     "/directoryRoles('{id}')/scopedMembers": {
       "get": {
         "tags": [
-          "directoryRoles"
+          "directoryRoles##scopedMembers"
         ],
         "summary": "Get scopedMembers from directoryRoles",
         "operationId": "GetScopedMembersFromDirectoryRoles",
@@ -10691,7 +10691,7 @@
       },
       "post": {
         "tags": [
-          "directoryRoles"
+          "directoryRoles##scopedMembers"
         ],
         "summary": "Add new navigation property to scopedMembers for directoryRoles",
         "operationId": "AddScopedMembersToDirectoryRoles",
@@ -11517,7 +11517,7 @@
     "/organization('{id}')/extensions": {
       "get": {
         "tags": [
-          "organization"
+          "organization##extensions"
         ],
         "summary": "Get extensions from organization",
         "operationId": "GetExtensionsFromOrganization",
@@ -11680,7 +11680,7 @@
       },
       "post": {
         "tags": [
-          "organization"
+          "organization##extensions"
         ],
         "summary": "Add new navigation property to extensions for organization",
         "operationId": "AddExtensionsToOrganization",
@@ -11715,7 +11715,7 @@
     "/organization('{id}')/depOnboardingSettings": {
       "get": {
         "tags": [
-          "organization"
+          "organization##depOnboardingSettings"
         ],
         "summary": "Get depOnboardingSettings from organization",
         "operationId": "GetDepOnboardingSettingsFromOrganization",
@@ -11878,7 +11878,7 @@
       },
       "post": {
         "tags": [
-          "organization"
+          "organization##depOnboardingSettings"
         ],
         "summary": "Add new navigation property to depOnboardingSettings for organization",
         "operationId": "AddDepOnboardingSettingsToOrganization",
@@ -11913,7 +11913,7 @@
     "/organization('{id}')/appleVolumePurchaseProgramTokens": {
       "get": {
         "tags": [
-          "organization"
+          "organization##appleVolumePurchaseProgramTokens"
         ],
         "summary": "Get appleVolumePurchaseProgramTokens from organization",
         "operationId": "GetAppleVolumePurchaseProgramTokensFromOrganization",
@@ -12076,7 +12076,7 @@
       },
       "post": {
         "tags": [
-          "organization"
+          "organization##appleVolumePurchaseProgramTokens"
         ],
         "summary": "Add new navigation property to appleVolumePurchaseProgramTokens for organization",
         "operationId": "AddAppleVolumePurchaseProgramTokensToOrganization",
@@ -13132,7 +13132,7 @@
     "/servicePrincipals('{id}')/licenseDetails": {
       "get": {
         "tags": [
-          "servicePrincipals"
+          "servicePrincipals##licenseDetails"
         ],
         "summary": "Get licenseDetails from servicePrincipals",
         "operationId": "GetLicenseDetailsFromServicePrincipals",
@@ -13299,7 +13299,7 @@
       },
       "post": {
         "tags": [
-          "servicePrincipals"
+          "servicePrincipals##licenseDetails"
         ],
         "summary": "Add new navigation property to licenseDetails for servicePrincipals",
         "operationId": "AddLicenseDetailsToServicePrincipals",
@@ -13334,7 +13334,7 @@
     "/servicePrincipals('{id}')/synchronization": {
       "get": {
         "tags": [
-          "servicePrincipals"
+          "servicePrincipals##synchronization"
         ],
         "summary": "Get synchronization from servicePrincipals",
         "operationId": "GetSynchronizationFromServicePrincipals",
@@ -13428,7 +13428,7 @@
       },
       "patch": {
         "tags": [
-          "servicePrincipals"
+          "servicePrincipals##synchronization"
         ],
         "summary": "Update the navigation property synchronization in servicePrincipals",
         "operationId": "UpdateSynchronizationInServicePrincipals",
@@ -14441,7 +14441,7 @@
     "/users('{id}')/extensions": {
       "get": {
         "tags": [
-          "users"
+          "users##extensions"
         ],
         "summary": "Get extensions from users",
         "operationId": "GetExtensionsFromUsers",
@@ -14736,7 +14736,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##extensions"
         ],
         "summary": "Add new navigation property to extensions for users",
         "operationId": "AddExtensionsToUsers",
@@ -14771,7 +14771,7 @@
     "/users('{id}')/scopedRoleMemberOf": {
       "get": {
         "tags": [
-          "users"
+          "users##scopedRoleMemberOf"
         ],
         "summary": "Get scopedRoleMemberOf from users",
         "operationId": "GetScopedRoleMemberOfFromUsers",
@@ -15066,7 +15066,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##scopedRoleMemberOf"
         ],
         "summary": "Add new navigation property to scopedRoleMemberOf for users",
         "operationId": "AddScopedRoleMemberOfToUsers",
@@ -15101,7 +15101,7 @@
     "/users('{id}')/licenseDetails": {
       "get": {
         "tags": [
-          "users"
+          "users##licenseDetails"
         ],
         "summary": "Get licenseDetails from users",
         "operationId": "GetLicenseDetailsFromUsers",
@@ -15396,7 +15396,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##licenseDetails"
         ],
         "summary": "Add new navigation property to licenseDetails for users",
         "operationId": "AddLicenseDetailsToUsers",
@@ -15431,7 +15431,7 @@
     "/users('{id}')/activities": {
       "get": {
         "tags": [
-          "users"
+          "users##activities"
         ],
         "summary": "Get activities from users",
         "operationId": "GetActivitiesFromUsers",
@@ -15726,7 +15726,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##activities"
         ],
         "summary": "Add new navigation property to activities for users",
         "operationId": "AddActivitiesToUsers",
@@ -15761,7 +15761,7 @@
     "/users('{id}')/outlook": {
       "get": {
         "tags": [
-          "users"
+          "users##outlook"
         ],
         "summary": "Get outlook from users",
         "operationId": "GetOutlookFromUsers",
@@ -15915,7 +15915,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##outlook"
         ],
         "summary": "Update the navigation property outlook in users",
         "operationId": "UpdateOutlookInUsers",
@@ -15954,7 +15954,7 @@
     "/users('{id}')/messages": {
       "get": {
         "tags": [
-          "users"
+          "users##messages"
         ],
         "summary": "Get messages from users",
         "operationId": "GetMessagesFromUsers",
@@ -16198,7 +16198,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##messages"
         ],
         "summary": "Add new navigation property to messages for users",
         "operationId": "AddMessagesToUsers",
@@ -16233,7 +16233,7 @@
     "/users('{id}')/joinedGroups": {
       "get": {
         "tags": [
-          "users"
+          "users##joinedGroups"
         ],
         "summary": "Get joinedGroups from users",
         "operationId": "GetJoinedGroupsFromUsers",
@@ -16476,7 +16476,7 @@
     "/users('{id}')/mailFolders": {
       "get": {
         "tags": [
-          "users"
+          "users##mailFolders"
         ],
         "summary": "Get mailFolders from users",
         "operationId": "GetMailFoldersFromUsers",
@@ -16717,7 +16717,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##mailFolders"
         ],
         "summary": "Add new navigation property to mailFolders for users",
         "operationId": "AddMailFoldersToUsers",
@@ -16752,7 +16752,7 @@
     "/users('{id}')/calendar": {
       "get": {
         "tags": [
-          "users"
+          "users##calendar"
         ],
         "summary": "Get calendar from users",
         "operationId": "GetCalendarFromUsers",
@@ -16857,7 +16857,7 @@
     "/users('{id}')/calendars": {
       "get": {
         "tags": [
-          "users"
+          "users##calendars"
         ],
         "summary": "Get calendars from users",
         "operationId": "GetCalendarsFromUsers",
@@ -17098,7 +17098,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##calendars"
         ],
         "summary": "Add new navigation property to calendars for users",
         "operationId": "AddCalendarsToUsers",
@@ -17133,7 +17133,7 @@
     "/users('{id}')/calendarGroups": {
       "get": {
         "tags": [
-          "users"
+          "users##calendarGroups"
         ],
         "summary": "Get calendarGroups from users",
         "operationId": "GetCalendarGroupsFromUsers",
@@ -17374,7 +17374,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##calendarGroups"
         ],
         "summary": "Add new navigation property to calendarGroups for users",
         "operationId": "AddCalendarGroupsToUsers",
@@ -17409,7 +17409,7 @@
     "/users('{id}')/calendarView": {
       "get": {
         "tags": [
-          "users"
+          "users##calendarView"
         ],
         "summary": "Get calendarView from users",
         "operationId": "GetCalendarViewFromUsers",
@@ -17652,7 +17652,7 @@
     "/users('{id}')/events": {
       "get": {
         "tags": [
-          "users"
+          "users##events"
         ],
         "summary": "Get events from users",
         "operationId": "GetEventsFromUsers",
@@ -17893,7 +17893,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##events"
         ],
         "summary": "Add new navigation property to events for users",
         "operationId": "AddEventsToUsers",
@@ -17928,7 +17928,7 @@
     "/users('{id}')/people": {
       "get": {
         "tags": [
-          "users"
+          "users##people"
         ],
         "summary": "Get people from users",
         "operationId": "GetPeopleFromUsers",
@@ -18174,7 +18174,7 @@
     "/users('{id}')/contacts": {
       "get": {
         "tags": [
-          "users"
+          "users##contacts"
         ],
         "summary": "Get contacts from users",
         "operationId": "GetContactsFromUsers",
@@ -18418,7 +18418,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##contacts"
         ],
         "summary": "Add new navigation property to contacts for users",
         "operationId": "AddContactsToUsers",
@@ -18453,7 +18453,7 @@
     "/users('{id}')/contactFolders": {
       "get": {
         "tags": [
-          "users"
+          "users##contactFolders"
         ],
         "summary": "Get contactFolders from users",
         "operationId": "GetContactFoldersFromUsers",
@@ -18694,7 +18694,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##contactFolders"
         ],
         "summary": "Add new navigation property to contactFolders for users",
         "operationId": "AddContactFoldersToUsers",
@@ -18729,7 +18729,7 @@
     "/users('{id}')/inferenceClassification": {
       "get": {
         "tags": [
-          "users"
+          "users##inferenceClassification"
         ],
         "summary": "Get inferenceClassification from users",
         "operationId": "GetInferenceClassificationFromUsers",
@@ -18832,7 +18832,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##inferenceClassification"
         ],
         "summary": "Update the navigation property inferenceClassification in users",
         "operationId": "UpdateInferenceClassificationInUsers",
@@ -18871,7 +18871,7 @@
     "/users('{id}')/photo": {
       "get": {
         "tags": [
-          "users"
+          "users##photo"
         ],
         "summary": "Get photo from users",
         "operationId": "GetPhotoFromUsers",
@@ -18974,7 +18974,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##photo"
         ],
         "summary": "Update the navigation property photo in users",
         "operationId": "UpdatePhotoInUsers",
@@ -19013,7 +19013,7 @@
     "/users('{id}')/photos": {
       "get": {
         "tags": [
-          "users"
+          "users##photos"
         ],
         "summary": "Get photos from users",
         "operationId": "GetPhotosFromUsers",
@@ -19256,7 +19256,7 @@
     "/users('{id}')/drive": {
       "get": {
         "tags": [
-          "users"
+          "users##drive"
         ],
         "summary": "Get drive from users",
         "operationId": "GetDriveFromUsers",
@@ -19410,7 +19410,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##drive"
         ],
         "summary": "Update the navigation property drive in users",
         "operationId": "UpdateDriveInUsers",
@@ -19449,7 +19449,7 @@
     "/users('{id}')/drives": {
       "get": {
         "tags": [
-          "users"
+          "users##drives"
         ],
         "summary": "Get drives from users",
         "operationId": "GetDrivesFromUsers",
@@ -19744,7 +19744,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##drives"
         ],
         "summary": "Add new navigation property to drives for users",
         "operationId": "AddDrivesToUsers",
@@ -19779,7 +19779,7 @@
     "/users('{id}')/insights": {
       "get": {
         "tags": [
-          "users"
+          "users##insights"
         ],
         "summary": "Get insights from users",
         "operationId": "GetInsightsFromUsers",
@@ -19933,7 +19933,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##insights"
         ],
         "summary": "Update the navigation property insights in users",
         "operationId": "UpdateInsightsInUsers",
@@ -19972,7 +19972,7 @@
     "/users('{id}')/planner": {
       "get": {
         "tags": [
-          "users"
+          "users##planner"
         ],
         "summary": "Get planner from users",
         "operationId": "GetPlannerFromUsers",
@@ -20126,7 +20126,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##planner"
         ],
         "summary": "Update the navigation property planner in users",
         "operationId": "UpdatePlannerInUsers",
@@ -20165,7 +20165,7 @@
     "/users('{id}')/onenote": {
       "get": {
         "tags": [
-          "users"
+          "users##onenote"
         ],
         "summary": "Get onenote from users",
         "operationId": "GetOnenoteFromUsers",
@@ -20319,7 +20319,7 @@
       },
       "patch": {
         "tags": [
-          "users"
+          "users##onenote"
         ],
         "summary": "Update the navigation property onenote in users",
         "operationId": "UpdateOnenoteInUsers",
@@ -20358,7 +20358,7 @@
     "/users('{id}')/devices": {
       "get": {
         "tags": [
-          "users"
+          "users##devices"
         ],
         "summary": "Get devices from users",
         "operationId": "GetDevicesFromUsers",
@@ -20653,7 +20653,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##devices"
         ],
         "summary": "Add new navigation property to devices for users",
         "operationId": "AddDevicesToUsers",
@@ -20688,7 +20688,7 @@
     "/users('{id}')/joinedTeams": {
       "get": {
         "tags": [
-          "users"
+          "users##joinedTeams"
         ],
         "summary": "Get joinedTeams from users",
         "operationId": "GetJoinedTeamsFromUsers",
@@ -20983,7 +20983,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##joinedTeams"
         ],
         "summary": "Add new navigation property to joinedTeams for users",
         "operationId": "AddJoinedTeamsToUsers",
@@ -21018,7 +21018,7 @@
     "/users('{id}')/deviceManagementTroubleshootingEvents": {
       "get": {
         "tags": [
-          "users"
+          "users##deviceManagementTroubleshootingEvents"
         ],
         "summary": "Get deviceManagementTroubleshootingEvents from users",
         "operationId": "GetDeviceManagementTroubleshootingEventsFromUsers",
@@ -21313,7 +21313,7 @@
       },
       "post": {
         "tags": [
-          "users"
+          "users##deviceManagementTroubleshootingEvents"
         ],
         "summary": "Add new navigation property to deviceManagementTroubleshootingEvents for users",
         "operationId": "AddDeviceManagementTroubleshootingEventsToUsers",
@@ -23056,7 +23056,7 @@
     "/workbooks('{id}')/workbook": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##workbook"
         ],
         "summary": "Get workbook from workbooks",
         "operationId": "GetWorkbookFromWorkbooks",
@@ -23158,7 +23158,7 @@
       },
       "patch": {
         "tags": [
-          "workbooks"
+          "workbooks##workbook"
         ],
         "summary": "Update the navigation property workbook in workbooks",
         "operationId": "UpdateWorkbookInWorkbooks",
@@ -23197,7 +23197,7 @@
     "/workbooks('{id}')/activities": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##activities"
         ],
         "summary": "Get activities from workbooks",
         "operationId": "GetActivitiesFromWorkbooks",
@@ -23390,7 +23390,7 @@
       },
       "post": {
         "tags": [
-          "workbooks"
+          "workbooks##activities"
         ],
         "summary": "Add new navigation property to activities for workbooks",
         "operationId": "AddActivitiesToWorkbooks",
@@ -23425,7 +23425,7 @@
     "/workbooks('{id}')/children": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##children"
         ],
         "summary": "Get children from workbooks",
         "operationId": "GetChildrenFromWorkbooks",
@@ -23618,7 +23618,7 @@
       },
       "post": {
         "tags": [
-          "workbooks"
+          "workbooks##children"
         ],
         "summary": "Add new navigation property to children for workbooks",
         "operationId": "AddChildrenToWorkbooks",
@@ -23653,7 +23653,7 @@
     "/workbooks('{id}')/listItem": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##listItem"
         ],
         "summary": "Get listItem from workbooks",
         "operationId": "GetListItemFromWorkbooks",
@@ -23755,7 +23755,7 @@
       },
       "patch": {
         "tags": [
-          "workbooks"
+          "workbooks##listItem"
         ],
         "summary": "Update the navigation property listItem in workbooks",
         "operationId": "UpdateListItemInWorkbooks",
@@ -23794,7 +23794,7 @@
     "/workbooks('{id}')/permissions": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##permissions"
         ],
         "summary": "Get permissions from workbooks",
         "operationId": "GetPermissionsFromWorkbooks",
@@ -23987,7 +23987,7 @@
       },
       "post": {
         "tags": [
-          "workbooks"
+          "workbooks##permissions"
         ],
         "summary": "Add new navigation property to permissions for workbooks",
         "operationId": "AddPermissionsToWorkbooks",
@@ -24022,7 +24022,7 @@
     "/workbooks('{id}')/thumbnails": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##thumbnails"
         ],
         "summary": "Get thumbnails from workbooks",
         "operationId": "GetThumbnailsFromWorkbooks",
@@ -24215,7 +24215,7 @@
       },
       "post": {
         "tags": [
-          "workbooks"
+          "workbooks##thumbnails"
         ],
         "summary": "Add new navigation property to thumbnails for workbooks",
         "operationId": "AddThumbnailsToWorkbooks",
@@ -24250,7 +24250,7 @@
     "/workbooks('{id}')/versions": {
       "get": {
         "tags": [
-          "workbooks"
+          "workbooks##versions"
         ],
         "summary": "Get versions from workbooks",
         "operationId": "GetVersionsFromWorkbooks",
@@ -24443,7 +24443,7 @@
       },
       "post": {
         "tags": [
-          "workbooks"
+          "workbooks##versions"
         ],
         "summary": "Add new navigation property to versions for workbooks",
         "operationId": "AddVersionsToWorkbooks",
@@ -25327,7 +25327,7 @@
     "/drives('{id}')/activities": {
       "get": {
         "tags": [
-          "drives"
+          "drives##activities"
         ],
         "summary": "Get activities from drives",
         "operationId": "GetActivitiesFromDrives",
@@ -25470,7 +25470,7 @@
       },
       "post": {
         "tags": [
-          "drives"
+          "drives##activities"
         ],
         "summary": "Add new navigation property to activities for drives",
         "operationId": "AddActivitiesToDrives",
@@ -25505,7 +25505,7 @@
     "/drives('{id}')/items": {
       "get": {
         "tags": [
-          "drives"
+          "drives##items"
         ],
         "summary": "Get items from drives",
         "operationId": "GetItemsFromDrives",
@@ -25648,7 +25648,7 @@
       },
       "post": {
         "tags": [
-          "drives"
+          "drives##items"
         ],
         "summary": "Add new navigation property to items for drives",
         "operationId": "AddItemsToDrives",
@@ -25683,7 +25683,7 @@
     "/drives('{id}')/list": {
       "get": {
         "tags": [
-          "drives"
+          "drives##list"
         ],
         "summary": "Get list from drives",
         "operationId": "GetListFromDrives",
@@ -25767,7 +25767,7 @@
       },
       "patch": {
         "tags": [
-          "drives"
+          "drives##list"
         ],
         "summary": "Update the navigation property list in drives",
         "operationId": "UpdateListInDrives",
@@ -25806,7 +25806,7 @@
     "/drives('{id}')/root": {
       "get": {
         "tags": [
-          "drives"
+          "drives##root"
         ],
         "summary": "Get root from drives",
         "operationId": "GetRootFromDrives",
@@ -25890,7 +25890,7 @@
       },
       "patch": {
         "tags": [
-          "drives"
+          "drives##root"
         ],
         "summary": "Update the navigation property root in drives",
         "operationId": "UpdateRootInDrives",
@@ -25929,7 +25929,7 @@
     "/drives('{id}')/special": {
       "get": {
         "tags": [
-          "drives"
+          "drives##special"
         ],
         "summary": "Get special from drives",
         "operationId": "GetSpecialFromDrives",
@@ -26072,7 +26072,7 @@
       },
       "post": {
         "tags": [
-          "drives"
+          "drives##special"
         ],
         "summary": "Add new navigation property to special for drives",
         "operationId": "AddSpecialToDrives",
@@ -26566,7 +26566,7 @@
     "/shares('{id}')/driveItem": {
       "get": {
         "tags": [
-          "shares"
+          "shares##driveItem"
         ],
         "summary": "Get driveItem from shares",
         "operationId": "GetDriveItemFromShares",
@@ -26647,7 +26647,7 @@
       },
       "patch": {
         "tags": [
-          "shares"
+          "shares##driveItem"
         ],
         "summary": "Update the navigation property driveItem in shares",
         "operationId": "UpdateDriveItemInShares",
@@ -26686,7 +26686,7 @@
     "/shares('{id}')/items": {
       "get": {
         "tags": [
-          "shares"
+          "shares##items"
         ],
         "summary": "Get items from shares",
         "operationId": "GetItemsFromShares",
@@ -26818,7 +26818,7 @@
       },
       "post": {
         "tags": [
-          "shares"
+          "shares##items"
         ],
         "summary": "Add new navigation property to items for shares",
         "operationId": "AddItemsToShares",
@@ -26853,7 +26853,7 @@
     "/shares('{id}')/list": {
       "get": {
         "tags": [
-          "shares"
+          "shares##list"
         ],
         "summary": "Get list from shares",
         "operationId": "GetListFromShares",
@@ -26934,7 +26934,7 @@
       },
       "patch": {
         "tags": [
-          "shares"
+          "shares##list"
         ],
         "summary": "Update the navigation property list in shares",
         "operationId": "UpdateListInShares",
@@ -26973,7 +26973,7 @@
     "/shares('{id}')/listItem": {
       "get": {
         "tags": [
-          "shares"
+          "shares##listItem"
         ],
         "summary": "Get listItem from shares",
         "operationId": "GetListItemFromShares",
@@ -27054,7 +27054,7 @@
       },
       "patch": {
         "tags": [
-          "shares"
+          "shares##listItem"
         ],
         "summary": "Update the navigation property listItem in shares",
         "operationId": "UpdateListItemInShares",
@@ -27093,7 +27093,7 @@
     "/shares('{id}')/root": {
       "get": {
         "tags": [
-          "shares"
+          "shares##root"
         ],
         "summary": "Get root from shares",
         "operationId": "GetRootFromShares",
@@ -27174,7 +27174,7 @@
       },
       "patch": {
         "tags": [
-          "shares"
+          "shares##root"
         ],
         "summary": "Update the navigation property root in shares",
         "operationId": "UpdateRootInShares",
@@ -27213,7 +27213,7 @@
     "/shares('{id}')/site": {
       "get": {
         "tags": [
-          "shares"
+          "shares##site"
         ],
         "summary": "Get site from shares",
         "operationId": "GetSiteFromShares",
@@ -27294,7 +27294,7 @@
       },
       "patch": {
         "tags": [
-          "shares"
+          "shares##site"
         ],
         "summary": "Update the navigation property site in shares",
         "operationId": "UpdateSiteInShares",
@@ -27670,7 +27670,7 @@
     "/sites('{id}')/columns": {
       "get": {
         "tags": [
-          "sites"
+          "sites##columns"
         ],
         "summary": "Get columns from sites",
         "operationId": "GetColumnsFromSites",
@@ -27813,7 +27813,7 @@
       },
       "post": {
         "tags": [
-          "sites"
+          "sites##columns"
         ],
         "summary": "Add new navigation property to columns for sites",
         "operationId": "AddColumnsToSites",
@@ -27848,7 +27848,7 @@
     "/sites('{id}')/contentTypes": {
       "get": {
         "tags": [
-          "sites"
+          "sites##contentTypes"
         ],
         "summary": "Get contentTypes from sites",
         "operationId": "GetContentTypesFromSites",
@@ -27991,7 +27991,7 @@
       },
       "post": {
         "tags": [
-          "sites"
+          "sites##contentTypes"
         ],
         "summary": "Add new navigation property to contentTypes for sites",
         "operationId": "AddContentTypesToSites",
@@ -28026,7 +28026,7 @@
     "/sites('{id}')/drive": {
       "get": {
         "tags": [
-          "sites"
+          "sites##drive"
         ],
         "summary": "Get drive from sites",
         "operationId": "GetDriveFromSites",
@@ -28112,7 +28112,7 @@
       },
       "patch": {
         "tags": [
-          "sites"
+          "sites##drive"
         ],
         "summary": "Update the navigation property drive in sites",
         "operationId": "UpdateDriveInSites",
@@ -28151,7 +28151,7 @@
     "/sites('{id}')/drives": {
       "get": {
         "tags": [
-          "sites"
+          "sites##drives"
         ],
         "summary": "Get drives from sites",
         "operationId": "GetDrivesFromSites",
@@ -28294,7 +28294,7 @@
       },
       "post": {
         "tags": [
-          "sites"
+          "sites##drives"
         ],
         "summary": "Add new navigation property to drives for sites",
         "operationId": "AddDrivesToSites",
@@ -28329,7 +28329,7 @@
     "/sites('{id}')/items": {
       "get": {
         "tags": [
-          "sites"
+          "sites##items"
         ],
         "summary": "Get items from sites",
         "operationId": "GetItemsFromSites",
@@ -28472,7 +28472,7 @@
       },
       "post": {
         "tags": [
-          "sites"
+          "sites##items"
         ],
         "summary": "Add new navigation property to items for sites",
         "operationId": "AddItemsToSites",
@@ -28507,7 +28507,7 @@
     "/sites('{id}')/lists": {
       "get": {
         "tags": [
-          "sites"
+          "sites##lists"
         ],
         "summary": "Get lists from sites",
         "operationId": "GetListsFromSites",
@@ -28650,7 +28650,7 @@
       },
       "post": {
         "tags": [
-          "sites"
+          "sites##lists"
         ],
         "summary": "Add new navigation property to lists for sites",
         "operationId": "AddListsToSites",
@@ -28685,7 +28685,7 @@
     "/sites('{id}')/sites": {
       "get": {
         "tags": [
-          "sites"
+          "sites##sites"
         ],
         "summary": "Get sites from sites",
         "operationId": "GetSitesFromSites",
@@ -28828,7 +28828,7 @@
       },
       "post": {
         "tags": [
-          "sites"
+          "sites##sites"
         ],
         "summary": "Add new navigation property to sites for sites",
         "operationId": "AddSitesToSites",
@@ -28863,7 +28863,7 @@
     "/sites('{id}')/onenote": {
       "get": {
         "tags": [
-          "sites"
+          "sites##onenote"
         ],
         "summary": "Get onenote from sites",
         "operationId": "GetOnenoteFromSites",
@@ -28949,7 +28949,7 @@
       },
       "patch": {
         "tags": [
-          "sites"
+          "sites##onenote"
         ],
         "summary": "Update the navigation property onenote in sites",
         "operationId": "UpdateOnenoteInSites",
@@ -31722,7 +31722,7 @@
     "/privilegedRoles('{id}')/settings": {
       "get": {
         "tags": [
-          "privilegedRoles"
+          "privilegedRoles##settings"
         ],
         "summary": "Get settings from privilegedRoles",
         "operationId": "GetSettingsFromPrivilegedRoles",
@@ -31789,7 +31789,7 @@
       },
       "patch": {
         "tags": [
-          "privilegedRoles"
+          "privilegedRoles##settings"
         ],
         "summary": "Update the navigation property settings in privilegedRoles",
         "operationId": "UpdateSettingsInPrivilegedRoles",
@@ -31828,7 +31828,7 @@
     "/privilegedRoles('{id}')/summary": {
       "get": {
         "tags": [
-          "privilegedRoles"
+          "privilegedRoles##summary"
         ],
         "summary": "Get summary from privilegedRoles",
         "operationId": "GetSummaryFromPrivilegedRoles",
@@ -31895,7 +31895,7 @@
       },
       "patch": {
         "tags": [
-          "privilegedRoles"
+          "privilegedRoles##summary"
         ],
         "summary": "Update the navigation property summary in privilegedRoles",
         "operationId": "UpdateSummaryInPrivilegedRoles",
@@ -32306,7 +32306,7 @@
     "/privilegedRoleAssignments('{id}')/roleInfo": {
       "get": {
         "tags": [
-          "privilegedRoleAssignments"
+          "privilegedRoleAssignments##roleInfo"
         ],
         "summary": "Get roleInfo from privilegedRoleAssignments",
         "operationId": "GetRoleInfoFromPrivilegedRoleAssignments",
@@ -32375,7 +32375,7 @@
       },
       "patch": {
         "tags": [
-          "privilegedRoleAssignments"
+          "privilegedRoleAssignments##roleInfo"
         ],
         "summary": "Update the navigation property roleInfo in privilegedRoleAssignments",
         "operationId": "UpdateRoleInfoInPrivilegedRoleAssignments",
@@ -33529,7 +33529,7 @@
     "/privilegedApproval('{id}')/roleInfo": {
       "get": {
         "tags": [
-          "privilegedApproval"
+          "privilegedApproval##roleInfo"
         ],
         "summary": "Get roleInfo from privilegedApproval",
         "operationId": "GetRoleInfoFromPrivilegedApproval",
@@ -33602,7 +33602,7 @@
       },
       "patch": {
         "tags": [
-          "privilegedApproval"
+          "privilegedApproval##roleInfo"
         ],
         "summary": "Update the navigation property roleInfo in privilegedApproval",
         "operationId": "UpdateRoleInfoInPrivilegedApproval",
@@ -35999,7 +35999,7 @@
     "/team('{id}')/channels": {
       "get": {
         "tags": [
-          "team"
+          "team##channels"
         ],
         "summary": "Get channels from team",
         "operationId": "GetChannelsFromTeam",
@@ -36106,7 +36106,7 @@
       },
       "post": {
         "tags": [
-          "team"
+          "team##channels"
         ],
         "summary": "Add new navigation property to channels for team",
         "operationId": "AddChannelsToTeam",
@@ -36416,7 +36416,7 @@
     "/channels('{id}')/chatThreads": {
       "get": {
         "tags": [
-          "channels"
+          "channels##chatThreads"
         ],
         "summary": "Get chatThreads from channels",
         "operationId": "GetChatThreadsFromChannels",
@@ -36517,7 +36517,7 @@
       },
       "post": {
         "tags": [
-          "channels"
+          "channels##chatThreads"
         ],
         "summary": "Add new navigation property to chatThreads for channels",
         "operationId": "AddChatThreadsToChannels",
@@ -36821,7 +36821,7 @@
     "/chatThreads('{id}')/chatMessages": {
       "get": {
         "tags": [
-          "chatThreads"
+          "chatThreads##chatMessages"
         ],
         "summary": "Get chatMessages from chatThreads",
         "operationId": "GetChatMessagesFromChatThreads",
@@ -36917,7 +36917,7 @@
       },
       "post": {
         "tags": [
-          "chatThreads"
+          "chatThreads##chatMessages"
         ],
         "summary": "Add new navigation property to chatMessages for chatThreads",
         "operationId": "AddChatMessagesToChatThreads",
@@ -38299,7 +38299,7 @@
     "/me/extensions": {
       "get": {
         "tags": [
-          "me"
+          "me##extensions"
         ],
         "summary": "Get extensions from me",
         "operationId": "GetExtensionsFromMe",
@@ -38585,7 +38585,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##extensions"
         ],
         "summary": "Add new navigation property to extensions for me",
         "operationId": "AddExtensionsToMe",
@@ -38620,7 +38620,7 @@
     "/me/scopedRoleMemberOf": {
       "get": {
         "tags": [
-          "me"
+          "me##scopedRoleMemberOf"
         ],
         "summary": "Get scopedRoleMemberOf from me",
         "operationId": "GetScopedRoleMemberOfFromMe",
@@ -38906,7 +38906,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##scopedRoleMemberOf"
         ],
         "summary": "Add new navigation property to scopedRoleMemberOf for me",
         "operationId": "AddScopedRoleMemberOfToMe",
@@ -38941,7 +38941,7 @@
     "/me/licenseDetails": {
       "get": {
         "tags": [
-          "me"
+          "me##licenseDetails"
         ],
         "summary": "Get licenseDetails from me",
         "operationId": "GetLicenseDetailsFromMe",
@@ -39227,7 +39227,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##licenseDetails"
         ],
         "summary": "Add new navigation property to licenseDetails for me",
         "operationId": "AddLicenseDetailsToMe",
@@ -39262,7 +39262,7 @@
     "/me/activities": {
       "get": {
         "tags": [
-          "me"
+          "me##activities"
         ],
         "summary": "Get activities from me",
         "operationId": "GetActivitiesFromMe",
@@ -39548,7 +39548,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##activities"
         ],
         "summary": "Add new navigation property to activities for me",
         "operationId": "AddActivitiesToMe",
@@ -39583,7 +39583,7 @@
     "/me/outlook": {
       "get": {
         "tags": [
-          "me"
+          "me##outlook"
         ],
         "summary": "Get outlook from me",
         "operationId": "GetOutlookFromMe",
@@ -39728,7 +39728,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##outlook"
         ],
         "summary": "Update the navigation property outlook in me",
         "operationId": "UpdateOutlookInMe",
@@ -39767,7 +39767,7 @@
     "/me/messages": {
       "get": {
         "tags": [
-          "me"
+          "me##messages"
         ],
         "summary": "Get messages from me",
         "operationId": "GetMessagesFromMe",
@@ -40002,7 +40002,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##messages"
         ],
         "summary": "Add new navigation property to messages for me",
         "operationId": "AddMessagesToMe",
@@ -40037,7 +40037,7 @@
     "/me/joinedGroups": {
       "get": {
         "tags": [
-          "me"
+          "me##joinedGroups"
         ],
         "summary": "Get joinedGroups from me",
         "operationId": "GetJoinedGroupsFromMe",
@@ -40271,7 +40271,7 @@
     "/me/mailFolders": {
       "get": {
         "tags": [
-          "me"
+          "me##mailFolders"
         ],
         "summary": "Get mailFolders from me",
         "operationId": "GetMailFoldersFromMe",
@@ -40503,7 +40503,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##mailFolders"
         ],
         "summary": "Add new navigation property to mailFolders for me",
         "operationId": "AddMailFoldersToMe",
@@ -40538,7 +40538,7 @@
     "/me/calendar": {
       "get": {
         "tags": [
-          "me"
+          "me##calendar"
         ],
         "summary": "Get calendar from me",
         "operationId": "GetCalendarFromMe",
@@ -40634,7 +40634,7 @@
     "/me/calendars": {
       "get": {
         "tags": [
-          "me"
+          "me##calendars"
         ],
         "summary": "Get calendars from me",
         "operationId": "GetCalendarsFromMe",
@@ -40866,7 +40866,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##calendars"
         ],
         "summary": "Add new navigation property to calendars for me",
         "operationId": "AddCalendarsToMe",
@@ -40901,7 +40901,7 @@
     "/me/calendarGroups": {
       "get": {
         "tags": [
-          "me"
+          "me##calendarGroups"
         ],
         "summary": "Get calendarGroups from me",
         "operationId": "GetCalendarGroupsFromMe",
@@ -41133,7 +41133,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##calendarGroups"
         ],
         "summary": "Add new navigation property to calendarGroups for me",
         "operationId": "AddCalendarGroupsToMe",
@@ -41168,7 +41168,7 @@
     "/me/calendarView": {
       "get": {
         "tags": [
-          "me"
+          "me##calendarView"
         ],
         "summary": "Get calendarView from me",
         "operationId": "GetCalendarViewFromMe",
@@ -41402,7 +41402,7 @@
     "/me/events": {
       "get": {
         "tags": [
-          "me"
+          "me##events"
         ],
         "summary": "Get events from me",
         "operationId": "GetEventsFromMe",
@@ -41634,7 +41634,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##events"
         ],
         "summary": "Add new navigation property to events for me",
         "operationId": "AddEventsToMe",
@@ -41669,7 +41669,7 @@
     "/me/people": {
       "get": {
         "tags": [
-          "me"
+          "me##people"
         ],
         "summary": "Get people from me",
         "operationId": "GetPeopleFromMe",
@@ -41906,7 +41906,7 @@
     "/me/contacts": {
       "get": {
         "tags": [
-          "me"
+          "me##contacts"
         ],
         "summary": "Get contacts from me",
         "operationId": "GetContactsFromMe",
@@ -42141,7 +42141,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##contacts"
         ],
         "summary": "Add new navigation property to contacts for me",
         "operationId": "AddContactsToMe",
@@ -42176,7 +42176,7 @@
     "/me/contactFolders": {
       "get": {
         "tags": [
-          "me"
+          "me##contactFolders"
         ],
         "summary": "Get contactFolders from me",
         "operationId": "GetContactFoldersFromMe",
@@ -42408,7 +42408,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##contactFolders"
         ],
         "summary": "Add new navigation property to contactFolders for me",
         "operationId": "AddContactFoldersToMe",
@@ -42443,7 +42443,7 @@
     "/me/inferenceClassification": {
       "get": {
         "tags": [
-          "me"
+          "me##inferenceClassification"
         ],
         "summary": "Get inferenceClassification from me",
         "operationId": "GetInferenceClassificationFromMe",
@@ -42537,7 +42537,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##inferenceClassification"
         ],
         "summary": "Update the navigation property inferenceClassification in me",
         "operationId": "UpdateInferenceClassificationInMe",
@@ -42576,7 +42576,7 @@
     "/me/photo": {
       "get": {
         "tags": [
-          "me"
+          "me##photo"
         ],
         "summary": "Get photo from me",
         "operationId": "GetPhotoFromMe",
@@ -42670,7 +42670,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##photo"
         ],
         "summary": "Update the navigation property photo in me",
         "operationId": "UpdatePhotoInMe",
@@ -42709,7 +42709,7 @@
     "/me/photos": {
       "get": {
         "tags": [
-          "me"
+          "me##photos"
         ],
         "summary": "Get photos from me",
         "operationId": "GetPhotosFromMe",
@@ -42943,7 +42943,7 @@
     "/me/drive": {
       "get": {
         "tags": [
-          "me"
+          "me##drive"
         ],
         "summary": "Get drive from me",
         "operationId": "GetDriveFromMe",
@@ -43088,7 +43088,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##drive"
         ],
         "summary": "Update the navigation property drive in me",
         "operationId": "UpdateDriveInMe",
@@ -43127,7 +43127,7 @@
     "/me/drives": {
       "get": {
         "tags": [
-          "me"
+          "me##drives"
         ],
         "summary": "Get drives from me",
         "operationId": "GetDrivesFromMe",
@@ -43413,7 +43413,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##drives"
         ],
         "summary": "Add new navigation property to drives for me",
         "operationId": "AddDrivesToMe",
@@ -43448,7 +43448,7 @@
     "/me/insights": {
       "get": {
         "tags": [
-          "me"
+          "me##insights"
         ],
         "summary": "Get insights from me",
         "operationId": "GetInsightsFromMe",
@@ -43593,7 +43593,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##insights"
         ],
         "summary": "Update the navigation property insights in me",
         "operationId": "UpdateInsightsInMe",
@@ -43632,7 +43632,7 @@
     "/me/planner": {
       "get": {
         "tags": [
-          "me"
+          "me##planner"
         ],
         "summary": "Get planner from me",
         "operationId": "GetPlannerFromMe",
@@ -43777,7 +43777,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##planner"
         ],
         "summary": "Update the navigation property planner in me",
         "operationId": "UpdatePlannerInMe",
@@ -43816,7 +43816,7 @@
     "/me/onenote": {
       "get": {
         "tags": [
-          "me"
+          "me##onenote"
         ],
         "summary": "Get onenote from me",
         "operationId": "GetOnenoteFromMe",
@@ -43961,7 +43961,7 @@
       },
       "patch": {
         "tags": [
-          "me"
+          "me##onenote"
         ],
         "summary": "Update the navigation property onenote in me",
         "operationId": "UpdateOnenoteInMe",
@@ -44000,7 +44000,7 @@
     "/me/devices": {
       "get": {
         "tags": [
-          "me"
+          "me##devices"
         ],
         "summary": "Get devices from me",
         "operationId": "GetDevicesFromMe",
@@ -44286,7 +44286,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##devices"
         ],
         "summary": "Add new navigation property to devices for me",
         "operationId": "AddDevicesToMe",
@@ -44321,7 +44321,7 @@
     "/me/joinedTeams": {
       "get": {
         "tags": [
-          "me"
+          "me##joinedTeams"
         ],
         "summary": "Get joinedTeams from me",
         "operationId": "GetJoinedTeamsFromMe",
@@ -44607,7 +44607,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##joinedTeams"
         ],
         "summary": "Add new navigation property to joinedTeams for me",
         "operationId": "AddJoinedTeamsToMe",
@@ -44642,7 +44642,7 @@
     "/me/deviceManagementTroubleshootingEvents": {
       "get": {
         "tags": [
-          "me"
+          "me##deviceManagementTroubleshootingEvents"
         ],
         "summary": "Get deviceManagementTroubleshootingEvents from me",
         "operationId": "GetDeviceManagementTroubleshootingEventsFromMe",
@@ -44928,7 +44928,7 @@
       },
       "post": {
         "tags": [
-          "me"
+          "me##deviceManagementTroubleshootingEvents"
         ],
         "summary": "Add new navigation property to deviceManagementTroubleshootingEvents for me",
         "operationId": "AddDeviceManagementTroubleshootingEventsToMe",
@@ -45658,7 +45658,7 @@
     "/directory/deletedItems": {
       "get": {
         "tags": [
-          "directory"
+          "directory##deletedItems"
         ],
         "summary": "Get deletedItems from directory",
         "operationId": "GetDeletedItemsFromDirectory",
@@ -45744,7 +45744,7 @@
       },
       "post": {
         "tags": [
-          "directory"
+          "directory##deletedItems"
         ],
         "summary": "Add new navigation property to deletedItems for directory",
         "operationId": "AddDeletedItemsToDirectory",
@@ -45882,7 +45882,7 @@
     "/drive/activities": {
       "get": {
         "tags": [
-          "drive"
+          "drive##activities"
         ],
         "summary": "Get activities from drive",
         "operationId": "GetActivitiesFromDrive",
@@ -46016,7 +46016,7 @@
       },
       "post": {
         "tags": [
-          "drive"
+          "drive##activities"
         ],
         "summary": "Add new navigation property to activities for drive",
         "operationId": "AddActivitiesToDrive",
@@ -46051,7 +46051,7 @@
     "/drive/items": {
       "get": {
         "tags": [
-          "drive"
+          "drive##items"
         ],
         "summary": "Get items from drive",
         "operationId": "GetItemsFromDrive",
@@ -46185,7 +46185,7 @@
       },
       "post": {
         "tags": [
-          "drive"
+          "drive##items"
         ],
         "summary": "Add new navigation property to items for drive",
         "operationId": "AddItemsToDrive",
@@ -46220,7 +46220,7 @@
     "/drive/list": {
       "get": {
         "tags": [
-          "drive"
+          "drive##list"
         ],
         "summary": "Get list from drive",
         "operationId": "GetListFromDrive",
@@ -46295,7 +46295,7 @@
       },
       "patch": {
         "tags": [
-          "drive"
+          "drive##list"
         ],
         "summary": "Update the navigation property list in drive",
         "operationId": "UpdateListInDrive",
@@ -46334,7 +46334,7 @@
     "/drive/root": {
       "get": {
         "tags": [
-          "drive"
+          "drive##root"
         ],
         "summary": "Get root from drive",
         "operationId": "GetRootFromDrive",
@@ -46409,7 +46409,7 @@
       },
       "patch": {
         "tags": [
-          "drive"
+          "drive##root"
         ],
         "summary": "Update the navigation property root in drive",
         "operationId": "UpdateRootInDrive",
@@ -46448,7 +46448,7 @@
     "/drive/special": {
       "get": {
         "tags": [
-          "drive"
+          "drive##special"
         ],
         "summary": "Get special from drive",
         "operationId": "GetSpecialFromDrive",
@@ -46582,7 +46582,7 @@
       },
       "post": {
         "tags": [
-          "drive"
+          "drive##special"
         ],
         "summary": "Add new navigation property to special for drive",
         "operationId": "AddSpecialToDrive",
@@ -46809,7 +46809,7 @@
     "/planner/tasks": {
       "get": {
         "tags": [
-          "planner"
+          "planner##tasks"
         ],
         "summary": "Get tasks from planner",
         "operationId": "GetTasksFromPlanner",
@@ -46897,7 +46897,7 @@
       },
       "post": {
         "tags": [
-          "planner"
+          "planner##tasks"
         ],
         "summary": "Add new navigation property to tasks for planner",
         "operationId": "AddTasksToPlanner",
@@ -46932,7 +46932,7 @@
     "/planner/plans": {
       "get": {
         "tags": [
-          "planner"
+          "planner##plans"
         ],
         "summary": "Get plans from planner",
         "operationId": "GetPlansFromPlanner",
@@ -47020,7 +47020,7 @@
       },
       "post": {
         "tags": [
-          "planner"
+          "planner##plans"
         ],
         "summary": "Add new navigation property to plans for planner",
         "operationId": "AddPlansToPlanner",
@@ -47055,7 +47055,7 @@
     "/planner/buckets": {
       "get": {
         "tags": [
-          "planner"
+          "planner##buckets"
         ],
         "summary": "Get buckets from planner",
         "operationId": "GetBucketsFromPlanner",
@@ -47143,7 +47143,7 @@
       },
       "post": {
         "tags": [
-          "planner"
+          "planner##buckets"
         ],
         "summary": "Add new navigation property to buckets for planner",
         "operationId": "AddBucketsToPlanner",
@@ -47314,7 +47314,7 @@
     "/deviceManagement/termsAndConditions": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##termsAndConditions"
         ],
         "summary": "Get termsAndConditions from deviceManagement",
         "operationId": "GetTermsAndConditionsFromDeviceManagement",
@@ -47469,7 +47469,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##termsAndConditions"
         ],
         "summary": "Add new navigation property to termsAndConditions for deviceManagement",
         "operationId": "AddTermsAndConditionsToDeviceManagement",
@@ -47504,7 +47504,7 @@
     "/deviceManagement/androidForWorkSettings": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##androidForWorkSettings"
         ],
         "summary": "Get androidForWorkSettings from deviceManagement",
         "operationId": "GetAndroidForWorkSettingsFromDeviceManagement",
@@ -47612,7 +47612,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##androidForWorkSettings"
         ],
         "summary": "Update the navigation property androidForWorkSettings in deviceManagement",
         "operationId": "UpdateAndroidForWorkSettingsInDeviceManagement",
@@ -47651,7 +47651,7 @@
     "/deviceManagement/androidForWorkAppConfigurationSchemas": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##androidForWorkAppConfigurationSchemas"
         ],
         "summary": "Get androidForWorkAppConfigurationSchemas from deviceManagement",
         "operationId": "GetAndroidForWorkAppConfigurationSchemasFromDeviceManagement",
@@ -47806,7 +47806,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##androidForWorkAppConfigurationSchemas"
         ],
         "summary": "Add new navigation property to androidForWorkAppConfigurationSchemas for deviceManagement",
         "operationId": "AddAndroidForWorkAppConfigurationSchemasToDeviceManagement",
@@ -47841,7 +47841,7 @@
     "/deviceManagement/androidForWorkEnrollmentProfiles": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##androidForWorkEnrollmentProfiles"
         ],
         "summary": "Get androidForWorkEnrollmentProfiles from deviceManagement",
         "operationId": "GetAndroidForWorkEnrollmentProfilesFromDeviceManagement",
@@ -47996,7 +47996,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##androidForWorkEnrollmentProfiles"
         ],
         "summary": "Add new navigation property to androidForWorkEnrollmentProfiles for deviceManagement",
         "operationId": "AddAndroidForWorkEnrollmentProfilesToDeviceManagement",
@@ -48031,7 +48031,7 @@
     "/deviceManagement/enrollmentProfiles": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##enrollmentProfiles"
         ],
         "summary": "Get enrollmentProfiles from deviceManagement",
         "operationId": "GetEnrollmentProfilesFromDeviceManagement",
@@ -48186,7 +48186,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##enrollmentProfiles"
         ],
         "summary": "Add new navigation property to enrollmentProfiles for deviceManagement",
         "operationId": "AddEnrollmentProfilesToDeviceManagement",
@@ -48221,7 +48221,7 @@
     "/deviceManagement/importedDeviceIdentities": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##importedDeviceIdentities"
         ],
         "summary": "Get importedDeviceIdentities from deviceManagement",
         "operationId": "GetImportedDeviceIdentitiesFromDeviceManagement",
@@ -48376,7 +48376,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##importedDeviceIdentities"
         ],
         "summary": "Add new navigation property to importedDeviceIdentities for deviceManagement",
         "operationId": "AddImportedDeviceIdentitiesToDeviceManagement",
@@ -48411,7 +48411,7 @@
     "/deviceManagement/importedAppleDeviceIdentities": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##importedAppleDeviceIdentities"
         ],
         "summary": "Get importedAppleDeviceIdentities from deviceManagement",
         "operationId": "GetImportedAppleDeviceIdentitiesFromDeviceManagement",
@@ -48566,7 +48566,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##importedAppleDeviceIdentities"
         ],
         "summary": "Add new navigation property to importedAppleDeviceIdentities for deviceManagement",
         "operationId": "AddImportedAppleDeviceIdentitiesToDeviceManagement",
@@ -48601,7 +48601,7 @@
     "/deviceManagement/remoteActionAudits": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##remoteActionAudits"
         ],
         "summary": "Get remoteActionAudits from deviceManagement",
         "operationId": "GetRemoteActionAuditsFromDeviceManagement",
@@ -48756,7 +48756,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##remoteActionAudits"
         ],
         "summary": "Add new navigation property to remoteActionAudits for deviceManagement",
         "operationId": "AddRemoteActionAuditsToDeviceManagement",
@@ -48791,7 +48791,7 @@
     "/deviceManagement/applePushNotificationCertificate": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##applePushNotificationCertificate"
         ],
         "summary": "Get applePushNotificationCertificate from deviceManagement",
         "operationId": "GetApplePushNotificationCertificateFromDeviceManagement",
@@ -48899,7 +48899,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##applePushNotificationCertificate"
         ],
         "summary": "Update the navigation property applePushNotificationCertificate in deviceManagement",
         "operationId": "UpdateApplePushNotificationCertificateInDeviceManagement",
@@ -48938,7 +48938,7 @@
     "/deviceManagement/deviceManagementScripts": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceManagementScripts"
         ],
         "summary": "Get deviceManagementScripts from deviceManagement",
         "operationId": "GetDeviceManagementScriptsFromDeviceManagement",
@@ -49093,7 +49093,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceManagementScripts"
         ],
         "summary": "Add new navigation property to deviceManagementScripts for deviceManagement",
         "operationId": "AddDeviceManagementScriptsToDeviceManagement",
@@ -49128,7 +49128,7 @@
     "/deviceManagement/detectedApps": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##detectedApps"
         ],
         "summary": "Get detectedApps from deviceManagement",
         "operationId": "GetDetectedAppsFromDeviceManagement",
@@ -49283,7 +49283,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##detectedApps"
         ],
         "summary": "Add new navigation property to detectedApps for deviceManagement",
         "operationId": "AddDetectedAppsToDeviceManagement",
@@ -49318,7 +49318,7 @@
     "/deviceManagement/managedDevices": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##managedDevices"
         ],
         "summary": "Get managedDevices from deviceManagement",
         "operationId": "GetManagedDevicesFromDeviceManagement",
@@ -49473,7 +49473,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##managedDevices"
         ],
         "summary": "Add new navigation property to managedDevices for deviceManagement",
         "operationId": "AddManagedDevicesToDeviceManagement",
@@ -49508,7 +49508,7 @@
     "/deviceManagement/windowsMalwareInformation": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsMalwareInformation"
         ],
         "summary": "Get windowsMalwareInformation from deviceManagement",
         "operationId": "GetWindowsMalwareInformationFromDeviceManagement",
@@ -49663,7 +49663,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsMalwareInformation"
         ],
         "summary": "Add new navigation property to windowsMalwareInformation for deviceManagement",
         "operationId": "AddWindowsMalwareInformationToDeviceManagement",
@@ -49698,7 +49698,7 @@
     "/deviceManagement/deviceConfigurations": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceConfigurations"
         ],
         "summary": "Get deviceConfigurations from deviceManagement",
         "operationId": "GetDeviceConfigurationsFromDeviceManagement",
@@ -49853,7 +49853,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceConfigurations"
         ],
         "summary": "Add new navigation property to deviceConfigurations for deviceManagement",
         "operationId": "AddDeviceConfigurationsToDeviceManagement",
@@ -49888,7 +49888,7 @@
     "/deviceManagement/deviceCompliancePolicies": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCompliancePolicies"
         ],
         "summary": "Get deviceCompliancePolicies from deviceManagement",
         "operationId": "GetDeviceCompliancePoliciesFromDeviceManagement",
@@ -50043,7 +50043,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCompliancePolicies"
         ],
         "summary": "Add new navigation property to deviceCompliancePolicies for deviceManagement",
         "operationId": "AddDeviceCompliancePoliciesToDeviceManagement",
@@ -50078,7 +50078,7 @@
     "/deviceManagement/deviceSetupConfigurations": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceSetupConfigurations"
         ],
         "summary": "Get deviceSetupConfigurations from deviceManagement",
         "operationId": "GetDeviceSetupConfigurationsFromDeviceManagement",
@@ -50233,7 +50233,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceSetupConfigurations"
         ],
         "summary": "Add new navigation property to deviceSetupConfigurations for deviceManagement",
         "operationId": "AddDeviceSetupConfigurationsToDeviceManagement",
@@ -50268,7 +50268,7 @@
     "/deviceManagement/deviceCompliancePolicyDeviceStateSummary": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCompliancePolicyDeviceStateSummary"
         ],
         "summary": "Get deviceCompliancePolicyDeviceStateSummary from deviceManagement",
         "operationId": "GetDeviceCompliancePolicyDeviceStateSummaryFromDeviceManagement",
@@ -50376,7 +50376,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCompliancePolicyDeviceStateSummary"
         ],
         "summary": "Update the navigation property deviceCompliancePolicyDeviceStateSummary in deviceManagement",
         "operationId": "UpdateDeviceCompliancePolicyDeviceStateSummaryInDeviceManagement",
@@ -50415,7 +50415,7 @@
     "/deviceManagement/deviceCompliancePolicySettingStateSummaries": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCompliancePolicySettingStateSummaries"
         ],
         "summary": "Get deviceCompliancePolicySettingStateSummaries from deviceManagement",
         "operationId": "GetDeviceCompliancePolicySettingStateSummariesFromDeviceManagement",
@@ -50570,7 +50570,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCompliancePolicySettingStateSummaries"
         ],
         "summary": "Add new navigation property to deviceCompliancePolicySettingStateSummaries for deviceManagement",
         "operationId": "AddDeviceCompliancePolicySettingStateSummariesToDeviceManagement",
@@ -50605,7 +50605,7 @@
     "/deviceManagement/deviceConfigurationDeviceStateSummaries": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceConfigurationDeviceStateSummaries"
         ],
         "summary": "Get deviceConfigurationDeviceStateSummaries from deviceManagement",
         "operationId": "GetDeviceConfigurationDeviceStateSummariesFromDeviceManagement",
@@ -50713,7 +50713,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceConfigurationDeviceStateSummaries"
         ],
         "summary": "Update the navigation property deviceConfigurationDeviceStateSummaries in deviceManagement",
         "operationId": "UpdateDeviceConfigurationDeviceStateSummariesInDeviceManagement",
@@ -50752,7 +50752,7 @@
     "/deviceManagement/deviceConfigurationUserStateSummaries": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceConfigurationUserStateSummaries"
         ],
         "summary": "Get deviceConfigurationUserStateSummaries from deviceManagement",
         "operationId": "GetDeviceConfigurationUserStateSummariesFromDeviceManagement",
@@ -50860,7 +50860,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceConfigurationUserStateSummaries"
         ],
         "summary": "Update the navigation property deviceConfigurationUserStateSummaries in deviceManagement",
         "operationId": "UpdateDeviceConfigurationUserStateSummariesInDeviceManagement",
@@ -50899,7 +50899,7 @@
     "/deviceManagement/cartToClassAssociations": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##cartToClassAssociations"
         ],
         "summary": "Get cartToClassAssociations from deviceManagement",
         "operationId": "GetCartToClassAssociationsFromDeviceManagement",
@@ -51054,7 +51054,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##cartToClassAssociations"
         ],
         "summary": "Add new navigation property to cartToClassAssociations for deviceManagement",
         "operationId": "AddCartToClassAssociationsToDeviceManagement",
@@ -51089,7 +51089,7 @@
     "/deviceManagement/iosUpdateStatuses": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##iosUpdateStatuses"
         ],
         "summary": "Get iosUpdateStatuses from deviceManagement",
         "operationId": "GetIosUpdateStatusesFromDeviceManagement",
@@ -51244,7 +51244,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##iosUpdateStatuses"
         ],
         "summary": "Add new navigation property to iosUpdateStatuses for deviceManagement",
         "operationId": "AddIosUpdateStatusesToDeviceManagement",
@@ -51279,7 +51279,7 @@
     "/deviceManagement/ndesConnectors": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##ndesConnectors"
         ],
         "summary": "Get ndesConnectors from deviceManagement",
         "operationId": "GetNdesConnectorsFromDeviceManagement",
@@ -51434,7 +51434,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##ndesConnectors"
         ],
         "summary": "Add new navigation property to ndesConnectors for deviceManagement",
         "operationId": "AddNdesConnectorsToDeviceManagement",
@@ -51469,7 +51469,7 @@
     "/deviceManagement/deviceCategories": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCategories"
         ],
         "summary": "Get deviceCategories from deviceManagement",
         "operationId": "GetDeviceCategoriesFromDeviceManagement",
@@ -51624,7 +51624,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceCategories"
         ],
         "summary": "Add new navigation property to deviceCategories for deviceManagement",
         "operationId": "AddDeviceCategoriesToDeviceManagement",
@@ -51659,7 +51659,7 @@
     "/deviceManagement/exchangeConnectors": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##exchangeConnectors"
         ],
         "summary": "Get exchangeConnectors from deviceManagement",
         "operationId": "GetExchangeConnectorsFromDeviceManagement",
@@ -51814,7 +51814,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##exchangeConnectors"
         ],
         "summary": "Add new navigation property to exchangeConnectors for deviceManagement",
         "operationId": "AddExchangeConnectorsToDeviceManagement",
@@ -51849,7 +51849,7 @@
     "/deviceManagement/deviceEnrollmentConfigurations": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceEnrollmentConfigurations"
         ],
         "summary": "Get deviceEnrollmentConfigurations from deviceManagement",
         "operationId": "GetDeviceEnrollmentConfigurationsFromDeviceManagement",
@@ -52004,7 +52004,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceEnrollmentConfigurations"
         ],
         "summary": "Add new navigation property to deviceEnrollmentConfigurations for deviceManagement",
         "operationId": "AddDeviceEnrollmentConfigurationsToDeviceManagement",
@@ -52039,7 +52039,7 @@
     "/deviceManagement/exchangeOnPremisesPolicy": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##exchangeOnPremisesPolicy"
         ],
         "summary": "Get exchangeOnPremisesPolicy from deviceManagement",
         "operationId": "GetExchangeOnPremisesPolicyFromDeviceManagement",
@@ -52147,7 +52147,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##exchangeOnPremisesPolicy"
         ],
         "summary": "Update the navigation property exchangeOnPremisesPolicy in deviceManagement",
         "operationId": "UpdateExchangeOnPremisesPolicyInDeviceManagement",
@@ -52186,7 +52186,7 @@
     "/deviceManagement/exchangeOnPremisesPolicies": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##exchangeOnPremisesPolicies"
         ],
         "summary": "Get exchangeOnPremisesPolicies from deviceManagement",
         "operationId": "GetExchangeOnPremisesPoliciesFromDeviceManagement",
@@ -52341,7 +52341,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##exchangeOnPremisesPolicies"
         ],
         "summary": "Add new navigation property to exchangeOnPremisesPolicies for deviceManagement",
         "operationId": "AddExchangeOnPremisesPoliciesToDeviceManagement",
@@ -52376,7 +52376,7 @@
     "/deviceManagement/conditionalAccessSettings": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##conditionalAccessSettings"
         ],
         "summary": "Get conditionalAccessSettings from deviceManagement",
         "operationId": "GetConditionalAccessSettingsFromDeviceManagement",
@@ -52484,7 +52484,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##conditionalAccessSettings"
         ],
         "summary": "Update the navigation property conditionalAccessSettings in deviceManagement",
         "operationId": "UpdateConditionalAccessSettingsInDeviceManagement",
@@ -52523,7 +52523,7 @@
     "/deviceManagement/mobileThreatDefenseConnectors": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##mobileThreatDefenseConnectors"
         ],
         "summary": "Get mobileThreatDefenseConnectors from deviceManagement",
         "operationId": "GetMobileThreatDefenseConnectorsFromDeviceManagement",
@@ -52678,7 +52678,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##mobileThreatDefenseConnectors"
         ],
         "summary": "Add new navigation property to mobileThreatDefenseConnectors for deviceManagement",
         "operationId": "AddMobileThreatDefenseConnectorsToDeviceManagement",
@@ -52713,7 +52713,7 @@
     "/deviceManagement/deviceManagementPartners": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceManagementPartners"
         ],
         "summary": "Get deviceManagementPartners from deviceManagement",
         "operationId": "GetDeviceManagementPartnersFromDeviceManagement",
@@ -52868,7 +52868,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##deviceManagementPartners"
         ],
         "summary": "Add new navigation property to deviceManagementPartners for deviceManagement",
         "operationId": "AddDeviceManagementPartnersToDeviceManagement",
@@ -52903,7 +52903,7 @@
     "/deviceManagement/depOnboardingSettings": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##depOnboardingSettings"
         ],
         "summary": "Get depOnboardingSettings from deviceManagement",
         "operationId": "GetDepOnboardingSettingsFromDeviceManagement",
@@ -53058,7 +53058,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##depOnboardingSettings"
         ],
         "summary": "Add new navigation property to depOnboardingSettings for deviceManagement",
         "operationId": "AddDepOnboardingSettingsToDeviceManagement",
@@ -53093,7 +53093,7 @@
     "/deviceManagement/notificationMessageTemplates": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##notificationMessageTemplates"
         ],
         "summary": "Get notificationMessageTemplates from deviceManagement",
         "operationId": "GetNotificationMessageTemplatesFromDeviceManagement",
@@ -53248,7 +53248,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##notificationMessageTemplates"
         ],
         "summary": "Add new navigation property to notificationMessageTemplates for deviceManagement",
         "operationId": "AddNotificationMessageTemplatesToDeviceManagement",
@@ -53283,7 +53283,7 @@
     "/deviceManagement/roleDefinitions": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##roleDefinitions"
         ],
         "summary": "Get roleDefinitions from deviceManagement",
         "operationId": "GetRoleDefinitionsFromDeviceManagement",
@@ -53438,7 +53438,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##roleDefinitions"
         ],
         "summary": "Add new navigation property to roleDefinitions for deviceManagement",
         "operationId": "AddRoleDefinitionsToDeviceManagement",
@@ -53473,7 +53473,7 @@
     "/deviceManagement/roleAssignments": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##roleAssignments"
         ],
         "summary": "Get roleAssignments from deviceManagement",
         "operationId": "GetRoleAssignmentsFromDeviceManagement",
@@ -53628,7 +53628,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##roleAssignments"
         ],
         "summary": "Add new navigation property to roleAssignments for deviceManagement",
         "operationId": "AddRoleAssignmentsToDeviceManagement",
@@ -53663,7 +53663,7 @@
     "/deviceManagement/resourceOperations": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##resourceOperations"
         ],
         "summary": "Get resourceOperations from deviceManagement",
         "operationId": "GetResourceOperationsFromDeviceManagement",
@@ -53818,7 +53818,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##resourceOperations"
         ],
         "summary": "Add new navigation property to resourceOperations for deviceManagement",
         "operationId": "AddResourceOperationsToDeviceManagement",
@@ -53853,7 +53853,7 @@
     "/deviceManagement/telecomExpenseManagementPartners": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##telecomExpenseManagementPartners"
         ],
         "summary": "Get telecomExpenseManagementPartners from deviceManagement",
         "operationId": "GetTelecomExpenseManagementPartnersFromDeviceManagement",
@@ -54008,7 +54008,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##telecomExpenseManagementPartners"
         ],
         "summary": "Add new navigation property to telecomExpenseManagementPartners for deviceManagement",
         "operationId": "AddTelecomExpenseManagementPartnersToDeviceManagement",
@@ -54043,7 +54043,7 @@
     "/deviceManagement/windowsAutopilotSettings": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsAutopilotSettings"
         ],
         "summary": "Get windowsAutopilotSettings from deviceManagement",
         "operationId": "GetWindowsAutopilotSettingsFromDeviceManagement",
@@ -54151,7 +54151,7 @@
       },
       "patch": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsAutopilotSettings"
         ],
         "summary": "Update the navigation property windowsAutopilotSettings in deviceManagement",
         "operationId": "UpdateWindowsAutopilotSettingsInDeviceManagement",
@@ -54190,7 +54190,7 @@
     "/deviceManagement/windowsAutopilotDeviceIdentities": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsAutopilotDeviceIdentities"
         ],
         "summary": "Get windowsAutopilotDeviceIdentities from deviceManagement",
         "operationId": "GetWindowsAutopilotDeviceIdentitiesFromDeviceManagement",
@@ -54345,7 +54345,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsAutopilotDeviceIdentities"
         ],
         "summary": "Add new navigation property to windowsAutopilotDeviceIdentities for deviceManagement",
         "operationId": "AddWindowsAutopilotDeviceIdentitiesToDeviceManagement",
@@ -54380,7 +54380,7 @@
     "/deviceManagement/windowsAutopilotDeploymentProfiles": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsAutopilotDeploymentProfiles"
         ],
         "summary": "Get windowsAutopilotDeploymentProfiles from deviceManagement",
         "operationId": "GetWindowsAutopilotDeploymentProfilesFromDeviceManagement",
@@ -54535,7 +54535,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsAutopilotDeploymentProfiles"
         ],
         "summary": "Add new navigation property to windowsAutopilotDeploymentProfiles for deviceManagement",
         "operationId": "AddWindowsAutopilotDeploymentProfilesToDeviceManagement",
@@ -54570,7 +54570,7 @@
     "/deviceManagement/remoteAssistancePartners": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##remoteAssistancePartners"
         ],
         "summary": "Get remoteAssistancePartners from deviceManagement",
         "operationId": "GetRemoteAssistancePartnersFromDeviceManagement",
@@ -54725,7 +54725,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##remoteAssistancePartners"
         ],
         "summary": "Add new navigation property to remoteAssistancePartners for deviceManagement",
         "operationId": "AddRemoteAssistancePartnersToDeviceManagement",
@@ -54760,7 +54760,7 @@
     "/deviceManagement/windowsInformationProtectionAppLearningSummaries": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsInformationProtectionAppLearningSummaries"
         ],
         "summary": "Get windowsInformationProtectionAppLearningSummaries from deviceManagement",
         "operationId": "GetWindowsInformationProtectionAppLearningSummariesFromDeviceManagement",
@@ -54915,7 +54915,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##windowsInformationProtectionAppLearningSummaries"
         ],
         "summary": "Add new navigation property to windowsInformationProtectionAppLearningSummaries for deviceManagement",
         "operationId": "AddWindowsInformationProtectionAppLearningSummariesToDeviceManagement",
@@ -54950,7 +54950,7 @@
     "/deviceManagement/auditEvents": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##auditEvents"
         ],
         "summary": "Get auditEvents from deviceManagement",
         "operationId": "GetAuditEventsFromDeviceManagement",
@@ -55105,7 +55105,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##auditEvents"
         ],
         "summary": "Add new navigation property to auditEvents for deviceManagement",
         "operationId": "AddAuditEventsToDeviceManagement",
@@ -55140,7 +55140,7 @@
     "/deviceManagement/troubleshootingEvents": {
       "get": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##troubleshootingEvents"
         ],
         "summary": "Get troubleshootingEvents from deviceManagement",
         "operationId": "GetTroubleshootingEventsFromDeviceManagement",
@@ -55295,7 +55295,7 @@
       },
       "post": {
         "tags": [
-          "deviceManagement"
+          "deviceManagement##troubleshootingEvents"
         ],
         "summary": "Add new navigation property to troubleshootingEvents for deviceManagement",
         "operationId": "AddTroubleshootingEventsToDeviceManagement",
@@ -55542,7 +55542,7 @@
     "/deviceAppManagement/mobileApps": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mobileApps"
         ],
         "summary": "Get mobileApps from deviceAppManagement",
         "operationId": "GetMobileAppsFromDeviceAppManagement",
@@ -55658,7 +55658,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mobileApps"
         ],
         "summary": "Add new navigation property to mobileApps for deviceAppManagement",
         "operationId": "AddMobileAppsToDeviceAppManagement",
@@ -55693,7 +55693,7 @@
     "/deviceAppManagement/mobileAppCategories": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mobileAppCategories"
         ],
         "summary": "Get mobileAppCategories from deviceAppManagement",
         "operationId": "GetMobileAppCategoriesFromDeviceAppManagement",
@@ -55809,7 +55809,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mobileAppCategories"
         ],
         "summary": "Add new navigation property to mobileAppCategories for deviceAppManagement",
         "operationId": "AddMobileAppCategoriesToDeviceAppManagement",
@@ -55844,7 +55844,7 @@
     "/deviceAppManagement/enterpriseCodeSigningCertificates": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##enterpriseCodeSigningCertificates"
         ],
         "summary": "Get enterpriseCodeSigningCertificates from deviceAppManagement",
         "operationId": "GetEnterpriseCodeSigningCertificatesFromDeviceAppManagement",
@@ -55960,7 +55960,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##enterpriseCodeSigningCertificates"
         ],
         "summary": "Add new navigation property to enterpriseCodeSigningCertificates for deviceAppManagement",
         "operationId": "AddEnterpriseCodeSigningCertificatesToDeviceAppManagement",
@@ -55995,7 +55995,7 @@
     "/deviceAppManagement/iosLobAppProvisioningConfigurations": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##iosLobAppProvisioningConfigurations"
         ],
         "summary": "Get iosLobAppProvisioningConfigurations from deviceAppManagement",
         "operationId": "GetIosLobAppProvisioningConfigurationsFromDeviceAppManagement",
@@ -56111,7 +56111,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##iosLobAppProvisioningConfigurations"
         ],
         "summary": "Add new navigation property to iosLobAppProvisioningConfigurations for deviceAppManagement",
         "operationId": "AddIosLobAppProvisioningConfigurationsToDeviceAppManagement",
@@ -56146,7 +56146,7 @@
     "/deviceAppManagement/symantecCodeSigningCertificate": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##symantecCodeSigningCertificate"
         ],
         "summary": "Get symantecCodeSigningCertificate from deviceAppManagement",
         "operationId": "GetSymantecCodeSigningCertificateFromDeviceAppManagement",
@@ -56223,7 +56223,7 @@
       },
       "patch": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##symantecCodeSigningCertificate"
         ],
         "summary": "Update the navigation property symantecCodeSigningCertificate in deviceAppManagement",
         "operationId": "UpdateSymantecCodeSigningCertificateInDeviceAppManagement",
@@ -56262,7 +56262,7 @@
     "/deviceAppManagement/mobileAppConfigurations": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mobileAppConfigurations"
         ],
         "summary": "Get mobileAppConfigurations from deviceAppManagement",
         "operationId": "GetMobileAppConfigurationsFromDeviceAppManagement",
@@ -56378,7 +56378,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mobileAppConfigurations"
         ],
         "summary": "Add new navigation property to mobileAppConfigurations for deviceAppManagement",
         "operationId": "AddMobileAppConfigurationsToDeviceAppManagement",
@@ -56413,7 +56413,7 @@
     "/deviceAppManagement/sideLoadingKeys": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##sideLoadingKeys"
         ],
         "summary": "Get sideLoadingKeys from deviceAppManagement",
         "operationId": "GetSideLoadingKeysFromDeviceAppManagement",
@@ -56529,7 +56529,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##sideLoadingKeys"
         ],
         "summary": "Add new navigation property to sideLoadingKeys for deviceAppManagement",
         "operationId": "AddSideLoadingKeysToDeviceAppManagement",
@@ -56564,7 +56564,7 @@
     "/deviceAppManagement/vppTokens": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##vppTokens"
         ],
         "summary": "Get vppTokens from deviceAppManagement",
         "operationId": "GetVppTokensFromDeviceAppManagement",
@@ -56680,7 +56680,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##vppTokens"
         ],
         "summary": "Add new navigation property to vppTokens for deviceAppManagement",
         "operationId": "AddVppTokensToDeviceAppManagement",
@@ -56715,7 +56715,7 @@
     "/deviceAppManagement/managedAppPolicies": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedAppPolicies"
         ],
         "summary": "Get managedAppPolicies from deviceAppManagement",
         "operationId": "GetManagedAppPoliciesFromDeviceAppManagement",
@@ -56831,7 +56831,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedAppPolicies"
         ],
         "summary": "Add new navigation property to managedAppPolicies for deviceAppManagement",
         "operationId": "AddManagedAppPoliciesToDeviceAppManagement",
@@ -56866,7 +56866,7 @@
     "/deviceAppManagement/iosManagedAppProtections": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##iosManagedAppProtections"
         ],
         "summary": "Get iosManagedAppProtections from deviceAppManagement",
         "operationId": "GetIosManagedAppProtectionsFromDeviceAppManagement",
@@ -56982,7 +56982,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##iosManagedAppProtections"
         ],
         "summary": "Add new navigation property to iosManagedAppProtections for deviceAppManagement",
         "operationId": "AddIosManagedAppProtectionsToDeviceAppManagement",
@@ -57017,7 +57017,7 @@
     "/deviceAppManagement/androidManagedAppProtections": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##androidManagedAppProtections"
         ],
         "summary": "Get androidManagedAppProtections from deviceAppManagement",
         "operationId": "GetAndroidManagedAppProtectionsFromDeviceAppManagement",
@@ -57133,7 +57133,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##androidManagedAppProtections"
         ],
         "summary": "Add new navigation property to androidManagedAppProtections for deviceAppManagement",
         "operationId": "AddAndroidManagedAppProtectionsToDeviceAppManagement",
@@ -57168,7 +57168,7 @@
     "/deviceAppManagement/defaultManagedAppProtections": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##defaultManagedAppProtections"
         ],
         "summary": "Get defaultManagedAppProtections from deviceAppManagement",
         "operationId": "GetDefaultManagedAppProtectionsFromDeviceAppManagement",
@@ -57284,7 +57284,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##defaultManagedAppProtections"
         ],
         "summary": "Add new navigation property to defaultManagedAppProtections for deviceAppManagement",
         "operationId": "AddDefaultManagedAppProtectionsToDeviceAppManagement",
@@ -57319,7 +57319,7 @@
     "/deviceAppManagement/targetedManagedAppConfigurations": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##targetedManagedAppConfigurations"
         ],
         "summary": "Get targetedManagedAppConfigurations from deviceAppManagement",
         "operationId": "GetTargetedManagedAppConfigurationsFromDeviceAppManagement",
@@ -57435,7 +57435,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##targetedManagedAppConfigurations"
         ],
         "summary": "Add new navigation property to targetedManagedAppConfigurations for deviceAppManagement",
         "operationId": "AddTargetedManagedAppConfigurationsToDeviceAppManagement",
@@ -57470,7 +57470,7 @@
     "/deviceAppManagement/mdmWindowsInformationProtectionPolicies": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mdmWindowsInformationProtectionPolicies"
         ],
         "summary": "Get mdmWindowsInformationProtectionPolicies from deviceAppManagement",
         "operationId": "GetMdmWindowsInformationProtectionPoliciesFromDeviceAppManagement",
@@ -57586,7 +57586,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##mdmWindowsInformationProtectionPolicies"
         ],
         "summary": "Add new navigation property to mdmWindowsInformationProtectionPolicies for deviceAppManagement",
         "operationId": "AddMdmWindowsInformationProtectionPoliciesToDeviceAppManagement",
@@ -57621,7 +57621,7 @@
     "/deviceAppManagement/windowsInformationProtectionPolicies": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##windowsInformationProtectionPolicies"
         ],
         "summary": "Get windowsInformationProtectionPolicies from deviceAppManagement",
         "operationId": "GetWindowsInformationProtectionPoliciesFromDeviceAppManagement",
@@ -57737,7 +57737,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##windowsInformationProtectionPolicies"
         ],
         "summary": "Add new navigation property to windowsInformationProtectionPolicies for deviceAppManagement",
         "operationId": "AddWindowsInformationProtectionPoliciesToDeviceAppManagement",
@@ -57772,7 +57772,7 @@
     "/deviceAppManagement/managedAppRegistrations": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedAppRegistrations"
         ],
         "summary": "Get managedAppRegistrations from deviceAppManagement",
         "operationId": "GetManagedAppRegistrationsFromDeviceAppManagement",
@@ -57888,7 +57888,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedAppRegistrations"
         ],
         "summary": "Add new navigation property to managedAppRegistrations for deviceAppManagement",
         "operationId": "AddManagedAppRegistrationsToDeviceAppManagement",
@@ -57923,7 +57923,7 @@
     "/deviceAppManagement/managedAppStatuses": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedAppStatuses"
         ],
         "summary": "Get managedAppStatuses from deviceAppManagement",
         "operationId": "GetManagedAppStatusesFromDeviceAppManagement",
@@ -58039,7 +58039,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedAppStatuses"
         ],
         "summary": "Add new navigation property to managedAppStatuses for deviceAppManagement",
         "operationId": "AddManagedAppStatusesToDeviceAppManagement",
@@ -58074,7 +58074,7 @@
     "/deviceAppManagement/managedEBooks": {
       "get": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedEBooks"
         ],
         "summary": "Get managedEBooks from deviceAppManagement",
         "operationId": "GetManagedEBooksFromDeviceAppManagement",
@@ -58190,7 +58190,7 @@
       },
       "post": {
         "tags": [
-          "deviceAppManagement"
+          "deviceAppManagement##managedEBooks"
         ],
         "summary": "Add new navigation property to managedEBooks for deviceAppManagement",
         "operationId": "AddManagedEBooksToDeviceAppManagement",
@@ -61582,7 +61582,7 @@
     "/education/synchronizationProfiles": {
       "get": {
         "tags": [
-          "education"
+          "education##synchronizationProfiles"
         ],
         "summary": "Get synchronizationProfiles from education",
         "operationId": "GetSynchronizationProfilesFromEducation",
@@ -61672,7 +61672,7 @@
       },
       "post": {
         "tags": [
-          "education"
+          "education##synchronizationProfiles"
         ],
         "summary": "Add new navigation property to synchronizationProfiles for education",
         "operationId": "AddSynchronizationProfilesToEducation",
@@ -61707,7 +61707,7 @@
     "/education/classes": {
       "get": {
         "tags": [
-          "education"
+          "education##classes"
         ],
         "summary": "Get classes from education",
         "operationId": "GetClassesFromEducation",
@@ -61797,7 +61797,7 @@
       },
       "post": {
         "tags": [
-          "education"
+          "education##classes"
         ],
         "summary": "Add new navigation property to classes for education",
         "operationId": "AddClassesToEducation",
@@ -61832,7 +61832,7 @@
     "/education/schools": {
       "get": {
         "tags": [
-          "education"
+          "education##schools"
         ],
         "summary": "Get schools from education",
         "operationId": "GetSchoolsFromEducation",
@@ -61922,7 +61922,7 @@
       },
       "post": {
         "tags": [
-          "education"
+          "education##schools"
         ],
         "summary": "Add new navigation property to schools for education",
         "operationId": "AddSchoolsToEducation",
@@ -61957,7 +61957,7 @@
     "/education/users": {
       "get": {
         "tags": [
-          "education"
+          "education##users"
         ],
         "summary": "Get users from education",
         "operationId": "GetUsersFromEducation",
@@ -62047,7 +62047,7 @@
       },
       "post": {
         "tags": [
-          "education"
+          "education##users"
         ],
         "summary": "Add new navigation property to users for education",
         "operationId": "AddUsersToEducation",
@@ -62082,7 +62082,7 @@
     "/education/me": {
       "get": {
         "tags": [
-          "education"
+          "education##me"
         ],
         "summary": "Get me from education",
         "operationId": "GetMeFromEducation",
@@ -62141,7 +62141,7 @@
       },
       "patch": {
         "tags": [
-          "education"
+          "education##me"
         ],
         "summary": "Update the navigation property me in education",
         "operationId": "UpdateMeInEducation",

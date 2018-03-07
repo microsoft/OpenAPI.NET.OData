@@ -702,7 +702,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = navigationSource.Name
+                        Name = navigationSource.Name + "##" + property.Name
                     }
                 },
                 RequestBody = null
@@ -856,7 +856,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name= navigationSource.Name
+                        Name= navigationSource.Name + "##" + property.Name
                     }
                 }
             };
@@ -933,7 +933,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = navigationSource.Name
+                        Name = navigationSource.Name + "##" + property.Name
                     }
                 },
 
