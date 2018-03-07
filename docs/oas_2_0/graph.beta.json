@@ -2109,6 +2109,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -2617,6 +2624,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -2743,6 +2757,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -4037,6 +4058,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -4218,6 +4246,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -4686,6 +4721,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -4827,6 +4869,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -5637,6 +5686,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -5865,6 +5921,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -6095,6 +6158,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -6323,6 +6393,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -6589,6 +6666,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -6743,6 +6827,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -6933,6 +7024,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -7238,6 +7336,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -7392,6 +7497,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -7582,6 +7694,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -7920,6 +8039,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -8148,6 +8274,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -8819,6 +8952,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -9047,6 +9187,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -9730,6 +9877,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -10600,6 +10754,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -10781,6 +10942,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -10961,6 +11129,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -12093,6 +12268,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -13149,7 +13331,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Get entity from users by key",
+        "summary": "Retrieve the properties and relationships of user object.",
         "operationId": "GetEntityFromUsersByKey",
         "produces": [
           "application/json"
@@ -13320,6 +13502,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -13634,6 +13823,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -13947,6 +14143,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -14259,6 +14462,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -14756,6 +14966,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -15021,6 +15238,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -15247,6 +15471,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -15609,6 +15840,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -15870,6 +16108,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -16133,6 +16378,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -16359,6 +16611,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -16622,6 +16881,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -16851,6 +17117,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -17116,6 +17389,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -17649,6 +17929,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -18058,6 +18345,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -18921,6 +19215,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -19234,6 +19535,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -19546,6 +19854,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -21510,6 +21825,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -21720,6 +22042,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -22063,6 +22392,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -22274,6 +22610,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -22484,6 +22827,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -23447,6 +23797,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -23607,6 +23964,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -23994,6 +24358,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -24669,6 +25040,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -25575,6 +25953,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -25735,6 +26120,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -26012,6 +26404,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -26172,6 +26571,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -26334,6 +26740,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -26494,6 +26907,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },
@@ -33237,6 +33657,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -33615,6 +34042,13 @@
         ],
         "parameters": [
           {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
+          {
             "$ref": "#/parameters/top"
           },
           {
@@ -33980,6 +34414,13 @@
           "application/json"
         ],
         "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "key: id",
+            "required": true,
+            "type": "string"
+          },
           {
             "$ref": "#/parameters/top"
           },

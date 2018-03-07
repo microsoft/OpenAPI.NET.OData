@@ -1532,6 +1532,12 @@ paths:
       summary: Get extensionProperties from applications
       operationId: GetExtensionPropertiesFromApplications
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -1909,6 +1915,12 @@ paths:
       summary: Get extensions from administrativeUnits
       operationId: GetExtensionsFromAdministrativeUnits
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -1997,6 +2009,12 @@ paths:
       summary: Get scopedRoleMembers from administrativeUnits
       operationId: GetScopedRoleMembersFromAdministrativeUnits
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -2957,6 +2975,12 @@ paths:
       summary: Get extensions from devices
       operationId: GetExtensionsFromDevices
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -3100,6 +3124,12 @@ paths:
       summary: Get commands from devices
       operationId: GetCommandsFromDevices
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -3452,6 +3482,12 @@ paths:
       summary: Get serviceConfigurationRecords from domains
       operationId: GetServiceConfigurationRecordsFromDomains
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -3555,6 +3591,12 @@ paths:
       summary: Get verificationDnsRecords from domains
       operationId: GetVerificationDnsRecordsFromDomains
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -4161,6 +4203,12 @@ paths:
       summary: Get extensions from groups
       operationId: GetExtensionsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -4351,6 +4399,12 @@ paths:
       summary: Get settings from groups
       operationId: GetSettingsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -4541,6 +4595,12 @@ paths:
       summary: Get endpoints from groups
       operationId: GetEndpointsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -4731,6 +4791,12 @@ paths:
       summary: Get threads from groups
       operationId: GetThreadsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -4949,6 +5015,12 @@ paths:
       summary: Get calendarView from groups
       operationId: GetCalendarViewFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -5083,6 +5155,12 @@ paths:
       summary: Get events from groups
       operationId: GetEventsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -5238,6 +5316,12 @@ paths:
       summary: Get conversations from groups
       operationId: GetConversationsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -5481,6 +5565,12 @@ paths:
       summary: Get photos from groups
       operationId: GetPhotosFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -5615,6 +5705,12 @@ paths:
       summary: Get acceptedSenders from groups
       operationId: GetAcceptedSendersFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -5770,6 +5866,12 @@ paths:
       summary: Get rejectedSenders from groups
       operationId: GetRejectedSendersFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -6046,6 +6148,12 @@ paths:
       summary: Get drives from groups
       operationId: GetDrivesFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -6236,6 +6344,12 @@ paths:
       summary: Get sites from groups
       operationId: GetSitesFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -6789,6 +6903,12 @@ paths:
       summary: Get channels from groups
       operationId: GetChannelsFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -6979,6 +7099,12 @@ paths:
       summary: Get groupLifecyclePolicies from groups
       operationId: GetGroupLifecyclePoliciesFromGroups
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -7492,6 +7618,12 @@ paths:
       summary: Get scopedMembers from directoryRoles
       operationId: GetScopedMembersFromDirectoryRoles
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -8126,6 +8258,12 @@ paths:
       summary: Get extensions from organization
       operationId: GetExtensionsFromOrganization
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -8268,6 +8406,12 @@ paths:
       summary: Get depOnboardingSettings from organization
       operationId: GetDepOnboardingSettingsFromOrganization
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -8410,6 +8554,12 @@ paths:
       summary: Get appleVolumePurchaseProgramTokens from organization
       operationId: GetAppleVolumePurchaseProgramTokensFromOrganization
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -9245,6 +9395,12 @@ paths:
       summary: Get licenseDetails from servicePrincipals
       operationId: GetLicenseDetailsFromServicePrincipals
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -10202,6 +10358,12 @@ paths:
       summary: Get extensions from users
       operationId: GetExtensionsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -10476,6 +10638,12 @@ paths:
       summary: Get scopedRoleMemberOf from users
       operationId: GetScopedRoleMemberOfFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -10750,6 +10918,12 @@ paths:
       summary: Get licenseDetails from users
       operationId: GetLicenseDetailsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -11024,6 +11198,12 @@ paths:
       summary: Get activities from users
       operationId: GetActivitiesFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -11455,6 +11635,12 @@ paths:
       summary: Get messages from users
       operationId: GetMessagesFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -11683,6 +11869,12 @@ paths:
       summary: Get joinedGroups from users
       operationId: GetJoinedGroupsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -11889,6 +12081,12 @@ paths:
       summary: Get mailFolders from users
       operationId: GetMailFoldersFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -12203,6 +12401,12 @@ paths:
       summary: Get calendars from users
       operationId: GetCalendarsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -12430,6 +12634,12 @@ paths:
       summary: Get calendarGroups from users
       operationId: GetCalendarGroupsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -12657,6 +12867,12 @@ paths:
       summary: Get calendarView from users
       operationId: GetCalendarViewFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -12863,6 +13079,12 @@ paths:
       summary: Get events from users
       operationId: GetEventsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -13090,6 +13312,12 @@ paths:
       summary: Get people from users
       operationId: GetPeopleFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -13297,6 +13525,12 @@ paths:
       summary: Get contacts from users
       operationId: GetContactsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -13525,6 +13759,12 @@ paths:
       summary: Get contactFolders from users
       operationId: GetContactFoldersFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -13974,6 +14214,12 @@ paths:
       summary: Get photos from users
       operationId: GetPhotosFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/filter'
@@ -14337,6 +14583,12 @@ paths:
       summary: Get drives from users
       operationId: GetDrivesFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -15082,6 +15334,12 @@ paths:
       summary: Get devices from users
       operationId: GetDevicesFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -15356,6 +15614,12 @@ paths:
       summary: Get joinedTeams from users
       operationId: GetJoinedTeamsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -15630,6 +15894,12 @@ paths:
       summary: Get deviceManagementTroubleshootingEvents from users
       operationId: GetDeviceManagementTroubleshootingEventsFromUsers
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -17160,6 +17430,12 @@ paths:
       summary: Get activities from workbooks
       operationId: GetActivitiesFromWorkbooks
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -17332,6 +17608,12 @@ paths:
       summary: Get children from workbooks
       operationId: GetChildrenFromWorkbooks
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -17609,6 +17891,12 @@ paths:
       summary: Get permissions from workbooks
       operationId: GetPermissionsFromWorkbooks
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -17781,6 +18069,12 @@ paths:
       summary: Get thumbnails from workbooks
       operationId: GetThumbnailsFromWorkbooks
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -17953,6 +18247,12 @@ paths:
       summary: Get versions from workbooks
       operationId: GetVersionsFromWorkbooks
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -18689,6 +18989,12 @@ paths:
       summary: Get activities from drives
       operationId: GetActivitiesFromDrives
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -18811,6 +19117,12 @@ paths:
       summary: Get items from drives
       operationId: GetItemsFromDrives
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -19107,6 +19419,12 @@ paths:
       summary: Get special from drives
       operationId: GetSpecialFromDrives
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -19620,6 +19938,12 @@ paths:
       summary: Get items from shares
       operationId: GetItemsFromShares
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -20306,6 +20630,12 @@ paths:
       summary: Get columns from sites
       operationId: GetColumnsFromSites
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -20428,6 +20758,12 @@ paths:
       summary: Get contentTypes from sites
       operationId: GetContentTypesFromSites
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -20639,6 +20975,12 @@ paths:
       summary: Get drives from sites
       operationId: GetDrivesFromSites
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -20761,6 +21103,12 @@ paths:
       summary: Get items from sites
       operationId: GetItemsFromSites
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -20883,6 +21231,12 @@ paths:
       summary: Get lists from sites
       operationId: GetListsFromSites
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -21005,6 +21359,12 @@ paths:
       summary: Get sites from sites
       operationId: GetSitesFromSites
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -25887,6 +26247,12 @@ paths:
       summary: Get channels from team
       operationId: GetChannelsFromTeam
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -26150,6 +26516,12 @@ paths:
       summary: Get chatThreads from channels
       operationId: GetChatThreadsFromChannels
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -26401,6 +26773,12 @@ paths:
       summary: Get chatMessages from chatThreads
       operationId: GetChatMessagesFromChatThreads
       parameters:
+        - name: id
+          in: path
+          description: 'key: id'
+          required: true
+          schema:
+            type: string
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'

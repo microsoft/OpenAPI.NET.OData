@@ -1421,6 +1421,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -1782,6 +1787,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -1866,6 +1876,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -2780,6 +2795,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -2919,6 +2939,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -3256,6 +3281,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -3355,6 +3385,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -3937,6 +3972,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -4123,6 +4163,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -4309,6 +4354,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -4495,6 +4545,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -4708,6 +4763,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -4838,6 +4898,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -4991,6 +5056,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -5229,6 +5299,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -5359,6 +5434,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -5512,6 +5592,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -5781,6 +5866,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -5967,6 +6057,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -6501,6 +6596,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -6687,6 +6787,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -7177,6 +7282,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -7786,6 +7896,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -7924,6 +8039,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -8062,6 +8182,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -8858,6 +8983,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -9648,7 +9778,7 @@ paths:
     get:
       tags:
         - users
-      summary: Get entity from users by key
+      summary: Retrieve the properties and relationships of user object.
       operationId: GetEntityFromUsersByKey
       produces:
         - application/json
@@ -9781,6 +9911,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -10051,6 +10186,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -10321,6 +10461,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -10591,6 +10736,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -11013,6 +11163,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -11239,6 +11394,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -11441,6 +11601,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -11750,6 +11915,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -11975,6 +12145,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -12200,6 +12375,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -12402,6 +12582,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -12627,6 +12812,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -12830,6 +13020,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -13056,6 +13251,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -13497,6 +13697,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/filter'
@@ -13851,6 +14056,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -14577,6 +14787,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -14847,6 +15062,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -15117,6 +15337,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -16551,6 +16776,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -16719,6 +16949,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -16987,6 +17222,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -17155,6 +17395,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -17323,6 +17568,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -18007,6 +18257,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -18125,6 +18380,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -18407,6 +18667,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -18886,6 +19151,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -19537,6 +19807,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -19655,6 +19930,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -19857,6 +20137,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -19975,6 +20260,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -20093,6 +20383,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -20211,6 +20506,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -24815,6 +25115,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -25063,6 +25368,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -25299,6 +25609,11 @@ paths:
       produces:
         - application/json
       parameters:
+        - in: path
+          name: id
+          description: 'key: id'
+          required: true
+          type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'

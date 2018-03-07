@@ -1,0 +1,72 @@
+<Annotations Target="microsoft.graph.GraphService">
+  <Annotation Term="Org.OData.Authorization.V1.Authorizations">
+    <Collection>
+      <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+        <PropertyValue Property="Name" String="DelegatedWork"/>
+        <PropertyValue Property="Description" String="DelegatedWork"/>
+        <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
+        <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+        <PropertyValue Property="Scopes">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+              <PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+            </Record>
+            <Record>
+              <PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+              <PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+            </Record>
+            <Record>
+              <PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+              <PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+            </Record>
+          </Collection>
+        </PropertyValue>
+      </Record>
+      <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+        <PropertyValue Property="Name" String="DelegatedPersonal"/>
+        <PropertyValue Property="Description" String="DelegatedPersonal"/>
+        <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+        <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+        <PropertyValue Property="Scopes">
+          <Collection>
+             <Record>
+                <PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+                <PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+             </Record>
+             <Record>
+               <PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+               <PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+             </Record>
+             <Record>
+               <PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+               <PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+             </Record>
+          </Collection>
+        </PropertyValue>
+      </Record>
+      <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+        <PropertyValue Property="Name" String="Application"/>
+                <PropertyValue Property="Description" String="Application"/>
+                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+        <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+        <PropertyValue Property="Scopes">
+          <Collection>
+            <Record>
+                <PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
+                <PropertyValue Property="Description" String="Read all user data"></PropertyValue>
+            </Record>
+            <Record>
+                <PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
+                <PropertyValue Property="Description" String="Write all user data"></PropertyValue>
+            </Record>
+            <Record>
+                <PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
+                <PropertyValue Property="Description" String="Write to directory"></PropertyValue>
+            </Record>
+          </Collection>
+        </PropertyValue>
+      </Record>
+    </Collection>
+  </Annotation>
+</Annotations>

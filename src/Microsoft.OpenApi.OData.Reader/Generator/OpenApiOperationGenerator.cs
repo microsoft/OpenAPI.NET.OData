@@ -187,25 +187,6 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return operation;
         }
-        /*
-        private static void AppendHttpRequestBody(OpenApiRequestBody requestBody, HttpRequestBody requestBodyAnnotation)
-        {
-            requestBody.Description = requestBodyAnnotation.Description;
-            requestBody.Content = new Dictionary<string, OpenApiMediaType>();
-            foreach(var p in requestBodyAnnotation.Parameters)
-            {
-                OpenApiMediaType mediaType = new OpenApiMediaType
-                {
-                    Schema = new OpenApiSchema
-                    {
- //                       Type = p.Type
-                    },
-                    Example = new OpenApiString(p.DocumentationURL),
-                };
-
-               // requestBody.Content[p.Name] = mediaType;
-            }
-        }*/
 
         private static void AppendCustomerHeaders(IList<OpenApiParameter> parameters, IList<CustomParameter> headers)
         {
@@ -343,6 +324,11 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
+            IEdmEntityType entityType = entitySet.EntityType();
+
+            HttpRequestsAnnotation httpRequests = new HttpRequestsAnnotation(context.Model, entitySet);
+            HttpRequest request = httpRequests.GetRequest("Get " + entityType.Name);
+
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get entity from " + entitySet.Name + " by key",
@@ -356,12 +342,16 @@ namespace Microsoft.OpenApi.OData.Generator
                 RequestBody = null
             };
 
+            // override the summary using the request.Description.
+            if (request != null && request.Description != null)
+            {
+                operation.Summary = request.Description;
+            }
+
             if (context.Settings.OperationId)
             {
                 operation.OperationId = "GetEntityFrom" + Utils.UpperFirstChar(entitySet.Name) + "ByKey";
             }
-
-            IEdmEntityType entityType = entitySet.EntityType();
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
 
@@ -377,6 +367,11 @@ namespace Microsoft.OpenApi.OData.Generator
             if (parameter != null)
             {
                 operation.Parameters.Add(parameter);
+            }
+
+            if (request != null && request.CustomHeaders != null && request.CustomHeaders.Any())
+            {
+               // AppendCustomerHeaders(operation.Parameters, request.CustomHeaders);
             }
 
             operation.Responses = new OpenApiResponses
@@ -407,6 +402,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
 
             return operation;
         }
@@ -726,12 +722,15 @@ namespace Microsoft.OpenApi.OData.Generator
 
             IEdmEntityType navEntityType = property.ToEntityType();
 
+            if (operation.Parameters == null)
+            {
+                operation.Parameters = new List<OpenApiParameter>();
+            }
+
             if (property.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 // The parameters array contains Parameter Objects for system query options allowed for this entity set,
                 // and it does not list system query options not allowed for this entity set.
-                operation.Parameters = new List<OpenApiParameter>();
-
                 OpenApiParameter parameter = context.CreateTop(property);
                 if (parameter != null)
                 {

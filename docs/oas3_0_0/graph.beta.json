@@ -2352,6 +2352,15 @@
         "operationId": "GetExtensionPropertiesFromApplications",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -2894,6 +2903,15 @@
         "operationId": "GetExtensionsFromAdministrativeUnits",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -3028,6 +3046,15 @@
         "summary": "Get scopedRoleMembers from administrativeUnits",
         "operationId": "GetScopedRoleMembersFromAdministrativeUnits",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -4422,6 +4449,15 @@
         "operationId": "GetExtensionsFromDevices",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -4611,6 +4647,15 @@
         "summary": "Get commands from devices",
         "operationId": "GetCommandsFromDevices",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -5109,6 +5154,15 @@
         "operationId": "GetServiceConfigurationRecordsFromDomains",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -5258,6 +5312,15 @@
         "summary": "Get verificationDnsRecords from domains",
         "operationId": "GetVerificationDnsRecordsFromDomains",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -6118,6 +6181,15 @@
         "operationId": "GetExtensionsFromGroups",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -6354,6 +6426,15 @@
         "summary": "Get settings from groups",
         "operationId": "GetSettingsFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -6592,6 +6673,15 @@
         "operationId": "GetEndpointsFromGroups",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -6828,6 +6918,15 @@
         "summary": "Get threads from groups",
         "operationId": "GetThreadsFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -7105,6 +7204,15 @@
         "operationId": "GetCalendarViewFromGroups",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -7266,6 +7374,15 @@
         "summary": "Get events from groups",
         "operationId": "GetEventsFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -7461,6 +7578,15 @@
         "summary": "Get conversations from groups",
         "operationId": "GetConversationsFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -7778,6 +7904,15 @@
         "operationId": "GetPhotosFromGroups",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -7939,6 +8074,15 @@
         "summary": "Get acceptedSenders from groups",
         "operationId": "GetAcceptedSendersFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -8134,6 +8278,15 @@
         "summary": "Get rejectedSenders from groups",
         "operationId": "GetRejectedSendersFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -8487,6 +8640,15 @@
         "operationId": "GetDrivesFromGroups",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -8723,6 +8885,15 @@
         "summary": "Get sites from groups",
         "operationId": "GetSitesFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -9432,6 +9603,15 @@
         "operationId": "GetChannelsFromGroups",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -9668,6 +9848,15 @@
         "summary": "Get groupLifecyclePolicies from groups",
         "operationId": "GetGroupLifecyclePoliciesFromGroups",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -10399,6 +10588,15 @@
         "summary": "Get scopedMembers from directoryRoles",
         "operationId": "GetScopedMembersFromDirectoryRoles",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -11325,6 +11523,15 @@
         "operationId": "GetExtensionsFromOrganization",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -11514,6 +11721,15 @@
         "operationId": "GetDepOnboardingSettingsFromOrganization",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -11702,6 +11918,15 @@
         "summary": "Get appleVolumePurchaseProgramTokens from organization",
         "operationId": "GetAppleVolumePurchaseProgramTokensFromOrganization",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -12913,6 +13138,15 @@
         "operationId": "GetLicenseDetailsFromServicePrincipals",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -14033,7 +14267,7 @@
         "tags": [
           "users"
         ],
-        "summary": "Get entity from users by key",
+        "summary": "Retrieve the properties and relationships of user object.",
         "operationId": "GetEntityFromUsersByKey",
         "parameters": [
           {
@@ -14212,6 +14446,15 @@
         "summary": "Get extensions from users",
         "operationId": "GetExtensionsFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -14534,6 +14777,15 @@
         "operationId": "GetScopedRoleMemberOfFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -14855,6 +15107,15 @@
         "operationId": "GetLicenseDetailsFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -15175,6 +15436,15 @@
         "summary": "Get activities from users",
         "operationId": "GetActivitiesFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -15690,6 +15960,15 @@
         "operationId": "GetMessagesFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -15960,6 +16239,15 @@
         "operationId": "GetJoinedGroupsFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -16193,6 +16481,15 @@
         "summary": "Get mailFolders from users",
         "operationId": "GetMailFoldersFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -16566,6 +16863,15 @@
         "operationId": "GetCalendarsFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -16832,6 +17138,15 @@
         "summary": "Get calendarGroups from users",
         "operationId": "GetCalendarGroupsFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -17100,6 +17415,15 @@
         "operationId": "GetCalendarViewFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -17333,6 +17657,15 @@
         "summary": "Get events from users",
         "operationId": "GetEventsFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -17601,6 +17934,15 @@
         "operationId": "GetPeopleFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -17837,6 +18179,15 @@
         "summary": "Get contacts from users",
         "operationId": "GetContactsFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -18107,6 +18458,15 @@
         "summary": "Get contactFolders from users",
         "operationId": "GetContactFoldersFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -18659,6 +19019,15 @@
         "operationId": "GetPhotosFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -19085,6 +19454,15 @@
         "summary": "Get drives from users",
         "operationId": "GetDrivesFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -19986,6 +20364,15 @@
         "operationId": "GetDevicesFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -20307,6 +20694,15 @@
         "operationId": "GetJoinedTeamsFromUsers",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -20627,6 +21023,15 @@
         "summary": "Get deviceManagementTroubleshootingEvents from users",
         "operationId": "GetDeviceManagementTroubleshootingEventsFromUsers",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -22798,6 +23203,15 @@
         "operationId": "GetActivitiesFromWorkbooks",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -23016,6 +23430,15 @@
         "summary": "Get children from workbooks",
         "operationId": "GetChildrenFromWorkbooks",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -23377,6 +23800,15 @@
         "operationId": "GetPermissionsFromWorkbooks",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -23596,6 +24028,15 @@
         "operationId": "GetThumbnailsFromWorkbooks",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -23814,6 +24255,15 @@
         "summary": "Get versions from workbooks",
         "operationId": "GetVersionsFromWorkbooks",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -24883,6 +25333,15 @@
         "operationId": "GetActivitiesFromDrives",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -25051,6 +25510,15 @@
         "summary": "Get items from drives",
         "operationId": "GetItemsFromDrives",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -25466,6 +25934,15 @@
         "summary": "Get special from drives",
         "operationId": "GetSpecialFromDrives",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -26214,6 +26691,15 @@
         "summary": "Get items from shares",
         "operationId": "GetItemsFromShares",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -27190,6 +27676,15 @@
         "operationId": "GetColumnsFromSites",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -27358,6 +27853,15 @@
         "summary": "Get contentTypes from sites",
         "operationId": "GetContentTypesFromSites",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -27653,6 +28157,15 @@
         "operationId": "GetDrivesFromSites",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -27821,6 +28334,15 @@
         "summary": "Get items from sites",
         "operationId": "GetItemsFromSites",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -27991,6 +28513,15 @@
         "operationId": "GetListsFromSites",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -28159,6 +28690,15 @@
         "summary": "Get sites from sites",
         "operationId": "GetSitesFromSites",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -35465,6 +36005,15 @@
         "operationId": "GetChannelsFromTeam",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -35873,6 +36422,15 @@
         "operationId": "GetChatThreadsFromChannels",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -36268,6 +36826,15 @@
         "summary": "Get chatMessages from chatThreads",
         "operationId": "GetChatMessagesFromChatThreads",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "$ref": "#/components/parameters/top"
           },

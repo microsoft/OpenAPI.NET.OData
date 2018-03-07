@@ -12,7 +12,7 @@ using Microsoft.OpenApi.OData.Common;
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
-    /// Org.Graph.Vocabulary.HttpRequests
+    /// Org.OData.Core.V1.HttpRequests
     /// </summary>
     internal class HttpRequestsAnnotation
     {

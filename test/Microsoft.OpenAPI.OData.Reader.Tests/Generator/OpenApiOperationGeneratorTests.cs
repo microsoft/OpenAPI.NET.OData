@@ -408,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("People", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(8, operation.Parameters.Count);
+            Assert.Equal(9, operation.Parameters.Count);
 
             Assert.Null(operation.RequestBody);
 
