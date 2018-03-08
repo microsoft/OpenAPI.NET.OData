@@ -14348,6 +14348,29 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "Select",
+            "in": "query",
+            "description": "N/A",
+            "schema": { },
+            "example": "N/A"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer {token}. Required.",
+            "required": true,
+            "schema": { },
+            "example": ""
+          },
+          {
+            "name": "content-type",
+            "in": "header",
+            "description": "application/json",
+            "required": true,
+            "schema": { },
+            "example": ""
           }
         ],
         "responses": {
@@ -107639,6 +107662,53 @@
         "description": "Search items by search phrases",
         "schema": {
           "type": "string"
+        }
+      }
+    },
+    "securitySchemes": {
+      "DelegatedWork": {
+        "type": "oauth2",
+        "description": "DelegatedWork",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://graph.microsoft.com/",
+            "refreshUrl": "https://graph.microsoft.com/",
+            "scopes": {
+              "User.ReadAll": "Read all user data",
+              "User.WriteAll": "Write all user data",
+              "Directory.ReadAll": "Write to directory"
+            }
+          }
+        }
+      },
+      "DelegatedPersonal": {
+        "type": "oauth2",
+        "description": "DelegatedPersonal",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://graph.microsoft.com/",
+            "refreshUrl": "https://graph.microsoft.com/",
+            "scopes": {
+              "User.ReadAll": "Read all user data",
+              "User.WriteAll": "Write all user data",
+              "Directory.ReadAll": "Write to directory"
+            }
+          }
+        }
+      },
+      "Application": {
+        "type": "oauth2",
+        "description": "Application",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://graph.microsoft.com/",
+            "refreshUrl": "https://graph.microsoft.com/",
+            "scopes": {
+              "User.ReadAll": "Read all user data",
+              "User.WriteAll": "Write all user data",
+              "Directory.ReadAll": "Write to directory"
+            }
+          }
         }
       }
     }

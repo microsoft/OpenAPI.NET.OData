@@ -19,6 +19,11 @@ namespace Microsoft.OpenApi.OData.Authorizations
         public string AuthorizationUrl { get; set; }
 
         /// <summary>
+        /// Gets the OAuth2 type.
+        /// </summary>
+        public override OAuth2Type OAuth2Type => OAuth2Type.Implicit;
+
+        /// <summary>
         /// Init <see cref="OAuth2Implicit"/>.
         /// </summary>
         /// <param name="record">the input record.</param>

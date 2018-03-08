@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Authorizations
@@ -22,6 +23,11 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// Format of the bearer token.
         /// </summary>
         public string BearerFormat { get; set; }
+
+        /// <summary>
+        /// Gets the security scheme type.
+        /// </summary>
+        public override SecuritySchemeType SchemeType => SecuritySchemeType.Http;
 
         /// <summary>
         /// Init <see cref="Http"/>.

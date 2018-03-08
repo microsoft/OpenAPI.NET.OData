@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Authorizations
@@ -18,6 +19,11 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// Configuration information can be obtained by appending `/.well-known/openid-configuration` to this Url.
         /// </summary>
         public string IssuerUrl { get; set; }
+
+        /// <summary>
+        /// Gets the security scheme type.
+        /// </summary>
+        public override SecuritySchemeType SchemeType => SecuritySchemeType.OpenIdConnect;
 
         /// <summary>
         /// Init <see cref="OpenIDConnect"/>.

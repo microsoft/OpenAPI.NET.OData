@@ -47,8 +47,8 @@
       </Record>
       <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
         <PropertyValue Property="Name" String="Application"/>
-                <PropertyValue Property="Description" String="Application"/>
-                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+        <PropertyValue Property="Description" String="Application"/>
+        <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
         <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
         <PropertyValue Property="Scopes">
           <Collection>

@@ -9851,6 +9851,17 @@ paths:
               - identityUserRisk
               - deviceEnrollmentLimit
             type: string
+        - in: query
+          name: Select
+          description: N/A
+        - in: header
+          name: Authorization
+          description: 'Bearer {token}. Required.'
+          required: true
+        - in: header
+          name: content-type
+          description: application/json
+          required: true
       responses:
         '200':
           description: Retrieved entity
@@ -67849,6 +67860,34 @@ responses:
     description: error
     schema:
       $ref: '#/definitions/odata.error'
+securityDefinitions:
+  DelegatedWork:
+    type: OAuth2
+    flow: implicit
+    authorizationUrl: https://graph.microsoft.com/
+    scopes:
+      User.ReadAll: Read all user data
+      User.WriteAll: Write all user data
+      Directory.ReadAll: Write to directory
+    description: DelegatedWork
+  DelegatedPersonal:
+    type: OAuth2
+    flow: implicit
+    authorizationUrl: https://graph.microsoft.com/
+    scopes:
+      User.ReadAll: Read all user data
+      User.WriteAll: Write all user data
+      Directory.ReadAll: Write to directory
+    description: DelegatedPersonal
+  Application:
+    type: OAuth2
+    flow: implicit
+    authorizationUrl: https://graph.microsoft.com/
+    scopes:
+      User.ReadAll: Read all user data
+      User.WriteAll: Write all user data
+      Directory.ReadAll: Write to directory
+    description: Application
 tags:
   - name: schemaExtensions
   - name: directoryObjects

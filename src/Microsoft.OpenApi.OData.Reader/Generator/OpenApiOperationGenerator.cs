@@ -122,20 +122,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 operation.Parameters.Add(parameter);
             }
 
-            if (request != null && request.CustomHeaders != null && request.CustomHeaders.Any())
-            {
-                AppendCustomerHeaders(operation.Parameters, request.CustomHeaders);
-            }
-            /*
-            if (request != null && request.RequestBody != null)
-            {
-                if (operation.RequestBody == null)
-                {
-                    operation.RequestBody = new OpenApiRequestBody();
-                }
-
-                AppendHttpRequestBody(operation.RequestBody, request.RequestBody);
-            }*/
+            AppendCustomParameters(operation, request);
 
             // The value of responses is a Responses Object.
             // It contains a name/value pair for the success case (HTTP response code 200)
@@ -185,40 +172,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
+            // AppendResponses(operation, request);
             return operation;
-        }
-
-        private static void AppendCustomerHeaders(IList<OpenApiParameter> parameters, IList<CustomParameter> headers)
-        {
-            foreach (var param in headers)
-            {
-                OpenApiParameter parameter = new OpenApiParameter
-                {
-                    In = ParameterLocation.Header,
-                    Name = param.Name,
-                    Description = param.Description,
-                    Schema = new OpenApiSchema
-                    {
-               //         Type = param.Type
-                    },
-                    Required = param.Required ?? false,
-                    Example = new OpenApiString(param.DocumentationURL)
-                };
-
-                parameter.Examples = new List<OpenApiExample>();
-                foreach (var example in param.ExampleValues)
-                {
-                    OpenApiExample ex = new OpenApiExample
-                    {
-                //        Value = new OpenApiString(example.Value),
-                        Description = example.Description
-                    };
-
-                    parameter.Examples.Add(ex);
-                }
-
-                parameters.Add(parameter);
-            }
         }
 
         /// <summary>
@@ -369,10 +324,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 operation.Parameters.Add(parameter);
             }
 
-            if (request != null && request.CustomHeaders != null && request.CustomHeaders.Any())
-            {
-               // AppendCustomerHeaders(operation.Parameters, request.CustomHeaders);
-            }
+            AppendCustomParameters(operation, request);
 
             operation.Responses = new OpenApiResponses
             {
@@ -402,7 +354,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
-
+            // AppendResponses(operation, request);
 
             return operation;
         }
@@ -1159,6 +1111,122 @@ namespace Microsoft.OpenApi.OData.Generator
         internal static string PathAsString(IEnumerable<string> path)
         {
             return String.Join("/", path);
+        }
+
+        private static void AppendResponses(OpenApiOperation operation, HttpRequest request)
+        {
+            if (request == null || request.HttpResponses == null || operation == null || operation.Responses == null)
+            {
+                return;
+            }
+
+            if (request.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation.Parameters, request.CustomQueryOptions, ParameterLocation.Query);
+            }
+
+            foreach (var response in request.HttpResponses)
+            {
+                operation.Responses.TryGetValue(response.ResponseCode, out OpenApiResponse operationResponse);
+                if (operationResponse == null)
+                {
+                    continue;
+                }
+
+                if (response.Examples != null)
+                {
+                    if (operationResponse.Content == null)
+                    {
+                        operationResponse.Content = new Dictionary<string, OpenApiMediaType>();
+                    }
+
+                    foreach (var example in response.Examples)
+                    {
+                        OpenApiMediaType mediaType = new OpenApiMediaType();
+                        if (example is ExternalExample)
+                        {
+                            var externalExample = (ExternalExample)example;
+                            mediaType.Example = new OpenApiString(externalExample.ExternalValue);
+                        }
+                        else
+                        {
+                            var inlineExample = (InlineExample)example;
+                            mediaType.Example = new OpenApiString(inlineExample.InlineValue);
+                        }
+
+                        operationResponse.Content[example.Description] = mediaType;
+                    }
+                }
+            }
+        }
+
+        private static void AppendCustomParameters(OpenApiOperation operation, HttpRequest request)
+        {
+            if (request == null)
+            {
+                return;
+            }
+
+            if (operation.Parameters == null)
+            {
+                operation.Parameters = new List<OpenApiParameter>();
+            }
+
+            if (request.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation.Parameters, request.CustomQueryOptions, ParameterLocation.Query);
+            }
+
+            if (request.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation.Parameters, request.CustomHeaders, ParameterLocation.Header);
+            }
+        }
+
+        private static void AppendCustomParameters(IList<OpenApiParameter> parameters, IList<CustomParameter> headers, ParameterLocation location)
+        {
+            foreach (var param in headers)
+            {
+                OpenApiParameter parameter = new OpenApiParameter
+                {
+                    In = location,
+                    Name = param.Name,
+                    Description = param.Description,
+                    Schema = new OpenApiSchema
+                    {
+                        // Type = param.Type
+                    },
+                    Required = param.Required ?? false,
+                    Example = new OpenApiString(param.DocumentationURL)
+                };
+
+                if (param.ExampleValues != null)
+                {
+                    parameter.Examples = new List<OpenApiExample>();
+                    foreach (var example in param.ExampleValues)
+                    {
+                        OpenApiExample ex = new OpenApiExample
+                        {
+                            Description = example.Description
+                        };
+
+                        if (example is ExternalExample)
+                        {
+                            var externalExample = (ExternalExample)example;
+                            ex.Value = new OpenApiString(externalExample.ExternalValue);
+                        }
+                        else
+                        {
+                            var inlineExample = (InlineExample)example;
+                            ex.Value = new OpenApiString(inlineExample.InlineValue);
+                        }
+
+                        parameter.Examples.Add(ex);
+                    }
+                }
+
+                parameters.Add(parameter);
+            }
         }
         #endregion
     }

@@ -30,7 +30,7 @@
                     <PropertyValue Property="Required" Bool="false" />
                     <PropertyValue Property="Examples">
                         <Collection>
-                            <Record>
+                            <Record Type="Org.OData.Core.V1.InlineExample" >
                                 <PropertyValue Property="InlineExample" String="JSON Example"/>
                                 <PropertyValue Property="Description" String="application/json"/>
                             </Record>
@@ -51,7 +51,7 @@
                     <!--Currently we don't the examples section. -->
                     <PropertyValue Property="Examples">
                         <Collection>
-                            <Record>
+                            <Record Type="Org.OData.Core.V1.ExternalExample">
                                 <PropertyValue Property="ExternalExample" String=""/>
                                 <PropertyValue Property="Description" String=""/>
                             </Record>
@@ -66,7 +66,7 @@
                     <PropertyValue Property="Required" Bool="true" />
                     <PropertyValue Property="Examples">
                         <Collection>
-                            <Record>
+                            <Record Type="Org.OData.Core.V1.ExternalExample">
                                 <PropertyValue Property="ExternalExample" String=""/>
                                 <PropertyValue Property="Description" String=""/>
                             </Record>
@@ -75,7 +75,7 @@
                 </Record>
             </Collection>
         </PropertyValue>
-        <PropertyValue Property="HttpsResponse">
+        <PropertyValue Property="HttpResponses">
             <!-- Maps to description for http response  -->
             <Annotation  Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
             <Collection>
@@ -84,7 +84,7 @@
                     <PropertyValue Property="ResponseCode" String="200"/>
                     <PropertyValue Property="Examples">
                         <Collection>
-                            <Record>
+                            <Record Type="Org.OData.Core.V1.InlineExample">
                                 <PropertyValue Property="InlineExample" String="{'businessPhones':['businessPhones-value'],'displayName':'displayName-value','givenName':'givenName-value','jobTitle':'jobTitle-value','mail':'mail-value','mobilePhone':'mobilePhone-value','officeLocation':'officeLocation-value','preferredLanguage':'preferredLanguage-value','surname':'surname-value','userPrincipalName':'userPrincipalName-value','id': 'id-value'}"/>
                                 <PropertyValue Property="Description" String="application/json"/>
                             </Record>
@@ -98,7 +98,7 @@
            <!-- This maps to the description for the permissions section on the current graph documentation.  -->
            <Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. To learn more, including how to choose permissions, see Permissions." />
            <Collection>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -112,7 +112,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -126,7 +126,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -140,7 +140,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -154,7 +154,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -168,7 +168,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -182,7 +182,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -196,7 +196,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -210,7 +210,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedWork" />
                <PropertyValue Property="Description" String="DelegatedWork" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -224,7 +224,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedPersonal" />
                <PropertyValue Property="Description" String="DelegatedPersonal" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -238,7 +238,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="DelegatedPersonal" />
                <PropertyValue Property="Description" String="DelegatedPersonal" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -252,7 +252,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="Application" />
                <PropertyValue Property="Description" String="Application" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -266,7 +266,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="Application" />
                <PropertyValue Property="Description" String="Application" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -280,7 +280,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="Application" />
                <PropertyValue Property="Description" String="Application" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
@@ -294,7 +294,7 @@
                </PropertyValue>
                <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record>
+             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
                <PropertyValue Property="Name" String="Application" />
                <PropertyValue Property="Description" String="Application" />
                <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
