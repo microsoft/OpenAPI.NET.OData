@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Authorizations;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -19,8 +20,7 @@ namespace Microsoft.OpenApi.OData.Generator
     {
         /// <summary>
         /// Create the dictionary of <see cref="OpenApiSecurityScheme"/> object.
-        /// The name of each pair is the namespace-qualified name of the type. It uses the namespace instead of the alias.
-        /// The value of each pair is a <see cref="OpenApiSecurityScheme"/>.
+        /// The name of each pair is the name of authorization. The value of each pair is a <see cref="OpenApiSecurityScheme"/>.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
         /// <returns>The string/security scheme dictionary.</returns>
@@ -156,11 +156,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (oAuth2.Scopes != null)
             {
-                flow.Scopes = new Dictionary<string, string>();
-                foreach (var scope in oAuth2.Scopes)
-                {
-                    flow.Scopes[scope.Scope] = scope.Description;
-                }
+                flow.Scopes = oAuth2.Scopes.ToDictionary(s => s.Scope, s => s.Description);
             }
         }
     }

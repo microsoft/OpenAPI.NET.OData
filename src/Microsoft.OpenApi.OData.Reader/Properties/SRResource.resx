@@ -120,6 +120,9 @@
   <data name="ArgumentNullOrEmpty" xml:space="preserve">
     <value>The argument '{0}' is null or empty.</value>
   </data>
+  <data name="AuthorizationRecordTypeNameNotCorrect" xml:space="preserve">
+    <value>The authorization record type name '{0}' is not correct.</value>
+  </data>
   <data name="ExtensionFieldNameMustBeginWithXMinus" xml:space="preserve">
     <value>The filed name of extension doesn't begin with x-.</value>
   </data>
