@@ -282,7 +282,7 @@ namespace Microsoft.OpenApi.OData.Generator
             IEdmEntityType entityType = entitySet.EntityType();
 
             HttpRequestsAnnotation httpRequests = new HttpRequestsAnnotation(context.Model, entitySet);
-            HttpRequest request = httpRequests.GetRequest("Get " + entityType.Name);
+            HttpRequest request = httpRequests.GetRequest("Get");
 
             OpenApiOperation operation = new OpenApiOperation
             {
@@ -355,6 +355,11 @@ namespace Microsoft.OpenApi.OData.Generator
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
             // AppendResponses(operation, request);
+
+            if (request != null)
+            {
+                operation.Security = context.CreateSecurityRequirements(request.SecuritySchemes).ToList();
+            }
 
             return operation;
         }

@@ -14,8 +14,8 @@
       <Record>
         <!-- Maps to the description of the operation and the name of the operation -->
         <PropertyValue Property="Description" String="Retrieve the properties and relationships of user object." />
-        <PropertyValue Property="Method" String="Get User" />
-        
+        <PropertyValue Property="MethodDescription" String="Get User" />
+        <PropertyValue Property="MethodType" String="Get" />
         <!-- Maps to the custom query options section -->
         <PropertyValue Property="CustomQueryOptions">
             <Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 
@@ -75,13 +75,12 @@
                 </Record>
             </Collection>
         </PropertyValue>
-        <PropertyValue Property="HttpResponses">
-            <!-- Maps to description for http response  -->
-            <Annotation  Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
+        <PropertyValue Property="HttpResponses">            
             <Collection>
                 <Record>
                     <!-- Will map to the table that define the response code, content type and sample for the http response -->
                     <PropertyValue Property="ResponseCode" String="200"/>
+                    <PropertyValue Property="Description" String="If successful, this method returns a 200 OK response code and user object in the response body."/> <!-- Maps to description for http response  -->
                     <PropertyValue Property="Examples">
                         <Collection>
                             <Record Type="Org.OData.Core.V1.InlineExample">
@@ -95,220 +94,19 @@
         </PropertyValue>
         <!-- maps to security/permissions -->
         <PropertyValue Property="SecuritySchemes">
-           <!-- This maps to the description for the permissions section on the current graph documentation.  -->
-           <Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. To learn more, including how to choose permissions, see Permissions." />
            <Collection>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.Read"/>
-                     <PropertyValue Property="Description" String="Scope Description"/>
-                   </Record>
-                  </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                  <Collection>
-                     <Record>
-                        <PropertyValue Property="Scope" String="User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All, Directory.AccessAsUser.All"/>
-                        <PropertyValue Property="Description" String="Scope Description"/>
-                     </Record>
-                  </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                  <Collection>
-                    <Record>
-                      <PropertyValue Property="Scope" String="User.ReadWrite"/>
-                      <PropertyValue Property="Description" String="Scope Description"/>
-                    </Record>
-                  </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                  <Collection>
-                    <Record>
-                      <PropertyValue Property="Scope" String="User.ReadBasic.All"/>
-                      <PropertyValue Property="Description" String="Scope Description"/>
-                    </Record>
-                  </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.Read.All"/>
-                     <PropertyValue Property="Description" String="Scope Description"/>
-                   </Record>
+             <Record>
+               <PropertyValue Property="AuthorizationSchemeName" String="DelegatedWork" />
+               <PropertyValue Property="RequiredScopes">
+                <Collection>
+                  <String>User.ReadAll</String>
+                  <String>User.WriteAll</String>
+                  <String>User.WriteAll,User.ReadAll</String>
                  </Collection>
                </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
              </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.ReadWrite.All"/>
-                     <PropertyValue Property="Description" String="Scope Description"/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="Directory.Read.All"/>
-                     <PropertyValue Property="Description" String="Scope Description"/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-                     <PropertyValue Property="Description" String="Scope Description"/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedWork" />
-               <PropertyValue Property="Description" String="DelegatedWork" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
-                     <PropertyValue Property="Description" String="Scope Description"/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedPersonal" />
-               <PropertyValue Property="Description" String="DelegatedPersonal" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.Read"/>
-                     <PropertyValue Property="Description" String=""/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="DelegatedPersonal" />
-               <PropertyValue Property="Description" String="DelegatedPersonal" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.ReadWrite"/>
-                     <PropertyValue Property="Description" String=""/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="Application" />
-               <PropertyValue Property="Description" String="Application" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.Read.All"/>
-                     <PropertyValue Property="Description" String=""/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="Application" />
-               <PropertyValue Property="Description" String="Application" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="User.ReadWrite.All"/>
-                     <PropertyValue Property="Description" String=""/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="Application" />
-               <PropertyValue Property="Description" String="Application" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="Directory.Read.All"/>
-                     <PropertyValue Property="Description" String=""/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-             <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-               <PropertyValue Property="Name" String="Application" />
-               <PropertyValue Property="Description" String="Application" />
-               <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-               <PropertyValue Property="Scopes">
-                 <Collection>
-                   <Record>
-                     <PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
-                     <PropertyValue Property="Description" String=""/>
-                   </Record>
-                 </Collection>
-               </PropertyValue>
-               <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-             </Record>
-            </Collection>
+             <!-- Add more records here by saurabh -->
+           </Collection>
         </PropertyValue>
       </Record>
     </Collection>

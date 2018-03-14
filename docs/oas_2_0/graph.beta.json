@@ -13267,6 +13267,23 @@
               ],
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "Select",
+            "description": "N/A"
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer {token}. Required.",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "content-type",
+            "description": "application/json",
+            "required": true
           }
         ],
         "responses": {
@@ -13439,7 +13456,16 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "security": [
+          {
+            "DelegatedWork": [
+              "User.ReadAll",
+              "User.WriteAll",
+              "User.WriteAll,User.ReadAll"
+            ]
+          }
+        ]
       },
       "patch": {
         "tags": [

@@ -9738,6 +9738,17 @@ paths:
               - identityUserRisk
               - deviceEnrollmentLimit
             type: string
+        - in: query
+          name: Select
+          description: N/A
+        - in: header
+          name: Authorization
+          description: 'Bearer {token}. Required.'
+          required: true
+        - in: header
+          name: content-type
+          description: application/json
+          required: true
       responses:
         '200':
           description: Retrieved entities
@@ -9869,6 +9880,11 @@ paths:
             $ref: '#/definitions/microsoft.graph.user'
         default:
           $ref: '#/responses/error'
+      security:
+        - DelegatedWork:
+            - User.ReadAll
+            - User.WriteAll
+            - 'User.WriteAll,User.ReadAll'
     patch:
       tags:
         - users

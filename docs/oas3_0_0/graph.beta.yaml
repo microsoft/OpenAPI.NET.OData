@@ -10182,6 +10182,23 @@ paths:
                 - identityUserRisk
                 - deviceEnrollmentLimit
               type: string
+        - name: Select
+          in: query
+          description: N/A
+          schema: { }
+          example: N/A
+        - name: Authorization
+          in: header
+          description: 'Bearer {token}. Required.'
+          required: true
+          schema: { }
+          example: ''
+        - name: content-type
+          in: header
+          description: application/json
+          required: true
+          schema: { }
+          example: ''
       responses:
         '200':
           description: Retrieved entities
@@ -10322,6 +10339,11 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.user'
         default:
           $ref: '#/components/responses/error'
+      security:
+        - DelegatedWork:
+            - User.ReadAll
+            - User.WriteAll
+            - 'User.WriteAll,User.ReadAll'
     patch:
       tags:
         - users

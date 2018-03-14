@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Annotations
                 return null;
             }
 
-            return Requests.FirstOrDefault(e => string.Equals(e.Method, method, System.StringComparison.OrdinalIgnoreCase));
+            return Requests.FirstOrDefault(e => string.Equals(e.MethodType, method, System.StringComparison.OrdinalIgnoreCase));
         }
 
         protected virtual void Initialize()
