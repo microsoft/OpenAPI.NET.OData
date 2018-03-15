@@ -6,7 +6,8 @@
   <ComplexType Name="HttpRequest">
     <Property Name="Description" Type="Edm.String" />
     <!-- text such as "For a specific user:" to describe the http request-->
-    <Property Name="Method" Type="Edm.String" />
+    <Property Name="MethodDescription" Type="Edm.String" /> <!-- map to: opertaion#summary or operation#operationID??? -->
+    <Property Name="MethodType" Type="Edm.String" /> <!-- GET/POST/PATCH/DELETE -->
     <Property Name="CustomQueryOptions" Type="Collection(Core.CustomParameter)" />
     <Property Name="CustomHeaders" Type="Collection(Core.CustomParameter)" />    <!-- Map to Parameter in Operation as Header object.-->
     <Property Name="HttpResponses" Type="Collection(Core.HttpResponse)" />    <!--  Map to Response object in Operation.     -->

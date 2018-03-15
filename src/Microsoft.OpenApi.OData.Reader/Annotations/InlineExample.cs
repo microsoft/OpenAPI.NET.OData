@@ -18,6 +18,10 @@ namespace Microsoft.OpenApi.OData.Annotations
         /// </summary>
         public string InlineValue { get; set; }
 
+        /// <summary>
+        /// Init the <see cref="InlineExample"/>.
+        /// </summary>
+        /// <param name="record">The record.</param>
         public override void Init(IEdmRecordExpression record)
         {
             base.Init(record);

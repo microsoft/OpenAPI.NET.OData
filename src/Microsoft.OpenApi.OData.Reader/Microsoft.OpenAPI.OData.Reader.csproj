@@ -37,7 +37,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.3.1" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.0.0-beta012" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.0.0-beta014" />
   </ItemGroup>
 
   <ItemGroup>

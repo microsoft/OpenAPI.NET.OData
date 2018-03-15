@@ -3,11 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Common;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
@@ -22,9 +21,14 @@ namespace Microsoft.OpenApi.OData.Annotations
         public string Description { get; set; }
 
         /// <summary>
-        /// The Method.
+        /// The MethodDescription.
         /// </summary>
-        public string Method { get; set; }
+        public string MethodDescription { get; set; }
+
+        /// <summary>
+        /// The MethodType.
+        /// </summary>
+        public string MethodType { get; set; }
 
         /// <summary>
         /// The Custom Query Options.
@@ -57,8 +61,11 @@ namespace Microsoft.OpenApi.OData.Annotations
             // Description.
             Description = record.GetString("Description");
 
-            // Method.
-            Method = record.GetString("Method");
+            // MethodDescription.
+            MethodDescription = record.GetString("MethodDescription");
+
+            // MethodType.
+            MethodType = record.GetString("MethodType");
 
             // CustomQueryOptions
             CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions", (s, r) => s.Init(r as IEdmRecordExpression));

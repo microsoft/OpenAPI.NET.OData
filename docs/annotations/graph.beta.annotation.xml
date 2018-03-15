@@ -1,164 +1,127 @@
 <Annotations Target="microsoft.graph.GraphService/users">
-    <Annotation Term="Org.OData.Capabilities.V1.ChangeTracking">
-        <Record>
-            <PropertyValue Property="Supported" Bool="true" />
-        </Record>
-    </Annotation>
-    <!-- Maps to the description for the user -->
-    <Annotation Term="Org.OData.Core.V1.Description" String="Use this API to create a new User. The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties."></Annotation>
-    <Annotation Term="Org.OData.Core.V1.LongDescription" String=""></Annotation>
-    <Annotation Term="Org.Graph.Vocabulary.HttpsRequests">
-        <!-- This describes httpsrequest, query params, headers, request body, response-->
-        <Collection>
-            <!-- Description for "Get user" operation -->
-            <Record>
-                <!-- Maps to the description of the operation and the name of the operation -->
-                <PropertyValue Property="Description" String="Retrieve the properties and relationships of user object.">
-                </PropertyValue>
-                <PropertyValue Property="Method" String="Get User">
-                </PropertyValue>
-                
-                <!-- Maps to the custom query options section -->
-                <PropertyValue Property="CustomQueryOptions">
-                    <Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 
-                    By default, only a limited set of properties are returned ( businessPhones, displayName, givenName, id, jobTitle, mail, mobilePhone, officeLocation, preferredLanguage, surname, userPrincipalName ). 
-                    To return an alternative property set, you must specify the desired set of user properties using the OData $select query parameter. For example, to return displayName, givenName, and postalCode, you would use the add the following to your query $select=displayName,givenName,postalCode" />
-                    <Collection>
-                        <Record>
-                            <PropertyValue Property="Name" String="Select"/>
-                            <PropertyValue Property="Type" String="" />
-                            <PropertyValue Property="Description" String="N/A" />
-                            <PropertyValue Property="DocumentationURL" String="N/A" />
-                            <PropertyValue Property="Required" Bool="false" />
-                            <PropertyValue Property="Examples">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="InlineExample" String="JSON Example"/>
-                                        <PropertyValue Property="Description" String="application/json"/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Collection>
-                </PropertyValue>
-                <PropertyValue Property="CustomHeaders">
-                    <Collection>
-                        <!-- Each record maps to the row in the headers table. -->
-                        <Record>
-                            <PropertyValue Property="Name" String="Authorization"/> <!-- Maps to the Header Name column of the request headers section -->
-                            <PropertyValue Property="Type" String="" />
-                            <PropertyValue Property="Description" String="Bearer {token}. Required." /> <!-- Maps to the value column of the request headers -->
-                            <PropertyValue Property="DocumentationURL" String="" /> <!-- Currently there is not used -->
-                            <PropertyValue Property="Required" Bool="true" />
-                            <!--Currently we don't the examples section. -->
-                            <PropertyValue Property="Examples">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="ExternalExample" String=""/>
-                                        <PropertyValue Property="Description" String=""/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                        <Record>
-                            <PropertyValue Property="Name" String="content-type"/>
-                            <PropertyValue Property="Type" String="" />
-                            <PropertyValue Property="Description" String="application/json" />
-                            <PropertyValue Property="DocumentationURL" String="" />
-                            <PropertyValue Property="Required" Bool="true" />
-                            <PropertyValue Property="Examples">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="ExternalExample" String=""/>
-                                        <PropertyValue Property="Description" String=""/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Collection>
-                </PropertyValue>
-                <PropertyValue Property="HttpsResponse">
-                    <!-- Maps to description for http response  -->
-                    <Annotation  Term="Org.OData.Core.V1.Description" String="If successful, this method returns a 200 OK response code and user object in the response body."></Annotation>
-                    <Collection>
-                        <Record>
-                            <!-- Will map to the table that define the response code, content type and sample for the http response -->
-                            <PropertyValue Property="ResponseCode" String="200"/>
-                            <PropertyValue Property="Examples">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="InlineExample" String="Sample"/>
-                                        <PropertyValue Property="Description" String="application/json"/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Collection>
-                </PropertyValue>
-                <!-- maps to security/permissions -->
-                <PropertyValue Property="SecuritySchemes">
-                    <Annotation Term="Org.OData.Core.V1.Description" String="One of the following permissions is required to call this API. 
-                    To learn more, including how to choose permissions, see Permissions.">
-                    </Annotation>
-                    <Collection>
-                        <Record>
-                            <PropertyValue Property="Name" String="DelegatedWork" />
-                            <PropertyValue Property="Description" String="Description of auth type" />
-                            <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-                            <PropertyValue Property="Scopes">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="Scope" String="User.Read, User.ReadWrite, User.ReadBasic.All, User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All, Directory.AccessAsUser.All"/>
-                                        <PropertyValue Property="Description" String="Scope Description"/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                            <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-                        </Record>
-                        <Record>
-                            <PropertyValue Property="Name" String="DelegatedPersonal" />
-                            <PropertyValue Property="Description" String="Description of auth type" />
-                            <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-                            <PropertyValue Property="Scopes">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="Scope" String="User.Read, User.ReadWrite"/>
-                                        <PropertyValue Property="Description" String=""/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                            <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-                        </Record>
-                        <Record>
-                            <PropertyValue Property="Name" String="Application" />
-                            <PropertyValue Property="Description" String="Description of auth type" />
-                            <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-                            <PropertyValue Property="Scopes">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="Scope" String="User.Read.All, User.ReadWrite.All, Directory.Read.All, Directory.ReadWrite.All"/>
-                                        <PropertyValue Property="Description" String=""/>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                            <PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com"/>
-                        </Record>
-                    </Collection>
-                </PropertyValue>
-            </Record>
-        </Collection>
-    </Annotation>
-    <!-- Resource inheritance (description)
-    Look into if we should do anyOf/all of for this representation. 
-    -->
-    <!-- Method extensions (description) 
-    This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
-    -->
-    <!-- Relationships  
-    These need to be defined as 'link objects'.
-    We need to links for media, navigation and string properties.
-    For paths that return a single resource, we need to write navi properties
-    -->
+  <Annotation Term="Org.OData.Capabilities.V1.ChangeTracking">
+      <Record>
+          <PropertyValue Property="Supported" Bool="true" />
+      </Record>
+  </Annotation>
+  <!-- Maps to the description for the user -->
+  <Annotation Term="Org.OData.Core.V1.Description" String="Use this API to create a new User. The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties."></Annotation>
+  <Annotation Term="Org.OData.Core.V1.LongDescription" String=""></Annotation>
+  <Annotation Term="Org.OData.Core.V1.HttpRequests">
+    <!-- This describes httpsrequest, query params, headers, request body, response-->
+    <Collection>
+      <!-- Description for "Get user" operation -->
+      <Record>
+        <!-- Maps to the description of the operation and the name of the operation -->
+        <PropertyValue Property="Description" String="Retrieve the properties and relationships of user object." />
+        <PropertyValue Property="MethodDescription" String="Get User" />
+        <PropertyValue Property="MethodType" String="Get" />
+        <!-- Maps to the custom query options section -->
+        <PropertyValue Property="CustomQueryOptions">
+            <Annotation Term="Org.OData.Core.V1.Description" String="This method supports the OData Query Parameters to help customize the response. 
+            By default, only a limited set of properties are returned ( businessPhones, displayName, givenName, id, jobTitle, mail, mobilePhone, officeLocation, preferredLanguage, surname, userPrincipalName ). 
+            To return an alternative property set, you must specify the desired set of user properties using the OData $select query parameter. For example, to return displayName, givenName, and postalCode, you would use the add the following to your query $select=displayName,givenName,postalCode" />
+            <Collection>
+                <Record>
+                    <PropertyValue Property="Name" String="Select"/>
+                    <PropertyValue Property="Type" String="" />
+                    <PropertyValue Property="Description" String="N/A" />
+                    <PropertyValue Property="DocumentationURL" String="N/A" />
+                    <PropertyValue Property="Required" Bool="false" />
+                    <PropertyValue Property="Examples">
+                        <Collection>
+                            <Record Type="Org.OData.Core.V1.InlineExample" >
+                                <PropertyValue Property="InlineExample" String="JSON Example"/>
+                                <PropertyValue Property="Description" String="application/json"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Collection>
+        </PropertyValue>
+        <PropertyValue Property="CustomHeaders">
+            <Collection>
+                <!-- Each record maps to the row in the headers table. -->
+                <Record>
+                    <PropertyValue Property="Name" String="Authorization"/> <!-- Maps to the Header Name column of the request headers section -->
+                    <PropertyValue Property="Type" String="" />
+                    <PropertyValue Property="Description" String="Bearer {token}. Required." /> <!-- Maps to the value column of the request headers -->
+                    <PropertyValue Property="DocumentationURL" String="" /> <!-- Currently there is not used -->
+                    <PropertyValue Property="Required" Bool="true" />
+                    <!--Currently we don't the examples section. -->
+                    <PropertyValue Property="Examples">
+                        <Collection>
+                            <Record Type="Org.OData.Core.V1.ExternalExample">
+                                <PropertyValue Property="ExternalExample" String=""/>
+                                <PropertyValue Property="Description" String=""/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+                <Record>
+                    <PropertyValue Property="Name" String="content-type"/>
+                    <PropertyValue Property="Type" String="" />
+                    <PropertyValue Property="Description" String="application/json" />
+                    <PropertyValue Property="DocumentationURL" String="" />
+                    <PropertyValue Property="Required" Bool="true" />
+                    <PropertyValue Property="Examples">
+                        <Collection>
+                            <Record Type="Org.OData.Core.V1.ExternalExample">
+                                <PropertyValue Property="ExternalExample" String=""/>
+                                <PropertyValue Property="Description" String=""/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Collection>
+        </PropertyValue>
+        <PropertyValue Property="HttpResponses">            
+            <Collection>
+                <Record>
+                    <!-- Will map to the table that define the response code, content type and sample for the http response -->
+                    <PropertyValue Property="ResponseCode" String="200"/>
+                    <PropertyValue Property="Description" String="If successful, this method returns a 200 OK response code and user object in the response body."/> <!-- Maps to description for http response  -->
+                    <PropertyValue Property="Examples">
+                        <Collection>
+                            <Record Type="Org.OData.Core.V1.InlineExample">
+                                <PropertyValue Property="InlineExample" String="{'businessPhones':['businessPhones-value'],'displayName':'displayName-value','givenName':'givenName-value','jobTitle':'jobTitle-value','mail':'mail-value','mobilePhone':'mobilePhone-value','officeLocation':'officeLocation-value','preferredLanguage':'preferredLanguage-value','surname':'surname-value','userPrincipalName':'userPrincipalName-value','id': 'id-value'}"/>
+                                <PropertyValue Property="Description" String="application/json"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Collection>
+        </PropertyValue>
+        <!-- maps to security/permissions -->
+        <PropertyValue Property="SecuritySchemes">
+           <Collection>
+             <Record>
+               <PropertyValue Property="AuthorizationSchemeName" String="DelegatedWork" />
+               <PropertyValue Property="RequiredScopes">
+                <Collection>
+                  <String>User.ReadAll</String>
+                  <String>User.WriteAll</String>
+                  <String>User.WriteAll,User.ReadAll</String>
+                 </Collection>
+               </PropertyValue>
+             </Record>
+             <!-- Add more records here by saurabh -->
+           </Collection>
+        </PropertyValue>
+      </Record>
+    </Collection>
+  </Annotation>
+  <!-- Resource inheritance (description)
+  Look into if we should do anyOf/all of for this representation. 
+  -->
+  <!-- Method extensions (description) 
+  This should probably be moved out of here. The only thing we should define here is if this resource supports extensions or not, then provide a link to extensions and schema 
+  -->
+  <!-- Relationships  
+  These need to be defined as 'link objects'.
+  We need to links for media, navigation and string properties.
+  For paths that return a single resource, we need to write navi properties
+  -->
 </Annotations>
 <!-- Properties (description) -->
 <Annotations Target="microsoft.graph.user/aboutMe">
@@ -292,73 +255,4 @@
 </Annotations>
 <Annotations Target="microsoft.graph.user/userType">
     <Annotation Term="Org.OData.Core.V1.Description" String="A string value that can be used to classify user types in your directory, such as 'Member' and 'Guest'. Supports $filter."></Annotation>
-</Annotations>
-<Annotations Target="microsoft.graph.GraphService">
-  <Annotation Term="Auth.Authorizations">
-    <Collection>
-      <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-        <PropertyValue Property="Name" String="DelegatedWork"/>
-        <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-        <PropertyValue Property="Scopes">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-              <PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-            </Record>
-            <Record>
-              <PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-              <PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-            </Record>
-            <Record>
-              <PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-              <PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-            </Record>
-          </Collection>
-        </PropertyValue>
-        <PropertyValue Property="RefreshUrl" String="https://refreshUrl" />
-      </Record>
-      <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-        <PropertyValue Property="Name" String="DelegatedPersonal"/>
-        <PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-        <PropertyValue Property="Scopes">
-          <Collection>
-             <Record>
-                <PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-                <PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-             </Record>
-             <Record>
-               <PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-               <PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-             </Record>
-             <Record>
-               <PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-               <PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-             </Record>
-          </Collection>
-        </PropertyValue>
-        <PropertyValue Property="RefreshUrl" String="https://refreshUrl" />
-      </Record>
-      <Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
-		<PropertyValue Property="Name" String="Application"/>
-		<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
-		<PropertyValue Property="Scopes">
-	      <Collection>
-			<Record>
-				<PropertyValue Property="Scope" String="User.ReadAll"></PropertyValue>
-				<PropertyValue Property="Description" String="Read all user data"></PropertyValue>
-			</Record>
-			<Record>
-				<PropertyValue Property="Scope" String="User.WriteAll"></PropertyValue>
-				<PropertyValue Property="Description" String="Write all user data"></PropertyValue>
-			</Record>
-			<Record>
-				<PropertyValue Property="Scope" String="Directory.ReadAll"></PropertyValue>
-				<PropertyValue Property="Description" String="Write to directory"></PropertyValue>
-			</Record>
-		  </Collection>
-		</PropertyValue>
-		<PropertyValue Property="RefreshUrl" String="https://refreshUrl" />
-      </Record>
-    </Collection>
-  </Annotation>
 </Annotations>

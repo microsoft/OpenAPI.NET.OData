@@ -405,10 +405,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Get Trips from People", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People##Trips", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(8, operation.Parameters.Count);
+            Assert.Equal(9, operation.Parameters.Count);
 
             Assert.Null(operation.RequestBody);
 
@@ -489,7 +489,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Update the navigation property BestFriend in People", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People##BestFriend", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Equal(1, operation.Parameters.Count);
@@ -574,7 +574,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Add new navigation property to Trips for People", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People##Trips", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Empty(operation.Parameters);

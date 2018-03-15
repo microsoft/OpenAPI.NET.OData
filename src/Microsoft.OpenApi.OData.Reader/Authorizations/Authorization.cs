@@ -3,9 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Exceptions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Properties;
 
 namespace Microsoft.OpenApi.OData.Authorizations
 {
@@ -23,6 +27,11 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// Description of the authorization method.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets the security scheme type.
+        /// </summary>
+        public abstract SecuritySchemeType SchemeType { get; }
 
         /// <summary>
         /// Init the <see cref="Authorization"/>.
@@ -46,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// <returns>The created <see cref="Authorization"/> object.</returns>
         public static Authorization CreateAuthorization(IEdmRecordExpression record)
         {
-            if (record== null || record.DeclaredType == null)
+            if (record == null || record.DeclaredType == null)
             {
                 return null;
             }
@@ -60,40 +69,37 @@ namespace Microsoft.OpenApi.OData.Authorizations
             Authorization auth = null;
             switch (complexType.FullTypeName())
             {
-                case "Org.OData.Authorization.V1.OpenIDConnect":
+                case AuthorizationConstants.OpenIDConnect: // OpenIDConnect
                     auth = new OpenIDConnect();
                     break;
 
-                case "Org.OData.Authorization.V1.Http":
+                case AuthorizationConstants.Http: // Http
                     auth = new Http();
                     break;
 
-                case "Org.OData.Authorization.V1.OAuthAuthorization":
-                    //auth = new OAuthAuthorization();
-                    break;
-
-                case "Org.OData.Authorization.V1.OAuth2ClientCredentials":
-                    auth = new OAuth2ClientCredentials();
-                    break;
-
-                case "Org.OData.Authorization.V1.OAuth2Implicit":
-                    auth = new OAuth2Implicit();
-                    break;
-
-                case "Org.OData.Authorization.V1.OAuth2Password":
-                    auth = new OAuth2Password();
-                    break;
-
-                case "Org.OData.Authorization.V1.OAuth2AuthCode":
-                    auth = new OAuth2AuthCode();
-                    break;
-
-                case "Org.OData.Authorization.V1.ApiKey":
+                case AuthorizationConstants.ApiKey: // ApiKey
                     auth = new ApiKey();
                     break;
 
-                default:
+                case AuthorizationConstants.OAuth2ClientCredentials: // OAuth2ClientCredentials
+                    auth = new OAuth2ClientCredentials();
                     break;
+
+                case AuthorizationConstants.OAuth2Implicit: // OAuth2Implicit
+                    auth = new OAuth2Implicit();
+                    break;
+
+                case AuthorizationConstants.OAuth2Password: // OAuth2Password
+                    auth = new OAuth2Password();
+                    break;
+
+                case AuthorizationConstants.OAuth2AuthCode: // OAuth2AuthCode
+                    auth = new OAuth2AuthCode();
+                    break;
+
+                case AuthorizationConstants.OAuthAuthorization: // OAuthAuthorization
+                default:
+                    throw new OpenApiException(String.Format(SRResource.AuthorizationRecordTypeNameNotCorrect, complexType.FullTypeName()));
             }
 
             if (auth != null)

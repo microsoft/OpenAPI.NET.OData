@@ -17,8 +17,16 @@ using Microsoft.OpenApi.Exceptions;
 
 namespace Microsoft.OpenApi.OData.Annotations
 {
+    /// <summary>
+    /// Annotation for Edm model extensions.
+    /// </summary>
     internal static class AnnotationEdmModelExtensions
     {
+        /// <summary>
+        /// Append the Annotations into the CSDL.
+        /// </summary>
+        /// <param name="outputCsdl">The input/output CSDL.</param>
+        /// <returns>The modified CSDL></returns>
         public static IEdmModel AppendAnnotations(this string outputCsdl)
         {
             int last = outputCsdl.LastIndexOf("</Schema>");
@@ -28,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Annotations
 
                 foreach (var def in GetDefs())
                 {
-                    using (Stream stream = typeof(Resources).Assembly.GetManifestResourceStream(def))
+                    using (Stream stream = typeof(AnnotationEdmModelExtensions).Assembly.GetManifestResourceStream(def))
                     using (TextReader reader = new StreamReader(stream))
                     {
                         string annotationDef = reader.ReadToEnd();
@@ -39,6 +47,7 @@ namespace Microsoft.OpenApi.OData.Annotations
                 sb.Append("</edmx:DataServices>\n</edmx:Edmx>");
                 outputCsdl = sb.ToString();
             }
+
             File.WriteAllText("c:\\b.xml", outputCsdl);
             return CsdlReader.Parse(XElement.Parse(outputCsdl).CreateReader());
         }
@@ -67,7 +76,7 @@ namespace Microsoft.OpenApi.OData.Annotations
 
             foreach (var def in GetDefs())
             {
-                using (Stream stream = typeof(Resources).Assembly.GetManifestResourceStream(def))
+                using (Stream stream = typeof(AnnotationEdmModelExtensions).Assembly.GetManifestResourceStream(def))
                 using (TextReader reader = new StreamReader(stream))
                 {
                     string annotationDef = reader.ReadToEnd();
@@ -83,7 +92,7 @@ namespace Microsoft.OpenApi.OData.Annotations
 
         private static IEnumerable<string> GetDefs()
         {
-            Assembly assmebly = typeof(Resources).Assembly;
+            Assembly assmebly = typeof(AnnotationEdmModelExtensions).Assembly;
             var resources = assmebly.GetManifestResourceNames();
             return resources.Where(r => r.Contains(".Annotations.") && r.EndsWith(".def"));
         }

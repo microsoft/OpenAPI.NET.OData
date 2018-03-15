@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Authorizations
@@ -43,6 +44,11 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// Whether the API Key is passed in the header or as a query option.
         /// </summary>
         public KeyLocation? Location { get; set; }
+
+        /// <summary>
+        /// Gets the security scheme type.
+        /// </summary>
+        public override SecuritySchemeType SchemeType => SecuritySchemeType.ApiKey;
 
         /// <summary>
         /// Init <see cref="ApiKey"/>.

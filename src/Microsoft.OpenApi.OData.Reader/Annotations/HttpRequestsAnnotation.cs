@@ -12,7 +12,7 @@ using Microsoft.OpenApi.OData.Common;
 namespace Microsoft.OpenApi.OData.Annotations
 {
     /// <summary>
-    /// Org.Graph.Vocabulary.HttpRequests
+    /// Org.OData.Core.V1.HttpRequests
     /// </summary>
     internal class HttpRequestsAnnotation
     {
@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Annotations
                 return null;
             }
 
-            return Requests.FirstOrDefault(e => string.Equals(e.Method, method, System.StringComparison.OrdinalIgnoreCase));
+            return Requests.FirstOrDefault(e => string.Equals(e.MethodType, method, System.StringComparison.OrdinalIgnoreCase));
         }
 
         protected virtual void Initialize()
