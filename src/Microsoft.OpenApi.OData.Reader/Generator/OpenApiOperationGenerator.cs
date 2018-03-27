@@ -349,7 +349,8 @@ namespace Microsoft.OpenApi.OData.Generator
                                     }
                                 }
                             }
-                        }
+                        },
+                        Links = context.CreateLinks(entitySet)
                     }
                 }
             };

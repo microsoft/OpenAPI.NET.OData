@@ -1477,6 +1477,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.application'
+          links:
+            extensionProperties:
+              operationId: GetExtensionPropertiesFromApplications
+              parameters:
+                id: $request.path.id
+            createdOnBehalfOf:
+              operationId: GetCreatedOnBehalfOfFromApplications
+              parameters:
+                id: $request.path.id
+            owners:
+              operationId: GetOwnersFromApplications
+              parameters:
+                id: $request.path.id
+            policies:
+              operationId: GetPoliciesFromApplications
+              parameters:
+                id: $request.path.id
+            synchronization:
+              operationId: GetSynchronizationFromApplications
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -1860,6 +1881,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.administrativeUnit'
+          links:
+            extensions:
+              operationId: GetExtensionsFromAdministrativeUnits
+              parameters:
+                id: $request.path.id
+            members:
+              operationId: GetMembersFromAdministrativeUnits
+              parameters:
+                id: $request.path.id
+            scopedRoleMembers:
+              operationId: GetScopedRoleMembersFromAdministrativeUnits
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -2669,6 +2703,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.orgContact'
+          links:
+            manager:
+              operationId: GetManagerFromContacts
+              parameters:
+                id: $request.path.id
+            directReports:
+              operationId: GetDirectReportsFromContacts
+              parameters:
+                id: $request.path.id
+            memberOf:
+              operationId: GetMemberOfFromContacts
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -2920,6 +2967,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.device'
+          links:
+            extensions:
+              operationId: GetExtensionsFromDevices
+              parameters:
+                id: $request.path.id
+            registeredOwners:
+              operationId: GetRegisteredOwnersFromDevices
+              parameters:
+                id: $request.path.id
+            registeredUsers:
+              operationId: GetRegisteredUsersFromDevices
+              parameters:
+                id: $request.path.id
+            commands:
+              operationId: GetCommandsFromDevices
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -3427,6 +3491,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.domain'
+          links:
+            serviceConfigurationRecords:
+              operationId: GetServiceConfigurationRecordsFromDomains
+              parameters:
+                id: $request.path.id
+            verificationDnsRecords:
+              operationId: GetVerificationDnsRecordsFromDomains
+              parameters:
+                id: $request.path.id
+            domainNameReferences:
+              operationId: GetDomainNameReferencesFromDomains
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -4148,6 +4225,103 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.group'
+          links:
+            extensions:
+              operationId: GetExtensionsFromGroups
+              parameters:
+                id: $request.path.id
+            members:
+              operationId: GetMembersFromGroups
+              parameters:
+                id: $request.path.id
+            memberOf:
+              operationId: GetMemberOfFromGroups
+              parameters:
+                id: $request.path.id
+            createdOnBehalfOf:
+              operationId: GetCreatedOnBehalfOfFromGroups
+              parameters:
+                id: $request.path.id
+            owners:
+              operationId: GetOwnersFromGroups
+              parameters:
+                id: $request.path.id
+            settings:
+              operationId: GetSettingsFromGroups
+              parameters:
+                id: $request.path.id
+            endpoints:
+              operationId: GetEndpointsFromGroups
+              parameters:
+                id: $request.path.id
+            threads:
+              operationId: GetThreadsFromGroups
+              parameters:
+                id: $request.path.id
+            calendar:
+              operationId: GetCalendarFromGroups
+              parameters:
+                id: $request.path.id
+            calendarView:
+              operationId: GetCalendarViewFromGroups
+              parameters:
+                id: $request.path.id
+            events:
+              operationId: GetEventsFromGroups
+              parameters:
+                id: $request.path.id
+            conversations:
+              operationId: GetConversationsFromGroups
+              parameters:
+                id: $request.path.id
+            photo:
+              operationId: GetPhotoFromGroups
+              parameters:
+                id: $request.path.id
+            photos:
+              operationId: GetPhotosFromGroups
+              parameters:
+                id: $request.path.id
+            acceptedSenders:
+              operationId: GetAcceptedSendersFromGroups
+              parameters:
+                id: $request.path.id
+            rejectedSenders:
+              operationId: GetRejectedSendersFromGroups
+              parameters:
+                id: $request.path.id
+            drive:
+              operationId: GetDriveFromGroups
+              parameters:
+                id: $request.path.id
+            drives:
+              operationId: GetDrivesFromGroups
+              parameters:
+                id: $request.path.id
+            sites:
+              operationId: GetSitesFromGroups
+              parameters:
+                id: $request.path.id
+            planner:
+              operationId: GetPlannerFromGroups
+              parameters:
+                id: $request.path.id
+            onenote:
+              operationId: GetOnenoteFromGroups
+              parameters:
+                id: $request.path.id
+            team:
+              operationId: GetTeamFromGroups
+              parameters:
+                id: $request.path.id
+            channels:
+              operationId: GetChannelsFromGroups
+              parameters:
+                id: $request.path.id
+            groupLifecyclePolicies:
+              operationId: GetGroupLifecyclePoliciesFromGroups
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -7563,6 +7737,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.directoryRole'
+          links:
+            members:
+              operationId: GetMembersFromDirectoryRoles
+              parameters:
+                id: $request.path.id
+            scopedMembers:
+              operationId: GetScopedMembersFromDirectoryRoles
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -8203,6 +8386,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.organization'
+          links:
+            extensions:
+              operationId: GetExtensionsFromOrganization
+              parameters:
+                id: $request.path.id
+            depOnboardingSettings:
+              operationId: GetDepOnboardingSettingsFromOrganization
+              parameters:
+                id: $request.path.id
+            appleVolumePurchaseProgramTokens:
+              operationId: GetAppleVolumePurchaseProgramTokensFromOrganization
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -9340,6 +9536,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.servicePrincipal'
+          links:
+            appRoleAssignedTo:
+              operationId: GetAppRoleAssignedToFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            appRoleAssignments:
+              operationId: GetAppRoleAssignmentsFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            oauth2PermissionGrants:
+              operationId: GetOauth2PermissionGrantsFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            memberOf:
+              operationId: GetMemberOfFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            createdObjects:
+              operationId: GetCreatedObjectsFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            licenseDetails:
+              operationId: GetLicenseDetailsFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            owners:
+              operationId: GetOwnersFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            ownedObjects:
+              operationId: GetOwnedObjectsFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            policies:
+              operationId: GetPoliciesFromServicePrincipals
+              parameters:
+                id: $request.path.id
+            synchronization:
+              operationId: GetSynchronizationFromServicePrincipals
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -10337,6 +10574,151 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.user'
+          links:
+            extensions:
+              operationId: GetExtensionsFromUsers
+              parameters:
+                id: $request.path.id
+            ownedDevices:
+              operationId: GetOwnedDevicesFromUsers
+              parameters:
+                id: $request.path.id
+            registeredDevices:
+              operationId: GetRegisteredDevicesFromUsers
+              parameters:
+                id: $request.path.id
+            manager:
+              operationId: GetManagerFromUsers
+              parameters:
+                id: $request.path.id
+            directReports:
+              operationId: GetDirectReportsFromUsers
+              parameters:
+                id: $request.path.id
+            memberOf:
+              operationId: GetMemberOfFromUsers
+              parameters:
+                id: $request.path.id
+            createdObjects:
+              operationId: GetCreatedObjectsFromUsers
+              parameters:
+                id: $request.path.id
+            ownedObjects:
+              operationId: GetOwnedObjectsFromUsers
+              parameters:
+                id: $request.path.id
+            scopedRoleMemberOf:
+              operationId: GetScopedRoleMemberOfFromUsers
+              parameters:
+                id: $request.path.id
+            licenseDetails:
+              operationId: GetLicenseDetailsFromUsers
+              parameters:
+                id: $request.path.id
+            activities:
+              operationId: GetActivitiesFromUsers
+              parameters:
+                id: $request.path.id
+            outlook:
+              operationId: GetOutlookFromUsers
+              parameters:
+                id: $request.path.id
+            messages:
+              operationId: GetMessagesFromUsers
+              parameters:
+                id: $request.path.id
+            joinedGroups:
+              operationId: GetJoinedGroupsFromUsers
+              parameters:
+                id: $request.path.id
+            mailFolders:
+              operationId: GetMailFoldersFromUsers
+              parameters:
+                id: $request.path.id
+            calendar:
+              operationId: GetCalendarFromUsers
+              parameters:
+                id: $request.path.id
+            calendars:
+              operationId: GetCalendarsFromUsers
+              parameters:
+                id: $request.path.id
+            calendarGroups:
+              operationId: GetCalendarGroupsFromUsers
+              parameters:
+                id: $request.path.id
+            calendarView:
+              operationId: GetCalendarViewFromUsers
+              parameters:
+                id: $request.path.id
+            events:
+              operationId: GetEventsFromUsers
+              parameters:
+                id: $request.path.id
+            people:
+              operationId: GetPeopleFromUsers
+              parameters:
+                id: $request.path.id
+            contacts:
+              operationId: GetContactsFromUsers
+              parameters:
+                id: $request.path.id
+            contactFolders:
+              operationId: GetContactFoldersFromUsers
+              parameters:
+                id: $request.path.id
+            inferenceClassification:
+              operationId: GetInferenceClassificationFromUsers
+              parameters:
+                id: $request.path.id
+            photo:
+              operationId: GetPhotoFromUsers
+              parameters:
+                id: $request.path.id
+            photos:
+              operationId: GetPhotosFromUsers
+              parameters:
+                id: $request.path.id
+            drive:
+              operationId: GetDriveFromUsers
+              parameters:
+                id: $request.path.id
+            drives:
+              operationId: GetDrivesFromUsers
+              parameters:
+                id: $request.path.id
+            insights:
+              operationId: GetInsightsFromUsers
+              parameters:
+                id: $request.path.id
+            planner:
+              operationId: GetPlannerFromUsers
+              parameters:
+                id: $request.path.id
+            onenote:
+              operationId: GetOnenoteFromUsers
+              parameters:
+                id: $request.path.id
+            managedDevices:
+              operationId: GetManagedDevicesFromUsers
+              parameters:
+                id: $request.path.id
+            managedAppRegistrations:
+              operationId: GetManagedAppRegistrationsFromUsers
+              parameters:
+                id: $request.path.id
+            devices:
+              operationId: GetDevicesFromUsers
+              parameters:
+                id: $request.path.id
+            joinedTeams:
+              operationId: GetJoinedTeamsFromUsers
+              parameters:
+                id: $request.path.id
+            deviceManagementTroubleshootingEvents:
+              operationId: GetDeviceManagementTroubleshootingEventsFromUsers
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
       security:
@@ -16840,6 +17222,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.policy'
+          links:
+            appliesTo:
+              operationId: GetAppliesToFromPolicies
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -17309,6 +17696,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.driveItem'
+          links:
+            workbook:
+              operationId: GetWorkbookFromWorkbooks
+              parameters:
+                id: $request.path.id
+            activities:
+              operationId: GetActivitiesFromWorkbooks
+              parameters:
+                id: $request.path.id
+            children:
+              operationId: GetChildrenFromWorkbooks
+              parameters:
+                id: $request.path.id
+            listItem:
+              operationId: GetListItemFromWorkbooks
+              parameters:
+                id: $request.path.id
+            permissions:
+              operationId: GetPermissionsFromWorkbooks
+              parameters:
+                id: $request.path.id
+            thumbnails:
+              operationId: GetThumbnailsFromWorkbooks
+              parameters:
+                id: $request.path.id
+            versions:
+              operationId: GetVersionsFromWorkbooks
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -18973,6 +19389,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.drive'
+          links:
+            activities:
+              operationId: GetActivitiesFromDrives
+              parameters:
+                id: $request.path.id
+            items:
+              operationId: GetItemsFromDrives
+              parameters:
+                id: $request.path.id
+            list:
+              operationId: GetListFromDrives
+              parameters:
+                id: $request.path.id
+            root:
+              operationId: GetRootFromDrives
+              parameters:
+                id: $request.path.id
+            special:
+              operationId: GetSpecialFromDrives
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -19838,6 +20275,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.sharedDriveItem'
+          links:
+            driveItem:
+              operationId: GetDriveItemFromShares
+              parameters:
+                id: $request.path.id
+            items:
+              operationId: GetItemsFromShares
+              parameters:
+                id: $request.path.id
+            list:
+              operationId: GetListFromShares
+              parameters:
+                id: $request.path.id
+            listItem:
+              operationId: GetListItemFromShares
+              parameters:
+                id: $request.path.id
+            root:
+              operationId: GetRootFromShares
+              parameters:
+                id: $request.path.id
+            site:
+              operationId: GetSiteFromShares
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -20614,6 +21076,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.site'
+          links:
+            columns:
+              operationId: GetColumnsFromSites
+              parameters:
+                id: $request.path.id
+            contentTypes:
+              operationId: GetContentTypesFromSites
+              parameters:
+                id: $request.path.id
+            drive:
+              operationId: GetDriveFromSites
+              parameters:
+                id: $request.path.id
+            drives:
+              operationId: GetDrivesFromSites
+              parameters:
+                id: $request.path.id
+            items:
+              operationId: GetItemsFromSites
+              parameters:
+                id: $request.path.id
+            lists:
+              operationId: GetListsFromSites
+              parameters:
+                id: $request.path.id
+            sites:
+              operationId: GetSitesFromSites
+              parameters:
+                id: $request.path.id
+            onenote:
+              operationId: GetOnenoteFromSites
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -21937,6 +22432,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.identityRiskEvent'
+          links:
+            impactedUser:
+              operationId: GetImpactedUserFromIdentityRiskEvents
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -23416,6 +23916,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.privilegedRole'
+          links:
+            settings:
+              operationId: GetSettingsFromPrivilegedRoles
+              parameters:
+                id: $request.path.id
+            assignments:
+              operationId: GetAssignmentsFromPrivilegedRoles
+              parameters:
+                id: $request.path.id
+            summary:
+              operationId: GetSummaryFromPrivilegedRoles
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -23801,6 +24314,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.privilegedRoleAssignment'
+          links:
+            roleInfo:
+              operationId: GetRoleInfoFromPrivilegedRoleAssignments
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -24614,6 +25132,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.privilegedApproval'
+          links:
+            roleInfo:
+              operationId: GetRoleInfoFromPrivilegedApproval
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -24910,6 +25433,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.invitation'
+          links:
+            invitedUser:
+              operationId: GetInvitedUserFromInvitations
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -25879,6 +26407,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.command'
+          links:
+            responsepayload:
+              operationId: GetResponsepayloadFromCommands
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -26231,6 +26764,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.team'
+          links:
+            channels:
+              operationId: GetChannelsFromTeam
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -26500,6 +27038,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.channel'
+          links:
+            chatThreads:
+              operationId: GetChatThreadsFromChannels
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
@@ -26757,6 +27300,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/microsoft.graph.chatThread'
+          links:
+            chatMessages:
+              operationId: GetChatMessagesFromChatThreads
+              parameters:
+                id: $request.path.id
+            rootMessage:
+              operationId: GetRootMessageFromChatThreads
+              parameters:
+                id: $request.path.id
         default:
           $ref: '#/components/responses/error'
     patch:
