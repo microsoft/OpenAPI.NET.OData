@@ -204,7 +204,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 operations = context.FindOperations(navigationSource.EntityType(), collection: true);
                 foreach (var operation in operations)
                 {
-                    OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation.Item2);
+                    OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation.Item1, operation.Item2);
                     string pathName = context.CreatePathItemName(operation.Item2);
 
                     // Append the type cast
@@ -220,7 +220,7 @@ namespace Microsoft.OpenApi.OData.Generator
             operations = context.FindOperations(navigationSource.EntityType(), collection: false);
             foreach (var operation in operations)
             {
-                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation.Item2);
+                OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, operation.Item1, operation.Item2);
                 string pathName = context.CreatePathItemName(operation.Item2);
 
                 string entityPathName;
@@ -318,7 +318,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="navigationSource">The binding navigation source.</param>
         /// <param name="edmOperation">The Edm opeation.</param>
         /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
-        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource, IEdmOperation edmOperation)
+        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource, IEdmEntityType entityType, IEdmOperation edmOperation)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
@@ -326,7 +326,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiPathItem pathItem = new OpenApiPathItem();
 
-            OpenApiOperation operation = context.CreateOperation(navigationSource, edmOperation);
+            OpenApiOperation operation = context.CreateOperation(navigationSource, entityType, edmOperation);
 
             if (edmOperation.IsAction())
             {

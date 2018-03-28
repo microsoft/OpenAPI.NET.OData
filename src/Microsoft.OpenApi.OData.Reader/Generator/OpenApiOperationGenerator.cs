@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Annotations;
+using System.Text;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -47,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = entitySet.Name
+                        Name = entitySet.Name + "." + entitySet.EntityType().Name
                     }
                 }
             };
@@ -198,7 +199,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = entitySet.Name
+                        Name = entitySet.Name + "." + entitySet.EntityType().Name
                     }
                 },
 
@@ -291,7 +292,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = entitySet.Name
+                        Name = entitySet.Name + "." + entitySet.EntityType().Name
                     }
                 },
                 RequestBody = null
@@ -387,7 +388,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name= entitySet.Name
+                        Name= entitySet.Name + "." + entitySet.EntityType().Name
                     }
                 }
             };
@@ -456,7 +457,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = entitySet.Name
+                        Name = entitySet.Name  + "." + entitySet.EntityType().Name
                     }
                 },
                 RequestBody = null
@@ -511,7 +512,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = singleton.Name
+                        Name = singleton.Name  + "." + singleton.EntityType().Name
                     }
                 },
                 RequestBody = null
@@ -593,7 +594,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = singleton.Name
+                        Name = singleton.Name + "." + singleton.EntityType().Name
                     }
                 }
             };
@@ -660,7 +661,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = navigationSource.Name + "##" + property.Name
+                        Name = navigationSource.Name + "." + property.Name
                     }
                 },
                 RequestBody = null
@@ -814,7 +815,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name= navigationSource.Name + "##" + property.Name
+                        Name= navigationSource.Name + "." + property.Name
                     }
                 }
             };
@@ -891,7 +892,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = navigationSource.Name + "##" + property.Name
+                        Name = navigationSource.Name + "." + property.Name
                     }
                 },
 
@@ -967,7 +968,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="navigationSource">The binding navigation source.</param>
         /// <param name="edmOperation">The Edm operation.</param>
         /// <returns>The created <see cref="OpenApiOperation"/>.</returns>
-        public static OpenApiOperation CreateOperation(this ODataContext context, IEdmNavigationSource navigationSource,
+        public static OpenApiOperation CreateOperation(this ODataContext context, IEdmNavigationSource navigationSource, IEdmEntityType entityType,
             IEdmOperation edmOperation)
         {
             Utils.CheckArgumentNull(context, nameof(context));
@@ -979,13 +980,20 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + Utils.UpperFirstChar(edmOperation.Name);
+                operation.OperationId = navigationSource.Name;
+                // Append the type cast
+                if (!entityType.IsEquivalentTo(navigationSource.EntityType()))
+                {
+                    operation.OperationId += "." + entityType.Name;
+                }
+
+                operation.OperationId += ".Invoke" + Utils.UpperFirstChar(edmOperation.Name) + GetParameters(edmOperation);
             }
 
             // The tags array of the Operation Object includes the entity set name.
             operation.Tags = new List<OpenApiTag>
             {
-                new OpenApiTag { Name = navigationSource.Name }
+                new OpenApiTag { Name = navigationSource.Name + "." + edmOperation.Name }
             };
 
             // For actions and functions bound to a single entity within an entity
@@ -1060,7 +1068,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + Utils.UpperFirstChar(operationImport.Name);
+                operation.OperationId = "Invoke" + Utils.UpperFirstChar(operationImport.Name) + GetParameters(operationImport.Operation);
             }
 
             // If the action or function import specifies the EntitySet attribute,
@@ -1235,5 +1243,12 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
         #endregion
+
+        private static string GetParameters(IEdmOperation operation)
+        {
+            int skip = operation.IsBound ? 1 : 0;
+            return operation.Parameters.Skip(skip).Any() ? "By" + String.Join("And", operation.Parameters.Skip(skip).Select(e => e.Name)) :
+                string.Empty;
+        }
     }
 }
