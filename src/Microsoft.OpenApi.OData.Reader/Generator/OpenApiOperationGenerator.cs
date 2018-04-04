@@ -981,13 +981,23 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 operation.OperationId = navigationSource.Name;
+
                 // Append the type cast
                 if (!entityType.IsEquivalentTo(navigationSource.EntityType()))
                 {
                     operation.OperationId += "." + entityType.Name;
                 }
 
-                operation.OperationId += ".Invoke" + Utils.UpperFirstChar(edmOperation.Name) + GetParameters(edmOperation);
+                if (!context.Model.IsOperationOverload(edmOperation))
+                {
+                    operation.OperationId += "." + Utils.UpperFirstChar(edmOperation.Name);
+                }
+                else
+                {
+                    string key = operation.OperationId + "." + edmOperation.Name; // get the operationId so far.
+                    operation.OperationId += "." + context.GetIndex(key) + "-" + Utils.UpperFirstChar(edmOperation.Name);
+                    // operation.OperationId += ".Invoke" + Utils.UpperFirstChar(edmOperation.Name) + GetParameters(edmOperation);
+                }
             }
 
             // The tags array of the Operation Object includes the entity set name.
@@ -1068,7 +1078,17 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Invoke" + Utils.UpperFirstChar(operationImport.Name) + GetParameters(operationImport.Operation);
+                // operation.OperationId = "Invoke" + Utils.UpperFirstChar(operationImport.Name) + GetParameters(operationImport.Operation);
+
+                if (!context.Model.IsOperationOverload(operationImport))
+                {
+                    operation.OperationId += "." + Utils.UpperFirstChar(operationImport.Name);
+                }
+                else
+                {
+                    string key = "." + operationImport.Name;
+                    operation.OperationId += "." + context.GetIndex(key) + "-" + Utils.UpperFirstChar(operationImport.Name);
+                }
             }
 
             // If the action or function import specifies the EntitySet attribute,

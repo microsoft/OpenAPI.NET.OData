@@ -95,5 +95,36 @@ namespace Microsoft.OpenApi.OData.Common
 
             return false;
         }
+
+        /// <summary>
+        /// Check whether the operaiton is overload in the model.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="operation">The test operations.</param>
+        /// <returns>True/false.</returns>
+        public static bool IsOperationOverload(this IEdmModel model, IEdmOperation operation)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(operation, nameof(operation));
+
+            return model.SchemaElements.OfType<IEdmOperation>()
+                .Where(o => o.IsBound == operation.IsBound && o.FullName() == operation.FullName() &&
+                o.Parameters.First().Type.Definition == operation.Parameters.First().Type.Definition
+                ).Count() > 1;
+        }
+
+        public static bool IsOperationOverload(this IEdmModel model, IEdmOperationImport operationImport)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(operationImport, nameof(operationImport));
+
+            if (model.EntityContainer == null)
+            {
+                return false;
+            }
+
+            return model.EntityContainer.OperationImports()
+                .Where(o => o.Operation.IsBound == operationImport.Operation.IsBound && o.Name == operationImport.Name).Count() > 1;
+        }
     }
 }

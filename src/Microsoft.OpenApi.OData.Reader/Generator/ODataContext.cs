@@ -21,6 +21,7 @@ namespace Microsoft.OpenApi.OData.Generator
     {
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
         private bool _keyAsSegmentSupported = false;
+        private IList<Authorization> _authorizations;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -96,6 +97,22 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
+        /// Gets the Authorizations
+        /// </summary>
+        public IList<Authorization> Authorizations
+        {
+            get
+            {
+                if (_authorizations == null)
+                {
+                    RetrieveAuthorizations();
+                }
+
+                return _authorizations;
+            }
+        }
+
+        /// <summary>
         /// Finds the operations using the <see cref="IEdmEntityType"/>
         /// </summary>
         /// <param name="entityType">The entity type.</param>
@@ -150,20 +167,6 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        public IList<Authorization> Authorizations
-        {
-            get
-            {
-                if (_authorizations == null)
-                {
-                    RetrieveAuthorizations();
-                }
-
-                return _authorizations;
-            }
-        }
-        private IList<Authorization> _authorizations;
-
         private void RetrieveAuthorizations()
         {
             if (_authorizations != null)
@@ -199,6 +202,21 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     _authorizations.Add(auth);
                 }
+            }
+        }
+
+        private IDictionary<string, int> _cached1 = new Dictionary<string, int>();
+        public int GetIndex(string source)
+        {
+            if (_cached1.TryGetValue(source, out int value))
+            {
+                _cached1[source]++;
+                return _cached1[source];
+            }
+            else
+            {
+                _cached1[source] = 0;
+                return 0;
             }
         }
     }
