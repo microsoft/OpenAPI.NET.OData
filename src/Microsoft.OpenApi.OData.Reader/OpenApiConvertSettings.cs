@@ -48,6 +48,11 @@ namespace Microsoft.OpenApi.OData
         public bool NavigationPropertyPathItem { get; set; }
 
         /// <summary>
+        /// Gets/set a value indicating the navigation property depth.
+        /// </summary>
+        public int NavigationPropertyDepth { get; set; } = 0;
+
+        /// <summary>
         /// Gets/set a value indicating the prefix for the parameter alias.
         /// </summary>
         public string ParameterAlias { get; set; } = "@p";

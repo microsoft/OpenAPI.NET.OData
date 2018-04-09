@@ -17,12 +17,158 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiPathItemGenerator
     {
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            IDictionary<string, OpenApiPathItem> pathItems = new Dictionary<string, OpenApiPathItem>();
+            int count = context.Paths.Count;
+            int index = 1;
+            foreach (ODataPath path in context.Paths)
+            {
+                index++;
+
+                pathItems.Add(path.ToString(), context.CreatePathItem(path));
+
+                Console.Write(index + "/" + count + " ....");
+                Console.Write("\r\b");
+            }
+
+            return pathItems;
+        }
+
+        public static OpenApiPathItem CreatePathItem(this ODataContext context, ODataPath path)
+        {
+            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+            switch (path.PathType)
+            {
+                case PathType.EntitySet:
+                    return context.CreateEntitySetPathItem(navigationSourceSegment.NavigationSource as IEdmEntitySet);
+
+                case PathType.Entity:
+                    return context.CreateEntityPathItem(navigationSourceSegment.NavigationSource as IEdmEntitySet);
+
+                case PathType.Singleton:
+                    return context.CreateSingletonPathItem(navigationSourceSegment.NavigationSource as IEdmSingleton);
+
+                case PathType.Operation:
+                    return context.CreateOperationPathItem(navigationSourceSegment.NavigationSource, path);
+
+                case PathType.NavigationProperty:
+                    return context.CreateNavigationPathItem(navigationSourceSegment.NavigationSource, path);
+
+                case PathType.OperationImport:
+                    ODataOperationImportSegment importSegment = path.FirstSegment as ODataOperationImportSegment;
+                    return context.CreatePathItem(importSegment.OperationImport);
+
+                default:
+                    throw Error.ArgumentNull("Error");
+            }
+        }
+
+        public static OpenApiPathItem CreateOperationPathItem(this ODataContext context, IEdmNavigationSource navigationSource, ODataPath path)
+        {
+            ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
+            if (operationSegment == null)
+            {
+                throw Error.ArgumentNull("operation");
+            }
+
+            ODataTypeCastSegment typeCast = path.Segments[path.Count - 2] as ODataTypeCastSegment;
+            if (typeCast != null)
+            {
+                return context.CreatePathItem(navigationSource, typeCast.EntityType, operationSegment.Operation);
+            }
+
+            return context.CreatePathItem(navigationSource, navigationSource.EntityType(), operationSegment.Operation);
+        }
+
+        public static OpenApiPathItem CreateNavigationPathItem(this ODataContext context, IEdmNavigationSource navigationSource, ODataPath path)
+        {
+            bool lastKeySegment = false;
+            ODataNavigationPropertySegment navigationPropertySegment = path.LastSegment as ODataNavigationPropertySegment;
+            if (navigationPropertySegment == null)
+            {
+                lastKeySegment = true;
+                navigationPropertySegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
+            }
+
+            IEdmNavigationProperty navigationProperty = navigationPropertySegment.NavigationProperty;
+
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            pathItem.AddOperation(OperationType.Get, context.CreateNavigationGetOperation(navigationSource, navigationProperty));
+
+            if (navigationProperty.ContainsTarget)
+            {
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    if (!lastKeySegment)
+                    {
+                        InsertRestrictions insert = new InsertRestrictions(context.Model, navigationProperty);
+                        if (insert.IsInsertable())
+                        {
+                            pathItem.AddOperation(OperationType.Post, context.CreateNavigationPostOperation(navigationSource, navigationProperty));
+                        }
+                    }
+                }
+                else
+                {
+                    UpdateRestrictions update = new UpdateRestrictions(context.Model, navigationProperty);
+                    if (update.IsUpdatable())
+                    {
+                        pathItem.AddOperation(OperationType.Patch, context.CreateNavigationPatchOperation(navigationSource, navigationProperty));
+                    }
+                }
+            }
+
+            return pathItem;
+        }
+
+
+        /// <summary>
+        /// Create a <see cref="OpenApiPathItem"/> for a single <see cref="IEdmNavigationProperty"/>.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <param name="navigationSource">The binding navigation source.</param>
+        /// <param name="navigationProperty">The Edm navigation property.</param>
+        /// <returns>The created <see cref="OpenApiPathItem"/>.</returns>
+        public static OpenApiPathItem CreatePathItem1(this ODataContext context, IEdmNavigationSource navigationSource,
+            IEdmNavigationProperty navigationProperty)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+
+            OpenApiPathItem pathItem = new OpenApiPathItem();
+
+            pathItem.AddOperation(OperationType.Get, context.CreateNavigationGetOperation(navigationSource, navigationProperty));
+
+            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                InsertRestrictions insert = new InsertRestrictions(context.Model, navigationProperty);
+                if (insert.IsInsertable())
+                {
+                    pathItem.AddOperation(OperationType.Post, context.CreateNavigationPostOperation(navigationSource, navigationProperty));
+                }
+            }
+            else
+            {
+                UpdateRestrictions update = new UpdateRestrictions(context.Model, navigationProperty);
+                if (update.IsUpdatable())
+                {
+                    pathItem.AddOperation(OperationType.Patch, context.CreateNavigationPatchOperation(navigationSource, navigationProperty));
+                }
+            }
+
+            return pathItem;
+        }
+
         /// <summary>
         /// Create a map of <see cref="OpenApiPathItem"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <returns>The created map of <see cref="OpenApiPathItem"/>.</returns>
-        public static IDictionary<string, OpenApiPathItem> CreatePathItems(this ODataContext context)
+        public static IDictionary<string, OpenApiPathItem> CreatePathItems_backup(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
@@ -309,6 +455,11 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             return pathItem;
+        }
+
+        public static OpenApiPathItem CreatePathItem(this ODataContext context, IEdmNavigationSource navigationSource, IEdmOperation edmOperation)
+        {
+            return context.CreatePathItem(navigationSource, navigationSource.EntityType(), edmOperation);
         }
 
         /// <summary>

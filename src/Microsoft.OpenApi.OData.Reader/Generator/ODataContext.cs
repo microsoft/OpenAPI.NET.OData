@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
@@ -22,6 +23,7 @@ namespace Microsoft.OpenApi.OData.Generator
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
         private bool _keyAsSegmentSupported = false;
         private IList<Authorization> _authorizations;
+        private IList<ODataPath> _paths;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -62,6 +64,19 @@ namespace Microsoft.OpenApi.OData.Generator
             get
             {
                 return Model.EntityContainer;
+            }
+        }
+
+        public IList<ODataPath> Paths
+        {
+            get
+            {
+                if (_paths == null)
+                {
+                    RetrievePaths();
+                }
+
+                return _paths ?? throw Error.ArgumentNull("Paths");
             }
         }
 
@@ -218,6 +233,191 @@ namespace Microsoft.OpenApi.OData.Generator
                 _cached1[source] = 0;
                 return 0;
             }
+        }
+
+        private void RetrievePaths()
+        {
+            if (_paths != null)
+            {
+                return;
+            }
+
+            _paths = new List<ODataPath>();
+
+            if (Model.EntityContainer == null)
+            {
+                return;
+            }
+
+            foreach (IEdmEntitySet entitySet in Model.EntityContainer.EntitySets())
+            {
+                RetrievePaths(entitySet);
+                RetrieveOperationPaths(entitySet);
+            }
+
+            foreach(IEdmSingleton singleton in Model.EntityContainer.Singletons())
+            {
+                RetrievePaths(singleton);
+                RetrieveOperationPaths(singleton);
+            }
+
+            foreach(IEdmOperationImport import in Model.EntityContainer.OperationImports())
+            {
+                _paths.Add(new ODataPath(new ODataOperationImportSegment(import)));
+            }
+        }
+
+        private void RetrieveOperationPaths(IEdmNavigationSource navigationSource)
+        {
+            IEnumerable<Tuple<IEdmEntityType, IEdmOperation>> operations;
+            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(navigationSource));
+
+            if (entitySet != null)
+            {
+                operations = FindOperations(navigationSource.EntityType(), collection: true);
+                foreach (var operation in operations)
+                {
+                    // Append the type cast
+                    if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
+                    {
+                        path.Push(new ODataTypeCastSegment(operation.Item1));
+                        path.Push(new ODataOperationSegment(operation.Item2, Settings.UnqualifiedCall));
+                        _paths.Add(path.Clone());
+                        path.Pop();
+                        path.Pop();
+                    }
+                    else
+                    {
+                        path.Push(new ODataOperationSegment(operation.Item2, Settings.UnqualifiedCall));
+                        _paths.Add(path.Clone());
+                        path.Pop();
+                    }
+                }
+            }
+
+            // for single
+            if (entitySet != null)
+            {
+                path.Push(new ODataKeySegment(navigationSource.EntityType()));
+            }
+
+            operations = FindOperations(navigationSource.EntityType(), collection: false);
+            foreach (var operation in operations)
+            {
+                // Append the type cast
+                if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
+                {
+                    path.Push(new ODataTypeCastSegment(operation.Item1));
+                    path.Push(new ODataOperationSegment(operation.Item2, Settings.UnqualifiedCall));
+                    _paths.Add(path.Clone());
+                    path.Pop();
+                    path.Pop();
+                }
+                else
+                {
+                    path.Push(new ODataOperationSegment(operation.Item2, Settings.UnqualifiedCall));
+                    _paths.Add(path.Clone());
+                    path.Pop();
+                }
+            }
+
+            if (entitySet != null)
+            {
+                path.Pop();
+            }
+
+            path.Pop();
+
+            Debug.Assert(path.Any() == false);
+        }
+
+        private void RetrievePaths(IEdmNavigationSource navigationSource)
+        {
+            ODataPath path = new ODataPath();
+            path.Push(new ODataNavigationSourceSegment(navigationSource));
+            _paths.Add(path.Clone()); // navigation source itself
+
+            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
+            IEdmEntityType entityType = navigationSource.EntityType();
+
+            if (entitySet != null)
+            {
+                path.Push(new ODataKeySegment(entityType));
+                _paths.Add(path.Clone());
+            }
+
+            foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
+            {
+                RetrievePaths(np, path);
+            }
+
+            if (entitySet != null)
+            {
+                path.Pop();
+            }
+
+            path.Pop();
+
+            Debug.Assert(path.Any() == false);
+        }
+
+        private void RetrievePaths(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
+        {
+            if (currentPath.Count > Settings.NavigationPropertyDepth)
+            {
+                return;
+            }
+
+            bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
+
+            currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
+            _paths.Add(currentPath.Clone());
+
+            IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+
+            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                currentPath.Push(new ODataKeySegment(navEntityType));
+                _paths.Add(currentPath.Clone());
+            }
+
+            //////////////////////////////////////////
+            if (shouldExpand)
+            {
+                foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                {
+                    RetrievePaths(subNavProperty, currentPath);
+                }
+            }
+            //////////////////////////////////////////
+
+            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                currentPath.Pop();
+            }
+
+            currentPath.Pop();
+        }
+
+        private static bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
+        {
+            if (!navigationProperty.ContainsTarget)
+            {
+                return false;
+            }
+
+            IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+            foreach (ODataSegment segment in currentPath)
+            {
+                if (navEntityType.IsAssignableFrom(segment.EntityType))
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

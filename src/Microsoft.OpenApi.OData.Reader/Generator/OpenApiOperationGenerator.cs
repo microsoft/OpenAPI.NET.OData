@@ -885,7 +885,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiOperation operation = new OpenApiOperation
             {
-                Summary = "Add new navigation property to " + property.Name + " for "  + navigationSource.Name,
+                Summary = "Add new navigation property to " + property.Name + " for " + navigationSource.Name,
 
                 // The tags array of the Operation Object includes the entity set name.
                 Tags = new List<OpenApiTag>
@@ -960,6 +960,11 @@ namespace Microsoft.OpenApi.OData.Generator
         #endregion
 
         #region EdmOperation Operations
+        public static OpenApiOperation CreateOperation(this ODataContext context, IEdmNavigationSource navigationSource, 
+            IEdmOperation edmOperation)
+        {
+            return context.CreateOperation(navigationSource, navigationSource.EntityType(), edmOperation);
+        }
 
         /// <summary>
         /// Create a <see cref="OpenApiOperation"/> for a <see cref="IEdmOperation"/>.
