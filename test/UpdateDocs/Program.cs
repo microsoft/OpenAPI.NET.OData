@@ -69,7 +69,7 @@ namespace UpdateDocs
                 return 0;
             }*/
 
-            foreach (var filePath in Directory.GetFiles(csdl, "*beta*.xml"))
+            foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {
                 /*
                 IEdmModel model = LoadEdmModel(filePath, annotationPath);
@@ -96,6 +96,10 @@ namespace UpdateDocs
                 else if (fileName.Contains("graph1.0"))
                 {
                     settings.ServiceRoot = new Uri("https://graph.microsoft.com/v1.0");
+                }
+                else
+                {
+                    continue;
                 }
 
                 OpenApiDocument document = edmCsdl.ConvertToOpenApi(settings);

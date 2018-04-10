@@ -13,7 +13,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Get entities from schemaExtensions
-      operationId: GetEntitiesFromSchemaExtensions
+      operationId: schemaExtensions.schemaExtension
       produces:
         - application/json
       parameters:
@@ -79,7 +79,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Add new entity to schemaExtensions
-      operationId: AddEntityToSchemaExtensions
+      operationId: schemaExtensions.schemaExtension
       consumes:
         - application/json
       produces:
@@ -103,7 +103,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Get entity from schemaExtensions by key
-      operationId: GetEntityFromSchemaExtensionsByKey
+      operationId: schemaExtensions.schemaExtension
       produces:
         - application/json
       parameters:
@@ -144,7 +144,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Update entity in schemaExtensions
-      operationId: UpdateEntityInSchemaExtensions
+      operationId: schemaExtensions.schemaExtension
       consumes:
         - application/json
       parameters:
@@ -168,7 +168,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Delete entity from schemaExtensions
-      operationId: DeleteEntityFromSchemaExtensions
+      operationId: schemaExtensions.schemaExtension
       parameters:
         - in: path
           name: id
@@ -189,7 +189,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Get entities from directoryObjects
-      operationId: GetEntitiesFromDirectoryObjects
+      operationId: directoryObjects.directoryObject
       produces:
         - application/json
       parameters:
@@ -232,7 +232,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Add new entity to directoryObjects
-      operationId: AddEntityToDirectoryObjects
+      operationId: directoryObjects.directoryObject
       consumes:
         - application/json
       produces:
@@ -256,7 +256,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Get entity from directoryObjects by key
-      operationId: GetEntityFromDirectoryObjectsByKey
+      operationId: directoryObjects.directoryObject
       produces:
         - application/json
       parameters:
@@ -285,7 +285,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Update entity in directoryObjects
-      operationId: UpdateEntityInDirectoryObjects
+      operationId: directoryObjects.directoryObject
       consumes:
         - application/json
       parameters:
@@ -309,7 +309,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Delete entity from directoryObjects
-      operationId: DeleteEntityFromDirectoryObjects
+      operationId: directoryObjects.directoryObject
       parameters:
         - in: path
           name: id
@@ -1212,7 +1212,7 @@ paths:
       tags:
         - applications.application
       summary: Get entities from applications
-      operationId: GetEntitiesFromApplications
+      operationId: applications.application
       produces:
         - application/json
       parameters:
@@ -1303,7 +1303,7 @@ paths:
       tags:
         - applications.application
       summary: Add new entity to applications
-      operationId: AddEntityToApplications
+      operationId: applications.application
       consumes:
         - application/json
       produces:
@@ -1327,7 +1327,7 @@ paths:
       tags:
         - applications.application
       summary: Get entity from applications by key
-      operationId: GetEntityFromApplicationsByKey
+      operationId: applications.application
       produces:
         - application/json
       parameters:
@@ -1372,7 +1372,7 @@ paths:
       tags:
         - applications.application
       summary: Update entity in applications
-      operationId: UpdateEntityInApplications
+      operationId: applications.application
       consumes:
         - application/json
       parameters:
@@ -1396,7 +1396,7 @@ paths:
       tags:
         - applications.application
       summary: Delete entity from applications
-      operationId: DeleteEntityFromApplications
+      operationId: applications.application
       parameters:
         - in: path
           name: id
@@ -1417,7 +1417,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Get entities from administrativeUnits
-      operationId: GetEntitiesFromAdministrativeUnits
+      operationId: administrativeUnits.administrativeUnit
       produces:
         - application/json
       parameters:
@@ -1469,7 +1469,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Add new entity to administrativeUnits
-      operationId: AddEntityToAdministrativeUnits
+      operationId: administrativeUnits.administrativeUnit
       consumes:
         - application/json
       produces:
@@ -1493,7 +1493,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Get entity from administrativeUnits by key
-      operationId: GetEntityFromAdministrativeUnitsByKey
+      operationId: administrativeUnits.administrativeUnit
       produces:
         - application/json
       parameters:
@@ -1525,7 +1525,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Update entity in administrativeUnits
-      operationId: UpdateEntityInAdministrativeUnits
+      operationId: administrativeUnits.administrativeUnit
       consumes:
         - application/json
       parameters:
@@ -1549,7 +1549,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Delete entity from administrativeUnits
-      operationId: DeleteEntityFromAdministrativeUnits
+      operationId: administrativeUnits.administrativeUnit
       parameters:
         - in: path
           name: id
@@ -1586,7 +1586,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Get entities from allowedDataLocations
-      operationId: GetEntitiesFromAllowedDataLocations
+      operationId: allowedDataLocations.allowedDataLocation
       produces:
         - application/json
       parameters:
@@ -1649,7 +1649,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Add new entity to allowedDataLocations
-      operationId: AddEntityToAllowedDataLocations
+      operationId: allowedDataLocations.allowedDataLocation
       consumes:
         - application/json
       produces:
@@ -1673,7 +1673,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Get entity from allowedDataLocations by key
-      operationId: GetEntityFromAllowedDataLocationsByKey
+      operationId: allowedDataLocations.allowedDataLocation
       produces:
         - application/json
       parameters:
@@ -1713,7 +1713,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Update entity in allowedDataLocations
-      operationId: UpdateEntityInAllowedDataLocations
+      operationId: allowedDataLocations.allowedDataLocation
       consumes:
         - application/json
       parameters:
@@ -1737,7 +1737,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Delete entity from allowedDataLocations
-      operationId: DeleteEntityFromAllowedDataLocations
+      operationId: allowedDataLocations.allowedDataLocation
       parameters:
         - in: path
           name: id
@@ -1758,7 +1758,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Get entities from appRoleAssignments
-      operationId: GetEntitiesFromAppRoleAssignments
+      operationId: appRoleAssignments.appRoleAssignment
       produces:
         - application/json
       parameters:
@@ -1827,7 +1827,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Add new entity to appRoleAssignments
-      operationId: AddEntityToAppRoleAssignments
+      operationId: appRoleAssignments.appRoleAssignment
       consumes:
         - application/json
       produces:
@@ -1851,7 +1851,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Get entity from appRoleAssignments by key
-      operationId: GetEntityFromAppRoleAssignmentsByKey
+      operationId: appRoleAssignments.appRoleAssignment
       produces:
         - application/json
       parameters:
@@ -1893,7 +1893,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Update entity in appRoleAssignments
-      operationId: UpdateEntityInAppRoleAssignments
+      operationId: appRoleAssignments.appRoleAssignment
       consumes:
         - application/json
       parameters:
@@ -1917,7 +1917,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Delete entity from appRoleAssignments
-      operationId: DeleteEntityFromAppRoleAssignments
+      operationId: appRoleAssignments.appRoleAssignment
       parameters:
         - in: path
           name: id
@@ -1938,7 +1938,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Get entities from contacts
-      operationId: GetEntitiesFromContacts
+      operationId: contacts.orgContact
       produces:
         - application/json
       parameters:
@@ -2041,7 +2041,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Add new entity to contacts
-      operationId: AddEntityToContacts
+      operationId: contacts.orgContact
       consumes:
         - application/json
       produces:
@@ -2065,7 +2065,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Get entity from contacts by key
-      operationId: GetEntityFromContactsByKey
+      operationId: contacts.orgContact
       produces:
         - application/json
       parameters:
@@ -2114,7 +2114,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Update entity in contacts
-      operationId: UpdateEntityInContacts
+      operationId: contacts.orgContact
       consumes:
         - application/json
       parameters:
@@ -2138,7 +2138,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Delete entity from contacts
-      operationId: DeleteEntityFromContacts
+      operationId: contacts.orgContact
       parameters:
         - in: path
           name: id
@@ -2175,7 +2175,7 @@ paths:
       tags:
         - devices.device
       summary: Get entities from devices
-      operationId: GetEntitiesFromDevices
+      operationId: devices.device
       produces:
         - application/json
       parameters:
@@ -2281,7 +2281,7 @@ paths:
       tags:
         - devices.device
       summary: Add new entity to devices
-      operationId: AddEntityToDevices
+      operationId: devices.device
       consumes:
         - application/json
       produces:
@@ -2305,7 +2305,7 @@ paths:
       tags:
         - devices.device
       summary: Get entity from devices by key
-      operationId: GetEntityFromDevicesByKey
+      operationId: devices.device
       produces:
         - application/json
       parameters:
@@ -2355,7 +2355,7 @@ paths:
       tags:
         - devices.device
       summary: Update entity in devices
-      operationId: UpdateEntityInDevices
+      operationId: devices.device
       consumes:
         - application/json
       parameters:
@@ -2379,7 +2379,7 @@ paths:
       tags:
         - devices.device
       summary: Delete entity from devices
-      operationId: DeleteEntityFromDevices
+      operationId: devices.device
       parameters:
         - in: path
           name: id
@@ -2400,7 +2400,7 @@ paths:
       tags:
         - domains.domain
       summary: Get entities from domains
-      operationId: GetEntitiesFromDomains
+      operationId: domains.domain
       produces:
         - application/json
       parameters:
@@ -2481,7 +2481,7 @@ paths:
       tags:
         - domains.domain
       summary: Add new entity to domains
-      operationId: AddEntityToDomains
+      operationId: domains.domain
       consumes:
         - application/json
       produces:
@@ -2505,7 +2505,7 @@ paths:
       tags:
         - domains.domain
       summary: Get entity from domains by key
-      operationId: GetEntityFromDomainsByKey
+      operationId: domains.domain
       produces:
         - application/json
       parameters:
@@ -2553,7 +2553,7 @@ paths:
       tags:
         - domains.domain
       summary: Update entity in domains
-      operationId: UpdateEntityInDomains
+      operationId: domains.domain
       consumes:
         - application/json
       parameters:
@@ -2577,7 +2577,7 @@ paths:
       tags:
         - domains.domain
       summary: Delete entity from domains
-      operationId: DeleteEntityFromDomains
+      operationId: domains.domain
       parameters:
         - in: path
           name: id
@@ -2644,7 +2644,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Get entities from domainDnsRecords
-      operationId: GetEntitiesFromDomainDnsRecords
+      operationId: domainDnsRecords.domainDnsRecord
       produces:
         - application/json
       parameters:
@@ -2710,7 +2710,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Add new entity to domainDnsRecords
-      operationId: AddEntityToDomainDnsRecords
+      operationId: domainDnsRecords.domainDnsRecord
       consumes:
         - application/json
       produces:
@@ -2734,7 +2734,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Get entity from domainDnsRecords by key
-      operationId: GetEntityFromDomainDnsRecordsByKey
+      operationId: domainDnsRecords.domainDnsRecord
       produces:
         - application/json
       parameters:
@@ -2775,7 +2775,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Update entity in domainDnsRecords
-      operationId: UpdateEntityInDomainDnsRecords
+      operationId: domainDnsRecords.domainDnsRecord
       consumes:
         - application/json
       parameters:
@@ -2799,7 +2799,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Delete entity from domainDnsRecords
-      operationId: DeleteEntityFromDomainDnsRecords
+      operationId: domainDnsRecords.domainDnsRecord
       parameters:
         - in: path
           name: id
@@ -2820,7 +2820,7 @@ paths:
       tags:
         - groups.group
       summary: Get entities from groups
-      operationId: GetEntitiesFromGroups
+      operationId: groups.group
       produces:
         - application/json
       parameters:
@@ -2953,7 +2953,7 @@ paths:
       tags:
         - groups.group
       summary: Add new entity to groups
-      operationId: AddEntityToGroups
+      operationId: groups.group
       consumes:
         - application/json
       produces:
@@ -2977,7 +2977,7 @@ paths:
       tags:
         - groups.group
       summary: Get entity from groups by key
-      operationId: GetEntityFromGroupsByKey
+      operationId: groups.group
       produces:
         - application/json
       parameters:
@@ -3036,7 +3036,7 @@ paths:
       tags:
         - groups.group
       summary: Update entity in groups
-      operationId: UpdateEntityInGroups
+      operationId: groups.group
       consumes:
         - application/json
       parameters:
@@ -3060,7 +3060,7 @@ paths:
       tags:
         - groups.group
       summary: Delete entity from groups
-      operationId: DeleteEntityFromGroups
+      operationId: groups.group
       parameters:
         - in: path
           name: id
@@ -3233,7 +3233,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Get entities from directoryRoles
-      operationId: GetEntitiesFromDirectoryRoles
+      operationId: directoryRoles.directoryRole
       produces:
         - application/json
       parameters:
@@ -3284,7 +3284,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Add new entity to directoryRoles
-      operationId: AddEntityToDirectoryRoles
+      operationId: directoryRoles.directoryRole
       consumes:
         - application/json
       produces:
@@ -3308,7 +3308,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Get entity from directoryRoles by key
-      operationId: GetEntityFromDirectoryRolesByKey
+      operationId: directoryRoles.directoryRole
       produces:
         - application/json
       parameters:
@@ -3340,7 +3340,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Update entity in directoryRoles
-      operationId: UpdateEntityInDirectoryRoles
+      operationId: directoryRoles.directoryRole
       consumes:
         - application/json
       parameters:
@@ -3364,7 +3364,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Delete entity from directoryRoles
-      operationId: DeleteEntityFromDirectoryRoles
+      operationId: directoryRoles.directoryRole
       parameters:
         - in: path
           name: id
@@ -3385,7 +3385,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Get entities from directoryRoleTemplates
-      operationId: GetEntitiesFromDirectoryRoleTemplates
+      operationId: directoryRoleTemplates.directoryRoleTemplate
       produces:
         - application/json
       parameters:
@@ -3433,7 +3433,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Add new entity to directoryRoleTemplates
-      operationId: AddEntityToDirectoryRoleTemplates
+      operationId: directoryRoleTemplates.directoryRoleTemplate
       consumes:
         - application/json
       produces:
@@ -3457,7 +3457,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Get entity from directoryRoleTemplates by key
-      operationId: GetEntityFromDirectoryRoleTemplatesByKey
+      operationId: directoryRoleTemplates.directoryRoleTemplate
       produces:
         - application/json
       parameters:
@@ -3488,7 +3488,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Update entity in directoryRoleTemplates
-      operationId: UpdateEntityInDirectoryRoleTemplates
+      operationId: directoryRoleTemplates.directoryRoleTemplate
       consumes:
         - application/json
       parameters:
@@ -3512,7 +3512,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Delete entity from directoryRoleTemplates
-      operationId: DeleteEntityFromDirectoryRoleTemplates
+      operationId: directoryRoleTemplates.directoryRoleTemplate
       parameters:
         - in: path
           name: id
@@ -3533,7 +3533,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Get entities from directorySettingTemplates
-      operationId: GetEntitiesFromDirectorySettingTemplates
+      operationId: directorySettingTemplates.directorySettingTemplate
       produces:
         - application/json
       parameters:
@@ -3585,7 +3585,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Add new entity to directorySettingTemplates
-      operationId: AddEntityToDirectorySettingTemplates
+      operationId: directorySettingTemplates.directorySettingTemplate
       consumes:
         - application/json
       produces:
@@ -3609,7 +3609,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Get entity from directorySettingTemplates by key
-      operationId: GetEntityFromDirectorySettingTemplatesByKey
+      operationId: directorySettingTemplates.directorySettingTemplate
       produces:
         - application/json
       parameters:
@@ -3641,7 +3641,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Update entity in directorySettingTemplates
-      operationId: UpdateEntityInDirectorySettingTemplates
+      operationId: directorySettingTemplates.directorySettingTemplate
       consumes:
         - application/json
       parameters:
@@ -3665,7 +3665,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Delete entity from directorySettingTemplates
-      operationId: DeleteEntityFromDirectorySettingTemplates
+      operationId: directorySettingTemplates.directorySettingTemplate
       parameters:
         - in: path
           name: id
@@ -3686,7 +3686,7 @@ paths:
       tags:
         - organization.organization
       summary: Get entities from organization
-      operationId: GetEntitiesFromOrganization
+      operationId: organization.organization
       produces:
         - application/json
       parameters:
@@ -3792,7 +3792,7 @@ paths:
       tags:
         - organization.organization
       summary: Add new entity to organization
-      operationId: AddEntityToOrganization
+      operationId: organization.organization
       consumes:
         - application/json
       produces:
@@ -3816,7 +3816,7 @@ paths:
       tags:
         - organization.organization
       summary: Get entity from organization by key
-      operationId: GetEntityFromOrganizationByKey
+      operationId: organization.organization
       produces:
         - application/json
       parameters:
@@ -3866,7 +3866,7 @@ paths:
       tags:
         - organization.organization
       summary: Update entity in organization
-      operationId: UpdateEntityInOrganization
+      operationId: organization.organization
       consumes:
         - application/json
       parameters:
@@ -3890,7 +3890,7 @@ paths:
       tags:
         - organization.organization
       summary: Delete entity from organization
-      operationId: DeleteEntityFromOrganization
+      operationId: organization.organization
       parameters:
         - in: path
           name: id
@@ -3996,7 +3996,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Get entities from oauth2PermissionGrants
-      operationId: GetEntitiesFromOauth2PermissionGrants
+      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
       produces:
         - application/json
       parameters:
@@ -4068,7 +4068,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Add new entity to oauth2PermissionGrants
-      operationId: AddEntityToOauth2PermissionGrants
+      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
       consumes:
         - application/json
       produces:
@@ -4092,7 +4092,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Get entity from oauth2PermissionGrants by key
-      operationId: GetEntityFromOauth2PermissionGrantsByKey
+      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
       produces:
         - application/json
       parameters:
@@ -4135,7 +4135,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Update entity in oauth2PermissionGrants
-      operationId: UpdateEntityInOauth2PermissionGrants
+      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
       consumes:
         - application/json
       parameters:
@@ -4159,7 +4159,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Delete entity from oauth2PermissionGrants
-      operationId: DeleteEntityFromOauth2PermissionGrants
+      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
       parameters:
         - in: path
           name: id
@@ -4180,7 +4180,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Get entities from scopedRoleMemberships
-      operationId: GetEntitiesFromScopedRoleMemberships
+      operationId: scopedRoleMemberships.scopedRoleMembership
       produces:
         - application/json
       parameters:
@@ -4240,7 +4240,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Add new entity to scopedRoleMemberships
-      operationId: AddEntityToScopedRoleMemberships
+      operationId: scopedRoleMemberships.scopedRoleMembership
       consumes:
         - application/json
       produces:
@@ -4264,7 +4264,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Get entity from scopedRoleMemberships by key
-      operationId: GetEntityFromScopedRoleMembershipsByKey
+      operationId: scopedRoleMemberships.scopedRoleMembership
       produces:
         - application/json
       parameters:
@@ -4303,7 +4303,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Update entity in scopedRoleMemberships
-      operationId: UpdateEntityInScopedRoleMemberships
+      operationId: scopedRoleMemberships.scopedRoleMembership
       consumes:
         - application/json
       parameters:
@@ -4327,7 +4327,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Delete entity from scopedRoleMemberships
-      operationId: DeleteEntityFromScopedRoleMemberships
+      operationId: scopedRoleMemberships.scopedRoleMembership
       parameters:
         - in: path
           name: id
@@ -4348,7 +4348,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Get entities from servicePrincipals
-      operationId: GetEntitiesFromServicePrincipals
+      operationId: servicePrincipals.servicePrincipal
       produces:
         - application/json
       parameters:
@@ -4451,7 +4451,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Add new entity to servicePrincipals
-      operationId: AddEntityToServicePrincipals
+      operationId: servicePrincipals.servicePrincipal
       consumes:
         - application/json
       produces:
@@ -4475,7 +4475,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Get entity from servicePrincipals by key
-      operationId: GetEntityFromServicePrincipalsByKey
+      operationId: servicePrincipals.servicePrincipal
       produces:
         - application/json
       parameters:
@@ -4524,7 +4524,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Update entity in servicePrincipals
-      operationId: UpdateEntityInServicePrincipals
+      operationId: servicePrincipals.servicePrincipal
       consumes:
         - application/json
       parameters:
@@ -4548,7 +4548,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Delete entity from servicePrincipals
-      operationId: DeleteEntityFromServicePrincipals
+      operationId: servicePrincipals.servicePrincipal
       parameters:
         - in: path
           name: id
@@ -4569,7 +4569,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Get entities from settings
-      operationId: GetEntitiesFromSettings
+      operationId: settings.directorySetting
       produces:
         - application/json
       parameters:
@@ -4629,7 +4629,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Add new entity to settings
-      operationId: AddEntityToSettings
+      operationId: settings.directorySetting
       consumes:
         - application/json
       produces:
@@ -4653,7 +4653,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Get entity from settings by key
-      operationId: GetEntityFromSettingsByKey
+      operationId: settings.directorySetting
       produces:
         - application/json
       parameters:
@@ -4692,7 +4692,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Update entity in settings
-      operationId: UpdateEntityInSettings
+      operationId: settings.directorySetting
       consumes:
         - application/json
       parameters:
@@ -4716,7 +4716,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Delete entity from settings
-      operationId: DeleteEntityFromSettings
+      operationId: settings.directorySetting
       parameters:
         - in: path
           name: id
@@ -4737,7 +4737,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Get entities from subscribedSkus
-      operationId: GetEntitiesFromSubscribedSkus
+      operationId: subscribedSkus.subscribedSku
       produces:
         - application/json
       parameters:
@@ -4797,7 +4797,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Add new entity to subscribedSkus
-      operationId: AddEntityToSubscribedSkus
+      operationId: subscribedSkus.subscribedSku
       consumes:
         - application/json
       produces:
@@ -4821,7 +4821,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Get entity from subscribedSkus by key
-      operationId: GetEntityFromSubscribedSkusByKey
+      operationId: subscribedSkus.subscribedSku
       produces:
         - application/json
       parameters:
@@ -4856,7 +4856,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Update entity in subscribedSkus
-      operationId: UpdateEntityInSubscribedSkus
+      operationId: subscribedSkus.subscribedSku
       consumes:
         - application/json
       parameters:
@@ -4880,7 +4880,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Delete entity from subscribedSkus
-      operationId: DeleteEntityFromSubscribedSkus
+      operationId: subscribedSkus.subscribedSku
       parameters:
         - in: path
           name: id
@@ -4901,7 +4901,7 @@ paths:
       tags:
         - users.user
       summary: Get entities from users
-      operationId: GetEntitiesFromUsers
+      operationId: users.user
       produces:
         - application/json
       parameters:
@@ -5117,7 +5117,7 @@ paths:
       tags:
         - users.user
       summary: Add new entity to users
-      operationId: AddEntityToUsers
+      operationId: users.user
       consumes:
         - application/json
       produces:
@@ -5141,7 +5141,7 @@ paths:
       tags:
         - users.user
       summary: Retrieve the properties and relationships of user object.
-      operationId: GetEntityFromUsersByKey
+      operationId: users.user
       produces:
         - application/json
       parameters:
@@ -5240,7 +5240,7 @@ paths:
       tags:
         - users.user
       summary: Update entity in users
-      operationId: UpdateEntityInUsers
+      operationId: users.user
       consumes:
         - application/json
       parameters:
@@ -5264,7 +5264,7 @@ paths:
       tags:
         - users.user
       summary: Delete entity from users
-      operationId: DeleteEntityFromUsers
+      operationId: users.user
       parameters:
         - in: path
           name: id
@@ -5733,7 +5733,7 @@ paths:
       tags:
         - policies.policy
       summary: Get entities from policies
-      operationId: GetEntitiesFromPolicies
+      operationId: policies.policy
       produces:
         - application/json
       parameters:
@@ -5794,7 +5794,7 @@ paths:
       tags:
         - policies.policy
       summary: Add new entity to policies
-      operationId: AddEntityToPolicies
+      operationId: policies.policy
       consumes:
         - application/json
       produces:
@@ -5818,7 +5818,7 @@ paths:
       tags:
         - policies.policy
       summary: Get entity from policies by key
-      operationId: GetEntityFromPoliciesByKey
+      operationId: policies.policy
       produces:
         - application/json
       parameters:
@@ -5853,7 +5853,7 @@ paths:
       tags:
         - policies.policy
       summary: Update entity in policies
-      operationId: UpdateEntityInPolicies
+      operationId: policies.policy
       consumes:
         - application/json
       parameters:
@@ -5877,7 +5877,7 @@ paths:
       tags:
         - policies.policy
       summary: Delete entity from policies
-      operationId: DeleteEntityFromPolicies
+      operationId: policies.policy
       parameters:
         - in: path
           name: id
@@ -5898,7 +5898,7 @@ paths:
       tags:
         - contracts.contract
       summary: Get entities from contracts
-      operationId: GetEntitiesFromContracts
+      operationId: contracts.contract
       produces:
         - application/json
       parameters:
@@ -5953,7 +5953,7 @@ paths:
       tags:
         - contracts.contract
       summary: Add new entity to contracts
-      operationId: AddEntityToContracts
+      operationId: contracts.contract
       consumes:
         - application/json
       produces:
@@ -5977,7 +5977,7 @@ paths:
       tags:
         - contracts.contract
       summary: Get entity from contracts by key
-      operationId: GetEntityFromContractsByKey
+      operationId: contracts.contract
       produces:
         - application/json
       parameters:
@@ -6010,7 +6010,7 @@ paths:
       tags:
         - contracts.contract
       summary: Update entity in contracts
-      operationId: UpdateEntityInContracts
+      operationId: contracts.contract
       consumes:
         - application/json
       parameters:
@@ -6034,7 +6034,7 @@ paths:
       tags:
         - contracts.contract
       summary: Delete entity from contracts
-      operationId: DeleteEntityFromContracts
+      operationId: contracts.contract
       parameters:
         - in: path
           name: id
@@ -6055,7 +6055,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Get entities from workbooks
-      operationId: GetEntitiesFromWorkbooks
+      operationId: workbooks.driveItem
       produces:
         - application/json
       parameters:
@@ -6205,7 +6205,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Add new entity to workbooks
-      operationId: AddEntityToWorkbooks
+      operationId: workbooks.driveItem
       consumes:
         - application/json
       produces:
@@ -6229,7 +6229,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Get entity from workbooks by key
-      operationId: GetEntityFromWorkbooksByKey
+      operationId: workbooks.driveItem
       produces:
         - application/json
       parameters:
@@ -6304,7 +6304,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Update entity in workbooks
-      operationId: UpdateEntityInWorkbooks
+      operationId: workbooks.driveItem
       consumes:
         - application/json
       parameters:
@@ -6328,7 +6328,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Delete entity from workbooks
-      operationId: DeleteEntityFromWorkbooks
+      operationId: workbooks.driveItem
       parameters:
         - in: path
           name: id
@@ -6639,7 +6639,7 @@ paths:
       tags:
         - drives.drive
       summary: Get entities from drives
-      operationId: GetEntitiesFromDrives
+      operationId: drives.drive
       produces:
         - application/json
       parameters:
@@ -6739,7 +6739,7 @@ paths:
       tags:
         - drives.drive
       summary: Add new entity to drives
-      operationId: AddEntityToDrives
+      operationId: drives.drive
       consumes:
         - application/json
       produces:
@@ -6763,7 +6763,7 @@ paths:
       tags:
         - drives.drive
       summary: Get entity from drives by key
-      operationId: GetEntityFromDrivesByKey
+      operationId: drives.drive
       produces:
         - application/json
       parameters:
@@ -6820,7 +6820,7 @@ paths:
       tags:
         - drives.drive
       summary: Update entity in drives
-      operationId: UpdateEntityInDrives
+      operationId: drives.drive
       consumes:
         - application/json
       parameters:
@@ -6844,7 +6844,7 @@ paths:
       tags:
         - drives.drive
       summary: Delete entity from drives
-      operationId: DeleteEntityFromDrives
+      operationId: drives.drive
       parameters:
         - in: path
           name: id
@@ -6935,7 +6935,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Get entities from shares
-      operationId: GetEntitiesFromShares
+      operationId: shares.sharedDriveItem
       produces:
         - application/json
       parameters:
@@ -7024,7 +7024,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Add new entity to shares
-      operationId: AddEntityToShares
+      operationId: shares.sharedDriveItem
       consumes:
         - application/json
       produces:
@@ -7048,7 +7048,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Get entity from shares by key
-      operationId: GetEntityFromSharesByKey
+      operationId: shares.sharedDriveItem
       produces:
         - application/json
       parameters:
@@ -7102,7 +7102,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Update entity in shares
-      operationId: UpdateEntityInShares
+      operationId: shares.sharedDriveItem
       consumes:
         - application/json
       parameters:
@@ -7126,7 +7126,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Delete entity from shares
-      operationId: DeleteEntityFromShares
+      operationId: shares.sharedDriveItem
       parameters:
         - in: path
           name: id
@@ -7147,7 +7147,7 @@ paths:
       tags:
         - sites.site
       summary: Get entities from sites
-      operationId: GetEntitiesFromSites
+      operationId: sites.site
       produces:
         - application/json
       parameters:
@@ -7247,7 +7247,7 @@ paths:
       tags:
         - sites.site
       summary: Add new entity to sites
-      operationId: AddEntityToSites
+      operationId: sites.site
       consumes:
         - application/json
       produces:
@@ -7271,7 +7271,7 @@ paths:
       tags:
         - sites.site
       summary: Get entity from sites by key
-      operationId: GetEntityFromSitesByKey
+      operationId: sites.site
       produces:
         - application/json
       parameters:
@@ -7330,7 +7330,7 @@ paths:
       tags:
         - sites.site
       summary: Update entity in sites
-      operationId: UpdateEntityInSites
+      operationId: sites.site
       consumes:
         - application/json
       parameters:
@@ -7354,7 +7354,7 @@ paths:
       tags:
         - sites.site
       summary: Delete entity from sites
-      operationId: DeleteEntityFromSites
+      operationId: sites.site
       parameters:
         - in: path
           name: id
@@ -7399,7 +7399,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Get entities from subscriptions
-      operationId: GetEntitiesFromSubscriptions
+      operationId: subscriptions.subscription
       produces:
         - application/json
       parameters:
@@ -7434,7 +7434,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Add new entity to subscriptions
-      operationId: AddEntityToSubscriptions
+      operationId: subscriptions.subscription
       consumes:
         - application/json
       produces:
@@ -7458,7 +7458,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Get entity from subscriptions by key
-      operationId: GetEntityFromSubscriptionsByKey
+      operationId: subscriptions.subscription
       produces:
         - application/json
       parameters:
@@ -7491,7 +7491,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Update entity in subscriptions
-      operationId: UpdateEntityInSubscriptions
+      operationId: subscriptions.subscription
       consumes:
         - application/json
       parameters:
@@ -7515,7 +7515,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Delete entity from subscriptions
-      operationId: DeleteEntityFromSubscriptions
+      operationId: subscriptions.subscription
       parameters:
         - in: path
           name: id
@@ -7536,7 +7536,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Get entities from identityRiskEvents
-      operationId: GetEntitiesFromIdentityRiskEvents
+      operationId: identityRiskEvents.identityRiskEvent
       produces:
         - application/json
       parameters:
@@ -7615,7 +7615,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Add new entity to identityRiskEvents
-      operationId: AddEntityToIdentityRiskEvents
+      operationId: identityRiskEvents.identityRiskEvent
       consumes:
         - application/json
       produces:
@@ -7639,7 +7639,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Get entity from identityRiskEvents by key
-      operationId: GetEntityFromIdentityRiskEventsByKey
+      operationId: identityRiskEvents.identityRiskEvent
       produces:
         - application/json
       parameters:
@@ -7685,7 +7685,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Update entity in identityRiskEvents
-      operationId: UpdateEntityInIdentityRiskEvents
+      operationId: identityRiskEvents.identityRiskEvent
       consumes:
         - application/json
       parameters:
@@ -7709,7 +7709,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Delete entity from identityRiskEvents
-      operationId: DeleteEntityFromIdentityRiskEvents
+      operationId: identityRiskEvents.identityRiskEvent
       parameters:
         - in: path
           name: id
@@ -7730,7 +7730,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Get entities from impossibleTravelRiskEvents
-      operationId: GetEntitiesFromImpossibleTravelRiskEvents
+      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
       produces:
         - application/json
       parameters:
@@ -7833,7 +7833,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Add new entity to impossibleTravelRiskEvents
-      operationId: AddEntityToImpossibleTravelRiskEvents
+      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
       consumes:
         - application/json
       produces:
@@ -7857,7 +7857,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Get entity from impossibleTravelRiskEvents by key
-      operationId: GetEntityFromImpossibleTravelRiskEventsByKey
+      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
       produces:
         - application/json
       parameters:
@@ -7911,7 +7911,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Update entity in impossibleTravelRiskEvents
-      operationId: UpdateEntityInImpossibleTravelRiskEvents
+      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
       consumes:
         - application/json
       parameters:
@@ -7935,7 +7935,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Delete entity from impossibleTravelRiskEvents
-      operationId: DeleteEntityFromImpossibleTravelRiskEvents
+      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
       parameters:
         - in: path
           name: id
@@ -7956,7 +7956,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Get entities from leakedCredentialsRiskEvents
-      operationId: GetEntitiesFromLeakedCredentialsRiskEvents
+      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       produces:
         - application/json
       parameters:
@@ -8035,7 +8035,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Add new entity to leakedCredentialsRiskEvents
-      operationId: AddEntityToLeakedCredentialsRiskEvents
+      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       consumes:
         - application/json
       produces:
@@ -8059,7 +8059,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Get entity from leakedCredentialsRiskEvents by key
-      operationId: GetEntityFromLeakedCredentialsRiskEventsByKey
+      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       produces:
         - application/json
       parameters:
@@ -8105,7 +8105,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Update entity in leakedCredentialsRiskEvents
-      operationId: UpdateEntityInLeakedCredentialsRiskEvents
+      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       consumes:
         - application/json
       parameters:
@@ -8129,7 +8129,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Delete entity from leakedCredentialsRiskEvents
-      operationId: DeleteEntityFromLeakedCredentialsRiskEvents
+      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       parameters:
         - in: path
           name: id
@@ -8150,7 +8150,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Get entities from anonymousIpRiskEvents
-      operationId: GetEntitiesFromAnonymousIpRiskEvents
+      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
       produces:
         - application/json
       parameters:
@@ -8235,7 +8235,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Add new entity to anonymousIpRiskEvents
-      operationId: AddEntityToAnonymousIpRiskEvents
+      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
       consumes:
         - application/json
       produces:
@@ -8259,7 +8259,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Get entity from anonymousIpRiskEvents by key
-      operationId: GetEntityFromAnonymousIpRiskEventsByKey
+      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
       produces:
         - application/json
       parameters:
@@ -8307,7 +8307,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Update entity in anonymousIpRiskEvents
-      operationId: UpdateEntityInAnonymousIpRiskEvents
+      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
       consumes:
         - application/json
       parameters:
@@ -8331,7 +8331,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Delete entity from anonymousIpRiskEvents
-      operationId: DeleteEntityFromAnonymousIpRiskEvents
+      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
       parameters:
         - in: path
           name: id
@@ -8352,7 +8352,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Get entities from suspiciousIpRiskEvents
-      operationId: GetEntitiesFromSuspiciousIpRiskEvents
+      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
       produces:
         - application/json
       parameters:
@@ -8437,7 +8437,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Add new entity to suspiciousIpRiskEvents
-      operationId: AddEntityToSuspiciousIpRiskEvents
+      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
       consumes:
         - application/json
       produces:
@@ -8461,7 +8461,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Get entity from suspiciousIpRiskEvents by key
-      operationId: GetEntityFromSuspiciousIpRiskEventsByKey
+      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
       produces:
         - application/json
       parameters:
@@ -8509,7 +8509,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Update entity in suspiciousIpRiskEvents
-      operationId: UpdateEntityInSuspiciousIpRiskEvents
+      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
       consumes:
         - application/json
       parameters:
@@ -8533,7 +8533,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Delete entity from suspiciousIpRiskEvents
-      operationId: DeleteEntityFromSuspiciousIpRiskEvents
+      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
       parameters:
         - in: path
           name: id
@@ -8554,7 +8554,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Get entities from unfamiliarLocationRiskEvents
-      operationId: GetEntitiesFromUnfamiliarLocationRiskEvents
+      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       produces:
         - application/json
       parameters:
@@ -8639,7 +8639,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Add new entity to unfamiliarLocationRiskEvents
-      operationId: AddEntityToUnfamiliarLocationRiskEvents
+      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       consumes:
         - application/json
       produces:
@@ -8663,7 +8663,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Get entity from unfamiliarLocationRiskEvents by key
-      operationId: GetEntityFromUnfamiliarLocationRiskEventsByKey
+      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       produces:
         - application/json
       parameters:
@@ -8711,7 +8711,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Update entity in unfamiliarLocationRiskEvents
-      operationId: UpdateEntityInUnfamiliarLocationRiskEvents
+      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       consumes:
         - application/json
       parameters:
@@ -8735,7 +8735,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Delete entity from unfamiliarLocationRiskEvents
-      operationId: DeleteEntityFromUnfamiliarLocationRiskEvents
+      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       parameters:
         - in: path
           name: id
@@ -8756,7 +8756,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Get entities from malwareRiskEvents
-      operationId: GetEntitiesFromMalwareRiskEvents
+      operationId: malwareRiskEvents.malwareRiskEvent
       produces:
         - application/json
       parameters:
@@ -8847,7 +8847,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Add new entity to malwareRiskEvents
-      operationId: AddEntityToMalwareRiskEvents
+      operationId: malwareRiskEvents.malwareRiskEvent
       consumes:
         - application/json
       produces:
@@ -8871,7 +8871,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Get entity from malwareRiskEvents by key
-      operationId: GetEntityFromMalwareRiskEventsByKey
+      operationId: malwareRiskEvents.malwareRiskEvent
       produces:
         - application/json
       parameters:
@@ -8921,7 +8921,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Update entity in malwareRiskEvents
-      operationId: UpdateEntityInMalwareRiskEvents
+      operationId: malwareRiskEvents.malwareRiskEvent
       consumes:
         - application/json
       parameters:
@@ -8945,7 +8945,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Delete entity from malwareRiskEvents
-      operationId: DeleteEntityFromMalwareRiskEvents
+      operationId: malwareRiskEvents.malwareRiskEvent
       parameters:
         - in: path
           name: id
@@ -8966,7 +8966,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Get entities from privilegedRoles
-      operationId: GetEntitiesFromPrivilegedRoles
+      operationId: privilegedRoles.privilegedRole
       produces:
         - application/json
       parameters:
@@ -9023,7 +9023,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Add new entity to privilegedRoles
-      operationId: AddEntityToPrivilegedRoles
+      operationId: privilegedRoles.privilegedRole
       consumes:
         - application/json
       produces:
@@ -9047,7 +9047,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Get entity from privilegedRoles by key
-      operationId: GetEntityFromPrivilegedRolesByKey
+      operationId: privilegedRoles.privilegedRole
       produces:
         - application/json
       parameters:
@@ -9087,7 +9087,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Update entity in privilegedRoles
-      operationId: UpdateEntityInPrivilegedRoles
+      operationId: privilegedRoles.privilegedRole
       consumes:
         - application/json
       parameters:
@@ -9111,7 +9111,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Delete entity from privilegedRoles
-      operationId: DeleteEntityFromPrivilegedRoles
+      operationId: privilegedRoles.privilegedRole
       parameters:
         - in: path
           name: id
@@ -9183,7 +9183,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Get entities from privilegedRoleAssignments
-      operationId: GetEntitiesFromPrivilegedRoleAssignments
+      operationId: privilegedRoleAssignments.privilegedRoleAssignment
       produces:
         - application/json
       parameters:
@@ -9250,7 +9250,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Add new entity to privilegedRoleAssignments
-      operationId: AddEntityToPrivilegedRoleAssignments
+      operationId: privilegedRoleAssignments.privilegedRoleAssignment
       consumes:
         - application/json
       produces:
@@ -9274,7 +9274,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Get entity from privilegedRoleAssignments by key
-      operationId: GetEntityFromPrivilegedRoleAssignmentsByKey
+      operationId: privilegedRoleAssignments.privilegedRoleAssignment
       produces:
         - application/json
       parameters:
@@ -9316,7 +9316,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Update entity in privilegedRoleAssignments
-      operationId: UpdateEntityInPrivilegedRoleAssignments
+      operationId: privilegedRoleAssignments.privilegedRoleAssignment
       consumes:
         - application/json
       parameters:
@@ -9340,7 +9340,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Delete entity from privilegedRoleAssignments
-      operationId: DeleteEntityFromPrivilegedRoleAssignments
+      operationId: privilegedRoleAssignments.privilegedRoleAssignment
       parameters:
         - in: path
           name: id
@@ -9426,7 +9426,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Get entities from privilegedOperationEvents
-      operationId: GetEntitiesFromPrivilegedOperationEvents
+      operationId: privilegedOperationEvents.privilegedOperationEvent
       produces:
         - application/json
       parameters:
@@ -9519,7 +9519,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Add new entity to privilegedOperationEvents
-      operationId: AddEntityToPrivilegedOperationEvents
+      operationId: privilegedOperationEvents.privilegedOperationEvent
       consumes:
         - application/json
       produces:
@@ -9543,7 +9543,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Get entity from privilegedOperationEvents by key
-      operationId: GetEntityFromPrivilegedOperationEventsByKey
+      operationId: privilegedOperationEvents.privilegedOperationEvent
       produces:
         - application/json
       parameters:
@@ -9593,7 +9593,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Update entity in privilegedOperationEvents
-      operationId: UpdateEntityInPrivilegedOperationEvents
+      operationId: privilegedOperationEvents.privilegedOperationEvent
       consumes:
         - application/json
       parameters:
@@ -9617,7 +9617,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Delete entity from privilegedOperationEvents
-      operationId: DeleteEntityFromPrivilegedOperationEvents
+      operationId: privilegedOperationEvents.privilegedOperationEvent
       parameters:
         - in: path
           name: id
@@ -9638,7 +9638,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Get entities from privilegedSignupStatus
-      operationId: GetEntitiesFromPrivilegedSignupStatus
+      operationId: privilegedSignupStatus.privilegedSignupStatus
       produces:
         - application/json
       parameters:
@@ -9695,7 +9695,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Add new entity to privilegedSignupStatus
-      operationId: AddEntityToPrivilegedSignupStatus
+      operationId: privilegedSignupStatus.privilegedSignupStatus
       consumes:
         - application/json
       produces:
@@ -9719,7 +9719,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Get entity from privilegedSignupStatus by key
-      operationId: GetEntityFromPrivilegedSignupStatusByKey
+      operationId: privilegedSignupStatus.privilegedSignupStatus
       produces:
         - application/json
       parameters:
@@ -9757,7 +9757,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Update entity in privilegedSignupStatus
-      operationId: UpdateEntityInPrivilegedSignupStatus
+      operationId: privilegedSignupStatus.privilegedSignupStatus
       consumes:
         - application/json
       parameters:
@@ -9781,7 +9781,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Delete entity from privilegedSignupStatus
-      operationId: DeleteEntityFromPrivilegedSignupStatus
+      operationId: privilegedSignupStatus.privilegedSignupStatus
       parameters:
         - in: path
           name: id
@@ -9867,7 +9867,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Get entities from privilegedApproval
-      operationId: GetEntitiesFromPrivilegedApproval
+      operationId: privilegedApproval.privilegedApproval
       produces:
         - application/json
       parameters:
@@ -9946,7 +9946,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Add new entity to privilegedApproval
-      operationId: AddEntityToPrivilegedApproval
+      operationId: privilegedApproval.privilegedApproval
       consumes:
         - application/json
       produces:
@@ -9970,7 +9970,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Get entity from privilegedApproval by key
-      operationId: GetEntityFromPrivilegedApprovalByKey
+      operationId: privilegedApproval.privilegedApproval
       produces:
         - application/json
       parameters:
@@ -10016,7 +10016,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Update entity in privilegedApproval
-      operationId: UpdateEntityInPrivilegedApproval
+      operationId: privilegedApproval.privilegedApproval
       consumes:
         - application/json
       parameters:
@@ -10040,7 +10040,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Delete entity from privilegedApproval
-      operationId: DeleteEntityFromPrivilegedApproval
+      operationId: privilegedApproval.privilegedApproval
       parameters:
         - in: path
           name: id
@@ -10077,7 +10077,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Get entities from invitations
-      operationId: GetEntitiesFromInvitations
+      operationId: invitations.invitation
       produces:
         - application/json
       parameters:
@@ -10153,7 +10153,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Add new entity to invitations
-      operationId: AddEntityToInvitations
+      operationId: invitations.invitation
       consumes:
         - application/json
       produces:
@@ -10177,7 +10177,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Get entity from invitations by key
-      operationId: GetEntityFromInvitationsByKey
+      operationId: invitations.invitation
       produces:
         - application/json
       parameters:
@@ -10222,7 +10222,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Update entity in invitations
-      operationId: UpdateEntityInInvitations
+      operationId: invitations.invitation
       consumes:
         - application/json
       parameters:
@@ -10246,7 +10246,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Delete entity from invitations
-      operationId: DeleteEntityFromInvitations
+      operationId: invitations.invitation
       parameters:
         - in: path
           name: id
@@ -10267,7 +10267,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Get entities from appConfigurationGroupAssignments
-      operationId: GetEntitiesFromAppConfigurationGroupAssignments
+      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       produces:
         - application/json
       parameters:
@@ -10324,7 +10324,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Add new entity to appConfigurationGroupAssignments
-      operationId: AddEntityToAppConfigurationGroupAssignments
+      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       consumes:
         - application/json
       produces:
@@ -10348,7 +10348,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Get entity from appConfigurationGroupAssignments by key
-      operationId: GetEntityFromAppConfigurationGroupAssignmentsByKey
+      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       produces:
         - application/json
       parameters:
@@ -10386,7 +10386,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Update entity in appConfigurationGroupAssignments
-      operationId: UpdateEntityInAppConfigurationGroupAssignments
+      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       consumes:
         - application/json
       parameters:
@@ -10410,7 +10410,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Delete entity from appConfigurationGroupAssignments
-      operationId: DeleteEntityFromAppConfigurationGroupAssignments
+      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       parameters:
         - in: path
           name: id
@@ -10431,7 +10431,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Get entities from assignments
-      operationId: GetEntitiesFromAssignments
+      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
       produces:
         - application/json
       parameters:
@@ -10485,7 +10485,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Add new entity to assignments
-      operationId: AddEntityToAssignments
+      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
       consumes:
         - application/json
       produces:
@@ -10509,7 +10509,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Get entity from assignments by key
-      operationId: GetEntityFromAssignmentsByKey
+      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
       produces:
         - application/json
       parameters:
@@ -10546,7 +10546,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Update entity in assignments
-      operationId: UpdateEntityInAssignments
+      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
       consumes:
         - application/json
       parameters:
@@ -10570,7 +10570,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Delete entity from assignments
-      operationId: DeleteEntityFromAssignments
+      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
       parameters:
         - in: path
           name: id
@@ -10591,7 +10591,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Get entities from vppTokens
-      operationId: GetEntitiesFromVppTokens
+      operationId: vppTokens.vppToken
       produces:
         - application/json
       parameters:
@@ -10678,7 +10678,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Add new entity to vppTokens
-      operationId: AddEntityToVppTokens
+      operationId: vppTokens.vppToken
       consumes:
         - application/json
       produces:
@@ -10702,7 +10702,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Get entity from vppTokens by key
-      operationId: GetEntityFromVppTokensByKey
+      operationId: vppTokens.vppToken
       produces:
         - application/json
       parameters:
@@ -10750,7 +10750,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Update entity in vppTokens
-      operationId: UpdateEntityInVppTokens
+      operationId: vppTokens.vppToken
       consumes:
         - application/json
       parameters:
@@ -10774,7 +10774,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Delete entity from vppTokens
-      operationId: DeleteEntityFromVppTokens
+      operationId: vppTokens.vppToken
       parameters:
         - in: path
           name: id
@@ -10829,7 +10829,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Get entities from enrollmentConfigurationAssignment
-      operationId: GetEntitiesFromEnrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       produces:
         - application/json
       parameters:
@@ -10883,7 +10883,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Add new entity to enrollmentConfigurationAssignment
-      operationId: AddEntityToEnrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       consumes:
         - application/json
       produces:
@@ -10907,7 +10907,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Get entity from enrollmentConfigurationAssignment by key
-      operationId: GetEntityFromEnrollmentConfigurationAssignmentByKey
+      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       produces:
         - application/json
       parameters:
@@ -10944,7 +10944,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Update entity in enrollmentConfigurationAssignment
-      operationId: UpdateEntityInEnrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       consumes:
         - application/json
       parameters:
@@ -10968,7 +10968,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Delete entity from enrollmentConfigurationAssignment
-      operationId: DeleteEntityFromEnrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       parameters:
         - in: path
           name: id
@@ -10989,7 +10989,7 @@ paths:
       tags:
         - commands.command
       summary: Get entities from commands
-      operationId: GetEntitiesFromCommands
+      operationId: commands.command
       produces:
         - application/json
       parameters:
@@ -11065,7 +11065,7 @@ paths:
       tags:
         - commands.command
       summary: Add new entity to commands
-      operationId: AddEntityToCommands
+      operationId: commands.command
       consumes:
         - application/json
       produces:
@@ -11089,7 +11089,7 @@ paths:
       tags:
         - commands.command
       summary: Get entity from commands by key
-      operationId: GetEntityFromCommandsByKey
+      operationId: commands.command
       produces:
         - application/json
       parameters:
@@ -11134,7 +11134,7 @@ paths:
       tags:
         - commands.command
       summary: Update entity in commands
-      operationId: UpdateEntityInCommands
+      operationId: commands.command
       consumes:
         - application/json
       parameters:
@@ -11158,7 +11158,7 @@ paths:
       tags:
         - commands.command
       summary: Delete entity from commands
-      operationId: DeleteEntityFromCommands
+      operationId: commands.command
       parameters:
         - in: path
           name: id
@@ -11179,7 +11179,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Get entities from payloadResponse
-      operationId: GetEntitiesFromPayloadResponse
+      operationId: payloadResponse.payloadResponse
       produces:
         - application/json
       parameters:
@@ -11230,7 +11230,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Add new entity to payloadResponse
-      operationId: AddEntityToPayloadResponse
+      operationId: payloadResponse.payloadResponse
       consumes:
         - application/json
       produces:
@@ -11254,7 +11254,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Get entity from payloadResponse by key
-      operationId: GetEntityFromPayloadResponseByKey
+      operationId: payloadResponse.payloadResponse
       produces:
         - application/json
       parameters:
@@ -11290,7 +11290,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Update entity in payloadResponse
-      operationId: UpdateEntityInPayloadResponse
+      operationId: payloadResponse.payloadResponse
       consumes:
         - application/json
       parameters:
@@ -11314,7 +11314,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Delete entity from payloadResponse
-      operationId: DeleteEntityFromPayloadResponse
+      operationId: payloadResponse.payloadResponse
       parameters:
         - in: path
           name: id
@@ -11335,7 +11335,7 @@ paths:
       tags:
         - team.team
       summary: Get entities from team
-      operationId: GetEntitiesFromTeam
+      operationId: team.team
       produces:
         - application/json
       parameters:
@@ -11399,7 +11399,7 @@ paths:
       tags:
         - team.team
       summary: Add new entity to team
-      operationId: AddEntityToTeam
+      operationId: team.team
       consumes:
         - application/json
       produces:
@@ -11423,7 +11423,7 @@ paths:
       tags:
         - team.team
       summary: Get entity from team by key
-      operationId: GetEntityFromTeamByKey
+      operationId: team.team
       produces:
         - application/json
       parameters:
@@ -11464,7 +11464,7 @@ paths:
       tags:
         - team.team
       summary: Update entity in team
-      operationId: UpdateEntityInTeam
+      operationId: team.team
       consumes:
         - application/json
       parameters:
@@ -11488,7 +11488,7 @@ paths:
       tags:
         - team.team
       summary: Delete entity from team
-      operationId: DeleteEntityFromTeam
+      operationId: team.team
       parameters:
         - in: path
           name: id
@@ -11509,7 +11509,7 @@ paths:
       tags:
         - channels.channel
       summary: Get entities from channels
-      operationId: GetEntitiesFromChannels
+      operationId: channels.channel
       produces:
         - application/json
       parameters:
@@ -11567,7 +11567,7 @@ paths:
       tags:
         - channels.channel
       summary: Add new entity to channels
-      operationId: AddEntityToChannels
+      operationId: channels.channel
       consumes:
         - application/json
       produces:
@@ -11591,7 +11591,7 @@ paths:
       tags:
         - channels.channel
       summary: Get entity from channels by key
-      operationId: GetEntityFromChannelsByKey
+      operationId: channels.channel
       produces:
         - application/json
       parameters:
@@ -11630,7 +11630,7 @@ paths:
       tags:
         - channels.channel
       summary: Update entity in channels
-      operationId: UpdateEntityInChannels
+      operationId: channels.channel
       consumes:
         - application/json
       parameters:
@@ -11654,7 +11654,7 @@ paths:
       tags:
         - channels.channel
       summary: Delete entity from channels
-      operationId: DeleteEntityFromChannels
+      operationId: channels.channel
       parameters:
         - in: path
           name: id
@@ -11675,7 +11675,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Get entities from chatThreads
-      operationId: GetEntitiesFromChatThreads
+      operationId: chatThreads.chatThread
       produces:
         - application/json
       parameters:
@@ -11728,7 +11728,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Add new entity to chatThreads
-      operationId: AddEntityToChatThreads
+      operationId: chatThreads.chatThread
       consumes:
         - application/json
       produces:
@@ -11752,7 +11752,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Get entity from chatThreads by key
-      operationId: GetEntityFromChatThreadsByKey
+      operationId: chatThreads.chatThread
       produces:
         - application/json
       parameters:
@@ -11790,7 +11790,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Update entity in chatThreads
-      operationId: UpdateEntityInChatThreads
+      operationId: chatThreads.chatThread
       consumes:
         - application/json
       parameters:
@@ -11814,7 +11814,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Delete entity from chatThreads
-      operationId: DeleteEntityFromChatThreads
+      operationId: chatThreads.chatThread
       parameters:
         - in: path
           name: id
@@ -11835,7 +11835,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Get entities from groupLifecyclePolicies
-      operationId: GetEntitiesFromGroupLifecyclePolicies
+      operationId: groupLifecyclePolicies.groupLifecyclePolicy
       produces:
         - application/json
       parameters:
@@ -11895,7 +11895,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Add new entity to groupLifecyclePolicies
-      operationId: AddEntityToGroupLifecyclePolicies
+      operationId: groupLifecyclePolicies.groupLifecyclePolicy
       consumes:
         - application/json
       produces:
@@ -11919,7 +11919,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Get entity from groupLifecyclePolicies by key
-      operationId: GetEntityFromGroupLifecyclePoliciesByKey
+      operationId: groupLifecyclePolicies.groupLifecyclePolicy
       produces:
         - application/json
       parameters:
@@ -11958,7 +11958,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Update entity in groupLifecyclePolicies
-      operationId: UpdateEntityInGroupLifecyclePolicies
+      operationId: groupLifecyclePolicies.groupLifecyclePolicy
       consumes:
         - application/json
       parameters:
@@ -11982,7 +11982,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Delete entity from groupLifecyclePolicies
-      operationId: DeleteEntityFromGroupLifecyclePolicies
+      operationId: groupLifecyclePolicies.groupLifecyclePolicy
       parameters:
         - in: path
           name: id
@@ -12082,7 +12082,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Get entities from identityProviders
-      operationId: GetEntitiesFromIdentityProviders
+      operationId: identityProviders.IdentityProvider
       produces:
         - application/json
       parameters:
@@ -12145,7 +12145,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Add new entity to identityProviders
-      operationId: AddEntityToIdentityProviders
+      operationId: identityProviders.IdentityProvider
       consumes:
         - application/json
       produces:
@@ -12169,7 +12169,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Get entity from identityProviders by key
-      operationId: GetEntityFromIdentityProvidersByKey
+      operationId: identityProviders.IdentityProvider
       produces:
         - application/json
       parameters:
@@ -12209,7 +12209,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Update entity in identityProviders
-      operationId: UpdateEntityInIdentityProviders
+      operationId: identityProviders.IdentityProvider
       consumes:
         - application/json
       parameters:
@@ -12233,7 +12233,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Delete entity from identityProviders
-      operationId: DeleteEntityFromIdentityProviders
+      operationId: identityProviders.IdentityProvider
       parameters:
         - in: path
           name: id
@@ -12254,7 +12254,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Get entities from functions
-      operationId: GetEntitiesFromFunctions
+      operationId: functions.attributeMappingFunctionSchema
       produces:
         - application/json
       parameters:
@@ -12308,7 +12308,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Add new entity to functions
-      operationId: AddEntityToFunctions
+      operationId: functions.attributeMappingFunctionSchema
       consumes:
         - application/json
       produces:
@@ -12332,7 +12332,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Get entity from functions by key
-      operationId: GetEntityFromFunctionsByKey
+      operationId: functions.attributeMappingFunctionSchema
       produces:
         - application/json
       parameters:
@@ -12369,7 +12369,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Update entity in functions
-      operationId: UpdateEntityInFunctions
+      operationId: functions.attributeMappingFunctionSchema
       consumes:
         - application/json
       parameters:
@@ -12393,7 +12393,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Delete entity from functions
-      operationId: DeleteEntityFromFunctions
+      operationId: functions.attributeMappingFunctionSchema
       parameters:
         - in: path
           name: id
@@ -12414,7 +12414,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Get entities from filterOperators
-      operationId: GetEntitiesFromFilterOperators
+      operationId: filterOperators.filterOperatorSchema
       produces:
         - application/json
       parameters:
@@ -12474,7 +12474,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Add new entity to filterOperators
-      operationId: AddEntityToFilterOperators
+      operationId: filterOperators.filterOperatorSchema
       consumes:
         - application/json
       produces:
@@ -12498,7 +12498,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Get entity from filterOperators by key
-      operationId: GetEntityFromFilterOperatorsByKey
+      operationId: filterOperators.filterOperatorSchema
       produces:
         - application/json
       parameters:
@@ -12537,7 +12537,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Update entity in filterOperators
-      operationId: UpdateEntityInFilterOperators
+      operationId: filterOperators.filterOperatorSchema
       consumes:
         - application/json
       parameters:
@@ -12561,7 +12561,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Delete entity from filterOperators
-      operationId: DeleteEntityFromFilterOperators
+      operationId: filterOperators.filterOperatorSchema
       parameters:
         - in: path
           name: id
@@ -12582,7 +12582,7 @@ paths:
       tags:
         - me.user
       summary: Get me
-      operationId: GetMe
+      operationId: me.user
       produces:
         - application/json
       parameters:
@@ -12660,7 +12660,7 @@ paths:
       tags:
         - me.user
       summary: Update me
-      operationId: UpdateMe
+      operationId: me.user
       consumes:
         - application/json
       parameters:
@@ -13031,7 +13031,7 @@ paths:
       tags:
         - directory.directory
       summary: Get directory
-      operationId: GetDirectory
+      operationId: directory.directory
       produces:
         - application/json
       parameters:
@@ -13063,7 +13063,7 @@ paths:
       tags:
         - directory.directory
       summary: Update directory
-      operationId: UpdateDirectory
+      operationId: directory.directory
       consumes:
         - application/json
       parameters:
@@ -13083,7 +13083,7 @@ paths:
       tags:
         - drive.drive
       summary: Get drive
-      operationId: GetDrive
+      operationId: drive.drive
       produces:
         - application/json
       parameters:
@@ -13135,7 +13135,7 @@ paths:
       tags:
         - drive.drive
       summary: Update drive
-      operationId: UpdateDrive
+      operationId: drive.drive
       consumes:
         - application/json
       parameters:
@@ -13208,7 +13208,7 @@ paths:
       tags:
         - planner.planner
       summary: Get planner
-      operationId: GetPlanner
+      operationId: planner.planner
       produces:
         - application/json
       parameters:
@@ -13242,7 +13242,7 @@ paths:
       tags:
         - planner.planner
       summary: Update planner
-      operationId: UpdatePlanner
+      operationId: planner.planner
       consumes:
         - application/json
       parameters:
@@ -13262,7 +13262,7 @@ paths:
       tags:
         - deviceManagement.deviceManagement
       summary: Get deviceManagement
-      operationId: GetDeviceManagement
+      operationId: deviceManagement.deviceManagement
       produces:
         - application/json
       parameters:
@@ -13347,7 +13347,7 @@ paths:
       tags:
         - deviceManagement.deviceManagement
       summary: Update deviceManagement
-      operationId: UpdateDeviceManagement
+      operationId: deviceManagement.deviceManagement
       consumes:
         - application/json
       parameters:
@@ -13426,7 +13426,7 @@ paths:
       tags:
         - deviceAppManagement.deviceAppManagement
       summary: Get deviceAppManagement
-      operationId: GetDeviceAppManagement
+      operationId: deviceAppManagement.deviceAppManagement
       produces:
         - application/json
       parameters:
@@ -13480,7 +13480,7 @@ paths:
       tags:
         - deviceAppManagement.deviceAppManagement
       summary: Update deviceAppManagement
-      operationId: UpdateDeviceAppManagement
+      operationId: deviceAppManagement.deviceAppManagement
       consumes:
         - application/json
       parameters:
@@ -13511,7 +13511,7 @@ paths:
       tags:
         - reports.reportRoot
       summary: Get reports
-      operationId: GetReports
+      operationId: reports.reportRoot
       produces:
         - application/json
       parameters:
@@ -13542,7 +13542,7 @@ paths:
       tags:
         - reports.reportRoot
       summary: Update reports
-      operationId: UpdateReports
+      operationId: reports.reportRoot
       consumes:
         - application/json
       parameters:
@@ -15453,7 +15453,7 @@ paths:
       tags:
         - education.educationRoot
       summary: Get education
-      operationId: GetEducation
+      operationId: education.educationRoot
       produces:
         - application/json
       parameters:
@@ -15489,7 +15489,7 @@ paths:
       tags:
         - education.educationRoot
       summary: Update education
-      operationId: UpdateEducation
+      operationId: education.educationRoot
       consumes:
         - application/json
       parameters:

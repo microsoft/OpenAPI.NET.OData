@@ -55,7 +55,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "GetEntitiesFrom" + Utils.UpperFirstChar(entitySet.Name);
+                //operation.OperationId = "GetEntitiesFrom" + Utils.UpperFirstChar(entitySet.Name);
+                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
             }
 
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
@@ -259,7 +260,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "AddEntityTo" + Utils.UpperFirstChar(entitySet.Name);
+                // operation.OperationId = "AddEntityTo" + Utils.UpperFirstChar(entitySet.Name);
+                operation.OperationId = entitySet.Name +"." + entitySet.EntityType().Name;
             }
 
             return operation;
@@ -306,7 +308,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "GetEntityFrom" + Utils.UpperFirstChar(entitySet.Name) + "ByKey";
+                //operation.OperationId = "GetEntityFrom" + Utils.UpperFirstChar(entitySet.Name) + "ByKey";
+                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -395,7 +398,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "UpdateEntityIn" + Utils.UpperFirstChar(entitySet.Name);
+                // operation.OperationId = "UpdateEntityIn" + Utils.UpperFirstChar(entitySet.Name);
+                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -465,7 +469,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "DeleteEntityFrom" + Utils.UpperFirstChar(entitySet.Name);
+                // operation.OperationId = "DeleteEntityFrom" + Utils.UpperFirstChar(entitySet.Name);
+                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -520,7 +525,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Get" + Utils.UpperFirstChar(singleton.Name);
+                // operation.OperationId = "Get" + Utils.UpperFirstChar(singleton.Name);
+                operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
             }
 
             operation.Parameters = new List<OpenApiParameter>();
@@ -601,7 +607,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Update" + Utils.UpperFirstChar(singleton.Name);
+                //operation.OperationId = "Update" + Utils.UpperFirstChar(singleton.Name);
+                operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -654,6 +661,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
             Utils.CheckArgumentNull(property, nameof(property));
 
+            IEdmEntityType declaringEntityType = property.ToEntityType();
+
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Get " + property.Name + " from " + navigationSource.Name,
@@ -661,7 +670,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = navigationSource.Name + "." + property.Name
+                        Name = navigationSource.Name + "." + declaringEntityType.Name
                     }
                 },
                 RequestBody = null
@@ -669,10 +678,19 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Get" + Utils.UpperFirstChar(property.Name) + "From" + Utils.UpperFirstChar(navigationSource.Name);
+                // operation.OperationId = "Get" + Utils.UpperFirstChar(property.Name) + "From" + Utils.UpperFirstChar(navigationSource.Name);
+
+                if (context.Model.IsNavigationTypeOverload(navigationSource.EntityType(), property))
+                {
+                    string key = navigationSource.Name + "." + declaringEntityType.Name;
+                    operation.OperationId = navigationSource.Name + "." + context.GetIndex(key) + "-" + declaringEntityType.Name;
+                }
+                else
+                {
+                    operation.OperationId = navigationSource.Name + "." + declaringEntityType.Name;
+                }
             }
 
-            IEdmEntityType declaringEntityType = property.DeclaringEntityType();
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
             if (entitySet != null)
             {
@@ -806,6 +824,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 throw new OpenApiException(String.Format(SRResource.UpdateCollectionNavigationPropertyInvalid, property.Name));
             }
 
+            IEdmEntityType declaringEntityType = property.ToEntityType();
+
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Update the navigation property " + property.Name + " in " + navigationSource.Name,
@@ -815,14 +835,23 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name= navigationSource.Name + "." + property.Name
+                        Name= navigationSource.Name + "." + declaringEntityType.Name
                     }
                 }
             };
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Update" + Utils.UpperFirstChar(property.Name) + "In" + Utils.UpperFirstChar(navigationSource.Name);
+                //operation.OperationId = "Update" + Utils.UpperFirstChar(property.Name) + "In" + Utils.UpperFirstChar(navigationSource.Name);
+                if (context.Model.IsNavigationTypeOverload(navigationSource.EntityType(), property))
+                {
+                    string key = navigationSource.Name + "." + declaringEntityType.Name;
+                    operation.OperationId = navigationSource.Name + "." + context.GetIndex(key) + "-" + declaringEntityType.Name;
+                }
+                else
+                {
+                    operation.OperationId = navigationSource.Name + "." + declaringEntityType.Name;
+                }
             }
 
             operation.Parameters = context.CreateKeyParameters(navigationSource.EntityType());
@@ -883,6 +912,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 throw new OpenApiException(String.Format(SRResource.PostToNonCollectionNavigationPropertyInvalid, property.Name));
             }
 
+            IEdmEntityType declaringEntityType = property.ToEntityType();
+
             OpenApiOperation operation = new OpenApiOperation
             {
                 Summary = "Add new navigation property to " + property.Name + " for " + navigationSource.Name,
@@ -892,7 +923,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiTag
                     {
-                        Name = navigationSource.Name + "." + property.Name
+                        Name = navigationSource.Name + "." + declaringEntityType.Name
                     }
                 },
 
@@ -952,7 +983,16 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.OperationId)
             {
-                operation.OperationId = "Add" + Utils.UpperFirstChar(property.Name) + "To" + Utils.UpperFirstChar(navigationSource.Name);
+                //operation.OperationId = "Add" + Utils.UpperFirstChar(property.Name) + "To" + Utils.UpperFirstChar(navigationSource.Name);
+                if (context.Model.IsNavigationTypeOverload(navigationSource.EntityType(), property))
+                {
+                    string key = navigationSource.Name + "." + declaringEntityType.Name;
+                    operation.OperationId = navigationSource.Name + "." + context.GetIndex(key) + "-" + declaringEntityType.Name;
+                }
+                else
+                {
+                    operation.OperationId = navigationSource.Name + "." + declaringEntityType.Name;
+                }
             }
 
             return operation;

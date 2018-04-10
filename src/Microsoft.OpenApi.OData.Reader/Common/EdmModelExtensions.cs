@@ -126,5 +126,24 @@ namespace Microsoft.OpenApi.OData.Common
             return model.EntityContainer.OperationImports()
                 .Where(o => o.Operation.IsBound == operationImport.Operation.IsBound && o.Name == operationImport.Name).Count() > 1;
         }
+
+        public static bool IsNavigationTypeOverload(this IEdmModel model, IEdmEntityType entityType, IEdmNavigationProperty navigationProperty)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
+
+            int count = 0;
+            IEdmEntityType nvaEntityType = navigationProperty.ToEntityType();
+            foreach(var np in entityType.DeclaredNavigationProperties())
+            {
+                if (np.ToEntityType() == nvaEntityType)
+                {
+                    count++;
+                }
+            }
+
+            return count == 0;
+        }
     }
 }
