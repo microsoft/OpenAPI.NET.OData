@@ -1051,6 +1051,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 new OpenApiTag { Name = navigationSource.Name + "." + edmOperation.Name }
             };
 
+            // operation.Tags[0].Extensions.Add("x-ms-doc-type", new OpenApiString((edmOperation.IsAction() ? "action" : "function")));
+            operation.Extensions.Add("x-ms-doc-type", new OpenApiString((edmOperation.IsAction() ? "action" : "function")));
+
             // For actions and functions bound to a single entity within an entity
             // set the parameters array contains a Parameter Object for each key property,
             // using the same type mapping as described for primitive properties.
@@ -1139,6 +1142,8 @@ namespace Microsoft.OpenApi.OData.Generator
             // If the action or function import specifies the EntitySet attribute,
             // the tags array of the Operation Object includes the entity set name.
             operation.Tags = CreateTags(operationImport);
+            //operation.Tags[0].Extensions.Add("x-ms-doc-type", new OpenApiString((operationImport.IsActionImport() ? "action" : "function")));
+            operation.Extensions.Add("x-ms-doc-type", new OpenApiString((operationImport.IsActionImport() ? "action" : "function")));
 
             if (operationImport.IsActionImport())
             {

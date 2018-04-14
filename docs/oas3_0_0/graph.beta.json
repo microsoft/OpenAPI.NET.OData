@@ -555,7 +555,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/microsoft.graph.group/microsoft.graph.delta()": {
@@ -587,7 +588,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()": {
@@ -619,7 +621,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()": {
@@ -651,7 +654,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/microsoft.graph.getByIds": {
@@ -694,7 +698,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/microsoft.graph.validateProperties": {
@@ -742,7 +747,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.checkMemberGroups": {
@@ -789,7 +795,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.getMemberGroups": {
@@ -835,7 +842,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.getMemberObjects": {
@@ -881,7 +889,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.validateProperties": {
@@ -936,7 +945,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.renew": {
@@ -964,7 +974,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.restore": {
@@ -992,7 +1003,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense": {
@@ -1047,7 +1059,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.changePassword": {
@@ -1096,7 +1109,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.invalidateAllRefreshTokens": {
@@ -1124,7 +1138,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail": {
@@ -1173,7 +1188,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimesOLD": {
@@ -1264,7 +1280,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes": {
@@ -1374,7 +1391,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getMailTips": {
@@ -1429,7 +1447,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
@@ -1484,7 +1503,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRoomLists()": {
@@ -1522,7 +1542,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms(RoomList={RoomList})": {
@@ -1568,7 +1589,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms()": {
@@ -1606,7 +1628,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail": {
@@ -1634,7 +1657,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail": {
@@ -1662,7 +1686,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite": {
@@ -1690,7 +1715,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite": {
@@ -1718,7 +1744,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount": {
@@ -1746,7 +1773,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.removeAllDevicesFromManagement": {
@@ -1774,7 +1802,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.setMobileDeviceManagementAuthority": {
@@ -1802,7 +1831,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.getEncryptionPublicKey()": {
@@ -1838,7 +1868,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.uploadDepToken": {
@@ -1887,7 +1918,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.syncWithAppleDeviceEnrollmentProgram": {
@@ -1915,7 +1947,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppDiagnosticStatuses()": {
@@ -1958,7 +1991,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppPolicies()": {
@@ -2001,7 +2035,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
@@ -2046,7 +2081,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/applications": {
@@ -2666,7 +2702,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/allowedDataLocations": {
@@ -3598,7 +3635,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/devices": {
@@ -4311,7 +4349,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/domains/{id}/microsoft.graph.verify": {
@@ -4339,7 +4378,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/domainDnsRecords": {
@@ -5152,7 +5192,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/groups/{id}/microsoft.graph.validateProperties": {
@@ -5207,7 +5248,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.renew": {
@@ -5235,7 +5277,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.subscribeByMail": {
@@ -5263,7 +5306,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.unsubscribeByMail": {
@@ -5291,7 +5335,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.addFavorite": {
@@ -5319,7 +5364,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.removeFavorite": {
@@ -5347,7 +5393,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.resetUnseenCount": {
@@ -5375,7 +5422,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directoryRoles": {
@@ -6467,7 +6515,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/organization/{id}/microsoft.graph.getEncryptionPublicKey()": {
@@ -6503,7 +6552,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/organization/{id}/microsoft.graph.uploadDepToken": {
@@ -6552,7 +6602,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/organization/{id}/microsoft.graph.syncWithAppleDeviceEnrollmentProgram": {
@@ -6580,7 +6631,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/oauth2PermissionGrants": {
@@ -8801,7 +8853,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.assignLicense": {
@@ -8856,7 +8909,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.changePassword": {
@@ -8905,7 +8959,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.invalidateAllRefreshTokens": {
@@ -8933,7 +8988,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.sendMail": {
@@ -8982,7 +9038,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.findMeetingTimesOLD": {
@@ -9073,7 +9130,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.findMeetingTimes": {
@@ -9183,7 +9241,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.getMailTips": {
@@ -9238,7 +9297,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
@@ -9293,7 +9353,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.findRoomLists()": {
@@ -9331,7 +9392,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.findRooms(RoomList={RoomList})": {
@@ -9377,7 +9439,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.findRooms()": {
@@ -9415,7 +9478,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.removeAllDevicesFromManagement": {
@@ -9443,7 +9507,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.getManagedAppDiagnosticStatuses()": {
@@ -9486,7 +9551,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.getManagedAppPolicies()": {
@@ -9529,7 +9595,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
@@ -9574,7 +9641,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/policies": {
@@ -10581,7 +10649,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/workbooks/{id}/microsoft.graph.delta()": {
@@ -10624,7 +10693,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/workbooks/{id}/microsoft.graph.search(q={q})": {
@@ -10676,7 +10746,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/workbooks/{id}/microsoft.graph.checkin": {
@@ -10725,7 +10796,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.checkout": {
@@ -10753,7 +10825,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.copy": {
@@ -10806,7 +10879,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.createLink": {
@@ -10879,7 +10953,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.createUploadSession": {
@@ -10928,7 +11003,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.invite": {
@@ -10996,7 +11072,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.validatePermission": {
@@ -11043,7 +11120,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/drives": {
@@ -11453,7 +11531,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/drives/{id}/microsoft.graph.search(q={q})": {
@@ -11505,7 +11584,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/drives/{id}/microsoft.graph.sharedWithMe()": {
@@ -11548,7 +11628,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/shares": {
@@ -12343,7 +12424,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/subscriptions": {
@@ -15113,7 +15195,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/privilegedRoles/{id}/microsoft.graph.selfDeactivate": {
@@ -15141,7 +15224,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/privilegedRoleAssignments": {
@@ -15468,7 +15552,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/privilegedRoleAssignments/{id}/microsoft.graph.makePermanent": {
@@ -15521,7 +15606,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/privilegedRoleAssignments/{id}/microsoft.graph.makeEligible": {
@@ -15549,7 +15635,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/privilegedOperationEvents": {
@@ -16160,7 +16247,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.isSignedUp()": {
@@ -16185,7 +16273,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.canSignUp()": {
@@ -16210,7 +16299,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.completeSetup": {
@@ -16248,7 +16338,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/privilegedApproval": {
@@ -16591,7 +16682,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/invitations": {
@@ -17781,7 +17873,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/vppTokens/{id}/microsoft.graph.revokeLicenses": {
@@ -17809,7 +17902,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/enrollmentConfigurationAssignment": {
@@ -19817,7 +19911,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groupLifecyclePolicies/{id}/microsoft.graph.addGroup": {
@@ -19861,7 +19956,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/groupLifecyclePolicies/{id}/microsoft.graph.removeGroup": {
@@ -19905,7 +20001,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/identityProviders": {
@@ -20898,7 +20995,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.changePassword": {
@@ -20936,7 +21034,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.invalidateAllRefreshTokens": {
@@ -20953,7 +21052,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.sendMail": {
@@ -20991,7 +21091,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.findMeetingTimesOLD": {
@@ -21071,7 +21172,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.findMeetingTimes": {
@@ -21170,7 +21272,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.getMailTips": {
@@ -21214,7 +21317,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
@@ -21260,7 +21364,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/me/microsoft.graph.findRoomLists()": {
@@ -21287,7 +21392,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/me/microsoft.graph.findRooms(RoomList={RoomList})": {
@@ -21324,7 +21430,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/me/microsoft.graph.findRooms()": {
@@ -21351,7 +21458,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/me/microsoft.graph.removeAllDevicesFromManagement": {
@@ -21368,7 +21476,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/me/microsoft.graph.getManagedAppDiagnosticStatuses()": {
@@ -21400,7 +21509,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/me/microsoft.graph.getManagedAppPolicies()": {
@@ -21432,7 +21542,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/me/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
@@ -21466,7 +21577,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/directory": {
@@ -21684,7 +21796,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/drive/microsoft.graph.search(q={q})": {
@@ -21727,7 +21840,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/drive/microsoft.graph.sharedWithMe()": {
@@ -21759,7 +21873,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/planner": {
@@ -22016,7 +22131,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/deviceManagement/microsoft.graph.getEffectivePermissions()": {
@@ -22044,7 +22160,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/deviceManagement/microsoft.graph.getEffectivePermissions(scope={scope})": {
@@ -22087,7 +22204,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/deviceAppManagement": {
@@ -22209,7 +22327,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "action"
       }
     },
     "/reports": {
@@ -22320,7 +22439,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.deviceConfigurationDeviceActivity()": {
@@ -22349,7 +22469,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActivationsUserDetail()": {
@@ -22376,7 +22497,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActivationCounts()": {
@@ -22403,7 +22525,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActivationsUserCounts()": {
@@ -22430,7 +22553,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})": {
@@ -22469,7 +22593,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})": {
@@ -22506,7 +22631,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})": {
@@ -22543,7 +22669,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})": {
@@ -22580,7 +22707,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})": {
@@ -22619,7 +22747,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})": {
@@ -22656,7 +22785,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})": {
@@ -22693,7 +22823,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})": {
@@ -22730,7 +22861,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})": {
@@ -22767,7 +22899,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})": {
@@ -22804,7 +22937,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailActivityUserDetail(date={date})": {
@@ -22843,7 +22977,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailActivityUserDetail(period={period})": {
@@ -22880,7 +23015,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailActivityCounts(period={period})": {
@@ -22917,7 +23053,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailActivityUserCounts(period={period})": {
@@ -22954,7 +23091,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})": {
@@ -22993,7 +23131,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})": {
@@ -23030,7 +23169,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})": {
@@ -23067,7 +23207,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})": {
@@ -23104,7 +23245,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})": {
@@ -23141,7 +23283,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageDetail(period={period})": {
@@ -23178,7 +23321,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})": {
@@ -23215,7 +23359,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})": {
@@ -23252,7 +23397,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageStorage(period={period})": {
@@ -23289,7 +23435,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})": {
@@ -23328,7 +23475,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})": {
@@ -23365,7 +23513,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})": {
@@ -23402,7 +23551,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})": {
@@ -23439,7 +23589,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})": {
@@ -23478,7 +23629,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})": {
@@ -23515,7 +23667,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})": {
@@ -23552,7 +23705,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})": {
@@ -23589,7 +23743,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageStorage(period={period})": {
@@ -23626,7 +23781,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})": {
@@ -23665,7 +23821,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})": {
@@ -23702,7 +23859,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})": {
@@ -23739,7 +23897,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})": {
@@ -23776,7 +23935,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityPages(period={period})": {
@@ -23813,7 +23973,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})": {
@@ -23852,7 +24013,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})": {
@@ -23889,7 +24051,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})": {
@@ -23926,7 +24089,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})": {
@@ -23963,7 +24127,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})": {
@@ -24000,7 +24165,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})": {
@@ -24037,7 +24203,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})": {
@@ -24076,7 +24243,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})": {
@@ -24113,7 +24281,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})": {
@@ -24150,7 +24319,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})": {
@@ -24187,7 +24357,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})": {
@@ -24224,7 +24395,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})": {
@@ -24261,7 +24433,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})": {
@@ -24298,7 +24471,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})": {
@@ -24335,7 +24509,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})": {
@@ -24372,7 +24547,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})": {
@@ -24409,7 +24585,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})": {
@@ -24446,7 +24623,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})": {
@@ -24483,7 +24661,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})": {
@@ -24520,7 +24699,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})": {
@@ -24559,7 +24739,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})": {
@@ -24596,7 +24777,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})": {
@@ -24633,7 +24815,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})": {
@@ -24670,7 +24853,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerActivityUserDetail(date={date})": {
@@ -24709,7 +24893,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerActivityUserDetail(period={period})": {
@@ -24746,7 +24931,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerActivityCounts(period={period})": {
@@ -24783,7 +24969,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerActivityUserCounts(period={period})": {
@@ -24820,7 +25007,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})": {
@@ -24859,7 +25047,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})": {
@@ -24896,7 +25085,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})": {
@@ -24933,7 +25123,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})": {
@@ -24970,7 +25161,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})": {
@@ -25009,7 +25201,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})": {
@@ -25046,7 +25239,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})": {
@@ -25083,7 +25277,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})": {
@@ -25120,7 +25315,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})": {
@@ -25159,7 +25355,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})": {
@@ -25196,7 +25393,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsUserActivityCounts(period={period})": {
@@ -25233,7 +25431,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsUserActivityUserCounts(period={period})": {
@@ -25270,7 +25469,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})": {
@@ -25309,7 +25509,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})": {
@@ -25346,7 +25547,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsDeviceUsageUserCounts(period={period})": {
@@ -25383,7 +25585,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsDeviceUsageDistributionUserCounts(period={period})": {
@@ -25420,7 +25623,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/reports/microsoft.graph.getTenantSecureScores(period={period})": {
@@ -25462,7 +25666,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-doc-type": "function"
       }
     },
     "/education": {
