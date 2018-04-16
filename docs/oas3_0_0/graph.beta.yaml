@@ -360,7 +360,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /directoryObjects/microsoft.graph.group/microsoft.graph.delta():
     get:
       tags:
@@ -380,7 +379,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta():
     get:
       tags:
@@ -400,7 +398,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta():
     get:
       tags:
@@ -420,7 +417,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /directoryObjects/microsoft.graph.getByIds:
     post:
       tags:
@@ -449,7 +445,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /directoryObjects/microsoft.graph.validateProperties:
     post:
       tags:
@@ -483,7 +478,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.checkMemberGroups':
     post:
       tags:
@@ -514,7 +508,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.getMemberGroups':
     post:
       tags:
@@ -545,7 +538,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.getMemberObjects':
     post:
       tags:
@@ -576,7 +568,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.validateProperties':
     post:
       tags:
@@ -614,7 +605,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.renew':
     post:
       tags:
@@ -633,7 +623,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.restore':
     post:
       tags:
@@ -652,7 +641,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense':
     post:
       tags:
@@ -689,7 +677,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.changePassword':
     post:
       tags:
@@ -722,7 +709,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.invalidateAllRefreshTokens':
     post:
       tags:
@@ -741,7 +727,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail':
     post:
       tags:
@@ -774,7 +759,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimesOLD':
     post:
       tags:
@@ -834,7 +818,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes':
     post:
       tags:
@@ -904,7 +887,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getMailTips':
     post:
       tags:
@@ -939,7 +921,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})':
     get:
       tags:
@@ -975,7 +956,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.reminder'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRoomLists()':
     get:
       tags:
@@ -1000,7 +980,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms(RoomList={RoomList})':
     get:
       tags:
@@ -1030,7 +1009,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms()':
     get:
       tags:
@@ -1055,7 +1033,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail':
     post:
       tags:
@@ -1074,7 +1051,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail':
     post:
       tags:
@@ -1093,7 +1069,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite':
     post:
       tags:
@@ -1112,7 +1087,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite':
     post:
       tags:
@@ -1131,7 +1105,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount':
     post:
       tags:
@@ -1150,7 +1123,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.removeAllDevicesFromManagement':
     post:
       tags:
@@ -1169,7 +1141,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.setMobileDeviceManagementAuthority':
     post:
       tags:
@@ -1188,7 +1159,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.getEncryptionPublicKey()':
     get:
       tags:
@@ -1212,7 +1182,6 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.uploadDepToken':
     post:
       tags:
@@ -1245,7 +1214,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.syncWithAppleDeviceEnrollmentProgram':
     post:
       tags:
@@ -1264,7 +1232,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppDiagnosticStatuses()':
     get:
       tags:
@@ -1291,7 +1258,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppPolicies()':
     get:
       tags:
@@ -1318,7 +1284,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.wipeManagedAppRegistrationByDeviceTag':
     post:
       tags:
@@ -1348,7 +1313,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /applications:
     get:
       tags:
@@ -1774,7 +1738,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /allowedDataLocations:
     get:
       tags:
@@ -2409,7 +2372,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /devices:
     get:
       tags:
@@ -2911,7 +2873,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/domains/{id}/microsoft.graph.verify':
     post:
       tags:
@@ -2930,7 +2891,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /domainDnsRecords:
     get:
       tags:
@@ -3502,7 +3462,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/groups/{id}/microsoft.graph.validateProperties':
     post:
       tags:
@@ -3540,7 +3499,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groups/{id}/microsoft.graph.renew':
     post:
       tags:
@@ -3559,7 +3517,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groups/{id}/microsoft.graph.subscribeByMail':
     post:
       tags:
@@ -3578,7 +3535,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groups/{id}/microsoft.graph.unsubscribeByMail':
     post:
       tags:
@@ -3597,7 +3553,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groups/{id}/microsoft.graph.addFavorite':
     post:
       tags:
@@ -3616,7 +3571,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groups/{id}/microsoft.graph.removeFavorite':
     post:
       tags:
@@ -3635,7 +3589,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groups/{id}/microsoft.graph.resetUnseenCount':
     post:
       tags:
@@ -3654,7 +3607,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /directoryRoles:
     get:
       tags:
@@ -4401,7 +4353,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/organization/{id}/microsoft.graph.getEncryptionPublicKey()':
     get:
       tags:
@@ -4425,7 +4376,6 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/organization/{id}/microsoft.graph.uploadDepToken':
     post:
       tags:
@@ -4458,7 +4408,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/organization/{id}/microsoft.graph.syncWithAppleDeviceEnrollmentProgram':
     post:
       tags:
@@ -4477,7 +4426,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /oauth2PermissionGrants:
     get:
       tags:
@@ -6038,7 +5986,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.assignLicense':
     post:
       tags:
@@ -6075,7 +6022,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.changePassword':
     post:
       tags:
@@ -6108,7 +6054,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.invalidateAllRefreshTokens':
     post:
       tags:
@@ -6127,7 +6072,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.sendMail':
     post:
       tags:
@@ -6160,7 +6104,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.findMeetingTimesOLD':
     post:
       tags:
@@ -6220,7 +6163,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.findMeetingTimes':
     post:
       tags:
@@ -6290,7 +6232,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.getMailTips':
     post:
       tags:
@@ -6325,7 +6266,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})':
     get:
       tags:
@@ -6361,7 +6301,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.reminder'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.findRoomLists()':
     get:
       tags:
@@ -6386,7 +6325,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.findRooms(RoomList={RoomList})':
     get:
       tags:
@@ -6416,7 +6354,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.findRooms()':
     get:
       tags:
@@ -6441,7 +6378,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.removeAllDevicesFromManagement':
     post:
       tags:
@@ -6460,7 +6396,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/users/{id}/microsoft.graph.getManagedAppDiagnosticStatuses()':
     get:
       tags:
@@ -6487,7 +6422,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.getManagedAppPolicies()':
     get:
       tags:
@@ -6514,7 +6448,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/users/{id}/microsoft.graph.wipeManagedAppRegistrationByDeviceTag':
     post:
       tags:
@@ -6544,7 +6477,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /policies:
     get:
       tags:
@@ -7252,7 +7184,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/workbooks/{id}/microsoft.graph.delta()':
     get:
       tags:
@@ -7279,7 +7210,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/workbooks/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
@@ -7312,7 +7242,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/workbooks/{id}/microsoft.graph.checkin':
     post:
       tags:
@@ -7345,7 +7274,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/workbooks/{id}/microsoft.graph.checkout':
     post:
       tags:
@@ -7364,7 +7292,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/workbooks/{id}/microsoft.graph.copy':
     post:
       tags:
@@ -7398,7 +7325,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/workbooks/{id}/microsoft.graph.createLink':
     post:
       tags:
@@ -7447,7 +7373,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/workbooks/{id}/microsoft.graph.createUploadSession':
     post:
       tags:
@@ -7478,7 +7403,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/workbooks/{id}/microsoft.graph.invite':
     post:
       tags:
@@ -7525,7 +7449,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/workbooks/{id}/microsoft.graph.validatePermission':
     post:
       tags:
@@ -7556,7 +7479,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /drives:
     get:
       tags:
@@ -7841,7 +7763,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/drives/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
@@ -7874,7 +7795,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/drives/{id}/microsoft.graph.sharedWithMe()':
     get:
       tags:
@@ -7901,7 +7821,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /shares:
     get:
       tags:
@@ -8452,7 +8371,6 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /subscriptions:
     get:
       tags:
@@ -10335,7 +10253,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/privilegedRoles/{id}/microsoft.graph.selfDeactivate':
     post:
       tags:
@@ -10354,7 +10271,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /privilegedRoleAssignments:
     get:
       tags:
@@ -10568,7 +10484,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/privilegedRoleAssignments/{id}/microsoft.graph.makePermanent':
     post:
       tags:
@@ -10604,7 +10519,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/privilegedRoleAssignments/{id}/microsoft.graph.makeEligible':
     post:
       tags:
@@ -10623,7 +10537,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /privilegedOperationEvents:
     get:
       tags:
@@ -11033,7 +10946,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /privilegedSignupStatus/microsoft.graph.isSignedUp():
     get:
       tags:
@@ -11050,7 +10962,6 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /privilegedSignupStatus/microsoft.graph.canSignUp():
     get:
       tags:
@@ -11067,7 +10978,6 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /privilegedSignupStatus/microsoft.graph.completeSetup:
     post:
       tags:
@@ -11091,7 +11001,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /privilegedApproval:
     get:
       tags:
@@ -11321,7 +11230,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /invitations:
     get:
       tags:
@@ -12107,7 +12015,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/vppTokens/{id}/microsoft.graph.revokeLicenses':
     post:
       tags:
@@ -12126,7 +12033,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /enrollmentConfigurationAssignment:
     get:
       tags:
@@ -13423,7 +13329,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groupLifecyclePolicies/{id}/microsoft.graph.addGroup':
     post:
       tags:
@@ -13452,7 +13357,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/groupLifecyclePolicies/{id}/microsoft.graph.removeGroup':
     post:
       tags:
@@ -13481,7 +13385,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /identityProviders:
     get:
       tags:
@@ -14142,7 +14045,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.changePassword:
     post:
       tags:
@@ -14168,7 +14070,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.invalidateAllRefreshTokens:
     post:
       tags:
@@ -14180,7 +14081,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.sendMail:
     post:
       tags:
@@ -14206,7 +14106,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.findMeetingTimesOLD:
     post:
       tags:
@@ -14259,7 +14158,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.findMeetingTimes:
     post:
       tags:
@@ -14322,7 +14220,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.getMailTips:
     post:
       tags:
@@ -14350,7 +14247,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   '/me/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})':
     get:
       tags:
@@ -14380,7 +14276,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.reminder'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /me/microsoft.graph.findRoomLists():
     get:
       tags:
@@ -14398,7 +14293,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/me/microsoft.graph.findRooms(RoomList={RoomList})':
     get:
       tags:
@@ -14422,7 +14316,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /me/microsoft.graph.findRooms():
     get:
       tags:
@@ -14440,7 +14333,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAddress'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /me/microsoft.graph.removeAllDevicesFromManagement:
     post:
       tags:
@@ -14452,7 +14344,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /me/microsoft.graph.getManagedAppDiagnosticStatuses():
     get:
       tags:
@@ -14472,7 +14363,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /me/microsoft.graph.getManagedAppPolicies():
     get:
       tags:
@@ -14492,7 +14382,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /me/microsoft.graph.wipeManagedAppRegistrationByDeviceTag:
     post:
       tags:
@@ -14515,7 +14404,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /directory:
     get:
       tags:
@@ -14663,7 +14551,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/drive/microsoft.graph.search(q={q})':
     get:
       tags:
@@ -14690,7 +14577,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /drive/microsoft.graph.sharedWithMe():
     get:
       tags:
@@ -14710,7 +14596,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /planner:
     get:
       tags:
@@ -14897,7 +14782,6 @@ paths:
                 default: false
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /deviceManagement/microsoft.graph.getEffectivePermissions():
     get:
       tags:
@@ -14916,7 +14800,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/deviceManagement/microsoft.graph.getEffectivePermissions(scope={scope})':
     get:
       tags:
@@ -14943,7 +14826,6 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /deviceAppManagement:
     get:
       tags:
@@ -15031,7 +14913,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: action
   /reports:
     get:
       tags:
@@ -15102,7 +14983,6 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /reports/microsoft.graph.deviceConfigurationDeviceActivity():
     get:
       tags:
@@ -15120,7 +15000,6 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /reports/microsoft.graph.getOffice365ActivationsUserDetail():
     get:
       tags:
@@ -15138,7 +15017,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ActivationsUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /reports/microsoft.graph.getOffice365ActivationCounts():
     get:
       tags:
@@ -15156,7 +15034,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ActivationCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /reports/microsoft.graph.getOffice365ActivationsUserCounts():
     get:
       tags:
@@ -15174,7 +15051,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ActivationsUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})':
     get:
       tags:
@@ -15200,7 +15076,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ActiveUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})':
     get:
       tags:
@@ -15224,7 +15099,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ActiveUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})':
     get:
       tags:
@@ -15248,7 +15122,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ServicesUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})':
     get:
       tags:
@@ -15272,7 +15145,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365ActiveUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})':
     get:
       tags:
@@ -15298,7 +15170,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365GroupsActivityDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})':
     get:
       tags:
@@ -15322,7 +15193,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365GroupsActivityDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})':
     get:
       tags:
@@ -15346,7 +15216,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365GroupsActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})':
     get:
       tags:
@@ -15370,7 +15239,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365GroupsActivityGroupCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})':
     get:
       tags:
@@ -15394,7 +15262,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365GroupsActivityStorage'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})':
     get:
       tags:
@@ -15418,7 +15285,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.office365GroupsActivityFileCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailActivityUserDetail(date={date})':
     get:
       tags:
@@ -15444,7 +15310,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})':
     get:
       tags:
@@ -15468,7 +15333,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailActivityCounts(period={period})':
     get:
       tags:
@@ -15492,7 +15356,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailActivityUserCounts(period={period})':
     get:
       tags:
@@ -15516,7 +15379,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})':
     get:
       tags:
@@ -15542,7 +15404,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAppUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})':
     get:
       tags:
@@ -15566,7 +15427,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAppUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})':
     get:
       tags:
@@ -15590,7 +15450,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAppUsageAppsUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})':
     get:
       tags:
@@ -15614,7 +15473,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAppUsageUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})':
     get:
       tags:
@@ -15638,7 +15496,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.emailAppUsageVersionsUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getMailboxUsageDetail(period={period})':
     get:
       tags:
@@ -15662,7 +15519,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.mailboxUsageDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})':
     get:
       tags:
@@ -15686,7 +15542,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.mailboxUsageMailboxCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})':
     get:
       tags:
@@ -15710,7 +15565,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.mailboxUsageQuotaStatusMailboxCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getMailboxUsageStorage(period={period})':
     get:
       tags:
@@ -15734,7 +15588,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.mailboxUsageStorage'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})':
     get:
       tags:
@@ -15760,7 +15613,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.oneDriveActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})':
     get:
       tags:
@@ -15784,7 +15636,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.oneDriveActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})':
     get:
       tags:
@@ -15808,7 +15659,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.siteActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})':
     get:
       tags:
@@ -15832,7 +15682,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.siteActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})':
     get:
       tags:
@@ -15858,7 +15707,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.oneDriveUsageAccountDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})':
     get:
       tags:
@@ -15882,7 +15730,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.oneDriveUsageAccountDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})':
     get:
       tags:
@@ -15906,7 +15753,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.oneDriveUsageAccountCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})':
     get:
       tags:
@@ -15930,7 +15776,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.oneDriveUsageFileCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getOneDriveUsageStorage(period={period})':
     get:
       tags:
@@ -15954,7 +15799,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.siteUsageStorage'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})':
     get:
       tags:
@@ -15980,7 +15824,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})':
     get:
       tags:
@@ -16004,7 +15847,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})':
     get:
       tags:
@@ -16028,7 +15870,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.siteActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})':
     get:
       tags:
@@ -16052,7 +15893,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointActivityUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointActivityPages(period={period})':
     get:
       tags:
@@ -16076,7 +15916,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointActivityPages'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})':
     get:
       tags:
@@ -16102,7 +15941,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointSiteUsageDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})':
     get:
       tags:
@@ -16126,7 +15964,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointSiteUsageDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})':
     get:
       tags:
@@ -16150,7 +15987,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointSiteUsageFileCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})':
     get:
       tags:
@@ -16174,7 +16010,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointSiteUsageSiteCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})':
     get:
       tags:
@@ -16198,7 +16033,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.siteUsageStorage'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})':
     get:
       tags:
@@ -16222,7 +16056,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.sharePointSiteUsagePages'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})':
     get:
       tags:
@@ -16248,7 +16081,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})':
     get:
       tags:
@@ -16272,7 +16104,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})':
     get:
       tags:
@@ -16296,7 +16127,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})':
     get:
       tags:
@@ -16320,7 +16150,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessActivityUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})':
     get:
       tags:
@@ -16344,7 +16173,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessPeerToPeerActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})':
     get:
       tags:
@@ -16368,7 +16196,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessPeerToPeerActivityUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})':
     get:
       tags:
@@ -16392,7 +16219,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessPeerToPeerActivityMinuteCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})':
     get:
       tags:
@@ -16416,7 +16242,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessOrganizerActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})':
     get:
       tags:
@@ -16440,7 +16265,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessOrganizerActivityUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})':
     get:
       tags:
@@ -16464,7 +16288,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessOrganizerActivityMinuteCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})':
     get:
       tags:
@@ -16488,7 +16311,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessParticipantActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})':
     get:
       tags:
@@ -16512,7 +16334,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessParticipantActivityUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})':
     get:
       tags:
@@ -16536,7 +16357,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessParticipantActivityMinuteCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})':
     get:
       tags:
@@ -16562,7 +16382,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessDeviceUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -16586,7 +16405,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessDeviceUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -16610,7 +16428,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessDeviceUsageDistributionUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})':
     get:
       tags:
@@ -16634,7 +16451,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.skypeForBusinessDeviceUsageUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerActivityUserDetail(date={date})':
     get:
       tags:
@@ -16660,7 +16476,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})':
     get:
       tags:
@@ -16684,7 +16499,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerActivityCounts(period={period})':
     get:
       tags:
@@ -16708,7 +16522,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerActivityUserCounts(period={period})':
     get:
       tags:
@@ -16732,7 +16545,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerActivitySummary'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})':
     get:
       tags:
@@ -16758,7 +16570,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerDeviceUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -16782,7 +16593,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerDeviceUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -16806,7 +16616,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerDeviceUsageDistributionUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})':
     get:
       tags:
@@ -16830,7 +16639,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerDeviceUsageUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})':
     get:
       tags:
@@ -16856,7 +16664,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerGroupsActivityDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})':
     get:
       tags:
@@ -16880,7 +16687,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerGroupsActivityDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})':
     get:
       tags:
@@ -16904,7 +16710,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerGroupsActivityGroupCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})':
     get:
       tags:
@@ -16928,7 +16733,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.yammerGroupsActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})':
     get:
       tags:
@@ -16954,7 +16758,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsUserActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})':
     get:
       tags:
@@ -16978,7 +16781,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsUserActivityUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsUserActivityCounts(period={period})':
     get:
       tags:
@@ -17002,7 +16804,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsUserActivityCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsUserActivityUserCounts(period={period})':
     get:
       tags:
@@ -17026,7 +16827,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsUserActivityUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})':
     get:
       tags:
@@ -17052,7 +16852,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsDeviceUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -17076,7 +16875,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsDeviceUsageUserDetail'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageUserCounts(period={period})':
     get:
       tags:
@@ -17100,7 +16898,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsDeviceUsageUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -17124,7 +16921,6 @@ paths:
                   $ref: '#/components/schemas/microsoft.graph.teamsDeviceUsageDistributionUserCounts'
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   '/reports/microsoft.graph.getTenantSecureScores(period={period})':
     get:
       tags:
@@ -17151,7 +16947,6 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-doc-type: function
   /education:
     get:
       tags:
@@ -47348,66 +47143,427 @@ components:
             User.WriteAll: Write all user data
             Directory.ReadAll: Write to directory
 tags:
-  - name: schemaExtensions
-  - name: directoryObjects
-  - name: applications
-  - name: administrativeUnits
-  - name: allowedDataLocations
-  - name: appRoleAssignments
-  - name: contacts
-  - name: devices
-  - name: domains
-  - name: domainDnsRecords
-  - name: groups
-  - name: directoryRoles
-  - name: directoryRoleTemplates
-  - name: directorySettingTemplates
-  - name: organization
-  - name: oauth2PermissionGrants
-  - name: scopedRoleMemberships
-  - name: servicePrincipals
-  - name: settings
-  - name: subscribedSkus
-  - name: users
-    description: 'Use this API to create a new User. The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.'
-  - name: policies
-  - name: contracts
-  - name: workbooks
-  - name: drives
-  - name: shares
-  - name: sites
-  - name: subscriptions
-  - name: identityRiskEvents
-  - name: impossibleTravelRiskEvents
-  - name: leakedCredentialsRiskEvents
-  - name: anonymousIpRiskEvents
-  - name: suspiciousIpRiskEvents
-  - name: unfamiliarLocationRiskEvents
-  - name: malwareRiskEvents
-  - name: privilegedRoles
-  - name: privilegedRoleAssignments
-  - name: privilegedOperationEvents
-  - name: privilegedSignupStatus
-  - name: privilegedApproval
-  - name: invitations
-  - name: appConfigurationGroupAssignments
-  - name: assignments
-  - name: vppTokens
-  - name: enrollmentConfigurationAssignment
-  - name: commands
-  - name: payloadResponse
-  - name: team
-  - name: channels
-  - name: chatThreads
-  - name: groupLifecyclePolicies
-  - name: identityProviders
-  - name: functions
-  - name: filterOperators
-  - name: me
-  - name: directory
-  - name: drive
-  - name: planner
-  - name: deviceManagement
-  - name: deviceAppManagement
-  - name: reports
-  - name: education
+  - name: schemaExtensions.schemaExtension
+  - name: directoryObjects.directoryObject
+  - name: directoryObjects.delta
+    x-ms-docs-type: function
+  - name: directoryObjects.getByIds
+    x-ms-docs-type: action
+  - name: directoryObjects.validateProperties
+    x-ms-docs-type: action
+  - name: directoryObjects.checkMemberGroups
+    x-ms-docs-type: action
+  - name: directoryObjects.getMemberGroups
+    x-ms-docs-type: action
+  - name: directoryObjects.getMemberObjects
+    x-ms-docs-type: action
+  - name: directoryObjects.renew
+    x-ms-docs-type: action
+  - name: directoryObjects.restore
+    x-ms-docs-type: action
+  - name: directoryObjects.assignLicense
+    x-ms-docs-type: action
+  - name: directoryObjects.changePassword
+    x-ms-docs-type: action
+  - name: directoryObjects.invalidateAllRefreshTokens
+    x-ms-docs-type: action
+  - name: directoryObjects.sendMail
+    x-ms-docs-type: action
+  - name: directoryObjects.findMeetingTimesOLD
+    x-ms-docs-type: action
+  - name: directoryObjects.findMeetingTimes
+    x-ms-docs-type: action
+  - name: directoryObjects.getMailTips
+    x-ms-docs-type: action
+  - name: directoryObjects.reminderView
+    x-ms-docs-type: function
+  - name: directoryObjects.findRoomLists
+    x-ms-docs-type: function
+  - name: directoryObjects.findRooms
+    x-ms-docs-type: function
+  - name: directoryObjects.subscribeByMail
+    x-ms-docs-type: action
+  - name: directoryObjects.unsubscribeByMail
+    x-ms-docs-type: action
+  - name: directoryObjects.addFavorite
+    x-ms-docs-type: action
+  - name: directoryObjects.removeFavorite
+    x-ms-docs-type: action
+  - name: directoryObjects.resetUnseenCount
+    x-ms-docs-type: action
+  - name: directoryObjects.removeAllDevicesFromManagement
+    x-ms-docs-type: action
+  - name: directoryObjects.setMobileDeviceManagementAuthority
+    x-ms-docs-type: action
+  - name: directoryObjects.getEncryptionPublicKey
+    x-ms-docs-type: function
+  - name: directoryObjects.uploadDepToken
+    x-ms-docs-type: action
+  - name: directoryObjects.syncWithAppleDeviceEnrollmentProgram
+    x-ms-docs-type: action
+  - name: directoryObjects.getManagedAppDiagnosticStatuses
+    x-ms-docs-type: function
+  - name: directoryObjects.getManagedAppPolicies
+    x-ms-docs-type: function
+  - name: directoryObjects.wipeManagedAppRegistrationByDeviceTag
+    x-ms-docs-type: action
+  - name: applications.application
+  - name: administrativeUnits.administrativeUnit
+  - name: administrativeUnits.delta
+    x-ms-docs-type: function
+  - name: allowedDataLocations.allowedDataLocation
+  - name: appRoleAssignments.appRoleAssignment
+  - name: contacts.orgContact
+  - name: contacts.delta
+    x-ms-docs-type: function
+  - name: devices.device
+  - name: domains.domain
+  - name: domains.forceDelete
+    x-ms-docs-type: action
+  - name: domains.verify
+    x-ms-docs-type: action
+  - name: domainDnsRecords.domainDnsRecord
+  - name: groups.group
+  - name: groups.delta
+    x-ms-docs-type: function
+  - name: groups.validateProperties
+    x-ms-docs-type: action
+  - name: groups.renew
+    x-ms-docs-type: action
+  - name: groups.subscribeByMail
+    x-ms-docs-type: action
+  - name: groups.unsubscribeByMail
+    x-ms-docs-type: action
+  - name: groups.addFavorite
+    x-ms-docs-type: action
+  - name: groups.removeFavorite
+    x-ms-docs-type: action
+  - name: groups.resetUnseenCount
+    x-ms-docs-type: action
+  - name: directoryRoles.directoryRole
+  - name: directoryRoleTemplates.directoryRoleTemplate
+  - name: directorySettingTemplates.directorySettingTemplate
+  - name: organization.organization
+  - name: organization.setMobileDeviceManagementAuthority
+    x-ms-docs-type: action
+  - name: organization.getEncryptionPublicKey
+    x-ms-docs-type: function
+  - name: organization.uploadDepToken
+    x-ms-docs-type: action
+  - name: organization.syncWithAppleDeviceEnrollmentProgram
+    x-ms-docs-type: action
+  - name: oauth2PermissionGrants.oAuth2PermissionGrant
+  - name: scopedRoleMemberships.scopedRoleMembership
+  - name: servicePrincipals.servicePrincipal
+  - name: settings.directorySetting
+  - name: subscribedSkus.subscribedSku
+  - name: users.user
+  - name: users.delta
+    x-ms-docs-type: function
+  - name: users.assignLicense
+    x-ms-docs-type: action
+  - name: users.changePassword
+    x-ms-docs-type: action
+  - name: users.invalidateAllRefreshTokens
+    x-ms-docs-type: action
+  - name: users.sendMail
+    x-ms-docs-type: action
+  - name: users.findMeetingTimesOLD
+    x-ms-docs-type: action
+  - name: users.findMeetingTimes
+    x-ms-docs-type: action
+  - name: users.getMailTips
+    x-ms-docs-type: action
+  - name: users.reminderView
+    x-ms-docs-type: function
+  - name: users.findRoomLists
+    x-ms-docs-type: function
+  - name: users.findRooms
+    x-ms-docs-type: function
+  - name: users.removeAllDevicesFromManagement
+    x-ms-docs-type: action
+  - name: users.getManagedAppDiagnosticStatuses
+    x-ms-docs-type: function
+  - name: users.getManagedAppPolicies
+    x-ms-docs-type: function
+  - name: users.wipeManagedAppRegistrationByDeviceTag
+    x-ms-docs-type: action
+  - name: policies.policy
+  - name: contracts.contract
+  - name: workbooks.driveItem
+  - name: workbooks.delta
+    x-ms-docs-type: function
+  - name: workbooks.search
+    x-ms-docs-type: function
+  - name: workbooks.checkin
+    x-ms-docs-type: action
+  - name: workbooks.checkout
+    x-ms-docs-type: action
+  - name: workbooks.copy
+    x-ms-docs-type: action
+  - name: workbooks.createLink
+    x-ms-docs-type: action
+  - name: workbooks.createUploadSession
+    x-ms-docs-type: action
+  - name: workbooks.invite
+    x-ms-docs-type: action
+  - name: workbooks.validatePermission
+    x-ms-docs-type: action
+  - name: drives.drive
+  - name: drives.recent
+    x-ms-docs-type: function
+  - name: drives.search
+    x-ms-docs-type: function
+  - name: drives.sharedWithMe
+    x-ms-docs-type: function
+  - name: shares.sharedDriveItem
+  - name: sites.site
+  - name: sites.getByPath
+    x-ms-docs-type: function
+  - name: subscriptions.subscription
+  - name: identityRiskEvents.identityRiskEvent
+  - name: impossibleTravelRiskEvents.impossibleTravelRiskEvent
+  - name: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
+  - name: anonymousIpRiskEvents.anonymousIpRiskEvent
+  - name: suspiciousIpRiskEvents.suspiciousIpRiskEvent
+  - name: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
+  - name: malwareRiskEvents.malwareRiskEvent
+  - name: privilegedRoles.privilegedRole
+  - name: privilegedRoles.selfActivate
+    x-ms-docs-type: action
+  - name: privilegedRoles.selfDeactivate
+    x-ms-docs-type: action
+  - name: privilegedRoleAssignments.privilegedRoleAssignment
+  - name: privilegedRoleAssignments.my
+    x-ms-docs-type: function
+  - name: privilegedRoleAssignments.makePermanent
+    x-ms-docs-type: action
+  - name: privilegedRoleAssignments.makeEligible
+    x-ms-docs-type: action
+  - name: privilegedOperationEvents.privilegedOperationEvent
+  - name: privilegedSignupStatus.privilegedSignupStatus
+  - name: privilegedSignupStatus.signUp
+    x-ms-docs-type: action
+  - name: privilegedSignupStatus.isSignedUp
+    x-ms-docs-type: function
+  - name: privilegedSignupStatus.canSignUp
+    x-ms-docs-type: function
+  - name: privilegedSignupStatus.completeSetup
+    x-ms-docs-type: action
+  - name: privilegedApproval.privilegedApproval
+  - name: privilegedApproval.myRequests
+    x-ms-docs-type: function
+  - name: invitations.invitation
+  - name: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
+  - name: assignments.managedDeviceMobileAppConfigurationAssignment
+  - name: vppTokens.vppToken
+  - name: vppTokens.syncLicenses
+    x-ms-docs-type: action
+  - name: vppTokens.revokeLicenses
+    x-ms-docs-type: action
+  - name: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
+  - name: commands.command
+  - name: payloadResponse.payloadResponse
+  - name: team.team
+  - name: channels.channel
+  - name: chatThreads.chatThread
+  - name: groupLifecyclePolicies.groupLifecyclePolicy
+  - name: groupLifecyclePolicies.renewGroup
+    x-ms-docs-type: action
+  - name: groupLifecyclePolicies.addGroup
+    x-ms-docs-type: action
+  - name: groupLifecyclePolicies.removeGroup
+    x-ms-docs-type: action
+  - name: identityProviders.IdentityProvider
+  - name: functions.attributeMappingFunctionSchema
+  - name: filterOperators.filterOperatorSchema
+  - name: me.user
+  - name: me.assignLicense
+    x-ms-docs-type: action
+  - name: me.changePassword
+    x-ms-docs-type: action
+  - name: me.invalidateAllRefreshTokens
+    x-ms-docs-type: action
+  - name: me.sendMail
+    x-ms-docs-type: action
+  - name: me.findMeetingTimesOLD
+    x-ms-docs-type: action
+  - name: me.findMeetingTimes
+    x-ms-docs-type: action
+  - name: me.getMailTips
+    x-ms-docs-type: action
+  - name: me.reminderView
+    x-ms-docs-type: function
+  - name: me.findRoomLists
+    x-ms-docs-type: function
+  - name: me.findRooms
+    x-ms-docs-type: function
+  - name: me.removeAllDevicesFromManagement
+    x-ms-docs-type: action
+  - name: me.getManagedAppDiagnosticStatuses
+    x-ms-docs-type: function
+  - name: me.getManagedAppPolicies
+    x-ms-docs-type: function
+  - name: me.wipeManagedAppRegistrationByDeviceTag
+    x-ms-docs-type: action
+  - name: directory.directory
+  - name: drive.drive
+  - name: drive.recent
+    x-ms-docs-type: function
+  - name: drive.search
+    x-ms-docs-type: function
+  - name: drive.sharedWithMe
+    x-ms-docs-type: function
+  - name: planner.planner
+  - name: deviceManagement.deviceManagement
+  - name: deviceManagement.verifyWindowsEnrollmentAutoDiscovery
+    x-ms-docs-type: function
+  - name: deviceManagement.getEffectivePermissions
+    x-ms-docs-type: function
+  - name: deviceAppManagement.deviceAppManagement
+  - name: deviceAppManagement.syncMicrosoftStoreForBusinessApps
+    x-ms-docs-type: action
+  - name: reports.reportRoot
+  - name: reports.deviceConfigurationUserActivity
+    x-ms-docs-type: function
+  - name: reports.deviceConfigurationDeviceActivity
+    x-ms-docs-type: function
+  - name: reports.getOffice365ActivationsUserDetail
+    x-ms-docs-type: function
+  - name: reports.getOffice365ActivationCounts
+    x-ms-docs-type: function
+  - name: reports.getOffice365ActivationsUserCounts
+    x-ms-docs-type: function
+  - name: reports.getOffice365ActiveUserDetail
+    x-ms-docs-type: function
+  - name: reports.getOffice365ServicesUserCounts
+    x-ms-docs-type: function
+  - name: reports.getOffice365ActiveUserCounts
+    x-ms-docs-type: function
+  - name: reports.getOffice365GroupsActivityDetail
+    x-ms-docs-type: function
+  - name: reports.getOffice365GroupsActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getOffice365GroupsActivityGroupCounts
+    x-ms-docs-type: function
+  - name: reports.getOffice365GroupsActivityStorage
+    x-ms-docs-type: function
+  - name: reports.getOffice365GroupsActivityFileCounts
+    x-ms-docs-type: function
+  - name: reports.getEmailActivityUserDetail
+    x-ms-docs-type: function
+  - name: reports.getEmailActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getEmailActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getEmailAppUsageUserDetail
+    x-ms-docs-type: function
+  - name: reports.getEmailAppUsageAppsUserCounts
+    x-ms-docs-type: function
+  - name: reports.getEmailAppUsageUserCounts
+    x-ms-docs-type: function
+  - name: reports.getEmailAppUsageVersionsUserCounts
+    x-ms-docs-type: function
+  - name: reports.getMailboxUsageDetail
+    x-ms-docs-type: function
+  - name: reports.getMailboxUsageMailboxCounts
+    x-ms-docs-type: function
+  - name: reports.getMailboxUsageQuotaStatusMailboxCounts
+    x-ms-docs-type: function
+  - name: reports.getMailboxUsageStorage
+    x-ms-docs-type: function
+  - name: reports.getOneDriveActivityUserDetail
+    x-ms-docs-type: function
+  - name: reports.getOneDriveActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getOneDriveActivityFileCounts
+    x-ms-docs-type: function
+  - name: reports.getOneDriveUsageAccountDetail
+    x-ms-docs-type: function
+  - name: reports.getOneDriveUsageAccountCounts
+    x-ms-docs-type: function
+  - name: reports.getOneDriveUsageFileCounts
+    x-ms-docs-type: function
+  - name: reports.getOneDriveUsageStorage
+    x-ms-docs-type: function
+  - name: reports.getSharePointActivityUserDetail
+    x-ms-docs-type: function
+  - name: reports.getSharePointActivityFileCounts
+    x-ms-docs-type: function
+  - name: reports.getSharePointActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getSharePointActivityPages
+    x-ms-docs-type: function
+  - name: reports.getSharePointSiteUsageDetail
+    x-ms-docs-type: function
+  - name: reports.getSharePointSiteUsageFileCounts
+    x-ms-docs-type: function
+  - name: reports.getSharePointSiteUsageSiteCounts
+    x-ms-docs-type: function
+  - name: reports.getSharePointSiteUsageStorage
+    x-ms-docs-type: function
+  - name: reports.getSharePointSiteUsagePages
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessActivityUserDetail
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessPeerToPeerActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessPeerToPeerActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessOrganizerActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessOrganizerActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessOrganizerActivityMinuteCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessParticipantActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessParticipantActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessParticipantActivityMinuteCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessDeviceUsageUserDetail
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessDeviceUsageDistributionUserCounts
+    x-ms-docs-type: function
+  - name: reports.getSkypeForBusinessDeviceUsageUserCounts
+    x-ms-docs-type: function
+  - name: reports.getYammerActivityUserDetail
+    x-ms-docs-type: function
+  - name: reports.getYammerActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getYammerActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getYammerDeviceUsageUserDetail
+    x-ms-docs-type: function
+  - name: reports.getYammerDeviceUsageDistributionUserCounts
+    x-ms-docs-type: function
+  - name: reports.getYammerDeviceUsageUserCounts
+    x-ms-docs-type: function
+  - name: reports.getYammerGroupsActivityDetail
+    x-ms-docs-type: function
+  - name: reports.getYammerGroupsActivityGroupCounts
+    x-ms-docs-type: function
+  - name: reports.getYammerGroupsActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getTeamsUserActivityUserDetail
+    x-ms-docs-type: function
+  - name: reports.getTeamsUserActivityCounts
+    x-ms-docs-type: function
+  - name: reports.getTeamsUserActivityUserCounts
+    x-ms-docs-type: function
+  - name: reports.getTeamsDeviceUsageUserDetail
+    x-ms-docs-type: function
+  - name: reports.getTeamsDeviceUsageUserCounts
+    x-ms-docs-type: function
+  - name: reports.getTeamsDeviceUsageDistributionUserCounts
+    x-ms-docs-type: function
+  - name: reports.getTenantSecureScores
+    x-ms-docs-type: function
+  - name: education.educationRoot

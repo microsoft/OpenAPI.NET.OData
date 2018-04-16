@@ -13,7 +13,6 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Annotations;
-using System.Text;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -58,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 //operation.OperationId = "GetEntitiesFrom" + Utils.UpperFirstChar(entitySet.Name);
                 operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
             }
-
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
             // and it does not list system query options not allowed for this collection, see terms
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,
@@ -228,6 +227,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             operation.Responses = new OpenApiResponses
             {
@@ -299,6 +299,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
                 RequestBody = null
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             // override the summary using the request.Description.
             if (request != null && request.Description != null)
@@ -395,6 +396,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             if (context.Settings.OperationId)
             {
@@ -466,6 +468,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
                 RequestBody = null
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             if (context.Settings.OperationId)
             {
@@ -528,6 +531,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // operation.OperationId = "Get" + Utils.UpperFirstChar(singleton.Name);
                 operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
             }
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             operation.Parameters = new List<OpenApiParameter>();
             IEdmEntityType entityType = singleton.EntityType();
@@ -604,6 +608,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             if (context.Settings.OperationId)
             {
@@ -675,6 +680,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
                 RequestBody = null
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             if (context.Settings.OperationId)
             {
@@ -839,6 +845,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             if (context.Settings.OperationId)
             {
@@ -951,6 +958,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name));
 
             operation.Responses = new OpenApiResponses
             {
@@ -1052,7 +1060,8 @@ namespace Microsoft.OpenApi.OData.Generator
             };
 
             // operation.Tags[0].Extensions.Add("x-ms-doc-type", new OpenApiString((edmOperation.IsAction() ? "action" : "function")));
-            operation.Extensions.Add("x-ms-doc-type", new OpenApiString((edmOperation.IsAction() ? "action" : "function")));
+            //operation.Extensions.Add("x-ms-doc-type", new OpenApiString((edmOperation.IsAction() ? "action" : "function")));
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name, null, edmOperation.IsAction() ? "action" : "function"));
 
             // For actions and functions bound to a single entity within an entity
             // set the parameters array contains a Parameter Object for each key property,
@@ -1143,7 +1152,8 @@ namespace Microsoft.OpenApi.OData.Generator
             // the tags array of the Operation Object includes the entity set name.
             operation.Tags = CreateTags(operationImport);
             //operation.Tags[0].Extensions.Add("x-ms-doc-type", new OpenApiString((operationImport.IsActionImport() ? "action" : "function")));
-            operation.Extensions.Add("x-ms-doc-type", new OpenApiString((operationImport.IsActionImport() ? "action" : "function")));
+            //operation.Extensions.Add("x-ms-doc-type", new OpenApiString((operationImport.IsActionImport() ? "action" : "function")));
+            context.AppendTagItem(new TagItem(operation.Tags[0].Name, null, operationImport.IsActionImport() ? "action" : "function"));
 
             if (operationImport.IsActionImport())
             {

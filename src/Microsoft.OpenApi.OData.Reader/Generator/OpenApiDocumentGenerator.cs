@@ -31,13 +31,13 @@ namespace Microsoft.OpenApi.OData.Generator
             //   "paths": …,
             //   "components": …
             // }
-            return new OpenApiDocument
+            OpenApiDocument doc = new OpenApiDocument
             {
                 Info = context.CreateInfo(),
 
                 Servers = context.CreateServers(),
 
-                Tags = context.CreateTags(),
+             //   Tags = context.CreateTags(),
 
                 Paths = context.CreatePaths(),
 
@@ -47,6 +47,9 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 ExternalDocs = null
             };
+
+            doc.Tags = context.CreateTags_FromTagItems();
+            return doc;
         }
     }
 }

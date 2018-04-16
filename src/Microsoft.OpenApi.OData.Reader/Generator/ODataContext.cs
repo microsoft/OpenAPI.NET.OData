@@ -24,6 +24,7 @@ namespace Microsoft.OpenApi.OData.Generator
         private bool _keyAsSegmentSupported = false;
         private IList<Authorization> _authorizations;
         private IList<ODataPath> _paths;
+        private IList<TagItem> _tagItems = new List<TagItem>();
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -127,6 +128,23 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
+
+        public IList<TagItem> TagItems
+        {
+            get
+            {
+                return _tagItems;
+            }
+        }
+
+        public void AppendTagItem(TagItem tagItem)
+        {
+            if (_tagItems.Any(c => c.Name == tagItem.Name))
+            {
+                return;
+            }
+            _tagItems.Add(tagItem);
+        }
         /// <summary>
         /// Finds the operations using the <see cref="IEdmEntityType"/>
         /// </summary>
