@@ -12,21 +12,6 @@ using Microsoft.OpenApi.Any;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
-    public class TagItem
-    {
-        public TagItem(string name) : this(name, null, null) { }
-        public TagItem(string name, string desc, string type)
-        {
-            Name = name;
-            Description = desc;
-            Type = type;
-        }
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public string Type { get; set; }
-    }
     /// <summary>
     /// Extension methods to create <see cref="OpenApiTag"/> by <see cref="IEdmModel"/>.
     /// </summary>
@@ -35,26 +20,7 @@ namespace Microsoft.OpenApi.OData.Generator
         public static IList<OpenApiTag> CreateTags_FromTagItems(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
-            IList<OpenApiTag> tags = new List<OpenApiTag>();
-            foreach (var item in context.TagItems)
-            {
-                OpenApiTag tag = new OpenApiTag
-                {
-                    Name = item.Name
-                };
-
-                if (item.Description != null)
-                {
-                    tag.Description = item.Description;
-                }
-
-                if (item.Type != null)
-                {
-                    tag.Extensions.Add("x-ms-docs-type", new OpenApiString(item.Type));
-                }
-                tags.Add(tag);
-            }
-            return tags;
+            return context.Tags;
         }
 
         /// <summary>

@@ -71067,914 +71067,976 @@
   },
   "tags": [
     {
-      "name": "schemaExtensions.schemaExtension"
+      "name": "schemaExtensions.schemaExtension",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "directoryObjects.directoryObject"
+      "name": "directoryObjects.directoryObject",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "directoryObjects.delta",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getByIds",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.validateProperties",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.checkMemberGroups",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getMemberGroups",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getMemberObjects",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.renew",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.restore",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.assignLicense",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.changePassword",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.invalidateAllRefreshTokens",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.sendMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.findMeetingTimesOLD",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.findMeetingTimes",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getMailTips",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.reminderView",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.findRoomLists",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.findRooms",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.subscribeByMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.unsubscribeByMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.addFavorite",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.removeFavorite",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.resetUnseenCount",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.removeAllDevicesFromManagement",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.setMobileDeviceManagementAuthority",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getEncryptionPublicKey",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.uploadDepToken",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.syncWithAppleDeviceEnrollmentProgram",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getManagedAppDiagnosticStatuses",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.getManagedAppPolicies",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "directoryObjects.wipeManagedAppRegistrationByDeviceTag",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "applications.application"
+      "name": "applications.application",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "administrativeUnits.administrativeUnit"
+      "name": "administrativeUnits.administrativeUnit",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "administrativeUnits.delta",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "allowedDataLocations.allowedDataLocation"
+      "name": "allowedDataLocations.allowedDataLocation",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "appRoleAssignments.appRoleAssignment"
+      "name": "appRoleAssignments.appRoleAssignment",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "contacts.orgContact"
+      "name": "contacts.orgContact",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "contacts.delta",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "devices.device"
+      "name": "devices.device",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "domains.domain"
+      "name": "domains.domain",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "domains.forceDelete",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "domains.verify",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "domainDnsRecords.domainDnsRecord"
+      "name": "domainDnsRecords.domainDnsRecord",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "groups.group"
+      "name": "groups.group",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "groups.delta",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.validateProperties",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.renew",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.subscribeByMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.unsubscribeByMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.addFavorite",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.removeFavorite",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groups.resetUnseenCount",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "directoryRoles.directoryRole"
+      "name": "directoryRoles.directoryRole",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "directoryRoleTemplates.directoryRoleTemplate"
+      "name": "directoryRoleTemplates.directoryRoleTemplate",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "directorySettingTemplates.directorySettingTemplate"
+      "name": "directorySettingTemplates.directorySettingTemplate",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "organization.organization"
+      "name": "organization.organization",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "organization.setMobileDeviceManagementAuthority",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "organization.getEncryptionPublicKey",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "organization.uploadDepToken",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "organization.syncWithAppleDeviceEnrollmentProgram",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "oauth2PermissionGrants.oAuth2PermissionGrant"
+      "name": "oauth2PermissionGrants.oAuth2PermissionGrant",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "scopedRoleMemberships.scopedRoleMembership"
+      "name": "scopedRoleMemberships.scopedRoleMembership",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "servicePrincipals.servicePrincipal"
+      "name": "servicePrincipals.servicePrincipal",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "settings.directorySetting"
+      "name": "settings.directorySetting",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "subscribedSkus.subscribedSku"
+      "name": "subscribedSkus.subscribedSku",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "users.user"
+      "name": "users.user",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "users.delta",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.assignLicense",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.changePassword",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.invalidateAllRefreshTokens",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.sendMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.findMeetingTimesOLD",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.findMeetingTimes",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.getMailTips",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.reminderView",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.findRoomLists",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.findRooms",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.removeAllDevicesFromManagement",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.getManagedAppDiagnosticStatuses",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.getManagedAppPolicies",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "users.wipeManagedAppRegistrationByDeviceTag",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "policies.policy"
+      "name": "policies.policy",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "contracts.contract"
+      "name": "contracts.contract",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "workbooks.driveItem"
+      "name": "workbooks.driveItem",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "workbooks.delta",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.search",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.checkin",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.checkout",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.copy",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.createLink",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.createUploadSession",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.invite",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "workbooks.validatePermission",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "drives.drive"
+      "name": "drives.drive",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "drives.recent",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "drives.search",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "drives.sharedWithMe",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "shares.sharedDriveItem"
+      "name": "shares.sharedDriveItem",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "sites.site"
+      "name": "sites.site",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "sites.getByPath",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "subscriptions.subscription"
+      "name": "subscriptions.subscription",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "identityRiskEvents.identityRiskEvent"
+      "name": "identityRiskEvents.identityRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "impossibleTravelRiskEvents.impossibleTravelRiskEvent"
+      "name": "impossibleTravelRiskEvents.impossibleTravelRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "leakedCredentialsRiskEvents.leakedCredentialsRiskEvent"
+      "name": "leakedCredentialsRiskEvents.leakedCredentialsRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "anonymousIpRiskEvents.anonymousIpRiskEvent"
+      "name": "anonymousIpRiskEvents.anonymousIpRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "suspiciousIpRiskEvents.suspiciousIpRiskEvent"
+      "name": "suspiciousIpRiskEvents.suspiciousIpRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent"
+      "name": "unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "malwareRiskEvents.malwareRiskEvent"
+      "name": "malwareRiskEvents.malwareRiskEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "privilegedRoles.privilegedRole"
+      "name": "privilegedRoles.privilegedRole",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "privilegedRoles.selfActivate",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "privilegedRoles.selfDeactivate",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "privilegedRoleAssignments.privilegedRoleAssignment"
+      "name": "privilegedRoleAssignments.privilegedRoleAssignment",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "privilegedRoleAssignments.my",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "privilegedRoleAssignments.makePermanent",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "privilegedRoleAssignments.makeEligible",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "privilegedOperationEvents.privilegedOperationEvent"
+      "name": "privilegedOperationEvents.privilegedOperationEvent",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "privilegedSignupStatus.privilegedSignupStatus"
+      "name": "privilegedSignupStatus.privilegedSignupStatus",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "privilegedSignupStatus.signUp",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "privilegedSignupStatus.isSignedUp",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "privilegedSignupStatus.canSignUp",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "privilegedSignupStatus.completeSetup",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "privilegedApproval.privilegedApproval"
+      "name": "privilegedApproval.privilegedApproval",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "privilegedApproval.myRequests",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "invitations.invitation"
+      "name": "invitations.invitation",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "appConfigurationGroupAssignments.mdmAppConfigGroupAssignment"
+      "name": "appConfigurationGroupAssignments.mdmAppConfigGroupAssignment",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "assignments.managedDeviceMobileAppConfigurationAssignment"
+      "name": "assignments.managedDeviceMobileAppConfigurationAssignment",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "vppTokens.vppToken"
+      "name": "vppTokens.vppToken",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "vppTokens.syncLicenses",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "vppTokens.revokeLicenses",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "enrollmentConfigurationAssignment.enrollmentConfigurationAssignment"
+      "name": "enrollmentConfigurationAssignment.enrollmentConfigurationAssignment",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "commands.command"
+      "name": "commands.command",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "payloadResponse.payloadResponse"
+      "name": "payloadResponse.payloadResponse",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "team.team"
+      "name": "team.team",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "channels.channel"
+      "name": "channels.channel",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "chatThreads.chatThread"
+      "name": "chatThreads.chatThread",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "groupLifecyclePolicies.groupLifecyclePolicy"
+      "name": "groupLifecyclePolicies.groupLifecyclePolicy",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "groupLifecyclePolicies.renewGroup",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groupLifecyclePolicies.addGroup",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "groupLifecyclePolicies.removeGroup",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "identityProviders.IdentityProvider"
+      "name": "identityProviders.IdentityProvider",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "functions.attributeMappingFunctionSchema"
+      "name": "functions.attributeMappingFunctionSchema",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "filterOperators.filterOperatorSchema"
+      "name": "filterOperators.filterOperatorSchema",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "me.user"
+      "name": "me.user",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "me.assignLicense",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.changePassword",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.invalidateAllRefreshTokens",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.sendMail",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.findMeetingTimesOLD",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.findMeetingTimes",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.getMailTips",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.reminderView",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.findRoomLists",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.findRooms",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.removeAllDevicesFromManagement",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.getManagedAppDiagnosticStatuses",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.getManagedAppPolicies",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "me.wipeManagedAppRegistrationByDeviceTag",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "directory.directory"
+      "name": "directory.directory",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "drive.drive"
+      "name": "drive.drive",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "drive.recent",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "drive.search",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "drive.sharedWithMe",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "planner.planner"
+      "name": "planner.planner",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "deviceManagement.deviceManagement"
+      "name": "deviceManagement.deviceManagement",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "deviceManagement.verifyWindowsEnrollmentAutoDiscovery",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "deviceManagement.getEffectivePermissions",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "deviceAppManagement.deviceAppManagement"
+      "name": "deviceAppManagement.deviceAppManagement",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "deviceAppManagement.syncMicrosoftStoreForBusinessApps",
-      "x-ms-docs-type": "action"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "reports.reportRoot"
+      "name": "reports.reportRoot",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "reports.deviceConfigurationUserActivity",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.deviceConfigurationDeviceActivity",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365ActivationsUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365ActivationCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365ActivationsUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365ActiveUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365ServicesUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365ActiveUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365GroupsActivityDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365GroupsActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365GroupsActivityGroupCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365GroupsActivityStorage",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOffice365GroupsActivityFileCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailActivityUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailAppUsageUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailAppUsageAppsUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailAppUsageUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getEmailAppUsageVersionsUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getMailboxUsageDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getMailboxUsageMailboxCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getMailboxUsageQuotaStatusMailboxCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getMailboxUsageStorage",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveActivityUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveActivityFileCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveUsageAccountDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveUsageAccountCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveUsageFileCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getOneDriveUsageStorage",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointActivityUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointActivityFileCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointActivityPages",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointSiteUsageDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointSiteUsageFileCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointSiteUsageSiteCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointSiteUsageStorage",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSharePointSiteUsagePages",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessActivityUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessPeerToPeerActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessPeerToPeerActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessOrganizerActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessOrganizerActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessOrganizerActivityMinuteCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessParticipantActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessParticipantActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessParticipantActivityMinuteCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessDeviceUsageUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessDeviceUsageDistributionUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getSkypeForBusinessDeviceUsageUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerActivityUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerDeviceUsageUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerDeviceUsageDistributionUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerDeviceUsageUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerGroupsActivityDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerGroupsActivityGroupCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getYammerGroupsActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTeamsUserActivityUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTeamsUserActivityCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTeamsUserActivityUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTeamsDeviceUsageUserDetail",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTeamsDeviceUsageUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTeamsDeviceUsageDistributionUserCounts",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
       "name": "reports.getTenantSecureScores",
-      "x-ms-docs-type": "function"
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "education.educationRoot"
+      "name": "education.educationRoot",
+      "x-ms-docs-toc-type": "page"
     }
   ]
 }

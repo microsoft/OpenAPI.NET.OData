@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Common;
@@ -24,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Generator
         private bool _keyAsSegmentSupported = false;
         private IList<Authorization> _authorizations;
         private IList<ODataPath> _paths;
-        private IList<TagItem> _tagItems = new List<TagItem>();
+        private IList<OpenApiTag> _tags = new List<OpenApiTag>();
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -129,22 +130,23 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
 
-        public IList<TagItem> TagItems
+        public IList<OpenApiTag> Tags
         {
             get
             {
-                return _tagItems;
+                return _tags;
             }
         }
 
-        public void AppendTagItem(TagItem tagItem)
+        public void AppendTag(OpenApiTag tagItem)
         {
-            if (_tagItems.Any(c => c.Name == tagItem.Name))
+            if (_tags.Any(c => c.Name == tagItem.Name))
             {
                 return;
             }
-            _tagItems.Add(tagItem);
+            _tags.Add(tagItem);
         }
+
         /// <summary>
         /// Finds the operations using the <see cref="IEdmEntityType"/>
         /// </summary>
