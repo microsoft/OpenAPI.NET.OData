@@ -53,6 +53,11 @@ namespace Microsoft.OpenApi.OData
         public int NavigationPropertyDepth { get; set; } = 0;
 
         /// <summary>
+        /// Gets/set a value indicating whether we count key segment as a depth.
+        /// </summary>
+        public bool CountKeySegmentAsDepth { get; set; } = true;
+
+        /// <summary>
         /// Gets/set a value indicating the prefix for the parameter alias.
         /// </summary>
         public string ParameterAlias { get; set; } = "@p";

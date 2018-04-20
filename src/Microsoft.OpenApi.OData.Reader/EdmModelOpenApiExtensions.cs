@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData
             IEdmModel model = csdl.AppendAnnotations();
 
             ODataContext context = new ODataContext(model, settings);
-            var a = context.Authorizations;
+   //         var a = context.Authorizations;
             return context.CreateDocument();
         }
     }

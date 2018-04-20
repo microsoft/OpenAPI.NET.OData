@@ -386,7 +386,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
         private void RetrievePaths(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
         {
-            if (currentPath.Count > Settings.NavigationPropertyDepth)
+            int count = currentPath.GetCount(Settings.CountKeySegmentAsDepth);
+            if (count > Settings.NavigationPropertyDepth)
             {
                 return;
             }

@@ -24,7 +24,7 @@ namespace UpdateDocs
     {
         private static bool ProcessAnnotation(string path)
         {
-            string csdlpath = path + "../../../../../../src/Microsoft.OpenApi.OData.Reader/Annotations";
+            string csdlpath = path + "../../../../../../docs/annotations";
             foreach (var filePath in Directory.GetFiles(csdlpath, "*.xml"))
             {
                 string csdl = File.ReadAllText(filePath);
@@ -39,6 +39,8 @@ namespace UpdateDocs
                     {
                         Console.WriteLine(error.ErrorMessage + ":" + error.ErrorLocation);
                     }
+
+                    continue;
                 }
 
                 foreach (var a in model.SchemaElements)
@@ -118,8 +120,14 @@ namespace UpdateDocs
 
                 settings.KeyAsSegment = true;
                 settings.NavigationPropertyPathItem = true;
-                settings.NavigationPropertyDepth = 7;
+                settings.NavigationPropertyDepth = 5;
                 output = oas30 + "/" + fileName + "_content.json";
+                document = edmCsdl.ConvertToOpenApi(settings);
+                File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+
+                settings.NavigationPropertyDepth = 5;
+                settings.CountKeySegmentAsDepth = false;
+                output = oas30 + "/" + fileName + "_content_withoutKeySegment.json";
                 document = edmCsdl.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
