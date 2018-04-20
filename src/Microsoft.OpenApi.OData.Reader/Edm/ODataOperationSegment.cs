@@ -3,12 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OData.Edm;
 using System;
 using System.Linq;
 using System.Text;
+using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 
-namespace Microsoft.OpenApi.OData.Common
+namespace Microsoft.OpenApi.OData.Edm
 {
     /// <summary>
     /// Operation segment
@@ -18,19 +19,28 @@ namespace Microsoft.OpenApi.OData.Common
         /// <summary>
         /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
         /// </summary>
-        /// <param name="operation"></param>
-        /// <param name="UnqualifiedCall"></param>
-        public ODataOperationSegment(IEdmOperation operation, bool UnqualifiedCall)
+        /// <param name="operation">The operation.</param>
+        /// <param name="unqualifiedCall">The unqualified call.</param>
+        public ODataOperationSegment(IEdmOperation operation, bool unqualifiedCall)
         {
             Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
+            UnqualifiedCall = unqualifiedCall;
         }
 
+        /// <summary>
+        /// Gets the operation.
+        /// </summary>
         public IEdmOperation Operation { get; }
 
+        /// <summary>
+        /// Gets the unqualified call.
+        /// </summary>
         public bool UnqualifiedCall { get; }
 
+        /// <inheritdoc />
         public override IEdmEntityType EntityType => throw new System.NotImplementedException();
 
+        /// <inheritdoc />
         public override string ToString()
         {
             if (Operation.IsFunction())

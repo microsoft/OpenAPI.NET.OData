@@ -6,8 +6,9 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Common;
 
-namespace Microsoft.OpenApi.OData.Common
+namespace Microsoft.OpenApi.OData.Edm
 {
     /// <summary>
     /// Extension methods for <see cref="IEdmModel"/>

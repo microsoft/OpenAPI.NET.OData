@@ -3,13 +3,14 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OData.Edm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 
-namespace Microsoft.OpenApi.OData.Common
+namespace Microsoft.OpenApi.OData.Edm
 {
     public enum PathType
     {
@@ -22,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Common
     }
 
     /// <summary>
-    /// Utilities methods
+    /// Describes an OData path.
     /// </summary>
     public class ODataPath : IEnumerable<ODataSegment>
     {
@@ -33,6 +34,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         private IList<ODataSegment> _segments;
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataPath"/> class.
+        /// </summary>
+        /// <param name="segments">The segments.</param>
         public ODataPath(IEnumerable<ODataSegment> segments)
         {
             _segments = segments.ToList();
@@ -65,7 +70,7 @@ namespace Microsoft.OpenApi.OData.Common
         {
             if (!_segments.Any())
             {
-                throw Error.ArgumentNull("Pop");
+                throw Error.InvalidOperation("Pop a segment is invalid. The segments in the path is empty.");
             }
 
             ODataSegment segment = _segments.Last();
@@ -129,7 +134,7 @@ namespace Microsoft.OpenApi.OData.Common
         }
 
         /// <summary>
-        /// get the segments enumerator
+        /// Get the segments enumerator
         /// </summary>
         /// <returns>The segments enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
@@ -207,7 +212,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 if (_segments.Count != 2)
                 {
-                    throw Error.ArgumentNull("entity");
+                    throw Error.InvalidOperation("Calc the path type wrong!");
                 }
 
                 _pathType = PathType.Entity;

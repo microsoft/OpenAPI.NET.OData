@@ -4,8 +4,9 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 
-namespace Microsoft.OpenApi.OData.Common
+namespace Microsoft.OpenApi.OData.Edm
 {
     /// <summary>
     /// Navigation property segment.

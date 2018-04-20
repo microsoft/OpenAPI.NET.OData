@@ -5,7 +5,7 @@
 
 using Microsoft.OData.Edm;
 
-namespace Microsoft.OpenApi.OData.Common
+namespace Microsoft.OpenApi.OData.Edm
 {
     /// <summary>
     /// Represents a OData segment. For example, an entity set segment.

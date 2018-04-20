@@ -7,8 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 
-namespace Microsoft.OpenApi.OData.Common
+namespace Microsoft.OpenApi.OData.Edm
 {
     /// <summary>
     /// The key segment.
@@ -24,12 +25,10 @@ namespace Microsoft.OpenApi.OData.Common
             EntityType = entityType ?? throw Error.ArgumentNull(nameof(entityType));
         }
 
+        /// <inheritdoc />
         public override IEdmEntityType EntityType { get; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc />
         public override string ToString()
         {
             IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();
