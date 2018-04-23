@@ -151,6 +151,11 @@ namespace Microsoft.OpenApi.OData.Edm
             return new ODataPath(_segments);
         }
 
+        /// <summary>
+        /// Get the segment count.
+        /// </summary>
+        /// <param name="keySegmentAsDepth">A bool value indicating whether to count key segment or not.</param>
+        /// <returns>The count.</returns>
         public int GetCount(bool keySegmentAsDepth)
         {
             return _segments.Count(c => keySegmentAsDepth ? true : !(c is ODataKeySegment));

@@ -2267,31 +2267,31 @@
             },
             "links": {
               "extensionProperties": {
-                "operationId": "GetExtensionPropertiesFromApplications",
+                "operationId": "applications.application",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "createdOnBehalfOf": {
-                "operationId": "GetCreatedOnBehalfOfFromApplications",
+                "operationId": "applications.application",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "owners": {
-                "operationId": "GetOwnersFromApplications",
+                "operationId": "applications.application",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "policies": {
-                "operationId": "GetPoliciesFromApplications",
+                "operationId": "applications.application",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "synchronization": {
-                "operationId": "GetSynchronizationFromApplications",
+                "operationId": "applications.application",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -2541,19 +2541,19 @@
             },
             "links": {
               "extensions": {
-                "operationId": "GetExtensionsFromAdministrativeUnits",
+                "operationId": "administrativeUnits.administrativeUnit",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "members": {
-                "operationId": "GetMembersFromAdministrativeUnits",
+                "operationId": "administrativeUnits.administrativeUnit",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "scopedRoleMembers": {
-                "operationId": "GetScopedRoleMembersFromAdministrativeUnits",
+                "operationId": "administrativeUnits.administrativeUnit",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -3473,19 +3473,19 @@
             },
             "links": {
               "manager": {
-                "operationId": "GetManagerFromContacts",
+                "operationId": "contacts.orgContact",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "directReports": {
-                "operationId": "GetDirectReportsFromContacts",
+                "operationId": "contacts.orgContact",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "memberOf": {
-                "operationId": "GetMemberOfFromContacts",
+                "operationId": "contacts.orgContact",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -3839,25 +3839,25 @@
             },
             "links": {
               "extensions": {
-                "operationId": "GetExtensionsFromDevices",
+                "operationId": "devices.device",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "registeredOwners": {
-                "operationId": "GetRegisteredOwnersFromDevices",
+                "operationId": "devices.device",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "registeredUsers": {
-                "operationId": "GetRegisteredUsersFromDevices",
+                "operationId": "devices.device",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "commands": {
-                "operationId": "GetCommandsFromDevices",
+                "operationId": "devices.device",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -4172,19 +4172,19 @@
             },
             "links": {
               "serviceConfigurationRecords": {
-                "operationId": "GetServiceConfigurationRecordsFromDomains",
+                "operationId": "domains.domain",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "verificationDnsRecords": {
-                "operationId": "GetVerificationDnsRecordsFromDomains",
+                "operationId": "domains.domain",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "domainNameReferences": {
-                "operationId": "GetDomainNameReferencesFromDomains",
+                "operationId": "domains.domain",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -4901,145 +4901,145 @@
             },
             "links": {
               "extensions": {
-                "operationId": "GetExtensionsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "members": {
-                "operationId": "GetMembersFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "memberOf": {
-                "operationId": "GetMemberOfFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "createdOnBehalfOf": {
-                "operationId": "GetCreatedOnBehalfOfFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "owners": {
-                "operationId": "GetOwnersFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "settings": {
-                "operationId": "GetSettingsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "endpoints": {
-                "operationId": "GetEndpointsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "threads": {
-                "operationId": "GetThreadsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "calendar": {
-                "operationId": "GetCalendarFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "calendarView": {
-                "operationId": "GetCalendarViewFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "events": {
-                "operationId": "GetEventsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "conversations": {
-                "operationId": "GetConversationsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "photo": {
-                "operationId": "GetPhotoFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "photos": {
-                "operationId": "GetPhotosFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "acceptedSenders": {
-                "operationId": "GetAcceptedSendersFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "rejectedSenders": {
-                "operationId": "GetRejectedSendersFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "drive": {
-                "operationId": "GetDriveFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "drives": {
-                "operationId": "GetDrivesFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "sites": {
-                "operationId": "GetSitesFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "planner": {
-                "operationId": "GetPlannerFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "onenote": {
-                "operationId": "GetOnenoteFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "team": {
-                "operationId": "GetTeamFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "channels": {
-                "operationId": "GetChannelsFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "groupLifecyclePolicies": {
-                "operationId": "GetGroupLifecyclePoliciesFromGroups",
+                "operationId": "groups.group",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -5541,13 +5541,13 @@
             },
             "links": {
               "members": {
-                "operationId": "GetMembersFromDirectoryRoles",
+                "operationId": "directoryRoles.directoryRole",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "scopedMembers": {
-                "operationId": "GetScopedMembersFromDirectoryRoles",
+                "operationId": "directoryRoles.directoryRole",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -6346,19 +6346,19 @@
             },
             "links": {
               "extensions": {
-                "operationId": "GetExtensionsFromOrganization",
+                "operationId": "organization.organization",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "depOnboardingSettings": {
-                "operationId": "GetDepOnboardingSettingsFromOrganization",
+                "operationId": "organization.organization",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "appleVolumePurchaseProgramTokens": {
-                "operationId": "GetAppleVolumePurchaseProgramTokensFromOrganization",
+                "operationId": "organization.organization",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -7387,61 +7387,61 @@
             },
             "links": {
               "appRoleAssignedTo": {
-                "operationId": "GetAppRoleAssignedToFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "appRoleAssignments": {
-                "operationId": "GetAppRoleAssignmentsFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "oauth2PermissionGrants": {
-                "operationId": "GetOauth2PermissionGrantsFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "memberOf": {
-                "operationId": "GetMemberOfFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "createdObjects": {
-                "operationId": "GetCreatedObjectsFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "licenseDetails": {
-                "operationId": "GetLicenseDetailsFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "owners": {
-                "operationId": "GetOwnersFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "ownedObjects": {
-                "operationId": "GetOwnedObjectsFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "policies": {
-                "operationId": "GetPoliciesFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "synchronization": {
-                "operationId": "GetSynchronizationFromServicePrincipals",
+                "operationId": "servicePrincipals.servicePrincipal",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -8469,217 +8469,217 @@
             },
             "links": {
               "extensions": {
-                "operationId": "GetExtensionsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "ownedDevices": {
-                "operationId": "GetOwnedDevicesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "registeredDevices": {
-                "operationId": "GetRegisteredDevicesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "manager": {
-                "operationId": "GetManagerFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "directReports": {
-                "operationId": "GetDirectReportsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "memberOf": {
-                "operationId": "GetMemberOfFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "createdObjects": {
-                "operationId": "GetCreatedObjectsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "ownedObjects": {
-                "operationId": "GetOwnedObjectsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "scopedRoleMemberOf": {
-                "operationId": "GetScopedRoleMemberOfFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "licenseDetails": {
-                "operationId": "GetLicenseDetailsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "activities": {
-                "operationId": "GetActivitiesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "outlook": {
-                "operationId": "GetOutlookFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "messages": {
-                "operationId": "GetMessagesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "joinedGroups": {
-                "operationId": "GetJoinedGroupsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "mailFolders": {
-                "operationId": "GetMailFoldersFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "calendar": {
-                "operationId": "GetCalendarFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "calendars": {
-                "operationId": "GetCalendarsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "calendarGroups": {
-                "operationId": "GetCalendarGroupsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "calendarView": {
-                "operationId": "GetCalendarViewFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "events": {
-                "operationId": "GetEventsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "people": {
-                "operationId": "GetPeopleFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "contacts": {
-                "operationId": "GetContactsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "contactFolders": {
-                "operationId": "GetContactFoldersFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "inferenceClassification": {
-                "operationId": "GetInferenceClassificationFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "photo": {
-                "operationId": "GetPhotoFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "photos": {
-                "operationId": "GetPhotosFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "drive": {
-                "operationId": "GetDriveFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "drives": {
-                "operationId": "GetDrivesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "insights": {
-                "operationId": "GetInsightsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "planner": {
-                "operationId": "GetPlannerFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "onenote": {
-                "operationId": "GetOnenoteFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "managedDevices": {
-                "operationId": "GetManagedDevicesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "managedAppRegistrations": {
-                "operationId": "GetManagedAppRegistrationsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "devices": {
-                "operationId": "GetDevicesFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "joinedTeams": {
-                "operationId": "GetJoinedTeamsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "deviceManagementTroubleshootingEvents": {
-                "operationId": "GetDeviceManagementTroubleshootingEventsFromUsers",
+                "operationId": "users.user",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -9755,7 +9755,7 @@
             },
             "links": {
               "appliesTo": {
-                "operationId": "GetAppliesToFromPolicies",
+                "operationId": "policies.policy",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -10412,43 +10412,43 @@
             },
             "links": {
               "workbook": {
-                "operationId": "GetWorkbookFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "activities": {
-                "operationId": "GetActivitiesFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "children": {
-                "operationId": "GetChildrenFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "listItem": {
-                "operationId": "GetListItemFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "permissions": {
-                "operationId": "GetPermissionsFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "thumbnails": {
-                "operationId": "GetThumbnailsFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "versions": {
-                "operationId": "GetVersionsFromWorkbooks",
+                "operationId": "workbooks.driveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -11305,31 +11305,31 @@
             },
             "links": {
               "activities": {
-                "operationId": "GetActivitiesFromDrives",
+                "operationId": "drives.drive",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "items": {
-                "operationId": "GetItemsFromDrives",
+                "operationId": "drives.drive",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "list": {
-                "operationId": "GetListFromDrives",
+                "operationId": "drives.drive",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "root": {
-                "operationId": "GetRootFromDrives",
+                "operationId": "drives.drive",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "special": {
-                "operationId": "GetSpecialFromDrives",
+                "operationId": "drives.drive",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -11796,37 +11796,37 @@
             },
             "links": {
               "driveItem": {
-                "operationId": "GetDriveItemFromShares",
+                "operationId": "shares.sharedDriveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "items": {
-                "operationId": "GetItemsFromShares",
+                "operationId": "shares.sharedDriveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "list": {
-                "operationId": "GetListFromShares",
+                "operationId": "shares.sharedDriveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "listItem": {
-                "operationId": "GetListItemFromShares",
+                "operationId": "shares.sharedDriveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "root": {
-                "operationId": "GetRootFromShares",
+                "operationId": "shares.sharedDriveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "site": {
-                "operationId": "GetSiteFromShares",
+                "operationId": "shares.sharedDriveItem",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -12171,49 +12171,49 @@
             },
             "links": {
               "columns": {
-                "operationId": "GetColumnsFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "contentTypes": {
-                "operationId": "GetContentTypesFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "drive": {
-                "operationId": "GetDriveFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "drives": {
-                "operationId": "GetDrivesFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "items": {
-                "operationId": "GetItemsFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "lists": {
-                "operationId": "GetListsFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "sites": {
-                "operationId": "GetSitesFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "onenote": {
-                "operationId": "GetOnenoteFromSites",
+                "operationId": "sites.site",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -12790,7 +12790,7 @@
             },
             "links": {
               "impactedUser": {
-                "operationId": "GetImpactedUserFromIdentityRiskEvents",
+                "operationId": "identityRiskEvents.identityRiskEvent",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -14963,19 +14963,19 @@
             },
             "links": {
               "settings": {
-                "operationId": "GetSettingsFromPrivilegedRoles",
+                "operationId": "privilegedRoles.privilegedRole",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "assignments": {
-                "operationId": "GetAssignmentsFromPrivilegedRoles",
+                "operationId": "privilegedRoles.privilegedRole",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "summary": {
-                "operationId": "GetSummaryFromPrivilegedRoles",
+                "operationId": "privilegedRoles.privilegedRole",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -15355,7 +15355,7 @@
             },
             "links": {
               "roleInfo": {
-                "operationId": "GetRoleInfoFromPrivilegedRoleAssignments",
+                "operationId": "privilegedRoleAssignments.privilegedRoleAssignment",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -16478,7 +16478,7 @@
             },
             "links": {
               "roleInfo": {
-                "operationId": "GetRoleInfoFromPrivilegedApproval",
+                "operationId": "privilegedApproval.privilegedApproval",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -16817,7 +16817,7 @@
             },
             "links": {
               "invitedUser": {
-                "operationId": "GetInvitedUserFromInvitations",
+                "operationId": "invitations.invitation",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -18304,7 +18304,7 @@
             },
             "links": {
               "responsepayload": {
-                "operationId": "GetResponsepayloadFromCommands",
+                "operationId": "commands.command",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -18860,7 +18860,7 @@
             },
             "links": {
               "channels": {
-                "operationId": "GetChannelsFromTeam",
+                "operationId": "team.team",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -19143,7 +19143,7 @@
             },
             "links": {
               "chatThreads": {
-                "operationId": "GetChatThreadsFromChannels",
+                "operationId": "channels.channel",
                 "parameters": {
                   "id": "$request.path.id"
                 }
@@ -19420,13 +19420,13 @@
             },
             "links": {
               "chatMessages": {
-                "operationId": "GetChatMessagesFromChatThreads",
+                "operationId": "chatThreads.chatThread",
                 "parameters": {
                   "id": "$request.path.id"
                 }
               },
               "rootMessage": {
-                "operationId": "GetRootMessageFromChatThreads",
+                "operationId": "chatThreads.chatThread",
                 "parameters": {
                   "id": "$request.path.id"
                 }

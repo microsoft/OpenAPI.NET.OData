@@ -22,10 +22,15 @@ namespace Microsoft.OpenApi.OData.Edm
             NavigationProperty = navigationProperty ?? throw Error.ArgumentNull(nameof(navigationProperty));
         }
 
+        /// <summary>
+        /// Gets the navigation property.
+        /// </summary>
         public IEdmNavigationProperty NavigationProperty { get; }
 
+        /// <inheritdoc />
         public override IEdmEntityType EntityType => NavigationProperty.ToEntityType();
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return NavigationProperty.Name;

@@ -43,9 +43,19 @@ namespace Microsoft.OpenApi.OData
         public bool EnumPrefixFree { get; set; }
 
         /// <summary>
-        /// Gets/set a value indicating the navigation property depth.
+        /// Gets/set a value indicating whether to output the path for Edm operation.
         /// </summary>
-        public bool NavigationPropertyPathItem { get; set; }
+        public bool EnableOperationPath { get; set; } = true;
+
+        /// <summary>
+        /// Gets/set a value indicating whether to output the path for Edm operation import.
+        /// </summary>
+        public bool EnableOperationImportPath { get; set; } = true;
+
+        /// <summary>
+        /// Gets/set a value indicating whether to output the path for Edm navigation property.
+        /// </summary>
+        public bool EnableNavigationPropertyPath { get; set; }
 
         /// <summary>
         /// Gets/set a value indicating the navigation property depth.

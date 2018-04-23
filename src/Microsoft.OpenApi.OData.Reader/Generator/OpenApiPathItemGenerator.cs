@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 pathItems.Add(path.ToString(), context.CreatePathItem(path));
 
-                Console.Write(index + "/" + count + " ....");
+                Console.Write(index + "/"  + count + " ....");
                 Console.Write("\r\b");
             }
 
@@ -408,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Generator
             IEdmEntityType entityType = navigationSource.EntityType();
             foreach (var navProperty in entityType.DeclaredNavigationProperties())
             {
-                if (navProperty.ContainsTarget || context.Settings.NavigationPropertyPathItem)
+                if (navProperty.ContainsTarget || context.Settings.EnableNavigationPropertyPath)
                 {
                     string pathItemName = context.CreateNavigationPathItemName(navigationSource, navProperty);
                     OpenApiPathItem pathItem = context.CreatePathItem(navigationSource, navProperty);

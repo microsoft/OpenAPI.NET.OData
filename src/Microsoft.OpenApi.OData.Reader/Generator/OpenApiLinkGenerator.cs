@@ -8,6 +8,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -32,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (var np in entityType.DeclaredNavigationProperties())
             {
                 OpenApiLink link = new OpenApiLink();
-                link.OperationId = "Get" + Utils.UpperFirstChar(np.Name) + "From" + Utils.UpperFirstChar(entitySet.Name);
+                link.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
                 link.Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>();
                 foreach (var key in entityType.Key())
                 {

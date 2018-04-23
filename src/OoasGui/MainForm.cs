@@ -254,7 +254,7 @@ namespace OoasGui
 
         private void NavPathcheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Settings.NavigationPropertyPathItem = !Settings.NavigationPropertyPathItem;
+            Settings.EnableNavigationPropertyPath = !Settings.EnableNavigationPropertyPath;
             Convert();
         }
     }

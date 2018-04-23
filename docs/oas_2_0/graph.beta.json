@@ -57571,7 +57571,7 @@
   },
   "securityDefinitions": {
     "DelegatedWork": {
-      "type": "OAuth2",
+      "type": "oauth2",
       "flow": "implicit",
       "authorizationUrl": "https://graph.microsoft.com/",
       "scopes": {
@@ -57582,7 +57582,7 @@
       "description": "DelegatedWork"
     },
     "DelegatedPersonal": {
-      "type": "OAuth2",
+      "type": "oauth2",
       "flow": "implicit",
       "authorizationUrl": "https://graph.microsoft.com/",
       "scopes": {
@@ -57593,7 +57593,7 @@
       "description": "DelegatedPersonal"
     },
     "Application": {
-      "type": "OAuth2",
+      "type": "oauth2",
       "flow": "implicit",
       "authorizationUrl": "https://graph.microsoft.com/",
       "scopes": {
