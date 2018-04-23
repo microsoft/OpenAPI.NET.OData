@@ -1311,7 +1311,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (param.ExampleValues != null)
                 {
-                    parameter.Examples = new List<OpenApiExample>();
+                    parameter.Examples = new Dictionary<string, OpenApiExample>();
+                    int index = 1;
                     foreach (var example in param.ExampleValues)
                     {
                         OpenApiExample ex = new OpenApiExample
@@ -1330,7 +1331,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             ex.Value = new OpenApiString(inlineExample.InlineValue);
                         }
 
-                        parameter.Examples.Add(ex);
+                        parameter.Examples.Add("example-" + index++, ex);
                     }
                 }
 

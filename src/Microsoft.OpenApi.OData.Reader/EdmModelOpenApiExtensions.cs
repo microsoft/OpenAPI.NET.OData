@@ -4,13 +4,9 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.IO;
-using System.Xml;
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Exceptions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Annotations;
 using Microsoft.OpenApi.OData.Common;
