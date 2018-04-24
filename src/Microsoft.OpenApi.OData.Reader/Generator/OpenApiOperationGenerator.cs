@@ -56,7 +56,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 //operation.OperationId = "GetEntitiesFrom" + Utils.UpperFirstChar(entitySet.Name);
-                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                // operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                operation.OperationId = entitySet.Name + ".EntitySet-List" + Utils.UpperFirstChar(entitySet.EntityType().Name);
             }
 
             operation.Tags[0].Extensions.Add("x-ms-docs-toc-type", new OpenApiString("page"));
@@ -265,7 +266,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 // operation.OperationId = "AddEntityTo" + Utils.UpperFirstChar(entitySet.Name);
-                operation.OperationId = entitySet.Name +"." + entitySet.EntityType().Name;
+                // operation.OperationId = entitySet.Name +"." + entitySet.EntityType().Name;
+                operation.OperationId = entitySet.Name + ".EntitySet-Create" + Utils.UpperFirstChar(entitySet.EntityType().Name);
             }
 
             return operation;
@@ -315,7 +317,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 //operation.OperationId = "GetEntityFrom" + Utils.UpperFirstChar(entitySet.Name) + "ByKey";
-                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                // operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                operation.OperationId = entitySet.Name + ".Entity-Get" + Utils.UpperFirstChar(entitySet.EntityType().Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -407,7 +410,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 // operation.OperationId = "UpdateEntityIn" + Utils.UpperFirstChar(entitySet.Name);
-                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                // operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                operation.OperationId = entitySet.Name + ".Entity-Update" + Utils.UpperFirstChar(entitySet.EntityType().Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -480,7 +484,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 // operation.OperationId = "DeleteEntityFrom" + Utils.UpperFirstChar(entitySet.Name);
-                operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                // operation.OperationId = entitySet.Name + "." + entitySet.EntityType().Name;
+                operation.OperationId = entitySet.Name + ".Entity-Delete" + Utils.UpperFirstChar(entitySet.EntityType().Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(entitySet.EntityType());
@@ -536,8 +541,10 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 // operation.OperationId = "Get" + Utils.UpperFirstChar(singleton.Name);
-                operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
+                //operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
+                operation.OperationId = singleton.Name + ".Singleton-Get" + Utils.UpperFirstChar(singleton.EntityType().Name);
             }
+
             operation.Tags[0].Extensions.Add("x-ms-docs-toc-type", new OpenApiString("page"));
             context.AppendTag(operation.Tags[0]);
 
@@ -622,7 +629,8 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 //operation.OperationId = "Update" + Utils.UpperFirstChar(singleton.Name);
-                operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
+                //operation.OperationId = singleton.Name + "." + singleton.EntityType().Name;
+                operation.OperationId = singleton.Name + ".Singleton-Update" + Utils.UpperFirstChar(singleton.EntityType().Name);
             }
 
             operation.RequestBody = new OpenApiRequestBody
@@ -695,7 +703,7 @@ namespace Microsoft.OpenApi.OData.Generator
             if (context.Settings.OperationId)
             {
                 // operation.OperationId = "Get" + Utils.UpperFirstChar(property.Name) + "From" + Utils.UpperFirstChar(navigationSource.Name);
-
+                /*
                 if (context.Model.IsNavigationTypeOverload(navigationSource.EntityType(), property))
                 {
                     string key = navigationSource.Name + "." + declaringEntityType.Name;
@@ -704,6 +712,15 @@ namespace Microsoft.OpenApi.OData.Generator
                 else
                 {
                     operation.OperationId = navigationSource.Name + "." + declaringEntityType.Name;
+                }*/
+
+                if (property.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    operation.OperationId = navigationSource.Name + "." + property.Name + "-List" + Utils.UpperFirstChar(declaringEntityType.Name);
+                }
+                else
+                {
+                    operation.OperationId = navigationSource.Name + "." + property.Name + "-Get" + Utils.UpperFirstChar(declaringEntityType.Name);
                 }
             }
 
@@ -859,7 +876,7 @@ namespace Microsoft.OpenApi.OData.Generator
             context.AppendTag(operation.Tags[0]);
 
             if (context.Settings.OperationId)
-            {
+            {/*
                 //operation.OperationId = "Update" + Utils.UpperFirstChar(property.Name) + "In" + Utils.UpperFirstChar(navigationSource.Name);
                 if (context.Model.IsNavigationTypeOverload(navigationSource.EntityType(), property))
                 {
@@ -869,7 +886,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 else
                 {
                     operation.OperationId = navigationSource.Name + "." + declaringEntityType.Name;
-                }
+                }*/
+
+                operation.OperationId = navigationSource.Name + "." + property.Name + "-Update" + Utils.UpperFirstChar(declaringEntityType.Name);
             }
 
             operation.Parameters = context.CreateKeyParameters(navigationSource.EntityType());
@@ -1002,7 +1021,7 @@ namespace Microsoft.OpenApi.OData.Generator
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             if (context.Settings.OperationId)
-            {
+            {/*
                 //operation.OperationId = "Add" + Utils.UpperFirstChar(property.Name) + "To" + Utils.UpperFirstChar(navigationSource.Name);
                 if (context.Model.IsNavigationTypeOverload(navigationSource.EntityType(), property))
                 {
@@ -1013,6 +1032,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     operation.OperationId = navigationSource.Name + "." + declaringEntityType.Name;
                 }
+                */
+                operation.OperationId = navigationSource.Name + "." + property.Name + "-Create" + Utils.UpperFirstChar(declaringEntityType.Name);
             }
 
             return operation;

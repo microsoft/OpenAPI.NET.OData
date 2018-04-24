@@ -17,7 +17,7 @@
           "directoryObjects.directoryObject"
         ],
         "summary": "Get entities from directoryObjects",
-        "operationId": "directoryObjects.directoryObject",
+        "operationId": "directoryObjects.EntitySet-ListDirectoryObject",
         "produces": [
           "application/json"
         ],
@@ -80,7 +80,7 @@
           "directoryObjects.directoryObject"
         ],
         "summary": "Add new entity to directoryObjects",
-        "operationId": "directoryObjects.directoryObject",
+        "operationId": "directoryObjects.EntitySet-CreateDirectoryObject",
         "consumes": [
           "application/json"
         ],
@@ -117,7 +117,7 @@
           "directoryObjects.directoryObject"
         ],
         "summary": "Get entity from directoryObjects by key",
-        "operationId": "directoryObjects.directoryObject",
+        "operationId": "directoryObjects.Entity-GetDirectoryObject",
         "produces": [
           "application/json"
         ],
@@ -159,7 +159,7 @@
           "directoryObjects.directoryObject"
         ],
         "summary": "Update entity in directoryObjects",
-        "operationId": "directoryObjects.directoryObject",
+        "operationId": "directoryObjects.Entity-UpdateDirectoryObject",
         "consumes": [
           "application/json"
         ],
@@ -195,7 +195,7 @@
           "directoryObjects.directoryObject"
         ],
         "summary": "Delete entity from directoryObjects",
-        "operationId": "directoryObjects.directoryObject",
+        "operationId": "directoryObjects.Entity-DeleteDirectoryObject",
         "parameters": [
           {
             "in": "path",
@@ -846,7 +846,7 @@
           "devices.device"
         ],
         "summary": "Get entities from devices",
-        "operationId": "devices.device",
+        "operationId": "devices.EntitySet-ListDevice",
         "produces": [
           "application/json"
         ],
@@ -954,7 +954,7 @@
           "devices.device"
         ],
         "summary": "Add new entity to devices",
-        "operationId": "devices.device",
+        "operationId": "devices.EntitySet-CreateDevice",
         "consumes": [
           "application/json"
         ],
@@ -991,7 +991,7 @@
           "devices.device"
         ],
         "summary": "Get entity from devices by key",
-        "operationId": "devices.device",
+        "operationId": "devices.Entity-GetDevice",
         "produces": [
           "application/json"
         ],
@@ -1048,7 +1048,7 @@
           "devices.device"
         ],
         "summary": "Update entity in devices",
-        "operationId": "devices.device",
+        "operationId": "devices.Entity-UpdateDevice",
         "consumes": [
           "application/json"
         ],
@@ -1084,7 +1084,7 @@
           "devices.device"
         ],
         "summary": "Delete entity from devices",
-        "operationId": "devices.device",
+        "operationId": "devices.Entity-DeleteDevice",
         "parameters": [
           {
             "in": "path",
@@ -1116,7 +1116,7 @@
           "domains.domain"
         ],
         "summary": "Get entities from domains",
-        "operationId": "domains.domain",
+        "operationId": "domains.EntitySet-ListDomain",
         "produces": [
           "application/json"
         ],
@@ -1230,7 +1230,7 @@
           "domains.domain"
         ],
         "summary": "Add new entity to domains",
-        "operationId": "domains.domain",
+        "operationId": "domains.EntitySet-CreateDomain",
         "consumes": [
           "application/json"
         ],
@@ -1267,7 +1267,7 @@
           "domains.domain"
         ],
         "summary": "Get entity from domains by key",
-        "operationId": "domains.domain",
+        "operationId": "domains.Entity-GetDomain",
         "produces": [
           "application/json"
         ],
@@ -1333,7 +1333,7 @@
           "domains.domain"
         ],
         "summary": "Update entity in domains",
-        "operationId": "domains.domain",
+        "operationId": "domains.Entity-UpdateDomain",
         "consumes": [
           "application/json"
         ],
@@ -1369,7 +1369,7 @@
           "domains.domain"
         ],
         "summary": "Delete entity from domains",
-        "operationId": "domains.domain",
+        "operationId": "domains.Entity-DeleteDomain",
         "parameters": [
           {
             "in": "path",
@@ -1427,7 +1427,7 @@
           "domainDnsRecords.domainDnsRecord"
         ],
         "summary": "Get entities from domainDnsRecords",
-        "operationId": "domainDnsRecords.domainDnsRecord",
+        "operationId": "domainDnsRecords.EntitySet-ListDomainDnsRecord",
         "produces": [
           "application/json"
         ],
@@ -1526,7 +1526,7 @@
           "domainDnsRecords.domainDnsRecord"
         ],
         "summary": "Add new entity to domainDnsRecords",
-        "operationId": "domainDnsRecords.domainDnsRecord",
+        "operationId": "domainDnsRecords.EntitySet-CreateDomainDnsRecord",
         "consumes": [
           "application/json"
         ],
@@ -1563,7 +1563,7 @@
           "domainDnsRecords.domainDnsRecord"
         ],
         "summary": "Get entity from domainDnsRecords by key",
-        "operationId": "domainDnsRecords.domainDnsRecord",
+        "operationId": "domainDnsRecords.Entity-GetDomainDnsRecord",
         "produces": [
           "application/json"
         ],
@@ -1622,7 +1622,7 @@
           "domainDnsRecords.domainDnsRecord"
         ],
         "summary": "Update entity in domainDnsRecords",
-        "operationId": "domainDnsRecords.domainDnsRecord",
+        "operationId": "domainDnsRecords.Entity-UpdateDomainDnsRecord",
         "consumes": [
           "application/json"
         ],
@@ -1658,7 +1658,7 @@
           "domainDnsRecords.domainDnsRecord"
         ],
         "summary": "Delete entity from domainDnsRecords",
-        "operationId": "domainDnsRecords.domainDnsRecord",
+        "operationId": "domainDnsRecords.Entity-DeleteDomainDnsRecord",
         "parameters": [
           {
             "in": "path",
@@ -1690,7 +1690,7 @@
           "groups.group"
         ],
         "summary": "Get entities from groups",
-        "operationId": "groups.group",
+        "operationId": "groups.EntitySet-ListGroup",
         "produces": [
           "application/json"
         ],
@@ -1810,7 +1810,7 @@
           "groups.group"
         ],
         "summary": "Add new entity to groups",
-        "operationId": "groups.group",
+        "operationId": "groups.EntitySet-CreateGroup",
         "consumes": [
           "application/json"
         ],
@@ -1847,7 +1847,7 @@
           "groups.group"
         ],
         "summary": "Get entity from groups by key",
-        "operationId": "groups.group",
+        "operationId": "groups.Entity-GetGroup",
         "produces": [
           "application/json"
         ],
@@ -1908,7 +1908,7 @@
           "groups.group"
         ],
         "summary": "Update entity in groups",
-        "operationId": "groups.group",
+        "operationId": "groups.Entity-UpdateGroup",
         "consumes": [
           "application/json"
         ],
@@ -1944,7 +1944,7 @@
           "groups.group"
         ],
         "summary": "Delete entity from groups",
-        "operationId": "groups.group",
+        "operationId": "groups.Entity-DeleteGroup",
         "parameters": [
           {
             "in": "path",
@@ -2130,7 +2130,7 @@
           "directoryRoles.directoryRole"
         ],
         "summary": "Get entities from directoryRoles",
-        "operationId": "directoryRoles.directoryRole",
+        "operationId": "directoryRoles.EntitySet-ListDirectoryRole",
         "produces": [
           "application/json"
         ],
@@ -2199,7 +2199,7 @@
           "directoryRoles.directoryRole"
         ],
         "summary": "Add new entity to directoryRoles",
-        "operationId": "directoryRoles.directoryRole",
+        "operationId": "directoryRoles.EntitySet-CreateDirectoryRole",
         "consumes": [
           "application/json"
         ],
@@ -2236,7 +2236,7 @@
           "directoryRoles.directoryRole"
         ],
         "summary": "Get entity from directoryRoles by key",
-        "operationId": "directoryRoles.directoryRole",
+        "operationId": "directoryRoles.Entity-GetDirectoryRole",
         "produces": [
           "application/json"
         ],
@@ -2281,7 +2281,7 @@
           "directoryRoles.directoryRole"
         ],
         "summary": "Update entity in directoryRoles",
-        "operationId": "directoryRoles.directoryRole",
+        "operationId": "directoryRoles.Entity-UpdateDirectoryRole",
         "consumes": [
           "application/json"
         ],
@@ -2317,7 +2317,7 @@
           "directoryRoles.directoryRole"
         ],
         "summary": "Delete entity from directoryRoles",
-        "operationId": "directoryRoles.directoryRole",
+        "operationId": "directoryRoles.Entity-DeleteDirectoryRole",
         "parameters": [
           {
             "in": "path",
@@ -2349,7 +2349,7 @@
           "directoryRoleTemplates.directoryRoleTemplate"
         ],
         "summary": "Get entities from directoryRoleTemplates",
-        "operationId": "directoryRoleTemplates.directoryRoleTemplate",
+        "operationId": "directoryRoleTemplates.EntitySet-ListDirectoryRoleTemplate",
         "produces": [
           "application/json"
         ],
@@ -2415,7 +2415,7 @@
           "directoryRoleTemplates.directoryRoleTemplate"
         ],
         "summary": "Add new entity to directoryRoleTemplates",
-        "operationId": "directoryRoleTemplates.directoryRoleTemplate",
+        "operationId": "directoryRoleTemplates.EntitySet-CreateDirectoryRoleTemplate",
         "consumes": [
           "application/json"
         ],
@@ -2452,7 +2452,7 @@
           "directoryRoleTemplates.directoryRoleTemplate"
         ],
         "summary": "Get entity from directoryRoleTemplates by key",
-        "operationId": "directoryRoleTemplates.directoryRoleTemplate",
+        "operationId": "directoryRoleTemplates.Entity-GetDirectoryRoleTemplate",
         "produces": [
           "application/json"
         ],
@@ -2496,7 +2496,7 @@
           "directoryRoleTemplates.directoryRoleTemplate"
         ],
         "summary": "Update entity in directoryRoleTemplates",
-        "operationId": "directoryRoleTemplates.directoryRoleTemplate",
+        "operationId": "directoryRoleTemplates.Entity-UpdateDirectoryRoleTemplate",
         "consumes": [
           "application/json"
         ],
@@ -2532,7 +2532,7 @@
           "directoryRoleTemplates.directoryRoleTemplate"
         ],
         "summary": "Delete entity from directoryRoleTemplates",
-        "operationId": "directoryRoleTemplates.directoryRoleTemplate",
+        "operationId": "directoryRoleTemplates.Entity-DeleteDirectoryRoleTemplate",
         "parameters": [
           {
             "in": "path",
@@ -2564,7 +2564,7 @@
           "organization.organization"
         ],
         "summary": "Get entities from organization",
-        "operationId": "organization.organization",
+        "operationId": "organization.EntitySet-ListOrganization",
         "produces": [
           "application/json"
         ],
@@ -2681,7 +2681,7 @@
           "organization.organization"
         ],
         "summary": "Add new entity to organization",
-        "operationId": "organization.organization",
+        "operationId": "organization.EntitySet-CreateOrganization",
         "consumes": [
           "application/json"
         ],
@@ -2718,7 +2718,7 @@
           "organization.organization"
         ],
         "summary": "Get entity from organization by key",
-        "operationId": "organization.organization",
+        "operationId": "organization.Entity-GetOrganization",
         "produces": [
           "application/json"
         ],
@@ -2778,7 +2778,7 @@
           "organization.organization"
         ],
         "summary": "Update entity in organization",
-        "operationId": "organization.organization",
+        "operationId": "organization.Entity-UpdateOrganization",
         "consumes": [
           "application/json"
         ],
@@ -2814,7 +2814,7 @@
           "organization.organization"
         ],
         "summary": "Delete entity from organization",
-        "operationId": "organization.organization",
+        "operationId": "organization.Entity-DeleteOrganization",
         "parameters": [
           {
             "in": "path",
@@ -2846,7 +2846,7 @@
           "groupSettings.groupSetting"
         ],
         "summary": "Get entities from groupSettings",
-        "operationId": "groupSettings.groupSetting",
+        "operationId": "groupSettings.EntitySet-ListGroupSetting",
         "produces": [
           "application/json"
         ],
@@ -2939,7 +2939,7 @@
           "groupSettings.groupSetting"
         ],
         "summary": "Add new entity to groupSettings",
-        "operationId": "groupSettings.groupSetting",
+        "operationId": "groupSettings.EntitySet-CreateGroupSetting",
         "consumes": [
           "application/json"
         ],
@@ -2976,7 +2976,7 @@
           "groupSettings.groupSetting"
         ],
         "summary": "Get entity from groupSettings by key",
-        "operationId": "groupSettings.groupSetting",
+        "operationId": "groupSettings.Entity-GetGroupSetting",
         "produces": [
           "application/json"
         ],
@@ -3033,7 +3033,7 @@
           "groupSettings.groupSetting"
         ],
         "summary": "Update entity in groupSettings",
-        "operationId": "groupSettings.groupSetting",
+        "operationId": "groupSettings.Entity-UpdateGroupSetting",
         "consumes": [
           "application/json"
         ],
@@ -3069,7 +3069,7 @@
           "groupSettings.groupSetting"
         ],
         "summary": "Delete entity from groupSettings",
-        "operationId": "groupSettings.groupSetting",
+        "operationId": "groupSettings.Entity-DeleteGroupSetting",
         "parameters": [
           {
             "in": "path",
@@ -3101,7 +3101,7 @@
           "groupSettingTemplates.groupSettingTemplate"
         ],
         "summary": "Get entities from groupSettingTemplates",
-        "operationId": "groupSettingTemplates.groupSettingTemplate",
+        "operationId": "groupSettingTemplates.EntitySet-ListGroupSettingTemplate",
         "produces": [
           "application/json"
         ],
@@ -3173,7 +3173,7 @@
           "groupSettingTemplates.groupSettingTemplate"
         ],
         "summary": "Add new entity to groupSettingTemplates",
-        "operationId": "groupSettingTemplates.groupSettingTemplate",
+        "operationId": "groupSettingTemplates.EntitySet-CreateGroupSettingTemplate",
         "consumes": [
           "application/json"
         ],
@@ -3210,7 +3210,7 @@
           "groupSettingTemplates.groupSettingTemplate"
         ],
         "summary": "Get entity from groupSettingTemplates by key",
-        "operationId": "groupSettingTemplates.groupSettingTemplate",
+        "operationId": "groupSettingTemplates.Entity-GetGroupSettingTemplate",
         "produces": [
           "application/json"
         ],
@@ -3255,7 +3255,7 @@
           "groupSettingTemplates.groupSettingTemplate"
         ],
         "summary": "Update entity in groupSettingTemplates",
-        "operationId": "groupSettingTemplates.groupSettingTemplate",
+        "operationId": "groupSettingTemplates.Entity-UpdateGroupSettingTemplate",
         "consumes": [
           "application/json"
         ],
@@ -3291,7 +3291,7 @@
           "groupSettingTemplates.groupSettingTemplate"
         ],
         "summary": "Delete entity from groupSettingTemplates",
-        "operationId": "groupSettingTemplates.groupSettingTemplate",
+        "operationId": "groupSettingTemplates.Entity-DeleteGroupSettingTemplate",
         "parameters": [
           {
             "in": "path",
@@ -3323,7 +3323,7 @@
           "subscribedSkus.subscribedSku"
         ],
         "summary": "Get entities from subscribedSkus",
-        "operationId": "subscribedSkus.subscribedSku",
+        "operationId": "subscribedSkus.EntitySet-ListSubscribedSku",
         "produces": [
           "application/json"
         ],
@@ -3404,7 +3404,7 @@
           "subscribedSkus.subscribedSku"
         ],
         "summary": "Add new entity to subscribedSkus",
-        "operationId": "subscribedSkus.subscribedSku",
+        "operationId": "subscribedSkus.EntitySet-CreateSubscribedSku",
         "consumes": [
           "application/json"
         ],
@@ -3441,7 +3441,7 @@
           "subscribedSkus.subscribedSku"
         ],
         "summary": "Get entity from subscribedSkus by key",
-        "operationId": "subscribedSkus.subscribedSku",
+        "operationId": "subscribedSkus.Entity-GetSubscribedSku",
         "produces": [
           "application/json"
         ],
@@ -3490,7 +3490,7 @@
           "subscribedSkus.subscribedSku"
         ],
         "summary": "Update entity in subscribedSkus",
-        "operationId": "subscribedSkus.subscribedSku",
+        "operationId": "subscribedSkus.Entity-UpdateSubscribedSku",
         "consumes": [
           "application/json"
         ],
@@ -3526,7 +3526,7 @@
           "subscribedSkus.subscribedSku"
         ],
         "summary": "Delete entity from subscribedSkus",
-        "operationId": "subscribedSkus.subscribedSku",
+        "operationId": "subscribedSkus.Entity-DeleteSubscribedSku",
         "parameters": [
           {
             "in": "path",
@@ -3558,7 +3558,7 @@
           "users.user"
         ],
         "summary": "Get entities from users",
-        "operationId": "users.user",
+        "operationId": "users.EntitySet-ListUser",
         "produces": [
           "application/json"
         ],
@@ -3750,7 +3750,7 @@
           "users.user"
         ],
         "summary": "Add new entity to users",
-        "operationId": "users.user",
+        "operationId": "users.EntitySet-CreateUser",
         "consumes": [
           "application/json"
         ],
@@ -3787,7 +3787,7 @@
           "users.user"
         ],
         "summary": "Get entity from users by key",
-        "operationId": "users.user",
+        "operationId": "users.Entity-GetUser",
         "produces": [
           "application/json"
         ],
@@ -3872,7 +3872,7 @@
           "users.user"
         ],
         "summary": "Update entity in users",
-        "operationId": "users.user",
+        "operationId": "users.Entity-UpdateUser",
         "consumes": [
           "application/json"
         ],
@@ -3908,7 +3908,7 @@
           "users.user"
         ],
         "summary": "Delete entity from users",
-        "operationId": "users.user",
+        "operationId": "users.Entity-DeleteUser",
         "parameters": [
           {
             "in": "path",
@@ -4226,7 +4226,7 @@
           "contracts.contract"
         ],
         "summary": "Get entities from contracts",
-        "operationId": "contracts.contract",
+        "operationId": "contracts.EntitySet-ListContract",
         "produces": [
           "application/json"
         ],
@@ -4301,7 +4301,7 @@
           "contracts.contract"
         ],
         "summary": "Add new entity to contracts",
-        "operationId": "contracts.contract",
+        "operationId": "contracts.EntitySet-CreateContract",
         "consumes": [
           "application/json"
         ],
@@ -4338,7 +4338,7 @@
           "contracts.contract"
         ],
         "summary": "Get entity from contracts by key",
-        "operationId": "contracts.contract",
+        "operationId": "contracts.Entity-GetContract",
         "produces": [
           "application/json"
         ],
@@ -4384,7 +4384,7 @@
           "contracts.contract"
         ],
         "summary": "Update entity in contracts",
-        "operationId": "contracts.contract",
+        "operationId": "contracts.Entity-UpdateContract",
         "consumes": [
           "application/json"
         ],
@@ -4420,7 +4420,7 @@
           "contracts.contract"
         ],
         "summary": "Delete entity from contracts",
-        "operationId": "contracts.contract",
+        "operationId": "contracts.Entity-DeleteContract",
         "parameters": [
           {
             "in": "path",
@@ -4452,7 +4452,7 @@
           "schemaExtensions.schemaExtension"
         ],
         "summary": "Get entities from schemaExtensions",
-        "operationId": "schemaExtensions.schemaExtension",
+        "operationId": "schemaExtensions.EntitySet-ListSchemaExtension",
         "produces": [
           "application/json"
         ],
@@ -4551,7 +4551,7 @@
           "schemaExtensions.schemaExtension"
         ],
         "summary": "Add new entity to schemaExtensions",
-        "operationId": "schemaExtensions.schemaExtension",
+        "operationId": "schemaExtensions.EntitySet-CreateSchemaExtension",
         "consumes": [
           "application/json"
         ],
@@ -4588,7 +4588,7 @@
           "schemaExtensions.schemaExtension"
         ],
         "summary": "Get entity from schemaExtensions by key",
-        "operationId": "schemaExtensions.schemaExtension",
+        "operationId": "schemaExtensions.Entity-GetSchemaExtension",
         "produces": [
           "application/json"
         ],
@@ -4647,7 +4647,7 @@
           "schemaExtensions.schemaExtension"
         ],
         "summary": "Update entity in schemaExtensions",
-        "operationId": "schemaExtensions.schemaExtension",
+        "operationId": "schemaExtensions.Entity-UpdateSchemaExtension",
         "consumes": [
           "application/json"
         ],
@@ -4683,7 +4683,7 @@
           "schemaExtensions.schemaExtension"
         ],
         "summary": "Delete entity from schemaExtensions",
-        "operationId": "schemaExtensions.schemaExtension",
+        "operationId": "schemaExtensions.Entity-DeleteSchemaExtension",
         "parameters": [
           {
             "in": "path",
@@ -4715,7 +4715,7 @@
           "drives.drive"
         ],
         "summary": "Get entities from drives",
-        "operationId": "drives.drive",
+        "operationId": "drives.EntitySet-ListDrive",
         "produces": [
           "application/json"
         ],
@@ -4847,7 +4847,7 @@
           "drives.drive"
         ],
         "summary": "Add new entity to drives",
-        "operationId": "drives.drive",
+        "operationId": "drives.EntitySet-CreateDrive",
         "consumes": [
           "application/json"
         ],
@@ -4884,7 +4884,7 @@
           "drives.drive"
         ],
         "summary": "Get entity from drives by key",
-        "operationId": "drives.drive",
+        "operationId": "drives.Entity-GetDrive",
         "produces": [
           "application/json"
         ],
@@ -4958,7 +4958,7 @@
           "drives.drive"
         ],
         "summary": "Update entity in drives",
-        "operationId": "drives.drive",
+        "operationId": "drives.Entity-UpdateDrive",
         "consumes": [
           "application/json"
         ],
@@ -4994,7 +4994,7 @@
           "drives.drive"
         ],
         "summary": "Delete entity from drives",
-        "operationId": "drives.drive",
+        "operationId": "drives.Entity-DeleteDrive",
         "parameters": [
           {
             "in": "path",
@@ -5131,7 +5131,7 @@
           "shares.sharedDriveItem"
         ],
         "summary": "Get entities from shares",
-        "operationId": "shares.sharedDriveItem",
+        "operationId": "shares.EntitySet-ListSharedDriveItem",
         "produces": [
           "application/json"
         ],
@@ -5253,7 +5253,7 @@
           "shares.sharedDriveItem"
         ],
         "summary": "Add new entity to shares",
-        "operationId": "shares.sharedDriveItem",
+        "operationId": "shares.EntitySet-CreateSharedDriveItem",
         "consumes": [
           "application/json"
         ],
@@ -5290,7 +5290,7 @@
           "shares.sharedDriveItem"
         ],
         "summary": "Get entity from shares by key",
-        "operationId": "shares.sharedDriveItem",
+        "operationId": "shares.Entity-GetSharedDriveItem",
         "produces": [
           "application/json"
         ],
@@ -5362,7 +5362,7 @@
           "shares.sharedDriveItem"
         ],
         "summary": "Update entity in shares",
-        "operationId": "shares.sharedDriveItem",
+        "operationId": "shares.Entity-UpdateSharedDriveItem",
         "consumes": [
           "application/json"
         ],
@@ -5398,7 +5398,7 @@
           "shares.sharedDriveItem"
         ],
         "summary": "Delete entity from shares",
-        "operationId": "shares.sharedDriveItem",
+        "operationId": "shares.Entity-DeleteSharedDriveItem",
         "parameters": [
           {
             "in": "path",
@@ -5430,7 +5430,7 @@
           "sites.site"
         ],
         "summary": "Get entities from sites",
-        "operationId": "sites.site",
+        "operationId": "sites.EntitySet-ListSite",
         "produces": [
           "application/json"
         ],
@@ -5563,7 +5563,7 @@
           "sites.site"
         ],
         "summary": "Add new entity to sites",
-        "operationId": "sites.site",
+        "operationId": "sites.EntitySet-CreateSite",
         "consumes": [
           "application/json"
         ],
@@ -5600,7 +5600,7 @@
           "sites.site"
         ],
         "summary": "Get entity from sites by key",
-        "operationId": "sites.site",
+        "operationId": "sites.Entity-GetSite",
         "produces": [
           "application/json"
         ],
@@ -5677,7 +5677,7 @@
           "sites.site"
         ],
         "summary": "Update entity in sites",
-        "operationId": "sites.site",
+        "operationId": "sites.Entity-UpdateSite",
         "consumes": [
           "application/json"
         ],
@@ -5713,7 +5713,7 @@
           "sites.site"
         ],
         "summary": "Delete entity from sites",
-        "operationId": "sites.site",
+        "operationId": "sites.Entity-DeleteSite",
         "parameters": [
           {
             "in": "path",
@@ -5781,7 +5781,7 @@
           "workbooks.driveItem"
         ],
         "summary": "Get entities from workbooks",
-        "operationId": "workbooks.driveItem",
+        "operationId": "workbooks.EntitySet-ListDriveItem",
         "produces": [
           "application/json"
         ],
@@ -5959,7 +5959,7 @@
           "workbooks.driveItem"
         ],
         "summary": "Add new entity to workbooks",
-        "operationId": "workbooks.driveItem",
+        "operationId": "workbooks.EntitySet-CreateDriveItem",
         "consumes": [
           "application/json"
         ],
@@ -5996,7 +5996,7 @@
           "workbooks.driveItem"
         ],
         "summary": "Get entity from workbooks by key",
-        "operationId": "workbooks.driveItem",
+        "operationId": "workbooks.Entity-GetDriveItem",
         "produces": [
           "application/json"
         ],
@@ -6086,7 +6086,7 @@
           "workbooks.driveItem"
         ],
         "summary": "Update entity in workbooks",
-        "operationId": "workbooks.driveItem",
+        "operationId": "workbooks.Entity-UpdateDriveItem",
         "consumes": [
           "application/json"
         ],
@@ -6122,7 +6122,7 @@
           "workbooks.driveItem"
         ],
         "summary": "Delete entity from workbooks",
-        "operationId": "workbooks.driveItem",
+        "operationId": "workbooks.Entity-DeleteDriveItem",
         "parameters": [
           {
             "in": "path",
@@ -6459,7 +6459,7 @@
           "subscriptions.subscription"
         ],
         "summary": "Get entities from subscriptions",
-        "operationId": "subscriptions.subscription",
+        "operationId": "subscriptions.EntitySet-ListSubscription",
         "produces": [
           "application/json"
         ],
@@ -6511,7 +6511,7 @@
           "subscriptions.subscription"
         ],
         "summary": "Add new entity to subscriptions",
-        "operationId": "subscriptions.subscription",
+        "operationId": "subscriptions.EntitySet-CreateSubscription",
         "consumes": [
           "application/json"
         ],
@@ -6548,7 +6548,7 @@
           "subscriptions.subscription"
         ],
         "summary": "Get entity from subscriptions by key",
-        "operationId": "subscriptions.subscription",
+        "operationId": "subscriptions.Entity-GetSubscription",
         "produces": [
           "application/json"
         ],
@@ -6595,7 +6595,7 @@
           "subscriptions.subscription"
         ],
         "summary": "Update entity in subscriptions",
-        "operationId": "subscriptions.subscription",
+        "operationId": "subscriptions.Entity-UpdateSubscription",
         "consumes": [
           "application/json"
         ],
@@ -6631,7 +6631,7 @@
           "subscriptions.subscription"
         ],
         "summary": "Delete entity from subscriptions",
-        "operationId": "subscriptions.subscription",
+        "operationId": "subscriptions.Entity-DeleteSubscription",
         "parameters": [
           {
             "in": "path",
@@ -6663,7 +6663,7 @@
           "invitations.invitation"
         ],
         "summary": "Get entities from invitations",
-        "operationId": "invitations.invitation",
+        "operationId": "invitations.EntitySet-ListInvitation",
         "produces": [
           "application/json"
         ],
@@ -6772,7 +6772,7 @@
           "invitations.invitation"
         ],
         "summary": "Add new entity to invitations",
-        "operationId": "invitations.invitation",
+        "operationId": "invitations.EntitySet-CreateInvitation",
         "consumes": [
           "application/json"
         ],
@@ -6809,7 +6809,7 @@
           "invitations.invitation"
         ],
         "summary": "Get entity from invitations by key",
-        "operationId": "invitations.invitation",
+        "operationId": "invitations.Entity-GetInvitation",
         "produces": [
           "application/json"
         ],
@@ -6872,7 +6872,7 @@
           "invitations.invitation"
         ],
         "summary": "Update entity in invitations",
-        "operationId": "invitations.invitation",
+        "operationId": "invitations.Entity-UpdateInvitation",
         "consumes": [
           "application/json"
         ],
@@ -6908,7 +6908,7 @@
           "invitations.invitation"
         ],
         "summary": "Delete entity from invitations",
-        "operationId": "invitations.invitation",
+        "operationId": "invitations.Entity-DeleteInvitation",
         "parameters": [
           {
             "in": "path",
@@ -6940,7 +6940,7 @@
           "me.user"
         ],
         "summary": "Get me",
-        "operationId": "me.user",
+        "operationId": "me.Singleton-GetUser",
         "produces": [
           "application/json"
         ],
@@ -7018,7 +7018,7 @@
           "me.user"
         ],
         "summary": "Update me",
-        "operationId": "me.user",
+        "operationId": "me.Singleton-UpdateUser",
         "consumes": [
           "application/json"
         ],
@@ -7276,7 +7276,7 @@
           "drive.drive"
         ],
         "summary": "Get drive",
-        "operationId": "drive.drive",
+        "operationId": "drive.Singleton-GetDrive",
         "produces": [
           "application/json"
         ],
@@ -7343,7 +7343,7 @@
           "drive.drive"
         ],
         "summary": "Update drive",
-        "operationId": "drive.drive",
+        "operationId": "drive.Singleton-UpdateDrive",
         "consumes": [
           "application/json"
         ],
@@ -7454,7 +7454,7 @@
           "planner.planner"
         ],
         "summary": "Get planner",
-        "operationId": "planner.planner",
+        "operationId": "planner.Singleton-GetPlanner",
         "produces": [
           "application/json"
         ],
@@ -7504,7 +7504,7 @@
           "planner.planner"
         ],
         "summary": "Update planner",
-        "operationId": "planner.planner",
+        "operationId": "planner.Singleton-UpdatePlanner",
         "consumes": [
           "application/json"
         ],
@@ -7535,7 +7535,7 @@
           "reports.reportRoot"
         ],
         "summary": "Get reports",
-        "operationId": "reports.reportRoot",
+        "operationId": "reports.Singleton-GetReportRoot",
         "produces": [
           "application/json"
         ],
@@ -7582,7 +7582,7 @@
           "reports.reportRoot"
         ],
         "summary": "Update reports",
-        "operationId": "reports.reportRoot",
+        "operationId": "reports.Singleton-UpdateReportRoot",
         "consumes": [
           "application/json"
         ],

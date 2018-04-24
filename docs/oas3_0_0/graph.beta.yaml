@@ -11,7 +11,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Get entities from schemaExtensions
-      operationId: schemaExtensions.schemaExtension
+      operationId: schemaExtensions.EntitySet-ListSchemaExtension
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -83,7 +83,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Add new entity to schemaExtensions
-      operationId: schemaExtensions.schemaExtension
+      operationId: schemaExtensions.EntitySet-CreateSchemaExtension
       requestBody:
         description: New entity
         content:
@@ -105,7 +105,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Get entity from schemaExtensions by key
-      operationId: schemaExtensions.schemaExtension
+      operationId: schemaExtensions.Entity-GetSchemaExtension
       parameters:
         - name: id
           in: path
@@ -151,7 +151,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Update entity in schemaExtensions
-      operationId: schemaExtensions.schemaExtension
+      operationId: schemaExtensions.Entity-UpdateSchemaExtension
       parameters:
         - name: id
           in: path
@@ -175,7 +175,7 @@ paths:
       tags:
         - schemaExtensions.schemaExtension
       summary: Delete entity from schemaExtensions
-      operationId: schemaExtensions.schemaExtension
+      operationId: schemaExtensions.Entity-DeleteSchemaExtension
       parameters:
         - name: id
           in: path
@@ -198,7 +198,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Get entities from directoryObjects
-      operationId: directoryObjects.directoryObject
+      operationId: directoryObjects.EntitySet-ListDirectoryObject
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -245,7 +245,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Add new entity to directoryObjects
-      operationId: directoryObjects.directoryObject
+      operationId: directoryObjects.EntitySet-CreateDirectoryObject
       requestBody:
         description: New entity
         content:
@@ -267,7 +267,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Get entity from directoryObjects by key
-      operationId: directoryObjects.directoryObject
+      operationId: directoryObjects.Entity-GetDirectoryObject
       parameters:
         - name: id
           in: path
@@ -299,7 +299,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Update entity in directoryObjects
-      operationId: directoryObjects.directoryObject
+      operationId: directoryObjects.Entity-UpdateDirectoryObject
       parameters:
         - name: id
           in: path
@@ -323,7 +323,7 @@ paths:
       tags:
         - directoryObjects.directoryObject
       summary: Delete entity from directoryObjects
-      operationId: directoryObjects.directoryObject
+      operationId: directoryObjects.Entity-DeleteDirectoryObject
       parameters:
         - name: id
           in: path
@@ -1318,7 +1318,7 @@ paths:
       tags:
         - applications.application
       summary: Get entities from applications
-      operationId: applications.application
+      operationId: applications.EntitySet-ListApplication
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -1413,7 +1413,7 @@ paths:
       tags:
         - applications.application
       summary: Add new entity to applications
-      operationId: applications.application
+      operationId: applications.EntitySet-CreateApplication
       requestBody:
         description: New entity
         content:
@@ -1435,7 +1435,7 @@ paths:
       tags:
         - applications.application
       summary: Get entity from applications by key
-      operationId: applications.application
+      operationId: applications.Entity-GetApplication
       parameters:
         - name: id
           in: path
@@ -1479,23 +1479,23 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.application'
           links:
             extensionProperties:
-              operationId: applications.application
+              operationId: applications.Entity-GetApplication
               parameters:
                 id: $request.path.id
             createdOnBehalfOf:
-              operationId: applications.application
+              operationId: applications.Entity-GetApplication
               parameters:
                 id: $request.path.id
             owners:
-              operationId: applications.application
+              operationId: applications.Entity-GetApplication
               parameters:
                 id: $request.path.id
             policies:
-              operationId: applications.application
+              operationId: applications.Entity-GetApplication
               parameters:
                 id: $request.path.id
             synchronization:
-              operationId: applications.application
+              operationId: applications.Entity-GetApplication
               parameters:
                 id: $request.path.id
         default:
@@ -1504,7 +1504,7 @@ paths:
       tags:
         - applications.application
       summary: Update entity in applications
-      operationId: applications.application
+      operationId: applications.Entity-UpdateApplication
       parameters:
         - name: id
           in: path
@@ -1528,7 +1528,7 @@ paths:
       tags:
         - applications.application
       summary: Delete entity from applications
-      operationId: applications.application
+      operationId: applications.Entity-DeleteApplication
       parameters:
         - name: id
           in: path
@@ -1551,7 +1551,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Get entities from administrativeUnits
-      operationId: administrativeUnits.administrativeUnit
+      operationId: administrativeUnits.EntitySet-ListAdministrativeUnit
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -1607,7 +1607,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Add new entity to administrativeUnits
-      operationId: administrativeUnits.administrativeUnit
+      operationId: administrativeUnits.EntitySet-CreateAdministrativeUnit
       requestBody:
         description: New entity
         content:
@@ -1629,7 +1629,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Get entity from administrativeUnits by key
-      operationId: administrativeUnits.administrativeUnit
+      operationId: administrativeUnits.Entity-GetAdministrativeUnit
       parameters:
         - name: id
           in: path
@@ -1660,15 +1660,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.administrativeUnit'
           links:
             extensions:
-              operationId: administrativeUnits.administrativeUnit
+              operationId: administrativeUnits.Entity-GetAdministrativeUnit
               parameters:
                 id: $request.path.id
             members:
-              operationId: administrativeUnits.administrativeUnit
+              operationId: administrativeUnits.Entity-GetAdministrativeUnit
               parameters:
                 id: $request.path.id
             scopedRoleMembers:
-              operationId: administrativeUnits.administrativeUnit
+              operationId: administrativeUnits.Entity-GetAdministrativeUnit
               parameters:
                 id: $request.path.id
         default:
@@ -1677,7 +1677,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Update entity in administrativeUnits
-      operationId: administrativeUnits.administrativeUnit
+      operationId: administrativeUnits.Entity-UpdateAdministrativeUnit
       parameters:
         - name: id
           in: path
@@ -1701,7 +1701,7 @@ paths:
       tags:
         - administrativeUnits.administrativeUnit
       summary: Delete entity from administrativeUnits
-      operationId: administrativeUnits.administrativeUnit
+      operationId: administrativeUnits.Entity-DeleteAdministrativeUnit
       parameters:
         - name: id
           in: path
@@ -1743,7 +1743,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Get entities from allowedDataLocations
-      operationId: allowedDataLocations.allowedDataLocation
+      operationId: allowedDataLocations.EntitySet-ListAllowedDataLocation
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -1812,7 +1812,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Add new entity to allowedDataLocations
-      operationId: allowedDataLocations.allowedDataLocation
+      operationId: allowedDataLocations.EntitySet-CreateAllowedDataLocation
       requestBody:
         description: New entity
         content:
@@ -1834,7 +1834,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Get entity from allowedDataLocations by key
-      operationId: allowedDataLocations.allowedDataLocation
+      operationId: allowedDataLocations.Entity-GetAllowedDataLocation
       parameters:
         - name: id
           in: path
@@ -1879,7 +1879,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Update entity in allowedDataLocations
-      operationId: allowedDataLocations.allowedDataLocation
+      operationId: allowedDataLocations.Entity-UpdateAllowedDataLocation
       parameters:
         - name: id
           in: path
@@ -1903,7 +1903,7 @@ paths:
       tags:
         - allowedDataLocations.allowedDataLocation
       summary: Delete entity from allowedDataLocations
-      operationId: allowedDataLocations.allowedDataLocation
+      operationId: allowedDataLocations.Entity-DeleteAllowedDataLocation
       parameters:
         - name: id
           in: path
@@ -1926,7 +1926,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Get entities from appRoleAssignments
-      operationId: appRoleAssignments.appRoleAssignment
+      operationId: appRoleAssignments.EntitySet-ListAppRoleAssignment
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -2001,7 +2001,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Add new entity to appRoleAssignments
-      operationId: appRoleAssignments.appRoleAssignment
+      operationId: appRoleAssignments.EntitySet-CreateAppRoleAssignment
       requestBody:
         description: New entity
         content:
@@ -2023,7 +2023,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Get entity from appRoleAssignments by key
-      operationId: appRoleAssignments.appRoleAssignment
+      operationId: appRoleAssignments.Entity-GetAppRoleAssignment
       parameters:
         - name: id
           in: path
@@ -2070,7 +2070,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Update entity in appRoleAssignments
-      operationId: appRoleAssignments.appRoleAssignment
+      operationId: appRoleAssignments.Entity-UpdateAppRoleAssignment
       parameters:
         - name: id
           in: path
@@ -2094,7 +2094,7 @@ paths:
       tags:
         - appRoleAssignments.appRoleAssignment
       summary: Delete entity from appRoleAssignments
-      operationId: appRoleAssignments.appRoleAssignment
+      operationId: appRoleAssignments.Entity-DeleteAppRoleAssignment
       parameters:
         - name: id
           in: path
@@ -2117,7 +2117,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Get entities from contacts
-      operationId: contacts.orgContact
+      operationId: contacts.EntitySet-ListOrgContact
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -2224,7 +2224,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Add new entity to contacts
-      operationId: contacts.orgContact
+      operationId: contacts.EntitySet-CreateOrgContact
       requestBody:
         description: New entity
         content:
@@ -2246,7 +2246,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Get entity from contacts by key
-      operationId: contacts.orgContact
+      operationId: contacts.Entity-GetOrgContact
       parameters:
         - name: id
           in: path
@@ -2294,15 +2294,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.orgContact'
           links:
             manager:
-              operationId: contacts.orgContact
+              operationId: contacts.Entity-GetOrgContact
               parameters:
                 id: $request.path.id
             directReports:
-              operationId: contacts.orgContact
+              operationId: contacts.Entity-GetOrgContact
               parameters:
                 id: $request.path.id
             memberOf:
-              operationId: contacts.orgContact
+              operationId: contacts.Entity-GetOrgContact
               parameters:
                 id: $request.path.id
         default:
@@ -2311,7 +2311,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Update entity in contacts
-      operationId: contacts.orgContact
+      operationId: contacts.Entity-UpdateOrgContact
       parameters:
         - name: id
           in: path
@@ -2335,7 +2335,7 @@ paths:
       tags:
         - contacts.orgContact
       summary: Delete entity from contacts
-      operationId: contacts.orgContact
+      operationId: contacts.Entity-DeleteOrgContact
       parameters:
         - name: id
           in: path
@@ -2377,7 +2377,7 @@ paths:
       tags:
         - devices.device
       summary: Get entities from devices
-      operationId: devices.device
+      operationId: devices.EntitySet-ListDevice
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -2487,7 +2487,7 @@ paths:
       tags:
         - devices.device
       summary: Add new entity to devices
-      operationId: devices.device
+      operationId: devices.EntitySet-CreateDevice
       requestBody:
         description: New entity
         content:
@@ -2509,7 +2509,7 @@ paths:
       tags:
         - devices.device
       summary: Get entity from devices by key
-      operationId: devices.device
+      operationId: devices.Entity-GetDevice
       parameters:
         - name: id
           in: path
@@ -2558,19 +2558,19 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.device'
           links:
             extensions:
-              operationId: devices.device
+              operationId: devices.Entity-GetDevice
               parameters:
                 id: $request.path.id
             registeredOwners:
-              operationId: devices.device
+              operationId: devices.Entity-GetDevice
               parameters:
                 id: $request.path.id
             registeredUsers:
-              operationId: devices.device
+              operationId: devices.Entity-GetDevice
               parameters:
                 id: $request.path.id
             commands:
-              operationId: devices.device
+              operationId: devices.Entity-GetDevice
               parameters:
                 id: $request.path.id
         default:
@@ -2579,7 +2579,7 @@ paths:
       tags:
         - devices.device
       summary: Update entity in devices
-      operationId: devices.device
+      operationId: devices.Entity-UpdateDevice
       parameters:
         - name: id
           in: path
@@ -2603,7 +2603,7 @@ paths:
       tags:
         - devices.device
       summary: Delete entity from devices
-      operationId: devices.device
+      operationId: devices.Entity-DeleteDevice
       parameters:
         - name: id
           in: path
@@ -2626,7 +2626,7 @@ paths:
       tags:
         - domains.domain
       summary: Get entities from domains
-      operationId: domains.domain
+      operationId: domains.EntitySet-ListDomain
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -2713,7 +2713,7 @@ paths:
       tags:
         - domains.domain
       summary: Add new entity to domains
-      operationId: domains.domain
+      operationId: domains.EntitySet-CreateDomain
       requestBody:
         description: New entity
         content:
@@ -2735,7 +2735,7 @@ paths:
       tags:
         - domains.domain
       summary: Get entity from domains by key
-      operationId: domains.domain
+      operationId: domains.Entity-GetDomain
       parameters:
         - name: id
           in: path
@@ -2784,15 +2784,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.domain'
           links:
             serviceConfigurationRecords:
-              operationId: domains.domain
+              operationId: domains.Entity-GetDomain
               parameters:
                 id: $request.path.id
             verificationDnsRecords:
-              operationId: domains.domain
+              operationId: domains.Entity-GetDomain
               parameters:
                 id: $request.path.id
             domainNameReferences:
-              operationId: domains.domain
+              operationId: domains.Entity-GetDomain
               parameters:
                 id: $request.path.id
         default:
@@ -2801,7 +2801,7 @@ paths:
       tags:
         - domains.domain
       summary: Update entity in domains
-      operationId: domains.domain
+      operationId: domains.Entity-UpdateDomain
       parameters:
         - name: id
           in: path
@@ -2825,7 +2825,7 @@ paths:
       tags:
         - domains.domain
       summary: Delete entity from domains
-      operationId: domains.domain
+      operationId: domains.Entity-DeleteDomain
       parameters:
         - name: id
           in: path
@@ -2896,7 +2896,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Get entities from domainDnsRecords
-      operationId: domainDnsRecords.domainDnsRecord
+      operationId: domainDnsRecords.EntitySet-ListDomainDnsRecord
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -2968,7 +2968,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Add new entity to domainDnsRecords
-      operationId: domainDnsRecords.domainDnsRecord
+      operationId: domainDnsRecords.EntitySet-CreateDomainDnsRecord
       requestBody:
         description: New entity
         content:
@@ -2990,7 +2990,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Get entity from domainDnsRecords by key
-      operationId: domainDnsRecords.domainDnsRecord
+      operationId: domainDnsRecords.Entity-GetDomainDnsRecord
       parameters:
         - name: id
           in: path
@@ -3036,7 +3036,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Update entity in domainDnsRecords
-      operationId: domainDnsRecords.domainDnsRecord
+      operationId: domainDnsRecords.Entity-UpdateDomainDnsRecord
       parameters:
         - name: id
           in: path
@@ -3060,7 +3060,7 @@ paths:
       tags:
         - domainDnsRecords.domainDnsRecord
       summary: Delete entity from domainDnsRecords
-      operationId: domainDnsRecords.domainDnsRecord
+      operationId: domainDnsRecords.Entity-DeleteDomainDnsRecord
       parameters:
         - name: id
           in: path
@@ -3083,7 +3083,7 @@ paths:
       tags:
         - groups.group
       summary: Get entities from groups
-      operationId: groups.group
+      operationId: groups.EntitySet-ListGroup
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -3220,7 +3220,7 @@ paths:
       tags:
         - groups.group
       summary: Add new entity to groups
-      operationId: groups.group
+      operationId: groups.EntitySet-CreateGroup
       requestBody:
         description: New entity
         content:
@@ -3242,7 +3242,7 @@ paths:
       tags:
         - groups.group
       summary: Get entity from groups by key
-      operationId: groups.group
+      operationId: groups.Entity-GetGroup
       parameters:
         - name: id
           in: path
@@ -3300,99 +3300,99 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.group'
           links:
             extensions:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             members:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             memberOf:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             createdOnBehalfOf:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             owners:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             settings:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             endpoints:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             threads:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             calendar:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             calendarView:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             events:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             conversations:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             photo:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             photos:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             acceptedSenders:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             rejectedSenders:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             drive:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             drives:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             sites:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             planner:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             onenote:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             team:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             channels:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
             groupLifecyclePolicies:
-              operationId: groups.group
+              operationId: groups.Entity-GetGroup
               parameters:
                 id: $request.path.id
         default:
@@ -3401,7 +3401,7 @@ paths:
       tags:
         - groups.group
       summary: Update entity in groups
-      operationId: groups.group
+      operationId: groups.Entity-UpdateGroup
       parameters:
         - name: id
           in: path
@@ -3425,7 +3425,7 @@ paths:
       tags:
         - groups.group
       summary: Delete entity from groups
-      operationId: groups.group
+      operationId: groups.Entity-DeleteGroup
       parameters:
         - name: id
           in: path
@@ -3612,7 +3612,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Get entities from directoryRoles
-      operationId: directoryRoles.directoryRole
+      operationId: directoryRoles.EntitySet-ListDirectoryRole
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $orderby
@@ -3667,7 +3667,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Add new entity to directoryRoles
-      operationId: directoryRoles.directoryRole
+      operationId: directoryRoles.EntitySet-CreateDirectoryRole
       requestBody:
         description: New entity
         content:
@@ -3689,7 +3689,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Get entity from directoryRoles by key
-      operationId: directoryRoles.directoryRole
+      operationId: directoryRoles.Entity-GetDirectoryRole
       parameters:
         - name: id
           in: path
@@ -3720,11 +3720,11 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.directoryRole'
           links:
             members:
-              operationId: directoryRoles.directoryRole
+              operationId: directoryRoles.Entity-GetDirectoryRole
               parameters:
                 id: $request.path.id
             scopedMembers:
-              operationId: directoryRoles.directoryRole
+              operationId: directoryRoles.Entity-GetDirectoryRole
               parameters:
                 id: $request.path.id
         default:
@@ -3733,7 +3733,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Update entity in directoryRoles
-      operationId: directoryRoles.directoryRole
+      operationId: directoryRoles.Entity-UpdateDirectoryRole
       parameters:
         - name: id
           in: path
@@ -3757,7 +3757,7 @@ paths:
       tags:
         - directoryRoles.directoryRole
       summary: Delete entity from directoryRoles
-      operationId: directoryRoles.directoryRole
+      operationId: directoryRoles.Entity-DeleteDirectoryRole
       parameters:
         - name: id
           in: path
@@ -3780,7 +3780,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Get entities from directoryRoleTemplates
-      operationId: directoryRoleTemplates.directoryRoleTemplate
+      operationId: directoryRoleTemplates.EntitySet-ListDirectoryRoleTemplate
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $orderby
@@ -3832,7 +3832,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Add new entity to directoryRoleTemplates
-      operationId: directoryRoleTemplates.directoryRoleTemplate
+      operationId: directoryRoleTemplates.EntitySet-CreateDirectoryRoleTemplate
       requestBody:
         description: New entity
         content:
@@ -3854,7 +3854,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Get entity from directoryRoleTemplates by key
-      operationId: directoryRoleTemplates.directoryRoleTemplate
+      operationId: directoryRoleTemplates.Entity-GetDirectoryRoleTemplate
       parameters:
         - name: id
           in: path
@@ -3888,7 +3888,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Update entity in directoryRoleTemplates
-      operationId: directoryRoleTemplates.directoryRoleTemplate
+      operationId: directoryRoleTemplates.Entity-UpdateDirectoryRoleTemplate
       parameters:
         - name: id
           in: path
@@ -3912,7 +3912,7 @@ paths:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
       summary: Delete entity from directoryRoleTemplates
-      operationId: directoryRoleTemplates.directoryRoleTemplate
+      operationId: directoryRoleTemplates.Entity-DeleteDirectoryRoleTemplate
       parameters:
         - name: id
           in: path
@@ -3935,7 +3935,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Get entities from directorySettingTemplates
-      operationId: directorySettingTemplates.directorySettingTemplate
+      operationId: directorySettingTemplates.EntitySet-ListDirectorySettingTemplate
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -3991,7 +3991,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Add new entity to directorySettingTemplates
-      operationId: directorySettingTemplates.directorySettingTemplate
+      operationId: directorySettingTemplates.EntitySet-CreateDirectorySettingTemplate
       requestBody:
         description: New entity
         content:
@@ -4013,7 +4013,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Get entity from directorySettingTemplates by key
-      operationId: directorySettingTemplates.directorySettingTemplate
+      operationId: directorySettingTemplates.Entity-GetDirectorySettingTemplate
       parameters:
         - name: id
           in: path
@@ -4048,7 +4048,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Update entity in directorySettingTemplates
-      operationId: directorySettingTemplates.directorySettingTemplate
+      operationId: directorySettingTemplates.Entity-UpdateDirectorySettingTemplate
       parameters:
         - name: id
           in: path
@@ -4072,7 +4072,7 @@ paths:
       tags:
         - directorySettingTemplates.directorySettingTemplate
       summary: Delete entity from directorySettingTemplates
-      operationId: directorySettingTemplates.directorySettingTemplate
+      operationId: directorySettingTemplates.Entity-DeleteDirectorySettingTemplate
       parameters:
         - name: id
           in: path
@@ -4095,7 +4095,7 @@ paths:
       tags:
         - organization.organization
       summary: Get entities from organization
-      operationId: organization.organization
+      operationId: organization.EntitySet-ListOrganization
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -4205,7 +4205,7 @@ paths:
       tags:
         - organization.organization
       summary: Add new entity to organization
-      operationId: organization.organization
+      operationId: organization.EntitySet-CreateOrganization
       requestBody:
         description: New entity
         content:
@@ -4227,7 +4227,7 @@ paths:
       tags:
         - organization.organization
       summary: Get entity from organization by key
-      operationId: organization.organization
+      operationId: organization.Entity-GetOrganization
       parameters:
         - name: id
           in: path
@@ -4276,15 +4276,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.organization'
           links:
             extensions:
-              operationId: organization.organization
+              operationId: organization.Entity-GetOrganization
               parameters:
                 id: $request.path.id
             depOnboardingSettings:
-              operationId: organization.organization
+              operationId: organization.Entity-GetOrganization
               parameters:
                 id: $request.path.id
             appleVolumePurchaseProgramTokens:
-              operationId: organization.organization
+              operationId: organization.Entity-GetOrganization
               parameters:
                 id: $request.path.id
         default:
@@ -4293,7 +4293,7 @@ paths:
       tags:
         - organization.organization
       summary: Update entity in organization
-      operationId: organization.organization
+      operationId: organization.Entity-UpdateOrganization
       parameters:
         - name: id
           in: path
@@ -4317,7 +4317,7 @@ paths:
       tags:
         - organization.organization
       summary: Delete entity from organization
-      operationId: organization.organization
+      operationId: organization.Entity-DeleteOrganization
       parameters:
         - name: id
           in: path
@@ -4431,7 +4431,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Get entities from oauth2PermissionGrants
-      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
+      operationId: oauth2PermissionGrants.EntitySet-ListOAuth2PermissionGrant
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -4509,7 +4509,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Add new entity to oauth2PermissionGrants
-      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
+      operationId: oauth2PermissionGrants.EntitySet-CreateOAuth2PermissionGrant
       requestBody:
         description: New entity
         content:
@@ -4531,7 +4531,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Get entity from oauth2PermissionGrants by key
-      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
+      operationId: oauth2PermissionGrants.Entity-GetOAuth2PermissionGrant
       parameters:
         - name: id
           in: path
@@ -4579,7 +4579,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Update entity in oauth2PermissionGrants
-      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
+      operationId: oauth2PermissionGrants.Entity-UpdateOAuth2PermissionGrant
       parameters:
         - name: id
           in: path
@@ -4603,7 +4603,7 @@ paths:
       tags:
         - oauth2PermissionGrants.oAuth2PermissionGrant
       summary: Delete entity from oauth2PermissionGrants
-      operationId: oauth2PermissionGrants.oAuth2PermissionGrant
+      operationId: oauth2PermissionGrants.Entity-DeleteOAuth2PermissionGrant
       parameters:
         - name: id
           in: path
@@ -4626,7 +4626,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Get entities from scopedRoleMemberships
-      operationId: scopedRoleMemberships.scopedRoleMembership
+      operationId: scopedRoleMemberships.EntitySet-ListScopedRoleMembership
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -4692,7 +4692,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Add new entity to scopedRoleMemberships
-      operationId: scopedRoleMemberships.scopedRoleMembership
+      operationId: scopedRoleMemberships.EntitySet-CreateScopedRoleMembership
       requestBody:
         description: New entity
         content:
@@ -4714,7 +4714,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Get entity from scopedRoleMemberships by key
-      operationId: scopedRoleMemberships.scopedRoleMembership
+      operationId: scopedRoleMemberships.Entity-GetScopedRoleMembership
       parameters:
         - name: id
           in: path
@@ -4758,7 +4758,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Update entity in scopedRoleMemberships
-      operationId: scopedRoleMemberships.scopedRoleMembership
+      operationId: scopedRoleMemberships.Entity-UpdateScopedRoleMembership
       parameters:
         - name: id
           in: path
@@ -4782,7 +4782,7 @@ paths:
       tags:
         - scopedRoleMemberships.scopedRoleMembership
       summary: Delete entity from scopedRoleMemberships
-      operationId: scopedRoleMemberships.scopedRoleMembership
+      operationId: scopedRoleMemberships.Entity-DeleteScopedRoleMembership
       parameters:
         - name: id
           in: path
@@ -4805,7 +4805,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Get entities from servicePrincipals
-      operationId: servicePrincipals.servicePrincipal
+      operationId: servicePrincipals.EntitySet-ListServicePrincipal
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -4912,7 +4912,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Add new entity to servicePrincipals
-      operationId: servicePrincipals.servicePrincipal
+      operationId: servicePrincipals.EntitySet-CreateServicePrincipal
       requestBody:
         description: New entity
         content:
@@ -4934,7 +4934,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Get entity from servicePrincipals by key
-      operationId: servicePrincipals.servicePrincipal
+      operationId: servicePrincipals.Entity-GetServicePrincipal
       parameters:
         - name: id
           in: path
@@ -4982,43 +4982,43 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.servicePrincipal'
           links:
             appRoleAssignedTo:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             appRoleAssignments:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             oauth2PermissionGrants:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             memberOf:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             createdObjects:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             licenseDetails:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             owners:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             ownedObjects:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             policies:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
             synchronization:
-              operationId: servicePrincipals.servicePrincipal
+              operationId: servicePrincipals.Entity-GetServicePrincipal
               parameters:
                 id: $request.path.id
         default:
@@ -5027,7 +5027,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Update entity in servicePrincipals
-      operationId: servicePrincipals.servicePrincipal
+      operationId: servicePrincipals.Entity-UpdateServicePrincipal
       parameters:
         - name: id
           in: path
@@ -5051,7 +5051,7 @@ paths:
       tags:
         - servicePrincipals.servicePrincipal
       summary: Delete entity from servicePrincipals
-      operationId: servicePrincipals.servicePrincipal
+      operationId: servicePrincipals.Entity-DeleteServicePrincipal
       parameters:
         - name: id
           in: path
@@ -5074,7 +5074,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Get entities from settings
-      operationId: settings.directorySetting
+      operationId: settings.EntitySet-ListDirectorySetting
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -5140,7 +5140,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Add new entity to settings
-      operationId: settings.directorySetting
+      operationId: settings.EntitySet-CreateDirectorySetting
       requestBody:
         description: New entity
         content:
@@ -5162,7 +5162,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Get entity from settings by key
-      operationId: settings.directorySetting
+      operationId: settings.Entity-GetDirectorySetting
       parameters:
         - name: id
           in: path
@@ -5206,7 +5206,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Update entity in settings
-      operationId: settings.directorySetting
+      operationId: settings.Entity-UpdateDirectorySetting
       parameters:
         - name: id
           in: path
@@ -5230,7 +5230,7 @@ paths:
       tags:
         - settings.directorySetting
       summary: Delete entity from settings
-      operationId: settings.directorySetting
+      operationId: settings.Entity-DeleteDirectorySetting
       parameters:
         - name: id
           in: path
@@ -5253,7 +5253,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Get entities from subscribedSkus
-      operationId: subscribedSkus.subscribedSku
+      operationId: subscribedSkus.EntitySet-ListSubscribedSku
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $orderby
@@ -5317,7 +5317,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Add new entity to subscribedSkus
-      operationId: subscribedSkus.subscribedSku
+      operationId: subscribedSkus.EntitySet-CreateSubscribedSku
       requestBody:
         description: New entity
         content:
@@ -5339,7 +5339,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Get entity from subscribedSkus by key
-      operationId: subscribedSkus.subscribedSku
+      operationId: subscribedSkus.Entity-GetSubscribedSku
       parameters:
         - name: id
           in: path
@@ -5377,7 +5377,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Update entity in subscribedSkus
-      operationId: subscribedSkus.subscribedSku
+      operationId: subscribedSkus.Entity-UpdateSubscribedSku
       parameters:
         - name: id
           in: path
@@ -5401,7 +5401,7 @@ paths:
       tags:
         - subscribedSkus.subscribedSku
       summary: Delete entity from subscribedSkus
-      operationId: subscribedSkus.subscribedSku
+      operationId: subscribedSkus.Entity-DeleteSubscribedSku
       parameters:
         - name: id
           in: path
@@ -5424,7 +5424,7 @@ paths:
       tags:
         - users.user
       summary: Get entities from users
-      operationId: users.user
+      operationId: users.EntitySet-ListUser
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -5650,7 +5650,7 @@ paths:
       tags:
         - users.user
       summary: Add new entity to users
-      operationId: users.user
+      operationId: users.EntitySet-CreateUser
       requestBody:
         description: New entity
         content:
@@ -5672,7 +5672,7 @@ paths:
       tags:
         - users.user
       summary: Retrieve the properties and relationships of user object.
-      operationId: users.user
+      operationId: users.Entity-GetUser
       parameters:
         - name: id
           in: path
@@ -5771,147 +5771,147 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.user'
           links:
             extensions:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             ownedDevices:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             registeredDevices:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             manager:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             directReports:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             memberOf:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             createdObjects:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             ownedObjects:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             scopedRoleMemberOf:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             licenseDetails:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             activities:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             outlook:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             messages:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             joinedGroups:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             mailFolders:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             calendar:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             calendars:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             calendarGroups:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             calendarView:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             events:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             people:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             contacts:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             contactFolders:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             inferenceClassification:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             photo:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             photos:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             drive:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             drives:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             insights:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             planner:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             onenote:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             managedDevices:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             managedAppRegistrations:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             devices:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             joinedTeams:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
             deviceManagementTroubleshootingEvents:
-              operationId: users.user
+              operationId: users.Entity-GetUser
               parameters:
                 id: $request.path.id
         default:
@@ -5925,7 +5925,7 @@ paths:
       tags:
         - users.user
       summary: Update entity in users
-      operationId: users.user
+      operationId: users.Entity-UpdateUser
       parameters:
         - name: id
           in: path
@@ -5949,7 +5949,7 @@ paths:
       tags:
         - users.user
       summary: Delete entity from users
-      operationId: users.user
+      operationId: users.Entity-DeleteUser
       parameters:
         - name: id
           in: path
@@ -6482,7 +6482,7 @@ paths:
       tags:
         - policies.policy
       summary: Get entities from policies
-      operationId: policies.policy
+      operationId: policies.EntitySet-ListPolicy
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -6547,7 +6547,7 @@ paths:
       tags:
         - policies.policy
       summary: Add new entity to policies
-      operationId: policies.policy
+      operationId: policies.EntitySet-CreatePolicy
       requestBody:
         description: New entity
         content:
@@ -6569,7 +6569,7 @@ paths:
       tags:
         - policies.policy
       summary: Get entity from policies by key
-      operationId: policies.policy
+      operationId: policies.Entity-GetPolicy
       parameters:
         - name: id
           in: path
@@ -6603,7 +6603,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.policy'
           links:
             appliesTo:
-              operationId: policies.policy
+              operationId: policies.Entity-GetPolicy
               parameters:
                 id: $request.path.id
         default:
@@ -6612,7 +6612,7 @@ paths:
       tags:
         - policies.policy
       summary: Update entity in policies
-      operationId: policies.policy
+      operationId: policies.Entity-UpdatePolicy
       parameters:
         - name: id
           in: path
@@ -6636,7 +6636,7 @@ paths:
       tags:
         - policies.policy
       summary: Delete entity from policies
-      operationId: policies.policy
+      operationId: policies.Entity-DeletePolicy
       parameters:
         - name: id
           in: path
@@ -6659,7 +6659,7 @@ paths:
       tags:
         - contracts.contract
       summary: Get entities from contracts
-      operationId: contracts.contract
+      operationId: contracts.EntitySet-ListContract
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/search'
@@ -6718,7 +6718,7 @@ paths:
       tags:
         - contracts.contract
       summary: Add new entity to contracts
-      operationId: contracts.contract
+      operationId: contracts.EntitySet-CreateContract
       requestBody:
         description: New entity
         content:
@@ -6740,7 +6740,7 @@ paths:
       tags:
         - contracts.contract
       summary: Get entity from contracts by key
-      operationId: contracts.contract
+      operationId: contracts.Entity-GetContract
       parameters:
         - name: id
           in: path
@@ -6776,7 +6776,7 @@ paths:
       tags:
         - contracts.contract
       summary: Update entity in contracts
-      operationId: contracts.contract
+      operationId: contracts.Entity-UpdateContract
       parameters:
         - name: id
           in: path
@@ -6800,7 +6800,7 @@ paths:
       tags:
         - contracts.contract
       summary: Delete entity from contracts
-      operationId: contracts.contract
+      operationId: contracts.Entity-DeleteContract
       parameters:
         - name: id
           in: path
@@ -6823,7 +6823,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Get entities from workbooks
-      operationId: workbooks.driveItem
+      operationId: workbooks.EntitySet-ListDriveItem
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -6979,7 +6979,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Add new entity to workbooks
-      operationId: workbooks.driveItem
+      operationId: workbooks.EntitySet-CreateDriveItem
       requestBody:
         description: New entity
         content:
@@ -7001,7 +7001,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Get entity from workbooks by key
-      operationId: workbooks.driveItem
+      operationId: workbooks.Entity-GetDriveItem
       parameters:
         - name: id
           in: path
@@ -7077,31 +7077,31 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.driveItem'
           links:
             workbook:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
             activities:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
             children:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
             listItem:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
             permissions:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
             thumbnails:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
             versions:
-              operationId: workbooks.driveItem
+              operationId: workbooks.Entity-GetDriveItem
               parameters:
                 id: $request.path.id
         default:
@@ -7110,7 +7110,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Update entity in workbooks
-      operationId: workbooks.driveItem
+      operationId: workbooks.Entity-UpdateDriveItem
       parameters:
         - name: id
           in: path
@@ -7134,7 +7134,7 @@ paths:
       tags:
         - workbooks.driveItem
       summary: Delete entity from workbooks
-      operationId: workbooks.driveItem
+      operationId: workbooks.Entity-DeleteDriveItem
       parameters:
         - name: id
           in: path
@@ -7484,7 +7484,7 @@ paths:
       tags:
         - drives.drive
       summary: Get entities from drives
-      operationId: drives.drive
+      operationId: drives.EntitySet-ListDrive
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7590,7 +7590,7 @@ paths:
       tags:
         - drives.drive
       summary: Add new entity to drives
-      operationId: drives.drive
+      operationId: drives.EntitySet-CreateDrive
       requestBody:
         description: New entity
         content:
@@ -7612,7 +7612,7 @@ paths:
       tags:
         - drives.drive
       summary: Get entity from drives by key
-      operationId: drives.drive
+      operationId: drives.Entity-GetDrive
       parameters:
         - name: id
           in: path
@@ -7670,23 +7670,23 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.drive'
           links:
             activities:
-              operationId: drives.drive
+              operationId: drives.Entity-GetDrive
               parameters:
                 id: $request.path.id
             items:
-              operationId: drives.drive
+              operationId: drives.Entity-GetDrive
               parameters:
                 id: $request.path.id
             list:
-              operationId: drives.drive
+              operationId: drives.Entity-GetDrive
               parameters:
                 id: $request.path.id
             root:
-              operationId: drives.drive
+              operationId: drives.Entity-GetDrive
               parameters:
                 id: $request.path.id
             special:
-              operationId: drives.drive
+              operationId: drives.Entity-GetDrive
               parameters:
                 id: $request.path.id
         default:
@@ -7695,7 +7695,7 @@ paths:
       tags:
         - drives.drive
       summary: Update entity in drives
-      operationId: drives.drive
+      operationId: drives.Entity-UpdateDrive
       parameters:
         - name: id
           in: path
@@ -7719,7 +7719,7 @@ paths:
       tags:
         - drives.drive
       summary: Delete entity from drives
-      operationId: drives.drive
+      operationId: drives.Entity-DeleteDrive
       parameters:
         - name: id
           in: path
@@ -7826,7 +7826,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Get entities from shares
-      operationId: shares.sharedDriveItem
+      operationId: shares.EntitySet-ListSharedDriveItem
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -7921,7 +7921,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Add new entity to shares
-      operationId: shares.sharedDriveItem
+      operationId: shares.EntitySet-CreateSharedDriveItem
       requestBody:
         description: New entity
         content:
@@ -7943,7 +7943,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Get entity from shares by key
-      operationId: shares.sharedDriveItem
+      operationId: shares.Entity-GetSharedDriveItem
       parameters:
         - name: id
           in: path
@@ -7998,27 +7998,27 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.sharedDriveItem'
           links:
             driveItem:
-              operationId: shares.sharedDriveItem
+              operationId: shares.Entity-GetSharedDriveItem
               parameters:
                 id: $request.path.id
             items:
-              operationId: shares.sharedDriveItem
+              operationId: shares.Entity-GetSharedDriveItem
               parameters:
                 id: $request.path.id
             list:
-              operationId: shares.sharedDriveItem
+              operationId: shares.Entity-GetSharedDriveItem
               parameters:
                 id: $request.path.id
             listItem:
-              operationId: shares.sharedDriveItem
+              operationId: shares.Entity-GetSharedDriveItem
               parameters:
                 id: $request.path.id
             root:
-              operationId: shares.sharedDriveItem
+              operationId: shares.Entity-GetSharedDriveItem
               parameters:
                 id: $request.path.id
             site:
-              operationId: shares.sharedDriveItem
+              operationId: shares.Entity-GetSharedDriveItem
               parameters:
                 id: $request.path.id
         default:
@@ -8027,7 +8027,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Update entity in shares
-      operationId: shares.sharedDriveItem
+      operationId: shares.Entity-UpdateSharedDriveItem
       parameters:
         - name: id
           in: path
@@ -8051,7 +8051,7 @@ paths:
       tags:
         - shares.sharedDriveItem
       summary: Delete entity from shares
-      operationId: shares.sharedDriveItem
+      operationId: shares.Entity-DeleteSharedDriveItem
       parameters:
         - name: id
           in: path
@@ -8074,7 +8074,7 @@ paths:
       tags:
         - sites.site
       summary: Get entities from sites
-      operationId: sites.site
+      operationId: sites.EntitySet-ListSite
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8180,7 +8180,7 @@ paths:
       tags:
         - sites.site
       summary: Add new entity to sites
-      operationId: sites.site
+      operationId: sites.EntitySet-CreateSite
       requestBody:
         description: New entity
         content:
@@ -8202,7 +8202,7 @@ paths:
       tags:
         - sites.site
       summary: Get entity from sites by key
-      operationId: sites.site
+      operationId: sites.Entity-GetSite
       parameters:
         - name: id
           in: path
@@ -8262,35 +8262,35 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.site'
           links:
             columns:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             contentTypes:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             drive:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             drives:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             items:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             lists:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             sites:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
             onenote:
-              operationId: sites.site
+              operationId: sites.Entity-GetSite
               parameters:
                 id: $request.path.id
         default:
@@ -8299,7 +8299,7 @@ paths:
       tags:
         - sites.site
       summary: Update entity in sites
-      operationId: sites.site
+      operationId: sites.Entity-UpdateSite
       parameters:
         - name: id
           in: path
@@ -8323,7 +8323,7 @@ paths:
       tags:
         - sites.site
       summary: Delete entity from sites
-      operationId: sites.site
+      operationId: sites.Entity-DeleteSite
       parameters:
         - name: id
           in: path
@@ -8376,7 +8376,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Get entities from subscriptions
-      operationId: subscriptions.subscription
+      operationId: subscriptions.EntitySet-ListSubscription
       parameters:
         - $ref: '#/components/parameters/search'
         - name: $select
@@ -8413,7 +8413,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Add new entity to subscriptions
-      operationId: subscriptions.subscription
+      operationId: subscriptions.EntitySet-CreateSubscription
       requestBody:
         description: New entity
         content:
@@ -8435,7 +8435,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Get entity from subscriptions by key
-      operationId: subscriptions.subscription
+      operationId: subscriptions.Entity-GetSubscription
       parameters:
         - name: id
           in: path
@@ -8471,7 +8471,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Update entity in subscriptions
-      operationId: subscriptions.subscription
+      operationId: subscriptions.Entity-UpdateSubscription
       parameters:
         - name: id
           in: path
@@ -8495,7 +8495,7 @@ paths:
       tags:
         - subscriptions.subscription
       summary: Delete entity from subscriptions
-      operationId: subscriptions.subscription
+      operationId: subscriptions.Entity-DeleteSubscription
       parameters:
         - name: id
           in: path
@@ -8518,7 +8518,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Get entities from identityRiskEvents
-      operationId: identityRiskEvents.identityRiskEvent
+      operationId: identityRiskEvents.EntitySet-ListIdentityRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8603,7 +8603,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Add new entity to identityRiskEvents
-      operationId: identityRiskEvents.identityRiskEvent
+      operationId: identityRiskEvents.EntitySet-CreateIdentityRiskEvent
       requestBody:
         description: New entity
         content:
@@ -8625,7 +8625,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Get entity from identityRiskEvents by key
-      operationId: identityRiskEvents.identityRiskEvent
+      operationId: identityRiskEvents.Entity-GetIdentityRiskEvent
       parameters:
         - name: id
           in: path
@@ -8672,7 +8672,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.identityRiskEvent'
           links:
             impactedUser:
-              operationId: identityRiskEvents.identityRiskEvent
+              operationId: identityRiskEvents.Entity-GetIdentityRiskEvent
               parameters:
                 id: $request.path.id
         default:
@@ -8681,7 +8681,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Update entity in identityRiskEvents
-      operationId: identityRiskEvents.identityRiskEvent
+      operationId: identityRiskEvents.Entity-UpdateIdentityRiskEvent
       parameters:
         - name: id
           in: path
@@ -8705,7 +8705,7 @@ paths:
       tags:
         - identityRiskEvents.identityRiskEvent
       summary: Delete entity from identityRiskEvents
-      operationId: identityRiskEvents.identityRiskEvent
+      operationId: identityRiskEvents.Entity-DeleteIdentityRiskEvent
       parameters:
         - name: id
           in: path
@@ -8728,7 +8728,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Get entities from impossibleTravelRiskEvents
-      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
+      operationId: impossibleTravelRiskEvents.EntitySet-ListImpossibleTravelRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -8837,7 +8837,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Add new entity to impossibleTravelRiskEvents
-      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
+      operationId: impossibleTravelRiskEvents.EntitySet-CreateImpossibleTravelRiskEvent
       requestBody:
         description: New entity
         content:
@@ -8859,7 +8859,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Get entity from impossibleTravelRiskEvents by key
-      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
+      operationId: impossibleTravelRiskEvents.Entity-GetImpossibleTravelRiskEvent
       parameters:
         - name: id
           in: path
@@ -8918,7 +8918,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Update entity in impossibleTravelRiskEvents
-      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
+      operationId: impossibleTravelRiskEvents.Entity-UpdateImpossibleTravelRiskEvent
       parameters:
         - name: id
           in: path
@@ -8942,7 +8942,7 @@ paths:
       tags:
         - impossibleTravelRiskEvents.impossibleTravelRiskEvent
       summary: Delete entity from impossibleTravelRiskEvents
-      operationId: impossibleTravelRiskEvents.impossibleTravelRiskEvent
+      operationId: impossibleTravelRiskEvents.Entity-DeleteImpossibleTravelRiskEvent
       parameters:
         - name: id
           in: path
@@ -8965,7 +8965,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Get entities from leakedCredentialsRiskEvents
-      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
+      operationId: leakedCredentialsRiskEvents.EntitySet-ListLeakedCredentialsRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9050,7 +9050,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Add new entity to leakedCredentialsRiskEvents
-      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
+      operationId: leakedCredentialsRiskEvents.EntitySet-CreateLeakedCredentialsRiskEvent
       requestBody:
         description: New entity
         content:
@@ -9072,7 +9072,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Get entity from leakedCredentialsRiskEvents by key
-      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
+      operationId: leakedCredentialsRiskEvents.Entity-GetLeakedCredentialsRiskEvent
       parameters:
         - name: id
           in: path
@@ -9123,7 +9123,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Update entity in leakedCredentialsRiskEvents
-      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
+      operationId: leakedCredentialsRiskEvents.Entity-UpdateLeakedCredentialsRiskEvent
       parameters:
         - name: id
           in: path
@@ -9147,7 +9147,7 @@ paths:
       tags:
         - leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
       summary: Delete entity from leakedCredentialsRiskEvents
-      operationId: leakedCredentialsRiskEvents.leakedCredentialsRiskEvent
+      operationId: leakedCredentialsRiskEvents.Entity-DeleteLeakedCredentialsRiskEvent
       parameters:
         - name: id
           in: path
@@ -9170,7 +9170,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Get entities from anonymousIpRiskEvents
-      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
+      operationId: anonymousIpRiskEvents.EntitySet-ListAnonymousIpRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9261,7 +9261,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Add new entity to anonymousIpRiskEvents
-      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
+      operationId: anonymousIpRiskEvents.EntitySet-CreateAnonymousIpRiskEvent
       requestBody:
         description: New entity
         content:
@@ -9283,7 +9283,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Get entity from anonymousIpRiskEvents by key
-      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
+      operationId: anonymousIpRiskEvents.Entity-GetAnonymousIpRiskEvent
       parameters:
         - name: id
           in: path
@@ -9336,7 +9336,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Update entity in anonymousIpRiskEvents
-      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
+      operationId: anonymousIpRiskEvents.Entity-UpdateAnonymousIpRiskEvent
       parameters:
         - name: id
           in: path
@@ -9360,7 +9360,7 @@ paths:
       tags:
         - anonymousIpRiskEvents.anonymousIpRiskEvent
       summary: Delete entity from anonymousIpRiskEvents
-      operationId: anonymousIpRiskEvents.anonymousIpRiskEvent
+      operationId: anonymousIpRiskEvents.Entity-DeleteAnonymousIpRiskEvent
       parameters:
         - name: id
           in: path
@@ -9383,7 +9383,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Get entities from suspiciousIpRiskEvents
-      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
+      operationId: suspiciousIpRiskEvents.EntitySet-ListSuspiciousIpRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9474,7 +9474,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Add new entity to suspiciousIpRiskEvents
-      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
+      operationId: suspiciousIpRiskEvents.EntitySet-CreateSuspiciousIpRiskEvent
       requestBody:
         description: New entity
         content:
@@ -9496,7 +9496,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Get entity from suspiciousIpRiskEvents by key
-      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
+      operationId: suspiciousIpRiskEvents.Entity-GetSuspiciousIpRiskEvent
       parameters:
         - name: id
           in: path
@@ -9549,7 +9549,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Update entity in suspiciousIpRiskEvents
-      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
+      operationId: suspiciousIpRiskEvents.Entity-UpdateSuspiciousIpRiskEvent
       parameters:
         - name: id
           in: path
@@ -9573,7 +9573,7 @@ paths:
       tags:
         - suspiciousIpRiskEvents.suspiciousIpRiskEvent
       summary: Delete entity from suspiciousIpRiskEvents
-      operationId: suspiciousIpRiskEvents.suspiciousIpRiskEvent
+      operationId: suspiciousIpRiskEvents.Entity-DeleteSuspiciousIpRiskEvent
       parameters:
         - name: id
           in: path
@@ -9596,7 +9596,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Get entities from unfamiliarLocationRiskEvents
-      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
+      operationId: unfamiliarLocationRiskEvents.EntitySet-ListUnfamiliarLocationRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9687,7 +9687,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Add new entity to unfamiliarLocationRiskEvents
-      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
+      operationId: unfamiliarLocationRiskEvents.EntitySet-CreateUnfamiliarLocationRiskEvent
       requestBody:
         description: New entity
         content:
@@ -9709,7 +9709,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Get entity from unfamiliarLocationRiskEvents by key
-      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
+      operationId: unfamiliarLocationRiskEvents.Entity-GetUnfamiliarLocationRiskEvent
       parameters:
         - name: id
           in: path
@@ -9762,7 +9762,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Update entity in unfamiliarLocationRiskEvents
-      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
+      operationId: unfamiliarLocationRiskEvents.Entity-UpdateUnfamiliarLocationRiskEvent
       parameters:
         - name: id
           in: path
@@ -9786,7 +9786,7 @@ paths:
       tags:
         - unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
       summary: Delete entity from unfamiliarLocationRiskEvents
-      operationId: unfamiliarLocationRiskEvents.unfamiliarLocationRiskEvent
+      operationId: unfamiliarLocationRiskEvents.Entity-DeleteUnfamiliarLocationRiskEvent
       parameters:
         - name: id
           in: path
@@ -9809,7 +9809,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Get entities from malwareRiskEvents
-      operationId: malwareRiskEvents.malwareRiskEvent
+      operationId: malwareRiskEvents.EntitySet-ListMalwareRiskEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -9906,7 +9906,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Add new entity to malwareRiskEvents
-      operationId: malwareRiskEvents.malwareRiskEvent
+      operationId: malwareRiskEvents.EntitySet-CreateMalwareRiskEvent
       requestBody:
         description: New entity
         content:
@@ -9928,7 +9928,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Get entity from malwareRiskEvents by key
-      operationId: malwareRiskEvents.malwareRiskEvent
+      operationId: malwareRiskEvents.Entity-GetMalwareRiskEvent
       parameters:
         - name: id
           in: path
@@ -9983,7 +9983,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Update entity in malwareRiskEvents
-      operationId: malwareRiskEvents.malwareRiskEvent
+      operationId: malwareRiskEvents.Entity-UpdateMalwareRiskEvent
       parameters:
         - name: id
           in: path
@@ -10007,7 +10007,7 @@ paths:
       tags:
         - malwareRiskEvents.malwareRiskEvent
       summary: Delete entity from malwareRiskEvents
-      operationId: malwareRiskEvents.malwareRiskEvent
+      operationId: malwareRiskEvents.Entity-DeleteMalwareRiskEvent
       parameters:
         - name: id
           in: path
@@ -10030,7 +10030,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Get entities from privilegedRoles
-      operationId: privilegedRoles.privilegedRole
+      operationId: privilegedRoles.EntitySet-ListPrivilegedRole
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10093,7 +10093,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Add new entity to privilegedRoles
-      operationId: privilegedRoles.privilegedRole
+      operationId: privilegedRoles.EntitySet-CreatePrivilegedRole
       requestBody:
         description: New entity
         content:
@@ -10115,7 +10115,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Get entity from privilegedRoles by key
-      operationId: privilegedRoles.privilegedRole
+      operationId: privilegedRoles.Entity-GetPrivilegedRole
       parameters:
         - name: id
           in: path
@@ -10156,15 +10156,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.privilegedRole'
           links:
             settings:
-              operationId: privilegedRoles.privilegedRole
+              operationId: privilegedRoles.Entity-GetPrivilegedRole
               parameters:
                 id: $request.path.id
             assignments:
-              operationId: privilegedRoles.privilegedRole
+              operationId: privilegedRoles.Entity-GetPrivilegedRole
               parameters:
                 id: $request.path.id
             summary:
-              operationId: privilegedRoles.privilegedRole
+              operationId: privilegedRoles.Entity-GetPrivilegedRole
               parameters:
                 id: $request.path.id
         default:
@@ -10173,7 +10173,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Update entity in privilegedRoles
-      operationId: privilegedRoles.privilegedRole
+      operationId: privilegedRoles.Entity-UpdatePrivilegedRole
       parameters:
         - name: id
           in: path
@@ -10197,7 +10197,7 @@ paths:
       tags:
         - privilegedRoles.privilegedRole
       summary: Delete entity from privilegedRoles
-      operationId: privilegedRoles.privilegedRole
+      operationId: privilegedRoles.Entity-DeletePrivilegedRole
       parameters:
         - name: id
           in: path
@@ -10276,7 +10276,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Get entities from privilegedRoleAssignments
-      operationId: privilegedRoleAssignments.privilegedRoleAssignment
+      operationId: privilegedRoleAssignments.EntitySet-ListPrivilegedRoleAssignment
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10349,7 +10349,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Add new entity to privilegedRoleAssignments
-      operationId: privilegedRoleAssignments.privilegedRoleAssignment
+      operationId: privilegedRoleAssignments.EntitySet-CreatePrivilegedRoleAssignment
       requestBody:
         description: New entity
         content:
@@ -10371,7 +10371,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Get entity from privilegedRoleAssignments by key
-      operationId: privilegedRoleAssignments.privilegedRoleAssignment
+      operationId: privilegedRoleAssignments.Entity-GetPrivilegedRoleAssignment
       parameters:
         - name: id
           in: path
@@ -10414,7 +10414,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.privilegedRoleAssignment'
           links:
             roleInfo:
-              operationId: privilegedRoleAssignments.privilegedRoleAssignment
+              operationId: privilegedRoleAssignments.Entity-GetPrivilegedRoleAssignment
               parameters:
                 id: $request.path.id
         default:
@@ -10423,7 +10423,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Update entity in privilegedRoleAssignments
-      operationId: privilegedRoleAssignments.privilegedRoleAssignment
+      operationId: privilegedRoleAssignments.Entity-UpdatePrivilegedRoleAssignment
       parameters:
         - name: id
           in: path
@@ -10447,7 +10447,7 @@ paths:
       tags:
         - privilegedRoleAssignments.privilegedRoleAssignment
       summary: Delete entity from privilegedRoleAssignments
-      operationId: privilegedRoleAssignments.privilegedRoleAssignment
+      operationId: privilegedRoleAssignments.Entity-DeletePrivilegedRoleAssignment
       parameters:
         - name: id
           in: path
@@ -10542,7 +10542,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Get entities from privilegedOperationEvents
-      operationId: privilegedOperationEvents.privilegedOperationEvent
+      operationId: privilegedOperationEvents.EntitySet-ListPrivilegedOperationEvent
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10641,7 +10641,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Add new entity to privilegedOperationEvents
-      operationId: privilegedOperationEvents.privilegedOperationEvent
+      operationId: privilegedOperationEvents.EntitySet-CreatePrivilegedOperationEvent
       requestBody:
         description: New entity
         content:
@@ -10663,7 +10663,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Get entity from privilegedOperationEvents by key
-      operationId: privilegedOperationEvents.privilegedOperationEvent
+      operationId: privilegedOperationEvents.Entity-GetPrivilegedOperationEvent
       parameters:
         - name: id
           in: path
@@ -10718,7 +10718,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Update entity in privilegedOperationEvents
-      operationId: privilegedOperationEvents.privilegedOperationEvent
+      operationId: privilegedOperationEvents.Entity-UpdatePrivilegedOperationEvent
       parameters:
         - name: id
           in: path
@@ -10742,7 +10742,7 @@ paths:
       tags:
         - privilegedOperationEvents.privilegedOperationEvent
       summary: Delete entity from privilegedOperationEvents
-      operationId: privilegedOperationEvents.privilegedOperationEvent
+      operationId: privilegedOperationEvents.Entity-DeletePrivilegedOperationEvent
       parameters:
         - name: id
           in: path
@@ -10765,7 +10765,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Get entities from privilegedSignupStatus
-      operationId: privilegedSignupStatus.privilegedSignupStatus
+      operationId: privilegedSignupStatus.EntitySet-ListPrivilegedSignupStatus
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -10828,7 +10828,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Add new entity to privilegedSignupStatus
-      operationId: privilegedSignupStatus.privilegedSignupStatus
+      operationId: privilegedSignupStatus.EntitySet-CreatePrivilegedSignupStatus
       requestBody:
         description: New entity
         content:
@@ -10850,7 +10850,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Get entity from privilegedSignupStatus by key
-      operationId: privilegedSignupStatus.privilegedSignupStatus
+      operationId: privilegedSignupStatus.Entity-GetPrivilegedSignupStatus
       parameters:
         - name: id
           in: path
@@ -10893,7 +10893,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Update entity in privilegedSignupStatus
-      operationId: privilegedSignupStatus.privilegedSignupStatus
+      operationId: privilegedSignupStatus.Entity-UpdatePrivilegedSignupStatus
       parameters:
         - name: id
           in: path
@@ -10917,7 +10917,7 @@ paths:
       tags:
         - privilegedSignupStatus.privilegedSignupStatus
       summary: Delete entity from privilegedSignupStatus
-      operationId: privilegedSignupStatus.privilegedSignupStatus
+      operationId: privilegedSignupStatus.Entity-DeletePrivilegedSignupStatus
       parameters:
         - name: id
           in: path
@@ -11006,7 +11006,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Get entities from privilegedApproval
-      operationId: privilegedApproval.privilegedApproval
+      operationId: privilegedApproval.EntitySet-ListPrivilegedApproval
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11091,7 +11091,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Add new entity to privilegedApproval
-      operationId: privilegedApproval.privilegedApproval
+      operationId: privilegedApproval.EntitySet-CreatePrivilegedApproval
       requestBody:
         description: New entity
         content:
@@ -11113,7 +11113,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Get entity from privilegedApproval by key
-      operationId: privilegedApproval.privilegedApproval
+      operationId: privilegedApproval.Entity-GetPrivilegedApproval
       parameters:
         - name: id
           in: path
@@ -11160,7 +11160,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.privilegedApproval'
           links:
             roleInfo:
-              operationId: privilegedApproval.privilegedApproval
+              operationId: privilegedApproval.Entity-GetPrivilegedApproval
               parameters:
                 id: $request.path.id
         default:
@@ -11169,7 +11169,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Update entity in privilegedApproval
-      operationId: privilegedApproval.privilegedApproval
+      operationId: privilegedApproval.Entity-UpdatePrivilegedApproval
       parameters:
         - name: id
           in: path
@@ -11193,7 +11193,7 @@ paths:
       tags:
         - privilegedApproval.privilegedApproval
       summary: Delete entity from privilegedApproval
-      operationId: privilegedApproval.privilegedApproval
+      operationId: privilegedApproval.Entity-DeletePrivilegedApproval
       parameters:
         - name: id
           in: path
@@ -11235,7 +11235,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Get entities from invitations
-      operationId: invitations.invitation
+      operationId: invitations.EntitySet-ListInvitation
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11317,7 +11317,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Add new entity to invitations
-      operationId: invitations.invitation
+      operationId: invitations.EntitySet-CreateInvitation
       requestBody:
         description: New entity
         content:
@@ -11339,7 +11339,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Get entity from invitations by key
-      operationId: invitations.invitation
+      operationId: invitations.Entity-GetInvitation
       parameters:
         - name: id
           in: path
@@ -11385,7 +11385,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.invitation'
           links:
             invitedUser:
-              operationId: invitations.invitation
+              operationId: invitations.Entity-GetInvitation
               parameters:
                 id: $request.path.id
         default:
@@ -11394,7 +11394,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Update entity in invitations
-      operationId: invitations.invitation
+      operationId: invitations.Entity-UpdateInvitation
       parameters:
         - name: id
           in: path
@@ -11418,7 +11418,7 @@ paths:
       tags:
         - invitations.invitation
       summary: Delete entity from invitations
-      operationId: invitations.invitation
+      operationId: invitations.Entity-DeleteInvitation
       parameters:
         - name: id
           in: path
@@ -11441,7 +11441,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Get entities from appConfigurationGroupAssignments
-      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
+      operationId: appConfigurationGroupAssignments.EntitySet-ListMdmAppConfigGroupAssignment
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11504,7 +11504,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Add new entity to appConfigurationGroupAssignments
-      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
+      operationId: appConfigurationGroupAssignments.EntitySet-CreateMdmAppConfigGroupAssignment
       requestBody:
         description: New entity
         content:
@@ -11526,7 +11526,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Get entity from appConfigurationGroupAssignments by key
-      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
+      operationId: appConfigurationGroupAssignments.Entity-GetMdmAppConfigGroupAssignment
       parameters:
         - name: id
           in: path
@@ -11569,7 +11569,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Update entity in appConfigurationGroupAssignments
-      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
+      operationId: appConfigurationGroupAssignments.Entity-UpdateMdmAppConfigGroupAssignment
       parameters:
         - name: id
           in: path
@@ -11593,7 +11593,7 @@ paths:
       tags:
         - appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
       summary: Delete entity from appConfigurationGroupAssignments
-      operationId: appConfigurationGroupAssignments.mdmAppConfigGroupAssignment
+      operationId: appConfigurationGroupAssignments.Entity-DeleteMdmAppConfigGroupAssignment
       parameters:
         - name: id
           in: path
@@ -11616,7 +11616,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Get entities from assignments
-      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
+      operationId: assignments.EntitySet-ListManagedDeviceMobileAppConfigurationAssignment
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11676,7 +11676,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Add new entity to assignments
-      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
+      operationId: assignments.EntitySet-CreateManagedDeviceMobileAppConfigurationAssignment
       requestBody:
         description: New entity
         content:
@@ -11698,7 +11698,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Get entity from assignments by key
-      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
+      operationId: assignments.Entity-GetManagedDeviceMobileAppConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -11740,7 +11740,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Update entity in assignments
-      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
+      operationId: assignments.Entity-UpdateManagedDeviceMobileAppConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -11764,7 +11764,7 @@ paths:
       tags:
         - assignments.managedDeviceMobileAppConfigurationAssignment
       summary: Delete entity from assignments
-      operationId: assignments.managedDeviceMobileAppConfigurationAssignment
+      operationId: assignments.Entity-DeleteManagedDeviceMobileAppConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -11787,7 +11787,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Get entities from vppTokens
-      operationId: vppTokens.vppToken
+      operationId: vppTokens.EntitySet-ListVppToken
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -11880,7 +11880,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Add new entity to vppTokens
-      operationId: vppTokens.vppToken
+      operationId: vppTokens.EntitySet-CreateVppToken
       requestBody:
         description: New entity
         content:
@@ -11902,7 +11902,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Get entity from vppTokens by key
-      operationId: vppTokens.vppToken
+      operationId: vppTokens.Entity-GetVppToken
       parameters:
         - name: id
           in: path
@@ -11955,7 +11955,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Update entity in vppTokens
-      operationId: vppTokens.vppToken
+      operationId: vppTokens.Entity-UpdateVppToken
       parameters:
         - name: id
           in: path
@@ -11979,7 +11979,7 @@ paths:
       tags:
         - vppTokens.vppToken
       summary: Delete entity from vppTokens
-      operationId: vppTokens.vppToken
+      operationId: vppTokens.Entity-DeleteVppToken
       parameters:
         - name: id
           in: path
@@ -12038,7 +12038,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Get entities from enrollmentConfigurationAssignment
-      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.EntitySet-ListEnrollmentConfigurationAssignment
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -12098,7 +12098,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Add new entity to enrollmentConfigurationAssignment
-      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.EntitySet-CreateEnrollmentConfigurationAssignment
       requestBody:
         description: New entity
         content:
@@ -12120,7 +12120,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Get entity from enrollmentConfigurationAssignment by key
-      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.Entity-GetEnrollmentConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -12162,7 +12162,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Update entity in enrollmentConfigurationAssignment
-      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.Entity-UpdateEnrollmentConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -12186,7 +12186,7 @@ paths:
       tags:
         - enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
       summary: Delete entity from enrollmentConfigurationAssignment
-      operationId: enrollmentConfigurationAssignment.enrollmentConfigurationAssignment
+      operationId: enrollmentConfigurationAssignment.Entity-DeleteEnrollmentConfigurationAssignment
       parameters:
         - name: id
           in: path
@@ -12209,7 +12209,7 @@ paths:
       tags:
         - commands.command
       summary: Get entities from commands
-      operationId: commands.command
+      operationId: commands.EntitySet-ListCommand
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -12291,7 +12291,7 @@ paths:
       tags:
         - commands.command
       summary: Add new entity to commands
-      operationId: commands.command
+      operationId: commands.EntitySet-CreateCommand
       requestBody:
         description: New entity
         content:
@@ -12313,7 +12313,7 @@ paths:
       tags:
         - commands.command
       summary: Get entity from commands by key
-      operationId: commands.command
+      operationId: commands.Entity-GetCommand
       parameters:
         - name: id
           in: path
@@ -12359,7 +12359,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.command'
           links:
             responsepayload:
-              operationId: commands.command
+              operationId: commands.Entity-GetCommand
               parameters:
                 id: $request.path.id
         default:
@@ -12368,7 +12368,7 @@ paths:
       tags:
         - commands.command
       summary: Update entity in commands
-      operationId: commands.command
+      operationId: commands.Entity-UpdateCommand
       parameters:
         - name: id
           in: path
@@ -12392,7 +12392,7 @@ paths:
       tags:
         - commands.command
       summary: Delete entity from commands
-      operationId: commands.command
+      operationId: commands.Entity-DeleteCommand
       parameters:
         - name: id
           in: path
@@ -12415,7 +12415,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Get entities from payloadResponse
-      operationId: payloadResponse.payloadResponse
+      operationId: payloadResponse.EntitySet-ListPayloadResponse
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -12472,7 +12472,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Add new entity to payloadResponse
-      operationId: payloadResponse.payloadResponse
+      operationId: payloadResponse.EntitySet-CreatePayloadResponse
       requestBody:
         description: New entity
         content:
@@ -12494,7 +12494,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Get entity from payloadResponse by key
-      operationId: payloadResponse.payloadResponse
+      operationId: payloadResponse.Entity-GetPayloadResponse
       parameters:
         - name: id
           in: path
@@ -12535,7 +12535,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Update entity in payloadResponse
-      operationId: payloadResponse.payloadResponse
+      operationId: payloadResponse.Entity-UpdatePayloadResponse
       parameters:
         - name: id
           in: path
@@ -12559,7 +12559,7 @@ paths:
       tags:
         - payloadResponse.payloadResponse
       summary: Delete entity from payloadResponse
-      operationId: payloadResponse.payloadResponse
+      operationId: payloadResponse.Entity-DeletePayloadResponse
       parameters:
         - name: id
           in: path
@@ -12582,7 +12582,7 @@ paths:
       tags:
         - team.team
       summary: Get entities from team
-      operationId: team.team
+      operationId: team.EntitySet-ListTeam
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -12652,7 +12652,7 @@ paths:
       tags:
         - team.team
       summary: Add new entity to team
-      operationId: team.team
+      operationId: team.EntitySet-CreateTeam
       requestBody:
         description: New entity
         content:
@@ -12674,7 +12674,7 @@ paths:
       tags:
         - team.team
       summary: Get entity from team by key
-      operationId: team.team
+      operationId: team.Entity-GetTeam
       parameters:
         - name: id
           in: path
@@ -12716,7 +12716,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.team'
           links:
             channels:
-              operationId: team.team
+              operationId: team.Entity-GetTeam
               parameters:
                 id: $request.path.id
         default:
@@ -12725,7 +12725,7 @@ paths:
       tags:
         - team.team
       summary: Update entity in team
-      operationId: team.team
+      operationId: team.Entity-UpdateTeam
       parameters:
         - name: id
           in: path
@@ -12749,7 +12749,7 @@ paths:
       tags:
         - team.team
       summary: Delete entity from team
-      operationId: team.team
+      operationId: team.Entity-DeleteTeam
       parameters:
         - name: id
           in: path
@@ -12772,7 +12772,7 @@ paths:
       tags:
         - channels.channel
       summary: Get entities from channels
-      operationId: channels.channel
+      operationId: channels.EntitySet-ListChannel
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -12836,7 +12836,7 @@ paths:
       tags:
         - channels.channel
       summary: Add new entity to channels
-      operationId: channels.channel
+      operationId: channels.EntitySet-CreateChannel
       requestBody:
         description: New entity
         content:
@@ -12858,7 +12858,7 @@ paths:
       tags:
         - channels.channel
       summary: Get entity from channels by key
-      operationId: channels.channel
+      operationId: channels.Entity-GetChannel
       parameters:
         - name: id
           in: path
@@ -12898,7 +12898,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.channel'
           links:
             chatThreads:
-              operationId: channels.channel
+              operationId: channels.Entity-GetChannel
               parameters:
                 id: $request.path.id
         default:
@@ -12907,7 +12907,7 @@ paths:
       tags:
         - channels.channel
       summary: Update entity in channels
-      operationId: channels.channel
+      operationId: channels.Entity-UpdateChannel
       parameters:
         - name: id
           in: path
@@ -12931,7 +12931,7 @@ paths:
       tags:
         - channels.channel
       summary: Delete entity from channels
-      operationId: channels.channel
+      operationId: channels.Entity-DeleteChannel
       parameters:
         - name: id
           in: path
@@ -12954,7 +12954,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Get entities from chatThreads
-      operationId: chatThreads.chatThread
+      operationId: chatThreads.EntitySet-ListChatThread
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -13013,7 +13013,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Add new entity to chatThreads
-      operationId: chatThreads.chatThread
+      operationId: chatThreads.EntitySet-CreateChatThread
       requestBody:
         description: New entity
         content:
@@ -13035,7 +13035,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Get entity from chatThreads by key
-      operationId: chatThreads.chatThread
+      operationId: chatThreads.Entity-GetChatThread
       parameters:
         - name: id
           in: path
@@ -13074,11 +13074,11 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.chatThread'
           links:
             chatMessages:
-              operationId: chatThreads.chatThread
+              operationId: chatThreads.Entity-GetChatThread
               parameters:
                 id: $request.path.id
             rootMessage:
-              operationId: chatThreads.chatThread
+              operationId: chatThreads.Entity-GetChatThread
               parameters:
                 id: $request.path.id
         default:
@@ -13087,7 +13087,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Update entity in chatThreads
-      operationId: chatThreads.chatThread
+      operationId: chatThreads.Entity-UpdateChatThread
       parameters:
         - name: id
           in: path
@@ -13111,7 +13111,7 @@ paths:
       tags:
         - chatThreads.chatThread
       summary: Delete entity from chatThreads
-      operationId: chatThreads.chatThread
+      operationId: chatThreads.Entity-DeleteChatThread
       parameters:
         - name: id
           in: path
@@ -13134,7 +13134,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Get entities from groupLifecyclePolicies
-      operationId: groupLifecyclePolicies.groupLifecyclePolicy
+      operationId: groupLifecyclePolicies.EntitySet-ListGroupLifecyclePolicy
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -13200,7 +13200,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Add new entity to groupLifecyclePolicies
-      operationId: groupLifecyclePolicies.groupLifecyclePolicy
+      operationId: groupLifecyclePolicies.EntitySet-CreateGroupLifecyclePolicy
       requestBody:
         description: New entity
         content:
@@ -13222,7 +13222,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Get entity from groupLifecyclePolicies by key
-      operationId: groupLifecyclePolicies.groupLifecyclePolicy
+      operationId: groupLifecyclePolicies.Entity-GetGroupLifecyclePolicy
       parameters:
         - name: id
           in: path
@@ -13266,7 +13266,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Update entity in groupLifecyclePolicies
-      operationId: groupLifecyclePolicies.groupLifecyclePolicy
+      operationId: groupLifecyclePolicies.Entity-UpdateGroupLifecyclePolicy
       parameters:
         - name: id
           in: path
@@ -13290,7 +13290,7 @@ paths:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
       summary: Delete entity from groupLifecyclePolicies
-      operationId: groupLifecyclePolicies.groupLifecyclePolicy
+      operationId: groupLifecyclePolicies.Entity-DeleteGroupLifecyclePolicy
       parameters:
         - name: id
           in: path
@@ -13390,7 +13390,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Get entities from identityProviders
-      operationId: identityProviders.IdentityProvider
+      operationId: identityProviders.EntitySet-ListIdentityProvider
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -13459,7 +13459,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Add new entity to identityProviders
-      operationId: identityProviders.IdentityProvider
+      operationId: identityProviders.EntitySet-CreateIdentityProvider
       requestBody:
         description: New entity
         content:
@@ -13481,7 +13481,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Get entity from identityProviders by key
-      operationId: identityProviders.IdentityProvider
+      operationId: identityProviders.Entity-GetIdentityProvider
       parameters:
         - name: id
           in: path
@@ -13526,7 +13526,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Update entity in identityProviders
-      operationId: identityProviders.IdentityProvider
+      operationId: identityProviders.Entity-UpdateIdentityProvider
       parameters:
         - name: id
           in: path
@@ -13550,7 +13550,7 @@ paths:
       tags:
         - identityProviders.IdentityProvider
       summary: Delete entity from identityProviders
-      operationId: identityProviders.IdentityProvider
+      operationId: identityProviders.Entity-DeleteIdentityProvider
       parameters:
         - name: id
           in: path
@@ -13573,7 +13573,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Get entities from functions
-      operationId: functions.attributeMappingFunctionSchema
+      operationId: functions.EntitySet-ListAttributeMappingFunctionSchema
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -13633,7 +13633,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Add new entity to functions
-      operationId: functions.attributeMappingFunctionSchema
+      operationId: functions.EntitySet-CreateAttributeMappingFunctionSchema
       requestBody:
         description: New entity
         content:
@@ -13655,7 +13655,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Get entity from functions by key
-      operationId: functions.attributeMappingFunctionSchema
+      operationId: functions.Entity-GetAttributeMappingFunctionSchema
       parameters:
         - name: id
           in: path
@@ -13697,7 +13697,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Update entity in functions
-      operationId: functions.attributeMappingFunctionSchema
+      operationId: functions.Entity-UpdateAttributeMappingFunctionSchema
       parameters:
         - name: id
           in: path
@@ -13721,7 +13721,7 @@ paths:
       tags:
         - functions.attributeMappingFunctionSchema
       summary: Delete entity from functions
-      operationId: functions.attributeMappingFunctionSchema
+      operationId: functions.Entity-DeleteAttributeMappingFunctionSchema
       parameters:
         - name: id
           in: path
@@ -13744,7 +13744,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Get entities from filterOperators
-      operationId: filterOperators.filterOperatorSchema
+      operationId: filterOperators.EntitySet-ListFilterOperatorSchema
       parameters:
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
@@ -13810,7 +13810,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Add new entity to filterOperators
-      operationId: filterOperators.filterOperatorSchema
+      operationId: filterOperators.EntitySet-CreateFilterOperatorSchema
       requestBody:
         description: New entity
         content:
@@ -13832,7 +13832,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Get entity from filterOperators by key
-      operationId: filterOperators.filterOperatorSchema
+      operationId: filterOperators.Entity-GetFilterOperatorSchema
       parameters:
         - name: id
           in: path
@@ -13876,7 +13876,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Update entity in filterOperators
-      operationId: filterOperators.filterOperatorSchema
+      operationId: filterOperators.Entity-UpdateFilterOperatorSchema
       parameters:
         - name: id
           in: path
@@ -13900,7 +13900,7 @@ paths:
       tags:
         - filterOperators.filterOperatorSchema
       summary: Delete entity from filterOperators
-      operationId: filterOperators.filterOperatorSchema
+      operationId: filterOperators.Entity-DeleteFilterOperatorSchema
       parameters:
         - name: id
           in: path
@@ -13923,7 +13923,7 @@ paths:
       tags:
         - me.user
       summary: Get me
-      operationId: me.user
+      operationId: me.Singleton-GetUser
       parameters:
         - name: $select
           in: query
@@ -14003,7 +14003,7 @@ paths:
       tags:
         - me.user
       summary: Update me
-      operationId: me.user
+      operationId: me.Singleton-UpdateUser
       requestBody:
         description: New property values
         content:
@@ -14409,7 +14409,7 @@ paths:
       tags:
         - directory.directory
       summary: Get directory
-      operationId: directory.directory
+      operationId: directory.Singleton-GetDirectory
       parameters:
         - name: $select
           in: query
@@ -14445,7 +14445,7 @@ paths:
       tags:
         - directory.directory
       summary: Update directory
-      operationId: directory.directory
+      operationId: directory.Singleton-UpdateDirectory
       requestBody:
         description: New property values
         content:
@@ -14463,7 +14463,7 @@ paths:
       tags:
         - drive.drive
       summary: Get drive
-      operationId: drive.drive
+      operationId: drive.Singleton-GetDrive
       parameters:
         - name: $select
           in: query
@@ -14519,7 +14519,7 @@ paths:
       tags:
         - drive.drive
       summary: Update drive
-      operationId: drive.drive
+      operationId: drive.Singleton-UpdateDrive
       requestBody:
         description: New property values
         content:
@@ -14601,7 +14601,7 @@ paths:
       tags:
         - planner.planner
       summary: Get planner
-      operationId: planner.planner
+      operationId: planner.Singleton-GetPlanner
       parameters:
         - name: $select
           in: query
@@ -14639,7 +14639,7 @@ paths:
       tags:
         - planner.planner
       summary: Update planner
-      operationId: planner.planner
+      operationId: planner.Singleton-UpdatePlanner
       requestBody:
         description: New property values
         content:
@@ -14657,7 +14657,7 @@ paths:
       tags:
         - deviceManagement.deviceManagement
       summary: Get deviceManagement
-      operationId: deviceManagement.deviceManagement
+      operationId: deviceManagement.Singleton-GetDeviceManagement
       parameters:
         - name: $select
           in: query
@@ -14746,7 +14746,7 @@ paths:
       tags:
         - deviceManagement.deviceManagement
       summary: Update deviceManagement
-      operationId: deviceManagement.deviceManagement
+      operationId: deviceManagement.Singleton-UpdateDeviceManagement
       requestBody:
         description: New property values
         content:
@@ -14831,7 +14831,7 @@ paths:
       tags:
         - deviceAppManagement.deviceAppManagement
       summary: Get deviceAppManagement
-      operationId: deviceAppManagement.deviceAppManagement
+      operationId: deviceAppManagement.Singleton-GetDeviceAppManagement
       parameters:
         - name: $select
           in: query
@@ -14889,7 +14889,7 @@ paths:
       tags:
         - deviceAppManagement.deviceAppManagement
       summary: Update deviceAppManagement
-      operationId: deviceAppManagement.deviceAppManagement
+      operationId: deviceAppManagement.Singleton-UpdateDeviceAppManagement
       requestBody:
         description: New property values
         content:
@@ -14918,7 +14918,7 @@ paths:
       tags:
         - reports.reportRoot
       summary: Get reports
-      operationId: reports.reportRoot
+      operationId: reports.Singleton-GetReportRoot
       parameters:
         - name: $select
           in: query
@@ -14953,7 +14953,7 @@ paths:
       tags:
         - reports.reportRoot
       summary: Update reports
-      operationId: reports.reportRoot
+      operationId: reports.Singleton-UpdateReportRoot
       requestBody:
         description: New property values
         content:
@@ -16952,7 +16952,7 @@ paths:
       tags:
         - education.educationRoot
       summary: Get education
-      operationId: education.educationRoot
+      operationId: education.Singleton-GetEducationRoot
       parameters:
         - name: $select
           in: query
@@ -16992,7 +16992,7 @@ paths:
       tags:
         - education.educationRoot
       summary: Update education
-      operationId: education.educationRoot
+      operationId: education.Singleton-UpdateEducationRoot
       requestBody:
         description: New property values
         content:
