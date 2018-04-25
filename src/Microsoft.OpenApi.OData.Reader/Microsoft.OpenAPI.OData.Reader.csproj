@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <None Remove="Annotations\GraphVocaburary.def" />
+    <None Remove="Operation\EntityGetOperationHandler.cs~RF2ce89b97.TMP" />
   </ItemGroup>
 
   <ItemGroup>

@@ -494,7 +494,7 @@
           "directoryObjects.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "directoryObjects.user.Delta",
+        "operationId": "directoryObjects.0-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -518,7 +518,7 @@
           "directoryObjects.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "directoryObjects.group.Delta",
+        "operationId": "directoryObjects.1-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -542,7 +542,7 @@
           "directoryObjects.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "directoryObjects.administrativeUnit.Delta",
+        "operationId": "directoryObjects.2-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -566,7 +566,7 @@
           "directoryObjects.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "directoryObjects.orgContact.Delta",
+        "operationId": "directoryObjects.3-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -590,7 +590,7 @@
           "directoryObjects.getByIds"
         ],
         "summary": "Invoke action getByIds",
-        "operationId": "directoryObjects.GetByIds",
+        "operationId": "directoryObjects.0-InvokeGetByIds",
         "consumes": [
           "application/json"
         ],
@@ -635,7 +635,7 @@
           "directoryObjects.validateProperties"
         ],
         "summary": "Invoke action validateProperties",
-        "operationId": "directoryObjects.ValidateProperties",
+        "operationId": "directoryObjects.0-InvokeValidateProperties",
         "consumes": [
           "application/json"
         ],
@@ -682,7 +682,7 @@
           "directoryObjects.checkMemberGroups"
         ],
         "summary": "Invoke action checkMemberGroups",
-        "operationId": "directoryObjects.CheckMemberGroups",
+        "operationId": "directoryObjects.0-InvokeCheckMemberGroups",
         "consumes": [
           "application/json"
         ],
@@ -728,7 +728,7 @@
           "directoryObjects.getMemberGroups"
         ],
         "summary": "Invoke action getMemberGroups",
-        "operationId": "directoryObjects.GetMemberGroups",
+        "operationId": "directoryObjects.0-InvokeGetMemberGroups",
         "consumes": [
           "application/json"
         ],
@@ -772,7 +772,7 @@
           "directoryObjects.getMemberObjects"
         ],
         "summary": "Invoke action getMemberObjects",
-        "operationId": "directoryObjects.GetMemberObjects",
+        "operationId": "directoryObjects.0-InvokeGetMemberObjects",
         "consumes": [
           "application/json"
         ],
@@ -816,7 +816,7 @@
           "directoryObjects.validateProperties"
         ],
         "summary": "Invoke action validateProperties",
-        "operationId": "directoryObjects.group.ValidateProperties",
+        "operationId": "directoryObjects.1-InvokeValidateProperties",
         "consumes": [
           "application/json"
         ],
@@ -867,7 +867,7 @@
           "directoryObjects.renew"
         ],
         "summary": "Invoke action renew",
-        "operationId": "directoryObjects.group.Renew",
+        "operationId": "directoryObjects.0-InvokeRenew",
         "parameters": [
           {
             "in": "path",
@@ -893,7 +893,7 @@
           "directoryObjects.restore"
         ],
         "summary": "Invoke action restore",
-        "operationId": "directoryObjects.Restore",
+        "operationId": "directoryObjects.0-InvokeRestore",
         "parameters": [
           {
             "in": "path",
@@ -919,7 +919,7 @@
           "directoryObjects.assignLicense"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "directoryObjects.user.AssignLicense",
+        "operationId": "directoryObjects.0-InvokeAssignLicense",
         "consumes": [
           "application/json"
         ],
@@ -973,7 +973,7 @@
           "directoryObjects.changePassword"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "directoryObjects.user.ChangePassword",
+        "operationId": "directoryObjects.0-InvokeChangePassword",
         "consumes": [
           "application/json"
         ],
@@ -1019,7 +1019,7 @@
           "directoryObjects.invalidateAllRefreshTokens"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
-        "operationId": "directoryObjects.user.InvalidateAllRefreshTokens",
+        "operationId": "directoryObjects.0-InvokeInvalidateAllRefreshTokens",
         "parameters": [
           {
             "in": "path",
@@ -1045,7 +1045,7 @@
           "directoryObjects.sendMail"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "directoryObjects.user.SendMail",
+        "operationId": "directoryObjects.0-InvokeSendMail",
         "consumes": [
           "application/json"
         ],
@@ -1092,7 +1092,7 @@
           "directoryObjects.findMeetingTimesOLD"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
-        "operationId": "directoryObjects.user.FindMeetingTimesOLD",
+        "operationId": "directoryObjects.0-InvokeFindMeetingTimesOLD",
         "consumes": [
           "application/json"
         ],
@@ -1157,7 +1157,7 @@
           "directoryObjects.findMeetingTimes"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "directoryObjects.user.FindMeetingTimes",
+        "operationId": "directoryObjects.0-InvokeFindMeetingTimes",
         "consumes": [
           "application/json"
         ],
@@ -1225,7 +1225,7 @@
           "directoryObjects.getMailTips"
         ],
         "summary": "Invoke action getMailTips",
-        "operationId": "directoryObjects.user.GetMailTips",
+        "operationId": "directoryObjects.0-InvokeGetMailTips",
         "consumes": [
           "application/json"
         ],
@@ -1272,7 +1272,7 @@
           "directoryObjects.reminderView"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "directoryObjects.user.ReminderView",
+        "operationId": "directoryObjects.0-InvokeReminderView",
         "produces": [
           "application/json"
         ],
@@ -1319,7 +1319,7 @@
           "directoryObjects.findRoomLists"
         ],
         "summary": "Invoke function findRoomLists",
-        "operationId": "directoryObjects.user.FindRoomLists",
+        "operationId": "directoryObjects.0-InvokeFindRoomLists",
         "produces": [
           "application/json"
         ],
@@ -1354,7 +1354,7 @@
           "directoryObjects.findRooms"
         ],
         "summary": "Invoke function findRooms",
-        "operationId": "directoryObjects.user.0-FindRooms",
+        "operationId": "directoryObjects.0-InvokeFindRooms",
         "produces": [
           "application/json"
         ],
@@ -1395,7 +1395,7 @@
           "directoryObjects.findRooms"
         ],
         "summary": "Invoke function findRooms",
-        "operationId": "directoryObjects.user.1-FindRooms",
+        "operationId": "directoryObjects.1-InvokeFindRooms",
         "produces": [
           "application/json"
         ],
@@ -1430,7 +1430,7 @@
           "directoryObjects.subscribeByMail"
         ],
         "summary": "Invoke action subscribeByMail",
-        "operationId": "directoryObjects.group.SubscribeByMail",
+        "operationId": "directoryObjects.0-InvokeSubscribeByMail",
         "parameters": [
           {
             "in": "path",
@@ -1456,7 +1456,7 @@
           "directoryObjects.unsubscribeByMail"
         ],
         "summary": "Invoke action unsubscribeByMail",
-        "operationId": "directoryObjects.group.UnsubscribeByMail",
+        "operationId": "directoryObjects.0-InvokeUnsubscribeByMail",
         "parameters": [
           {
             "in": "path",
@@ -1482,7 +1482,7 @@
           "directoryObjects.addFavorite"
         ],
         "summary": "Invoke action addFavorite",
-        "operationId": "directoryObjects.group.AddFavorite",
+        "operationId": "directoryObjects.0-InvokeAddFavorite",
         "parameters": [
           {
             "in": "path",
@@ -1508,7 +1508,7 @@
           "directoryObjects.removeFavorite"
         ],
         "summary": "Invoke action removeFavorite",
-        "operationId": "directoryObjects.group.RemoveFavorite",
+        "operationId": "directoryObjects.0-InvokeRemoveFavorite",
         "parameters": [
           {
             "in": "path",
@@ -1534,7 +1534,7 @@
           "directoryObjects.resetUnseenCount"
         ],
         "summary": "Invoke action resetUnseenCount",
-        "operationId": "directoryObjects.group.ResetUnseenCount",
+        "operationId": "directoryObjects.0-InvokeResetUnseenCount",
         "parameters": [
           {
             "in": "path",
@@ -1560,7 +1560,7 @@
           "directoryObjects.removeAllDevicesFromManagement"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
-        "operationId": "directoryObjects.user.RemoveAllDevicesFromManagement",
+        "operationId": "directoryObjects.0-InvokeRemoveAllDevicesFromManagement",
         "parameters": [
           {
             "in": "path",
@@ -1586,7 +1586,7 @@
           "directoryObjects.setMobileDeviceManagementAuthority"
         ],
         "summary": "Invoke action setMobileDeviceManagementAuthority",
-        "operationId": "directoryObjects.organization.SetMobileDeviceManagementAuthority",
+        "operationId": "directoryObjects.0-InvokeSetMobileDeviceManagementAuthority",
         "parameters": [
           {
             "in": "path",
@@ -1612,7 +1612,7 @@
           "directoryObjects.getEncryptionPublicKey"
         ],
         "summary": "Invoke function getEncryptionPublicKey",
-        "operationId": "directoryObjects.organization.GetEncryptionPublicKey",
+        "operationId": "directoryObjects.0-InvokeGetEncryptionPublicKey",
         "produces": [
           "application/json"
         ],
@@ -1644,7 +1644,7 @@
           "directoryObjects.uploadDepToken"
         ],
         "summary": "Invoke action uploadDepToken",
-        "operationId": "directoryObjects.organization.UploadDepToken",
+        "operationId": "directoryObjects.0-InvokeUploadDepToken",
         "consumes": [
           "application/json"
         ],
@@ -1690,7 +1690,7 @@
           "directoryObjects.syncWithAppleDeviceEnrollmentProgram"
         ],
         "summary": "Invoke action syncWithAppleDeviceEnrollmentProgram",
-        "operationId": "directoryObjects.organization.SyncWithAppleDeviceEnrollmentProgram",
+        "operationId": "directoryObjects.0-InvokeSyncWithAppleDeviceEnrollmentProgram",
         "parameters": [
           {
             "in": "path",
@@ -1716,7 +1716,7 @@
           "directoryObjects.getManagedAppDiagnosticStatuses"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
-        "operationId": "directoryObjects.user.GetManagedAppDiagnosticStatuses",
+        "operationId": "directoryObjects.0-InvokeGetManagedAppDiagnosticStatuses",
         "produces": [
           "application/json"
         ],
@@ -1749,7 +1749,7 @@
           "directoryObjects.getManagedAppPolicies"
         ],
         "summary": "Invoke function getManagedAppPolicies",
-        "operationId": "directoryObjects.user.GetManagedAppPolicies",
+        "operationId": "directoryObjects.0-InvokeGetManagedAppPolicies",
         "produces": [
           "application/json"
         ],
@@ -1782,7 +1782,7 @@
           "directoryObjects.wipeManagedAppRegistrationByDeviceTag"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
-        "operationId": "directoryObjects.user.WipeManagedAppRegistrationByDeviceTag",
+        "operationId": "directoryObjects.0-InvokeWipeManagedAppRegistrationByDeviceTag",
         "consumes": [
           "application/json"
         ],
@@ -2329,7 +2329,7 @@
           "administrativeUnits.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "administrativeUnits.Delta",
+        "operationId": "administrativeUnits.0-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -3173,7 +3173,7 @@
           "contacts.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "contacts.Delta",
+        "operationId": "contacts.0-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -3780,7 +3780,7 @@
           "domains.forceDelete"
         ],
         "summary": "Invoke action forceDelete",
-        "operationId": "domains.ForceDelete",
+        "operationId": "domains.0-InvokeForceDelete",
         "consumes": [
           "application/json"
         ],
@@ -3824,7 +3824,7 @@
           "domains.verify"
         ],
         "summary": "Invoke action verify",
-        "operationId": "domains.Verify",
+        "operationId": "domains.0-InvokeVerify",
         "parameters": [
           {
             "in": "path",
@@ -4447,7 +4447,7 @@
           "groups.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "groups.Delta",
+        "operationId": "groups.0-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -4471,7 +4471,7 @@
           "groups.validateProperties"
         ],
         "summary": "Invoke action validateProperties",
-        "operationId": "groups.ValidateProperties",
+        "operationId": "groups.0-InvokeValidateProperties",
         "consumes": [
           "application/json"
         ],
@@ -4522,7 +4522,7 @@
           "groups.renew"
         ],
         "summary": "Invoke action renew",
-        "operationId": "groups.Renew",
+        "operationId": "groups.0-InvokeRenew",
         "parameters": [
           {
             "in": "path",
@@ -4548,7 +4548,7 @@
           "groups.subscribeByMail"
         ],
         "summary": "Invoke action subscribeByMail",
-        "operationId": "groups.SubscribeByMail",
+        "operationId": "groups.0-InvokeSubscribeByMail",
         "parameters": [
           {
             "in": "path",
@@ -4574,7 +4574,7 @@
           "groups.unsubscribeByMail"
         ],
         "summary": "Invoke action unsubscribeByMail",
-        "operationId": "groups.UnsubscribeByMail",
+        "operationId": "groups.0-InvokeUnsubscribeByMail",
         "parameters": [
           {
             "in": "path",
@@ -4600,7 +4600,7 @@
           "groups.addFavorite"
         ],
         "summary": "Invoke action addFavorite",
-        "operationId": "groups.AddFavorite",
+        "operationId": "groups.0-InvokeAddFavorite",
         "parameters": [
           {
             "in": "path",
@@ -4626,7 +4626,7 @@
           "groups.removeFavorite"
         ],
         "summary": "Invoke action removeFavorite",
-        "operationId": "groups.RemoveFavorite",
+        "operationId": "groups.0-InvokeRemoveFavorite",
         "parameters": [
           {
             "in": "path",
@@ -4652,7 +4652,7 @@
           "groups.resetUnseenCount"
         ],
         "summary": "Invoke action resetUnseenCount",
-        "operationId": "groups.ResetUnseenCount",
+        "operationId": "groups.0-InvokeResetUnseenCount",
         "parameters": [
           {
             "in": "path",
@@ -5644,7 +5644,7 @@
           "organization.setMobileDeviceManagementAuthority"
         ],
         "summary": "Invoke action setMobileDeviceManagementAuthority",
-        "operationId": "organization.SetMobileDeviceManagementAuthority",
+        "operationId": "organization.0-InvokeSetMobileDeviceManagementAuthority",
         "parameters": [
           {
             "in": "path",
@@ -5670,7 +5670,7 @@
           "organization.getEncryptionPublicKey"
         ],
         "summary": "Invoke function getEncryptionPublicKey",
-        "operationId": "organization.GetEncryptionPublicKey",
+        "operationId": "organization.0-InvokeGetEncryptionPublicKey",
         "produces": [
           "application/json"
         ],
@@ -5702,7 +5702,7 @@
           "organization.uploadDepToken"
         ],
         "summary": "Invoke action uploadDepToken",
-        "operationId": "organization.UploadDepToken",
+        "operationId": "organization.0-InvokeUploadDepToken",
         "consumes": [
           "application/json"
         ],
@@ -5748,7 +5748,7 @@
           "organization.syncWithAppleDeviceEnrollmentProgram"
         ],
         "summary": "Invoke action syncWithAppleDeviceEnrollmentProgram",
-        "operationId": "organization.SyncWithAppleDeviceEnrollmentProgram",
+        "operationId": "organization.0-InvokeSyncWithAppleDeviceEnrollmentProgram",
         "parameters": [
           {
             "in": "path",
@@ -7083,7 +7083,7 @@
         "tags": [
           "users.user"
         ],
-        "summary": "Get entities from users",
+        "summary": "Retrieve the properties and relationships of user object.",
         "operationId": "users.EntitySet-ListUser",
         "produces": [
           "application/json"
@@ -7365,7 +7365,7 @@
         "tags": [
           "users.user"
         ],
-        "summary": "Retrieve the properties and relationships of user object.",
+        "summary": "Get entity from users by key",
         "operationId": "users.Entity-GetUser",
         "produces": [
           "application/json"
@@ -7444,23 +7444,6 @@
               ],
               "type": "string"
             }
-          },
-          {
-            "in": "query",
-            "name": "Select",
-            "description": "N/A"
-          },
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer {token}. Required.",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "content-type",
-            "description": "application/json",
-            "required": true
           }
         ],
         "responses": {
@@ -7473,16 +7456,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "security": [
-          {
-            "DelegatedWork": [
-              "User.ReadAll",
-              "User.WriteAll",
-              "User.WriteAll,User.ReadAll"
-            ]
-          }
-        ]
+        }
       },
       "patch": {
         "tags": [
@@ -7557,7 +7531,7 @@
           "users.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "users.Delta",
+        "operationId": "users.0-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -7581,7 +7555,7 @@
           "users.assignLicense"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "users.AssignLicense",
+        "operationId": "users.0-InvokeAssignLicense",
         "consumes": [
           "application/json"
         ],
@@ -7635,7 +7609,7 @@
           "users.changePassword"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "users.ChangePassword",
+        "operationId": "users.0-InvokeChangePassword",
         "consumes": [
           "application/json"
         ],
@@ -7681,7 +7655,7 @@
           "users.invalidateAllRefreshTokens"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
-        "operationId": "users.InvalidateAllRefreshTokens",
+        "operationId": "users.0-InvokeInvalidateAllRefreshTokens",
         "parameters": [
           {
             "in": "path",
@@ -7707,7 +7681,7 @@
           "users.sendMail"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "users.SendMail",
+        "operationId": "users.0-InvokeSendMail",
         "consumes": [
           "application/json"
         ],
@@ -7754,7 +7728,7 @@
           "users.findMeetingTimesOLD"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
-        "operationId": "users.FindMeetingTimesOLD",
+        "operationId": "users.0-InvokeFindMeetingTimesOLD",
         "consumes": [
           "application/json"
         ],
@@ -7819,7 +7793,7 @@
           "users.findMeetingTimes"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "users.FindMeetingTimes",
+        "operationId": "users.0-InvokeFindMeetingTimes",
         "consumes": [
           "application/json"
         ],
@@ -7887,7 +7861,7 @@
           "users.getMailTips"
         ],
         "summary": "Invoke action getMailTips",
-        "operationId": "users.GetMailTips",
+        "operationId": "users.0-InvokeGetMailTips",
         "consumes": [
           "application/json"
         ],
@@ -7934,7 +7908,7 @@
           "users.reminderView"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "users.ReminderView",
+        "operationId": "users.0-InvokeReminderView",
         "produces": [
           "application/json"
         ],
@@ -7981,7 +7955,7 @@
           "users.findRoomLists"
         ],
         "summary": "Invoke function findRoomLists",
-        "operationId": "users.FindRoomLists",
+        "operationId": "users.0-InvokeFindRoomLists",
         "produces": [
           "application/json"
         ],
@@ -8016,7 +7990,7 @@
           "users.findRooms"
         ],
         "summary": "Invoke function findRooms",
-        "operationId": "users.0-FindRooms",
+        "operationId": "users.0-InvokeFindRooms",
         "produces": [
           "application/json"
         ],
@@ -8057,7 +8031,7 @@
           "users.findRooms"
         ],
         "summary": "Invoke function findRooms",
-        "operationId": "users.1-FindRooms",
+        "operationId": "users.1-InvokeFindRooms",
         "produces": [
           "application/json"
         ],
@@ -8092,7 +8066,7 @@
           "users.removeAllDevicesFromManagement"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
-        "operationId": "users.RemoveAllDevicesFromManagement",
+        "operationId": "users.0-InvokeRemoveAllDevicesFromManagement",
         "parameters": [
           {
             "in": "path",
@@ -8118,7 +8092,7 @@
           "users.getManagedAppDiagnosticStatuses"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
-        "operationId": "users.GetManagedAppDiagnosticStatuses",
+        "operationId": "users.0-InvokeGetManagedAppDiagnosticStatuses",
         "produces": [
           "application/json"
         ],
@@ -8151,7 +8125,7 @@
           "users.getManagedAppPolicies"
         ],
         "summary": "Invoke function getManagedAppPolicies",
-        "operationId": "users.GetManagedAppPolicies",
+        "operationId": "users.0-InvokeGetManagedAppPolicies",
         "produces": [
           "application/json"
         ],
@@ -8184,7 +8158,7 @@
           "users.wipeManagedAppRegistrationByDeviceTag"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
-        "operationId": "users.WipeManagedAppRegistrationByDeviceTag",
+        "operationId": "users.0-InvokeWipeManagedAppRegistrationByDeviceTag",
         "consumes": [
           "application/json"
         ],
@@ -9076,7 +9050,7 @@
           "workbooks.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "workbooks.0-Delta",
+        "operationId": "workbooks.0-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -9115,7 +9089,7 @@
           "workbooks.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "workbooks.1-Delta",
+        "operationId": "workbooks.1-InvokeDelta",
         "produces": [
           "application/json"
         ],
@@ -9148,7 +9122,7 @@
           "workbooks.search"
         ],
         "summary": "Invoke function search",
-        "operationId": "workbooks.Search",
+        "operationId": "workbooks.0-InvokeSearch",
         "produces": [
           "application/json"
         ],
@@ -9187,7 +9161,7 @@
           "workbooks.checkin"
         ],
         "summary": "Invoke action checkin",
-        "operationId": "workbooks.Checkin",
+        "operationId": "workbooks.0-InvokeCheckin",
         "consumes": [
           "application/json"
         ],
@@ -9233,7 +9207,7 @@
           "workbooks.checkout"
         ],
         "summary": "Invoke action checkout",
-        "operationId": "workbooks.Checkout",
+        "operationId": "workbooks.0-InvokeCheckout",
         "parameters": [
           {
             "in": "path",
@@ -9259,7 +9233,7 @@
           "workbooks.copy"
         ],
         "summary": "Invoke action copy",
-        "operationId": "workbooks.Copy",
+        "operationId": "workbooks.0-InvokeCopy",
         "consumes": [
           "application/json"
         ],
@@ -9303,7 +9277,7 @@
           "workbooks.createLink"
         ],
         "summary": "Invoke action createLink",
-        "operationId": "workbooks.CreateLink",
+        "operationId": "workbooks.0-InvokeCreateLink",
         "consumes": [
           "application/json"
         ],
@@ -9364,7 +9338,7 @@
           "workbooks.createUploadSession"
         ],
         "summary": "Invoke action createUploadSession",
-        "operationId": "workbooks.CreateUploadSession",
+        "operationId": "workbooks.0-InvokeCreateUploadSession",
         "consumes": [
           "application/json"
         ],
@@ -9405,7 +9379,7 @@
           "workbooks.invite"
         ],
         "summary": "Invoke action invite",
-        "operationId": "workbooks.Invite",
+        "operationId": "workbooks.0-InvokeInvite",
         "consumes": [
           "application/json"
         ],
@@ -9468,7 +9442,7 @@
           "workbooks.validatePermission"
         ],
         "summary": "Invoke action validatePermission",
-        "operationId": "workbooks.ValidatePermission",
+        "operationId": "workbooks.0-InvokeValidatePermission",
         "consumes": [
           "application/json"
         ],
@@ -9827,7 +9801,7 @@
           "drives.recent"
         ],
         "summary": "Invoke function recent",
-        "operationId": "drives.Recent",
+        "operationId": "drives.0-InvokeRecent",
         "produces": [
           "application/json"
         ],
@@ -9860,7 +9834,7 @@
           "drives.search"
         ],
         "summary": "Invoke function search",
-        "operationId": "drives.Search",
+        "operationId": "drives.0-InvokeSearch",
         "produces": [
           "application/json"
         ],
@@ -9899,7 +9873,7 @@
           "drives.sharedWithMe"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "drives.SharedWithMe",
+        "operationId": "drives.0-InvokeSharedWithMe",
         "produces": [
           "application/json"
         ],
@@ -10546,7 +10520,7 @@
           "sites.getByPath"
         ],
         "summary": "Invoke function getByPath",
-        "operationId": "sites.GetByPath",
+        "operationId": "sites.0-InvokeGetByPath",
         "produces": [
           "application/json"
         ],
@@ -13078,7 +13052,7 @@
           "privilegedRoles.selfActivate"
         ],
         "summary": "Invoke action selfActivate",
-        "operationId": "privilegedRoles.SelfActivate",
+        "operationId": "privilegedRoles.0-InvokeSelfActivate",
         "consumes": [
           "application/json"
         ],
@@ -13130,7 +13104,7 @@
           "privilegedRoles.selfDeactivate"
         ],
         "summary": "Invoke action selfDeactivate",
-        "operationId": "privilegedRoles.SelfDeactivate",
+        "operationId": "privilegedRoles.0-InvokeSelfDeactivate",
         "parameters": [
           {
             "in": "path",
@@ -13421,7 +13395,7 @@
           "privilegedRoleAssignments.my"
         ],
         "summary": "Invoke function my",
-        "operationId": "privilegedRoleAssignments.My",
+        "operationId": "privilegedRoleAssignments.0-InvokeMy",
         "produces": [
           "application/json"
         ],
@@ -13445,7 +13419,7 @@
           "privilegedRoleAssignments.makePermanent"
         ],
         "summary": "Invoke action makePermanent",
-        "operationId": "privilegedRoleAssignments.MakePermanent",
+        "operationId": "privilegedRoleAssignments.0-InvokeMakePermanent",
         "consumes": [
           "application/json"
         ],
@@ -13494,7 +13468,7 @@
           "privilegedRoleAssignments.makeEligible"
         ],
         "summary": "Invoke action makeEligible",
-        "operationId": "privilegedRoleAssignments.MakeEligible",
+        "operationId": "privilegedRoleAssignments.0-InvokeMakeEligible",
         "parameters": [
           {
             "in": "path",
@@ -14070,7 +14044,7 @@
           "privilegedSignupStatus.signUp"
         ],
         "summary": "Invoke action signUp",
-        "operationId": "privilegedSignupStatus.SignUp",
+        "operationId": "privilegedSignupStatus.0-InvokeSignUp",
         "responses": {
           "204": {
             "description": "Success"
@@ -14087,7 +14061,7 @@
           "privilegedSignupStatus.isSignedUp"
         ],
         "summary": "Invoke function isSignedUp",
-        "operationId": "privilegedSignupStatus.IsSignedUp",
+        "operationId": "privilegedSignupStatus.0-InvokeIsSignedUp",
         "produces": [
           "application/json"
         ],
@@ -14111,7 +14085,7 @@
           "privilegedSignupStatus.canSignUp"
         ],
         "summary": "Invoke function canSignUp",
-        "operationId": "privilegedSignupStatus.CanSignUp",
+        "operationId": "privilegedSignupStatus.0-InvokeCanSignUp",
         "produces": [
           "application/json"
         ],
@@ -14135,7 +14109,7 @@
           "privilegedSignupStatus.completeSetup"
         ],
         "summary": "Invoke action completeSetup",
-        "operationId": "privilegedSignupStatus.CompleteSetup",
+        "operationId": "privilegedSignupStatus.0-InvokeCompleteSetup",
         "consumes": [
           "application/json"
         ],
@@ -14450,7 +14424,7 @@
           "privilegedApproval.myRequests"
         ],
         "summary": "Invoke function myRequests",
-        "operationId": "privilegedApproval.MyRequests",
+        "operationId": "privilegedApproval.0-InvokeMyRequests",
         "produces": [
           "application/json"
         ],
@@ -15540,7 +15514,7 @@
           "vppTokens.syncLicenses"
         ],
         "summary": "Invoke action syncLicenses",
-        "operationId": "vppTokens.SyncLicenses",
+        "operationId": "vppTokens.0-InvokeSyncLicenses",
         "parameters": [
           {
             "in": "path",
@@ -15566,7 +15540,7 @@
           "vppTokens.revokeLicenses"
         ],
         "summary": "Invoke action revokeLicenses",
-        "operationId": "vppTokens.RevokeLicenses",
+        "operationId": "vppTokens.0-InvokeRevokeLicenses",
         "parameters": [
           {
             "in": "path",
@@ -17375,7 +17349,7 @@
           "groupLifecyclePolicies.renewGroup"
         ],
         "summary": "Invoke action renewGroup",
-        "operationId": "groupLifecyclePolicies.RenewGroup",
+        "operationId": "groupLifecyclePolicies.0-InvokeRenewGroup",
         "consumes": [
           "application/json"
         ],
@@ -17411,7 +17385,7 @@
           "groupLifecyclePolicies.addGroup"
         ],
         "summary": "Invoke action addGroup",
-        "operationId": "groupLifecyclePolicies.AddGroup",
+        "operationId": "groupLifecyclePolicies.0-InvokeAddGroup",
         "consumes": [
           "application/json"
         ],
@@ -17454,7 +17428,7 @@
           "groupLifecyclePolicies.removeGroup"
         ],
         "summary": "Invoke action removeGroup",
-        "operationId": "groupLifecyclePolicies.RemoveGroup",
+        "operationId": "groupLifecyclePolicies.0-InvokeRemoveGroup",
         "consumes": [
           "application/json"
         ],
@@ -18379,7 +18353,7 @@
           "me.assignLicense"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "me.AssignLicense",
+        "operationId": "me.0-InvokeAssignLicense",
         "consumes": [
           "application/json"
         ],
@@ -18426,7 +18400,7 @@
           "me.changePassword"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "me.ChangePassword",
+        "operationId": "me.0-InvokeChangePassword",
         "consumes": [
           "application/json"
         ],
@@ -18465,7 +18439,7 @@
           "me.invalidateAllRefreshTokens"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
-        "operationId": "me.InvalidateAllRefreshTokens",
+        "operationId": "me.0-InvokeInvalidateAllRefreshTokens",
         "responses": {
           "204": {
             "description": "Success"
@@ -18482,7 +18456,7 @@
           "me.sendMail"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "me.SendMail",
+        "operationId": "me.0-InvokeSendMail",
         "consumes": [
           "application/json"
         ],
@@ -18522,7 +18496,7 @@
           "me.findMeetingTimesOLD"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
-        "operationId": "me.FindMeetingTimesOLD",
+        "operationId": "me.0-InvokeFindMeetingTimesOLD",
         "consumes": [
           "application/json"
         ],
@@ -18580,7 +18554,7 @@
           "me.findMeetingTimes"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "me.FindMeetingTimes",
+        "operationId": "me.0-InvokeFindMeetingTimes",
         "consumes": [
           "application/json"
         ],
@@ -18641,7 +18615,7 @@
           "me.getMailTips"
         ],
         "summary": "Invoke action getMailTips",
-        "operationId": "me.GetMailTips",
+        "operationId": "me.0-InvokeGetMailTips",
         "consumes": [
           "application/json"
         ],
@@ -18681,7 +18655,7 @@
           "me.reminderView"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "me.ReminderView",
+        "operationId": "me.0-InvokeReminderView",
         "produces": [
           "application/json"
         ],
@@ -18721,7 +18695,7 @@
           "me.findRoomLists"
         ],
         "summary": "Invoke function findRoomLists",
-        "operationId": "me.FindRoomLists",
+        "operationId": "me.0-InvokeFindRoomLists",
         "produces": [
           "application/json"
         ],
@@ -18747,7 +18721,7 @@
           "me.findRooms"
         ],
         "summary": "Invoke function findRooms",
-        "operationId": "me.0-FindRooms",
+        "operationId": "me.0-InvokeFindRooms",
         "produces": [
           "application/json"
         ],
@@ -18781,7 +18755,7 @@
           "me.findRooms"
         ],
         "summary": "Invoke function findRooms",
-        "operationId": "me.1-FindRooms",
+        "operationId": "me.1-InvokeFindRooms",
         "produces": [
           "application/json"
         ],
@@ -18807,7 +18781,7 @@
           "me.removeAllDevicesFromManagement"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
-        "operationId": "me.RemoveAllDevicesFromManagement",
+        "operationId": "me.0-InvokeRemoveAllDevicesFromManagement",
         "responses": {
           "204": {
             "description": "Success"
@@ -18824,7 +18798,7 @@
           "me.getManagedAppDiagnosticStatuses"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
-        "operationId": "me.GetManagedAppDiagnosticStatuses",
+        "operationId": "me.0-InvokeGetManagedAppDiagnosticStatuses",
         "produces": [
           "application/json"
         ],
@@ -18848,7 +18822,7 @@
           "me.getManagedAppPolicies"
         ],
         "summary": "Invoke function getManagedAppPolicies",
-        "operationId": "me.GetManagedAppPolicies",
+        "operationId": "me.0-InvokeGetManagedAppPolicies",
         "produces": [
           "application/json"
         ],
@@ -18872,7 +18846,7 @@
           "me.wipeManagedAppRegistrationByDeviceTag"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
-        "operationId": "me.WipeManagedAppRegistrationByDeviceTag",
+        "operationId": "me.0-InvokeWipeManagedAppRegistrationByDeviceTag",
         "consumes": [
           "application/json"
         ],
@@ -19086,7 +19060,7 @@
           "drive.recent"
         ],
         "summary": "Invoke function recent",
-        "operationId": "drive.Recent",
+        "operationId": "drive.0-InvokeRecent",
         "produces": [
           "application/json"
         ],
@@ -19110,7 +19084,7 @@
           "drive.search"
         ],
         "summary": "Invoke function search",
-        "operationId": "drive.Search",
+        "operationId": "drive.0-InvokeSearch",
         "produces": [
           "application/json"
         ],
@@ -19142,7 +19116,7 @@
           "drive.sharedWithMe"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "drive.SharedWithMe",
+        "operationId": "drive.0-InvokeSharedWithMe",
         "produces": [
           "application/json"
         ],
@@ -19379,7 +19353,7 @@
           "deviceManagement.verifyWindowsEnrollmentAutoDiscovery"
         ],
         "summary": "Invoke function verifyWindowsEnrollmentAutoDiscovery",
-        "operationId": "deviceManagement.VerifyWindowsEnrollmentAutoDiscovery",
+        "operationId": "deviceManagement.0-InvokeVerifyWindowsEnrollmentAutoDiscovery",
         "produces": [
           "application/json"
         ],
@@ -19411,7 +19385,7 @@
           "deviceManagement.getEffectivePermissions"
         ],
         "summary": "Invoke function getEffectivePermissions",
-        "operationId": "deviceManagement.0-GetEffectivePermissions",
+        "operationId": "deviceManagement.0-InvokeGetEffectivePermissions",
         "produces": [
           "application/json"
         ],
@@ -19437,7 +19411,7 @@
           "deviceManagement.getEffectivePermissions"
         ],
         "summary": "Invoke function getEffectivePermissions",
-        "operationId": "deviceManagement.1-GetEffectivePermissions",
+        "operationId": "deviceManagement.1-InvokeGetEffectivePermissions",
         "produces": [
           "application/json"
         ],
@@ -19570,7 +19544,7 @@
           "deviceAppManagement.syncMicrosoftStoreForBusinessApps"
         ],
         "summary": "Invoke action syncMicrosoftStoreForBusinessApps",
-        "operationId": "deviceAppManagement.SyncMicrosoftStoreForBusinessApps",
+        "operationId": "deviceAppManagement.0-InvokeSyncMicrosoftStoreForBusinessApps",
         "responses": {
           "204": {
             "description": "Success"
@@ -19665,7 +19639,7 @@
           "reports.deviceConfigurationUserActivity"
         ],
         "summary": "Invoke function deviceConfigurationUserActivity",
-        "operationId": "reports.DeviceConfigurationUserActivity",
+        "operationId": "reports.0-InvokeDeviceConfigurationUserActivity",
         "produces": [
           "application/json"
         ],
@@ -19686,7 +19660,7 @@
           "reports.deviceConfigurationDeviceActivity"
         ],
         "summary": "Invoke function deviceConfigurationDeviceActivity",
-        "operationId": "reports.DeviceConfigurationDeviceActivity",
+        "operationId": "reports.0-InvokeDeviceConfigurationDeviceActivity",
         "produces": [
           "application/json"
         ],
@@ -19707,7 +19681,7 @@
           "reports.getOffice365ActivationsUserDetail"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
-        "operationId": "reports.GetOffice365ActivationsUserDetail",
+        "operationId": "reports.0-InvokeGetOffice365ActivationsUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19733,7 +19707,7 @@
           "reports.getOffice365ActivationCounts"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
-        "operationId": "reports.GetOffice365ActivationCounts",
+        "operationId": "reports.0-InvokeGetOffice365ActivationCounts",
         "produces": [
           "application/json"
         ],
@@ -19759,7 +19733,7 @@
           "reports.getOffice365ActivationsUserCounts"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
-        "operationId": "reports.GetOffice365ActivationsUserCounts",
+        "operationId": "reports.0-InvokeGetOffice365ActivationsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19785,7 +19759,7 @@
           "reports.getOffice365ActiveUserDetail"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "reports.0-GetOffice365ActiveUserDetail",
+        "operationId": "reports.0-InvokeGetOffice365ActiveUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19821,7 +19795,7 @@
           "reports.getOffice365ActiveUserDetail"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "reports.1-GetOffice365ActiveUserDetail",
+        "operationId": "reports.1-InvokeGetOffice365ActiveUserDetail",
         "produces": [
           "application/json"
         ],
@@ -19855,7 +19829,7 @@
           "reports.getOffice365ServicesUserCounts"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
-        "operationId": "reports.GetOffice365ServicesUserCounts",
+        "operationId": "reports.0-InvokeGetOffice365ServicesUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19889,7 +19863,7 @@
           "reports.getOffice365ActiveUserCounts"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
-        "operationId": "reports.GetOffice365ActiveUserCounts",
+        "operationId": "reports.0-InvokeGetOffice365ActiveUserCounts",
         "produces": [
           "application/json"
         ],
@@ -19923,7 +19897,7 @@
           "reports.getOffice365GroupsActivityDetail"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "reports.0-GetOffice365GroupsActivityDetail",
+        "operationId": "reports.0-InvokeGetOffice365GroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -19959,7 +19933,7 @@
           "reports.getOffice365GroupsActivityDetail"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "reports.1-GetOffice365GroupsActivityDetail",
+        "operationId": "reports.1-InvokeGetOffice365GroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -19993,7 +19967,7 @@
           "reports.getOffice365GroupsActivityCounts"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
-        "operationId": "reports.GetOffice365GroupsActivityCounts",
+        "operationId": "reports.0-InvokeGetOffice365GroupsActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -20027,7 +20001,7 @@
           "reports.getOffice365GroupsActivityGroupCounts"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
-        "operationId": "reports.GetOffice365GroupsActivityGroupCounts",
+        "operationId": "reports.0-InvokeGetOffice365GroupsActivityGroupCounts",
         "produces": [
           "application/json"
         ],
@@ -20061,7 +20035,7 @@
           "reports.getOffice365GroupsActivityStorage"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
-        "operationId": "reports.GetOffice365GroupsActivityStorage",
+        "operationId": "reports.0-InvokeGetOffice365GroupsActivityStorage",
         "produces": [
           "application/json"
         ],
@@ -20095,7 +20069,7 @@
           "reports.getOffice365GroupsActivityFileCounts"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
-        "operationId": "reports.GetOffice365GroupsActivityFileCounts",
+        "operationId": "reports.0-InvokeGetOffice365GroupsActivityFileCounts",
         "produces": [
           "application/json"
         ],
@@ -20129,7 +20103,7 @@
           "reports.getEmailActivityUserDetail"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "reports.0-GetEmailActivityUserDetail",
+        "operationId": "reports.0-InvokeGetEmailActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20165,7 +20139,7 @@
           "reports.getEmailActivityUserDetail"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "reports.1-GetEmailActivityUserDetail",
+        "operationId": "reports.1-InvokeGetEmailActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20199,7 +20173,7 @@
           "reports.getEmailActivityCounts"
         ],
         "summary": "Invoke function getEmailActivityCounts",
-        "operationId": "reports.GetEmailActivityCounts",
+        "operationId": "reports.0-InvokeGetEmailActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -20233,7 +20207,7 @@
           "reports.getEmailActivityUserCounts"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
-        "operationId": "reports.GetEmailActivityUserCounts",
+        "operationId": "reports.0-InvokeGetEmailActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20267,7 +20241,7 @@
           "reports.getEmailAppUsageUserDetail"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "reports.0-GetEmailAppUsageUserDetail",
+        "operationId": "reports.0-InvokeGetEmailAppUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20303,7 +20277,7 @@
           "reports.getEmailAppUsageUserDetail"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "reports.1-GetEmailAppUsageUserDetail",
+        "operationId": "reports.1-InvokeGetEmailAppUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20337,7 +20311,7 @@
           "reports.getEmailAppUsageAppsUserCounts"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
-        "operationId": "reports.GetEmailAppUsageAppsUserCounts",
+        "operationId": "reports.0-InvokeGetEmailAppUsageAppsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20371,7 +20345,7 @@
           "reports.getEmailAppUsageUserCounts"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
-        "operationId": "reports.GetEmailAppUsageUserCounts",
+        "operationId": "reports.0-InvokeGetEmailAppUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20405,7 +20379,7 @@
           "reports.getEmailAppUsageVersionsUserCounts"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
-        "operationId": "reports.GetEmailAppUsageVersionsUserCounts",
+        "operationId": "reports.0-InvokeGetEmailAppUsageVersionsUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20439,7 +20413,7 @@
           "reports.getMailboxUsageDetail"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
-        "operationId": "reports.GetMailboxUsageDetail",
+        "operationId": "reports.0-InvokeGetMailboxUsageDetail",
         "produces": [
           "application/json"
         ],
@@ -20473,7 +20447,7 @@
           "reports.getMailboxUsageMailboxCounts"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
-        "operationId": "reports.GetMailboxUsageMailboxCounts",
+        "operationId": "reports.0-InvokeGetMailboxUsageMailboxCounts",
         "produces": [
           "application/json"
         ],
@@ -20507,7 +20481,7 @@
           "reports.getMailboxUsageQuotaStatusMailboxCounts"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
-        "operationId": "reports.GetMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "reports.0-InvokeGetMailboxUsageQuotaStatusMailboxCounts",
         "produces": [
           "application/json"
         ],
@@ -20541,7 +20515,7 @@
           "reports.getMailboxUsageStorage"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
-        "operationId": "reports.GetMailboxUsageStorage",
+        "operationId": "reports.0-InvokeGetMailboxUsageStorage",
         "produces": [
           "application/json"
         ],
@@ -20575,7 +20549,7 @@
           "reports.getOneDriveActivityUserDetail"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "reports.0-GetOneDriveActivityUserDetail",
+        "operationId": "reports.0-InvokeGetOneDriveActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20611,7 +20585,7 @@
           "reports.getOneDriveActivityUserDetail"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "reports.1-GetOneDriveActivityUserDetail",
+        "operationId": "reports.1-InvokeGetOneDriveActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20645,7 +20619,7 @@
           "reports.getOneDriveActivityUserCounts"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
-        "operationId": "reports.GetOneDriveActivityUserCounts",
+        "operationId": "reports.0-InvokeGetOneDriveActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -20679,7 +20653,7 @@
           "reports.getOneDriveActivityFileCounts"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
-        "operationId": "reports.GetOneDriveActivityFileCounts",
+        "operationId": "reports.0-InvokeGetOneDriveActivityFileCounts",
         "produces": [
           "application/json"
         ],
@@ -20713,7 +20687,7 @@
           "reports.getOneDriveUsageAccountDetail"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "reports.0-GetOneDriveUsageAccountDetail",
+        "operationId": "reports.0-InvokeGetOneDriveUsageAccountDetail",
         "produces": [
           "application/json"
         ],
@@ -20749,7 +20723,7 @@
           "reports.getOneDriveUsageAccountDetail"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "reports.1-GetOneDriveUsageAccountDetail",
+        "operationId": "reports.1-InvokeGetOneDriveUsageAccountDetail",
         "produces": [
           "application/json"
         ],
@@ -20783,7 +20757,7 @@
           "reports.getOneDriveUsageAccountCounts"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
-        "operationId": "reports.GetOneDriveUsageAccountCounts",
+        "operationId": "reports.0-InvokeGetOneDriveUsageAccountCounts",
         "produces": [
           "application/json"
         ],
@@ -20817,7 +20791,7 @@
           "reports.getOneDriveUsageFileCounts"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
-        "operationId": "reports.GetOneDriveUsageFileCounts",
+        "operationId": "reports.0-InvokeGetOneDriveUsageFileCounts",
         "produces": [
           "application/json"
         ],
@@ -20851,7 +20825,7 @@
           "reports.getOneDriveUsageStorage"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
-        "operationId": "reports.GetOneDriveUsageStorage",
+        "operationId": "reports.0-InvokeGetOneDriveUsageStorage",
         "produces": [
           "application/json"
         ],
@@ -20885,7 +20859,7 @@
           "reports.getSharePointActivityUserDetail"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "reports.0-GetSharePointActivityUserDetail",
+        "operationId": "reports.0-InvokeGetSharePointActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20921,7 +20895,7 @@
           "reports.getSharePointActivityUserDetail"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "reports.1-GetSharePointActivityUserDetail",
+        "operationId": "reports.1-InvokeGetSharePointActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -20955,7 +20929,7 @@
           "reports.getSharePointActivityFileCounts"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
-        "operationId": "reports.GetSharePointActivityFileCounts",
+        "operationId": "reports.0-InvokeGetSharePointActivityFileCounts",
         "produces": [
           "application/json"
         ],
@@ -20989,7 +20963,7 @@
           "reports.getSharePointActivityUserCounts"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
-        "operationId": "reports.GetSharePointActivityUserCounts",
+        "operationId": "reports.0-InvokeGetSharePointActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21023,7 +20997,7 @@
           "reports.getSharePointActivityPages"
         ],
         "summary": "Invoke function getSharePointActivityPages",
-        "operationId": "reports.GetSharePointActivityPages",
+        "operationId": "reports.0-InvokeGetSharePointActivityPages",
         "produces": [
           "application/json"
         ],
@@ -21057,7 +21031,7 @@
           "reports.getSharePointSiteUsageDetail"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "reports.0-GetSharePointSiteUsageDetail",
+        "operationId": "reports.0-InvokeGetSharePointSiteUsageDetail",
         "produces": [
           "application/json"
         ],
@@ -21093,7 +21067,7 @@
           "reports.getSharePointSiteUsageDetail"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "reports.1-GetSharePointSiteUsageDetail",
+        "operationId": "reports.1-InvokeGetSharePointSiteUsageDetail",
         "produces": [
           "application/json"
         ],
@@ -21127,7 +21101,7 @@
           "reports.getSharePointSiteUsageFileCounts"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
-        "operationId": "reports.GetSharePointSiteUsageFileCounts",
+        "operationId": "reports.0-InvokeGetSharePointSiteUsageFileCounts",
         "produces": [
           "application/json"
         ],
@@ -21161,7 +21135,7 @@
           "reports.getSharePointSiteUsageSiteCounts"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
-        "operationId": "reports.GetSharePointSiteUsageSiteCounts",
+        "operationId": "reports.0-InvokeGetSharePointSiteUsageSiteCounts",
         "produces": [
           "application/json"
         ],
@@ -21195,7 +21169,7 @@
           "reports.getSharePointSiteUsageStorage"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
-        "operationId": "reports.GetSharePointSiteUsageStorage",
+        "operationId": "reports.0-InvokeGetSharePointSiteUsageStorage",
         "produces": [
           "application/json"
         ],
@@ -21229,7 +21203,7 @@
           "reports.getSharePointSiteUsagePages"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
-        "operationId": "reports.GetSharePointSiteUsagePages",
+        "operationId": "reports.0-InvokeGetSharePointSiteUsagePages",
         "produces": [
           "application/json"
         ],
@@ -21263,7 +21237,7 @@
           "reports.getSkypeForBusinessActivityUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "reports.0-GetSkypeForBusinessActivityUserDetail",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -21299,7 +21273,7 @@
           "reports.getSkypeForBusinessActivityUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "reports.1-GetSkypeForBusinessActivityUserDetail",
+        "operationId": "reports.1-InvokeGetSkypeForBusinessActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -21333,7 +21307,7 @@
           "reports.getSkypeForBusinessActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
-        "operationId": "reports.GetSkypeForBusinessActivityCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -21367,7 +21341,7 @@
           "reports.getSkypeForBusinessActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
-        "operationId": "reports.GetSkypeForBusinessActivityUserCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21401,7 +21375,7 @@
           "reports.getSkypeForBusinessPeerToPeerActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
-        "operationId": "reports.GetSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -21435,7 +21409,7 @@
           "reports.getSkypeForBusinessPeerToPeerActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
-        "operationId": "reports.GetSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21469,7 +21443,7 @@
           "reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
-        "operationId": "reports.GetSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
@@ -21503,7 +21477,7 @@
           "reports.getSkypeForBusinessOrganizerActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
-        "operationId": "reports.GetSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessOrganizerActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -21537,7 +21511,7 @@
           "reports.getSkypeForBusinessOrganizerActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
-        "operationId": "reports.GetSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessOrganizerActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21571,7 +21545,7 @@
           "reports.getSkypeForBusinessOrganizerActivityMinuteCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
-        "operationId": "reports.GetSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
@@ -21605,7 +21579,7 @@
           "reports.getSkypeForBusinessParticipantActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
-        "operationId": "reports.GetSkypeForBusinessParticipantActivityCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessParticipantActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -21639,7 +21613,7 @@
           "reports.getSkypeForBusinessParticipantActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
-        "operationId": "reports.GetSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessParticipantActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21673,7 +21647,7 @@
           "reports.getSkypeForBusinessParticipantActivityMinuteCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
-        "operationId": "reports.GetSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessParticipantActivityMinuteCounts",
         "produces": [
           "application/json"
         ],
@@ -21707,7 +21681,7 @@
           "reports.getSkypeForBusinessDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "reports.0-GetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -21743,7 +21717,7 @@
           "reports.getSkypeForBusinessDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "reports.1-GetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "reports.1-InvokeGetSkypeForBusinessDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -21777,7 +21751,7 @@
           "reports.getSkypeForBusinessDeviceUsageDistributionUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
-        "operationId": "reports.GetSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21811,7 +21785,7 @@
           "reports.getSkypeForBusinessDeviceUsageUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
-        "operationId": "reports.GetSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "reports.0-InvokeGetSkypeForBusinessDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21845,7 +21819,7 @@
           "reports.getYammerActivityUserDetail"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "reports.0-GetYammerActivityUserDetail",
+        "operationId": "reports.0-InvokeGetYammerActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -21881,7 +21855,7 @@
           "reports.getYammerActivityUserDetail"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "reports.1-GetYammerActivityUserDetail",
+        "operationId": "reports.1-InvokeGetYammerActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -21915,7 +21889,7 @@
           "reports.getYammerActivityCounts"
         ],
         "summary": "Invoke function getYammerActivityCounts",
-        "operationId": "reports.GetYammerActivityCounts",
+        "operationId": "reports.0-InvokeGetYammerActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -21949,7 +21923,7 @@
           "reports.getYammerActivityUserCounts"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
-        "operationId": "reports.GetYammerActivityUserCounts",
+        "operationId": "reports.0-InvokeGetYammerActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -21983,7 +21957,7 @@
           "reports.getYammerDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "reports.0-GetYammerDeviceUsageUserDetail",
+        "operationId": "reports.0-InvokeGetYammerDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -22019,7 +21993,7 @@
           "reports.getYammerDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "reports.1-GetYammerDeviceUsageUserDetail",
+        "operationId": "reports.1-InvokeGetYammerDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -22053,7 +22027,7 @@
           "reports.getYammerDeviceUsageDistributionUserCounts"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
-        "operationId": "reports.GetYammerDeviceUsageDistributionUserCounts",
+        "operationId": "reports.0-InvokeGetYammerDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
@@ -22087,7 +22061,7 @@
           "reports.getYammerDeviceUsageUserCounts"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
-        "operationId": "reports.GetYammerDeviceUsageUserCounts",
+        "operationId": "reports.0-InvokeGetYammerDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -22121,7 +22095,7 @@
           "reports.getYammerGroupsActivityDetail"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "reports.0-GetYammerGroupsActivityDetail",
+        "operationId": "reports.0-InvokeGetYammerGroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -22157,7 +22131,7 @@
           "reports.getYammerGroupsActivityDetail"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "reports.1-GetYammerGroupsActivityDetail",
+        "operationId": "reports.1-InvokeGetYammerGroupsActivityDetail",
         "produces": [
           "application/json"
         ],
@@ -22191,7 +22165,7 @@
           "reports.getYammerGroupsActivityGroupCounts"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
-        "operationId": "reports.GetYammerGroupsActivityGroupCounts",
+        "operationId": "reports.0-InvokeGetYammerGroupsActivityGroupCounts",
         "produces": [
           "application/json"
         ],
@@ -22225,7 +22199,7 @@
           "reports.getYammerGroupsActivityCounts"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
-        "operationId": "reports.GetYammerGroupsActivityCounts",
+        "operationId": "reports.0-InvokeGetYammerGroupsActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -22259,7 +22233,7 @@
           "reports.getTeamsUserActivityUserDetail"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
-        "operationId": "reports.0-GetTeamsUserActivityUserDetail",
+        "operationId": "reports.0-InvokeGetTeamsUserActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -22295,7 +22269,7 @@
           "reports.getTeamsUserActivityUserDetail"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
-        "operationId": "reports.1-GetTeamsUserActivityUserDetail",
+        "operationId": "reports.1-InvokeGetTeamsUserActivityUserDetail",
         "produces": [
           "application/json"
         ],
@@ -22329,7 +22303,7 @@
           "reports.getTeamsUserActivityCounts"
         ],
         "summary": "Invoke function getTeamsUserActivityCounts",
-        "operationId": "reports.GetTeamsUserActivityCounts",
+        "operationId": "reports.0-InvokeGetTeamsUserActivityCounts",
         "produces": [
           "application/json"
         ],
@@ -22363,7 +22337,7 @@
           "reports.getTeamsUserActivityUserCounts"
         ],
         "summary": "Invoke function getTeamsUserActivityUserCounts",
-        "operationId": "reports.GetTeamsUserActivityUserCounts",
+        "operationId": "reports.0-InvokeGetTeamsUserActivityUserCounts",
         "produces": [
           "application/json"
         ],
@@ -22397,7 +22371,7 @@
           "reports.getTeamsDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
-        "operationId": "reports.0-GetTeamsDeviceUsageUserDetail",
+        "operationId": "reports.0-InvokeGetTeamsDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -22433,7 +22407,7 @@
           "reports.getTeamsDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
-        "operationId": "reports.1-GetTeamsDeviceUsageUserDetail",
+        "operationId": "reports.1-InvokeGetTeamsDeviceUsageUserDetail",
         "produces": [
           "application/json"
         ],
@@ -22467,7 +22441,7 @@
           "reports.getTeamsDeviceUsageUserCounts"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserCounts",
-        "operationId": "reports.GetTeamsDeviceUsageUserCounts",
+        "operationId": "reports.0-InvokeGetTeamsDeviceUsageUserCounts",
         "produces": [
           "application/json"
         ],
@@ -22501,7 +22475,7 @@
           "reports.getTeamsDeviceUsageDistributionUserCounts"
         ],
         "summary": "Invoke function getTeamsDeviceUsageDistributionUserCounts",
-        "operationId": "reports.GetTeamsDeviceUsageDistributionUserCounts",
+        "operationId": "reports.0-InvokeGetTeamsDeviceUsageDistributionUserCounts",
         "produces": [
           "application/json"
         ],
@@ -22535,7 +22509,7 @@
           "reports.getTenantSecureScores"
         ],
         "summary": "Invoke function getTenantSecureScores",
-        "operationId": "reports.GetTenantSecureScores",
+        "operationId": "reports.0-InvokeGetTenantSecureScores",
         "produces": [
           "application/json"
         ],

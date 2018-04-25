@@ -9,10 +9,13 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Annotations;
 using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Operation;
+using Microsoft.OpenApi.OData.PathItem;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -53,7 +56,14 @@ namespace Microsoft.OpenApi.OData.Edm
             _keyAsSegmentSupported = settings.KeyAsSegment ?? model.GetKeyAsSegmentSupported();
 
             _pathHandler = new ODataPathHandler(this);
+
+            OperationHanderProvider = new OperationHandlerProvider();
+            PathItemHanderProvider = new PathItemHandlerProvider();
         }
+
+        public IPathItemHandlerProvider PathItemHanderProvider { get; }
+
+        public IOperationHandlerProvider OperationHanderProvider { get; }
 
         /// <summary>
         /// Gets the Edm model.
@@ -149,6 +159,24 @@ namespace Microsoft.OpenApi.OData.Edm
                     yield return Tuple.Create(operationBindingType, item.Value);
                 }
             }
+        }
+
+        private IDictionary<IEdmVocabularyAnnotatable, HttpRequestsAnnotation> _requests;
+
+        public HttpRequest FindRequest(IEdmVocabularyAnnotatable target, string method)
+        {
+            if (_requests == null)
+            {
+                _requests = new Dictionary<IEdmVocabularyAnnotatable, HttpRequestsAnnotation>();
+            }
+
+            if (!_requests.TryGetValue(target, out HttpRequestsAnnotation value))
+            {
+                value = new HttpRequestsAnnotation(Model, target);
+                _requests.Add(target, value);
+            }
+
+            return value.GetRequest(method);
         }
 
         private void GenerateBoundOperations()

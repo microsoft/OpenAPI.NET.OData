@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.PathItem;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -27,8 +28,9 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (ODataPath path in context.Paths)
             {
                 index++;
+                IPathItemHandler handler = context.PathItemHanderProvider.GetHandler(path.PathType);
 
-                pathItems.Add(path.ToString(), context.CreatePathItem(path));
+                pathItems.Add(path.ToString(), handler.CreatePathItem(context, path));
 
                 Console.Write(index + "/"  + count + " ....");
                 Console.Write("\r\b");

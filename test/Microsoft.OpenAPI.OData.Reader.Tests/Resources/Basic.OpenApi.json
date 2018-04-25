@@ -14,10 +14,10 @@
     "/People": {
       "get": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Get entities from People",
-        "operationId": "GetEntitiesFromPeople",
+        "operationId": "People.EntitySet-ListPerson",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -117,10 +117,10 @@
       },
       "post": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Add new entity to People",
-        "operationId": "AddEntityToPeople",
+        "operationId": "People.EntitySet-CreatePerson",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -149,13 +149,13 @@
         }
       }
     },
-    "/People('{UserName}')": {
+    "/People/{UserName}": {
       "get": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Get entity from People by key",
-        "operationId": "GetEntityFromPeopleByKey",
+        "operationId": "People.Entity-GetPerson",
         "parameters": [
           {
             "name": "UserName",
@@ -218,10 +218,10 @@
       },
       "patch": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Update entity in People",
-        "operationId": "UpdateEntityInPeople",
+        "operationId": "People.Entity-UpdatePerson",
         "parameters": [
           {
             "name": "UserName",
@@ -255,10 +255,10 @@
       },
       "delete": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Delete entity from People",
-        "operationId": "DeleteEntityFromPeople",
+        "operationId": "People.Entity-DeletePerson",
         "parameters": [
           {
             "name": "UserName",
@@ -291,10 +291,10 @@
     "/City": {
       "get": {
         "tags": [
-          "City"
+          "City.City"
         ],
         "summary": "Get entities from City",
-        "operationId": "GetEntitiesFromCity",
+        "operationId": "City.EntitySet-ListCity",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -385,10 +385,10 @@
       },
       "post": {
         "tags": [
-          "City"
+          "City.City"
         ],
         "summary": "Add new entity to City",
-        "operationId": "AddEntityToCity",
+        "operationId": "City.EntitySet-CreateCity",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -417,13 +417,13 @@
         }
       }
     },
-    "/City('{Name}')": {
+    "/City/{Name}": {
       "get": {
         "tags": [
-          "City"
+          "City.City"
         ],
         "summary": "Get entity from City by key",
-        "operationId": "GetEntityFromCityByKey",
+        "operationId": "City.Entity-GetCity",
         "parameters": [
           {
             "name": "Name",
@@ -483,10 +483,10 @@
       },
       "patch": {
         "tags": [
-          "City"
+          "City.City"
         ],
         "summary": "Update entity in City",
-        "operationId": "UpdateEntityInCity",
+        "operationId": "City.Entity-UpdateCity",
         "parameters": [
           {
             "name": "Name",
@@ -520,10 +520,10 @@
       },
       "delete": {
         "tags": [
-          "City"
+          "City.City"
         ],
         "summary": "Delete entity from City",
-        "operationId": "DeleteEntityFromCity",
+        "operationId": "City.Entity-DeleteCity",
         "parameters": [
           {
             "name": "Name",
@@ -556,10 +556,10 @@
     "/CountryOrRegion": {
       "get": {
         "tags": [
-          "CountryOrRegion"
+          "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Get entities from CountryOrRegion",
-        "operationId": "GetEntitiesFromCountryOrRegion",
+        "operationId": "CountryOrRegion.EntitySet-ListCountryOrRegion",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -650,10 +650,10 @@
       },
       "post": {
         "tags": [
-          "CountryOrRegion"
+          "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Add new entity to CountryOrRegion",
-        "operationId": "AddEntityToCountryOrRegion",
+        "operationId": "CountryOrRegion.EntitySet-CreateCountryOrRegion",
         "requestBody": {
           "description": "New entity",
           "content": {
@@ -682,13 +682,13 @@
         }
       }
     },
-    "/CountryOrRegion('{Name}')": {
+    "/CountryOrRegion/{Name}": {
       "get": {
         "tags": [
-          "CountryOrRegion"
+          "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Get entity from CountryOrRegion by key",
-        "operationId": "GetEntityFromCountryOrRegionByKey",
+        "operationId": "CountryOrRegion.Entity-GetCountryOrRegion",
         "parameters": [
           {
             "name": "Name",
@@ -748,10 +748,10 @@
       },
       "patch": {
         "tags": [
-          "CountryOrRegion"
+          "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Update entity in CountryOrRegion",
-        "operationId": "UpdateEntityInCountryOrRegion",
+        "operationId": "CountryOrRegion.Entity-UpdateCountryOrRegion",
         "parameters": [
           {
             "name": "Name",
@@ -785,10 +785,10 @@
       },
       "delete": {
         "tags": [
-          "CountryOrRegion"
+          "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Delete entity from CountryOrRegion",
-        "operationId": "DeleteEntityFromCountryOrRegion",
+        "operationId": "CountryOrRegion.Entity-DeleteCountryOrRegion",
         "parameters": [
           {
             "name": "Name",
@@ -821,10 +821,10 @@
     "/Me": {
       "get": {
         "tags": [
-          "Me"
+          "Me.Person"
         ],
         "summary": "Get Me",
-        "operationId": "GetMe",
+        "operationId": "Me.Singleton-GetPerson",
         "parameters": [
           {
             "name": "$select",
@@ -878,10 +878,10 @@
       },
       "patch": {
         "tags": [
-          "Me"
+          "Me.Person"
         ],
         "summary": "Update Me",
-        "operationId": "UpdateMe",
+        "operationId": "Me.Singleton-UpdatePerson",
         "requestBody": {
           "description": "New property values",
           "content": {
@@ -1103,17 +1103,20 @@
   },
   "tags": [
     {
-      "name": "People",
-      "description": "People's description."
+      "name": "People.Person",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "City"
+      "name": "City.City",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "CountryOrRegion"
+      "name": "CountryOrRegion.CountryOrRegion",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Me"
+      "name": "Me.Person",
+      "x-ms-docs-toc-type": "page"
     }
   ]
 }

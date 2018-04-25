@@ -1235,7 +1235,12 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             }
 
-            return null;
+            return new List<OpenApiTag>{
+                new OpenApiTag
+                {
+                    Name = operationImport.Name
+                }
+            };
         }
 
         internal static string PathAsString(IEnumerable<string> path)

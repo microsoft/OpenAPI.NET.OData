@@ -155,7 +155,7 @@ paths:
       tags:
         - directoryObjects.getByIds
       summary: Invoke action getByIds
-      operationId: directoryObjects.GetByIds
+      operationId: directoryObjects.0-InvokeGetByIds
       requestBody:
         description: Action parameters
         content:
@@ -183,7 +183,7 @@ paths:
       tags:
         - directoryObjects.delta
       summary: Invoke function delta
-      operationId: directoryObjects.user.Delta
+      operationId: directoryObjects.0-InvokeDelta
       responses:
         '200':
           description: Success
@@ -202,7 +202,7 @@ paths:
       tags:
         - directoryObjects.delta
       summary: Invoke function delta
-      operationId: directoryObjects.group.Delta
+      operationId: directoryObjects.1-InvokeDelta
       responses:
         '200':
           description: Success
@@ -221,7 +221,7 @@ paths:
       tags:
         - directoryObjects.checkMemberGroups
       summary: Invoke action checkMemberGroups
-      operationId: directoryObjects.CheckMemberGroups
+      operationId: directoryObjects.0-InvokeCheckMemberGroups
       parameters:
         - name: id
           in: path
@@ -251,7 +251,7 @@ paths:
       tags:
         - directoryObjects.getMemberGroups
       summary: Invoke action getMemberGroups
-      operationId: directoryObjects.GetMemberGroups
+      operationId: directoryObjects.0-InvokeGetMemberGroups
       parameters:
         - name: id
           in: path
@@ -281,7 +281,7 @@ paths:
       tags:
         - directoryObjects.getMemberObjects
       summary: Invoke action getMemberObjects
-      operationId: directoryObjects.GetMemberObjects
+      operationId: directoryObjects.0-InvokeGetMemberObjects
       parameters:
         - name: id
           in: path
@@ -311,7 +311,7 @@ paths:
       tags:
         - directoryObjects.assignLicense
       summary: Invoke action assignLicense
-      operationId: directoryObjects.user.AssignLicense
+      operationId: directoryObjects.0-InvokeAssignLicense
       parameters:
         - name: id
           in: path
@@ -347,7 +347,7 @@ paths:
       tags:
         - directoryObjects.changePassword
       summary: Invoke action changePassword
-      operationId: directoryObjects.user.ChangePassword
+      operationId: directoryObjects.0-InvokeChangePassword
       parameters:
         - name: id
           in: path
@@ -379,7 +379,7 @@ paths:
       tags:
         - directoryObjects.sendMail
       summary: Invoke action sendMail
-      operationId: directoryObjects.user.SendMail
+      operationId: directoryObjects.0-InvokeSendMail
       parameters:
         - name: id
           in: path
@@ -411,7 +411,7 @@ paths:
       tags:
         - directoryObjects.findMeetingTimes
       summary: Invoke action findMeetingTimes
-      operationId: directoryObjects.user.FindMeetingTimes
+      operationId: directoryObjects.0-InvokeFindMeetingTimes
       parameters:
         - name: id
           in: path
@@ -480,7 +480,7 @@ paths:
       tags:
         - directoryObjects.reminderView
       summary: Invoke function reminderView
-      operationId: directoryObjects.user.ReminderView
+      operationId: directoryObjects.0-InvokeReminderView
       parameters:
         - name: id
           in: path
@@ -515,7 +515,7 @@ paths:
       tags:
         - directoryObjects.subscribeByMail
       summary: Invoke action subscribeByMail
-      operationId: directoryObjects.group.SubscribeByMail
+      operationId: directoryObjects.0-InvokeSubscribeByMail
       parameters:
         - name: id
           in: path
@@ -533,7 +533,7 @@ paths:
       tags:
         - directoryObjects.unsubscribeByMail
       summary: Invoke action unsubscribeByMail
-      operationId: directoryObjects.group.UnsubscribeByMail
+      operationId: directoryObjects.0-InvokeUnsubscribeByMail
       parameters:
         - name: id
           in: path
@@ -551,7 +551,7 @@ paths:
       tags:
         - directoryObjects.addFavorite
       summary: Invoke action addFavorite
-      operationId: directoryObjects.group.AddFavorite
+      operationId: directoryObjects.0-InvokeAddFavorite
       parameters:
         - name: id
           in: path
@@ -569,7 +569,7 @@ paths:
       tags:
         - directoryObjects.removeFavorite
       summary: Invoke action removeFavorite
-      operationId: directoryObjects.group.RemoveFavorite
+      operationId: directoryObjects.0-InvokeRemoveFavorite
       parameters:
         - name: id
           in: path
@@ -587,7 +587,7 @@ paths:
       tags:
         - directoryObjects.resetUnseenCount
       summary: Invoke action resetUnseenCount
-      operationId: directoryObjects.group.ResetUnseenCount
+      operationId: directoryObjects.0-InvokeResetUnseenCount
       parameters:
         - name: id
           in: path
@@ -1044,7 +1044,7 @@ paths:
       tags:
         - domains.verify
       summary: Invoke action verify
-      operationId: domains.Verify
+      operationId: domains.0-InvokeVerify
       parameters:
         - name: id
           in: path
@@ -1550,7 +1550,7 @@ paths:
       tags:
         - groups.delta
       summary: Invoke function delta
-      operationId: groups.Delta
+      operationId: groups.0-InvokeDelta
       responses:
         '200':
           description: Success
@@ -1569,7 +1569,7 @@ paths:
       tags:
         - groups.subscribeByMail
       summary: Invoke action subscribeByMail
-      operationId: groups.SubscribeByMail
+      operationId: groups.0-InvokeSubscribeByMail
       parameters:
         - name: id
           in: path
@@ -1587,7 +1587,7 @@ paths:
       tags:
         - groups.unsubscribeByMail
       summary: Invoke action unsubscribeByMail
-      operationId: groups.UnsubscribeByMail
+      operationId: groups.0-InvokeUnsubscribeByMail
       parameters:
         - name: id
           in: path
@@ -1605,7 +1605,7 @@ paths:
       tags:
         - groups.addFavorite
       summary: Invoke action addFavorite
-      operationId: groups.AddFavorite
+      operationId: groups.0-InvokeAddFavorite
       parameters:
         - name: id
           in: path
@@ -1623,7 +1623,7 @@ paths:
       tags:
         - groups.removeFavorite
       summary: Invoke action removeFavorite
-      operationId: groups.RemoveFavorite
+      operationId: groups.0-InvokeRemoveFavorite
       parameters:
         - name: id
           in: path
@@ -1641,7 +1641,7 @@ paths:
       tags:
         - groups.resetUnseenCount
       summary: Invoke action resetUnseenCount
-      operationId: groups.ResetUnseenCount
+      operationId: groups.0-InvokeResetUnseenCount
       parameters:
         - name: id
           in: path
@@ -3118,7 +3118,7 @@ paths:
       tags:
         - users.delta
       summary: Invoke function delta
-      operationId: users.Delta
+      operationId: users.0-InvokeDelta
       responses:
         '200':
           description: Success
@@ -3137,7 +3137,7 @@ paths:
       tags:
         - users.assignLicense
       summary: Invoke action assignLicense
-      operationId: users.AssignLicense
+      operationId: users.0-InvokeAssignLicense
       parameters:
         - name: id
           in: path
@@ -3173,7 +3173,7 @@ paths:
       tags:
         - users.changePassword
       summary: Invoke action changePassword
-      operationId: users.ChangePassword
+      operationId: users.0-InvokeChangePassword
       parameters:
         - name: id
           in: path
@@ -3205,7 +3205,7 @@ paths:
       tags:
         - users.sendMail
       summary: Invoke action sendMail
-      operationId: users.SendMail
+      operationId: users.0-InvokeSendMail
       parameters:
         - name: id
           in: path
@@ -3237,7 +3237,7 @@ paths:
       tags:
         - users.findMeetingTimes
       summary: Invoke action findMeetingTimes
-      operationId: users.FindMeetingTimes
+      operationId: users.0-InvokeFindMeetingTimes
       parameters:
         - name: id
           in: path
@@ -3306,7 +3306,7 @@ paths:
       tags:
         - users.reminderView
       summary: Invoke function reminderView
-      operationId: users.ReminderView
+      operationId: users.0-InvokeReminderView
       parameters:
         - name: id
           in: path
@@ -3940,7 +3940,7 @@ paths:
       tags:
         - drives.recent
       summary: Invoke function recent
-      operationId: drives.Recent
+      operationId: drives.0-InvokeRecent
       parameters:
         - name: id
           in: path
@@ -3966,7 +3966,7 @@ paths:
       tags:
         - drives.search
       summary: Invoke function search
-      operationId: drives.Search
+      operationId: drives.0-InvokeSearch
       parameters:
         - name: id
           in: path
@@ -3998,7 +3998,7 @@ paths:
       tags:
         - drives.sharedWithMe
       summary: Invoke function sharedWithMe
-      operationId: drives.SharedWithMe
+      operationId: drives.0-InvokeSharedWithMe
       parameters:
         - name: id
           in: path
@@ -4544,7 +4544,7 @@ paths:
       tags:
         - sites.getByPath
       summary: Invoke function getByPath
-      operationId: sites.GetByPath
+      operationId: sites.0-InvokeGetByPath
       parameters:
         - name: id
           in: path
@@ -4892,7 +4892,7 @@ paths:
       tags:
         - workbooks.delta
       summary: Invoke function delta
-      operationId: workbooks.0-Delta
+      operationId: workbooks.0-InvokeDelta
       parameters:
         - name: id
           in: path
@@ -4924,7 +4924,7 @@ paths:
       tags:
         - workbooks.delta
       summary: Invoke function delta
-      operationId: workbooks.1-Delta
+      operationId: workbooks.1-InvokeDelta
       parameters:
         - name: id
           in: path
@@ -4950,7 +4950,7 @@ paths:
       tags:
         - workbooks.search
       summary: Invoke function search
-      operationId: workbooks.Search
+      operationId: workbooks.0-InvokeSearch
       parameters:
         - name: id
           in: path
@@ -4982,7 +4982,7 @@ paths:
       tags:
         - workbooks.copy
       summary: Invoke action copy
-      operationId: workbooks.Copy
+      operationId: workbooks.0-InvokeCopy
       parameters:
         - name: id
           in: path
@@ -5015,7 +5015,7 @@ paths:
       tags:
         - workbooks.createLink
       summary: Invoke action createLink
-      operationId: workbooks.CreateLink
+      operationId: workbooks.0-InvokeCreateLink
       parameters:
         - name: id
           in: path
@@ -5046,7 +5046,7 @@ paths:
       tags:
         - workbooks.createUploadSession
       summary: Invoke action createUploadSession
-      operationId: workbooks.CreateUploadSession
+      operationId: workbooks.0-InvokeCreateUploadSession
       parameters:
         - name: id
           in: path
@@ -5076,7 +5076,7 @@ paths:
       tags:
         - workbooks.invite
       summary: Invoke action invite
-      operationId: workbooks.Invite
+      operationId: workbooks.0-InvokeInvite
       parameters:
         - name: id
           in: path
@@ -5556,7 +5556,7 @@ paths:
       tags:
         - me.assignLicense
       summary: Invoke action assignLicense
-      operationId: me.AssignLicense
+      operationId: me.0-InvokeAssignLicense
       requestBody:
         description: Action parameters
         content:
@@ -5585,7 +5585,7 @@ paths:
       tags:
         - me.changePassword
       summary: Invoke action changePassword
-      operationId: me.ChangePassword
+      operationId: me.0-InvokeChangePassword
       requestBody:
         description: Action parameters
         content:
@@ -5610,7 +5610,7 @@ paths:
       tags:
         - me.sendMail
       summary: Invoke action sendMail
-      operationId: me.SendMail
+      operationId: me.0-InvokeSendMail
       requestBody:
         description: Action parameters
         content:
@@ -5635,7 +5635,7 @@ paths:
       tags:
         - me.findMeetingTimes
       summary: Invoke action findMeetingTimes
-      operationId: me.FindMeetingTimes
+      operationId: me.0-InvokeFindMeetingTimes
       requestBody:
         description: Action parameters
         content:
@@ -5697,7 +5697,7 @@ paths:
       tags:
         - me.reminderView
       summary: Invoke function reminderView
-      operationId: me.ReminderView
+      operationId: me.0-InvokeReminderView
       parameters:
         - name: StartDateTime
           in: path
@@ -5799,7 +5799,7 @@ paths:
       tags:
         - drive.recent
       summary: Invoke function recent
-      operationId: drive.Recent
+      operationId: drive.0-InvokeRecent
       responses:
         '200':
           description: Success
@@ -5818,7 +5818,7 @@ paths:
       tags:
         - drive.search
       summary: Invoke function search
-      operationId: drive.Search
+      operationId: drive.0-InvokeSearch
       parameters:
         - name: q
           in: path
@@ -5844,7 +5844,7 @@ paths:
       tags:
         - drive.sharedWithMe
       summary: Invoke function sharedWithMe
-      operationId: drive.SharedWithMe
+      operationId: drive.0-InvokeSharedWithMe
       responses:
         '200':
           description: Success
@@ -5972,7 +5972,7 @@ paths:
       tags:
         - reports.getOffice365ActivationsUserDetail
       summary: Invoke function getOffice365ActivationsUserDetail
-      operationId: reports.GetOffice365ActivationsUserDetail
+      operationId: reports.0-InvokeGetOffice365ActivationsUserDetail
       responses:
         '200':
           description: Success
@@ -5987,7 +5987,7 @@ paths:
       tags:
         - reports.getOffice365ActivationCounts
       summary: Invoke function getOffice365ActivationCounts
-      operationId: reports.GetOffice365ActivationCounts
+      operationId: reports.0-InvokeGetOffice365ActivationCounts
       responses:
         '200':
           description: Success
@@ -6002,7 +6002,7 @@ paths:
       tags:
         - reports.getOffice365ActivationsUserCounts
       summary: Invoke function getOffice365ActivationsUserCounts
-      operationId: reports.GetOffice365ActivationsUserCounts
+      operationId: reports.0-InvokeGetOffice365ActivationsUserCounts
       responses:
         '200':
           description: Success
@@ -6017,7 +6017,7 @@ paths:
       tags:
         - reports.getOffice365ActiveUserDetail
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: reports.0-GetOffice365ActiveUserDetail
+      operationId: reports.0-InvokeGetOffice365ActiveUserDetail
       parameters:
         - name: date
           in: path
@@ -6040,7 +6040,7 @@ paths:
       tags:
         - reports.getOffice365ActiveUserDetail
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: reports.1-GetOffice365ActiveUserDetail
+      operationId: reports.1-InvokeGetOffice365ActiveUserDetail
       parameters:
         - name: period
           in: path
@@ -6061,7 +6061,7 @@ paths:
       tags:
         - reports.getOffice365ServicesUserCounts
       summary: Invoke function getOffice365ServicesUserCounts
-      operationId: reports.GetOffice365ServicesUserCounts
+      operationId: reports.0-InvokeGetOffice365ServicesUserCounts
       parameters:
         - name: period
           in: path
@@ -6082,7 +6082,7 @@ paths:
       tags:
         - reports.getOffice365ActiveUserCounts
       summary: Invoke function getOffice365ActiveUserCounts
-      operationId: reports.GetOffice365ActiveUserCounts
+      operationId: reports.0-InvokeGetOffice365ActiveUserCounts
       parameters:
         - name: period
           in: path
@@ -6103,7 +6103,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityDetail
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: reports.0-GetOffice365GroupsActivityDetail
+      operationId: reports.0-InvokeGetOffice365GroupsActivityDetail
       parameters:
         - name: date
           in: path
@@ -6126,7 +6126,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityDetail
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: reports.1-GetOffice365GroupsActivityDetail
+      operationId: reports.1-InvokeGetOffice365GroupsActivityDetail
       parameters:
         - name: period
           in: path
@@ -6147,7 +6147,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityCounts
       summary: Invoke function getOffice365GroupsActivityCounts
-      operationId: reports.GetOffice365GroupsActivityCounts
+      operationId: reports.0-InvokeGetOffice365GroupsActivityCounts
       parameters:
         - name: period
           in: path
@@ -6168,7 +6168,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityGroupCounts
       summary: Invoke function getOffice365GroupsActivityGroupCounts
-      operationId: reports.GetOffice365GroupsActivityGroupCounts
+      operationId: reports.0-InvokeGetOffice365GroupsActivityGroupCounts
       parameters:
         - name: period
           in: path
@@ -6189,7 +6189,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityStorage
       summary: Invoke function getOffice365GroupsActivityStorage
-      operationId: reports.GetOffice365GroupsActivityStorage
+      operationId: reports.0-InvokeGetOffice365GroupsActivityStorage
       parameters:
         - name: period
           in: path
@@ -6210,7 +6210,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityFileCounts
       summary: Invoke function getOffice365GroupsActivityFileCounts
-      operationId: reports.GetOffice365GroupsActivityFileCounts
+      operationId: reports.0-InvokeGetOffice365GroupsActivityFileCounts
       parameters:
         - name: period
           in: path
@@ -6231,7 +6231,7 @@ paths:
       tags:
         - reports.getEmailActivityUserDetail
       summary: Invoke function getEmailActivityUserDetail
-      operationId: reports.0-GetEmailActivityUserDetail
+      operationId: reports.0-InvokeGetEmailActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -6254,7 +6254,7 @@ paths:
       tags:
         - reports.getEmailActivityUserDetail
       summary: Invoke function getEmailActivityUserDetail
-      operationId: reports.1-GetEmailActivityUserDetail
+      operationId: reports.1-InvokeGetEmailActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -6275,7 +6275,7 @@ paths:
       tags:
         - reports.getEmailActivityCounts
       summary: Invoke function getEmailActivityCounts
-      operationId: reports.GetEmailActivityCounts
+      operationId: reports.0-InvokeGetEmailActivityCounts
       parameters:
         - name: period
           in: path
@@ -6296,7 +6296,7 @@ paths:
       tags:
         - reports.getEmailActivityUserCounts
       summary: Invoke function getEmailActivityUserCounts
-      operationId: reports.GetEmailActivityUserCounts
+      operationId: reports.0-InvokeGetEmailActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -6317,7 +6317,7 @@ paths:
       tags:
         - reports.getEmailAppUsageUserDetail
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: reports.0-GetEmailAppUsageUserDetail
+      operationId: reports.0-InvokeGetEmailAppUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -6340,7 +6340,7 @@ paths:
       tags:
         - reports.getEmailAppUsageUserDetail
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: reports.1-GetEmailAppUsageUserDetail
+      operationId: reports.1-InvokeGetEmailAppUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -6361,7 +6361,7 @@ paths:
       tags:
         - reports.getEmailAppUsageAppsUserCounts
       summary: Invoke function getEmailAppUsageAppsUserCounts
-      operationId: reports.GetEmailAppUsageAppsUserCounts
+      operationId: reports.0-InvokeGetEmailAppUsageAppsUserCounts
       parameters:
         - name: period
           in: path
@@ -6382,7 +6382,7 @@ paths:
       tags:
         - reports.getEmailAppUsageUserCounts
       summary: Invoke function getEmailAppUsageUserCounts
-      operationId: reports.GetEmailAppUsageUserCounts
+      operationId: reports.0-InvokeGetEmailAppUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -6403,7 +6403,7 @@ paths:
       tags:
         - reports.getEmailAppUsageVersionsUserCounts
       summary: Invoke function getEmailAppUsageVersionsUserCounts
-      operationId: reports.GetEmailAppUsageVersionsUserCounts
+      operationId: reports.0-InvokeGetEmailAppUsageVersionsUserCounts
       parameters:
         - name: period
           in: path
@@ -6424,7 +6424,7 @@ paths:
       tags:
         - reports.getMailboxUsageDetail
       summary: Invoke function getMailboxUsageDetail
-      operationId: reports.GetMailboxUsageDetail
+      operationId: reports.0-InvokeGetMailboxUsageDetail
       parameters:
         - name: period
           in: path
@@ -6445,7 +6445,7 @@ paths:
       tags:
         - reports.getMailboxUsageMailboxCounts
       summary: Invoke function getMailboxUsageMailboxCounts
-      operationId: reports.GetMailboxUsageMailboxCounts
+      operationId: reports.0-InvokeGetMailboxUsageMailboxCounts
       parameters:
         - name: period
           in: path
@@ -6466,7 +6466,7 @@ paths:
       tags:
         - reports.getMailboxUsageQuotaStatusMailboxCounts
       summary: Invoke function getMailboxUsageQuotaStatusMailboxCounts
-      operationId: reports.GetMailboxUsageQuotaStatusMailboxCounts
+      operationId: reports.0-InvokeGetMailboxUsageQuotaStatusMailboxCounts
       parameters:
         - name: period
           in: path
@@ -6487,7 +6487,7 @@ paths:
       tags:
         - reports.getMailboxUsageStorage
       summary: Invoke function getMailboxUsageStorage
-      operationId: reports.GetMailboxUsageStorage
+      operationId: reports.0-InvokeGetMailboxUsageStorage
       parameters:
         - name: period
           in: path
@@ -6508,7 +6508,7 @@ paths:
       tags:
         - reports.getOneDriveActivityUserDetail
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: reports.0-GetOneDriveActivityUserDetail
+      operationId: reports.0-InvokeGetOneDriveActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -6531,7 +6531,7 @@ paths:
       tags:
         - reports.getOneDriveActivityUserDetail
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: reports.1-GetOneDriveActivityUserDetail
+      operationId: reports.1-InvokeGetOneDriveActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -6552,7 +6552,7 @@ paths:
       tags:
         - reports.getOneDriveActivityUserCounts
       summary: Invoke function getOneDriveActivityUserCounts
-      operationId: reports.GetOneDriveActivityUserCounts
+      operationId: reports.0-InvokeGetOneDriveActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -6573,7 +6573,7 @@ paths:
       tags:
         - reports.getOneDriveActivityFileCounts
       summary: Invoke function getOneDriveActivityFileCounts
-      operationId: reports.GetOneDriveActivityFileCounts
+      operationId: reports.0-InvokeGetOneDriveActivityFileCounts
       parameters:
         - name: period
           in: path
@@ -6594,7 +6594,7 @@ paths:
       tags:
         - reports.getOneDriveUsageAccountDetail
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: reports.0-GetOneDriveUsageAccountDetail
+      operationId: reports.0-InvokeGetOneDriveUsageAccountDetail
       parameters:
         - name: date
           in: path
@@ -6617,7 +6617,7 @@ paths:
       tags:
         - reports.getOneDriveUsageAccountDetail
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: reports.1-GetOneDriveUsageAccountDetail
+      operationId: reports.1-InvokeGetOneDriveUsageAccountDetail
       parameters:
         - name: period
           in: path
@@ -6638,7 +6638,7 @@ paths:
       tags:
         - reports.getOneDriveUsageAccountCounts
       summary: Invoke function getOneDriveUsageAccountCounts
-      operationId: reports.GetOneDriveUsageAccountCounts
+      operationId: reports.0-InvokeGetOneDriveUsageAccountCounts
       parameters:
         - name: period
           in: path
@@ -6659,7 +6659,7 @@ paths:
       tags:
         - reports.getOneDriveUsageFileCounts
       summary: Invoke function getOneDriveUsageFileCounts
-      operationId: reports.GetOneDriveUsageFileCounts
+      operationId: reports.0-InvokeGetOneDriveUsageFileCounts
       parameters:
         - name: period
           in: path
@@ -6680,7 +6680,7 @@ paths:
       tags:
         - reports.getOneDriveUsageStorage
       summary: Invoke function getOneDriveUsageStorage
-      operationId: reports.GetOneDriveUsageStorage
+      operationId: reports.0-InvokeGetOneDriveUsageStorage
       parameters:
         - name: period
           in: path
@@ -6701,7 +6701,7 @@ paths:
       tags:
         - reports.getSharePointActivityUserDetail
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: reports.0-GetSharePointActivityUserDetail
+      operationId: reports.0-InvokeGetSharePointActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -6724,7 +6724,7 @@ paths:
       tags:
         - reports.getSharePointActivityUserDetail
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: reports.1-GetSharePointActivityUserDetail
+      operationId: reports.1-InvokeGetSharePointActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -6745,7 +6745,7 @@ paths:
       tags:
         - reports.getSharePointActivityFileCounts
       summary: Invoke function getSharePointActivityFileCounts
-      operationId: reports.GetSharePointActivityFileCounts
+      operationId: reports.0-InvokeGetSharePointActivityFileCounts
       parameters:
         - name: period
           in: path
@@ -6766,7 +6766,7 @@ paths:
       tags:
         - reports.getSharePointActivityUserCounts
       summary: Invoke function getSharePointActivityUserCounts
-      operationId: reports.GetSharePointActivityUserCounts
+      operationId: reports.0-InvokeGetSharePointActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -6787,7 +6787,7 @@ paths:
       tags:
         - reports.getSharePointActivityPages
       summary: Invoke function getSharePointActivityPages
-      operationId: reports.GetSharePointActivityPages
+      operationId: reports.0-InvokeGetSharePointActivityPages
       parameters:
         - name: period
           in: path
@@ -6808,7 +6808,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageDetail
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: reports.0-GetSharePointSiteUsageDetail
+      operationId: reports.0-InvokeGetSharePointSiteUsageDetail
       parameters:
         - name: date
           in: path
@@ -6831,7 +6831,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageDetail
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: reports.1-GetSharePointSiteUsageDetail
+      operationId: reports.1-InvokeGetSharePointSiteUsageDetail
       parameters:
         - name: period
           in: path
@@ -6852,7 +6852,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageFileCounts
       summary: Invoke function getSharePointSiteUsageFileCounts
-      operationId: reports.GetSharePointSiteUsageFileCounts
+      operationId: reports.0-InvokeGetSharePointSiteUsageFileCounts
       parameters:
         - name: period
           in: path
@@ -6873,7 +6873,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageSiteCounts
       summary: Invoke function getSharePointSiteUsageSiteCounts
-      operationId: reports.GetSharePointSiteUsageSiteCounts
+      operationId: reports.0-InvokeGetSharePointSiteUsageSiteCounts
       parameters:
         - name: period
           in: path
@@ -6894,7 +6894,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageStorage
       summary: Invoke function getSharePointSiteUsageStorage
-      operationId: reports.GetSharePointSiteUsageStorage
+      operationId: reports.0-InvokeGetSharePointSiteUsageStorage
       parameters:
         - name: period
           in: path
@@ -6915,7 +6915,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsagePages
       summary: Invoke function getSharePointSiteUsagePages
-      operationId: reports.GetSharePointSiteUsagePages
+      operationId: reports.0-InvokeGetSharePointSiteUsagePages
       parameters:
         - name: period
           in: path
@@ -6936,7 +6936,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityUserDetail
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: reports.0-GetSkypeForBusinessActivityUserDetail
+      operationId: reports.0-InvokeGetSkypeForBusinessActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -6959,7 +6959,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityUserDetail
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: reports.1-GetSkypeForBusinessActivityUserDetail
+      operationId: reports.1-InvokeGetSkypeForBusinessActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -6980,7 +6980,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityCounts
       summary: Invoke function getSkypeForBusinessActivityCounts
-      operationId: reports.GetSkypeForBusinessActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessActivityCounts
       parameters:
         - name: period
           in: path
@@ -7001,7 +7001,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityUserCounts
       summary: Invoke function getSkypeForBusinessActivityUserCounts
-      operationId: reports.GetSkypeForBusinessActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -7022,7 +7022,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessPeerToPeerActivityCounts
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
-      operationId: reports.GetSkypeForBusinessPeerToPeerActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityCounts
       parameters:
         - name: period
           in: path
@@ -7043,7 +7043,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessPeerToPeerActivityUserCounts
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
-      operationId: reports.GetSkypeForBusinessPeerToPeerActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -7064,7 +7064,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
-      operationId: reports.GetSkypeForBusinessPeerToPeerActivityMinuteCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts
       parameters:
         - name: period
           in: path
@@ -7085,7 +7085,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessOrganizerActivityCounts
       summary: Invoke function getSkypeForBusinessOrganizerActivityCounts
-      operationId: reports.GetSkypeForBusinessOrganizerActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessOrganizerActivityCounts
       parameters:
         - name: period
           in: path
@@ -7106,7 +7106,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessOrganizerActivityUserCounts
       summary: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
-      operationId: reports.GetSkypeForBusinessOrganizerActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessOrganizerActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -7127,7 +7127,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessOrganizerActivityMinuteCounts
       summary: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
-      operationId: reports.GetSkypeForBusinessOrganizerActivityMinuteCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts
       parameters:
         - name: period
           in: path
@@ -7148,7 +7148,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessParticipantActivityCounts
       summary: Invoke function getSkypeForBusinessParticipantActivityCounts
-      operationId: reports.GetSkypeForBusinessParticipantActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessParticipantActivityCounts
       parameters:
         - name: period
           in: path
@@ -7169,7 +7169,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessParticipantActivityUserCounts
       summary: Invoke function getSkypeForBusinessParticipantActivityUserCounts
-      operationId: reports.GetSkypeForBusinessParticipantActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessParticipantActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -7190,7 +7190,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessParticipantActivityMinuteCounts
       summary: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
-      operationId: reports.GetSkypeForBusinessParticipantActivityMinuteCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessParticipantActivityMinuteCounts
       parameters:
         - name: period
           in: path
@@ -7211,7 +7211,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageUserDetail
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: reports.0-GetSkypeForBusinessDeviceUsageUserDetail
+      operationId: reports.0-InvokeGetSkypeForBusinessDeviceUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -7234,7 +7234,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageUserDetail
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: reports.1-GetSkypeForBusinessDeviceUsageUserDetail
+      operationId: reports.1-InvokeGetSkypeForBusinessDeviceUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -7255,7 +7255,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageDistributionUserCounts
       summary: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
-      operationId: reports.GetSkypeForBusinessDeviceUsageDistributionUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts
       parameters:
         - name: period
           in: path
@@ -7276,7 +7276,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageUserCounts
       summary: Invoke function getSkypeForBusinessDeviceUsageUserCounts
-      operationId: reports.GetSkypeForBusinessDeviceUsageUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessDeviceUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -7297,7 +7297,7 @@ paths:
       tags:
         - reports.getYammerActivityUserDetail
       summary: Invoke function getYammerActivityUserDetail
-      operationId: reports.0-GetYammerActivityUserDetail
+      operationId: reports.0-InvokeGetYammerActivityUserDetail
       parameters:
         - name: date
           in: path
@@ -7320,7 +7320,7 @@ paths:
       tags:
         - reports.getYammerActivityUserDetail
       summary: Invoke function getYammerActivityUserDetail
-      operationId: reports.1-GetYammerActivityUserDetail
+      operationId: reports.1-InvokeGetYammerActivityUserDetail
       parameters:
         - name: period
           in: path
@@ -7341,7 +7341,7 @@ paths:
       tags:
         - reports.getYammerActivityCounts
       summary: Invoke function getYammerActivityCounts
-      operationId: reports.GetYammerActivityCounts
+      operationId: reports.0-InvokeGetYammerActivityCounts
       parameters:
         - name: period
           in: path
@@ -7362,7 +7362,7 @@ paths:
       tags:
         - reports.getYammerActivityUserCounts
       summary: Invoke function getYammerActivityUserCounts
-      operationId: reports.GetYammerActivityUserCounts
+      operationId: reports.0-InvokeGetYammerActivityUserCounts
       parameters:
         - name: period
           in: path
@@ -7383,7 +7383,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageUserDetail
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: reports.0-GetYammerDeviceUsageUserDetail
+      operationId: reports.0-InvokeGetYammerDeviceUsageUserDetail
       parameters:
         - name: date
           in: path
@@ -7406,7 +7406,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageUserDetail
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: reports.1-GetYammerDeviceUsageUserDetail
+      operationId: reports.1-InvokeGetYammerDeviceUsageUserDetail
       parameters:
         - name: period
           in: path
@@ -7427,7 +7427,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageDistributionUserCounts
       summary: Invoke function getYammerDeviceUsageDistributionUserCounts
-      operationId: reports.GetYammerDeviceUsageDistributionUserCounts
+      operationId: reports.0-InvokeGetYammerDeviceUsageDistributionUserCounts
       parameters:
         - name: period
           in: path
@@ -7448,7 +7448,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageUserCounts
       summary: Invoke function getYammerDeviceUsageUserCounts
-      operationId: reports.GetYammerDeviceUsageUserCounts
+      operationId: reports.0-InvokeGetYammerDeviceUsageUserCounts
       parameters:
         - name: period
           in: path
@@ -7469,7 +7469,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityDetail
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: reports.0-GetYammerGroupsActivityDetail
+      operationId: reports.0-InvokeGetYammerGroupsActivityDetail
       parameters:
         - name: date
           in: path
@@ -7492,7 +7492,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityDetail
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: reports.1-GetYammerGroupsActivityDetail
+      operationId: reports.1-InvokeGetYammerGroupsActivityDetail
       parameters:
         - name: period
           in: path
@@ -7513,7 +7513,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityGroupCounts
       summary: Invoke function getYammerGroupsActivityGroupCounts
-      operationId: reports.GetYammerGroupsActivityGroupCounts
+      operationId: reports.0-InvokeGetYammerGroupsActivityGroupCounts
       parameters:
         - name: period
           in: path
@@ -7534,7 +7534,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityCounts
       summary: Invoke function getYammerGroupsActivityCounts
-      operationId: reports.GetYammerGroupsActivityCounts
+      operationId: reports.0-InvokeGetYammerGroupsActivityCounts
       parameters:
         - name: period
           in: path

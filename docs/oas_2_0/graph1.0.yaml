@@ -150,7 +150,7 @@ paths:
       tags:
         - directoryObjects.getByIds
       summary: Invoke action getByIds
-      operationId: directoryObjects.GetByIds
+      operationId: directoryObjects.0-InvokeGetByIds
       consumes:
         - application/json
       parameters:
@@ -179,7 +179,7 @@ paths:
       tags:
         - directoryObjects.delta
       summary: Invoke function delta
-      operationId: directoryObjects.user.Delta
+      operationId: directoryObjects.0-InvokeDelta
       produces:
         - application/json
       responses:
@@ -195,7 +195,7 @@ paths:
       tags:
         - directoryObjects.delta
       summary: Invoke function delta
-      operationId: directoryObjects.group.Delta
+      operationId: directoryObjects.1-InvokeDelta
       produces:
         - application/json
       responses:
@@ -211,7 +211,7 @@ paths:
       tags:
         - directoryObjects.checkMemberGroups
       summary: Invoke action checkMemberGroups
-      operationId: directoryObjects.CheckMemberGroups
+      operationId: directoryObjects.0-InvokeCheckMemberGroups
       consumes:
         - application/json
       parameters:
@@ -241,7 +241,7 @@ paths:
       tags:
         - directoryObjects.getMemberGroups
       summary: Invoke action getMemberGroups
-      operationId: directoryObjects.GetMemberGroups
+      operationId: directoryObjects.0-InvokeGetMemberGroups
       consumes:
         - application/json
       parameters:
@@ -270,7 +270,7 @@ paths:
       tags:
         - directoryObjects.getMemberObjects
       summary: Invoke action getMemberObjects
-      operationId: directoryObjects.GetMemberObjects
+      operationId: directoryObjects.0-InvokeGetMemberObjects
       consumes:
         - application/json
       parameters:
@@ -299,7 +299,7 @@ paths:
       tags:
         - directoryObjects.assignLicense
       summary: Invoke action assignLicense
-      operationId: directoryObjects.user.AssignLicense
+      operationId: directoryObjects.0-InvokeAssignLicense
       consumes:
         - application/json
       parameters:
@@ -335,7 +335,7 @@ paths:
       tags:
         - directoryObjects.changePassword
       summary: Invoke action changePassword
-      operationId: directoryObjects.user.ChangePassword
+      operationId: directoryObjects.0-InvokeChangePassword
       consumes:
         - application/json
       parameters:
@@ -365,7 +365,7 @@ paths:
       tags:
         - directoryObjects.sendMail
       summary: Invoke action sendMail
-      operationId: directoryObjects.user.SendMail
+      operationId: directoryObjects.0-InvokeSendMail
       consumes:
         - application/json
       parameters:
@@ -396,7 +396,7 @@ paths:
       tags:
         - directoryObjects.findMeetingTimes
       summary: Invoke action findMeetingTimes
-      operationId: directoryObjects.user.FindMeetingTimes
+      operationId: directoryObjects.0-InvokeFindMeetingTimes
       consumes:
         - application/json
       parameters:
@@ -444,7 +444,7 @@ paths:
       tags:
         - directoryObjects.reminderView
       summary: Invoke function reminderView
-      operationId: directoryObjects.user.ReminderView
+      operationId: directoryObjects.0-InvokeReminderView
       produces:
         - application/json
       parameters:
@@ -475,7 +475,7 @@ paths:
       tags:
         - directoryObjects.subscribeByMail
       summary: Invoke action subscribeByMail
-      operationId: directoryObjects.group.SubscribeByMail
+      operationId: directoryObjects.0-InvokeSubscribeByMail
       parameters:
         - in: path
           name: id
@@ -492,7 +492,7 @@ paths:
       tags:
         - directoryObjects.unsubscribeByMail
       summary: Invoke action unsubscribeByMail
-      operationId: directoryObjects.group.UnsubscribeByMail
+      operationId: directoryObjects.0-InvokeUnsubscribeByMail
       parameters:
         - in: path
           name: id
@@ -509,7 +509,7 @@ paths:
       tags:
         - directoryObjects.addFavorite
       summary: Invoke action addFavorite
-      operationId: directoryObjects.group.AddFavorite
+      operationId: directoryObjects.0-InvokeAddFavorite
       parameters:
         - in: path
           name: id
@@ -526,7 +526,7 @@ paths:
       tags:
         - directoryObjects.removeFavorite
       summary: Invoke action removeFavorite
-      operationId: directoryObjects.group.RemoveFavorite
+      operationId: directoryObjects.0-InvokeRemoveFavorite
       parameters:
         - in: path
           name: id
@@ -543,7 +543,7 @@ paths:
       tags:
         - directoryObjects.resetUnseenCount
       summary: Invoke action resetUnseenCount
-      operationId: directoryObjects.group.ResetUnseenCount
+      operationId: directoryObjects.0-InvokeResetUnseenCount
       parameters:
         - in: path
           name: id
@@ -955,7 +955,7 @@ paths:
       tags:
         - domains.verify
       summary: Invoke action verify
-      operationId: domains.Verify
+      operationId: domains.0-InvokeVerify
       parameters:
         - in: path
           name: id
@@ -1361,7 +1361,7 @@ paths:
       tags:
         - groups.delta
       summary: Invoke function delta
-      operationId: groups.Delta
+      operationId: groups.0-InvokeDelta
       produces:
         - application/json
       responses:
@@ -1377,7 +1377,7 @@ paths:
       tags:
         - groups.subscribeByMail
       summary: Invoke action subscribeByMail
-      operationId: groups.SubscribeByMail
+      operationId: groups.0-InvokeSubscribeByMail
       parameters:
         - in: path
           name: id
@@ -1394,7 +1394,7 @@ paths:
       tags:
         - groups.unsubscribeByMail
       summary: Invoke action unsubscribeByMail
-      operationId: groups.UnsubscribeByMail
+      operationId: groups.0-InvokeUnsubscribeByMail
       parameters:
         - in: path
           name: id
@@ -1411,7 +1411,7 @@ paths:
       tags:
         - groups.addFavorite
       summary: Invoke action addFavorite
-      operationId: groups.AddFavorite
+      operationId: groups.0-InvokeAddFavorite
       parameters:
         - in: path
           name: id
@@ -1428,7 +1428,7 @@ paths:
       tags:
         - groups.removeFavorite
       summary: Invoke action removeFavorite
-      operationId: groups.RemoveFavorite
+      operationId: groups.0-InvokeRemoveFavorite
       parameters:
         - in: path
           name: id
@@ -1445,7 +1445,7 @@ paths:
       tags:
         - groups.resetUnseenCount
       summary: Invoke action resetUnseenCount
-      operationId: groups.ResetUnseenCount
+      operationId: groups.0-InvokeResetUnseenCount
       parameters:
         - in: path
           name: id
@@ -2753,7 +2753,7 @@ paths:
       tags:
         - users.delta
       summary: Invoke function delta
-      operationId: users.Delta
+      operationId: users.0-InvokeDelta
       produces:
         - application/json
       responses:
@@ -2769,7 +2769,7 @@ paths:
       tags:
         - users.assignLicense
       summary: Invoke action assignLicense
-      operationId: users.AssignLicense
+      operationId: users.0-InvokeAssignLicense
       consumes:
         - application/json
       parameters:
@@ -2805,7 +2805,7 @@ paths:
       tags:
         - users.changePassword
       summary: Invoke action changePassword
-      operationId: users.ChangePassword
+      operationId: users.0-InvokeChangePassword
       consumes:
         - application/json
       parameters:
@@ -2835,7 +2835,7 @@ paths:
       tags:
         - users.sendMail
       summary: Invoke action sendMail
-      operationId: users.SendMail
+      operationId: users.0-InvokeSendMail
       consumes:
         - application/json
       parameters:
@@ -2866,7 +2866,7 @@ paths:
       tags:
         - users.findMeetingTimes
       summary: Invoke action findMeetingTimes
-      operationId: users.FindMeetingTimes
+      operationId: users.0-InvokeFindMeetingTimes
       consumes:
         - application/json
       parameters:
@@ -2914,7 +2914,7 @@ paths:
       tags:
         - users.reminderView
       summary: Invoke function reminderView
-      operationId: users.ReminderView
+      operationId: users.0-InvokeReminderView
       produces:
         - application/json
       parameters:
@@ -3498,7 +3498,7 @@ paths:
       tags:
         - drives.recent
       summary: Invoke function recent
-      operationId: drives.Recent
+      operationId: drives.0-InvokeRecent
       produces:
         - application/json
       parameters:
@@ -3520,7 +3520,7 @@ paths:
       tags:
         - drives.search
       summary: Invoke function search
-      operationId: drives.Search
+      operationId: drives.0-InvokeSearch
       produces:
         - application/json
       parameters:
@@ -3546,7 +3546,7 @@ paths:
       tags:
         - drives.sharedWithMe
       summary: Invoke function sharedWithMe
-      operationId: drives.SharedWithMe
+      operationId: drives.0-InvokeSharedWithMe
       produces:
         - application/json
       parameters:
@@ -4008,7 +4008,7 @@ paths:
       tags:
         - sites.getByPath
       summary: Invoke function getByPath
-      operationId: sites.GetByPath
+      operationId: sites.0-InvokeGetByPath
       produces:
         - application/json
       parameters:
@@ -4318,7 +4318,7 @@ paths:
       tags:
         - workbooks.delta
       summary: Invoke function delta
-      operationId: workbooks.0-Delta
+      operationId: workbooks.0-InvokeDelta
       produces:
         - application/json
       parameters:
@@ -4344,7 +4344,7 @@ paths:
       tags:
         - workbooks.delta
       summary: Invoke function delta
-      operationId: workbooks.1-Delta
+      operationId: workbooks.1-InvokeDelta
       produces:
         - application/json
       parameters:
@@ -4366,7 +4366,7 @@ paths:
       tags:
         - workbooks.search
       summary: Invoke function search
-      operationId: workbooks.Search
+      operationId: workbooks.0-InvokeSearch
       produces:
         - application/json
       parameters:
@@ -4392,7 +4392,7 @@ paths:
       tags:
         - workbooks.copy
       summary: Invoke action copy
-      operationId: workbooks.Copy
+      operationId: workbooks.0-InvokeCopy
       consumes:
         - application/json
       parameters:
@@ -4421,7 +4421,7 @@ paths:
       tags:
         - workbooks.createLink
       summary: Invoke action createLink
-      operationId: workbooks.CreateLink
+      operationId: workbooks.0-InvokeCreateLink
       consumes:
         - application/json
       parameters:
@@ -4451,7 +4451,7 @@ paths:
       tags:
         - workbooks.createUploadSession
       summary: Invoke action createUploadSession
-      operationId: workbooks.CreateUploadSession
+      operationId: workbooks.0-InvokeCreateUploadSession
       consumes:
         - application/json
       parameters:
@@ -4478,7 +4478,7 @@ paths:
       tags:
         - workbooks.invite
       summary: Invoke action invite
-      operationId: workbooks.Invite
+      operationId: workbooks.0-InvokeInvite
       consumes:
         - application/json
       parameters:
@@ -4933,7 +4933,7 @@ paths:
       tags:
         - me.assignLicense
       summary: Invoke action assignLicense
-      operationId: me.AssignLicense
+      operationId: me.0-InvokeAssignLicense
       consumes:
         - application/json
       parameters:
@@ -4964,7 +4964,7 @@ paths:
       tags:
         - me.changePassword
       summary: Invoke action changePassword
-      operationId: me.ChangePassword
+      operationId: me.0-InvokeChangePassword
       consumes:
         - application/json
       parameters:
@@ -4989,7 +4989,7 @@ paths:
       tags:
         - me.sendMail
       summary: Invoke action sendMail
-      operationId: me.SendMail
+      operationId: me.0-InvokeSendMail
       consumes:
         - application/json
       parameters:
@@ -5015,7 +5015,7 @@ paths:
       tags:
         - me.findMeetingTimes
       summary: Invoke action findMeetingTimes
-      operationId: me.FindMeetingTimes
+      operationId: me.0-InvokeFindMeetingTimes
       consumes:
         - application/json
       parameters:
@@ -5058,7 +5058,7 @@ paths:
       tags:
         - me.reminderView
       summary: Invoke function reminderView
-      operationId: me.ReminderView
+      operationId: me.0-InvokeReminderView
       produces:
         - application/json
       parameters:
@@ -5155,7 +5155,7 @@ paths:
       tags:
         - drive.recent
       summary: Invoke function recent
-      operationId: drive.Recent
+      operationId: drive.0-InvokeRecent
       produces:
         - application/json
       responses:
@@ -5171,7 +5171,7 @@ paths:
       tags:
         - drive.search
       summary: Invoke function search
-      operationId: drive.Search
+      operationId: drive.0-InvokeSearch
       produces:
         - application/json
       parameters:
@@ -5192,7 +5192,7 @@ paths:
       tags:
         - drive.sharedWithMe
       summary: Invoke function sharedWithMe
-      operationId: drive.SharedWithMe
+      operationId: drive.0-InvokeSharedWithMe
       produces:
         - application/json
       responses:
@@ -5313,7 +5313,7 @@ paths:
       tags:
         - reports.getOffice365ActivationsUserDetail
       summary: Invoke function getOffice365ActivationsUserDetail
-      operationId: reports.GetOffice365ActivationsUserDetail
+      operationId: reports.0-InvokeGetOffice365ActivationsUserDetail
       produces:
         - application/json
       responses:
@@ -5328,7 +5328,7 @@ paths:
       tags:
         - reports.getOffice365ActivationCounts
       summary: Invoke function getOffice365ActivationCounts
-      operationId: reports.GetOffice365ActivationCounts
+      operationId: reports.0-InvokeGetOffice365ActivationCounts
       produces:
         - application/json
       responses:
@@ -5343,7 +5343,7 @@ paths:
       tags:
         - reports.getOffice365ActivationsUserCounts
       summary: Invoke function getOffice365ActivationsUserCounts
-      operationId: reports.GetOffice365ActivationsUserCounts
+      operationId: reports.0-InvokeGetOffice365ActivationsUserCounts
       produces:
         - application/json
       responses:
@@ -5358,7 +5358,7 @@ paths:
       tags:
         - reports.getOffice365ActiveUserDetail
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: reports.0-GetOffice365ActiveUserDetail
+      operationId: reports.0-InvokeGetOffice365ActiveUserDetail
       produces:
         - application/json
       parameters:
@@ -5380,7 +5380,7 @@ paths:
       tags:
         - reports.getOffice365ActiveUserDetail
       summary: Invoke function getOffice365ActiveUserDetail
-      operationId: reports.1-GetOffice365ActiveUserDetail
+      operationId: reports.1-InvokeGetOffice365ActiveUserDetail
       produces:
         - application/json
       parameters:
@@ -5400,7 +5400,7 @@ paths:
       tags:
         - reports.getOffice365ServicesUserCounts
       summary: Invoke function getOffice365ServicesUserCounts
-      operationId: reports.GetOffice365ServicesUserCounts
+      operationId: reports.0-InvokeGetOffice365ServicesUserCounts
       produces:
         - application/json
       parameters:
@@ -5420,7 +5420,7 @@ paths:
       tags:
         - reports.getOffice365ActiveUserCounts
       summary: Invoke function getOffice365ActiveUserCounts
-      operationId: reports.GetOffice365ActiveUserCounts
+      operationId: reports.0-InvokeGetOffice365ActiveUserCounts
       produces:
         - application/json
       parameters:
@@ -5440,7 +5440,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityDetail
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: reports.0-GetOffice365GroupsActivityDetail
+      operationId: reports.0-InvokeGetOffice365GroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -5462,7 +5462,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityDetail
       summary: Invoke function getOffice365GroupsActivityDetail
-      operationId: reports.1-GetOffice365GroupsActivityDetail
+      operationId: reports.1-InvokeGetOffice365GroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -5482,7 +5482,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityCounts
       summary: Invoke function getOffice365GroupsActivityCounts
-      operationId: reports.GetOffice365GroupsActivityCounts
+      operationId: reports.0-InvokeGetOffice365GroupsActivityCounts
       produces:
         - application/json
       parameters:
@@ -5502,7 +5502,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityGroupCounts
       summary: Invoke function getOffice365GroupsActivityGroupCounts
-      operationId: reports.GetOffice365GroupsActivityGroupCounts
+      operationId: reports.0-InvokeGetOffice365GroupsActivityGroupCounts
       produces:
         - application/json
       parameters:
@@ -5522,7 +5522,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityStorage
       summary: Invoke function getOffice365GroupsActivityStorage
-      operationId: reports.GetOffice365GroupsActivityStorage
+      operationId: reports.0-InvokeGetOffice365GroupsActivityStorage
       produces:
         - application/json
       parameters:
@@ -5542,7 +5542,7 @@ paths:
       tags:
         - reports.getOffice365GroupsActivityFileCounts
       summary: Invoke function getOffice365GroupsActivityFileCounts
-      operationId: reports.GetOffice365GroupsActivityFileCounts
+      operationId: reports.0-InvokeGetOffice365GroupsActivityFileCounts
       produces:
         - application/json
       parameters:
@@ -5562,7 +5562,7 @@ paths:
       tags:
         - reports.getEmailActivityUserDetail
       summary: Invoke function getEmailActivityUserDetail
-      operationId: reports.0-GetEmailActivityUserDetail
+      operationId: reports.0-InvokeGetEmailActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5584,7 +5584,7 @@ paths:
       tags:
         - reports.getEmailActivityUserDetail
       summary: Invoke function getEmailActivityUserDetail
-      operationId: reports.1-GetEmailActivityUserDetail
+      operationId: reports.1-InvokeGetEmailActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5604,7 +5604,7 @@ paths:
       tags:
         - reports.getEmailActivityCounts
       summary: Invoke function getEmailActivityCounts
-      operationId: reports.GetEmailActivityCounts
+      operationId: reports.0-InvokeGetEmailActivityCounts
       produces:
         - application/json
       parameters:
@@ -5624,7 +5624,7 @@ paths:
       tags:
         - reports.getEmailActivityUserCounts
       summary: Invoke function getEmailActivityUserCounts
-      operationId: reports.GetEmailActivityUserCounts
+      operationId: reports.0-InvokeGetEmailActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -5644,7 +5644,7 @@ paths:
       tags:
         - reports.getEmailAppUsageUserDetail
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: reports.0-GetEmailAppUsageUserDetail
+      operationId: reports.0-InvokeGetEmailAppUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -5666,7 +5666,7 @@ paths:
       tags:
         - reports.getEmailAppUsageUserDetail
       summary: Invoke function getEmailAppUsageUserDetail
-      operationId: reports.1-GetEmailAppUsageUserDetail
+      operationId: reports.1-InvokeGetEmailAppUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -5686,7 +5686,7 @@ paths:
       tags:
         - reports.getEmailAppUsageAppsUserCounts
       summary: Invoke function getEmailAppUsageAppsUserCounts
-      operationId: reports.GetEmailAppUsageAppsUserCounts
+      operationId: reports.0-InvokeGetEmailAppUsageAppsUserCounts
       produces:
         - application/json
       parameters:
@@ -5706,7 +5706,7 @@ paths:
       tags:
         - reports.getEmailAppUsageUserCounts
       summary: Invoke function getEmailAppUsageUserCounts
-      operationId: reports.GetEmailAppUsageUserCounts
+      operationId: reports.0-InvokeGetEmailAppUsageUserCounts
       produces:
         - application/json
       parameters:
@@ -5726,7 +5726,7 @@ paths:
       tags:
         - reports.getEmailAppUsageVersionsUserCounts
       summary: Invoke function getEmailAppUsageVersionsUserCounts
-      operationId: reports.GetEmailAppUsageVersionsUserCounts
+      operationId: reports.0-InvokeGetEmailAppUsageVersionsUserCounts
       produces:
         - application/json
       parameters:
@@ -5746,7 +5746,7 @@ paths:
       tags:
         - reports.getMailboxUsageDetail
       summary: Invoke function getMailboxUsageDetail
-      operationId: reports.GetMailboxUsageDetail
+      operationId: reports.0-InvokeGetMailboxUsageDetail
       produces:
         - application/json
       parameters:
@@ -5766,7 +5766,7 @@ paths:
       tags:
         - reports.getMailboxUsageMailboxCounts
       summary: Invoke function getMailboxUsageMailboxCounts
-      operationId: reports.GetMailboxUsageMailboxCounts
+      operationId: reports.0-InvokeGetMailboxUsageMailboxCounts
       produces:
         - application/json
       parameters:
@@ -5786,7 +5786,7 @@ paths:
       tags:
         - reports.getMailboxUsageQuotaStatusMailboxCounts
       summary: Invoke function getMailboxUsageQuotaStatusMailboxCounts
-      operationId: reports.GetMailboxUsageQuotaStatusMailboxCounts
+      operationId: reports.0-InvokeGetMailboxUsageQuotaStatusMailboxCounts
       produces:
         - application/json
       parameters:
@@ -5806,7 +5806,7 @@ paths:
       tags:
         - reports.getMailboxUsageStorage
       summary: Invoke function getMailboxUsageStorage
-      operationId: reports.GetMailboxUsageStorage
+      operationId: reports.0-InvokeGetMailboxUsageStorage
       produces:
         - application/json
       parameters:
@@ -5826,7 +5826,7 @@ paths:
       tags:
         - reports.getOneDriveActivityUserDetail
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: reports.0-GetOneDriveActivityUserDetail
+      operationId: reports.0-InvokeGetOneDriveActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5848,7 +5848,7 @@ paths:
       tags:
         - reports.getOneDriveActivityUserDetail
       summary: Invoke function getOneDriveActivityUserDetail
-      operationId: reports.1-GetOneDriveActivityUserDetail
+      operationId: reports.1-InvokeGetOneDriveActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -5868,7 +5868,7 @@ paths:
       tags:
         - reports.getOneDriveActivityUserCounts
       summary: Invoke function getOneDriveActivityUserCounts
-      operationId: reports.GetOneDriveActivityUserCounts
+      operationId: reports.0-InvokeGetOneDriveActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -5888,7 +5888,7 @@ paths:
       tags:
         - reports.getOneDriveActivityFileCounts
       summary: Invoke function getOneDriveActivityFileCounts
-      operationId: reports.GetOneDriveActivityFileCounts
+      operationId: reports.0-InvokeGetOneDriveActivityFileCounts
       produces:
         - application/json
       parameters:
@@ -5908,7 +5908,7 @@ paths:
       tags:
         - reports.getOneDriveUsageAccountDetail
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: reports.0-GetOneDriveUsageAccountDetail
+      operationId: reports.0-InvokeGetOneDriveUsageAccountDetail
       produces:
         - application/json
       parameters:
@@ -5930,7 +5930,7 @@ paths:
       tags:
         - reports.getOneDriveUsageAccountDetail
       summary: Invoke function getOneDriveUsageAccountDetail
-      operationId: reports.1-GetOneDriveUsageAccountDetail
+      operationId: reports.1-InvokeGetOneDriveUsageAccountDetail
       produces:
         - application/json
       parameters:
@@ -5950,7 +5950,7 @@ paths:
       tags:
         - reports.getOneDriveUsageAccountCounts
       summary: Invoke function getOneDriveUsageAccountCounts
-      operationId: reports.GetOneDriveUsageAccountCounts
+      operationId: reports.0-InvokeGetOneDriveUsageAccountCounts
       produces:
         - application/json
       parameters:
@@ -5970,7 +5970,7 @@ paths:
       tags:
         - reports.getOneDriveUsageFileCounts
       summary: Invoke function getOneDriveUsageFileCounts
-      operationId: reports.GetOneDriveUsageFileCounts
+      operationId: reports.0-InvokeGetOneDriveUsageFileCounts
       produces:
         - application/json
       parameters:
@@ -5990,7 +5990,7 @@ paths:
       tags:
         - reports.getOneDriveUsageStorage
       summary: Invoke function getOneDriveUsageStorage
-      operationId: reports.GetOneDriveUsageStorage
+      operationId: reports.0-InvokeGetOneDriveUsageStorage
       produces:
         - application/json
       parameters:
@@ -6010,7 +6010,7 @@ paths:
       tags:
         - reports.getSharePointActivityUserDetail
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: reports.0-GetSharePointActivityUserDetail
+      operationId: reports.0-InvokeGetSharePointActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6032,7 +6032,7 @@ paths:
       tags:
         - reports.getSharePointActivityUserDetail
       summary: Invoke function getSharePointActivityUserDetail
-      operationId: reports.1-GetSharePointActivityUserDetail
+      operationId: reports.1-InvokeGetSharePointActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6052,7 +6052,7 @@ paths:
       tags:
         - reports.getSharePointActivityFileCounts
       summary: Invoke function getSharePointActivityFileCounts
-      operationId: reports.GetSharePointActivityFileCounts
+      operationId: reports.0-InvokeGetSharePointActivityFileCounts
       produces:
         - application/json
       parameters:
@@ -6072,7 +6072,7 @@ paths:
       tags:
         - reports.getSharePointActivityUserCounts
       summary: Invoke function getSharePointActivityUserCounts
-      operationId: reports.GetSharePointActivityUserCounts
+      operationId: reports.0-InvokeGetSharePointActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6092,7 +6092,7 @@ paths:
       tags:
         - reports.getSharePointActivityPages
       summary: Invoke function getSharePointActivityPages
-      operationId: reports.GetSharePointActivityPages
+      operationId: reports.0-InvokeGetSharePointActivityPages
       produces:
         - application/json
       parameters:
@@ -6112,7 +6112,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageDetail
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: reports.0-GetSharePointSiteUsageDetail
+      operationId: reports.0-InvokeGetSharePointSiteUsageDetail
       produces:
         - application/json
       parameters:
@@ -6134,7 +6134,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageDetail
       summary: Invoke function getSharePointSiteUsageDetail
-      operationId: reports.1-GetSharePointSiteUsageDetail
+      operationId: reports.1-InvokeGetSharePointSiteUsageDetail
       produces:
         - application/json
       parameters:
@@ -6154,7 +6154,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageFileCounts
       summary: Invoke function getSharePointSiteUsageFileCounts
-      operationId: reports.GetSharePointSiteUsageFileCounts
+      operationId: reports.0-InvokeGetSharePointSiteUsageFileCounts
       produces:
         - application/json
       parameters:
@@ -6174,7 +6174,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageSiteCounts
       summary: Invoke function getSharePointSiteUsageSiteCounts
-      operationId: reports.GetSharePointSiteUsageSiteCounts
+      operationId: reports.0-InvokeGetSharePointSiteUsageSiteCounts
       produces:
         - application/json
       parameters:
@@ -6194,7 +6194,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsageStorage
       summary: Invoke function getSharePointSiteUsageStorage
-      operationId: reports.GetSharePointSiteUsageStorage
+      operationId: reports.0-InvokeGetSharePointSiteUsageStorage
       produces:
         - application/json
       parameters:
@@ -6214,7 +6214,7 @@ paths:
       tags:
         - reports.getSharePointSiteUsagePages
       summary: Invoke function getSharePointSiteUsagePages
-      operationId: reports.GetSharePointSiteUsagePages
+      operationId: reports.0-InvokeGetSharePointSiteUsagePages
       produces:
         - application/json
       parameters:
@@ -6234,7 +6234,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityUserDetail
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: reports.0-GetSkypeForBusinessActivityUserDetail
+      operationId: reports.0-InvokeGetSkypeForBusinessActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6256,7 +6256,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityUserDetail
       summary: Invoke function getSkypeForBusinessActivityUserDetail
-      operationId: reports.1-GetSkypeForBusinessActivityUserDetail
+      operationId: reports.1-InvokeGetSkypeForBusinessActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6276,7 +6276,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityCounts
       summary: Invoke function getSkypeForBusinessActivityCounts
-      operationId: reports.GetSkypeForBusinessActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessActivityCounts
       produces:
         - application/json
       parameters:
@@ -6296,7 +6296,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessActivityUserCounts
       summary: Invoke function getSkypeForBusinessActivityUserCounts
-      operationId: reports.GetSkypeForBusinessActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6316,7 +6316,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessPeerToPeerActivityCounts
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
-      operationId: reports.GetSkypeForBusinessPeerToPeerActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityCounts
       produces:
         - application/json
       parameters:
@@ -6336,7 +6336,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessPeerToPeerActivityUserCounts
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
-      operationId: reports.GetSkypeForBusinessPeerToPeerActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6356,7 +6356,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
-      operationId: reports.GetSkypeForBusinessPeerToPeerActivityMinuteCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts
       produces:
         - application/json
       parameters:
@@ -6376,7 +6376,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessOrganizerActivityCounts
       summary: Invoke function getSkypeForBusinessOrganizerActivityCounts
-      operationId: reports.GetSkypeForBusinessOrganizerActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessOrganizerActivityCounts
       produces:
         - application/json
       parameters:
@@ -6396,7 +6396,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessOrganizerActivityUserCounts
       summary: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
-      operationId: reports.GetSkypeForBusinessOrganizerActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessOrganizerActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6416,7 +6416,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessOrganizerActivityMinuteCounts
       summary: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
-      operationId: reports.GetSkypeForBusinessOrganizerActivityMinuteCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts
       produces:
         - application/json
       parameters:
@@ -6436,7 +6436,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessParticipantActivityCounts
       summary: Invoke function getSkypeForBusinessParticipantActivityCounts
-      operationId: reports.GetSkypeForBusinessParticipantActivityCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessParticipantActivityCounts
       produces:
         - application/json
       parameters:
@@ -6456,7 +6456,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessParticipantActivityUserCounts
       summary: Invoke function getSkypeForBusinessParticipantActivityUserCounts
-      operationId: reports.GetSkypeForBusinessParticipantActivityUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessParticipantActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6476,7 +6476,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessParticipantActivityMinuteCounts
       summary: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
-      operationId: reports.GetSkypeForBusinessParticipantActivityMinuteCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessParticipantActivityMinuteCounts
       produces:
         - application/json
       parameters:
@@ -6496,7 +6496,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageUserDetail
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: reports.0-GetSkypeForBusinessDeviceUsageUserDetail
+      operationId: reports.0-InvokeGetSkypeForBusinessDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6518,7 +6518,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageUserDetail
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
-      operationId: reports.1-GetSkypeForBusinessDeviceUsageUserDetail
+      operationId: reports.1-InvokeGetSkypeForBusinessDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6538,7 +6538,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageDistributionUserCounts
       summary: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
-      operationId: reports.GetSkypeForBusinessDeviceUsageDistributionUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts
       produces:
         - application/json
       parameters:
@@ -6558,7 +6558,7 @@ paths:
       tags:
         - reports.getSkypeForBusinessDeviceUsageUserCounts
       summary: Invoke function getSkypeForBusinessDeviceUsageUserCounts
-      operationId: reports.GetSkypeForBusinessDeviceUsageUserCounts
+      operationId: reports.0-InvokeGetSkypeForBusinessDeviceUsageUserCounts
       produces:
         - application/json
       parameters:
@@ -6578,7 +6578,7 @@ paths:
       tags:
         - reports.getYammerActivityUserDetail
       summary: Invoke function getYammerActivityUserDetail
-      operationId: reports.0-GetYammerActivityUserDetail
+      operationId: reports.0-InvokeGetYammerActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6600,7 +6600,7 @@ paths:
       tags:
         - reports.getYammerActivityUserDetail
       summary: Invoke function getYammerActivityUserDetail
-      operationId: reports.1-GetYammerActivityUserDetail
+      operationId: reports.1-InvokeGetYammerActivityUserDetail
       produces:
         - application/json
       parameters:
@@ -6620,7 +6620,7 @@ paths:
       tags:
         - reports.getYammerActivityCounts
       summary: Invoke function getYammerActivityCounts
-      operationId: reports.GetYammerActivityCounts
+      operationId: reports.0-InvokeGetYammerActivityCounts
       produces:
         - application/json
       parameters:
@@ -6640,7 +6640,7 @@ paths:
       tags:
         - reports.getYammerActivityUserCounts
       summary: Invoke function getYammerActivityUserCounts
-      operationId: reports.GetYammerActivityUserCounts
+      operationId: reports.0-InvokeGetYammerActivityUserCounts
       produces:
         - application/json
       parameters:
@@ -6660,7 +6660,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageUserDetail
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: reports.0-GetYammerDeviceUsageUserDetail
+      operationId: reports.0-InvokeGetYammerDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6682,7 +6682,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageUserDetail
       summary: Invoke function getYammerDeviceUsageUserDetail
-      operationId: reports.1-GetYammerDeviceUsageUserDetail
+      operationId: reports.1-InvokeGetYammerDeviceUsageUserDetail
       produces:
         - application/json
       parameters:
@@ -6702,7 +6702,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageDistributionUserCounts
       summary: Invoke function getYammerDeviceUsageDistributionUserCounts
-      operationId: reports.GetYammerDeviceUsageDistributionUserCounts
+      operationId: reports.0-InvokeGetYammerDeviceUsageDistributionUserCounts
       produces:
         - application/json
       parameters:
@@ -6722,7 +6722,7 @@ paths:
       tags:
         - reports.getYammerDeviceUsageUserCounts
       summary: Invoke function getYammerDeviceUsageUserCounts
-      operationId: reports.GetYammerDeviceUsageUserCounts
+      operationId: reports.0-InvokeGetYammerDeviceUsageUserCounts
       produces:
         - application/json
       parameters:
@@ -6742,7 +6742,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityDetail
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: reports.0-GetYammerGroupsActivityDetail
+      operationId: reports.0-InvokeGetYammerGroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -6764,7 +6764,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityDetail
       summary: Invoke function getYammerGroupsActivityDetail
-      operationId: reports.1-GetYammerGroupsActivityDetail
+      operationId: reports.1-InvokeGetYammerGroupsActivityDetail
       produces:
         - application/json
       parameters:
@@ -6784,7 +6784,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityGroupCounts
       summary: Invoke function getYammerGroupsActivityGroupCounts
-      operationId: reports.GetYammerGroupsActivityGroupCounts
+      operationId: reports.0-InvokeGetYammerGroupsActivityGroupCounts
       produces:
         - application/json
       parameters:
@@ -6804,7 +6804,7 @@ paths:
       tags:
         - reports.getYammerGroupsActivityCounts
       summary: Invoke function getYammerGroupsActivityCounts
-      operationId: reports.GetYammerGroupsActivityCounts
+      operationId: reports.0-InvokeGetYammerGroupsActivityCounts
       produces:
         - application/json
       parameters:

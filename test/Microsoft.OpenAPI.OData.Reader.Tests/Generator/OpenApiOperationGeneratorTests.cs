@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Get entities from " + entitySet.Name, get.Summary);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
-            Assert.Equal(entitySet.Name, tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(get.Parameters);
             Assert.Equal(8, get.Parameters.Count);
@@ -97,7 +97,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Add new entity to " + entitySet.Name, post.Summary);
             Assert.NotNull(post.Tags);
             var tag = Assert.Single(post.Tags);
-            Assert.Equal(entitySet.Name, tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.Empty(post.Parameters);
             Assert.NotNull(post.RequestBody);
@@ -142,7 +142,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Get entity from People by key", get.Summary);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(get.Parameters);
             Assert.Equal(3, get.Parameters.Count);
@@ -192,7 +192,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Update entity in People", patch.Summary);
             Assert.NotNull(patch.Tags);
             var tag = Assert.Single(patch.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(patch.Parameters);
             Assert.Equal(1, patch.Parameters.Count);
@@ -240,7 +240,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Delete entity from People", delete.Summary);
             Assert.NotNull(delete.Tags);
             var tag = Assert.Single(delete.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(delete.Parameters);
             Assert.Equal(2, delete.Parameters.Count);
@@ -290,7 +290,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Get Me", get.Summary);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
-            Assert.Equal("Me", tag.Name);
+            Assert.Equal("Me.Person", tag.Name);
 
             Assert.NotNull(get.Parameters);
             Assert.Equal(2, get.Parameters.Count);
@@ -338,7 +338,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Update Me", patch.Summary);
             Assert.NotNull(patch.Tags);
             var tag = Assert.Single(patch.Tags);
-            Assert.Equal("Me", tag.Name);
+            Assert.Equal("Me.Person", tag.Name);
 
             Assert.Empty(patch.Parameters);
             Assert.NotNull(patch.RequestBody);
@@ -406,7 +406,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Get Trips from People", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People##Trips", tag.Name);
+            Assert.Equal("People.Trip", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Equal(9, operation.Parameters.Count);
@@ -490,7 +490,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Update the navigation property BestFriend in People", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People##BestFriend", tag.Name);
+            Assert.Equal("People.Person", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Equal(1, operation.Parameters.Count);
@@ -575,7 +575,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Add new navigation property to Trips for People", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People##Trips", tag.Name);
+            Assert.Equal("People.Trip", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Empty(operation.Parameters);
@@ -645,7 +645,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Invoke function GetFavoriteAirline", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People.GetFavoriteAirline", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Equal(1, operation.Parameters.Count);
@@ -677,7 +677,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("Invoke action ShareTrip", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
-            Assert.Equal("People", tag.Name);
+            Assert.Equal("People.ShareTrip", tag.Name);
 
             Assert.NotNull(operation.Parameters);
             Assert.Equal(1, operation.Parameters.Count);
@@ -758,7 +758,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Invoke action ResetDataSource", operation.Summary);
-            Assert.Null(operation.Tags);
+            Assert.NotNull(operation.Tags);
 
             Assert.NotNull(operation.Parameters);
             Assert.Empty(operation.Parameters);

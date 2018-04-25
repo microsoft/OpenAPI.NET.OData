@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             }
             File.WriteAllText("c:\\c.xml", sb.ToString());
 
-            Assert.Equal(100, paths.Count);
+            Assert.Equal(321, paths.Count);
         }
     }
 }

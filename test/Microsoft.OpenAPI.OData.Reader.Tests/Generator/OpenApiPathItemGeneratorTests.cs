@@ -55,11 +55,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(7, pathItems.Count);
 
             Assert.Contains("/People", pathItems.Keys);
-            Assert.Contains("/People('{UserName}')", pathItems.Keys);
+            Assert.Contains("/People/{UserName}", pathItems.Keys);
             Assert.Contains("/City", pathItems.Keys);
-            Assert.Contains("/City('{Name}')", pathItems.Keys);
+            Assert.Contains("/City/{Name}", pathItems.Keys);
             Assert.Contains("/CountryOrRegion", pathItems.Keys);
-            Assert.Contains("/CountryOrRegion('{Name}')", pathItems.Keys);
+            Assert.Contains("/CountryOrRegion/{Name}", pathItems.Keys);
             Assert.Contains("/Me", pathItems.Keys);
         }
 
