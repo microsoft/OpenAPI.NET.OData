@@ -41,18 +41,20 @@ namespace Microsoft.OpenApi.OData.PathItem
             {
                 if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
-                    InsertRestrictions insert = new InsertRestrictions(Context.Model, NavigationProperty);
-                    if (insert.IsInsertable())
-                    {
-                        AddOperation(item, OperationType.Post);
-                    }
-
                     if (LastSegmentIsKeySegment)
                     {
                         UpdateRestrictions update = new UpdateRestrictions(Context.Model, NavigationProperty);
                         if (update.IsUpdatable())
                         {
                             AddOperation(item, OperationType.Patch);
+                        }
+                    }
+                    else
+                    {
+                        InsertRestrictions insert = new InsertRestrictions(Context.Model, NavigationProperty);
+                        if (insert.IsInsertable())
+                        {
+                            AddOperation(item, OperationType.Post);
                         }
                     }
                 }
