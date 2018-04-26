@@ -63,27 +63,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/Me", pathItems.Keys);
         }
 
-        #region EntitySet PathItem
-        [Fact]
-        public void CreateEntitySetPathItemThrowArgumentNullContext()
-        {
-            // Arrange
-            ODataContext context = null;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateEntitySetPathItem(entitySet: null));
-        }
-
-        [Fact]
-        public void CreateEntitySetPathItemThrowArgumentNullEntitySet()
-        {
-            // Arrange
-            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("entitySet", () => context.CreateEntitySetPathItem(entitySet: null));
-        }
-
+        /*
         [Fact]
         public void CreateEntitySetPathItemReturnsCorrectPathItem()
         {
@@ -104,28 +84,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, pathItem.Operations.Count);
             Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Post },
                 pathItem.Operations.Select(o => o.Key));
-        }
-        #endregion
-
-        #region Entity PathItem
-        [Fact]
-        public void CreateEntityPathItemThrowArgumentNullContext()
-        {
-            // Arrange
-            ODataContext context = null;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateEntityPathItem(entitySet: null));
-        }
-
-        [Fact]
-        public void CreateEntityPathItemThrowArgumentNullEntitySet()
-        {
-            // Arrange
-            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("entitySet", () => context.CreateEntityPathItem(entitySet: null));
         }
 
         [Fact]
@@ -149,28 +107,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete },
                 pathItem.Operations.Select(o => o.Key));
         }
-        #endregion
-
-        #region Singleton PathItem
-        [Fact]
-        public void CreateSingletonPathItemThrowArgumentNullContext()
-        {
-            // Arrange
-            ODataContext context = null;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateSingletonPathItem(singleton: null));
-        }
-
-        [Fact]
-        public void CreateSingletonPathItemThrowArgumentNullSingleton()
-        {
-            // Arrange
-            ODataContext context = new ODataContext(EdmModelHelper.BasicEdmModel);
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("singleton", () => context.CreateSingletonPathItem(singleton: null));
-        }
 
         [Fact]
         public void CreateSingletonPathItemReturnsCorrectPathItem()
@@ -192,30 +128,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, pathItem.Operations.Count);
             Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch },
                 pathItem.Operations.Select(o => o.Key));
-        }
-        #endregion
-
-        #region Bound Edm Operation PathItem
-        [Fact]
-        public void CreatePathItemForOperationThrowArgumentNullContext()
-        {
-            // Arrange
-            ODataContext context = null;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("context",
-                () => context.CreatePathItem(navigationSource: null, edmOperation: null));
-        }
-
-        [Fact]
-        public void CreatePathItemForOperationThrowArgumentNullNavigationSource()
-        {
-            // Arrange
-            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("navigationSource",
-                () => context.CreatePathItem(navigationSource: null, edmOperation: null));
         }
 
         [Fact]
@@ -260,28 +172,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
         }
-        #endregion
-
-        #region Edm OperationImport PathItem
-        [Fact]
-        public void CreatePathItemForOperationImportThrowArgumentNullContext()
-        {
-            // Arrange
-            ODataContext context = null;
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreatePathItem(operationImport: null));
-        }
-
-        [Fact]
-        public void CreatePathItemForOperationImportThrowArgumentNullOperationImport()
-        {
-            // Arrange
-            ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);
-
-            // Act & Assert
-            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreatePathItem(operationImport: null));
-        }
 
         [Theory]
         [InlineData("GetNearestAirport", OperationType.Get)]
@@ -310,6 +200,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
         }
-        #endregion
+        */
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
-            operation.Summary = "Update the navigation propoerty " + NavigationProperty.Name + " in " + NavigationSource.Name;
+            operation.Summary = "Update the navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
 
             // OperationId
             if (Context.Settings.OperationId)

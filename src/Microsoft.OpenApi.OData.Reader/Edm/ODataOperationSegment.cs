@@ -20,6 +20,14 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
         /// </summary>
         /// <param name="operation">The operation.</param>
+        public ODataOperationSegment(IEdmOperation operation)
+            : this(operation, true)
+        { }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
         /// <param name="unqualifiedCall">The unqualified call.</param>
         public ODataOperationSegment(IEdmOperation operation, bool unqualifiedCall)
         {

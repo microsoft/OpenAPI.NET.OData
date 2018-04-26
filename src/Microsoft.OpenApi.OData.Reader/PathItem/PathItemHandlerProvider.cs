@@ -15,11 +15,22 @@ namespace Microsoft.OpenApi.OData.PathItem
     {
         private IDictionary<PathType, IPathItemHandler> _handlers = new Dictionary<PathType, IPathItemHandler>
         {
+            // Entity
             { PathType.EntitySet, new EntitySetPathItemHandler() },
+
+            // Entity
             { PathType.Entity, new EntityPathItemHandler() },
+
+            // Singleton
             { PathType.Singleton, new SingletonPathItemHandler() },
+
+            // Navigation property
             { PathType.NavigationProperty, new NavigationPropertyPathItemHandler() },
+
+            // Edm Operation
             { PathType.Operation, new OperationPathItemHandler() },
+
+            // Edm OperationImport
             { PathType.OperationImport, new OperationImportPathItemHandler() },
         };
 
