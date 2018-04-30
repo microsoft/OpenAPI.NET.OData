@@ -341,6 +341,10 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.group/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.group/microsoft.graph.delta():
     get:
       tags:
@@ -357,6 +361,10 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.user/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta():
     get:
       tags:
@@ -373,6 +381,10 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.user/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.group/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta():
     get:
       tags:
@@ -389,6 +401,10 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.user/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.group/microsoft.graph.delta()
+      - /directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.getByIds:
     post:
       tags:
@@ -449,6 +465,8 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.validateProperties'
   '/directoryObjects/{id}/microsoft.graph.checkMemberGroups':
     post:
       tags:
@@ -571,6 +589,8 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.validateProperties
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.renew':
     post:
       tags:
@@ -925,6 +945,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAddress'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms()'
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms()':
     get:
       tags:
@@ -948,6 +970,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAddress'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms(RoomList={RoomList})'
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail':
     post:
       tags:
@@ -5600,6 +5624,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAddress'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/users/{id}/microsoft.graph.findRooms()'
   '/users/{id}/microsoft.graph.findRooms()':
     get:
       tags:
@@ -5623,6 +5649,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAddress'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/users/{id}/microsoft.graph.findRooms(RoomList={RoomList})'
   '/users/{id}/microsoft.graph.removeAllDevicesFromManagement':
     post:
       tags:
@@ -6354,6 +6382,8 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/workbooks/{id}/microsoft.graph.delta()'
   '/workbooks/{id}/microsoft.graph.delta()':
     get:
       tags:
@@ -6376,6 +6406,8 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/workbooks/{id}/microsoft.graph.delta(token={token})'
   '/workbooks/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
@@ -12927,6 +12959,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAddress'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /me/microsoft.graph.findRooms()
   /me/microsoft.graph.findRooms():
     get:
       tags:
@@ -12944,6 +12978,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAddress'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/me/microsoft.graph.findRooms(RoomList={RoomList})'
   /me/microsoft.graph.removeAllDevicesFromManagement:
     post:
       tags:
@@ -13384,6 +13420,8 @@ paths:
               type: string
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/deviceManagement/microsoft.graph.getEffectivePermissions(scope={scope})'
   '/deviceManagement/microsoft.graph.getEffectivePermissions(scope={scope})':
     get:
       tags:
@@ -13405,6 +13443,8 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - /deviceManagement/microsoft.graph.getEffectivePermissions()
   /deviceAppManagement:
     get:
       tags:
@@ -13644,6 +13684,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.office365ActiveUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})'
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})':
     get:
       tags:
@@ -13666,6 +13708,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.office365ActiveUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})'
   '/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})':
     get:
       tags:
@@ -13734,6 +13778,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.office365GroupsActivityDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})'
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})':
     get:
       tags:
@@ -13756,6 +13802,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.office365GroupsActivityDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})'
   '/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})':
     get:
       tags:
@@ -13868,6 +13916,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})':
     get:
       tags:
@@ -13890,6 +13940,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getEmailActivityCounts(period={period})':
     get:
       tags:
@@ -13958,6 +14010,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAppUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})':
     get:
       tags:
@@ -13980,6 +14034,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.emailAppUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})':
     get:
       tags:
@@ -14158,6 +14214,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.oneDriveActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})':
     get:
       tags:
@@ -14180,6 +14238,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.oneDriveActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})':
     get:
       tags:
@@ -14248,6 +14308,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.oneDriveUsageAccountDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})'
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})':
     get:
       tags:
@@ -14270,6 +14332,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.oneDriveUsageAccountDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})'
   '/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})':
     get:
       tags:
@@ -14360,6 +14424,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.sharePointActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})':
     get:
       tags:
@@ -14382,6 +14448,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.sharePointActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})':
     get:
       tags:
@@ -14472,6 +14540,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.sharePointSiteUsageDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})'
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})':
     get:
       tags:
@@ -14494,6 +14564,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.sharePointSiteUsageDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})'
   '/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})':
     get:
       tags:
@@ -14606,6 +14678,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.skypeForBusinessActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})':
     get:
       tags:
@@ -14628,6 +14702,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.skypeForBusinessActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})':
     get:
       tags:
@@ -14894,6 +14970,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.skypeForBusinessDeviceUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -14916,6 +14994,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.skypeForBusinessDeviceUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -14984,6 +15064,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.yammerActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})':
     get:
       tags:
@@ -15006,6 +15088,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.yammerActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getYammerActivityCounts(period={period})':
     get:
       tags:
@@ -15074,6 +15158,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.yammerDeviceUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -15096,6 +15182,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.yammerDeviceUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -15164,6 +15252,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.yammerGroupsActivityDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})'
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})':
     get:
       tags:
@@ -15186,6 +15276,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.yammerGroupsActivityDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})'
   '/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})':
     get:
       tags:
@@ -15254,6 +15346,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.teamsUserActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})':
     get:
       tags:
@@ -15276,6 +15370,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.teamsUserActivityUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getTeamsUserActivityCounts(period={period})':
     get:
       tags:
@@ -15344,6 +15440,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.teamsDeviceUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -15366,6 +15464,8 @@ paths:
               $ref: '#/definitions/microsoft.graph.teamsDeviceUsageUserDetail'
         default:
           $ref: '#/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getTeamsDeviceUsageUserCounts(period={period})':
     get:
       tags:

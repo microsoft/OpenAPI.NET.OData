@@ -4,8 +4,11 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -42,6 +45,42 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
             EdmOperation = operationSegment.Operation;
             base.Initialize(context, path);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiPathItem item)
+        {
+            ODataNavigationSourceSegment navigationSourceSegment = Path.FirstSegment as ODataNavigationSourceSegment;
+            IEdmNavigationSource currentNavSource = navigationSourceSegment.NavigationSource;
+
+            IList<ODataPath> samePaths = new List<ODataPath>();
+            foreach (var path in Context.Paths.Where(p => p.PathType == PathType.Operation && p != Path))
+            {
+                navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+                if (currentNavSource != navigationSourceSegment.NavigationSource)
+                {
+                    continue;
+                }
+
+                ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
+                if (EdmOperation.FullName() != operationSegment.Operation.FullName())
+                {
+                    continue;
+                }
+
+                samePaths.Add(path);
+            }
+
+            if (samePaths.Any())
+            {
+                OpenApiArray array = new OpenApiArray();
+                foreach (var p in samePaths)
+                {
+                    array.Add(new OpenApiString(p.ToString()));
+                }
+
+                item.Extensions.Add("x-ms-additionalPath", array);
+            }
         }
     }
 }

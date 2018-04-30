@@ -197,6 +197,8 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.group/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.group/microsoft.graph.delta():
     get:
       tags:
@@ -216,6 +218,8 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - /directoryObjects/microsoft.graph.user/microsoft.graph.delta()
   '/directoryObjects/{id}/microsoft.graph.checkMemberGroups':
     post:
       tags:
@@ -4919,6 +4923,8 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/workbooks/{id}/microsoft.graph.delta()'
   '/workbooks/{id}/microsoft.graph.delta()':
     get:
       tags:
@@ -4945,6 +4951,8 @@ paths:
                   nullable: true
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/workbooks/{id}/microsoft.graph.delta(token={token})'
   '/workbooks/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
@@ -6035,6 +6043,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})'
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})':
     get:
       tags:
@@ -6056,6 +6066,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})'
   '/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})':
     get:
       tags:
@@ -6121,6 +6133,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})'
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})':
     get:
       tags:
@@ -6142,6 +6156,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})'
   '/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})':
     get:
       tags:
@@ -6249,6 +6265,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})':
     get:
       tags:
@@ -6270,6 +6288,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getEmailActivityCounts(period={period})':
     get:
       tags:
@@ -6335,6 +6355,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})':
     get:
       tags:
@@ -6356,6 +6378,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})':
     get:
       tags:
@@ -6526,6 +6550,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})':
     get:
       tags:
@@ -6547,6 +6573,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})':
     get:
       tags:
@@ -6612,6 +6640,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})'
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})':
     get:
       tags:
@@ -6633,6 +6663,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})'
   '/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})':
     get:
       tags:
@@ -6719,6 +6751,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})':
     get:
       tags:
@@ -6740,6 +6774,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})':
     get:
       tags:
@@ -6826,6 +6862,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})'
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})':
     get:
       tags:
@@ -6847,6 +6885,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})'
   '/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})':
     get:
       tags:
@@ -6954,6 +6994,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})':
     get:
       tags:
@@ -6975,6 +7017,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})':
     get:
       tags:
@@ -7229,6 +7273,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -7250,6 +7296,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -7315,6 +7363,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})':
     get:
       tags:
@@ -7336,6 +7386,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getYammerActivityCounts(period={period})':
     get:
       tags:
@@ -7401,6 +7453,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -7422,6 +7476,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -7487,6 +7543,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})'
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})':
     get:
       tags:
@@ -7508,6 +7566,8 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.report'
         default:
           $ref: '#/components/responses/error'
+    x-ms-additionalPath:
+      - '/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})'
   '/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})':
     get:
       tags:
