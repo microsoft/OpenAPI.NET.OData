@@ -38,6 +38,8 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             SetOperations(item);
 
+            SetExtensions(item);
+
             return item;
         }
 
@@ -54,6 +56,15 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <param name="path">The path.</param>
         protected virtual void Initialize(ODataContext context, ODataPath path)
         { }
+
+        /// <summary>
+        /// Set the extensions for the path item.
+        /// </summary>
+        /// <param name="item">The path item.</param>
+        protected virtual void SetExtensions(OpenApiPathItem item)
+        {
+
+        }
 
         /// <summary>
         /// Add one operation into path item.

@@ -3,10 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Linq;
+using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.Any;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -84,6 +87,49 @@ namespace Microsoft.OpenApi.OData.PathItem
             NavigationProperty = npSegment.NavigationProperty;
 
             base.Initialize(context, path);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiPathItem item)
+        {
+            IList<ODataPath> samePaths = new List<ODataPath>();
+            foreach (var path in Context.Paths.Where(p => p.PathType == PathType.NavigationProperty && p != Path))
+            {
+                bool lastIsKeySegment = path.LastSegment is ODataKeySegment;
+                if (LastSegmentIsKeySegment != lastIsKeySegment)
+                {
+                    continue;
+                }
+
+                ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+                if (NavigationSource != navigationSourceSegment.NavigationSource)
+                {
+                    continue;
+                }
+
+                ODataNavigationPropertySegment npSegment = path.LastSegment as ODataNavigationPropertySegment;
+                if (npSegment == null)
+                {
+                    npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
+                }
+                if (NavigationProperty != npSegment.NavigationProperty)
+                {
+                    continue;
+                }
+
+                samePaths.Add(path);
+            }
+
+            if (samePaths.Any())
+            {
+                OpenApiArray array = new OpenApiArray();
+                foreach(var p in samePaths)
+                {
+                    array.Add(new OpenApiString(p.ToString()));
+                }
+
+                item.Extensions.Add("x-ms-additionalPath", array);
+            }
         }
     }
 }
