@@ -125,7 +125,7 @@ namespace UpdateDocs
                 document = edmCsdl.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
-                settings.NavigationPropertyDepth = 5;
+                settings.NavigationPropertyDepth = 3;
                 settings.CountKeySegmentAsDepth = false;
                 output = oas30 + "/" + fileName + "_content_withoutKeySegment.json";
                 document = edmCsdl.ConvertToOpenApi(settings);
