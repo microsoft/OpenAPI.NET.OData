@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                     Reference = new OpenApiReference
                                     {
                                         Type = ReferenceType.Schema,
-                                        Id = NavigationSource.EntityType().FullName()
+                                        Id = NavigationProperty.ToEntityType().FullName()
                                     }
                                 }
                             }
