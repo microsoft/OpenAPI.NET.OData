@@ -13,6 +13,7 @@ using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.Exceptions;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -269,7 +270,80 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Description = context.Model.GetDescriptionAnnotation(entity);
                 }
 
+                schema.Example = CreateStructuredTypePropertiesExample(structuredType);
+
                 return schema;
+            }
+        }
+
+        private static IOpenApiAny CreateStructuredTypePropertiesExample(IEdmStructuredType structuredType)
+        {
+            OpenApiObject example = new OpenApiObject();
+
+            IEdmEntityType entityType = structuredType as IEdmEntityType;
+
+            // properties
+            foreach (var property in structuredType.Properties())
+            {
+               // IOpenApiAny item;
+                IEdmTypeReference propertyType = property.Type;
+
+                IOpenApiAny item = GetTypeNameForExample(propertyType);
+
+                EdmTypeKind typeKind = propertyType.TypeKind();
+                if (typeKind == EdmTypeKind.Primitive && item is OpenApiString)
+                {
+                    OpenApiString stringAny = item as OpenApiString;
+                    string value = stringAny.Value;
+                    if (entityType != null && entityType.Key().Any(k => k.Name == property.Name))
+                    {
+                        value += " (identifier)";
+                    }
+                    if (propertyType.IsDateTimeOffset() || propertyType.IsDate() || propertyType.IsTimeOfDay())
+                    {
+                        value += " (timestamp)";
+                    }
+                    item = new OpenApiString(value);
+                }
+
+                example.Add(property.Name, item);
+            }
+
+            return example;
+        }
+
+        private static IOpenApiAny GetTypeNameForExample(IEdmTypeReference edmTypeReference)
+        {
+            switch (edmTypeReference.TypeKind())
+            {
+                case EdmTypeKind.Primitive:
+                    if (edmTypeReference.IsBoolean())
+                    {
+                        return new OpenApiBoolean(true);
+                    }
+                    else
+                    {
+                        return new OpenApiString(edmTypeReference.AsPrimitive().PrimitiveDefinition().Name);
+                    }
+
+                case EdmTypeKind.Entity:
+                case EdmTypeKind.Complex:
+                case EdmTypeKind.Enum:
+                    OpenApiObject obj = new OpenApiObject();
+                    obj["@odata.type"] = new OpenApiString(edmTypeReference.FullName());
+                    return obj;
+
+                case EdmTypeKind.Collection:
+                    OpenApiArray array = new OpenApiArray();
+                    IEdmTypeReference elementType = edmTypeReference.AsCollection().ElementType();
+                    array.Add(GetTypeNameForExample(elementType));
+                    return array;
+
+                case EdmTypeKind.Untyped:
+                case EdmTypeKind.TypeDefinition:
+                case EdmTypeKind.EntityReference:
+                default:
+                    throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind());
             }
         }
 
