@@ -46,6 +46,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public bool UnqualifiedCall { get; }
 
         /// <inheritdoc />
+        public override string Name => Operation.Name;
+
+        /// <inheritdoc />
         public override IEdmEntityType EntityType => throw new NotImplementedException();
 
         /// <inheritdoc />

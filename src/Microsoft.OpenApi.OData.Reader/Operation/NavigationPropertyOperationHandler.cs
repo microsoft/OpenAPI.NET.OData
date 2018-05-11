@@ -7,6 +7,8 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -51,9 +53,29 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
+            IList<string> items = new List<string>
+            {
+                NavigationSource.Name
+            };
+            foreach (var segment in Path.Segments.Skip(1))
+            {
+                if (segment is ODataNavigationPropertySegment)
+                {
+                    ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
+                    if (npSegment.NavigationProperty == NavigationProperty)
+                    {
+                        continue;
+                    }
+
+                    items.Add(segment.Name);
+                }
+            }
+            items.Add(NavigationProperty.ToEntityType().Name);
+            string name = string.Join(".", items);
             OpenApiTag tag = new OpenApiTag
             {
-                Name = NavigationSource.Name + "." + NavigationProperty.ToEntityType().Name,
+                // Name = NavigationSource.Name + "." + NavigationProperty.ToEntityType().Name,
+                Name = name
             };
             tag.Extensions.Add("x-ms-docs-toc-type", new OpenApiString("page"));
             operation.Tags.Add(tag);

@@ -16,5 +16,10 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Gets the entity type of current segment.
         /// </summary>
         public abstract IEdmEntityType EntityType { get; }
+
+        /// <summary>
+        /// Ges the name of this segment.
+        /// </summary>
+        public abstract string Name { get; }
     }
 }

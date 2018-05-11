@@ -31,6 +31,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public override IEdmEntityType EntityType => NavigationSource.EntityType();
 
         /// <inheritdoc />
+        public override string Name => NavigationSource.Name;
+
+        /// <inheritdoc />
         public override string ToString()
         {
             return NavigationSource.Name;

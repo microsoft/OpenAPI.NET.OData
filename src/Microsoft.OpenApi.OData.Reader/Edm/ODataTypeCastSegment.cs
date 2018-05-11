@@ -30,5 +30,8 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             return EntityType.FullTypeName();
         }
+
+        /// <inheritdoc />
+        public override string Name => EntityType.FullTypeName();
     }
 }

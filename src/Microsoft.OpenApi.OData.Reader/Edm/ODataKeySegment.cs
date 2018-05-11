@@ -29,6 +29,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public override IEdmEntityType EntityType { get; }
 
         /// <inheritdoc />
+        public override string Name => throw new NotImplementedException();
+
+        /// <inheritdoc />
         public override string ToString()
         {
             IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();

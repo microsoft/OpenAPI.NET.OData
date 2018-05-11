@@ -31,6 +31,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public override IEdmEntityType EntityType => throw new System.NotImplementedException();
 
         /// <inheritdoc />
+        public override string Name => OperationImport.Name;
+
+        /// <inheritdoc />
         public override string ToString()
         {
             return OperationImport.Name;
