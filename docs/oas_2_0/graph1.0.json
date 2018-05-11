@@ -10033,9 +10033,6 @@
         "id": {
           "type": "string"
         }
-      },
-      "example": {
-        "id": "String (identifier)"
       }
     },
     "microsoft.graph.directoryObject": {
@@ -10045,10 +10042,7 @@
         },
         {
           "title": "directoryObject",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -10137,45 +10131,6 @@
                 "$ref": "#/definitions/microsoft.graph.extension"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "accountEnabled": true,
-            "alternativeSecurityIds": [
-              {
-                "@odata.type": "microsoft.graph.alternativeSecurityId"
-              }
-            ],
-            "approximateLastSignInDateTime": "DateTimeOffset (timestamp)",
-            "deviceId": "String",
-            "deviceMetadata": "String",
-            "deviceVersion": "Int32",
-            "displayName": "String",
-            "isCompliant": true,
-            "isManaged": true,
-            "onPremisesLastSyncDateTime": "DateTimeOffset (timestamp)",
-            "onPremisesSyncEnabled": true,
-            "operatingSystem": "String",
-            "operatingSystemVersion": "String",
-            "physicalIds": [
-              "String"
-            ],
-            "trustType": "String",
-            "registeredOwners": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "registeredUsers": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ]
           }
         }
       ]
@@ -10197,11 +10152,6 @@
           "format": "base64url",
           "type": "string"
         }
-      },
-      "example": {
-        "type": "Int32",
-        "identityProvider": "String",
-        "key": "Binary"
       }
     },
     "microsoft.graph.extension": {
@@ -10211,10 +10161,7 @@
         },
         {
           "title": "extension",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -10242,17 +10189,6 @@
                 "$ref": "#/definitions/microsoft.graph.directoryObject"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "description": "String",
-            "displayName": "String",
-            "roleTemplateId": "String",
-            "members": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ]
           }
         }
       ]
@@ -10272,11 +10208,6 @@
             "displayName": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "description": "String",
-            "displayName": "String"
           }
         }
       ]
@@ -10336,37 +10267,6 @@
                 "$ref": "#/definitions/microsoft.graph.directoryObject"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "authenticationType": "String",
-            "availabilityStatus": "String",
-            "isAdminManaged": true,
-            "isDefault": true,
-            "isInitial": true,
-            "isRoot": true,
-            "isVerified": true,
-            "supportedServices": [
-              "String"
-            ],
-            "state": {
-              "@odata.type": "microsoft.graph.domainState"
-            },
-            "serviceConfigurationRecords": [
-              {
-                "@odata.type": "microsoft.graph.domainDnsRecord"
-              }
-            ],
-            "verificationDnsRecords": [
-              {
-                "@odata.type": "microsoft.graph.domainDnsRecord"
-              }
-            ],
-            "domainNameReferences": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ]
           }
         }
       ]
@@ -10386,11 +10286,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "status": "String",
-        "operation": "String",
-        "lastActionDateTime": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.domainDnsRecord": {
@@ -10420,14 +10315,6 @@
               "minimum": -2147483648,
               "type": "integer"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "isOptional": true,
-            "label": "String",
-            "recordType": "String",
-            "supportedService": "String",
-            "ttl": "Int32"
           }
         }
       ]
@@ -10444,15 +10331,6 @@
             "canonicalName": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "isOptional": true,
-            "label": "String",
-            "recordType": "String",
-            "supportedService": "String",
-            "ttl": "Int32",
-            "canonicalName": "String"
           }
         }
       ]
@@ -10475,16 +10353,6 @@
               "minimum": -2147483648,
               "type": "integer"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "isOptional": true,
-            "label": "String",
-            "recordType": "String",
-            "supportedService": "String",
-            "ttl": "Int32",
-            "mailExchange": "String",
-            "preference": "Int32"
           }
         }
       ]
@@ -10525,20 +10393,6 @@
               "minimum": -2147483648,
               "type": "integer"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "isOptional": true,
-            "label": "String",
-            "recordType": "String",
-            "supportedService": "String",
-            "ttl": "Int32",
-            "nameTarget": "String",
-            "port": "Int32",
-            "priority": "Int32",
-            "protocol": "String",
-            "service": "String",
-            "weight": "Int32"
           }
         }
       ]
@@ -10555,15 +10409,6 @@
             "text": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "isOptional": true,
-            "label": "String",
-            "recordType": "String",
-            "supportedService": "String",
-            "ttl": "Int32",
-            "text": "String"
           }
         }
       ]
@@ -10580,15 +10425,6 @@
             "description": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "isOptional": true,
-            "label": "String",
-            "recordType": "String",
-            "supportedService": "String",
-            "ttl": "Int32",
-            "description": "String"
           }
         }
       ]
@@ -10616,16 +10452,6 @@
             "skuPartNumber": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "servicePlans": [
-              {
-                "@odata.type": "microsoft.graph.servicePlanInfo"
-              }
-            ],
-            "skuId": "Guid",
-            "skuPartNumber": "String"
           }
         }
       ]
@@ -10648,12 +10474,6 @@
         "appliesTo": {
           "type": "string"
         }
-      },
-      "example": {
-        "servicePlanId": "Guid",
-        "servicePlanName": "String",
-        "provisioningStatus": "String",
-        "appliesTo": "String"
       }
     },
     "microsoft.graph.group": {
@@ -10827,120 +10647,6 @@
             },
             "planner": { },
             "onenote": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "classification": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "displayName": "String",
-            "groupTypes": [
-              "String"
-            ],
-            "mail": "String",
-            "mailEnabled": true,
-            "mailNickname": "String",
-            "onPremisesLastSyncDateTime": "DateTimeOffset (timestamp)",
-            "onPremisesSecurityIdentifier": "String",
-            "onPremisesSyncEnabled": true,
-            "proxyAddresses": [
-              "String"
-            ],
-            "renewedDateTime": "DateTimeOffset (timestamp)",
-            "securityEnabled": true,
-            "visibility": "String",
-            "allowExternalSenders": true,
-            "autoSubscribeNewMembers": true,
-            "isSubscribedByMail": true,
-            "unseenCount": "Int32",
-            "members": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "memberOf": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "createdOnBehalfOf": {
-              "@odata.type": "microsoft.graph.directoryObject"
-            },
-            "owners": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "settings": [
-              {
-                "@odata.type": "microsoft.graph.groupSetting"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "threads": [
-              {
-                "@odata.type": "microsoft.graph.conversationThread"
-              }
-            ],
-            "calendar": {
-              "@odata.type": "microsoft.graph.calendar"
-            },
-            "calendarView": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "events": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "conversations": [
-              {
-                "@odata.type": "microsoft.graph.conversation"
-              }
-            ],
-            "photo": {
-              "@odata.type": "microsoft.graph.profilePhoto"
-            },
-            "photos": [
-              {
-                "@odata.type": "microsoft.graph.profilePhoto"
-              }
-            ],
-            "acceptedSenders": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "rejectedSenders": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "drive": {
-              "@odata.type": "microsoft.graph.drive"
-            },
-            "drives": [
-              {
-                "@odata.type": "microsoft.graph.drive"
-              }
-            ],
-            "sites": [
-              {
-                "@odata.type": "microsoft.graph.site"
-              }
-            ],
-            "planner": {
-              "@odata.type": "microsoft.graph.plannerGroup"
-            },
-            "onenote": {
-              "@odata.type": "microsoft.graph.onenote"
-            }
           }
         }
       ]
@@ -10966,16 +10672,6 @@
                 "$ref": "#/definitions/microsoft.graph.settingValue"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "displayName": "String",
-            "templateId": "String",
-            "values": [
-              {
-                "@odata.type": "microsoft.graph.settingValue"
-              }
-            ]
           }
         }
       ]
@@ -11030,32 +10726,6 @@
                 "$ref": "#/definitions/microsoft.graph.post"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "toRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "topic": "String",
-            "hasAttachments": true,
-            "lastDeliveredDateTime": "DateTimeOffset (timestamp)",
-            "uniqueSenders": [
-              "String"
-            ],
-            "ccRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "preview": "String",
-            "isLocked": true,
-            "posts": [
-              {
-                "@odata.type": "microsoft.graph.post"
-              }
-            ]
           }
         }
       ]
@@ -11110,40 +10780,6 @@
                 "$ref": "#/definitions/microsoft.graph.multiValueLegacyExtendedProperty"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String",
-            "color": {
-              "@odata.type": "microsoft.graph.calendarColor"
-            },
-            "changeKey": "String",
-            "canShare": true,
-            "canViewPrivateItems": true,
-            "canEdit": true,
-            "owner": {
-              "@odata.type": "microsoft.graph.emailAddress"
-            },
-            "events": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "calendarView": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ]
           }
         }
       ]
@@ -11176,15 +10812,6 @@
                 "type": "string"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "changeKey": "String",
-            "categories": [
-              "String"
-            ]
           }
         }
       ]
@@ -11297,97 +10924,6 @@
                 "$ref": "#/definitions/microsoft.graph.multiValueLegacyExtendedProperty"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "changeKey": "String",
-            "categories": [
-              "String"
-            ],
-            "originalStartTimeZone": "String",
-            "originalEndTimeZone": "String",
-            "responseStatus": {
-              "@odata.type": "microsoft.graph.responseStatus"
-            },
-            "iCalUId": "String",
-            "reminderMinutesBeforeStart": "Int32",
-            "isReminderOn": true,
-            "hasAttachments": true,
-            "subject": "String",
-            "body": {
-              "@odata.type": "microsoft.graph.itemBody"
-            },
-            "bodyPreview": "String",
-            "importance": {
-              "@odata.type": "microsoft.graph.importance"
-            },
-            "sensitivity": {
-              "@odata.type": "microsoft.graph.sensitivity"
-            },
-            "start": {
-              "@odata.type": "microsoft.graph.dateTimeTimeZone"
-            },
-            "originalStart": "DateTimeOffset (timestamp)",
-            "end": {
-              "@odata.type": "microsoft.graph.dateTimeTimeZone"
-            },
-            "location": {
-              "@odata.type": "microsoft.graph.location"
-            },
-            "isAllDay": true,
-            "isCancelled": true,
-            "isOrganizer": true,
-            "recurrence": {
-              "@odata.type": "microsoft.graph.patternedRecurrence"
-            },
-            "responseRequested": true,
-            "seriesMasterId": "String",
-            "showAs": {
-              "@odata.type": "microsoft.graph.freeBusyStatus"
-            },
-            "type": {
-              "@odata.type": "microsoft.graph.eventType"
-            },
-            "attendees": [
-              {
-                "@odata.type": "microsoft.graph.attendee"
-              }
-            ],
-            "organizer": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "webLink": "String",
-            "onlineMeetingUrl": "String",
-            "calendar": {
-              "@odata.type": "microsoft.graph.calendar"
-            },
-            "instances": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "attachments": [
-              {
-                "@odata.type": "microsoft.graph.attachment"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ]
           }
         }
       ]
@@ -11427,21 +10963,6 @@
                 "$ref": "#/definitions/microsoft.graph.conversationThread"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "topic": "String",
-            "hasAttachments": true,
-            "lastDeliveredDateTime": "DateTimeOffset (timestamp)",
-            "uniqueSenders": [
-              "String"
-            ],
-            "preview": "String",
-            "threads": [
-              {
-                "@odata.type": "microsoft.graph.conversationThread"
-              }
-            ]
           }
         }
       ]
@@ -11467,11 +10988,6 @@
               "minimum": -2147483648,
               "type": "integer"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "height": "Int32",
-            "width": "Int32"
           }
         }
       ]
@@ -11512,30 +11028,6 @@
             },
             "createdByUser": { },
             "lastModifiedByUser": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            }
           }
         }
       ]
@@ -11570,59 +11062,6 @@
                 "$ref": "#/definitions/microsoft.graph.driveItem"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "driveType": "String",
-            "owner": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "quota": {
-              "@odata.type": "microsoft.graph.quota"
-            },
-            "sharePointIds": {
-              "@odata.type": "microsoft.graph.sharepointIds"
-            },
-            "system": {
-              "@odata.type": "microsoft.graph.systemFacet"
-            },
-            "items": [
-              {
-                "@odata.type": "microsoft.graph.driveItem"
-              }
-            ],
-            "list": {
-              "@odata.type": "microsoft.graph.list"
-            },
-            "root": {
-              "@odata.type": "microsoft.graph.driveItem"
-            },
-            "special": [
-              {
-                "@odata.type": "microsoft.graph.driveItem"
-              }
-            ]
           }
         }
       ]
@@ -11680,76 +11119,6 @@
               }
             },
             "onenote": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "displayName": "String",
-            "root": {
-              "@odata.type": "microsoft.graph.root"
-            },
-            "sharepointIds": {
-              "@odata.type": "microsoft.graph.sharepointIds"
-            },
-            "siteCollection": {
-              "@odata.type": "microsoft.graph.siteCollection"
-            },
-            "columns": [
-              {
-                "@odata.type": "microsoft.graph.columnDefinition"
-              }
-            ],
-            "contentTypes": [
-              {
-                "@odata.type": "microsoft.graph.contentType"
-              }
-            ],
-            "drive": {
-              "@odata.type": "microsoft.graph.drive"
-            },
-            "drives": [
-              {
-                "@odata.type": "microsoft.graph.drive"
-              }
-            ],
-            "items": [
-              {
-                "@odata.type": "microsoft.graph.baseItem"
-              }
-            ],
-            "lists": [
-              {
-                "@odata.type": "microsoft.graph.list"
-              }
-            ],
-            "sites": [
-              {
-                "@odata.type": "microsoft.graph.site"
-              }
-            ],
-            "onenote": {
-              "@odata.type": "microsoft.graph.onenote"
-            }
           }
         }
       ]
@@ -11769,14 +11138,6 @@
                 "$ref": "#/definitions/microsoft.graph.plannerPlan"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "plans": [
-              {
-                "@odata.type": "microsoft.graph.plannerPlan"
-              }
-            ]
           }
         }
       ]
@@ -11826,39 +11187,6 @@
                 "$ref": "#/definitions/microsoft.graph.onenoteOperation"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "notebooks": [
-              {
-                "@odata.type": "microsoft.graph.notebook"
-              }
-            ],
-            "sections": [
-              {
-                "@odata.type": "microsoft.graph.onenoteSection"
-              }
-            ],
-            "sectionGroups": [
-              {
-                "@odata.type": "microsoft.graph.sectionGroup"
-              }
-            ],
-            "pages": [
-              {
-                "@odata.type": "microsoft.graph.onenotePage"
-              }
-            ],
-            "resources": [
-              {
-                "@odata.type": "microsoft.graph.onenoteResource"
-              }
-            ],
-            "operations": [
-              {
-                "@odata.type": "microsoft.graph.onenoteOperation"
-              }
-            ]
           }
         }
       ]
@@ -11886,13 +11214,6 @@
             "displayName": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "contractType": "String",
-            "customerId": "Guid",
-            "defaultDomainName": "String",
-            "displayName": "String"
           }
         }
       ]
@@ -11933,22 +11254,6 @@
             "appliesTo": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "capabilityStatus": "String",
-            "consumedUnits": "Int32",
-            "prepaidUnits": {
-              "@odata.type": "microsoft.graph.licenseUnitsDetail"
-            },
-            "servicePlans": [
-              {
-                "@odata.type": "microsoft.graph.servicePlanInfo"
-              }
-            ],
-            "skuId": "Guid",
-            "skuPartNumber": "String",
-            "appliesTo": "String"
           }
         }
       ]
@@ -11975,11 +11280,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "enabled": "Int32",
-        "suspended": "Int32",
-        "warning": "Int32"
       }
     },
     "microsoft.graph.organization": {
@@ -12077,54 +11377,6 @@
                 "$ref": "#/definitions/microsoft.graph.extension"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "assignedPlans": [
-              {
-                "@odata.type": "microsoft.graph.assignedPlan"
-              }
-            ],
-            "businessPhones": [
-              "String"
-            ],
-            "city": "String",
-            "country": "String",
-            "countryLetterCode": "String",
-            "displayName": "String",
-            "marketingNotificationEmails": [
-              "String"
-            ],
-            "onPremisesLastSyncDateTime": "DateTimeOffset (timestamp)",
-            "onPremisesSyncEnabled": true,
-            "postalCode": "String",
-            "preferredLanguage": "String",
-            "provisionedPlans": [
-              {
-                "@odata.type": "microsoft.graph.provisionedPlan"
-              }
-            ],
-            "securityComplianceNotificationMails": [
-              "String"
-            ],
-            "securityComplianceNotificationPhones": [
-              "String"
-            ],
-            "state": "String",
-            "street": "String",
-            "technicalNotificationMails": [
-              "String"
-            ],
-            "verifiedDomains": [
-              {
-                "@odata.type": "microsoft.graph.verifiedDomain"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ]
           }
         }
       ]
@@ -12149,12 +11401,6 @@
           "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
           "type": "string"
         }
-      },
-      "example": {
-        "assignedDateTime": "DateTimeOffset (timestamp)",
-        "capabilityStatus": "String",
-        "service": "String",
-        "servicePlanId": "Guid"
       }
     },
     "microsoft.graph.provisionedPlan": {
@@ -12170,11 +11416,6 @@
         "service": {
           "type": "string"
         }
-      },
-      "example": {
-        "capabilityStatus": "String",
-        "provisioningStatus": "String",
-        "service": "String"
       }
     },
     "microsoft.graph.verifiedDomain": {
@@ -12196,13 +11437,6 @@
         "type": {
           "type": "string"
         }
-      },
-      "example": {
-        "capabilities": "String",
-        "isDefault": true,
-        "isInitial": true,
-        "name": "String",
-        "type": "String"
       }
     },
     "microsoft.graph.user": {
@@ -12499,200 +11733,6 @@
             },
             "planner": { },
             "onenote": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "accountEnabled": true,
-            "assignedLicenses": [
-              {
-                "@odata.type": "microsoft.graph.assignedLicense"
-              }
-            ],
-            "assignedPlans": [
-              {
-                "@odata.type": "microsoft.graph.assignedPlan"
-              }
-            ],
-            "businessPhones": [
-              "String"
-            ],
-            "city": "String",
-            "companyName": "String",
-            "country": "String",
-            "department": "String",
-            "displayName": "String",
-            "givenName": "String",
-            "imAddresses": [
-              "String"
-            ],
-            "jobTitle": "String",
-            "mail": "String",
-            "mailNickname": "String",
-            "mobilePhone": "String",
-            "onPremisesImmutableId": "String",
-            "onPremisesLastSyncDateTime": "DateTimeOffset (timestamp)",
-            "onPremisesSecurityIdentifier": "String",
-            "onPremisesSyncEnabled": true,
-            "passwordPolicies": "String",
-            "passwordProfile": {
-              "@odata.type": "microsoft.graph.passwordProfile"
-            },
-            "officeLocation": "String",
-            "postalCode": "String",
-            "preferredLanguage": "String",
-            "provisionedPlans": [
-              {
-                "@odata.type": "microsoft.graph.provisionedPlan"
-              }
-            ],
-            "proxyAddresses": [
-              "String"
-            ],
-            "state": "String",
-            "streetAddress": "String",
-            "surname": "String",
-            "usageLocation": "String",
-            "userPrincipalName": "String",
-            "userType": "String",
-            "mailboxSettings": {
-              "@odata.type": "microsoft.graph.mailboxSettings"
-            },
-            "aboutMe": "String",
-            "birthday": "DateTimeOffset (timestamp)",
-            "hireDate": "DateTimeOffset (timestamp)",
-            "interests": [
-              "String"
-            ],
-            "mySite": "String",
-            "pastProjects": [
-              "String"
-            ],
-            "preferredName": "String",
-            "responsibilities": [
-              "String"
-            ],
-            "schools": [
-              "String"
-            ],
-            "skills": [
-              "String"
-            ],
-            "ownedDevices": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "registeredDevices": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "manager": {
-              "@odata.type": "microsoft.graph.directoryObject"
-            },
-            "directReports": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "memberOf": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "createdObjects": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "ownedObjects": [
-              {
-                "@odata.type": "microsoft.graph.directoryObject"
-              }
-            ],
-            "licenseDetails": [
-              {
-                "@odata.type": "microsoft.graph.licenseDetails"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "messages": [
-              {
-                "@odata.type": "microsoft.graph.message"
-              }
-            ],
-            "mailFolders": [
-              {
-                "@odata.type": "microsoft.graph.mailFolder"
-              }
-            ],
-            "calendar": {
-              "@odata.type": "microsoft.graph.calendar"
-            },
-            "calendars": [
-              {
-                "@odata.type": "microsoft.graph.calendar"
-              }
-            ],
-            "calendarGroups": [
-              {
-                "@odata.type": "microsoft.graph.calendarGroup"
-              }
-            ],
-            "calendarView": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "events": [
-              {
-                "@odata.type": "microsoft.graph.event"
-              }
-            ],
-            "people": [
-              {
-                "@odata.type": "microsoft.graph.person"
-              }
-            ],
-            "contacts": [
-              {
-                "@odata.type": "microsoft.graph.contact"
-              }
-            ],
-            "contactFolders": [
-              {
-                "@odata.type": "microsoft.graph.contactFolder"
-              }
-            ],
-            "inferenceClassification": {
-              "@odata.type": "microsoft.graph.inferenceClassification"
-            },
-            "photo": {
-              "@odata.type": "microsoft.graph.profilePhoto"
-            },
-            "photos": [
-              {
-                "@odata.type": "microsoft.graph.profilePhoto"
-              }
-            ],
-            "drive": {
-              "@odata.type": "microsoft.graph.drive"
-            },
-            "drives": [
-              {
-                "@odata.type": "microsoft.graph.drive"
-              }
-            ],
-            "planner": {
-              "@odata.type": "microsoft.graph.plannerUser"
-            },
-            "onenote": {
-              "@odata.type": "microsoft.graph.onenote"
-            }
           }
         }
       ]
@@ -12714,12 +11754,6 @@
           "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
           "type": "string"
         }
-      },
-      "example": {
-        "disabledPlans": [
-          "Guid"
-        ],
-        "skuId": "Guid"
       }
     },
     "microsoft.graph.passwordProfile": {
@@ -12732,10 +11766,6 @@
         "forceChangePasswordNextSignIn": {
           "type": "boolean"
         }
-      },
-      "example": {
-        "password": "String",
-        "forceChangePasswordNextSignIn": true
       }
     },
     "microsoft.graph.mailboxSettings": {
@@ -12750,16 +11780,6 @@
           "type": "string"
         },
         "language": { }
-      },
-      "example": {
-        "automaticRepliesSetting": {
-          "@odata.type": "microsoft.graph.automaticRepliesSetting"
-        },
-        "archiveFolder": "String",
-        "timeZone": "String",
-        "language": {
-          "@odata.type": "microsoft.graph.localeInfo"
-        }
       }
     },
     "microsoft.graph.automaticRepliesSetting": {
@@ -12776,22 +11796,6 @@
         "externalReplyMessage": {
           "type": "string"
         }
-      },
-      "example": {
-        "status": {
-          "@odata.type": "microsoft.graph.automaticRepliesStatus"
-        },
-        "externalAudience": {
-          "@odata.type": "microsoft.graph.externalAudienceScope"
-        },
-        "scheduledStartDateTime": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        },
-        "scheduledEndDateTime": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        },
-        "internalReplyMessage": "String",
-        "externalReplyMessage": "String"
       }
     },
     "microsoft.graph.dateTimeTimeZone": {
@@ -12804,10 +11808,6 @@
         "timeZone": {
           "type": "string"
         }
-      },
-      "example": {
-        "dateTime": "String",
-        "timeZone": "String"
       }
     },
     "microsoft.graph.localeInfo": {
@@ -12820,10 +11820,6 @@
         "displayName": {
           "type": "string"
         }
-      },
-      "example": {
-        "locale": "String",
-        "displayName": "String"
       }
     },
     "microsoft.graph.message": {
@@ -12924,86 +11920,6 @@
                 "$ref": "#/definitions/microsoft.graph.multiValueLegacyExtendedProperty"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "changeKey": "String",
-            "categories": [
-              "String"
-            ],
-            "receivedDateTime": "DateTimeOffset (timestamp)",
-            "sentDateTime": "DateTimeOffset (timestamp)",
-            "hasAttachments": true,
-            "internetMessageId": "String",
-            "subject": "String",
-            "body": {
-              "@odata.type": "microsoft.graph.itemBody"
-            },
-            "bodyPreview": "String",
-            "importance": {
-              "@odata.type": "microsoft.graph.importance"
-            },
-            "parentFolderId": "String",
-            "sender": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "from": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "toRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "ccRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "bccRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "replyTo": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "conversationId": "String",
-            "uniqueBody": {
-              "@odata.type": "microsoft.graph.itemBody"
-            },
-            "isDeliveryReceiptRequested": true,
-            "isReadReceiptRequested": true,
-            "isRead": true,
-            "isDraft": true,
-            "webLink": "String",
-            "inferenceClassification": {
-              "@odata.type": "microsoft.graph.inferenceClassificationType"
-            },
-            "attachments": [
-              {
-                "@odata.type": "microsoft.graph.attachment"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ]
           }
         }
       ]
@@ -13065,34 +11981,6 @@
                 "$ref": "#/definitions/microsoft.graph.multiValueLegacyExtendedProperty"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "displayName": "String",
-            "parentFolderId": "String",
-            "childFolderCount": "Int32",
-            "unreadItemCount": "Int32",
-            "totalItemCount": "Int32",
-            "messages": [
-              {
-                "@odata.type": "microsoft.graph.message"
-              }
-            ],
-            "childFolders": [
-              {
-                "@odata.type": "microsoft.graph.mailFolder"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ]
           }
         }
       ]
@@ -13123,17 +12011,6 @@
                 "$ref": "#/definitions/microsoft.graph.calendar"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String",
-            "classId": "Guid",
-            "changeKey": "String",
-            "calendars": [
-              {
-                "@odata.type": "microsoft.graph.calendar"
-              }
-            ]
           }
         }
       ]
@@ -13206,46 +12083,6 @@
             "imAddress": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "displayName": "String",
-            "givenName": "String",
-            "surname": "String",
-            "birthday": "String",
-            "personNotes": "String",
-            "isFavorite": true,
-            "scoredEmailAddresses": [
-              {
-                "@odata.type": "microsoft.graph.scoredEmailAddress"
-              }
-            ],
-            "phones": [
-              {
-                "@odata.type": "microsoft.graph.phone"
-              }
-            ],
-            "postalAddresses": [
-              {
-                "@odata.type": "microsoft.graph.location"
-              }
-            ],
-            "websites": [
-              {
-                "@odata.type": "microsoft.graph.website"
-              }
-            ],
-            "jobTitle": "String",
-            "companyName": "String",
-            "yomiCompany": "String",
-            "department": "String",
-            "officeLocation": "String",
-            "profession": "String",
-            "personType": {
-              "@odata.type": "microsoft.graph.personType"
-            },
-            "userPrincipalName": "String",
-            "imAddress": "String"
           }
         }
       ]
@@ -13386,84 +12223,6 @@
               }
             },
             "photo": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "changeKey": "String",
-            "categories": [
-              "String"
-            ],
-            "parentFolderId": "String",
-            "birthday": "DateTimeOffset (timestamp)",
-            "fileAs": "String",
-            "displayName": "String",
-            "givenName": "String",
-            "initials": "String",
-            "middleName": "String",
-            "nickName": "String",
-            "surname": "String",
-            "title": "String",
-            "yomiGivenName": "String",
-            "yomiSurname": "String",
-            "yomiCompanyName": "String",
-            "generation": "String",
-            "emailAddresses": [
-              {
-                "@odata.type": "microsoft.graph.emailAddress"
-              }
-            ],
-            "imAddresses": [
-              "String"
-            ],
-            "jobTitle": "String",
-            "companyName": "String",
-            "department": "String",
-            "officeLocation": "String",
-            "profession": "String",
-            "businessHomePage": "String",
-            "assistantName": "String",
-            "manager": "String",
-            "homePhones": [
-              "String"
-            ],
-            "mobilePhone": "String",
-            "businessPhones": [
-              "String"
-            ],
-            "homeAddress": {
-              "@odata.type": "microsoft.graph.physicalAddress"
-            },
-            "businessAddress": {
-              "@odata.type": "microsoft.graph.physicalAddress"
-            },
-            "otherAddress": {
-              "@odata.type": "microsoft.graph.physicalAddress"
-            },
-            "spouseName": "String",
-            "personalNotes": "String",
-            "children": [
-              "String"
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ],
-            "photo": {
-              "@odata.type": "microsoft.graph.profilePhoto"
-            }
           }
         }
       ]
@@ -13507,31 +12266,6 @@
                 "$ref": "#/definitions/microsoft.graph.multiValueLegacyExtendedProperty"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "parentFolderId": "String",
-            "displayName": "String",
-            "contacts": [
-              {
-                "@odata.type": "microsoft.graph.contact"
-              }
-            ],
-            "childFolders": [
-              {
-                "@odata.type": "microsoft.graph.contactFolder"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ]
           }
         }
       ]
@@ -13551,14 +12285,6 @@
                 "$ref": "#/definitions/microsoft.graph.inferenceClassificationOverride"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "overrides": [
-              {
-                "@odata.type": "microsoft.graph.inferenceClassificationOverride"
-              }
-            ]
           }
         }
       ]
@@ -13584,19 +12310,6 @@
                 "$ref": "#/definitions/microsoft.graph.plannerPlan"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "tasks": [
-              {
-                "@odata.type": "microsoft.graph.plannerTask"
-              }
-            ],
-            "plans": [
-              {
-                "@odata.type": "microsoft.graph.plannerPlan"
-              }
-            ]
           }
         }
       ]
@@ -13611,10 +12324,6 @@
         "value": {
           "type": "string"
         }
-      },
-      "example": {
-        "name": "String",
-        "value": "String"
       }
     },
     "microsoft.graph.groupSettingTemplate": {
@@ -13638,16 +12347,6 @@
                 "$ref": "#/definitions/microsoft.graph.settingTemplateValue"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "displayName": "String",
-            "description": "String",
-            "values": [
-              {
-                "@odata.type": "microsoft.graph.settingTemplateValue"
-              }
-            ]
           }
         }
       ]
@@ -13668,12 +12367,6 @@
         "description": {
           "type": "string"
         }
-      },
-      "example": {
-        "name": "String",
-        "type": "String",
-        "defaultValue": "String",
-        "description": "String"
       }
     },
     "microsoft.graph.ComplexExtensionValue": {
@@ -13710,20 +12403,6 @@
             "owner": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "description": "String",
-            "targetTypes": [
-              "String"
-            ],
-            "properties": [
-              {
-                "@odata.type": "microsoft.graph.extensionSchemaProperty"
-              }
-            ],
-            "status": "String",
-            "owner": "String"
           }
         }
       ]
@@ -13738,10 +12417,6 @@
         "type": {
           "type": "string"
         }
-      },
-      "example": {
-        "name": "String",
-        "type": "String"
       }
     },
     "microsoft.graph.attachment": {
@@ -13773,14 +12448,6 @@
             "isInline": {
               "type": "boolean"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "contentType": "String",
-            "size": "Int32",
-            "isInline": true
           }
         }
       ]
@@ -13790,11 +12457,6 @@
       "type": "object",
       "properties": {
         "emailAddress": { }
-      },
-      "example": {
-        "emailAddress": {
-          "@odata.type": "microsoft.graph.emailAddress"
-        }
       }
     },
     "microsoft.graph.emailAddress": {
@@ -13807,10 +12469,6 @@
         "address": {
           "type": "string"
         }
-      },
-      "example": {
-        "name": "String",
-        "address": "String"
       }
     },
     "microsoft.graph.attendeeBase": {
@@ -13823,14 +12481,6 @@
           "type": "object",
           "properties": {
             "type": { }
-          },
-          "example": {
-            "emailAddress": {
-              "@odata.type": "microsoft.graph.emailAddress"
-            },
-            "type": {
-              "@odata.type": "microsoft.graph.attendeeType"
-            }
           }
         }
       ]
@@ -13846,14 +12496,6 @@
         "emptySuggestionsReason": {
           "type": "string"
         }
-      },
-      "example": {
-        "meetingTimeSuggestions": [
-          {
-            "@odata.type": "microsoft.graph.meetingTimeSuggestion"
-          }
-        ],
-        "emptySuggestionsReason": "String"
       }
     },
     "microsoft.graph.meetingTimeSuggestion": {
@@ -13876,26 +12518,6 @@
         "suggestionReason": {
           "type": "string"
         }
-      },
-      "example": {
-        "meetingTimeSlot": {
-          "@odata.type": "microsoft.graph.timeSlot"
-        },
-        "confidence": "Double",
-        "organizerAvailability": {
-          "@odata.type": "microsoft.graph.freeBusyStatus"
-        },
-        "attendeeAvailability": [
-          {
-            "@odata.type": "microsoft.graph.attendeeAvailability"
-          }
-        ],
-        "locations": [
-          {
-            "@odata.type": "microsoft.graph.location"
-          }
-        ],
-        "suggestionReason": "String"
       }
     },
     "microsoft.graph.timeSlot": {
@@ -13904,14 +12526,6 @@
       "properties": {
         "start": { },
         "end": { }
-      },
-      "example": {
-        "start": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        },
-        "end": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        }
       }
     },
     "microsoft.graph.attendeeAvailability": {
@@ -13920,14 +12534,6 @@
       "properties": {
         "attendee": { },
         "availability": { }
-      },
-      "example": {
-        "attendee": {
-          "@odata.type": "microsoft.graph.attendeeBase"
-        },
-        "availability": {
-          "@odata.type": "microsoft.graph.freeBusyStatus"
-        }
       }
     },
     "microsoft.graph.location": {
@@ -13941,13 +12547,6 @@
           "type": "string"
         },
         "address": { }
-      },
-      "example": {
-        "displayName": "String",
-        "locationEmailAddress": "String",
-        "address": {
-          "@odata.type": "microsoft.graph.physicalAddress"
-        }
       }
     },
     "microsoft.graph.physicalAddress": {
@@ -13969,13 +12568,6 @@
         "postalCode": {
           "type": "string"
         }
-      },
-      "example": {
-        "street": "String",
-        "city": "String",
-        "state": "String",
-        "countryOrRegion": "String",
-        "postalCode": "String"
       }
     },
     "microsoft.graph.locationConstraint": {
@@ -13992,15 +12584,6 @@
           "type": "array",
           "items": { }
         }
-      },
-      "example": {
-        "isRequired": true,
-        "suggestLocation": true,
-        "locations": [
-          {
-            "@odata.type": "microsoft.graph.locationConstraintItem"
-          }
-        ]
       }
     },
     "microsoft.graph.locationConstraintItem": {
@@ -14015,14 +12598,6 @@
             "resolveAvailability": {
               "type": "boolean"
             }
-          },
-          "example": {
-            "displayName": "String",
-            "locationEmailAddress": "String",
-            "address": {
-              "@odata.type": "microsoft.graph.physicalAddress"
-            },
-            "resolveAvailability": true
           }
         }
       ]
@@ -14036,16 +12611,6 @@
           "type": "array",
           "items": { }
         }
-      },
-      "example": {
-        "activityDomain": {
-          "@odata.type": "microsoft.graph.activityDomain"
-        },
-        "timeslots": [
-          {
-            "@odata.type": "microsoft.graph.timeSlot"
-          }
-        ]
       }
     },
     "microsoft.graph.reminder": {
@@ -14068,24 +12633,6 @@
           "type": "string"
         },
         "reminderFireTime": { }
-      },
-      "example": {
-        "eventId": "String",
-        "eventStartTime": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        },
-        "eventEndTime": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        },
-        "changeKey": "String",
-        "eventSubject": "String",
-        "eventLocation": {
-          "@odata.type": "microsoft.graph.location"
-        },
-        "eventWebLink": "String",
-        "reminderFireTime": {
-          "@odata.type": "microsoft.graph.dateTimeTimeZone"
-        }
       }
     },
     "microsoft.graph.singleValueLegacyExtendedProperty": {
@@ -14100,10 +12647,6 @@
             "value": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "value": "String"
           }
         }
       ]
@@ -14123,12 +12666,6 @@
                 "type": "string"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "value": [
-              "String"
-            ]
           }
         }
       ]
@@ -14141,12 +12678,6 @@
         "content": {
           "type": "string"
         }
-      },
-      "example": {
-        "contentType": {
-          "@odata.type": "microsoft.graph.bodyType"
-        },
-        "content": "String"
       }
     },
     "microsoft.graph.fileAttachment": {
@@ -14168,17 +12699,6 @@
               "format": "base64url",
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "contentType": "String",
-            "size": "Int32",
-            "isInline": true,
-            "contentId": "String",
-            "contentLocation": "String",
-            "contentBytes": "Binary"
           }
         }
       ]
@@ -14193,17 +12713,6 @@
           "type": "object",
           "properties": {
             "item": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "contentType": "String",
-            "size": "Int32",
-            "isInline": true,
-            "item": {
-              "@odata.type": "microsoft.graph.outlookItem"
-            }
           }
         }
       ]
@@ -14218,12 +12727,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "response": {
-          "@odata.type": "microsoft.graph.responseType"
-        },
-        "time": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.patternedRecurrence": {
@@ -14232,14 +12735,6 @@
       "properties": {
         "pattern": { },
         "range": { }
-      },
-      "example": {
-        "pattern": {
-          "@odata.type": "microsoft.graph.recurrencePattern"
-        },
-        "range": {
-          "@odata.type": "microsoft.graph.recurrenceRange"
-        }
       }
     },
     "microsoft.graph.recurrencePattern": {
@@ -14271,25 +12766,6 @@
         },
         "firstDayOfWeek": { },
         "index": { }
-      },
-      "example": {
-        "type": {
-          "@odata.type": "microsoft.graph.recurrencePatternType"
-        },
-        "interval": "Int32",
-        "month": "Int32",
-        "dayOfMonth": "Int32",
-        "daysOfWeek": [
-          {
-            "@odata.type": "microsoft.graph.dayOfWeek"
-          }
-        ],
-        "firstDayOfWeek": {
-          "@odata.type": "microsoft.graph.dayOfWeek"
-        },
-        "index": {
-          "@odata.type": "microsoft.graph.weekIndex"
-        }
       }
     },
     "microsoft.graph.recurrenceRange": {
@@ -14316,15 +12792,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "type": {
-          "@odata.type": "microsoft.graph.recurrenceRangeType"
-        },
-        "startDate": "Date (timestamp)",
-        "endDate": "Date (timestamp)",
-        "recurrenceTimeZone": "String",
-        "numberOfOccurrences": "Int32"
       }
     },
     "microsoft.graph.attendee": {
@@ -14337,17 +12804,6 @@
           "type": "object",
           "properties": {
             "status": { }
-          },
-          "example": {
-            "emailAddress": {
-              "@odata.type": "microsoft.graph.emailAddress"
-            },
-            "type": {
-              "@odata.type": "microsoft.graph.attendeeType"
-            },
-            "status": {
-              "@odata.type": "microsoft.graph.responseStatus"
-            }
           }
         }
       ]
@@ -14363,92 +12819,6 @@
           "properties": {
             "meetingMessageType": { },
             "event": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "changeKey": "String",
-            "categories": [
-              "String"
-            ],
-            "receivedDateTime": "DateTimeOffset (timestamp)",
-            "sentDateTime": "DateTimeOffset (timestamp)",
-            "hasAttachments": true,
-            "internetMessageId": "String",
-            "subject": "String",
-            "body": {
-              "@odata.type": "microsoft.graph.itemBody"
-            },
-            "bodyPreview": "String",
-            "importance": {
-              "@odata.type": "microsoft.graph.importance"
-            },
-            "parentFolderId": "String",
-            "sender": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "from": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "toRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "ccRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "bccRecipients": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "replyTo": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "conversationId": "String",
-            "uniqueBody": {
-              "@odata.type": "microsoft.graph.itemBody"
-            },
-            "isDeliveryReceiptRequested": true,
-            "isReadReceiptRequested": true,
-            "isRead": true,
-            "isDraft": true,
-            "webLink": "String",
-            "inferenceClassification": {
-              "@odata.type": "microsoft.graph.inferenceClassificationType"
-            },
-            "attachments": [
-              {
-                "@odata.type": "microsoft.graph.attachment"
-              }
-            ],
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ],
-            "meetingMessageType": {
-              "@odata.type": "microsoft.graph.meetingMessageType"
-            },
-            "event": {
-              "@odata.type": "microsoft.graph.event"
-            }
           }
         }
       ]
@@ -14460,15 +12830,7 @@
         },
         {
           "title": "referenceAttachment",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "contentType": "String",
-            "size": "Int32",
-            "isInline": true
-          }
+          "type": "object"
         }
       ]
     },
@@ -14484,10 +12846,6 @@
             "extensionName": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "extensionName": "String"
           }
         }
       ]
@@ -14551,56 +12909,6 @@
                 "$ref": "#/definitions/microsoft.graph.multiValueLegacyExtendedProperty"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "changeKey": "String",
-            "categories": [
-              "String"
-            ],
-            "body": {
-              "@odata.type": "microsoft.graph.itemBody"
-            },
-            "receivedDateTime": "DateTimeOffset (timestamp)",
-            "hasAttachments": true,
-            "from": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "sender": {
-              "@odata.type": "microsoft.graph.recipient"
-            },
-            "conversationThreadId": "String",
-            "newParticipants": [
-              {
-                "@odata.type": "microsoft.graph.recipient"
-              }
-            ],
-            "conversationId": "String",
-            "extensions": [
-              {
-                "@odata.type": "microsoft.graph.extension"
-              }
-            ],
-            "inReplyTo": {
-              "@odata.type": "microsoft.graph.post"
-            },
-            "attachments": [
-              {
-                "@odata.type": "microsoft.graph.attachment"
-              }
-            ],
-            "singleValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.singleValueLegacyExtendedProperty"
-              }
-            ],
-            "multiValueExtendedProperties": [
-              {
-                "@odata.type": "microsoft.graph.multiValueLegacyExtendedProperty"
-              }
-            ]
           }
         }
       ]
@@ -14616,15 +12924,6 @@
           "properties": {
             "classifyAs": { },
             "senderEmailAddress": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "classifyAs": {
-              "@odata.type": "microsoft.graph.inferenceClassificationType"
-            },
-            "senderEmailAddress": {
-              "@odata.type": "microsoft.graph.emailAddress"
-            }
           }
         }
       ]
@@ -14639,10 +12938,6 @@
         "relevanceScore": {
           "format": "double"
         }
-      },
-      "example": {
-        "address": "String",
-        "relevanceScore": "Double"
       }
     },
     "microsoft.graph.phone": {
@@ -14659,14 +12954,6 @@
         "language": {
           "type": "string"
         }
-      },
-      "example": {
-        "type": {
-          "@odata.type": "microsoft.graph.phoneType"
-        },
-        "number": "String",
-        "region": "String",
-        "language": "String"
       }
     },
     "microsoft.graph.website": {
@@ -14680,13 +12967,6 @@
         "displayName": {
           "type": "string"
         }
-      },
-      "example": {
-        "type": {
-          "@odata.type": "microsoft.graph.websiteType"
-        },
-        "address": "String",
-        "displayName": "String"
       }
     },
     "microsoft.graph.personType": {
@@ -14699,10 +12979,6 @@
         "subclass": {
           "type": "string"
         }
-      },
-      "example": {
-        "class": "String",
-        "subclass": "String"
       }
     },
     "microsoft.graph.identitySet": {
@@ -14712,17 +12988,6 @@
         "application": { },
         "device": { },
         "user": { }
-      },
-      "example": {
-        "application": {
-          "@odata.type": "microsoft.graph.identity"
-        },
-        "device": {
-          "@odata.type": "microsoft.graph.identity"
-        },
-        "user": {
-          "@odata.type": "microsoft.graph.identity"
-        }
       }
     },
     "microsoft.graph.identity": {
@@ -14735,10 +13000,6 @@
         "id": {
           "type": "string"
         }
-      },
-      "example": {
-        "displayName": "String",
-        "id": "String"
       }
     },
     "microsoft.graph.itemReference": {
@@ -14764,17 +13025,6 @@
           "type": "string"
         },
         "sharepointIds": { }
-      },
-      "example": {
-        "driveId": "String",
-        "driveType": "String",
-        "id": "String",
-        "name": "String",
-        "path": "String",
-        "shareId": "String",
-        "sharepointIds": {
-          "@odata.type": "microsoft.graph.sharepointIds"
-        }
       }
     },
     "microsoft.graph.sharepointIds": {
@@ -14799,14 +13049,6 @@
         "webId": {
           "type": "string"
         }
-      },
-      "example": {
-        "listId": "String",
-        "listItemId": "String",
-        "listItemUniqueId": "String",
-        "siteId": "String",
-        "siteUrl": "String",
-        "webId": "String"
       }
     },
     "microsoft.graph.columnDefinition": {
@@ -14855,48 +13097,6 @@
               "type": "boolean"
             },
             "text": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "boolean": {
-              "@odata.type": "microsoft.graph.booleanColumn"
-            },
-            "calculated": {
-              "@odata.type": "microsoft.graph.calculatedColumn"
-            },
-            "choice": {
-              "@odata.type": "microsoft.graph.choiceColumn"
-            },
-            "columnGroup": "String",
-            "currency": {
-              "@odata.type": "microsoft.graph.currencyColumn"
-            },
-            "dateTime": {
-              "@odata.type": "microsoft.graph.dateTimeColumn"
-            },
-            "defaultValue": {
-              "@odata.type": "microsoft.graph.defaultColumnValue"
-            },
-            "description": "String",
-            "displayName": "String",
-            "enforceUniqueValues": true,
-            "hidden": true,
-            "indexed": true,
-            "lookup": {
-              "@odata.type": "microsoft.graph.lookupColumn"
-            },
-            "name": "String",
-            "number": {
-              "@odata.type": "microsoft.graph.numberColumn"
-            },
-            "personOrGroup": {
-              "@odata.type": "microsoft.graph.personOrGroupColumn"
-            },
-            "readOnly": true,
-            "required": true,
-            "text": {
-              "@odata.type": "microsoft.graph.textColumn"
-            }
           }
         }
       ]
@@ -14918,11 +13118,6 @@
         "outputType": {
           "type": "string"
         }
-      },
-      "example": {
-        "format": "String",
-        "formula": "String",
-        "outputType": "String"
       }
     },
     "microsoft.graph.choiceColumn": {
@@ -14941,13 +13136,6 @@
         "displayAs": {
           "type": "string"
         }
-      },
-      "example": {
-        "allowTextEntry": true,
-        "choices": [
-          "String"
-        ],
-        "displayAs": "String"
       }
     },
     "microsoft.graph.currencyColumn": {
@@ -14957,9 +13145,6 @@
         "locale": {
           "type": "string"
         }
-      },
-      "example": {
-        "locale": "String"
       }
     },
     "microsoft.graph.dateTimeColumn": {
@@ -14972,10 +13157,6 @@
         "format": {
           "type": "string"
         }
-      },
-      "example": {
-        "displayAs": "String",
-        "format": "String"
       }
     },
     "microsoft.graph.defaultColumnValue": {
@@ -14988,10 +13169,6 @@
         "value": {
           "type": "string"
         }
-      },
-      "example": {
-        "formula": "String",
-        "value": "String"
       }
     },
     "microsoft.graph.lookupColumn": {
@@ -15013,13 +13190,6 @@
         "primaryLookupColumnId": {
           "type": "string"
         }
-      },
-      "example": {
-        "allowMultipleValues": true,
-        "allowUnlimitedLength": true,
-        "columnName": "String",
-        "listId": "String",
-        "primaryLookupColumnId": "String"
       }
     },
     "microsoft.graph.numberColumn": {
@@ -15038,12 +13208,6 @@
         "minimum": {
           "format": "double"
         }
-      },
-      "example": {
-        "decimalPlaces": "String",
-        "displayAs": "String",
-        "maximum": "Double",
-        "minimum": "Double"
       }
     },
     "microsoft.graph.personOrGroupColumn": {
@@ -15059,11 +13223,6 @@
         "chooseFromType": {
           "type": "string"
         }
-      },
-      "example": {
-        "allowMultipleSelection": true,
-        "displayAs": "String",
-        "chooseFromType": "String"
       }
     },
     "microsoft.graph.textColumn": {
@@ -15091,13 +13250,6 @@
         "textType": {
           "type": "string"
         }
-      },
-      "example": {
-        "allowMultipleLines": true,
-        "appendChangesToExistingText": true,
-        "linesForEditing": "Int32",
-        "maxLength": "Int32",
-        "textType": "String"
       }
     },
     "microsoft.graph.columnLink": {
@@ -15112,10 +13264,6 @@
             "name": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String"
           }
         }
       ]
@@ -15158,27 +13306,6 @@
                 "$ref": "#/definitions/microsoft.graph.columnLink"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "description": "String",
-            "group": "String",
-            "hidden": true,
-            "inheritedFrom": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "name": "String",
-            "order": {
-              "@odata.type": "microsoft.graph.contentTypeOrder"
-            },
-            "parentId": "String",
-            "readOnly": true,
-            "sealed": true,
-            "columnLinks": [
-              {
-                "@odata.type": "microsoft.graph.columnLink"
-              }
-            ]
           }
         }
       ]
@@ -15196,10 +13323,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "default": true,
-        "position": "Int32"
       }
     },
     "microsoft.graph.quota": {
@@ -15225,13 +13348,6 @@
           "format": "int64",
           "type": "integer"
         }
-      },
-      "example": {
-        "deleted": "Int64",
-        "remaining": "Int64",
-        "state": "String",
-        "total": "Int64",
-        "used": "Int64"
       }
     },
     "microsoft.graph.systemFacet": {
@@ -15297,103 +13413,6 @@
               }
             },
             "workbook": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "audio": {
-              "@odata.type": "microsoft.graph.audio"
-            },
-            "content": "Stream",
-            "cTag": "String",
-            "deleted": {
-              "@odata.type": "microsoft.graph.deleted"
-            },
-            "file": {
-              "@odata.type": "microsoft.graph.file"
-            },
-            "fileSystemInfo": {
-              "@odata.type": "microsoft.graph.fileSystemInfo"
-            },
-            "folder": {
-              "@odata.type": "microsoft.graph.folder"
-            },
-            "image": {
-              "@odata.type": "microsoft.graph.image"
-            },
-            "location": {
-              "@odata.type": "microsoft.graph.geoCoordinates"
-            },
-            "package": {
-              "@odata.type": "microsoft.graph.package"
-            },
-            "photo": {
-              "@odata.type": "microsoft.graph.photo"
-            },
-            "remoteItem": {
-              "@odata.type": "microsoft.graph.remoteItem"
-            },
-            "root": {
-              "@odata.type": "microsoft.graph.root"
-            },
-            "searchResult": {
-              "@odata.type": "microsoft.graph.searchResult"
-            },
-            "shared": {
-              "@odata.type": "microsoft.graph.shared"
-            },
-            "sharepointIds": {
-              "@odata.type": "microsoft.graph.sharepointIds"
-            },
-            "size": "Int64",
-            "specialFolder": {
-              "@odata.type": "microsoft.graph.specialFolder"
-            },
-            "video": {
-              "@odata.type": "microsoft.graph.video"
-            },
-            "webDavUrl": "String",
-            "children": [
-              {
-                "@odata.type": "microsoft.graph.driveItem"
-              }
-            ],
-            "listItem": {
-              "@odata.type": "microsoft.graph.listItem"
-            },
-            "permissions": [
-              {
-                "@odata.type": "microsoft.graph.permission"
-              }
-            ],
-            "thumbnails": [
-              {
-                "@odata.type": "microsoft.graph.thumbnailSet"
-              }
-            ],
-            "workbook": {
-              "@odata.type": "microsoft.graph.workbook"
-            }
           }
         }
       ]
@@ -15432,58 +13451,6 @@
                 "$ref": "#/definitions/microsoft.graph.listItem"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "displayName": "String",
-            "list": {
-              "@odata.type": "microsoft.graph.listInfo"
-            },
-            "sharepointIds": {
-              "@odata.type": "microsoft.graph.sharepointIds"
-            },
-            "system": {
-              "@odata.type": "microsoft.graph.systemFacet"
-            },
-            "columns": [
-              {
-                "@odata.type": "microsoft.graph.columnDefinition"
-              }
-            ],
-            "contentTypes": [
-              {
-                "@odata.type": "microsoft.graph.contentType"
-              }
-            ],
-            "drive": {
-              "@odata.type": "microsoft.graph.drive"
-            },
-            "items": [
-              {
-                "@odata.type": "microsoft.graph.listItem"
-              }
-            ]
           }
         }
       ]
@@ -15557,24 +13524,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "album": "String",
-        "albumArtist": "String",
-        "artist": "String",
-        "bitrate": "Int64",
-        "composers": "String",
-        "copyright": "String",
-        "disc": "Int16",
-        "discCount": "Int16",
-        "duration": "Int64",
-        "genre": "String",
-        "hasDrm": true,
-        "isVariableBitrate": true,
-        "title": "String",
-        "track": "Int32",
-        "trackCount": "Int32",
-        "year": "Int32"
       }
     },
     "microsoft.graph.deleted": {
@@ -15584,9 +13533,6 @@
         "state": {
           "type": "string"
         }
-      },
-      "example": {
-        "state": "String"
       }
     },
     "microsoft.graph.file": {
@@ -15600,13 +13546,6 @@
         "processingMetadata": {
           "type": "boolean"
         }
-      },
-      "example": {
-        "hashes": {
-          "@odata.type": "microsoft.graph.hashes"
-        },
-        "mimeType": "String",
-        "processingMetadata": true
       }
     },
     "microsoft.graph.hashes": {
@@ -15622,11 +13561,6 @@
         "sha1Hash": {
           "type": "string"
         }
-      },
-      "example": {
-        "crc32Hash": "String",
-        "quickXorHash": "String",
-        "sha1Hash": "String"
       }
     },
     "microsoft.graph.fileSystemInfo": {
@@ -15648,11 +13582,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "createdDateTime": "DateTimeOffset (timestamp)",
-        "lastAccessedDateTime": "DateTimeOffset (timestamp)",
-        "lastModifiedDateTime": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.folder": {
@@ -15666,12 +13595,6 @@
           "type": "integer"
         },
         "view": { }
-      },
-      "example": {
-        "childCount": "Int32",
-        "view": {
-          "@odata.type": "microsoft.graph.folderView"
-        }
       }
     },
     "microsoft.graph.folderView": {
@@ -15687,11 +13610,6 @@
         "viewType": {
           "type": "string"
         }
-      },
-      "example": {
-        "sortBy": "String",
-        "sortOrder": "String",
-        "viewType": "String"
       }
     },
     "microsoft.graph.image": {
@@ -15710,10 +13628,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "height": "Int32",
-        "width": "Int32"
       }
     },
     "microsoft.graph.geoCoordinates": {
@@ -15729,11 +13643,6 @@
         "longitude": {
           "format": "double"
         }
-      },
-      "example": {
-        "altitude": "Double",
-        "latitude": "Double",
-        "longitude": "Double"
       }
     },
     "microsoft.graph.package": {
@@ -15743,9 +13652,6 @@
         "type": {
           "type": "string"
         }
-      },
-      "example": {
-        "type": "String"
       }
     },
     "microsoft.graph.photo": {
@@ -15781,16 +13687,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "cameraMake": "String",
-        "cameraModel": "String",
-        "exposureDenominator": "Double",
-        "exposureNumerator": "Double",
-        "fNumber": "Double",
-        "focalLength": "Double",
-        "iso": "Int32",
-        "takenDateTime": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.remoteItem": {
@@ -15833,45 +13729,6 @@
         "webUrl": {
           "type": "string"
         }
-      },
-      "example": {
-        "createdBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "createdDateTime": "DateTimeOffset (timestamp)",
-        "file": {
-          "@odata.type": "microsoft.graph.file"
-        },
-        "fileSystemInfo": {
-          "@odata.type": "microsoft.graph.fileSystemInfo"
-        },
-        "folder": {
-          "@odata.type": "microsoft.graph.folder"
-        },
-        "id": "String",
-        "lastModifiedBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-        "name": "String",
-        "package": {
-          "@odata.type": "microsoft.graph.package"
-        },
-        "parentReference": {
-          "@odata.type": "microsoft.graph.itemReference"
-        },
-        "shared": {
-          "@odata.type": "microsoft.graph.shared"
-        },
-        "sharepointIds": {
-          "@odata.type": "microsoft.graph.sharepointIds"
-        },
-        "size": "Int64",
-        "specialFolder": {
-          "@odata.type": "microsoft.graph.specialFolder"
-        },
-        "webDavUrl": "String",
-        "webUrl": "String"
       }
     },
     "microsoft.graph.shared": {
@@ -15888,16 +13745,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "owner": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "scope": "String",
-        "sharedBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "sharedDateTime": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.specialFolder": {
@@ -15907,9 +13754,6 @@
         "name": {
           "type": "string"
         }
-      },
-      "example": {
-        "name": "String"
       }
     },
     "microsoft.graph.root": {
@@ -15923,9 +13767,6 @@
         "onClickTelemetryUrl": {
           "type": "string"
         }
-      },
-      "example": {
-        "onClickTelemetryUrl": "String"
       }
     },
     "microsoft.graph.video": {
@@ -15981,18 +13822,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "audioBitsPerSample": "Int32",
-        "audioChannels": "Int32",
-        "audioFormat": "String",
-        "audioSamplesPerSecond": "Int32",
-        "bitrate": "Int32",
-        "duration": "Int64",
-        "fourCC": "String",
-        "frameRate": "Double",
-        "height": "Int32",
-        "width": "Int32"
       }
     },
     "microsoft.graph.listItem": {
@@ -16008,42 +13837,6 @@
             "sharepointIds": { },
             "driveItem": { },
             "fields": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "contentType": {
-              "@odata.type": "microsoft.graph.contentTypeInfo"
-            },
-            "sharepointIds": {
-              "@odata.type": "microsoft.graph.sharepointIds"
-            },
-            "driveItem": {
-              "@odata.type": "microsoft.graph.driveItem"
-            },
-            "fields": {
-              "@odata.type": "microsoft.graph.fieldValueSet"
-            }
           }
         }
       ]
@@ -16070,25 +13863,6 @@
             "shareId": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "grantedTo": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "inheritedFrom": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "invitation": {
-              "@odata.type": "microsoft.graph.sharingInvitation"
-            },
-            "link": {
-              "@odata.type": "microsoft.graph.sharingLink"
-            },
-            "roles": [
-              "String"
-            ],
-            "shareId": "String"
           }
         }
       ]
@@ -16106,21 +13880,6 @@
             "medium": { },
             "small": { },
             "source": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "large": {
-              "@odata.type": "microsoft.graph.thumbnail"
-            },
-            "medium": {
-              "@odata.type": "microsoft.graph.thumbnail"
-            },
-            "small": {
-              "@odata.type": "microsoft.graph.thumbnail"
-            },
-            "source": {
-              "@odata.type": "microsoft.graph.thumbnail"
-            }
           }
         }
       ]
@@ -16154,30 +13913,6 @@
               }
             },
             "functions": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "application": {
-              "@odata.type": "microsoft.graph.workbookApplication"
-            },
-            "names": [
-              {
-                "@odata.type": "microsoft.graph.workbookNamedItem"
-              }
-            ],
-            "tables": [
-              {
-                "@odata.type": "microsoft.graph.workbookTable"
-              }
-            ],
-            "worksheets": [
-              {
-                "@odata.type": "microsoft.graph.workbookWorksheet"
-              }
-            ],
-            "functions": {
-              "@odata.type": "microsoft.graph.workbookFunctions"
-            }
           }
         }
       ]
@@ -16189,10 +13924,7 @@
         },
         {
           "title": "fieldValueSet",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -16209,11 +13941,6 @@
         "template": {
           "type": "string"
         }
-      },
-      "example": {
-        "contentTypesEnabled": true,
-        "hidden": true,
-        "template": "String"
       }
     },
     "microsoft.graph.contentTypeInfo": {
@@ -16223,9 +13950,6 @@
         "id": {
           "type": "string"
         }
-      },
-      "example": {
-        "id": "String"
       }
     },
     "microsoft.graph.sharingInvitation": {
@@ -16242,14 +13966,6 @@
         "signInRequired": {
           "type": "boolean"
         }
-      },
-      "example": {
-        "email": "String",
-        "invitedBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "redeemedBy": "String",
-        "signInRequired": true
       }
     },
     "microsoft.graph.sharingLink": {
@@ -16266,14 +13982,6 @@
         "webUrl": {
           "type": "string"
         }
-      },
-      "example": {
-        "application": {
-          "@odata.type": "microsoft.graph.identity"
-        },
-        "scope": "String",
-        "type": "String",
-        "webUrl": "String"
       }
     },
     "microsoft.graph.sharedDriveItem": {
@@ -16297,53 +14005,6 @@
             "listItem": { },
             "root": { },
             "site": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "description": "String",
-            "eTag": "String",
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "name": "String",
-            "parentReference": {
-              "@odata.type": "microsoft.graph.itemReference"
-            },
-            "webUrl": "String",
-            "createdByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "lastModifiedByUser": {
-              "@odata.type": "microsoft.graph.user"
-            },
-            "owner": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "driveItem": {
-              "@odata.type": "microsoft.graph.driveItem"
-            },
-            "items": [
-              {
-                "@odata.type": "microsoft.graph.driveItem"
-              }
-            ],
-            "list": {
-              "@odata.type": "microsoft.graph.list"
-            },
-            "listItem": {
-              "@odata.type": "microsoft.graph.listItem"
-            },
-            "root": {
-              "@odata.type": "microsoft.graph.driveItem"
-            },
-            "site": {
-              "@odata.type": "microsoft.graph.site"
-            }
           }
         }
       ]
@@ -16355,9 +14016,6 @@
         "hostname": {
           "type": "string"
         }
-      },
-      "example": {
-        "hostname": "String"
       }
     },
     "microsoft.graph.thumbnail": {
@@ -16386,13 +14044,6 @@
           "minimum": -2147483648,
           "type": "integer"
         }
-      },
-      "example": {
-        "content": "Stream",
-        "height": "Int32",
-        "sourceItemId": "String",
-        "url": "String",
-        "width": "Int32"
       }
     },
     "microsoft.graph.driveItemUploadableProperties": {
@@ -16406,13 +14057,6 @@
         "name": {
           "type": "string"
         }
-      },
-      "example": {
-        "description": "String",
-        "fileSystemInfo": {
-          "@odata.type": "microsoft.graph.fileSystemInfo"
-        },
-        "name": "String"
       }
     },
     "microsoft.graph.driveRecipient": {
@@ -16428,11 +14072,6 @@
         "objectId": {
           "type": "string"
         }
-      },
-      "example": {
-        "alias": "String",
-        "email": "String",
-        "objectId": "String"
       }
     },
     "microsoft.graph.uploadSession": {
@@ -16453,13 +14092,6 @@
         "uploadUrl": {
           "type": "string"
         }
-      },
-      "example": {
-        "expirationDateTime": "DateTimeOffset (timestamp)",
-        "nextExpectedRanges": [
-          "String"
-        ],
-        "uploadUrl": "String"
       }
     },
     "microsoft.graph.workbookApplication": {
@@ -16474,10 +14106,6 @@
             "calculationMode": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "calculationMode": "String"
           }
         }
       ]
@@ -16508,20 +14136,6 @@
               "type": "boolean"
             },
             "worksheet": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "comment": "String",
-            "name": "String",
-            "scope": "String",
-            "type": "String",
-            "value": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "visible": true,
-            "worksheet": {
-              "@odata.type": "microsoft.graph.workbookWorksheet"
-            }
           }
         }
       ]
@@ -16576,34 +14190,6 @@
             },
             "sort": { },
             "worksheet": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "highlightFirstColumn": true,
-            "highlightLastColumn": true,
-            "name": "String",
-            "showBandedColumns": true,
-            "showBandedRows": true,
-            "showFilterButton": true,
-            "showHeaders": true,
-            "showTotals": true,
-            "style": "String",
-            "columns": [
-              {
-                "@odata.type": "microsoft.graph.workbookTableColumn"
-              }
-            ],
-            "rows": [
-              {
-                "@odata.type": "microsoft.graph.workbookTableRow"
-              }
-            ],
-            "sort": {
-              "@odata.type": "microsoft.graph.workbookTableSort"
-            },
-            "worksheet": {
-              "@odata.type": "microsoft.graph.workbookWorksheet"
-            }
           }
         }
       ]
@@ -16654,35 +14240,6 @@
                 "$ref": "#/definitions/microsoft.graph.workbookTable"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String",
-            "position": "Int32",
-            "visibility": "String",
-            "charts": [
-              {
-                "@odata.type": "microsoft.graph.workbookChart"
-              }
-            ],
-            "names": [
-              {
-                "@odata.type": "microsoft.graph.workbookNamedItem"
-              }
-            ],
-            "pivotTables": [
-              {
-                "@odata.type": "microsoft.graph.workbookPivotTable"
-              }
-            ],
-            "protection": {
-              "@odata.type": "microsoft.graph.workbookWorksheetProtection"
-            },
-            "tables": [
-              {
-                "@odata.type": "microsoft.graph.workbookTable"
-              }
-            ]
           }
         }
       ]
@@ -16694,10 +14251,7 @@
         },
         {
           "title": "workbookFunctions",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -16711,10 +14265,6 @@
         "persistChanges": {
           "type": "boolean"
         }
-      },
-      "example": {
-        "id": "String",
-        "persistChanges": true
       }
     },
     "microsoft.graph.Json": {
@@ -16757,37 +14307,6 @@
             },
             "title": { },
             "worksheet": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "height": "Double",
-            "left": "Double",
-            "name": "String",
-            "top": "Double",
-            "width": "Double",
-            "axes": {
-              "@odata.type": "microsoft.graph.workbookChartAxes"
-            },
-            "dataLabels": {
-              "@odata.type": "microsoft.graph.workbookChartDataLabels"
-            },
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartAreaFormat"
-            },
-            "legend": {
-              "@odata.type": "microsoft.graph.workbookChartLegend"
-            },
-            "series": [
-              {
-                "@odata.type": "microsoft.graph.workbookChartSeries"
-              }
-            ],
-            "title": {
-              "@odata.type": "microsoft.graph.workbookChartTitle"
-            },
-            "worksheet": {
-              "@odata.type": "microsoft.graph.workbookWorksheet"
-            }
           }
         }
       ]
@@ -16804,18 +14323,6 @@
             "categoryAxis": { },
             "seriesAxis": { },
             "valueAxis": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "categoryAxis": {
-              "@odata.type": "microsoft.graph.workbookChartAxis"
-            },
-            "seriesAxis": {
-              "@odata.type": "microsoft.graph.workbookChartAxis"
-            },
-            "valueAxis": {
-              "@odata.type": "microsoft.graph.workbookChartAxis"
-            }
           }
         }
       ]
@@ -16854,20 +14361,6 @@
               "type": "boolean"
             },
             "format": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "position": "String",
-            "separator": "String",
-            "showBubbleSize": true,
-            "showCategoryName": true,
-            "showLegendKey": true,
-            "showPercentage": true,
-            "showSeriesName": true,
-            "showValue": true,
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartDataLabelFormat"
-            }
           }
         }
       ]
@@ -16883,15 +14376,6 @@
           "properties": {
             "fill": { },
             "font": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookChartFill"
-            },
-            "font": {
-              "@odata.type": "microsoft.graph.workbookChartFont"
-            }
           }
         }
       ]
@@ -16915,15 +14399,6 @@
               "type": "boolean"
             },
             "format": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "overlay": true,
-            "position": "String",
-            "visible": true,
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartLegendFormat"
-            }
           }
         }
       ]
@@ -16947,18 +14422,6 @@
                 "$ref": "#/definitions/microsoft.graph.workbookChartPoint"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String",
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartSeriesFormat"
-            },
-            "points": [
-              {
-                "@odata.type": "microsoft.graph.workbookChartPoint"
-              }
-            ]
           }
         }
       ]
@@ -16982,15 +14445,6 @@
               "type": "boolean"
             },
             "format": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "overlay": true,
-            "text": "String",
-            "visible": true,
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartTitleFormat"
-            }
           }
         }
       ]
@@ -17002,10 +14456,7 @@
         },
         {
           "title": "workbookChartFill",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -17036,15 +14487,6 @@
             "underline": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "bold": true,
-            "color": "String",
-            "italic": true,
-            "name": "String",
-            "size": "Double",
-            "underline": "String"
           }
         }
       ]
@@ -17066,33 +14508,6 @@
             "majorGridlines": { },
             "minorGridlines": { },
             "title": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "majorUnit": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "maximum": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "minimum": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "minorUnit": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartAxisFormat"
-            },
-            "majorGridlines": {
-              "@odata.type": "microsoft.graph.workbookChartGridlines"
-            },
-            "minorGridlines": {
-              "@odata.type": "microsoft.graph.workbookChartGridlines"
-            },
-            "title": {
-              "@odata.type": "microsoft.graph.workbookChartAxisTitle"
-            }
           }
         }
       ]
@@ -17108,15 +14523,6 @@
           "properties": {
             "font": { },
             "line": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "font": {
-              "@odata.type": "microsoft.graph.workbookChartFont"
-            },
-            "line": {
-              "@odata.type": "microsoft.graph.workbookChartLineFormat"
-            }
           }
         }
       ]
@@ -17134,13 +14540,6 @@
               "type": "boolean"
             },
             "format": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "visible": true,
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartGridlinesFormat"
-            }
           }
         }
       ]
@@ -17161,14 +14560,6 @@
               "type": "boolean"
             },
             "format": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "text": "String",
-            "visible": true,
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartAxisTitleFormat"
-            }
           }
         }
       ]
@@ -17185,10 +14576,6 @@
             "color": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "color": "String"
           }
         }
       ]
@@ -17203,12 +14590,6 @@
           "type": "object",
           "properties": {
             "font": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "font": {
-              "@odata.type": "microsoft.graph.workbookChartFont"
-            }
           }
         }
       ]
@@ -17224,15 +14605,6 @@
           "properties": {
             "fill": { },
             "font": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookChartFill"
-            },
-            "font": {
-              "@odata.type": "microsoft.graph.workbookChartFont"
-            }
           }
         }
       ]
@@ -17247,12 +14619,6 @@
           "type": "object",
           "properties": {
             "line": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "line": {
-              "@odata.type": "microsoft.graph.workbookChartLineFormat"
-            }
           }
         }
       ]
@@ -17268,15 +14634,6 @@
           "properties": {
             "fill": { },
             "font": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookChartFill"
-            },
-            "font": {
-              "@odata.type": "microsoft.graph.workbookChartFont"
-            }
           }
         }
       ]
@@ -17292,15 +14649,6 @@
           "properties": {
             "value": { },
             "format": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "value": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "format": {
-              "@odata.type": "microsoft.graph.workbookChartPointFormat"
-            }
           }
         }
       ]
@@ -17315,12 +14663,6 @@
           "type": "object",
           "properties": {
             "fill": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookChartFill"
-            }
           }
         }
       ]
@@ -17336,15 +14678,6 @@
           "properties": {
             "fill": { },
             "line": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookChartFill"
-            },
-            "line": {
-              "@odata.type": "microsoft.graph.workbookChartLineFormat"
-            }
           }
         }
       ]
@@ -17360,15 +14693,6 @@
           "properties": {
             "fill": { },
             "font": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookChartFill"
-            },
-            "font": {
-              "@odata.type": "microsoft.graph.workbookChartFont"
-            }
           }
         }
       ]
@@ -17383,12 +14707,6 @@
           "type": "object",
           "properties": {
             "criteria": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "criteria": {
-              "@odata.type": "microsoft.graph.workbookFilterCriteria"
-            }
           }
         }
       ]
@@ -17417,20 +14735,6 @@
           "type": "string"
         },
         "values": { }
-      },
-      "example": {
-        "color": "String",
-        "criterion1": "String",
-        "criterion2": "String",
-        "dynamicCriteria": "String",
-        "filterOn": "String",
-        "icon": {
-          "@odata.type": "microsoft.graph.workbookIcon"
-        },
-        "operator": "String",
-        "values": {
-          "@odata.type": "microsoft.graph.Json"
-        }
       }
     },
     "microsoft.graph.workbookIcon": {
@@ -17446,10 +14750,6 @@
         "set": {
           "type": "string"
         }
-      },
-      "example": {
-        "index": "Int32",
-        "set": "String"
       }
     },
     "microsoft.graph.workbookFormatProtection": {
@@ -17467,11 +14767,6 @@
             "locked": {
               "type": "boolean"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "formulaHidden": true,
-            "locked": true
           }
         }
       ]
@@ -17489,13 +14784,6 @@
               "type": "string"
             },
             "value": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "error": "String",
-            "value": {
-              "@odata.type": "microsoft.graph.Json"
-            }
           }
         }
       ]
@@ -17513,13 +14801,6 @@
               "type": "string"
             },
             "worksheet": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String",
-            "worksheet": {
-              "@odata.type": "microsoft.graph.workbookWorksheet"
-            }
           }
         }
       ]
@@ -17588,49 +14869,6 @@
             "format": { },
             "sort": { },
             "worksheet": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "address": "String",
-            "addressLocal": "String",
-            "cellCount": "Int32",
-            "columnCount": "Int32",
-            "columnHidden": true,
-            "columnIndex": "Int32",
-            "formulas": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "formulasLocal": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "formulasR1C1": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "hidden": true,
-            "numberFormat": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "rowCount": "Int32",
-            "rowHidden": true,
-            "rowIndex": "Int32",
-            "text": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "valueTypes": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "values": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "format": {
-              "@odata.type": "microsoft.graph.workbookRangeFormat"
-            },
-            "sort": {
-              "@odata.type": "microsoft.graph.workbookRangeSort"
-            },
-            "worksheet": {
-              "@odata.type": "microsoft.graph.workbookWorksheet"
-            }
           }
         }
       ]
@@ -17668,28 +14906,6 @@
             "fill": { },
             "font": { },
             "protection": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "columnWidth": "Double",
-            "horizontalAlignment": "String",
-            "rowHeight": "Double",
-            "verticalAlignment": "String",
-            "wrapText": true,
-            "borders": [
-              {
-                "@odata.type": "microsoft.graph.workbookRangeBorder"
-              }
-            ],
-            "fill": {
-              "@odata.type": "microsoft.graph.workbookRangeFill"
-            },
-            "font": {
-              "@odata.type": "microsoft.graph.workbookRangeFont"
-            },
-            "protection": {
-              "@odata.type": "microsoft.graph.workbookFormatProtection"
-            }
           }
         }
       ]
@@ -17701,10 +14917,7 @@
         },
         {
           "title": "workbookRangeSort",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -17729,13 +14942,6 @@
             "weight": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "color": "String",
-            "sideIndex": "String",
-            "style": "String",
-            "weight": "String"
           }
         }
       ]
@@ -17752,10 +14958,6 @@
             "color": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "color": "String"
           }
         }
       ]
@@ -17787,15 +14989,6 @@
             "underline": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "bold": true,
-            "color": "String",
-            "italic": true,
-            "name": "String",
-            "size": "Double",
-            "underline": "String"
           }
         }
       ]
@@ -17841,41 +15034,6 @@
                 "$ref": "#/definitions/microsoft.graph.workbookRangeView"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "cellAddresses": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "columnCount": "Int32",
-            "formulas": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "formulasLocal": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "formulasR1C1": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "index": "Int32",
-            "numberFormat": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "rowCount": "Int32",
-            "text": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "valueTypes": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "values": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "rows": [
-              {
-                "@odata.type": "microsoft.graph.workbookRangeView"
-              }
-            ]
           }
         }
       ]
@@ -17900,17 +15058,6 @@
             },
             "values": { },
             "filter": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "index": "Int32",
-            "name": "String",
-            "values": {
-              "@odata.type": "microsoft.graph.Json"
-            },
-            "filter": {
-              "@odata.type": "microsoft.graph.workbookFilter"
-            }
           }
         }
       ]
@@ -17931,13 +15078,6 @@
               "type": "integer"
             },
             "values": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "index": "Int32",
-            "values": {
-              "@odata.type": "microsoft.graph.Json"
-            }
           }
         }
       ]
@@ -17961,16 +15101,6 @@
             "method": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "fields": [
-              {
-                "@odata.type": "microsoft.graph.workbookSortField"
-              }
-            ],
-            "matchCase": true,
-            "method": "String"
           }
         }
       ]
@@ -17998,16 +15128,6 @@
         "sortOn": {
           "type": "string"
         }
-      },
-      "example": {
-        "ascending": true,
-        "color": "String",
-        "dataOption": "String",
-        "icon": {
-          "@odata.type": "microsoft.graph.workbookIcon"
-        },
-        "key": "Int32",
-        "sortOn": "String"
       }
     },
     "microsoft.graph.workbookWorksheetProtection": {
@@ -18023,13 +15143,6 @@
             "protected": {
               "type": "boolean"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "options": {
-              "@odata.type": "microsoft.graph.workbookWorksheetProtectionOptions"
-            },
-            "protected": true
           }
         }
       ]
@@ -18071,19 +15184,6 @@
         "allowSort": {
           "type": "boolean"
         }
-      },
-      "example": {
-        "allowAutoFilter": true,
-        "allowDeleteColumns": true,
-        "allowDeleteRows": true,
-        "allowFormatCells": true,
-        "allowFormatColumns": true,
-        "allowFormatRows": true,
-        "allowInsertColumns": true,
-        "allowInsertHyperlinks": true,
-        "allowInsertRows": true,
-        "allowPivotTables": true,
-        "allowSort": true
       }
     },
     "microsoft.graph.workbookFilterDatetime": {
@@ -18096,10 +15196,6 @@
         "specificity": {
           "type": "string"
         }
-      },
-      "example": {
-        "date": "String",
-        "specificity": "String"
       }
     },
     "microsoft.graph.workbookRangeReference": {
@@ -18109,9 +15205,6 @@
         "address": {
           "type": "string"
         }
-      },
-      "example": {
-        "address": "String"
       }
     },
     "microsoft.graph.subscription": {
@@ -18140,14 +15233,6 @@
               "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "resource": "String",
-            "changeType": "String",
-            "clientState": "String",
-            "notificationUrl": "String",
-            "expirationDateTime": "DateTimeOffset (timestamp)"
           }
         }
       ]
@@ -18184,22 +15269,6 @@
               "type": "string"
             },
             "invitedUser": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "invitedUserDisplayName": "String",
-            "invitedUserType": "String",
-            "invitedUserEmailAddress": "String",
-            "invitedUserMessageInfo": {
-              "@odata.type": "microsoft.graph.invitedUserMessageInfo"
-            },
-            "sendInvitationMessage": true,
-            "inviteRedirectUrl": "String",
-            "inviteRedeemUrl": "String",
-            "status": "String",
-            "invitedUser": {
-              "@odata.type": "microsoft.graph.user"
-            }
           }
         }
       ]
@@ -18218,15 +15287,6 @@
         "customizedMessageBody": {
           "type": "string"
         }
-      },
-      "example": {
-        "ccRecipients": [
-          {
-            "@odata.type": "microsoft.graph.recipient"
-          }
-        ],
-        "messageLanguage": "String",
-        "customizedMessageBody": "String"
       }
     },
     "microsoft.graph.plannerTask": {
@@ -18312,51 +15372,6 @@
             "assignedToTaskBoardFormat": { },
             "progressTaskBoardFormat": { },
             "bucketTaskBoardFormat": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "planId": "String",
-            "bucketId": "String",
-            "title": "String",
-            "orderHint": "String",
-            "assigneePriority": "String",
-            "percentComplete": "Int32",
-            "startDateTime": "DateTimeOffset (timestamp)",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "dueDateTime": "DateTimeOffset (timestamp)",
-            "hasDescription": true,
-            "previewType": {
-              "@odata.type": "microsoft.graph.plannerPreviewType"
-            },
-            "completedDateTime": "DateTimeOffset (timestamp)",
-            "completedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "referenceCount": "Int32",
-            "checklistItemCount": "Int32",
-            "activeChecklistItemCount": "Int32",
-            "appliedCategories": {
-              "@odata.type": "microsoft.graph.plannerAppliedCategories"
-            },
-            "assignments": {
-              "@odata.type": "microsoft.graph.plannerAssignments"
-            },
-            "conversationThreadId": "String",
-            "details": {
-              "@odata.type": "microsoft.graph.plannerTaskDetails"
-            },
-            "assignedToTaskBoardFormat": {
-              "@odata.type": "microsoft.graph.plannerAssignedToTaskBoardTaskFormat"
-            },
-            "progressTaskBoardFormat": {
-              "@odata.type": "microsoft.graph.plannerProgressTaskBoardTaskFormat"
-            },
-            "bucketTaskBoardFormat": {
-              "@odata.type": "microsoft.graph.plannerBucketTaskBoardTaskFormat"
-            }
           }
         }
       ]
@@ -18395,28 +15410,6 @@
               }
             },
             "details": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "owner": "String",
-            "title": "String",
-            "tasks": [
-              {
-                "@odata.type": "microsoft.graph.plannerTask"
-              }
-            ],
-            "buckets": [
-              {
-                "@odata.type": "microsoft.graph.plannerBucket"
-              }
-            ],
-            "details": {
-              "@odata.type": "microsoft.graph.plannerPlanDetails"
-            }
           }
         }
       ]
@@ -18448,24 +15441,6 @@
                 "$ref": "#/definitions/microsoft.graph.plannerBucket"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "tasks": [
-              {
-                "@odata.type": "microsoft.graph.plannerTask"
-              }
-            ],
-            "plans": [
-              {
-                "@odata.type": "microsoft.graph.plannerPlan"
-              }
-            ],
-            "buckets": [
-              {
-                "@odata.type": "microsoft.graph.plannerBucket"
-              }
-            ]
           }
         }
       ]
@@ -18494,17 +15469,6 @@
                 "$ref": "#/definitions/microsoft.graph.plannerTask"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "name": "String",
-            "planId": "String",
-            "orderHint": "String",
-            "tasks": [
-              {
-                "@odata.type": "microsoft.graph.plannerTask"
-              }
-            ]
           }
         }
       ]
@@ -18532,19 +15496,6 @@
             "previewType": { },
             "references": { },
             "checklist": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "description": "String",
-            "previewType": {
-              "@odata.type": "microsoft.graph.plannerPreviewType"
-            },
-            "references": {
-              "@odata.type": "microsoft.graph.plannerExternalReferences"
-            },
-            "checklist": {
-              "@odata.type": "microsoft.graph.plannerChecklistItems"
-            }
           }
         }
       ]
@@ -18562,13 +15513,6 @@
               "type": "string"
             },
             "orderHintsByAssignee": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "unassignedOrderHint": "String",
-            "orderHintsByAssignee": {
-              "@odata.type": "microsoft.graph.plannerOrderHintsByAssignee"
-            }
           }
         }
       ]
@@ -18585,10 +15529,6 @@
             "orderHint": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "orderHint": "String"
           }
         }
       ]
@@ -18605,10 +15545,6 @@
             "orderHint": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "orderHint": "String"
           }
         }
       ]
@@ -18624,15 +15560,6 @@
           "properties": {
             "sharedWith": { },
             "categoryDescriptions": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "sharedWith": {
-              "@odata.type": "microsoft.graph.plannerUserIds"
-            },
-            "categoryDescriptions": {
-              "@odata.type": "microsoft.graph.plannerCategoryDescriptions"
-            }
           }
         }
       ]
@@ -18656,15 +15583,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "alias": "String",
-        "type": "String",
-        "previewPriority": "String",
-        "lastModifiedBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "lastModifiedDateTime": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.plannerChecklistItem": {
@@ -18686,15 +15604,6 @@
           "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
           "type": "string"
         }
-      },
-      "example": {
-        "isChecked": true,
-        "title": "String",
-        "orderHint": "String",
-        "lastModifiedBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "lastModifiedDateTime": "DateTimeOffset (timestamp)"
       }
     },
     "microsoft.graph.plannerAssignment": {
@@ -18710,13 +15619,6 @@
         "orderHint": {
           "type": "string"
         }
-      },
-      "example": {
-        "assignedBy": {
-          "@odata.type": "microsoft.graph.identitySet"
-        },
-        "assignedDateTime": "DateTimeOffset (timestamp)",
-        "orderHint": "String"
       }
     },
     "microsoft.graph.plannerExternalReferences": {
@@ -18757,14 +15659,6 @@
         "category6": {
           "type": "string"
         }
-      },
-      "example": {
-        "category1": "String",
-        "category2": "String",
-        "category3": "String",
-        "category4": "String",
-        "category5": "String",
-        "category6": "String"
       }
     },
     "microsoft.graph.onenoteEntityBaseModel": {
@@ -18779,10 +15673,6 @@
             "self": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String"
           }
         }
       ]
@@ -18801,11 +15691,6 @@
               "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)"
           }
         }
       ]
@@ -18829,19 +15714,6 @@
               "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "displayName": "String",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)"
           }
         }
       ]
@@ -18881,39 +15753,6 @@
                 "$ref": "#/definitions/microsoft.graph.sectionGroup"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "displayName": "String",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "isDefault": true,
-            "userRole": {
-              "@odata.type": "microsoft.graph.onenoteUserRole"
-            },
-            "isShared": true,
-            "sectionsUrl": "String",
-            "sectionGroupsUrl": "String",
-            "links": {
-              "@odata.type": "microsoft.graph.notebookLinks"
-            },
-            "sections": [
-              {
-                "@odata.type": "microsoft.graph.onenoteSection"
-              }
-            ],
-            "sectionGroups": [
-              {
-                "@odata.type": "microsoft.graph.sectionGroup"
-              }
-            ]
           }
         }
       ]
@@ -18942,35 +15781,6 @@
                 "$ref": "#/definitions/microsoft.graph.onenotePage"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "displayName": "String",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "isDefault": true,
-            "links": {
-              "@odata.type": "microsoft.graph.sectionLinks"
-            },
-            "pagesUrl": "String",
-            "parentNotebook": {
-              "@odata.type": "microsoft.graph.notebook"
-            },
-            "parentSectionGroup": {
-              "@odata.type": "microsoft.graph.sectionGroup"
-            },
-            "pages": [
-              {
-                "@odata.type": "microsoft.graph.onenotePage"
-              }
-            ]
           }
         }
       ]
@@ -19004,37 +15814,6 @@
                 "$ref": "#/definitions/microsoft.graph.sectionGroup"
               }
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "displayName": "String",
-            "createdBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedBy": {
-              "@odata.type": "microsoft.graph.identitySet"
-            },
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "sectionsUrl": "String",
-            "sectionGroupsUrl": "String",
-            "parentNotebook": {
-              "@odata.type": "microsoft.graph.notebook"
-            },
-            "parentSectionGroup": {
-              "@odata.type": "microsoft.graph.sectionGroup"
-            },
-            "sections": [
-              {
-                "@odata.type": "microsoft.graph.onenoteSection"
-              }
-            ],
-            "sectionGroups": [
-              {
-                "@odata.type": "microsoft.graph.sectionGroup"
-              }
-            ]
           }
         }
       ]
@@ -19087,30 +15866,6 @@
             },
             "parentSection": { },
             "parentNotebook": { }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "title": "String",
-            "createdByAppId": "String",
-            "links": {
-              "@odata.type": "microsoft.graph.pageLinks"
-            },
-            "contentUrl": "String",
-            "content": "Stream",
-            "lastModifiedDateTime": "DateTimeOffset (timestamp)",
-            "level": "Int32",
-            "order": "Int32",
-            "userTags": [
-              "String"
-            ],
-            "parentSection": {
-              "@odata.type": "microsoft.graph.onenoteSection"
-            },
-            "parentNotebook": {
-              "@odata.type": "microsoft.graph.notebook"
-            }
           }
         }
       ]
@@ -19131,12 +15886,6 @@
             "contentUrl": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "self": "String",
-            "content": "Stream",
-            "contentUrl": "String"
           }
         }
       ]
@@ -19161,14 +15910,6 @@
               "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "status": {
-              "@odata.type": "microsoft.graph.operationStatus"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastActionDateTime": "DateTimeOffset (timestamp)"
           }
         }
       ]
@@ -19192,20 +15933,6 @@
             "percentComplete": {
               "type": "string"
             }
-          },
-          "example": {
-            "id": "String (identifier)",
-            "status": {
-              "@odata.type": "microsoft.graph.operationStatus"
-            },
-            "createdDateTime": "DateTimeOffset (timestamp)",
-            "lastActionDateTime": "DateTimeOffset (timestamp)",
-            "resourceLocation": "String",
-            "resourceId": "String",
-            "error": {
-              "@odata.type": "microsoft.graph.onenoteOperationError"
-            },
-            "percentComplete": "String"
           }
         }
       ]
@@ -19216,14 +15943,6 @@
       "properties": {
         "oneNoteClientUrl": { },
         "oneNoteWebUrl": { }
-      },
-      "example": {
-        "oneNoteClientUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        },
-        "oneNoteWebUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        }
       }
     },
     "microsoft.graph.externalLink": {
@@ -19233,9 +15952,6 @@
         "href": {
           "type": "string"
         }
-      },
-      "example": {
-        "href": "String"
       }
     },
     "microsoft.graph.sectionLinks": {
@@ -19244,14 +15960,6 @@
       "properties": {
         "oneNoteClientUrl": { },
         "oneNoteWebUrl": { }
-      },
-      "example": {
-        "oneNoteClientUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        },
-        "oneNoteWebUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        }
       }
     },
     "microsoft.graph.pageLinks": {
@@ -19260,14 +15968,6 @@
       "properties": {
         "oneNoteClientUrl": { },
         "oneNoteWebUrl": { }
-      },
-      "example": {
-        "oneNoteClientUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        },
-        "oneNoteWebUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        }
       }
     },
     "microsoft.graph.onenoteOperationError": {
@@ -19280,10 +15980,6 @@
         "message": {
           "type": "string"
         }
-      },
-      "example": {
-        "code": "String",
-        "message": "String"
       }
     },
     "microsoft.graph.diagnostic": {
@@ -19296,10 +15992,6 @@
         "url": {
           "type": "string"
         }
-      },
-      "example": {
-        "message": "String",
-        "url": "String"
       }
     },
     "microsoft.graph.onenotePatchContentCommand": {
@@ -19314,16 +16006,6 @@
           "type": "string"
         },
         "position": { }
-      },
-      "example": {
-        "action": {
-          "@odata.type": "microsoft.graph.onenotePatchActionType"
-        },
-        "target": "String",
-        "content": "String",
-        "position": {
-          "@odata.type": "microsoft.graph.onenotePatchInsertPosition"
-        }
       }
     },
     "microsoft.graph.onenotePagePreview": {
@@ -19334,12 +16016,6 @@
           "type": "string"
         },
         "links": { }
-      },
-      "example": {
-        "previewText": "String",
-        "links": {
-          "@odata.type": "microsoft.graph.onenotePagePreviewLinks"
-        }
       }
     },
     "microsoft.graph.onenotePagePreviewLinks": {
@@ -19347,11 +16023,6 @@
       "type": "object",
       "properties": {
         "previewImageUrl": { }
-      },
-      "example": {
-        "previewImageUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        }
       }
     },
     "microsoft.graph.recentNotebook": {
@@ -19368,16 +16039,6 @@
         },
         "links": { },
         "sourceService": { }
-      },
-      "example": {
-        "displayName": "String",
-        "lastAccessedTime": "DateTimeOffset (timestamp)",
-        "links": {
-          "@odata.type": "microsoft.graph.recentNotebookLinks"
-        },
-        "sourceService": {
-          "@odata.type": "microsoft.graph.onenoteSourceService"
-        }
       }
     },
     "microsoft.graph.recentNotebookLinks": {
@@ -19386,14 +16047,6 @@
       "properties": {
         "oneNoteClientUrl": { },
         "oneNoteWebUrl": { }
-      },
-      "example": {
-        "oneNoteClientUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        },
-        "oneNoteWebUrl": {
-          "@odata.type": "microsoft.graph.externalLink"
-        }
       }
     },
     "microsoft.graph.reportRoot": {
@@ -19403,10 +16056,7 @@
         },
         {
           "title": "reportRoot",
-          "type": "object",
-          "example": {
-            "id": "String (identifier)"
-          }
+          "type": "object"
         }
       ]
     },
@@ -19418,9 +16068,6 @@
           "format": "base64url",
           "type": "string"
         }
-      },
-      "example": {
-        "content": "Stream"
       }
     },
     "microsoft.graph.automaticRepliesStatus": {

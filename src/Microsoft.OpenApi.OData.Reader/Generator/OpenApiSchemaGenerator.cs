@@ -270,7 +270,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Description = context.Model.GetDescriptionAnnotation(entity);
                 }
 
-                schema.Example = CreateStructuredTypePropertiesExample(structuredType);
+               // schema.Example = CreateStructuredTypePropertiesExample(structuredType);
 
                 return schema;
             }
