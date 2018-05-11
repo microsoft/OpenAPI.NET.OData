@@ -112,7 +112,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
-            return context.CreateStructuredTypeSchema(structuredType, true);
+            return context.CreateStructuredTypeSchema(structuredType, true, true);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 case EdmTypeKind.Complex: // complex type
                 case EdmTypeKind.Entity: // entity type
-                    return context.CreateStructuredTypeSchema((IEdmStructuredType)edmType, true);
+                    return context.CreateStructuredTypeSchema((IEdmStructuredType)edmType, true, true);
 
                 case EdmTypeKind.Enum: // enum type
                     return context.CreateEnumTypeSchema((IEdmEnumType)edmType);
@@ -206,7 +206,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase)
+        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample)
         {
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
@@ -230,12 +230,13 @@ namespace Microsoft.OpenApi.OData.Generator
                         },
 
                         // 2. a Schema Object describing the derived type
-                        context.CreateStructuredTypeSchema(structuredType, false)
+                        context.CreateStructuredTypeSchema(structuredType, false, false)
                     },
 
                     AnyOf = null,
                     OneOf = null,
-                    Properties = null
+                    Properties = null,
+                    Example = CreateStructuredTypePropertiesExample(structuredType)
                 };
             }
             else
@@ -270,7 +271,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Description = context.Model.GetDescriptionAnnotation(entity);
                 }
 
-               // schema.Example = CreateStructuredTypePropertiesExample(structuredType);
+                if (processExample)
+                {
+                    schema.Example = CreateStructuredTypePropertiesExample(structuredType);
+                }
 
                 return schema;
             }
