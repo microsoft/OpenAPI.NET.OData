@@ -225,7 +225,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryPointSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -241,13 +241,12 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     },
                     { "coordinates", new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } } }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>
@@ -256,7 +255,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryLineStringSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -276,13 +275,12 @@ namespace Microsoft.OpenApi.OData.Generator
                             MinItems = 2
                         }
                     }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>
@@ -291,7 +289,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryPolygonSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -315,13 +313,12 @@ namespace Microsoft.OpenApi.OData.Generator
                             MinItems = 4
                         }
                     }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>
@@ -330,7 +327,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryMultiPointSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -349,13 +346,12 @@ namespace Microsoft.OpenApi.OData.Generator
                             Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }}
                         }
                     }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>
@@ -364,7 +360,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryMultiLineStringSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -388,13 +384,12 @@ namespace Microsoft.OpenApi.OData.Generator
                             MinItems = 2
                         }
                     }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>
@@ -403,7 +398,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryMultiPolygonSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -431,13 +426,12 @@ namespace Microsoft.OpenApi.OData.Generator
                             MinItems = 4
                         }
                     }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>
@@ -446,7 +440,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateEdmGeometryCollectionSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>
@@ -465,13 +459,12 @@ namespace Microsoft.OpenApi.OData.Generator
                             Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.Geometry" } }
                         }
                     }
-                },
-                Required = new List<string>
-                {
-                    "type",
-                    "coordinates"
                 }
             };
+
+            schema.Required.Add("type");
+            schema.Required.Add("coordinates");
+            return schema;
         }
 
         /// <summary>

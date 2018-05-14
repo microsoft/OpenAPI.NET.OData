@@ -46,13 +46,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateErrorSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
-                Required = new List<string>
-                {
-                    "error"
-                },
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
@@ -68,6 +64,9 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+
+            schema.Required.Add("error");
+            return schema;
         }
 
         /// <summary>
@@ -76,13 +75,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateErrorMainSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
-                Required = new List<string>
-                {
-                    "code", "message"
-                },
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
@@ -119,6 +114,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+
+            schema.Required.Add("code");
+            schema.Required.Add("message");
+            return schema;
         }
 
         /// <summary>
@@ -127,13 +126,9 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateErrorDetailSchema()
         {
-            return new OpenApiSchema
+            OpenApiSchema schema = new OpenApiSchema
             {
                 Type = "object",
-                Required = new List<string>
-                {
-                    "code", "message"
-                },
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
@@ -147,6 +142,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
+
+            schema.Required.Add("code");
+            schema.Required.Add("message");
+            return schema;
         }
     }
 }
