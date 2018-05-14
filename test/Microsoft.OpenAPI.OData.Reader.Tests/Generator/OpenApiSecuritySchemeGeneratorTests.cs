@@ -5,10 +5,11 @@
 
 using System;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Annotations;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
 
@@ -201,9 +202,7 @@ openIdConnectUrl: http://any/".Replace("\r\n", "\n"), yaml);
 </edmx:Edmx>";
 
             string modelText = string.Format(template, records);
-
-            // Once updated to latest ODL, please remove the append function call.
-            return modelText.AppendAnnotations();
+            return CsdlReader.Parse(XElement.Parse(modelText).CreateReader());
         }
     }
 }

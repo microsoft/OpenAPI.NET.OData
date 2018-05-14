@@ -8,6 +8,8 @@ using System;
 using System.IO;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
@@ -15,8 +17,6 @@ using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
 using Microsoft.OpenApi.Extensions;
-using System.Linq;
-using System.Text;
 
 namespace UpdateDocs
 {
@@ -48,7 +48,7 @@ namespace UpdateDocs
                     Console.WriteLine(a.Name + ":" + a.SchemaElementKind);
                 }
 
-                foreach(var a in model.VocabularyAnnotations)
+                foreach (var a in model.VocabularyAnnotations)
                 {
                     Console.WriteLine(a.Qualifier + a.Term + a.Target);
                 }
@@ -69,10 +69,11 @@ namespace UpdateDocs
             if (ProcessAnnotation(path))
             {
                 return 0;
-            }*/
-
+            }
+            */
             foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {
+                Console.WriteLine(filePath + "....");
                 /*
                 IEdmModel model = LoadEdmModel(filePath, annotationPath);
                 if (model == null)
@@ -84,8 +85,6 @@ namespace UpdateDocs
                 {
                     continue;
                 }
-
-                File.WriteAllText("c:\\a.xml", edmCsdl);
 
                 FileInfo fileInfo = new FileInfo(filePath);
                 string fileName = fileInfo.Name.Substring(0, fileInfo.Name.Length - 4);
@@ -104,7 +103,9 @@ namespace UpdateDocs
                     continue;
                 }
 
-                OpenApiDocument document = edmCsdl.ConvertToOpenApi(settings);
+                IEdmModel model = GetEdmModel(edmCsdl);
+
+                OpenApiDocument document = model.ConvertToOpenApi(settings);
 
                 string output = oas20 + "/" + fileName + ".yaml";
                 File.WriteAllText(output, document.SerializeAsYaml(OpenApiSpecVersion.OpenApi2_0));
@@ -122,13 +123,13 @@ namespace UpdateDocs
                 settings.EnableNavigationPropertyPath = true;
                 settings.NavigationPropertyDepth = 5;
                 output = oas30 + "/" + fileName + "_content.json";
-                document = edmCsdl.ConvertToOpenApi(settings);
+                document = model.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
                 settings.NavigationPropertyDepth = 3;
                 settings.CountKeySegmentAsDepth = false;
                 output = oas30 + "/" + fileName + "_content_withoutKeySegment.json";
-                document = edmCsdl.ConvertToOpenApi(settings);
+                document = model.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
                 Console.WriteLine("Output [ " + fileName + " ] Succeessful!");
@@ -145,6 +146,8 @@ namespace UpdateDocs
             if (file.Contains("graph.beta.xml"))
             {
                 csdl = MergeWithAnnotation(csdl, annotationPath);
+
+                File.WriteAllText("c:\\a.xml", csdl);
             }
 
             return csdl;
@@ -170,9 +173,9 @@ namespace UpdateDocs
             }
         }
 
-        protected static IEnumerable<string> GetAnnotations(string annotationPath)
+        protected static IEnumerable<string> GetAnnotations(string annotationPath, string searchPattern)
         {
-            foreach (var filePath in Directory.GetFiles(annotationPath, "*.xml"))
+            foreach (var filePath in Directory.GetFiles(annotationPath, searchPattern))
             {
                 string csdl = File.ReadAllText(filePath);
                 yield return csdl;
@@ -181,7 +184,7 @@ namespace UpdateDocs
 
         protected static string MergeWithAnnotation(string csdl, string annotationPath)
         {
-            IEnumerable<string> annotations = GetAnnotations(annotationPath);
+            IEnumerable<string> annotations = GetAnnotations(annotationPath, "*.xml");
             if (!annotations.Any())
             {
                 return csdl;
@@ -201,8 +204,36 @@ namespace UpdateDocs
             }
 
             sb.Append("\n    </Schema>");
+
+            // Append definitions
+            foreach (var def in GetAnnotations(annotationPath, "*.def"))
+            {
+                sb.Append(def);
+            }
+
             sb.Append("\n  </edmx:DataServices>\n</edmx:Edmx>");
             return sb.ToString();
+        }
+
+        private static IEdmModel GetEdmModel(string csdl)
+        {
+            IEnumerable<EdmError> errors;
+            IEdmModel model;
+            if (CsdlReader.TryParse(XElement.Parse(csdl).CreateReader(), out model, out errors))
+            {
+                return model;
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    sb.Append(error.ErrorMessage + ":" + error.ErrorLocation).Append("\n");
+                }
+                File.WriteAllText("e:/b.txt", sb.ToString());
+                Console.Write(sb.ToString());
+                return null;
+            }
         }
     }
 }

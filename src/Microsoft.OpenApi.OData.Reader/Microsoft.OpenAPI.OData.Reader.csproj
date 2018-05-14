@@ -26,15 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Annotations\GraphVocaburary.def" />
-    <None Remove="Operation\EntityGetOperationHandler.cs~RF2ce89b97.TMP" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Annotations\GraphVocaburary.def" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.4.4" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.0.0" />
   </ItemGroup>
