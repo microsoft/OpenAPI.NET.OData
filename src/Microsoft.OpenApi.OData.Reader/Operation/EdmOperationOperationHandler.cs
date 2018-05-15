@@ -57,9 +57,9 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.OperationId)
             {
-                string key = NavigationSource.Name + "-Invoke" + Utils.UpperFirstChar(EdmOperation.Name);
+                string key = NavigationSource.Name + "-" + Utils.UpperFirstChar(EdmOperation.Name);
                 int index = Context.GetIndex(key);
-                operation.OperationId = NavigationSource.Name + "." + index + "-Invoke" + Utils.UpperFirstChar(EdmOperation.Name);
+                operation.OperationId = NavigationSource.Name + "." + index + "-" + Utils.UpperFirstChar(EdmOperation.Name);
             }
         }
 

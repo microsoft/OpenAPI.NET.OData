@@ -243,7 +243,7 @@
           "directoryObjects.getByIds"
         ],
         "summary": "Invoke action getByIds",
-        "operationId": "directoryObjects.0-InvokeGetByIds",
+        "operationId": "directoryObjects.0-GetByIds",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -286,7 +286,7 @@
           "directoryObjects.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "directoryObjects.0-InvokeDelta",
+        "operationId": "directoryObjects.0-Delta",
         "responses": {
           "200": {
             "description": "Success",
@@ -321,7 +321,7 @@
           "directoryObjects.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "directoryObjects.1-InvokeDelta",
+        "operationId": "directoryObjects.1-Delta",
         "responses": {
           "200": {
             "description": "Success",
@@ -356,7 +356,7 @@
           "directoryObjects.checkMemberGroups"
         ],
         "summary": "Invoke action checkMemberGroups",
-        "operationId": "directoryObjects.0-InvokeCheckMemberGroups",
+        "operationId": "directoryObjects.0-CheckMemberGroups",
         "parameters": [
           {
             "name": "id",
@@ -403,7 +403,7 @@
           "directoryObjects.getMemberGroups"
         ],
         "summary": "Invoke action getMemberGroups",
-        "operationId": "directoryObjects.0-InvokeGetMemberGroups",
+        "operationId": "directoryObjects.0-GetMemberGroups",
         "parameters": [
           {
             "name": "id",
@@ -449,7 +449,7 @@
           "directoryObjects.getMemberObjects"
         ],
         "summary": "Invoke action getMemberObjects",
-        "operationId": "directoryObjects.0-InvokeGetMemberObjects",
+        "operationId": "directoryObjects.0-GetMemberObjects",
         "parameters": [
           {
             "name": "id",
@@ -495,7 +495,7 @@
           "directoryObjects.assignLicense"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "directoryObjects.0-InvokeAssignLicense",
+        "operationId": "directoryObjects.0-AssignLicense",
         "parameters": [
           {
             "name": "id",
@@ -550,7 +550,7 @@
           "directoryObjects.changePassword"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "directoryObjects.0-InvokeChangePassword",
+        "operationId": "directoryObjects.0-ChangePassword",
         "parameters": [
           {
             "name": "id",
@@ -599,7 +599,7 @@
           "directoryObjects.sendMail"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "directoryObjects.0-InvokeSendMail",
+        "operationId": "directoryObjects.0-SendMail",
         "parameters": [
           {
             "name": "id",
@@ -648,7 +648,7 @@
           "directoryObjects.findMeetingTimes"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "directoryObjects.0-InvokeFindMeetingTimes",
+        "operationId": "directoryObjects.0-FindMeetingTimes",
         "parameters": [
           {
             "name": "id",
@@ -758,7 +758,7 @@
           "directoryObjects.reminderView"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "directoryObjects.0-InvokeReminderView",
+        "operationId": "directoryObjects.0-ReminderView",
         "parameters": [
           {
             "name": "id",
@@ -813,7 +813,7 @@
           "directoryObjects.subscribeByMail"
         ],
         "summary": "Invoke action subscribeByMail",
-        "operationId": "directoryObjects.0-InvokeSubscribeByMail",
+        "operationId": "directoryObjects.0-SubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -841,7 +841,7 @@
           "directoryObjects.unsubscribeByMail"
         ],
         "summary": "Invoke action unsubscribeByMail",
-        "operationId": "directoryObjects.0-InvokeUnsubscribeByMail",
+        "operationId": "directoryObjects.0-UnsubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -869,7 +869,7 @@
           "directoryObjects.addFavorite"
         ],
         "summary": "Invoke action addFavorite",
-        "operationId": "directoryObjects.0-InvokeAddFavorite",
+        "operationId": "directoryObjects.0-AddFavorite",
         "parameters": [
           {
             "name": "id",
@@ -897,7 +897,7 @@
           "directoryObjects.removeFavorite"
         ],
         "summary": "Invoke action removeFavorite",
-        "operationId": "directoryObjects.0-InvokeRemoveFavorite",
+        "operationId": "directoryObjects.0-RemoveFavorite",
         "parameters": [
           {
             "name": "id",
@@ -925,7 +925,7 @@
           "directoryObjects.resetUnseenCount"
         ],
         "summary": "Invoke action resetUnseenCount",
-        "operationId": "directoryObjects.0-InvokeResetUnseenCount",
+        "operationId": "directoryObjects.0-ResetUnseenCount",
         "parameters": [
           {
             "name": "id",
@@ -1586,7 +1586,7 @@
           "domains.verify"
         ],
         "summary": "Invoke action verify",
-        "operationId": "domains.0-InvokeVerify",
+        "operationId": "domains.0-Verify",
         "parameters": [
           {
             "name": "id",
@@ -2323,7 +2323,7 @@
           "groups.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "groups.0-InvokeDelta",
+        "operationId": "groups.0-Delta",
         "responses": {
           "200": {
             "description": "Success",
@@ -2355,7 +2355,7 @@
           "groups.subscribeByMail"
         ],
         "summary": "Invoke action subscribeByMail",
-        "operationId": "groups.0-InvokeSubscribeByMail",
+        "operationId": "groups.0-SubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -2383,7 +2383,7 @@
           "groups.unsubscribeByMail"
         ],
         "summary": "Invoke action unsubscribeByMail",
-        "operationId": "groups.0-InvokeUnsubscribeByMail",
+        "operationId": "groups.0-UnsubscribeByMail",
         "parameters": [
           {
             "name": "id",
@@ -2411,7 +2411,7 @@
           "groups.addFavorite"
         ],
         "summary": "Invoke action addFavorite",
-        "operationId": "groups.0-InvokeAddFavorite",
+        "operationId": "groups.0-AddFavorite",
         "parameters": [
           {
             "name": "id",
@@ -2439,7 +2439,7 @@
           "groups.removeFavorite"
         ],
         "summary": "Invoke action removeFavorite",
-        "operationId": "groups.0-InvokeRemoveFavorite",
+        "operationId": "groups.0-RemoveFavorite",
         "parameters": [
           {
             "name": "id",
@@ -2467,7 +2467,7 @@
           "groups.resetUnseenCount"
         ],
         "summary": "Invoke action resetUnseenCount",
-        "operationId": "groups.0-InvokeResetUnseenCount",
+        "operationId": "groups.0-ResetUnseenCount",
         "parameters": [
           {
             "name": "id",
@@ -4597,7 +4597,7 @@
           "users.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "users.0-InvokeDelta",
+        "operationId": "users.0-Delta",
         "responses": {
           "200": {
             "description": "Success",
@@ -4629,7 +4629,7 @@
           "users.assignLicense"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "users.0-InvokeAssignLicense",
+        "operationId": "users.0-AssignLicense",
         "parameters": [
           {
             "name": "id",
@@ -4684,7 +4684,7 @@
           "users.changePassword"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "users.0-InvokeChangePassword",
+        "operationId": "users.0-ChangePassword",
         "parameters": [
           {
             "name": "id",
@@ -4733,7 +4733,7 @@
           "users.sendMail"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "users.0-InvokeSendMail",
+        "operationId": "users.0-SendMail",
         "parameters": [
           {
             "name": "id",
@@ -4782,7 +4782,7 @@
           "users.findMeetingTimes"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "users.0-InvokeFindMeetingTimes",
+        "operationId": "users.0-FindMeetingTimes",
         "parameters": [
           {
             "name": "id",
@@ -4892,7 +4892,7 @@
           "users.reminderView"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "users.0-InvokeReminderView",
+        "operationId": "users.0-ReminderView",
         "parameters": [
           {
             "name": "id",
@@ -5833,7 +5833,7 @@
           "drives.recent"
         ],
         "summary": "Invoke function recent",
-        "operationId": "drives.0-InvokeRecent",
+        "operationId": "drives.0-Recent",
         "parameters": [
           {
             "name": "id",
@@ -5876,7 +5876,7 @@
           "drives.search"
         ],
         "summary": "Invoke function search",
-        "operationId": "drives.0-InvokeSearch",
+        "operationId": "drives.0-Search",
         "parameters": [
           {
             "name": "id",
@@ -5928,7 +5928,7 @@
           "drives.sharedWithMe"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "drives.0-InvokeSharedWithMe",
+        "operationId": "drives.0-SharedWithMe",
         "parameters": [
           {
             "name": "id",
@@ -6717,7 +6717,7 @@
           "sites.getByPath"
         ],
         "summary": "Invoke function getByPath",
-        "operationId": "sites.0-InvokeGetByPath",
+        "operationId": "sites.0-GetByPath",
         "parameters": [
           {
             "name": "id",
@@ -7193,7 +7193,7 @@
           "workbooks.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "workbooks.0-InvokeDelta",
+        "operationId": "workbooks.0-Delta",
         "parameters": [
           {
             "name": "id",
@@ -7248,7 +7248,7 @@
           "workbooks.delta"
         ],
         "summary": "Invoke function delta",
-        "operationId": "workbooks.1-InvokeDelta",
+        "operationId": "workbooks.1-Delta",
         "parameters": [
           {
             "name": "id",
@@ -7294,7 +7294,7 @@
           "workbooks.search"
         ],
         "summary": "Invoke function search",
-        "operationId": "workbooks.0-InvokeSearch",
+        "operationId": "workbooks.0-Search",
         "parameters": [
           {
             "name": "id",
@@ -7346,7 +7346,7 @@
           "workbooks.copy"
         ],
         "summary": "Invoke action copy",
-        "operationId": "workbooks.0-InvokeCopy",
+        "operationId": "workbooks.0-Copy",
         "parameters": [
           {
             "name": "id",
@@ -7399,7 +7399,7 @@
           "workbooks.createLink"
         ],
         "summary": "Invoke action createLink",
-        "operationId": "workbooks.0-InvokeCreateLink",
+        "operationId": "workbooks.0-CreateLink",
         "parameters": [
           {
             "name": "id",
@@ -7447,7 +7447,7 @@
           "workbooks.createUploadSession"
         ],
         "summary": "Invoke action createUploadSession",
-        "operationId": "workbooks.0-InvokeCreateUploadSession",
+        "operationId": "workbooks.0-CreateUploadSession",
         "parameters": [
           {
             "name": "id",
@@ -7496,7 +7496,7 @@
           "workbooks.invite"
         ],
         "summary": "Invoke action invite",
-        "operationId": "workbooks.0-InvokeInvite",
+        "operationId": "workbooks.0-Invite",
         "parameters": [
           {
             "name": "id",
@@ -8198,7 +8198,7 @@
           "me.assignLicense"
         ],
         "summary": "Invoke action assignLicense",
-        "operationId": "me.0-InvokeAssignLicense",
+        "operationId": "me.0-AssignLicense",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -8242,7 +8242,7 @@
           "me.changePassword"
         ],
         "summary": "Invoke action changePassword",
-        "operationId": "me.0-InvokeChangePassword",
+        "operationId": "me.0-ChangePassword",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -8280,7 +8280,7 @@
           "me.sendMail"
         ],
         "summary": "Invoke action sendMail",
-        "operationId": "me.0-InvokeSendMail",
+        "operationId": "me.0-SendMail",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -8318,7 +8318,7 @@
           "me.findMeetingTimes"
         ],
         "summary": "Invoke action findMeetingTimes",
-        "operationId": "me.0-InvokeFindMeetingTimes",
+        "operationId": "me.0-FindMeetingTimes",
         "requestBody": {
           "description": "Action parameters",
           "content": {
@@ -8417,7 +8417,7 @@
           "me.reminderView"
         ],
         "summary": "Invoke function reminderView",
-        "operationId": "me.0-InvokeReminderView",
+        "operationId": "me.0-ReminderView",
         "parameters": [
           {
             "name": "StartDateTime",
@@ -8565,7 +8565,7 @@
           "drive.recent"
         ],
         "summary": "Invoke function recent",
-        "operationId": "drive.0-InvokeRecent",
+        "operationId": "drive.0-Recent",
         "responses": {
           "200": {
             "description": "Success",
@@ -8597,7 +8597,7 @@
           "drive.search"
         ],
         "summary": "Invoke function search",
-        "operationId": "drive.0-InvokeSearch",
+        "operationId": "drive.0-Search",
         "parameters": [
           {
             "name": "q",
@@ -8640,7 +8640,7 @@
           "drive.sharedWithMe"
         ],
         "summary": "Invoke function sharedWithMe",
-        "operationId": "drive.0-InvokeSharedWithMe",
+        "operationId": "drive.0-SharedWithMe",
         "responses": {
           "200": {
             "description": "Success",
@@ -8839,7 +8839,7 @@
           "reports.getOffice365ActivationsUserDetail"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
-        "operationId": "reports.0-InvokeGetOffice365ActivationsUserDetail",
+        "operationId": "reports.0-GetOffice365ActivationsUserDetail",
         "responses": {
           "200": {
             "description": "Success",
@@ -8863,7 +8863,7 @@
           "reports.getOffice365ActivationCounts"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
-        "operationId": "reports.0-InvokeGetOffice365ActivationCounts",
+        "operationId": "reports.0-GetOffice365ActivationCounts",
         "responses": {
           "200": {
             "description": "Success",
@@ -8887,7 +8887,7 @@
           "reports.getOffice365ActivationsUserCounts"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
-        "operationId": "reports.0-InvokeGetOffice365ActivationsUserCounts",
+        "operationId": "reports.0-GetOffice365ActivationsUserCounts",
         "responses": {
           "200": {
             "description": "Success",
@@ -8911,7 +8911,7 @@
           "reports.getOffice365ActiveUserDetail"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "reports.0-InvokeGetOffice365ActiveUserDetail",
+        "operationId": "reports.0-GetOffice365ActiveUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -8950,7 +8950,7 @@
           "reports.getOffice365ActiveUserDetail"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
-        "operationId": "reports.1-InvokeGetOffice365ActiveUserDetail",
+        "operationId": "reports.1-GetOffice365ActiveUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -8987,7 +8987,7 @@
           "reports.getOffice365ServicesUserCounts"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
-        "operationId": "reports.0-InvokeGetOffice365ServicesUserCounts",
+        "operationId": "reports.0-GetOffice365ServicesUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9021,7 +9021,7 @@
           "reports.getOffice365ActiveUserCounts"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
-        "operationId": "reports.0-InvokeGetOffice365ActiveUserCounts",
+        "operationId": "reports.0-GetOffice365ActiveUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9055,7 +9055,7 @@
           "reports.getOffice365GroupsActivityDetail"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "reports.0-InvokeGetOffice365GroupsActivityDetail",
+        "operationId": "reports.0-GetOffice365GroupsActivityDetail",
         "parameters": [
           {
             "name": "date",
@@ -9094,7 +9094,7 @@
           "reports.getOffice365GroupsActivityDetail"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
-        "operationId": "reports.1-InvokeGetOffice365GroupsActivityDetail",
+        "operationId": "reports.1-GetOffice365GroupsActivityDetail",
         "parameters": [
           {
             "name": "period",
@@ -9131,7 +9131,7 @@
           "reports.getOffice365GroupsActivityCounts"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
-        "operationId": "reports.0-InvokeGetOffice365GroupsActivityCounts",
+        "operationId": "reports.0-GetOffice365GroupsActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -9165,7 +9165,7 @@
           "reports.getOffice365GroupsActivityGroupCounts"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
-        "operationId": "reports.0-InvokeGetOffice365GroupsActivityGroupCounts",
+        "operationId": "reports.0-GetOffice365GroupsActivityGroupCounts",
         "parameters": [
           {
             "name": "period",
@@ -9199,7 +9199,7 @@
           "reports.getOffice365GroupsActivityStorage"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
-        "operationId": "reports.0-InvokeGetOffice365GroupsActivityStorage",
+        "operationId": "reports.0-GetOffice365GroupsActivityStorage",
         "parameters": [
           {
             "name": "period",
@@ -9233,7 +9233,7 @@
           "reports.getOffice365GroupsActivityFileCounts"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
-        "operationId": "reports.0-InvokeGetOffice365GroupsActivityFileCounts",
+        "operationId": "reports.0-GetOffice365GroupsActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -9267,7 +9267,7 @@
           "reports.getEmailActivityUserDetail"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "reports.0-InvokeGetEmailActivityUserDetail",
+        "operationId": "reports.0-GetEmailActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -9306,7 +9306,7 @@
           "reports.getEmailActivityUserDetail"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
-        "operationId": "reports.1-InvokeGetEmailActivityUserDetail",
+        "operationId": "reports.1-GetEmailActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -9343,7 +9343,7 @@
           "reports.getEmailActivityCounts"
         ],
         "summary": "Invoke function getEmailActivityCounts",
-        "operationId": "reports.0-InvokeGetEmailActivityCounts",
+        "operationId": "reports.0-GetEmailActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -9377,7 +9377,7 @@
           "reports.getEmailActivityUserCounts"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
-        "operationId": "reports.0-InvokeGetEmailActivityUserCounts",
+        "operationId": "reports.0-GetEmailActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9411,7 +9411,7 @@
           "reports.getEmailAppUsageUserDetail"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "reports.0-InvokeGetEmailAppUsageUserDetail",
+        "operationId": "reports.0-GetEmailAppUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -9450,7 +9450,7 @@
           "reports.getEmailAppUsageUserDetail"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
-        "operationId": "reports.1-InvokeGetEmailAppUsageUserDetail",
+        "operationId": "reports.1-GetEmailAppUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -9487,7 +9487,7 @@
           "reports.getEmailAppUsageAppsUserCounts"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
-        "operationId": "reports.0-InvokeGetEmailAppUsageAppsUserCounts",
+        "operationId": "reports.0-GetEmailAppUsageAppsUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9521,7 +9521,7 @@
           "reports.getEmailAppUsageUserCounts"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
-        "operationId": "reports.0-InvokeGetEmailAppUsageUserCounts",
+        "operationId": "reports.0-GetEmailAppUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9555,7 +9555,7 @@
           "reports.getEmailAppUsageVersionsUserCounts"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
-        "operationId": "reports.0-InvokeGetEmailAppUsageVersionsUserCounts",
+        "operationId": "reports.0-GetEmailAppUsageVersionsUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9589,7 +9589,7 @@
           "reports.getMailboxUsageDetail"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
-        "operationId": "reports.0-InvokeGetMailboxUsageDetail",
+        "operationId": "reports.0-GetMailboxUsageDetail",
         "parameters": [
           {
             "name": "period",
@@ -9623,7 +9623,7 @@
           "reports.getMailboxUsageMailboxCounts"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
-        "operationId": "reports.0-InvokeGetMailboxUsageMailboxCounts",
+        "operationId": "reports.0-GetMailboxUsageMailboxCounts",
         "parameters": [
           {
             "name": "period",
@@ -9657,7 +9657,7 @@
           "reports.getMailboxUsageQuotaStatusMailboxCounts"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
-        "operationId": "reports.0-InvokeGetMailboxUsageQuotaStatusMailboxCounts",
+        "operationId": "reports.0-GetMailboxUsageQuotaStatusMailboxCounts",
         "parameters": [
           {
             "name": "period",
@@ -9691,7 +9691,7 @@
           "reports.getMailboxUsageStorage"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
-        "operationId": "reports.0-InvokeGetMailboxUsageStorage",
+        "operationId": "reports.0-GetMailboxUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -9725,7 +9725,7 @@
           "reports.getOneDriveActivityUserDetail"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "reports.0-InvokeGetOneDriveActivityUserDetail",
+        "operationId": "reports.0-GetOneDriveActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -9764,7 +9764,7 @@
           "reports.getOneDriveActivityUserDetail"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
-        "operationId": "reports.1-InvokeGetOneDriveActivityUserDetail",
+        "operationId": "reports.1-GetOneDriveActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -9801,7 +9801,7 @@
           "reports.getOneDriveActivityUserCounts"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
-        "operationId": "reports.0-InvokeGetOneDriveActivityUserCounts",
+        "operationId": "reports.0-GetOneDriveActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -9835,7 +9835,7 @@
           "reports.getOneDriveActivityFileCounts"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
-        "operationId": "reports.0-InvokeGetOneDriveActivityFileCounts",
+        "operationId": "reports.0-GetOneDriveActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -9869,7 +9869,7 @@
           "reports.getOneDriveUsageAccountDetail"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "reports.0-InvokeGetOneDriveUsageAccountDetail",
+        "operationId": "reports.0-GetOneDriveUsageAccountDetail",
         "parameters": [
           {
             "name": "date",
@@ -9908,7 +9908,7 @@
           "reports.getOneDriveUsageAccountDetail"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
-        "operationId": "reports.1-InvokeGetOneDriveUsageAccountDetail",
+        "operationId": "reports.1-GetOneDriveUsageAccountDetail",
         "parameters": [
           {
             "name": "period",
@@ -9945,7 +9945,7 @@
           "reports.getOneDriveUsageAccountCounts"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
-        "operationId": "reports.0-InvokeGetOneDriveUsageAccountCounts",
+        "operationId": "reports.0-GetOneDriveUsageAccountCounts",
         "parameters": [
           {
             "name": "period",
@@ -9979,7 +9979,7 @@
           "reports.getOneDriveUsageFileCounts"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
-        "operationId": "reports.0-InvokeGetOneDriveUsageFileCounts",
+        "operationId": "reports.0-GetOneDriveUsageFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -10013,7 +10013,7 @@
           "reports.getOneDriveUsageStorage"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
-        "operationId": "reports.0-InvokeGetOneDriveUsageStorage",
+        "operationId": "reports.0-GetOneDriveUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -10047,7 +10047,7 @@
           "reports.getSharePointActivityUserDetail"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "reports.0-InvokeGetSharePointActivityUserDetail",
+        "operationId": "reports.0-GetSharePointActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -10086,7 +10086,7 @@
           "reports.getSharePointActivityUserDetail"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
-        "operationId": "reports.1-InvokeGetSharePointActivityUserDetail",
+        "operationId": "reports.1-GetSharePointActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -10123,7 +10123,7 @@
           "reports.getSharePointActivityFileCounts"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
-        "operationId": "reports.0-InvokeGetSharePointActivityFileCounts",
+        "operationId": "reports.0-GetSharePointActivityFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -10157,7 +10157,7 @@
           "reports.getSharePointActivityUserCounts"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
-        "operationId": "reports.0-InvokeGetSharePointActivityUserCounts",
+        "operationId": "reports.0-GetSharePointActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -10191,7 +10191,7 @@
           "reports.getSharePointActivityPages"
         ],
         "summary": "Invoke function getSharePointActivityPages",
-        "operationId": "reports.0-InvokeGetSharePointActivityPages",
+        "operationId": "reports.0-GetSharePointActivityPages",
         "parameters": [
           {
             "name": "period",
@@ -10225,7 +10225,7 @@
           "reports.getSharePointSiteUsageDetail"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "reports.0-InvokeGetSharePointSiteUsageDetail",
+        "operationId": "reports.0-GetSharePointSiteUsageDetail",
         "parameters": [
           {
             "name": "date",
@@ -10264,7 +10264,7 @@
           "reports.getSharePointSiteUsageDetail"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
-        "operationId": "reports.1-InvokeGetSharePointSiteUsageDetail",
+        "operationId": "reports.1-GetSharePointSiteUsageDetail",
         "parameters": [
           {
             "name": "period",
@@ -10301,7 +10301,7 @@
           "reports.getSharePointSiteUsageFileCounts"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
-        "operationId": "reports.0-InvokeGetSharePointSiteUsageFileCounts",
+        "operationId": "reports.0-GetSharePointSiteUsageFileCounts",
         "parameters": [
           {
             "name": "period",
@@ -10335,7 +10335,7 @@
           "reports.getSharePointSiteUsageSiteCounts"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
-        "operationId": "reports.0-InvokeGetSharePointSiteUsageSiteCounts",
+        "operationId": "reports.0-GetSharePointSiteUsageSiteCounts",
         "parameters": [
           {
             "name": "period",
@@ -10369,7 +10369,7 @@
           "reports.getSharePointSiteUsageStorage"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
-        "operationId": "reports.0-InvokeGetSharePointSiteUsageStorage",
+        "operationId": "reports.0-GetSharePointSiteUsageStorage",
         "parameters": [
           {
             "name": "period",
@@ -10403,7 +10403,7 @@
           "reports.getSharePointSiteUsagePages"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
-        "operationId": "reports.0-InvokeGetSharePointSiteUsagePages",
+        "operationId": "reports.0-GetSharePointSiteUsagePages",
         "parameters": [
           {
             "name": "period",
@@ -10437,7 +10437,7 @@
           "reports.getSkypeForBusinessActivityUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessActivityUserDetail",
+        "operationId": "reports.0-GetSkypeForBusinessActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -10476,7 +10476,7 @@
           "reports.getSkypeForBusinessActivityUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
-        "operationId": "reports.1-InvokeGetSkypeForBusinessActivityUserDetail",
+        "operationId": "reports.1-GetSkypeForBusinessActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -10513,7 +10513,7 @@
           "reports.getSkypeForBusinessActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessActivityCounts",
+        "operationId": "reports.0-GetSkypeForBusinessActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -10547,7 +10547,7 @@
           "reports.getSkypeForBusinessActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessActivityUserCounts",
+        "operationId": "reports.0-GetSkypeForBusinessActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -10581,7 +10581,7 @@
           "reports.getSkypeForBusinessPeerToPeerActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityCounts",
+        "operationId": "reports.0-GetSkypeForBusinessPeerToPeerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -10615,7 +10615,7 @@
           "reports.getSkypeForBusinessPeerToPeerActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityUserCounts",
+        "operationId": "reports.0-GetSkypeForBusinessPeerToPeerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -10649,7 +10649,7 @@
           "reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessPeerToPeerActivityMinuteCounts",
+        "operationId": "reports.0-GetSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -10683,7 +10683,7 @@
           "reports.getSkypeForBusinessOrganizerActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessOrganizerActivityCounts",
+        "operationId": "reports.0-GetSkypeForBusinessOrganizerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -10717,7 +10717,7 @@
           "reports.getSkypeForBusinessOrganizerActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessOrganizerActivityUserCounts",
+        "operationId": "reports.0-GetSkypeForBusinessOrganizerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -10751,7 +10751,7 @@
           "reports.getSkypeForBusinessOrganizerActivityMinuteCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessOrganizerActivityMinuteCounts",
+        "operationId": "reports.0-GetSkypeForBusinessOrganizerActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -10785,7 +10785,7 @@
           "reports.getSkypeForBusinessParticipantActivityCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessParticipantActivityCounts",
+        "operationId": "reports.0-GetSkypeForBusinessParticipantActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -10819,7 +10819,7 @@
           "reports.getSkypeForBusinessParticipantActivityUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessParticipantActivityUserCounts",
+        "operationId": "reports.0-GetSkypeForBusinessParticipantActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -10853,7 +10853,7 @@
           "reports.getSkypeForBusinessParticipantActivityMinuteCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessParticipantActivityMinuteCounts",
+        "operationId": "reports.0-GetSkypeForBusinessParticipantActivityMinuteCounts",
         "parameters": [
           {
             "name": "period",
@@ -10887,7 +10887,7 @@
           "reports.getSkypeForBusinessDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "reports.0-GetSkypeForBusinessDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -10926,7 +10926,7 @@
           "reports.getSkypeForBusinessDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
-        "operationId": "reports.1-InvokeGetSkypeForBusinessDeviceUsageUserDetail",
+        "operationId": "reports.1-GetSkypeForBusinessDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -10963,7 +10963,7 @@
           "reports.getSkypeForBusinessDeviceUsageDistributionUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessDeviceUsageDistributionUserCounts",
+        "operationId": "reports.0-GetSkypeForBusinessDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -10997,7 +10997,7 @@
           "reports.getSkypeForBusinessDeviceUsageUserCounts"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
-        "operationId": "reports.0-InvokeGetSkypeForBusinessDeviceUsageUserCounts",
+        "operationId": "reports.0-GetSkypeForBusinessDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -11031,7 +11031,7 @@
           "reports.getYammerActivityUserDetail"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "reports.0-InvokeGetYammerActivityUserDetail",
+        "operationId": "reports.0-GetYammerActivityUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -11070,7 +11070,7 @@
           "reports.getYammerActivityUserDetail"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
-        "operationId": "reports.1-InvokeGetYammerActivityUserDetail",
+        "operationId": "reports.1-GetYammerActivityUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -11107,7 +11107,7 @@
           "reports.getYammerActivityCounts"
         ],
         "summary": "Invoke function getYammerActivityCounts",
-        "operationId": "reports.0-InvokeGetYammerActivityCounts",
+        "operationId": "reports.0-GetYammerActivityCounts",
         "parameters": [
           {
             "name": "period",
@@ -11141,7 +11141,7 @@
           "reports.getYammerActivityUserCounts"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
-        "operationId": "reports.0-InvokeGetYammerActivityUserCounts",
+        "operationId": "reports.0-GetYammerActivityUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -11175,7 +11175,7 @@
           "reports.getYammerDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "reports.0-InvokeGetYammerDeviceUsageUserDetail",
+        "operationId": "reports.0-GetYammerDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "date",
@@ -11214,7 +11214,7 @@
           "reports.getYammerDeviceUsageUserDetail"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
-        "operationId": "reports.1-InvokeGetYammerDeviceUsageUserDetail",
+        "operationId": "reports.1-GetYammerDeviceUsageUserDetail",
         "parameters": [
           {
             "name": "period",
@@ -11251,7 +11251,7 @@
           "reports.getYammerDeviceUsageDistributionUserCounts"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
-        "operationId": "reports.0-InvokeGetYammerDeviceUsageDistributionUserCounts",
+        "operationId": "reports.0-GetYammerDeviceUsageDistributionUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -11285,7 +11285,7 @@
           "reports.getYammerDeviceUsageUserCounts"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
-        "operationId": "reports.0-InvokeGetYammerDeviceUsageUserCounts",
+        "operationId": "reports.0-GetYammerDeviceUsageUserCounts",
         "parameters": [
           {
             "name": "period",
@@ -11319,7 +11319,7 @@
           "reports.getYammerGroupsActivityDetail"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "reports.0-InvokeGetYammerGroupsActivityDetail",
+        "operationId": "reports.0-GetYammerGroupsActivityDetail",
         "parameters": [
           {
             "name": "date",
@@ -11358,7 +11358,7 @@
           "reports.getYammerGroupsActivityDetail"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
-        "operationId": "reports.1-InvokeGetYammerGroupsActivityDetail",
+        "operationId": "reports.1-GetYammerGroupsActivityDetail",
         "parameters": [
           {
             "name": "period",
@@ -11395,7 +11395,7 @@
           "reports.getYammerGroupsActivityGroupCounts"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
-        "operationId": "reports.0-InvokeGetYammerGroupsActivityGroupCounts",
+        "operationId": "reports.0-GetYammerGroupsActivityGroupCounts",
         "parameters": [
           {
             "name": "period",
@@ -11429,7 +11429,7 @@
           "reports.getYammerGroupsActivityCounts"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
-        "operationId": "reports.0-InvokeGetYammerGroupsActivityCounts",
+        "operationId": "reports.0-GetYammerGroupsActivityCounts",
         "parameters": [
           {
             "name": "period",

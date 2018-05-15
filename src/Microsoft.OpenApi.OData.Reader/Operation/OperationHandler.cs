@@ -149,9 +149,13 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         // Type = param.Type
                     },
-                    Required = param.Required ?? false,
-                    Example = new OpenApiString(param.DocumentationURL)
+                    Required = param.Required ?? false
                 };
+
+                if (param.DocumentationURL != null)
+                {
+                    parameter.Example = new OpenApiString(param.DocumentationURL?? "N/A");
+                }
 
                 if (param.ExampleValues != null)
                 {
@@ -167,12 +171,12 @@ namespace Microsoft.OpenApi.OData.Operation
                         if (example is ExternalExample)
                         {
                             var externalExample = (ExternalExample)example;
-                            ex.Value = new OpenApiString(externalExample.ExternalValue);
+                            ex.Value = new OpenApiString(externalExample.ExternalValue ?? "N/A");
                         }
                         else
                         {
                             var inlineExample = (InlineExample)example;
-                            ex.Value = new OpenApiString(inlineExample.InlineValue);
+                            ex.Value = new OpenApiString(inlineExample.InlineValue ?? "N/A");
                         }
 
                         parameter.Examples.Add("example-" + index++, ex);

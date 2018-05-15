@@ -52,13 +52,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj">
       <Project>{ff3acd93-19e0-486c-9c0f-fa1c2e7fc8c2}</Project>
       <Name>Microsoft.OpenApi.OData.Reader</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
