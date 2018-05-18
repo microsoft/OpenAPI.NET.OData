@@ -70,7 +70,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                     else
                     {
-                        if (items.Count >= Context.Settings.TagDepth)
+                        if (items.Count >= Context.Settings.TagDepth - 1)
                         {
                             items.Add(npSegment.NavigationProperty.ToEntityType().Name);
                             break;
