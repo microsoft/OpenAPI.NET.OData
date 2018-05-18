@@ -57,20 +57,32 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 NavigationSource.Name
             };
+
             foreach (var segment in Path.Segments.Skip(1))
             {
                 if (segment is ODataNavigationPropertySegment)
                 {
-                    ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
+                    ODataNavigationPropertySegment npSegment = (ODataNavigationPropertySegment)segment;
                     if (npSegment.NavigationProperty == NavigationProperty)
                     {
-                        continue;
+                        items.Add(NavigationProperty.ToEntityType().Name);
+                        break;
                     }
-
-                    items.Add(segment.Name);
+                    else
+                    {
+                        if (items.Count >= Context.Settings.TagDepth)
+                        {
+                            items.Add(npSegment.NavigationProperty.ToEntityType().Name);
+                            break;
+                        }
+                        else
+                        {
+                            items.Add(segment.Name);
+                        }
+                    }
                 }
             }
-            items.Add(NavigationProperty.ToEntityType().Name);
+            
             string name = string.Join(".", items);
             OpenApiTag tag = new OpenApiTag
             {

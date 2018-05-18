@@ -63,6 +63,11 @@ namespace Microsoft.OpenApi.OData
         public int NavigationPropertyDepth { get; set; } = 0;
 
         /// <summary>
+        /// Gets/set a value indicating the tags name depth.
+        /// </summary>
+        public int TagDepth { get; set; } = 4;
+
+        /// <summary>
         /// Gets/set a value indicating whether we count key segment as a depth.
         /// </summary>
         public bool CountKeySegmentAsDepth { get; set; } = true;

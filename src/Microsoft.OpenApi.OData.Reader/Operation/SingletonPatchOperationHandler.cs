@@ -35,7 +35,8 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.OperationId)
             {
-                operation.OperationId = Singleton.Name + ".Singleton-Update" + Utils.UpperFirstChar(Singleton.EntityType().Name);
+                string typeName = Singleton.EntityType().Name;
+                operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
             }
         }
 
