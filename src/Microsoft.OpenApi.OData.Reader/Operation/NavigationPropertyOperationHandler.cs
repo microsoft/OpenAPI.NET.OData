@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,6 +94,33 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
+        }
+
+        protected string GetOperationId(string prefix)
+        {
+            IList<string> items = new List<string>
+            {
+                NavigationSource.Name
+            };
+
+            foreach (var segment in Path.Segments.Skip(1))
+            {
+                if (segment is ODataNavigationPropertySegment)
+                {
+                    ODataNavigationPropertySegment npSegment = (ODataNavigationPropertySegment)segment;
+                    if (npSegment.NavigationProperty == NavigationProperty)
+                    {
+                        items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name));
+                        break;
+                    }
+                    else
+                    {
+                        items.Add(segment.Name);
+                    }
+                }
+            }
+
+            return string.Join(".", items);
         }
     }
 }

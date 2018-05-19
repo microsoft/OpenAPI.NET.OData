@@ -148,7 +148,7 @@ paths:
   /directoryObjects/microsoft.graph.getByIds:
     post:
       tags:
-        - directoryObjects.getByIds
+        - directoryObjects.Actions
       summary: Invoke action getByIds
       operationId: directoryObjects.0-GetByIds
       consumes:
@@ -177,7 +177,7 @@ paths:
   /directoryObjects/microsoft.graph.user/microsoft.graph.delta():
     get:
       tags:
-        - directoryObjects.delta
+        - directoryObjects.Functions
       summary: Invoke function delta
       operationId: directoryObjects.0-Delta
       produces:
@@ -195,7 +195,7 @@ paths:
   /directoryObjects/microsoft.graph.group/microsoft.graph.delta():
     get:
       tags:
-        - directoryObjects.delta
+        - directoryObjects.Functions
       summary: Invoke function delta
       operationId: directoryObjects.1-Delta
       produces:
@@ -213,7 +213,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.checkMemberGroups':
     post:
       tags:
-        - directoryObjects.checkMemberGroups
+        - directoryObjects.Actions
       summary: Invoke action checkMemberGroups
       operationId: directoryObjects.0-CheckMemberGroups
       consumes:
@@ -243,7 +243,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.getMemberGroups':
     post:
       tags:
-        - directoryObjects.getMemberGroups
+        - directoryObjects.Actions
       summary: Invoke action getMemberGroups
       operationId: directoryObjects.0-GetMemberGroups
       consumes:
@@ -272,7 +272,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.getMemberObjects':
     post:
       tags:
-        - directoryObjects.getMemberObjects
+        - directoryObjects.Actions
       summary: Invoke action getMemberObjects
       operationId: directoryObjects.0-GetMemberObjects
       consumes:
@@ -301,7 +301,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense':
     post:
       tags:
-        - directoryObjects.assignLicense
+        - directoryObjects.Actions
       summary: Invoke action assignLicense
       operationId: directoryObjects.0-AssignLicense
       consumes:
@@ -337,7 +337,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.changePassword':
     post:
       tags:
-        - directoryObjects.changePassword
+        - directoryObjects.Actions
       summary: Invoke action changePassword
       operationId: directoryObjects.0-ChangePassword
       consumes:
@@ -367,7 +367,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail':
     post:
       tags:
-        - directoryObjects.sendMail
+        - directoryObjects.Actions
       summary: Invoke action sendMail
       operationId: directoryObjects.0-SendMail
       consumes:
@@ -398,7 +398,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes':
     post:
       tags:
-        - directoryObjects.findMeetingTimes
+        - directoryObjects.Actions
       summary: Invoke action findMeetingTimes
       operationId: directoryObjects.0-FindMeetingTimes
       consumes:
@@ -446,7 +446,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})':
     get:
       tags:
-        - directoryObjects.reminderView
+        - directoryObjects.Functions
       summary: Invoke function reminderView
       operationId: directoryObjects.0-ReminderView
       produces:
@@ -477,7 +477,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail':
     post:
       tags:
-        - directoryObjects.subscribeByMail
+        - directoryObjects.Actions
       summary: Invoke action subscribeByMail
       operationId: directoryObjects.0-SubscribeByMail
       parameters:
@@ -494,7 +494,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail':
     post:
       tags:
-        - directoryObjects.unsubscribeByMail
+        - directoryObjects.Actions
       summary: Invoke action unsubscribeByMail
       operationId: directoryObjects.0-UnsubscribeByMail
       parameters:
@@ -511,7 +511,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite':
     post:
       tags:
-        - directoryObjects.addFavorite
+        - directoryObjects.Actions
       summary: Invoke action addFavorite
       operationId: directoryObjects.0-AddFavorite
       parameters:
@@ -528,7 +528,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite':
     post:
       tags:
-        - directoryObjects.removeFavorite
+        - directoryObjects.Actions
       summary: Invoke action removeFavorite
       operationId: directoryObjects.0-RemoveFavorite
       parameters:
@@ -545,7 +545,7 @@ paths:
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount':
     post:
       tags:
-        - directoryObjects.resetUnseenCount
+        - directoryObjects.Actions
       summary: Invoke action resetUnseenCount
       operationId: directoryObjects.0-ResetUnseenCount
       parameters:
@@ -957,7 +957,7 @@ paths:
   '/domains/{id}/microsoft.graph.verify':
     post:
       tags:
-        - domains.verify
+        - domains.Actions
       summary: Invoke action verify
       operationId: domains.0-Verify
       parameters:
@@ -1363,7 +1363,7 @@ paths:
   /groups/microsoft.graph.delta():
     get:
       tags:
-        - groups.delta
+        - groups.Functions
       summary: Invoke function delta
       operationId: groups.0-Delta
       produces:
@@ -1379,7 +1379,7 @@ paths:
   '/groups/{id}/microsoft.graph.subscribeByMail':
     post:
       tags:
-        - groups.subscribeByMail
+        - groups.Actions
       summary: Invoke action subscribeByMail
       operationId: groups.0-SubscribeByMail
       parameters:
@@ -1396,7 +1396,7 @@ paths:
   '/groups/{id}/microsoft.graph.unsubscribeByMail':
     post:
       tags:
-        - groups.unsubscribeByMail
+        - groups.Actions
       summary: Invoke action unsubscribeByMail
       operationId: groups.0-UnsubscribeByMail
       parameters:
@@ -1413,7 +1413,7 @@ paths:
   '/groups/{id}/microsoft.graph.addFavorite':
     post:
       tags:
-        - groups.addFavorite
+        - groups.Actions
       summary: Invoke action addFavorite
       operationId: groups.0-AddFavorite
       parameters:
@@ -1430,7 +1430,7 @@ paths:
   '/groups/{id}/microsoft.graph.removeFavorite':
     post:
       tags:
-        - groups.removeFavorite
+        - groups.Actions
       summary: Invoke action removeFavorite
       operationId: groups.0-RemoveFavorite
       parameters:
@@ -1447,7 +1447,7 @@ paths:
   '/groups/{id}/microsoft.graph.resetUnseenCount':
     post:
       tags:
-        - groups.resetUnseenCount
+        - groups.Actions
       summary: Invoke action resetUnseenCount
       operationId: groups.0-ResetUnseenCount
       parameters:
@@ -2755,7 +2755,7 @@ paths:
   /users/microsoft.graph.delta():
     get:
       tags:
-        - users.delta
+        - users.Functions
       summary: Invoke function delta
       operationId: users.0-Delta
       produces:
@@ -2771,7 +2771,7 @@ paths:
   '/users/{id}/microsoft.graph.assignLicense':
     post:
       tags:
-        - users.assignLicense
+        - users.Actions
       summary: Invoke action assignLicense
       operationId: users.0-AssignLicense
       consumes:
@@ -2807,7 +2807,7 @@ paths:
   '/users/{id}/microsoft.graph.changePassword':
     post:
       tags:
-        - users.changePassword
+        - users.Actions
       summary: Invoke action changePassword
       operationId: users.0-ChangePassword
       consumes:
@@ -2837,7 +2837,7 @@ paths:
   '/users/{id}/microsoft.graph.sendMail':
     post:
       tags:
-        - users.sendMail
+        - users.Actions
       summary: Invoke action sendMail
       operationId: users.0-SendMail
       consumes:
@@ -2868,7 +2868,7 @@ paths:
   '/users/{id}/microsoft.graph.findMeetingTimes':
     post:
       tags:
-        - users.findMeetingTimes
+        - users.Actions
       summary: Invoke action findMeetingTimes
       operationId: users.0-FindMeetingTimes
       consumes:
@@ -2916,7 +2916,7 @@ paths:
   '/users/{id}/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})':
     get:
       tags:
-        - users.reminderView
+        - users.Functions
       summary: Invoke function reminderView
       operationId: users.0-ReminderView
       produces:
@@ -3500,7 +3500,7 @@ paths:
   '/drives/{id}/microsoft.graph.recent()':
     get:
       tags:
-        - drives.recent
+        - drives.Functions
       summary: Invoke function recent
       operationId: drives.0-Recent
       produces:
@@ -3522,7 +3522,7 @@ paths:
   '/drives/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
-        - drives.search
+        - drives.Functions
       summary: Invoke function search
       operationId: drives.0-Search
       produces:
@@ -3548,7 +3548,7 @@ paths:
   '/drives/{id}/microsoft.graph.sharedWithMe()':
     get:
       tags:
-        - drives.sharedWithMe
+        - drives.Functions
       summary: Invoke function sharedWithMe
       operationId: drives.0-SharedWithMe
       produces:
@@ -4010,7 +4010,7 @@ paths:
   '/sites/{id}/microsoft.graph.getByPath(path={path})':
     get:
       tags:
-        - sites.getByPath
+        - sites.Functions
       summary: Invoke function getByPath
       operationId: sites.0-GetByPath
       produces:
@@ -4320,7 +4320,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.delta(token={token})':
     get:
       tags:
-        - workbooks.delta
+        - workbooks.Functions
       summary: Invoke function delta
       operationId: workbooks.0-Delta
       produces:
@@ -4348,7 +4348,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.delta()':
     get:
       tags:
-        - workbooks.delta
+        - workbooks.Functions
       summary: Invoke function delta
       operationId: workbooks.1-Delta
       produces:
@@ -4372,7 +4372,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
-        - workbooks.search
+        - workbooks.Functions
       summary: Invoke function search
       operationId: workbooks.0-Search
       produces:
@@ -4398,7 +4398,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.copy':
     post:
       tags:
-        - workbooks.copy
+        - workbooks.Actions
       summary: Invoke action copy
       operationId: workbooks.0-Copy
       consumes:
@@ -4427,7 +4427,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.createLink':
     post:
       tags:
-        - workbooks.createLink
+        - workbooks.Actions
       summary: Invoke action createLink
       operationId: workbooks.0-CreateLink
       consumes:
@@ -4457,7 +4457,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.createUploadSession':
     post:
       tags:
-        - workbooks.createUploadSession
+        - workbooks.Actions
       summary: Invoke action createUploadSession
       operationId: workbooks.0-CreateUploadSession
       consumes:
@@ -4484,7 +4484,7 @@ paths:
   '/workbooks/{id}/microsoft.graph.invite':
     post:
       tags:
-        - workbooks.invite
+        - workbooks.Actions
       summary: Invoke action invite
       operationId: workbooks.0-Invite
       consumes:
@@ -4939,7 +4939,7 @@ paths:
   /me/microsoft.graph.assignLicense:
     post:
       tags:
-        - me.assignLicense
+        - me.Actions
       summary: Invoke action assignLicense
       operationId: me.0-AssignLicense
       consumes:
@@ -4970,7 +4970,7 @@ paths:
   /me/microsoft.graph.changePassword:
     post:
       tags:
-        - me.changePassword
+        - me.Actions
       summary: Invoke action changePassword
       operationId: me.0-ChangePassword
       consumes:
@@ -4995,7 +4995,7 @@ paths:
   /me/microsoft.graph.sendMail:
     post:
       tags:
-        - me.sendMail
+        - me.Actions
       summary: Invoke action sendMail
       operationId: me.0-SendMail
       consumes:
@@ -5021,7 +5021,7 @@ paths:
   /me/microsoft.graph.findMeetingTimes:
     post:
       tags:
-        - me.findMeetingTimes
+        - me.Actions
       summary: Invoke action findMeetingTimes
       operationId: me.0-FindMeetingTimes
       consumes:
@@ -5064,7 +5064,7 @@ paths:
   '/me/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})':
     get:
       tags:
-        - me.reminderView
+        - me.Functions
       summary: Invoke function reminderView
       operationId: me.0-ReminderView
       produces:
@@ -5161,7 +5161,7 @@ paths:
   /drive/microsoft.graph.recent():
     get:
       tags:
-        - drive.recent
+        - drive.Functions
       summary: Invoke function recent
       operationId: drive.0-Recent
       produces:
@@ -5177,7 +5177,7 @@ paths:
   '/drive/microsoft.graph.search(q={q})':
     get:
       tags:
-        - drive.search
+        - drive.Functions
       summary: Invoke function search
       operationId: drive.0-Search
       produces:
@@ -5198,7 +5198,7 @@ paths:
   /drive/microsoft.graph.sharedWithMe():
     get:
       tags:
-        - drive.sharedWithMe
+        - drive.Functions
       summary: Invoke function sharedWithMe
       operationId: drive.0-SharedWithMe
       produces:
@@ -5319,7 +5319,7 @@ paths:
   /reports/microsoft.graph.getOffice365ActivationsUserDetail():
     get:
       tags:
-        - reports.getOffice365ActivationsUserDetail
+        - reports.Functions
       summary: Invoke function getOffice365ActivationsUserDetail
       operationId: reports.0-GetOffice365ActivationsUserDetail
       produces:
@@ -5334,7 +5334,7 @@ paths:
   /reports/microsoft.graph.getOffice365ActivationCounts():
     get:
       tags:
-        - reports.getOffice365ActivationCounts
+        - reports.Functions
       summary: Invoke function getOffice365ActivationCounts
       operationId: reports.0-GetOffice365ActivationCounts
       produces:
@@ -5349,7 +5349,7 @@ paths:
   /reports/microsoft.graph.getOffice365ActivationsUserCounts():
     get:
       tags:
-        - reports.getOffice365ActivationsUserCounts
+        - reports.Functions
       summary: Invoke function getOffice365ActivationsUserCounts
       operationId: reports.0-GetOffice365ActivationsUserCounts
       produces:
@@ -5364,7 +5364,7 @@ paths:
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})':
     get:
       tags:
-        - reports.getOffice365ActiveUserDetail
+        - reports.Functions
       summary: Invoke function getOffice365ActiveUserDetail
       operationId: reports.0-GetOffice365ActiveUserDetail
       produces:
@@ -5388,7 +5388,7 @@ paths:
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})':
     get:
       tags:
-        - reports.getOffice365ActiveUserDetail
+        - reports.Functions
       summary: Invoke function getOffice365ActiveUserDetail
       operationId: reports.1-GetOffice365ActiveUserDetail
       produces:
@@ -5410,7 +5410,7 @@ paths:
   '/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})':
     get:
       tags:
-        - reports.getOffice365ServicesUserCounts
+        - reports.Functions
       summary: Invoke function getOffice365ServicesUserCounts
       operationId: reports.0-GetOffice365ServicesUserCounts
       produces:
@@ -5430,7 +5430,7 @@ paths:
   '/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})':
     get:
       tags:
-        - reports.getOffice365ActiveUserCounts
+        - reports.Functions
       summary: Invoke function getOffice365ActiveUserCounts
       operationId: reports.0-GetOffice365ActiveUserCounts
       produces:
@@ -5450,7 +5450,7 @@ paths:
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})':
     get:
       tags:
-        - reports.getOffice365GroupsActivityDetail
+        - reports.Functions
       summary: Invoke function getOffice365GroupsActivityDetail
       operationId: reports.0-GetOffice365GroupsActivityDetail
       produces:
@@ -5474,7 +5474,7 @@ paths:
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})':
     get:
       tags:
-        - reports.getOffice365GroupsActivityDetail
+        - reports.Functions
       summary: Invoke function getOffice365GroupsActivityDetail
       operationId: reports.1-GetOffice365GroupsActivityDetail
       produces:
@@ -5496,7 +5496,7 @@ paths:
   '/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})':
     get:
       tags:
-        - reports.getOffice365GroupsActivityCounts
+        - reports.Functions
       summary: Invoke function getOffice365GroupsActivityCounts
       operationId: reports.0-GetOffice365GroupsActivityCounts
       produces:
@@ -5516,7 +5516,7 @@ paths:
   '/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})':
     get:
       tags:
-        - reports.getOffice365GroupsActivityGroupCounts
+        - reports.Functions
       summary: Invoke function getOffice365GroupsActivityGroupCounts
       operationId: reports.0-GetOffice365GroupsActivityGroupCounts
       produces:
@@ -5536,7 +5536,7 @@ paths:
   '/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})':
     get:
       tags:
-        - reports.getOffice365GroupsActivityStorage
+        - reports.Functions
       summary: Invoke function getOffice365GroupsActivityStorage
       operationId: reports.0-GetOffice365GroupsActivityStorage
       produces:
@@ -5556,7 +5556,7 @@ paths:
   '/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})':
     get:
       tags:
-        - reports.getOffice365GroupsActivityFileCounts
+        - reports.Functions
       summary: Invoke function getOffice365GroupsActivityFileCounts
       operationId: reports.0-GetOffice365GroupsActivityFileCounts
       produces:
@@ -5576,7 +5576,7 @@ paths:
   '/reports/microsoft.graph.getEmailActivityUserDetail(date={date})':
     get:
       tags:
-        - reports.getEmailActivityUserDetail
+        - reports.Functions
       summary: Invoke function getEmailActivityUserDetail
       operationId: reports.0-GetEmailActivityUserDetail
       produces:
@@ -5600,7 +5600,7 @@ paths:
   '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})':
     get:
       tags:
-        - reports.getEmailActivityUserDetail
+        - reports.Functions
       summary: Invoke function getEmailActivityUserDetail
       operationId: reports.1-GetEmailActivityUserDetail
       produces:
@@ -5622,7 +5622,7 @@ paths:
   '/reports/microsoft.graph.getEmailActivityCounts(period={period})':
     get:
       tags:
-        - reports.getEmailActivityCounts
+        - reports.Functions
       summary: Invoke function getEmailActivityCounts
       operationId: reports.0-GetEmailActivityCounts
       produces:
@@ -5642,7 +5642,7 @@ paths:
   '/reports/microsoft.graph.getEmailActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getEmailActivityUserCounts
+        - reports.Functions
       summary: Invoke function getEmailActivityUserCounts
       operationId: reports.0-GetEmailActivityUserCounts
       produces:
@@ -5662,7 +5662,7 @@ paths:
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})':
     get:
       tags:
-        - reports.getEmailAppUsageUserDetail
+        - reports.Functions
       summary: Invoke function getEmailAppUsageUserDetail
       operationId: reports.0-GetEmailAppUsageUserDetail
       produces:
@@ -5686,7 +5686,7 @@ paths:
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})':
     get:
       tags:
-        - reports.getEmailAppUsageUserDetail
+        - reports.Functions
       summary: Invoke function getEmailAppUsageUserDetail
       operationId: reports.1-GetEmailAppUsageUserDetail
       produces:
@@ -5708,7 +5708,7 @@ paths:
   '/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})':
     get:
       tags:
-        - reports.getEmailAppUsageAppsUserCounts
+        - reports.Functions
       summary: Invoke function getEmailAppUsageAppsUserCounts
       operationId: reports.0-GetEmailAppUsageAppsUserCounts
       produces:
@@ -5728,7 +5728,7 @@ paths:
   '/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})':
     get:
       tags:
-        - reports.getEmailAppUsageUserCounts
+        - reports.Functions
       summary: Invoke function getEmailAppUsageUserCounts
       operationId: reports.0-GetEmailAppUsageUserCounts
       produces:
@@ -5748,7 +5748,7 @@ paths:
   '/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})':
     get:
       tags:
-        - reports.getEmailAppUsageVersionsUserCounts
+        - reports.Functions
       summary: Invoke function getEmailAppUsageVersionsUserCounts
       operationId: reports.0-GetEmailAppUsageVersionsUserCounts
       produces:
@@ -5768,7 +5768,7 @@ paths:
   '/reports/microsoft.graph.getMailboxUsageDetail(period={period})':
     get:
       tags:
-        - reports.getMailboxUsageDetail
+        - reports.Functions
       summary: Invoke function getMailboxUsageDetail
       operationId: reports.0-GetMailboxUsageDetail
       produces:
@@ -5788,7 +5788,7 @@ paths:
   '/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})':
     get:
       tags:
-        - reports.getMailboxUsageMailboxCounts
+        - reports.Functions
       summary: Invoke function getMailboxUsageMailboxCounts
       operationId: reports.0-GetMailboxUsageMailboxCounts
       produces:
@@ -5808,7 +5808,7 @@ paths:
   '/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})':
     get:
       tags:
-        - reports.getMailboxUsageQuotaStatusMailboxCounts
+        - reports.Functions
       summary: Invoke function getMailboxUsageQuotaStatusMailboxCounts
       operationId: reports.0-GetMailboxUsageQuotaStatusMailboxCounts
       produces:
@@ -5828,7 +5828,7 @@ paths:
   '/reports/microsoft.graph.getMailboxUsageStorage(period={period})':
     get:
       tags:
-        - reports.getMailboxUsageStorage
+        - reports.Functions
       summary: Invoke function getMailboxUsageStorage
       operationId: reports.0-GetMailboxUsageStorage
       produces:
@@ -5848,7 +5848,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})':
     get:
       tags:
-        - reports.getOneDriveActivityUserDetail
+        - reports.Functions
       summary: Invoke function getOneDriveActivityUserDetail
       operationId: reports.0-GetOneDriveActivityUserDetail
       produces:
@@ -5872,7 +5872,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})':
     get:
       tags:
-        - reports.getOneDriveActivityUserDetail
+        - reports.Functions
       summary: Invoke function getOneDriveActivityUserDetail
       operationId: reports.1-GetOneDriveActivityUserDetail
       produces:
@@ -5894,7 +5894,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getOneDriveActivityUserCounts
+        - reports.Functions
       summary: Invoke function getOneDriveActivityUserCounts
       operationId: reports.0-GetOneDriveActivityUserCounts
       produces:
@@ -5914,7 +5914,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})':
     get:
       tags:
-        - reports.getOneDriveActivityFileCounts
+        - reports.Functions
       summary: Invoke function getOneDriveActivityFileCounts
       operationId: reports.0-GetOneDriveActivityFileCounts
       produces:
@@ -5934,7 +5934,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})':
     get:
       tags:
-        - reports.getOneDriveUsageAccountDetail
+        - reports.Functions
       summary: Invoke function getOneDriveUsageAccountDetail
       operationId: reports.0-GetOneDriveUsageAccountDetail
       produces:
@@ -5958,7 +5958,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})':
     get:
       tags:
-        - reports.getOneDriveUsageAccountDetail
+        - reports.Functions
       summary: Invoke function getOneDriveUsageAccountDetail
       operationId: reports.1-GetOneDriveUsageAccountDetail
       produces:
@@ -5980,7 +5980,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})':
     get:
       tags:
-        - reports.getOneDriveUsageAccountCounts
+        - reports.Functions
       summary: Invoke function getOneDriveUsageAccountCounts
       operationId: reports.0-GetOneDriveUsageAccountCounts
       produces:
@@ -6000,7 +6000,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})':
     get:
       tags:
-        - reports.getOneDriveUsageFileCounts
+        - reports.Functions
       summary: Invoke function getOneDriveUsageFileCounts
       operationId: reports.0-GetOneDriveUsageFileCounts
       produces:
@@ -6020,7 +6020,7 @@ paths:
   '/reports/microsoft.graph.getOneDriveUsageStorage(period={period})':
     get:
       tags:
-        - reports.getOneDriveUsageStorage
+        - reports.Functions
       summary: Invoke function getOneDriveUsageStorage
       operationId: reports.0-GetOneDriveUsageStorage
       produces:
@@ -6040,7 +6040,7 @@ paths:
   '/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})':
     get:
       tags:
-        - reports.getSharePointActivityUserDetail
+        - reports.Functions
       summary: Invoke function getSharePointActivityUserDetail
       operationId: reports.0-GetSharePointActivityUserDetail
       produces:
@@ -6064,7 +6064,7 @@ paths:
   '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})':
     get:
       tags:
-        - reports.getSharePointActivityUserDetail
+        - reports.Functions
       summary: Invoke function getSharePointActivityUserDetail
       operationId: reports.1-GetSharePointActivityUserDetail
       produces:
@@ -6086,7 +6086,7 @@ paths:
   '/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})':
     get:
       tags:
-        - reports.getSharePointActivityFileCounts
+        - reports.Functions
       summary: Invoke function getSharePointActivityFileCounts
       operationId: reports.0-GetSharePointActivityFileCounts
       produces:
@@ -6106,7 +6106,7 @@ paths:
   '/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getSharePointActivityUserCounts
+        - reports.Functions
       summary: Invoke function getSharePointActivityUserCounts
       operationId: reports.0-GetSharePointActivityUserCounts
       produces:
@@ -6126,7 +6126,7 @@ paths:
   '/reports/microsoft.graph.getSharePointActivityPages(period={period})':
     get:
       tags:
-        - reports.getSharePointActivityPages
+        - reports.Functions
       summary: Invoke function getSharePointActivityPages
       operationId: reports.0-GetSharePointActivityPages
       produces:
@@ -6146,7 +6146,7 @@ paths:
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})':
     get:
       tags:
-        - reports.getSharePointSiteUsageDetail
+        - reports.Functions
       summary: Invoke function getSharePointSiteUsageDetail
       operationId: reports.0-GetSharePointSiteUsageDetail
       produces:
@@ -6170,7 +6170,7 @@ paths:
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})':
     get:
       tags:
-        - reports.getSharePointSiteUsageDetail
+        - reports.Functions
       summary: Invoke function getSharePointSiteUsageDetail
       operationId: reports.1-GetSharePointSiteUsageDetail
       produces:
@@ -6192,7 +6192,7 @@ paths:
   '/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})':
     get:
       tags:
-        - reports.getSharePointSiteUsageFileCounts
+        - reports.Functions
       summary: Invoke function getSharePointSiteUsageFileCounts
       operationId: reports.0-GetSharePointSiteUsageFileCounts
       produces:
@@ -6212,7 +6212,7 @@ paths:
   '/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})':
     get:
       tags:
-        - reports.getSharePointSiteUsageSiteCounts
+        - reports.Functions
       summary: Invoke function getSharePointSiteUsageSiteCounts
       operationId: reports.0-GetSharePointSiteUsageSiteCounts
       produces:
@@ -6232,7 +6232,7 @@ paths:
   '/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})':
     get:
       tags:
-        - reports.getSharePointSiteUsageStorage
+        - reports.Functions
       summary: Invoke function getSharePointSiteUsageStorage
       operationId: reports.0-GetSharePointSiteUsageStorage
       produces:
@@ -6252,7 +6252,7 @@ paths:
   '/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})':
     get:
       tags:
-        - reports.getSharePointSiteUsagePages
+        - reports.Functions
       summary: Invoke function getSharePointSiteUsagePages
       operationId: reports.0-GetSharePointSiteUsagePages
       produces:
@@ -6272,7 +6272,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})':
     get:
       tags:
-        - reports.getSkypeForBusinessActivityUserDetail
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessActivityUserDetail
       operationId: reports.0-GetSkypeForBusinessActivityUserDetail
       produces:
@@ -6296,7 +6296,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessActivityUserDetail
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessActivityUserDetail
       operationId: reports.1-GetSkypeForBusinessActivityUserDetail
       produces:
@@ -6318,7 +6318,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessActivityCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessActivityCounts
       operationId: reports.0-GetSkypeForBusinessActivityCounts
       produces:
@@ -6338,7 +6338,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessActivityUserCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessActivityUserCounts
       operationId: reports.0-GetSkypeForBusinessActivityUserCounts
       produces:
@@ -6358,7 +6358,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessPeerToPeerActivityCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityCounts
       operationId: reports.0-GetSkypeForBusinessPeerToPeerActivityCounts
       produces:
@@ -6378,7 +6378,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessPeerToPeerActivityUserCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts
       operationId: reports.0-GetSkypeForBusinessPeerToPeerActivityUserCounts
       produces:
@@ -6398,7 +6398,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts
       operationId: reports.0-GetSkypeForBusinessPeerToPeerActivityMinuteCounts
       produces:
@@ -6418,7 +6418,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessOrganizerActivityCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessOrganizerActivityCounts
       operationId: reports.0-GetSkypeForBusinessOrganizerActivityCounts
       produces:
@@ -6438,7 +6438,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessOrganizerActivityUserCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessOrganizerActivityUserCounts
       operationId: reports.0-GetSkypeForBusinessOrganizerActivityUserCounts
       produces:
@@ -6458,7 +6458,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessOrganizerActivityMinuteCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts
       operationId: reports.0-GetSkypeForBusinessOrganizerActivityMinuteCounts
       produces:
@@ -6478,7 +6478,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessParticipantActivityCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessParticipantActivityCounts
       operationId: reports.0-GetSkypeForBusinessParticipantActivityCounts
       produces:
@@ -6498,7 +6498,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessParticipantActivityUserCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessParticipantActivityUserCounts
       operationId: reports.0-GetSkypeForBusinessParticipantActivityUserCounts
       produces:
@@ -6518,7 +6518,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessParticipantActivityMinuteCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessParticipantActivityMinuteCounts
       operationId: reports.0-GetSkypeForBusinessParticipantActivityMinuteCounts
       produces:
@@ -6538,7 +6538,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})':
     get:
       tags:
-        - reports.getSkypeForBusinessDeviceUsageUserDetail
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
       operationId: reports.0-GetSkypeForBusinessDeviceUsageUserDetail
       produces:
@@ -6562,7 +6562,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessDeviceUsageUserDetail
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessDeviceUsageUserDetail
       operationId: reports.1-GetSkypeForBusinessDeviceUsageUserDetail
       produces:
@@ -6584,7 +6584,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessDeviceUsageDistributionUserCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts
       operationId: reports.0-GetSkypeForBusinessDeviceUsageDistributionUserCounts
       produces:
@@ -6604,7 +6604,7 @@ paths:
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})':
     get:
       tags:
-        - reports.getSkypeForBusinessDeviceUsageUserCounts
+        - reports.Functions
       summary: Invoke function getSkypeForBusinessDeviceUsageUserCounts
       operationId: reports.0-GetSkypeForBusinessDeviceUsageUserCounts
       produces:
@@ -6624,7 +6624,7 @@ paths:
   '/reports/microsoft.graph.getYammerActivityUserDetail(date={date})':
     get:
       tags:
-        - reports.getYammerActivityUserDetail
+        - reports.Functions
       summary: Invoke function getYammerActivityUserDetail
       operationId: reports.0-GetYammerActivityUserDetail
       produces:
@@ -6648,7 +6648,7 @@ paths:
   '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})':
     get:
       tags:
-        - reports.getYammerActivityUserDetail
+        - reports.Functions
       summary: Invoke function getYammerActivityUserDetail
       operationId: reports.1-GetYammerActivityUserDetail
       produces:
@@ -6670,7 +6670,7 @@ paths:
   '/reports/microsoft.graph.getYammerActivityCounts(period={period})':
     get:
       tags:
-        - reports.getYammerActivityCounts
+        - reports.Functions
       summary: Invoke function getYammerActivityCounts
       operationId: reports.0-GetYammerActivityCounts
       produces:
@@ -6690,7 +6690,7 @@ paths:
   '/reports/microsoft.graph.getYammerActivityUserCounts(period={period})':
     get:
       tags:
-        - reports.getYammerActivityUserCounts
+        - reports.Functions
       summary: Invoke function getYammerActivityUserCounts
       operationId: reports.0-GetYammerActivityUserCounts
       produces:
@@ -6710,7 +6710,7 @@ paths:
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})':
     get:
       tags:
-        - reports.getYammerDeviceUsageUserDetail
+        - reports.Functions
       summary: Invoke function getYammerDeviceUsageUserDetail
       operationId: reports.0-GetYammerDeviceUsageUserDetail
       produces:
@@ -6734,7 +6734,7 @@ paths:
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})':
     get:
       tags:
-        - reports.getYammerDeviceUsageUserDetail
+        - reports.Functions
       summary: Invoke function getYammerDeviceUsageUserDetail
       operationId: reports.1-GetYammerDeviceUsageUserDetail
       produces:
@@ -6756,7 +6756,7 @@ paths:
   '/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
-        - reports.getYammerDeviceUsageDistributionUserCounts
+        - reports.Functions
       summary: Invoke function getYammerDeviceUsageDistributionUserCounts
       operationId: reports.0-GetYammerDeviceUsageDistributionUserCounts
       produces:
@@ -6776,7 +6776,7 @@ paths:
   '/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})':
     get:
       tags:
-        - reports.getYammerDeviceUsageUserCounts
+        - reports.Functions
       summary: Invoke function getYammerDeviceUsageUserCounts
       operationId: reports.0-GetYammerDeviceUsageUserCounts
       produces:
@@ -6796,7 +6796,7 @@ paths:
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})':
     get:
       tags:
-        - reports.getYammerGroupsActivityDetail
+        - reports.Functions
       summary: Invoke function getYammerGroupsActivityDetail
       operationId: reports.0-GetYammerGroupsActivityDetail
       produces:
@@ -6820,7 +6820,7 @@ paths:
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})':
     get:
       tags:
-        - reports.getYammerGroupsActivityDetail
+        - reports.Functions
       summary: Invoke function getYammerGroupsActivityDetail
       operationId: reports.1-GetYammerGroupsActivityDetail
       produces:
@@ -6842,7 +6842,7 @@ paths:
   '/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})':
     get:
       tags:
-        - reports.getYammerGroupsActivityGroupCounts
+        - reports.Functions
       summary: Invoke function getYammerGroupsActivityGroupCounts
       operationId: reports.0-GetYammerGroupsActivityGroupCounts
       produces:
@@ -6862,7 +6862,7 @@ paths:
   '/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})':
     get:
       tags:
-        - reports.getYammerGroupsActivityCounts
+        - reports.Functions
       summary: Invoke function getYammerGroupsActivityCounts
       operationId: reports.0-GetYammerGroupsActivityCounts
       produces:
@@ -13329,57 +13329,23 @@ responses:
 tags:
   - name: directoryObjects.directoryObject
     x-ms-docs-toc-type: page
-  - name: directoryObjects.getByIds
+  - name: directoryObjects.Actions
     x-ms-docs-toc-type: container
-  - name: directoryObjects.delta
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.checkMemberGroups
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.getMemberGroups
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.getMemberObjects
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.assignLicense
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.changePassword
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.sendMail
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.findMeetingTimes
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.reminderView
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.subscribeByMail
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.unsubscribeByMail
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.addFavorite
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.removeFavorite
-    x-ms-docs-toc-type: container
-  - name: directoryObjects.resetUnseenCount
+  - name: directoryObjects.Functions
     x-ms-docs-toc-type: container
   - name: devices.device
     x-ms-docs-toc-type: page
   - name: domains.domain
     x-ms-docs-toc-type: page
-  - name: domains.verify
+  - name: domains.Actions
     x-ms-docs-toc-type: container
   - name: domainDnsRecords.domainDnsRecord
     x-ms-docs-toc-type: page
   - name: groups.group
     x-ms-docs-toc-type: page
-  - name: groups.delta
+  - name: groups.Functions
     x-ms-docs-toc-type: container
-  - name: groups.subscribeByMail
-    x-ms-docs-toc-type: container
-  - name: groups.unsubscribeByMail
-    x-ms-docs-toc-type: container
-  - name: groups.addFavorite
-    x-ms-docs-toc-type: container
-  - name: groups.removeFavorite
-    x-ms-docs-toc-type: container
-  - name: groups.resetUnseenCount
+  - name: groups.Actions
     x-ms-docs-toc-type: container
   - name: directoryRoles.directoryRole
     x-ms-docs-toc-type: page
@@ -13395,17 +13361,9 @@ tags:
     x-ms-docs-toc-type: page
   - name: users.user
     x-ms-docs-toc-type: page
-  - name: users.delta
+  - name: users.Functions
     x-ms-docs-toc-type: container
-  - name: users.assignLicense
-    x-ms-docs-toc-type: container
-  - name: users.changePassword
-    x-ms-docs-toc-type: container
-  - name: users.sendMail
-    x-ms-docs-toc-type: container
-  - name: users.findMeetingTimes
-    x-ms-docs-toc-type: container
-  - name: users.reminderView
+  - name: users.Actions
     x-ms-docs-toc-type: container
   - name: contracts.contract
     x-ms-docs-toc-type: page
@@ -13413,31 +13371,19 @@ tags:
     x-ms-docs-toc-type: page
   - name: drives.drive
     x-ms-docs-toc-type: page
-  - name: drives.recent
-    x-ms-docs-toc-type: container
-  - name: drives.search
-    x-ms-docs-toc-type: container
-  - name: drives.sharedWithMe
+  - name: drives.Functions
     x-ms-docs-toc-type: container
   - name: shares.sharedDriveItem
     x-ms-docs-toc-type: page
   - name: sites.site
     x-ms-docs-toc-type: page
-  - name: sites.getByPath
+  - name: sites.Functions
     x-ms-docs-toc-type: container
   - name: workbooks.driveItem
     x-ms-docs-toc-type: page
-  - name: workbooks.delta
+  - name: workbooks.Functions
     x-ms-docs-toc-type: container
-  - name: workbooks.search
-    x-ms-docs-toc-type: container
-  - name: workbooks.copy
-    x-ms-docs-toc-type: container
-  - name: workbooks.createLink
-    x-ms-docs-toc-type: container
-  - name: workbooks.createUploadSession
-    x-ms-docs-toc-type: container
-  - name: workbooks.invite
+  - name: workbooks.Actions
     x-ms-docs-toc-type: container
   - name: subscriptions.subscription
     x-ms-docs-toc-type: page
@@ -13445,149 +13391,17 @@ tags:
     x-ms-docs-toc-type: page
   - name: me.user
     x-ms-docs-toc-type: page
-  - name: me.assignLicense
+  - name: me.Actions
     x-ms-docs-toc-type: container
-  - name: me.changePassword
-    x-ms-docs-toc-type: container
-  - name: me.sendMail
-    x-ms-docs-toc-type: container
-  - name: me.findMeetingTimes
-    x-ms-docs-toc-type: container
-  - name: me.reminderView
+  - name: me.Functions
     x-ms-docs-toc-type: container
   - name: drive.drive
     x-ms-docs-toc-type: page
-  - name: drive.recent
-    x-ms-docs-toc-type: container
-  - name: drive.search
-    x-ms-docs-toc-type: container
-  - name: drive.sharedWithMe
+  - name: drive.Functions
     x-ms-docs-toc-type: container
   - name: planner.planner
     x-ms-docs-toc-type: page
   - name: reports.reportRoot
     x-ms-docs-toc-type: page
-  - name: reports.getOffice365ActivationsUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365ActivationCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365ActivationsUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365ActiveUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365ServicesUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365ActiveUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365GroupsActivityDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365GroupsActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365GroupsActivityGroupCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365GroupsActivityStorage
-    x-ms-docs-toc-type: container
-  - name: reports.getOffice365GroupsActivityFileCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailActivityUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailAppUsageUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailAppUsageAppsUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailAppUsageUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getEmailAppUsageVersionsUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getMailboxUsageDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getMailboxUsageMailboxCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getMailboxUsageQuotaStatusMailboxCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getMailboxUsageStorage
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveActivityUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveActivityFileCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveUsageAccountDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveUsageAccountCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveUsageFileCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getOneDriveUsageStorage
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointActivityUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointActivityFileCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointActivityPages
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointSiteUsageDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointSiteUsageFileCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointSiteUsageSiteCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointSiteUsageStorage
-    x-ms-docs-toc-type: container
-  - name: reports.getSharePointSiteUsagePages
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessActivityUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessPeerToPeerActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessPeerToPeerActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessOrganizerActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessOrganizerActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessOrganizerActivityMinuteCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessParticipantActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessParticipantActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessParticipantActivityMinuteCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessDeviceUsageUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessDeviceUsageDistributionUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getSkypeForBusinessDeviceUsageUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerActivityUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerActivityCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerActivityUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerDeviceUsageUserDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerDeviceUsageDistributionUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerDeviceUsageUserCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerGroupsActivityDetail
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerGroupsActivityGroupCounts
-    x-ms-docs-toc-type: container
-  - name: reports.getYammerGroupsActivityCounts
+  - name: reports.Functions
     x-ms-docs-toc-type: container

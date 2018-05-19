@@ -66,9 +66,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
+            string value = EdmOperation.IsAction() ? "Actions" : "Functions";
             OpenApiTag tag = new OpenApiTag
             {
-                Name = NavigationSource.Name + "." + EdmOperation.Name,
+                Name = NavigationSource.Name + "." + value,
             };
             tag.Extensions.Add("x-ms-docs-toc-type", new OpenApiString("container"));
             operation.Tags.Add(tag);

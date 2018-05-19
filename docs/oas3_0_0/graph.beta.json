@@ -535,7 +535,7 @@
     "/directoryObjects/microsoft.graph.user/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "directoryObjects.delta"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "directoryObjects.0-Delta",
@@ -572,7 +572,7 @@
     "/directoryObjects/microsoft.graph.group/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "directoryObjects.delta"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "directoryObjects.1-Delta",
@@ -609,7 +609,7 @@
     "/directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "directoryObjects.delta"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "directoryObjects.2-Delta",
@@ -646,7 +646,7 @@
     "/directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "directoryObjects.delta"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "directoryObjects.3-Delta",
@@ -683,7 +683,7 @@
     "/directoryObjects/microsoft.graph.getByIds": {
       "post": {
         "tags": [
-          "directoryObjects.getByIds"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action getByIds",
         "operationId": "directoryObjects.0-GetByIds",
@@ -726,7 +726,7 @@
     "/directoryObjects/microsoft.graph.validateProperties": {
       "post": {
         "tags": [
-          "directoryObjects.validateProperties"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action validateProperties",
         "operationId": "directoryObjects.0-ValidateProperties",
@@ -777,7 +777,7 @@
     "/directoryObjects/{id}/microsoft.graph.checkMemberGroups": {
       "post": {
         "tags": [
-          "directoryObjects.checkMemberGroups"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action checkMemberGroups",
         "operationId": "directoryObjects.0-CheckMemberGroups",
@@ -824,7 +824,7 @@
     "/directoryObjects/{id}/microsoft.graph.getMemberGroups": {
       "post": {
         "tags": [
-          "directoryObjects.getMemberGroups"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action getMemberGroups",
         "operationId": "directoryObjects.0-GetMemberGroups",
@@ -870,7 +870,7 @@
     "/directoryObjects/{id}/microsoft.graph.getMemberObjects": {
       "post": {
         "tags": [
-          "directoryObjects.getMemberObjects"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action getMemberObjects",
         "operationId": "directoryObjects.0-GetMemberObjects",
@@ -916,7 +916,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.validateProperties": {
       "post": {
         "tags": [
-          "directoryObjects.validateProperties"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action validateProperties",
         "operationId": "directoryObjects.1-ValidateProperties",
@@ -974,7 +974,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.renew": {
       "post": {
         "tags": [
-          "directoryObjects.renew"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action renew",
         "operationId": "directoryObjects.0-Renew",
@@ -1002,7 +1002,7 @@
     "/directoryObjects/{id}/microsoft.graph.restore": {
       "post": {
         "tags": [
-          "directoryObjects.restore"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action restore",
         "operationId": "directoryObjects.0-Restore",
@@ -1030,7 +1030,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense": {
       "post": {
         "tags": [
-          "directoryObjects.assignLicense"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action assignLicense",
         "operationId": "directoryObjects.0-AssignLicense",
@@ -1085,7 +1085,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.changePassword": {
       "post": {
         "tags": [
-          "directoryObjects.changePassword"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action changePassword",
         "operationId": "directoryObjects.0-ChangePassword",
@@ -1134,7 +1134,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.invalidateAllRefreshTokens": {
       "post": {
         "tags": [
-          "directoryObjects.invalidateAllRefreshTokens"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
         "operationId": "directoryObjects.0-InvalidateAllRefreshTokens",
@@ -1162,7 +1162,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail": {
       "post": {
         "tags": [
-          "directoryObjects.sendMail"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action sendMail",
         "operationId": "directoryObjects.0-SendMail",
@@ -1211,7 +1211,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimesOLD": {
       "post": {
         "tags": [
-          "directoryObjects.findMeetingTimesOLD"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
         "operationId": "directoryObjects.0-FindMeetingTimesOLD",
@@ -1302,7 +1302,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes": {
       "post": {
         "tags": [
-          "directoryObjects.findMeetingTimes"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action findMeetingTimes",
         "operationId": "directoryObjects.0-FindMeetingTimes",
@@ -1412,7 +1412,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getMailTips": {
       "post": {
         "tags": [
-          "directoryObjects.getMailTips"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action getMailTips",
         "operationId": "directoryObjects.0-GetMailTips",
@@ -1467,7 +1467,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
       "get": {
         "tags": [
-          "directoryObjects.reminderView"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function reminderView",
         "operationId": "directoryObjects.0-ReminderView",
@@ -1522,7 +1522,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRoomLists()": {
       "get": {
         "tags": [
-          "directoryObjects.findRoomLists"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function findRoomLists",
         "operationId": "directoryObjects.0-FindRoomLists",
@@ -1560,7 +1560,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms(RoomList={RoomList})": {
       "get": {
         "tags": [
-          "directoryObjects.findRooms"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function findRooms",
         "operationId": "directoryObjects.0-FindRooms",
@@ -1609,7 +1609,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms()": {
       "get": {
         "tags": [
-          "directoryObjects.findRooms"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function findRooms",
         "operationId": "directoryObjects.1-FindRooms",
@@ -1650,7 +1650,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail": {
       "post": {
         "tags": [
-          "directoryObjects.subscribeByMail"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action subscribeByMail",
         "operationId": "directoryObjects.0-SubscribeByMail",
@@ -1678,7 +1678,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail": {
       "post": {
         "tags": [
-          "directoryObjects.unsubscribeByMail"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action unsubscribeByMail",
         "operationId": "directoryObjects.0-UnsubscribeByMail",
@@ -1706,7 +1706,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite": {
       "post": {
         "tags": [
-          "directoryObjects.addFavorite"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action addFavorite",
         "operationId": "directoryObjects.0-AddFavorite",
@@ -1734,7 +1734,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite": {
       "post": {
         "tags": [
-          "directoryObjects.removeFavorite"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action removeFavorite",
         "operationId": "directoryObjects.0-RemoveFavorite",
@@ -1762,7 +1762,7 @@
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount": {
       "post": {
         "tags": [
-          "directoryObjects.resetUnseenCount"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action resetUnseenCount",
         "operationId": "directoryObjects.0-ResetUnseenCount",
@@ -1790,7 +1790,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.removeAllDevicesFromManagement": {
       "post": {
         "tags": [
-          "directoryObjects.removeAllDevicesFromManagement"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
         "operationId": "directoryObjects.0-RemoveAllDevicesFromManagement",
@@ -1818,7 +1818,7 @@
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.setMobileDeviceManagementAuthority": {
       "post": {
         "tags": [
-          "directoryObjects.setMobileDeviceManagementAuthority"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action setMobileDeviceManagementAuthority",
         "operationId": "directoryObjects.0-SetMobileDeviceManagementAuthority",
@@ -1846,7 +1846,7 @@
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.getEncryptionPublicKey()": {
       "get": {
         "tags": [
-          "directoryObjects.getEncryptionPublicKey"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function getEncryptionPublicKey",
         "operationId": "directoryObjects.0-GetEncryptionPublicKey",
@@ -1882,7 +1882,7 @@
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.uploadDepToken": {
       "post": {
         "tags": [
-          "directoryObjects.uploadDepToken"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action uploadDepToken",
         "operationId": "directoryObjects.0-UploadDepToken",
@@ -1931,7 +1931,7 @@
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.syncWithAppleDeviceEnrollmentProgram": {
       "post": {
         "tags": [
-          "directoryObjects.syncWithAppleDeviceEnrollmentProgram"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action syncWithAppleDeviceEnrollmentProgram",
         "operationId": "directoryObjects.0-SyncWithAppleDeviceEnrollmentProgram",
@@ -1959,7 +1959,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppDiagnosticStatuses()": {
       "get": {
         "tags": [
-          "directoryObjects.getManagedAppDiagnosticStatuses"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
         "operationId": "directoryObjects.0-GetManagedAppDiagnosticStatuses",
@@ -2002,7 +2002,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppPolicies()": {
       "get": {
         "tags": [
-          "directoryObjects.getManagedAppPolicies"
+          "directoryObjects.Functions"
         ],
         "summary": "Invoke function getManagedAppPolicies",
         "operationId": "directoryObjects.0-GetManagedAppPolicies",
@@ -2045,7 +2045,7 @@
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
       "post": {
         "tags": [
-          "directoryObjects.wipeManagedAppRegistrationByDeviceTag"
+          "directoryObjects.Actions"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
         "operationId": "directoryObjects.0-WipeManagedAppRegistrationByDeviceTag",
@@ -2678,7 +2678,7 @@
     "/administrativeUnits/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "administrativeUnits.delta"
+          "administrativeUnits.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "administrativeUnits.0-Delta",
@@ -3610,7 +3610,7 @@
     "/contacts/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "contacts.delta"
+          "contacts.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "contacts.0-Delta",
@@ -4325,7 +4325,7 @@
     "/domains/{id}/microsoft.graph.forceDelete": {
       "post": {
         "tags": [
-          "domains.forceDelete"
+          "domains.Actions"
         ],
         "summary": "Invoke action forceDelete",
         "operationId": "domains.0-ForceDelete",
@@ -4371,7 +4371,7 @@
     "/domains/{id}/microsoft.graph.verify": {
       "post": {
         "tags": [
-          "domains.verify"
+          "domains.Actions"
         ],
         "summary": "Invoke action verify",
         "operationId": "domains.0-Verify",
@@ -5186,7 +5186,7 @@
     "/groups/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "groups.delta"
+          "groups.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "groups.0-Delta",
@@ -5218,7 +5218,7 @@
     "/groups/{id}/microsoft.graph.validateProperties": {
       "post": {
         "tags": [
-          "groups.validateProperties"
+          "groups.Actions"
         ],
         "summary": "Invoke action validateProperties",
         "operationId": "groups.0-ValidateProperties",
@@ -5273,7 +5273,7 @@
     "/groups/{id}/microsoft.graph.renew": {
       "post": {
         "tags": [
-          "groups.renew"
+          "groups.Actions"
         ],
         "summary": "Invoke action renew",
         "operationId": "groups.0-Renew",
@@ -5301,7 +5301,7 @@
     "/groups/{id}/microsoft.graph.subscribeByMail": {
       "post": {
         "tags": [
-          "groups.subscribeByMail"
+          "groups.Actions"
         ],
         "summary": "Invoke action subscribeByMail",
         "operationId": "groups.0-SubscribeByMail",
@@ -5329,7 +5329,7 @@
     "/groups/{id}/microsoft.graph.unsubscribeByMail": {
       "post": {
         "tags": [
-          "groups.unsubscribeByMail"
+          "groups.Actions"
         ],
         "summary": "Invoke action unsubscribeByMail",
         "operationId": "groups.0-UnsubscribeByMail",
@@ -5357,7 +5357,7 @@
     "/groups/{id}/microsoft.graph.addFavorite": {
       "post": {
         "tags": [
-          "groups.addFavorite"
+          "groups.Actions"
         ],
         "summary": "Invoke action addFavorite",
         "operationId": "groups.0-AddFavorite",
@@ -5385,7 +5385,7 @@
     "/groups/{id}/microsoft.graph.removeFavorite": {
       "post": {
         "tags": [
-          "groups.removeFavorite"
+          "groups.Actions"
         ],
         "summary": "Invoke action removeFavorite",
         "operationId": "groups.0-RemoveFavorite",
@@ -5413,7 +5413,7 @@
     "/groups/{id}/microsoft.graph.resetUnseenCount": {
       "post": {
         "tags": [
-          "groups.resetUnseenCount"
+          "groups.Actions"
         ],
         "summary": "Invoke action resetUnseenCount",
         "operationId": "groups.0-ResetUnseenCount",
@@ -6523,7 +6523,7 @@
     "/organization/{id}/microsoft.graph.setMobileDeviceManagementAuthority": {
       "post": {
         "tags": [
-          "organization.setMobileDeviceManagementAuthority"
+          "organization.Actions"
         ],
         "summary": "Invoke action setMobileDeviceManagementAuthority",
         "operationId": "organization.0-SetMobileDeviceManagementAuthority",
@@ -6551,7 +6551,7 @@
     "/organization/{id}/microsoft.graph.getEncryptionPublicKey()": {
       "get": {
         "tags": [
-          "organization.getEncryptionPublicKey"
+          "organization.Functions"
         ],
         "summary": "Invoke function getEncryptionPublicKey",
         "operationId": "organization.0-GetEncryptionPublicKey",
@@ -6587,7 +6587,7 @@
     "/organization/{id}/microsoft.graph.uploadDepToken": {
       "post": {
         "tags": [
-          "organization.uploadDepToken"
+          "organization.Actions"
         ],
         "summary": "Invoke action uploadDepToken",
         "operationId": "organization.0-UploadDepToken",
@@ -6636,7 +6636,7 @@
     "/organization/{id}/microsoft.graph.syncWithAppleDeviceEnrollmentProgram": {
       "post": {
         "tags": [
-          "organization.syncWithAppleDeviceEnrollmentProgram"
+          "organization.Actions"
         ],
         "summary": "Invoke action syncWithAppleDeviceEnrollmentProgram",
         "operationId": "organization.0-SyncWithAppleDeviceEnrollmentProgram",
@@ -8804,7 +8804,7 @@
     "/users/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "users.delta"
+          "users.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "users.0-Delta",
@@ -8836,7 +8836,7 @@
     "/users/{id}/microsoft.graph.assignLicense": {
       "post": {
         "tags": [
-          "users.assignLicense"
+          "users.Actions"
         ],
         "summary": "Invoke action assignLicense",
         "operationId": "users.0-AssignLicense",
@@ -8891,7 +8891,7 @@
     "/users/{id}/microsoft.graph.changePassword": {
       "post": {
         "tags": [
-          "users.changePassword"
+          "users.Actions"
         ],
         "summary": "Invoke action changePassword",
         "operationId": "users.0-ChangePassword",
@@ -8940,7 +8940,7 @@
     "/users/{id}/microsoft.graph.invalidateAllRefreshTokens": {
       "post": {
         "tags": [
-          "users.invalidateAllRefreshTokens"
+          "users.Actions"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
         "operationId": "users.0-InvalidateAllRefreshTokens",
@@ -8968,7 +8968,7 @@
     "/users/{id}/microsoft.graph.sendMail": {
       "post": {
         "tags": [
-          "users.sendMail"
+          "users.Actions"
         ],
         "summary": "Invoke action sendMail",
         "operationId": "users.0-SendMail",
@@ -9017,7 +9017,7 @@
     "/users/{id}/microsoft.graph.findMeetingTimesOLD": {
       "post": {
         "tags": [
-          "users.findMeetingTimesOLD"
+          "users.Actions"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
         "operationId": "users.0-FindMeetingTimesOLD",
@@ -9108,7 +9108,7 @@
     "/users/{id}/microsoft.graph.findMeetingTimes": {
       "post": {
         "tags": [
-          "users.findMeetingTimes"
+          "users.Actions"
         ],
         "summary": "Invoke action findMeetingTimes",
         "operationId": "users.0-FindMeetingTimes",
@@ -9218,7 +9218,7 @@
     "/users/{id}/microsoft.graph.getMailTips": {
       "post": {
         "tags": [
-          "users.getMailTips"
+          "users.Actions"
         ],
         "summary": "Invoke action getMailTips",
         "operationId": "users.0-GetMailTips",
@@ -9273,7 +9273,7 @@
     "/users/{id}/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
       "get": {
         "tags": [
-          "users.reminderView"
+          "users.Functions"
         ],
         "summary": "Invoke function reminderView",
         "operationId": "users.0-ReminderView",
@@ -9328,7 +9328,7 @@
     "/users/{id}/microsoft.graph.findRoomLists()": {
       "get": {
         "tags": [
-          "users.findRoomLists"
+          "users.Functions"
         ],
         "summary": "Invoke function findRoomLists",
         "operationId": "users.0-FindRoomLists",
@@ -9366,7 +9366,7 @@
     "/users/{id}/microsoft.graph.findRooms(RoomList={RoomList})": {
       "get": {
         "tags": [
-          "users.findRooms"
+          "users.Functions"
         ],
         "summary": "Invoke function findRooms",
         "operationId": "users.0-FindRooms",
@@ -9415,7 +9415,7 @@
     "/users/{id}/microsoft.graph.findRooms()": {
       "get": {
         "tags": [
-          "users.findRooms"
+          "users.Functions"
         ],
         "summary": "Invoke function findRooms",
         "operationId": "users.1-FindRooms",
@@ -9456,7 +9456,7 @@
     "/users/{id}/microsoft.graph.removeAllDevicesFromManagement": {
       "post": {
         "tags": [
-          "users.removeAllDevicesFromManagement"
+          "users.Actions"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
         "operationId": "users.0-RemoveAllDevicesFromManagement",
@@ -9484,7 +9484,7 @@
     "/users/{id}/microsoft.graph.getManagedAppDiagnosticStatuses()": {
       "get": {
         "tags": [
-          "users.getManagedAppDiagnosticStatuses"
+          "users.Functions"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
         "operationId": "users.0-GetManagedAppDiagnosticStatuses",
@@ -9527,7 +9527,7 @@
     "/users/{id}/microsoft.graph.getManagedAppPolicies()": {
       "get": {
         "tags": [
-          "users.getManagedAppPolicies"
+          "users.Functions"
         ],
         "summary": "Invoke function getManagedAppPolicies",
         "operationId": "users.0-GetManagedAppPolicies",
@@ -9570,7 +9570,7 @@
     "/users/{id}/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
       "post": {
         "tags": [
-          "users.wipeManagedAppRegistrationByDeviceTag"
+          "users.Actions"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
         "operationId": "users.0-WipeManagedAppRegistrationByDeviceTag",
@@ -10575,7 +10575,7 @@
     "/workbooks/{id}/microsoft.graph.delta(token={token})": {
       "get": {
         "tags": [
-          "workbooks.delta"
+          "workbooks.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "workbooks.0-Delta",
@@ -10630,7 +10630,7 @@
     "/workbooks/{id}/microsoft.graph.delta()": {
       "get": {
         "tags": [
-          "workbooks.delta"
+          "workbooks.Functions"
         ],
         "summary": "Invoke function delta",
         "operationId": "workbooks.1-Delta",
@@ -10676,7 +10676,7 @@
     "/workbooks/{id}/microsoft.graph.search(q={q})": {
       "get": {
         "tags": [
-          "workbooks.search"
+          "workbooks.Functions"
         ],
         "summary": "Invoke function search",
         "operationId": "workbooks.0-Search",
@@ -10728,7 +10728,7 @@
     "/workbooks/{id}/microsoft.graph.checkin": {
       "post": {
         "tags": [
-          "workbooks.checkin"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action checkin",
         "operationId": "workbooks.0-Checkin",
@@ -10777,7 +10777,7 @@
     "/workbooks/{id}/microsoft.graph.checkout": {
       "post": {
         "tags": [
-          "workbooks.checkout"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action checkout",
         "operationId": "workbooks.0-Checkout",
@@ -10805,7 +10805,7 @@
     "/workbooks/{id}/microsoft.graph.copy": {
       "post": {
         "tags": [
-          "workbooks.copy"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action copy",
         "operationId": "workbooks.0-Copy",
@@ -10858,7 +10858,7 @@
     "/workbooks/{id}/microsoft.graph.createLink": {
       "post": {
         "tags": [
-          "workbooks.createLink"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action createLink",
         "operationId": "workbooks.0-CreateLink",
@@ -10931,7 +10931,7 @@
     "/workbooks/{id}/microsoft.graph.createUploadSession": {
       "post": {
         "tags": [
-          "workbooks.createUploadSession"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action createUploadSession",
         "operationId": "workbooks.0-CreateUploadSession",
@@ -10980,7 +10980,7 @@
     "/workbooks/{id}/microsoft.graph.invite": {
       "post": {
         "tags": [
-          "workbooks.invite"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action invite",
         "operationId": "workbooks.0-Invite",
@@ -11048,7 +11048,7 @@
     "/workbooks/{id}/microsoft.graph.validatePermission": {
       "post": {
         "tags": [
-          "workbooks.validatePermission"
+          "workbooks.Actions"
         ],
         "summary": "Invoke action validatePermission",
         "operationId": "workbooks.0-ValidatePermission",
@@ -11462,7 +11462,7 @@
     "/drives/{id}/microsoft.graph.recent()": {
       "get": {
         "tags": [
-          "drives.recent"
+          "drives.Functions"
         ],
         "summary": "Invoke function recent",
         "operationId": "drives.0-Recent",
@@ -11505,7 +11505,7 @@
     "/drives/{id}/microsoft.graph.search(q={q})": {
       "get": {
         "tags": [
-          "drives.search"
+          "drives.Functions"
         ],
         "summary": "Invoke function search",
         "operationId": "drives.0-Search",
@@ -11557,7 +11557,7 @@
     "/drives/{id}/microsoft.graph.sharedWithMe()": {
       "get": {
         "tags": [
-          "drives.sharedWithMe"
+          "drives.Functions"
         ],
         "summary": "Invoke function sharedWithMe",
         "operationId": "drives.0-SharedWithMe",
@@ -12346,7 +12346,7 @@
     "/sites/{id}/microsoft.graph.getByPath(path={path})": {
       "get": {
         "tags": [
-          "sites.getByPath"
+          "sites.Functions"
         ],
         "summary": "Invoke function getByPath",
         "operationId": "sites.0-GetByPath",
@@ -15114,7 +15114,7 @@
     "/privilegedRoles/{id}/microsoft.graph.selfActivate": {
       "post": {
         "tags": [
-          "privilegedRoles.selfActivate"
+          "privilegedRoles.Actions"
         ],
         "summary": "Invoke action selfActivate",
         "operationId": "privilegedRoles.0-SelfActivate",
@@ -15171,7 +15171,7 @@
     "/privilegedRoles/{id}/microsoft.graph.selfDeactivate": {
       "post": {
         "tags": [
-          "privilegedRoles.selfDeactivate"
+          "privilegedRoles.Actions"
         ],
         "summary": "Invoke action selfDeactivate",
         "operationId": "privilegedRoles.0-SelfDeactivate",
@@ -15494,7 +15494,7 @@
     "/privilegedRoleAssignments/microsoft.graph.my()": {
       "get": {
         "tags": [
-          "privilegedRoleAssignments.my"
+          "privilegedRoleAssignments.Functions"
         ],
         "summary": "Invoke function my",
         "operationId": "privilegedRoleAssignments.0-My",
@@ -15526,7 +15526,7 @@
     "/privilegedRoleAssignments/{id}/microsoft.graph.makePermanent": {
       "post": {
         "tags": [
-          "privilegedRoleAssignments.makePermanent"
+          "privilegedRoleAssignments.Actions"
         ],
         "summary": "Invoke action makePermanent",
         "operationId": "privilegedRoleAssignments.0-MakePermanent",
@@ -15579,7 +15579,7 @@
     "/privilegedRoleAssignments/{id}/microsoft.graph.makeEligible": {
       "post": {
         "tags": [
-          "privilegedRoleAssignments.makeEligible"
+          "privilegedRoleAssignments.Actions"
         ],
         "summary": "Invoke action makeEligible",
         "operationId": "privilegedRoleAssignments.0-MakeEligible",
@@ -16201,7 +16201,7 @@
     "/privilegedSignupStatus/microsoft.graph.signUp": {
       "post": {
         "tags": [
-          "privilegedSignupStatus.signUp"
+          "privilegedSignupStatus.Actions"
         ],
         "summary": "Invoke action signUp",
         "operationId": "privilegedSignupStatus.0-SignUp",
@@ -16218,7 +16218,7 @@
     "/privilegedSignupStatus/microsoft.graph.isSignedUp()": {
       "get": {
         "tags": [
-          "privilegedSignupStatus.isSignedUp"
+          "privilegedSignupStatus.Functions"
         ],
         "summary": "Invoke function isSignedUp",
         "operationId": "privilegedSignupStatus.0-IsSignedUp",
@@ -16243,7 +16243,7 @@
     "/privilegedSignupStatus/microsoft.graph.canSignUp()": {
       "get": {
         "tags": [
-          "privilegedSignupStatus.canSignUp"
+          "privilegedSignupStatus.Functions"
         ],
         "summary": "Invoke function canSignUp",
         "operationId": "privilegedSignupStatus.0-CanSignUp",
@@ -16268,7 +16268,7 @@
     "/privilegedSignupStatus/microsoft.graph.completeSetup": {
       "post": {
         "tags": [
-          "privilegedSignupStatus.completeSetup"
+          "privilegedSignupStatus.Actions"
         ],
         "summary": "Invoke action completeSetup",
         "operationId": "privilegedSignupStatus.0-CompleteSetup",
@@ -16617,7 +16617,7 @@
     "/privilegedApproval/microsoft.graph.myRequests()": {
       "get": {
         "tags": [
-          "privilegedApproval.myRequests"
+          "privilegedApproval.Functions"
         ],
         "summary": "Invoke function myRequests",
         "operationId": "privilegedApproval.0-MyRequests",
@@ -17825,7 +17825,7 @@
     "/vppTokens/{id}/microsoft.graph.syncLicenses": {
       "post": {
         "tags": [
-          "vppTokens.syncLicenses"
+          "vppTokens.Actions"
         ],
         "summary": "Invoke action syncLicenses",
         "operationId": "vppTokens.0-SyncLicenses",
@@ -17853,7 +17853,7 @@
     "/vppTokens/{id}/microsoft.graph.revokeLicenses": {
       "post": {
         "tags": [
-          "vppTokens.revokeLicenses"
+          "vppTokens.Actions"
         ],
         "summary": "Invoke action revokeLicenses",
         "operationId": "vppTokens.0-RevokeLicenses",
@@ -19861,7 +19861,7 @@
     "/groupLifecyclePolicies/microsoft.graph.renewGroup": {
       "post": {
         "tags": [
-          "groupLifecyclePolicies.renewGroup"
+          "groupLifecyclePolicies.Actions"
         ],
         "summary": "Invoke action renewGroup",
         "operationId": "groupLifecyclePolicies.0-RenewGroup",
@@ -19894,7 +19894,7 @@
     "/groupLifecyclePolicies/{id}/microsoft.graph.addGroup": {
       "post": {
         "tags": [
-          "groupLifecyclePolicies.addGroup"
+          "groupLifecyclePolicies.Actions"
         ],
         "summary": "Invoke action addGroup",
         "operationId": "groupLifecyclePolicies.0-AddGroup",
@@ -19938,7 +19938,7 @@
     "/groupLifecyclePolicies/{id}/microsoft.graph.removeGroup": {
       "post": {
         "tags": [
-          "groupLifecyclePolicies.removeGroup"
+          "groupLifecyclePolicies.Actions"
         ],
         "summary": "Invoke action removeGroup",
         "operationId": "groupLifecyclePolicies.0-RemoveGroup",
@@ -20931,7 +20931,7 @@
     "/me/microsoft.graph.assignLicense": {
       "post": {
         "tags": [
-          "me.assignLicense"
+          "me.Actions"
         ],
         "summary": "Invoke action assignLicense",
         "operationId": "me.0-AssignLicense",
@@ -20975,7 +20975,7 @@
     "/me/microsoft.graph.changePassword": {
       "post": {
         "tags": [
-          "me.changePassword"
+          "me.Actions"
         ],
         "summary": "Invoke action changePassword",
         "operationId": "me.0-ChangePassword",
@@ -21013,7 +21013,7 @@
     "/me/microsoft.graph.invalidateAllRefreshTokens": {
       "post": {
         "tags": [
-          "me.invalidateAllRefreshTokens"
+          "me.Actions"
         ],
         "summary": "Invoke action invalidateAllRefreshTokens",
         "operationId": "me.0-InvalidateAllRefreshTokens",
@@ -21030,7 +21030,7 @@
     "/me/microsoft.graph.sendMail": {
       "post": {
         "tags": [
-          "me.sendMail"
+          "me.Actions"
         ],
         "summary": "Invoke action sendMail",
         "operationId": "me.0-SendMail",
@@ -21068,7 +21068,7 @@
     "/me/microsoft.graph.findMeetingTimesOLD": {
       "post": {
         "tags": [
-          "me.findMeetingTimesOLD"
+          "me.Actions"
         ],
         "summary": "Invoke action findMeetingTimesOLD",
         "operationId": "me.0-FindMeetingTimesOLD",
@@ -21148,7 +21148,7 @@
     "/me/microsoft.graph.findMeetingTimes": {
       "post": {
         "tags": [
-          "me.findMeetingTimes"
+          "me.Actions"
         ],
         "summary": "Invoke action findMeetingTimes",
         "operationId": "me.0-FindMeetingTimes",
@@ -21247,7 +21247,7 @@
     "/me/microsoft.graph.getMailTips": {
       "post": {
         "tags": [
-          "me.getMailTips"
+          "me.Actions"
         ],
         "summary": "Invoke action getMailTips",
         "operationId": "me.0-GetMailTips",
@@ -21291,7 +21291,7 @@
     "/me/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
       "get": {
         "tags": [
-          "me.reminderView"
+          "me.Functions"
         ],
         "summary": "Invoke function reminderView",
         "operationId": "me.0-ReminderView",
@@ -21337,7 +21337,7 @@
     "/me/microsoft.graph.findRoomLists()": {
       "get": {
         "tags": [
-          "me.findRoomLists"
+          "me.Functions"
         ],
         "summary": "Invoke function findRoomLists",
         "operationId": "me.0-FindRoomLists",
@@ -21364,7 +21364,7 @@
     "/me/microsoft.graph.findRooms(RoomList={RoomList})": {
       "get": {
         "tags": [
-          "me.findRooms"
+          "me.Functions"
         ],
         "summary": "Invoke function findRooms",
         "operationId": "me.0-FindRooms",
@@ -21404,7 +21404,7 @@
     "/me/microsoft.graph.findRooms()": {
       "get": {
         "tags": [
-          "me.findRooms"
+          "me.Functions"
         ],
         "summary": "Invoke function findRooms",
         "operationId": "me.1-FindRooms",
@@ -21434,7 +21434,7 @@
     "/me/microsoft.graph.removeAllDevicesFromManagement": {
       "post": {
         "tags": [
-          "me.removeAllDevicesFromManagement"
+          "me.Actions"
         ],
         "summary": "Invoke action removeAllDevicesFromManagement",
         "operationId": "me.0-RemoveAllDevicesFromManagement",
@@ -21451,7 +21451,7 @@
     "/me/microsoft.graph.getManagedAppDiagnosticStatuses()": {
       "get": {
         "tags": [
-          "me.getManagedAppDiagnosticStatuses"
+          "me.Functions"
         ],
         "summary": "Invoke function getManagedAppDiagnosticStatuses",
         "operationId": "me.0-GetManagedAppDiagnosticStatuses",
@@ -21483,7 +21483,7 @@
     "/me/microsoft.graph.getManagedAppPolicies()": {
       "get": {
         "tags": [
-          "me.getManagedAppPolicies"
+          "me.Functions"
         ],
         "summary": "Invoke function getManagedAppPolicies",
         "operationId": "me.0-GetManagedAppPolicies",
@@ -21515,7 +21515,7 @@
     "/me/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
       "post": {
         "tags": [
-          "me.wipeManagedAppRegistrationByDeviceTag"
+          "me.Actions"
         ],
         "summary": "Invoke action wipeManagedAppRegistrationByDeviceTag",
         "operationId": "me.0-WipeManagedAppRegistrationByDeviceTag",
@@ -21735,7 +21735,7 @@
     "/drive/microsoft.graph.recent()": {
       "get": {
         "tags": [
-          "drive.recent"
+          "drive.Functions"
         ],
         "summary": "Invoke function recent",
         "operationId": "drive.0-Recent",
@@ -21767,7 +21767,7 @@
     "/drive/microsoft.graph.search(q={q})": {
       "get": {
         "tags": [
-          "drive.search"
+          "drive.Functions"
         ],
         "summary": "Invoke function search",
         "operationId": "drive.0-Search",
@@ -21810,7 +21810,7 @@
     "/drive/microsoft.graph.sharedWithMe()": {
       "get": {
         "tags": [
-          "drive.sharedWithMe"
+          "drive.Functions"
         ],
         "summary": "Invoke function sharedWithMe",
         "operationId": "drive.0-SharedWithMe",
@@ -22063,7 +22063,7 @@
     "/deviceManagement/microsoft.graph.verifyWindowsEnrollmentAutoDiscovery(domainName={domainName})": {
       "get": {
         "tags": [
-          "deviceManagement.verifyWindowsEnrollmentAutoDiscovery"
+          "deviceManagement.Functions"
         ],
         "summary": "Invoke function verifyWindowsEnrollmentAutoDiscovery",
         "operationId": "deviceManagement.0-VerifyWindowsEnrollmentAutoDiscovery",
@@ -22099,7 +22099,7 @@
     "/deviceManagement/microsoft.graph.getEffectivePermissions()": {
       "get": {
         "tags": [
-          "deviceManagement.getEffectivePermissions"
+          "deviceManagement.Functions"
         ],
         "summary": "Invoke function getEffectivePermissions",
         "operationId": "deviceManagement.0-GetEffectivePermissions",
@@ -22130,7 +22130,7 @@
     "/deviceManagement/microsoft.graph.getEffectivePermissions(scope={scope})": {
       "get": {
         "tags": [
-          "deviceManagement.getEffectivePermissions"
+          "deviceManagement.Functions"
         ],
         "summary": "Invoke function getEffectivePermissions",
         "operationId": "deviceManagement.1-GetEffectivePermissions",
@@ -22281,7 +22281,7 @@
     "/deviceAppManagement/microsoft.graph.syncMicrosoftStoreForBusinessApps": {
       "post": {
         "tags": [
-          "deviceAppManagement.syncMicrosoftStoreForBusinessApps"
+          "deviceAppManagement.Actions"
         ],
         "summary": "Invoke action syncMicrosoftStoreForBusinessApps",
         "operationId": "deviceAppManagement.0-SyncMicrosoftStoreForBusinessApps",
@@ -22380,7 +22380,7 @@
     "/reports/microsoft.graph.deviceConfigurationUserActivity()": {
       "get": {
         "tags": [
-          "reports.deviceConfigurationUserActivity"
+          "reports.Functions"
         ],
         "summary": "Invoke function deviceConfigurationUserActivity",
         "operationId": "reports.0-DeviceConfigurationUserActivity",
@@ -22409,7 +22409,7 @@
     "/reports/microsoft.graph.deviceConfigurationDeviceActivity()": {
       "get": {
         "tags": [
-          "reports.deviceConfigurationDeviceActivity"
+          "reports.Functions"
         ],
         "summary": "Invoke function deviceConfigurationDeviceActivity",
         "operationId": "reports.0-DeviceConfigurationDeviceActivity",
@@ -22438,7 +22438,7 @@
     "/reports/microsoft.graph.getOffice365ActivationsUserDetail()": {
       "get": {
         "tags": [
-          "reports.getOffice365ActivationsUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ActivationsUserDetail",
         "operationId": "reports.0-GetOffice365ActivationsUserDetail",
@@ -22465,7 +22465,7 @@
     "/reports/microsoft.graph.getOffice365ActivationCounts()": {
       "get": {
         "tags": [
-          "reports.getOffice365ActivationCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ActivationCounts",
         "operationId": "reports.0-GetOffice365ActivationCounts",
@@ -22492,7 +22492,7 @@
     "/reports/microsoft.graph.getOffice365ActivationsUserCounts()": {
       "get": {
         "tags": [
-          "reports.getOffice365ActivationsUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ActivationsUserCounts",
         "operationId": "reports.0-GetOffice365ActivationsUserCounts",
@@ -22519,7 +22519,7 @@
     "/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getOffice365ActiveUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
         "operationId": "reports.0-GetOffice365ActiveUserDetail",
@@ -22561,7 +22561,7 @@
     "/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365ActiveUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ActiveUserDetail",
         "operationId": "reports.1-GetOffice365ActiveUserDetail",
@@ -22601,7 +22601,7 @@
     "/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365ServicesUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ServicesUserCounts",
         "operationId": "reports.0-GetOffice365ServicesUserCounts",
@@ -22638,7 +22638,7 @@
     "/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365ActiveUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365ActiveUserCounts",
         "operationId": "reports.0-GetOffice365ActiveUserCounts",
@@ -22675,7 +22675,7 @@
     "/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getOffice365GroupsActivityDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
         "operationId": "reports.0-GetOffice365GroupsActivityDetail",
@@ -22717,7 +22717,7 @@
     "/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365GroupsActivityDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365GroupsActivityDetail",
         "operationId": "reports.1-GetOffice365GroupsActivityDetail",
@@ -22757,7 +22757,7 @@
     "/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365GroupsActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365GroupsActivityCounts",
         "operationId": "reports.0-GetOffice365GroupsActivityCounts",
@@ -22794,7 +22794,7 @@
     "/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365GroupsActivityGroupCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365GroupsActivityGroupCounts",
         "operationId": "reports.0-GetOffice365GroupsActivityGroupCounts",
@@ -22831,7 +22831,7 @@
     "/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365GroupsActivityStorage"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365GroupsActivityStorage",
         "operationId": "reports.0-GetOffice365GroupsActivityStorage",
@@ -22868,7 +22868,7 @@
     "/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOffice365GroupsActivityFileCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOffice365GroupsActivityFileCounts",
         "operationId": "reports.0-GetOffice365GroupsActivityFileCounts",
@@ -22905,7 +22905,7 @@
     "/reports/microsoft.graph.getEmailActivityUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getEmailActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
         "operationId": "reports.0-GetEmailActivityUserDetail",
@@ -22947,7 +22947,7 @@
     "/reports/microsoft.graph.getEmailActivityUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailActivityUserDetail",
         "operationId": "reports.1-GetEmailActivityUserDetail",
@@ -22987,7 +22987,7 @@
     "/reports/microsoft.graph.getEmailActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailActivityCounts",
         "operationId": "reports.0-GetEmailActivityCounts",
@@ -23024,7 +23024,7 @@
     "/reports/microsoft.graph.getEmailActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailActivityUserCounts",
         "operationId": "reports.0-GetEmailActivityUserCounts",
@@ -23061,7 +23061,7 @@
     "/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getEmailAppUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
         "operationId": "reports.0-GetEmailAppUsageUserDetail",
@@ -23103,7 +23103,7 @@
     "/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailAppUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailAppUsageUserDetail",
         "operationId": "reports.1-GetEmailAppUsageUserDetail",
@@ -23143,7 +23143,7 @@
     "/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailAppUsageAppsUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailAppUsageAppsUserCounts",
         "operationId": "reports.0-GetEmailAppUsageAppsUserCounts",
@@ -23180,7 +23180,7 @@
     "/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailAppUsageUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailAppUsageUserCounts",
         "operationId": "reports.0-GetEmailAppUsageUserCounts",
@@ -23217,7 +23217,7 @@
     "/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getEmailAppUsageVersionsUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getEmailAppUsageVersionsUserCounts",
         "operationId": "reports.0-GetEmailAppUsageVersionsUserCounts",
@@ -23254,7 +23254,7 @@
     "/reports/microsoft.graph.getMailboxUsageDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getMailboxUsageDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getMailboxUsageDetail",
         "operationId": "reports.0-GetMailboxUsageDetail",
@@ -23291,7 +23291,7 @@
     "/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getMailboxUsageMailboxCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getMailboxUsageMailboxCounts",
         "operationId": "reports.0-GetMailboxUsageMailboxCounts",
@@ -23328,7 +23328,7 @@
     "/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getMailboxUsageQuotaStatusMailboxCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getMailboxUsageQuotaStatusMailboxCounts",
         "operationId": "reports.0-GetMailboxUsageQuotaStatusMailboxCounts",
@@ -23365,7 +23365,7 @@
     "/reports/microsoft.graph.getMailboxUsageStorage(period={period})": {
       "get": {
         "tags": [
-          "reports.getMailboxUsageStorage"
+          "reports.Functions"
         ],
         "summary": "Invoke function getMailboxUsageStorage",
         "operationId": "reports.0-GetMailboxUsageStorage",
@@ -23402,7 +23402,7 @@
     "/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getOneDriveActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
         "operationId": "reports.0-GetOneDriveActivityUserDetail",
@@ -23444,7 +23444,7 @@
     "/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveActivityUserDetail",
         "operationId": "reports.1-GetOneDriveActivityUserDetail",
@@ -23484,7 +23484,7 @@
     "/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveActivityUserCounts",
         "operationId": "reports.0-GetOneDriveActivityUserCounts",
@@ -23521,7 +23521,7 @@
     "/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveActivityFileCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveActivityFileCounts",
         "operationId": "reports.0-GetOneDriveActivityFileCounts",
@@ -23558,7 +23558,7 @@
     "/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getOneDriveUsageAccountDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
         "operationId": "reports.0-GetOneDriveUsageAccountDetail",
@@ -23600,7 +23600,7 @@
     "/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveUsageAccountDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveUsageAccountDetail",
         "operationId": "reports.1-GetOneDriveUsageAccountDetail",
@@ -23640,7 +23640,7 @@
     "/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveUsageAccountCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveUsageAccountCounts",
         "operationId": "reports.0-GetOneDriveUsageAccountCounts",
@@ -23677,7 +23677,7 @@
     "/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveUsageFileCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveUsageFileCounts",
         "operationId": "reports.0-GetOneDriveUsageFileCounts",
@@ -23714,7 +23714,7 @@
     "/reports/microsoft.graph.getOneDriveUsageStorage(period={period})": {
       "get": {
         "tags": [
-          "reports.getOneDriveUsageStorage"
+          "reports.Functions"
         ],
         "summary": "Invoke function getOneDriveUsageStorage",
         "operationId": "reports.0-GetOneDriveUsageStorage",
@@ -23751,7 +23751,7 @@
     "/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getSharePointActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
         "operationId": "reports.0-GetSharePointActivityUserDetail",
@@ -23793,7 +23793,7 @@
     "/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointActivityUserDetail",
         "operationId": "reports.1-GetSharePointActivityUserDetail",
@@ -23833,7 +23833,7 @@
     "/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointActivityFileCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointActivityFileCounts",
         "operationId": "reports.0-GetSharePointActivityFileCounts",
@@ -23870,7 +23870,7 @@
     "/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointActivityUserCounts",
         "operationId": "reports.0-GetSharePointActivityUserCounts",
@@ -23907,7 +23907,7 @@
     "/reports/microsoft.graph.getSharePointActivityPages(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointActivityPages"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointActivityPages",
         "operationId": "reports.0-GetSharePointActivityPages",
@@ -23944,7 +23944,7 @@
     "/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getSharePointSiteUsageDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
         "operationId": "reports.0-GetSharePointSiteUsageDetail",
@@ -23986,7 +23986,7 @@
     "/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointSiteUsageDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointSiteUsageDetail",
         "operationId": "reports.1-GetSharePointSiteUsageDetail",
@@ -24026,7 +24026,7 @@
     "/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointSiteUsageFileCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointSiteUsageFileCounts",
         "operationId": "reports.0-GetSharePointSiteUsageFileCounts",
@@ -24063,7 +24063,7 @@
     "/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointSiteUsageSiteCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointSiteUsageSiteCounts",
         "operationId": "reports.0-GetSharePointSiteUsageSiteCounts",
@@ -24100,7 +24100,7 @@
     "/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointSiteUsageStorage"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointSiteUsageStorage",
         "operationId": "reports.0-GetSharePointSiteUsageStorage",
@@ -24137,7 +24137,7 @@
     "/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})": {
       "get": {
         "tags": [
-          "reports.getSharePointSiteUsagePages"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSharePointSiteUsagePages",
         "operationId": "reports.0-GetSharePointSiteUsagePages",
@@ -24174,7 +24174,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
         "operationId": "reports.0-GetSkypeForBusinessActivityUserDetail",
@@ -24216,7 +24216,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserDetail",
         "operationId": "reports.1-GetSkypeForBusinessActivityUserDetail",
@@ -24256,7 +24256,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityCounts",
         "operationId": "reports.0-GetSkypeForBusinessActivityCounts",
@@ -24293,7 +24293,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessActivityUserCounts",
         "operationId": "reports.0-GetSkypeForBusinessActivityUserCounts",
@@ -24330,7 +24330,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessPeerToPeerActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityCounts",
         "operationId": "reports.0-GetSkypeForBusinessPeerToPeerActivityCounts",
@@ -24367,7 +24367,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessPeerToPeerActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityUserCounts",
         "operationId": "reports.0-GetSkypeForBusinessPeerToPeerActivityUserCounts",
@@ -24404,7 +24404,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessPeerToPeerActivityMinuteCounts",
         "operationId": "reports.0-GetSkypeForBusinessPeerToPeerActivityMinuteCounts",
@@ -24441,7 +24441,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessOrganizerActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityCounts",
         "operationId": "reports.0-GetSkypeForBusinessOrganizerActivityCounts",
@@ -24478,7 +24478,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessOrganizerActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityUserCounts",
         "operationId": "reports.0-GetSkypeForBusinessOrganizerActivityUserCounts",
@@ -24515,7 +24515,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessOrganizerActivityMinuteCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessOrganizerActivityMinuteCounts",
         "operationId": "reports.0-GetSkypeForBusinessOrganizerActivityMinuteCounts",
@@ -24552,7 +24552,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessParticipantActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityCounts",
         "operationId": "reports.0-GetSkypeForBusinessParticipantActivityCounts",
@@ -24589,7 +24589,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessParticipantActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityUserCounts",
         "operationId": "reports.0-GetSkypeForBusinessParticipantActivityUserCounts",
@@ -24626,7 +24626,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessParticipantActivityMinuteCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessParticipantActivityMinuteCounts",
         "operationId": "reports.0-GetSkypeForBusinessParticipantActivityMinuteCounts",
@@ -24663,7 +24663,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessDeviceUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
         "operationId": "reports.0-GetSkypeForBusinessDeviceUsageUserDetail",
@@ -24705,7 +24705,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessDeviceUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserDetail",
         "operationId": "reports.1-GetSkypeForBusinessDeviceUsageUserDetail",
@@ -24745,7 +24745,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessDeviceUsageDistributionUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageDistributionUserCounts",
         "operationId": "reports.0-GetSkypeForBusinessDeviceUsageDistributionUserCounts",
@@ -24782,7 +24782,7 @@
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getSkypeForBusinessDeviceUsageUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getSkypeForBusinessDeviceUsageUserCounts",
         "operationId": "reports.0-GetSkypeForBusinessDeviceUsageUserCounts",
@@ -24819,7 +24819,7 @@
     "/reports/microsoft.graph.getYammerActivityUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getYammerActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
         "operationId": "reports.0-GetYammerActivityUserDetail",
@@ -24861,7 +24861,7 @@
     "/reports/microsoft.graph.getYammerActivityUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerActivityUserDetail",
         "operationId": "reports.1-GetYammerActivityUserDetail",
@@ -24901,7 +24901,7 @@
     "/reports/microsoft.graph.getYammerActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerActivityCounts",
         "operationId": "reports.0-GetYammerActivityCounts",
@@ -24938,7 +24938,7 @@
     "/reports/microsoft.graph.getYammerActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerActivityUserCounts",
         "operationId": "reports.0-GetYammerActivityUserCounts",
@@ -24975,7 +24975,7 @@
     "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getYammerDeviceUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
         "operationId": "reports.0-GetYammerDeviceUsageUserDetail",
@@ -25017,7 +25017,7 @@
     "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerDeviceUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserDetail",
         "operationId": "reports.1-GetYammerDeviceUsageUserDetail",
@@ -25057,7 +25057,7 @@
     "/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerDeviceUsageDistributionUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerDeviceUsageDistributionUserCounts",
         "operationId": "reports.0-GetYammerDeviceUsageDistributionUserCounts",
@@ -25094,7 +25094,7 @@
     "/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerDeviceUsageUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerDeviceUsageUserCounts",
         "operationId": "reports.0-GetYammerDeviceUsageUserCounts",
@@ -25131,7 +25131,7 @@
     "/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getYammerGroupsActivityDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
         "operationId": "reports.0-GetYammerGroupsActivityDetail",
@@ -25173,7 +25173,7 @@
     "/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerGroupsActivityDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerGroupsActivityDetail",
         "operationId": "reports.1-GetYammerGroupsActivityDetail",
@@ -25213,7 +25213,7 @@
     "/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerGroupsActivityGroupCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerGroupsActivityGroupCounts",
         "operationId": "reports.0-GetYammerGroupsActivityGroupCounts",
@@ -25250,7 +25250,7 @@
     "/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getYammerGroupsActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getYammerGroupsActivityCounts",
         "operationId": "reports.0-GetYammerGroupsActivityCounts",
@@ -25287,7 +25287,7 @@
     "/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getTeamsUserActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
         "operationId": "reports.0-GetTeamsUserActivityUserDetail",
@@ -25329,7 +25329,7 @@
     "/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getTeamsUserActivityUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsUserActivityUserDetail",
         "operationId": "reports.1-GetTeamsUserActivityUserDetail",
@@ -25369,7 +25369,7 @@
     "/reports/microsoft.graph.getTeamsUserActivityCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getTeamsUserActivityCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsUserActivityCounts",
         "operationId": "reports.0-GetTeamsUserActivityCounts",
@@ -25406,7 +25406,7 @@
     "/reports/microsoft.graph.getTeamsUserActivityUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getTeamsUserActivityUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsUserActivityUserCounts",
         "operationId": "reports.0-GetTeamsUserActivityUserCounts",
@@ -25443,7 +25443,7 @@
     "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})": {
       "get": {
         "tags": [
-          "reports.getTeamsDeviceUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
         "operationId": "reports.0-GetTeamsDeviceUsageUserDetail",
@@ -25485,7 +25485,7 @@
     "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})": {
       "get": {
         "tags": [
-          "reports.getTeamsDeviceUsageUserDetail"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserDetail",
         "operationId": "reports.1-GetTeamsDeviceUsageUserDetail",
@@ -25525,7 +25525,7 @@
     "/reports/microsoft.graph.getTeamsDeviceUsageUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getTeamsDeviceUsageUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsDeviceUsageUserCounts",
         "operationId": "reports.0-GetTeamsDeviceUsageUserCounts",
@@ -25562,7 +25562,7 @@
     "/reports/microsoft.graph.getTeamsDeviceUsageDistributionUserCounts(period={period})": {
       "get": {
         "tags": [
-          "reports.getTeamsDeviceUsageDistributionUserCounts"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTeamsDeviceUsageDistributionUserCounts",
         "operationId": "reports.0-GetTeamsDeviceUsageDistributionUserCounts",
@@ -25599,7 +25599,7 @@
     "/reports/microsoft.graph.getTenantSecureScores(period={period})": {
       "get": {
         "tags": [
-          "reports.getTenantSecureScores"
+          "reports.Functions"
         ],
         "summary": "Invoke function getTenantSecureScores",
         "operationId": "reports.0-GetTenantSecureScores",
@@ -91009,127 +91009,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "directoryObjects.delta",
+      "name": "directoryObjects.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "directoryObjects.getByIds",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.validateProperties",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.checkMemberGroups",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.getMemberGroups",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.getMemberObjects",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.renew",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.restore",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.assignLicense",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.changePassword",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.invalidateAllRefreshTokens",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.sendMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.findMeetingTimesOLD",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.findMeetingTimes",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.getMailTips",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.reminderView",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.findRoomLists",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.findRooms",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.subscribeByMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.unsubscribeByMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.addFavorite",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.removeFavorite",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.resetUnseenCount",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.removeAllDevicesFromManagement",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.setMobileDeviceManagementAuthority",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.getEncryptionPublicKey",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.uploadDepToken",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.syncWithAppleDeviceEnrollmentProgram",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.getManagedAppDiagnosticStatuses",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.getManagedAppPolicies",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "directoryObjects.wipeManagedAppRegistrationByDeviceTag",
+      "name": "directoryObjects.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91141,7 +91025,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "administrativeUnits.delta",
+      "name": "administrativeUnits.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91157,7 +91041,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "contacts.delta",
+      "name": "contacts.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91169,11 +91053,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "domains.forceDelete",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "domains.verify",
+      "name": "domains.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91185,35 +91065,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "groups.delta",
+      "name": "groups.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "groups.validateProperties",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groups.renew",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groups.subscribeByMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groups.unsubscribeByMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groups.addFavorite",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groups.removeFavorite",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groups.resetUnseenCount",
+      "name": "groups.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91233,19 +91089,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "organization.setMobileDeviceManagementAuthority",
+      "name": "organization.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "organization.getEncryptionPublicKey",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "organization.uploadDepToken",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "organization.syncWithAppleDeviceEnrollmentProgram",
+      "name": "organization.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91273,63 +91121,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "users.delta",
+      "name": "users.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "users.assignLicense",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.changePassword",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.invalidateAllRefreshTokens",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.sendMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.findMeetingTimesOLD",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.findMeetingTimes",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.getMailTips",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.reminderView",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.findRoomLists",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.findRooms",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.removeAllDevicesFromManagement",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.getManagedAppDiagnosticStatuses",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.getManagedAppPolicies",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "users.wipeManagedAppRegistrationByDeviceTag",
+      "name": "users.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91345,39 +91141,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "workbooks.delta",
+      "name": "workbooks.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "workbooks.search",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.checkin",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.checkout",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.copy",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.createLink",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.createUploadSession",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.invite",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "workbooks.validatePermission",
+      "name": "workbooks.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91385,15 +91153,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "drives.recent",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "drives.search",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "drives.sharedWithMe",
+      "name": "drives.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91405,7 +91165,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "sites.getByPath",
+      "name": "sites.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91445,11 +91205,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "privilegedRoles.selfActivate",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "privilegedRoles.selfDeactivate",
+      "name": "privilegedRoles.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91457,15 +91213,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "privilegedRoleAssignments.my",
+      "name": "privilegedRoleAssignments.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "privilegedRoleAssignments.makePermanent",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "privilegedRoleAssignments.makeEligible",
+      "name": "privilegedRoleAssignments.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91477,19 +91229,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "privilegedSignupStatus.signUp",
+      "name": "privilegedSignupStatus.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "privilegedSignupStatus.isSignedUp",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "privilegedSignupStatus.canSignUp",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "privilegedSignupStatus.completeSetup",
+      "name": "privilegedSignupStatus.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91497,7 +91241,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "privilegedApproval.myRequests",
+      "name": "privilegedApproval.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91517,11 +91261,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "vppTokens.syncLicenses",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "vppTokens.revokeLicenses",
+      "name": "vppTokens.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91553,15 +91293,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "groupLifecyclePolicies.renewGroup",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groupLifecyclePolicies.addGroup",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "groupLifecyclePolicies.removeGroup",
+      "name": "groupLifecyclePolicies.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91581,59 +91313,11 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "me.assignLicense",
+      "name": "me.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "me.changePassword",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.invalidateAllRefreshTokens",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.sendMail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.findMeetingTimesOLD",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.findMeetingTimes",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.getMailTips",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.reminderView",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.findRoomLists",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.findRooms",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.removeAllDevicesFromManagement",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.getManagedAppDiagnosticStatuses",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.getManagedAppPolicies",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "me.wipeManagedAppRegistrationByDeviceTag",
+      "name": "me.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91645,15 +91329,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "drive.recent",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "drive.search",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "drive.sharedWithMe",
+      "name": "drive.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91665,11 +91341,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "deviceManagement.verifyWindowsEnrollmentAutoDiscovery",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "deviceManagement.getEffectivePermissions",
+      "name": "deviceManagement.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91677,7 +91349,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "deviceAppManagement.syncMicrosoftStoreForBusinessApps",
+      "name": "deviceAppManagement.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {
@@ -91685,287 +91357,7 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "reports.deviceConfigurationUserActivity",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.deviceConfigurationDeviceActivity",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365ActivationsUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365ActivationCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365ActivationsUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365ActiveUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365ServicesUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365ActiveUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365GroupsActivityDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365GroupsActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365GroupsActivityGroupCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365GroupsActivityStorage",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOffice365GroupsActivityFileCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailActivityUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailAppUsageUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailAppUsageAppsUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailAppUsageUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getEmailAppUsageVersionsUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getMailboxUsageDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getMailboxUsageMailboxCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getMailboxUsageQuotaStatusMailboxCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getMailboxUsageStorage",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveActivityUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveActivityFileCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveUsageAccountDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveUsageAccountCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveUsageFileCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getOneDriveUsageStorage",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointActivityUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointActivityFileCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointActivityPages",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointSiteUsageDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointSiteUsageFileCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointSiteUsageSiteCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointSiteUsageStorage",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSharePointSiteUsagePages",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessActivityUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessPeerToPeerActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessPeerToPeerActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessPeerToPeerActivityMinuteCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessOrganizerActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessOrganizerActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessOrganizerActivityMinuteCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessParticipantActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessParticipantActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessParticipantActivityMinuteCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessDeviceUsageUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessDeviceUsageDistributionUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getSkypeForBusinessDeviceUsageUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerActivityUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerDeviceUsageUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerDeviceUsageDistributionUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerDeviceUsageUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerGroupsActivityDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerGroupsActivityGroupCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getYammerGroupsActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTeamsUserActivityUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTeamsUserActivityCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTeamsUserActivityUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTeamsDeviceUsageUserDetail",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTeamsDeviceUsageUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTeamsDeviceUsageDistributionUserCounts",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "reports.getTenantSecureScores",
+      "name": "reports.Functions",
       "x-ms-docs-toc-type": "container"
     },
     {
