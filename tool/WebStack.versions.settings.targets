@@ -6,12 +6,12 @@
     <VersionMajor Condition="'$(VersionMajor)' == ''">1</VersionMajor>
     <VersionMinor Condition="'$(VersionMinor)' == ''">0</VersionMinor>
     <VersionBuild Condition="'$(VersionBuild)' == ''">0</VersionBuild>
-    <VersionRelease Condition="'$(VersionRelease)' == ''">beta</VersionRelease>
+    <VersionRelease Condition="'$(VersionRelease)' == ''">beta2</VersionRelease>
   </PropertyGroup>
 
   <!-- For NuGet Package Dependencies -->
   <PropertyGroup>
-    <OpenApiCorePackageDependency>[1.0.0-beta009, 2.0.0)</OpenApiCorePackageDependency>
+    <OpenApiCorePackageDependency>[1.0.0-beta012, 2.0.0)</OpenApiCorePackageDependency>
     <ODataEdmPackageDependency>[7.3.1, 8.0.0)</ODataEdmPackageDependency>
   </PropertyGroup>
 
