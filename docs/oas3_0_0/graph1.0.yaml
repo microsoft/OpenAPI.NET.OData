@@ -762,15 +762,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.device'
           links:
             registeredOwners:
-              operationId: devices.Entity-GetDevice
+              operationId: devices.device.GetDevice
               parameters:
                 id: $request.path.id
             registeredUsers:
-              operationId: devices.Entity-GetDevice
+              operationId: devices.device.GetDevice
               parameters:
                 id: $request.path.id
             extensions:
-              operationId: devices.Entity-GetDevice
+              operationId: devices.device.GetDevice
               parameters:
                 id: $request.path.id
         default:
@@ -984,15 +984,15 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.domain'
           links:
             serviceConfigurationRecords:
-              operationId: domains.Entity-GetDomain
+              operationId: domains.domain.GetDomain
               parameters:
                 id: $request.path.id
             verificationDnsRecords:
-              operationId: domains.Entity-GetDomain
+              operationId: domains.domain.GetDomain
               parameters:
                 id: $request.path.id
             domainNameReferences:
-              operationId: domains.Entity-GetDomain
+              operationId: domains.domain.GetDomain
               parameters:
                 id: $request.path.id
         default:
@@ -1422,83 +1422,83 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.group'
           links:
             members:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             memberOf:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             createdOnBehalfOf:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             owners:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             settings:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             extensions:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             threads:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             calendar:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             calendarView:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             events:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             conversations:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             photo:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             photos:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             acceptedSenders:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             rejectedSenders:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             drive:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             drives:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             sites:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             planner:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
             onenote:
-              operationId: groups.Entity-GetGroup
+              operationId: groups.group.GetGroup
               parameters:
                 id: $request.path.id
         default:
@@ -1767,7 +1767,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.directoryRole'
           links:
             members:
-              operationId: directoryRoles.Entity-GetDirectoryRole
+              operationId: directoryRoles.directoryRole.GetDirectoryRole
               parameters:
                 id: $request.path.id
         default:
@@ -2139,7 +2139,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.organization'
           links:
             extensions:
-              operationId: organization.Entity-GetOrganization
+              operationId: organization.organization.GetOrganization
               parameters:
                 id: $request.path.id
         default:
@@ -2966,107 +2966,107 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.user'
           links:
             ownedDevices:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             registeredDevices:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             manager:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             directReports:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             memberOf:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             createdObjects:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             ownedObjects:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             licenseDetails:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             extensions:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             messages:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             mailFolders:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             calendar:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             calendars:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             calendarGroups:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             calendarView:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             events:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             people:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             contacts:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             contactFolders:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             inferenceClassification:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             photo:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             photos:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             drive:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             drives:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             planner:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
             onenote:
-              operationId: users.Entity-GetUser
+              operationId: users.user.GetUser
               parameters:
                 id: $request.path.id
         default:
@@ -3876,19 +3876,19 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.drive'
           links:
             items:
-              operationId: drives.Entity-GetDrive
+              operationId: drives.drive.GetDrive
               parameters:
                 id: $request.path.id
             list:
-              operationId: drives.Entity-GetDrive
+              operationId: drives.drive.GetDrive
               parameters:
                 id: $request.path.id
             root:
-              operationId: drives.Entity-GetDrive
+              operationId: drives.drive.GetDrive
               parameters:
                 id: $request.path.id
             special:
-              operationId: drives.Entity-GetDrive
+              operationId: drives.drive.GetDrive
               parameters:
                 id: $request.path.id
         default:
@@ -4200,27 +4200,27 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.sharedDriveItem'
           links:
             driveItem:
-              operationId: shares.Entity-GetSharedDriveItem
+              operationId: shares.sharedDriveItem.GetSharedDriveItem
               parameters:
                 id: $request.path.id
             items:
-              operationId: shares.Entity-GetSharedDriveItem
+              operationId: shares.sharedDriveItem.GetSharedDriveItem
               parameters:
                 id: $request.path.id
             list:
-              operationId: shares.Entity-GetSharedDriveItem
+              operationId: shares.sharedDriveItem.GetSharedDriveItem
               parameters:
                 id: $request.path.id
             listItem:
-              operationId: shares.Entity-GetSharedDriveItem
+              operationId: shares.sharedDriveItem.GetSharedDriveItem
               parameters:
                 id: $request.path.id
             root:
-              operationId: shares.Entity-GetSharedDriveItem
+              operationId: shares.sharedDriveItem.GetSharedDriveItem
               parameters:
                 id: $request.path.id
             site:
-              operationId: shares.Entity-GetSharedDriveItem
+              operationId: shares.sharedDriveItem.GetSharedDriveItem
               parameters:
                 id: $request.path.id
         default:
@@ -4464,35 +4464,35 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.site'
           links:
             columns:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             contentTypes:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             drive:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             drives:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             items:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             lists:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             sites:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
             onenote:
-              operationId: sites.Entity-GetSite
+              operationId: sites.site.GetSite
               parameters:
                 id: $request.path.id
         default:
@@ -4824,23 +4824,23 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.driveItem'
           links:
             children:
-              operationId: workbooks.Entity-GetDriveItem
+              operationId: workbooks.driveItem.GetDriveItem
               parameters:
                 id: $request.path.id
             listItem:
-              operationId: workbooks.Entity-GetDriveItem
+              operationId: workbooks.driveItem.GetDriveItem
               parameters:
                 id: $request.path.id
             permissions:
-              operationId: workbooks.Entity-GetDriveItem
+              operationId: workbooks.driveItem.GetDriveItem
               parameters:
                 id: $request.path.id
             thumbnails:
-              operationId: workbooks.Entity-GetDriveItem
+              operationId: workbooks.driveItem.GetDriveItem
               parameters:
                 id: $request.path.id
             workbook:
-              operationId: workbooks.Entity-GetDriveItem
+              operationId: workbooks.driveItem.GetDriveItem
               parameters:
                 id: $request.path.id
         default:
@@ -5422,7 +5422,7 @@ paths:
                 $ref: '#/components/schemas/microsoft.graph.invitation'
           links:
             invitedUser:
-              operationId: invitations.Entity-GetInvitation
+              operationId: invitations.invitation.GetInvitation
               parameters:
                 id: $request.path.id
         default:

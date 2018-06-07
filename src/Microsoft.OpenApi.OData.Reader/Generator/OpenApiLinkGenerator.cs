@@ -33,7 +33,8 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (var np in entityType.DeclaredNavigationProperties())
             {
                 OpenApiLink link = new OpenApiLink();
-                link.OperationId = entitySet.Name + ".Entity-Get" + Utils.UpperFirstChar(entitySet.EntityType().Name);
+                string typeName = entitySet.EntityType().Name;
+                link.OperationId = entitySet.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
                 link.Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>();
                 foreach (var key in entityType.Key())
                 {
