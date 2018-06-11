@@ -90,7 +90,7 @@ namespace UpdateDocs
                 string fileName = fileInfo.Name.Substring(0, fileInfo.Name.Length - 4);
 
                 OpenApiConvertSettings settings = new OpenApiConvertSettings();
-                if (fileName.Contains("graph.beta"))
+                if (fileName.Contains("graph.beta") || fileName.Contains("metadata"))
                 {
                     settings.ServiceRoot = new Uri("https://graph.microsoft.com/beta");
                 }
@@ -126,12 +126,13 @@ namespace UpdateDocs
                 document = model.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
+                /*
                 settings.NavigationPropertyDepth = 3;
                 settings.CountKeySegmentAsDepth = false;
                 output = oas30 + "/" + fileName + "_content_withoutKeySegment.json";
                 document = model.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-
+                */
                 Console.WriteLine("Output [ " + fileName + " ] Succeessful!");
             }
 
