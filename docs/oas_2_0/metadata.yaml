@@ -72,6 +72,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.contract'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - contracts.contract
@@ -95,6 +96,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.contract'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/contracts/{id}':
     get:
       tags:
@@ -136,6 +138,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.contract'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - contracts.contract
@@ -160,6 +163,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - contracts.contract
@@ -180,6 +184,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /devices:
     get:
       tags:
@@ -280,6 +285,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.device'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - devices.device
@@ -303,6 +309,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.device'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/devices/{id}':
     get:
       tags:
@@ -358,6 +365,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.device'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - devices.device
@@ -382,6 +390,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - devices.device
@@ -402,6 +411,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /directoryObjects:
     get:
       tags:
@@ -454,6 +464,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.directoryObject'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - directoryObjects.directoryObject
@@ -477,6 +488,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directoryObject'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/directoryObjects/{id}':
     get:
       tags:
@@ -514,6 +526,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directoryObject'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - directoryObjects.directoryObject
@@ -538,6 +551,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - directoryObjects.directoryObject
@@ -558,6 +572,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /directoryObjects/microsoft.graph.group/microsoft.graph.delta():
     get:
       tags:
@@ -574,7 +589,8 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - /directoryObjects/microsoft.graph.user/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.user/microsoft.graph.delta():
     get:
@@ -592,7 +608,8 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - /directoryObjects/microsoft.graph.group/microsoft.graph.delta()
   /directoryObjects/microsoft.graph.getByIds:
     post:
@@ -623,6 +640,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(endDateTime={endDateTime},startDateTime={startDateTime})':
     get:
       tags:
@@ -653,6 +671,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense':
     post:
       tags:
@@ -688,6 +707,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes':
     post:
       tags:
@@ -736,6 +756,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail':
     post:
       tags:
@@ -766,6 +787,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.checkMemberGroups':
     post:
       tags:
@@ -796,6 +818,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.getMemberGroups':
     post:
       tags:
@@ -825,6 +848,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.getMemberObjects':
     post:
       tags:
@@ -854,6 +878,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite':
     post:
       tags:
@@ -871,6 +896,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite':
     post:
       tags:
@@ -888,6 +914,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.renew':
     post:
       tags:
@@ -905,6 +932,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount':
     post:
       tags:
@@ -922,6 +950,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.subscribeByMail':
     post:
       tags:
@@ -939,6 +968,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail':
     post:
       tags:
@@ -956,6 +986,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/directoryObjects/{id}/microsoft.graph.restore':
     post:
       tags:
@@ -973,6 +1004,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /directoryRoles:
     get:
       tags:
@@ -1035,6 +1067,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.directoryRole'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - directoryRoles.directoryRole
@@ -1058,6 +1091,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directoryRole'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/directoryRoles/{id}':
     get:
       tags:
@@ -1099,6 +1133,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directoryRole'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - directoryRoles.directoryRole
@@ -1123,6 +1158,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - directoryRoles.directoryRole
@@ -1143,6 +1179,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /directoryRoleTemplates:
     get:
       tags:
@@ -1201,6 +1238,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.directoryRoleTemplate'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
@@ -1224,6 +1262,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directoryRoleTemplate'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/directoryRoleTemplates/{id}':
     get:
       tags:
@@ -1263,6 +1302,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directoryRoleTemplate'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
@@ -1287,6 +1327,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - directoryRoleTemplates.directoryRoleTemplate
@@ -1307,6 +1348,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /domains:
     get:
       tags:
@@ -1389,6 +1431,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.domain'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - domains.domain
@@ -1412,6 +1455,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.domain'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/domains/{id}':
     get:
       tags:
@@ -1461,6 +1505,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.domain'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - domains.domain
@@ -1485,6 +1530,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - domains.domain
@@ -1505,6 +1551,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/domains/{id}/microsoft.graph.verify':
     post:
       tags:
@@ -1522,6 +1569,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /drives:
     get:
       tags:
@@ -1622,6 +1670,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.drive'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - drives.drive
@@ -1645,6 +1694,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.drive'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/drives/{id}':
     get:
       tags:
@@ -1702,6 +1752,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.drive'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - drives.drive
@@ -1726,6 +1777,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - drives.drive
@@ -1746,6 +1798,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/drives/{id}/microsoft.graph.recent()':
     get:
       tags:
@@ -1768,6 +1821,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/drives/{id}/microsoft.graph.search(q={q})':
     get:
       tags:
@@ -1794,6 +1848,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/drives/{id}/microsoft.graph.sharedWithMe()':
     get:
       tags:
@@ -1816,6 +1871,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   /groupLifecyclePolicies:
     get:
       tags:
@@ -1877,6 +1933,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.groupLifecyclePolicy'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
@@ -1900,6 +1957,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.groupLifecyclePolicy'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/groupLifecyclePolicies/{id}':
     get:
       tags:
@@ -1940,6 +1998,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.groupLifecyclePolicy'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
@@ -1964,6 +2023,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - groupLifecyclePolicies.groupLifecyclePolicy
@@ -1984,6 +2044,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /groups:
     get:
       tags:
@@ -2114,6 +2175,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.group'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - groups.group
@@ -2137,6 +2199,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.group'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/groups/{id}':
     get:
       tags:
@@ -2214,6 +2277,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.group'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - groups.group
@@ -2238,6 +2302,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - groups.group
@@ -2258,6 +2323,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /groups/microsoft.graph.delta():
     get:
       tags:
@@ -2274,6 +2340,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/groups/{id}/microsoft.graph.addFavorite':
     post:
       tags:
@@ -2291,6 +2358,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/groups/{id}/microsoft.graph.removeFavorite':
     post:
       tags:
@@ -2308,6 +2376,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/groups/{id}/microsoft.graph.renew':
     post:
       tags:
@@ -2325,6 +2394,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/groups/{id}/microsoft.graph.resetUnseenCount':
     post:
       tags:
@@ -2342,6 +2412,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/groups/{id}/microsoft.graph.subscribeByMail':
     post:
       tags:
@@ -2359,6 +2430,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/groups/{id}/microsoft.graph.unsubscribeByMail':
     post:
       tags:
@@ -2376,6 +2448,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /groupSettings:
     get:
       tags:
@@ -2437,6 +2510,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.groupSetting'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - groupSettings.groupSetting
@@ -2460,6 +2534,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.groupSetting'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/groupSettings/{id}':
     get:
       tags:
@@ -2500,6 +2575,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.groupSetting'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - groupSettings.groupSetting
@@ -2524,6 +2600,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - groupSettings.groupSetting
@@ -2544,6 +2621,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /groupSettingTemplates:
     get:
       tags:
@@ -2605,6 +2683,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.groupSettingTemplate'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - groupSettingTemplates.groupSettingTemplate
@@ -2628,6 +2707,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.groupSettingTemplate'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/groupSettingTemplates/{id}':
     get:
       tags:
@@ -2668,6 +2748,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.groupSettingTemplate'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - groupSettingTemplates.groupSettingTemplate
@@ -2692,6 +2773,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - groupSettingTemplates.groupSettingTemplate
@@ -2712,6 +2794,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /schemaExtensions:
     get:
       tags:
@@ -2779,6 +2862,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.schemaExtension'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - schemaExtensions.schemaExtension
@@ -2802,6 +2886,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.schemaExtension'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/schemaExtensions/{id}':
     get:
       tags:
@@ -2844,6 +2929,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.schemaExtension'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - schemaExtensions.schemaExtension
@@ -2868,6 +2954,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - schemaExtensions.schemaExtension
@@ -2888,6 +2975,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /shares:
     get:
       tags:
@@ -2978,6 +3066,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.sharedDriveItem'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - shares.sharedDriveItem
@@ -3001,6 +3090,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.sharedDriveItem'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/shares/{id}':
     get:
       tags:
@@ -3056,6 +3146,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.sharedDriveItem'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - shares.sharedDriveItem
@@ -3080,6 +3171,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - shares.sharedDriveItem
@@ -3100,6 +3192,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /sites:
     get:
       tags:
@@ -3201,6 +3294,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.site'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - sites.site
@@ -3224,6 +3318,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.site'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/sites/{id}':
     get:
       tags:
@@ -3284,6 +3379,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.site'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - sites.site
@@ -3308,6 +3404,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - sites.site
@@ -3328,6 +3425,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /subscribedSkus:
     get:
       tags:
@@ -3401,6 +3499,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.subscribedSku'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - subscribedSkus.subscribedSku
@@ -3424,6 +3523,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.subscribedSku'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/subscribedSkus/{id}':
     get:
       tags:
@@ -3468,6 +3568,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.subscribedSku'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - subscribedSkus.subscribedSku
@@ -3492,6 +3593,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - subscribedSkus.subscribedSku
@@ -3512,6 +3614,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /subscriptions:
     get:
       tags:
@@ -3585,6 +3688,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.subscription'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - subscriptions.subscription
@@ -3608,6 +3712,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.subscription'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/subscriptions/{id}':
     get:
       tags:
@@ -3652,6 +3757,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.subscription'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - subscriptions.subscription
@@ -3676,6 +3782,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - subscriptions.subscription
@@ -3696,6 +3803,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /users:
     get:
       tags:
@@ -3907,6 +4015,7 @@ paths:
                   $ref: '#/definitions/microsoft.graph.user'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     post:
       tags:
         - users.user
@@ -3930,6 +4039,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.user'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/users/{id}':
     get:
       tags:
@@ -4040,6 +4150,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.user'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - users.user
@@ -4064,6 +4175,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     delete:
       tags:
         - users.user
@@ -4084,6 +4196,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /users/microsoft.graph.delta():
     get:
       tags:
@@ -4100,6 +4213,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/users/{id}/microsoft.graph.reminderView(endDateTime={endDateTime},startDateTime={startDateTime})':
     get:
       tags:
@@ -4130,6 +4244,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/users/{id}/microsoft.graph.assignLicense':
     post:
       tags:
@@ -4165,6 +4280,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/users/{id}/microsoft.graph.findMeetingTimes':
     post:
       tags:
@@ -4213,6 +4329,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   '/users/{id}/microsoft.graph.sendMail':
     post:
       tags:
@@ -4243,6 +4360,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /directory:
     get:
       tags:
@@ -4276,6 +4394,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.directory'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - directory.directory
@@ -4295,6 +4414,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /education:
     get:
       tags:
@@ -4331,6 +4451,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.educationRoot'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - education.educationRoot
@@ -4350,6 +4471,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /invitations:
     get:
       tags:
@@ -4391,6 +4513,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.invitation'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - invitations.invitation
@@ -4410,6 +4533,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /me:
     get:
       tags:
@@ -4515,6 +4639,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.user'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - me.user
@@ -4534,6 +4659,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/me/microsoft.graph.reminderView(endDateTime={endDateTime},startDateTime={startDateTime})':
     get:
       tags:
@@ -4559,6 +4685,7 @@ paths:
             items: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   /me/microsoft.graph.assignLicense:
     post:
       tags:
@@ -4589,6 +4716,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /me/microsoft.graph.findMeetingTimes:
     post:
       tags:
@@ -4632,6 +4760,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /me/microsoft.graph.sendMail:
     post:
       tags:
@@ -4657,6 +4786,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: action
   /organization:
     get:
       tags:
@@ -4715,6 +4845,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.organization'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - organization.organization
@@ -4734,6 +4865,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /planner:
     get:
       tags:
@@ -4769,6 +4901,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.planner'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - planner.planner
@@ -4788,6 +4921,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /reports:
     get:
       tags:
@@ -4820,6 +4954,7 @@ paths:
             $ref: '#/definitions/microsoft.graph.reportRoot'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
     patch:
       tags:
         - reports.reportRoot
@@ -4839,6 +4974,7 @@ paths:
           description: Success
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/reports/microsoft.graph.getEmailActivityCounts(period={period})':
     get:
       tags:
@@ -4858,6 +4994,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getEmailActivityUserCounts(period={period})':
     get:
       tags:
@@ -4877,6 +5014,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})':
     get:
       tags:
@@ -4896,7 +5034,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getEmailActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getEmailActivityUserDetail(date={date})':
     get:
@@ -4919,7 +5058,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getEmailActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getEmailAppUsageAppsUserCounts(period={period})':
     get:
@@ -4940,6 +5080,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})':
     get:
       tags:
@@ -4959,6 +5100,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})':
     get:
       tags:
@@ -4978,7 +5120,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})':
     get:
@@ -5001,7 +5144,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})':
     get:
@@ -5022,6 +5166,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getMailboxUsageDetail(period={period})':
     get:
       tags:
@@ -5041,6 +5186,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})':
     get:
       tags:
@@ -5060,6 +5206,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})':
     get:
       tags:
@@ -5079,6 +5226,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getMailboxUsageStorage(period={period})':
     get:
       tags:
@@ -5098,6 +5246,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   /reports/microsoft.graph.getOffice365ActivationCounts():
     get:
       tags:
@@ -5112,6 +5261,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   /reports/microsoft.graph.getOffice365ActivationsUserCounts():
     get:
       tags:
@@ -5126,6 +5276,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   /reports/microsoft.graph.getOffice365ActivationsUserDetail():
     get:
       tags:
@@ -5140,6 +5291,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})':
     get:
       tags:
@@ -5159,6 +5311,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})':
     get:
       tags:
@@ -5178,7 +5331,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})'
   '/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})':
     get:
@@ -5201,7 +5355,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})'
   '/reports/microsoft.graph.getOffice365GroupsActivityCounts(period={period})':
     get:
@@ -5222,6 +5377,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})':
     get:
       tags:
@@ -5241,7 +5397,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})'
   '/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})':
     get:
@@ -5264,7 +5421,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})'
   '/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})':
     get:
@@ -5285,6 +5443,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})':
     get:
       tags:
@@ -5304,6 +5463,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})':
     get:
       tags:
@@ -5323,6 +5483,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOffice365ServicesUserCounts(period={period})':
     get:
       tags:
@@ -5342,6 +5503,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})':
     get:
       tags:
@@ -5361,6 +5523,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOneDriveActivityUserCounts(period={period})':
     get:
       tags:
@@ -5380,6 +5543,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})':
     get:
       tags:
@@ -5399,7 +5563,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})':
     get:
@@ -5422,7 +5587,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getOneDriveUsageAccountCounts(period={period})':
     get:
@@ -5443,6 +5609,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})':
     get:
       tags:
@@ -5462,7 +5629,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})'
   '/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})':
     get:
@@ -5485,7 +5653,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})'
   '/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})':
     get:
@@ -5506,6 +5675,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getOneDriveUsageStorage(period={period})':
     get:
       tags:
@@ -5525,6 +5695,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointActivityFileCounts(period={period})':
     get:
       tags:
@@ -5544,6 +5715,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointActivityPages(period={period})':
     get:
       tags:
@@ -5563,6 +5735,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})':
     get:
       tags:
@@ -5582,6 +5755,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})':
     get:
       tags:
@@ -5601,7 +5775,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})':
     get:
@@ -5624,7 +5799,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})':
     get:
@@ -5645,7 +5821,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})'
   '/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})':
     get:
@@ -5668,7 +5845,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})'
   '/reports/microsoft.graph.getSharePointSiteUsageFileCounts(period={period})':
     get:
@@ -5689,6 +5867,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})':
     get:
       tags:
@@ -5708,6 +5887,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})':
     get:
       tags:
@@ -5727,6 +5907,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})':
     get:
       tags:
@@ -5746,6 +5927,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityCounts(period={period})':
     get:
       tags:
@@ -5765,6 +5947,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})':
     get:
       tags:
@@ -5784,6 +5967,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})':
     get:
       tags:
@@ -5803,7 +5987,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})':
     get:
@@ -5826,7 +6011,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageDistributionUserCounts(period={period})':
     get:
@@ -5847,6 +6033,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})':
     get:
       tags:
@@ -5866,6 +6053,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -5885,7 +6073,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})':
     get:
@@ -5908,7 +6097,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})':
     get:
@@ -5929,6 +6119,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})':
     get:
       tags:
@@ -5948,6 +6139,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})':
     get:
       tags:
@@ -5967,6 +6159,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})':
     get:
       tags:
@@ -5986,6 +6179,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})':
     get:
       tags:
@@ -6005,6 +6199,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})':
     get:
       tags:
@@ -6024,6 +6219,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})':
     get:
       tags:
@@ -6043,6 +6239,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})':
     get:
       tags:
@@ -6062,6 +6259,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})':
     get:
       tags:
@@ -6081,6 +6279,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageDistributionUserCounts(period={period})':
     get:
       tags:
@@ -6100,6 +6299,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageUserCounts(period={period})':
     get:
       tags:
@@ -6119,6 +6319,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})':
     get:
       tags:
@@ -6138,7 +6339,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})':
     get:
@@ -6161,7 +6363,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getTeamsUserActivityCounts(period={period})':
     get:
@@ -6182,6 +6385,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getTeamsUserActivityUserCounts(period={period})':
     get:
       tags:
@@ -6201,6 +6405,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})':
     get:
       tags:
@@ -6220,7 +6425,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})':
     get:
@@ -6243,7 +6449,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerActivityCounts(period={period})':
     get:
@@ -6264,6 +6471,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getYammerActivityUserCounts(period={period})':
     get:
       tags:
@@ -6283,6 +6491,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getYammerActivityUserDetail(date={date})':
     get:
       tags:
@@ -6304,7 +6513,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerActivityUserDetail(period={period})':
     get:
@@ -6325,7 +6535,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getYammerActivityUserDetail(date={date})'
   '/reports/microsoft.graph.getYammerDeviceUsageDistributionUserCounts(period={period})':
     get:
@@ -6346,6 +6557,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})':
     get:
       tags:
@@ -6365,6 +6577,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})':
     get:
       tags:
@@ -6386,7 +6599,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})'
   '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})':
     get:
@@ -6407,7 +6621,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})'
   '/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})':
     get:
@@ -6428,6 +6643,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})':
     get:
       tags:
@@ -6449,7 +6665,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})'
   '/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})':
     get:
@@ -6470,7 +6687,8 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
-    x-ms-additionalPath:
+      x-ms-docs-operation-type: function
+    x-ms-docs-grouped-path:
       - '/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})'
   '/reports/microsoft.graph.getYammerGroupsActivityGroupCounts(period={period})':
     get:
@@ -6491,6 +6709,7 @@ paths:
           schema: { }
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: function
 definitions:
   microsoft.graph.entity:
     title: entity

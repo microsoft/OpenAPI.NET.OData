@@ -3,7 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-namespace Microsoft.OpenApi.OData.Generator
+namespace Microsoft.OpenApi.OData.Common
 {
     /// <summary>
     /// Constant strings
@@ -34,5 +34,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Status code: default
         /// </summary>
         public static string StatusCodeDefault = "default";
+
+        /// <summary>
+        /// extension for operation type
+        /// </summary>
+        public static string xMsDosOperationType = "x-ms-docs-operation-type";
+
+        /// <summary>
+        /// extension for group type
+        /// </summary>
+        public static string xMsDosGroupPath = "x-ms-docs-grouped-path";
     }
 }

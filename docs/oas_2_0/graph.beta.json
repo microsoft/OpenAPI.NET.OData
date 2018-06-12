@@ -109,7 +109,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -144,7 +145,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/schemaExtensions/{id}": {
@@ -205,7 +207,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -241,7 +244,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -271,7 +275,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directoryObjects": {
@@ -344,7 +349,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -379,7 +385,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directoryObjects/{id}": {
@@ -424,7 +431,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -460,7 +468,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -490,7 +499,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directoryObjects/microsoft.graph.user/microsoft.graph.delta()": {
@@ -514,9 +524,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/microsoft.graph.group/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()"
@@ -543,9 +554,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/microsoft.graph.user/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()"
@@ -572,9 +584,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/microsoft.graph.user/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.group/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.orgContact/microsoft.graph.delta()"
@@ -601,9 +614,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/microsoft.graph.user/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.group/microsoft.graph.delta()",
         "/directoryObjects/microsoft.graph.administrativeUnit/microsoft.graph.delta()"
@@ -651,7 +665,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/microsoft.graph.validateProperties": {
@@ -698,9 +713,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.validateProperties"
       ]
     },
@@ -747,7 +763,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.getMemberGroups": {
@@ -791,7 +808,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.getMemberObjects": {
@@ -835,7 +853,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.validateProperties": {
@@ -886,9 +905,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/microsoft.graph.validateProperties"
       ]
     },
@@ -915,7 +935,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.restore": {
@@ -941,7 +962,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.assignLicense": {
@@ -995,7 +1017,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.changePassword": {
@@ -1041,7 +1064,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.invalidateAllRefreshTokens": {
@@ -1067,7 +1091,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.sendMail": {
@@ -1114,7 +1139,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimesOLD": {
@@ -1179,7 +1205,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findMeetingTimes": {
@@ -1247,7 +1274,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getMailTips": {
@@ -1294,7 +1322,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
@@ -1341,7 +1370,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRoomLists()": {
@@ -1376,7 +1406,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms(RoomList={RoomList})": {
@@ -1417,9 +1448,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms()"
       ]
     },
@@ -1455,9 +1487,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.findRooms(RoomList={RoomList})"
       ]
     },
@@ -1484,7 +1517,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.unsubscribeByMail": {
@@ -1510,7 +1544,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.addFavorite": {
@@ -1536,7 +1571,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.removeFavorite": {
@@ -1562,7 +1598,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.group/microsoft.graph.resetUnseenCount": {
@@ -1588,7 +1625,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.removeAllDevicesFromManagement": {
@@ -1614,7 +1652,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.setMobileDeviceManagementAuthority": {
@@ -1640,7 +1679,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.getEncryptionPublicKey()": {
@@ -1672,7 +1712,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.uploadDepToken": {
@@ -1718,7 +1759,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.organization/microsoft.graph.syncWithAppleDeviceEnrollmentProgram": {
@@ -1744,7 +1786,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppDiagnosticStatuses()": {
@@ -1777,7 +1820,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.getManagedAppPolicies()": {
@@ -1810,7 +1854,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/directoryObjects/{id}/microsoft.graph.user/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
@@ -1853,7 +1898,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/applications": {
@@ -1969,7 +2015,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -2004,7 +2051,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/applications/{id}": {
@@ -2065,7 +2113,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -2101,7 +2150,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -2131,7 +2181,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/administrativeUnits": {
@@ -2208,7 +2259,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -2243,7 +2295,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/administrativeUnits/{id}": {
@@ -2291,7 +2344,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -2327,7 +2381,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -2357,7 +2412,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/administrativeUnits/microsoft.graph.delta()": {
@@ -2381,7 +2437,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/allowedDataLocations": {
@@ -2479,7 +2536,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -2514,7 +2572,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/allowedDataLocations/{id}": {
@@ -2574,7 +2633,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -2610,7 +2670,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -2640,7 +2701,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/appRoleAssignments": {
@@ -2744,7 +2806,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -2779,7 +2842,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/appRoleAssignments/{id}": {
@@ -2841,7 +2905,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -2877,7 +2942,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -2907,7 +2973,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/contacts": {
@@ -3035,7 +3102,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -3070,7 +3138,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/contacts/{id}": {
@@ -3135,7 +3204,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -3171,7 +3241,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -3201,7 +3272,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/contacts/microsoft.graph.delta()": {
@@ -3225,7 +3297,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/devices": {
@@ -3361,7 +3434,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -3396,7 +3470,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/devices/{id}": {
@@ -3462,7 +3537,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -3498,7 +3574,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -3528,7 +3605,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/domains": {
@@ -3652,7 +3730,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -3687,7 +3766,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/domains/{id}": {
@@ -3755,7 +3835,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -3791,7 +3872,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -3821,7 +3903,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/domains/{id}/microsoft.graph.forceDelete": {
@@ -3865,7 +3948,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/domains/{id}/microsoft.graph.verify": {
@@ -3891,7 +3975,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/domainDnsRecords": {
@@ -3992,7 +4077,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -4027,7 +4113,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/domainDnsRecords/{id}": {
@@ -4088,7 +4175,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -4124,7 +4212,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -4154,7 +4243,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/groups": {
@@ -4317,7 +4407,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -4352,7 +4443,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/groups/{id}": {
@@ -4427,7 +4519,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -4463,7 +4556,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -4493,7 +4587,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/groups/microsoft.graph.delta()": {
@@ -4517,7 +4612,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/groups/{id}/microsoft.graph.validateProperties": {
@@ -4568,7 +4664,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.renew": {
@@ -4594,7 +4691,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.subscribeByMail": {
@@ -4620,7 +4718,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.unsubscribeByMail": {
@@ -4646,7 +4745,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.addFavorite": {
@@ -4672,7 +4772,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.removeFavorite": {
@@ -4698,7 +4799,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groups/{id}/microsoft.graph.resetUnseenCount": {
@@ -4724,7 +4826,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directoryRoles": {
@@ -4803,7 +4906,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -4838,7 +4942,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directoryRoles/{id}": {
@@ -4886,7 +4991,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -4922,7 +5028,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -4952,7 +5059,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directoryRoleTemplates": {
@@ -5028,7 +5136,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -5063,7 +5172,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directoryRoleTemplates/{id}": {
@@ -5110,7 +5220,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -5146,7 +5257,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -5176,7 +5288,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directorySettingTemplates": {
@@ -5253,7 +5366,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -5288,7 +5402,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/directorySettingTemplates/{id}": {
@@ -5336,7 +5451,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -5372,7 +5488,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -5402,7 +5519,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/organization": {
@@ -5538,7 +5656,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -5573,7 +5692,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/organization/{id}": {
@@ -5639,7 +5759,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -5675,7 +5796,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -5705,7 +5827,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/organization/{id}/microsoft.graph.setMobileDeviceManagementAuthority": {
@@ -5731,7 +5854,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/organization/{id}/microsoft.graph.getEncryptionPublicKey()": {
@@ -5763,7 +5887,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/organization/{id}/microsoft.graph.uploadDepToken": {
@@ -5809,7 +5934,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/organization/{id}/microsoft.graph.syncWithAppleDeviceEnrollmentProgram": {
@@ -5835,7 +5961,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/oauth2PermissionGrants": {
@@ -5942,7 +6069,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -5977,7 +6105,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/oauth2PermissionGrants/{id}": {
@@ -6040,7 +6169,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -6076,7 +6206,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -6106,7 +6237,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/scopedRoleMemberships": {
@@ -6201,7 +6333,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -6236,7 +6369,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/scopedRoleMemberships/{id}": {
@@ -6295,7 +6429,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -6331,7 +6466,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -6361,7 +6497,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/servicePrincipals": {
@@ -6489,7 +6626,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -6524,7 +6662,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/servicePrincipals/{id}": {
@@ -6589,7 +6728,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -6625,7 +6765,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -6655,7 +6796,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/settings": {
@@ -6750,7 +6892,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -6785,7 +6928,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/settings/{id}": {
@@ -6844,7 +6988,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -6880,7 +7025,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -6910,7 +7056,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/subscribedSkus": {
@@ -6998,7 +7145,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -7033,7 +7181,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/subscribedSkus/{id}": {
@@ -7084,7 +7233,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -7120,7 +7270,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -7150,7 +7301,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/users": {
@@ -7380,7 +7532,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -7415,7 +7568,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/users/{id}": {
@@ -7514,7 +7668,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -7550,7 +7705,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -7580,7 +7736,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/users/microsoft.graph.delta()": {
@@ -7604,7 +7761,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.assignLicense": {
@@ -7658,7 +7816,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.changePassword": {
@@ -7704,7 +7863,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.invalidateAllRefreshTokens": {
@@ -7730,7 +7890,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.sendMail": {
@@ -7777,7 +7938,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.findMeetingTimesOLD": {
@@ -7842,7 +8004,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.findMeetingTimes": {
@@ -7910,7 +8073,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.getMailTips": {
@@ -7957,7 +8121,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
@@ -8004,7 +8169,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.findRoomLists()": {
@@ -8039,7 +8205,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.findRooms(RoomList={RoomList})": {
@@ -8080,9 +8247,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/users/{id}/microsoft.graph.findRooms()"
       ]
     },
@@ -8118,9 +8286,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/users/{id}/microsoft.graph.findRooms(RoomList={RoomList})"
       ]
     },
@@ -8147,7 +8316,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/users/{id}/microsoft.graph.getManagedAppDiagnosticStatuses()": {
@@ -8180,7 +8350,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.getManagedAppPolicies()": {
@@ -8213,7 +8384,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/users/{id}/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
@@ -8256,7 +8428,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/policies": {
@@ -8342,7 +8515,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -8377,7 +8551,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/policies/{id}": {
@@ -8428,7 +8603,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -8464,7 +8640,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -8494,7 +8671,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/contracts": {
@@ -8578,7 +8756,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -8613,7 +8792,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/contracts/{id}": {
@@ -8662,7 +8842,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -8698,7 +8879,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -8728,7 +8910,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/workbooks": {
@@ -8913,7 +9096,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -8948,7 +9132,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/workbooks/{id}": {
@@ -9043,7 +9228,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -9079,7 +9265,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -9109,7 +9296,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/workbooks/{id}/microsoft.graph.delta(token={token})": {
@@ -9148,9 +9336,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/workbooks/{id}/microsoft.graph.delta()"
       ]
     },
@@ -9184,9 +9373,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/workbooks/{id}/microsoft.graph.delta(token={token})"
       ]
     },
@@ -9226,7 +9416,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/workbooks/{id}/microsoft.graph.checkin": {
@@ -9272,7 +9463,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.checkout": {
@@ -9298,7 +9490,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.copy": {
@@ -9342,7 +9535,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.createLink": {
@@ -9403,7 +9597,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.createUploadSession": {
@@ -9444,7 +9639,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.invite": {
@@ -9507,7 +9703,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/workbooks/{id}/microsoft.graph.validatePermission": {
@@ -9553,7 +9750,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/drives": {
@@ -9688,7 +9886,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -9723,7 +9922,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/drives/{id}": {
@@ -9800,7 +10000,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -9836,7 +10037,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -9866,7 +10068,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/drives/{id}/microsoft.graph.recent()": {
@@ -9899,7 +10102,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/drives/{id}/microsoft.graph.search(q={q})": {
@@ -9938,7 +10142,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/drives/{id}/microsoft.graph.sharedWithMe()": {
@@ -9971,7 +10176,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/shares": {
@@ -10095,7 +10301,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -10130,7 +10337,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/shares/{id}": {
@@ -10204,7 +10412,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -10240,7 +10449,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -10270,7 +10480,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/sites": {
@@ -10405,7 +10616,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -10440,7 +10652,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/sites/{id}": {
@@ -10519,7 +10732,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -10555,7 +10769,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -10585,7 +10800,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/sites/{id}/microsoft.graph.getByPath(path={path})": {
@@ -10621,7 +10837,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/subscriptions": {
@@ -10680,7 +10897,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -10715,7 +10933,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/subscriptions/{id}": {
@@ -10764,7 +10983,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -10800,7 +11020,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -10830,7 +11051,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/identityRiskEvents": {
@@ -10944,7 +11166,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -10979,7 +11202,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/identityRiskEvents/{id}": {
@@ -11045,7 +11269,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -11081,7 +11306,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -11111,7 +11337,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/impossibleTravelRiskEvents": {
@@ -11249,7 +11476,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -11284,7 +11512,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/impossibleTravelRiskEvents/{id}": {
@@ -11358,7 +11587,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -11394,7 +11624,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -11424,7 +11655,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/leakedCredentialsRiskEvents": {
@@ -11538,7 +11770,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -11573,7 +11806,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/leakedCredentialsRiskEvents/{id}": {
@@ -11639,7 +11873,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -11675,7 +11910,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -11705,7 +11941,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/anonymousIpRiskEvents": {
@@ -11825,7 +12062,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -11860,7 +12098,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/anonymousIpRiskEvents/{id}": {
@@ -11928,7 +12167,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -11964,7 +12204,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -11994,7 +12235,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/suspiciousIpRiskEvents": {
@@ -12114,7 +12356,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -12149,7 +12392,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/suspiciousIpRiskEvents/{id}": {
@@ -12217,7 +12461,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -12253,7 +12498,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -12283,7 +12529,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/unfamiliarLocationRiskEvents": {
@@ -12403,7 +12650,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -12438,7 +12686,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/unfamiliarLocationRiskEvents/{id}": {
@@ -12506,7 +12755,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -12542,7 +12792,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -12572,7 +12823,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/malwareRiskEvents": {
@@ -12698,7 +12950,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -12733,7 +12986,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/malwareRiskEvents/{id}": {
@@ -12803,7 +13057,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -12839,7 +13094,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -12869,7 +13125,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedRoles": {
@@ -12961,7 +13218,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -12996,7 +13254,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedRoles/{id}": {
@@ -13056,7 +13315,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -13092,7 +13352,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -13122,7 +13383,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedRoles/{id}/microsoft.graph.selfActivate": {
@@ -13174,7 +13436,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/privilegedRoles/{id}/microsoft.graph.selfDeactivate": {
@@ -13200,7 +13463,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/privilegedRoleAssignments": {
@@ -13302,7 +13566,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -13337,7 +13602,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedRoleAssignments/{id}": {
@@ -13399,7 +13665,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -13435,7 +13702,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -13465,7 +13733,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedRoleAssignments/microsoft.graph.my()": {
@@ -13489,7 +13758,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/privilegedRoleAssignments/{id}/microsoft.graph.makePermanent": {
@@ -13538,7 +13808,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/privilegedRoleAssignments/{id}/microsoft.graph.makeEligible": {
@@ -13564,7 +13835,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/privilegedOperationEvents": {
@@ -13692,7 +13964,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -13727,7 +14000,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedOperationEvents/{id}": {
@@ -13797,7 +14071,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -13833,7 +14108,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -13863,7 +14139,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedSignupStatus": {
@@ -13955,7 +14232,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -13990,7 +14268,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedSignupStatus/{id}": {
@@ -14048,7 +14327,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -14084,7 +14364,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -14114,7 +14395,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.signUp": {
@@ -14131,7 +14413,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.isSignedUp()": {
@@ -14155,7 +14438,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.canSignUp()": {
@@ -14179,7 +14463,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/privilegedSignupStatus/microsoft.graph.completeSetup": {
@@ -14213,7 +14498,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/privilegedApproval": {
@@ -14327,7 +14613,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -14362,7 +14649,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedApproval/{id}": {
@@ -14428,7 +14716,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -14464,7 +14753,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -14494,7 +14784,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/privilegedApproval/microsoft.graph.myRequests()": {
@@ -14518,7 +14809,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/invitations": {
@@ -14629,7 +14921,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -14674,7 +14967,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/invitations/{id}": {
@@ -14739,7 +15033,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -14775,7 +15070,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -14805,7 +15101,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/appConfigurationGroupAssignments": {
@@ -14897,7 +15194,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -14932,7 +15230,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/appConfigurationGroupAssignments/{id}": {
@@ -14990,7 +15289,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -15026,7 +15326,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -15056,7 +15357,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/assignments": {
@@ -15145,7 +15447,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -15180,7 +15483,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/assignments/{id}": {
@@ -15237,7 +15541,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -15273,7 +15578,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -15303,7 +15609,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/vppTokens": {
@@ -15425,7 +15732,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -15460,7 +15768,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/vppTokens/{id}": {
@@ -15528,7 +15837,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -15564,7 +15874,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -15594,7 +15905,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/vppTokens/{id}/microsoft.graph.syncLicenses": {
@@ -15620,7 +15932,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/vppTokens/{id}/microsoft.graph.revokeLicenses": {
@@ -15646,7 +15959,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/enrollmentConfigurationAssignment": {
@@ -15735,7 +16049,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -15770,7 +16085,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/enrollmentConfigurationAssignment/{id}": {
@@ -15827,7 +16143,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -15863,7 +16180,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -15893,7 +16211,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/commands": {
@@ -16004,7 +16323,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -16039,7 +16359,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/commands/{id}": {
@@ -16104,7 +16425,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -16140,7 +16462,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -16170,7 +16493,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/payloadResponse": {
@@ -16256,7 +16580,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -16291,7 +16616,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/payloadResponse/{id}": {
@@ -16347,7 +16673,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -16383,7 +16710,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -16413,7 +16741,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/team": {
@@ -16512,7 +16841,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -16547,7 +16877,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/team/{id}": {
@@ -16608,7 +16939,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -16644,7 +16976,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -16674,7 +17007,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/channels": {
@@ -16767,7 +17101,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -16802,7 +17137,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/channels/{id}": {
@@ -16861,7 +17197,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -16897,7 +17234,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -16927,7 +17265,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/chatThreads": {
@@ -17015,7 +17354,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -17050,7 +17390,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/chatThreads/{id}": {
@@ -17108,7 +17449,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -17144,7 +17486,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -17174,7 +17517,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/groupLifecyclePolicies": {
@@ -17273,7 +17617,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -17308,7 +17653,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/groupLifecyclePolicies/{id}": {
@@ -17367,7 +17713,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -17403,7 +17750,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -17433,7 +17781,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/groupLifecyclePolicies/microsoft.graph.renewGroup": {
@@ -17469,7 +17818,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groupLifecyclePolicies/{id}/microsoft.graph.addGroup": {
@@ -17512,7 +17862,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/groupLifecyclePolicies/{id}/microsoft.graph.removeGroup": {
@@ -17555,7 +17906,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/identityProviders": {
@@ -17653,7 +18005,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -17688,7 +18041,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/identityProviders/{id}": {
@@ -17748,7 +18102,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -17784,7 +18139,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -17814,7 +18170,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/functions": {
@@ -17903,7 +18260,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -17938,7 +18296,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/functions/{id}": {
@@ -17995,7 +18354,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -18031,7 +18391,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -18061,7 +18422,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/filterOperators": {
@@ -18156,7 +18518,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
@@ -18191,7 +18554,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/filterOperators/{id}": {
@@ -18250,7 +18614,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -18286,7 +18651,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
@@ -18316,7 +18682,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/me": {
@@ -18408,7 +18775,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -18437,7 +18805,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/me/microsoft.graph.assignLicense": {
@@ -18484,7 +18853,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.changePassword": {
@@ -18523,7 +18893,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.invalidateAllRefreshTokens": {
@@ -18540,7 +18911,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.sendMail": {
@@ -18580,7 +18952,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.findMeetingTimesOLD": {
@@ -18638,7 +19011,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.findMeetingTimes": {
@@ -18699,7 +19073,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.getMailTips": {
@@ -18739,7 +19114,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.reminderView(StartDateTime={StartDateTime},EndDateTime={EndDateTime})": {
@@ -18779,7 +19155,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/me/microsoft.graph.findRoomLists()": {
@@ -18805,7 +19182,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/me/microsoft.graph.findRooms(RoomList={RoomList})": {
@@ -18839,9 +19217,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/me/microsoft.graph.findRooms()"
       ]
     },
@@ -18868,9 +19247,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/me/microsoft.graph.findRooms(RoomList={RoomList})"
       ]
     },
@@ -18888,7 +19268,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/me/microsoft.graph.getManagedAppDiagnosticStatuses()": {
@@ -18912,7 +19293,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/me/microsoft.graph.getManagedAppPolicies()": {
@@ -18936,7 +19318,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/me/microsoft.graph.wipeManagedAppRegistrationByDeviceTag": {
@@ -18972,7 +19355,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/directory": {
@@ -19022,7 +19406,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -19051,7 +19436,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/drive": {
@@ -19121,7 +19507,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -19150,7 +19537,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/drive/microsoft.graph.recent()": {
@@ -19174,7 +19562,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/drive/microsoft.graph.search(q={q})": {
@@ -19206,7 +19595,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/drive/microsoft.graph.sharedWithMe()": {
@@ -19230,7 +19620,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/planner": {
@@ -19282,7 +19673,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -19311,7 +19703,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/deviceManagement": {
@@ -19414,7 +19807,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -19443,7 +19837,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/deviceManagement/microsoft.graph.verifyWindowsEnrollmentAutoDiscovery(domainName={domainName})": {
@@ -19475,7 +19870,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/deviceManagement/microsoft.graph.getEffectivePermissions()": {
@@ -19501,9 +19897,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/deviceManagement/microsoft.graph.getEffectivePermissions(scope={scope})"
       ]
     },
@@ -19536,9 +19933,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/deviceManagement/microsoft.graph.getEffectivePermissions()"
       ]
     },
@@ -19611,7 +20009,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -19640,7 +20039,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/deviceAppManagement/microsoft.graph.syncMicrosoftStoreForBusinessApps": {
@@ -19657,7 +20057,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/reports": {
@@ -19706,7 +20107,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -19735,7 +20137,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/reports/microsoft.graph.deviceConfigurationUserActivity()": {
@@ -19756,7 +20159,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.deviceConfigurationDeviceActivity()": {
@@ -19777,7 +20181,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActivationsUserDetail()": {
@@ -19803,7 +20208,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActivationCounts()": {
@@ -19829,7 +20235,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActivationsUserCounts()": {
@@ -19855,7 +20262,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})": {
@@ -19891,9 +20299,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOffice365ActiveUserDetail(period={period})"
       ]
     },
@@ -19928,9 +20337,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOffice365ActiveUserDetail(date={date})"
       ]
     },
@@ -19965,7 +20375,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365ActiveUserCounts(period={period})": {
@@ -19999,7 +20410,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})": {
@@ -20035,9 +20447,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOffice365GroupsActivityDetail(period={period})"
       ]
     },
@@ -20072,9 +20485,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOffice365GroupsActivityDetail(date={date})"
       ]
     },
@@ -20109,7 +20523,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityGroupCounts(period={period})": {
@@ -20143,7 +20558,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityStorage(period={period})": {
@@ -20177,7 +20593,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOffice365GroupsActivityFileCounts(period={period})": {
@@ -20211,7 +20628,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailActivityUserDetail(date={date})": {
@@ -20247,9 +20665,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getEmailActivityUserDetail(period={period})"
       ]
     },
@@ -20284,9 +20703,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getEmailActivityUserDetail(date={date})"
       ]
     },
@@ -20321,7 +20741,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailActivityUserCounts(period={period})": {
@@ -20355,7 +20776,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})": {
@@ -20391,9 +20813,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getEmailAppUsageUserDetail(period={period})"
       ]
     },
@@ -20428,9 +20851,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getEmailAppUsageUserDetail(date={date})"
       ]
     },
@@ -20465,7 +20889,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageUserCounts(period={period})": {
@@ -20499,7 +20924,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getEmailAppUsageVersionsUserCounts(period={period})": {
@@ -20533,7 +20959,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageDetail(period={period})": {
@@ -20567,7 +20994,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageMailboxCounts(period={period})": {
@@ -20601,7 +21029,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageQuotaStatusMailboxCounts(period={period})": {
@@ -20635,7 +21064,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getMailboxUsageStorage(period={period})": {
@@ -20669,7 +21099,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})": {
@@ -20705,9 +21136,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOneDriveActivityUserDetail(period={period})"
       ]
     },
@@ -20742,9 +21174,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOneDriveActivityUserDetail(date={date})"
       ]
     },
@@ -20779,7 +21212,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveActivityFileCounts(period={period})": {
@@ -20813,7 +21247,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})": {
@@ -20849,9 +21284,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOneDriveUsageAccountDetail(period={period})"
       ]
     },
@@ -20886,9 +21322,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getOneDriveUsageAccountDetail(date={date})"
       ]
     },
@@ -20923,7 +21360,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageFileCounts(period={period})": {
@@ -20957,7 +21395,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getOneDriveUsageStorage(period={period})": {
@@ -20991,7 +21430,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})": {
@@ -21027,9 +21467,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSharePointActivityUserDetail(period={period})"
       ]
     },
@@ -21064,9 +21505,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSharePointActivityUserDetail(date={date})"
       ]
     },
@@ -21101,7 +21543,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityUserCounts(period={period})": {
@@ -21135,7 +21578,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointActivityPages(period={period})": {
@@ -21169,7 +21613,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})": {
@@ -21205,9 +21650,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSharePointSiteUsageDetail(period={period})"
       ]
     },
@@ -21242,9 +21688,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSharePointSiteUsageDetail(date={date})"
       ]
     },
@@ -21279,7 +21726,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageSiteCounts(period={period})": {
@@ -21313,7 +21761,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsageStorage(period={period})": {
@@ -21347,7 +21796,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSharePointSiteUsagePages(period={period})": {
@@ -21381,7 +21831,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})": {
@@ -21417,9 +21868,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(period={period})"
       ]
     },
@@ -21454,9 +21906,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSkypeForBusinessActivityUserDetail(date={date})"
       ]
     },
@@ -21491,7 +21944,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessActivityUserCounts(period={period})": {
@@ -21525,7 +21979,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityCounts(period={period})": {
@@ -21559,7 +22014,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityUserCounts(period={period})": {
@@ -21593,7 +22049,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessPeerToPeerActivityMinuteCounts(period={period})": {
@@ -21627,7 +22084,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityCounts(period={period})": {
@@ -21661,7 +22119,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityUserCounts(period={period})": {
@@ -21695,7 +22154,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessOrganizerActivityMinuteCounts(period={period})": {
@@ -21729,7 +22189,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityCounts(period={period})": {
@@ -21763,7 +22224,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityUserCounts(period={period})": {
@@ -21797,7 +22259,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessParticipantActivityMinuteCounts(period={period})": {
@@ -21831,7 +22294,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})": {
@@ -21867,9 +22331,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(period={period})"
       ]
     },
@@ -21904,9 +22369,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserDetail(date={date})"
       ]
     },
@@ -21941,7 +22407,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getSkypeForBusinessDeviceUsageUserCounts(period={period})": {
@@ -21975,7 +22442,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerActivityUserDetail(date={date})": {
@@ -22011,9 +22479,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getYammerActivityUserDetail(period={period})"
       ]
     },
@@ -22048,9 +22517,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getYammerActivityUserDetail(date={date})"
       ]
     },
@@ -22085,7 +22555,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerActivityUserCounts(period={period})": {
@@ -22119,7 +22590,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})": {
@@ -22155,9 +22627,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(period={period})"
       ]
     },
@@ -22192,9 +22665,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getYammerDeviceUsageUserDetail(date={date})"
       ]
     },
@@ -22229,7 +22703,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerDeviceUsageUserCounts(period={period})": {
@@ -22263,7 +22738,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})": {
@@ -22299,9 +22775,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getYammerGroupsActivityDetail(period={period})"
       ]
     },
@@ -22336,9 +22813,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getYammerGroupsActivityDetail(date={date})"
       ]
     },
@@ -22373,7 +22851,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getYammerGroupsActivityCounts(period={period})": {
@@ -22407,7 +22886,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})": {
@@ -22443,9 +22923,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getTeamsUserActivityUserDetail(period={period})"
       ]
     },
@@ -22480,9 +22961,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getTeamsUserActivityUserDetail(date={date})"
       ]
     },
@@ -22517,7 +22999,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsUserActivityUserCounts(period={period})": {
@@ -22551,7 +23034,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})": {
@@ -22587,9 +23071,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(period={period})"
       ]
     },
@@ -22624,9 +23109,10 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       },
-      "x-ms-additionalPath": [
+      "x-ms-docs-grouped-path": [
         "/reports/microsoft.graph.getTeamsDeviceUsageUserDetail(date={date})"
       ]
     },
@@ -22661,7 +23147,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getTeamsDeviceUsageDistributionUserCounts(period={period})": {
@@ -22695,7 +23182,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/reports/microsoft.graph.getTenantSecureScores(period={period})": {
@@ -22727,7 +23215,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/education": {
@@ -22781,7 +23270,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
@@ -22810,7 +23300,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     }
   },

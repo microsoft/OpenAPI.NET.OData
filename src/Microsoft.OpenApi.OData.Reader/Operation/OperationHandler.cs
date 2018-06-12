@@ -50,6 +50,9 @@ namespace Microsoft.OpenApi.OData.Operation
             // Tags
             SetTags(operation);
 
+            // Extensions
+            SetExtensions(operation);
+
             return operation;
         }
 
@@ -112,6 +115,15 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetTags(OpenApiOperation operation)
         { }
+
+        /// <summary>
+        /// Set the Extensions information for <see cref="OpenApiOperation"/>.
+        /// </summary>
+        /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
+        protected virtual void SetExtensions(OpenApiOperation operation)
+        {
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+        }
 
         protected static void AppendCustomParameters(OpenApiOperation operation, HttpRequest request)
         {

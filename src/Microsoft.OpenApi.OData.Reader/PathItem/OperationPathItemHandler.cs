@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,7 +80,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     array.Add(new OpenApiString(p.ToString()));
                 }
 
-                item.Extensions.Add("x-ms-additionalPath", array);
+                item.Extensions.Add(Constants.xMsDosGroupPath, array);
             }
         }
     }

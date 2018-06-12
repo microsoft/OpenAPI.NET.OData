@@ -4,7 +4,9 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -20,5 +22,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets the Edm Function.
         /// </summary>
         public IEdmFunction Function => EdmOperation as IEdmFunction;
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiOperation operation)
+        {
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("function"));
+        }
     }
 }
