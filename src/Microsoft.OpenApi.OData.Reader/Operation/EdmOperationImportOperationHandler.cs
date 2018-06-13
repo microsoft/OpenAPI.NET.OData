@@ -58,7 +58,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetTags(OpenApiOperation operation)
         {
             operation.Tags = CreateTags(EdmOperationImport);
-            operation.Tags[0].Extensions.Add("x-ms-docs-toc-type", new OpenApiString("container"));
+            operation.Tags[0].Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
             Context.AppendTag(operation.Tags[0]);
         }
 

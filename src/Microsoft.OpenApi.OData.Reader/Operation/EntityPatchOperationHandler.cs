@@ -42,12 +42,6 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetParameters(OpenApiOperation operation)
-        {
-            operation.Parameters = Context.CreateKeyParameters(EntitySet.EntityType());
-        }
-
-        /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
             operation.RequestBody = new OpenApiRequestBody

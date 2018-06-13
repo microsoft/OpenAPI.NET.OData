@@ -111,6 +111,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: contract
         - in: query
           name: $select
           description: Select properties to be returned
@@ -152,6 +153,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: contract
         - in: body
           name: body
           description: New property values
@@ -175,6 +177,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: contract
         - in: header
           name: If-Match
           description: ETag
@@ -324,6 +327,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: device
         - in: query
           name: $select
           description: Select properties to be returned
@@ -379,6 +383,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: device
         - in: body
           name: body
           description: New property values
@@ -402,6 +407,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: device
         - in: header
           name: If-Match
           description: ETag
@@ -503,6 +509,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: query
           name: $select
           description: Select properties to be returned
@@ -540,6 +547,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: New property values
@@ -563,6 +571,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: header
           name: If-Match
           description: ETag
@@ -655,6 +664,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: path
           name: endDateTime
           required: true
@@ -686,6 +696,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: Action parameters
@@ -722,6 +733,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: Action parameters
@@ -771,6 +783,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: Action parameters
@@ -802,6 +815,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: Action parameters
@@ -833,6 +847,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: Action parameters
@@ -863,6 +878,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
         - in: body
           name: body
           description: Action parameters
@@ -891,6 +907,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -909,6 +926,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -927,6 +945,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -945,6 +964,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -963,6 +983,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -981,6 +1002,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -999,6 +1021,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryObject
       responses:
         '204':
           description: Success
@@ -1106,6 +1129,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryRole
         - in: query
           name: $select
           description: Select properties to be returned
@@ -1147,6 +1171,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryRole
         - in: body
           name: body
           description: New property values
@@ -1170,6 +1195,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryRole
         - in: header
           name: If-Match
           description: ETag
@@ -1277,6 +1303,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryRoleTemplate
         - in: query
           name: $select
           description: Select properties to be returned
@@ -1316,6 +1343,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryRoleTemplate
         - in: body
           name: body
           description: New property values
@@ -1339,6 +1367,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: directoryRoleTemplate
         - in: header
           name: If-Match
           description: ETag
@@ -1470,6 +1499,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: domain
         - in: query
           name: $select
           description: Select properties to be returned
@@ -1519,6 +1549,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: domain
         - in: body
           name: body
           description: New property values
@@ -1542,6 +1573,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: domain
         - in: header
           name: If-Match
           description: ETag
@@ -1564,6 +1596,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: domain
       responses:
         '204':
           description: Success
@@ -1709,6 +1742,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: drive
         - in: query
           name: $select
           description: Select properties to be returned
@@ -1766,6 +1800,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: drive
         - in: body
           name: body
           description: New property values
@@ -1789,6 +1824,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: drive
         - in: header
           name: If-Match
           description: ETag
@@ -1813,6 +1849,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: drive
       responses:
         '200':
           description: Success
@@ -1836,6 +1873,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: drive
         - in: path
           name: q
           required: true
@@ -1863,6 +1901,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: drive
       responses:
         '200':
           description: Success
@@ -1972,6 +2011,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2012,6 +2052,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
         - in: body
           name: body
           description: New property values
@@ -2035,6 +2076,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupLifecyclePolicy
         - in: header
           name: If-Match
           description: ETag
@@ -2214,6 +2256,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2291,6 +2334,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
         - in: body
           name: body
           description: New property values
@@ -2314,6 +2358,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
         - in: header
           name: If-Match
           description: ETag
@@ -2353,6 +2398,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
       responses:
         '204':
           description: Success
@@ -2371,6 +2417,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
       responses:
         '204':
           description: Success
@@ -2389,6 +2436,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
       responses:
         '204':
           description: Success
@@ -2407,6 +2455,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
       responses:
         '204':
           description: Success
@@ -2425,6 +2474,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
       responses:
         '204':
           description: Success
@@ -2443,6 +2493,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: group
       responses:
         '204':
           description: Success
@@ -2549,6 +2600,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupSetting
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2589,6 +2641,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupSetting
         - in: body
           name: body
           description: New property values
@@ -2612,6 +2665,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupSetting
         - in: header
           name: If-Match
           description: ETag
@@ -2722,6 +2776,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupSettingTemplate
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2762,6 +2817,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupSettingTemplate
         - in: body
           name: body
           description: New property values
@@ -2785,6 +2841,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: groupSettingTemplate
         - in: header
           name: If-Match
           description: ETag
@@ -2901,6 +2958,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: schemaExtension
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2943,6 +3001,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: schemaExtension
         - in: body
           name: body
           description: New property values
@@ -2966,6 +3025,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: schemaExtension
         - in: header
           name: If-Match
           description: ETag
@@ -3105,6 +3165,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: sharedDriveItem
         - in: query
           name: $select
           description: Select properties to be returned
@@ -3160,6 +3221,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: sharedDriveItem
         - in: body
           name: body
           description: New property values
@@ -3183,6 +3245,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: sharedDriveItem
         - in: header
           name: If-Match
           description: ETag
@@ -3333,6 +3396,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: site
         - in: query
           name: $select
           description: Select properties to be returned
@@ -3393,6 +3457,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: site
         - in: body
           name: body
           description: New property values
@@ -3416,6 +3481,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: site
         - in: header
           name: If-Match
           description: ETag
@@ -3538,6 +3604,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: subscribedSku
         - in: query
           name: $select
           description: Select properties to be returned
@@ -3582,6 +3649,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: subscribedSku
         - in: body
           name: body
           description: New property values
@@ -3605,6 +3673,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: subscribedSku
         - in: header
           name: If-Match
           description: ETag
@@ -3727,6 +3796,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: subscription
         - in: query
           name: $select
           description: Select properties to be returned
@@ -3771,6 +3841,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: subscription
         - in: body
           name: body
           description: New property values
@@ -3794,6 +3865,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: subscription
         - in: header
           name: If-Match
           description: ETag
@@ -4054,6 +4126,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: query
           name: $select
           description: Select properties to be returned
@@ -4164,6 +4237,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: body
           name: body
           description: New property values
@@ -4187,6 +4261,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: header
           name: If-Match
           description: ETag
@@ -4228,6 +4303,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: path
           name: endDateTime
           required: true
@@ -4259,6 +4335,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: body
           name: body
           description: Action parameters
@@ -4295,6 +4372,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: body
           name: body
           description: Action parameters
@@ -4344,6 +4422,7 @@ paths:
           description: 'key: id'
           required: true
           type: string
+          x-ms-docs-key-type: user
         - in: body
           name: body
           description: Action parameters

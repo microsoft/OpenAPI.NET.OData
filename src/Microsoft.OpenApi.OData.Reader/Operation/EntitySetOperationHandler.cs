@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Operation
@@ -36,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = EntitySet.Name + "." + EntitySet.EntityType().Name,
             };
-            tag.Extensions.Add("x-ms-docs-toc-type", new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);

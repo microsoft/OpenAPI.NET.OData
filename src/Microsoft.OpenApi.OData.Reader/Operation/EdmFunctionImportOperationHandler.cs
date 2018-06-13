@@ -22,6 +22,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
+            base.SetParameters(operation);
+
             IEdmFunctionImport functionImport = EdmOperationImport as IEdmFunctionImport;
             //The parameters array contains a Parameter Object for each parameter of the function overload,
             // and it contains specific Parameter Objects for the allowed system query options.

@@ -44,6 +44,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
+            base.SetParameters(operation);
+
             // The parameters array contains Parameter Objects for all system query options allowed for this collection,
             // and it does not list system query options not allowed for this collection, see terms
             // Capabilities.TopSupported, Capabilities.SkipSupported, Capabilities.SearchRestrictions,

@@ -43,6 +43,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
+            base.SetParameters(operation);
+
             var request = Context.FindRequest(EntitySet, OperationType.ToString());
             AppendCustomParameters(operation, request);
         }

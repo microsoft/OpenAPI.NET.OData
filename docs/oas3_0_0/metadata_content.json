@@ -170,7 +170,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "contract"
           },
           {
             "name": "$select",
@@ -239,7 +240,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "contract"
           }
         ],
         "requestBody": {
@@ -278,7 +280,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "contract"
           },
           {
             "name": "If-Match",
@@ -495,7 +498,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "name": "$select",
@@ -598,7 +602,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           }
         ],
         "requestBody": {
@@ -637,7 +642,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "name": "If-Match",
@@ -675,7 +681,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -821,7 +828,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "extension"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -967,7 +986,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -1113,7 +1133,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -1259,7 +1291,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -1405,7 +1438,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -1682,7 +1727,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "name": "$select",
@@ -1747,7 +1793,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1786,7 +1833,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "name": "If-Match",
@@ -1941,7 +1989,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "name": "endDateTime",
@@ -2004,7 +2053,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -2067,7 +2117,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -2179,7 +2230,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -2235,7 +2287,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -2285,7 +2338,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -2333,7 +2387,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -2381,7 +2436,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2411,7 +2467,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2441,7 +2498,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2471,7 +2529,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2501,7 +2560,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2531,7 +2591,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2561,7 +2622,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -2732,7 +2794,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "name": "$select",
@@ -2809,7 +2872,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           }
         ],
         "requestBody": {
@@ -2848,7 +2912,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "name": "If-Match",
@@ -2886,7 +2951,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -2994,7 +3060,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -3239,7 +3317,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "name": "$select",
@@ -3306,7 +3385,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           }
         ],
         "requestBody": {
@@ -3345,7 +3425,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "name": "If-Match",
@@ -3544,7 +3625,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "name": "$select",
@@ -3641,7 +3723,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           }
         ],
         "requestBody": {
@@ -3680,7 +3763,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "name": "If-Match",
@@ -3718,7 +3802,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -3846,7 +3931,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -3974,7 +4071,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -4102,7 +4200,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "domainDnsRecord"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -4230,7 +4340,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -4358,7 +4469,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "domainDnsRecord"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -4486,7 +4609,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           }
         ],
         "responses": {
@@ -4695,7 +4819,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "$select",
@@ -4806,7 +4931,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "requestBody": {
@@ -4845,7 +4971,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "If-Match",
@@ -4883,7 +5010,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -5029,7 +5157,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -5175,7 +5315,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "$select",
@@ -5262,7 +5403,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -5408,7 +5550,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -5554,7 +5708,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "$select",
@@ -5641,7 +5796,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "responses": {
@@ -5686,7 +5842,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "q",
@@ -5740,7 +5897,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "responses": {
@@ -5925,7 +6083,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "name": "$select",
@@ -5993,7 +6152,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           }
         ],
         "requestBody": {
@@ -6032,7 +6192,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "name": "If-Match",
@@ -6279,7 +6440,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -6512,7 +6674,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "requestBody": {
@@ -6551,7 +6714,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "If-Match",
@@ -6589,7 +6753,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -6765,7 +6930,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -6941,7 +7118,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -7048,7 +7226,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -7224,7 +7403,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "event"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -7400,7 +7591,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -7576,7 +7768,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "conversation"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -7752,7 +7956,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -7859,7 +8064,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -7966,7 +8172,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -8142,7 +8349,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "event"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -8318,7 +8537,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -8494,7 +8714,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -8670,7 +8902,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -8846,7 +9079,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -9022,7 +9267,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -9198,7 +9444,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -9374,7 +9632,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -9481,7 +9740,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -9657,7 +9917,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -9833,7 +10105,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -10009,7 +10282,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -10185,7 +10470,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -10361,7 +10647,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "conversationThread"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -10537,7 +10835,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -10713,7 +11012,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -10889,7 +11200,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -11065,7 +11377,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "extension"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -11241,7 +11565,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -11417,7 +11742,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -11593,7 +11930,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -11700,7 +12038,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -11876,7 +12215,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "profilePhoto"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -12052,7 +12403,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -12159,7 +12511,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -12335,7 +12688,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "groupSetting"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -12544,7 +12909,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -12574,7 +12940,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -12604,7 +12971,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -12634,7 +13002,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -12664,7 +13033,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -12694,7 +13064,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -12864,7 +13235,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSetting"
           },
           {
             "name": "$select",
@@ -12932,7 +13304,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSetting"
           }
         ],
         "requestBody": {
@@ -12971,7 +13344,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSetting"
           },
           {
             "name": "If-Match",
@@ -13149,7 +13523,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSettingTemplate"
           },
           {
             "name": "$select",
@@ -13217,7 +13592,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSettingTemplate"
           }
         ],
         "requestBody": {
@@ -13256,7 +13632,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSettingTemplate"
           },
           {
             "name": "If-Match",
@@ -13440,7 +13817,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "name": "$select",
@@ -13510,7 +13888,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "schemaExtension"
           }
         ],
         "requestBody": {
@@ -13549,7 +13928,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "name": "If-Match",
@@ -13756,7 +14136,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -13877,7 +14258,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           }
         ],
         "requestBody": {
@@ -13916,7 +14298,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "If-Match",
@@ -13954,7 +14337,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -14039,7 +14423,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -14175,7 +14560,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -14311,7 +14708,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -14396,7 +14794,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -14481,7 +14880,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -14566,7 +14966,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -14831,7 +15232,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "name": "$select",
@@ -14969,7 +15371,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           }
         ],
         "requestBody": {
@@ -15008,7 +15411,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "name": "If-Match",
@@ -15046,7 +15450,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -15193,7 +15598,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "contentType"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -15340,7 +15757,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "name": "$select",
@@ -15430,7 +15848,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -15577,7 +15996,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -15724,7 +16155,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -15871,7 +16303,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "baseItem"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16018,7 +16462,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16165,7 +16610,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "list"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16312,7 +16769,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16459,7 +16917,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16606,7 +17076,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16753,7 +17224,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "columnDefinition"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -16900,7 +17383,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "name": "$select",
@@ -17142,7 +17626,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "name": "$select",
@@ -17214,7 +17699,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscribedSku"
           }
         ],
         "requestBody": {
@@ -17253,7 +17739,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "name": "If-Match",
@@ -17443,7 +17930,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "name": "$select",
@@ -17515,7 +18003,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscription"
           }
         ],
         "requestBody": {
@@ -17554,7 +18043,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "name": "If-Match",
@@ -17882,7 +18372,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -18202,7 +18693,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -18241,7 +18733,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "If-Match",
@@ -18279,7 +18772,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -18536,7 +19030,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "deviceManagementTroubleshootingEvent"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -18793,7 +19299,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -19050,7 +19557,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "managedAppRegistration"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -19307,7 +19826,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -19564,7 +20084,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "managedDevice"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -19821,7 +20353,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -19961,7 +20494,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -20218,7 +20752,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "calendarGroup"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -20475,7 +21021,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -20732,7 +21279,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "event"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -20989,7 +21548,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -21246,7 +21806,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "calendar"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -21503,7 +22075,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -21760,7 +22333,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "contact"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -22017,7 +22602,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -22274,7 +22860,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "contactFolder"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -22531,7 +23129,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -22788,7 +23387,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -23045,7 +23656,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -23302,7 +23914,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -23559,7 +24183,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -23699,7 +24324,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -23956,7 +24582,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -24213,7 +24851,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -24470,7 +25109,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "event"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -24727,7 +25378,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -24867,7 +25519,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -25124,7 +25777,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "mailFolder"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -25381,7 +26046,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -25521,7 +26187,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -25778,7 +26445,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -26035,7 +26714,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -26292,7 +26972,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "message"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -26549,7 +27241,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -26689,7 +27382,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -26946,7 +27640,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -27203,7 +27909,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -27460,7 +28167,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -27717,7 +28436,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -27857,7 +28577,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -28114,7 +28835,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -28371,7 +29104,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -28628,7 +29362,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "userActivity"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -28885,7 +29631,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -29142,7 +29889,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "extension"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -29399,7 +30158,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -29656,7 +30416,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "licenseDetails"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -29913,7 +30685,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -30053,7 +30826,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -30310,7 +31084,19 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "person"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -30567,7 +31353,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -30740,7 +31527,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "endDateTime",
@@ -30803,7 +31591,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -30866,7 +31655,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -30978,7 +31768,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -31200,6 +31991,17 @@
         "summary": "Get deletedItems from directory",
         "operationId": "directory.GetDirectoryObject",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -31470,6 +32272,17 @@
         "operationId": "education.GetEducationClass",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "educationClass"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -31715,6 +32528,17 @@
         "operationId": "education.GetEducationSchool",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "educationSchool"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -31898,6 +32722,17 @@
         "summary": "Get users from education",
         "operationId": "education.GetEducationUser",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "educationUser"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -32554,6 +33389,17 @@
         "operationId": "me.GetDeviceManagementTroubleshootingEvent",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "deviceManagementTroubleshootingEvent"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -33048,6 +33894,17 @@
         "operationId": "me.GetManagedAppRegistration",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "managedAppRegistration"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -33541,6 +34398,17 @@
         "summary": "Get managedDevices from me",
         "operationId": "me.GetManagedDevice",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "managedDevice"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -34166,6 +35034,17 @@
         "operationId": "me.GetCalendarGroup",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "calendarGroup"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -34659,6 +35538,17 @@
         "summary": "Get calendarView from me",
         "operationId": "me.GetEvent",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "event"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -35154,6 +36044,17 @@
         "operationId": "me.GetCalendar",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "calendar"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -35647,6 +36548,17 @@
         "summary": "Get contacts from me",
         "operationId": "me.GetContact",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "contact"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -36142,6 +37054,17 @@
         "operationId": "me.GetContactFolder",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "contactFolder"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -36636,6 +37559,17 @@
         "operationId": "me.GetDirectoryObject",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -37129,6 +38063,17 @@
         "summary": "Get directReports from me",
         "operationId": "me.GetDirectoryObject",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -37754,6 +38699,17 @@
         "operationId": "me.GetDrive",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "drive"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -38247,6 +39203,17 @@
         "summary": "Get events from me",
         "operationId": "me.GetEvent",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "event"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -38872,6 +39839,17 @@
         "operationId": "me.GetMailFolder",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "mailFolder"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -39496,6 +40474,17 @@
         "operationId": "me.GetDirectoryObject",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -39989,6 +40978,17 @@
         "summary": "Get messages from me",
         "operationId": "me.GetMessage",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "message"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -40614,6 +41614,17 @@
         "operationId": "me.GetDirectoryObject",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -41107,6 +42118,17 @@
         "summary": "Get ownedObjects from me",
         "operationId": "me.GetDirectoryObject",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -41732,6 +42754,17 @@
         "operationId": "me.GetDirectoryObject",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "directoryObject"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -42225,6 +43258,17 @@
         "summary": "Get activities from me",
         "operationId": "me.GetUserActivity",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "userActivity"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -42720,6 +43764,17 @@
         "operationId": "me.GetExtension",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "extension"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -43213,6 +44268,17 @@
         "summary": "Get licenseDetails from me",
         "operationId": "me.GetLicenseDetails",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "licenseDetails"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -43837,6 +44903,17 @@
         "summary": "Get people from me",
         "operationId": "me.GetPerson",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "person"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -44737,6 +45814,17 @@
         "operationId": "organization.GetExtension",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "extension"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -45079,6 +46167,17 @@
         "operationId": "planner.GetPlannerBucket",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "plannerBucket"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -45261,6 +46360,17 @@
         "operationId": "planner.GetPlannerPlan",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "plannerPlan"
+          },
+          {
             "$ref": "#/components/parameters/top"
           },
           {
@@ -45442,6 +46552,17 @@
         "summary": "Get tasks from planner",
         "operationId": "planner.GetPlannerTask",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "key: id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-ms-docs-key-type": "plannerTask"
+          },
           {
             "$ref": "#/components/parameters/top"
           },

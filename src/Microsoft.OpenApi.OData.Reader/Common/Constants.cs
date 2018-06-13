@@ -36,6 +36,16 @@ namespace Microsoft.OpenApi.OData.Common
         public static string StatusCodeDefault = "default";
 
         /// <summary>
+        /// extension for toc (table of content) type
+        /// </summary>
+        public static string xMsTocType = "x-ms-docs-toc-type";
+
+        /// <summary>
+        /// extension for key type
+        /// </summary>
+        public static string xMsKeyType = "x-ms-docs-key-type";
+
+        /// <summary>
         /// extension for operation type
         /// </summary>
         public static string xMsDosOperationType = "x-ms-docs-operation-type";

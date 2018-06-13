@@ -170,7 +170,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "contract"
           },
           {
             "name": "$select",
@@ -239,7 +240,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "contract"
           }
         ],
         "requestBody": {
@@ -278,7 +280,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "contract"
           },
           {
             "name": "If-Match",
@@ -495,7 +498,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "name": "$select",
@@ -598,7 +602,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           }
         ],
         "requestBody": {
@@ -637,7 +642,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "device"
           },
           {
             "name": "If-Match",
@@ -806,7 +812,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "name": "$select",
@@ -871,7 +878,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -910,7 +918,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "name": "If-Match",
@@ -1065,7 +1074,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "name": "endDateTime",
@@ -1128,7 +1138,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1191,7 +1202,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1303,7 +1315,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1359,7 +1372,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1409,7 +1423,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1457,7 +1472,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "requestBody": {
@@ -1505,7 +1521,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1535,7 +1552,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1565,7 +1583,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1595,7 +1614,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1625,7 +1645,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1655,7 +1676,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1685,7 +1707,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1856,7 +1879,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "name": "$select",
@@ -1933,7 +1957,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           }
         ],
         "requestBody": {
@@ -1972,7 +1997,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "name": "If-Match",
@@ -2147,7 +2173,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "name": "$select",
@@ -2214,7 +2241,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           }
         ],
         "requestBody": {
@@ -2253,7 +2281,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "name": "If-Match",
@@ -2452,7 +2481,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "name": "$select",
@@ -2549,7 +2579,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           }
         ],
         "requestBody": {
@@ -2588,7 +2619,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           },
           {
             "name": "If-Match",
@@ -2626,7 +2658,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "domain"
           }
         ],
         "responses": {
@@ -2835,7 +2868,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "$select",
@@ -2946,7 +2980,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "requestBody": {
@@ -2985,7 +3020,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "If-Match",
@@ -3023,7 +3059,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "responses": {
@@ -3068,7 +3105,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           },
           {
             "name": "q",
@@ -3122,7 +3160,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "responses": {
@@ -3307,7 +3346,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "name": "$select",
@@ -3375,7 +3415,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           }
         ],
         "requestBody": {
@@ -3414,7 +3455,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "name": "If-Match",
@@ -3661,7 +3703,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "$select",
@@ -3894,7 +3937,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "requestBody": {
@@ -3933,7 +3977,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           },
           {
             "name": "If-Match",
@@ -4004,7 +4049,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4034,7 +4080,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4064,7 +4111,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4094,7 +4142,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4124,7 +4173,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4154,7 +4204,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4324,7 +4375,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSetting"
           },
           {
             "name": "$select",
@@ -4392,7 +4444,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSetting"
           }
         ],
         "requestBody": {
@@ -4431,7 +4484,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSetting"
           },
           {
             "name": "If-Match",
@@ -4609,7 +4663,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSettingTemplate"
           },
           {
             "name": "$select",
@@ -4677,7 +4732,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSettingTemplate"
           }
         ],
         "requestBody": {
@@ -4716,7 +4772,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "groupSettingTemplate"
           },
           {
             "name": "If-Match",
@@ -4900,7 +4957,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "name": "$select",
@@ -4970,7 +5028,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "schemaExtension"
           }
         ],
         "requestBody": {
@@ -5009,7 +5068,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "name": "If-Match",
@@ -5216,7 +5276,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "$select",
@@ -5337,7 +5398,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           }
         ],
         "requestBody": {
@@ -5376,7 +5438,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "name": "If-Match",
@@ -5594,7 +5657,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "name": "$select",
@@ -5732,7 +5796,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           }
         ],
         "requestBody": {
@@ -5771,7 +5836,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "site"
           },
           {
             "name": "If-Match",
@@ -5961,7 +6027,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "name": "$select",
@@ -6033,7 +6100,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscribedSku"
           }
         ],
         "requestBody": {
@@ -6072,7 +6140,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "name": "If-Match",
@@ -6262,7 +6331,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "name": "$select",
@@ -6334,7 +6404,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscription"
           }
         ],
         "requestBody": {
@@ -6373,7 +6444,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "name": "If-Match",
@@ -6701,7 +6773,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "$select",
@@ -7021,7 +7094,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -7060,7 +7134,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "If-Match",
@@ -7131,7 +7206,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           },
           {
             "name": "endDateTime",
@@ -7194,7 +7270,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -7257,7 +7334,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {
@@ -7369,7 +7447,8 @@
             "schema": {
               "type": "string",
               "nullable": true
-            }
+            },
+            "x-ms-docs-key-type": "user"
           }
         ],
         "requestBody": {

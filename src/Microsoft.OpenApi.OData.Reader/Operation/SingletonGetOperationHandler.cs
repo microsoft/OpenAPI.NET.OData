@@ -43,6 +43,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
+            base.SetParameters(operation);
+
             operation.Parameters = new List<OpenApiParameter>();
             IEdmEntityType entityType = Singleton.EntityType();
 

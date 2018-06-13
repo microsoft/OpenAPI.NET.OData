@@ -71,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = NavigationSource.Name + "." + value,
             };
-            tag.Extensions.Add("x-ms-docs-toc-type", new OpenApiString("container"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
@@ -80,6 +80,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
+            base.SetParameters(operation);
+            /*
             IEdmSingleton singleton = NavigationSource as IEdmSingleton;
             if (singleton == null && EdmOperation.IsBound)
             {
@@ -91,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.Parameters = Context.CreateKeyParameters(bindingParameter
                         .Type.AsEntity().EntityDefinition());
                 }
-            }
+            }*/
 
             if (EdmOperation.IsFunction())
             {

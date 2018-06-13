@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 // Name = NavigationSource.Name + "." + NavigationProperty.ToEntityType().Name,
                 Name = name
             };
-            tag.Extensions.Add("x-ms-docs-toc-type", new OpenApiString("page"));
+            tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);

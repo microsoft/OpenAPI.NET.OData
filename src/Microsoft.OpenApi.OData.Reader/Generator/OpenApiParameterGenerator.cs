@@ -135,6 +135,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     Schema = context.CreateEdmTypeSchema(keyProperty.Type)
                 };
 
+                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+
                 parameters.Add(parameter);
             }
 

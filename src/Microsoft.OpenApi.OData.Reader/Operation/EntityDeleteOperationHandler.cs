@@ -43,7 +43,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
-            operation.Parameters = Context.CreateKeyParameters(EntitySet.EntityType());
+            base.SetParameters(operation);
+
             operation.Parameters.Add(new OpenApiParameter
             {
                 Name = "If-Match",

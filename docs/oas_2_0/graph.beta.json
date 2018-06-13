@@ -165,7 +165,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "in": "query",
@@ -225,7 +226,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "in": "body",
@@ -259,7 +261,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "schemaExtension"
           },
           {
             "in": "header",
@@ -405,7 +408,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "query",
@@ -449,7 +453,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -483,7 +488,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "header",
@@ -736,7 +742,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -783,7 +790,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -828,7 +836,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -873,7 +882,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -925,7 +935,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -952,7 +963,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -982,7 +994,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1037,7 +1050,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1081,7 +1095,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1111,7 +1126,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1159,7 +1175,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1225,7 +1242,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1294,7 +1312,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1342,7 +1361,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "path",
@@ -1390,7 +1410,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1426,7 +1447,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "path",
@@ -1471,7 +1493,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1507,7 +1530,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1534,7 +1558,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1561,7 +1586,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1588,7 +1614,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1615,7 +1642,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1642,7 +1670,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1669,7 +1698,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1699,7 +1729,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1732,7 +1763,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -1776,7 +1808,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1806,7 +1839,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1840,7 +1874,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           }
         ],
         "responses": {
@@ -1874,7 +1909,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryObject"
           },
           {
             "in": "body",
@@ -2071,7 +2107,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "application"
           },
           {
             "in": "query",
@@ -2131,7 +2168,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "application"
           },
           {
             "in": "body",
@@ -2165,7 +2203,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "application"
           },
           {
             "in": "header",
@@ -2315,7 +2354,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "administrativeUnit"
           },
           {
             "in": "query",
@@ -2362,7 +2402,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "administrativeUnit"
           },
           {
             "in": "body",
@@ -2396,7 +2437,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "administrativeUnit"
           },
           {
             "in": "header",
@@ -2592,7 +2634,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "allowedDataLocation"
           },
           {
             "in": "query",
@@ -2651,7 +2694,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "allowedDataLocation"
           },
           {
             "in": "body",
@@ -2685,7 +2729,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "allowedDataLocation"
           },
           {
             "in": "header",
@@ -2862,7 +2907,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "appRoleAssignment"
           },
           {
             "in": "query",
@@ -2923,7 +2969,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "appRoleAssignment"
           },
           {
             "in": "body",
@@ -2957,7 +3004,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "appRoleAssignment"
           },
           {
             "in": "header",
@@ -3158,7 +3206,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "orgContact"
           },
           {
             "in": "query",
@@ -3222,7 +3271,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "orgContact"
           },
           {
             "in": "body",
@@ -3256,7 +3306,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "orgContact"
           },
           {
             "in": "header",
@@ -3490,7 +3541,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "device"
           },
           {
             "in": "query",
@@ -3555,7 +3607,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "device"
           },
           {
             "in": "body",
@@ -3589,7 +3642,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "device"
           },
           {
             "in": "header",
@@ -3786,7 +3840,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domain"
           },
           {
             "in": "query",
@@ -3853,7 +3908,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domain"
           },
           {
             "in": "body",
@@ -3887,7 +3943,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domain"
           },
           {
             "in": "header",
@@ -3923,7 +3980,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domain"
           },
           {
             "in": "body",
@@ -3965,7 +4023,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domain"
           }
         ],
         "responses": {
@@ -4133,7 +4192,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domainDnsRecord"
           },
           {
             "in": "query",
@@ -4193,7 +4253,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domainDnsRecord"
           },
           {
             "in": "body",
@@ -4227,7 +4288,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "domainDnsRecord"
           },
           {
             "in": "header",
@@ -4463,7 +4525,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           },
           {
             "in": "query",
@@ -4537,7 +4600,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           },
           {
             "in": "body",
@@ -4571,7 +4635,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           },
           {
             "in": "header",
@@ -4632,7 +4697,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           },
           {
             "in": "body",
@@ -4681,7 +4747,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4708,7 +4775,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4735,7 +4803,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4762,7 +4831,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4789,7 +4859,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4816,7 +4887,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "group"
           }
         ],
         "responses": {
@@ -4962,7 +5034,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "in": "query",
@@ -5009,7 +5082,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "in": "body",
@@ -5043,7 +5117,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryRole"
           },
           {
             "in": "header",
@@ -5192,7 +5267,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "in": "query",
@@ -5238,7 +5314,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "in": "body",
@@ -5272,7 +5349,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directoryRoleTemplate"
           },
           {
             "in": "header",
@@ -5422,7 +5500,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directorySettingTemplate"
           },
           {
             "in": "query",
@@ -5469,7 +5548,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directorySettingTemplate"
           },
           {
             "in": "body",
@@ -5503,7 +5583,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directorySettingTemplate"
           },
           {
             "in": "header",
@@ -5712,7 +5793,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           },
           {
             "in": "query",
@@ -5777,7 +5859,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           },
           {
             "in": "body",
@@ -5811,7 +5894,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           },
           {
             "in": "header",
@@ -5844,7 +5928,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           }
         ],
         "responses": {
@@ -5874,7 +5959,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           }
         ],
         "responses": {
@@ -5907,7 +5993,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           },
           {
             "in": "body",
@@ -5951,7 +6038,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "organization"
           }
         ],
         "responses": {
@@ -6125,7 +6213,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "oAuth2PermissionGrant"
           },
           {
             "in": "query",
@@ -6187,7 +6276,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "oAuth2PermissionGrant"
           },
           {
             "in": "body",
@@ -6221,7 +6311,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "oAuth2PermissionGrant"
           },
           {
             "in": "header",
@@ -6389,7 +6480,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "scopedRoleMembership"
           },
           {
             "in": "query",
@@ -6447,7 +6539,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "scopedRoleMembership"
           },
           {
             "in": "body",
@@ -6481,7 +6574,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "scopedRoleMembership"
           },
           {
             "in": "header",
@@ -6682,7 +6776,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "servicePrincipal"
           },
           {
             "in": "query",
@@ -6746,7 +6841,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "servicePrincipal"
           },
           {
             "in": "body",
@@ -6780,7 +6876,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "servicePrincipal"
           },
           {
             "in": "header",
@@ -6948,7 +7045,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directorySetting"
           },
           {
             "in": "query",
@@ -7006,7 +7104,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directorySetting"
           },
           {
             "in": "body",
@@ -7040,7 +7139,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "directorySetting"
           },
           {
             "in": "header",
@@ -7201,7 +7301,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "in": "query",
@@ -7251,7 +7352,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "in": "body",
@@ -7285,7 +7387,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "subscribedSku"
           },
           {
             "in": "header",
@@ -7588,7 +7691,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "query",
@@ -7686,7 +7790,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -7720,7 +7825,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "header",
@@ -7781,7 +7887,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -7836,7 +7943,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -7880,7 +7988,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           }
         ],
         "responses": {
@@ -7910,7 +8019,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -7958,7 +8068,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -8024,7 +8135,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -8093,7 +8205,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -8141,7 +8254,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "path",
@@ -8189,7 +8303,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           }
         ],
         "responses": {
@@ -8225,7 +8340,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "path",
@@ -8270,7 +8386,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           }
         ],
         "responses": {
@@ -8306,7 +8423,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           }
         ],
         "responses": {
@@ -8336,7 +8454,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           }
         ],
         "responses": {
@@ -8370,7 +8489,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           }
         ],
         "responses": {
@@ -8404,7 +8524,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "user"
           },
           {
             "in": "body",
@@ -8571,7 +8692,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "policy"
           },
           {
             "in": "query",
@@ -8621,7 +8743,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "policy"
           },
           {
             "in": "body",
@@ -8655,7 +8778,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "policy"
           },
           {
             "in": "header",
@@ -8812,7 +8936,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "contract"
           },
           {
             "in": "query",
@@ -8860,7 +8985,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "contract"
           },
           {
             "in": "body",
@@ -8894,7 +9020,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "contract"
           },
           {
             "in": "header",
@@ -9152,7 +9279,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "query",
@@ -9246,7 +9374,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9280,7 +9409,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "header",
@@ -9316,7 +9446,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "path",
@@ -9359,7 +9490,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           }
         ],
         "responses": {
@@ -9396,7 +9528,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "path",
@@ -9436,7 +9569,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9480,7 +9614,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           }
         ],
         "responses": {
@@ -9510,7 +9645,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9555,7 +9691,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9617,7 +9754,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9659,7 +9797,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9723,7 +9862,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "driveItem"
           },
           {
             "in": "body",
@@ -9942,7 +10082,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "drive"
           },
           {
             "in": "query",
@@ -10018,7 +10159,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "drive"
           },
           {
             "in": "body",
@@ -10052,7 +10194,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "drive"
           },
           {
             "in": "header",
@@ -10088,7 +10231,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "responses": {
@@ -10122,7 +10266,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "drive"
           },
           {
             "in": "path",
@@ -10162,7 +10307,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "drive"
           }
         ],
         "responses": {
@@ -10357,7 +10503,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "in": "query",
@@ -10430,7 +10577,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "in": "body",
@@ -10464,7 +10612,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "sharedDriveItem"
           },
           {
             "in": "header",
@@ -10672,7 +10821,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "site"
           },
           {
             "in": "query",
@@ -10750,7 +10900,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "site"
           },
           {
             "in": "body",
@@ -10784,7 +10935,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "site"
           },
           {
             "in": "header",
@@ -10820,7 +10972,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "site"
           },
           {
             "in": "path",
@@ -10953,7 +11106,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "in": "query",
@@ -11001,7 +11155,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "in": "body",
@@ -11035,7 +11190,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "subscription"
           },
           {
             "in": "header",
@@ -11222,7 +11378,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "identityRiskEvent"
           },
           {
             "in": "query",
@@ -11287,7 +11444,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "identityRiskEvent"
           },
           {
             "in": "body",
@@ -11321,7 +11479,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "identityRiskEvent"
           },
           {
             "in": "header",
@@ -11532,7 +11691,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "impossibleTravelRiskEvent"
           },
           {
             "in": "query",
@@ -11605,7 +11765,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "impossibleTravelRiskEvent"
           },
           {
             "in": "body",
@@ -11639,7 +11800,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "impossibleTravelRiskEvent"
           },
           {
             "in": "header",
@@ -11826,7 +11988,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "leakedCredentialsRiskEvent"
           },
           {
             "in": "query",
@@ -11891,7 +12054,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "leakedCredentialsRiskEvent"
           },
           {
             "in": "body",
@@ -11925,7 +12089,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "leakedCredentialsRiskEvent"
           },
           {
             "in": "header",
@@ -12118,7 +12283,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "anonymousIpRiskEvent"
           },
           {
             "in": "query",
@@ -12185,7 +12351,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "anonymousIpRiskEvent"
           },
           {
             "in": "body",
@@ -12219,7 +12386,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "anonymousIpRiskEvent"
           },
           {
             "in": "header",
@@ -12412,7 +12580,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "suspiciousIpRiskEvent"
           },
           {
             "in": "query",
@@ -12479,7 +12648,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "suspiciousIpRiskEvent"
           },
           {
             "in": "body",
@@ -12513,7 +12683,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "suspiciousIpRiskEvent"
           },
           {
             "in": "header",
@@ -12706,7 +12877,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "unfamiliarLocationRiskEvent"
           },
           {
             "in": "query",
@@ -12773,7 +12945,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "unfamiliarLocationRiskEvent"
           },
           {
             "in": "body",
@@ -12807,7 +12980,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "unfamiliarLocationRiskEvent"
           },
           {
             "in": "header",
@@ -13006,7 +13180,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "malwareRiskEvent"
           },
           {
             "in": "query",
@@ -13075,7 +13250,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "malwareRiskEvent"
           },
           {
             "in": "body",
@@ -13109,7 +13285,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "malwareRiskEvent"
           },
           {
             "in": "header",
@@ -13274,7 +13451,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRole"
           },
           {
             "in": "query",
@@ -13333,7 +13511,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRole"
           },
           {
             "in": "body",
@@ -13367,7 +13546,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRole"
           },
           {
             "in": "header",
@@ -13403,7 +13583,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRole"
           },
           {
             "in": "body",
@@ -13453,7 +13634,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRole"
           }
         ],
         "responses": {
@@ -13622,7 +13804,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRoleAssignment"
           },
           {
             "in": "query",
@@ -13683,7 +13866,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRoleAssignment"
           },
           {
             "in": "body",
@@ -13717,7 +13901,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRoleAssignment"
           },
           {
             "in": "header",
@@ -13778,7 +13963,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRoleAssignment"
           },
           {
             "in": "body",
@@ -13825,7 +14011,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedRoleAssignment"
           }
         ],
         "responses": {
@@ -14020,7 +14207,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedOperationEvent"
           },
           {
             "in": "query",
@@ -14089,7 +14277,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedOperationEvent"
           },
           {
             "in": "body",
@@ -14123,7 +14312,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedOperationEvent"
           },
           {
             "in": "header",
@@ -14288,7 +14478,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedSignupStatus"
           },
           {
             "in": "query",
@@ -14345,7 +14536,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedSignupStatus"
           },
           {
             "in": "body",
@@ -14379,7 +14571,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedSignupStatus"
           },
           {
             "in": "header",
@@ -14669,7 +14862,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedApproval"
           },
           {
             "in": "query",
@@ -14734,7 +14928,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedApproval"
           },
           {
             "in": "body",
@@ -14768,7 +14963,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "privilegedApproval"
           },
           {
             "in": "header",
@@ -14987,7 +15183,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "invitation"
           },
           {
             "in": "query",
@@ -15051,7 +15248,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "invitation"
           },
           {
             "in": "body",
@@ -15085,7 +15283,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "invitation"
           },
           {
             "in": "header",
@@ -15250,7 +15449,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "mdmAppConfigGroupAssignment"
           },
           {
             "in": "query",
@@ -15307,7 +15507,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "mdmAppConfigGroupAssignment"
           },
           {
             "in": "body",
@@ -15341,7 +15542,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "mdmAppConfigGroupAssignment"
           },
           {
             "in": "header",
@@ -15503,7 +15705,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "managedDeviceMobileAppConfigurationAssignment"
           },
           {
             "in": "query",
@@ -15559,7 +15762,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "managedDeviceMobileAppConfigurationAssignment"
           },
           {
             "in": "body",
@@ -15593,7 +15797,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "managedDeviceMobileAppConfigurationAssignment"
           },
           {
             "in": "header",
@@ -15788,7 +15993,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "vppToken"
           },
           {
             "in": "query",
@@ -15855,7 +16061,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "vppToken"
           },
           {
             "in": "body",
@@ -15889,7 +16096,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "vppToken"
           },
           {
             "in": "header",
@@ -15922,7 +16130,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "vppToken"
           }
         ],
         "responses": {
@@ -15949,7 +16158,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "vppToken"
           }
         ],
         "responses": {
@@ -16105,7 +16315,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "enrollmentConfigurationAssignment"
           },
           {
             "in": "query",
@@ -16161,7 +16372,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "enrollmentConfigurationAssignment"
           },
           {
             "in": "body",
@@ -16195,7 +16407,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "enrollmentConfigurationAssignment"
           },
           {
             "in": "header",
@@ -16379,7 +16592,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "command"
           },
           {
             "in": "query",
@@ -16443,7 +16657,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "command"
           },
           {
             "in": "body",
@@ -16477,7 +16692,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "command"
           },
           {
             "in": "header",
@@ -16636,7 +16852,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "payloadResponse"
           },
           {
             "in": "query",
@@ -16691,7 +16908,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "payloadResponse"
           },
           {
             "in": "body",
@@ -16725,7 +16943,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "payloadResponse"
           },
           {
             "in": "header",
@@ -16897,7 +17116,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "team"
           },
           {
             "in": "query",
@@ -16957,7 +17177,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "team"
           },
           {
             "in": "body",
@@ -16991,7 +17212,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "team"
           },
           {
             "in": "header",
@@ -17157,7 +17379,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "channel"
           },
           {
             "in": "query",
@@ -17215,7 +17438,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "channel"
           },
           {
             "in": "body",
@@ -17249,7 +17473,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "channel"
           },
           {
             "in": "header",
@@ -17410,7 +17635,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "chatThread"
           },
           {
             "in": "query",
@@ -17467,7 +17693,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "chatThread"
           },
           {
             "in": "body",
@@ -17501,7 +17728,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "chatThread"
           },
           {
             "in": "header",
@@ -17673,7 +17901,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "in": "query",
@@ -17731,7 +17960,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "in": "body",
@@ -17765,7 +17995,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "in": "header",
@@ -17838,7 +18069,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "in": "body",
@@ -17882,7 +18114,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "groupLifecyclePolicy"
           },
           {
             "in": "body",
@@ -18061,7 +18294,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "IdentityProvider"
           },
           {
             "in": "query",
@@ -18120,7 +18354,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "IdentityProvider"
           },
           {
             "in": "body",
@@ -18154,7 +18389,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "IdentityProvider"
           },
           {
             "in": "header",
@@ -18316,7 +18552,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "attributeMappingFunctionSchema"
           },
           {
             "in": "query",
@@ -18372,7 +18609,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "attributeMappingFunctionSchema"
           },
           {
             "in": "body",
@@ -18406,7 +18644,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "attributeMappingFunctionSchema"
           },
           {
             "in": "header",
@@ -18574,7 +18813,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "filterOperatorSchema"
           },
           {
             "in": "query",
@@ -18632,7 +18872,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "filterOperatorSchema"
           },
           {
             "in": "body",
@@ -18666,7 +18907,8 @@
             "name": "id",
             "description": "key: id",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "filterOperatorSchema"
           },
           {
             "in": "header",

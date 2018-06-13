@@ -81,11 +81,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
-            IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
-            if (entitySet != null)
-            {
-                operation.Parameters = Context.CreateKeyParameters(NavigationProperty.ToEntityType());
-            }
+            base.SetParameters(operation);
 
             if (operation.Parameters == null)
             {
