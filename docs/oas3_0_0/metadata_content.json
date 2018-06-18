@@ -671,7 +671,7 @@
           "devices.extension"
         ],
         "summary": "Get extensions from devices",
-        "operationId": "devices.ListExtension",
+        "operationId": "devices.ListExtensions",
         "parameters": [
           {
             "name": "id",
@@ -818,7 +818,7 @@
           "devices.extension"
         ],
         "summary": "Get extensions from devices",
-        "operationId": "devices.GetExtension",
+        "operationId": "devices.GetExtensions",
         "parameters": [
           {
             "name": "id",
@@ -976,7 +976,7 @@
           "devices.directoryObject"
         ],
         "summary": "Get registeredOwners from devices",
-        "operationId": "devices.ListDirectoryObject",
+        "operationId": "devices.ListRegisteredOwners",
         "parameters": [
           {
             "name": "id",
@@ -1123,7 +1123,7 @@
           "devices.directoryObject"
         ],
         "summary": "Get registeredOwners from devices",
-        "operationId": "devices.GetDirectoryObject",
+        "operationId": "devices.GetRegisteredOwners",
         "parameters": [
           {
             "name": "id",
@@ -1281,7 +1281,7 @@
           "devices.directoryObject"
         ],
         "summary": "Get registeredUsers from devices",
-        "operationId": "devices.ListDirectoryObject",
+        "operationId": "devices.ListRegisteredUsers",
         "parameters": [
           {
             "name": "id",
@@ -1428,7 +1428,7 @@
           "devices.directoryObject"
         ],
         "summary": "Get registeredUsers from devices",
-        "operationId": "devices.GetDirectoryObject",
+        "operationId": "devices.GetRegisteredUsers",
         "parameters": [
           {
             "name": "id",
@@ -2941,7 +2941,7 @@
           "directoryRoles.directoryObject"
         ],
         "summary": "Get members from directoryRoles",
-        "operationId": "directoryRoles.ListDirectoryObject",
+        "operationId": "directoryRoles.ListMembers",
         "parameters": [
           {
             "name": "id",
@@ -3050,7 +3050,7 @@
           "directoryRoles.directoryObject"
         ],
         "summary": "Get members from directoryRoles",
-        "operationId": "directoryRoles.GetDirectoryObject",
+        "operationId": "directoryRoles.GetMembers",
         "parameters": [
           {
             "name": "id",
@@ -3792,7 +3792,7 @@
           "domains.directoryObject"
         ],
         "summary": "Get domainNameReferences from domains",
-        "operationId": "domains.ListDirectoryObject",
+        "operationId": "domains.ListDomainNameReferences",
         "parameters": [
           {
             "name": "id",
@@ -3921,7 +3921,7 @@
           "domains.directoryObject"
         ],
         "summary": "Get domainNameReferences from domains",
-        "operationId": "domains.GetDirectoryObject",
+        "operationId": "domains.GetDomainNameReferences",
         "parameters": [
           {
             "name": "id",
@@ -4061,7 +4061,7 @@
           "domains.domainDnsRecord"
         ],
         "summary": "Get serviceConfigurationRecords from domains",
-        "operationId": "domains.ListDomainDnsRecord",
+        "operationId": "domains.ListServiceConfigurationRecords",
         "parameters": [
           {
             "name": "id",
@@ -4190,7 +4190,7 @@
           "domains.domainDnsRecord"
         ],
         "summary": "Get serviceConfigurationRecords from domains",
-        "operationId": "domains.GetDomainDnsRecord",
+        "operationId": "domains.GetServiceConfigurationRecords",
         "parameters": [
           {
             "name": "id",
@@ -4330,7 +4330,7 @@
           "domains.domainDnsRecord"
         ],
         "summary": "Get verificationDnsRecords from domains",
-        "operationId": "domains.ListDomainDnsRecord",
+        "operationId": "domains.ListVerificationDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -4459,7 +4459,7 @@
           "domains.domainDnsRecord"
         ],
         "summary": "Get verificationDnsRecords from domains",
-        "operationId": "domains.GetDomainDnsRecord",
+        "operationId": "domains.GetVerificationDnsRecords",
         "parameters": [
           {
             "name": "id",
@@ -5000,7 +5000,7 @@
           "drives.driveItem"
         ],
         "summary": "Get items from drives",
-        "operationId": "drives.ListDriveItem",
+        "operationId": "drives.ListItems",
         "parameters": [
           {
             "name": "id",
@@ -5147,7 +5147,7 @@
           "drives.driveItem"
         ],
         "summary": "Get items from drives",
-        "operationId": "drives.GetDriveItem",
+        "operationId": "drives.GetItems",
         "parameters": [
           {
             "name": "id",
@@ -5305,7 +5305,7 @@
           "drives.driveItem"
         ],
         "summary": "Get root from drives",
-        "operationId": "drives.GetDriveItem",
+        "operationId": "drives.GetRoot",
         "parameters": [
           {
             "name": "id",
@@ -5393,7 +5393,7 @@
           "drives.driveItem"
         ],
         "summary": "Get special from drives",
-        "operationId": "drives.ListDriveItem",
+        "operationId": "drives.ListSpecial",
         "parameters": [
           {
             "name": "id",
@@ -5540,7 +5540,7 @@
           "drives.driveItem"
         ],
         "summary": "Get special from drives",
-        "operationId": "drives.GetDriveItem",
+        "operationId": "drives.GetSpecial",
         "parameters": [
           {
             "name": "id",
@@ -6743,7 +6743,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get acceptedSenders from groups",
-        "operationId": "groups.ListDirectoryObject",
+        "operationId": "groups.ListAcceptedSenders",
         "parameters": [
           {
             "name": "id",
@@ -6920,7 +6920,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get acceptedSenders from groups",
-        "operationId": "groups.GetDirectoryObject",
+        "operationId": "groups.GetAcceptedSenders",
         "parameters": [
           {
             "name": "id",
@@ -7216,7 +7216,7 @@
           "groups.event"
         ],
         "summary": "Get calendarView from groups",
-        "operationId": "groups.ListEvent",
+        "operationId": "groups.ListCalendarView",
         "parameters": [
           {
             "name": "id",
@@ -7393,7 +7393,7 @@
           "groups.event"
         ],
         "summary": "Get calendarView from groups",
-        "operationId": "groups.GetEvent",
+        "operationId": "groups.GetCalendarView",
         "parameters": [
           {
             "name": "id",
@@ -7581,7 +7581,7 @@
           "groups.conversation"
         ],
         "summary": "Get conversations from groups",
-        "operationId": "groups.ListConversation",
+        "operationId": "groups.ListConversations",
         "parameters": [
           {
             "name": "id",
@@ -7758,7 +7758,7 @@
           "groups.conversation"
         ],
         "summary": "Get conversations from groups",
-        "operationId": "groups.GetConversation",
+        "operationId": "groups.GetConversations",
         "parameters": [
           {
             "name": "id",
@@ -7946,7 +7946,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get createdOnBehalfOf from groups",
-        "operationId": "groups.GetDirectoryObject",
+        "operationId": "groups.GetCreatedOnBehalfOf",
         "parameters": [
           {
             "name": "id",
@@ -8162,7 +8162,7 @@
           "groups.event"
         ],
         "summary": "Get events from groups",
-        "operationId": "groups.ListEvent",
+        "operationId": "groups.ListEvents",
         "parameters": [
           {
             "name": "id",
@@ -8339,7 +8339,7 @@
           "groups.event"
         ],
         "summary": "Get events from groups",
-        "operationId": "groups.GetEvent",
+        "operationId": "groups.GetEvents",
         "parameters": [
           {
             "name": "id",
@@ -8527,7 +8527,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get memberOf from groups",
-        "operationId": "groups.ListDirectoryObject",
+        "operationId": "groups.ListMemberOf",
         "parameters": [
           {
             "name": "id",
@@ -8704,7 +8704,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get memberOf from groups",
-        "operationId": "groups.GetDirectoryObject",
+        "operationId": "groups.GetMemberOf",
         "parameters": [
           {
             "name": "id",
@@ -8892,7 +8892,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get members from groups",
-        "operationId": "groups.ListDirectoryObject",
+        "operationId": "groups.ListMembers",
         "parameters": [
           {
             "name": "id",
@@ -9069,7 +9069,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get members from groups",
-        "operationId": "groups.GetDirectoryObject",
+        "operationId": "groups.GetMembers",
         "parameters": [
           {
             "name": "id",
@@ -9257,7 +9257,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get owners from groups",
-        "operationId": "groups.ListDirectoryObject",
+        "operationId": "groups.ListOwners",
         "parameters": [
           {
             "name": "id",
@@ -9434,7 +9434,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get owners from groups",
-        "operationId": "groups.GetDirectoryObject",
+        "operationId": "groups.GetOwners",
         "parameters": [
           {
             "name": "id",
@@ -9622,7 +9622,7 @@
           "groups.profilePhoto"
         ],
         "summary": "Get photo from groups",
-        "operationId": "groups.GetProfilePhoto",
+        "operationId": "groups.GetPhoto",
         "parameters": [
           {
             "name": "id",
@@ -9730,7 +9730,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get rejectedSenders from groups",
-        "operationId": "groups.ListDirectoryObject",
+        "operationId": "groups.ListRejectedSenders",
         "parameters": [
           {
             "name": "id",
@@ -9907,7 +9907,7 @@
           "groups.directoryObject"
         ],
         "summary": "Get rejectedSenders from groups",
-        "operationId": "groups.GetDirectoryObject",
+        "operationId": "groups.GetRejectedSenders",
         "parameters": [
           {
             "name": "id",
@@ -10095,7 +10095,7 @@
           "groups.site"
         ],
         "summary": "Get sites from groups",
-        "operationId": "groups.ListSite",
+        "operationId": "groups.ListSites",
         "parameters": [
           {
             "name": "id",
@@ -10272,7 +10272,7 @@
           "groups.site"
         ],
         "summary": "Get sites from groups",
-        "operationId": "groups.GetSite",
+        "operationId": "groups.GetSites",
         "parameters": [
           {
             "name": "id",
@@ -10460,7 +10460,7 @@
           "groups.conversationThread"
         ],
         "summary": "Get threads from groups",
-        "operationId": "groups.ListConversationThread",
+        "operationId": "groups.ListThreads",
         "parameters": [
           {
             "name": "id",
@@ -10637,7 +10637,7 @@
           "groups.conversationThread"
         ],
         "summary": "Get threads from groups",
-        "operationId": "groups.GetConversationThread",
+        "operationId": "groups.GetThreads",
         "parameters": [
           {
             "name": "id",
@@ -10825,7 +10825,7 @@
           "groups.drive"
         ],
         "summary": "Get drives from groups",
-        "operationId": "groups.ListDrive",
+        "operationId": "groups.ListDrives",
         "parameters": [
           {
             "name": "id",
@@ -11002,7 +11002,7 @@
           "groups.drive"
         ],
         "summary": "Get drives from groups",
-        "operationId": "groups.GetDrive",
+        "operationId": "groups.GetDrives",
         "parameters": [
           {
             "name": "id",
@@ -11190,7 +11190,7 @@
           "groups.extension"
         ],
         "summary": "Get extensions from groups",
-        "operationId": "groups.ListExtension",
+        "operationId": "groups.ListExtensions",
         "parameters": [
           {
             "name": "id",
@@ -11367,7 +11367,7 @@
           "groups.extension"
         ],
         "summary": "Get extensions from groups",
-        "operationId": "groups.GetExtension",
+        "operationId": "groups.GetExtensions",
         "parameters": [
           {
             "name": "id",
@@ -11555,7 +11555,7 @@
           "groups.groupLifecyclePolicy"
         ],
         "summary": "Get groupLifecyclePolicies from groups",
-        "operationId": "groups.ListGroupLifecyclePolicy",
+        "operationId": "groups.ListGroupLifecyclePolicies",
         "parameters": [
           {
             "name": "id",
@@ -11732,7 +11732,7 @@
           "groups.groupLifecyclePolicy"
         ],
         "summary": "Get groupLifecyclePolicies from groups",
-        "operationId": "groups.GetGroupLifecyclePolicy",
+        "operationId": "groups.GetGroupLifecyclePolicies",
         "parameters": [
           {
             "name": "id",
@@ -12028,7 +12028,7 @@
           "groups.profilePhoto"
         ],
         "summary": "Get photos from groups",
-        "operationId": "groups.ListProfilePhoto",
+        "operationId": "groups.ListPhotos",
         "parameters": [
           {
             "name": "id",
@@ -12205,7 +12205,7 @@
           "groups.profilePhoto"
         ],
         "summary": "Get photos from groups",
-        "operationId": "groups.GetProfilePhoto",
+        "operationId": "groups.GetPhotos",
         "parameters": [
           {
             "name": "id",
@@ -12393,7 +12393,7 @@
           "groups.plannerGroup"
         ],
         "summary": "Get planner from groups",
-        "operationId": "groups.GetPlannerGroup",
+        "operationId": "groups.GetPlanner",
         "parameters": [
           {
             "name": "id",
@@ -12501,7 +12501,7 @@
           "groups.groupSetting"
         ],
         "summary": "Get settings from groups",
-        "operationId": "groups.ListGroupSetting",
+        "operationId": "groups.ListSettings",
         "parameters": [
           {
             "name": "id",
@@ -12678,7 +12678,7 @@
           "groups.groupSetting"
         ],
         "summary": "Get settings from groups",
-        "operationId": "groups.GetGroupSetting",
+        "operationId": "groups.GetSettings",
         "parameters": [
           {
             "name": "id",
@@ -14413,7 +14413,7 @@
           "shares.driveItem"
         ],
         "summary": "Get items from shares",
-        "operationId": "shares.ListDriveItem",
+        "operationId": "shares.ListItems",
         "parameters": [
           {
             "name": "id",
@@ -14550,7 +14550,7 @@
           "shares.driveItem"
         ],
         "summary": "Get items from shares",
-        "operationId": "shares.GetDriveItem",
+        "operationId": "shares.GetItems",
         "parameters": [
           {
             "name": "id",
@@ -14870,7 +14870,7 @@
           "shares.driveItem"
         ],
         "summary": "Get root from shares",
-        "operationId": "shares.GetDriveItem",
+        "operationId": "shares.GetRoot",
         "parameters": [
           {
             "name": "id",
@@ -15440,7 +15440,7 @@
           "sites.contentType"
         ],
         "summary": "Get contentTypes from sites",
-        "operationId": "sites.ListContentType",
+        "operationId": "sites.ListContentTypes",
         "parameters": [
           {
             "name": "id",
@@ -15588,7 +15588,7 @@
           "sites.contentType"
         ],
         "summary": "Get contentTypes from sites",
-        "operationId": "sites.GetContentType",
+        "operationId": "sites.GetContentTypes",
         "parameters": [
           {
             "name": "id",
@@ -15838,7 +15838,7 @@
           "sites.drive"
         ],
         "summary": "Get drives from sites",
-        "operationId": "sites.ListDrive",
+        "operationId": "sites.ListDrives",
         "parameters": [
           {
             "name": "id",
@@ -15986,7 +15986,7 @@
           "sites.drive"
         ],
         "summary": "Get drives from sites",
-        "operationId": "sites.GetDrive",
+        "operationId": "sites.GetDrives",
         "parameters": [
           {
             "name": "id",
@@ -16145,7 +16145,7 @@
           "sites.baseItem"
         ],
         "summary": "Get items from sites",
-        "operationId": "sites.ListBaseItem",
+        "operationId": "sites.ListItems",
         "parameters": [
           {
             "name": "id",
@@ -16293,7 +16293,7 @@
           "sites.baseItem"
         ],
         "summary": "Get items from sites",
-        "operationId": "sites.GetBaseItem",
+        "operationId": "sites.GetItems",
         "parameters": [
           {
             "name": "id",
@@ -16452,7 +16452,7 @@
           "sites.list"
         ],
         "summary": "Get lists from sites",
-        "operationId": "sites.ListList",
+        "operationId": "sites.ListLists",
         "parameters": [
           {
             "name": "id",
@@ -16600,7 +16600,7 @@
           "sites.list"
         ],
         "summary": "Get lists from sites",
-        "operationId": "sites.GetList",
+        "operationId": "sites.GetLists",
         "parameters": [
           {
             "name": "id",
@@ -16759,7 +16759,7 @@
           "sites.site"
         ],
         "summary": "Get sites from sites",
-        "operationId": "sites.ListSite",
+        "operationId": "sites.ListSites",
         "parameters": [
           {
             "name": "id",
@@ -16907,7 +16907,7 @@
           "sites.site"
         ],
         "summary": "Get sites from sites",
-        "operationId": "sites.GetSite",
+        "operationId": "sites.GetSites",
         "parameters": [
           {
             "name": "id",
@@ -17066,7 +17066,7 @@
           "sites.columnDefinition"
         ],
         "summary": "Get columns from sites",
-        "operationId": "sites.ListColumnDefinition",
+        "operationId": "sites.ListColumns",
         "parameters": [
           {
             "name": "id",
@@ -17214,7 +17214,7 @@
           "sites.columnDefinition"
         ],
         "summary": "Get columns from sites",
-        "operationId": "sites.GetColumnDefinition",
+        "operationId": "sites.GetColumns",
         "parameters": [
           {
             "name": "id",
@@ -18762,7 +18762,7 @@
           "users.deviceManagementTroubleshootingEvent"
         ],
         "summary": "Get deviceManagementTroubleshootingEvents from users",
-        "operationId": "users.ListDeviceManagementTroubleshootingEvent",
+        "operationId": "users.ListDeviceManagementTroubleshootingEvents",
         "parameters": [
           {
             "name": "id",
@@ -19020,7 +19020,7 @@
           "users.deviceManagementTroubleshootingEvent"
         ],
         "summary": "Get deviceManagementTroubleshootingEvents from users",
-        "operationId": "users.GetDeviceManagementTroubleshootingEvent",
+        "operationId": "users.GetDeviceManagementTroubleshootingEvents",
         "parameters": [
           {
             "name": "id",
@@ -19289,7 +19289,7 @@
           "users.managedAppRegistration"
         ],
         "summary": "Get managedAppRegistrations from users",
-        "operationId": "users.ListManagedAppRegistration",
+        "operationId": "users.ListManagedAppRegistrations",
         "parameters": [
           {
             "name": "id",
@@ -19547,7 +19547,7 @@
           "users.managedAppRegistration"
         ],
         "summary": "Get managedAppRegistrations from users",
-        "operationId": "users.GetManagedAppRegistration",
+        "operationId": "users.GetManagedAppRegistrations",
         "parameters": [
           {
             "name": "id",
@@ -19816,7 +19816,7 @@
           "users.managedDevice"
         ],
         "summary": "Get managedDevices from users",
-        "operationId": "users.ListManagedDevice",
+        "operationId": "users.ListManagedDevices",
         "parameters": [
           {
             "name": "id",
@@ -20074,7 +20074,7 @@
           "users.managedDevice"
         ],
         "summary": "Get managedDevices from users",
-        "operationId": "users.GetManagedDevice",
+        "operationId": "users.GetManagedDevices",
         "parameters": [
           {
             "name": "id",
@@ -20484,7 +20484,7 @@
           "users.calendarGroup"
         ],
         "summary": "Get calendarGroups from users",
-        "operationId": "users.ListCalendarGroup",
+        "operationId": "users.ListCalendarGroups",
         "parameters": [
           {
             "name": "id",
@@ -20742,7 +20742,7 @@
           "users.calendarGroup"
         ],
         "summary": "Get calendarGroups from users",
-        "operationId": "users.GetCalendarGroup",
+        "operationId": "users.GetCalendarGroups",
         "parameters": [
           {
             "name": "id",
@@ -21011,7 +21011,7 @@
           "users.event"
         ],
         "summary": "Get calendarView from users",
-        "operationId": "users.ListEvent",
+        "operationId": "users.ListCalendarView",
         "parameters": [
           {
             "name": "id",
@@ -21269,7 +21269,7 @@
           "users.event"
         ],
         "summary": "Get calendarView from users",
-        "operationId": "users.GetEvent",
+        "operationId": "users.GetCalendarView",
         "parameters": [
           {
             "name": "id",
@@ -21538,7 +21538,7 @@
           "users.calendar"
         ],
         "summary": "Get calendars from users",
-        "operationId": "users.ListCalendar",
+        "operationId": "users.ListCalendars",
         "parameters": [
           {
             "name": "id",
@@ -21796,7 +21796,7 @@
           "users.calendar"
         ],
         "summary": "Get calendars from users",
-        "operationId": "users.GetCalendar",
+        "operationId": "users.GetCalendars",
         "parameters": [
           {
             "name": "id",
@@ -22065,7 +22065,7 @@
           "users.contact"
         ],
         "summary": "Get contacts from users",
-        "operationId": "users.ListContact",
+        "operationId": "users.ListContacts",
         "parameters": [
           {
             "name": "id",
@@ -22323,7 +22323,7 @@
           "users.contact"
         ],
         "summary": "Get contacts from users",
-        "operationId": "users.GetContact",
+        "operationId": "users.GetContacts",
         "parameters": [
           {
             "name": "id",
@@ -22592,7 +22592,7 @@
           "users.contactFolder"
         ],
         "summary": "Get contactFolders from users",
-        "operationId": "users.ListContactFolder",
+        "operationId": "users.ListContactFolders",
         "parameters": [
           {
             "name": "id",
@@ -22850,7 +22850,7 @@
           "users.contactFolder"
         ],
         "summary": "Get contactFolders from users",
-        "operationId": "users.GetContactFolder",
+        "operationId": "users.GetContactFolders",
         "parameters": [
           {
             "name": "id",
@@ -23119,7 +23119,7 @@
           "users.directoryObject"
         ],
         "summary": "Get createdObjects from users",
-        "operationId": "users.ListDirectoryObject",
+        "operationId": "users.ListCreatedObjects",
         "parameters": [
           {
             "name": "id",
@@ -23377,7 +23377,7 @@
           "users.directoryObject"
         ],
         "summary": "Get createdObjects from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetCreatedObjects",
         "parameters": [
           {
             "name": "id",
@@ -23646,7 +23646,7 @@
           "users.directoryObject"
         ],
         "summary": "Get directReports from users",
-        "operationId": "users.ListDirectoryObject",
+        "operationId": "users.ListDirectReports",
         "parameters": [
           {
             "name": "id",
@@ -23904,7 +23904,7 @@
           "users.directoryObject"
         ],
         "summary": "Get directReports from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetDirectReports",
         "parameters": [
           {
             "name": "id",
@@ -24314,7 +24314,7 @@
           "users.drive"
         ],
         "summary": "Get drives from users",
-        "operationId": "users.ListDrive",
+        "operationId": "users.ListDrives",
         "parameters": [
           {
             "name": "id",
@@ -24572,7 +24572,7 @@
           "users.drive"
         ],
         "summary": "Get drives from users",
-        "operationId": "users.GetDrive",
+        "operationId": "users.GetDrives",
         "parameters": [
           {
             "name": "id",
@@ -24841,7 +24841,7 @@
           "users.event"
         ],
         "summary": "Get events from users",
-        "operationId": "users.ListEvent",
+        "operationId": "users.ListEvents",
         "parameters": [
           {
             "name": "id",
@@ -25099,7 +25099,7 @@
           "users.event"
         ],
         "summary": "Get events from users",
-        "operationId": "users.GetEvent",
+        "operationId": "users.GetEvents",
         "parameters": [
           {
             "name": "id",
@@ -25509,7 +25509,7 @@
           "users.mailFolder"
         ],
         "summary": "Get mailFolders from users",
-        "operationId": "users.ListMailFolder",
+        "operationId": "users.ListMailFolders",
         "parameters": [
           {
             "name": "id",
@@ -25767,7 +25767,7 @@
           "users.mailFolder"
         ],
         "summary": "Get mailFolders from users",
-        "operationId": "users.GetMailFolder",
+        "operationId": "users.GetMailFolders",
         "parameters": [
           {
             "name": "id",
@@ -26036,7 +26036,7 @@
           "users.directoryObject"
         ],
         "summary": "Get manager from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetManager",
         "parameters": [
           {
             "name": "id",
@@ -26177,7 +26177,7 @@
           "users.directoryObject"
         ],
         "summary": "Get memberOf from users",
-        "operationId": "users.ListDirectoryObject",
+        "operationId": "users.ListMemberOf",
         "parameters": [
           {
             "name": "id",
@@ -26435,7 +26435,7 @@
           "users.directoryObject"
         ],
         "summary": "Get memberOf from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetMemberOf",
         "parameters": [
           {
             "name": "id",
@@ -26704,7 +26704,7 @@
           "users.message"
         ],
         "summary": "Get messages from users",
-        "operationId": "users.ListMessage",
+        "operationId": "users.ListMessages",
         "parameters": [
           {
             "name": "id",
@@ -26962,7 +26962,7 @@
           "users.message"
         ],
         "summary": "Get messages from users",
-        "operationId": "users.GetMessage",
+        "operationId": "users.GetMessages",
         "parameters": [
           {
             "name": "id",
@@ -27231,7 +27231,7 @@
           "users.outlookUser"
         ],
         "summary": "Get outlook from users",
-        "operationId": "users.GetOutlookUser",
+        "operationId": "users.GetOutlook",
         "parameters": [
           {
             "name": "id",
@@ -27372,7 +27372,7 @@
           "users.directoryObject"
         ],
         "summary": "Get ownedDevices from users",
-        "operationId": "users.ListDirectoryObject",
+        "operationId": "users.ListOwnedDevices",
         "parameters": [
           {
             "name": "id",
@@ -27630,7 +27630,7 @@
           "users.directoryObject"
         ],
         "summary": "Get ownedDevices from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetOwnedDevices",
         "parameters": [
           {
             "name": "id",
@@ -27899,7 +27899,7 @@
           "users.directoryObject"
         ],
         "summary": "Get ownedObjects from users",
-        "operationId": "users.ListDirectoryObject",
+        "operationId": "users.ListOwnedObjects",
         "parameters": [
           {
             "name": "id",
@@ -28157,7 +28157,7 @@
           "users.directoryObject"
         ],
         "summary": "Get ownedObjects from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetOwnedObjects",
         "parameters": [
           {
             "name": "id",
@@ -28426,7 +28426,7 @@
           "users.profilePhoto"
         ],
         "summary": "Get photo from users",
-        "operationId": "users.GetProfilePhoto",
+        "operationId": "users.GetPhoto",
         "parameters": [
           {
             "name": "id",
@@ -28567,7 +28567,7 @@
           "users.directoryObject"
         ],
         "summary": "Get registeredDevices from users",
-        "operationId": "users.ListDirectoryObject",
+        "operationId": "users.ListRegisteredDevices",
         "parameters": [
           {
             "name": "id",
@@ -28825,7 +28825,7 @@
           "users.directoryObject"
         ],
         "summary": "Get registeredDevices from users",
-        "operationId": "users.GetDirectoryObject",
+        "operationId": "users.GetRegisteredDevices",
         "parameters": [
           {
             "name": "id",
@@ -29094,7 +29094,7 @@
           "users.userActivity"
         ],
         "summary": "Get activities from users",
-        "operationId": "users.ListUserActivity",
+        "operationId": "users.ListActivities",
         "parameters": [
           {
             "name": "id",
@@ -29352,7 +29352,7 @@
           "users.userActivity"
         ],
         "summary": "Get activities from users",
-        "operationId": "users.GetUserActivity",
+        "operationId": "users.GetActivities",
         "parameters": [
           {
             "name": "id",
@@ -29621,7 +29621,7 @@
           "users.extension"
         ],
         "summary": "Get extensions from users",
-        "operationId": "users.ListExtension",
+        "operationId": "users.ListExtensions",
         "parameters": [
           {
             "name": "id",
@@ -29879,7 +29879,7 @@
           "users.extension"
         ],
         "summary": "Get extensions from users",
-        "operationId": "users.GetExtension",
+        "operationId": "users.GetExtensions",
         "parameters": [
           {
             "name": "id",
@@ -30816,7 +30816,7 @@
           "users.person"
         ],
         "summary": "Get people from users",
-        "operationId": "users.ListPerson",
+        "operationId": "users.ListPeople",
         "parameters": [
           {
             "name": "id",
@@ -31074,7 +31074,7 @@
           "users.person"
         ],
         "summary": "Get people from users",
-        "operationId": "users.GetPerson",
+        "operationId": "users.GetPeople",
         "parameters": [
           {
             "name": "id",
@@ -31343,7 +31343,7 @@
           "users.plannerUser"
         ],
         "summary": "Get planner from users",
-        "operationId": "users.GetPlannerUser",
+        "operationId": "users.GetPlanner",
         "parameters": [
           {
             "name": "id",
@@ -31900,7 +31900,7 @@
           "directory.directoryObject"
         ],
         "summary": "Get deletedItems from directory",
-        "operationId": "directory.ListDirectoryObject",
+        "operationId": "directory.ListDeletedItems",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -31989,7 +31989,7 @@
           "directory.directoryObject"
         ],
         "summary": "Get deletedItems from directory",
-        "operationId": "directory.GetDirectoryObject",
+        "operationId": "directory.GetDeletedItems",
         "parameters": [
           {
             "name": "id",
@@ -32177,7 +32177,7 @@
           "education.educationClass"
         ],
         "summary": "Get classes from education",
-        "operationId": "education.ListEducationClass",
+        "operationId": "education.ListClasses",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -32269,7 +32269,7 @@
           "education.educationClass"
         ],
         "summary": "Get classes from education",
-        "operationId": "education.GetEducationClass",
+        "operationId": "education.GetClasses",
         "parameters": [
           {
             "name": "id",
@@ -32372,7 +32372,7 @@
           "education.educationUser"
         ],
         "summary": "Get me from education",
-        "operationId": "education.GetEducationUser",
+        "operationId": "education.GetMe",
         "parameters": [
           {
             "name": "$select",
@@ -32433,7 +32433,7 @@
           "education.educationSchool"
         ],
         "summary": "Get schools from education",
-        "operationId": "education.ListEducationSchool",
+        "operationId": "education.ListSchools",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -32525,7 +32525,7 @@
           "education.educationSchool"
         ],
         "summary": "Get schools from education",
-        "operationId": "education.GetEducationSchool",
+        "operationId": "education.GetSchools",
         "parameters": [
           {
             "name": "id",
@@ -32628,7 +32628,7 @@
           "education.educationUser"
         ],
         "summary": "Get users from education",
-        "operationId": "education.ListEducationUser",
+        "operationId": "education.ListUsers",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -32720,7 +32720,7 @@
           "education.educationUser"
         ],
         "summary": "Get users from education",
-        "operationId": "education.GetEducationUser",
+        "operationId": "education.GetUsers",
         "parameters": [
           {
             "name": "id",
@@ -32916,7 +32916,7 @@
           "invitations.user"
         ],
         "summary": "Get invitedUser from invitations",
-        "operationId": "invitations.GetUser",
+        "operationId": "invitations.GetInvitedUser",
         "parameters": [
           {
             "name": "$select",
@@ -33139,7 +33139,7 @@
           "me.deviceManagementTroubleshootingEvent"
         ],
         "summary": "Get deviceManagementTroubleshootingEvents from me",
-        "operationId": "me.ListDeviceManagementTroubleshootingEvent",
+        "operationId": "me.ListDeviceManagementTroubleshootingEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -33386,7 +33386,7 @@
           "me.deviceManagementTroubleshootingEvent"
         ],
         "summary": "Get deviceManagementTroubleshootingEvents from me",
-        "operationId": "me.GetDeviceManagementTroubleshootingEvent",
+        "operationId": "me.GetDeviceManagementTroubleshootingEvents",
         "parameters": [
           {
             "name": "id",
@@ -33644,7 +33644,7 @@
           "me.managedAppRegistration"
         ],
         "summary": "Get managedAppRegistrations from me",
-        "operationId": "me.ListManagedAppRegistration",
+        "operationId": "me.ListManagedAppRegistrations",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -33891,7 +33891,7 @@
           "me.managedAppRegistration"
         ],
         "summary": "Get managedAppRegistrations from me",
-        "operationId": "me.GetManagedAppRegistration",
+        "operationId": "me.GetManagedAppRegistrations",
         "parameters": [
           {
             "name": "id",
@@ -34149,7 +34149,7 @@
           "me.managedDevice"
         ],
         "summary": "Get managedDevices from me",
-        "operationId": "me.ListManagedDevice",
+        "operationId": "me.ListManagedDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -34396,7 +34396,7 @@
           "me.managedDevice"
         ],
         "summary": "Get managedDevices from me",
-        "operationId": "me.GetManagedDevice",
+        "operationId": "me.GetManagedDevices",
         "parameters": [
           {
             "name": "id",
@@ -34784,7 +34784,7 @@
           "me.calendarGroup"
         ],
         "summary": "Get calendarGroups from me",
-        "operationId": "me.ListCalendarGroup",
+        "operationId": "me.ListCalendarGroups",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -35031,7 +35031,7 @@
           "me.calendarGroup"
         ],
         "summary": "Get calendarGroups from me",
-        "operationId": "me.GetCalendarGroup",
+        "operationId": "me.GetCalendarGroups",
         "parameters": [
           {
             "name": "id",
@@ -35289,7 +35289,7 @@
           "me.event"
         ],
         "summary": "Get calendarView from me",
-        "operationId": "me.ListEvent",
+        "operationId": "me.ListCalendarView",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -35536,7 +35536,7 @@
           "me.event"
         ],
         "summary": "Get calendarView from me",
-        "operationId": "me.GetEvent",
+        "operationId": "me.GetCalendarView",
         "parameters": [
           {
             "name": "id",
@@ -35794,7 +35794,7 @@
           "me.calendar"
         ],
         "summary": "Get calendars from me",
-        "operationId": "me.ListCalendar",
+        "operationId": "me.ListCalendars",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -36041,7 +36041,7 @@
           "me.calendar"
         ],
         "summary": "Get calendars from me",
-        "operationId": "me.GetCalendar",
+        "operationId": "me.GetCalendars",
         "parameters": [
           {
             "name": "id",
@@ -36299,7 +36299,7 @@
           "me.contact"
         ],
         "summary": "Get contacts from me",
-        "operationId": "me.ListContact",
+        "operationId": "me.ListContacts",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -36546,7 +36546,7 @@
           "me.contact"
         ],
         "summary": "Get contacts from me",
-        "operationId": "me.GetContact",
+        "operationId": "me.GetContacts",
         "parameters": [
           {
             "name": "id",
@@ -36804,7 +36804,7 @@
           "me.contactFolder"
         ],
         "summary": "Get contactFolders from me",
-        "operationId": "me.ListContactFolder",
+        "operationId": "me.ListContactFolders",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -37051,7 +37051,7 @@
           "me.contactFolder"
         ],
         "summary": "Get contactFolders from me",
-        "operationId": "me.GetContactFolder",
+        "operationId": "me.GetContactFolders",
         "parameters": [
           {
             "name": "id",
@@ -37309,7 +37309,7 @@
           "me.directoryObject"
         ],
         "summary": "Get createdObjects from me",
-        "operationId": "me.ListDirectoryObject",
+        "operationId": "me.ListCreatedObjects",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -37556,7 +37556,7 @@
           "me.directoryObject"
         ],
         "summary": "Get createdObjects from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetCreatedObjects",
         "parameters": [
           {
             "name": "id",
@@ -37814,7 +37814,7 @@
           "me.directoryObject"
         ],
         "summary": "Get directReports from me",
-        "operationId": "me.ListDirectoryObject",
+        "operationId": "me.ListDirectReports",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -38061,7 +38061,7 @@
           "me.directoryObject"
         ],
         "summary": "Get directReports from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetDirectReports",
         "parameters": [
           {
             "name": "id",
@@ -38449,7 +38449,7 @@
           "me.drive"
         ],
         "summary": "Get drives from me",
-        "operationId": "me.ListDrive",
+        "operationId": "me.ListDrives",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -38696,7 +38696,7 @@
           "me.drive"
         ],
         "summary": "Get drives from me",
-        "operationId": "me.GetDrive",
+        "operationId": "me.GetDrives",
         "parameters": [
           {
             "name": "id",
@@ -38954,7 +38954,7 @@
           "me.event"
         ],
         "summary": "Get events from me",
-        "operationId": "me.ListEvent",
+        "operationId": "me.ListEvents",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -39201,7 +39201,7 @@
           "me.event"
         ],
         "summary": "Get events from me",
-        "operationId": "me.GetEvent",
+        "operationId": "me.GetEvents",
         "parameters": [
           {
             "name": "id",
@@ -39589,7 +39589,7 @@
           "me.mailFolder"
         ],
         "summary": "Get mailFolders from me",
-        "operationId": "me.ListMailFolder",
+        "operationId": "me.ListMailFolders",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -39836,7 +39836,7 @@
           "me.mailFolder"
         ],
         "summary": "Get mailFolders from me",
-        "operationId": "me.GetMailFolder",
+        "operationId": "me.GetMailFolders",
         "parameters": [
           {
             "name": "id",
@@ -40094,7 +40094,7 @@
           "me.directoryObject"
         ],
         "summary": "Get manager from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetManager",
         "parameters": [
           {
             "name": "$select",
@@ -40224,7 +40224,7 @@
           "me.directoryObject"
         ],
         "summary": "Get memberOf from me",
-        "operationId": "me.ListDirectoryObject",
+        "operationId": "me.ListMemberOf",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -40471,7 +40471,7 @@
           "me.directoryObject"
         ],
         "summary": "Get memberOf from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetMemberOf",
         "parameters": [
           {
             "name": "id",
@@ -40729,7 +40729,7 @@
           "me.message"
         ],
         "summary": "Get messages from me",
-        "operationId": "me.ListMessage",
+        "operationId": "me.ListMessages",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -40976,7 +40976,7 @@
           "me.message"
         ],
         "summary": "Get messages from me",
-        "operationId": "me.GetMessage",
+        "operationId": "me.GetMessages",
         "parameters": [
           {
             "name": "id",
@@ -41234,7 +41234,7 @@
           "me.outlookUser"
         ],
         "summary": "Get outlook from me",
-        "operationId": "me.GetOutlookUser",
+        "operationId": "me.GetOutlook",
         "parameters": [
           {
             "name": "$select",
@@ -41364,7 +41364,7 @@
           "me.directoryObject"
         ],
         "summary": "Get ownedDevices from me",
-        "operationId": "me.ListDirectoryObject",
+        "operationId": "me.ListOwnedDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -41611,7 +41611,7 @@
           "me.directoryObject"
         ],
         "summary": "Get ownedDevices from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetOwnedDevices",
         "parameters": [
           {
             "name": "id",
@@ -41869,7 +41869,7 @@
           "me.directoryObject"
         ],
         "summary": "Get ownedObjects from me",
-        "operationId": "me.ListDirectoryObject",
+        "operationId": "me.ListOwnedObjects",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -42116,7 +42116,7 @@
           "me.directoryObject"
         ],
         "summary": "Get ownedObjects from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetOwnedObjects",
         "parameters": [
           {
             "name": "id",
@@ -42374,7 +42374,7 @@
           "me.profilePhoto"
         ],
         "summary": "Get photo from me",
-        "operationId": "me.GetProfilePhoto",
+        "operationId": "me.GetPhoto",
         "parameters": [
           {
             "name": "$select",
@@ -42504,7 +42504,7 @@
           "me.directoryObject"
         ],
         "summary": "Get registeredDevices from me",
-        "operationId": "me.ListDirectoryObject",
+        "operationId": "me.ListRegisteredDevices",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -42751,7 +42751,7 @@
           "me.directoryObject"
         ],
         "summary": "Get registeredDevices from me",
-        "operationId": "me.GetDirectoryObject",
+        "operationId": "me.GetRegisteredDevices",
         "parameters": [
           {
             "name": "id",
@@ -43009,7 +43009,7 @@
           "me.userActivity"
         ],
         "summary": "Get activities from me",
-        "operationId": "me.ListUserActivity",
+        "operationId": "me.ListActivities",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -43256,7 +43256,7 @@
           "me.userActivity"
         ],
         "summary": "Get activities from me",
-        "operationId": "me.GetUserActivity",
+        "operationId": "me.GetActivities",
         "parameters": [
           {
             "name": "id",
@@ -43514,7 +43514,7 @@
           "me.extension"
         ],
         "summary": "Get extensions from me",
-        "operationId": "me.ListExtension",
+        "operationId": "me.ListExtensions",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -43761,7 +43761,7 @@
           "me.extension"
         ],
         "summary": "Get extensions from me",
-        "operationId": "me.GetExtension",
+        "operationId": "me.GetExtensions",
         "parameters": [
           {
             "name": "id",
@@ -44654,7 +44654,7 @@
           "me.person"
         ],
         "summary": "Get people from me",
-        "operationId": "me.ListPerson",
+        "operationId": "me.ListPeople",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -44901,7 +44901,7 @@
           "me.person"
         ],
         "summary": "Get people from me",
-        "operationId": "me.GetPerson",
+        "operationId": "me.GetPeople",
         "parameters": [
           {
             "name": "id",
@@ -45159,7 +45159,7 @@
           "me.plannerUser"
         ],
         "summary": "Get planner from me",
-        "operationId": "me.GetPlannerUser",
+        "operationId": "me.GetPlanner",
         "parameters": [
           {
             "name": "$select",
@@ -45647,7 +45647,7 @@
           "organization.extension"
         ],
         "summary": "Get extensions from organization",
-        "operationId": "organization.ListExtension",
+        "operationId": "organization.ListExtensions",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -45811,7 +45811,7 @@
           "organization.extension"
         ],
         "summary": "Get extensions from organization",
-        "operationId": "organization.GetExtension",
+        "operationId": "organization.GetExtensions",
         "parameters": [
           {
             "name": "id",
@@ -46073,7 +46073,7 @@
           "planner.plannerBucket"
         ],
         "summary": "Get buckets from planner",
-        "operationId": "planner.ListPlannerBucket",
+        "operationId": "planner.ListBuckets",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -46164,7 +46164,7 @@
           "planner.plannerBucket"
         ],
         "summary": "Get buckets from planner",
-        "operationId": "planner.GetPlannerBucket",
+        "operationId": "planner.GetBuckets",
         "parameters": [
           {
             "name": "id",
@@ -46266,7 +46266,7 @@
           "planner.plannerPlan"
         ],
         "summary": "Get plans from planner",
-        "operationId": "planner.ListPlannerPlan",
+        "operationId": "planner.ListPlans",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -46357,7 +46357,7 @@
           "planner.plannerPlan"
         ],
         "summary": "Get plans from planner",
-        "operationId": "planner.GetPlannerPlan",
+        "operationId": "planner.GetPlans",
         "parameters": [
           {
             "name": "id",
@@ -46459,7 +46459,7 @@
           "planner.plannerTask"
         ],
         "summary": "Get tasks from planner",
-        "operationId": "planner.ListPlannerTask",
+        "operationId": "planner.ListTasks",
         "parameters": [
           {
             "$ref": "#/components/parameters/top"
@@ -46550,7 +46550,7 @@
           "planner.plannerTask"
         ],
         "summary": "Get tasks from planner",
-        "operationId": "planner.GetPlannerTask",
+        "operationId": "planner.GetTasks",
         "parameters": [
           {
             "name": "id",

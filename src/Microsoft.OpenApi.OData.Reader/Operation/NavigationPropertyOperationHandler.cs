@@ -103,14 +103,24 @@ namespace Microsoft.OpenApi.OData.Operation
                 NavigationSource.Name
             };
 
+            var lastpath = Path.Segments.Last(c => c is ODataNavigationPropertySegment);
             foreach (var segment in Path.Segments.Skip(1))
             {
                 if (segment is ODataNavigationPropertySegment)
                 {
-                    ODataNavigationPropertySegment npSegment = (ODataNavigationPropertySegment)segment;
+                    ODataNavigationPropertySegment npSegment = (ODataNavigationPropertySegment)segment;/*
                     if (npSegment.NavigationProperty == NavigationProperty)
                     {
                         items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name));
+                        break;
+                    }
+                    else
+                    {
+                        items.Add(segment.Name);
+                    }*/
+                    if (segment == lastpath)
+                    {
+                        items.Add(prefix + Utils.UpperFirstChar(segment.Name));
                         break;
                     }
                     else
