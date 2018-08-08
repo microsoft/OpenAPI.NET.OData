@@ -3,7 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-namespace Microsoft.OpenApi.OData.Generator
+namespace Microsoft.OpenApi.OData.Common
 {
     /// <summary>
     /// Constant strings
@@ -31,8 +31,28 @@ namespace Microsoft.OpenApi.OData.Generator
         public static string StatusCode204 = "204";
 
         /// <summary>
-        /// Status code: 204
+        /// Status code: default
         /// </summary>
         public static string StatusCodeDefault = "default";
+
+        /// <summary>
+        /// extension for toc (table of content) type
+        /// </summary>
+        public static string xMsTocType = "x-ms-docs-toc-type";
+
+        /// <summary>
+        /// extension for key type
+        /// </summary>
+        public static string xMsKeyType = "x-ms-docs-key-type";
+
+        /// <summary>
+        /// extension for operation type
+        /// </summary>
+        public static string xMsDosOperationType = "x-ms-docs-operation-type";
+
+        /// <summary>
+        /// extension for group type
+        /// </summary>
+        public static string xMsDosGroupPath = "x-ms-docs-grouped-path";
     }
 }

@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -22,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
-        public void CreateInfoReturnsNullForEmptyModel()
+        public void CreateInfoReturnsNotNullForEmptyModel()
         {
             // Arrange
             ODataContext context = new ODataContext(EdmModelHelper.EmptyModel);

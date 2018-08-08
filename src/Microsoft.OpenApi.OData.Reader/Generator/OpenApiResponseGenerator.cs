@@ -6,6 +6,8 @@
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -57,10 +59,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The name/value pairs for the standard OData error response.</returns>
         public static IDictionary<string, OpenApiResponse> CreateResponses(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             return new Dictionary<string, OpenApiResponse>
             {
@@ -76,15 +75,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiResponses"/>.</returns>
         public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperationImport operationImport)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (operationImport == null)
-            {
-                throw Error.ArgumentNull(nameof(operationImport));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(operationImport, nameof(operationImport));
 
             return context.CreateResponses(operationImport.Operation);
         }
@@ -97,15 +89,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiResponses"/>.</returns>
         public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperation operation)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (operation == null)
-            {
-                throw Error.ArgumentNull(nameof(operation));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(operation, nameof(operation));
 
             OpenApiResponses responses = new OpenApiResponses();
 

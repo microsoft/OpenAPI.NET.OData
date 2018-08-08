@@ -5,6 +5,8 @@
 
 using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -22,10 +24,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The string/schema dictionary.</returns>
         public static IDictionary<string, OpenApiSchema> CreateODataErrorSchemas(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
 
@@ -50,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = "object",
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "error"
                 },
@@ -80,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = "object",
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "code", "message"
                 },
@@ -131,7 +130,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = "object",
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "code", "message"
                 },

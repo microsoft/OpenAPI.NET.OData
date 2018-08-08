@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OpenApi.OData.Abstractions;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -43,9 +44,34 @@ namespace Microsoft.OpenApi.OData
         public bool EnumPrefixFree { get; set; }
 
         /// <summary>
+        /// Gets/set a value indicating whether to output the path for Edm operation.
+        /// </summary>
+        public bool EnableOperationPath { get; set; } = true;
+
+        /// <summary>
+        /// Gets/set a value indicating whether to output the path for Edm operation import.
+        /// </summary>
+        public bool EnableOperationImportPath { get; set; } = true;
+
+        /// <summary>
+        /// Gets/set a value indicating whether to output the path for Edm navigation property.
+        /// </summary>
+        public bool EnableNavigationPropertyPath { get; set; }
+
+        /// <summary>
         /// Gets/set a value indicating the navigation property depth.
         /// </summary>
-        public bool NavigationPropertyPathItem { get; set; }
+        public int NavigationPropertyDepth { get; set; } = 0;
+
+        /// <summary>
+        /// Gets/set a value indicating the tags name depth.
+        /// </summary>
+        public int TagDepth { get; set; } = 4;
+
+        /// <summary>
+        /// Gets/set a value indicating whether we count key segment as a depth.
+        /// </summary>
+        public bool CountKeySegmentAsDepth { get; set; } = true;
 
         /// <summary>
         /// Gets/set a value indicating the prefix for the parameter alias.
@@ -68,5 +94,7 @@ namespace Microsoft.OpenApi.OData
         /// otherwise keep number without quotes.
         /// </summary>
         public bool IEEE754Compatible { get; set; }
+
+        public IAuthorizationProvider AuthorizationProvider { get; set; }
     }
 }

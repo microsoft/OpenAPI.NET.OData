@@ -70,6 +70,15 @@ namespace Microsoft.OpenApi.OData.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The authorization record type name &apos;{0}&apos; is not correct..
+        /// </summary>
+        internal static string AuthorizationRecordTypeNameNotCorrect {
+            get {
+                return ResourceManager.GetString("AuthorizationRecordTypeNameNotCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The filed name of extension doesn&apos;t begin with x-..
         /// </summary>
         internal static string ExtensionFieldNameMustBeginWithXMinus {

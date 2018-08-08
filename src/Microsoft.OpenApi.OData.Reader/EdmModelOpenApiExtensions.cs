@@ -8,6 +8,8 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData

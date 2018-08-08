@@ -7,7 +7,7 @@ using System;
 using System.Globalization;
 using Microsoft.OpenApi.OData.Properties;
 
-namespace Microsoft.OpenApi.OData
+namespace Microsoft.OpenApi.OData.Common
 {
     /// <summary>
     /// Utility class for creating and unwrapping <see cref="Exception"/> instances.
@@ -78,6 +78,29 @@ namespace Microsoft.OpenApi.OData
         internal static ArgumentException ArgumentNullOrEmpty(string parameterName)
         {
             return Error.Argument(parameterName, SRResource.ArgumentNullOrEmpty, parameterName);
+        }
+
+        /// <summary>
+        /// Creates an <see cref="InvalidOperationException"/>.
+        /// </summary>
+        /// <param name="messageFormat">A composite format string explaining the reason for the exception.</param>
+        /// <param name="messageArgs">An object array that contains zero or more objects to format.</param>
+        /// <returns>The logged <see cref="Exception"/>.</returns>
+        internal static InvalidOperationException InvalidOperation(string messageFormat, params object[] messageArgs)
+        {
+            return new InvalidOperationException(Error.Format(messageFormat, messageArgs));
+        }
+
+        /// <summary>
+        /// Creates an <see cref="InvalidOperationException"/>.
+        /// </summary>
+        /// <param name="innerException">Inner exception</param>
+        /// <param name="messageFormat">A composite format string explaining the reason for the exception.</param>
+        /// <param name="messageArgs">An object array that contains zero or more objects to format.</param>
+        /// <returns>The logged <see cref="Exception"/>.</returns>
+        internal static InvalidOperationException InvalidOperation(Exception innerException, string messageFormat, params object[] messageArgs)
+        {
+            return new InvalidOperationException(Error.Format(messageFormat, messageArgs), innerException);
         }
 
         /// <summary>

@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
 using Xunit.Abstractions;
@@ -95,9 +96,12 @@ namespace Microsoft.OpenApi.OData.Tests
       ""nullable"": true
     }
   },
-  ""description"": ""Complex type 'Address' description.""
-}"
-.ChangeLineBreaks(), json);
+  ""description"": ""Complex type 'Address' description."",
+  ""example"": {
+    ""Street"": ""String"",
+    ""City"": ""String""
+  }
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -176,7 +180,17 @@ namespace Microsoft.OpenApi.OData.Tests
       },
       ""description"": ""Complex type 'Tree' description.""
     }
-  ]
+  ],
+  ""example"": {
+    ""Color"": {
+      ""@odata.type"": ""NS.Color""
+    },
+    ""Continent"": {
+      ""@odata.type"": ""NS.Continent""
+    },
+    ""Name"": ""String"",
+    ""Price"": ""Decimal""
+  }
 }"
 .ChangeLineBreaks(), json);
         }
@@ -226,9 +240,16 @@ namespace Microsoft.OpenApi.OData.Tests
       }
     }
   },
-  ""description"": ""Entity type 'Zoo' description.""
-}"
-.ChangeLineBreaks(), json);
+  ""description"": ""Entity type 'Zoo' description."",
+  ""example"": {
+    ""Id"": ""Int32 (identifier)"",
+    ""Creatures"": [
+      {
+        ""@odata.type"": ""NS.Creature""
+      }
+    ]
+  }
+}".ChangeLineBreaks(), json);
         }
 
         [Fact]
@@ -294,7 +315,12 @@ namespace Microsoft.OpenApi.OData.Tests
       },
       ""description"": ""Entity type 'Human' description.""
     }
-  ]
+  ],
+  ""example"": {
+    ""Id"": ""Int32 (identifier)"",
+    ""Age"": ""Int32"",
+    ""Name"": ""String""
+  }
 }"
 .ChangeLineBreaks(), json);
         }

@@ -6,6 +6,8 @@
 using System.Collections.Generic;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -23,10 +25,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The string/schema dictionary.</returns>
         public static IDictionary<string, OpenApiSchema> CreateSpatialSchemas(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
 
@@ -243,7 +242,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     },
                     { "coordinates", new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } } }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"
@@ -278,7 +277,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"
@@ -317,7 +316,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"
@@ -351,7 +350,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"
@@ -390,7 +389,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"
@@ -433,7 +432,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"
@@ -467,7 +466,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 },
-                Required = new List<string>
+                Required = new HashSet<string>
                 {
                     "type",
                     "coordinates"

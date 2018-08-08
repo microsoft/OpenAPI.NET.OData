@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -25,15 +27,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created path item name.</returns>
         public static string CreateEntityPathName(this ODataContext context, IEdmEntitySet entitySet)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (entitySet == null)
-            {
-                throw Error.ArgumentNull(nameof(entitySet));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
 
             StringBuilder sb = new StringBuilder("/" + entitySet.Name);
             IList<IEdmStructuralProperty> keys = entitySet.EntityType().Key().ToList();
@@ -69,15 +64,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created path item name</returns>
         public static string CreatePathItemName(this ODataContext context, IEdmOperationImport operationImport)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (operationImport == null)
-            {
-                throw Error.ArgumentNull(nameof(operationImport));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(operationImport, nameof(operationImport));
 
             if (operationImport.IsActionImport())
             {
@@ -86,9 +74,19 @@ namespace Microsoft.OpenApi.OData.Generator
             else
             {
                 StringBuilder functionName = new StringBuilder("/" + operationImport.Name + "(");
-
                 functionName.Append(String.Join(",",
-                    operationImport.Operation.Parameters.Select(p => p.Name + "=" + "{" + p.Name + "}")));
+                    operationImport.Operation.Parameters.Select(p =>
+                    {
+                        if (p.Type.IsStructured() || p.Type.IsCollection())
+                        {
+                            return p.Name + "=@" + p.Name;
+                        }
+                        else
+                        {
+                            return p.Name + "={" + p.Name + "}";
+                        }
+                    })));
+
                 functionName.Append(")");
 
                 return functionName.ToString();
@@ -99,19 +97,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the path item name for a <see cref="IEdmOperation"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <param name="function">The Edm function.</param>
+        /// <param name="operation">The Edm operation.</param>
         /// <returns>The created path item name</returns>
         public static string CreatePathItemName(this ODataContext context, IEdmOperation operation)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (operation == null)
-            {
-                throw Error.ArgumentNull(nameof(operation));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(operation, nameof(operation));
 
             if (operation.IsAction())
             {
@@ -131,20 +122,9 @@ namespace Microsoft.OpenApi.OData.Generator
         public static string CreateNavigationPathItemName(this ODataContext context,
             IEdmNavigationSource navigationSource, IEdmNavigationProperty navigationProperty)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (navigationSource == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationSource));
-            }
-
-            if (navigationProperty == null)
-            {
-                throw Error.ArgumentNull(nameof(navigationProperty));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(navigationSource, nameof(navigationSource));
+            Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
 
             string pathItemName;
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
@@ -179,30 +159,17 @@ namespace Microsoft.OpenApi.OData.Generator
             // Structured or collection-valued parameters are represented as a parameter alias in the path template
             // and the parameters array contains a Parameter Object for the parameter alias as a query option of type string.
             int skip = function.IsBound ? 1 : 0;
-            int index = 0;
-            int parameterAliasIndex = 1;
-            foreach (IEdmOperationParameter edmParameter in function.Parameters.Skip(skip))
+            functionName.Append(String.Join(",", function.Parameters.Skip(skip).Select(p =>
             {
-                if (index == 0)
+                if (p.Type.IsStructured() || p.Type.IsCollection())
                 {
-                    index++;
+                    return p.Name + "=@" + p.Name;
                 }
                 else
                 {
-                    functionName.Append(",");
+                    return p.Name + "={" + p.Name + "}";
                 }
-
-                if (edmParameter.Type.IsStructured() ||
-                    edmParameter.Type.IsCollection())
-                {
-                    functionName.Append(edmParameter.Name).Append("=")
-                        .Append(context.Settings.ParameterAlias).Append(parameterAliasIndex++);
-                }
-                else
-                {
-                    functionName.Append(edmParameter.Name).Append("={").Append(edmParameter.Name).Append("}");
-                }
-            }
+            })));
 
             functionName.Append(")");
 

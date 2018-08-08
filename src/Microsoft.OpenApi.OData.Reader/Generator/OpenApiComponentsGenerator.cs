@@ -4,6 +4,8 @@
 // ------------------------------------------------------------
 
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -21,10 +23,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiComponents"/> object.</returns>
         public static OpenApiComponents CreateComponents(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             // "components": {
             //   "schemas": …,
@@ -51,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 Examples = null,
 
-                SecuritySchemes = null,
+                SecuritySchemes = context.CreateSecuritySchemes(),
 
                 Links = null,
 

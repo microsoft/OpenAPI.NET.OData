@@ -7,6 +7,8 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -23,15 +25,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
         public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmActionImport actionImport)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (actionImport == null)
-            {
-                throw Error.ArgumentNull(nameof(actionImport));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(actionImport, nameof(actionImport));
 
             return context.CreateRequestBody(actionImport.Action);
         }
@@ -44,15 +39,8 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
         public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmAction action)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
-
-            if (action == null)
-            {
-                throw Error.ArgumentNull(nameof(action));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(action, nameof(action));
 
             // return null for empty action parameters
             int skip = 0;

@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Tests;
 using Microsoft.OpenApi.Models;
 using Xunit;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator.Tests
 {

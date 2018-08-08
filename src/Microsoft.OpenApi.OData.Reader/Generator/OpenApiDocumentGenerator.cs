@@ -3,8 +3,9 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -20,10 +21,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiDocument"/> object.</returns>
         public static OpenApiDocument CreateDocument(this ODataContext context)
         {
-            if (context == null)
-            {
-                throw Error.ArgumentNull(nameof(context));
-            }
+            Utils.CheckArgumentNull(context, nameof(context));
 
             // An OAS document consists of a single OpenAPI Object represented as OpenApiDocument object.
             // {
@@ -34,13 +32,13 @@ namespace Microsoft.OpenApi.OData.Generator
             //   "paths": …,
             //   "components": …
             // }
-            return new OpenApiDocument
+            OpenApiDocument doc = new OpenApiDocument
             {
                 Info = context.CreateInfo(),
 
                 Servers = context.CreateServers(),
 
-                Tags = context.CreateTags(),
+             //   Tags = context.CreateTags(),
 
                 Paths = context.CreatePaths(),
 
@@ -50,6 +48,9 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 ExternalDocs = null
             };
+
+            doc.Tags = context.CreateTags_FromTagItems();
+            return doc;
         }
     }
 }
