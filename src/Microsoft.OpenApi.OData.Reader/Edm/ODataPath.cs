@@ -82,59 +82,35 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the first segment in the path. Returns null if the path is empty.
         /// </summary>
-        public ODataSegment FirstSegment
-        {
-            get
-            {
-                return this.Segments.Count == 0 ? null : this.Segments[0];
-            }
-        }
+        public ODataSegment FirstSegment => Segments.Count == 0 ? null : Segments[0];
 
         /// <summary>
         /// Get the last segment in the path. Returns null if the path is empty.
         /// </summary>
-        public ODataSegment LastSegment
-        {
-            get
-            {
-                return this.Segments.Count == 0 ? null : this.Segments[this.Segments.Count - 1];
-            }
-        }
+        public ODataSegment LastSegment => Segments.Count == 0 ? null : this.Segments[Segments.Count - 1];
 
         /// <summary>
         /// Get the number of segments in this path.
         /// </summary>
-        public int Count
-        {
-            get { return this.Segments.Count; }
-        }
+        public int Count => this.Segments.Count;
 
         /// <summary>
         /// Get the segments enumerator
         /// </summary>
         /// <returns>The segments enumerator</returns>
-        public IEnumerator<ODataSegment> GetEnumerator()
-        {
-            return this.Segments.GetEnumerator();
-        }
+        public IEnumerator<ODataSegment> GetEnumerator() => Segments.GetEnumerator();
 
         /// <summary>
         /// Get the segments enumerator
         /// </summary>
         /// <returns>The segments enumerator.</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
 
         /// <summary>
         /// Clone a new ODataPath object.
         /// </summary>
         /// <returns>The new ODataPath.</returns>
-        public ODataPath Clone()
-        {
-            return new ODataPath(Segments);
-        }
+        public ODataPath Clone() => new ODataPath(Segments);
 
         /// <summary>
         /// Get the segment count.

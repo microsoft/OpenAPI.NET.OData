@@ -16,10 +16,10 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Initializes a new instance of <see cref="ODataNavigationSourceSegment"/> class.
         /// </summary>
-        /// <param name="navigaitonSource">The navigation source.</param>
-        public ODataNavigationSourceSegment(IEdmNavigationSource navigaitonSource)
+        /// <param name="navigationSource">The navigation source.</param>
+        public ODataNavigationSourceSegment(IEdmNavigationSource navigationSource)
         {
-            NavigationSource = navigaitonSource ?? throw Error.ArgumentNull(nameof(navigaitonSource));
+            NavigationSource = navigationSource ?? throw Error.ArgumentNull(nameof(navigationSource));
         }
 
         /// <summary>
@@ -34,9 +34,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Name => NavigationSource.Name;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return NavigationSource.Name;
-        }
+        public override string ToString() => NavigationSource.Name;
     }
 }

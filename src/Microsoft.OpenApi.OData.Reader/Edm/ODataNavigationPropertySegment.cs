@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Initializes a new instance of <see cref="ODataNavigationPropertySegment"/> class.
         /// </summary>
-        /// <param name="navigationProperty"></param>
+        /// <param name="navigationProperty">The Navigation property</param>
         public ODataNavigationPropertySegment(IEdmNavigationProperty navigationProperty)
         {
             NavigationProperty = navigationProperty ?? throw Error.ArgumentNull(nameof(navigationProperty));
@@ -34,9 +34,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Name => NavigationProperty.Name;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return NavigationProperty.Name;
-        }
+        public override string ToString() => NavigationProperty.Name;
     }
 }

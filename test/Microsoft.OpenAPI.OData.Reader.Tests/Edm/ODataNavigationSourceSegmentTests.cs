@@ -4,11 +4,69 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OData.Edm;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Edm.Tests
 {
     public class ODataNavigationSourceSegmentTests
     {
+        private IEdmEntityType _entityType;
+        private IEdmEntitySet _entitySet;
+        private IEdmSingleton _singleton;
+        public ODataNavigationSourceSegmentTests()
+        {
+            _entityType = new EdmEntityType("NS", "Entity");
+            IEdmEntityContainer container = new EdmEntityContainer("NS", "Container");
+            _entitySet = new EdmEntitySet(container, "Entities", _entityType);
+            _singleton = new EdmSingleton(container, "Me", _entityType);
+        }
+
+        [Fact]
+        public void CtorThrowArgumentNullNavigationSource()
+        {
+            // Arrange & Act & Assert
+            Assert.Throws<ArgumentNullException>("navigationSource", () => new ODataNavigationSourceSegment(navigationSource: null));
+        }
+
+        [Fact]
+        public void CtorSetNavigationSourceProperty()
+        {
+            // Arrange & Act
+            var segment = new ODataNavigationSourceSegment(_entitySet);
+
+            // Assert
+            Assert.Same(_entitySet, segment.NavigationSource);
+        }
+
+        [Fact]
+        public void GetEntityTypeReturnsCorrectEntityType()
+        {
+            // Arrange & Act
+            var segment = new ODataNavigationSourceSegment(_singleton);
+
+            // Assert
+            Assert.Same(_entityType, segment.EntityType);
+        }
+
+        [Fact]
+        public void GetNameReturnsCorrectNameString()
+        {
+            // Arrange & Act
+            var segment = new ODataNavigationSourceSegment(_singleton);
+
+            // Assert
+            Assert.Equal("Me", segment.Name);
+        }
+
+        [Fact]
+        public void ToStringReturnsCorrectNameString()
+        {
+            // Arrange & Act
+            var segment = new ODataNavigationSourceSegment(_entitySet);
+
+            // Assert
+            Assert.Equal("Entities", segment.ToString());
+        }
     }
 }
