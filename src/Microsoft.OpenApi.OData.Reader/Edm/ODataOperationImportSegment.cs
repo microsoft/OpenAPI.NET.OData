@@ -34,9 +34,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Name => OperationImport.Name;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return OperationImport.Name;
-        }
+        public override string ToString() => OperationImport.Name;
     }
 }

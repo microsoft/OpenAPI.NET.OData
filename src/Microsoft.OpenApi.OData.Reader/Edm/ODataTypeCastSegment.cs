@@ -26,10 +26,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public override IEdmEntityType EntityType { get; }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return EntityType.FullTypeName();
-        }
+        public override string ToString() => EntityType.FullTypeName();
 
         /// <inheritdoc />
         public override string Name => EntityType.FullTypeName();

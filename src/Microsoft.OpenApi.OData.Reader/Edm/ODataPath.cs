@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
 
@@ -51,16 +52,15 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Pop the last segment.
         /// </summary>
         /// <returns>The pop last segment.</returns>
-        public ODataSegment Pop()
+        public ODataPath Pop()
         {
             if (!Segments.Any())
             {
                 throw Error.InvalidOperation("Pop a segment is invalid. The segments in the path is empty.");
             }
 
-            ODataSegment segment = Segments.Last();
             Segments.RemoveAt(Segments.Count - 1);
-            return segment;
+            return this;
         }
 
         /// <summary>
@@ -120,6 +120,37 @@ namespace Microsoft.OpenApi.OData.Edm
         public int GetCount(bool keySegmentAsDepth)
         {
             return Segments.Count(c => keySegmentAsDepth ? true : !(c is ODataKeySegment));
+        }
+
+        /// <summary>
+        /// Gets the path item name.
+        /// </summary>
+        /// <param name="keyAsSegment">A bool value indicating whether to output key as segment.</param>
+        /// <returns>The string.</returns>
+        public string GetPathItemName(bool keyAsSegment)
+        {
+            if (keyAsSegment)
+            {
+                return "/" + String.Join("/", Segments);
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach (var segment in Segments)
+            {
+                if (segment is ODataKeySegment)
+                {
+                    sb.Append("(");
+                    sb.Append(segment);
+                    sb.Append(")");
+                }
+                else
+                {
+                    sb.Append("/");
+                    sb.Append(segment);
+                }
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>
