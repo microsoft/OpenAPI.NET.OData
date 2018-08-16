@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (ODataPath path in context.Paths)
             {
                 IPathItemHandler handler = context.PathItemHanderProvider.GetHandler(path.PathType);
-                pathItems.Add(path.ToString(), handler.CreatePathItem(context, path));
+                pathItems.Add(path.GetPathItemName(context.KeyAsSegment), handler.CreatePathItem(context, path));
             }
 
             return pathItems;

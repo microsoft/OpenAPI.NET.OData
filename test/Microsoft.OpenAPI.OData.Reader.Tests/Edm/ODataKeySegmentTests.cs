@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataKeySegment segment = new ODataKeySegment(Person);
 
             // Assert
-            Assert.Equal("{Id}", segment.ToString());
+            Assert.Equal("{Person-Id}", segment.ToString());
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataKeySegment segment = new ODataKeySegment(Customer);
 
             // Assert
-            Assert.Equal("{firstName={firstName},lastName={lastName}}", segment.ToString());
+            Assert.Equal("firstName={firstName},lastName={lastName}", segment.ToString());
         }
     }
 }

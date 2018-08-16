@@ -45,7 +45,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
-            ODataContext context = new ODataContext(model);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                KeyAsSegment = true
+            };
+            ODataContext context = new ODataContext(model, settings);
 
             // Act
             var pathItems = context.CreatePathItems();

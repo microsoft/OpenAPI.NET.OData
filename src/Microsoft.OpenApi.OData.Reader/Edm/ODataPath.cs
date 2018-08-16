@@ -129,21 +129,27 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The string.</returns>
         public string GetPathItemName(bool keyAsSegment)
         {
-            if (keyAsSegment)
-            {
-                return "/" + String.Join("/", Segments);
-            }
-
             StringBuilder sb = new StringBuilder();
             foreach (var segment in Segments)
             {
-                if (segment is ODataKeySegment)
+                ODataKeySegment keySegmnet = segment as ODataKeySegment;
+                if (keySegmnet != null)
                 {
-                    sb.Append("(");
-                    sb.Append(segment);
-                    sb.Append(")");
+                    // So far, the behaviour for composite keys in key as segment is un-defined.
+                    // So, for composite keys, we will use () at any time.
+                    if (keyAsSegment && !keySegmnet.HasCompositeKeys)
+                    {
+                        sb.Append("/");
+                        sb.Append(keySegmnet.ToString());
+                    }
+                    else
+                    {
+                        sb.Append("(");
+                        sb.Append(segment);
+                        sb.Append(")");
+                    }
                 }
-                else
+                else // other segments
                 {
                     sb.Append("/");
                     sb.Append(segment);

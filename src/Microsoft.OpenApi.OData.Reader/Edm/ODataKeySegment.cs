@@ -31,13 +31,34 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Name => throw new NotImplementedException();
 
+        /// <summary>
+        /// Gets a value indicating the key segment has composite keys
+        /// </summary>
+        public virtual bool HasCompositeKeys
+        {
+            get
+            {
+                return EntityType.Key().Count() > 1;
+            }
+        }
+
         /// <inheritdoc />
         public override string ToString()
         {
             IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();
             if (keys.Count() == 1)
             {
-                return "{" + keys.First().Name + "}";
+                string keyName = keys.First().Name;
+
+                // Update {id} to {[entityname]-id}
+                if (String.Equals("id", keyName, StringComparison.OrdinalIgnoreCase))
+                {
+                    return "{" + EntityType.Name + "-" + keyName + "}";
+                }
+                else
+                {
+                    return "{" + keyName + "}";
+                }
             }
             else
             {
@@ -46,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     keyStrings.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
                 }
-                return "{" + String.Join(",", keyStrings) + "}";
+                return String.Join(",", keyStrings);
             }
         }
     }

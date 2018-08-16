@@ -94,6 +94,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.TripServiceModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
+                KeyAsSegment = true,
                 Version = new Version(1, 0, 1),
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true
@@ -114,6 +115,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
+                KeyAsSegment = true,
                 Version = new Version(1, 0, 1),
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true

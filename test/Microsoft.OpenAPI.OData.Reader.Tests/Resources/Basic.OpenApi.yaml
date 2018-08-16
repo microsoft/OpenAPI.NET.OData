@@ -96,7 +96,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/People/{UserName}':
+  '/People({UserName})':
     get:
       tags:
         - People.Person
@@ -274,7 +274,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/City/{Name}':
+  '/City({Name})':
     get:
       tags:
         - City.City
@@ -449,7 +449,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/CountryOrRegion/{Name}':
+  '/CountryOrRegion({Name})':
     get:
       tags:
         - CountryOrRegion.CountryOrRegion
