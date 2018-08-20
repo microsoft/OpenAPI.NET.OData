@@ -129,6 +129,9 @@
   <data name="NotSupportedEdmTypeKind" xml:space="preserve">
     <value>Not supported {0} Edm type kind.</value>
   </data>
+  <data name="ODataPathPopInvalid" xml:space="preserve">
+    <value>Pop a segment is invalid. The segment list in the path is empty.</value>
+  </data>
   <data name="OpenApiExceptionGeneralError" xml:space="preserve">
     <value>An error occurred while processing the OData message.</value>
   </data>

@@ -97,6 +97,15 @@ namespace Microsoft.OpenApi.OData.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pop a segment is invalid. The segment list in the path is empty..
+        /// </summary>
+        internal static string ODataPathPopInvalid {
+            get {
+                return ResourceManager.GetString("ODataPathPopInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred while processing the OData message..
         /// </summary>
         internal static string OpenApiExceptionGeneralError {

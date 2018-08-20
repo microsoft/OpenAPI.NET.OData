@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Properties;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -56,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             if (!Segments.Any())
             {
-                throw Error.InvalidOperation("Pop a segment is invalid. The segments in the path is empty.");
+                throw Error.InvalidOperation(SRResource.ODataPathPopInvalid);
             }
 
             Segments.RemoveAt(Segments.Count - 1);
