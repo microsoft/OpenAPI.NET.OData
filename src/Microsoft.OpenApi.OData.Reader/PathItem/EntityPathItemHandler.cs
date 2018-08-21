@@ -9,7 +9,7 @@ using Microsoft.OpenApi.OData.Capabilities;
 namespace Microsoft.OpenApi.OData.PathItem
 {
     /// <summary>
-    /// Path item handler for Entity Set.
+    /// Path item handler for single Entity.
     /// </summary>
     internal class EntityPathItemHandler : EntitySetPathItemHandler
     {

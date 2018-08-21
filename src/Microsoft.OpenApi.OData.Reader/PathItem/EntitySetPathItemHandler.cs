@@ -35,6 +35,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            // The first segment should be the entity set segment.
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
 
