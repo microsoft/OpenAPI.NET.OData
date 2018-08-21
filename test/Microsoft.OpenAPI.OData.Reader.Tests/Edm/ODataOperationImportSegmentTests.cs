@@ -12,6 +12,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     public class ODataOperationImportSegmentTests
     {
         private IEdmOperationImport _operationImport;
+
         public ODataOperationImportSegmentTests()
         {
             IEdmEntityContainer container = new EdmEntityContainer("NS", "default");
@@ -47,23 +48,23 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetNameReturnsCorrectNameString()
+        public void KindPropertyReturnsOperationImportEnumMember()
         {
             // Arrange & Act
             var segment = new ODataOperationImportSegment(_operationImport);
 
             // Assert
-            Assert.Equal("MyAction", segment.Name);
+            Assert.Equal(ODataSegmentKind.OperationImport, segment.Kind);
         }
 
         [Fact]
-        public void ToStringReturnsCorrectNameString()
+        public void GetPathItemNameReturnsCorrectOperationImportLiteral()
         {
             // Arrange & Act
             var segment = new ODataOperationImportSegment(_operationImport);
 
             // Assert
-            Assert.Equal("MyAction", segment.ToString());
+            Assert.Equal("MyAction", segment.GetPathItemName(new OpenApiConvertSettings()));
         }
     }
 }

@@ -62,7 +62,7 @@ namespace UpdateDocs
                 output = oas30 + "/" + fileName + ".json";
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
-                settings.KeyAsSegment = true;
+                settings.EnableKeyAsSegment = true;
                 settings.EnableNavigationPropertyPath = true;
                 output = oas30 + "/" + fileName + "_content.json";
                 document = model.ConvertToOpenApi(settings);

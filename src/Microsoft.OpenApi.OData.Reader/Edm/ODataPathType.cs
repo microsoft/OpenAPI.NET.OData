@@ -8,7 +8,7 @@ namespace Microsoft.OpenApi.OData.Edm
     /// <summary>
     /// Enum types for Edm path.
     /// </summary>
-    public enum ODataPathType
+    public enum ODataPathKind
     {
         /// <summary>
         /// Represents an entity set path. for example: ~/users
@@ -38,6 +38,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Represents an navigation propert path, for example: ~/users/{id}/onedrive
         /// </summary>
-        NavigationProperty
+        NavigationProperty,
+
+        /// <summary>
+        /// Represents an un-supported/unknown path.
+        /// </summary>
+        Unknown
     }
 }

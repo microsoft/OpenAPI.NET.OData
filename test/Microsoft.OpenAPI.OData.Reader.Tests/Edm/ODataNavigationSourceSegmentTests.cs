@@ -14,6 +14,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         private IEdmEntityType _entityType;
         private IEdmEntitySet _entitySet;
         private IEdmSingleton _singleton;
+
         public ODataNavigationSourceSegmentTests()
         {
             _entityType = new EdmEntityType("NS", "Entity");
@@ -50,23 +51,33 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetNameReturnsCorrectNameString()
+        public void KindPropertyReturnsNavigationSourceEnumMember()
         {
             // Arrange & Act
             var segment = new ODataNavigationSourceSegment(_singleton);
 
             // Assert
-            Assert.Equal("Me", segment.Name);
+            Assert.Equal(ODataSegmentKind.NavigationSource, segment.Kind);
         }
 
         [Fact]
-        public void ToStringReturnsCorrectNameString()
+        public void GetPathItemNameReturnsCorrectNavigationSourceLiteralForEntitySet()
         {
             // Arrange & Act
             var segment = new ODataNavigationSourceSegment(_entitySet);
 
             // Assert
-            Assert.Equal("Entities", segment.ToString());
+            Assert.Equal("Entities", segment.GetPathItemName(new OpenApiConvertSettings()));
+        }
+
+        [Fact]
+        public void GetPathItemNameReturnsCorrectNavigationSourceLiteralForSingleton()
+        {
+            // Arrange & Act
+            var segment = new ODataNavigationSourceSegment(_singleton);
+
+            // Assert
+            Assert.Equal("Me", segment.GetPathItemName(new OpenApiConvertSettings()));
         }
     }
 }

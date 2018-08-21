@@ -47,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                KeyAsSegment = true
+                EnableKeyAsSegment = true
             };
             ODataContext context = new ODataContext(model, settings);
 

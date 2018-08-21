@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public class ODataPath : IEnumerable<ODataSegment>
     {
-        private ODataPathType? _pathType;
+        private ODataPathKind? _pathKind;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataPath"/> class.
@@ -50,34 +50,19 @@ namespace Microsoft.OpenApi.OData.Edm
         public IList<ODataSegment> Segments { get; private set; }
 
         /// <summary>
-        /// Pop the last segment.
+        /// Gets the path kind.
         /// </summary>
-        /// <returns>The pop last segment.</returns>
-        public ODataPath Pop()
+        public ODataPathKind Kind
         {
-            if (!Segments.Any())
+            get
             {
-                throw Error.InvalidOperation(SRResource.ODataPathPopInvalid);
+                if (_pathKind == null)
+                {
+                    _pathKind = CalcPathType();
+                }
+
+                return _pathKind.Value;
             }
-
-            Segments.RemoveAt(Segments.Count - 1);
-            return this;
-        }
-
-        /// <summary>
-        /// Push a segment to the last.
-        /// </summary>
-        /// <param name="segment">The pushed segment.</param>
-        /// <returns>The whole path object.</returns>
-        public ODataPath Push(ODataSegment segment)
-        {
-            if (Segments == null)
-            {
-                Segments = new List<ODataSegment>();
-            }
-
-            Segments.Add(segment);
-            return this;
         }
 
         /// <summary>
@@ -124,40 +109,75 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Gets the default path item name.
+        /// </summary>
+        /// <returns>The string.</returns>
+        public string GetPathItemName()
+        {
+            return GetPathItemName(new OpenApiConvertSettings());
+        }
+
+        /// <summary>
         /// Gets the path item name.
         /// </summary>
-        /// <param name="keyAsSegment">A bool value indicating whether to output key as segment.</param>
+        /// <param name="settings">The settings.</param>
         /// <returns>The string.</returns>
-        public string GetPathItemName(bool keyAsSegment)
+        public string GetPathItemName(OpenApiConvertSettings settings)
         {
+            Utils.CheckArgumentNull(settings, nameof(settings));
+
             StringBuilder sb = new StringBuilder();
             foreach (var segment in Segments)
             {
-                ODataKeySegment keySegmnet = segment as ODataKeySegment;
-                if (keySegmnet != null)
+                string pathItemName = segment.GetPathItemName(settings);
+
+                if (segment.Kind == ODataSegmentKind.Key &&
+                    (settings.EnableKeyAsSegment == null || !settings.EnableKeyAsSegment.Value))
                 {
-                    // So far, the behaviour for composite keys in key as segment is un-defined.
-                    // So, for composite keys, we will use () at any time.
-                    if (keyAsSegment && !keySegmnet.HasCompositeKeys)
-                    {
-                        sb.Append("/");
-                        sb.Append(keySegmnet.ToString());
-                    }
-                    else
-                    {
-                        sb.Append("(");
-                        sb.Append(segment);
-                        sb.Append(")");
-                    }
+                    sb.Append("(");
+                    sb.Append(pathItemName);
+                    sb.Append(")");
                 }
                 else // other segments
                 {
                     sb.Append("/");
-                    sb.Append(segment);
+                    sb.Append(pathItemName);
                 }
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Push a segment to the last.
+        /// </summary>
+        /// <param name="segment">The pushed segment.</param>
+        /// <returns>The whole path object.</returns>
+        internal ODataPath Push(ODataSegment segment)
+        {
+            if (Segments == null)
+            {
+                Segments = new List<ODataSegment>();
+            }
+
+            Segments.Add(segment);
+            return this;
+        }
+
+
+        /// <summary>
+        /// Pop the last segment.
+        /// </summary>
+        /// <returns>The pop last segment.</returns>
+        internal ODataPath Pop()
+        {
+            if (!Segments.Any())
+            {
+                throw Error.InvalidOperation(SRResource.ODataPathPopInvalid);
+            }
+
+            Segments.RemoveAt(Segments.Count - 1);
+            return this;
         }
 
         /// <summary>
@@ -166,66 +186,45 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The string.</returns>
         public override string ToString()
         {
-            return "/" + String.Join("/", Segments);
+            return "/" + String.Join("/", Segments.Select(e => e.Kind));
         }
 
-        internal ODataPathType PathType
+        private ODataPathKind CalcPathType()
         {
-            get
+            if (Segments.Any(c => c.Kind == ODataSegmentKind.NavigationProperty))
             {
-                if (_pathType == null)
-                {
-                    CalcPathType();
-                }
-
-                return _pathType.Value;
+                return ODataPathKind.NavigationProperty;
             }
-        }
-
-        private void CalcPathType()
-        {
-            if (Segments.Any(c => c is ODataNavigationPropertySegment))
+            else if (Segments.Any(c => c.Kind == ODataSegmentKind.OperationImport))
             {
-                _pathType = ODataPathType.NavigationProperty;
-                return;
+                return ODataPathKind.OperationImport;
             }
-            else if (Segments.Any(c => c is ODataOperationImportSegment))
+            else if (Segments.Any(c => c.Kind == ODataSegmentKind.Operation))
             {
-                _pathType = ODataPathType.OperationImport;
-                return;
-            }
-            else if (Segments.Any(c => c is ODataOperationSegment))
-            {
-                _pathType = ODataPathType.Operation;
-                return;
+                return ODataPathKind.Operation;
             }
 
             if (Segments.Count == 1)
             {
                 ODataNavigationSourceSegment segment = Segments[0] as ODataNavigationSourceSegment;
-                if (segment == null)
+                if (segment != null)
                 {
-                    throw Error.ArgumentNull("segment");
-                }
-
-                if (segment.NavigationSource is IEdmSingleton)
-                {
-                    _pathType = ODataPathType.Singleton;
-                }
-                else
-                {
-                    _pathType = ODataPathType.EntitySet;
+                    if (segment.NavigationSource is IEdmSingleton)
+                    {
+                        return ODataPathKind.Singleton;
+                    }
+                    else
+                    {
+                        return ODataPathKind.EntitySet;
+                    }
                 }
             }
-            else
+            else if (Segments.Count == 2 && Segments.Last().Kind == ODataSegmentKind.Key)
             {
-                if (Segments.Count != 2)
-                {
-                    throw Error.InvalidOperation("Calc the path type wrong!");
-                }
-
-                _pathType = ODataPathType.Entity;
+                return ODataPathKind.Entity;
             }
+
+            return ODataPathKind.Unknown;
         }
     }
 }

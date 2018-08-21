@@ -11,20 +11,21 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 {
     public class ODataKeySegmentTests
     {
-        public IEdmEntityType Person { get; }
-
-        public IEdmEntityType Customer { get; }
+        private IEdmEntityType _person { get; }
+        private IEdmEntityType _customer { get; }
 
         public ODataKeySegmentTests()
         {
+            // entity type with simple key
             var person = new EdmEntityType("NS", "Person");
             person.AddKeys(person.AddStructuralProperty("Id", EdmCoreModel.Instance.GetString(false)));
-            Person = person;
+            _person = person;
 
+            // entity type with composite keys
             var customer = new EdmEntityType("NS", "Customer");
             customer.AddKeys(customer.AddStructuralProperty("firstName", EdmCoreModel.Instance.GetString(false)));
             customer.AddKeys(customer.AddStructuralProperty("lastName", EdmCoreModel.Instance.GetString(false)));
-            Customer = customer;
+            _customer = customer;
         }
 
         [Fact]
@@ -37,30 +38,52 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         public void KeySegmentEntityTypePropertyReturnsSameEntityType()
         {
             // Arrange & Act
-            ODataKeySegment segment = new ODataKeySegment(Person);
+            ODataKeySegment segment = new ODataKeySegment(_person);
 
             // Assert
-            Assert.Same(Person, segment.EntityType);
+            Assert.Same(_person, segment.EntityType);
         }
 
         [Fact]
-        public void KeySegmentToStringReturnsCorrectKeyString()
+        public void KindPropertyReturnsKeyEnumMember()
         {
             // Arrange & Act
-            ODataKeySegment segment = new ODataKeySegment(Person);
+            ODataKeySegment segment = new ODataKeySegment(_person);
 
             // Assert
-            Assert.Equal("{Person-Id}", segment.ToString());
+            Assert.Equal(ODataSegmentKind.Key, segment.Kind);
         }
 
-        [Fact]
-        public void KeySegmentToStringReturnsCorrectKeyStringForCompositeKeys()
+        [Theory]
+        [InlineData(true, "{Person-Id}")]
+        [InlineData(false, "{Id}")]
+        public void GetPathItemNameReturnsCorrectKeyLiteralForSimpleKey(bool prefix, string expected)
         {
             // Arrange & Act
-            ODataKeySegment segment = new ODataKeySegment(Customer);
+            ODataKeySegment segment = new ODataKeySegment(_person);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                PrefixEntityTypeNameBeforeKey = prefix
+            };
 
             // Assert
-            Assert.Equal("firstName={firstName},lastName={lastName}", segment.ToString());
+            Assert.Equal(expected, segment.GetPathItemName(settings));
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void GetPathItemNameReturnsCorrectKeyLiteralForCompositeKey(bool prefix)
+        {
+            // Arrange & Act
+            ODataKeySegment segment = new ODataKeySegment(_customer);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                PrefixEntityTypeNameBeforeKey = prefix
+            };
+
+            // Assert
+            Assert.Equal("firstName={firstName},lastName={lastName}", segment.GetPathItemName(settings));
         }
     }
 }

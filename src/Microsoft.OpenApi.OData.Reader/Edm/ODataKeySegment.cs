@@ -29,29 +29,19 @@ namespace Microsoft.OpenApi.OData.Edm
         public override IEdmEntityType EntityType { get; }
 
         /// <inheritdoc />
-        public override string Name => throw new NotImplementedException();
-
-        /// <summary>
-        /// Gets a value indicating the key segment has composite keys
-        /// </summary>
-        public virtual bool HasCompositeKeys
-        {
-            get
-            {
-                return EntityType.Key().Count() > 1;
-            }
-        }
+        public override ODataSegmentKind Kind => ODataSegmentKind.Key;
 
         /// <inheritdoc />
-        public override string ToString()
+        public override string GetPathItemName(OpenApiConvertSettings settings)
         {
+            Utils.CheckArgumentNull(settings, nameof(settings));
+
             IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();
             if (keys.Count() == 1)
             {
                 string keyName = keys.First().Name;
 
-                // Update {id} to {[entityname]-id}
-                if (String.Equals("id", keyName, StringComparison.OrdinalIgnoreCase))
+                if (settings.PrefixEntityTypeNameBeforeKey)
                 {
                     return "{" + EntityType.Name + "-" + keyName + "}";
                 }
@@ -67,6 +57,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     keyStrings.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
                 }
+
                 return String.Join(",", keyStrings);
             }
         }

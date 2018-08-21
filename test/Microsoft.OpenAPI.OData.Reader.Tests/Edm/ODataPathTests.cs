@@ -40,7 +40,13 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void PopThrowsForEmptyPath()
+        public void ODataPathConstructorThrowsArgumentNull()
+        {
+            Assert.Throws<ArgumentNullException>("source", () => new ODataPath(null));
+        }
+
+        [Fact]
+        public void ODataPathPopThrowsForEmptyPath()
         {
             // Arrange
             ODataPath path = new ODataPath();
@@ -53,10 +59,23 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.Equal(SRResource.ODataPathPopInvalid, exception.Message);
         }
 
-        [Theory]
-        [InlineData(true, "/Orders/{Order-Id}")]
-        [InlineData(false, "/Orders({Order-Id})")]
-        public void GetPathItemNameReturnsCorrectStringWithSingleKeySegment(bool keyAsSegment, string expected)
+        [Fact]
+        public void ODataPathPushWorks()
+        {
+            // Arrange
+            ODataPath path = new ODataPath();
+            Assert.Empty(path); // guard
+
+            // Act
+            path.Push(new ODataNavigationSourceSegment(_simpleKeyEntitySet));
+
+            // Assert
+            Assert.Single(path);
+            Assert.Equal(1, path.Count);
+        }
+
+        [Fact]
+        public void ODataPathFirstSegmentWorks()
         {
             // Arrange
             ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_simpleKeyEntitySet);
@@ -64,27 +83,167 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataPath path = new ODataPath(nsSegment, keySegment);
 
             // Act
-            string pathItemName = path.GetPathItemName(keyAsSegment);
+            var segment = path.FirstSegment;
+
+            // Assert
+            Assert.Same(nsSegment, segment);
+        }
+
+        [Fact]
+        public void ODataPathLastSegmentWorks()
+        {
+            // Arrange
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_simpleKeyEntitySet);
+            ODataKeySegment keySegment = new ODataKeySegment(_simpleKeyEntityType);
+            ODataPath path = new ODataPath(nsSegment, keySegment);
+
+            // Act
+            var segment = path.LastSegment;
+
+            // Assert
+            Assert.Same(keySegment, segment);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsUnknow()
+        {
+            // Arrange
+            ODataKeySegment keySegment = new ODataKeySegment(_simpleKeyEntityType);
+            ODataPath path = new ODataPath(keySegment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.Unknown, path.Kind);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsEntity()
+        {
+            // Arrange
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_simpleKeyEntitySet);
+            ODataKeySegment keySegment = new ODataKeySegment(_simpleKeyEntityType);
+            ODataPath path = new ODataPath(nsSegment, keySegment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.Entity, path.Kind);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsSingleton()
+        {
+            // Arrange
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmSingleton me = new EdmSingleton(container, "Me", _simpleKeyEntityType);
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(me);
+            ODataPath path = new ODataPath(nsSegment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.Singleton, path.Kind);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsEntitySet()
+        {
+            // Arrange
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_compositeKeyEntitySet);
+            ODataPath path = new ODataPath(nsSegment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.EntitySet, path.Kind);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsOperation()
+        {
+            // Arrange
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_simpleKeyEntitySet);
+            EdmAction action = new EdmAction("NS", "MyAction", null, isBound: true, entitySetPathExpression: null);
+            ODataOperationSegment opSegment = new ODataOperationSegment(action);
+            ODataPath path = new ODataPath(nsSegment, opSegment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.Operation, path.Kind);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsNavigationProperty()
+        {
+            // Arrange
+            EdmNavigationPropertyInfo propertyInfo = new EdmNavigationPropertyInfo
+            {
+                Name = "Nav",
+                TargetMultiplicity = EdmMultiplicity.One,
+                Target = _compositeKeyEntityType
+            };
+            var property = EdmNavigationProperty.CreateNavigationProperty(_simpleKeyEntityType, propertyInfo);
+            ODataNavigationPropertySegment npSegment = new ODataNavigationPropertySegment(property);
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_simpleKeyEntitySet);
+            ODataKeySegment keySegment = new ODataKeySegment(_simpleKeyEntityType);
+            ODataPath path = new ODataPath(nsSegment, keySegment, npSegment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.NavigationProperty, path.Kind);
+        }
+
+        [Fact]
+        public void KindPropertyReturnsOperationImport()
+        {
+            // Arrange
+            IEdmEntityContainer container = new EdmEntityContainer("NS", "default");
+            IEdmAction action = new EdmAction("NS", "MyAction", null);
+            var operationImport = new EdmActionImport(container, "MyAction", action);
+            ODataOperationImportSegment segment = new ODataOperationImportSegment(operationImport);
+            ODataPath path = new ODataPath(segment);
+
+            // Act & Assert
+            Assert.Equal(ODataPathKind.OperationImport, path.Kind);
+        }
+
+        [Theory]
+        [InlineData(true, true, "/Orders/{Order-Id}")]
+        [InlineData(true, false, "/Orders/{Id}")]
+        [InlineData(false, true, "/Orders({Order-Id})")]
+        [InlineData(false, false, "/Orders({Id})")]
+        public void GetPathItemNameReturnsCorrectWithSingleKeySegment(bool keyAsSegment, bool prefix, string expected)
+        {
+            // Arrange
+            ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_simpleKeyEntitySet);
+            ODataKeySegment keySegment = new ODataKeySegment(_simpleKeyEntityType);
+            ODataPath path = new ODataPath(nsSegment, keySegment);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableKeyAsSegment = keyAsSegment,
+                PrefixEntityTypeNameBeforeKey = prefix
+            };
+
+            // Act
+            string pathItemName = path.GetPathItemName(settings);
 
             // Assert
             Assert.Equal(expected, pathItemName);
         }
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void GetPathItemNameReturnsCorrectStringWithMultipleKeySegment(bool keyAsSegment)
+        [InlineData(true, true, "/Customers/FirstName={FirstName},LastName={LastName}")]
+        [InlineData(true, false, "/Customers/FirstName={FirstName},LastName={LastName}")]
+        [InlineData(false, true, "/Customers(FirstName={FirstName},LastName={LastName})")]
+        [InlineData(false, false, "/Customers(FirstName={FirstName},LastName={LastName})")]
+        public void GetPathItemNameReturnsCorrectStringWithMultipleKeySegment(bool keyAsSegment, bool prefix, string expected)
         {
             // Arrange
             ODataNavigationSourceSegment nsSegment = new ODataNavigationSourceSegment(_compositeKeyEntitySet);
             ODataKeySegment keySegment = new ODataKeySegment(_compositeKeyEntityType);
             ODataPath path = new ODataPath(nsSegment, keySegment);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableKeyAsSegment = keyAsSegment,
+                PrefixEntityTypeNameBeforeKey = prefix
+            };
 
             // Act
-            string pathItemName = path.GetPathItemName(keyAsSegment);
+            string pathItemName = path.GetPathItemName(settings);
 
             // Assert
-            Assert.Equal("/Customers(FirstName={FirstName},LastName={LastName})", pathItemName);
+            Assert.Equal(expected, pathItemName);
         }
     }
 }

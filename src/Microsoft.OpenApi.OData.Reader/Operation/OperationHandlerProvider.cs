@@ -14,24 +14,24 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class OperationHandlerProvider : IOperationHandlerProvider
     {
-        private IDictionary<ODataPathType, IDictionary<OperationType, IOperationHandler>> _handlers;
+        private IDictionary<ODataPathKind, IDictionary<OperationType, IOperationHandler>> _handlers;
 
         /// <summary>
         /// Initializes a new instance of <see cref="OperationHandlerProvider"/> class.
         /// </summary>
         public OperationHandlerProvider()
         {
-            _handlers = new Dictionary<ODataPathType, IDictionary<OperationType, IOperationHandler>>();
+            _handlers = new Dictionary<ODataPathKind, IDictionary<OperationType, IOperationHandler>>();
 
             // entity set (Get/Post)
-            _handlers[ODataPathType.EntitySet] = new Dictionary<OperationType, IOperationHandler>
+            _handlers[ODataPathKind.EntitySet] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new EntitySetGetOperationHandler() },
                 {OperationType.Post, new EntitySetPostOperationHandler() }
             };
 
             // entity (Get/Patch/Delete)
-            _handlers[ODataPathType.Entity] = new Dictionary<OperationType, IOperationHandler>
+            _handlers[ODataPathKind.Entity] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new EntityGetOperationHandler() },
                 {OperationType.Patch, new EntityPatchOperationHandler() },
@@ -39,28 +39,28 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             // singleton (Get/Patch)
-            _handlers[ODataPathType.Singleton] = new Dictionary<OperationType, IOperationHandler>
+            _handlers[ODataPathKind.Singleton] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new SingletonGetOperationHandler() },
                 {OperationType.Patch, new SingletonPatchOperationHandler() }
             };
 
             // edm operation (Get|Post)
-            _handlers[ODataPathType.Operation] = new Dictionary<OperationType, IOperationHandler>
+            _handlers[ODataPathKind.Operation] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new EdmFunctionOperationHandler() },
                 {OperationType.Post, new EdmActionOperationHandler() }
             };
 
             // edm operation import (Get|Post)
-            _handlers[ODataPathType.OperationImport] = new Dictionary<OperationType, IOperationHandler>
+            _handlers[ODataPathKind.OperationImport] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new EdmFunctionImportOperationHandler() },
                 {OperationType.Post, new EdmActionImportOperationHandler() }
             };
 
             // navigation property (Get/Patch/Post)
-            _handlers[ODataPathType.NavigationProperty] = new Dictionary<OperationType, IOperationHandler>
+            _handlers[ODataPathKind.NavigationProperty] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new NavigationPropertyGetOperationHandler() },
                 {OperationType.Patch, new NavigationPropertyPatchOperationHandler() },
@@ -69,9 +69,9 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        public IOperationHandler GetHandler(ODataPathType pathType, OperationType operationType)
+        public IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType)
         {
-            return _handlers[pathType][operationType];
+            return _handlers[pathKind][operationType];
         }
     }
 }

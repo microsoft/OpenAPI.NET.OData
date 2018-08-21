@@ -61,9 +61,9 @@ namespace Microsoft.OpenApi.OData.Operation
 
             foreach (var segment in Path.Segments.Skip(1))
             {
-                if (segment is ODataNavigationPropertySegment)
+                ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
+                if (npSegment != null)
                 {
-                    ODataNavigationPropertySegment npSegment = (ODataNavigationPropertySegment)segment;
                     if (npSegment.NavigationProperty == NavigationProperty)
                     {
                         items.Add(NavigationProperty.ToEntityType().Name);
@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         }
                         else
                         {
-                            items.Add(segment.Name);
+                            items.Add(npSegment.NavigationProperty.Name);
                         }
                     }
                 }
@@ -106,9 +106,10 @@ namespace Microsoft.OpenApi.OData.Operation
             var lastpath = Path.Segments.Last(c => c is ODataNavigationPropertySegment);
             foreach (var segment in Path.Segments.Skip(1))
             {
-                if (segment is ODataNavigationPropertySegment)
+                ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
+                if (npSegment != null)
                 {
-                    ODataNavigationPropertySegment npSegment = (ODataNavigationPropertySegment)segment;/*
+/*
                     if (npSegment.NavigationProperty == NavigationProperty)
                     {
                         items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name));
@@ -120,12 +121,12 @@ namespace Microsoft.OpenApi.OData.Operation
                     }*/
                     if (segment == lastpath)
                     {
-                        items.Add(prefix + Utils.UpperFirstChar(segment.Name));
+                        items.Add(prefix + Utils.UpperFirstChar(npSegment.NavigationProperty.Name));
                         break;
                     }
                     else
                     {
-                        items.Add(segment.Name);
+                        items.Add(npSegment.NavigationProperty.Name);
                     }
                 }
             }

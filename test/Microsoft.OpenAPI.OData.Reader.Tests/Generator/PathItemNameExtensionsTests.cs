@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             ODataContext context = new ODataContext(model, new OpenApiConvertSettings
             {
-                KeyAsSegment = true
+                EnableKeyAsSegment = true
             });
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
             Assert.NotNull(people); // guard
@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.CompositeKeyModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                KeyAsSegment = keyAsSegment
+                EnableKeyAsSegment = keyAsSegment
             };
             ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet customers = model.EntityContainer.FindEntitySet("Customers");
@@ -184,7 +184,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(navProperty);
             ODataContext context = new ODataContext(model, new OpenApiConvertSettings
             {
-                KeyAsSegment = true
+                EnableKeyAsSegment = true
             });
 
             // Act
@@ -296,7 +296,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.TripServiceModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                UnqualifiedCall = unqualifiedCall
+                EnableUnqualifiedCall = unqualifiedCall
             };
 
             ODataContext context = new ODataContext(model, settings);

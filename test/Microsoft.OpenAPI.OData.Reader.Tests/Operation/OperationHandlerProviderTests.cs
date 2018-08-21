@@ -13,27 +13,27 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     public class OperationHandlerProviderTests
     {
         [Theory]
-        [InlineData(ODataPathType.EntitySet, OperationType.Get, typeof(EntitySetGetOperationHandler))]
-        [InlineData(ODataPathType.EntitySet, OperationType.Post, typeof(EntitySetPostOperationHandler))]
-        [InlineData(ODataPathType.Entity, OperationType.Get, typeof(EntityGetOperationHandler))]
-        [InlineData(ODataPathType.Entity, OperationType.Patch, typeof(EntityPatchOperationHandler))]
-        [InlineData(ODataPathType.Entity, OperationType.Delete, typeof(EntityDeleteOperationHandler))]
-        [InlineData(ODataPathType.Singleton, OperationType.Get, typeof(SingletonGetOperationHandler))]
-        [InlineData(ODataPathType.Singleton, OperationType.Patch, typeof(SingletonPatchOperationHandler))]
-        [InlineData(ODataPathType.NavigationProperty, OperationType.Get, typeof(NavigationPropertyGetOperationHandler))]
-        [InlineData(ODataPathType.NavigationProperty, OperationType.Post, typeof(NavigationPropertyPostOperationHandler))]
-        [InlineData(ODataPathType.NavigationProperty, OperationType.Patch, typeof(NavigationPropertyPatchOperationHandler))]
-        [InlineData(ODataPathType.Operation, OperationType.Get, typeof(EdmFunctionOperationHandler))]
-        [InlineData(ODataPathType.Operation, OperationType.Post, typeof(EdmActionOperationHandler))]
-        [InlineData(ODataPathType.OperationImport, OperationType.Get, typeof(EdmFunctionImportOperationHandler))]
-        [InlineData(ODataPathType.OperationImport, OperationType.Post, typeof(EdmActionImportOperationHandler))]
-        public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathType pathType, OperationType operationType, Type handlerType)
+        [InlineData(ODataPathKind.EntitySet, OperationType.Get, typeof(EntitySetGetOperationHandler))]
+        [InlineData(ODataPathKind.EntitySet, OperationType.Post, typeof(EntitySetPostOperationHandler))]
+        [InlineData(ODataPathKind.Entity, OperationType.Get, typeof(EntityGetOperationHandler))]
+        [InlineData(ODataPathKind.Entity, OperationType.Patch, typeof(EntityPatchOperationHandler))]
+        [InlineData(ODataPathKind.Entity, OperationType.Delete, typeof(EntityDeleteOperationHandler))]
+        [InlineData(ODataPathKind.Singleton, OperationType.Get, typeof(SingletonGetOperationHandler))]
+        [InlineData(ODataPathKind.Singleton, OperationType.Patch, typeof(SingletonPatchOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, OperationType.Get, typeof(NavigationPropertyGetOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, OperationType.Post, typeof(NavigationPropertyPostOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, OperationType.Patch, typeof(NavigationPropertyPatchOperationHandler))]
+        [InlineData(ODataPathKind.Operation, OperationType.Get, typeof(EdmFunctionOperationHandler))]
+        [InlineData(ODataPathKind.Operation, OperationType.Post, typeof(EdmActionOperationHandler))]
+        [InlineData(ODataPathKind.OperationImport, OperationType.Get, typeof(EdmFunctionImportOperationHandler))]
+        [InlineData(ODataPathKind.OperationImport, OperationType.Post, typeof(EdmActionImportOperationHandler))]
+        public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, OperationType operationType, Type handlerType)
         {
             // Arrange
             OperationHandlerProvider provider = new OperationHandlerProvider();
 
             // Act
-            IOperationHandler hander = provider.GetHandler(pathType, operationType);
+            IOperationHandler hander = provider.GetHandler(pathKind, operationType);
 
             // Assert
             Assert.Same(handlerType, hander.GetType());

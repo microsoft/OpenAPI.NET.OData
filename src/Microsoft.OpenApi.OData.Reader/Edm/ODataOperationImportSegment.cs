@@ -28,12 +28,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public IEdmOperationImport OperationImport { get; }
 
         /// <inheritdoc />
-        public override IEdmEntityType EntityType => throw new System.NotImplementedException();
+        public override ODataSegmentKind Kind => ODataSegmentKind.OperationImport;
 
         /// <inheritdoc />
-        public override string Name => OperationImport.Name;
-
-        /// <inheritdoc />
-        public override string ToString() => OperationImport.Name;
+        public override string GetPathItemName(OpenApiConvertSettings settings) => OperationImport.Name;
     }
 }

@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Get the <see cref="IOperationHandler"/>.
         /// </summary>
-        /// <param name="pathType">The path type.</param>
+        /// <param name="pathKind">The path kind.</param>
         /// <param name="operationType">The operation type.</param>
         /// <returns>The corresponding <see cref="IOperationHandler"/>.</returns>
-        IOperationHandler GetHandler(ODataPathType pathType, OperationType operationType);
+        IOperationHandler GetHandler(ODataPathKind pathKind, OperationType operationType);
     }
 }

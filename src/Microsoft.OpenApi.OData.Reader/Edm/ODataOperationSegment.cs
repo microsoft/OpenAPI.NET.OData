@@ -21,18 +21,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="operation">The operation.</param>
         public ODataOperationSegment(IEdmOperation operation)
-            : this(operation, true)
-        { }
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
-        /// </summary>
-        /// <param name="operation">The operation.</param>
-        /// <param name="unqualifiedCall">The unqualified call.</param>
-        public ODataOperationSegment(IEdmOperation operation, bool unqualifiedCall)
         {
             Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
-            UnqualifiedCall = unqualifiedCall;
         }
 
         /// <summary>
@@ -40,32 +30,24 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         public IEdmOperation Operation { get; }
 
-        /// <summary>
-        /// Gets the unqualified call.
-        /// </summary>
-        public bool UnqualifiedCall { get; }
+        /// <inheritdoc />
+        public override ODataSegmentKind Kind => ODataSegmentKind.Operation;
 
         /// <inheritdoc />
-        public override string Name => Operation.Name;
-
-        /// <inheritdoc />
-        public override IEdmEntityType EntityType => throw new NotImplementedException();
-
-        /// <inheritdoc />
-        public override string ToString()
+        public override string GetPathItemName(OpenApiConvertSettings settings)
         {
             if (Operation.IsFunction())
             {
-                return FunctionName(Operation as IEdmFunction);
+                return FunctionName(Operation as IEdmFunction, settings);
             }
 
-            return ActionName(Operation as IEdmAction);
+            return ActionName(Operation as IEdmAction, settings);
         }
 
-        private string FunctionName(IEdmFunction function)
+        private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings)
         {
             StringBuilder functionName = new StringBuilder();
-            if (UnqualifiedCall)
+            if (settings.EnableUnqualifiedCall)
             {
                 functionName.Append(function.Name);
             }
@@ -95,9 +77,9 @@ namespace Microsoft.OpenApi.OData.Edm
             return functionName.ToString();
         }
 
-        private string ActionName(IEdmAction action)
+        private string ActionName(IEdmAction action, OpenApiConvertSettings settings)
         {
-            if (UnqualifiedCall)
+            if (settings.EnableUnqualifiedCall)
             {
                 return action.Name;
             }

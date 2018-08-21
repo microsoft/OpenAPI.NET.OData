@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetExtensions(OpenApiPathItem item)
         {
             IList<ODataPath> samePaths = new List<ODataPath>();
-            foreach (var path in Context.Paths.Where(p => p.PathType == ODataPathType.NavigationProperty && p != Path))
+            foreach (var path in Context.Paths.Where(p => p.Kind == ODataPathKind.NavigationProperty && p != Path))
             {
                 bool lastIsKeySegment = path.LastSegment is ODataKeySegment;
                 if (LastSegmentIsKeySegment != lastIsKeySegment)
@@ -126,7 +126,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 OpenApiArray array = new OpenApiArray();
                 foreach(var p in samePaths)
                 {
-                    array.Add(new OpenApiString(p.ToString()));
+                    array.Add(new OpenApiString(p.GetPathItemName(Context.Settings)));
                 }
 
                 item.Extensions.Add(Constants.xMsDosGroupPath, array);

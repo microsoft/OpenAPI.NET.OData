@@ -197,14 +197,14 @@ namespace Microsoft.OpenApi.OData.Edm
                     if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
                     {
                         path.Push(new ODataTypeCastSegment(operation.Item1));
-                        path.Push(new ODataOperationSegment(operation.Item2, Context.Settings.UnqualifiedCall));
+                        path.Push(new ODataOperationSegment(operation.Item2));
                         _paths.Add(path.Clone());
                         path.Pop();
                         path.Pop();
                     }
                     else
                     {
-                        path.Push(new ODataOperationSegment(operation.Item2, Context.Settings.UnqualifiedCall));
+                        path.Push(new ODataOperationSegment(operation.Item2));
                         _paths.Add(path.Clone());
                         path.Pop();
                     }
@@ -224,14 +224,14 @@ namespace Microsoft.OpenApi.OData.Edm
                 if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
                 {
                     path.Push(new ODataTypeCastSegment(operation.Item1));
-                    path.Push(new ODataOperationSegment(operation.Item2, Context.Settings.UnqualifiedCall));
+                    path.Push(new ODataOperationSegment(operation.Item2));
                     _paths.Add(path.Clone());
                     path.Pop();
                     path.Pop();
                 }
                 else
                 {
-                    path.Push(new ODataOperationSegment(operation.Item2, Context.Settings.UnqualifiedCall));
+                    path.Push(new ODataOperationSegment(operation.Item2));
                     _paths.Add(path.Clone());
                     path.Pop();
                 }

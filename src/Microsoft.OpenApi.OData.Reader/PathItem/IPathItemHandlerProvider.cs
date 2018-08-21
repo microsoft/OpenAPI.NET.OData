@@ -15,8 +15,8 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <summary>
         /// Get the <see cref="IPathItemHandler"/> based on the path type.
         /// </summary>
-        /// <param name="pathType">The path type.</param>
+        /// <param name="pathKind">The path kind.</param>
         /// <returns>The <see cref="IPathItemHandler"/>.</returns>
-        IPathItemHandler GetHandler(ODataPathType pathType);
+        IPathItemHandler GetHandler(ODataPathKind pathKind);
     }
 }

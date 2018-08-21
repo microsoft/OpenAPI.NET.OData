@@ -9,10 +9,8 @@ using Xunit;
 
 namespace Microsoft.OpenApi.OData.Edm.Tests
 {
-    public class ODataOperationISegmentTests
+    public class ODataOperationSegmentTests
     {
-        private IEdmOperation _operation = new EdmAction("NS", "MyAction", null);
-
         [Fact]
         public void CtorThrowArgumentNullOperation()
         {
@@ -24,40 +22,86 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         public void CtorSetOperationProperty()
         {
             // Arrange & Act
-            var segment = new ODataOperationSegment(_operation);
+            IEdmOperation operation = new EdmAction("NS", "MyAction", null);
+            var segment = new ODataOperationSegment(operation);
 
             // Assert
-            Assert.Same(_operation, segment.Operation);
+            Assert.Same(operation, segment.Operation);
         }
 
         [Fact]
         public void GetEntityTypeThrowsNotImplementedException()
         {
             // Arrange & Act
-            var segment = new ODataOperationSegment(_operation);
+            IEdmOperation operation = new EdmAction("NS", "MyAction", null);
+            var segment = new ODataOperationSegment(operation);
 
             // Assert
             Assert.Throws<NotImplementedException>(() => segment.EntityType);
         }
 
         [Fact]
-        public void GetNameReturnsCorrectNameString()
+        public void KindPropertyReturnsOperationEnumMember()
         {
             // Arrange & Act
-            var segment = new ODataOperationSegment(_operation);
+            IEdmOperation operation = new EdmAction("NS", "MyAction", null);
+            var segment = new ODataOperationSegment(operation);
 
             // Assert
-            Assert.Equal("MyAction", segment.Name);
+            Assert.Equal(ODataSegmentKind.Operation, segment.Kind);
         }
 
-        [Fact]
-        public void ToStringReturnsCorrectNameString()
+        [Theory]
+        [InlineData(true, true)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        [InlineData(false, false)]
+        public void GetPathItemNameReturnsCorrectActionLiteral(bool unqualifiedCall, bool isBound)
         {
             // Arrange & Act
-            var segment = new ODataOperationSegment(_operation);
+            EdmAction action = new EdmAction("NS", "MyAction", null, isBound: isBound, entitySetPathExpression: null);
+            var segment = new ODataOperationSegment(action);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableUnqualifiedCall = unqualifiedCall
+            };
+
+            string expected = unqualifiedCall ? "MyAction" : "NS.MyAction";
 
             // Assert
-            Assert.Equal("MyAction", segment.ToString());
+            Assert.Equal(expected, segment.GetPathItemName(settings));
+        }
+
+        [Theory]
+        [InlineData(true, true, "MyFunction(param={param})")]
+        [InlineData(true, false, "MyFunction(entity=@entity,param={param})")]
+        [InlineData(false, true, "NS.MyFunction(param={param})")]
+        [InlineData(false, false, "NS.MyFunction(entity=@entity,param={param})")]
+        public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected)
+        {
+            // Arrange & Act
+            IEdmEntityTypeReference entityTypeReference = new EdmEntityTypeReference(new EdmEntityType("NS", "Entity"), false);
+            IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
+            EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference);
+            boundFunction.AddParameter("param", parameterType);
+
+            var segment = new ODataOperationSegment(boundFunction);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableUnqualifiedCall = unqualifiedCall
+            };
+
+            // Assert
+            Assert.Equal(expected, segment.GetPathItemName(settings));
+        }
+
+        private EdmFunction BoundFunction(string funcName,  bool isBound, IEdmTypeReference firstParameterType)
+        {
+            IEdmTypeReference returnType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
+            EdmFunction boundFunction = new EdmFunction("NS", funcName, returnType,
+                isBound: isBound, entitySetPathExpression: null, isComposable: false);
+            boundFunction.AddParameter("entity", firstParameterType);
+            return boundFunction;
         }
     }
 }

@@ -3,10 +3,21 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using Microsoft.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
+    public enum ODataSegmentKind
+    {
+        NavigationSource,
+        NavigationProperty,
+        Operation,
+        OperationImport,
+        Key,
+        TypeCast
+    }
+
     /// <summary>
     /// Represents an OData segment. For example, an entity set segment.
     /// </summary>
@@ -15,11 +26,18 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the entity type of current segment.
         /// </summary>
-        public abstract IEdmEntityType EntityType { get; }
+        public virtual IEdmEntityType EntityType => throw new NotImplementedException();
 
         /// <summary>
-        /// Ges the name of this segment.
+        /// Gets the kind of this segment.
         /// </summary>
-        public abstract string Name { get; }
+        public abstract ODataSegmentKind Kind { get; }
+
+        /// <summary>
+        /// Gets the path item name for this segment.
+        /// </summary>
+        /// <param name="settings">The settings.</param>
+        /// <returns></returns>
+        public abstract string GetPathItemName(OpenApiConvertSettings settings);
     }
 }

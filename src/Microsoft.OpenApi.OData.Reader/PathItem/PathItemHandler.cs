@@ -72,7 +72,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected void AddOperation(OpenApiPathItem item, OperationType operationType)
         {
             IOperationHandlerProvider provider = Context.OperationHanderProvider;
-            IOperationHandler operationHander = provider.GetHandler(Path.PathType, operationType);
+            IOperationHandler operationHander = provider.GetHandler(Path.Kind, operationType);
             item.AddOperation(operationType, operationHander.CreateOperation(Context, Path));
         }
     }

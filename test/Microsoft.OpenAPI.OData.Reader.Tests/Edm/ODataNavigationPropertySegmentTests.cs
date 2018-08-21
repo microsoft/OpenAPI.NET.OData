@@ -13,6 +13,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     {
         private IEdmEntityType _entityType;
         private IEdmNavigationProperty _property;
+
         public ODataNavigationPropertySegmentTests()
         {
             _entityType = new EdmEntityType("NS", "Entity");
@@ -53,23 +54,23 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetNameReturnsCorrectNameString()
+        public void KindPropertyReturnsNavigationPropertyEnumMember()
         {
             // Arrange & Act
             var segment = new ODataNavigationPropertySegment(_property);
 
             // Assert
-            Assert.Equal("Nav", segment.Name);
+            Assert.Equal(ODataSegmentKind.NavigationProperty, segment.Kind);
         }
 
         [Fact]
-        public void ToStringReturnsCorrectNameString()
+        public void GetPathItemNameReturnsCorrectNavigationPropertyLiteral()
         {
             // Arrange & Act
             var segment = new ODataNavigationPropertySegment(_property);
 
             // Assert
-            Assert.Equal("Nav", segment.ToString());
+            Assert.Equal("Nav", segment.GetPathItemName(new OpenApiConvertSettings()));
         }
     }
 }

@@ -146,7 +146,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(function != null);
 
             StringBuilder functionName = new StringBuilder("/");
-            if (context.Settings.UnqualifiedCall)
+            if (context.Settings.EnableUnqualifiedCall)
             {
                 functionName.Append(function.Name);
             }
@@ -181,7 +181,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(context != null);
             Debug.Assert(action != null);
 
-            if (context.Settings.UnqualifiedCall)
+            if (context.Settings.EnableUnqualifiedCall)
             {
                 return "/" + action.Name;
             }

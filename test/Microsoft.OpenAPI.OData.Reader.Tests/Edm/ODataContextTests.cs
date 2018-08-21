@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             StringBuilder sb = new StringBuilder();
             foreach (var path in paths)
             {
-                sb.Append(path.ToString()).Append("\n");
+                sb.Append(path.GetPathItemName(settings)).Append("\n");
             }
             File.WriteAllText("c:\\c.xml", sb.ToString());
 

@@ -53,7 +53,7 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-            _keyAsSegmentSupported = settings.KeyAsSegment ?? model.GetKeyAsSegmentSupported();
+            _keyAsSegmentSupported = settings.EnableKeyAsSegment ?? model.GetKeyAsSegmentSupported();
 
             _pathHandler = new ODataPathHandler(this);
 

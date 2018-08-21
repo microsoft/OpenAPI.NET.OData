@@ -55,7 +55,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             IEdmNavigationSource currentNavSource = navigationSourceSegment.NavigationSource;
 
             IList<ODataPath> samePaths = new List<ODataPath>();
-            foreach (var path in Context.Paths.Where(p => p.PathType == ODataPathType.Operation && p != Path))
+            foreach (var path in Context.Paths.Where(p => p.Kind == ODataPathKind.Operation && p != Path))
             {
                 navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
                 if (currentNavSource != navigationSourceSegment.NavigationSource)
@@ -77,7 +77,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 OpenApiArray array = new OpenApiArray();
                 foreach (var p in samePaths)
                 {
-                    array.Add(new OpenApiString(p.ToString()));
+                    array.Add(new OpenApiString(p.GetPathItemName(Context.Settings)));
                 }
 
                 item.Extensions.Add(Constants.xMsDosGroupPath, array);

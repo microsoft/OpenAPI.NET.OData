@@ -12,19 +12,19 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
     public class PathItemHandlerProviderTests
     {
         [Theory]
-        [InlineData(ODataPathType.EntitySet, typeof(EntitySetPathItemHandler))]
-        [InlineData(ODataPathType.Entity, typeof(EntityPathItemHandler))]
-        [InlineData(ODataPathType.Singleton, typeof(SingletonPathItemHandler))]
-        [InlineData(ODataPathType.NavigationProperty, typeof(NavigationPropertyPathItemHandler))]
-        [InlineData(ODataPathType.Operation, typeof(OperationPathItemHandler))]
-        [InlineData(ODataPathType.OperationImport, typeof(OperationImportPathItemHandler))]
-        public void GetHandlerReturnsCorrectHandlerType(ODataPathType pathType, Type handlerType)
+        [InlineData(ODataPathKind.EntitySet, typeof(EntitySetPathItemHandler))]
+        [InlineData(ODataPathKind.Entity, typeof(EntityPathItemHandler))]
+        [InlineData(ODataPathKind.Singleton, typeof(SingletonPathItemHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, typeof(NavigationPropertyPathItemHandler))]
+        [InlineData(ODataPathKind.Operation, typeof(OperationPathItemHandler))]
+        [InlineData(ODataPathKind.OperationImport, typeof(OperationImportPathItemHandler))]
+        public void GetHandlerReturnsCorrectHandlerType(ODataPathKind pathKind, Type handlerType)
         {
             // Arrange
             PathItemHandlerProvider provider = new PathItemHandlerProvider();
 
             // Act
-            IPathItemHandler hander = provider.GetHandler(pathType);
+            IPathItemHandler hander = provider.GetHandler(pathKind);
 
             // Assert
             Assert.Same(handlerType, hander.GetType());

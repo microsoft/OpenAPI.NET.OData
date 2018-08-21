@@ -13,31 +13,31 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class PathItemHandlerProvider : IPathItemHandlerProvider
     {
-        private IDictionary<ODataPathType, IPathItemHandler> _handlers = new Dictionary<ODataPathType, IPathItemHandler>
+        private IDictionary<ODataPathKind, IPathItemHandler> _handlers = new Dictionary<ODataPathKind, IPathItemHandler>
         {
             // Entity
-            { ODataPathType.EntitySet, new EntitySetPathItemHandler() },
+            { ODataPathKind.EntitySet, new EntitySetPathItemHandler() },
 
             // Entity
-            { ODataPathType.Entity, new EntityPathItemHandler() },
+            { ODataPathKind.Entity, new EntityPathItemHandler() },
 
             // Singleton
-            { ODataPathType.Singleton, new SingletonPathItemHandler() },
+            { ODataPathKind.Singleton, new SingletonPathItemHandler() },
 
             // Navigation property
-            { ODataPathType.NavigationProperty, new NavigationPropertyPathItemHandler() },
+            { ODataPathKind.NavigationProperty, new NavigationPropertyPathItemHandler() },
 
             // Edm Operation
-            { ODataPathType.Operation, new OperationPathItemHandler() },
+            { ODataPathKind.Operation, new OperationPathItemHandler() },
 
             // Edm OperationImport
-            { ODataPathType.OperationImport, new OperationImportPathItemHandler() },
+            { ODataPathKind.OperationImport, new OperationImportPathItemHandler() },
         };
 
         /// <inheritdoc/>
-        public IPathItemHandler GetHandler(ODataPathType pathType)
+        public IPathItemHandler GetHandler(ODataPathKind pathKind)
         {
-            return _handlers[pathType];
+            return _handlers[pathKind];
         }
     }
 }

@@ -11,13 +11,13 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 {
     public class ODataTypeCastSegmentTests
     {
-        public IEdmEntityType Person { get; }
+        private IEdmEntityType _person { get; }
 
         public ODataTypeCastSegmentTests()
         {
             var person = new EdmEntityType("NS", "Person");
             person.AddKeys(person.AddStructuralProperty("Id", EdmCoreModel.Instance.GetString(false)));
-            Person = person;
+            _person = person;
         }
 
         [Fact]
@@ -30,20 +30,30 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         public void TypeCastSegmentEntityTypePropertyReturnsSameEntityType()
         {
             // Arrange & Act
-            ODataTypeCastSegment segment = new ODataTypeCastSegment(Person);
+            var segment = new ODataTypeCastSegment(_person);
 
             // Assert
-            Assert.Same(Person, segment.EntityType);
+            Assert.Same(_person, segment.EntityType);
         }
 
         [Fact]
-        public void TypeCastSegmentToStringReturnsCorrectKeyString()
+        public void KindPropertyReturnsTypeCastEnumMember()
         {
             // Arrange & Act
-            ODataTypeCastSegment segment = new ODataTypeCastSegment(Person);
+            var segment = new ODataTypeCastSegment(_person);
 
             // Assert
-            Assert.Equal("NS.Person", segment.ToString());
+            Assert.Equal(ODataSegmentKind.TypeCast, segment.Kind);
+        }
+
+        [Fact]
+        public void GetPathItemNameReturnsCorrectTypeCastLiteral()
+        {
+            // Arrange & Act
+            var segment = new ODataTypeCastSegment(_person);
+
+            // Assert
+            Assert.Equal("NS.Person", segment.GetPathItemName(new OpenApiConvertSettings()));
         }
     }
 }

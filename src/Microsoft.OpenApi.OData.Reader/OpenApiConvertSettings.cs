@@ -26,12 +26,12 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/set a value indicating whether to output key as segment path.
         /// </summary>
-        public bool? KeyAsSegment { get; set; }
+        public bool? EnableKeyAsSegment { get; set; }
 
         /// <summary>
         /// Gets/set a value indicating whether to output un-qualified operation call.
         /// </summary>
-        public bool UnqualifiedCall { get; set; }
+        public bool EnableUnqualifiedCall { get; set; }
 
         /// <summary>
         /// Gets/set a value indicating whether to output case-insensitive path.
@@ -72,6 +72,11 @@ namespace Microsoft.OpenApi.OData
         /// Gets/set a value indicating whether we count key segment as a depth.
         /// </summary>
         public bool CountKeySegmentAsDepth { get; set; } = true;
+
+        /// <summary>
+        /// Gets/set a value indicating whether we prefix entity type name before single key.
+        /// </summary>
+        public bool PrefixEntityTypeNameBeforeKey { get; set; } = false;
 
         /// <summary>
         /// Gets/set a value indicating the prefix for the parameter alias.
