@@ -51,6 +51,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         /// <summary>
+        /// Gets a boolean value indicating whether the target supports $orderby.
+        /// </summary>
+        public bool IsSortable => Sortable == null || Sortable.Value == true;
+
+        /// <summary>
         /// Test the input property is Ascending only.
         /// </summary>
         /// <param name="property">The input property.</param>

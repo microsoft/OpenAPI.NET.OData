@@ -17,19 +17,19 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetOperations(OpenApiPathItem item)
         {
             IndexableByKey index = new IndexableByKey(Context.Model, EntitySet);
-            if (index.IsSupported())
+            if (index.IsSupported)
             {
                 AddOperation(item, OperationType.Get);
             }
 
             UpdateRestrictions update = new UpdateRestrictions(Context.Model, EntitySet);
-            if (update.IsUpdatable())
+            if (update.IsUpdatable)
             {
                 AddOperation(item, OperationType.Patch);
             }
 
             DeleteRestrictions delete = new DeleteRestrictions(Context.Model, EntitySet);
-            if (delete.IsDeletable())
+            if (delete.IsDeletable)
             {
                 AddOperation(item, OperationType.Delete);
             }

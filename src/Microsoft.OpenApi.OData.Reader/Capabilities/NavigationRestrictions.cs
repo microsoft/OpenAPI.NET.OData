@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
@@ -77,6 +76,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
             : base(model, target)
         {
         }
+
+        /// <summary>
+        /// Gets a value indicating the target is navigable or not.
+        /// </summary>
+        public bool IsNavigable => Navigability == null || Navigability.Value != NavigationType.None;
 
         /// <summary>
         /// Test the input navigation property which has navigation restrictions.

@@ -41,6 +41,12 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         /// <summary>
+        /// Test the target supports $expand.
+        /// </summary>
+        /// <returns>True/false.</returns>
+        public bool IsExpandable => Expandable == null || Expandable.Value;
+
+        /// <summary>
         /// Test the input property cannot be used in $orderby expressions.
         /// </summary>
         /// <param name="property">The input navigation property.</param>

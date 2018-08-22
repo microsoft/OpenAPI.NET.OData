@@ -155,7 +155,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             TopSupported top = new TopSupported(context.Model, target);
-            if (top.IsSupported())
+            if (top.IsSupported)
             {
                 return new OpenApiParameter
                 {
@@ -178,7 +178,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             SkipSupported skip = new SkipSupported(context.Model, target);
-            if (skip.IsSupported())
+            if (skip.IsSupported)
             {
                 return new OpenApiParameter
                 {
@@ -201,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             SearchRestrictions search = new SearchRestrictions(context.Model, target);
-            if (search.IsSearchable())
+            if (search.IsSearchable)
             {
                 return new OpenApiParameter
                 {
@@ -224,7 +224,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             CountRestrictions count = new CountRestrictions(context.Model, target);
-            if (count.IsCountable())
+            if (count.IsCountable)
             {
                 return new OpenApiParameter
                 {
@@ -247,7 +247,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
 
             FilterRestrictions filter = new FilterRestrictions(context.Model, target);
-            if (filter.IsFilterable())
+            if (filter.IsFilterable)
             {
                 return new OpenApiParameter
                 {

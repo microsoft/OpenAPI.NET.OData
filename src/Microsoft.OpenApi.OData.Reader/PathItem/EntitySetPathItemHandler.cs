@@ -23,10 +23,14 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            AddOperation(item, OperationType.Get);
+            NavigationRestrictions navigation = new NavigationRestrictions(Context.Model, EntitySet);
+            if (navigation.IsNavigable)
+            {
+                AddOperation(item, OperationType.Get);
+            }
 
             InsertRestrictions insert = new InsertRestrictions(Context.Model, EntitySet);
-            if (insert.IsInsertable())
+            if (insert.IsInsertable)
             {
                 AddOperation(item, OperationType.Post);
             }

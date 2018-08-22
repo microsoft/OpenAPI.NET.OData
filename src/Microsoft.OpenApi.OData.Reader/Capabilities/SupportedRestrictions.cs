@@ -32,10 +32,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Test the target supports the corresponding restriction.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsSupported()
-        {
-            return Supported == null || Supported.Value == true;
-        }
+        public bool IsSupported => Supported == null || Supported.Value == true;
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
         {

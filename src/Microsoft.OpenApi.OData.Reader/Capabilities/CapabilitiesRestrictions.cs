@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Capabilities
 {
@@ -46,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
         protected void Initialize()
         {
-            IEdmVocabularyAnnotation annotation = Model.GetCapabilitiesAnnotation(Target, QualifiedName);
+            IEdmVocabularyAnnotation annotation = Model.GetVocabularyAnnotation(Target, QualifiedName);
             if (annotation == null)
             {
                 IEdmNavigationSource navigationSource = Target as IEdmNavigationSource;
@@ -55,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
                 if (navigationSource != null)
                 {
                     IEdmEntityType entityType = navigationSource.EntityType();
-                    annotation = Model.GetCapabilitiesAnnotation(entityType, QualifiedName);
+                    annotation = Model.GetVocabularyAnnotation(entityType, QualifiedName);
                 }
             }
 

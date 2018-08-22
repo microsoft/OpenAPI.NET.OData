@@ -88,6 +88,15 @@ namespace Microsoft.OpenApi.OData.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The &apos;{0}&apos; path item handler can&apos;t process path kind &apos;{1}&apos;..
+        /// </summary>
+        internal static string InvalidPathKindForPathItemHandler {
+            get {
+                return ResourceManager.GetString("InvalidPathKindForPathItemHandler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not supported {0} Edm type kind..
         /// </summary>
         internal static string NotSupportedEdmTypeKind {

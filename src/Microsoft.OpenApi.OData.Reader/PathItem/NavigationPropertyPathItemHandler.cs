@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     if (LastSegmentIsKeySegment)
                     {
                         UpdateRestrictions update = new UpdateRestrictions(Context.Model, NavigationProperty);
-                        if (update.IsUpdatable())
+                        if (update.IsUpdatable)
                         {
                             AddOperation(item, OperationType.Patch);
                         }
@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     else
                     {
                         InsertRestrictions insert = new InsertRestrictions(Context.Model, NavigationProperty);
-                        if (insert.IsInsertable())
+                        if (insert.IsInsertable)
                         {
                             AddOperation(item, OperationType.Post);
                         }
@@ -65,7 +65,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 else
                 {
                     UpdateRestrictions update = new UpdateRestrictions(Context.Model, NavigationProperty);
-                    if (update.IsUpdatable())
+                    if (update.IsUpdatable)
                     {
                         AddOperation(item, OperationType.Patch);
                     }

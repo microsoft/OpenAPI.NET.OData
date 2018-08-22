@@ -54,10 +54,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Test the target supports filter.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsFilterable()
-        {
-            return Filterable == null || Filterable.Value == true;
-        }
+        public bool IsFilterable => Filterable == null || Filterable.Value;
 
         /// <summary>
         /// Test the input property which must be specified in the $filter clause.

@@ -44,10 +44,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Test the target supports delete.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsDeletable()
-        {
-            return Deletable == null || Deletable.Value == true;
-        }
+        public bool IsDeletable => Deletable == null || Deletable.Value;
 
         /// <summary>
         /// Test the input navigation property do not allow DeleteLink requests.

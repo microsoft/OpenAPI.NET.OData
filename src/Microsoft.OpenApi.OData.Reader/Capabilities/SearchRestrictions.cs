@@ -81,10 +81,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Test the target supports search.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsSearchable()
-        {
-            return Searchable == null || Searchable.Value == true;
-        }
+        public bool IsSearchable => Searchable == null || Searchable.Value == true;
 
         protected override void Initialize(IEdmVocabularyAnnotation annotation)
         {

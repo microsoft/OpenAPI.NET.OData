@@ -49,10 +49,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Test the target supports count.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsCountable()
-        {
-            return Countable == null || Countable.Value == true;
-        }
+        public bool IsCountable => Countable == null || Countable.Value;
 
         /// <summary>
         /// Test the input property which do not allow /$count segments.
