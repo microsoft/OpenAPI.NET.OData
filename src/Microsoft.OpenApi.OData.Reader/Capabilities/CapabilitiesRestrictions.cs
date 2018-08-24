@@ -25,6 +25,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="target">The target.</param>
+        /// <returns>True/False</returns>
         public virtual bool Load(IEdmModel model, IEdmVocabularyAnnotatable target)
         {
             Utils.CheckArgumentNull(model, nameof(model));
