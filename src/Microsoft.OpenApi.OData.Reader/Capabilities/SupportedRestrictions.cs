@@ -19,28 +19,18 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public bool? Supported { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="SupportedRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public SupportedRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports the corresponding restriction.
         /// </summary>
         /// <returns>True/false.</returns>
         public bool IsSupported => Supported == null || Supported.Value == true;
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.BooleanConstant)
             {
-                return;
+                return false;
             }
 
             // supported
@@ -49,6 +39,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
             {
                 Supported = boolConstant.Value;
             }
+
+            return true;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class UpdateRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.UpdateRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.UpdateRestrictions;
 
         /// <summary>
         /// Gets the Updatable value.
@@ -31,40 +31,30 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonUpdatableNavigationProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="UpdateRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public UpdateRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports update.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsUpdatable => Updatable == null || Updatable.Value == true;
+        public bool IsUpdatable => Updatable == null || Updatable.Value;
 
         /// <summary>
         /// Test the input navigation property do not allow rebinding.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="navigationPropertyPath">The input navigation property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonUpdatableNavigationProperty(IEdmNavigationProperty property)
+        public bool IsNonUpdatableNavigationProperty(string navigationPropertyPath)
         {
             return NonUpdatableNavigationProperties != null ?
-                NonUpdatableNavigationProperties.Any(a => a == property.Name) :
+                NonUpdatableNavigationProperties.Any(a => a == navigationPropertyPath) :
                 false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                annotation.Value == null ||
                annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -74,6 +64,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonUpdatableNavigationProperties
             NonUpdatableNavigationProperties = record.GetCollectionPropertyPath("NonUpdatableNavigationProperties");
+
+            return true;
         }
     }
 }

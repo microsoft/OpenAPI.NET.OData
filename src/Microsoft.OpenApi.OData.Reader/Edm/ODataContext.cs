@@ -53,7 +53,6 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-            _keyAsSegmentSupported = settings.EnableKeyAsSegment ?? model.GetKeyAsSegmentSupported();
 
             _pathHandler = new ODataPathHandler(this);
 
@@ -61,6 +60,24 @@ namespace Microsoft.OpenApi.OData.Edm
             PathItemHanderProvider = new PathItemHandlerProvider();
 
             AuthorizationProvider = new AuthorizationProvider();
+
+            if (settings.EnableKeyAsSegment != null)
+            {
+                // We have the global setting, use the global setting
+                _keyAsSegmentSupported = settings.EnableKeyAsSegment.Value;
+            }
+            else
+            {
+                _keyAsSegmentSupported = false;
+                if (model.EntityContainer != null)
+                {
+                    var keyAsSegment = model.GetKeyAsSegmentSupported(model.EntityContainer);
+                    if (keyAsSegment != null)
+                    {
+                        _keyAsSegmentSupported = keyAsSegment.IsSupported;
+                    }
+                }
+            }
         }
 
         public IPathItemHandlerProvider PathItemHanderProvider { get; }
@@ -71,6 +88,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Gets the <see cref="IAuthorizationProvider"/> to provider the authorization.
         /// </summary>
         public AuthorizationProvider AuthorizationProvider { get; }
+
+        //public CapabilitiesProvider CapabilitiesProvider { get; }
 
         /// <summary>
         /// Gets the Edm model.

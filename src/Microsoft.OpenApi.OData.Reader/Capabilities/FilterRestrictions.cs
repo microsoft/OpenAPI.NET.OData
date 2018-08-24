@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class FilterRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.FilterRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.FilterRestrictions;
 
         /// <summary>
         /// Gets the Filterable value.
@@ -41,16 +41,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonFilterableProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="FilterRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public FilterRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports filter.
         /// </summary>
         /// <returns>True/false.</returns>
@@ -59,30 +49,30 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input property which must be specified in the $filter clause.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="propertyPath">The input property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsRequiredProperty(IEdmProperty property)
+        public bool IsRequiredProperty(string propertyPath)
         {
-            return RequiredProperties != null ? RequiredProperties.Any(a => a == property.Name) : false;
+            return RequiredProperties != null ? RequiredProperties.Any(a => a == propertyPath) : false;
         }
 
         /// <summary>
         /// Test the input property which cannot be used in $filter expressions.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="propertyPath">The input property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonFilterableProperty(IEdmProperty property)
+        public bool IsNonFilterableProperty(string propertyPath)
         {
-            return NonFilterableProperties != null ? NonFilterableProperties.Any(a => a == property.Name) : false;
+            return NonFilterableProperties != null ? NonFilterableProperties.Any(a => a == propertyPath) : false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -98,6 +88,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonFilterableProperties
             NonFilterableProperties = record.GetCollectionPropertyPath("NonFilterableProperties");
+
+            return true;
         }
     }
 }

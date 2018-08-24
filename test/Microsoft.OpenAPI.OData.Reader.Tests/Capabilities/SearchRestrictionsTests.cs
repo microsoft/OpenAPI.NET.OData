@@ -13,16 +13,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class SearchRestrictionsTests
     {
         [Fact]
+        public void KindPropertyReturnsSearchRestrictionsEnumMember()
+        {
+            // Arrange & Act
+            SearchRestrictions search = new SearchRestrictions();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.SearchRestrictions, search.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultPropertyValues()
         {
             // Arrange
+            SearchRestrictions search = new SearchRestrictions();
             EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            SearchRestrictions search = new SearchRestrictions(EdmCoreModel.Instance, entityType);
+            //  Act
+            bool result = search.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.SearchRestrictions, search.QualifiedName);
+            Assert.False(result);
+            Assert.True(search.IsSearchable);
             Assert.Null(search.Searchable);
             Assert.Null(search.UnsupportedExpressions);
         }
@@ -47,12 +59,17 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
 
             // Act
-            SearchRestrictions search = new SearchRestrictions(model, calendar);
+            SearchRestrictions search = new SearchRestrictions();
+            bool result = search.Load(model, calendar);
 
             // Assert
+            Assert.True(result);
             Assert.False(search.Searchable);
             Assert.NotNull(search.UnsupportedExpressions);
             Assert.Equal(SearchExpressions.phrase, search.UnsupportedExpressions.Value);
+
+            Assert.False(search.IsUnsupportedExpressions(SearchExpressions.AND));
+            Assert.True(search.IsUnsupportedExpressions(SearchExpressions.phrase));
         }
 
         [Fact]
@@ -75,41 +92,17 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
 
             // Act
-            SearchRestrictions search = new SearchRestrictions(model, calendars);
+            SearchRestrictions search = new SearchRestrictions();
+            bool result = search.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             Assert.False(search.Searchable);
             Assert.NotNull(search.UnsupportedExpressions);
             Assert.Equal(SearchExpressions.group, search.UnsupportedExpressions.Value);
-        }
 
-        [Fact]
-        public void AnnotatableTargetOnNavigationPropertyReturnsCorrectPropertyValue()
-        {
-            // Arrange
-            const string searchAnnotation = @"
-              <Annotations Target=""NS.Calendar/RelatedEvents"" >
-                  <Annotation Term=""Org.OData.Capabilities.V1.SearchRestrictions"">
-                    <Record>
-                        <PropertyValue Property=""Searchable"" Bool=""false"" />
-                        <PropertyValue Property=""UnsupportedExpressions"">
-                            <EnumMember>Org.OData.Capabilities.V1.SearchExpressions/AND</EnumMember>
-                        </PropertyValue >
-                    </Record>
-                  </Annotation>
-              </Annotations>";
-
-            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            IEdmNavigationProperty property = calendar.DeclaredNavigationProperties().First(d => d.Name == "RelatedEvents");
-
-            // Act
-            SearchRestrictions search = new SearchRestrictions(model, property);
-
-            // Assert
-            Assert.False(search.Searchable);
-            Assert.NotNull(search.UnsupportedExpressions);
-            Assert.Equal(SearchExpressions.AND, search.UnsupportedExpressions.Value);
+            Assert.False(search.IsUnsupportedExpressions(SearchExpressions.AND));
+            Assert.True(search.IsUnsupportedExpressions(SearchExpressions.group));
         }
 
         [Fact]
@@ -132,9 +125,11 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
 
             // Act
-            SearchRestrictions search = new SearchRestrictions(model, calendar);
+            SearchRestrictions search = new SearchRestrictions();
+            bool result = search.Load(model, calendar);
 
             // Assert
+            Assert.True(result);
             Assert.False(search.Searchable);
             Assert.Null(search.UnsupportedExpressions);
         }
@@ -159,36 +154,11 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
 
             // Act
-            SearchRestrictions search = new SearchRestrictions(model, calendars);
+            SearchRestrictions search = new SearchRestrictions();
+            bool result = search.Load(model, calendars);
 
             // Assert
-            Assert.False(search.Searchable);
-            Assert.Null(search.UnsupportedExpressions);
-        }
-        [Fact]
-        public void AnnotatableTargetOnNavigationPropertyWithUnknownEnumMemberDoesnotReturnsUnsupportedExpressions()
-        {
-            // Arrange
-            const string searchAnnotation = @"
-              <Annotations Target=""NS.Calendar/RelatedEvents"" >
-                  <Annotation Term=""Org.OData.Capabilities.V1.SearchRestrictions"">
-                    <Record>
-                        <PropertyValue Property=""Searchable"" Bool=""false"" />
-                        <PropertyValue Property=""UnsupportedExpressions"">
-                            <EnumMember>Org.OData.Capabilities.V1.SearchExpressions/Unknown</EnumMember>
-                        </PropertyValue >
-                    </Record>
-                  </Annotation>
-              </Annotations>";
-
-            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            IEdmNavigationProperty property = calendar.DeclaredNavigationProperties().First(d => d.Name == "RelatedEvents");
-
-            // Act
-            SearchRestrictions search = new SearchRestrictions(model, property);
-
-            // Assert
+            Assert.True(result);
             Assert.False(search.Searchable);
             Assert.Null(search.UnsupportedExpressions);
         }
@@ -213,9 +183,11 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
 
             // Act
-            SearchRestrictions search = new SearchRestrictions(model, calendar);
+            SearchRestrictions search = new SearchRestrictions();
+            bool result = search.Load(model, calendar);
 
             // Assert
+            Assert.True(result);
             Assert.False(search.Searchable);
             Assert.NotNull(search.UnsupportedExpressions);
             Assert.Equal(SearchExpressions.AND | SearchExpressions.OR, search.UnsupportedExpressions.Value);
@@ -241,41 +213,18 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
 
             // Act
-            SearchRestrictions search = new SearchRestrictions(model, calendars);
+            SearchRestrictions search = new SearchRestrictions();
+            bool result = search.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             Assert.False(search.Searchable);
             Assert.NotNull(search.UnsupportedExpressions);
             Assert.Equal(SearchExpressions.AND | SearchExpressions.OR, search.UnsupportedExpressions.Value);
-        }
 
-        [Fact]
-        public void AnnotatableTargetOnNavigationPropertyWithMultipleEnumMemberReturnsCorrectPropertyValue()
-        {
-            // Arrange
-            const string searchAnnotation = @"
-              <Annotations Target=""NS.Calendar/RelatedEvents"" >
-                  <Annotation Term=""Org.OData.Capabilities.V1.SearchRestrictions"">
-                    <Record>
-                        <PropertyValue Property=""Searchable"" Bool=""false"" />
-                        <PropertyValue Property=""UnsupportedExpressions"">
-                            <EnumMember>Org.OData.Capabilities.V1.SearchExpressions/AND Org.OData.Capabilities.V1.SearchExpressions/OR</EnumMember>
-                        </PropertyValue >
-                    </Record>
-                  </Annotation>
-              </Annotations>";
-
-            IEdmModel model = CapabilitiesModelHelper.GetModelOutline(searchAnnotation);
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            IEdmNavigationProperty property = calendar.DeclaredNavigationProperties().First(d => d.Name == "RelatedEvents");
-
-            // Act
-            SearchRestrictions search = new SearchRestrictions(model, property);
-
-            // Assert
-            Assert.False(search.Searchable);
-            Assert.NotNull(search.UnsupportedExpressions);
-            Assert.Equal(SearchExpressions.AND | SearchExpressions.OR, search.UnsupportedExpressions.Value);
+            Assert.True(search.IsUnsupportedExpressions(SearchExpressions.AND));
+            Assert.True(search.IsUnsupportedExpressions(SearchExpressions.OR));
+            Assert.False(search.IsUnsupportedExpressions(SearchExpressions.group));
         }
     }
 }

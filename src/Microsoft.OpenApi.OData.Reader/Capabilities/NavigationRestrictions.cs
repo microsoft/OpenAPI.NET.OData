@@ -55,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// The Term type name.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.NavigationRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.NavigationRestrictions;
 
         /// <summary>
         /// Gets the Navigability value.
@@ -68,16 +68,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<NavigationPropertyRestriction> RestrictedProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="NavigationRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public NavigationRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Gets a value indicating the target is navigable or not.
         /// </summary>
         public bool IsNavigable => Navigability == null || Navigability.Value != NavigationType.None;
@@ -85,23 +75,23 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input navigation property which has navigation restrictions.
         /// </summary>
-        /// <param name="property">The input navigation property.</param>
+        /// <param name="navigationPropertyPath">The input navigation property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsRestrictedProperty(IEdmNavigationProperty property)
+        public bool IsRestrictedProperty(string navigationPropertyPath)
         {
             return RestrictedProperties != null ?
-                RestrictedProperties.Where(a => a.NavigationProperty == property.Name)
+                RestrictedProperties.Where(a => a.NavigationProperty == navigationPropertyPath)
                 .Any(a => a.Navigability != null && a.Navigability.Value == NavigationType.None) :
-                true;
+                false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -111,6 +101,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // RestrictedProperties
             RestrictedProperties = GetRestrictedProperties(record);
+
+            return true;
         }
 
         private static IList<NavigationPropertyRestriction> GetRestrictedProperties(IEdmRecordExpression record)

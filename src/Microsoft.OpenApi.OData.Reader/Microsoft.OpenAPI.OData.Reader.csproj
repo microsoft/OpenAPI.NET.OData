@@ -20,6 +20,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Capabilities\CapabilitiesTermKind.cs~RF91fb26a.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.5.0" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.1.0" />
   </ItemGroup>

@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.OData.Capabilities;
@@ -15,16 +14,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class CountRestrictionsTests
     {
         [Fact]
-        public void UnknownAnnotatableTargetReturnsDefaultPropertyValues()
+        public void KindPropertyReturnsCountRestrictionEnumMember()
         {
-            // Arrange
-            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
-
-            // Act
-            CountRestrictions count = new CountRestrictions(EdmCoreModel.Instance, entityType);
+            // Arrange & Act
+            CountRestrictions count = new CountRestrictions();
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.CountRestrictions, count.QualifiedName);
+            Assert.Equal(CapabilitesTermKind.CountRestrictions, count.Kind);
+        }
+
+        [Fact]
+        public void UnknownAnnotatableTargetReturnsDefaultPropertyValues()
+        {
+            // Arrange & Act
+            CountRestrictions count = new CountRestrictions();
+            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
+
+            //  Act
+            bool result = count.Load(EdmCoreModel.Instance, entityType);
+
+            // Assert
+            Assert.False(result);
+            Assert.True(count.IsCountable);
             Assert.Null(count.Countable);
             Assert.Null(count.NonCountableProperties);
             Assert.Null(count.NonCountableNavigationProperties);
@@ -44,13 +55,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmModel model = GetEdmModel(template, location);
             Assert.NotNull(model); // guard
 
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
+            IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
+            Assert.NotNull(calendars); // guard
 
             // Act
-            CountRestrictions count = new CountRestrictions(model, calendar);
+            CountRestrictions count = new CountRestrictions();
+            bool  result = count.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyCountRestrictions(count);
         }
 
@@ -72,77 +85,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            CountRestrictions count = new CountRestrictions(model, calendars);
+            CountRestrictions count = new CountRestrictions();
+            bool result = count.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyCountRestrictions(count);
         }
 
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectCountRestrictionsValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            CountRestrictions count = new CountRestrictions(model, navigationProperty);
-
-            // Assert
-            VerifyCountRestrictions(count);
-        }
-
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void IsNonCountablePropertyReturnsCorrectForProperty(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // Guard
-
-            IEdmProperty id = calendar.DeclaredStructuralProperties().First(c => c.Name == "Id");
-            Assert.NotNull(id); // Guard
-
-            IEdmProperty property = calendar.DeclaredStructuralProperties().First(c => c.Name == "Emails");
-            Assert.NotNull(property); // Guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // Guard
-
-            // Act
-            CountRestrictions count = new CountRestrictions(model, calendar);
-
-            // Assert
-            Assert.NotNull(count.Countable);
-            Assert.False(count.Countable.Value);
-            Assert.False(count.IsNonCountableProperty(id));
-            Assert.True(count.IsNonCountableProperty(property));
-            Assert.True(count.IsNonCountableNavigationProperty(navigationProperty));
-        }
-
-        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
+        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
             string countAnnotation = @"
                 <Annotation Term=""Org.OData.Capabilities.V1.CountRestrictions"" >
@@ -170,14 +121,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
 
@@ -187,6 +131,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
 
             Assert.NotNull(count.Countable);
             Assert.False(count.Countable.Value);
+            Assert.False(count.IsCountable);
 
             Assert.NotNull(count.NonCountableProperties);
             Assert.Equal(2, count.NonCountableProperties.Count);
@@ -195,6 +140,10 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(count.NonCountableNavigationProperties);
             Assert.Equal(2, count.NonCountableNavigationProperties.Count);
             Assert.Equal("RelatedEvents,abc", String.Join(",", count.NonCountableNavigationProperties));
+
+            Assert.False(count.IsNonCountableProperty("id"));
+            Assert.True(count.IsNonCountableProperty("Emails"));
+            Assert.True(count.IsNonCountableNavigationProperty("RelatedEvents"));
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class CountRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.CountRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.CountRestrictions;
 
         /// <summary>
         /// Gets the Countable value.
@@ -36,52 +36,40 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonCountableNavigationProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="CountRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public CountRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports count.
         /// </summary>
         /// <returns>True/false.</returns>
         public bool IsCountable => Countable == null || Countable.Value;
 
         /// <summary>
-        /// Test the input property which do not allow /$count segments.
+        /// Test the input property path which do not allow /$count segments.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="propertyPath">The input property path. "property1/property2"</param>
         /// <returns>True/False.</returns>
-        public bool IsNonCountableProperty(IEdmProperty property)
+        public bool IsNonCountableProperty(string propertyPath)
         {
-            return NonCountableProperties != null ?
-                NonCountableProperties.Any(a => a == property.Name) :
-                false;
+            return NonCountableProperties != null ? NonCountableProperties.Any(a => a == propertyPath) : false;
         }
 
         /// <summary>
         /// Test the input navigation property which do not allow /$count segments.
         /// </summary>
-        /// <param name="property">The input navigation property.</param>
+        /// <param name="navigationPropertyPath">The input navigation property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonCountableNavigationProperty(IEdmNavigationProperty property)
+        public bool IsNonCountableNavigationProperty(string navigationPropertyPath)
         {
             return NonCountableNavigationProperties != null ?
-                NonCountableNavigationProperties.Any(a => a == property.Name) :
+                NonCountableNavigationProperties.Any(a => a == navigationPropertyPath) :
                 false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -94,6 +82,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonCountableNavigationProperties
             NonCountableNavigationProperties = record.GetCollectionPropertyPath("NonCountableNavigationProperties");
+
+            return true;
         }
     }
 }

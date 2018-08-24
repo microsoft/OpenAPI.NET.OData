@@ -53,9 +53,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class SearchRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.SearchRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.SearchRestrictions;
 
         /// <summary>
         /// Gets the Searchable value.
@@ -68,28 +68,38 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public SearchExpressions? UnsupportedExpressions { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="SearchRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public SearchRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports search.
         /// </summary>
         /// <returns>True/false.</returns>
         public bool IsSearchable => Searchable == null || Searchable.Value == true;
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        /// <summary>
+        /// Test the input expression supported or not.
+        /// </summary>
+        /// <param name="expression">The input expression</param>
+        /// <returns>True/false.</returns>
+        public bool IsUnsupportedExpressions(SearchExpressions expression)
+        {
+            if (UnsupportedExpressions == null || UnsupportedExpressions.Value == SearchExpressions.none)
+            {
+                return false;
+            }
+
+            if ((UnsupportedExpressions.Value & expression) == expression)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                annotation.Value == null ||
                annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -121,6 +131,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
                     }
                 }
             }
+
+            return true;
         }
     }
 }

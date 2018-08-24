@@ -3,10 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Operation;
+using Microsoft.OpenApi.OData.Properties;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -15,6 +17,11 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal abstract class PathItemHandler : IPathItemHandler
     {
+        /// <summary>
+        /// Gets the handler path kind.
+        /// </summary>
+        protected abstract ODataPathKind HandleKind { get; }
+
         /// <summary>
         /// Gets the OData Context.
         /// </summary>
@@ -55,7 +62,12 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <param name="context">The context.</param>
         /// <param name="path">The path.</param>
         protected virtual void Initialize(ODataContext context, ODataPath path)
-        { }
+        {
+            if (HandleKind != path.Kind)
+            {
+                throw Error.InvalidOperation(String.Format(SRResource.InvalidPathKindForPathItemHandler, GetType().Name, path.Kind));
+            }
+        }
 
         /// <summary>
         /// Set the extensions for the path item.

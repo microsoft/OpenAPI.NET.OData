@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// The Term type name.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.SortRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.SortRestrictions;
 
         /// <summary>
         /// Gets the Sortable value.
@@ -41,16 +41,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonSortableProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="SortRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public SortRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Gets a boolean value indicating whether the target supports $orderby.
         /// </summary>
         public bool IsSortable => Sortable == null || Sortable.Value == true;
@@ -58,40 +48,40 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input property is Ascending only.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="propertyPath">The input property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsAscendingOnlyProperty(IEdmProperty property)
+        public bool IsAscendingOnlyProperty(string propertyPath)
         {
-            return AscendingOnlyProperties != null ? AscendingOnlyProperties.Any(a => a == property.Name) : false;
+            return AscendingOnlyProperties != null ? AscendingOnlyProperties.Any(a => a == propertyPath) : false;
         }
 
         /// <summary>
         /// Test the input property is Descending only.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="propertyPath">The input property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsDescendingOnlyProperty(IEdmProperty property)
+        public bool IsDescendingOnlyProperty(string propertyPath)
         {
-            return DescendingOnlyProperties != null ? DescendingOnlyProperties.Any(a => a == property.Name) : false;
+            return DescendingOnlyProperties != null ? DescendingOnlyProperties.Any(a => a == propertyPath) : false;
         }
 
         /// <summary>
         /// Test the input property cannot be used in $orderby expressions.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="propertyPath">The input property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonSortableProperty(IEdmProperty property)
+        public bool IsNonSortableProperty(string propertyPath)
         {
-            return NonSortableProperties != null ? NonSortableProperties.Any(a => a == property.Name) : false;
+            return NonSortableProperties != null ? NonSortableProperties.Any(a => a == propertyPath) : false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                annotation.Value == null ||
                annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -107,6 +97,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonSortablePropeties
             NonSortableProperties = record.GetCollectionPropertyPath("NonSortableProperties");
+
+            return true;
         }
     }
 }

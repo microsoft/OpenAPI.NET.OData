@@ -3,9 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Vocabularies;
-
 namespace Microsoft.OpenApi.OData.Capabilities
 {
     /// <summary>
@@ -14,18 +11,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class SkipSupported : SupportedRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.SkipSupported;
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="SkipSupported"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public SkipSupported(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.SkipSupported;
     }
 }

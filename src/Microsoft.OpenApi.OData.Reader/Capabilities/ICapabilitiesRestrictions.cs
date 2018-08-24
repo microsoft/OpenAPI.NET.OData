@@ -8,14 +8,10 @@ using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.Capabilities
 {
-    /// <summary>
-    /// Org.OData.Capabilities.V1.IndexableByKey
-    /// </summary>
-    internal class IndexableByKey : SupportedRestrictions
+    internal interface ICapablitiesRestrictions
     {
-        /// <summary>
-        /// The Term type kind.
-        /// </summary>
-        public override CapabilitesTermKind Kind => CapabilitesTermKind.IndexableByKey;
+        CapabilitesTermKind Kind { get; }
+
+        bool Load(IEdmModel model, IEdmVocabularyAnnotatable target);
     }
 }

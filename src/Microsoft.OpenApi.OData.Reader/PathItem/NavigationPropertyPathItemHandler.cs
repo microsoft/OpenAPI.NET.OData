@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -19,6 +20,9 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class NavigationPropertyPathItemHandler : PathItemHandler
     {
+        /// <inheritdoc/>
+        protected override ODataPathKind HandleKind { get; } = ODataPathKind.NavigationProperty;
+
         /// <summary>
         /// Gets the navigation property.
         /// </summary>
@@ -37,9 +41,20 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
+            IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
+            IEdmVocabularyAnnotatable target = entitySet;
+            if (target == null)
+            {
+                target = NavigationSource as IEdmSingleton;
+            }
+
             // contaiment: Get / (Post - Collection | Patch - Single)
             // non-containment: only Get
-            AddOperation(item, OperationType.Get);
+            NavigationRestrictions navigation = Context.Model.GetNavigationRestrictions(target);
+            if (navigation == null || navigation.IsNavigable)
+            {
+                AddOperation(item, OperationType.Get);
+            }
 
             if (NavigationProperty.ContainsTarget)
             {
@@ -47,16 +62,16 @@ namespace Microsoft.OpenApi.OData.PathItem
                 {
                     if (LastSegmentIsKeySegment)
                     {
-                        UpdateRestrictions update = new UpdateRestrictions(Context.Model, NavigationProperty);
-                        if (update.IsUpdatable)
+                        UpdateRestrictions update = Context.Model.GetUpdateRestrictions(target);
+                        if (update == null || update.IsUpdatable)
                         {
                             AddOperation(item, OperationType.Patch);
                         }
                     }
                     else
                     {
-                        InsertRestrictions insert = new InsertRestrictions(Context.Model, NavigationProperty);
-                        if (insert.IsInsertable)
+                        InsertRestrictions insert = Context.Model.GetInsertRestrictions(target);
+                        if (insert == null || insert.IsInsertable)
                         {
                             AddOperation(item, OperationType.Post);
                         }
@@ -64,8 +79,8 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
                 else
                 {
-                    UpdateRestrictions update = new UpdateRestrictions(Context.Model, NavigationProperty);
-                    if (update.IsUpdatable)
+                    UpdateRestrictions update = Context.Model.GetUpdateRestrictions(target);
+                    if (update == null || update.IsUpdatable)
                     {
                         AddOperation(item, OperationType.Patch);
                     }
@@ -76,6 +91,8 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
 
@@ -86,8 +103,6 @@ namespace Microsoft.OpenApi.OData.PathItem
                 npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
             }
             NavigationProperty = npSegment.NavigationProperty;
-
-            base.Initialize(context, path);
         }
 
         /// <inheritdoc/>

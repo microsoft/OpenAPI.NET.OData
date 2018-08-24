@@ -18,7 +18,7 @@ using Xunit;
 
 namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
-    public class SingletonPathItemGeneratorTest
+    public class SingletonPathItemHandlerTest
     {
         private SingletonPathItemHandler _pathItemHandler = new SingletonPathItemHandler();
 

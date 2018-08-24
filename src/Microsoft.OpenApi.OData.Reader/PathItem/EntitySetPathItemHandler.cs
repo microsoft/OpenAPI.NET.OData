@@ -15,6 +15,9 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class EntitySetPathItemHandler : PathItemHandler
     {
+        /// <inheritdoc/>
+        protected override ODataPathKind HandleKind { get; } = ODataPathKind.EntitySet;
+
         /// <summary>
         /// Gets the entity set.
         /// </summary>
@@ -23,14 +26,14 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            NavigationRestrictions navigation = new NavigationRestrictions(Context.Model, EntitySet);
-            if (navigation.IsNavigable)
+            NavigationRestrictions navigation = Context.Model.GetNavigationRestrictions(EntitySet);
+            if (navigation == null || navigation.IsNavigable)
             {
                 AddOperation(item, OperationType.Get);
             }
 
-            InsertRestrictions insert = new InsertRestrictions(Context.Model, EntitySet);
-            if (insert.IsInsertable)
+            InsertRestrictions insert = Context.Model.GetInsertRestrictions(EntitySet);
+            if (insert == null || insert.IsInsertable)
             {
                 AddOperation(item, OperationType.Post);
             }
@@ -39,11 +42,11 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
             // The first segment should be the entity set segment.
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
-
-            base.Initialize(context, path);
         }
     }
 }

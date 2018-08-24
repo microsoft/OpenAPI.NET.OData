@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.OData.Capabilities;
@@ -14,16 +13,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class IndexableByKeyTests
     {
         [Fact]
+        public void KindPropertyReturnsIndexableByKeyEnumMember()
+        {
+            // Arrange & Act
+            IndexableByKey index = new IndexableByKey();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.IndexableByKey, index.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultIndexableByKeyValues()
         {
             // Arrange
+            IndexableByKey index = new IndexableByKey();
             EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            IndexableByKey index = new IndexableByKey(EdmCoreModel.Instance, entityType);
+            //  Act
+            bool result = index.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.IndexableByKey, index.QualifiedName);
+            Assert.False(result);
+            Assert.True(index.IsSupported);
             Assert.Null(index.Supported);
         }
 
@@ -41,13 +52,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmModel model = GetEdmModel(template, location);
             Assert.NotNull(model); // guard
 
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
+            IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
+            Assert.NotNull(calendars); // guard
 
             // Act
-            IndexableByKey index = new IndexableByKey(model, calendar);
+            IndexableByKey index = new IndexableByKey();
+            bool result = index.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             Assert.NotNull(index.Supported);
             Assert.False(index.Supported.Value);
         }
@@ -70,42 +83,16 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            IndexableByKey index = new IndexableByKey(model, calendars);
+            IndexableByKey index = new IndexableByKey();
+            bool result = index.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             Assert.NotNull(index.Supported);
             Assert.False(index.Supported.Value);
         }
 
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectIndexableByKeyValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            IndexableByKey index = new IndexableByKey(model, navigationProperty);
-
-            // Assert
-            Assert.NotNull(index.Supported);
-            Assert.False(index.Supported.Value);
-        }
-
-        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
+        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
             string countAnnotation = @"<Annotation Term=""Org.OData.Capabilities.V1.IndexableByKey"" Bool=""false"" />";
 
@@ -116,14 +103,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
     }

@@ -5,6 +5,7 @@
 
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -14,22 +15,25 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class EntityPathItemHandler : EntitySetPathItemHandler
     {
         /// <inheritdoc/>
+        protected override ODataPathKind HandleKind { get; } = ODataPathKind.Entity;
+
+        /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            IndexableByKey index = new IndexableByKey(Context.Model, EntitySet);
-            if (index.IsSupported)
+            IndexableByKey index = Context.Model.GetIndexableByKey(EntitySet);
+            if (index == null || index.IsSupported)
             {
                 AddOperation(item, OperationType.Get);
             }
 
-            UpdateRestrictions update = new UpdateRestrictions(Context.Model, EntitySet);
-            if (update.IsUpdatable)
+            UpdateRestrictions update = Context.Model.GetUpdateRestrictions(EntitySet);
+            if (update == null || update.IsUpdatable)
             {
                 AddOperation(item, OperationType.Patch);
             }
 
-            DeleteRestrictions delete = new DeleteRestrictions(Context.Model, EntitySet);
-            if (delete.IsDeletable)
+            DeleteRestrictions delete = Context.Model.GetDeleteRestrictions(EntitySet);
+            if (delete == null || delete.IsDeletable)
             {
                 AddOperation(item, OperationType.Delete);
             }

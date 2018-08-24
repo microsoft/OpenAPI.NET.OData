@@ -18,6 +18,9 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class OperationPathItemHandler : PathItemHandler
     {
+        /// <inheritdoc/>
+        protected override ODataPathKind HandleKind { get; } = ODataPathKind.Operation;
+
         /// <summary>
         /// Gets the Edm operation.
         /// </summary>
@@ -43,9 +46,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
             ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
             EdmOperation = operationSegment.Operation;
-            base.Initialize(context, path);
         }
 
         /// <inheritdoc/>

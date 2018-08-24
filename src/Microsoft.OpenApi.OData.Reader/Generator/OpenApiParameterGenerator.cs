@@ -154,8 +154,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            TopSupported top = new TopSupported(context.Model, target);
-            if (top.IsSupported)
+            TopSupported top = context.Model.GetTopSupported(target);
+            if (top == null || top.IsSupported)
             {
                 return new OpenApiParameter
                 {
@@ -177,8 +177,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            SkipSupported skip = new SkipSupported(context.Model, target);
-            if (skip.IsSupported)
+            SkipSupported skip = context.Model.GetSkipSupported(target);
+            if (skip == null || skip.IsSupported)
             {
                 return new OpenApiParameter
                 {
@@ -200,8 +200,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            SearchRestrictions search = new SearchRestrictions(context.Model, target);
-            if (search.IsSearchable)
+            SearchRestrictions search = context.Model.GetSearchRestrictions(target);
+            if (search == null || search.IsSearchable)
             {
                 return new OpenApiParameter
                 {
@@ -223,8 +223,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            CountRestrictions count = new CountRestrictions(context.Model, target);
-            if (count.IsCountable)
+            CountRestrictions count = context.Model.GetCountRestrictions(target);
+            if (count == null || count.IsCountable)
             {
                 return new OpenApiParameter
                 {
@@ -246,8 +246,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            FilterRestrictions filter = new FilterRestrictions(context.Model, target);
-            if (filter.IsFilterable)
+            FilterRestrictions filter = context.Model.GetFilterRestrictions(target);
+            if (filter == null || filter.IsFilterable)
             {
                 return new OpenApiParameter
                 {
@@ -294,8 +294,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
-            SortRestrictions sort = new SortRestrictions(context.Model, target);
-            if (sort.Sortable != null && sort.Sortable.Value == false)
+            SortRestrictions sort = context.Model.GetSortRestrictions(target);
+            if (sort != null && !sort.IsSortable)
             {
                 return null;
             }
@@ -303,13 +303,13 @@ namespace Microsoft.OpenApi.OData.Generator
             IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
             foreach (var property in entityType.StructuralProperties())
             {
-                if (sort.IsNonSortableProperty(property))
+                if (sort != null && sort.IsNonSortableProperty(property.Name))
                 {
                     continue;
                 }
 
-                bool isAscOnly = sort.IsAscendingOnlyProperty(property);
-                bool isDescOnly = sort.IsDescendingOnlyProperty(property);
+                bool isAscOnly = sort != null ? sort.IsAscendingOnlyProperty(property.Name) : false ;
+                bool isDescOnly = sort != null ? sort.IsDescendingOnlyProperty(property.Name) : false;
                 if (isAscOnly || isDescOnly)
                 {
                     if (isAscOnly)
@@ -382,8 +382,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
-            NavigationRestrictions navigation = new NavigationRestrictions(context.Model, target);
-            if (navigation.Navigability != null && navigation.Navigability.Value == NavigationType.None)
+            NavigationRestrictions navigation = context.Model.GetNavigationRestrictions(target);
+            if (navigation != null && !navigation.IsNavigable)
             {
                 return null;
             }
@@ -397,7 +397,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var property in entityType.NavigationProperties())
             {
-                if (navigation.IsRestrictedProperty(property))
+                if (navigation != null && navigation.IsRestrictedProperty(property.Name))
                 {
                     continue;
                 }
@@ -460,8 +460,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
-            ExpandRestrictions expand = new ExpandRestrictions(context.Model, target);
-            if (expand.Expandable != null && expand.Expandable.Value == false)
+            ExpandRestrictions expand = context.Model.GetExpandRestrictions(target);
+            if (expand != null && !expand.IsExpandable)
             {
                 return null;
             }
@@ -473,7 +473,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (var property in entityType.NavigationProperties())
             {
-                if (expand.IsNonExpandableProperty(property))
+                if (expand != null && expand.IsNonExpandableProperty(property.Name))
                 {
                     continue;
                 }

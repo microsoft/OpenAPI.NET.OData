@@ -3,13 +3,10 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Capabilities;
-using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Properties;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -18,6 +15,9 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class SingletonPathItemHandler : PathItemHandler
     {
+        /// <inheritdoc/>
+        protected override ODataPathKind HandleKind { get; } = ODataPathKind.Singleton;
+
         /// <summary>
         /// Gets the singleton.
         /// </summary>
@@ -27,15 +27,15 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetOperations(OpenApiPathItem item)
         {
             // Retrieve a singleton.
-            NavigationRestrictions navigation = new NavigationRestrictions(Context.Model, Singleton);
-            if (navigation.IsNavigable)
+            NavigationRestrictions navigation = Context.Model.GetNavigationRestrictions(Singleton);
+            if (navigation == null || navigation.IsNavigable)
             {
                 AddOperation(item, OperationType.Get);
             }
 
             // Update a singleton
-            UpdateRestrictions update = new UpdateRestrictions(Context.Model, Singleton);
-            if (update.IsUpdatable)
+            UpdateRestrictions update = Context.Model.GetUpdateRestrictions(Singleton);
+            if (update == null || update.IsUpdatable)
             {
                 AddOperation(item, OperationType.Patch);
             }
@@ -44,14 +44,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
-            if (path.Kind != ODataPathKind.Singleton)
-            {
-                throw Error.InvalidOperation(String.Format(SRResource.InvalidPathKindForPathItemHandler, nameof(SingletonPathItemHandler), path.Kind));
-            }
+            base.Initialize(context, path);
 
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
-            base.Initialize(context, path);
         }
     }
 }

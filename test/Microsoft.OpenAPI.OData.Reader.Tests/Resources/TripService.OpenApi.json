@@ -89,7 +89,10 @@
                   "AddressInfo",
                   "HomeAddress",
                   "FavoriteFeature",
-                  "Features"
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
@@ -212,7 +215,10 @@
                   "AddressInfo",
                   "HomeAddress",
                   "FavoriteFeature",
-                  "Features"
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
@@ -1183,7 +1189,10 @@
                   "AddressInfo",
                   "HomeAddress",
                   "FavoriteFeature",
-                  "Features"
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
@@ -1306,7 +1315,10 @@
                   "AddressInfo",
                   "HomeAddress",
                   "FavoriteFeature",
-                  "Features"
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }
@@ -1664,7 +1676,10 @@
                   "AddressInfo",
                   "HomeAddress",
                   "FavoriteFeature",
-                  "Features"
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
                 ],
                 "type": "string"
               }

@@ -79,6 +79,15 @@ namespace Microsoft.OpenApi.OData.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The capabilities term kind &apos;{0}&apos; is not supported now..
+        /// </summary>
+        internal static string CapabilitiesKindNotSupported {
+            get {
+                return ResourceManager.GetString("CapabilitiesKindNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The filed name of extension doesn&apos;t begin with x-..
         /// </summary>
         internal static string ExtensionFieldNameMustBeginWithXMinus {

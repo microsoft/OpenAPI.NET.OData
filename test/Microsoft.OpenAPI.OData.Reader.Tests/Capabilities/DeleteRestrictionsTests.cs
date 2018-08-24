@@ -15,16 +15,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class DeleteRestrictionsTests
     {
         [Fact]
+        public void KindPropertyReturnsDeleteRestrictionsEnumMember()
+        {
+            // Arrange & Act
+            DeleteRestrictions delete = new DeleteRestrictions();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.DeleteRestrictions, delete.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultDeleteRestrictionsValues()
         {
             // Arrange
+            DeleteRestrictions delete = new DeleteRestrictions();
             EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            DeleteRestrictions delete = new DeleteRestrictions(EdmCoreModel.Instance, entityType);
+            //  Act
+            bool result = delete.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.DeleteRestrictions, delete.QualifiedName);
+            Assert.False(result);
+            Assert.True(delete.IsDeletable);
             Assert.Null(delete.Deletable);
             Assert.Null(delete.NonDeletableNavigationProperties);
         }
@@ -43,13 +55,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmModel model = GetEdmModel(template, location);
             Assert.NotNull(model); // guard
 
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
+            IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
+            Assert.NotNull(calendars); // guard
 
             // Act
-            DeleteRestrictions delete = new DeleteRestrictions(model, calendar);
+            DeleteRestrictions delete = new DeleteRestrictions();
+            bool result = delete.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyDeleteRestrictions(delete);
         }
 
@@ -71,69 +85,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            DeleteRestrictions delete = new DeleteRestrictions(model, calendars);
+            DeleteRestrictions delete = new DeleteRestrictions();
+            bool result = delete.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyDeleteRestrictions(delete);
         }
 
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectDeleteRestrictionsValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            DeleteRestrictions delete = new DeleteRestrictions(model, navigationProperty);
-
-            // Assert
-            VerifyDeleteRestrictions(delete);
-        }
-
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void IsNonDeletableNavigationPropertyReturnsCorrectForProperty(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // Guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // Guard
-
-            // Act
-            DeleteRestrictions delete = new DeleteRestrictions(model, calendar);
-
-            // Assert
-            Assert.NotNull(delete.Deletable);
-            Assert.False(delete.Deletable.Value);
-            Assert.True(delete.IsNonDeletableNavigationProperty(navigationProperty));
-        }
-
-        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
+        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
             string countAnnotation = @"
                 <Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"" >
@@ -155,14 +115,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
 
@@ -176,6 +129,8 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(delete.NonDeletableNavigationProperties);
             Assert.Equal(2, delete.NonDeletableNavigationProperties.Count);
             Assert.Equal("abc|RelatedEvents", String.Join("|", delete.NonDeletableNavigationProperties));
+
+            Assert.True(delete.IsNonDeletableNavigationProperty("RelatedEvents"));
         }
     }
 }

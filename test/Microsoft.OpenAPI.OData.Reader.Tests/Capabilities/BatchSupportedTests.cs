@@ -14,16 +14,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class BatchSupportedTests
     {
         [Fact]
+        public void KindPropertyReturnsBatchSupportedEnumMember()
+        {
+            // Arrange & Act
+            BatchSupported batch = new BatchSupported();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.BatchSupported, batch.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultBatchSupportedValues()
         {
             // Arrange
-            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            BatchSupported batch = new BatchSupported();
+            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            BatchSupported batch = new BatchSupported(EdmCoreModel.Instance, container);
+            //  Act
+            bool result = batch.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.BatchSupported, batch.QualifiedName);
+            Assert.False(result);
+            Assert.True(batch.IsSupported);
             Assert.Null(batch.Supported);
         }
 
@@ -39,11 +51,14 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(model); // guard
 
             // Act
-            BatchSupported batch = new BatchSupported(model, model.EntityContainer);
+            BatchSupported batch = new BatchSupported();
+            bool result = batch.Load(model, model.EntityContainer);
 
             // Assert
+            Assert.True(result);
             Assert.NotNull(batch.Supported);
             Assert.Equal(support, batch.Supported.Value);
+            Assert.Equal(support, batch.IsSupported);
         }
 
         private static IEdmModel GetEdmModel(EdmVocabularyAnnotationSerializationLocation location, bool supported)

@@ -15,16 +15,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class UpdateRestrictionsTests
     {
         [Fact]
+        public void KindPropertyReturnsUpdateRestrictionsEnumMember()
+        {
+            // Arrange & Act
+            UpdateRestrictions update = new UpdateRestrictions();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.UpdateRestrictions, update.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultUpdateRestrictionsValues()
         {
             // Arrange
+            UpdateRestrictions update = new UpdateRestrictions();
             EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            UpdateRestrictions update = new UpdateRestrictions(EdmCoreModel.Instance, entityType);
+            //  Act
+            bool result = update.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.UpdateRestrictions, update.QualifiedName);
+            Assert.False(result);
+            Assert.True(update.IsUpdatable);
             Assert.Null(update.Updatable);
             Assert.Null(update.NonUpdatableNavigationProperties);
         }
@@ -47,9 +59,11 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendar); // guard
 
             // Act
-            UpdateRestrictions update = new UpdateRestrictions(model, calendar);
+            UpdateRestrictions update = new UpdateRestrictions();
+            bool result = update.Load(model, calendar);
 
             // Assert
+            Assert.True(result);
             VerifyUpdateRestrictions(update);
         }
 
@@ -71,69 +85,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            UpdateRestrictions update = new UpdateRestrictions(model, calendars);
+            UpdateRestrictions update = new UpdateRestrictions();
+            bool result = update.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyUpdateRestrictions(update);
         }
 
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectUpdateRestrictionsValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            UpdateRestrictions update = new UpdateRestrictions(model, navigationProperty);
-
-            // Assert
-            VerifyUpdateRestrictions(update);
-        }
-
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void IsNonUpdatableNavigationPropertyReturnsCorrectForProperty(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // Guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // Guard
-
-            // Act
-            UpdateRestrictions update = new UpdateRestrictions(model, calendar);
-
-            // Assert
-            Assert.NotNull(update.Updatable);
-            Assert.False(update.Updatable.Value);
-            Assert.True(update.IsNonUpdatableNavigationProperty(navigationProperty));
-        }
-
-        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
+        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
             string countAnnotation = @"
                 <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"" >
@@ -155,14 +115,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
 
@@ -176,6 +129,10 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(update.NonUpdatableNavigationProperties);
             Assert.Equal(2, update.NonUpdatableNavigationProperties.Count);
             Assert.Equal("abc|RelatedEvents", String.Join("|", update.NonUpdatableNavigationProperties));
+
+            Assert.True(update.IsNonUpdatableNavigationProperty("abc"));
+            Assert.True(update.IsNonUpdatableNavigationProperty("RelatedEvents"));
+            Assert.False(update.IsNonUpdatableNavigationProperty("Others"));
         }
     }
 }

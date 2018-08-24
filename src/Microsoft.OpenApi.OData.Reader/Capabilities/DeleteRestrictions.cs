@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class DeleteRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.DeleteRestrictions;
+        public override CapabilitesTermKind Kind  => CapabilitesTermKind.DeleteRestrictions;
 
         /// <summary>
         /// Gets the Deletable value.
@@ -31,16 +31,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonDeletableNavigationProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="DeleteRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public DeleteRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports delete.
         /// </summary>
         /// <returns>True/false.</returns>
@@ -49,22 +39,22 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input navigation property do not allow DeleteLink requests.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="navigationPropertyPath">The input navigation property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonDeletableNavigationProperty(IEdmNavigationProperty property)
+        public bool IsNonDeletableNavigationProperty(string navigationPropertyPath)
         {
             return NonDeletableNavigationProperties != null ?
-                NonDeletableNavigationProperties.Any(a => a == property.Name) :
+                NonDeletableNavigationProperties.Any(a => a == navigationPropertyPath) :
                 false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -74,6 +64,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonDeletableNavigationProperties
             NonDeletableNavigationProperties = record.GetCollectionPropertyPath("NonDeletableNavigationProperties");
+
+            return true;
         }
     }
 }

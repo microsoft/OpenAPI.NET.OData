@@ -13,60 +13,44 @@ namespace Microsoft.OpenApi.OData.Capabilities
     /// <summary>
     /// The base class of Capabilities
     /// </summary>
-    internal abstract class CapabilitiesRestrictions
+    internal abstract class CapabilitiesRestrictions : ICapablitiesRestrictions
     {
         /// <summary>
-        /// Gets the <see cref="IEdmModel"/>.
+        /// The Capablities Kind.
         /// </summary>
-        public IEdmModel Model { get; }
+        public abstract CapabilitesTermKind Kind { get; }
 
         /// <summary>
-        /// Gets the <see cref="IEdmVocabularyAnnotatable"/>.
-        /// </summary>
-        public IEdmVocabularyAnnotatable Target { get; }
-
-        /// <summary>
-        /// The Term qualified name.
-        /// </summary>
-        public virtual string QualifiedName { get; }
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="CapabilitiesRestrictions"/> class.
+        /// Load the annotation value.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm vocabulary annotatable.</param>
-        public CapabilitiesRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
+        /// <param name="target">The target.</param>
+        public virtual bool Load(IEdmModel model, IEdmVocabularyAnnotatable target)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            Model = model;
-            Target = target;
-            Initialize();
-        }
-
-        protected void Initialize()
-        {
-            IEdmVocabularyAnnotation annotation = Model.GetVocabularyAnnotation(Target, QualifiedName);
+            string termQualifiedName = CapabilitiesConstants.Namespace + "." + Kind.ToString();
+            IEdmVocabularyAnnotation annotation = model.GetVocabularyAnnotation(target, termQualifiedName);
             if (annotation == null)
             {
-                IEdmNavigationSource navigationSource = Target as IEdmNavigationSource;
+                IEdmNavigationSource navigationSource = target as IEdmNavigationSource;
 
                 // if not, search the entity type.
                 if (navigationSource != null)
                 {
                     IEdmEntityType entityType = navigationSource.EntityType();
-                    annotation = Model.GetVocabularyAnnotation(entityType, QualifiedName);
+                    annotation = model.GetVocabularyAnnotation(entityType, termQualifiedName);
                 }
             }
 
-            Initialize(annotation);
+            return Initialize(annotation);
         }
 
         /// <summary>
         /// Initialize the capabilities with the vocabulary annotation.
         /// </summary>
         /// <param name="annotation">The input vocabulary annotation.</param>
-        protected abstract void Initialize(IEdmVocabularyAnnotation annotation);
+        protected abstract bool Initialize(IEdmVocabularyAnnotation annotation);
     }
 }

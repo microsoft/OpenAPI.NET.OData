@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -15,16 +14,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class SkipSupportedTests
     {
         [Fact]
+        public void KindPropertyReturnsSkipSupportedEnumMember()
+        {
+            // Arrange & Act
+            SkipSupported skip = new SkipSupported();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.SkipSupported, skip.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultSkipSupportedValues()
         {
             // Arrange
+            SkipSupported skip = new SkipSupported();
             EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            SkipSupported skip = new SkipSupported(EdmCoreModel.Instance, entityType);
+            //  Act
+            bool result = skip.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.SkipSupported, skip.QualifiedName);
+            Assert.False(result);
+            Assert.True(skip.IsSupported);
             Assert.Null(skip.Supported);
         }
 
@@ -46,9 +57,12 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendar); // guard
 
             // Act
-            SkipSupported skip = new SkipSupported(model, calendar);
+            SkipSupported skip = new SkipSupported();
+            bool result = skip.Load(model, calendar);
 
             // Assert
+            Assert.True(result);
+            Assert.False(skip.IsSupported);
             Assert.NotNull(skip.Supported);
             Assert.False(skip.Supported.Value);
         }
@@ -71,42 +85,16 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            SkipSupported skip = new SkipSupported(model, calendars);
+            SkipSupported skip = new SkipSupported();
+            bool result = skip.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             Assert.NotNull(skip.Supported);
             Assert.False(skip.Supported.Value);
         }
 
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectSkipSupportedValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            SkipSupported skip = new SkipSupported(model, navigationProperty);
-
-            // Assert
-            Assert.NotNull(skip.Supported);
-            Assert.False(skip.Supported.Value);
-        }
-
-        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
+        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
             string countAnnotation = @"<Annotation Term=""Org.OData.Capabilities.V1.SkipSupported"" Bool=""false"" />";
 
@@ -117,14 +105,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
     }

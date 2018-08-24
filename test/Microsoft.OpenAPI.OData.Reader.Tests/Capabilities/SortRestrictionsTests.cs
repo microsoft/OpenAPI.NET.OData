@@ -14,16 +14,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class SortRestrictionsTests
     {
         [Fact]
-        public void UnknownAnnotatableTargetReturnsDefaultSortRestrictionsValues()
+        public void KindPropertyReturnsSortRestrictionsEnumMember()
         {
-            // Arrange
-            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
-
-            // Act
-            SortRestrictions sort = new SortRestrictions(EdmCoreModel.Instance, entityType);
+            // Arrange & Act
+            SortRestrictions sort = new SortRestrictions();
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.SortRestrictions, sort.QualifiedName);
+            Assert.Equal(CapabilitesTermKind.SortRestrictions, sort.Kind);
+        }
+
+        [Fact]
+        public void UnknownAnnotatableTargetReturnsDefaultSortRestrictionsValues()
+        {
+            // Arrange & Act
+            SortRestrictions sort = new SortRestrictions();
+            EdmEntityType entityType = new EdmEntityType("NS", "Entity");
+
+            //  Act
+            bool result = sort.Load(EdmCoreModel.Instance, entityType);
+
+            // Assert
+            Assert.False(result);
+            Assert.True(sort.IsSortable);
             Assert.Null(sort.Sortable);
             Assert.Null(sort.AscendingOnlyProperties);
             Assert.Null(sort.DescendingOnlyProperties);
@@ -48,9 +60,11 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendar); // guard
 
             // Act
-            SortRestrictions sort = new SortRestrictions(model, calendar);
+            SortRestrictions sort = new SortRestrictions();
+            bool result = sort.Load(model, calendar);
 
             // Assert
+            Assert.True(result);
             VerifySortRestrictions(sort);
         }
 
@@ -72,66 +86,12 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            SortRestrictions sort = new SortRestrictions(model, calendars);
+            SortRestrictions sort = new SortRestrictions();
+            bool result = sort.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifySortRestrictions(sort);
-        }
-
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectSortRestrictionsValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            SortRestrictions sort = new SortRestrictions(model, navigationProperty);
-
-            // Assert
-            VerifySortRestrictions(sort);
-        }
-
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void IsNonSortablePropertiesReturnsCorrectForProperty(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // Guard
-
-            IEdmProperty emails = calendar.DeclaredStructuralProperties().First(c => c.Name == "Emails");
-            Assert.NotNull(emails); // Guard
-
-            // Act
-            SortRestrictions sort = new SortRestrictions(model, calendar);
-
-            // Assert
-            Assert.NotNull(sort.Sortable);
-            Assert.False(sort.Sortable.Value);
-            Assert.True(sort.IsNonSortableProperty(emails));
         }
 
         private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
@@ -165,14 +125,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
 
@@ -194,6 +147,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(sort.NonSortableProperties);
             Assert.Single(sort.NonSortableProperties);
             Assert.Equal("Emails", sort.NonSortableProperties.First());
+
+            Assert.True(sort.IsAscendingOnlyProperty("abc"));
+            Assert.False(sort.IsAscendingOnlyProperty("rst"));
+
+            Assert.False(sort.IsDescendingOnlyProperty("abc"));
+            Assert.True(sort.IsDescendingOnlyProperty("rst"));
+
+            Assert.False(sort.IsNonSortableProperty("abc"));
+            Assert.True(sort.IsNonSortableProperty("Emails"));
         }
     }
 }

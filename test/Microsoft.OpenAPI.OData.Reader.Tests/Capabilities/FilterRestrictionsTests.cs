@@ -14,16 +14,28 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
     public class FilterRestrictionsTests
     {
         [Fact]
+        public void KindPropertyReturnsFilterRestrictionsEnumMember()
+        {
+            // Arrange & Act
+            FilterRestrictions filter = new FilterRestrictions();
+
+            // Assert
+            Assert.Equal(CapabilitesTermKind.FilterRestrictions, filter.Kind);
+        }
+
+        [Fact]
         public void UnknownAnnotatableTargetReturnsDefaultFilterRestrictionsValues()
         {
             // Arrange
+            FilterRestrictions filter = new FilterRestrictions();
             EdmEntityType entityType = new EdmEntityType("NS", "Entity");
 
-            // Act
-            FilterRestrictions filter = new FilterRestrictions(EdmCoreModel.Instance, entityType);
+            //  Act
+            bool result = filter.Load(EdmCoreModel.Instance, entityType);
 
             // Assert
-            Assert.Equal(CapabilitiesConstants.FilterRestrictions, filter.QualifiedName);
+            Assert.False(result);
+            Assert.True(filter.IsFilterable);
             Assert.Null(filter.Filterable);
             Assert.Null(filter.RequiresFilter);
             Assert.Null(filter.RequiredProperties);
@@ -44,13 +56,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             IEdmModel model = GetEdmModel(template, location);
             Assert.NotNull(model); // guard
 
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
+            IEdmEntitySet calendars = model.EntityContainer.FindEntitySet("Calendars");
+            Assert.NotNull(calendars); // guard
 
             // Act
-            FilterRestrictions filter = new FilterRestrictions(model, calendar);
+            FilterRestrictions filter = new FilterRestrictions();
+            bool result = filter.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyFilterRestrictions(filter);
         }
 
@@ -72,76 +86,15 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(calendars); // guard
 
             // Act
-            FilterRestrictions filter = new FilterRestrictions(model, calendars);
+            FilterRestrictions filter = new FilterRestrictions();
+            bool result = filter.Load(model, calendars);
 
             // Assert
+            Assert.True(result);
             VerifyFilterRestrictions(filter);
         }
 
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void TargetOnNavigationPropertyReturnsCorrectFilterRestrictionsValue(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar/RelatedEvents"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location, true);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // guard
-
-            IEdmNavigationProperty navigationProperty = calendar.DeclaredNavigationProperties().First(c => c.Name == "RelatedEvents");
-            Assert.NotNull(navigationProperty); // guard
-
-            // Act
-            FilterRestrictions filter = new FilterRestrictions(model, navigationProperty);
-
-            // Assert
-            VerifyFilterRestrictions(filter);
-        }
-
-        [Theory]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.Inline)]
-        [InlineData(EdmVocabularyAnnotationSerializationLocation.OutOfLine)]
-        public void IsNonExpandablePropertyReturnsCorrectForProperty(EdmVocabularyAnnotationSerializationLocation location)
-        {
-            // Arrange
-            const string template = @"
-                <Annotations Target=""NS.Calendar"">
-                  {0}
-                </Annotations>";
-
-            IEdmModel model = GetEdmModel(template, location);
-            Assert.NotNull(model); // guard
-
-            IEdmEntityType calendar = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Calendar");
-            Assert.NotNull(calendar); // Guard
-
-            IEdmProperty id = calendar.DeclaredStructuralProperties().First(c => c.Name == "Id");
-            Assert.NotNull(id); // Guard
-
-            IEdmProperty emails = calendar.DeclaredStructuralProperties().First(c => c.Name == "Emails");
-            Assert.NotNull(emails); // Guard
-
-            // Act
-            FilterRestrictions filter = new FilterRestrictions(model, calendar);
-
-            // Assert
-            Assert.NotNull(filter.Filterable);
-            Assert.False(filter.Filterable.Value);
-            Assert.NotNull(filter.RequiresFilter);
-            Assert.False(filter.RequiresFilter.Value);
-
-            Assert.True(filter.IsRequiredProperty(id));
-            Assert.True(filter.IsNonFilterableProperty(emails));
-        }
-
-        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location, bool navInLine = false)
+        private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
             string countAnnotation = @"
                 <Annotation Term=""Org.OData.Capabilities.V1.FilterRestrictions"" >
@@ -168,14 +121,7 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             }
             else
             {
-                if (navInLine)
-                {
-                    return CapabilitiesModelHelper.GetEdmModelNavInline(countAnnotation);
-                }
-                else
-                {
-                    return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
-                }
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
             }
         }
 
@@ -196,6 +142,12 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
             Assert.NotNull(filter.NonFilterableProperties);
             Assert.Single(filter.NonFilterableProperties);
             Assert.Equal("Emails", filter.NonFilterableProperties.First());
+
+            Assert.True(filter.IsRequiredProperty("Id"));
+            Assert.False(filter.IsRequiredProperty("ID"));
+
+            Assert.True(filter.IsNonFilterableProperty("Emails"));
+            Assert.False(filter.IsNonFilterableProperty("ID"));
         }
     }
 }

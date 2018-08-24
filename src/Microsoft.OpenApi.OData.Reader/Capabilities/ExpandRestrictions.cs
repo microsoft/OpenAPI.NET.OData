@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class ExpandRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.ExpandRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.ExpandRestrictions;
 
         /// <summary>
         /// Gets the Expandable value.
@@ -31,16 +31,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonExpandableProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="ExpandRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="entityStargetet">The Edm annotation target.</param>
-        public ExpandRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports $expand.
         /// </summary>
         /// <returns>True/false.</returns>
@@ -49,20 +39,20 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input property cannot be used in $orderby expressions.
         /// </summary>
-        /// <param name="property">The input navigation property.</param>
+        /// <param name="navigationPropertyPath">The input navigation property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonExpandableProperty(IEdmNavigationProperty property)
+        public bool IsNonExpandableProperty(string navigationPropertyPath)
         {
-            return NonExpandableProperties != null ? NonExpandableProperties.Any(a => a == property.Name) : false;
+            return NonExpandableProperties != null ? NonExpandableProperties.Any(a => a == navigationPropertyPath) : false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -72,6 +62,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonExpandableProperties
             NonExpandableProperties = record.GetCollectionPropertyPath("NonExpandableProperties");
+
+            return true;
         }
     }
 }

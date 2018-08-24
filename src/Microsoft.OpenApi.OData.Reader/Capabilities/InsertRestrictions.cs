@@ -16,9 +16,9 @@ namespace Microsoft.OpenApi.OData.Capabilities
     internal class InsertRestrictions : CapabilitiesRestrictions
     {
         /// <summary>
-        /// The Term type name.
+        /// The Term type kind.
         /// </summary>
-        public override string QualifiedName => CapabilitiesConstants.InsertRestrictions;
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.InsertRestrictions;
 
         /// <summary>
         /// Gets the Insertable value.
@@ -31,16 +31,6 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonInsertableNavigationProperties { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="InsertRestrictions"/> class.
-        /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="target">The Edm annotation target.</param>
-        public InsertRestrictions(IEdmModel model, IEdmVocabularyAnnotatable target)
-            : base(model, target)
-        {
-        }
-
-        /// <summary>
         /// Test the target supports insert.
         /// </summary>
         /// <returns>True/false.</returns>
@@ -49,22 +39,22 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <summary>
         /// Test the input navigation property do not allow deep insert.
         /// </summary>
-        /// <param name="property">The input property.</param>
+        /// <param name="navigationPropertyPath">The input navigation property path.</param>
         /// <returns>True/False.</returns>
-        public bool IsNonINsertableNavigationProperty(IEdmNavigationProperty property)
+        public bool IsNonInsertableNavigationProperty(string navigationPropertyPath)
         {
             return NonInsertableNavigationProperties != null ?
-                NonInsertableNavigationProperties.Any(a => a == property.Name) :
+                NonInsertableNavigationProperties.Any(a => a == navigationPropertyPath) :
                 false;
         }
 
-        protected override void Initialize(IEdmVocabularyAnnotation annotation)
+        protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
                 annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
-                return;
+                return false;
             }
 
             IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
@@ -74,6 +64,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
 
             // NonInsertableNavigationProperties
             NonInsertableNavigationProperties = record.GetCollectionPropertyPath("NonInsertableNavigationProperties");
+
+            return true;
         }
     }
 }
