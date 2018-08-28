@@ -3,8 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -47,6 +51,97 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmFunctionReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmEntitySet customers = new EdmEntitySet(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.MyFunction.2c7bd5b91474cb963a16e394", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmFunctionWithTypeCastReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmEntityType vipCustomer = new EdmEntityType("NS", "VipCustomer", customer);
+            model.AddElement(vipCustomer);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(vipCustomer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmEntitySet customers = new EdmEntitySet(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataTypeCastSegment(vipCustomer),
+                new ODataOperationSegment(function));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.VipCustomer.MyFunction.2c7bd5b91474cb963a16e394", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
         }
     }
 }

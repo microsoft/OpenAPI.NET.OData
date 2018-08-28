@@ -66,7 +66,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 .OperationImports().FirstOrDefault(o => o.Name == operationImport);
             Assert.NotNull(edmOperationImport); // guard
             string expectSummary = "Invoke " +
-                (edmOperationImport.IsActionImport() ? "action " : "function ") + operationImport;
+                (edmOperationImport.IsActionImport() ? "actionImport " : "functionImport ") + operationImport;
             ODataPath path = new ODataPath(new ODataOperationImportSegment(edmOperationImport));
 
             // Act

@@ -36,6 +36,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings)
         {
+            Utils.CheckArgumentNull(settings, nameof(settings));
+
             if (Operation.IsFunction())
             {
                 return FunctionName(Operation as IEdmFunction, settings);

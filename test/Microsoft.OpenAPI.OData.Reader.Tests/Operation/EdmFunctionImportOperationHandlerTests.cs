@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation);
-            Assert.Equal("Invoke function GetPersonWithMostFriends", operation.Summary);
+            Assert.Equal("Invoke functionImport GetPersonWithMostFriends", operation.Summary);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People", tag.Name);
@@ -42,6 +42,48 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmFunctionImportReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), false, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmFunctionImport functionImport = new EdmFunctionImport(container, "MyFunction", function);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataOperationImportSegment(functionImport));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("OperationImport.MyFunction.a5ea52712c5e17e3bd081e4f", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
         }
     }
 }

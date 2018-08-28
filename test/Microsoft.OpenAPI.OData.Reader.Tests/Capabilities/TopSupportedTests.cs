@@ -97,16 +97,16 @@ namespace Microsoft.OpenApi.OData.Reader.Capabilities.Tests
 
         private static IEdmModel GetEdmModel(string template, EdmVocabularyAnnotationSerializationLocation location)
         {
-            string countAnnotation = @"<Annotation Term=""Org.OData.Capabilities.V1.TopSupported"" Bool=""false"" />";
+            string topAnnotation = @"<Annotation Term=""Org.OData.Capabilities.V1.TopSupported"" Bool=""false"" />";
 
             if (location == EdmVocabularyAnnotationSerializationLocation.OutOfLine)
             {
-                countAnnotation = string.Format(template, countAnnotation);
-                return CapabilitiesModelHelper.GetEdmModelOutline(countAnnotation);
+                topAnnotation = string.Format(template, topAnnotation);
+                return CapabilitiesModelHelper.GetEdmModelOutline(topAnnotation);
             }
             else
             {
-                return CapabilitiesModelHelper.GetEdmModelTypeInline(countAnnotation);
+                return CapabilitiesModelHelper.GetEdmModelTypeInline(topAnnotation);
             }
         }
     }

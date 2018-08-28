@@ -6,7 +6,6 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -15,13 +14,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private EntityPatchOperationHandler _operationHandler = new EntityPatchOperationHandler();
 
-        [Fact]
-        public void CreateEntityPatchOperationReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEntityPatchOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
-            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("People");
-            ODataContext context = new ODataContext(model);
+            IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
 
             // Act
@@ -29,10 +34,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(patch);
-            Assert.Equal("Update entity in People", patch.Summary);
+            Assert.Equal("Update entity in Customers", patch.Summary);
             Assert.NotNull(patch.Tags);
             var tag = Assert.Single(patch.Tags);
-            Assert.Equal("People.Person", tag.Name);
+            Assert.Equal("Customers.Customer", tag.Name);
 
             Assert.NotNull(patch.Parameters);
             Assert.Equal(1, patch.Parameters.Count);
@@ -42,6 +47,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(patch.Responses);
             Assert.Equal(2, patch.Responses.Count);
             Assert.Equal(new[] { "204", "default" }, patch.Responses.Select(r => r.Key));
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.UpdateCustomer", patch.OperationId);
+            }
+            else
+            {
+                Assert.Null(patch.OperationId);
+            }
         }
     }
 }

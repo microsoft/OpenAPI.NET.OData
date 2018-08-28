@@ -35,12 +35,24 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            operation.Summary = "Invoke " + (EdmOperationImport.IsActionImport() ? "action " : "function ") + EdmOperationImport.Name;
+            operation.Summary = "Invoke " + (EdmOperationImport.IsActionImport() ? "actionImport " : "functionImport ") + EdmOperationImport.Name;
 
             if (Context.Settings.OperationId)
             {
                 string key = "OperationImport." + EdmOperationImport.Name;
                 operation.OperationId += "OperationImport." + Context.GetIndex(key) + "-" + Utils.UpperFirstChar(EdmOperationImport.Name);
+
+                if (EdmOperationImport.IsActionImport())
+                {
+                    operation.OperationId = "OperationImport." + EdmOperationImport.Name;
+                }
+                else
+                {
+                    ODataOperationImportSegment operationImportSegment = Path.LastSegment as ODataOperationImportSegment;
+                    string pathItemName = operationImportSegment.GetPathItemName(Context.Settings);
+                    string md5 = pathItemName.GetHashMd5();
+                    operation.OperationId = "OperationImport." + EdmOperationImport.Name + "." + md5.Substring(8);
+                }
             }
         }
 

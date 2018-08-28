@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -57,9 +58,32 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.OperationId)
             {
-                string key = NavigationSource.Name + "-" + Utils.UpperFirstChar(EdmOperation.Name);
-                int index = Context.GetIndex(key);
-                operation.OperationId = NavigationSource.Name + "." + index + "-" + Utils.UpperFirstChar(EdmOperation.Name);
+                StringBuilder operationId = new StringBuilder(NavigationSource.Name);
+                if (HasTypeCast)
+                {
+                    ODataTypeCastSegment typeCast = Path.Segments.FirstOrDefault(s => s is ODataTypeCastSegment) as ODataTypeCastSegment;
+                    operationId.Append(".");
+                    operationId.Append(typeCast.EntityType.Name);
+                }
+                else
+                {
+                    operationId.Append(".");
+                    operationId.Append(NavigationSource.EntityType().Name);
+                }
+
+                operationId.Append(".");
+                operationId.Append(EdmOperation.Name);
+                if (EdmOperation.IsAction())
+                {
+                    operation.OperationId = operationId.ToString();
+                }
+                else
+                {
+                    ODataOperationSegment operationSegment = Path.LastSegment as ODataOperationSegment;
+                    string pathItemName = operationSegment.GetPathItemName(Context.Settings);
+                    string md5 = pathItemName.GetHashMd5();
+                    operation.OperationId = operationId.Append(".").Append(md5.Substring(8)).ToString();
+                }
             }
         }
 
@@ -81,19 +105,6 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-            /*
-            IEdmSingleton singleton = NavigationSource as IEdmSingleton;
-            if (singleton == null && EdmOperation.IsBound)
-            {
-                IEdmOperationParameter bindingParameter = EdmOperation.Parameters.FirstOrDefault();
-                if (bindingParameter != null &&
-                    !bindingParameter.Type.IsCollection() && // bound to a single entity
-                    bindingParameter.Type.IsEntity())
-                {
-                    operation.Parameters = Context.CreateKeyParameters(bindingParameter
-                        .Type.AsEntity().EntityDefinition());
-                }
-            }*/
 
             if (EdmOperation.IsFunction())
             {

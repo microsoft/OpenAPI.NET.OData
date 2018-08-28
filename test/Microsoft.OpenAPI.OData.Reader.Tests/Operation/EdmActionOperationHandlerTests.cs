@@ -48,5 +48,96 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
         }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmActionReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmAction action = new EdmAction("NS", "MyAction", EdmCoreModel.Instance.GetString(false), true, null);
+            action.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            action.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(action);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmEntitySet customers = new EdmEntitySet(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(action));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.MyAction", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmActionWithTypeCastReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmEntityType vipCustomer = new EdmEntityType("NS", "VipCustomer", customer);
+            model.AddElement(vipCustomer);
+            EdmAction action = new EdmAction("NS", "MyAction", EdmCoreModel.Instance.GetString(false), true, null);
+            action.AddParameter("entity", new EdmEntityTypeReference(vipCustomer, false));
+            action.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(action);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmEntitySet customers = new EdmEntitySet(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataTypeCastSegment(vipCustomer),
+                new ODataOperationSegment(action));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.VipCustomer.MyAction", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
+        }
     }
 }

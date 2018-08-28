@@ -29,6 +29,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected IEdmNavigationSource NavigationSource { get; private set; }
 
         /// <summary>
+        /// Gets the navigation path.
+        /// </summary>
+        protected string NavigationPropertyPath { get; private set; }
+
+        /// <summary>
         /// Gets a bool value indicating whether the last segment is a key segment.
         /// </summary>
         protected bool LastSegmentIsKeySegment { get; private set; }
@@ -47,6 +52,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
             }
             NavigationProperty = npSegment.NavigationProperty;
+
+            NavigationPropertyPath = string.Join("/",
+                path.Segments.OfType<ODataNavigationPropertySegment>().Select(p => p.NavigationProperty.Name));
 
             base.Initialize(context, path);
         }
@@ -87,7 +95,6 @@ namespace Microsoft.OpenApi.OData.Operation
             string name = string.Join(".", items);
             OpenApiTag tag = new OpenApiTag
             {
-                // Name = NavigationSource.Name + "." + NavigationProperty.ToEntityType().Name,
                 Name = name
             };
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
@@ -109,16 +116,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
                 if (npSegment != null)
                 {
-/*
-                    if (npSegment.NavigationProperty == NavigationProperty)
-                    {
-                        items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name));
-                        break;
-                    }
-                    else
-                    {
-                        items.Add(segment.Name);
-                    }*/
                     if (segment == lastpath)
                     {
                         items.Add(prefix + Utils.UpperFirstChar(npSegment.NavigationProperty.Name));

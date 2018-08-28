@@ -38,7 +38,9 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = Singleton.Name + "." + Singleton.EntityType().Name,
             };
+
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);

@@ -144,6 +144,62 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
+        /// Create key parameters for the <see cref="ODataKeySegment"/>.
+        /// </summary>
+        /// <param name="keySegment">The key segment.</param>
+        /// <returns>The created the list of <see cref="OpenApiParameter"/>.</returns>
+        public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+            Utils.CheckArgumentNull(keySegment, nameof(keySegment));
+
+            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
+            IEdmEntityType entityType = keySegment.EntityType;
+
+            IList<IEdmStructuralProperty> keys = entityType.Key().ToList();
+            if (keys.Count() == 1)
+            {
+                string keyName = keys.First().Name;
+                if (context.Settings.PrefixEntityTypeNameBeforeKey)
+                {
+                    keyName = entityType.Name + "-" + keys.First().Name;
+                }
+
+                OpenApiParameter parameter = new OpenApiParameter
+                {
+                    Name = keyName,
+                    In = ParameterLocation.Path,
+                    Required = true,
+                    Description = "key: " + keyName,
+                    Schema = context.CreateEdmTypeSchema(keys.First().Type)
+                };
+
+                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+                parameters.Add(parameter);
+            }
+            else
+            {
+                // append key parameter
+                foreach (var keyProperty in entityType.Key())
+                {
+                    OpenApiParameter parameter = new OpenApiParameter
+                    {
+                        Name = keyProperty.Name,
+                        In = ParameterLocation.Path,
+                        Required = true,
+                        Description = "key: " + keyProperty.Name,
+                        Schema = context.CreateEdmTypeSchema(keyProperty.Type)
+                    };
+
+                    parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
+                    parameters.Add(parameter);
+                }
+            }
+
+            return parameters;
+        }
+
+        /// <summary>
         /// Create the $top parameter.
         /// </summary>
         /// <param name="context">The OData context.</param>

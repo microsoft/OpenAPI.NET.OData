@@ -15,12 +15,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private NavigationPropertyPatchOperationHandler _operationHandler = new NavigationPropertyPatchOperationHandler();
 
-        [Fact]
-        public void CreateNavigationPatchOperationReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateNavigationPatchOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            ODataContext context = new ODataContext(model);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
             Assert.NotNull(people);
 
@@ -46,6 +52,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
+
+            if (enableOperationId)
+            {
+                Assert.Equal("People.UpdateBestFriend", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
         }
     }
 }

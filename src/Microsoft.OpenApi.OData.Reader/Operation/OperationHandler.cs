@@ -112,7 +112,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
             {
-                foreach (var p in Context.CreateKeyParameters(keySegment.EntityType))
+                foreach (var p in Context.CreateKeyParameters(keySegment))
                 {
                     operation.Parameters.Add(p);
                 }

@@ -6,7 +6,6 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -15,13 +14,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private EntityDeleteOperationHandler _operationHandler = new EntityDeleteOperationHandler();
 
-        [Fact]
-        public void CreateEntityDeleteOperationReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEntityDeleteOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
-            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("People");
-            ODataContext context = new ODataContext(model);
+            IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
 
             // Act
@@ -29,10 +34,10 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(delete);
-            Assert.Equal("Delete entity from People", delete.Summary);
+            Assert.Equal("Delete entity from Customers", delete.Summary);
             Assert.NotNull(delete.Tags);
             var tag = Assert.Single(delete.Tags);
-            Assert.Equal("People.Person", tag.Name);
+            Assert.Equal("Customers.Customer", tag.Name);
 
             Assert.NotNull(delete.Parameters);
             Assert.Equal(2, delete.Parameters.Count);
@@ -42,6 +47,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(delete.Responses);
             Assert.Equal(2, delete.Responses.Count);
             Assert.Equal(new[] { "204", "default" }, delete.Responses.Select(r => r.Key));
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.DeleteCustomer", delete.OperationId);
+            }
+            else
+            {
+                Assert.Null(delete.OperationId);
+            }
         }
     }
 }

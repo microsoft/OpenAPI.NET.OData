@@ -6,7 +6,6 @@
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -15,13 +14,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private SingletonPatchOperationHandler _operationHandler = new SingletonPatchOperationHandler();
 
-        [Fact]
-        public void CreateSingletonPatchOperationReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateSingletonPatchOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            IEdmModel model = SingletonGetOperationHandlerTests.GetEdmModel("");
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("Me");
-            ODataContext context = new ODataContext(model);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(singleton));
 
             // Act
@@ -32,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Update Me", patch.Summary);
             Assert.NotNull(patch.Tags);
             var tag = Assert.Single(patch.Tags);
-            Assert.Equal("Me.Person", tag.Name);
+            Assert.Equal("Me.Customer", tag.Name);
 
             Assert.Empty(patch.Parameters);
             Assert.NotNull(patch.RequestBody);
@@ -40,6 +45,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(patch.Responses);
             Assert.Equal(2, patch.Responses.Count);
             Assert.Equal(new[] { "204", "default" }, patch.Responses.Select(r => r.Key));
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Me.Customer.UpdateCustomer", patch.OperationId);
+            }
+            else
+            {
+                Assert.Null(patch.OperationId);
+            }
         }
     }
 }

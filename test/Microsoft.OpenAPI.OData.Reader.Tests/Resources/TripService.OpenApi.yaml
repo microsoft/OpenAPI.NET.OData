@@ -251,7 +251,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function GetFavoriteAirline
-      operationId: People.0-GetFavoriteAirline
+      operationId: People.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
       parameters:
         - name: UserName
           in: path
@@ -277,7 +277,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function GetFriendsTrips
-      operationId: People.0-GetFriendsTrips
+      operationId: People.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
       parameters:
         - name: UserName
           in: path
@@ -310,7 +310,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function UpdatePersonLastName
-      operationId: People.0-UpdatePersonLastName
+      operationId: People.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
       parameters:
         - name: UserName
           in: path
@@ -340,7 +340,7 @@ paths:
       tags:
         - People.Actions
       summary: Invoke action ShareTrip
-      operationId: People.0-ShareTrip
+      operationId: People.Person.ShareTrip
       parameters:
         - name: UserName
           in: path
@@ -981,7 +981,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function GetFavoriteAirline
-      operationId: NewComePeople.0-GetFavoriteAirline
+      operationId: NewComePeople.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
       parameters:
         - name: UserName
           in: path
@@ -1007,7 +1007,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function GetFriendsTrips
-      operationId: NewComePeople.0-GetFriendsTrips
+      operationId: NewComePeople.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
       parameters:
         - name: UserName
           in: path
@@ -1040,7 +1040,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function UpdatePersonLastName
-      operationId: NewComePeople.0-UpdatePersonLastName
+      operationId: NewComePeople.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
       parameters:
         - name: UserName
           in: path
@@ -1070,7 +1070,7 @@ paths:
       tags:
         - NewComePeople.Actions
       summary: Invoke action ShareTrip
-      operationId: NewComePeople.0-ShareTrip
+      operationId: NewComePeople.Person.ShareTrip
       parameters:
         - name: UserName
           in: path
@@ -1176,7 +1176,7 @@ paths:
       tags:
         - Me.Functions
       summary: Invoke function GetFavoriteAirline
-      operationId: Me.0-GetFavoriteAirline
+      operationId: Me.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
       responses:
         '200':
           description: Success
@@ -1194,7 +1194,7 @@ paths:
       tags:
         - Me.Functions
       summary: Invoke function GetFriendsTrips
-      operationId: Me.0-GetFriendsTrips
+      operationId: Me.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
       parameters:
         - name: userName
           in: path
@@ -1220,7 +1220,7 @@ paths:
       tags:
         - Me.Functions
       summary: Invoke function UpdatePersonLastName
-      operationId: Me.0-UpdatePersonLastName
+      operationId: Me.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
       parameters:
         - name: lastName
           in: path
@@ -1243,7 +1243,7 @@ paths:
       tags:
         - Me.Actions
       summary: Invoke action ShareTrip
-      operationId: Me.0-ShareTrip
+      operationId: Me.Person.ShareTrip
       requestBody:
         description: Action parameters
         content:
@@ -1265,12 +1265,12 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
-  /GetPersonWithMostFriends:
+  /GetPersonWithMostFriends():
     get:
       tags:
         - People
-      summary: Invoke function GetPersonWithMostFriends
-      operationId: OperationImport.0-GetPersonWithMostFriends
+      summary: Invoke functionImport GetPersonWithMostFriends
+      operationId: OperationImport.GetPersonWithMostFriends.de8b4a5ab51ba6c8c254fe80
       responses:
         '200':
           description: Success
@@ -1283,12 +1283,12 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: functionImport
-  /GetNearestAirport:
+  '/GetNearestAirport(lat={lat},lon={lon})':
     get:
       tags:
         - Airports
-      summary: Invoke function GetNearestAirport
-      operationId: OperationImport.0-GetNearestAirport
+      summary: Invoke functionImport GetNearestAirport
+      operationId: OperationImport.GetNearestAirport.6896b1324a4eff76ad9867a0
       parameters:
         - name: lat
           in: path
@@ -1330,8 +1330,8 @@ paths:
     post:
       tags:
         - ResetDataSource
-      summary: Invoke action ResetDataSource
-      operationId: OperationImport.0-ResetDataSource
+      summary: Invoke actionImport ResetDataSource
+      operationId: OperationImport.ResetDataSource
       responses:
         '204':
           description: Success

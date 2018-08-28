@@ -36,11 +36,6 @@ namespace Microsoft.OpenApi.OData.Operation
                     prefix = "List";
                 }
 
-                /*
-                string key = NavigationSource.Name + "." + NavigationProperty.Name + "-" + prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name);
-                int index = Context.GetIndex(key);
-                operation.OperationId = NavigationSource.Name + "." + NavigationProperty.Name + index + "-" + prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name);
-                */
                 operation.OperationId = GetOperationId(prefix);
             }
         }
@@ -88,10 +83,10 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Parameters = new List<OpenApiParameter>();
             }
 
-            if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                // The parameters array contains Parameter Objects for system query options allowed for this entity set,
-                // and it does not list system query options not allowed for this entity set.
+                // Need to verify that TopSupported or others should be applyed to navigaiton source.
+                // So, how about for the navigation property.
                 OpenApiParameter parameter = Context.CreateTop(NavigationProperty);
                 if (parameter != null)
                 {

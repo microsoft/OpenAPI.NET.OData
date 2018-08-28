@@ -46,7 +46,6 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetParameters(operation);
 
             operation.Parameters = new List<OpenApiParameter>();
-            IEdmEntityType entityType = Singleton.EntityType();
 
             // $select
             OpenApiParameter parameter = Context.CreateSelect(Singleton);

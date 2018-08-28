@@ -15,12 +15,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private NavigationPropertyPostOperationHandler _operationHandler = new NavigationPropertyPostOperationHandler();
 
-        [Fact]
-        public void CreateNavigationPostOperationReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateNavigationPostOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            ODataContext context = new ODataContext(model);
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
             Assert.NotNull(people);
 
@@ -46,6 +52,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "201", "default" }, operation.Responses.Select(e => e.Key));
+
+            if (enableOperationId)
+            {
+                Assert.Equal("People.CreateTrips", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
         }
     }
 }

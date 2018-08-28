@@ -5,7 +5,6 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -14,13 +13,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private EntitySetPostOperationHandler _operationHandler = new EntitySetPostOperationHandler();
 
-        [Fact]
-        public void CreateEntitySetPostOperationReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEntitySetPostOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
-            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("People");
-            ODataContext context = new ODataContext(model);
+            IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                OperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
 
             // Act
@@ -31,13 +36,22 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Add new entity to " + entitySet.Name, post.Summary);
             Assert.NotNull(post.Tags);
             var tag = Assert.Single(post.Tags);
-            Assert.Equal("People.Person", tag.Name);
+            Assert.Equal("Customers.Customer", tag.Name);
 
             Assert.Empty(post.Parameters);
             Assert.NotNull(post.RequestBody);
 
             Assert.NotNull(post.Responses);
             Assert.Equal(2, post.Responses.Count);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.Customer.CreateCustomer", post.OperationId);
+            }
+            else
+            {
+                Assert.Null(post.OperationId);
+            }
         }
     }
 }

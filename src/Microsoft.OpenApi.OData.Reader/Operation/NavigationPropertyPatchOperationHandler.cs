@@ -31,10 +31,6 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.OperationId)
             {
                 string prefix = "Update";
-                //string key = NavigationSource.Name + "." + NavigationProperty.Name + "-" + prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name);
-               // int index = Context.GetIndex(key);
-               // operation.OperationId = NavigationSource.Name + "." + NavigationProperty.Name + index + "-" + prefix + Utils.UpperFirstChar(NavigationProperty.ToEntityType().Name);
-
                 operation.OperationId = GetOperationId(prefix);
             }
         }
