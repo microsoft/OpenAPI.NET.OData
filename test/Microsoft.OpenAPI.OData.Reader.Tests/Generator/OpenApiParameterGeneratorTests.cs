@@ -67,5 +67,122 @@ schema:
   type: integer
 ".ChangeLineBreaks(), yaml);
         }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateKeyParametersForSingleKeyWorks(bool prefix)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("Id", EdmPrimitiveTypeKind.String));
+            model.AddElement(customer);
+            OpenApiConvertSettings setting = new OpenApiConvertSettings
+            {
+                PrefixEntityTypeNameBeforeKey = prefix
+            };
+            ODataContext context = new ODataContext(model, setting);
+            ODataKeySegment keySegment = new ODataKeySegment(customer);
+
+            // Act
+            var parameters = context.CreateKeyParameters(keySegment);
+
+            // Assert
+            Assert.NotNull(parameters);
+            var parameter = Assert.Single(parameters);
+
+            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string expected;
+
+            if (prefix)
+            {
+                expected = @"{
+  ""name"": ""Customer-Id"",
+  ""in"": ""path"",
+  ""description"": ""key: Customer-Id"",
+  ""required"": true,
+  ""schema"": {
+    ""type"": ""string"",
+    ""nullable"": true
+  },
+  ""x-ms-docs-key-type"": ""Customer""
+}";
+            }
+            else
+            {
+                expected = @"{
+  ""name"": ""Id"",
+  ""in"": ""path"",
+  ""description"": ""key: Id"",
+  ""required"": true,
+  ""schema"": {
+    ""type"": ""string"",
+    ""nullable"": true
+  },
+  ""x-ms-docs-key-type"": ""Customer""
+}";
+            }
+
+            Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateKeyParametersForCompositeKeyWorks(bool prefix)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("firstName", EdmPrimitiveTypeKind.String));
+            customer.AddKeys(customer.AddStructuralProperty("lastName", EdmPrimitiveTypeKind.String));
+            model.AddElement(customer);
+            OpenApiConvertSettings setting = new OpenApiConvertSettings
+            {
+                PrefixEntityTypeNameBeforeKey = prefix
+            };
+            ODataContext context = new ODataContext(model, setting);
+            ODataKeySegment keySegment = new ODataKeySegment(customer);
+
+            // Act
+            var parameters = context.CreateKeyParameters(keySegment);
+
+            // Assert
+            Assert.NotNull(parameters);
+            Assert.Equal(2, parameters.Count);
+
+            // 1st
+            var parameter = parameters.First();
+            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string expected = @"{
+  ""name"": ""firstName"",
+  ""in"": ""path"",
+  ""description"": ""key: firstName"",
+  ""required"": true,
+  ""schema"": {
+    ""type"": ""string"",
+    ""nullable"": true
+  },
+  ""x-ms-docs-key-type"": ""Customer""
+}";
+            Assert.Equal(expected.ChangeLineBreaks(), json);
+
+            // 2nd
+            parameter = parameters.Last();
+            json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            expected = @"{
+  ""name"": ""lastName"",
+  ""in"": ""path"",
+  ""description"": ""key: lastName"",
+  ""required"": true,
+  ""schema"": {
+    ""type"": ""string"",
+    ""nullable"": true
+  },
+  ""x-ms-docs-key-type"": ""Customer""
+}";
+            Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
     }
 }

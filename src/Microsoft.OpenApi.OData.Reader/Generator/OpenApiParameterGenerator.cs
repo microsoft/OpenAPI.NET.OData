@@ -112,38 +112,6 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
-        /// Create key parameters for the <see cref="IEdmEntityType"/>.
-        /// </summary>
-        /// <param name="entityType">The entity type.</param>
-        /// <returns>The created the list of <see cref="OpenApiParameter"/>.</returns>
-        public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, IEdmEntityType entityType)
-        {
-            Utils.CheckArgumentNull(context, nameof(context));
-            Utils.CheckArgumentNull(entityType, nameof(entityType));
-
-            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
-
-            // append key parameter
-            foreach (var keyProperty in entityType.Key())
-            {
-                OpenApiParameter parameter = new OpenApiParameter
-                {
-                    Name = keyProperty.Name,
-                    In = ParameterLocation.Path,
-                    Required = true,
-                    Description = "key: " + keyProperty.Name,
-                    Schema = context.CreateEdmTypeSchema(keyProperty.Type)
-                };
-
-                parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
-
-                parameters.Add(parameter);
-            }
-
-            return parameters;
-        }
-
-        /// <summary>
         /// Create key parameters for the <see cref="ODataKeySegment"/>.
         /// </summary>
         /// <param name="keySegment">The key segment.</param>
