@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Capabilities
         {
             return RestrictedProperties != null ?
                 RestrictedProperties.Where(a => a.NavigationProperty == navigationPropertyPath)
-                .Any(a => a.Navigability != null && a.Navigability.Value == NavigationType.None) :
+                .Any(b => b.Navigability != null && b.Navigability.Value == NavigationType.None) :
                 false;
         }
 

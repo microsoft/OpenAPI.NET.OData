@@ -8,6 +8,7 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Properties;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -31,6 +32,25 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             // Arrange & Act & Assert
             Assert.Throws<ArgumentNullException>("path",
                 () => _pathItemHandler.CreatePathItem(new ODataContext(EdmCoreModel.Instance), path: null));
+        }
+
+        [Fact]
+        public void CreatePathItemThrowsForNonOperationPath()
+        {
+            // Arrange
+            IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: "");
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            var path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
+            Assert.Equal(ODataPathKind.EntitySet, path.Kind); // guard
+
+            // Act
+            Action test = () => _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            var exception = Assert.Throws<InvalidOperationException>(test);
+            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, "OperationPathItemHandler", path.Kind), exception.Message);
         }
 
         [Theory]

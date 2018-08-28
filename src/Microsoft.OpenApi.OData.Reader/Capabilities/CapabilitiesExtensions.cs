@@ -177,59 +177,13 @@ namespace Microsoft.OpenApi.OData.Capabilities
         }
 
         /// <summary>
-        /// Gets the capablities from the <see cref="IEdmModel"/> for the given <see cref="IEdmVocabularyAnnotatable"/>.
+        /// Create the capabiliites restriction
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="target">The target.</param>
-        /// <param name="kind">Thye Capabilites kind.</param>
-        /// <returns>The capabilities restrictions or null.</returns>
-        public static ICapablitiesRestrictions GetCapabilities(this IEdmModel model, IEdmVocabularyAnnotatable target, CapabilitesTermKind kind)
-        {
-            Utils.CheckArgumentNull(model, nameof(model));
-            Utils.CheckArgumentNull(target, nameof(target));
-
-            lock (_objectLock)
-            {
-                if (!ReferenceEquals(_savedModel, model))
-                {
-                    if (_capabilitesRestrictions != null)
-                    {
-                        _capabilitesRestrictions.Clear();
-                    }
-                    _savedModel = model;
-                }
-
-                if (_capabilitesRestrictions == null)
-                {
-                    _capabilitesRestrictions = new Dictionary<IEdmVocabularyAnnotatable, IDictionary<CapabilitesTermKind, ICapablitiesRestrictions>>();
-                }
-
-                ICapablitiesRestrictions restriction;
-                if (_capabilitesRestrictions.TryGetValue(target, out IDictionary<CapabilitesTermKind, ICapablitiesRestrictions> value))
-                {
-                    // Here means we visited target before and we are sure that the value is not null.
-                    if (value.TryGetValue(kind, out restriction))
-                    {
-                        return restriction;
-                    }
-                    else
-                    {
-                        restriction = CreateCapabilitesRestrictions(model, target, kind);
-                        value[kind] = restriction;
-                        return restriction;
-                    }
-                }
-
-                // It's first time to query this target, create new dictionary and restriction.
-                value = new Dictionary<CapabilitesTermKind, ICapablitiesRestrictions>();
-                _capabilitesRestrictions[target] = value;
-                restriction = CreateCapabilitesRestrictions(model, target, kind);
-                value[kind] = restriction;
-                return restriction;
-            }
-        }
-
-        private static ICapablitiesRestrictions CreateCapabilitesRestrictions(this IEdmModel model, IEdmVocabularyAnnotatable target, CapabilitesTermKind kind)
+        /// <param name="target">The Target.</param>
+        /// <param name="kind">The Capabiliites kind.</param>
+        /// <returns>The <see cref="ICapablitiesRestrictions"/>.</returns>
+        public static ICapablitiesRestrictions CreateCapabilitesRestrictions(this IEdmModel model, IEdmVocabularyAnnotatable target, CapabilitesTermKind kind)
         {
             Debug.Assert(model != null);
             Debug.Assert(target != null);
@@ -313,6 +267,59 @@ namespace Microsoft.OpenApi.OData.Capabilities
             }
 
             return capabilitiesRestrictions;
+        }
+
+        /// <summary>
+        /// Gets the capablities from the <see cref="IEdmModel"/> for the given <see cref="IEdmVocabularyAnnotatable"/>.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="target">The target.</param>
+        /// <param name="kind">Thye Capabilites kind.</param>
+        /// <returns>The capabilities restrictions or null.</returns>
+        private static ICapablitiesRestrictions GetCapabilities(this IEdmModel model, IEdmVocabularyAnnotatable target, CapabilitesTermKind kind)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(target, nameof(target));
+
+            lock (_objectLock)
+            {
+                if (!ReferenceEquals(_savedModel, model))
+                {
+                    if (_capabilitesRestrictions != null)
+                    {
+                        _capabilitesRestrictions.Clear();
+                    }
+                    _savedModel = model;
+                }
+
+                if (_capabilitesRestrictions == null)
+                {
+                    _capabilitesRestrictions = new Dictionary<IEdmVocabularyAnnotatable, IDictionary<CapabilitesTermKind, ICapablitiesRestrictions>>();
+                }
+
+                ICapablitiesRestrictions restriction;
+                if (_capabilitesRestrictions.TryGetValue(target, out IDictionary<CapabilitesTermKind, ICapablitiesRestrictions> value))
+                {
+                    // Here means we visited target before and we are sure that the value is not null.
+                    if (value.TryGetValue(kind, out restriction))
+                    {
+                        return restriction;
+                    }
+                    else
+                    {
+                        restriction = CreateCapabilitesRestrictions(model, target, kind);
+                        value[kind] = restriction;
+                        return restriction;
+                    }
+                }
+
+                // It's first time to query this target, create new dictionary and restriction.
+                value = new Dictionary<CapabilitesTermKind, ICapablitiesRestrictions>();
+                _capabilitesRestrictions[target] = value;
+                restriction = CreateCapabilitesRestrictions(model, target, kind);
+                value[kind] = restriction;
+                return restriction;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Tests;
+using Microsoft.OpenApi.OData.Properties;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.PathItem.Tests
@@ -36,25 +36,25 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Throws<ArgumentNullException>("path",
                 () => _pathItemHandler.CreatePathItem(new ODataContext(EdmCoreModel.Instance), path: null));
         }
-        /*
+
         [Fact]
         public void CreatePathItemThrowsForNonNavigationPropertyPath()
         {
             // Arrange
-            IEdmModel model = GetEdmModel(annotation: "");
+            IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: "");
             ODataContext context = new ODataContext(model);
-            var entitySet = model.EntityContainer.FindEntitySet("Customers");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
-            var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
-            Assert.Equal(ODataPathKind.Entity, path.Kind); // guard
+            var path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
+            Assert.Equal(ODataPathKind.EntitySet, path.Kind); // guard
 
             // Act
             Action test = () => _pathItemHandler.CreatePathItem(context, path);
 
             // Assert
             var exception = Assert.Throws<InvalidOperationException>(test);
-            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, "EntitySetPathItemHandler", path.Kind), exception.Message);
-        }*/
+            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, "NavigationPropertyPathItemHandler", path.Kind), exception.Message);
+        }
 
         [Theory]
         [InlineData(true, true, new OperationType[] { OperationType.Get, OperationType.Patch })]
@@ -64,9 +64,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         public void CreateCollectionNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, bool keySegment, OperationType[] expected)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            IEdmModel model = GetEdmModel("");
             ODataContext context = new ODataContext(model);
-            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("users");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
             IEdmEntityType entityType = entitySet.EntityType();
 
@@ -100,9 +100,9 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         public void CreateSingleNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, OperationType[] expected)
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            IEdmModel model = GetEdmModel("");
             ODataContext context = new ODataContext(model);
-            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("users");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard
             IEdmEntityType entityType = entitySet.EntityType();
 
@@ -125,6 +125,155 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
         }
 
+        public static IEnumerable<object[]> CollectionNavigationPropertyData
+        {
+            get
+            {
+                IList<string> navigationPropertyPaths = new List<string>
+                {
+                    "ContainedOrders",
+                    "Orders",
+                    "ContainedOrders/ContainedOrderLines",
+                    "ContainedOrders/OrderLines",
+                    "Orders/ContainedOrderLines",
+                    "Orders/OrderLines",
+                    "ContainedMyOrder/ContainedOrderLines",
+                    "ContainedMyOrder/OrderLines",
+                    "MyOrder/ContainedOrderLines",
+                    "MyOrder/OrderLines"
+                };
+                foreach (var path in navigationPropertyPaths)
+                {
+                    foreach (var enableAnnotation in new[] { true, false })
+                    {
+                        yield return new object[] { enableAnnotation, path };
+                    }
+                }
+            }
+        }
+
+        public static IEnumerable<object[]> SingleNavigationPropertyData
+        {
+            get
+            {
+                IList<string> navigationPropertyPaths = new List<string>
+                {
+                    "ContainedMyOrder",
+                    "MyOrder",
+                    "ContainedOrders/ContainedMyOrderLine",
+                    "ContainedOrders/MyOrderLine",
+                    "Orders/ContainedMyOrderLine",
+                    "Orders/MyOrderLine",
+                    "ContainedMyOrder/ContainedMyOrderLine",
+                    "ContainedMyOrder/MyOrderLine",
+                    "MyOrder/ContainedMyOrderLine",
+                    "MyOrder/MyOrderLine"
+                };
+                foreach (var path in navigationPropertyPaths)
+                {
+                    foreach (var enableAnnotation in new[] { true, false })
+                    {
+                        yield return new object[] { enableAnnotation, path };
+                    }
+                }
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CollectionNavigationPropertyData))]
+        public void CreatePathItemForNavigationPropertyAndInsertRestrictions(bool hasRestrictions, string navigationPropertyPath)
+        {
+            // Arrange
+            string annotation = String.Format(@"
+<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+  <Record>
+    <PropertyValue Property=""NonInsertableNavigationProperties"" >
+      <Collection>
+        <NavigationPropertyPath>{0}</NavigationPropertyPath>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>", navigationPropertyPath);
+
+            IEdmModel model = GetEdmModel(hasRestrictions ? annotation : "");
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+
+            ODataPath path = CreatePath(entitySet, navigationPropertyPath, false);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+
+            bool isContainment = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty.ContainsTarget;
+
+            OperationType[] expected;
+            if (!isContainment || hasRestrictions)
+            {
+                expected = new[] { OperationType.Get };
+            }
+            else
+            {
+                expected = new[] { OperationType.Get, OperationType.Post };
+            }
+
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+        }
+
+        [Theory]
+        [MemberData(nameof(CollectionNavigationPropertyData))]
+        [MemberData(nameof(SingleNavigationPropertyData))]
+        public void CreatePathItemForNavigationPropertyAndUpdateRestrictions(bool hasRestrictions, string navigationPropertyPath)
+        {
+            // Arrange
+            string annotation = String.Format(@"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+    <PropertyValue Property=""NonUpdatableNavigationProperties"" >
+      <Collection>
+        <NavigationPropertyPath>{0}</NavigationPropertyPath>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>", navigationPropertyPath);
+
+            IEdmModel model = GetEdmModel(hasRestrictions ? annotation : "");
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+
+            ODataPath path = CreatePath(entitySet, navigationPropertyPath, true);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+
+            bool isContainment = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty.ContainsTarget;
+
+            OperationType[] expected;
+            if (!isContainment || hasRestrictions)
+            {
+                expected = new[] { OperationType.Get };
+            }
+            else
+            {
+                expected = new[] { OperationType.Get, OperationType.Patch };
+            }
+
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+        }
+
         public static IEdmModel GetEdmModel(string annotation)
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
@@ -135,9 +284,22 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
           <PropertyRef Name=""ID"" />
         </Key>
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
-        <NavigationProperty Name=""DirectOrders"" Type=""Collection(NS.Order)"" />
+        <NavigationProperty Name=""ContainedOrders"" Type=""Collection(NS.Order)"" ContainsTarget=""true"" />
+        <NavigationProperty Name=""Orders"" Type=""Collection(NS.Order)"" />
+        <NavigationProperty Name=""ContainedMyOrder"" Type=""NS.Order"" Nullable=""false"" ContainsTarget=""true"" />
+        <NavigationProperty Name=""MyOrder"" Type=""NS.Order"" Nullable=""false"" />
       </EntityType>
       <EntityType Name=""Order"">
+        <Key>
+          <PropertyRef Name=""ID"" />
+        </Key>
+        <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+        <NavigationProperty Name=""ContainedOrderLines"" Type=""Collection(NS.OrderLine)"" ContainsTarget=""true"" />
+        <NavigationProperty Name=""OrderLines"" Type=""Collection(NS.OrderLine)"" />
+        <NavigationProperty Name=""ContainedMyOrderLine"" Type=""NS.OrderLine"" Nullable=""false"" ContainsTarget=""true"" />
+        <NavigationProperty Name=""MyOrderLine"" Type=""NS.OrderLine"" Nullable=""false"" />
+      </EntityType>
+      <EntityType Name=""OrderLine"">
         <Key>
           <PropertyRef Name=""ID"" />
         </Key>
@@ -153,6 +315,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
+
             string modelText = string.Format(template, annotation);
 
             IEdmModel model;
@@ -161,6 +324,46 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out model, out errors);
             Assert.True(result);
             return model;
+        }
+
+        private static ODataPath CreatePath(IEdmNavigationSource navigationSource, string navigationPropertyPath, bool single)
+        {
+            Assert.NotNull(navigationSource);
+            Assert.NotNull(navigationPropertyPath);
+
+            IEdmEntityType previousEntityType = navigationSource.EntityType();
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(navigationSource), new ODataKeySegment(previousEntityType));
+
+            string[] npPaths = navigationPropertyPath.Split('/');
+
+            IEdmNavigationProperty previousProperty = null;
+            foreach (string npPath in npPaths)
+            {
+                IEdmNavigationProperty property = previousEntityType.DeclaredNavigationProperties().FirstOrDefault(p => p.Name == npPath);
+                Assert.NotNull(property);
+
+                if (previousProperty != null)
+                {
+                    if (previousProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+                        path.Push(new ODataKeySegment(previousProperty.ToEntityType()));
+                    }
+                }
+
+                path.Push(new ODataNavigationPropertySegment(property));
+                previousProperty = property;
+                previousEntityType = property.ToEntityType();
+            }
+
+            if (single)
+            {
+                if (previousProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    path.Push(new ODataKeySegment(previousProperty.ToEntityType()));
+                }
+            }
+
+            return path;
         }
     }
 }
