@@ -182,7 +182,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Format = "decimal";
                     break;
                 case EdmPrimitiveTypeKind.Double: // double
-                    schema.OneOf = new List<OpenApiSchema>
+                    schema.AnyOf = new List<OpenApiSchema>
                     {
                         new OpenApiSchema { Type = "number" },
                         new OpenApiSchema { Type = "string" },
@@ -199,7 +199,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Format = "double";
                     break;
                 case EdmPrimitiveTypeKind.Single: // single
-                    schema.OneOf = new List<OpenApiSchema>
+                    schema.AnyOf = new List<OpenApiSchema>
                     {
                         new OpenApiSchema { Type = "number" },
                         new OpenApiSchema { Type = "string" },

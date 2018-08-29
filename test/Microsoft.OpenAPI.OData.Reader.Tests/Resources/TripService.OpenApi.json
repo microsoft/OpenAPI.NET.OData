@@ -1941,7 +1941,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "oneOf": [
+              "anyOf": [
                 {
                   "type": "number"
                 },
@@ -1964,7 +1964,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "oneOf": [
+              "anyOf": [
                 {
                   "type": "number"
                 },
@@ -2335,7 +2335,7 @@
             "nullable": true
           },
           "Budget": {
-            "oneOf": [
+            "anyOf": [
               {
                 "type": "number"
               },

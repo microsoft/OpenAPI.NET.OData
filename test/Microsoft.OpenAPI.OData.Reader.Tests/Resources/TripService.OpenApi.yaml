@@ -1294,7 +1294,7 @@ paths:
           in: path
           required: true
           schema:
-            oneOf:
+            anyOf:
               - type: number
               - type: string
               - enum:
@@ -1306,7 +1306,7 @@ paths:
           in: path
           required: true
           schema:
-            oneOf:
+            anyOf:
               - type: number
               - type: string
               - enum:
@@ -1532,7 +1532,7 @@ components:
           type: string
           nullable: true
         Budget:
-          oneOf:
+          anyOf:
             - type: number
             - type: string
             - enum:

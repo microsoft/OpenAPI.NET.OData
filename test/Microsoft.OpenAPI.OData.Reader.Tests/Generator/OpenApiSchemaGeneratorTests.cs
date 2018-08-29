@@ -536,7 +536,7 @@ namespace Microsoft.OpenApi.OData.Tests
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal(@"{
-  ""oneOf"": [
+  ""anyOf"": [
     {
       ""type"": ""number""
     },

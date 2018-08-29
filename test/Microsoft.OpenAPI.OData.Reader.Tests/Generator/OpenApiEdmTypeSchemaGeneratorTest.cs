@@ -448,8 +448,10 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("double", schema.Format);
             Assert.Equal(isNullable, schema.Nullable);
 
-            Assert.NotNull(schema.OneOf);
-            Assert.Equal(3, schema.OneOf.Count);
+            Assert.Null(schema.OneOf);
+
+            Assert.NotNull(schema.AnyOf);
+            Assert.Equal(3, schema.AnyOf.Count);
         }
 
         [Theory]
@@ -472,8 +474,10 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("float", schema.Format);
             Assert.Equal(isNullable, schema.Nullable);
 
-            Assert.NotNull(schema.OneOf);
-            Assert.Equal(3, schema.OneOf.Count);
+            Assert.Null(schema.OneOf);
+
+            Assert.NotNull(schema.AnyOf);
+            Assert.Equal(3, schema.AnyOf.Count);
         }
         #endregion
     }
