@@ -35,7 +35,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             IDictionary<string, OpenApiSecurityScheme> securitySchemes = new Dictionary<string, OpenApiSecurityScheme>();
-            var authorizations = context.AuthorizationProvider.GetAuthorizations(context.Model, context.EntityContainer);
+            var authorizations = context.GetAuthorizations(context.EntityContainer);
             foreach (var authorization in authorizations)
             {
                 OpenApiSecurityScheme scheme = new OpenApiSecurityScheme

@@ -9,7 +9,6 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Abstractions;
 using Microsoft.OpenApi.OData.Annotations;
 using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Capabilities;
@@ -30,6 +29,7 @@ namespace Microsoft.OpenApi.OData.Edm
         private IList<OpenApiTag> _tags = new List<OpenApiTag>();
         private ODataPathHandler _pathHandler;
         public HttpRequestProvider _httpRequestProvider;
+        public AuthorizationProvider _authorizationProvider;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Edm
             OperationHanderProvider = new OperationHandlerProvider();
             PathItemHanderProvider = new PathItemHandlerProvider();
 
-            AuthorizationProvider = new AuthorizationProvider();
+            _authorizationProvider = new AuthorizationProvider(model);
             _httpRequestProvider = new HttpRequestProvider(model);
 
             if (settings.EnableKeyAsSegment != null)
@@ -84,11 +84,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public IPathItemHandlerProvider PathItemHanderProvider { get; }
 
         public IOperationHandlerProvider OperationHanderProvider { get; }
-
-        /// <summary>
-        /// Gets the <see cref="IAuthorizationProvider"/> to provider the authorization.
-        /// </summary>
-        public AuthorizationProvider AuthorizationProvider { get; }
 
         /// <summary>
         /// Gets the Edm model.
@@ -151,6 +146,16 @@ namespace Microsoft.OpenApi.OData.Edm
         public HttpRequest FindRequest(IEdmVocabularyAnnotatable target, string method)
         {
             return _httpRequestProvider?.GetHttpRequest(target, method);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="Authorization"/> collections for a given target in the given Edm model.
+        /// </summary>
+        /// <param name="target">The Edm target.</param>
+        /// <returns>The <see cref="Authorization"/> collections.</returns>
+        public IEnumerable<Authorization> GetAuthorizations(IEdmVocabularyAnnotatable target)
+        {
+            return _authorizationProvider?.GetAuthorizations(target);
         }
 
         /// <summary>

@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using Microsoft.OpenApi.OData.Abstractions;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -99,7 +98,5 @@ namespace Microsoft.OpenApi.OData
         /// otherwise keep number without quotes.
         /// </summary>
         public bool IEEE754Compatible { get; set; }
-
-        public IAuthorizationProvider AuthorizationProvider { get; set; }
     }
 }

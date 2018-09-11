@@ -20,11 +20,10 @@ namespace Microsoft.OpenApi.OData.Reader.Authorizations.Tests
     public class AuthorizationProviderTest
     {
         [Fact]
-        public void GetAuthorizationsThrowArgumentNullModel()
+        public void CtroThrowArgumentNullModel()
         {
             // Arrange & Act & Assert
-            Assert.Throws<ArgumentNullException>("model",
-                () => new AuthorizationProvider().GetAuthorizations(model: null, target: null));
+            Assert.Throws<ArgumentNullException>("model", () => new AuthorizationProvider(model: null));
         }
 
         [Fact]
@@ -32,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Reader.Authorizations.Tests
         {
             // Arrange & Act & Assert
             Assert.Throws<ArgumentNullException>("target",
-                () => new AuthorizationProvider().GetAuthorizations(model: new EdmModel(), target: null));
+                () => new AuthorizationProvider(EdmCoreModel.Instance).GetAuthorizations(target: null));
         }
 
         [Fact]
@@ -42,10 +41,10 @@ namespace Microsoft.OpenApi.OData.Reader.Authorizations.Tests
             EdmModel model = new EdmModel();
             EdmEntityContainer container = new EdmEntityContainer("NS", "Container");
             model.AddElement(container);
-            AuthorizationProvider provider = new AuthorizationProvider();
+            AuthorizationProvider provider = new AuthorizationProvider(model);
 
             // Act & Assert
-            var authorizations = provider.GetAuthorizations(model, container);
+            var authorizations = provider.GetAuthorizations(container);
 
             // Assert
             Assert.Empty(authorizations);
@@ -60,10 +59,10 @@ namespace Microsoft.OpenApi.OData.Reader.Authorizations.Tests
             IEdmModel model = GetEdmModel();
             IEdmNavigationSource navigationSource = model.FindDeclaredNavigationSource(name);
             Assert.NotNull(navigationSource);
-            AuthorizationProvider provider = new AuthorizationProvider();
+            AuthorizationProvider provider = new AuthorizationProvider(model);
 
             // Act
-            var authorizations = provider.GetAuthorizations(model, navigationSource as IEdmVocabularyAnnotatable);
+            var authorizations = provider.GetAuthorizations(navigationSource as IEdmVocabularyAnnotatable);
 
             // Assert
             Assert.NotEmpty(authorizations);

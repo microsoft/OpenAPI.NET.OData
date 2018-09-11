@@ -4,9 +4,9 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
-using Microsoft.OpenApi.OData.Abstractions;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -18,16 +18,57 @@ namespace Microsoft.OpenApi.OData.Authorizations
     internal class AuthorizationProvider
     {
         /// <summary>
-        /// Gets the <see cref="IAuthorization"/> collections for a given target in the given Edm model.
+        /// Annotatable: EntitySet Singleton ActionImport FunctionImport Action Function
+        /// Collection(Core.HttpRequest)
         /// </summary>
-        /// <returns>The <see cref="IAuthorization"/> collections.</returns>
-        public virtual IEnumerable<Authorization> GetAuthorizations(IEdmModel model, IEdmVocabularyAnnotatable target)
+        private IDictionary<IEdmVocabularyAnnotatable, IEnumerable<Authorization>> _authorizations
+            = new Dictionary<IEdmVocabularyAnnotatable, IEnumerable<Authorization>>();
+
+        /// <summary>
+        /// Gets the Edm model.
+        /// </summary>
+        public IEdmModel Model { get; }
+
+        /// <summary>
+        /// Gets the Edm Term.
+        /// </summary>
+        public IEdmTerm Term { get; }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="AuthorizationProvider"/> class.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        public AuthorizationProvider(IEdmModel model)
         {
             Utils.CheckArgumentNull(model, nameof(model));
+
+            Term = model.FindTerm(AuthorizationConstants.Authorizations);
+
+            Model = model;
+        }
+
+        /// <summary>
+        /// Gets the <see cref="Authorization"/> collections for a given target in the given Edm model.
+        /// </summary>
+        /// <param name="target">The Edm target.</param>
+        /// <returns>The <see cref="Authorization"/> collections.</returns>
+        public virtual IEnumerable<Authorization> GetAuthorizations(IEdmVocabularyAnnotatable target)
+        {
             Utils.CheckArgumentNull(target, nameof(target));
 
-            // Retrieve it every time when it needed. Don't want to cache the result.
-            return RetrieveAuthorizations(model, target);
+            if (_authorizations.TryGetValue(target, out IEnumerable<Authorization> value))
+            {
+                return value;
+            }
+
+            if (Term == null)
+            {
+                return Enumerable.Empty<Authorization>();
+            }
+
+            value = RetrieveAuthorizations(target);
+            _authorizations[target] = value;
+            return value;
         }
 
         /// <summary>
@@ -35,9 +76,9 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// </summary>
         /// <param name="record">The input record.</param>
         /// <returns>The created <see cref="Authorization"/> object.</returns>
-        private IEnumerable<Authorization> RetrieveAuthorizations(IEdmModel model, IEdmVocabularyAnnotatable target)
+        private IEnumerable<Authorization> RetrieveAuthorizations(IEdmVocabularyAnnotatable target)
         {
-            IEdmVocabularyAnnotation annotation = model.GetVocabularyAnnotation(target, AuthorizationConstants.Authorizations);
+            IEdmVocabularyAnnotation annotation = Model.GetVocabularyAnnotation(target, Term);
             if (annotation != null && annotation.Value != null && annotation.Value.ExpressionKind == EdmExpressionKind.Collection)
             {
                 IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;

@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Annotations
             = new Dictionary<IEdmVocabularyAnnotatable, IList<HttpRequest>>();
 
         /// <summary>
-        /// Gets the Edm mode.
+        /// Gets the Edm model.
         /// </summary>
         public IEdmModel Model { get; }
 
@@ -101,15 +101,6 @@ namespace Microsoft.OpenApi.OData.Annotations
             {
                 _requests[target] = null;
                 return null;
-            }
-
-            if (target is IEdmEntitySet)
-            {
-                IEdmEntitySet entitySet = target as IEdmEntitySet;
-                if (entitySet.Name == "domains")
-                {
-                    int pp = 0;
-                }
             }
 
             IEdmCollectionExpression collection = (IEdmCollectionExpression)annotation.Value;
