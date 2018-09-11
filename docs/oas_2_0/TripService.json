@@ -6,7 +6,6 @@
     "version": "1.0.1"
   },
   "host": "localhost",
-  "basePath": "/",
   "schemes": [
     "http"
   ],
@@ -14,10 +13,10 @@
     "/People": {
       "get": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Get entities from People",
-        "operationId": "GetEntitiesFromPeople",
+        "operationId": "People.Person.ListPerson",
         "produces": [
           "application/json"
         ],
@@ -38,8 +37,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -71,8 +70,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -87,14 +86,17 @@
                 "AddressInfo",
                 "HomeAddress",
                 "FavoriteFeature",
-                "Features"
+                "Features",
+                "Friends",
+                "BestFriend",
+                "Trips"
               ],
               "type": "string"
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -127,14 +129,15 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Add new entity to People",
-        "operationId": "AddEntityToPeople",
+        "operationId": "People.Person.CreatePerson",
         "consumes": [
           "application/json"
         ],
@@ -143,9 +146,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -161,30 +165,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
-    "/People('{UserName}')": {
+    "/People({UserName})": {
       "get": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Get entity from People by key",
-        "operationId": "GetEntityFromPeopleByKey",
+        "operationId": "People.Person.GetPerson",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -199,14 +205,17 @@
                 "AddressInfo",
                 "HomeAddress",
                 "FavoriteFeature",
-                "Features"
+                "Features",
+                "Friends",
+                "BestFriend",
+                "Trips"
               ],
               "type": "string"
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -230,29 +239,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Update entity in People",
-        "operationId": "UpdateEntityInPeople",
+        "operationId": "People.Person.UpdatePerson",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -265,25 +277,27 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
-          "People"
+          "People.Person"
         ],
         "summary": "Delete entity from People",
-        "operationId": "DeleteEntityFromPeople",
+        "operationId": "People.Person.DeletePerson",
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -295,26 +309,28 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+    "/People({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
-          "People"
+          "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "InvokeGetFavoriteAirline",
+        "operationId": "People.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           }
         ],
         "responses": {
@@ -325,24 +341,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+    "/People({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
         "tags": [
-          "People"
+          "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "InvokeGetFriendsTrips",
+        "operationId": "People.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "in": "path",
+            "name": "userName",
             "required": true,
             "type": "string"
           }
@@ -358,24 +382,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+    "/People({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
-          "People"
+          "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "InvokeUpdatePersonLastName",
+        "operationId": "People.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -391,31 +423,34 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
-    "/People('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+    "/People({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
-          "People"
+          "People.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "InvokeShareTrip",
+        "operationId": "People.Person.ShareTrip",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -439,16 +474,17 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/Airlines": {
       "get": {
         "tags": [
-          "Airlines"
+          "Airlines.Airline"
         ],
         "summary": "Get entities from Airlines",
-        "operationId": "GetEntitiesFromAirlines",
+        "operationId": "Airlines.Airline.ListAirline",
         "produces": [
           "application/json"
         ],
@@ -469,8 +505,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -484,8 +520,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -497,8 +533,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -528,14 +564,15 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
-          "Airlines"
+          "Airlines.Airline"
         ],
         "summary": "Add new entity to Airlines",
-        "operationId": "AddEntityToAirlines",
+        "operationId": "Airlines.Airline.CreateAirline",
         "consumes": [
           "application/json"
         ],
@@ -544,9 +581,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
             }
@@ -562,30 +600,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
-    "/Airlines('{AirlineCode}')": {
+    "/Airlines({AirlineCode})": {
       "get": {
         "tags": [
-          "Airlines"
+          "Airlines.Airline"
         ],
         "summary": "Get entity from Airlines by key",
-        "operationId": "GetEntityFromAirlinesByKey",
+        "operationId": "Airlines.Airline.GetAirline",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "AirlineCode",
             "in": "path",
+            "name": "AirlineCode",
             "description": "key: AirlineCode",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Airline"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -597,8 +637,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -619,29 +659,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
-          "Airlines"
+          "Airlines.Airline"
         ],
         "summary": "Update entity in Airlines",
-        "operationId": "UpdateEntityInAirlines",
+        "operationId": "Airlines.Airline.UpdateAirline",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "AirlineCode",
             "in": "path",
+            "name": "AirlineCode",
             "description": "key: AirlineCode",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Airline"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
             }
@@ -654,25 +697,27 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
-          "Airlines"
+          "Airlines.Airline"
         ],
         "summary": "Delete entity from Airlines",
-        "operationId": "DeleteEntityFromAirlines",
+        "operationId": "Airlines.Airline.DeleteAirline",
         "parameters": [
           {
-            "name": "AirlineCode",
             "in": "path",
+            "name": "AirlineCode",
             "description": "key: AirlineCode",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Airline"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -684,16 +729,17 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Airports": {
       "get": {
         "tags": [
-          "Airports"
+          "Airports.Airport"
         ],
         "summary": "Get entities from Airports",
-        "operationId": "GetEntitiesFromAirports",
+        "operationId": "Airports.Airport.ListAirport",
         "produces": [
           "application/json"
         ],
@@ -714,8 +760,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -733,8 +779,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -748,8 +794,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -779,14 +825,15 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
-          "Airports"
+          "Airports.Airport"
         ],
         "summary": "Add new entity to Airports",
-        "operationId": "AddEntityToAirports",
+        "operationId": "Airports.Airport.CreateAirport",
         "consumes": [
           "application/json"
         ],
@@ -795,9 +842,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
             }
@@ -813,30 +861,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
-    "/Airports('{IcaoCode}')": {
+    "/Airports({IcaoCode})": {
       "get": {
         "tags": [
-          "Airports"
+          "Airports.Airport"
         ],
         "summary": "Get entity from Airports by key",
-        "operationId": "GetEntityFromAirportsByKey",
+        "operationId": "Airports.Airport.GetAirport",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "IcaoCode",
             "in": "path",
+            "name": "IcaoCode",
             "description": "key: IcaoCode",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Airport"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -850,8 +900,8 @@
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -872,29 +922,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
-          "Airports"
+          "Airports.Airport"
         ],
         "summary": "Update entity in Airports",
-        "operationId": "UpdateEntityInAirports",
+        "operationId": "Airports.Airport.UpdateAirport",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "IcaoCode",
             "in": "path",
+            "name": "IcaoCode",
             "description": "key: IcaoCode",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Airport"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
             }
@@ -907,25 +960,27 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
-          "Airports"
+          "Airports.Airport"
         ],
         "summary": "Delete entity from Airports",
-        "operationId": "DeleteEntityFromAirports",
+        "operationId": "Airports.Airport.DeleteAirport",
         "parameters": [
           {
-            "name": "IcaoCode",
             "in": "path",
+            "name": "IcaoCode",
             "description": "key: IcaoCode",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Airport"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -937,16 +992,17 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/NewComePeople": {
       "get": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Person"
         ],
         "summary": "Get entities from NewComePeople",
-        "operationId": "GetEntitiesFromNewComePeople",
+        "operationId": "NewComePeople.Person.ListPerson",
         "produces": [
           "application/json"
         ],
@@ -967,8 +1023,8 @@
             "$ref": "#/parameters/count"
           },
           {
-            "name": "$orderby",
             "in": "query",
+            "name": "$orderby",
             "description": "Order items by property values",
             "type": "array",
             "items": {
@@ -1000,8 +1056,8 @@
             }
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1016,14 +1072,17 @@
                 "AddressInfo",
                 "HomeAddress",
                 "FavoriteFeature",
-                "Features"
+                "Features",
+                "Friends",
+                "BestFriend",
+                "Trips"
               ],
               "type": "string"
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1056,14 +1115,15 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "post": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Person"
         ],
         "summary": "Add new entity to NewComePeople",
-        "operationId": "AddEntityToNewComePeople",
+        "operationId": "NewComePeople.Person.CreatePerson",
         "consumes": [
           "application/json"
         ],
@@ -1072,9 +1132,10 @@
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New entity",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1090,30 +1151,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
-    "/NewComePeople('{UserName}')": {
+    "/NewComePeople({UserName})": {
       "get": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Person"
         ],
         "summary": "Get entity from NewComePeople by key",
-        "operationId": "GetEntityFromNewComePeopleByKey",
+        "operationId": "NewComePeople.Person.GetPerson",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1128,14 +1191,17 @@
                 "AddressInfo",
                 "HomeAddress",
                 "FavoriteFeature",
-                "Features"
+                "Features",
+                "Friends",
+                "BestFriend",
+                "Trips"
               ],
               "type": "string"
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1159,29 +1225,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Person"
         ],
         "summary": "Update entity in NewComePeople",
-        "operationId": "UpdateEntityInNewComePeople",
+        "operationId": "NewComePeople.Person.UpdatePerson",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1194,25 +1263,27 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "delete": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Person"
         ],
         "summary": "Delete entity from NewComePeople",
-        "operationId": "DeleteEntityFromNewComePeople",
+        "operationId": "NewComePeople.Person.DeletePerson",
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "If-Match",
             "in": "header",
+            "name": "If-Match",
             "description": "ETag",
             "type": "string"
           }
@@ -1224,26 +1295,28 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+    "/NewComePeople({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "InvokeGetFavoriteAirline",
+        "operationId": "NewComePeople.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           }
         ],
         "responses": {
@@ -1254,24 +1327,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+    "/NewComePeople({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "InvokeGetFriendsTrips",
+        "operationId": "NewComePeople.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "in": "path",
+            "name": "userName",
             "required": true,
             "type": "string"
           }
@@ -1287,24 +1368,32 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+    "/NewComePeople({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "InvokeUpdatePersonLastName",
+        "operationId": "NewComePeople.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
+            "required": true,
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -1320,31 +1409,34 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
-    "/NewComePeople('{UserName}')/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+    "/NewComePeople({UserName})/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
-          "NewComePeople"
+          "NewComePeople.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "InvokeShareTrip",
+        "operationId": "NewComePeople.Person.ShareTrip",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "UserName",
             "in": "path",
+            "name": "UserName",
             "description": "key: UserName",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1368,23 +1460,24 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/Me": {
       "get": {
         "tags": [
-          "Me"
+          "Me.Person"
         ],
         "summary": "Get Me",
-        "operationId": "GetMe",
+        "operationId": "Me.Person.GetPerson",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "$select",
             "in": "query",
+            "name": "$select",
             "description": "Select properties to be returned",
             "type": "array",
             "items": {
@@ -1399,14 +1492,17 @@
                 "AddressInfo",
                 "HomeAddress",
                 "FavoriteFeature",
-                "Features"
+                "Features",
+                "Friends",
+                "BestFriend",
+                "Trips"
               ],
               "type": "string"
             }
           },
           {
-            "name": "$expand",
             "in": "query",
+            "name": "$expand",
             "description": "Expand related entities",
             "type": "array",
             "items": {
@@ -1430,22 +1526,24 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       },
       "patch": {
         "tags": [
-          "Me"
+          "Me.Person"
         ],
         "summary": "Update Me",
-        "operationId": "UpdateMe",
+        "operationId": "Me.Person.UpdatePerson",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "New property values",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
@@ -1458,16 +1556,17 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
-          "Me"
+          "Me.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "InvokeGetFavoriteAirline",
+        "operationId": "Me.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
         "produces": [
           "application/json"
         ],
@@ -1479,23 +1578,24 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
         "tags": [
-          "Me"
+          "Me.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "InvokeGetFriendsTrips",
+        "operationId": "Me.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "userName",
             "in": "path",
+            "name": "userName",
             "required": true,
             "type": "string"
           }
@@ -1511,23 +1611,24 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
-          "Me"
+          "Me.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "InvokeUpdatePersonLastName",
+        "operationId": "Me.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "lastName",
             "in": "path",
+            "name": "lastName",
             "required": true,
             "type": "string"
           }
@@ -1543,24 +1644,26 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "function"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
-          "Me"
+          "Me.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "InvokeShareTrip",
+        "operationId": "Me.Person.ShareTrip",
         "consumes": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
             "in": "body",
+            "name": "body",
             "description": "Action parameters",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
@@ -1584,7 +1687,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/GetPersonWithMostFriends()": {
@@ -1592,8 +1696,8 @@
         "tags": [
           "People"
         ],
-        "summary": "Invoke function GetPersonWithMostFriends",
-        "operationId": "InvokeGetPersonWithMostFriends",
+        "summary": "Invoke functionImport GetPersonWithMostFriends",
+        "operationId": "OperationImport.GetPersonWithMostFriends.de8b4a5ab51ba6c8c254fe80",
         "produces": [
           "application/json"
         ],
@@ -1605,7 +1709,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "functionImport"
       }
     },
     "/GetNearestAirport(lat={lat},lon={lon})": {
@@ -1613,21 +1718,21 @@
         "tags": [
           "Airports"
         ],
-        "summary": "Invoke function GetNearestAirport",
-        "operationId": "InvokeGetNearestAirport",
+        "summary": "Invoke functionImport GetNearestAirport",
+        "operationId": "OperationImport.GetNearestAirport.6896b1324a4eff76ad9867a0",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "lat",
             "in": "path",
+            "name": "lat",
             "required": true,
             "format": "double"
           },
           {
-            "name": "lon",
             "in": "path",
+            "name": "lon",
             "required": true,
             "format": "double"
           }
@@ -1640,13 +1745,17 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "functionImport"
       }
     },
     "/ResetDataSource": {
       "post": {
-        "summary": "Invoke action ResetDataSource",
-        "operationId": "InvokeResetDataSource",
+        "tags": [
+          "ResetDataSource"
+        ],
+        "summary": "Invoke actionImport ResetDataSource",
+        "operationId": "OperationImport.ResetDataSource",
         "responses": {
           "204": {
             "description": "Success"
@@ -1654,7 +1763,8 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "actionImport"
       }
     }
   },
@@ -1709,6 +1819,48 @@
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
           }
         }
+      },
+      "example": {
+        "UserName": "String (identifier)",
+        "FirstName": "String",
+        "LastName": "String",
+        "MiddleName": "String",
+        "Gender": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+        },
+        "Age": "Int64",
+        "Emails": [
+          "String"
+        ],
+        "AddressInfo": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          }
+        ],
+        "HomeAddress": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        "FavoriteFeature": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+        },
+        "Features": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          }
+        ],
+        "Friends": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          }
+        ],
+        "BestFriend": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+        },
+        "Trips": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+          }
+        ]
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
@@ -1721,6 +1873,10 @@
         "Name": {
           "type": "string"
         }
+      },
+      "example": {
+        "AirlineCode": "String (identifier)",
+        "Name": "String"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
@@ -1737,6 +1893,14 @@
           "type": "string"
         },
         "Location": { }
+      },
+      "example": {
+        "Name": "String",
+        "IcaoCode": "String (identifier)",
+        "IataCode": "String",
+        "Location": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
+        }
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
@@ -1747,6 +1911,12 @@
           "type": "string"
         },
         "City": { }
+      },
+      "example": {
+        "Address": "String",
+        "City": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+        }
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City": {
@@ -1762,6 +1932,11 @@
         "Region": {
           "type": "string"
         }
+      },
+      "example": {
+        "Name": "String",
+        "CountryRegion": "String",
+        "Region": "String"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
@@ -1778,7 +1953,14 @@
             }
           }
         }
-      ]
+      ],
+      "example": {
+        "Address": "String",
+        "City": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+        },
+        "Loc": "GeographyPoint"
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
       "allOf": [
@@ -1794,7 +1976,14 @@
             }
           }
         }
-      ]
+      ],
+      "example": {
+        "Address": "String",
+        "City": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+        },
+        "BuildingInfo": "String"
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
       "title": "Trip",
@@ -1842,6 +2031,23 @@
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
           }
         }
+      },
+      "example": {
+        "TripId": "Int32 (identifier)",
+        "ShareId": "Guid",
+        "Name": "String",
+        "Budget": "Single",
+        "Description": "String",
+        "Tags": [
+          "String"
+        ],
+        "StartsAt": "DateTimeOffset (timestamp)",
+        "EndsAt": "DateTimeOffset (timestamp)",
+        "PlanItems": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+          }
+        ]
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
@@ -1872,6 +2078,13 @@
           "pattern": "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$",
           "type": "string"
         }
+      },
+      "example": {
+        "PlanItemId": "Int32 (identifier)",
+        "ConfirmationCode": "String",
+        "StartsAt": "DateTimeOffset (timestamp)",
+        "EndsAt": "DateTimeOffset (timestamp)",
+        "Duration": "Duration"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
@@ -1889,7 +2102,18 @@
             }
           }
         }
-      ]
+      ],
+      "example": {
+        "PlanItemId": "Int32 (identifier)",
+        "ConfirmationCode": "String",
+        "StartsAt": "DateTimeOffset (timestamp)",
+        "EndsAt": "DateTimeOffset (timestamp)",
+        "Duration": "Duration",
+        "OccursAt": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+        },
+        "Description": "String"
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
       "allOf": [
@@ -1905,7 +2129,15 @@
             }
           }
         }
-      ]
+      ],
+      "example": {
+        "PlanItemId": "Int32 (identifier)",
+        "ConfirmationCode": "String",
+        "StartsAt": "DateTimeOffset (timestamp)",
+        "EndsAt": "DateTimeOffset (timestamp)",
+        "Duration": "Duration",
+        "SeatNumber": "String"
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
       "allOf": [
@@ -1924,7 +2156,25 @@
             "To": { }
           }
         }
-      ]
+      ],
+      "example": {
+        "PlanItemId": "Int32 (identifier)",
+        "ConfirmationCode": "String",
+        "StartsAt": "DateTimeOffset (timestamp)",
+        "EndsAt": "DateTimeOffset (timestamp)",
+        "Duration": "Duration",
+        "SeatNumber": "String",
+        "FlightNumber": "String",
+        "Airline": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+        },
+        "From": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+        },
+        "To": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+        }
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee": {
       "allOf": [
@@ -1947,7 +2197,55 @@
             }
           }
         }
-      ]
+      ],
+      "example": {
+        "UserName": "String (identifier)",
+        "FirstName": "String",
+        "LastName": "String",
+        "MiddleName": "String",
+        "Gender": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+        },
+        "Age": "Int64",
+        "Emails": [
+          "String"
+        ],
+        "AddressInfo": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          }
+        ],
+        "HomeAddress": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        "FavoriteFeature": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+        },
+        "Features": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          }
+        ],
+        "Friends": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          }
+        ],
+        "BestFriend": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+        },
+        "Trips": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+          }
+        ],
+        "Cost": "Int64",
+        "Peers": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          }
+        ]
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "allOf": [
@@ -1971,7 +2269,58 @@
             }
           }
         }
-      ]
+      ],
+      "example": {
+        "UserName": "String (identifier)",
+        "FirstName": "String",
+        "LastName": "String",
+        "MiddleName": "String",
+        "Gender": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+        },
+        "Age": "Int64",
+        "Emails": [
+          "String"
+        ],
+        "AddressInfo": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          }
+        ],
+        "HomeAddress": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        "FavoriteFeature": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+        },
+        "Features": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          }
+        ],
+        "Friends": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          }
+        ],
+        "BestFriend": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+        },
+        "Trips": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+          }
+        ],
+        "Budget": "Int64",
+        "BossOffice": {
+          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+        },
+        "DirectReports": [
+          {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          }
+        ]
+      }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender": {
       "title": "PersonGender",
@@ -2241,34 +2590,34 @@
   },
   "parameters": {
     "top": {
-      "name": "$top",
       "in": "query",
+      "name": "$top",
       "description": "Show only the first n items",
       "type": "integer",
       "minimum": 0
     },
     "skip": {
-      "name": "$skip",
       "in": "query",
+      "name": "$skip",
       "description": "Skip the first n items",
       "type": "integer",
       "minimum": 0
     },
     "count": {
-      "name": "$count",
       "in": "query",
+      "name": "$count",
       "description": "Include count of items",
       "type": "boolean"
     },
     "filter": {
-      "name": "$filter",
       "in": "query",
+      "name": "$filter",
       "description": "Filter items by property values",
       "type": "string"
     },
     "search": {
-      "name": "$search",
       "in": "query",
+      "name": "$search",
       "description": "Search items by search phrases",
       "type": "string"
     }
@@ -2283,22 +2632,60 @@
   },
   "tags": [
     {
-      "name": "People"
+      "name": "People.Person",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Airlines"
+      "name": "People.Functions",
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "Airports"
+      "name": "People.Actions",
+      "x-ms-docs-toc-type": "container"
     },
     {
-      "name": "NewComePeople"
+      "name": "Airlines.Airline",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "Me"
+      "name": "Airports.Airport",
+      "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "ResetDataSource"
+      "name": "NewComePeople.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "NewComePeople.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "NewComePeople.Actions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "Me.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "Me.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "Me.Actions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "People",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "Airports",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "ResetDataSource",
+      "x-ms-docs-toc-type": "container"
     }
   ]
 }

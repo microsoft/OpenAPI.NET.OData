@@ -109,9 +109,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 operation.Parameters.Add(parameter);
             }
-
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            AppendCustomParameters(operation, request);
         }
 
         /// <inheritdoc/>

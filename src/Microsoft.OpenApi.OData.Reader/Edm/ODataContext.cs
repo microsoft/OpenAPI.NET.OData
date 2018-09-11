@@ -29,6 +29,7 @@ namespace Microsoft.OpenApi.OData.Edm
         private bool _keyAsSegmentSupported = false;
         private IList<OpenApiTag> _tags = new List<OpenApiTag>();
         private ODataPathHandler _pathHandler;
+        public HttpRequestProvider _httpRequestProvider;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -53,13 +54,13 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-
             _pathHandler = new ODataPathHandler(this);
 
             OperationHanderProvider = new OperationHandlerProvider();
             PathItemHanderProvider = new PathItemHandlerProvider();
 
             AuthorizationProvider = new AuthorizationProvider();
+            _httpRequestProvider = new HttpRequestProvider(model);
 
             if (settings.EnableKeyAsSegment != null)
             {
@@ -88,8 +89,6 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Gets the <see cref="IAuthorizationProvider"/> to provider the authorization.
         /// </summary>
         public AuthorizationProvider AuthorizationProvider { get; }
-
-        //public CapabilitiesProvider CapabilitiesProvider { get; }
 
         /// <summary>
         /// Gets the Edm model.
@@ -144,6 +143,17 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Find the Org.OData.Core.V1.HttpRequest for a given target.
+        /// </summary>
+        /// <param name="target">The target.</param>
+        /// <param name="method">The method name.</param>
+        /// <returns>The <see cref="HttpRequest"/> or null.</returns>
+        public HttpRequest FindRequest(IEdmVocabularyAnnotatable target, string method)
+        {
+            return _httpRequestProvider?.GetHttpRequest(target, method);
+        }
+
+        /// <summary>
         /// Finds the operations using the <see cref="IEdmEntityType"/>
         /// </summary>
         /// <param name="model">The Edm model.</param>
@@ -187,24 +197,6 @@ namespace Microsoft.OpenApi.OData.Edm
             }
         }
 
-        private IDictionary<IEdmVocabularyAnnotatable, HttpRequestsAnnotation> _requests;
-
-        public HttpRequest FindRequest(IEdmVocabularyAnnotatable target, string method)
-        {
-            if (_requests == null)
-            {
-                _requests = new Dictionary<IEdmVocabularyAnnotatable, HttpRequestsAnnotation>();
-            }
-
-            if (!_requests.TryGetValue(target, out HttpRequestsAnnotation value))
-            {
-                value = new HttpRequestsAnnotation(Model, target);
-                _requests.Add(target, value);
-            }
-
-            return value.GetRequest(method);
-        }
-
         private void GenerateBoundOperations()
         {
             if (_boundOperations != null)
@@ -235,21 +227,6 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
             _tags.Add(tagItem);
-        }
-
-        private IDictionary<string, int> _cached1 = new Dictionary<string, int>();
-        public int GetIndex(string source)
-        {
-            if (_cached1.TryGetValue(source, out int value))
-            {
-                _cached1[source]++;
-                return _cached1[source];
-            }
-            else
-            {
-                _cached1[source] = 0;
-                return 0;
-            }
         }
     }
 }

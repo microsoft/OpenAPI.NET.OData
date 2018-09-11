@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm;
@@ -29,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Get entity from " + EntitySet.Name + " by key";
 
             // override the summary using the request.Description.
-            var request = Context.FindRequest(EntitySet.EntityType(), OperationType.ToString());
+            var request = Context.FindRequest(EntitySet, OperationType.ToString());
             if (request != null && request.Description != null)
             {
                 operation.Summary = request.Description;
@@ -61,9 +60,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 operation.Parameters.Add(parameter);
             }
-
-            var request = Context.FindRequest(EntitySet.EntityType(), OperationType.ToString());
-            AppendCustomParameters(operation, request);
         }
 
         /// <inheritdoc/>
@@ -98,16 +94,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
-        }
-
-        /// <inheritdoc/>
-        protected override void SetSecurity(OpenApiOperation operation)
-        {
-            var request = Context.FindRequest(EntitySet.EntityType(), OperationType.ToString());
-            if (request != null)
-            {
-                operation.Security = Context.CreateSecurityRequirements(request.SecuritySchemes).ToList();
-            }
         }
     }
 }

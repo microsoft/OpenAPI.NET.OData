@@ -169,7 +169,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Description = param.Description,
                     Schema = new OpenApiSchema
                     {
-                        // Type = param.Type
+                        Type = "string"
                     },
                     Required = param.Required ?? false
                 };

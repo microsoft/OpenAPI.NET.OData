@@ -3,11 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -44,6 +46,30 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetSecurity(OpenApiOperation operation)
+        {
+            base.SetSecurity(operation);
+
+            var request = Context.FindRequest(Singleton, OperationType.ToString());
+            if (request != null)
+            {
+                operation.Security = Context.CreateSecurityRequirements(request.SecuritySchemes).ToList();
+            }
+        }
+
+        /// <inheritdoc/>
+        protected override void SetParameters(OpenApiOperation operation)
+        {
+            base.SetParameters(operation);
+
+            var request = Context.FindRequest(Singleton, OperationType.ToString());
+            if (request != null)
+            {
+                AppendCustomParameters(operation, request);
+            }
         }
     }
 }

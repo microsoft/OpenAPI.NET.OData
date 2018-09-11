@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Summary
             operation.Summary = "Update entity in " + EntitySet.Name;
             // override the summary using the request.Description.
-            var request = Context.FindRequest(EntitySet.EntityType(), OperationType.ToString());
+            var request = Context.FindRequest(EntitySet, OperationType.ToString());
             if (request != null && request.Description != null)
             {
                 operation.Summary = request.Description;

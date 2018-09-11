@@ -20,6 +20,10 @@ namespace UpdateDocs
     {
         static int Main(string[] args)
         {
+            if (!Test())
+            {
+                return 0;
+            }
             // we assume the path are existed for simplicity.
             string path = Directory.GetCurrentDirectory();
             string csdl = path + "../../../../../../docs/csdl";
@@ -73,6 +77,15 @@ namespace UpdateDocs
 
             Console.WriteLine("\n==> All Done!");
             return 0;
+        }
+
+        public static bool Test()
+        {
+            var model = LoadEdmModel(@"E:\work\OpenApi\metadata_withRequestTerms.xml");
+            OpenApiDocument document = model.ConvertToOpenApi();
+            string output = @"E:\work\OpenApi\metadata_withRequestTerms.json";
+            File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            return false;
         }
 
         public static IEdmModel LoadEdmModel(string file)

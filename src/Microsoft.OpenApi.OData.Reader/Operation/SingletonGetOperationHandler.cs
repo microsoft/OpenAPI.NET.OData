@@ -60,9 +60,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 operation.Parameters.Add(parameter);
             }
-
-            var request = Context.FindRequest(Singleton, OperationType.ToString());
-            AppendCustomParameters(operation, request);
         }
 
         /// <inheritdoc/>

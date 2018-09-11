@@ -39,9 +39,6 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.OperationId)
             {
-                string key = "OperationImport." + EdmOperationImport.Name;
-                operation.OperationId += "OperationImport." + Context.GetIndex(key) + "-" + Utils.UpperFirstChar(EdmOperationImport.Name);
-
                 if (EdmOperationImport.IsActionImport())
                 {
                     operation.OperationId = "OperationImport." + EdmOperationImport.Name;
