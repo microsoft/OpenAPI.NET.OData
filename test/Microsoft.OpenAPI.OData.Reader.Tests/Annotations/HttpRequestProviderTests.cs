@@ -14,7 +14,7 @@ using Xunit;
 
 namespace Microsoft.OpenApi.OData.Reader.Annotations.Tests
 {
-    public class HttpRequestProviderTest
+    public class HttpRequestProviderTests
     {
         [Fact]
         public void CtorThrowArgumentNullModel()

@@ -303,7 +303,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
 
-            return context.CreateOrderBy(navigationProperty, navigationProperty.DeclaringEntityType());
+            return context.CreateOrderBy(navigationProperty, navigationProperty.ToEntityType());
         }
 
         /// <summary>
@@ -391,7 +391,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
 
-            return context.CreateSelect(navigationProperty, navigationProperty.DeclaringEntityType());
+            return context.CreateSelect(navigationProperty, navigationProperty.ToEntityType());
         }
 
         // <summary>
@@ -468,7 +468,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(navigationProperty, nameof(navigationProperty));
 
-            return context.CreateExpand(navigationProperty, navigationProperty.DeclaringEntityType());
+            return context.CreateExpand(navigationProperty, navigationProperty.ToEntityType());
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Microsoft.OpenApi.OData.Reader.Authorizations.Tests
 {
-    public class AuthorizationProviderTest
+    public class AuthorizationProviderTests
     {
         [Fact]
         public void CtroThrowArgumentNullModel()

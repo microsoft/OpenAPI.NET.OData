@@ -55,12 +55,12 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/set a value indicating whether to output the path for Edm navigation property.
         /// </summary>
-        public bool EnableNavigationPropertyPath { get; set; }
+        public bool EnableNavigationPropertyPath { get; set; } = true;
 
         /// <summary>
         /// Gets/set a value indicating the navigation property depth.
         /// </summary>
-        public int NavigationPropertyDepth { get; set; } = 0;
+        public int NavigationPropertyDepth { get; set; } = 2;
 
         /// <summary>
         /// Gets/set a value indicating the tags name depth.
