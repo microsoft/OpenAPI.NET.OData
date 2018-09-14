@@ -160,6 +160,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 Segments = new List<ODataSegment>();
             }
 
+            _pathKind = null;
             Segments.Add(segment);
             return this;
         }
@@ -176,6 +177,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 throw Error.InvalidOperation(SRResource.ODataPathPopInvalid);
             }
 
+            _pathKind = null;
             Segments.RemoveAt(Segments.Count - 1);
             return this;
         }

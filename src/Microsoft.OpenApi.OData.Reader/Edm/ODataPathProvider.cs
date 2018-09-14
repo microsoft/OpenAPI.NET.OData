@@ -3,109 +3,71 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
     /// <summary>
-    /// Helper class for <see cref="ODataPath"/> generating.
+    /// Provide class for <see cref="ODataPath"/> generating.
     /// </summary>
-    internal class ODataPathHandler
+    public class ODataPathProvider
     {
-        private IList<ODataPath> _paths = null;
-
         /// <summary>
-        /// Gets the OData Context
+        /// Generate the list of <see cref="ODataPath"/> with the given <see cref="IEdmModel"/>.
         /// </summary>
-        public ODataContext Context { get; }
-
-        /// <summary>
-        /// Gets the <see cref="ODataPath"/>s.
-        /// </summary>
-        public IList<ODataPath> Paths => GeneratePaths();
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="ODataPathHandler"/> class.
-        /// </summary>
-        /// <param name="context">The OData context.</param>
-        public ODataPathHandler(ODataContext context)
+        /// <param name="model">The given Edm model.</param>
+        /// <returns>The collection of build <see cref="ODataPath"/>.</returns>
+        public static IEnumerable<ODataPath> CreatePaths(IEdmModel model)
         {
-            Context = context ?? throw Error.ArgumentNull(nameof(context));
-        }
-
-        /// <summary>
-        /// Generate the <see cref="ODataPath"/> from <see cref="IEdmModel"/> and <see cref="OpenApiConvertSettings"/>.
-        /// </summary>
-        /// <returns>The generated paths.</returns>
-        private IList<ODataPath> GeneratePaths()
-        {
-            if (_paths != null)
+            if (model == null || model.EntityContainer == null)
             {
-                return _paths;
+                return Enumerable.Empty<ODataPath>();
             }
 
-            _paths = new List<ODataPath>();
-            if (Context.Model.EntityContainer == null)
-            {
-                return _paths;
-            }
+            IList<ODataPath> paths = new List<ODataPath>();
 
             // entity set
-            foreach (IEdmEntitySet entitySet in Context.Model.EntityContainer.EntitySets())
+            foreach (IEdmEntitySet entitySet in model.EntityContainer.EntitySets())
             {
-                RetrieveNavigationSourcePaths(entitySet);
-
-                if (Context.Settings.EnableOperationPath)
-                {
-               //     RetrieveOperationPaths(entitySet);
-                }
+                RetrieveNavigationSourcePaths(model, entitySet, paths);
             }
 
             // singleton
-            foreach (IEdmSingleton singleton in Context.Model.EntityContainer.Singletons())
+            foreach (IEdmSingleton singleton in model.EntityContainer.Singletons())
             {
-                RetrieveNavigationSourcePaths(singleton);
-
-                if (Context.Settings.EnableOperationPath)
-                {
-                //    RetrieveOperationPaths(singleton);
-                }
+                RetrieveNavigationSourcePaths(model, singleton, paths);
             }
 
-            if (Context.Settings.EnableOperationPath)
+            // bound operations
+            RetrieveBoundOperationPaths(model, paths);
+
+            // unbound operations
+            foreach (IEdmOperationImport import in model.EntityContainer.OperationImports())
             {
-                ProcessOperations();
+                paths.Add(new ODataPath(new ODataOperationImportSegment(import)));
             }
 
-            // operation import
-            if (Context.Settings.EnableOperationImportPath)
-            {
-                foreach (IEdmOperationImport import in Context.Model.EntityContainer.OperationImports())
-                {
-                    _paths.Add(new ODataPath(new ODataOperationImportSegment(import)));
-                }
-            }
-
-            return _paths;
+            return paths;
         }
 
         /// <summary>
-        /// Retrieve the path for <see cref="IEdmNavigationSource"/>.
+        /// Retrieve the paths for <see cref="IEdmNavigationSource"/>.
         /// </summary>
+        /// <param name="model">The Edm model.</param>
         /// <param name="navigationSource">The navigation source.</param>
-        private void RetrieveNavigationSourcePaths(IEdmNavigationSource navigationSource)
+        /// <param name="paths">The existing paths.</param>
+        private static void RetrieveNavigationSourcePaths(IEdmModel model, IEdmNavigationSource navigationSource, IList<ODataPath> paths)
         {
+            Debug.Assert(paths != null);
+            Debug.Assert(model != null);
             Debug.Assert(navigationSource != null);
 
             // navigation source itself
-            ODataPath path = new ODataPath();
-            path.Push(new ODataNavigationSourceSegment(navigationSource));
-            _paths.Add(path.Clone()); 
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(navigationSource));
+            paths.Add(path);
 
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
             IEdmEntityType entityType = navigationSource.EntityType();
@@ -114,16 +76,13 @@ namespace Microsoft.OpenApi.OData.Edm
             if (entitySet != null)
             {
                 path.Push(new ODataKeySegment(entityType));
-                _paths.Add(path.Clone());
+                paths.Add(path.Clone());
             }
 
             // navigation property
-            if (Context.Settings.EnableNavigationPropertyPath)
+            foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
             {
-                foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
-                {
-                    RetrieveNavigationPropertyPaths(np, path);
-                }
+                RetrieveNavigationPropertyPaths(model, np, path, paths);
             }
 
             if (entitySet != null)
@@ -139,36 +98,30 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="navigationProperty">The navigation property.</param>
         /// <param name="currentPath">The current OData path.</param>
-        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
+        private static void RetrieveNavigationPropertyPaths(IEdmModel model, IEdmNavigationProperty navigationProperty, ODataPath currentPath, IList<ODataPath> paths)
         {
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
-            int count = currentPath.GetCount(Context.Settings.CountKeySegmentAsDepth);
-            if (count > Context.Settings.NavigationPropertyDepth)
-            {
-                return;
-            }
-
-            bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
+            bool shouldExpand = ShouldExpandNavigationProperty(model, navigationProperty, currentPath);
 
             // append a navigation property.
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
-            _paths.Add(currentPath.Clone());
+            paths.Add(currentPath.Clone());
 
             // append a navigation property key.
             IEdmEntityType navEntityType = navigationProperty.ToEntityType();
             if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 currentPath.Push(new ODataKeySegment(navEntityType));
-                _paths.Add(currentPath.Clone());
+                paths.Add(currentPath.Clone());
             }
 
             if (shouldExpand)
             {
                 foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
                 {
-                    RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                    RetrieveNavigationPropertyPaths(model, subNavProperty, currentPath, paths);
                 }
             }
 
@@ -180,80 +133,9 @@ namespace Microsoft.OpenApi.OData.Edm
             currentPath.Pop();
         }
 
-        /// <summary>
-        /// Retrieve the <see cref="IEdmOperation"/> path for <see cref="IEdmNavigationSource"/>.
-        /// </summary>
-        /// <param name="navigationSource">The navigation source.</param>
-        private void RetrieveOperationPaths(IEdmNavigationSource navigationSource)
+        private static bool ShouldExpandNavigationProperty(IEdmModel model, IEdmNavigationProperty navigationProperty, ODataPath currentPath)
         {
-            Debug.Assert(navigationSource != null);
-
-            IEnumerable<Tuple<IEdmEntityType, IEdmOperation>> operations;
-            IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
-
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(navigationSource));
-
-            if (entitySet != null)
-            {
-                operations = Context.FindOperations(navigationSource.EntityType(), collection: true);
-                foreach (var operation in operations)
-                {
-                    // Append the type cast
-                    if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
-                    {
-                        path.Push(new ODataTypeCastSegment(operation.Item1));
-                        path.Push(new ODataOperationSegment(operation.Item2));
-                        _paths.Add(path.Clone());
-                        path.Pop();
-                        path.Pop();
-                    }
-                    else
-                    {
-                        path.Push(new ODataOperationSegment(operation.Item2));
-                        _paths.Add(path.Clone());
-                        path.Pop();
-                    }
-                }
-            }
-
-            // for single
-            if (entitySet != null)
-            {
-                path.Push(new ODataKeySegment(navigationSource.EntityType()));
-            }
-
-            operations = Context.FindOperations(navigationSource.EntityType(), collection: false);
-            foreach (var operation in operations)
-            {
-                // Append the type cast
-                if (!operation.Item1.IsEquivalentTo(navigationSource.EntityType()))
-                {
-                    path.Push(new ODataTypeCastSegment(operation.Item1));
-                    path.Push(new ODataOperationSegment(operation.Item2));
-                    _paths.Add(path.Clone());
-                    path.Pop();
-                    path.Pop();
-                }
-                else
-                {
-                    path.Push(new ODataOperationSegment(operation.Item2));
-                    _paths.Add(path.Clone());
-                    path.Pop();
-                }
-            }
-
-            if (entitySet != null)
-            {
-                path.Pop();
-            }
-
-            path.Pop();
-
-            Debug.Assert(path.Any() == false);
-        }
-
-        private static bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
-        {
+            // only expand for the containment.
             if (!navigationProperty.ContainsTarget)
             {
                 return false;
@@ -268,12 +150,19 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
+            if (FindNavigationSource(model, navEntityType).Any())
+            {
+                return false;
+            }
+
+
             return true;
         }
 
-        private void ProcessOperations()
+        private static void RetrieveBoundOperationPaths(IEdmModel model, IList<ODataPath> paths)
         {
-            IEdmModel model = Context.Model;
+            IList<ODataPath> npPaths = paths.Where(p => p.Kind == ODataPathKind.NavigationProperty).ToList();
+
             var navigationSourceDic = model.EntityContainer.EntitySets().ToDictionary(o => o.EntityType(), o => o as IEdmNavigationSource);
 
             foreach (var edmOperation in model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
@@ -296,7 +185,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 bool found = false;
                 // 1. Search for correspoinding navigation source
-                var correspondingNavigationSource = FindNavigationSource(bindingEntityType);
+                var correspondingNavigationSource = FindNavigationSource(model, bindingEntityType);
                 if (correspondingNavigationSource.Any())
                 {
                     foreach(var ns in correspondingNavigationSource)
@@ -306,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             if (ns is IEdmEntitySet)
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataOperationSegment(edmOperation));
-                                _paths.Add(newPath);
+                                paths.Add(newPath);
                                 found = true;
                             }
                         }
@@ -315,14 +204,14 @@ namespace Microsoft.OpenApi.OData.Edm
                             if (ns is IEdmSingleton)
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataOperationSegment(edmOperation));
-                                _paths.Add(newPath);
+                                paths.Add(newPath);
                                 found = true;
                             }
                             else
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataKeySegment(ns.EntityType()),
                                     new ODataOperationSegment(edmOperation));
-                                _paths.Add(newPath);
+                                paths.Add(newPath);
                                 found = true;
                             }
                         }
@@ -335,7 +224,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 // 2. Search for generated navigation property
-                IList<ODataPath> npPaths = _paths.Where(p => p.Kind == ODataPathKind.NavigationProperty).ToList();
+                // IList<ODataPath> npPaths = paths.Where(p => p.Kind == ODataPathKind.NavigationProperty).ToList();
                 foreach(var path in npPaths)
                 {
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
@@ -350,7 +239,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         ODataPath newPath = path.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation));
-                        _paths.Add(newPath);
+                        paths.Add(newPath);
                         found = true;
                     }
                 }
@@ -363,7 +252,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 // 3. Search for derived
                 foreach(var baseType in bindingEntityType.FindAllBaseTypes())
                 {
-                    var baseNavigationSource = FindNavigationSource(baseType);
+                    var baseNavigationSource = FindNavigationSource(model, baseType);
                     if (baseNavigationSource.Any())
                     {
                         foreach (var ns in baseNavigationSource)
@@ -374,7 +263,7 @@ namespace Microsoft.OpenApi.OData.Edm
                                 {
                                     ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType),
                                         new ODataOperationSegment(edmOperation));
-                                    _paths.Add(newPath);
+                                    paths.Add(newPath);
                                     found = true;
                                 }
                             }
@@ -383,14 +272,14 @@ namespace Microsoft.OpenApi.OData.Edm
                                 if (ns is IEdmSingleton)
                                 {
                                     ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType), new ODataOperationSegment(edmOperation));
-                                    _paths.Add(newPath);
+                                    paths.Add(newPath);
                                     found = true;
                                 }
                                 else
                                 {
                                     ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataKeySegment(ns.EntityType()), new ODataTypeCastSegment(bindingEntityType),
                                         new ODataOperationSegment(edmOperation));
-                                    _paths.Add(newPath);
+                                    paths.Add(newPath);
                                     found = true;
                                 }
                             }
@@ -400,10 +289,10 @@ namespace Microsoft.OpenApi.OData.Edm
             }
         }
 
-        private IEnumerable<IEdmNavigationSource> FindNavigationSource(IEdmEntityType entityType)
+        private static IEnumerable<IEdmNavigationSource> FindNavigationSource(IEdmModel model, IEdmEntityType entityType)
         {
-            IEnumerable<IEdmNavigationSource> returnEnumerable1 = Context.Model.EntityContainer.EntitySets().Where(e => e.EntityType() == entityType);
-            IEnumerable<IEdmNavigationSource> returnEnumerable2 = Context.Model.EntityContainer.Singletons().Where(e => e.EntityType() == entityType);
+            IEnumerable<IEdmNavigationSource> returnEnumerable1 = model.EntityContainer.EntitySets().Where(e => e.EntityType() == entityType);
+            IEnumerable<IEdmNavigationSource> returnEnumerable2 = model.EntityContainer.Singletons().Where(e => e.EntityType() == entityType);
             return returnEnumerable1.Concat(returnEnumerable2);
         }
     }

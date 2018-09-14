@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
@@ -14,6 +15,21 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public static class EdmModelExtensions
     {
+        public static IEnumerable<IEdmEntityType> FindAllBaseTypes(this IEdmEntityType entityType)
+        {
+            if (entityType == null)
+            {
+                yield return null;
+            }
+
+            IEdmEntityType current = entityType;
+            while (current != null)
+            {
+                yield return current;
+                current = current.BaseEntityType();
+            }
+        }
+
         /// <summary>
         /// Checks if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>.
         /// In other words, if <paramref name="subtype"/> is a subtype of <paramref name="baseType"/> or not.

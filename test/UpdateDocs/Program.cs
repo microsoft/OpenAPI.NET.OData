@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Extensions;
 using System;
 using System.IO;
 using System.Xml.Linq;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace UpdateDocs
 {
@@ -81,10 +82,29 @@ namespace UpdateDocs
 
         public static bool Test()
         {
-            var model = LoadEdmModel(@"E:\work\OpenApi\metadata_withRequestTerms.xml");
+            var model = LoadEdmModel(@"E:\github\microsoft\OpenAPI.NET.OData\test\Microsoft.OpenAPI.OData.Reader.Tests\Resources\Graph.Beta.OData2.xml");
+
+            //var model = LoadEdmModel(@"E:\work\OpenApi\metadata_withRequestTerms.xml");
+
+            /*
             OpenApiDocument document = model.ConvertToOpenApi();
             string output = @"E:\work\OpenApi\metadata_withRequestTerms.json";
             File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+            return false;*/
+
+            var paths = ODataPathProvider.CreatePaths(model);
+            using (StreamWriter file = new StreamWriter(@"e:\work\openapi\Graph.Beta.OData.AllPath4.txt"))
+            {
+                foreach (var path in paths)
+                {
+                    string pathItem = path.GetPathItemName();
+
+                    file.WriteLine(pathItem);
+                }
+
+                file.Flush();
+            }
+
             return false;
         }
 
