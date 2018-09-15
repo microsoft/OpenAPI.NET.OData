@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
@@ -15,6 +16,36 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public static class EdmModelExtensions
     {
+        public static IDictionary<IEdmEntityType, IList<IEdmNavigationSource>> LoadAllNavigationSources(this IEdmModel model)
+        {
+            var navigationSourceDic = new Dictionary<IEdmEntityType, IList<IEdmNavigationSource>>();
+            if (model != null && model.EntityContainer != null)
+            {
+                Action<IEdmNavigationSource, IDictionary<IEdmEntityType, IList<IEdmNavigationSource>>> action = (ns, dic) =>
+                {
+                    if (!dic.TryGetValue(ns.EntityType(), out IList<IEdmNavigationSource> value))
+                    {
+                        value = new List<IEdmNavigationSource>();
+                        dic[ns.EntityType()] = value;
+                    }
+
+                    value.Add(ns);
+                };
+
+                foreach (var entitySet in model.EntityContainer.EntitySets())
+                {
+                    action(entitySet, navigationSourceDic);
+                }
+
+                foreach (var singelton in model.EntityContainer.Singletons())
+                {
+                    action(singelton, navigationSourceDic);
+                }
+            }
+
+            return navigationSourceDic;
+        }
+
         public static IEnumerable<IEdmEntityType> FindAllBaseTypes(this IEdmEntityType entityType)
         {
             if (entityType == null)

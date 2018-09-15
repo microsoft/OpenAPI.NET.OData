@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Edm
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
         private bool _keyAsSegmentSupported = false;
         private IList<OpenApiTag> _tags = new List<OpenApiTag>();
-        private ODataPathHandler _pathHandler;
+        private ODataPathProvider _pathProvider;
         public HttpRequestProvider _httpRequestProvider;
         public AuthorizationProvider _authorizationProvider;
 
@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Edm
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
 
-            _pathHandler = new ODataPathHandler(this);
+            _pathProvider = new ODataPathProvider(model);
 
             OperationHanderProvider = new OperationHandlerProvider();
             PathItemHanderProvider = new PathItemHandlerProvider();
@@ -104,7 +104,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the <see cref="ODataPath"/>s.
         /// </summary>
-        public IList<ODataPath> Paths => _pathHandler.Paths;
+        public IEnumerable<ODataPath> Paths => _pathProvider.CreatePaths();
 
         /// <summary>
         /// Gets the boolean value indicating to support key as segment.

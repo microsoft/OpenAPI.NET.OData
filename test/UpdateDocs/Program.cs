@@ -91,9 +91,10 @@ namespace UpdateDocs
             string output = @"E:\work\OpenApi\metadata_withRequestTerms.json";
             File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
             return false;*/
+            ODataPathProvider provider = new ODataPathProvider(model);
+            var paths = provider.CreatePaths();
 
-            var paths = ODataPathProvider.CreatePaths(model);
-            using (StreamWriter file = new StreamWriter(@"e:\work\openapi\Graph.Beta.OData.AllPath4.txt"))
+            using (StreamWriter file = new StreamWriter(@"e:\work\openapi\Graph.Beta.OData.AllPath5.txt"))
             {
                 foreach (var path in paths)
                 {

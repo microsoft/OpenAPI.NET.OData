@@ -34,9 +34,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             //ODataContext context = new ODataContext(model);
 
-            var paths = ODataPathProvider.CreatePaths(model);
+            ODataPathProvider provider = new ODataPathProvider(model);
 
-
+            var paths = provider.CreatePaths();
 
             Assert.NotNull(paths);
         }
