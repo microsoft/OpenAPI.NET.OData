@@ -193,17 +193,17 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private ODataPathKind CalcPathType()
         {
-            if (Segments.Any(c => c.Kind == ODataSegmentKind.NavigationProperty))
-            {
-                return ODataPathKind.NavigationProperty;
-            }
-            else if (Segments.Any(c => c.Kind == ODataSegmentKind.OperationImport))
+            if (Segments.Any(c => c.Kind == ODataSegmentKind.OperationImport))
             {
                 return ODataPathKind.OperationImport;
             }
             else if (Segments.Any(c => c.Kind == ODataSegmentKind.Operation))
             {
                 return ODataPathKind.Operation;
+            }
+            else if (Segments.Any(c => c.Kind == ODataSegmentKind.NavigationProperty))
+            {
+                return ODataPathKind.NavigationProperty;
             }
 
             if (Segments.Count == 1)

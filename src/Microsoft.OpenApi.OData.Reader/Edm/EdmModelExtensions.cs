@@ -16,6 +16,11 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public static class EdmModelExtensions
     {
+        /// <summary>
+        /// Load all navigation sources into a dictionary.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <returns>The dictionary.</returns>
         public static IDictionary<IEdmEntityType, IList<IEdmNavigationSource>> LoadAllNavigationSources(this IEdmModel model)
         {
             var navigationSourceDic = new Dictionary<IEdmEntityType, IList<IEdmNavigationSource>>();
@@ -32,11 +37,13 @@ namespace Microsoft.OpenApi.OData.Edm
                     value.Add(ns);
                 };
 
+                // entity-set
                 foreach (var entitySet in model.EntityContainer.EntitySets())
                 {
                     action(entitySet, navigationSourceDic);
                 }
 
+                // singleton
                 foreach (var singelton in model.EntityContainer.Singletons())
                 {
                     action(singelton, navigationSourceDic);
@@ -46,6 +53,11 @@ namespace Microsoft.OpenApi.OData.Edm
             return navigationSourceDic;
         }
 
+        /// <summary>
+        /// Find all base types for a given <see cref="IEdmEntityType"/>
+        /// </summary>
+        /// <param name="entityType">The given entity type.</param>
+        /// <returns>All base types or null.</returns>
         public static IEnumerable<IEdmEntityType> FindAllBaseTypes(this IEdmEntityType entityType)
         {
             if (entityType == null)

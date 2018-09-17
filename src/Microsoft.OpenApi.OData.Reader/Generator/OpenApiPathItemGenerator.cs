@@ -33,7 +33,19 @@ namespace Microsoft.OpenApi.OData.Generator
 
             foreach (ODataPath path in context.Paths)
             {
+                if ((path.Kind == ODataPathKind.Operation && !context.Settings.EnableOperationPath) ||
+                    (path.Kind == ODataPathKind.OperationImport && !context.Settings.EnableOperationImportPath) ||
+                    (path.Kind == ODataPathKind.NavigationProperty && !context.Settings.EnableNavigationPropertyPath))
+                {
+                    continue;
+                }
+
                 IPathItemHandler handler = context.PathItemHanderProvider.GetHandler(path.Kind);
+                if (handler == null)
+                {
+                    continue;
+                }
+
                 pathItems.Add(path.GetPathItemName(context.Settings), handler.CreatePathItem(context, path));
             }
 

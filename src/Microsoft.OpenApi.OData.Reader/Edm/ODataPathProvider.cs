@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public IEdmModel Model { get; }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="AuthorizationProvider"/> class.
+        /// Initializes a new instance of <see cref="ODataPathProvider"/> class.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         public ODataPathProvider(IEdmModel model)
@@ -89,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // navigation source itself
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(navigationSource));
-            _allODataPaths.Add(path);
+            _allODataPaths.Add(path.Clone());
 
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
             IEdmEntityType entityType = navigationSource.EntityType();

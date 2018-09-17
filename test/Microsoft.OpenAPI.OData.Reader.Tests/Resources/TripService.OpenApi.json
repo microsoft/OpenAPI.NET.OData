@@ -876,199 +876,6 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
-      "get": {
-        "tags": [
-          "People.Functions"
-        ],
-        "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-                    }
-                  ],
-                  "nullable": true
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "function"
-      }
-    },
-    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
-      "get": {
-        "tags": [
-          "People.Functions"
-        ],
-        "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "anyOf": [
-                      {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                      }
-                    ],
-                    "nullable": true
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "function"
-      }
-    },
-    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
-      "get": {
-        "tags": [
-          "People.Functions"
-        ],
-        "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "lastName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "boolean",
-                  "default": false
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "function"
-      }
-    },
-    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
-      "post": {
-        "tags": [
-          "People.Actions"
-        ],
-        "summary": "Invoke action ShareTrip",
-        "operationId": "People.Person.ShareTrip",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          }
-        ],
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "action"
-      }
-    },
     "/Airlines": {
       "get": {
         "tags": [
@@ -2496,199 +2303,6 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
-      "get": {
-        "tags": [
-          "NewComePeople.Functions"
-        ],
-        "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-                    }
-                  ],
-                  "nullable": true
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "function"
-      }
-    },
-    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
-      "get": {
-        "tags": [
-          "NewComePeople.Functions"
-        ],
-        "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "userName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "anyOf": [
-                      {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                      }
-                    ],
-                    "nullable": true
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "function"
-      }
-    },
-    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
-      "get": {
-        "tags": [
-          "NewComePeople.Functions"
-        ],
-        "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "lastName",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "boolean",
-                  "default": false
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "function"
-      }
-    },
-    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
-      "post": {
-        "tags": [
-          "NewComePeople.Actions"
-        ],
-        "summary": "Invoke action ShareTrip",
-        "operationId": "NewComePeople.Person.ShareTrip",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          }
-        ],
-        "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "action"
-      }
-    },
     "/Me": {
       "get": {
         "tags": [
@@ -3259,6 +2873,90 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+      "get": {
+        "tags": [
+          "People.Functions"
+        ],
+        "summary": "Invoke function GetFavoriteAirline",
+        "operationId": "People.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+      "get": {
+        "tags": [
+          "NewComePeople.Functions"
+        ],
+        "summary": "Invoke function GetFavoriteAirline",
+        "operationId": "NewComePeople.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                    }
+                  ],
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -3278,6 +2976,112 @@
                     }
                   ],
                   "nullable": true
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+      "get": {
+        "tags": [
+          "People.Functions"
+        ],
+        "summary": "Invoke function GetFriendsTrips",
+        "operationId": "People.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+      "get": {
+        "tags": [
+          "NewComePeople.Functions"
+        ],
+        "summary": "Invoke function GetFriendsTrips",
+        "operationId": "NewComePeople.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "userName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                      }
+                    ],
+                    "nullable": true
+                  }
                 }
               }
             }
@@ -3332,6 +3136,262 @@
         "x-ms-docs-operation-type": "function"
       }
     },
+    "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
+      "get": {
+        "tags": [
+          "People.Functions"
+        ],
+        "summary": "Invoke function GetInvolvedPeople",
+        "operationId": "People.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
+      "get": {
+        "tags": [
+          "NewComePeople.Functions"
+        ],
+        "summary": "Invoke function GetInvolvedPeople",
+        "operationId": "NewComePeople.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
+      "get": {
+        "tags": [
+          "Me.Functions"
+        ],
+        "summary": "Invoke function GetInvolvedPeople",
+        "operationId": "Me.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+      "get": {
+        "tags": [
+          "People.Functions"
+        ],
+        "summary": "Invoke function UpdatePersonLastName",
+        "operationId": "People.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "lastName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+      "get": {
+        "tags": [
+          "NewComePeople.Functions"
+        ],
+        "summary": "Invoke function UpdatePersonLastName",
+        "operationId": "NewComePeople.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "lastName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "function"
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
         "tags": [
@@ -3366,6 +3426,110 @@
           }
         },
         "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+      "post": {
+        "tags": [
+          "People.Actions"
+        ],
+        "summary": "Invoke action ShareTrip",
+        "operationId": "People.Person.ShareTrip",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "action"
+      }
+    },
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+      "post": {
+        "tags": [
+          "NewComePeople.Actions"
+        ],
+        "summary": "Invoke action ShareTrip",
+        "operationId": "NewComePeople.Person.ShareTrip",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
@@ -4590,14 +4754,6 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "People.Functions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "People.Actions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
       "name": "Airlines.Airline",
       "x-ms-docs-toc-type": "page"
     },
@@ -4614,14 +4770,6 @@
       "x-ms-docs-toc-type": "page"
     },
     {
-      "name": "NewComePeople.Functions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
-      "name": "NewComePeople.Actions",
-      "x-ms-docs-toc-type": "container"
-    },
-    {
       "name": "Me.Person",
       "x-ms-docs-toc-type": "page"
     },
@@ -4630,7 +4778,23 @@
       "x-ms-docs-toc-type": "page"
     },
     {
+      "name": "People.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "NewComePeople.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
       "name": "Me.Functions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "People.Actions",
+      "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "NewComePeople.Actions",
       "x-ms-docs-toc-type": "container"
     },
     {

@@ -8,13 +8,39 @@ using Microsoft.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
+    /// <summary>
+    /// Segment kind.
+    /// </summary>
     public enum ODataSegmentKind
     {
+        /// <summary>
+        /// Navigation source (entity set or singleton )
+        /// </summary>
         NavigationSource,
+
+        /// <summary>
+        /// Navigation property
+        /// </summary>
         NavigationProperty,
+
+        /// <summary>
+        /// Edm bound operation (function or action)
+        /// </summary>
         Operation,
+
+        /// <summary>
+        /// Edm unbound operation (function import or action import)
+        /// </summary>
         OperationImport,
+
+        /// <summary>
+        /// Key
+        /// </summary>
         Key,
+
+        /// <summary>
+        /// Type cast
+        /// </summary>
         TypeCast
     }
 
@@ -37,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Gets the path item name for this segment.
         /// </summary>
         /// <param name="settings">The settings.</param>
-        /// <returns></returns>
+        /// <returns>The path item name.</returns>
         public abstract string GetPathItemName(OpenApiConvertSettings settings);
     }
 }
