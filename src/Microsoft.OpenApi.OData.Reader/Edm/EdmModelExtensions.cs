@@ -65,7 +65,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 yield return null;
             }
 
-            IEdmEntityType current = entityType;
+            IEdmEntityType current = entityType.BaseEntityType();
             while (current != null)
             {
                 yield return current;
