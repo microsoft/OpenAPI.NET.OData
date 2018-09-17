@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             operation.Summary = "Invoke " + (EdmOperationImport.IsActionImport() ? "actionImport " : "functionImport ") + EdmOperationImport.Name;
 
-            if (Context.Settings.OperationId)
+            if (Context.Settings.EnableOperationId)
             {
                 if (EdmOperationImport.IsActionImport())
                 {

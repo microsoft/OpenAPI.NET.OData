@@ -41,7 +41,7 @@ namespace OoasGui
             urlTextBox.Text = "http://services.odata.org/TrippinRESTierService";
             loadBtn.Enabled = false;
             operationIdcheckBox.Checked = true;
-            Settings.OperationId = true;
+            Settings.EnableOperationId = true;
 
             verifyEdmModelcheckBox.Checked = true;
             Settings.VerifyEdmModel = true;
@@ -242,7 +242,7 @@ namespace OoasGui
 
         private void operationIdcheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            Settings.OperationId = !Settings.OperationId;
+            Settings.EnableOperationId = !Settings.EnableOperationId;
             Convert();
         }
 

@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Update the navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
 
             // OperationId
-            if (Context.Settings.OperationId)
+            if (Context.Settings.EnableOperationId)
             {
                 string prefix = "Update";
                 operation.OperationId = GetOperationId(prefix);

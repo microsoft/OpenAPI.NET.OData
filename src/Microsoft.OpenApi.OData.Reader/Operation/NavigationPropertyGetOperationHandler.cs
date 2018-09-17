@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Get " + NavigationProperty.Name + " from " + NavigationSource.Name;
 
             // OperationId
-            if (Context.Settings.OperationId)
+            if (Context.Settings.EnableOperationId)
             {
                 string prefix = "Get";
                 if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)

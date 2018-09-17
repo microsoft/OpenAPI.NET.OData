@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Invoke " + (EdmOperation.IsAction() ? "action " : "function ") + EdmOperation.Name;
 
             // OperationId
-            if (Context.Settings.OperationId)
+            if (Context.Settings.EnableOperationId)
             {
                 StringBuilder operationId = new StringBuilder(NavigationSource.Name);
                 if (HasTypeCast)

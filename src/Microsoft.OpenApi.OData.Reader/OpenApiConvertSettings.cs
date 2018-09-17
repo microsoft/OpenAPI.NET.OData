@@ -33,16 +33,6 @@ namespace Microsoft.OpenApi.OData
         public bool EnableUnqualifiedCall { get; set; }
 
         /// <summary>
-        /// Gets/set a value indicating whether to output case-insensitive path.
-        /// </summary>
-        public bool CaseInsensitive { get; set; }
-
-        /// <summary>
-        /// Gets/set a value indicating whether to output enum as prefix free.
-        /// </summary>
-        public bool EnumPrefixFree { get; set; }
-
-        /// <summary>
         /// Gets/set a value indicating whether to output the path for Edm operation.
         /// </summary>
         public bool EnableOperationPath { get; set; } = true;
@@ -78,14 +68,9 @@ namespace Microsoft.OpenApi.OData
         public bool PrefixEntityTypeNameBeforeKey { get; set; } = false;
 
         /// <summary>
-        /// Gets/set a value indicating the prefix for the parameter alias.
+        /// Gets/sets a value indicating to set the OperationId on Open API operation.
         /// </summary>
-        public string ParameterAlias { get; set; } = "@p";
-
-        /// <summary>
-        /// Gets/sets a value indicating to set the OperationId on <see cref="OpenApiOperation"/>.
-        /// </summary>
-        public bool OperationId { get; set; } = true;
+        public bool EnableOperationId { get; set; } = true;
 
         /// <summary>
         /// Gets/sets a value indicating whether to verify the edm model before converter.

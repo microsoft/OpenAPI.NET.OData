@@ -28,7 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Summary = "Create new navigation property to " + NavigationProperty.Name + " for " + NavigationSource.Name;
 
             // OperationId
-            if (Context.Settings.OperationId)
+            if (Context.Settings.EnableOperationId)
             {
                 string prefix = "Create";
                 operation.OperationId = GetOperationId(prefix);

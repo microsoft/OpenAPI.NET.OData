@@ -24,7 +24,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmModel model = EdmModelHelper.TripServiceModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                OperationId = enableOperationId
+                EnableOperationId = enableOperationId
             };
             ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");

@@ -35,7 +35,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             // OperationId
-            if (Context.Settings.OperationId)
+            if (Context.Settings.EnableOperationId)
             {
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);

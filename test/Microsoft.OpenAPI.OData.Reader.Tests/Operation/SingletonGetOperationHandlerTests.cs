@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("Me");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                OperationId = enableOperationId
+                EnableOperationId = enableOperationId
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(singleton));

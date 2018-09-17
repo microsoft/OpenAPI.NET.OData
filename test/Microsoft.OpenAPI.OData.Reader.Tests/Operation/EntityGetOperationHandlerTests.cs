@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                OperationId = enableOperationId
+                EnableOperationId = enableOperationId
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
