@@ -48,19 +48,9 @@ namespace Microsoft.OpenApi.OData
         public bool EnableNavigationPropertyPath { get; set; } = true;
 
         /// <summary>
-        /// Gets/set a value indicating the navigation property depth.
-        /// </summary>
-        public int NavigationPropertyDepth { get; set; } = 2;
-
-        /// <summary>
         /// Gets/set a value indicating the tags name depth.
         /// </summary>
         public int TagDepth { get; set; } = 4;
-
-        /// <summary>
-        /// Gets/set a value indicating whether we count key segment as a depth.
-        /// </summary>
-        public bool CountKeySegmentAsDepth { get; set; } = true;
 
         /// <summary>
         /// Gets/set a value indicating whether we prefix entity type name before single key.
@@ -83,5 +73,25 @@ namespace Microsoft.OpenApi.OData
         /// otherwise keep number without quotes.
         /// </summary>
         public bool IEEE754Compatible { get; set; }
+
+        internal OpenApiConvertSettings Clone()
+        {
+            var newSettings = new OpenApiConvertSettings();
+
+            newSettings.ServiceRoot = this.ServiceRoot;
+            newSettings.Version = this.Version;
+            newSettings.EnableKeyAsSegment = this.EnableKeyAsSegment;
+            newSettings.EnableUnqualifiedCall = this.EnableUnqualifiedCall;
+            newSettings.EnableOperationPath = this.EnableOperationPath;
+            newSettings.EnableOperationImportPath = this.EnableOperationImportPath;
+            newSettings.EnableNavigationPropertyPath = this.EnableNavigationPropertyPath;
+            newSettings.TagDepth = this.TagDepth;
+            newSettings.PrefixEntityTypeNameBeforeKey = this.PrefixEntityTypeNameBeforeKey;
+            newSettings.EnableOperationId = this.EnableOperationId;
+            newSettings.VerifyEdmModel = this.VerifyEdmModel;
+            newSettings.IEEE754Compatible = this.IEEE754Compatible;
+
+            return newSettings;
+        }
     }
 }

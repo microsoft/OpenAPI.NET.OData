@@ -37,15 +37,8 @@ namespace Microsoft.OpenApi.OData
         /// <returns>The converted Open API document object, <see cref="OpenApiDocument"/>.</returns>
         public static OpenApiDocument ConvertToOpenApi(this IEdmModel model, OpenApiConvertSettings settings)
         {
-            if (model == null)
-            {
-                throw Error.ArgumentNull(nameof(model));
-            }
-
-            if (settings == null)
-            {
-                settings = new OpenApiConvertSettings(); // default
-            }
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(settings, nameof(settings));
 
             if (settings.VerifyEdmModel)
             {
@@ -56,7 +49,7 @@ namespace Microsoft.OpenApi.OData
                     int index = 1;
                     foreach (var error in errors)
                     {
-                        document.Extensions.Add("x-edm-error-" + index++, new OpenApiString(error.ToString()));
+                        document.Extensions.Add(Constants.xMsEdmModelError + index++, new OpenApiString(error.ToString()));
                     }
 
                     return document;

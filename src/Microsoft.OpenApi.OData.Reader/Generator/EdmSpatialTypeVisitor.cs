@@ -8,9 +8,9 @@ using Microsoft.OData.Edm;
 namespace Microsoft.OpenApi.OData.Generator
 {
     /// <summary>
-    /// Edm model visitor
+    /// Visit the <see cref="IEdmModel"/> to test the Spatial types are used or not.
     /// </summary>
-    internal class EdmModelVisitor
+    internal class EdmSpatialTypeVisitor
     {
         /// <summary>
         /// Gets the value indicating Edm spatial type using in the Edm model.
@@ -23,12 +23,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="model">The Edm model.</param>
         public void Visit(IEdmModel model)
         {
+            IsSpatialTypeUsed = false;
+
             if (model == null)
             {
                 return;
             }
-
-            IsSpatialTypeUsed = false;
 
             foreach (var element in model.SchemaElements)
             {

@@ -25,9 +25,9 @@ namespace Microsoft.OpenApi.OData.Edm
     internal class ODataContext
     {
         private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
+        private IEnumerable<ODataPath> _allPaths = null;
         private bool _keyAsSegmentSupported = false;
         private IList<OpenApiTag> _tags = new List<OpenApiTag>();
-        private ODataPathProvider _pathProvider;
         public HttpRequestProvider _httpRequestProvider;
         public AuthorizationProvider _authorizationProvider;
 
@@ -50,11 +50,9 @@ namespace Microsoft.OpenApi.OData.Edm
             Model = model ?? throw Error.ArgumentNull(nameof(model));
             Settings = settings ?? throw Error.ArgumentNull(nameof(settings));
 
-            EdmModelVisitor visitor = new EdmModelVisitor();
+            EdmSpatialTypeVisitor visitor = new EdmSpatialTypeVisitor();
             visitor.Visit(model);
             IsSpatialTypeUsed = visitor.IsSpatialTypeUsed;
-
-            _pathProvider = new ODataPathProvider(model);
 
             OperationHanderProvider = new OperationHandlerProvider();
             PathItemHanderProvider = new PathItemHandlerProvider();
@@ -104,7 +102,18 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the <see cref="ODataPath"/>s.
         /// </summary>
-        public IEnumerable<ODataPath> Paths => _pathProvider.CreatePaths();
+        public IEnumerable<ODataPath> AllPaths
+        {
+            get
+            {
+                if (_allPaths == null)
+                {
+                    _allPaths = LoadAllODataPaths();
+                }
+
+                return _allPaths;
+            }
+        }
 
         /// <summary>
         /// Gets the boolean value indicating to support key as segment.
@@ -232,6 +241,27 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
             _tags.Add(tagItem);
+        }
+
+        /// <summary>
+        /// Gets all OData paths
+        /// </summary>
+        /// <returns>All acceptable OData path.</returns>
+        private IEnumerable<ODataPath> LoadAllODataPaths()
+        {
+            ODataPathProvider pathProvider = new ODataPathProvider(Model);
+            IEnumerable<ODataPath> allPaths = pathProvider.CreatePaths();
+            foreach (var path in allPaths)
+            {
+                if ((path.Kind == ODataPathKind.Operation && !Settings.EnableOperationPath) ||
+                    (path.Kind == ODataPathKind.OperationImport && !Settings.EnableOperationImportPath) ||
+                    (path.Kind == ODataPathKind.NavigationProperty && !Settings.EnableNavigationPropertyPath))
+                {
+                    continue;
+                }
+
+                yield return path;
+            }
         }
     }
 }

@@ -278,8 +278,10 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// <returns>The capabilities restrictions or null.</returns>
         private static ICapablitiesRestrictions GetCapabilities(this IEdmModel model, IEdmVocabularyAnnotatable target, CapabilitesTermKind kind)
         {
-            Utils.CheckArgumentNull(model, nameof(model));
-            Utils.CheckArgumentNull(target, nameof(target));
+            if (model == null || target == null)
+            {
+                return null;
+            }
 
             lock (_objectLock)
             {

@@ -132,6 +132,7 @@ namespace Microsoft.OpenApi.OData.Tests
         private static string WriteEdmModelAsOpenApi(IEdmModel model, OpenApiFormat target,
             OpenApiConvertSettings settings = null)
         {
+            settings = settings ?? new OpenApiConvertSettings();
             var document = model.ConvertToOpenApi(settings);
             Assert.NotNull(document); // guard
 

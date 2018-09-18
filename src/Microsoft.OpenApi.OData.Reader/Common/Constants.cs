@@ -36,6 +36,11 @@ namespace Microsoft.OpenApi.OData.Common
         public static string StatusCodeDefault = "default";
 
         /// <summary>
+        /// Edm model error extension key.
+        /// </summary>
+        public static string xMsEdmModelError = "x-ms-edm-error-";
+
+        /// <summary>
         /// extension for toc (table of content) type
         /// </summary>
         public static string xMsTocType = "x-ms-docs-toc-type";

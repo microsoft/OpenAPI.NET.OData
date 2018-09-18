@@ -31,15 +31,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 return pathItems;
             }
 
-            foreach (ODataPath path in context.Paths)
+            OpenApiConvertSettings settings = context.Settings.Clone();
+            settings.EnableKeyAsSegment = context.KeyAsSegment;
+            foreach (ODataPath path in context.AllPaths)
             {
-                if ((path.Kind == ODataPathKind.Operation && !context.Settings.EnableOperationPath) ||
-                    (path.Kind == ODataPathKind.OperationImport && !context.Settings.EnableOperationImportPath) ||
-                    (path.Kind == ODataPathKind.NavigationProperty && !context.Settings.EnableNavigationPropertyPath))
-                {
-                    continue;
-                }
-
                 IPathItemHandler handler = context.PathItemHanderProvider.GetHandler(path.Kind);
                 if (handler == null)
                 {
