@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
@@ -24,10 +23,7 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     internal class ODataContext
     {
-        private IDictionary<IEdmTypeReference, IEdmOperation> _boundOperations;
         private IEnumerable<ODataPath> _allPaths = null;
-        private bool _keyAsSegmentSupported = false;
-        private IList<OpenApiTag> _tags = new List<OpenApiTag>();
         public HttpRequestProvider _httpRequestProvider;
         public AuthorizationProvider _authorizationProvider;
 
@@ -63,17 +59,17 @@ namespace Microsoft.OpenApi.OData.Edm
             if (settings.EnableKeyAsSegment != null)
             {
                 // We have the global setting, use the global setting
-                _keyAsSegmentSupported = settings.EnableKeyAsSegment.Value;
+                KeyAsSegment = settings.EnableKeyAsSegment.Value;
             }
             else
             {
-                _keyAsSegmentSupported = false;
+                KeyAsSegment = false;
                 if (model.EntityContainer != null)
                 {
                     var keyAsSegment = model.GetKeyAsSegmentSupported(model.EntityContainer);
                     if (keyAsSegment != null)
                     {
-                        _keyAsSegmentSupported = keyAsSegment.IsSupported;
+                        KeyAsSegment = keyAsSegment.IsSupported;
                     }
                 }
             }
@@ -118,7 +114,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the boolean value indicating to support key as segment.
         /// </summary>
-        public bool KeyAsSegment => _keyAsSegmentSupported;
+        public bool KeyAsSegment { get; }
 
         /// <summary>
         /// Gets the value indicating the Edm spatial type used.
@@ -131,20 +127,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public OpenApiConvertSettings Settings { get; }
 
         /// <summary>
-        /// Gets the bound operations (functions & actions).
+        /// Gets all tags.
         /// </summary>
-        public IDictionary<IEdmTypeReference, IEdmOperation> BoundOperations
-        {
-            get
-            {
-                if (_boundOperations == null)
-                {
-                    GenerateBoundOperations();
-                }
-
-                return _boundOperations;
-            }
-        }
+        public IList<OpenApiTag> Tags { get; private set; }
 
         /// <summary>
         /// Find the Org.OData.Core.V1.HttpRequest for a given target.
@@ -168,79 +153,22 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Finds the operations using the <see cref="IEdmEntityType"/>
+        /// Append tag.
         /// </summary>
-        /// <param name="model">The Edm model.</param>
-        /// <param name="entityType">The entity type.</param>
-        /// <param name="collection">The collection flag.</param>
-        /// <returns>The found operations.</returns>
-        public IEnumerable<Tuple<IEdmEntityType, IEdmOperation>> FindOperations(IEdmEntityType entityType, bool collection)
-        {
-            Utils.CheckArgumentNull(entityType, nameof(entityType));
-
-            string fullTypeName = collection ?
-                "Collection(" + entityType.FullName() + ")" :
-                entityType.FullName();
-
-            foreach (var item in BoundOperations)
-            {
-                IEdmEntityType operationBindingType;
-                if (collection)
-                {
-                    if (!item.Key.IsCollection())
-                    {
-                        continue;
-                    }
-
-                    operationBindingType = item.Key.AsCollection().ElementType().AsEntity().EntityDefinition();
-                }
-                else
-                {
-                    if (item.Key.IsCollection())
-                    {
-                        continue;
-                    }
-
-                    operationBindingType = item.Key.AsEntity().EntityDefinition();
-                }
-
-                if (entityType.IsAssignableFrom(operationBindingType))
-                {
-                    yield return Tuple.Create(operationBindingType, item.Value);
-                }
-            }
-        }
-
-        private void GenerateBoundOperations()
-        {
-            if (_boundOperations != null)
-            {
-                return;
-            }
-
-            _boundOperations = new Dictionary<IEdmTypeReference, IEdmOperation>();
-            foreach (var edmOperation in Model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
-            {
-                IEdmOperationParameter bindingParameter = edmOperation.Parameters.First();
-                _boundOperations.Add(bindingParameter.Type, edmOperation);
-            }
-        }
-
-        public IList<OpenApiTag> Tags
-        {
-            get
-            {
-                return _tags;
-            }
-        }
-
+        /// <param name="tagItem">The tag item.</param>
         public void AppendTag(OpenApiTag tagItem)
         {
-            if (_tags.Any(c => c.Name == tagItem.Name))
+            if (Tags == null)
+            {
+                Tags = new List<OpenApiTag>();
+            }
+
+            if (Tags.Any(c => c.Name == tagItem.Name))
             {
                 return;
             }
-            _tags.Add(tagItem);
+
+            Tags.Add(tagItem);
         }
 
         /// <summary>

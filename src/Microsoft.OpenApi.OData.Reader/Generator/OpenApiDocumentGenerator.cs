@@ -49,7 +49,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 ExternalDocs = null
             };
 
-            doc.Tags = context.CreateTags_FromTagItems();
+            doc.Tags = context.CreateTags();
+
             return doc;
         }
     }

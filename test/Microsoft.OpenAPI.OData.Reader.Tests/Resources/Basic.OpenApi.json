@@ -1160,6 +1160,49 @@
           "type": "string"
         }
       }
+    },
+    "examples": {
+      "DefaultNs.Person": {
+        "value": {
+          "Addresses": [
+            {
+              "@odata.type": "DefaultNs.Address"
+            }
+          ],
+          "HomeAddress": {
+            "@odata.type": "DefaultNs.Address"
+          },
+          "UserName": "String (identifier)",
+          "WorkAddress": {
+            "@odata.type": "DefaultNs.Address"
+          }
+        }
+      },
+      "DefaultNs.City": {
+        "value": {
+          "Name": "String (identifier)"
+        }
+      },
+      "DefaultNs.CountryOrRegion": {
+        "value": {
+          "Name": "String (identifier)"
+        }
+      },
+      "DefaultNs.Address": {
+        "value": {
+          "City": {
+            "@odata.type": "DefaultNs.City"
+          },
+          "Id": "Int32"
+        }
+      },
+      "DefaultNs.WorkAddress": {
+        "value": {
+          "CountryOrRegion": {
+            "@odata.type": "DefaultNs.CountryOrRegion"
+          }
+        }
+      }
     }
   },
   "tags": [

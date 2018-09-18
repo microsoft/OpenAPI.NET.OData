@@ -17,12 +17,6 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiTagGenerator
     {
-        public static IList<OpenApiTag> CreateTags_FromTagItems(this ODataContext context)
-        {
-            Utils.CheckArgumentNull(context, nameof(context));
-            return context.Tags;
-        }
-
         /// <summary>
         /// Create the collection of <see cref="OpenApiTag"/> object.
         /// </summary>
@@ -39,6 +33,11 @@ namespace Microsoft.OpenApi.OData.Generator
             // A Tag Object has to contain the field name, whose value is the name of the entity set or singleton,
             // and it optionally can contain the field description, whose value is the value of the unqualified annotation
             // Core.Description of the entity set or singleton.
+            if (context.Tags != null)
+            {
+                return context.Tags;
+            }
+
             IList<OpenApiTag> tags = new List<OpenApiTag>();
             if (context.EntityContainer != null)
             {

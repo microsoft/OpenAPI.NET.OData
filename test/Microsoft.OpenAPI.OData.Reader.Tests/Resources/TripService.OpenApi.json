@@ -4832,6 +4832,171 @@
           "type": "string"
         }
       }
+    },
+    "examples": {
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person": {
+        "value": {
+          "AddressInfo": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+            }
+          ],
+          "Age": "Int64",
+          "BestFriend": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          },
+          "Emails": [
+            "String"
+          ],
+          "FavoriteFeature": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+          },
+          "Features": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+            }
+          ],
+          "FirstName": "String",
+          "Friends": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+            }
+          ],
+          "Gender": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
+          },
+          "HomeAddress": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          },
+          "LastName": "String",
+          "MiddleName": "String",
+          "Trips": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+            }
+          ],
+          "UserName": "String (identifier)"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
+        "value": {
+          "AirlineCode": "String (identifier)",
+          "Name": "String"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
+        "value": {
+          "IataCode": "String",
+          "IcaoCode": "String (identifier)",
+          "Location": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
+          },
+          "Name": "String"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
+        "value": {
+          "Address": "String",
+          "City": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City": {
+        "value": {
+          "CountryRegion": "String",
+          "Name": "String",
+          "Region": "String"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
+        "value": {
+          "Loc": "GeographyPoint"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
+        "value": {
+          "BuildingInfo": "String"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
+        "value": {
+          "Budget": "Single",
+          "Description": "String",
+          "EndsAt": "DateTimeOffset (timestamp)",
+          "Name": "String",
+          "PlanItems": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+            }
+          ],
+          "ShareId": "Guid",
+          "StartsAt": "DateTimeOffset (timestamp)",
+          "Tags": [
+            "String"
+          ],
+          "TripId": "Int32 (identifier)"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
+        "value": {
+          "ConfirmationCode": "String",
+          "Duration": "Duration",
+          "EndsAt": "DateTimeOffset (timestamp)",
+          "PlanItemId": "Int32 (identifier)",
+          "StartsAt": "DateTimeOffset (timestamp)"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
+        "value": {
+          "Description": "String",
+          "OccursAt": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
+        "value": {
+          "SeatNumber": "String"
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
+        "value": {
+          "Airline": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+          },
+          "FlightNumber": "String",
+          "From": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+          },
+          "To": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee": {
+        "value": {
+          "Cost": "Int64",
+          "Peers": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+            }
+          ]
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
+        "value": {
+          "BossOffice": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+          },
+          "Budget": "Int64",
+          "DirectReports": [
+            {
+              "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+            }
+          ]
+        }
+      }
     }
   },
   "tags": [

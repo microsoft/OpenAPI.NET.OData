@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // Make others as null.
                 RequestBodies = null,
 
-                Examples = null,
+                Examples = context.CreateExamples(),
 
                 SecuritySchemes = context.CreateSecuritySchemes(),
 
