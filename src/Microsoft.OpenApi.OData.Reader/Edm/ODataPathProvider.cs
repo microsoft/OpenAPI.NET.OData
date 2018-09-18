@@ -252,7 +252,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 // 2. Search for generated navigation property
-                foreach(var path in npPaths)
+                foreach (var path in npPaths)
                 {
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
                     IEdmEntityType navPropertyEntityType = npSegment.NavigationProperty.ToEntityType();
@@ -262,13 +262,31 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
 
                     bool isLastKeySegment = path.LastSegment is ODataKeySegment;
-                    if ((isCollection && !isLastKeySegment) || (!isCollection && isLastKeySegment))
+
+                    if (isCollection)
                     {
-                        ODataPath newPath = path.Clone();
-                        newPath.Push(new ODataOperationSegment(edmOperation));
-                        _allODataPaths.Add(newPath);
-                        found = true;
+                        if (isLastKeySegment)
+                        {
+                            continue;
+                        }
+
+                        if (npSegment.NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many)
+                        {
+                            continue;
+                        }
                     }
+                    else
+                    {
+                        if (!isLastKeySegment && npSegment.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                        {
+                            continue;
+                        }
+                    }
+
+                    ODataPath newPath = path.Clone();
+                    newPath.Push(new ODataOperationSegment(edmOperation));
+                    _allODataPaths.Add(newPath);
+                    found = true;
                 }
 
                 if (found)
