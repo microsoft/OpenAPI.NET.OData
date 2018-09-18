@@ -1,0 +1,662 @@
+<Annotations Target="microsoft.graph.GraphService">
+	<Annotation Term="Org.OData.Authorization.V1.Authorizations">
+		<Collection>
+			<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+				<PropertyValue Property="Name" String="Delegated (work or school account)"/>
+				<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="Scopes">
+					<Collection>
+						<!-- #Delegated -->
+						<Record>
+							<PropertyValue Property="Scope" String="Bookings.Read.All"/>
+							<PropertyValue Property="Description" String=" Allows an app to read Bookings appointments, businesses, customers, services, and staff on behalf of the signed-in user. Intended for read-only applications. Typical target user is the customer of a booking business. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Bookings.ReadWrite.Appointments"/>
+							<PropertyValue Property="Description" String="Allows an app to read and write Bookings appointments and customers, and additionally allows reading businesses, services, and staff on behalf of the signed-in user. Intended for scheduling applications which need to manipulate appointments and customers. Cannot change fundamental information about the booking business, nor its services and staff members. Typical target user is the customer of a booking business."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Bookings.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Allows an app to read and write Bookings appointments, businesses, customers, services, and staff on behalf of the signed-in user. Does not allow create, delete, or publish of Bookings businesses. Intended for management applications that manipulate existing businesses, their services and staff members. Cannot create, delete, or change the publishing status of a booking business. Typical target user is the support staff of an organization."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Bookings.Manage"/>
+							<PropertyValue Property="Description" String="Allows an app to read, write, and manage Bookings appointments, businesses, customers, services, and staff on behalf of the signed-in user. . Allows the app to have full access. Intended for a full management experience. Typical target user is the administrator of an organization."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.Read"/>
+							<PropertyValue Property="Description" String="    Read user calendars .Allows the app to read events in user calendars. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.Read.Shared"/>
+							<PropertyValue Property="Description" String="    Read user and shared calendars .Allows the app to read events in all calendars that the user can access, including delegate and shared calendars. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Have full access to user calendars .Allows the app to create, read, update, and delete events in user calendars. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.ReadWrite.Shared"/>
+							<PropertyValue Property="Description" String="    Read and write user and shared calendars .Allows the app to create, read, update and delete events in all calendars the user has permissions to access. This includes delegate and shared calendars."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.Read"/>
+							<PropertyValue Property="Description" String="Read user contacts  .Allows the app to read user contacts. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.Read.Shared"/>
+							<PropertyValue Property="Description" String="    Read user and shared contacts .Allows the app to read contacts that the user has permissions to access, including the user's own and shared contacts. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Have full access to user contacts .Allows the app to create, read, update, and delete user contacts. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.ReadWrite.Shared"/>
+							<PropertyValue Property="Description" String="    Read and write user and shared contacts .Allows the app to create, read, update and delete contacts that the user has permissions to, including the user's own and shared contacts. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Device.Read"/>
+							<PropertyValue Property="Description" String="    Read user devices .Allows the app to read a user's list of devices on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Device.Command"/>
+							<PropertyValue Property="Description" String="    Communicate with user devices .Allows the app to launch another app or communicate with another app on a user's device on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.Read.All"/>
+							<PropertyValue Property="Description" String="    Read directory data. Allows the app to read data in your organization's directory, such as users, groups and apps."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="    Read and write directory data. Allows the app to read and write data in your organization's directory, such as users, and groups. It does not allow the app to delete users or groups, or reset user passwords. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.AccessAsUser.All"/>
+							<PropertyValue Property="Description" String="    Access directory as the signed-in user. Allows the app to have the same access to information in the directory as the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAdministration.Read"/>
+							<PropertyValue Property="Description" String="    Read education app settings. Allows the app to read education app settings on behalf of the user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAdministration.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Manage education app settings. Allows the app to manage education app settings on behalf of the user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.ReadBasic"/>
+							<PropertyValue Property="Description" String="    Read users' class assignments without grades. Allows the app to read assignments without grades on behalf of the user "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.ReadWriteBasic"/>
+							<PropertyValue Property="Description" String="    Read and write users' class assignments without grades. Allows the app to read and write assignments without grades on behalf of the user "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.Read"/>
+							<PropertyValue Property="Description" String="    Read users' view of class assignments and their grades. Allows the app to read assignments and their grades on behalf of the user"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Read and write users' view of class assignments and their grades. Allows the app to read and write assignments and their grades on behalf of the user"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduRostering.ReadBasic"/>
+							<PropertyValue Property="Description" String="    Read a limited subset of users' view of the roster. Allows the app to read a limited subset of the data from the  structure of schools and classes in an organization's roster and  education-specific information about users to be read on behalf of the user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.Read"/>
+							<PropertyValue Property="Description" String="Read user files. Allows the app to read the signed-in user's files. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.Read.All"/>
+							<PropertyValue Property="Description" String="Read all files that user can access. Allows the app to read all files the signed-in user can access. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite"/>
+							<PropertyValue Property="Description" String="Have full access to user files. Allows the app to read, create, update, and delete the signed-in user's files. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Have full access to all files user can access. Allows the app to read, create, update, and delete all files the signed-in user can access. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite.AppFolder"/>
+							<PropertyValue Property="Description" String="Have full access to the application's folder (preview). (Preview) Allows the app to read, create, update, and delete files in the application's folder. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.Read.Selected"/>
+							<PropertyValue Property="Description" String="Read files that the user selects. **Limited support in Microsoft Graph; see Remarks** . (Preview) Allows the app to read files that the user selects. The app has access for several hours after the user selects a file. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite.Selected"/>
+							<PropertyValue Property="Description" String="Read and write files that the user selects. **Limited support in Microsoft Graph; see Remarks** . (Preview) Allows the app to read and write files that the user selects. The app has access for several hours after the user selects a file. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Group.Read.All"/>
+							<PropertyValue Property="Description" String="Read all groups. Allows the app to list groups, and to read their properties and all group memberships on behalf of the signed-in user. Also allows the app to read calendar, conversations, files, and other group content for all groups the signed-in user can access. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Group.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write all groups. Allows the app to create groups and read all group properties and memberships on behalf of the signed-in user. Additionally allows group owners to manage their groups and allows group members to update group content. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="IdentityRiskEvent.Read.All"/>
+							<PropertyValue Property="Description" String="  Read identity risk event information. Allows the app to read identity risk event information for all users in your organization on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="IdentityProvider.Read.All"/>
+							<PropertyValue Property="Description" String="  Read identity provider information. Allows the app to read identity providers configured in your Azure AD or Azure AD B2C tenant on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="IdentityProvider.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="  Read and write identity provider information. Allows the app to read or write identity providers configured in your Azure AD or Azure AD B2C tenant on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementApps.Read.All"/>
+							<PropertyValue Property="Description" String="Read Microsoft Intune apps. Allows the app to read the properties, group assignments and status of apps, app configurations and app protection policies managed by Microsoft Intune. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementApps.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write Microsoft Intune apps. Allows the app to read and write the properties, group assignments and status of apps, app configurations and app protection policies managed by Microsoft Intune. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementConfiguration.Read.All"/>
+							<PropertyValue Property="Description" String="Read Microsoft Intune device configuration and policies. Allows the app to read properties of Microsoft Intune-managed device configuration and device compliance policies and their assignment to groups. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementConfiguration.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write Microsoft Intune device configuration and policies. Allows the app to read and write properties of Microsoft Intune-managed device configuration and device compliance policies and their assignment to groups. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementManagedDevices.PrivilegedOperations.All"/>
+							<PropertyValue Property="Description" String="Perform user-impacting remote actions on Microsoft Intune devices. Allows the app to perform remote high impact actions such as wiping the device or resetting the passcode on devices managed by Microsoft Intune. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementManagedDevices.Read.All"/>
+							<PropertyValue Property="Description" String="Read Microsoft Intune devices. Allows the app to read the properties of devices managed by Microsoft Intune. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementManagedDevices.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write Microsoft Intune devices. Allows the app to read and write the properties of devices managed by Microsoft Intune. Does not allow high impact operations such as remote wipe and password reset on the device’s owner. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementRBAC.Read.All"/>
+							<PropertyValue Property="Description" String="Read Microsoft Intune RBAC settings. Allows the app to read the properties relating to the Microsoft Intune Role-Based Access Control (RBAC) settings. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementRBAC.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write Microsoft Intune RBAC settings. Allows the app to read and write the properties relating to the Microsoft Intune Role-Based Access Control (RBAC) settings. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementServiceConfig.Read.All"/>
+							<PropertyValue Property="Description" String="Read Microsoft Intune configuration. Allows the app to read Intune service properties including device enrollment and third party service connection configuration. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="DeviceManagementServiceConfig.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write Microsoft Intune configuration. Allows the app to read and write Microsoft Intune service properties including device enrollment and third party service connection configuration. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.Read"/>
+							<PropertyValue Property="Description" String="Read user mail. Allows the app to read email in user mailboxes. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write access to user mail. Allows the app to create, read, update, and delete email in user mailboxes. Does not include permission to send mail."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.Read.Shared"/>
+							<PropertyValue Property="Description" String="Read user and shared mail. Allows the app to read mail that the user can access, including the user's own and shared mail. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.ReadWrite.Shared"/>
+							<PropertyValue Property="Description" String="Read and write user and shared mail. Allows the app to create, read, update, and delete mail that the user has permission to access, including the user's own and shared mail. Does not include permission to send mail. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.Send"/>
+							<PropertyValue Property="Description" String="Send mail as a user. Allows the app to send mail as users in the organization. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.Send.Shared"/>
+							<PropertyValue Property="Description" String="Send mail on behalf of others. Allows the app to send mail as the signed-in user, including sending on-behalf of others. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="MailboxSettings.Read"/>
+							<PropertyValue Property="Description" String=" Read user mailbox settings. Allows the app to the read user's mailbox settings. Does not include permission to send mail. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="MailboxSettings.ReadWrite"/>
+							<PropertyValue Property="Description" String=" Read and write user mailbox settings. Allows the app to create, read, update, and delete user's mailbox settings. Does not include permission to directly send mail, but allows the app to create rules that can forward or redirect messages. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Member.Read.Hidden"/>
+							<PropertyValue Property="Description" String="Read hidden memberships. Allows the app to read the memberships of hidden groups and administrative units on behalf of the signed-in user, for those hidden groups and administrative units that the signed-in user has access to. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Read"/>
+							<PropertyValue Property="Description" String="Read user OneNote notebooks. Allows the app to read the titles of OneNote notebooks and sections and to create new pages, notebooks, and sections on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Create"/>
+							<PropertyValue Property="Description" String="Create user OneNote notebooks. Allows the app to read the titles of OneNote notebooks and sections and to create new pages, notebooks, and sections on behalf of the signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write user OneNote notebooks. Allows the app to read, share, and modify OneNote notebooks on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Read.All"/>
+							<PropertyValue Property="Description" String="Read all OneNote notebooks that user can access. Allows the app to read OneNote notebooks that the signed-in user has access to in the organization. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write all OneNote notebooks that user can access. Allows the app to read, share, and modify OneNote notebooks that the signed-in user has access to in the organization."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.ReadWrite.CreatedByApp"/>
+							<PropertyValue Property="Description" String="Limited notebook access (deprecated). **Deprecated** .Do not use. No privileges are granted by this permission. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="email"/>
+							<PropertyValue Property="Description" String="View users' email address. Allows the app to read your users' primary email address. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="offline_access"/>
+							<PropertyValue Property="Description" String="Access user's data anytime. Allows the app to read and update user data, even when they are not currently using the app."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="openid"/>
+							<PropertyValue Property="Description" String="Sign users in. Allows users to sign in to the app with their work or school accounts and allows the app to see basic user profile information."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="profile"/>
+							<PropertyValue Property="Description" String="View users' basic profile. Allows the app to see your users' basic profile (name, picture, user name)."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="People.Read"/>
+							<PropertyValue Property="Description" String="Read users' relevant people lists. Allows the app to read a scored list of people relevant to the signed-in user. The list can include local contacts, contacts from social networking or your organization's directory, and people from recent communications (such as email and Skype). "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="People.Read.All"/>
+							<PropertyValue Property="Description" String="Read all users' relevant people lists. Allows the app to read a scored list of people relevant to the signed-in user or other users in the signed-in user's organization. The list can include local contacts, contacts from social networking or your organization's directory, and people from recent communications (such as email and Skype). Also allows the app to search the entire directory of the signed-in user's organization. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Reports.Read.All"/>
+							<PropertyValue Property="Description" String="Read all usage reports. Allows an app to read all service usage reports without a signed-in user. Services that provide usage reports include Office 365 and Azure Active Directory. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="SecurityEvents.Read.All"/>
+							<PropertyValue Property="Description" String=" Read your organization’s security events. Allows the app to read your organization’s security events on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="SecurityEvents.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and update your organization’s security events. Allows the app to read your organization’s security events on behalf of the signed-in user. Also allows the app to update editable properties in security events on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.Read.All"/>
+							<PropertyValue Property="Description" String="Read items in all site collections. Allows the app to read documents and list items in all site collections on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write items in all site collections. Allows the app to edit or delete documents and list items in all site collections on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.Manage.All"/>
+							<PropertyValue Property="Description" String="Create, edit, and delete items and lists in all site collections. Allows the app to manage and create lists, documents, and list items in all site collections on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.FullControl.All"/>
+							<PropertyValue Property="Description" String="Have full control of all site collections. Allows the app to have full control to SharePoint sites in all site collections on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Tasks.Read"/>
+							<PropertyValue Property="Description" String="Read user tasks. Allows the app to read user tasks. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Tasks.Read.Shared"/>
+							<PropertyValue Property="Description" String="Read user and shared tasks. Allows the app to read tasks a user has permissions to access, including their own and shared tasks. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Tasks.ReadWrite"/>
+							<PropertyValue Property="Description" String="Create, read, update and delete user tasks and containers. Allows the app to create, read, update and delete tasks and containers (and tasks in them) that are assigned to or shared with the signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Tasks.ReadWrite.Shared"/>
+							<PropertyValue Property="Description" String="Read and write user and shared tasks. Allows the app to create, read, update, and delete tasks a user has permissions to, including their own and shared tasks. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Agreement.Read.All"/>
+							<PropertyValue Property="Description" String="Read all terms of use agreements. Allows the app to read terms of use agreements on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Agreement.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write all terms of use agreements. Allows the app to read and write terms of use agreements on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="AgreementAcceptance.Read"/>
+							<PropertyValue Property="Description" String="Read user terms of use acceptance statuses. Allows the app to read terms of use acceptance statuses on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="AgreementAcceptance.Read.All"/>
+							<PropertyValue Property="Description" String="Read terms of use acceptance statuses that user can access. Allows the app to read terms of use acceptance statuses on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Read"/>
+							<PropertyValue Property="Description" String="Sign-in and read user profile. Allows users to sign-in to the app, and allows the app to read the profile of signed-in users. It also allows the app to read basic company information of signed-in users."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write access to user profile. Allows the app to read the signed-in user's full profile. It also allows the app to update the signed-in user's profile information on their behalf. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadBasic.All"/>
+							<PropertyValue Property="Description" String="Read all users' basic profiles. Allows the app to read a basic set of profile properties of other users in your organization on behalf of the signed-in user. This includes display name, first and last name, email address, open extensions and photo. Also allows the app to read the full profile of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Read.All"/>
+							<PropertyValue Property="Description" String=" Read all users' full profiles. Allows the app to read the full set of profile properties, reports, and managers of other users in your organization, on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
+							<PropertyValue Property="Description" String=" Read and write all users' full profiles. Allows the app to read and write the full set of profile properties, reports, and managers of other users in your organization, on behalf of the signed-in user. Also allows the app to create and delete users as well as reset user passwords on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Invite.All"/>
+							<PropertyValue Property="Description" String=" Invite guest users to the organization. Allows the app to invite guest users to your organization, on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Export.All"/>
+							<PropertyValue Property="Description" String="Export users' data. Allows the app to export an organizational user's data, when performed by a Company Administrator."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="UserActivity.ReadWrite.CreatedByApp"/>
+							<PropertyValue Property="Description" String="    Read and write app activity to users' activity feed .Allows the app to read and report the signed-in user's activity in the app. "/>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+			</Record>
+			<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+				<PropertyValue Property="Name" String="DelegatedPersonal"/>
+				<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="Scopes">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.Read"/>
+							<PropertyValue Property="Description" String="    Read user calendars .Allows the app to read events in user calendars. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Have full access to user calendars .Allows the app to create, read, update, and delete events in user calendars. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.Read"/>
+							<PropertyValue Property="Description" String="    Read user contacts  .Allows the app to read user contacts. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Have full access to user contacts .Allows the app to create, read, update, and delete user contacts. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Device.Read"/>
+							<PropertyValue Property="Description" String="    Read user devices .Allows the app to read a user's list of devices on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Device.Command"/>
+							<PropertyValue Property="Description" String="    Communicate with user devices .Allows the app to launch another app or communicate with another app on a user's device on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.Read"/>
+							<PropertyValue Property="Description" String="Read user files. Allows the app to read the signed-in user's files. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.Read.All"/>
+							<PropertyValue Property="Description" String="Read all files that user can access. Allows the app to read all files the signed-in user can access. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite"/>
+							<PropertyValue Property="Description" String="Have full access to user files. Allows the app to read, create, update, and delete the signed-in user's files. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Have full access to all files user can access. Allows the app to read, create, update, and delete all files the signed-in user can access. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write access to user mail. Allows the app to create, read, update, and delete email in user mailboxes. Does not include permission to send mail."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Member.Read.Hidden"/>
+							<PropertyValue Property="Description" String="Read all hidden memberships. Allows the app to read the memberships of hidden groups and administrative units without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Read"/>
+							<PropertyValue Property="Description" String="Read user OneNote notebooks. Allows the app to read the titles of OneNote notebooks and sections and to create new pages, notebooks, and sections on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Create"/>
+							<PropertyValue Property="Description" String="Create user OneNote notebooks. Allows the app to read the titles of OneNote notebooks and sections and to create new pages, notebooks, and sections on behalf of the signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write user OneNote notebooks. Allows the app to read, share, and modify OneNote notebooks on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Read.All"/>
+							<PropertyValue Property="Description" String="Read all OneNote notebooks that user can access. Allows the app to read OneNote notebooks that the signed-in user has access to in the organization. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Tasks.Read"/>
+							<PropertyValue Property="Description" String="Read user tasks. Allows the app to read user tasks. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Tasks.ReadWrite"/>
+							<PropertyValue Property="Description" String="Create, read, update and delete user tasks and containers. Allows the app to create, read, update and delete tasks and containers (and tasks in them) that are assigned to or shared with the signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Read"/>
+							<PropertyValue Property="Description" String="Sign-in and read user profile. Allows users to sign-in to the app, and allows the app to read the profile of signed-in users. It also allows the app to read basic company information of signed-in users."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write access to user profile. Allows the app to read the signed-in user's full profile. It also allows the app to update the signed-in user's profile information on their behalf. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadBasic.All"/>
+							<PropertyValue Property="Description" String="Read all users' basic profiles. Allows the app to read a basic set of profile properties of other users in your organization on behalf of the signed-in user. This includes display name, first and last name, email address, open extensions and photo. Also allows the app to read the full profile of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Read.All"/>
+							<PropertyValue Property="Description" String=" Read all users' full profiles. Allows the app to read the full set of profile properties, reports, and managers of other users in your organization, on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
+							<PropertyValue Property="Description" String=" Read and write all users' full profiles. Allows the app to read and write the full set of profile properties, reports, and managers of other users in your organization, on behalf of the signed-in user. Also allows the app to create and delete users as well as reset user passwords on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Invite.All"/>
+							<PropertyValue Property="Description" String=" Invite guest users to the organization. Allows the app to invite guest users to your organization, on behalf of the signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Export.All"/>
+							<PropertyValue Property="Description" String="Export users' data. Allows the app to export an organizational user's data, when performed by a Company Administrator."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="UserActivity.ReadWrite.CreatedByApp"/>
+							<PropertyValue Property="Description" String="    Read and write app activity to users' activity feed .Allows the app to read and report the signed-in user's activity in the app. "/>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+			</Record>
+			<Record Type="Org.OData.Authorization.V1.OAuth2Implicit">
+				<PropertyValue Property="Name" String="Application"/>
+				<PropertyValue Property="AuthorizationUrl" String="https://graph.microsoft.com" />
+				<PropertyValue Property="Scopes">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Scope" String="Application.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write all apps. Allows the calling app to create, and manage (read, update, update application secrets and delete) applications and service principals without a signed-in user. Does not allow management of consent grants or application assignments to users or groups. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Application.ReadWrite.OwnedBy"/>
+							<PropertyValue Property="Description" String="Manage apps that this app creates or owns. Allows the calling app to create other applications and service principals, and fully manage those applications and service principals (read, update, update application secrets and delete), without a signed-in user. It cannot update any applications that it is not an owner of. Does not allow management of consent grants or application assignments to users or groups. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.Read"/>
+							<PropertyValue Property="Description" String="    Read calendars in all mailboxes .Allows the app to read events of all calendars without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Calendars.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Read and write calendars in all mailboxes .Allows the app to create, read, update, and delete events of all calendars without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.Read"/>
+							<PropertyValue Property="Description" String="    Read contacts in all mailboxes .Allows the app to read all contacts in all mailboxes without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Contacts.ReadWrite"/>
+							<PropertyValue Property="Description" String="    Read and write contacts in all mailboxes .Allows the app to create, read, update, and delete all contacts in all mailboxes without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Device.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="    Read and write devices .Allows the app to read and write all device properties without a signed in user. Does not allow device creation, device deletion, or update of device alternative security identifiers. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.Read.All"/>
+							<PropertyValue Property="Description" String="Read directory data. Allows the app to read data in your organization's directory, such as users, groups and apps, without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Directory.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write directory data. Allows the app to read and write data in your organization's directory, such as users, and groups, without a signed-in user. Does not allow user or group deletion. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.ReadBasic.All"/>
+							<PropertyValue Property="Description" String="Read class assignments without grades.Allows the app to read assignments without grades for all users"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.ReadWriteBasic.All"/>
+							<PropertyValue Property="Description" String="Read and write class assignments without grades. Allows the app to read and write assignments without grades for all users"/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.Read.All"/>
+							<PropertyValue Property="Description" String="Read class assignments with grades. Allows the app to read assignments and their grades for all users "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduAssignments.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write class assignments with grades. Allows the app to read and write assignments and their grades for all users "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduRostering.ReadBasic.All"/>
+							<PropertyValue Property="Description" String="Read a limited subset of the organization's roster. Allows the app to read a limited subset of both the structure of schools and classes in an organization's roster and education-specific information about all users. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduRostering.Read.All"/>
+							<PropertyValue Property="Description" String="Read the organization's roster. Allows the app to read the structure of schools and classes in the organization's roster and education-specific information about all users to be read. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="EduRostering.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write the organization's roster. Allows the app to read and write the structure of schools and classes in the organization's roster and education-specific information about all users to be read and written. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.Read.All"/>
+							<PropertyValue Property="Description" String="Read files in all site collections. Allows the app to read all files in all site collections without a signed in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Files.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write files in all site collections. Allows the app to read, create, update, and delete all files in all site collections without a signed in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Group.Read.All"/>
+							<PropertyValue Property="Description" String="Read all groups. Allows the app to read memberships for all groups without a signed-in user. > **NOTE:** that not all group API supports access using app-only permissions. See [known issues](../concepts/known_issues.md) for examples. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Group.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write all groups. Allows the app to create groups, read and update group memberships, and delete groups. All of these operations can be performed by the app without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="IdentityRiskEvent.Read.All"/>
+							<PropertyValue Property="Description" String="  Read identity risk event information. Allows the app to read identity risk event information for all users in your organization without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.Read"/>
+							<PropertyValue Property="Description" String="Read mail in all mailboxes. Allows the app to read mail in all mailboxes without a signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write mail in all mailboxes. Allows the app to create, read, update, and delete mail in all mailboxes without a signed-in user. Does not include permission to send mail. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Mail.Send"/>
+							<PropertyValue Property="Description" String="Send mail as any user. Allows the app to send mail as any user without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="MailboxSettings.Read"/>
+							<PropertyValue Property="Description" String=" Read all user mailbox settings. Allows the app to read user's mailbox settings without a signed-in user. Does not include permission to send mail. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="MailboxSettings.ReadWrite"/>
+							<PropertyValue Property="Description" String="Read and write all user mailbox settings. Allows the app to create, read, update, and delete user's mailbox settings without a signed-in user. Does not include permission to send mail. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.Read.All"/>
+							<PropertyValue Property="Description" String="Read all OneNote notebooks. Allows the app to read all the OneNote notebooks in your organization, without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Notes.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write all OneNote notebooks. Allows the app to read, share, and modify all the OneNote notebooks in your organization, without a signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="People.Read.All"/>
+							<PropertyValue Property="Description" String="Read all users' relevant people lists. Allows the app to read a scored list of people relevant to the signed-in user or other users in the signed-in user's organization. .The list can include local contacts, contacts from social networking or your organization's directory, and people from recent communications (such as email and Skype). Also allows the app to search the entire directory of the signed-in user's organization. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Reports.Read.All"/>
+							<PropertyValue Property="Description" String="Read all usage reports. Allows an app to read all service usage reports without a signed-in user. Services that provide usage reports include Office 365 and Azure Active Directory. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="SecurityEvents.Read.All"/>
+							<PropertyValue Property="Description" String=" Read your organization’s security events. Allows the app to read your organization’s security events. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="SecurityEvents.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and update your organization’s security events. Allows the app to read your organization’s security events. Also allows the app to update editable properties in security events. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.Read.All"/>
+							<PropertyValue Property="Description" String="Read items in all site collections. Allows the app to read documents and list items in all site collections without a signed in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="Read and write items in all site collections. Allows the app to create, read, update, and delete documents and list items in all site collections without a signed in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.Manage.All"/>
+							<PropertyValue Property="Description" String="Have full control of all site collections. Allows the app to manage and create lists, documents, and list items in all site collections without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="Sites.FullControl.All"/>
+							<PropertyValue Property="Description" String="Create, edit, and delete items and lists in all site collections. Allows the app to have full control to SharePoint sites in all site collections without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Read.All"/>
+							<PropertyValue Property="Description" String="Read all users' full profiles. Allows the app to read the full set of profile properties, group membership, reports and managers of other users in your organization, without a signed-in user."/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.ReadWrite.All"/>
+							<PropertyValue Property="Description" String="  Read and write all users' full profiles. Allows the app to read and write the full set of profile properties, group membership, reports and managers of other users in your organization, without a signed-in user. Also allows the app to create and delete non-administrative users. Does not allow reset of user passwords. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Invite.All"/>
+							<PropertyValue Property="Description" String=" Invite guest users to the organization. Allows the app to invite guest users to your organization, without a signed-in user. "/>
+						</Record>
+						<Record>
+							<PropertyValue Property="Scope" String="User.Export.All"/>
+							<PropertyValue Property="Description" String="Export users' data. Allows the app to export organizational users' data, without a signed-in user."/>
+						</Record>
+					</Collection>
+				</PropertyValue>
+				<PropertyValue Property="RefreshUrl" String="https://graph.microsoft.com" />
+			</Record>
+		</Collection>
+	</Annotation>
+</Annotations>
