@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
-    <TargetFrameworks>net46; netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net461; netstandard2.0</TargetFrameworks>
     <Company>Microsoft</Company>
     <Product>Microsoft.OpenApi.OData.Reader</Product>
     <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
@@ -18,10 +18,6 @@
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">..\..\bin\Release\</OutputPath>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Capabilities\CapabilitiesTermKind.cs~RF91fb26a.TMP" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Edm" Version="7.5.0" />
