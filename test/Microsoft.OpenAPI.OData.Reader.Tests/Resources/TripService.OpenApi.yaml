@@ -342,8 +342,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Friends'
   '/People/{UserName}/Friends/{UserName}':
     get:
       tags:
@@ -411,8 +409,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Friends/{UserName}'
   '/People/{UserName}/BestFriend':
     get:
       tags:
@@ -473,8 +469,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/BestFriend'
   '/People/{UserName}/Trips':
     get:
       tags:
@@ -558,8 +552,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Trips'
   '/People/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -623,8 +615,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Trips/{TripId}'
   /Airlines:
     get:
       tags:
@@ -1327,8 +1317,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Friends'
   '/NewComePeople/{UserName}/Friends/{UserName}':
     get:
       tags:
@@ -1396,8 +1384,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Friends/{UserName}'
   '/NewComePeople/{UserName}/BestFriend':
     get:
       tags:
@@ -1458,8 +1444,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/BestFriend'
   '/NewComePeople/{UserName}/Trips':
     get:
       tags:
@@ -1543,8 +1527,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Trips'
   '/NewComePeople/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -1608,8 +1590,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Trips/{TripId}'
   /Me:
     get:
       tags:
@@ -1770,8 +1750,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - /Me/Friends
   '/Me/Friends/{UserName}':
     get:
       tags:
@@ -1832,8 +1810,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/Me/Friends/{UserName}'
   /Me/BestFriend:
     get:
       tags:
@@ -1887,8 +1863,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - /Me/BestFriend
   /Me/Trips:
     get:
       tags:
@@ -1965,8 +1939,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - /Me/Trips
   '/Me/Trips/{TripId}':
     get:
       tags:
@@ -2023,8 +1995,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    x-ms-docs-grouped-path:
-      - '/Me/Trips/{TripId}'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -2051,8 +2021,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -2079,8 +2047,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
@@ -2099,8 +2065,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
@@ -2134,8 +2098,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
@@ -2169,8 +2131,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})'
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
@@ -2197,8 +2157,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})'
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -2237,8 +2195,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()'
   '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -2277,8 +2233,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()'
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -2310,8 +2264,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
     get:
       tags:
@@ -2342,8 +2294,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
     get:
       tags:
@@ -2374,8 +2324,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
     get:
       tags:
@@ -2399,8 +2347,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-    x-ms-docs-grouped-path:
-      - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     post:
       tags:
@@ -2436,8 +2382,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
-    x-ms-docs-grouped-path:
-      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     post:
       tags:
@@ -2473,8 +2417,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
-    x-ms-docs-grouped-path:
-      - '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
     post:
       tags:
@@ -2502,8 +2444,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
-    x-ms-docs-grouped-path:
-      - /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip
   /GetPersonWithMostFriends():
     get:
       tags:

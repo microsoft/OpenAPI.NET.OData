@@ -488,10 +488,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Friends"
-      ]
+      }
     },
     "/People/{UserName}/Friends/{UserName}": {
       "get": {
@@ -584,10 +581,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Friends/{UserName}"
-      ]
+      }
     },
     "/People/{UserName}/BestFriend": {
       "get": {
@@ -670,10 +664,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/BestFriend"
-      ]
+      }
     },
     "/People/{UserName}/Trips": {
       "get": {
@@ -794,10 +785,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Trips"
-      ]
+      }
     },
     "/People/{UserName}/Trips/{TripId}": {
       "get": {
@@ -886,10 +874,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Trips/{TripId}"
-      ]
+      }
     },
     "/Airlines": {
       "get": {
@@ -1930,10 +1915,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Friends"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Friends/{UserName}": {
       "get": {
@@ -2026,10 +2008,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Friends/{UserName}"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/BestFriend": {
       "get": {
@@ -2112,10 +2091,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/BestFriend"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Trips": {
       "get": {
@@ -2236,10 +2212,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Trips"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}": {
       "get": {
@@ -2328,10 +2301,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Trips/{TripId}"
-      ]
+      }
     },
     "/Me": {
       "get": {
@@ -2555,10 +2525,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Friends"
-      ]
+      }
     },
     "/Me/Friends/{UserName}": {
       "get": {
@@ -2641,10 +2608,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Friends/{UserName}"
-      ]
+      }
     },
     "/Me/BestFriend": {
       "get": {
@@ -2717,10 +2681,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/BestFriend"
-      ]
+      }
     },
     "/Me/Trips": {
       "get": {
@@ -2831,10 +2792,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Trips"
-      ]
+      }
     },
     "/Me/Trips/{TripId}": {
       "get": {
@@ -2913,10 +2871,7 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Trips/{TripId}"
-      ]
+      }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
@@ -2958,10 +2913,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
@@ -3003,10 +2955,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()"
-      ]
+      }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
@@ -3036,10 +2985,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()"
-      ]
+      }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
@@ -3092,10 +3038,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
@@ -3148,10 +3091,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})"
-      ]
+      }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
       "get": {
@@ -3194,10 +3134,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})"
-      ]
+      }
     },
     "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
@@ -3255,10 +3192,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
@@ -3316,10 +3250,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()"
-      ]
+      }
     },
     "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
       "get": {
@@ -3367,10 +3298,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()"
-      ]
+      }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
@@ -3416,10 +3344,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
@@ -3465,10 +3390,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
-      ]
+      }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
       "get": {
@@ -3504,10 +3426,7 @@
           }
         },
         "x-ms-docs-operation-type": "function"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
-      ]
+      }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
@@ -3559,10 +3478,7 @@
           }
         },
         "x-ms-docs-operation-type": "action"
-      },
-      "x-ms-docs-grouped-path": [
-        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip"
-      ]
+      }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
@@ -3614,10 +3530,7 @@
           }
         },
         "x-ms-docs-operation-type": "action"
-      },
-      "x-ms-docs-grouped-path": [
-        "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip"
-      ]
+      }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
@@ -3657,10 +3570,7 @@
           }
         },
         "x-ms-docs-operation-type": "action"
-      },
-      "x-ms-docs-grouped-path": [
-        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip"
-      ]
+      }
     },
     "/GetPersonWithMostFriends()": {
       "get": {
