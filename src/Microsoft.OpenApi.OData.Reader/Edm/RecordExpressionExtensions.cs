@@ -203,6 +203,13 @@ namespace Microsoft.OpenApi.OData.Edm
             return null;
         }
 
+        /// <summary>
+        /// Get the collection of <typeparamref name="T"/> from the record using the given property name.
+        /// </summary>
+        /// <param name="record">The record expression.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <param name="elementFunc">The element func.</param>
+        /// <returns>The collection of string or null.</returns>
         public static IEnumerable<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName, Func<IEdmExpression, T> elementFunc)
         {
             Utils.CheckArgumentNull(record, nameof(record));

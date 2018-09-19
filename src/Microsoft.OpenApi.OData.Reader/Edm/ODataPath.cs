@@ -165,7 +165,6 @@ namespace Microsoft.OpenApi.OData.Edm
             return this;
         }
 
-
         /// <summary>
         /// Pop the last segment.
         /// </summary>

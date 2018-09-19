@@ -23,11 +23,10 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     internal class ODataContext
     {
-        private IEnumerable<ODataPath> _allPaths = null;
+        private IEnumerable<ODataPath> _allPaths;
         private ODataPathProvider _pathProvider;
-
-        public HttpRequestProvider _httpRequestProvider;
-        public AuthorizationProvider _authorizationProvider;
+        private HttpRequestProvider _httpRequestProvider;
+        private AuthorizationProvider _authorizationProvider;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataContext"/> class.
@@ -78,8 +77,14 @@ namespace Microsoft.OpenApi.OData.Edm
             }
         }
 
+        /// <summary>
+        /// Gets the path item handler provider.
+        /// </summary>
         public IPathItemHandlerProvider PathItemHanderProvider { get; }
 
+        /// <summary>
+        /// Gets the operation handler provider.
+        /// </summary>
         public IOperationHandlerProvider OperationHanderProvider { get; }
 
         /// <summary>
