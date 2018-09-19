@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                pathItems.Add(path.GetPathItemName(context.Settings), handler.CreatePathItem(context, path));
+                pathItems.Add(path.GetPathItemName(settings), handler.CreatePathItem(context, path));
             }
 
             return pathItems;

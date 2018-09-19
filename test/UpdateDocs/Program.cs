@@ -21,16 +21,11 @@ namespace UpdateDocs
     {
         static int Main(string[] args)
         {
-            if (!Test())
-            {
-                return 0;
-            }
             // we assume the path are existed for simplicity.
             string path = Directory.GetCurrentDirectory();
-            string csdl = path + "../../../../../../docs/csdl";
-            string oas20 = path + "../../../../../../docs/oas_2_0";
-            string oas30 = path + "../../../../../../docs/oas3_0_0";
-
+            string csdl = path + "/../../../../../docs/csdl";
+            string oas20 = path + "/../../../../../docs/oas_2_0";
+            string oas30 = path + "/../../../../../docs/oas3_0_0";
 
             foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {
@@ -46,10 +41,12 @@ namespace UpdateDocs
                 OpenApiConvertSettings settings = new OpenApiConvertSettings();
                 if (fileName.Contains("graph.beta"))
                 {
+                    settings.PrefixEntityTypeNameBeforeKey = true;
                     settings.ServiceRoot = new Uri("https://graph.microsoft.com/beta");
                 }
                 else if (fileName.Contains("graph1.0"))
                 {
+                    settings.PrefixEntityTypeNameBeforeKey = true;
                     settings.ServiceRoot = new Uri("https://graph.microsoft.com/v1.0");
                 }
 
@@ -68,7 +65,7 @@ namespace UpdateDocs
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
 
                 settings.EnableKeyAsSegment = true;
-                settings.EnableNavigationPropertyPath = true;
+                settings.EnableUnqualifiedCall = true;
                 output = oas30 + "/" + fileName + "_content.json";
                 document = model.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));

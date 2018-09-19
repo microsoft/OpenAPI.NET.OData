@@ -192,6 +192,20 @@ namespace Microsoft.OpenApi.OData.Edm
         private void RetrieveBoundOperationPaths()
         {
             IList<ODataPath> npPaths = _allODataPaths.Where(p => p.Kind == ODataPathKind.NavigationProperty).ToList();
+            IDictionary<IEdmEntityType, IList<ODataPath>> allNavigationPropertyPaths = new Dictionary<IEdmEntityType, IList<ODataPath>>();
+            foreach(var path in npPaths)
+            {
+                ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
+                IEdmEntityType navPropertyEntityType = npSegment.NavigationProperty.ToEntityType();
+
+                if (!allNavigationPropertyPaths.TryGetValue(navPropertyEntityType, out IList<ODataPath> value))
+                {
+                    value = new List<ODataPath>();
+                    allNavigationPropertyPaths[navPropertyEntityType] = value;
+                }
+
+                value.Add(path);
+            }
 
             foreach (var edmOperation in Model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
             {
@@ -252,6 +266,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 // 2. Search for generated navigation property
+                /*
                 foreach (var path in npPaths)
                 {
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
@@ -287,6 +302,41 @@ namespace Microsoft.OpenApi.OData.Edm
                     newPath.Push(new ODataOperationSegment(edmOperation));
                     _allODataPaths.Add(newPath);
                     found = true;
+                }*/
+
+                if (allNavigationPropertyPaths.TryGetValue(bindingEntityType, out IList<ODataPath> value))
+                {
+                    foreach(var path in value)
+                    {
+                        ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
+
+                        bool isLastKeySegment = path.LastSegment is ODataKeySegment;
+
+                        if (isCollection)
+                        {
+                            if (isLastKeySegment)
+                            {
+                                continue;
+                            }
+
+                            if (npSegment.NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many)
+                            {
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            if (!isLastKeySegment && npSegment.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                            {
+                                continue;
+                            }
+                        }
+
+                        ODataPath newPath = path.Clone();
+                        newPath.Push(new ODataOperationSegment(edmOperation));
+                        _allODataPaths.Add(newPath);
+                        found = true;
+                    }
                 }
 
                 if (found)
