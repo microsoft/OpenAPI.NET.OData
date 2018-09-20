@@ -26,11 +26,6 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary
             operation.Summary = "Add new entity to " + EntitySet.Name;
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            if (request != null && request.Description != null)
-            {
-                operation.Summary = request.Description;
-            }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -38,15 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Create" + Utils.UpperFirstChar(typeName);
             }
-        }
 
-        /// <inheritdoc/>
-        protected override void SetParameters(OpenApiOperation operation)
-        {
-            base.SetParameters(operation);
-
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            AppendCustomParameters(operation, request);
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -75,6 +63,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
+
+            base.SetRequestBody(operation);
         }
 
         /// <inheritdoc/>
@@ -109,6 +99,8 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            base.SetResponses(operation);
         }
     }
 }

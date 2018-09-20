@@ -34,6 +34,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("functionImport"));
+            base.SetExtensions(operation);
         }
     }
 }

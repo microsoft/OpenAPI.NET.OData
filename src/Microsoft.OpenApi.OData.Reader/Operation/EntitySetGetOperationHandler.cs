@@ -27,11 +27,6 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary
             operation.Summary = "Get entities from " + EntitySet.Name;
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            if (request != null && request.Description != null)
-            {
-                operation.Summary = request.Description;
-            }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -39,6 +34,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".List" + Utils.UpperFirstChar(typeName);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -158,6 +155,8 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            base.SetResponses(operation);
         }
     }
 }

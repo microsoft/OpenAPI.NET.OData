@@ -26,12 +26,16 @@ namespace Microsoft.OpenApi.OData.Operation
             // The requestBody field contains a Request Body Object describing the structure of the request body.
             // Its schema value follows the rules for Schema Objects for complex types, with one property per action parameter.
             operation.RequestBody = Context.CreateRequestBody(actionImport);
+
+            base.SetRequestBody(operation);
         }
 
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("actionImport"));
+
+            base.SetExtensions(operation);
         }
     }
 }

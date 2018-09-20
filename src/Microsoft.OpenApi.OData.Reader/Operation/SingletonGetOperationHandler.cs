@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.Operation
 {
     /// <summary>
     /// Retrieve a Singleton
-    /// The Path Item Object for the entity set contains the keyword get with an Operation Object as value
+    /// The Path Item Object for the singleton contains the keyword get with an Operation Object as value
     /// that describes the capabilities for retrieving the singleton.
     /// </summary>
     internal class SingletonGetOperationHandler : SingletonOperationHandler
@@ -24,28 +24,23 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
+            // Summary, this summary maybe update in the base function call.
             operation.Summary = "Get " + Singleton.Name;
-            var request = Context.FindRequest(Singleton, OperationType.ToString());
-            if (request != null && request.Description != null)
-            {
-                operation.Summary = request.Description;
-            }
 
-            // OperationId
+            // OperationId, it should be unique among all operations described in the API.
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = Singleton.EntityType().Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-
-            operation.Parameters = new List<OpenApiParameter>();
 
             // $select
             OpenApiParameter parameter = Context.CreateSelect(Singleton);
@@ -92,7 +87,10 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 },
             };
+
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            base.SetResponses(operation);
         }
     }
 }

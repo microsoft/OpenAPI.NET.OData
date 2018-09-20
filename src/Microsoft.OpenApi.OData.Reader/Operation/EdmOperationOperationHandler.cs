@@ -38,6 +38,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
+            // It's bound operation, the first segment must be the navigaiton source.
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
 
@@ -46,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             HasTypeCast = path.Segments.Any(s => s is ODataTypeCastSegment);
 
-            base.Initialize(context, path);
+            Request = Context.FindRequest(EdmOperation, OperationType.ToString());
         }
 
         /// <inheritdoc/>
@@ -85,6 +88,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.OperationId = operationId.Append(".").Append(md5.Substring(8)).ToString();
                 }
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -99,6 +104,8 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
+
+            base.SetTags(operation);
         }
 
         /// <inheritdoc/>
@@ -124,9 +131,12 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
+        /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
             operation.Responses = Context.CreateResponses(EdmOperation);
+
+            base.SetResponses(operation);
         }
     }
 }

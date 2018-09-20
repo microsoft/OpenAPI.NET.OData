@@ -27,19 +27,14 @@ namespace Microsoft.OpenApi.OData.Operation
             // Summary
             operation.Summary = "Get entity from " + EntitySet.Name + " by key";
 
-            // override the summary using the request.Description.
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            if (request != null && request.Description != null)
-            {
-                operation.Summary = request.Description;
-            }
-
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -94,6 +89,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            base.SetResponses(operation);
         }
     }
 }

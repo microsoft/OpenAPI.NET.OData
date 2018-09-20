@@ -27,6 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("function"));
+            base.SetExtensions(operation);
         }
     }
 }

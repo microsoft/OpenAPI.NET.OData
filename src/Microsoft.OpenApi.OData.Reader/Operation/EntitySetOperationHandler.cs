@@ -3,13 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -26,10 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
             // get the entity set.
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
+
             EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
-            base.Initialize(context, path);
+
+            Request = Context.FindRequest(EntitySet, OperationType.ToString());
         }
 
         /// <inheritdoc/>
@@ -39,34 +41,22 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Name = EntitySet.Name + "." + EntitySet.EntityType().Name,
             };
+
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
+
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
+
+            base.SetTags(operation);
         }
 
         /// <inheritdoc/>
-        protected override void SetSecurity(OpenApiOperation operation)
+        protected override void SetExtensions(OpenApiOperation operation)
         {
-            base.SetSecurity(operation);
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
 
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            if (request != null)
-            {
-                operation.Security = Context.CreateSecurityRequirements(request.SecuritySchemes).ToList();
-            }
-        }
-
-        /// <inheritdoc/>
-        protected override void SetParameters(OpenApiOperation operation)
-        {
-            base.SetParameters(operation);
-
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            if (request != null)
-            {
-                AppendCustomParameters(operation, request);
-            }
+            base.SetExtensions(operation);
         }
     }
 }

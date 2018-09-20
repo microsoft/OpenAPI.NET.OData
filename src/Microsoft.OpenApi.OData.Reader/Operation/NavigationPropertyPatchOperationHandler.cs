@@ -33,6 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 string prefix = "Update";
                 operation.OperationId = GetOperationId(prefix);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -59,6 +61,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
+
+            base.SetRequestBody(operation);
         }
 
         /// <inheritdoc/>
@@ -69,6 +73,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
                 { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
             };
+
+            base.SetResponses(operation);
         }
     }
 }

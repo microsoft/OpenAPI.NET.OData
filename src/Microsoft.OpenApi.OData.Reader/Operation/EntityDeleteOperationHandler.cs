@@ -25,12 +25,6 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary
             operation.Summary = "Delete entity from " + EntitySet.Name;
-            // override the summary using the request.Description.
-            var request = Context.FindRequest(EntitySet, OperationType.ToString());
-            if (request != null && request.Description != null)
-            {
-                operation.Summary = request.Description;
-            }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -38,6 +32,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Delete" + Utils.UpperFirstChar(typeName);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -65,6 +61,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
                 { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
             };
+
+            base.SetResponses(operation);
         }
     }
 }

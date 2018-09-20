@@ -18,7 +18,6 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [InlineData(ODataPathKind.NavigationProperty, typeof(NavigationPropertyPathItemHandler))]
         [InlineData(ODataPathKind.Operation, typeof(OperationPathItemHandler))]
         [InlineData(ODataPathKind.OperationImport, typeof(OperationImportPathItemHandler))]
-        [InlineData(ODataPathKind.Unknown, null)]
         public void GetHandlerReturnsCorrectHandlerType(ODataPathKind pathKind, Type handlerType)
         {
             // Arrange
@@ -29,6 +28,19 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             // Assert
             Assert.Same(handlerType, hander.GetType());
+        }
+
+        [Fact]
+        public void GetHandlerReturnsNullForUnknownPathKind()
+        {
+            // Arrange
+            PathItemHandlerProvider provider = new PathItemHandlerProvider();
+
+            // Act
+            IPathItemHandler hander = provider.GetHandler(ODataPathKind.Unknown);
+
+            // Assert
+            Assert.Null(hander);
         }
     }
 }

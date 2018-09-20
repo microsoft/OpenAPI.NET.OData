@@ -27,9 +27,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
             ODataOperationImportSegment operationImportSegment = path.LastSegment as ODataOperationImportSegment;
             EdmOperationImport = operationImportSegment.OperationImport;
-            base.Initialize(context, path);
+
+            Request = Context.FindRequest(EdmOperationImport, OperationType.ToString());
         }
 
         /// <inheritdoc/>
@@ -51,6 +54,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     operation.OperationId = "OperationImport." + EdmOperationImport.Name + "." + md5.Substring(8);
                 }
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -61,6 +66,8 @@ namespace Microsoft.OpenApi.OData.Operation
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
             operation.Responses = Context.CreateResponses(EdmOperationImport);
+
+            base.SetResponses(operation);
         }
 
         /// <inheritdoc/>
@@ -69,6 +76,8 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Tags = CreateTags(EdmOperationImport);
             operation.Tags[0].Extensions.Add(Constants.xMsTocType, new OpenApiString("container"));
             Context.AppendTag(operation.Tags[0]);
+
+            base.SetTags(operation);
         }
 
         private static IList<OpenApiTag> CreateTags(IEdmOperationImport operationImport)

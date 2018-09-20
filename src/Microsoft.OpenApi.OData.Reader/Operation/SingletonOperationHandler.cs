@@ -3,13 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -26,50 +24,43 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            // Base Initialize should be called at top of this method.
+            base.Initialize(context, path);
+
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
 
             Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
 
-            base.Initialize(context, path);
+            Request = context.FindRequest(Singleton, OperationType.ToString());
         }
 
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
+            // In this SDK, we use "[Singleton Name].[Singleton Entity Type Name]
+            // For example: "Me.User"
             OpenApiTag tag = new OpenApiTag
             {
                 Name = Singleton.Name + "." + Singleton.EntityType().Name,
             };
 
+            // Use an extension for TOC (Table of Content)
             tag.Extensions.Add(Constants.xMsTocType, new OpenApiString("page"));
 
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
+
+            // Call base.SetTags() at the end of this method.
+            base.SetTags(operation);
         }
 
         /// <inheritdoc/>
-        protected override void SetSecurity(OpenApiOperation operation)
+        protected override void SetExtensions(OpenApiOperation operation)
         {
-            base.SetSecurity(operation);
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
 
-            var request = Context.FindRequest(Singleton, OperationType.ToString());
-            if (request != null)
-            {
-                operation.Security = Context.CreateSecurityRequirements(request.SecuritySchemes).ToList();
-            }
-        }
-
-        /// <inheritdoc/>
-        protected override void SetParameters(OpenApiOperation operation)
-        {
-            base.SetParameters(operation);
-
-            var request = Context.FindRequest(Singleton, OperationType.ToString());
-            if (request != null)
-            {
-                AppendCustomParameters(operation, request);
-            }
+            base.SetExtensions(operation);
         }
     }
 }

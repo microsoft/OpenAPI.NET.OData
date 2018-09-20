@@ -33,6 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 string prefix = "Create";
                 operation.OperationId = GetOperationId(prefix);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -59,6 +61,8 @@ namespace Microsoft.OpenApi.OData.Operation
                         }
                     }
             };
+
+            base.SetRequestBody(operation);
         }
 
         /// <inheritdoc/>
@@ -92,6 +96,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            base.SetResponses(operation);
         }
     }
 }

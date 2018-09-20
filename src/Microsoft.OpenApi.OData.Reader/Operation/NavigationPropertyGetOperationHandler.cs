@@ -38,6 +38,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 operation.OperationId = GetOperationId(prefix);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -71,17 +73,14 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+
+            base.SetResponses(operation);
         }
 
         /// <inheritdoc/>
         protected override void SetParameters(OpenApiOperation operation)
         {
             base.SetParameters(operation);
-
-            if (operation.Parameters == null)
-            {
-                operation.Parameters = new List<OpenApiParameter>();
-            }
 
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {

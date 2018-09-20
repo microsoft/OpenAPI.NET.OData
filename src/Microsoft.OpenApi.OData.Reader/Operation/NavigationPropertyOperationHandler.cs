@@ -3,13 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -41,6 +41,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
+            base.Initialize(context, path);
+
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
 
@@ -56,7 +58,8 @@ namespace Microsoft.OpenApi.OData.Operation
             NavigationPropertyPath = string.Join("/",
                 path.Segments.OfType<ODataNavigationPropertySegment>().Select(p => p.NavigationProperty.Name));
 
-            base.Initialize(context, path);
+            // So far, we haven't defined the HttpRequest for the navigation property path.
+            // Request = Context.FindRequest(NavigationSource, OperationType.ToString());
         }
 
         /// <inheritdoc/>
@@ -101,6 +104,16 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Tags.Add(tag);
 
             Context.AppendTag(tag);
+
+            base.SetTags(operation);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiOperation operation)
+        {
+            operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
+
+            base.SetExtensions(operation);
         }
 
         protected string GetOperationId(string prefix)

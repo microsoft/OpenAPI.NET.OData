@@ -24,13 +24,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
+            // Summary, this summary maybe update in the base function call.
             operation.Summary = "Update " + Singleton.Name;
-            var request = Context.FindRequest(Singleton, OperationType.ToString());
-            if (request != null && request.Description != null)
-            {
-                operation.Summary = request.Description;
-            }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -38,6 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = Singleton.EntityType().Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
             }
+
+            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -64,6 +61,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
             };
+
+            base.SetRequestBody(operation);
         }
 
         /// <inheritdoc/>
@@ -74,6 +73,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
                 { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
             };
+
+            base.SetResponses(operation);
         }
     }
 }

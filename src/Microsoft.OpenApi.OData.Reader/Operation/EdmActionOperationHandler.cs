@@ -19,11 +19,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
 
-        /// <summary>
-        /// Gets the Edm Action.
-        /// </summary>
-        public IEdmAction Action => EdmOperation as IEdmAction;
-
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
@@ -32,12 +27,15 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 operation.RequestBody = Context.CreateRequestBody(action);
             }
+
+            base.SetRequestBody(operation);
         }
 
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
         {
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("action"));
+            base.SetExtensions(operation);
         }
     }
 }
