@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     {
         private IDictionary<ODataPathKind, IPathItemHandler> _handlers = new Dictionary<ODataPathKind, IPathItemHandler>
         {
-            // Entity
+            // EntitySet
             { ODataPathKind.EntitySet, new EntitySetPathItemHandler() },
 
             // Entity

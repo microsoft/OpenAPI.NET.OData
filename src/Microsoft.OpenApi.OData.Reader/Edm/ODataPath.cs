@@ -52,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Gets the path kind.
         /// </summary>
-        public ODataPathKind Kind
+        public virtual ODataPathKind Kind
         {
             get
             {

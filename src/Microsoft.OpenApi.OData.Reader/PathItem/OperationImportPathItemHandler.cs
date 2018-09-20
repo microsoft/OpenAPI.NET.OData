@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class OperationImportPathItemHandler : PathItemHandler
     {
         /// <inheritdoc/>
-        protected override ODataPathKind HandleKind { get; } = ODataPathKind.OperationImport;
+        protected override ODataPathKind HandleKind => ODataPathKind.OperationImport;
 
         /// <summary>
         /// Gets the operation import.

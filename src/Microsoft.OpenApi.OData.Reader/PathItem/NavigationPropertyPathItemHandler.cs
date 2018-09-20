@@ -22,7 +22,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class NavigationPropertyPathItemHandler : PathItemHandler
     {
         /// <inheritdoc/>
-        protected override ODataPathKind HandleKind { get; } = ODataPathKind.NavigationProperty;
+        protected override ODataPathKind HandleKind => ODataPathKind.NavigationProperty;
 
         /// <summary>
         /// Gets the navigation property.

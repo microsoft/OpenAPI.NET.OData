@@ -18,6 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [InlineData(ODataPathKind.NavigationProperty, typeof(NavigationPropertyPathItemHandler))]
         [InlineData(ODataPathKind.Operation, typeof(OperationPathItemHandler))]
         [InlineData(ODataPathKind.OperationImport, typeof(OperationImportPathItemHandler))]
+        [InlineData(ODataPathKind.Unknown, null)]
         public void GetHandlerReturnsCorrectHandlerType(ODataPathKind pathKind, Type handlerType)
         {
             // Arrange

@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class EntityPathItemHandler : EntitySetPathItemHandler
     {
         /// <inheritdoc/>
-        protected override ODataPathKind HandleKind { get; } = ODataPathKind.Entity;
+        protected override ODataPathKind HandleKind => ODataPathKind.Entity;
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)

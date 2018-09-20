@@ -16,7 +16,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class SingletonPathItemHandler : PathItemHandler
     {
         /// <inheritdoc/>
-        protected override ODataPathKind HandleKind { get; } = ODataPathKind.Singleton;
+        protected override ODataPathKind HandleKind => ODataPathKind.Singleton;
 
         /// <summary>
         /// Gets the singleton.

@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     internal class OperationPathItemHandler : PathItemHandler
     {
         /// <inheritdoc/>
-        protected override ODataPathKind HandleKind { get; } = ODataPathKind.Operation;
+        protected override ODataPathKind HandleKind => ODataPathKind.Operation;
 
         /// <summary>
         /// Gets the Edm operation.
