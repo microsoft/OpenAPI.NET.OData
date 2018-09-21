@@ -134,7 +134,33 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.Responses = Context.CreateResponses(EdmOperation);
+            if (EdmOperation.IsAction() && EdmOperation.ReturnType == null)
+            {
+                operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
+            }
+            else
+            {
+                // function should have a return type.
+                OpenApiResponse response = new OpenApiResponse
+                {
+                    Description = "Success",
+                    Content = new Dictionary<string, OpenApiMediaType>
+                    {
+                        {
+                            Constants.ApplicationJsonMediaType,
+                            new OpenApiMediaType
+                            {
+                                Schema = Context.CreateEdmTypeSchema(EdmOperation.ReturnType)
+                            }
+                        }
+                    }
+                };
+
+                operation.Responses.Add(Constants.StatusCode200, response);
+            }
+
+            // both action & function has the default response.
+            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             base.SetResponses(operation);
         }

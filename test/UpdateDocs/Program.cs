@@ -52,7 +52,7 @@ namespace UpdateDocs
 
                 OpenApiDocument document = model.ConvertToOpenApi(settings);
 
-                string output = oas20 + "/" + fileName + ".yaml";
+                string output;/* = oas20 + "/" + fileName + ".yaml";
                 File.WriteAllText(output, document.SerializeAsYaml(OpenApiSpecVersion.OpenApi2_0));
 
                 output = oas20 + "/" + fileName + ".json";
@@ -63,12 +63,15 @@ namespace UpdateDocs
 
                 output = oas30 + "/" + fileName + ".json";
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-
+                */
                 settings.EnableKeyAsSegment = true;
                 settings.EnableUnqualifiedCall = true;
-                output = oas30 + "/" + fileName + "_content.json";
+                output = oas30 + "/" + fileName + ".json";
                 document = model.ConvertToOpenApi(settings);
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+
+                output = oas20 + "/" + fileName + ".json";
+                File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi2_0));
 
                 Console.WriteLine("Output [ " + fileName + " ] Succeessful!");
             }

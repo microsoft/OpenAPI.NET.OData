@@ -76,6 +76,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 _allODataPaths.Add(new ODataPath(new ODataOperationImportSegment(import)));
             }
 
+            _allODataPaths.Sort();
+
             return _allODataPaths;
         }
 

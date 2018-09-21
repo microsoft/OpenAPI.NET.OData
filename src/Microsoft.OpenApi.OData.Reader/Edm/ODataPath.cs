@@ -17,9 +17,10 @@ namespace Microsoft.OpenApi.OData.Edm
     /// <summary>
     /// Describes an OData path.
     /// </summary>
-    public class ODataPath : IEnumerable<ODataSegment>
+    public class ODataPath : IEnumerable<ODataSegment>, IComparable<ODataPath>
     {
         private ODataPathKind? _pathKind;
+        private string _defaultPathItemName;
 
         /// <summary>
         /// Initializes a new instance of <see cref="ODataPath"/> class.
@@ -114,7 +115,13 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The string.</returns>
         public string GetPathItemName()
         {
-            return GetPathItemName(new OpenApiConvertSettings());
+            if (_defaultPathItemName != null)
+            {
+                return _defaultPathItemName;
+            }
+
+            _defaultPathItemName = GetPathItemName(new OpenApiConvertSettings());
+            return _defaultPathItemName;
         }
 
         /// <summary>
@@ -161,6 +168,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             _pathKind = null;
+            _defaultPathItemName = null;
             Segments.Add(segment);
             return this;
         }
@@ -177,6 +185,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             _pathKind = null;
+            _defaultPathItemName = null;
             Segments.RemoveAt(Segments.Count - 1);
             return this;
         }
@@ -188,6 +197,11 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string ToString()
         {
             return "/" + String.Join("/", Segments.Select(e => e.Kind));
+        }
+
+        public int CompareTo(ODataPath other)
+        {
+            return GetPathItemName().CompareTo(other.GetPathItemName());
         }
 
         private ODataPathKind CalcPathType()
