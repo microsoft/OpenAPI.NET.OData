@@ -6,615 +6,6 @@ info:
 servers:
   - url: http://services.odata.org/TrippinRESTierService
 paths:
-  /People:
-    get:
-      tags:
-        - People.Person
-      summary: Get entities from People
-      operationId: People.Person.ListPerson
-      parameters:
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/count'
-        - name: $orderby
-          in: query
-          description: Order items by property values
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
-              type: string
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-      responses:
-        '200':
-          description: Retrieved entities
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-    post:
-      tags:
-        - People.Person
-      summary: Add new entity to People
-      operationId: People.Person.CreatePerson
-      requestBody:
-        description: New entity
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        required: true
-      responses:
-        '201':
-          description: Created entity
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  '/People/{UserName}':
-    get:
-      tags:
-        - People.Person
-      summary: Get entity from People by key
-      operationId: People.Person.GetPerson
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-      responses:
-        '200':
-          description: Retrieved entity
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-          links:
-            Friends:
-              operationId: People.Person.GetPerson
-              parameters:
-                UserName: $request.path.UserName
-            BestFriend:
-              operationId: People.Person.GetPerson
-              parameters:
-                UserName: $request.path.UserName
-            Trips:
-              operationId: People.Person.GetPerson
-              parameters:
-                UserName: $request.path.UserName
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-    patch:
-      tags:
-        - People.Person
-      summary: Update entity in People
-      operationId: People.Person.UpdatePerson
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-      requestBody:
-        description: New property values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-    delete:
-      tags:
-        - People.Person
-      summary: Delete entity from People
-      operationId: People.Person.DeletePerson
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  '/People/{UserName}/Friends':
-    get:
-      tags:
-        - People.Person
-      summary: Get Friends from People
-      operationId: People.ListFriends
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/count'
-        - name: $orderby
-          in: query
-          description: Order items by property values
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - UserName desc
-                - FirstName
-                - FirstName desc
-                - LastName
-                - LastName desc
-                - MiddleName
-                - MiddleName desc
-                - Gender
-                - Gender desc
-                - Age
-                - Age desc
-                - Emails
-                - Emails desc
-                - AddressInfo
-                - AddressInfo desc
-                - HomeAddress
-                - HomeAddress desc
-                - FavoriteFeature
-                - FavoriteFeature desc
-                - Features
-                - Features desc
-              type: string
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  '/People/{UserName}/Friends/{UserName}':
-    get:
-      tags:
-        - People.Person
-      summary: Get Friends from People
-      operationId: People.GetFriends
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  '/People/{UserName}/BestFriend':
-    get:
-      tags:
-        - People.Person
-      summary: Get BestFriend from People
-      operationId: People.GetBestFriend
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  '/People/{UserName}/Trips':
-    get:
-      tags:
-        - People.Trip
-      summary: Get Trips from People
-      operationId: People.ListTrips
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - $ref: '#/components/parameters/top'
-        - $ref: '#/components/parameters/skip'
-        - $ref: '#/components/parameters/search'
-        - $ref: '#/components/parameters/filter'
-        - $ref: '#/components/parameters/count'
-        - name: $orderby
-          in: query
-          description: Order items by property values
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - TripId
-                - TripId desc
-                - ShareId
-                - ShareId desc
-                - Name
-                - Name desc
-                - Budget
-                - Budget desc
-                - Description
-                - Description desc
-                - Tags
-                - Tags desc
-                - StartsAt
-                - StartsAt desc
-                - EndsAt
-                - EndsAt desc
-              type: string
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - PlanItems
-              type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  '/People/{UserName}/Trips/{TripId}':
-    get:
-      tags:
-        - People.Trip
-      summary: Get Trips from People
-      operationId: People.GetTrips
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: TripId
-          in: path
-          description: 'key: TripId'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: Trip
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - TripId
-                - ShareId
-                - Name
-                - Budget
-                - Description
-                - Tags
-                - StartsAt
-                - EndsAt
-                - PlanItems
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - PlanItems
-              type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   /Airlines:
     get:
       tags:
@@ -981,6 +372,597 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
+  '/GetNearestAirport(lat={lat},lon={lon})':
+    get:
+      tags:
+        - Airports
+      summary: Invoke functionImport GetNearestAirport
+      operationId: OperationImport.GetNearestAirport.6896b1324a4eff76ad9867a0
+      parameters:
+        - name: lat
+          in: path
+          required: true
+          schema:
+            anyOf:
+              - type: number
+              - type: string
+              - enum:
+                  - '-INF'
+                  - INF
+                  - NaN
+            format: double
+        - name: lon
+          in: path
+          required: true
+          schema:
+            anyOf:
+              - type: number
+              - type: string
+              - enum:
+                  - '-INF'
+                  - INF
+                  - NaN
+            format: double
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+                nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: functionImport
+  /GetPersonWithMostFriends():
+    get:
+      tags:
+        - People
+      summary: Invoke functionImport GetPersonWithMostFriends
+      operationId: OperationImport.GetPersonWithMostFriends.de8b4a5ab51ba6c8c254fe80
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: functionImport
+  /Me:
+    get:
+      tags:
+        - Me.Person
+      summary: Get Me
+      operationId: Me.Person.GetPerson
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Me.Person
+      summary: Update Me
+      operationId: Me.Person.UpdatePerson
+      requestBody:
+        description: New property values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/BestFriend:
+    get:
+      tags:
+        - Me.Person
+      summary: Get BestFriend from Me
+      operationId: Me.GetBestFriend
+      parameters:
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/Friends:
+    get:
+      tags:
+        - Me.Person
+      summary: Get Friends from Me
+      operationId: Me.ListFriends
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Friends/{UserName}':
+    get:
+      tags:
+        - Me.Person
+      summary: Get Friends from Me
+      operationId: Me.GetFriends
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
+    get:
+      tags:
+        - Me.Functions
+      summary: Invoke function GetFavoriteAirline
+      operationId: Me.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
+    get:
+      tags:
+        - Me.Functions
+      summary: Invoke function GetFriendsTrips
+      operationId: Me.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
+      parameters:
+        - name: userName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
+    post:
+      tags:
+        - Me.Actions
+      summary: Invoke action ShareTrip
+      operationId: Me.Person.ShareTrip
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                tripId:
+                  maximum: 2147483647
+                  minimum: -2147483648
+                  type: integer
+                  format: int32
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
+    get:
+      tags:
+        - Me.Functions
+      summary: Invoke function UpdatePersonLastName
+      operationId: Me.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
+      parameters:
+        - name: lastName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: boolean
+                default: false
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /Me/Trips:
+    get:
+      tags:
+        - Me.Trip
+      summary: Get Trips from Me
+      operationId: Me.ListTrips
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - TripId
+                - TripId desc
+                - ShareId
+                - ShareId desc
+                - Name
+                - Name desc
+                - Budget
+                - Budget desc
+                - Description
+                - Description desc
+                - Tags
+                - Tags desc
+                - StartsAt
+                - StartsAt desc
+                - EndsAt
+                - EndsAt desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - TripId
+                - ShareId
+                - Name
+                - Budget
+                - Description
+                - Tags
+                - StartsAt
+                - EndsAt
+                - PlanItems
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - PlanItems
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Trips/{TripId}':
+    get:
+      tags:
+        - Me.Trip
+      summary: Get Trips from Me
+      operationId: Me.GetTrips
+      parameters:
+        - name: TripId
+          in: path
+          description: 'key: TripId'
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+            format: int32
+          x-ms-docs-key-type: Trip
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - TripId
+                - ShareId
+                - Name
+                - Budget
+                - Description
+                - Tags
+                - StartsAt
+                - EndsAt
+                - PlanItems
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - PlanItems
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
+    get:
+      tags:
+        - Me.Functions
+      summary: Invoke function GetInvolvedPeople
+      operationId: Me.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716
+      parameters:
+        - name: TripId
+          in: path
+          description: 'key: TripId'
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+            format: int32
+          x-ms-docs-key-type: Trip
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                  nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
   /NewComePeople:
     get:
       tags:
@@ -1221,6 +1203,66 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/BestFriend':
+    get:
+      tags:
+        - NewComePeople.Person
+      summary: Get BestFriend from NewComePeople
+      operationId: NewComePeople.GetBestFriend
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends':
     get:
       tags:
@@ -1384,12 +1426,12 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/NewComePeople/{UserName}/BestFriend':
+  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
-        - NewComePeople.Person
-      summary: Get BestFriend from NewComePeople
-      operationId: NewComePeople.GetBestFriend
+        - NewComePeople.Functions
+      summary: Invoke function GetFavoriteAirline
+      operationId: NewComePeople.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
       parameters:
         - name: UserName
           in: path
@@ -1398,52 +1440,116 @@ paths:
           schema:
             type: string
           x-ms-docs-key-type: Person
-        - name: $select
-          in: query
-          description: Select properties to be returned
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
       responses:
         '200':
-          description: Retrieved navigation property
+          description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
+      x-ms-docs-operation-type: function
+  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
+    get:
+      tags:
+        - NewComePeople.Functions
+      summary: Invoke function GetFriendsTrips
+      operationId: NewComePeople.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: userName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
+    post:
+      tags:
+        - NewComePeople.Actions
+      summary: Invoke action ShareTrip
+      operationId: NewComePeople.Person.ShareTrip
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                tripId:
+                  maximum: 2147483647
+                  minimum: -2147483648
+                  type: integer
+                  format: int32
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
+    get:
+      tags:
+        - NewComePeople.Functions
+      summary: Invoke function UpdatePersonLastName
+      operationId: NewComePeople.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: lastName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: boolean
+                default: false
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
   '/NewComePeople/{UserName}/Trips':
     get:
       tags:
@@ -1590,13 +1696,175 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  /Me:
+  '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
-        - Me.Person
-      summary: Get Me
-      operationId: Me.Person.GetPerson
+        - NewComePeople.Functions
+      summary: Invoke function GetInvolvedPeople
+      operationId: NewComePeople.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716
       parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: TripId
+          in: path
+          description: 'key: TripId'
+          required: true
+          schema:
+            maximum: 2147483647
+            minimum: -2147483648
+            type: integer
+            format: int32
+          x-ms-docs-key-type: Trip
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                  nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  /People:
+    get:
+      tags:
+        - People.Person
+      summary: Get entities from People
+      operationId: People.Person.ListPerson
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved entities
+          content:
+            application/json:
+              schema:
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Person
+      summary: Add new entity to People
+      operationId: People.Person.CreatePerson
+      requestBody:
+        description: New entity
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        required: true
+      responses:
+        '201':
+          description: Created entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}':
+    get:
+      tags:
+        - People.Person
+      summary: Get entity from People by key
+      operationId: People.Person.GetPerson
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
         - name: $select
           in: query
           description: Select properties to be returned
@@ -1640,14 +1908,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: People.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
+            BestFriend:
+              operationId: People.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
+            Trips:
+              operationId: People.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
     patch:
       tags:
-        - Me.Person
-      summary: Update Me
-      operationId: Me.Person.UpdatePerson
+        - People.Person
+      summary: Update entity in People
+      operationId: People.Person.UpdatePerson
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
       requestBody:
         description: New property values
         content:
@@ -1661,13 +1950,104 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  /Me/Friends:
+    delete:
+      tags:
+        - People.Person
+      summary: Delete entity from People
+      operationId: People.Person.DeletePerson
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: If-Match
+          in: header
+          description: ETag
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/BestFriend':
     get:
       tags:
-        - Me.Person
-      summary: Get Friends from Me
-      operationId: Me.ListFriends
+        - People.Person
+      summary: Get BestFriend from People
+      operationId: People.GetBestFriend
       parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: $select
+          in: query
+          description: Select properties to be returned
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - FirstName
+                - LastName
+                - MiddleName
+                - Gender
+                - Age
+                - Emails
+                - AddressInfo
+                - HomeAddress
+                - FavoriteFeature
+                - Features
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+        - name: $expand
+          in: query
+          description: Expand related entities
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - '*'
+                - Friends
+                - BestFriend
+                - Trips
+              type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Friends':
+    get:
+      tags:
+        - People.Person
+      summary: Get Friends from People
+      operationId: People.ListFriends
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -1750,13 +2130,20 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/Me/Friends/{UserName}':
+  '/People/{UserName}/Friends/{UserName}':
     get:
       tags:
-        - Me.Person
-      summary: Get Friends from Me
-      operationId: Me.GetFriends
+        - People.Person
+      summary: Get Friends from People
+      operationId: People.GetFriends
       parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
         - name: UserName
           in: path
           description: 'key: UserName'
@@ -1810,66 +2197,144 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  /Me/BestFriend:
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
-        - Me.Person
-      summary: Get BestFriend from Me
-      operationId: Me.GetBestFriend
+        - People.Functions
+      summary: Invoke function GetFavoriteAirline
+      operationId: People.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
       parameters:
-        - name: $select
-          in: query
-          description: Select properties to be returned
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
           schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - UserName
-                - FirstName
-                - LastName
-                - MiddleName
-                - Gender
-                - Age
-                - Emails
-                - AddressInfo
-                - HomeAddress
-                - FavoriteFeature
-                - Features
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
-        - name: $expand
-          in: query
-          description: Expand related entities
-          schema:
-            uniqueItems: true
-            type: array
-            items:
-              enum:
-                - '*'
-                - Friends
-                - BestFriend
-                - Trips
-              type: string
+            type: string
+          x-ms-docs-key-type: Person
       responses:
         '200':
-          description: Retrieved navigation property
+          description: Success
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                anyOf:
+                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+                nullable: true
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
-  /Me/Trips:
+      x-ms-docs-operation-type: function
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
     get:
       tags:
-        - Me.Trip
-      summary: Get Trips from Me
-      operationId: Me.ListTrips
+        - People.Functions
+      summary: Invoke function GetFriendsTrips
+      operationId: People.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
       parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: userName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  anyOf:
+                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                  nullable: true
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
+    post:
+      tags:
+        - People.Actions
+      summary: Invoke action ShareTrip
+      operationId: People.Person.ShareTrip
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                tripId:
+                  maximum: 2147483647
+                  minimum: -2147483648
+                  type: integer
+                  format: int32
+        required: true
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: action
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
+    get:
+      tags:
+        - People.Functions
+      summary: Invoke function UpdatePersonLastName
+      operationId: People.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
+        - name: lastName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: boolean
+                default: false
+        default:
+          $ref: '#/components/responses/error'
+      x-ms-docs-operation-type: function
+  '/People/{UserName}/Trips':
+    get:
+      tags:
+        - People.Trip
+      summary: Get Trips from People
+      operationId: People.ListTrips
+      parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
         - $ref: '#/components/parameters/top'
         - $ref: '#/components/parameters/skip'
         - $ref: '#/components/parameters/search'
@@ -1939,13 +2404,20 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/Me/Trips/{TripId}':
+  '/People/{UserName}/Trips/{TripId}':
     get:
       tags:
-        - Me.Trip
-      summary: Get Trips from Me
-      operationId: Me.GetTrips
+        - People.Trip
+      summary: Get Trips from People
+      operationId: People.GetTrips
       parameters:
+        - name: UserName
+          in: path
+          description: 'key: UserName'
+          required: true
+          schema:
+            type: string
+          x-ms-docs-key-type: Person
         - name: TripId
           in: path
           description: 'key: TripId'
@@ -1995,168 +2467,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
-    get:
-      tags:
-        - People.Functions
-      summary: Invoke function GetFavoriteAirline
-      operationId: People.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-                nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
-    get:
-      tags:
-        - NewComePeople.Functions
-      summary: Invoke function GetFavoriteAirline
-      operationId: NewComePeople.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-                nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
-    get:
-      tags:
-        - Me.Functions
-      summary: Invoke function GetFavoriteAirline
-      operationId: Me.Person.GetFavoriteAirline.1c526eb64c7a82083ebab0f2
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
-                nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
-    get:
-      tags:
-        - People.Functions
-      summary: Invoke function GetFriendsTrips
-      operationId: People.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: userName
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                  nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
-    get:
-      tags:
-        - NewComePeople.Functions
-      summary: Invoke function GetFriendsTrips
-      operationId: NewComePeople.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: userName
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                  nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})':
-    get:
-      tags:
-        - Me.Functions
-      summary: Invoke function GetFriendsTrips
-      operationId: Me.Person.GetFriendsTrips.9b42e09ab8ef6d73b88be6e9
-      parameters:
-        - name: userName
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                  nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -2195,316 +2505,6 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
-  '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
-    get:
-      tags:
-        - NewComePeople.Functions
-      summary: Invoke function GetInvolvedPeople
-      operationId: NewComePeople.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: TripId
-          in: path
-          description: 'key: TripId'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: Trip
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
-    get:
-      tags:
-        - Me.Functions
-      summary: Invoke function GetInvolvedPeople
-      operationId: Me.Person.GetInvolvedPeople.27c6c87f0d461b76c8ef1716
-      parameters:
-        - name: TripId
-          in: path
-          description: 'key: TripId'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: Trip
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
-    get:
-      tags:
-        - People.Functions
-      summary: Invoke function UpdatePersonLastName
-      operationId: People.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: lastName
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: boolean
-                default: false
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
-    get:
-      tags:
-        - NewComePeople.Functions
-      summary: Invoke function UpdatePersonLastName
-      operationId: NewComePeople.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: lastName
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: boolean
-                default: false
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})':
-    get:
-      tags:
-        - Me.Functions
-      summary: Invoke function UpdatePersonLastName
-      operationId: Me.Person.UpdatePersonLastName.e4ea38792d2cfa3aa5bab91b
-      parameters:
-        - name: lastName
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: boolean
-                default: false
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: function
-  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
-    post:
-      tags:
-        - People.Actions
-      summary: Invoke action ShareTrip
-      operationId: People.Person.ShareTrip
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-      requestBody:
-        description: Action parameters
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                tripId:
-                  maximum: 2147483647
-                  minimum: -2147483648
-                  type: integer
-                  format: int32
-        required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: action
-  '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
-    post:
-      tags:
-        - NewComePeople.Actions
-      summary: Invoke action ShareTrip
-      operationId: NewComePeople.Person.ShareTrip
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-      requestBody:
-        description: Action parameters
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                tripId:
-                  maximum: 2147483647
-                  minimum: -2147483648
-                  type: integer
-                  format: int32
-        required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: action
-  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
-    post:
-      tags:
-        - Me.Actions
-      summary: Invoke action ShareTrip
-      operationId: Me.Person.ShareTrip
-      requestBody:
-        description: Action parameters
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                userName:
-                  type: string
-                tripId:
-                  maximum: 2147483647
-                  minimum: -2147483648
-                  type: integer
-                  format: int32
-        required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: action
-  /GetPersonWithMostFriends():
-    get:
-      tags:
-        - People
-      summary: Invoke functionImport GetPersonWithMostFriends
-      operationId: OperationImport.GetPersonWithMostFriends.de8b4a5ab51ba6c8c254fe80
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: functionImport
-  '/GetNearestAirport(lat={lat},lon={lon})':
-    get:
-      tags:
-        - Airports
-      summary: Invoke functionImport GetNearestAirport
-      operationId: OperationImport.GetNearestAirport.6896b1324a4eff76ad9867a0
-      parameters:
-        - name: lat
-          in: path
-          required: true
-          schema:
-            anyOf:
-              - type: number
-              - type: string
-              - enum:
-                  - '-INF'
-                  - INF
-                  - NaN
-            format: double
-        - name: lon
-          in: path
-          required: true
-          schema:
-            anyOf:
-              - type: number
-              - type: string
-              - enum:
-                  - '-INF'
-                  - INF
-                  - NaN
-            format: double
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                anyOf:
-                  - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
-                nullable: true
-        default:
-          $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: functionImport
   /ResetDataSource:
     post:
       tags:
@@ -3275,37 +3275,37 @@ components:
         DirectReports:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
 tags:
-  - name: People.Person
-    x-ms-docs-toc-type: page
-  - name: People.Trip
-    x-ms-docs-toc-type: page
   - name: Airlines.Airline
     x-ms-docs-toc-type: page
   - name: Airports.Airport
     x-ms-docs-toc-type: page
-  - name: NewComePeople.Person
-    x-ms-docs-toc-type: page
-  - name: NewComePeople.Trip
-    x-ms-docs-toc-type: page
-  - name: Me.Person
-    x-ms-docs-toc-type: page
-  - name: Me.Trip
-    x-ms-docs-toc-type: page
-  - name: People.Functions
-    x-ms-docs-toc-type: container
-  - name: NewComePeople.Functions
-    x-ms-docs-toc-type: container
-  - name: Me.Functions
-    x-ms-docs-toc-type: container
-  - name: People.Actions
-    x-ms-docs-toc-type: container
-  - name: NewComePeople.Actions
-    x-ms-docs-toc-type: container
-  - name: Me.Actions
+  - name: Airports
     x-ms-docs-toc-type: container
   - name: People
     x-ms-docs-toc-type: container
-  - name: Airports
+  - name: Me.Person
+    x-ms-docs-toc-type: page
+  - name: Me.Functions
     x-ms-docs-toc-type: container
+  - name: Me.Actions
+    x-ms-docs-toc-type: container
+  - name: Me.Trip
+    x-ms-docs-toc-type: page
+  - name: NewComePeople.Person
+    x-ms-docs-toc-type: page
+  - name: NewComePeople.Functions
+    x-ms-docs-toc-type: container
+  - name: NewComePeople.Actions
+    x-ms-docs-toc-type: container
+  - name: NewComePeople.Trip
+    x-ms-docs-toc-type: page
+  - name: People.Person
+    x-ms-docs-toc-type: page
+  - name: People.Functions
+    x-ms-docs-toc-type: container
+  - name: People.Actions
+    x-ms-docs-toc-type: container
+  - name: People.Trip
+    x-ms-docs-toc-type: page
   - name: ResetDataSource
     x-ms-docs-toc-type: container

@@ -11,291 +11,6 @@
     }
   ],
   "paths": {
-    "/People": {
-      "get": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Get entities from People",
-        "operationId": "People.Person.ListPerson",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/top"
-          },
-          {
-            "$ref": "#/components/parameters/skip"
-          },
-          {
-            "$ref": "#/components/parameters/search"
-          },
-          {
-            "$ref": "#/components/parameters/filter"
-          },
-          {
-            "$ref": "#/components/parameters/count"
-          },
-          {
-            "name": "$orderby",
-            "in": "query",
-            "description": "Order items by property values",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "UserName desc",
-                  "HomeAddress",
-                  "HomeAddress desc",
-                  "WorkAddress",
-                  "WorkAddress desc",
-                  "Addresses",
-                  "Addresses desc"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "HomeAddress",
-                  "WorkAddress",
-                  "Addresses"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.Person"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "post": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Add new entity to People",
-        "operationId": "People.Person.CreatePerson",
-        "requestBody": {
-          "description": "New entity",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DefaultNs.Person"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DefaultNs.Person"
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      }
-    },
-    "/People({UserName})": {
-      "get": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Get entity from People by key",
-        "operationId": "People.Person.GetPerson",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "HomeAddress",
-                  "WorkAddress",
-                  "Addresses"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*"
-                ],
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved entity",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DefaultNs.Person"
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "patch": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Update entity in People",
-        "operationId": "People.Person.UpdatePerson",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          }
-        ],
-        "requestBody": {
-          "description": "New property values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DefaultNs.Person"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Delete entity from People",
-        "operationId": "People.Person.DeletePerson",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      }
-    },
     "/City": {
       "get": {
         "tags": [
@@ -928,6 +643,291 @@
         },
         "x-ms-docs-operation-type": "operation"
       }
+    },
+    "/People": {
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get entities from People",
+        "operationId": "People.Person.ListPerson",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "WorkAddress",
+                  "WorkAddress desc",
+                  "Addresses",
+                  "Addresses desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "HomeAddress",
+                  "WorkAddress",
+                  "Addresses"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DefaultNs.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Add new entity to People",
+        "operationId": "People.Person.CreatePerson",
+        "requestBody": {
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DefaultNs.Person"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DefaultNs.Person"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People({UserName})": {
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get entity from People by key",
+        "operationId": "People.Person.GetPerson",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "HomeAddress",
+                  "WorkAddress",
+                  "Addresses"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DefaultNs.Person"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Update entity in People",
+        "operationId": "People.Person.UpdatePerson",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DefaultNs.Person"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete entity from People",
+        "operationId": "People.Person.DeletePerson",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
     }
   },
   "components": {
@@ -1207,10 +1207,6 @@
   },
   "tags": [
     {
-      "name": "People.Person",
-      "x-ms-docs-toc-type": "page"
-    },
-    {
       "name": "City.City",
       "x-ms-docs-toc-type": "page"
     },
@@ -1220,6 +1216,10 @@
     },
     {
       "name": "Me.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "People.Person",
       "x-ms-docs-toc-type": "page"
     }
   ]
