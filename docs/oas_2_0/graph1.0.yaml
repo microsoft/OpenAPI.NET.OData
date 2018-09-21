@@ -19,6 +19,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -125,6 +126,7 @@ paths:
           x-ms-docs-key-type: contract
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -221,7 +223,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -368,7 +370,7 @@ paths:
           x-ms-docs-key-type: device
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -440,7 +442,7 @@ paths:
           x-ms-docs-key-type: device
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: body
           name: body
@@ -472,7 +474,7 @@ paths:
           x-ms-docs-key-type: device
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-Match
@@ -792,7 +794,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -885,7 +887,7 @@ paths:
           x-ms-docs-key-type: directoryObject
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -957,7 +959,7 @@ paths:
           x-ms-docs-key-type: directoryObject
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-Match
@@ -983,7 +985,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1089,7 +1091,7 @@ paths:
           x-ms-docs-key-type: directoryRole
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -1285,7 +1287,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1386,7 +1388,7 @@ paths:
           x-ms-docs-key-type: directoryRoleTemplate
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -1481,9 +1483,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1609,9 +1613,11 @@ paths:
           x-ms-docs-key-type: domain
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: query
           name: $select
@@ -1674,9 +1680,11 @@ paths:
           x-ms-docs-key-type: domain
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: body
           name: body
@@ -1709,9 +1717,11 @@ paths:
           x-ms-docs-key-type: domain
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: header
           name: If-Match
@@ -2966,6 +2976,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3070,6 +3081,7 @@ paths:
           x-ms-docs-key-type: groupLifecyclePolicy
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -3123,9 +3135,11 @@ paths:
           x-ms-docs-key-type: groupLifecyclePolicy
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: body
           name: body
@@ -3158,9 +3172,11 @@ paths:
           x-ms-docs-key-type: groupLifecyclePolicy
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: header
           name: If-Match
@@ -3188,7 +3204,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3384,7 +3400,7 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -3495,7 +3511,7 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: body
           name: body
@@ -3528,7 +3544,7 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-Match
@@ -5893,6 +5909,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -5996,6 +6013,7 @@ paths:
           x-ms-docs-key-type: groupSetting
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -6048,9 +6066,11 @@ paths:
           x-ms-docs-key-type: groupSetting
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: body
           name: body
@@ -6084,9 +6104,11 @@ paths:
           x-ms-docs-key-type: groupSetting
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: header
           name: If-Match
@@ -6115,6 +6137,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -6218,6 +6241,7 @@ paths:
           x-ms-docs-key-type: groupSettingTemplate
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -6454,9 +6478,11 @@ paths:
           x-ms-docs-key-type: schemaExtension
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
         - in: body
           name: body
@@ -6487,6 +6513,7 @@ paths:
           x-ms-docs-key-type: schemaExtension
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-Match
@@ -8768,7 +8795,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: Bearer token. Required
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -8884,7 +8911,7 @@ paths:
           x-ms-docs-key-type: subscribedSku
         - in: header
           name: Authorization
-          description: String
+          description: Bearer token. Required
           type: string
         - in: query
           name: $select
@@ -8984,7 +9011,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -9092,7 +9119,7 @@ paths:
           x-ms-docs-key-type: subscription
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -9141,7 +9168,7 @@ paths:
           x-ms-docs-key-type: subscription
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: body
           name: body
@@ -9169,7 +9196,7 @@ paths:
           x-ms-docs-key-type: subscription
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-Match
@@ -9665,7 +9692,6 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: If-Match
@@ -14559,11 +14585,9 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -18034,7 +18058,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: query
           name: $select
@@ -18105,7 +18129,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: body
           name: body
@@ -18865,9 +18889,11 @@ paths:
           type: string
         - in: header
           name: Authorization
+          description: Bearer token
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
       responses:
         '200':
@@ -18905,15 +18931,12 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
         - in: path
           name: endDateTime
@@ -18953,15 +18976,12 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
         - in: path
           name: endDateTime
@@ -19001,9 +19021,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19032,9 +19054,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19063,9 +19087,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19096,9 +19122,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -19131,9 +19159,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19162,9 +19192,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19193,9 +19225,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19226,9 +19260,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -19261,9 +19297,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19292,9 +19330,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19323,9 +19363,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19354,9 +19396,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19385,9 +19429,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19416,9 +19462,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
       responses:
         '200':
@@ -19443,9 +19491,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
       responses:
         '200':
@@ -19470,9 +19520,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
       responses:
         '200':
@@ -19497,6 +19549,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -19525,9 +19578,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19558,9 +19613,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -19593,9 +19650,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19624,9 +19683,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19657,9 +19718,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -19692,9 +19755,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19723,9 +19788,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19754,9 +19821,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19785,9 +19854,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19816,9 +19887,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19847,9 +19920,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19878,9 +19953,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19911,9 +19988,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -19946,9 +20025,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -19977,9 +20058,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20010,9 +20093,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -20045,9 +20130,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20076,9 +20163,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20107,9 +20196,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20138,9 +20229,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20169,9 +20262,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20200,9 +20295,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20233,9 +20330,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -20268,9 +20367,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20301,9 +20402,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -20336,9 +20439,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20367,9 +20472,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20398,9 +20505,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20429,9 +20538,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20460,9 +20571,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20491,9 +20604,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20522,9 +20637,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20555,9 +20672,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -20590,9 +20709,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20621,9 +20742,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20652,9 +20775,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20685,9 +20810,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -20720,9 +20847,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20751,9 +20880,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20782,9 +20913,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20813,9 +20946,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20844,9 +20979,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20875,9 +21012,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20906,9 +21045,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20937,9 +21078,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20968,9 +21111,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -20999,6 +21144,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -21027,6 +21173,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -21055,6 +21202,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -21085,6 +21233,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: date
@@ -21117,6 +21266,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -21145,6 +21295,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -21173,6 +21324,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: period
@@ -21203,6 +21355,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: date
@@ -21235,9 +21388,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21266,9 +21421,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21297,9 +21454,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -21332,9 +21491,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21365,9 +21526,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21396,9 +21559,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21427,9 +21592,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -21462,9 +21629,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21495,9 +21664,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21526,9 +21697,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: date
@@ -21561,9 +21734,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21594,9 +21769,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: If-None-Match
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           type: string
         - in: path
           name: period
@@ -21633,9 +21810,11 @@ paths:
           type: string
         - in: header
           name: Authorization
+          description: Bearer token
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
       responses:
         '200':
@@ -21688,7 +21867,7 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '200':
@@ -21715,7 +21894,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '200':
@@ -21764,19 +21943,19 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           type: string
       responses:
         '200':
@@ -21830,19 +22009,19 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           type: string
       responses:
         '200':
@@ -21896,19 +22075,19 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           type: string
       responses:
         '200':
@@ -21966,19 +22145,19 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           type: string
       responses:
         '200':
@@ -22030,19 +22209,19 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           type: string
       responses:
         '200':
@@ -22093,19 +22272,19 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           type: string
       responses:
         '200':
@@ -22154,15 +22333,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -22209,15 +22388,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -22399,15 +22578,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -22454,15 +22633,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -22506,7 +22685,7 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '200':
@@ -22536,7 +22715,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '200':
@@ -22572,7 +22751,7 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '200':
@@ -22604,7 +22783,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '200':
@@ -22642,7 +22821,7 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: TimeZoneStandard
@@ -22677,7 +22856,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: path
           name: TimeZoneStandard
@@ -23677,15 +23856,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -23732,15 +23911,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -23792,15 +23971,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -23847,15 +24026,15 @@ paths:
           type: string
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json. Required.
           type: string
         - in: header
           name: Prefer
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           type: string
       responses:
         '200':
@@ -23893,11 +24072,11 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json
           type: string
         - in: body
           name: body
@@ -23943,11 +24122,9 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -23989,11 +24166,9 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -24041,11 +24216,9 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: 'Prefer: outlook.timezone'
-          description: String
           type: string
         - in: body
           name: body
@@ -24097,11 +24270,9 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: 'Prefer: outlook.timezone'
-          description: String
           type: string
         - in: body
           name: body
@@ -24159,11 +24330,9 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -24203,11 +24372,9 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -24253,11 +24420,9 @@ paths:
           x-ms-docs-key-type: user
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -24294,11 +24459,9 @@ paths:
       parameters:
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -24341,11 +24504,11 @@ paths:
           x-ms-docs-key-type: directoryObject
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json
           type: string
         - in: body
           name: body
@@ -24392,11 +24555,11 @@ paths:
           x-ms-docs-key-type: directoryObject
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json
           type: string
         - in: body
           name: body
@@ -24442,11 +24605,11 @@ paths:
           x-ms-docs-key-type: directoryObject
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: application/json
           type: string
         - in: body
           name: body
@@ -24490,9 +24653,11 @@ paths:
           x-ms-docs-key-type: domain
         - in: header
           name: Authorization
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
+          description: application/json
           type: string
       responses:
         '204':
@@ -24521,11 +24686,9 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
       responses:
         '204':
@@ -24551,11 +24714,9 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
       responses:
         '204':
@@ -24581,6 +24742,7 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
+          description: 'Bearer {token}'
           type: string
       responses:
         '204':
@@ -24612,11 +24774,9 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
       responses:
         '204':
@@ -24642,11 +24802,9 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
       responses:
         '204':
@@ -24672,11 +24830,9 @@ paths:
           x-ms-docs-key-type: group
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Prefer
-          description: String
           type: string
       responses:
         '204':
@@ -24702,9 +24858,11 @@ paths:
           x-ms-docs-key-type: directoryObject
         - in: header
           name: Authorization
+          description: Bearer code Required
           type: string
         - in: header
           name: Accept
+          description: application/json
           type: string
       responses:
         '204':
@@ -24735,11 +24893,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -24791,11 +24949,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -24847,11 +25005,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -24903,11 +25061,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -24953,11 +25111,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25003,11 +25161,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25059,11 +25217,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25115,11 +25273,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25171,11 +25329,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25227,11 +25385,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25277,11 +25435,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25327,11 +25485,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25381,7 +25539,7 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -25419,7 +25577,7 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -25457,7 +25615,7 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -25495,7 +25653,7 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -25527,7 +25685,7 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -25559,7 +25717,7 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -25599,11 +25757,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25651,11 +25809,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25703,11 +25861,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25755,11 +25913,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25801,11 +25959,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25847,11 +26005,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25899,11 +26057,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -25955,11 +26113,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26011,11 +26169,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26067,11 +26225,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26117,11 +26275,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26167,11 +26325,11 @@ paths:
           x-ms-docs-key-type: event
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26223,11 +26381,9 @@ paths:
           x-ms-docs-key-type: mailFolder
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26270,11 +26426,9 @@ paths:
           x-ms-docs-key-type: mailFolder
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26323,11 +26477,9 @@ paths:
           x-ms-docs-key-type: mailFolder
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26370,11 +26522,9 @@ paths:
           x-ms-docs-key-type: mailFolder
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26423,11 +26573,9 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26470,11 +26618,9 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26521,7 +26667,7 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -26551,7 +26697,7 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -26587,7 +26733,7 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -26617,7 +26763,7 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -26653,7 +26799,7 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -26683,7 +26829,7 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
       responses:
         '204':
@@ -26721,11 +26867,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26769,11 +26915,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26823,11 +26969,9 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26870,11 +27014,9 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -26923,11 +27065,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -26968,11 +27110,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -27019,11 +27161,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -27064,11 +27206,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Type
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           type: string
         - in: body
           name: body
@@ -27113,11 +27255,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Length
-          description: Int64
+          description: '* Required.'
           type: string
       responses:
         '204':
@@ -27147,11 +27289,11 @@ paths:
           x-ms-docs-key-type: message
         - in: header
           name: Authorization
-          description: String
+          description: 'Bearer {token}. Required.'
           type: string
         - in: header
           name: Content-Length
-          description: Int64
+          description: '* Required.'
           type: string
       responses:
         '204':
@@ -27189,11 +27331,9 @@ paths:
           x-ms-docs-key-type: conversationThread
         - in: header
           name: Authorization
-          description: String
           type: string
         - in: header
           name: Content-Type
-          description: String
           type: string
         - in: body
           name: body
@@ -28179,7 +28319,7 @@ paths:
           x-ms-docs-key-type: driveItem
         - in: header
           name: if-match
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           type: string
         - in: body
           name: body
@@ -28225,7 +28365,7 @@ paths:
           x-ms-docs-key-type: drive
         - in: header
           name: if-match
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           type: string
         - in: body
           name: body
@@ -28277,7 +28417,7 @@ paths:
           x-ms-docs-key-type: driveItem
         - in: header
           name: if-match
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           type: string
         - in: body
           name: body
@@ -28323,7 +28463,7 @@ paths:
           x-ms-docs-key-type: sharedDriveItem
         - in: header
           name: if-match
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           type: string
         - in: body
           name: body
@@ -28375,7 +28515,7 @@ paths:
           x-ms-docs-key-type: driveItem
         - in: header
           name: if-match
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           type: string
         - in: body
           name: body
@@ -28421,7 +28561,7 @@ paths:
           x-ms-docs-key-type: sharedDriveItem
         - in: header
           name: if-match
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           type: string
         - in: body
           name: body

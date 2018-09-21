@@ -25,6 +25,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -188,6 +189,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -332,7 +334,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -536,7 +538,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -635,7 +637,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -684,7 +686,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -1182,7 +1184,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -1332,7 +1334,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -1442,7 +1444,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -1484,7 +1486,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -1647,7 +1649,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -1945,7 +1947,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -2103,7 +2105,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -2246,11 +2248,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -2433,11 +2437,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -2527,11 +2533,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -2584,11 +2592,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -4257,6 +4267,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -4418,6 +4429,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -4498,11 +4510,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -4555,11 +4569,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -4606,7 +4622,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -4859,7 +4875,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -4997,7 +5013,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -5050,7 +5066,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -8358,6 +8374,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -8518,6 +8535,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -8597,11 +8615,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -8655,11 +8675,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -8707,6 +8729,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -8867,6 +8890,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -9217,11 +9241,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -9269,6 +9295,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -12285,7 +12312,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer token. Required",
             "type": "string"
           },
           {
@@ -12458,7 +12485,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer token. Required",
             "type": "string"
           },
           {
@@ -12606,7 +12633,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -12764,7 +12791,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -12833,7 +12860,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -12874,7 +12901,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -13459,7 +13486,6 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
@@ -20043,13 +20069,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -24779,7 +24803,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -24875,7 +24899,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -25982,11 +26006,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer token",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           }
         ],
@@ -26045,19 +26071,16 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           },
           {
@@ -26122,19 +26145,16 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           },
           {
@@ -26199,11 +26219,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26251,11 +26273,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26303,11 +26327,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26358,11 +26384,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26415,11 +26443,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26467,11 +26497,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26519,11 +26551,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26574,11 +26608,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26631,11 +26667,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26683,11 +26721,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26735,11 +26775,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26787,11 +26829,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26839,11 +26883,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -26891,11 +26937,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           }
         ],
@@ -26937,11 +26985,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           }
         ],
@@ -26983,11 +27033,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           }
         ],
@@ -27029,6 +27081,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -27076,11 +27129,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27131,11 +27186,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27188,11 +27245,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27240,11 +27299,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27295,11 +27356,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27352,11 +27415,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27404,11 +27469,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27456,11 +27523,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27508,11 +27577,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27560,11 +27631,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27612,11 +27685,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27664,11 +27739,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27719,11 +27796,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27776,11 +27855,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27828,11 +27909,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27883,11 +27966,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27940,11 +28025,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -27992,11 +28079,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28044,11 +28133,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28096,11 +28187,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28148,11 +28241,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28200,11 +28295,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28255,11 +28352,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28312,11 +28411,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28367,11 +28468,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28424,11 +28527,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28476,11 +28581,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28528,11 +28635,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28580,11 +28689,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28632,11 +28743,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28684,11 +28797,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28736,11 +28851,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28791,11 +28908,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28848,11 +28967,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28900,11 +29021,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -28952,11 +29075,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29007,11 +29132,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29064,11 +29191,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29116,11 +29245,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29168,11 +29299,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29220,11 +29353,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29272,11 +29407,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29324,11 +29461,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29376,11 +29515,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29428,11 +29569,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29480,11 +29623,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29532,6 +29677,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29579,6 +29725,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29626,6 +29773,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29676,6 +29824,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29728,6 +29877,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29775,6 +29925,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29822,6 +29973,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29872,6 +30024,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -29924,11 +30077,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -29976,11 +30131,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30028,11 +30185,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30085,11 +30244,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30140,11 +30301,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30192,11 +30355,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30244,11 +30409,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30301,11 +30468,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30356,11 +30525,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30408,11 +30579,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30465,11 +30638,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30520,11 +30695,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "If-None-Match",
+            "description": "If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.",
             "type": "string"
           },
           {
@@ -30584,11 +30761,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer token",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           }
         ],
@@ -30665,7 +30844,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -30710,7 +30889,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -30787,25 +30966,25 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "{Time zone}. Optional, UTC assumed if absent.",
             "type": "string"
           }
         ],
@@ -30891,25 +31070,25 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "{Time zone}. Optional, UTC assumed if absent.",
             "type": "string"
           }
         ],
@@ -30995,25 +31174,25 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "{Time zone}. Optional, UTC assumed if absent.",
             "type": "string"
           }
         ],
@@ -31103,25 +31282,25 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "{Time zone}. Optional, UTC assumed if absent.",
             "type": "string"
           }
         ],
@@ -31203,25 +31382,25 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "{Time zone}. Optional, UTC assumed if absent.",
             "type": "string"
           }
         ],
@@ -31302,25 +31481,25 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "{Time zone}. Optional, UTC assumed if absent.",
             "type": "string"
           }
         ],
@@ -31397,19 +31576,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -31482,19 +31661,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -31770,19 +31949,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -31855,19 +32034,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -31935,7 +32114,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -31986,7 +32165,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -32045,7 +32224,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -32099,7 +32278,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -32161,7 +32340,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -32220,7 +32399,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
@@ -33688,19 +33867,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -33773,19 +33952,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -33865,19 +34044,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -33950,19 +34129,19 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
+            "description": "odata.maxpagesize={x}. Optional.",
             "type": "string"
           }
         ],
@@ -34022,13 +34201,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -34101,13 +34280,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34173,13 +34350,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34253,13 +34428,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer: outlook.timezone",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34335,13 +34508,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer: outlook.timezone",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34425,13 +34596,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34498,13 +34667,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34579,13 +34746,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34647,13 +34812,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -34723,13 +34886,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -34801,13 +34964,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -34877,13 +35040,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "application/json",
             "type": "string"
           },
           {
@@ -34950,11 +35113,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
+            "description": "application/json",
             "type": "string"
           }
         ],
@@ -35001,13 +35166,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           }
         ],
@@ -35048,13 +35211,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           }
         ],
@@ -35095,6 +35256,7 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer {token}",
             "type": "string"
           }
         ],
@@ -35144,13 +35306,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           }
         ],
@@ -35191,13 +35351,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           }
         ],
@@ -35238,13 +35396,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Prefer",
-            "description": "String",
             "type": "string"
           }
         ],
@@ -35285,11 +35441,13 @@
           {
             "in": "header",
             "name": "Authorization",
+            "description": "Bearer code Required",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Accept",
+            "description": "application/json",
             "type": "string"
           }
         ],
@@ -35334,13 +35492,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35423,13 +35581,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35512,13 +35670,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35601,13 +35759,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35682,13 +35840,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35763,13 +35921,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35852,13 +36010,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -35941,13 +36099,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36030,13 +36188,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36119,13 +36277,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36200,13 +36358,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36281,13 +36439,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36367,7 +36525,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -36429,7 +36587,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -36491,7 +36649,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -36553,7 +36711,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -36607,7 +36765,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -36661,7 +36819,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -36726,13 +36884,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36809,13 +36967,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36892,13 +37050,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -36975,13 +37133,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37050,13 +37208,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37125,13 +37283,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37208,13 +37366,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37297,13 +37455,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37386,13 +37544,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37475,13 +37633,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37556,13 +37714,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37637,13 +37795,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -37726,13 +37884,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -37803,13 +37959,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -37888,13 +38042,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -37965,13 +38117,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -38050,13 +38200,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -38127,13 +38275,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -38209,7 +38355,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -38260,7 +38406,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -38319,7 +38465,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -38370,7 +38516,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -38429,7 +38575,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -38480,7 +38626,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           }
         ],
@@ -38542,13 +38688,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -38620,13 +38766,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -38706,13 +38852,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -38783,13 +38927,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -38868,13 +39010,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -38942,13 +39084,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -39024,13 +39166,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -39098,13 +39240,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
+            "description": "Nature of the data in the body of an entity. Required.",
             "type": "string"
           },
           {
@@ -39177,13 +39319,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Length",
-            "description": "Int64",
+            "description": "* Required.",
             "type": "string"
           }
         ],
@@ -39234,13 +39376,13 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
+            "description": "Bearer {token}. Required.",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Length",
-            "description": "Int64",
+            "description": "* Required.",
             "type": "string"
           }
         ],
@@ -39302,13 +39444,11 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "String",
             "type": "string"
           },
           {
             "in": "header",
             "name": "Content-Type",
-            "description": "String",
             "type": "string"
           },
           {
@@ -40841,7 +40981,7 @@
           {
             "in": "header",
             "name": "if-match",
-            "description": "String",
+            "description": "If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.",
             "type": "string"
           },
           {
@@ -40914,7 +41054,7 @@
           {
             "in": "header",
             "name": "if-match",
-            "description": "String",
+            "description": "If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.",
             "type": "string"
           },
           {
@@ -40995,7 +41135,7 @@
           {
             "in": "header",
             "name": "if-match",
-            "description": "String",
+            "description": "If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.",
             "type": "string"
           },
           {
@@ -41068,7 +41208,7 @@
           {
             "in": "header",
             "name": "if-match",
-            "description": "String",
+            "description": "If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.",
             "type": "string"
           },
           {
@@ -41149,7 +41289,7 @@
           {
             "in": "header",
             "name": "if-match",
-            "description": "String",
+            "description": "If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.",
             "type": "string"
           },
           {
@@ -41222,7 +41362,7 @@
           {
             "in": "header",
             "name": "if-match",
-            "description": "String",
+            "description": "If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.",
             "type": "string"
           },
           {

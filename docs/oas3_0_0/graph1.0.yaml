@@ -15,6 +15,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -132,6 +133,7 @@ paths:
           x-ms-docs-key-type: contract
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -241,7 +243,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -399,7 +401,7 @@ paths:
           x-ms-docs-key-type: device
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -495,7 +497,7 @@ paths:
           x-ms-docs-key-type: device
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       requestBody:
@@ -531,7 +533,7 @@ paths:
           x-ms-docs-key-type: device
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-Match
@@ -899,7 +901,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -1003,7 +1005,7 @@ paths:
           x-ms-docs-key-type: directoryObject
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -1089,7 +1091,7 @@ paths:
           x-ms-docs-key-type: directoryObject
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-Match
@@ -1115,7 +1117,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -1232,7 +1234,7 @@ paths:
           x-ms-docs-key-type: directoryRole
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -1462,7 +1464,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -1574,7 +1576,7 @@ paths:
           x-ms-docs-key-type: directoryRoleTemplate
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -1682,10 +1684,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -1822,10 +1826,12 @@ paths:
           x-ms-docs-key-type: domain
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
         - name: $select
@@ -1912,10 +1918,12 @@ paths:
           x-ms-docs-key-type: domain
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -1952,10 +1960,12 @@ paths:
           x-ms-docs-key-type: domain
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
         - name: If-Match
@@ -3341,6 +3351,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -3456,6 +3467,7 @@ paths:
           x-ms-docs-key-type: groupLifecyclePolicy
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -3520,10 +3532,12 @@ paths:
           x-ms-docs-key-type: groupLifecyclePolicy
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -3560,10 +3574,12 @@ paths:
           x-ms-docs-key-type: groupLifecyclePolicy
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
         - name: If-Match
@@ -3591,7 +3607,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -3798,7 +3814,7 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -4005,7 +4021,7 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       requestBody:
@@ -4042,7 +4058,7 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-Match
@@ -6683,6 +6699,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -6797,6 +6814,7 @@ paths:
           x-ms-docs-key-type: groupSetting
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -6860,10 +6878,12 @@ paths:
           x-ms-docs-key-type: groupSetting
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -6901,10 +6921,12 @@ paths:
           x-ms-docs-key-type: groupSetting
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
         - name: If-Match
@@ -6933,6 +6955,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -7047,6 +7070,7 @@ paths:
           x-ms-docs-key-type: groupSettingTemplate
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -7308,10 +7332,12 @@ paths:
           x-ms-docs-key-type: schemaExtension
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -7346,6 +7372,7 @@ paths:
           x-ms-docs-key-type: schemaExtension
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-Match
@@ -9883,7 +9910,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: Bearer token. Required
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -10010,7 +10037,7 @@ paths:
           x-ms-docs-key-type: subscribedSku
         - name: Authorization
           in: header
-          description: String
+          description: Bearer token. Required
           schema:
             type: string
         - name: $select
@@ -10123,7 +10150,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - $ref: '#/components/parameters/top'
@@ -10242,7 +10269,7 @@ paths:
           x-ms-docs-key-type: subscription
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -10302,7 +10329,7 @@ paths:
           x-ms-docs-key-type: subscription
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       requestBody:
@@ -10334,7 +10361,7 @@ paths:
           x-ms-docs-key-type: subscription
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-Match
@@ -10974,7 +11001,6 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: If-Match
@@ -16346,12 +16372,10 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -20118,7 +20142,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: $select
@@ -20198,7 +20222,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       requestBody:
@@ -21036,10 +21060,12 @@ paths:
             type: string
         - name: Authorization
           in: header
+          description: Bearer token
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       responses:
@@ -21087,17 +21113,14 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
         - name: endDateTime
@@ -21149,17 +21172,14 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
         - name: endDateTime
@@ -21211,10 +21231,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21249,10 +21271,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21287,10 +21311,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21327,10 +21353,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -21369,10 +21397,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21407,10 +21437,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21445,10 +21477,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21485,10 +21519,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -21527,10 +21563,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21565,10 +21603,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21603,10 +21643,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21641,10 +21683,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21679,10 +21723,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21717,10 +21763,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
       responses:
@@ -21749,10 +21797,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
       responses:
@@ -21781,10 +21831,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
       responses:
@@ -21813,6 +21865,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -21847,10 +21900,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21887,10 +21942,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -21929,10 +21986,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -21967,10 +22026,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22007,10 +22068,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -22049,10 +22112,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22087,10 +22152,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22125,10 +22192,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22163,10 +22232,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22201,10 +22272,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22239,10 +22312,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22277,10 +22352,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22317,10 +22394,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -22359,10 +22438,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22397,10 +22478,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22437,10 +22520,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -22479,10 +22564,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22517,10 +22604,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22555,10 +22644,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22593,10 +22684,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22631,10 +22724,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22669,10 +22764,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22709,10 +22806,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -22751,10 +22850,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22791,10 +22892,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -22833,10 +22936,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22871,10 +22976,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22909,10 +23016,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22947,10 +23056,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -22985,10 +23096,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23023,10 +23136,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23061,10 +23176,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23101,10 +23218,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -23143,10 +23262,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23181,10 +23302,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23219,10 +23342,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23259,10 +23384,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -23301,10 +23428,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23339,10 +23468,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23377,10 +23508,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23415,10 +23548,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23453,10 +23588,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23491,10 +23628,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23529,10 +23668,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23567,10 +23708,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23605,10 +23748,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23643,6 +23788,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -23677,6 +23823,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -23711,6 +23858,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -23747,6 +23895,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: date
@@ -23785,6 +23934,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -23819,6 +23969,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -23853,6 +24004,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: period
@@ -23889,6 +24041,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: date
@@ -23927,10 +24080,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -23965,10 +24120,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24003,10 +24160,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -24045,10 +24204,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24085,10 +24246,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24123,10 +24286,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24161,10 +24326,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -24203,10 +24370,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24243,10 +24412,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24281,10 +24452,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: date
@@ -24323,10 +24496,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24363,10 +24538,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: If-None-Match
           in: header
+          description: 'If this request header is included and the eTag provided matches the current tag on the file, a 304 Not Modified response code is returned. Optional.'
           schema:
             type: string
         - name: period
@@ -24411,10 +24588,12 @@ paths:
             type: string
         - name: Authorization
           in: header
+          description: Bearer token
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       responses:
@@ -24477,7 +24656,7 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -24512,7 +24691,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -24575,22 +24754,22 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           schema:
             type: string
       responses:
@@ -24658,22 +24837,22 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           schema:
             type: string
       responses:
@@ -24741,22 +24920,22 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           schema:
             type: string
       responses:
@@ -24828,22 +25007,22 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           schema:
             type: string
       responses:
@@ -24907,22 +25086,22 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           schema:
             type: string
       responses:
@@ -24985,22 +25164,22 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: '{Time zone}. Optional, UTC assumed if absent.'
           schema:
             type: string
       responses:
@@ -25061,17 +25240,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -25128,17 +25307,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -25361,17 +25540,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -25428,17 +25607,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -25492,7 +25671,7 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -25530,7 +25709,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -25576,7 +25755,7 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -25616,7 +25795,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -25664,7 +25843,7 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: TimeZoneStandard
@@ -25711,7 +25890,7 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: TimeZoneStandard
@@ -26931,17 +27110,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -26998,17 +27177,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -27072,17 +27251,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -27139,17 +27318,17 @@ paths:
             type: string
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json. Required.
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
+          description: 'odata.maxpagesize={x}. Optional.'
           schema:
             type: string
       responses:
@@ -27195,12 +27374,12 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -27250,12 +27429,10 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27301,12 +27478,10 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27360,12 +27535,10 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: 'Prefer: outlook.timezone'
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27438,12 +27611,10 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: 'Prefer: outlook.timezone'
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27524,12 +27695,10 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27571,12 +27740,10 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27626,12 +27793,10 @@ paths:
           x-ms-docs-key-type: user
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27672,12 +27837,10 @@ paths:
       parameters:
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -27726,12 +27889,12 @@ paths:
           x-ms-docs-key-type: directoryObject
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -27781,12 +27944,12 @@ paths:
           x-ms-docs-key-type: directoryObject
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -27835,12 +27998,12 @@ paths:
           x-ms-docs-key-type: directoryObject
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: application/json
           schema:
             type: string
       requestBody:
@@ -27889,10 +28052,12 @@ paths:
           x-ms-docs-key-type: domain
         - name: Authorization
           in: header
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
+          description: application/json
           schema:
             type: string
       responses:
@@ -27924,12 +28089,10 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
       responses:
@@ -27958,12 +28121,10 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
       responses:
@@ -27992,6 +28153,7 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
+          description: 'Bearer {token}'
           schema:
             type: string
       responses:
@@ -28026,12 +28188,10 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
       responses:
@@ -28060,12 +28220,10 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
       responses:
@@ -28094,12 +28252,10 @@ paths:
           x-ms-docs-key-type: group
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Prefer
           in: header
-          description: String
           schema:
             type: string
       responses:
@@ -28128,10 +28284,12 @@ paths:
           x-ms-docs-key-type: directoryObject
         - name: Authorization
           in: header
+          description: Bearer code Required
           schema:
             type: string
         - name: Accept
           in: header
+          description: application/json
           schema:
             type: string
       responses:
@@ -28165,12 +28323,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28228,12 +28386,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28291,12 +28449,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28354,12 +28512,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28409,12 +28567,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28464,12 +28622,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28527,12 +28685,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28590,12 +28748,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28653,12 +28811,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28716,12 +28874,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28771,12 +28929,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28826,12 +28984,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -28889,7 +29047,7 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -28932,7 +29090,7 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -28975,7 +29133,7 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -29018,7 +29176,7 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -29053,7 +29211,7 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -29088,7 +29246,7 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -29131,12 +29289,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29191,12 +29349,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29251,12 +29409,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29311,12 +29469,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29363,12 +29521,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29415,12 +29573,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29475,12 +29633,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29538,12 +29696,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29601,12 +29759,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29664,12 +29822,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29719,12 +29877,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29774,12 +29932,12 @@ paths:
           x-ms-docs-key-type: event
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -29837,12 +29995,10 @@ paths:
           x-ms-docs-key-type: mailFolder
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -29888,12 +30044,10 @@ paths:
           x-ms-docs-key-type: mailFolder
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -29947,12 +30101,10 @@ paths:
           x-ms-docs-key-type: mailFolder
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -29998,12 +30150,10 @@ paths:
           x-ms-docs-key-type: mailFolder
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -30057,12 +30207,10 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -30108,12 +30256,10 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -30167,7 +30313,7 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -30200,7 +30346,7 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -30241,7 +30387,7 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -30274,7 +30420,7 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -30315,7 +30461,7 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -30348,7 +30494,7 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
       responses:
@@ -30389,12 +30535,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -30444,12 +30590,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -30507,12 +30653,10 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -30558,12 +30702,10 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -30617,12 +30759,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -30666,12 +30808,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -30723,12 +30865,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -30772,12 +30914,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
+          description: Nature of the data in the body of an entity. Required.
           schema:
             type: string
       requestBody:
@@ -30829,12 +30971,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Length
           in: header
-          description: Int64
+          description: '* Required.'
           schema:
             type: string
       responses:
@@ -30867,12 +31009,12 @@ paths:
           x-ms-docs-key-type: message
         - name: Authorization
           in: header
-          description: String
+          description: 'Bearer {token}. Required.'
           schema:
             type: string
         - name: Content-Length
           in: header
-          description: Int64
+          description: '* Required.'
           schema:
             type: string
       responses:
@@ -30913,12 +31055,10 @@ paths:
           x-ms-docs-key-type: conversationThread
         - name: Authorization
           in: header
-          description: String
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: String
           schema:
             type: string
       requestBody:
@@ -32025,7 +32165,7 @@ paths:
           x-ms-docs-key-type: driveItem
         - name: if-match
           in: header
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           schema:
             type: string
       requestBody:
@@ -32076,7 +32216,7 @@ paths:
           x-ms-docs-key-type: drive
         - name: if-match
           in: header
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           schema:
             type: string
       requestBody:
@@ -32135,7 +32275,7 @@ paths:
           x-ms-docs-key-type: driveItem
         - name: if-match
           in: header
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           schema:
             type: string
       requestBody:
@@ -32186,7 +32326,7 @@ paths:
           x-ms-docs-key-type: sharedDriveItem
         - name: if-match
           in: header
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           schema:
             type: string
       requestBody:
@@ -32245,7 +32385,7 @@ paths:
           x-ms-docs-key-type: driveItem
         - name: if-match
           in: header
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           schema:
             type: string
       requestBody:
@@ -32296,7 +32436,7 @@ paths:
           x-ms-docs-key-type: sharedDriveItem
         - name: if-match
           in: header
-          description: String
+          description: 'If this request header is included and the eTag (or cTag) provided does not match the current etag on the item, a 412 Precondition Failed error response is returned.'
           schema:
             type: string
       requestBody:
