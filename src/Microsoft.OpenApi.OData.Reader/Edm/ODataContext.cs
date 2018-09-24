@@ -24,7 +24,7 @@ namespace Microsoft.OpenApi.OData.Edm
     internal class ODataContext
     {
         private IEnumerable<ODataPath> _allPaths;
-        private ODataPathProvider _pathProvider;
+        private IODataPathProvider _pathProvider;
         private HttpRequestProvider _httpRequestProvider;
         private AuthorizationProvider _authorizationProvider;
 
@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             _authorizationProvider = new AuthorizationProvider(model);
             _httpRequestProvider = new HttpRequestProvider(model);
-            _pathProvider = new ODataPathProvider(Model);
+            _pathProvider = new ODataPathProvider();
 
             if (settings.EnableKeyAsSegment != null)
             {
@@ -112,7 +112,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 if (_allPaths == null)
                 {
-                    _allPaths = LoadAllODataPaths();
+                    _allPaths = LoadAllODataPaths().ToList();
                 }
 
                 return _allPaths;
@@ -185,7 +185,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>All acceptable OData path.</returns>
         private IEnumerable<ODataPath> LoadAllODataPaths()
         {
-            IEnumerable<ODataPath> allPaths = _pathProvider.CreatePaths();
+            IEnumerable<ODataPath> allPaths = _pathProvider.GetPaths(Model);
             foreach (var path in allPaths)
             {
                 if ((path.Kind == ODataPathKind.Operation && !Settings.EnableOperationPath) ||
