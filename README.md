@@ -35,38 +35,38 @@ The following sample code illustrates the use of the library
 
 ```csharp
 public static void GenerateOpenApiDescription()
-    {
-        IEdmModel model = GetEdmModel();
-        OpenApiDocument document = model.ConvertToOpenApi();
-        var outputJSON = openapiObject.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-        var outputYAML = openapiObject.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
-    }
+{
+    IEdmModel model = GetEdmModel();
+    OpenApiDocument document = model.ConvertToOpenApi();
+    var outputJSON = openapiObject.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+    var outputYAML = openapiObject.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
+}
 
 public static IEdmModel GetEdmModel()
-    {
+{
     // load EDM model here...
-    }
+}
 ```
 
 Or with the convert settings:
 
 ```csharp
 public static void GenerateOpenApiDescription()
+{
+    IEdmModel model = GetEdmModel();
+    OpenApiConvertSettings settings = new OpenApiConvertSettings
     {
-        IEdmModel model = GetEdmModel();
-        OpenApiConvertSettings settings = new OpenApiConvertSettings
-        {
         // configuration
-        };
-        OpenApiDocument document = model.ConvertToOpenApi(settings);
-        var outputJSON = openapiObject.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-        var outputYAML = openapiObject.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
-    }
+    };
+    OpenApiDocument document = model.ConvertToOpenApi(settings);
+    var outputJSON = openapiObject.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
+    var outputYAML = openapiObject.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
+}
 
 public static IEdmModel GetEdmModel()
-    {
+{
     // load EDM model here...
-    }
+}
 ```
 
 The `GetEdmModel()` method can load a model in 3 ways:
