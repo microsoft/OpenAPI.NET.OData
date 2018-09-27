@@ -4,7 +4,7 @@ VSTS Build  | Status
 Rolling | <img src="https://identitydivision.visualstudio.com/_apis/public/build/definitions/2cfe7ec3-b94f-4ab9-85ab-2ebff928f3fd/410/badge"/>
 Nightly | <img src="https://identitydivision.visualstudio.com/_apis/public/build/definitions/2cfe7ec3-b94f-4ab9-85ab-2ebff928f3fd/427/badge"/>
 
-# Convert OData to OpenAPI.NET
+# Convert OData to OpenAPI.NET [Preview]
 
 [**Disclaimer:This library is in a preview state. Feedback and contribution is welcome!**]
 
@@ -34,7 +34,7 @@ For more information about the Open API object of model, please refer to [http:/
 The following sample code illustrates the use of the library
 
 ```csharp
-public static IEdmModel GenerateOpenApiDescription()
+public static void GenerateOpenApiDescription()
     {
         IEdmModel model = GetEdmModel();
         OpenApiDocument document = model.ConvertToOpenApi();
@@ -51,7 +51,7 @@ public static IEdmModel GetEdmModel()
 Or with the convert settings:
 
 ```csharp
-public static IEdmModel GenerateOpenApiDescription()
+public static void GenerateOpenApiDescription()
     {
         IEdmModel model = GetEdmModel();
         OpenApiConvertSettings settings = new OpenApiConvertSettings
@@ -69,14 +69,13 @@ public static IEdmModel GetEdmModel()
     }
 ```
 
-The `GetEdmModel()` method can load a model in two ways:
+The `GetEdmModel()` method can load a model in 3 ways:
 
 1. Create the Edm model from scratch. For details refer [building a basic model](http://odata.github.io/odata.net/#02-01-build-basic-model)
 
 2. Load the Edm model from CSDL file. The following shows a code sample that loads a model from a csdl file.
 
     ```csharp
- 
     public static IEdmModel GetEdmModel()
     {
         string csdlFilePath = @"c:\csdl.xml";
