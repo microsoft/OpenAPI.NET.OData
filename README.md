@@ -6,6 +6,8 @@ Nightly | <img src="https://identitydivision.visualstudio.com/_apis/public/build
 
 # Convert OData to OpenAPI.NET
 
+[**Disclaimer:This library is in a preview state. Feedback and contribution is welcome!**]
+
 ## Introduction
 
 The **Microsoft.OpenAPI.OData.Reader** library helps represent an OData service metadata as an OpenApi description. It converts [OData](http://www.odata.org) [CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the XML represetntation of the Entity Data Model (EDM) to [Open API](https://github.com/OAI/OpenAPI-Specification) based on [OpenAPI.NET](http://aka.ms/openapi) object model.
