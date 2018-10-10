@@ -38,8 +38,8 @@ public static void GenerateOpenApiDescription()
 {
     IEdmModel model = GetEdmModel();
     OpenApiDocument document = model.ConvertToOpenApi();
-    var outputJSON = openapiObject.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-    var outputYAML = openapiObject.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
+    var outputJSON = document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+    var outputYAML = document.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 }
 
 public static IEdmModel GetEdmModel()
@@ -59,8 +59,8 @@ public static void GenerateOpenApiDescription()
         // configuration
     };
     OpenApiDocument document = model.ConvertToOpenApi(settings);
-    var outputJSON = openapiObject.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0));
-    var outputYAML = openapiObject.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0));
+    var outputJSON = document.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+    var outputYAML = document.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
 }
 
 public static IEdmModel GetEdmModel()
