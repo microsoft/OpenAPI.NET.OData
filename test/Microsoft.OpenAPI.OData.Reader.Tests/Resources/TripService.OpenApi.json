@@ -38,6 +38,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -56,6 +57,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -72,6 +74,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -167,6 +170,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -183,6 +187,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -315,6 +320,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -337,6 +343,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -355,6 +362,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -450,6 +458,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -468,6 +477,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -693,6 +703,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -721,6 +732,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -793,6 +805,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -821,6 +834,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -881,6 +895,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -917,6 +932,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -945,6 +961,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1000,6 +1017,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1028,6 +1046,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1237,6 +1256,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1267,6 +1287,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1290,6 +1311,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1346,6 +1368,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1369,6 +1392,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1475,6 +1499,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1511,6 +1536,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1539,6 +1565,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1637,6 +1664,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1665,6 +1693,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1815,6 +1844,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1843,6 +1873,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1913,6 +1944,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1949,6 +1981,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1977,6 +2010,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2042,6 +2076,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2070,6 +2105,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2333,6 +2369,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2363,6 +2400,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2386,6 +2424,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2452,6 +2491,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2475,6 +2515,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2591,6 +2632,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2627,6 +2669,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2655,6 +2698,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2753,6 +2797,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2781,6 +2826,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2931,6 +2977,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2959,6 +3006,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3029,6 +3077,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3065,6 +3114,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3093,6 +3143,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3158,6 +3209,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3186,6 +3238,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3449,6 +3502,7 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3479,6 +3533,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3502,6 +3557,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3568,6 +3624,7 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3591,6 +3648,7 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
+            "style": "simple",
             "schema": {
               "uniqueItems": true,
               "type": "array",
