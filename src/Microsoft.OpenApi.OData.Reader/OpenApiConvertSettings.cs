@@ -74,6 +74,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool IEEE754Compatible { get; set; }
 
+        /// <summary>
+        /// Gets or sets $Top example value.
+        /// </summary>
+        public int TopExample { get; set; } = 50;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings();
@@ -90,6 +95,7 @@ namespace Microsoft.OpenApi.OData
             newSettings.EnableOperationId = this.EnableOperationId;
             newSettings.VerifyEdmModel = this.VerifyEdmModel;
             newSettings.IEEE754Compatible = this.IEEE754Compatible;
+            newSettings.TopExample = this.TopExample;
 
             return newSettings;
         }
