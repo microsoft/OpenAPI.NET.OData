@@ -29,12 +29,12 @@ namespace Microsoft.OpenApi.OData.Generator
         public static IDictionary<string, OpenApiParameter> CreateParameters(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
-
+            
             // It allows defining query options and headers that can be reused across operations of the service.
             // The value of parameters is a map of Parameter Objects.
             return new Dictionary<string, OpenApiParameter>
             {
-                { "top", CreateTop() },
+                { "top", CreateTop(context.Settings.TopExample) },
                 { "skip", CreateSkip() },
                 { "count", CreateCount() },
                 { "filter", CreateFilter() },
@@ -524,7 +524,7 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         // #top
-        private static OpenApiParameter CreateTop()
+        private static OpenApiParameter CreateTop(int topExample)
         {
             return new OpenApiParameter
             {
@@ -536,7 +536,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = "integer",
                     Minimum = 0,
                 },
-                Example = new OpenApiInteger(50)
+                Example = new OpenApiInteger(topExample)
             };
         }
 
