@@ -366,7 +366,8 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = "string",
                         Enum = orderByItems
                     }
-                }
+                },
+                Style = ParameterStyle.Simple
             };
         }
 
@@ -443,7 +444,8 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = "string",
                         Enum = selectItems
                     }
-                }
+                },
+                Style = ParameterStyle.Simple
             };
         }
 
@@ -519,7 +521,8 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = "string",
                         Enum = expandItems
                     }
-                }
+                },
+                Style = ParameterStyle.Simple
             };
         }
 
