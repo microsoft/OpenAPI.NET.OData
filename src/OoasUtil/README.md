@@ -38,5 +38,5 @@ Indicate to output file name.
 
 `OoasUtil.exe -j -i http://services.odata.org/TrippinRESTierService -o trip.json`
 
-The content of `trip.json` is similiar at https://github.com/xuzhg/OData.OpenAPI/blob/master/Microsoft.OData.OpenAPI/Microsoft.OData.OpenAPI.Tests/Resources/TripService.OpenApi.json
+The content of `trip.json` is similar at https://github.com/xuzhg/OData.OpenAPI/blob/master/Microsoft.OData.OpenAPI/Microsoft.OData.OpenAPI.Tests/Resources/TripService.OpenApi.json
 

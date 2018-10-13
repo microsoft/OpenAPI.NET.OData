@@ -10,11 +10,11 @@ Nightly | <img src="https://identitydivision.visualstudio.com/_apis/public/build
 
 ## Introduction
 
-The **Microsoft.OpenAPI.OData.Reader** library helps represent an OData service metadata as an OpenApi description. It converts [OData](http://www.odata.org) [CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the XML representation of the Entity Data Model (EDM) describing an OData serivce into [Open API](https://github.com/OAI/OpenAPI-Specification) based on [OpenAPI.NET](http://aka.ms/openapi) object model.
+The **Microsoft.OpenAPI.OData.Reader** library helps represent an OData service metadata as an OpenApi description. It converts [OData](http://www.odata.org) [CSDL](http://docs.oasis-open.org/odata/odata-csdl-xml/v4.01/odata-csdl-xml-v4.01.html), the XML representation of the Entity Data Model (EDM) describing an OData service into [Open API](https://github.com/OAI/OpenAPI-Specification) based on [OpenAPI.NET](http://aka.ms/openapi) object model.
 
 The conversion is based on the mapping doc from [OASIS OData OpenAPI v1.0](https://www.oasis-open.org/committees/document.php?document_id=61852&wg_abbrev=odata) and uses the following :
 
-1. Capabilites annotation
+1. Capabilities annotation
 2. Authorization annotation
 3. HttpRequest annotation
 4. Navigation property path
