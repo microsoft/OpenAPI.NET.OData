@@ -2636,15 +2636,15 @@ components:
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
       example:
-        UserName: String (identifier)
-        FirstName: String
-        LastName: String
-        MiddleName: String
+        UserName: string (identifier)
+        FirstName: string
+        LastName: string
+        MiddleName: string
         Gender:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender
-        Age: Int64
+        Age: int64
         Emails:
-          - String
+          - string
         AddressInfo:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         HomeAddress:
@@ -2669,8 +2669,8 @@ components:
           type: string
           nullable: true
       example:
-        AirlineCode: String (identifier)
-        Name: String
+        AirlineCode: string (identifier)
+        Name: string
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport:
       title: Airport
       type: object
@@ -2688,9 +2688,9 @@ components:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
           nullable: true
       example:
-        Name: String
-        IcaoCode: String (identifier)
-        IataCode: String
+        Name: string
+        IcaoCode: string (identifier)
+        IataCode: string
         Location:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location:
@@ -2705,7 +2705,7 @@ components:
             - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City'
           nullable: true
       example:
-        Address: String
+        Address: string
         City:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.City
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.City:
@@ -2722,9 +2722,9 @@ components:
           type: string
           nullable: true
       example:
-        Name: String
-        CountryRegion: String
-        Region: String
+        Name: string
+        CountryRegion: string
+        Region: string
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -2734,10 +2734,10 @@ components:
             Loc:
               $ref: '#/components/schemas/Edm.GeographyPoint'
       example:
-        Address: String
+        Address: string
         City:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.City
-        Loc: GeographyPoint
+        Loc: Edm.GeographyPoint
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
@@ -2748,10 +2748,10 @@ components:
               type: string
               nullable: true
       example:
-        Address: String
+        Address: string
         City:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.City
-        BuildingInfo: String
+        BuildingInfo: string
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip:
       title: Trip
       type: object
@@ -2798,15 +2798,15 @@ components:
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
       example:
-        TripId: Int32 (identifier)
-        ShareId: Guid
-        Name: String
-        Budget: Single
-        Description: String
+        TripId: integer (identifier)
+        ShareId: string
+        Name: string
+        Budget: float
+        Description: string
         Tags:
-          - String
-        StartsAt: DateTimeOffset (timestamp)
-        EndsAt: DateTimeOffset (timestamp)
+          - string
+        StartsAt: string (timestamp)
+        EndsAt: string (timestamp)
         PlanItems:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
@@ -2834,11 +2834,11 @@ components:
           type: string
           format: duration
       example:
-        PlanItemId: Int32 (identifier)
-        ConfirmationCode: String
-        StartsAt: DateTimeOffset (timestamp)
-        EndsAt: DateTimeOffset (timestamp)
-        Duration: Duration
+        PlanItemId: integer (identifier)
+        ConfirmationCode: string
+        StartsAt: string (timestamp)
+        EndsAt: string (timestamp)
+        Duration: string
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
@@ -2853,14 +2853,14 @@ components:
               type: string
               nullable: true
       example:
-        PlanItemId: Int32 (identifier)
-        ConfirmationCode: String
-        StartsAt: DateTimeOffset (timestamp)
-        EndsAt: DateTimeOffset (timestamp)
-        Duration: Duration
+        PlanItemId: integer (identifier)
+        ConfirmationCode: string
+        StartsAt: string (timestamp)
+        EndsAt: string (timestamp)
+        Duration: string
         OccursAt:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation
-        Description: String
+        Description: string
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
@@ -2871,12 +2871,12 @@ components:
               type: string
               nullable: true
       example:
-        PlanItemId: Int32 (identifier)
-        ConfirmationCode: String
-        StartsAt: DateTimeOffset (timestamp)
-        EndsAt: DateTimeOffset (timestamp)
-        Duration: Duration
-        SeatNumber: String
+        PlanItemId: integer (identifier)
+        ConfirmationCode: string
+        StartsAt: string (timestamp)
+        EndsAt: string (timestamp)
+        Duration: string
+        SeatNumber: string
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight:
       allOf:
         - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
@@ -2899,13 +2899,13 @@ components:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
               nullable: true
       example:
-        PlanItemId: Int32 (identifier)
-        ConfirmationCode: String
-        StartsAt: DateTimeOffset (timestamp)
-        EndsAt: DateTimeOffset (timestamp)
-        Duration: Duration
-        SeatNumber: String
-        FlightNumber: String
+        PlanItemId: integer (identifier)
+        ConfirmationCode: string
+        StartsAt: string (timestamp)
+        EndsAt: string (timestamp)
+        Duration: string
+        SeatNumber: string
+        FlightNumber: string
         Airline:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline
         From:
@@ -2928,15 +2928,15 @@ components:
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       example:
-        UserName: String (identifier)
-        FirstName: String
-        LastName: String
-        MiddleName: String
+        UserName: string (identifier)
+        FirstName: string
+        LastName: string
+        MiddleName: string
         Gender:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender
-        Age: Int64
+        Age: int64
         Emails:
-          - String
+          - string
         AddressInfo:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         HomeAddress:
@@ -2951,7 +2951,7 @@ components:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
         Trips:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip
-        Cost: Int64
+        Cost: int64
         Peers:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
@@ -2974,15 +2974,15 @@ components:
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
       example:
-        UserName: String (identifier)
-        FirstName: String
-        LastName: String
-        MiddleName: String
+        UserName: string (identifier)
+        FirstName: string
+        LastName: string
+        MiddleName: string
         Gender:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender
-        Age: Int64
+        Age: int64
         Emails:
-          - String
+          - string
         AddressInfo:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         HomeAddress:
@@ -2997,7 +2997,7 @@ components:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
         Trips:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip
-        Budget: Int64
+        Budget: int64
         BossOffice:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
         DirectReports:

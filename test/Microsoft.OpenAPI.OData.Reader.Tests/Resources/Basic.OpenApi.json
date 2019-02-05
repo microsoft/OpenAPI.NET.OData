@@ -979,7 +979,7 @@
           }
         },
         "example": {
-          "UserName": "String (identifier)",
+          "UserName": "string (identifier)",
           "HomeAddress": {
             "@odata.type": "DefaultNs.Address"
           },
@@ -1002,7 +1002,7 @@
           }
         },
         "example": {
-          "Name": "String (identifier)"
+          "Name": "string (identifier)"
         }
       },
       "DefaultNs.CountryOrRegion": {
@@ -1014,7 +1014,7 @@
           }
         },
         "example": {
-          "Name": "String (identifier)"
+          "Name": "string (identifier)"
         }
       },
       "DefaultNs.Address": {
@@ -1032,7 +1032,7 @@
           }
         },
         "example": {
-          "Id": "Int32",
+          "Id": "integer",
           "City": {
             "@odata.type": "DefaultNs.City"
           }
@@ -1054,7 +1054,7 @@
           }
         ],
         "example": {
-          "Id": "Int32",
+          "Id": "integer",
           "City": {
             "@odata.type": "DefaultNs.City"
           },

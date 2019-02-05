@@ -3861,16 +3861,16 @@
           }
         },
         "example": {
-          "UserName": "String (identifier)",
-          "FirstName": "String",
-          "LastName": "String",
-          "MiddleName": "String",
+          "UserName": "string (identifier)",
+          "FirstName": "string",
+          "LastName": "string",
+          "MiddleName": "string",
           "Gender": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
           },
-          "Age": "Int64",
+          "Age": "int64",
           "Emails": [
-            "String"
+            "string"
           ],
           "AddressInfo": [
             {
@@ -3916,8 +3916,8 @@
           }
         },
         "example": {
-          "AirlineCode": "String (identifier)",
-          "Name": "String"
+          "AirlineCode": "string (identifier)",
+          "Name": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
@@ -3945,9 +3945,9 @@
           }
         },
         "example": {
-          "Name": "String",
-          "IcaoCode": "String (identifier)",
-          "IataCode": "String",
+          "Name": "string",
+          "IcaoCode": "string (identifier)",
+          "IataCode": "string",
           "Location": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
           }
@@ -3971,7 +3971,7 @@
           }
         },
         "example": {
-          "Address": "String",
+          "Address": "string",
           "City": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
           }
@@ -3995,9 +3995,9 @@
           }
         },
         "example": {
-          "Name": "String",
-          "CountryRegion": "String",
-          "Region": "String"
+          "Name": "string",
+          "CountryRegion": "string",
+          "Region": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
@@ -4016,11 +4016,11 @@
           }
         ],
         "example": {
-          "Address": "String",
+          "Address": "string",
           "City": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
           },
-          "Loc": "GeographyPoint"
+          "Loc": "Edm.GeographyPoint"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
@@ -4040,11 +4040,11 @@
           }
         ],
         "example": {
-          "Address": "String",
+          "Address": "string",
           "City": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
           },
-          "BuildingInfo": "String"
+          "BuildingInfo": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
@@ -4113,16 +4113,16 @@
           }
         },
         "example": {
-          "TripId": "Int32 (identifier)",
-          "ShareId": "Guid",
-          "Name": "String",
-          "Budget": "Single",
-          "Description": "String",
+          "TripId": "integer (identifier)",
+          "ShareId": "string",
+          "Name": "string",
+          "Budget": "float",
+          "Description": "string",
           "Tags": [
-            "String"
+            "string"
           ],
-          "StartsAt": "DateTimeOffset (timestamp)",
-          "EndsAt": "DateTimeOffset (timestamp)",
+          "StartsAt": "string (timestamp)",
+          "EndsAt": "string (timestamp)",
           "PlanItems": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
@@ -4161,11 +4161,11 @@
           }
         },
         "example": {
-          "PlanItemId": "Int32 (identifier)",
-          "ConfirmationCode": "String",
-          "StartsAt": "DateTimeOffset (timestamp)",
-          "EndsAt": "DateTimeOffset (timestamp)",
-          "Duration": "Duration"
+          "PlanItemId": "integer (identifier)",
+          "ConfirmationCode": "string",
+          "StartsAt": "string (timestamp)",
+          "EndsAt": "string (timestamp)",
+          "Duration": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
@@ -4193,15 +4193,15 @@
           }
         ],
         "example": {
-          "PlanItemId": "Int32 (identifier)",
-          "ConfirmationCode": "String",
-          "StartsAt": "DateTimeOffset (timestamp)",
-          "EndsAt": "DateTimeOffset (timestamp)",
-          "Duration": "Duration",
+          "PlanItemId": "integer (identifier)",
+          "ConfirmationCode": "string",
+          "StartsAt": "string (timestamp)",
+          "EndsAt": "string (timestamp)",
+          "Duration": "string",
           "OccursAt": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
           },
-          "Description": "String"
+          "Description": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
@@ -4221,12 +4221,12 @@
           }
         ],
         "example": {
-          "PlanItemId": "Int32 (identifier)",
-          "ConfirmationCode": "String",
-          "StartsAt": "DateTimeOffset (timestamp)",
-          "EndsAt": "DateTimeOffset (timestamp)",
-          "Duration": "Duration",
-          "SeatNumber": "String"
+          "PlanItemId": "integer (identifier)",
+          "ConfirmationCode": "string",
+          "StartsAt": "string (timestamp)",
+          "EndsAt": "string (timestamp)",
+          "Duration": "string",
+          "SeatNumber": "string"
         }
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
@@ -4270,13 +4270,13 @@
           }
         ],
         "example": {
-          "PlanItemId": "Int32 (identifier)",
-          "ConfirmationCode": "String",
-          "StartsAt": "DateTimeOffset (timestamp)",
-          "EndsAt": "DateTimeOffset (timestamp)",
-          "Duration": "Duration",
-          "SeatNumber": "String",
-          "FlightNumber": "String",
+          "PlanItemId": "integer (identifier)",
+          "ConfirmationCode": "string",
+          "StartsAt": "string (timestamp)",
+          "EndsAt": "string (timestamp)",
+          "Duration": "string",
+          "SeatNumber": "string",
+          "FlightNumber": "string",
           "Airline": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
           },
@@ -4318,16 +4318,16 @@
           }
         ],
         "example": {
-          "UserName": "String (identifier)",
-          "FirstName": "String",
-          "LastName": "String",
-          "MiddleName": "String",
+          "UserName": "string (identifier)",
+          "FirstName": "string",
+          "LastName": "string",
+          "MiddleName": "string",
           "Gender": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
           },
-          "Age": "Int64",
+          "Age": "int64",
           "Emails": [
-            "String"
+            "string"
           ],
           "AddressInfo": [
             {
@@ -4358,7 +4358,7 @@
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
             }
           ],
-          "Cost": "Int64",
+          "Cost": "int64",
           "Peers": [
             {
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
@@ -4404,16 +4404,16 @@
           }
         ],
         "example": {
-          "UserName": "String (identifier)",
-          "FirstName": "String",
-          "LastName": "String",
-          "MiddleName": "String",
+          "UserName": "string (identifier)",
+          "FirstName": "string",
+          "LastName": "string",
+          "MiddleName": "string",
           "Gender": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
           },
-          "Age": "Int64",
+          "Age": "int64",
           "Emails": [
-            "String"
+            "string"
           ],
           "AddressInfo": [
             {
@@ -4444,7 +4444,7 @@
               "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
             }
           ],
-          "Budget": "Int64",
+          "Budget": "int64",
           "BossOffice": {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
           },

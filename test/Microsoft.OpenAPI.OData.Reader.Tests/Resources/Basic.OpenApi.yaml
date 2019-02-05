@@ -642,7 +642,7 @@ components:
           items:
             $ref: '#/components/schemas/DefaultNs.Address'
       example:
-        UserName: String (identifier)
+        UserName: string (identifier)
         HomeAddress:
           '@odata.type': DefaultNs.Address
         WorkAddress:
@@ -656,7 +656,7 @@ components:
         Name:
           type: string
       example:
-        Name: String (identifier)
+        Name: string (identifier)
     DefaultNs.CountryOrRegion:
       title: CountryOrRegion
       type: object
@@ -664,7 +664,7 @@ components:
         Name:
           type: string
       example:
-        Name: String (identifier)
+        Name: string (identifier)
     DefaultNs.Address:
       title: Address
       type: object
@@ -677,7 +677,7 @@ components:
         City:
           $ref: '#/components/schemas/DefaultNs.City'
       example:
-        Id: Int32
+        Id: integer
         City:
           '@odata.type': DefaultNs.City
     DefaultNs.WorkAddress:
@@ -689,7 +689,7 @@ components:
             CountryOrRegion:
               $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
       example:
-        Id: Int32
+        Id: integer
         City:
           '@odata.type': DefaultNs.City
         CountryOrRegion:

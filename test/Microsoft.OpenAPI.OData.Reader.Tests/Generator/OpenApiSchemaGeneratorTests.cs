@@ -98,8 +98,8 @@ namespace Microsoft.OpenApi.OData.Tests
   },
   ""description"": ""Complex type 'Address' description."",
   ""example"": {
-    ""Street"": ""String"",
-    ""City"": ""String""
+    ""Street"": ""string"",
+    ""City"": ""string""
   }
 }".ChangeLineBreaks(), json);
         }
@@ -188,8 +188,8 @@ namespace Microsoft.OpenApi.OData.Tests
     ""Continent"": {
       ""@odata.type"": ""NS.Continent""
     },
-    ""Name"": ""String"",
-    ""Price"": ""Decimal""
+    ""Name"": ""string"",
+    ""Price"": ""decimal""
   }
 }"
 .ChangeLineBreaks(), json);
@@ -242,7 +242,7 @@ namespace Microsoft.OpenApi.OData.Tests
   },
   ""description"": ""Entity type 'Zoo' description."",
   ""example"": {
-    ""Id"": ""Int32 (identifier)"",
+    ""Id"": ""integer (identifier)"",
     ""Creatures"": [
       {
         ""@odata.type"": ""NS.Creature""
@@ -317,9 +317,9 @@ namespace Microsoft.OpenApi.OData.Tests
     }
   ],
   ""example"": {
-    ""Id"": ""Int32 (identifier)"",
-    ""Age"": ""Int32"",
-    ""Name"": ""String""
+    ""Id"": ""integer (identifier)"",
+    ""Age"": ""integer"",
+    ""Name"": ""string""
   }
 }"
 .ChangeLineBreaks(), json);
