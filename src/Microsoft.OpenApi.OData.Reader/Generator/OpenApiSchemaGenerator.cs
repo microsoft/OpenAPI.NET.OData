@@ -236,7 +236,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     AnyOf = null,
                     OneOf = null,
                     Properties = null,
-                    Example = CreateStructuredTypePropertiesExample(structuredType)
+                    Example = CreateStructuredTypePropertiesExample(context, structuredType)
                 };
             }
             else
@@ -273,14 +273,14 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (processExample)
                 {
-                    schema.Example = CreateStructuredTypePropertiesExample(structuredType);
+                    schema.Example = CreateStructuredTypePropertiesExample(context, structuredType);
                 }
 
                 return schema;
             }
         }
 
-        private static IOpenApiAny CreateStructuredTypePropertiesExample(IEdmStructuredType structuredType)
+        private static IOpenApiAny CreateStructuredTypePropertiesExample(ODataContext context, IEdmStructuredType structuredType)
         {
             OpenApiObject example = new OpenApiObject();
 
@@ -292,7 +292,7 @@ namespace Microsoft.OpenApi.OData.Generator
                // IOpenApiAny item;
                 IEdmTypeReference propertyType = property.Type;
 
-                IOpenApiAny item = GetTypeNameForExample(propertyType);
+                IOpenApiAny item = GetTypeNameForExample(context, propertyType);
 
                 EdmTypeKind typeKind = propertyType.TypeKind();
                 if (typeKind == EdmTypeKind.Primitive && item is OpenApiString)
@@ -316,18 +316,28 @@ namespace Microsoft.OpenApi.OData.Generator
             return example;
         }
 
-        private static IOpenApiAny GetTypeNameForExample(IEdmTypeReference edmTypeReference)
+        private static IOpenApiAny GetTypeNameForExample(ODataContext context, IEdmTypeReference edmTypeReference)
         {
             switch (edmTypeReference.TypeKind())
             {
                 case EdmTypeKind.Primitive:
+                    IEdmPrimitiveType primitiveType = edmTypeReference.AsPrimitive().PrimitiveDefinition();
+                    OpenApiSchema schema = context.CreateSchema(primitiveType);
+
                     if (edmTypeReference.IsBoolean())
                     {
                         return new OpenApiBoolean(true);
                     }
                     else
                     {
-                        return new OpenApiString(edmTypeReference.AsPrimitive().PrimitiveDefinition().Name);
+                        if (schema.Reference != null)
+                        {
+                            return new OpenApiString(schema.Reference.Id);
+                        }
+                        else
+                        {
+                            return new OpenApiString(schema.Type ?? schema.Format);
+                        }
                     }
 
                 case EdmTypeKind.Entity:
@@ -340,7 +350,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmTypeKind.Collection:
                     OpenApiArray array = new OpenApiArray();
                     IEdmTypeReference elementType = edmTypeReference.AsCollection().ElementType();
-                    array.Add(GetTypeNameForExample(elementType));
+                    array.Add(GetTypeNameForExample(context, elementType));
                     return array;
 
                 case EdmTypeKind.Untyped:
