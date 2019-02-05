@@ -15432,6 +15432,7 @@
                 <Parameter Name="bindingParameter" Type="microsoft.graph.site" />
                 <Parameter Name="path" Type="Edm.String" Unicode="false" />
                 <ReturnType Type="microsoft.graph.site" />
+				<Annotation Term="Core.NewUriSyntax" Bool="true" />
             </Function>
             <Function Name="recent" IsBound="true">
                 <Parameter Name="bindingParameter" Type="microsoft.graph.drive" />
