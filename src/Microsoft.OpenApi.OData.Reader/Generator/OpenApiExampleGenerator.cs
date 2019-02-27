@@ -126,11 +126,11 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                     else if (edmTypeReference.IsDate())
                     {
-                        return new OpenApiDate(DateTime.UtcNow);
+                        return new OpenApiDate(DateTime.MinValue);
                     }
                     else if (edmTypeReference.IsDateTimeOffset())
                     {
-                        return new OpenApiDateTime(DateTimeOffset.UtcNow);
+                        return new OpenApiDateTime(DateTimeOffset.MinValue);
                     }
                     else if (edmTypeReference.IsDecimal() || edmTypeReference.IsDouble())
                     {
