@@ -13,7 +13,6 @@ using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
 using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.OData.Edm;
 
 namespace UpdateDocs
 {
@@ -29,6 +28,8 @@ namespace UpdateDocs
 
             foreach (var filePath in Directory.GetFiles(csdl, "*.xml"))
             {
+                Console.WriteLine(filePath);
+
                 IEdmModel model = LoadEdmModel(filePath);
                 if (model == null)
                 {
