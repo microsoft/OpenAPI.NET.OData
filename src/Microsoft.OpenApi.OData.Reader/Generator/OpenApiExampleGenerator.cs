@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,7 +25,6 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the dictionary of <see cref="OpenApiExample"/> object.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
-        /// <param name="securitySchemes">The securitySchemes.</param>
         /// <returns>The created <see cref="OpenApiExample"/> dictionary.</returns>
         public static IDictionary<string, OpenApiExample> CreateExamples(this ODataContext context)
         {
@@ -112,9 +112,45 @@ namespace Microsoft.OpenApi.OData.Generator
             switch (edmTypeReference.TypeKind())
             {
                 case EdmTypeKind.Primitive:
-                    if (edmTypeReference.IsBoolean())
+                    if (edmTypeReference.IsBinary())
+                    {
+                        return new OpenApiBinary(new byte[] { 0x00 });
+                    }
+                    else if (edmTypeReference.IsBoolean())
                     {
                         return new OpenApiBoolean(true);
+                    }
+                    else if (edmTypeReference.IsByte())
+                    {
+                        return new OpenApiByte(0x00);
+                    }
+                    else if (edmTypeReference.IsDate())
+                    {
+                        return new OpenApiDate(DateTime.UtcNow);
+                    }
+                    else if (edmTypeReference.IsDateTimeOffset())
+                    {
+                        return new OpenApiDateTime(DateTimeOffset.UtcNow);
+                    }
+                    else if (edmTypeReference.IsDecimal() || edmTypeReference.IsDouble())
+                    {
+                        return new OpenApiDouble(0D);
+                    }
+                    else if (edmTypeReference.IsFloating())
+                    {
+                        return new OpenApiFloat(0F);
+                    }
+                    else if (edmTypeReference.IsGuid())
+                    {
+                        return new OpenApiString(Guid.Empty.ToString());
+                    }
+                    else if (edmTypeReference.IsInt16() || edmTypeReference.IsInt32())
+                    {
+                        return new OpenApiInteger(0);
+                    }
+                    else if (edmTypeReference.IsInt64())
+                    {
+                        return new OpenApiLong(0L);
                     }
                     else
                     {
