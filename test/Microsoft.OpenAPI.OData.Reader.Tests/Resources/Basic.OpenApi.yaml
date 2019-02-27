@@ -793,7 +793,7 @@ components:
       value:
         City:
           '@odata.type': DefaultNs.City
-        Id: Int32
+        Id: 0
     DefaultNs.WorkAddress:
       value:
         CountryOrRegion:

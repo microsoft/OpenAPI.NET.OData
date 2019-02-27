@@ -3235,7 +3235,7 @@ components:
       value:
         AddressInfo:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
-        Age: Int64
+        Age: 0
         BestFriend:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
         Emails:
@@ -3285,24 +3285,24 @@ components:
         BuildingInfo: String
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip:
       value:
-        Budget: Single
+        Budget: 0
         Description: String
-        EndsAt: DateTimeOffset (timestamp)
+        EndsAt: '0001-01-01T00:00:00.0000000+00:00'
         Name: String
         PlanItems:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem
-        ShareId: Guid
-        StartsAt: DateTimeOffset (timestamp)
+        ShareId: 00000000-0000-0000-0000-000000000000
+        StartsAt: '0001-01-01T00:00:00.0000000+00:00'
         Tags:
           - String
-        TripId: Int32 (identifier)
+        TripId: 0
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem:
       value:
         ConfirmationCode: String
         Duration: Duration
-        EndsAt: DateTimeOffset (timestamp)
-        PlanItemId: Int32 (identifier)
-        StartsAt: DateTimeOffset (timestamp)
+        EndsAt: '0001-01-01T00:00:00.0000000+00:00'
+        PlanItemId: 0
+        StartsAt: '0001-01-01T00:00:00.0000000+00:00'
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event:
       value:
         Description: String
@@ -3322,14 +3322,14 @@ components:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
       value:
-        Cost: Int64
+        Cost: 0
         Peers:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
       value:
         BossOffice:
           '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location
-        Budget: Int64
+        Budget: 0
         DirectReports:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
 tags:
