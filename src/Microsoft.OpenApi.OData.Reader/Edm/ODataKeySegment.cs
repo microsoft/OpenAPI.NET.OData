@@ -32,6 +32,21 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.Key;
 
         /// <inheritdoc />
+        public override string Name
+        {
+            get
+            {
+                IList<string> keys = new List<string>();
+                foreach (var key in EntityType.Key())
+                {
+                    keys.Add(key.Name);
+                }
+
+                return String.Join(",", keys);
+            }
+        }
+
+        /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));

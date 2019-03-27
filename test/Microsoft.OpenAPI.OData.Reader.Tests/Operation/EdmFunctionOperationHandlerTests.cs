@@ -89,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.Customer.MyFunction.2c7bd5b91474cb963a16e394", operation.OperationId);
+                Assert.Equal("Customers.MyFunction.1e00", operation.OperationId);
             }
             else
             {
@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.VipCustomer.MyFunction.2c7bd5b91474cb963a16e394", operation.OperationId);
+                Assert.Equal("Customers.VipCustomer.MyFunction.1e00", operation.OperationId);
             }
             else
             {

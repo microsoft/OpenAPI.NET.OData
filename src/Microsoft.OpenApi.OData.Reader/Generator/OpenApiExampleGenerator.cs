@@ -114,7 +114,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmTypeKind.Primitive:
                     if (edmTypeReference.IsBinary())
                     {
-                        return new OpenApiBinary(new byte[] { 0x00 });
+                        // return new OpenApiBinary(new byte[] { 0x00 }); issue on binary writing
+                        return new OpenApiString(Convert.ToBase64String(new byte[] { 0x00 }));
                     }
                     else if (edmTypeReference.IsBoolean())
                     {

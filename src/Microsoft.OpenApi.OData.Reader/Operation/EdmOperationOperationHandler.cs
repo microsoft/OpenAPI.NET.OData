@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,31 +62,17 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                StringBuilder operationId = new StringBuilder(NavigationSource.Name);
-                if (HasTypeCast)
-                {
-                    ODataTypeCastSegment typeCast = Path.Segments.FirstOrDefault(s => s is ODataTypeCastSegment) as ODataTypeCastSegment;
-                    operationId.Append(".");
-                    operationId.Append(typeCast.EntityType.Name);
-                }
-                else
-                {
-                    operationId.Append(".");
-                    operationId.Append(NavigationSource.EntityType().Name);
-                }
-
-                operationId.Append(".");
-                operationId.Append(EdmOperation.Name);
+                string operationId = String.Join(".", Path.Segments.Where(s => !(s is ODataKeySegment)).Select(s => s.Name));
                 if (EdmOperation.IsAction())
                 {
-                    operation.OperationId = operationId.ToString();
+                    operation.OperationId = operationId;
                 }
                 else
                 {
                     ODataOperationSegment operationSegment = Path.LastSegment as ODataOperationSegment;
                     string pathItemName = operationSegment.GetPathItemName(Context.Settings);
                     string md5 = pathItemName.GetHashMd5();
-                    operation.OperationId = operationId.Append(".").Append(md5.Substring(8)).ToString();
+                    operation.OperationId = operationId + "." + md5.Substring(0, 4);
                 }
             }
 

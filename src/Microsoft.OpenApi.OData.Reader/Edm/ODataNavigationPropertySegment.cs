@@ -34,6 +34,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.NavigationProperty;
 
         /// <inheritdoc />
+        public override string Name { get => NavigationProperty.Name; }
+
+        /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings) => NavigationProperty.Name;
     }
 }

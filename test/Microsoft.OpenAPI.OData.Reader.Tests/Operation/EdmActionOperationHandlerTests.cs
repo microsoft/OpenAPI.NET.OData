@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.Customer.MyAction", operation.OperationId);
+                Assert.Equal("Customers.MyAction", operation.OperationId);
             }
             else
             {
