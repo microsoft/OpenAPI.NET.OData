@@ -942,7 +942,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "Me.Person.GetFavoriteAirline.938def2c53a7fc93a0fd9f8c",
+        "operationId": "Me.GetFavoriteAirline.5766",
         "produces": [
           "application/json"
         ],
@@ -964,7 +964,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "Me.Person.GetFriendsTrips.932b774f1ac3d3ca19e29f78",
+        "operationId": "Me.GetFriendsTrips.9e3a",
         "produces": [
           "application/json"
         ],
@@ -997,7 +997,7 @@
           "Me.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "Me.Person.ShareTrip",
+        "operationId": "Me.ShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -1040,7 +1040,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "Me.Person.UpdatePersonLastName.20bcbcf157674bf7f5d99020",
+        "operationId": "Me.UpdatePersonLastName.08a5",
         "produces": [
           "application/json"
         ],
@@ -1244,7 +1244,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Person.GetInvolvedPeople.3cefedae3e130099ab7dd3d1",
+        "operationId": "Me.Trips.GetInvolvedPeople.6610",
         "produces": [
           "application/json"
         ],
@@ -1863,7 +1863,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.Person.GetFavoriteAirline.938def2c53a7fc93a0fd9f8c",
+        "operationId": "NewComePeople.GetFavoriteAirline.5766",
         "produces": [
           "application/json"
         ],
@@ -1895,7 +1895,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.Person.GetFriendsTrips.932b774f1ac3d3ca19e29f78",
+        "operationId": "NewComePeople.GetFriendsTrips.9e3a",
         "produces": [
           "application/json"
         ],
@@ -1936,7 +1936,7 @@
           "NewComePeople.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "NewComePeople.Person.ShareTrip",
+        "operationId": "NewComePeople.ShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -1987,7 +1987,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.Person.UpdatePersonLastName.20bcbcf157674bf7f5d99020",
+        "operationId": "NewComePeople.UpdatePersonLastName.08a5",
         "produces": [
           "application/json"
         ],
@@ -2215,7 +2215,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Person.GetInvolvedPeople.3cefedae3e130099ab7dd3d1",
+        "operationId": "NewComePeople.Trips.GetInvolvedPeople.6610",
         "produces": [
           "application/json"
         ],
@@ -2842,7 +2842,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.Person.GetFavoriteAirline.938def2c53a7fc93a0fd9f8c",
+        "operationId": "People.GetFavoriteAirline.5766",
         "produces": [
           "application/json"
         ],
@@ -2874,7 +2874,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.Person.GetFriendsTrips.932b774f1ac3d3ca19e29f78",
+        "operationId": "People.GetFriendsTrips.9e3a",
         "produces": [
           "application/json"
         ],
@@ -2915,7 +2915,7 @@
           "People.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "People.Person.ShareTrip",
+        "operationId": "People.ShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -2966,7 +2966,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.Person.UpdatePersonLastName.20bcbcf157674bf7f5d99020",
+        "operationId": "People.UpdatePersonLastName.08a5",
         "produces": [
           "application/json"
         ],
@@ -3194,7 +3194,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Person.GetInvolvedPeople.3cefedae3e130099ab7dd3d1",
+        "operationId": "People.Trips.GetInvolvedPeople.6610",
         "produces": [
           "application/json"
         ],
@@ -3306,16 +3306,16 @@
         }
       },
       "example": {
-        "UserName": "String (identifier)",
-        "FirstName": "String",
-        "LastName": "String",
-        "MiddleName": "String",
+        "UserName": "string (identifier)",
+        "FirstName": "string",
+        "LastName": "string",
+        "MiddleName": "string",
         "Gender": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
         },
-        "Age": "Int64",
+        "Age": "integer",
         "Emails": [
-          "String"
+          "string"
         ],
         "AddressInfo": [
           {
@@ -3360,8 +3360,8 @@
         }
       },
       "example": {
-        "AirlineCode": "String (identifier)",
-        "Name": "String"
+        "AirlineCode": "string (identifier)",
+        "Name": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
@@ -3380,9 +3380,9 @@
         "Location": { }
       },
       "example": {
-        "Name": "String",
-        "IcaoCode": "String (identifier)",
-        "IataCode": "String",
+        "Name": "string",
+        "IcaoCode": "string (identifier)",
+        "IataCode": "string",
         "Location": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
         }
@@ -3398,7 +3398,7 @@
         "City": { }
       },
       "example": {
-        "Address": "String",
+        "Address": "string",
         "City": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
         }
@@ -3419,9 +3419,9 @@
         }
       },
       "example": {
-        "Name": "String",
-        "CountryRegion": "String",
-        "Region": "String"
+        "Name": "string",
+        "CountryRegion": "string",
+        "Region": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
@@ -3440,11 +3440,11 @@
         }
       ],
       "example": {
-        "Address": "String",
+        "Address": "string",
         "City": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
         },
-        "Loc": "GeographyPoint"
+        "Loc": "Edm.GeographyPoint"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
@@ -3463,11 +3463,11 @@
         }
       ],
       "example": {
-        "Address": "String",
+        "Address": "string",
         "City": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
         },
-        "BuildingInfo": "String"
+        "BuildingInfo": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
@@ -3518,16 +3518,16 @@
         }
       },
       "example": {
-        "TripId": "Int32 (identifier)",
-        "ShareId": "Guid",
-        "Name": "String",
-        "Budget": "Single",
-        "Description": "String",
+        "TripId": "integer (identifier)",
+        "ShareId": "string",
+        "Name": "string",
+        "Budget": "float",
+        "Description": "string",
         "Tags": [
-          "String"
+          "string"
         ],
-        "StartsAt": "DateTimeOffset (timestamp)",
-        "EndsAt": "DateTimeOffset (timestamp)",
+        "StartsAt": "string (timestamp)",
+        "EndsAt": "string (timestamp)",
         "PlanItems": [
           {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
@@ -3565,11 +3565,11 @@
         }
       },
       "example": {
-        "PlanItemId": "Int32 (identifier)",
-        "ConfirmationCode": "String",
-        "StartsAt": "DateTimeOffset (timestamp)",
-        "EndsAt": "DateTimeOffset (timestamp)",
-        "Duration": "Duration"
+        "PlanItemId": "integer (identifier)",
+        "ConfirmationCode": "string",
+        "StartsAt": "string (timestamp)",
+        "EndsAt": "string (timestamp)",
+        "Duration": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
@@ -3589,15 +3589,15 @@
         }
       ],
       "example": {
-        "PlanItemId": "Int32 (identifier)",
-        "ConfirmationCode": "String",
-        "StartsAt": "DateTimeOffset (timestamp)",
-        "EndsAt": "DateTimeOffset (timestamp)",
-        "Duration": "Duration",
+        "PlanItemId": "integer (identifier)",
+        "ConfirmationCode": "string",
+        "StartsAt": "string (timestamp)",
+        "EndsAt": "string (timestamp)",
+        "Duration": "string",
         "OccursAt": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
         },
-        "Description": "String"
+        "Description": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
@@ -3616,12 +3616,12 @@
         }
       ],
       "example": {
-        "PlanItemId": "Int32 (identifier)",
-        "ConfirmationCode": "String",
-        "StartsAt": "DateTimeOffset (timestamp)",
-        "EndsAt": "DateTimeOffset (timestamp)",
-        "Duration": "Duration",
-        "SeatNumber": "String"
+        "PlanItemId": "integer (identifier)",
+        "ConfirmationCode": "string",
+        "StartsAt": "string (timestamp)",
+        "EndsAt": "string (timestamp)",
+        "Duration": "string",
+        "SeatNumber": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
@@ -3643,13 +3643,13 @@
         }
       ],
       "example": {
-        "PlanItemId": "Int32 (identifier)",
-        "ConfirmationCode": "String",
-        "StartsAt": "DateTimeOffset (timestamp)",
-        "EndsAt": "DateTimeOffset (timestamp)",
-        "Duration": "Duration",
-        "SeatNumber": "String",
-        "FlightNumber": "String",
+        "PlanItemId": "integer (identifier)",
+        "ConfirmationCode": "string",
+        "StartsAt": "string (timestamp)",
+        "EndsAt": "string (timestamp)",
+        "Duration": "string",
+        "SeatNumber": "string",
+        "FlightNumber": "string",
         "Airline": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
         },
@@ -3684,16 +3684,16 @@
         }
       ],
       "example": {
-        "UserName": "String (identifier)",
-        "FirstName": "String",
-        "LastName": "String",
-        "MiddleName": "String",
+        "UserName": "string (identifier)",
+        "FirstName": "string",
+        "LastName": "string",
+        "MiddleName": "string",
         "Gender": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
         },
-        "Age": "Int64",
+        "Age": "integer",
         "Emails": [
-          "String"
+          "string"
         ],
         "AddressInfo": [
           {
@@ -3724,7 +3724,7 @@
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
           }
         ],
-        "Cost": "Int64",
+        "Cost": "integer",
         "Peers": [
           {
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
@@ -3756,16 +3756,16 @@
         }
       ],
       "example": {
-        "UserName": "String (identifier)",
-        "FirstName": "String",
-        "LastName": "String",
-        "MiddleName": "String",
+        "UserName": "string (identifier)",
+        "FirstName": "string",
+        "LastName": "string",
+        "MiddleName": "string",
         "Gender": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
         },
-        "Age": "Int64",
+        "Age": "integer",
         "Emails": [
-          "String"
+          "string"
         ],
         "AddressInfo": [
           {
@@ -3796,7 +3796,7 @@
             "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
           }
         ],
-        "Budget": "Int64",
+        "Budget": "integer",
         "BossOffice": {
           "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
         },
