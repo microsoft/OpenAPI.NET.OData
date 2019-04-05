@@ -99,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Reader.Annotations.Tests
                 <PropertyValue Property=""SecuritySchemes"">
                   <Collection>
                     <Record>
-                      <PropertyValue Property=""AuthorizationSchemeName"" String=""Delegated (work or school account)"" />
+                      <PropertyValue Property=""Authorization"" String=""Delegated (work or school account)"" />
                       <PropertyValue Property=""RequiredScopes"">
                         <Collection>
                           <String>Directory.AccessAsUser.All</String>
@@ -141,7 +141,7 @@ namespace Microsoft.OpenApi.OData.Reader.Annotations.Tests
                 <PropertyValue Property=""SecuritySchemes"">
                   <Collection>
                     <Record>
-                      <PropertyValue Property=""AuthorizationSchemeName"" String=""Delegated (work or school account)"" />
+                      <PropertyValue Property=""Authorization"" String=""Delegated (work or school account)"" />
                       <PropertyValue Property=""RequiredScopes"">
                         <Collection>
                           <String>Directory.Read.All</String>
@@ -151,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Reader.Annotations.Tests
                       </PropertyValue>
                     </Record>
                     <Record>
-                      <PropertyValue Property=""AuthorizationSchemeName"" String=""Application"" />
+                      <PropertyValue Property=""Authorization"" String=""Application"" />
                       <PropertyValue Property=""RequiredScopes"">
                         <Collection>
                           <String>Device.ReadWrite.All</String>
@@ -195,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Reader.Annotations.Tests
                 <PropertyValue Property=""SecuritySchemes"">
                   <Collection>
                     <Record>
-                      <PropertyValue Property=""AuthorizationSchemeName"" String=""Delegated (work or school account)"" />
+                      <PropertyValue Property=""Authorization"" String=""Delegated (work or school account)"" />
                       <PropertyValue Property=""RequiredScopes"">
                         <Collection>
                           <String>Directory.ReadWrite.All</String>
@@ -236,7 +236,7 @@ namespace Microsoft.OpenApi.OData.Reader.Annotations.Tests
             Assert.Equal("PATCH Example", request.MethodDescription);
             Assert.NotNull(request.SecuritySchemes);
             var securityScheme = Assert.Single(request.SecuritySchemes);
-            Assert.Equal("Delegated (work or school account)", securityScheme.AuthorizationSchemeName);
+            Assert.Equal("Delegated (work or school account)", securityScheme.Authorization);
             Assert.NotNull(securityScheme.RequiredScopes);
             Assert.Equal(new[] { "Directory.ReadWrite.All", "Directory.AccessAsUser.All" }, securityScheme.RequiredScopes);
         }

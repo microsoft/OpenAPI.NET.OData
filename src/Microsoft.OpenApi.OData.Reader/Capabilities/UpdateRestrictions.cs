@@ -11,7 +11,7 @@ using Microsoft.OData.Edm.Vocabularies;
 namespace Microsoft.OpenApi.OData.Capabilities
 {
     /// <summary>
-    /// Org.OData.Capabilities.V1.UpdateRestrictions
+    /// Org.OData.Capabilities.V1.UpdateRestrictionsType
     /// </summary>
     internal class UpdateRestrictions : CapabilitiesRestrictions
     {
@@ -21,7 +21,8 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public override CapabilitesTermKind Kind => CapabilitesTermKind.UpdateRestrictions;
 
         /// <summary>
-        /// Gets the Updatable value.
+        /// Gets the Updatable value, if true, entities can be updated.
+        /// The default value is true;
         /// </summary>
         public bool? Updatable { get; private set; }
 
@@ -29,6 +30,32 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Gets the navigation properties which do not allow rebinding.
         /// </summary>
         public IList<string> NonUpdatableNavigationProperties { get; private set; }
+
+        /// <summary>
+        /// Gets the maximum number of navigation properties that can be traversed when addressing the collection or entity to update.
+        /// A value of -1 indicates there is no restriction.
+        /// </summary>
+        public int MaxLevels { get; private set; } = -1;
+
+        /// <summary>
+        /// Gets/sets the required scopes to perform update.
+        /// </summary>
+        public PermissionType Permission { get; private set; }
+
+        /// <summary>
+        /// Gets/sets the support for query options with update requests.
+        /// </summary>
+        public ModificationQueryOptionsType QueryOptions { get; private set; }
+
+        /// <summary>
+        /// Gets/sets the supported or required custom headers.
+        /// </summary>
+        public IList<CustomParameter> CustomHeaders { get; private set; }
+
+        /// <summary>
+        /// Gets/sets the supported or required custom query options.
+        /// </summary>
+        public IList<CustomParameter> CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Test the target supports update.

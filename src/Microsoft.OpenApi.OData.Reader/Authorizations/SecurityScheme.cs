@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.Authorizations
         /// <summary>
         /// The name of a required authorization scheme.
         /// </summary>
-        public string AuthorizationSchemeName { get; set; }
+        public string Authorization { get; set; }
 
         /// <summary>
         /// The names of scopes required from this authorization scheme.
@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Authorizations
             Utils.CheckArgumentNull(record, nameof(record));
 
             // AuthorizationSchemeName
-            AuthorizationSchemeName = record.GetString("AuthorizationSchemeName");
+            Authorization = record.GetString("Authorization");
 
             // RequiredScopes
             RequiredScopes = record.GetCollection("RequiredScopes");

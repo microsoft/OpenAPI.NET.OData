@@ -90,6 +90,7 @@ namespace Microsoft.OpenApi.OData.Tests
             <Collection>
               <Record>
                  <PropertyValue Property=""Scope"" String=""Scope1"" />
+                 <PropertyValue Property=""Grant"" String=""Grant1"" />
                  <PropertyValue Property=""Description"" String=""Description 1"" />
               </Record>
             </Collection>

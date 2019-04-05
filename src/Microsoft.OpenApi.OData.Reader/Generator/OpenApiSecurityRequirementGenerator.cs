@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.SecurityScheme,
-                                    Id = securityScheme.AuthorizationSchemeName
+                                    Id = securityScheme.Authorization
                                 }
                             }
                         ] = new List<string>(securityScheme.RequiredScopes ?? new List<string>())

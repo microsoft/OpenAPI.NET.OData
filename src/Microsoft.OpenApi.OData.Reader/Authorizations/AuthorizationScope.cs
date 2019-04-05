@@ -20,6 +20,12 @@ namespace Microsoft.OpenApi.OData.Authorizations
         public string Scope { get; set; }
 
         /// <summary>
+        /// Scope Grant.
+        /// Identity that has access to the scope or can grant access to the scope.
+        /// </summary>
+        public string Grant { get; set; }
+
+        /// <summary>
         /// Description of the scope.
         /// </summary>
         public string Description { get; set; }
@@ -34,6 +40,9 @@ namespace Microsoft.OpenApi.OData.Authorizations
 
             // Scope.
             Scope = record.GetString("Scope");
+
+            // Grant.
+            Grant = record.GetString("Grant");
 
             // Description.
             Description = record.GetString("Description");
