@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OData.Edm.Vocabularies.Community.V1;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -16,6 +18,37 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public static class EdmModelExtensions
     {
+        /// <summary>
+        /// Determines whether the specified function is UrlEscape function or not.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="function">The specified function</param>
+        /// <returns><c>true</c> if the specified operation is UrlEscape function; otherwise, <c>false</c>.</returns>
+        public static bool IsUrlEscapeFunction(this IEdmModel model, IEdmFunction function)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(function, nameof(function));
+
+            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(function,
+                CommunityVocabularyModel.UrlEscapeFunctionTerm).FirstOrDefault();
+            if (annotation != null)
+            {
+                if (annotation.Value == null)
+                {
+                    // If the annotation is applied but a value is not specified then the value is assumed to be true.
+                    return true;
+                }
+
+                IEdmBooleanConstantExpression tagConstant = annotation.Value as IEdmBooleanConstantExpression;
+                if (tagConstant != null)
+                {
+                    return tagConstant.Value;
+                }
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Load all navigation sources into a dictionary.
         /// </summary>
