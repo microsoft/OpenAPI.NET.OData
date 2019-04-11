@@ -116,13 +116,48 @@ namespace Microsoft.OpenApi.OData.Capabilities
         InsertRestrictions,
 
         /// <summary>
+        /// Deep Insert Support of the annotated resource (the whole service, an entity set, or a collection-valued resource
+        /// </summary>
+        DeepInsertSupport,
+
+        /// <summary>
         /// Restrictions on update operations
         /// </summary>
         UpdateRestrictions,
 
         /// <summary>
+        /// Deep Update Support of the annotated resource (the whole service, an entity set, or a collection-valued resource)
+        /// </summary>
+        DeepUpdateSupported,
+
+        /// <summary>
         /// Restrictions on delete operations
         /// </summary>
         DeleteRestrictions,
+
+        /// <summary>
+        /// Describes restrictions on operations applied to collection-valued structural properties.
+        /// </summary>
+        CollectionPropertyRestrictions,
+
+        /// <summary>
+        /// Restrictions for function or action operation.
+        /// </summary>
+        OperationRestrictions,
+
+        /// <summary>
+        /// Restrictions for retrieving a collection of entities, retrieving a singleton instance, invoking a function
+        /// </summary>
+        ReadRestrictions,
+
+        /// <summary>
+        /// Custom headers that are supported/required for the annotated resource
+        /// </summary>
+        CustomHeaders,
+
+        /// <summary>
+        /// Custom query options that are supported/required for the annotated resource
+        /// </summary>
+        CustomQueryOptions
     }
 }

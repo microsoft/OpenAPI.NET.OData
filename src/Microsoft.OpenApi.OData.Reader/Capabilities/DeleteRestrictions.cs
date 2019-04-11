@@ -31,6 +31,26 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonDeletableNavigationProperties { get; private set; }
 
         /// <summary>
+        /// Gets the maximum number of navigation properties that can be traversed.
+        /// </summary>
+        public int? MaxLevels { get; private set; }
+
+        /// <summary>
+        /// Gets the required scopes to perform the insert.
+        /// </summary>
+        public PermissionType Permission { get; private set; }
+
+        /// <summary>
+        /// Gets the Support for query options with insert requests.
+        /// </summary>
+        public ModificationQueryOptionsType QueryOptions { get; private set; }
+
+        /// <summary>
+        /// Gets the Supported or required custom headers.
+        /// </summary>
+        public IList<CustomParameter> CustomHeaders { get; private set; }
+
+        /// <summary>
         /// Test the target supports delete.
         /// </summary>
         /// <returns>True/false.</returns>

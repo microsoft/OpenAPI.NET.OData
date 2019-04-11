@@ -9,36 +9,36 @@ using Microsoft.OData.Edm.Vocabularies;
 namespace Microsoft.OpenApi.OData.Capabilities
 {
     /// <summary>
-    /// Base class the supported restrictions.
+    /// Org.OData.Capabilities.V1.DeepUpdateSupported
     /// </summary>
-    internal abstract class SupportedRestrictions : CapabilitiesRestrictions
+    internal class DeepUpdateSupported : SupportedRestrictions
     {
         /// <summary>
-        /// Get the Supported boolean value.
+        /// The Term type kind.
         /// </summary>
-        public bool? Supported { get; protected set; }
+        public override CapabilitesTermKind Kind => CapabilitesTermKind.DeepUpdateSupported;
 
         /// <summary>
-        /// Test the target supports the corresponding restriction.
+        /// Gets Annotation target supports accepting and returning nested entities annotated with the `Core.ContentID` instance annotation.
         /// </summary>
-        /// <returns>True/false.</returns>
-        public bool IsSupported => Supported == null || Supported.Value == true;
+        public bool? ContentIDSupported { get; private set; }
 
         protected override bool Initialize(IEdmVocabularyAnnotation annotation)
         {
             if (annotation == null ||
                 annotation.Value == null ||
-                annotation.Value.ExpressionKind != EdmExpressionKind.BooleanConstant)
+                annotation.Value.ExpressionKind != EdmExpressionKind.Record)
             {
                 return false;
             }
 
-            // supported
-            IEdmBooleanConstantExpression boolConstant = (IEdmBooleanConstantExpression)annotation.Value;
-            if (boolConstant != null)
-            {
-                Supported = boolConstant.Value;
-            }
+            IEdmRecordExpression record = (IEdmRecordExpression)annotation.Value;
+
+            // Supported
+            Supported = record.GetBoolean("Supported");
+
+            // NonInsertableNavigationProperties
+            ContentIDSupported = record.GetBoolean("ContentIDSupported");
 
             return true;
         }

@@ -31,6 +31,11 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public IList<string> NonExpandableProperties { get; private set; }
 
         /// <summary>
+        /// Gets the maximum number of levels that can be expanded in a expand expression.
+        /// </summary>
+        public int? MaxLevles { get; private set; }
+
+        /// <summary>
         /// Test the target supports $expand.
         /// </summary>
         /// <returns>True/false.</returns>

@@ -26,9 +26,39 @@ namespace Microsoft.OpenApi.OData.Capabilities
         public bool? Insertable { get; private set; }
 
         /// <summary>
+        /// Gets the structural properties cannot be specified on insert.
+        /// </summary>
+        public IList<string> NonInsertableProperties { get; private set; }
+
+        /// <summary>
         /// Gets the navigation properties which do not allow deep inserts.
         /// </summary>
         public IList<string> NonInsertableNavigationProperties { get; private set; }
+
+        /// <summary>
+        /// Gets the maximum number of navigation properties that can be traversed.
+        /// </summary>
+        public int? MaxLevels { get; private set; }
+
+        /// <summary>
+        /// Gets the required scopes to perform the insert.
+        /// </summary>
+        public PermissionType Permission { get; private set; }
+
+        /// <summary>
+        /// Gets the Support for query options with insert requests.
+        /// </summary>
+        public ModificationQueryOptionsType QueryOptions { get; private set; }
+
+        /// <summary>
+        /// Gets the Supported or required custom headers.
+        /// </summary>
+        public IList<CustomParameter> CustomHeaders { get; private set; }
+
+        /// <summary>
+        /// Gets the Supported or required custom query options.
+        /// </summary>
+        public IList<CustomParameter> CustomQueryOptions { get; private set; }
 
         /// <summary>
         /// Test the target supports insert.
