@@ -45,6 +45,81 @@ namespace Microsoft.OpenApi.OData.Capabilities
         /// Navigation properties can be navigated to this level.
         /// </summary>
         public NavigationType? Navigability { get; set; }
+
+        /// <summary>
+        /// List of functions and operators supported in filter expressions.
+        /// </summary>
+        public IList<string> FilterFunctions { get; set; }
+
+        /// <summary>
+        /// Restrictions on filter expressions.
+        /// </summary>
+        public FilterRestrictions FilterRestrictions { get; set; }
+
+        /// <summary>
+        /// Restrictions on search expressions.
+        /// </summary>
+        public SearchRestrictions SearchRestrictions { get; set; }
+
+        /// <summary>
+        /// Restrictions on orderby expressions.
+        /// </summary>
+        public SortRestrictions SortRestrictions { get; set; }
+
+        /// <summary>
+        /// Supports $top.
+        /// </summary>
+        public bool? TopSupported { get; set; }
+
+        /// <summary>
+        /// Supports $skip.
+        /// </summary>
+        public bool? SkipSupported { get; set; }
+
+        /// <summary>
+        /// Supports $select.
+        /// </summary>
+        public SelectSupportType SelectSupport { get; set; }
+
+        /// <summary>
+        /// Supports key values according to OData URL conventions.
+        /// </summary>
+        public bool? IndexableByKey { get; set; }
+
+        /// <summary>
+        /// Restrictions on insert operations.
+        /// </summary>
+        public InsertRestrictions InsertRestrictions { get; set; }
+
+        /// <summary>
+        /// Deep Insert Support of the annotated resource (the whole service, an entity set, or a collection-valued resource).
+        /// </summary>
+        public DeepInsertSupported DeepInsertSupport { get; set; }
+
+        /// <summary>
+        /// Restrictions on update operations.
+        /// </summary>
+        public UpdateRestrictions UpdateRestrictions { get; set; }
+
+        /// <summary>
+        /// Deep Update Support of the annotated resource (the whole service, an entity set, or a collection-valued resource).
+        /// </summary>
+        public DeepUpdateSupported DeepUpdateSupport { get; set; }
+
+        /// <summary>
+        /// Restrictions on delete operations.
+        /// </summary>
+        public DeleteRestrictions DeleteRestrictions { get; set; }
+
+        /// <summary>
+        /// Data modification (including insert) along this navigation property requires the use of ETags.
+        /// </summary>
+        public bool? OptimisticConcurrencyControl { get; set; }
+
+        /// <summary>
+        /// Restrictions for retrieving entities.
+        /// </summary>
+        public ReadRestrictions ReadRestrictions { get; set; }
     }
 
     /// <summary>

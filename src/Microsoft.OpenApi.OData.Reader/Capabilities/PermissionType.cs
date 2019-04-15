@@ -3,56 +3,36 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.OpenApi.OData.Authorizations;
+using Microsoft.OpenApi.OData.Common;
+
 namespace Microsoft.OpenApi.OData.Capabilities
 {
     /// <summary>
-    /// Complex type: Org.OData.Capabilities.V1.SelectSupportType
+    /// Complex type: Org.OData.Capabilities.V1.PermissionType
     /// </summary>
-    internal class SelectSupportType
+    internal class PermissionType
     {
         /// <summary>
-        /// Gets the Supports $select.
+        /// Initializes a new instance of <see cref="PermissionType"/> class.
         /// </summary>
-        public bool? Supported { get; private set; }
+        /// <param name="scheme">The Auth flow scheme name.</param>
+        /// <param name="scopes">List of scopes that can provide access to the resource.</param>
+        public PermissionType(SecurityScheme scheme, IEnumerable<ScopeType> scopes)
+        {
+            Scheme = scheme ?? throw Error.ArgumentNull(nameof(scheme));
+            Scopes = scopes ?? throw Error.ArgumentNull(nameof(scopes));
+        }
 
         /// <summary>
-        /// Gets the $expand within $select is supported.
+        /// Gets the auth flow scheme name.
         /// </summary>
-        public bool? Expandable { get; private set; }
+        public SecurityScheme Scheme { get; private set; }
 
         /// <summary>
-        /// Gets the $filter within $select is supported.
+        /// Gets the list of scopes that can provide access to the resource.
         /// </summary>
-        public bool? Filterable { get; private set; }
-
-        /// <summary>
-        /// Gets the $search within $select is supported.
-        /// </summary>
-        public bool? Searchable { get; private set; }
-
-        /// <summary>
-        /// Gets the $top within $select is supported.
-        /// </summary>
-        public bool? TopSupported { get; private set; }
-
-        /// <summary>
-        /// Gets the $skip within $select is supported.
-        /// </summary>
-        public bool? SkipSupported { get; private set; }
-
-        /// <summary>
-        /// Gets the $compute within $select is supported.
-        /// </summary>
-        public bool? ComputeSupported { get; private set; }
-
-        /// <summary>
-        /// Gets the $count within $select is supported.
-        /// </summary>
-        public bool? Countable { get; private set; }
-
-        /// <summary>
-        /// Gets the orderby within $select is supported.
-        /// </summary>
-        public bool? Sortable { get; private set; }
+        public IEnumerable<ScopeType> Scopes { get; private set; }
     }
 }
