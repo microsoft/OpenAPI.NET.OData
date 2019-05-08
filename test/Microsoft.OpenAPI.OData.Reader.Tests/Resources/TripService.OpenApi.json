@@ -1153,6 +1153,61 @@
         "x-ms-docs-operation-type": "function"
       }
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
+      "post": {
+        "tags": [
+          "Me.Actions"
+        ],
+        "summary": "Invoke action GetPeersForTrip",
+        "operationId": "Me.GetPeersForTrip",
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "action"
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
       "post": {
         "tags": [
@@ -2232,6 +2287,73 @@
           }
         },
         "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
+      "post": {
+        "tags": [
+          "NewComePeople.Actions"
+        ],
+        "summary": "Invoke action GetPeersForTrip",
+        "operationId": "NewComePeople.GetPeersForTrip",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
@@ -3365,6 +3487,73 @@
           }
         },
         "x-ms-docs-operation-type": "function"
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
+      "post": {
+        "tags": [
+          "People.Actions"
+        ],
+        "summary": "Invoke action GetPeersForTrip",
+        "operationId": "People.GetPeersForTrip",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "Action parameters",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userName": {
+                    "type": "string"
+                  },
+                  "tripId": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    ],
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "action"
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
