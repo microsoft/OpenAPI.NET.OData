@@ -181,9 +181,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Theory]
-        [InlineData("ShareTrip", false)]
-        [InlineData("ResetDataSource", true)]
-        public void CreateResponseForEdmActionReturnCorrectResponses(string actionName, bool isActionImport)
+        [InlineData("ShareTrip", false, false)]
+        [InlineData("ResetDataSource", true, false)]
+        [InlineData("GetPeersForTrip", false, true)]
+        public void CreateResponseForEdmActionReturnCorrectResponses(string actionName, bool isActionImport, bool hasResponse)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -208,7 +209,18 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(responses);
             Assert.NotEmpty(responses);
             Assert.Equal(2, responses.Count);
-            Assert.Equal(new string[] { "204", "default" }, responses.Select(r => r.Key));
+
+            var responseCode = string.Empty;
+            if (!hasResponse)
+            {
+                responseCode = "204";
+            }
+            else
+            {
+                responseCode = "200";
+            }
+
+            Assert.Equal(new string[] { responseCode, "default" }, responses.Select(r => r.Key));
         }
     }
 }
