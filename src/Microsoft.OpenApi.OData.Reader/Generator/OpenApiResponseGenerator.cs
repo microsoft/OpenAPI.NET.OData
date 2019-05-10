@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiResponses responses = new OpenApiResponses();
 
-            if (operation.IsAction())
+            if (operation.IsAction() && operation.ReturnType == null)
             {
                 responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
             }
