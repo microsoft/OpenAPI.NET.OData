@@ -88,6 +88,34 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
+        public void MultipleSchemasEdmModelToOpenApiJsonWorks()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
+
+            // Act
+            string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json);
+            _output.WriteLine(json);
+
+            // Assert
+            Assert.Equal(Resources.GetString("Multiple.Schema.OpenApi.json").ChangeLineBreaks(), json);
+        }
+
+        [Fact]
+        public void MultipleSchemasEdmModelToOpenApiYamlWorks()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
+
+            // Act
+            string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml);
+            _output.WriteLine(yaml);
+
+            // Assert
+            Assert.Equal(Resources.GetString("Multiple.Schema.OpenApi.yaml").ChangeLineBreaks(), yaml);
+        }
+
+        [Fact]
         public void TripServiceMetadataToOpenApiJsonWorks()
         {
             // Arrange

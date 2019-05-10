@@ -17,8 +17,15 @@
     <None Remove="Resources\Empty.OpenApi.json" />
     <None Remove="Resources\Empty.OpenApi.yaml" />
     <None Remove="Resources\Graph.Beta.OData.xml" />
+    <None Remove="Resources\Multiple.Schema.OData.xml" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.json" />
+    <None Remove="Resources\Multiple.Schema.OpenApi.yaml" />
     <None Remove="Resources\TripService.OpenApi.json" />
     <None Remove="Resources\TripService.OpenApi.yaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Multiple.Schema.OData.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +34,8 @@
     <EmbeddedResource Include="Resources\Empty.OpenApi.json" />
     <EmbeddedResource Include="Resources\Empty.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\Graph.Beta.OData.xml" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.json" />
+    <EmbeddedResource Include="Resources\Multiple.Schema.OpenApi.yaml" />
     <EmbeddedResource Include="Resources\TripService.OData.xml" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.json" />
     <EmbeddedResource Include="Resources\TripService.OpenApi.yaml" />

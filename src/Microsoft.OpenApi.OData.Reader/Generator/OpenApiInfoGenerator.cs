@@ -55,7 +55,11 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             // If no Core.Description is present, a default title has to be provided as this is a required OpenAPI field.
-            return "OData Service for namespace " + context.Model.DeclaredNamespaces.FirstOrDefault();
+            string namespaceName = context.Model.EntityContainer != null ?
+                context.Model.EntityContainer.Namespace :
+                context.Model.DeclaredNamespaces.FirstOrDefault();
+
+            return "OData Service for namespace " + namespaceName;
         }
 
         private static string GetVersion(this ODataContext context)
