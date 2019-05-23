@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="Siterra.Documents.App.DTO" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="DocumentDto">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Filename" Type="Edm.String" />
+        <Property Name="NumberOfRevisions" Type="Edm.String" />
+        <Property Name="Suffix" Type="Edm.String" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" />
+        <Property Name="Tags" Type="Collection(Siterra.Documents.App.DTO.DocumentTagRelDto)" />
+        <NavigationProperty Name="Revisions" Type="Collection(Siterra.Documents.App.DTO.RevisionDto)" />
+      </EntityType>
+      <EntityType Name="LibraryDto">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Number" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="LibraryTemplateId" Type="Edm.Int32" />
+        <Property Name="ParentTypeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ParentId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="AllowMultiple" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="AutoCreate" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="TypeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" />
+        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.App.DTO.DocumentDto)" />
+      </EntityType>
+      <EntityType Name="RevisionDto">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Number" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DocumentId" Type="Edm.Int32" />
+        <Property Name="DocumentName" Type="Edm.String" />
+        <Property Name="DocumentDescription" Type="Edm.String" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="IsReviewed" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ReviewedBy" Type="Edm.Int32" />
+        <Property Name="ReviewedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="IsApproved" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ApprovedBy" Type="Edm.Int32" />
+        <Property Name="ApprovedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="IsRejected" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="RejectedBy" Type="Edm.Int32" />
+        <Property Name="RejectedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Document" Type="Siterra.Documents.BusinessLogic.Entities.Document.Document">
+          <ReferentialConstraint Property="DocumentId" ReferencedProperty="Id" />
+        </NavigationProperty>
+      </EntityType>
+      <EntityType Name="CategoryDto">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <ComplexType Name="DocumentTagRelDto">
+        <Property Name="Name" Type="Edm.String" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Siterra.Documents.BusinessLogic.Entities.Document" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Document">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="StatusId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TypeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Keywords" Type="Edm.String" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="LibraryId" Type="Edm.Int32" />
+        <Property Name="OwnerUserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="StatusDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="LastRevisionId" Type="Edm.Int32" />
+        <Property Name="CheckoutDate" Type="Edm.DateTimeOffset" />
+        <Property Name="CheckoutPath" Type="Edm.String" />
+        <Property Name="CheckoutUserId" Type="Edm.Int32" />
+        <Property Name="Number" Type="Edm.String" />
+        <Property Name="OriginalDate" Type="Edm.DateTimeOffset" />
+        <Property Name="FileSized" Type="Edm.Decimal" Nullable="false" />
+        <Property Name="FileClientPath" Type="Edm.String" />
+        <Property Name="LastRevisionFileId" Type="Edm.Int32" />
+        <Property Name="IsDeleted" Type="Edm.Int32" Nullable="false" />
+        <Property Name="IsNa" Type="Edm.Decimal" />
+        <Property Name="IsRejected" Type="Edm.Decimal" />
+        <Property Name="IsReviewed" Type="Edm.Decimal" />
+        <Property Name="NaDescription" Type="Edm.String" />
+        <Property Name="NaReason" Type="Edm.String" />
+        <Property Name="RejectedDescription" Type="Edm.String" />
+        <Property Name="RejectedReason" Type="Edm.String" />
+        <Property Name="ReviewDescription" Type="Edm.String" />
+        <Property Name="SourceDocumentId" Type="Edm.Int32" />
+        <Property Name="ScraperMapId" Type="Edm.Int32" />
+        <Property Name="LastDownloadedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="SmsId" Type="Edm.Int32" />
+        <Property Name="IsApprovedOld" Type="Edm.Int32" />
+        <Property Name="Suffix" Type="Edm.String" />
+        <Property Name="ScrapeResultId" Type="Edm.Int32" />
+        <Property Name="IsApproved" Type="Edm.Decimal" />
+        <Property Name="CategoryId" Type="Edm.Int32" />
+        <Property Name="SectionId" Type="Edm.Int32" />
+        <Property Name="VersionCount" Type="Edm.Int32" Nullable="false" />
+        <Property Name="LastFileName" Type="Edm.String" />
+        <Property Name="DocumentClasses" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass)" />
+        <Property Name="Tags" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel)" />
+        <NavigationProperty Name="Library" Type="Siterra.Documents.BusinessLogic.Entities.Library.Library">
+          <ReferentialConstraint Property="LibraryId" ReferencedProperty="Id" />
+        </NavigationProperty>
+        <NavigationProperty Name="LastRevisionFile" Type="Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile" />
+        <NavigationProperty Name="SourceDocument" Type="Siterra.Documents.BusinessLogic.Entities.Document.Document" />
+        <NavigationProperty Name="SourceDocumentChildren" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.Document)" />
+        <NavigationProperty Name="Revisions" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Revision.Revision)" />
+      </EntityType>
+      <ComplexType Name="DocumentClass">
+        <Property Name="ClassInstance" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ClassId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DocumentId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="IsPrimary" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="Document" Type="Siterra.Documents.BusinessLogic.Entities.Document.Document" />
+      </ComplexType>
+      <ComplexType Name="DocumentTagRel">
+        <Property Name="DocumentId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TagId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <NavigationProperty Name="Document" Type="Siterra.Documents.BusinessLogic.Entities.Document.Document" />
+        <NavigationProperty Name="Tag" Type="Siterra.Documents.BusinessLogic.Entities.Tags.Tag" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="Siterra.Documents.BusinessLogic.Entities.Library" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Library">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="ParentFolderId" Type="Edm.Int32" />
+        <Property Name="Number" Type="Edm.String" />
+        <Property Name="TypeId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OwnerUserId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TotalSize" Type="Edm.Decimal" Nullable="false" />
+        <Property Name="FilesCounter" Type="Edm.Int32" Nullable="false" />
+        <Property Name="FoldersCounter" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ProjectId" Type="Edm.Int32" />
+        <Property Name="SearchRingId" Type="Edm.Int32" />
+        <Property Name="SiteId" Type="Edm.Int32" />
+        <Property Name="AssetId" Type="Edm.Int32" />
+        <Property Name="AllowMultiple" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="AutoCreate" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="IsTemplate" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ProgramId" Type="Edm.Int32" />
+        <Property Name="SourceFolderId" Type="Edm.Int32" />
+        <Property Name="TemplateClassId" Type="Edm.Int32" />
+        <Property Name="TemplateSubType" Type="Edm.Int32" />
+        <Property Name="IsHidden" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsDeleted" Type="Edm.Int32" Nullable="false" />
+        <Property Name="StatusId" Type="Edm.Int32" />
+        <Property Name="SmsId" Type="Edm.Int32" />
+        <Property Name="ContractId" Type="Edm.Int32" />
+        <Property Name="VendorId" Type="Edm.Int32" />
+        <Property Name="OrganizationUnitId" Type="Edm.Int32" />
+        <Property Name="IncidentId" Type="Edm.Int32" />
+        <Property Name="EventId" Type="Edm.Int32" />
+        <Property Name="ClassInstance" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ClassId" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="LibraryParent" Type="Siterra.Documents.BusinessLogic.Entities.Library.Library" />
+        <NavigationProperty Name="Type" Type="Siterra.Documents.BusinessLogic.Entities.Library.LibraryType" />
+        <NavigationProperty Name="SourceFolder" Type="Siterra.Documents.BusinessLogic.Entities.Library.Library" />
+        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.Document)" />
+        <NavigationProperty Name="LibraryChildren" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Library.Library)" />
+        <NavigationProperty Name="SourceLibraryChildren" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Library.Library)" />
+      </EntityType>
+      <EntityType Name="LibraryType">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="XmlName" Type="Edm.String" />
+        <Property Name="MasterId" Type="Edm.Int32" />
+        <Property Name="Number" Type="Edm.Int32" />
+        <Property Name="ClassId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ParentId" Type="Edm.Int32" />
+        <Property Name="HasChanged" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="MasterLibraryType" Type="Siterra.Documents.BusinessLogic.Entities.Library.LibraryType" />
+        <NavigationProperty Name="ParentLibraryTypes" Type="Siterra.Documents.BusinessLogic.Entities.Library.LibraryType" />
+        <NavigationProperty Name="MasterLibraryTypeChildren" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Library.LibraryType)" />
+        <NavigationProperty Name="ChildrenLibraryTypes" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Library.LibraryType)" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Siterra.Documents.BusinessLogic.Entities.DocumentFile" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="DocumentFile">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Path" Type="Edm.String" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="Sized" Type="Edm.Decimal" Nullable="false" />
+        <Property Name="ActualName" Type="Edm.String" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SourceClassId" Type="Edm.Int32" />
+        <Property Name="ContentTypeId" Type="Edm.Int32" />
+        <Property Name="ClientPath" Type="Edm.String" />
+        <Property Name="IsSelfHosted" Type="Edm.Int16" Nullable="false" />
+        <Property Name="SmsId" Type="Edm.Int32" />
+        <Property Name="Latitude" Type="Edm.Decimal" />
+        <Property Name="Longitude" Type="Edm.Decimal" />
+        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.Document)" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Siterra.Documents.BusinessLogic.Entities.Tags" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Tag" Abstract="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+      </EntityType>
+      <EntityType Name="UserDefinedTag" BaseType="Siterra.Documents.BusinessLogic.Entities.Tags.Tag">
+        <Property Name="Documents" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel)" />
+      </EntityType>
+      <EntityType Name="Section" BaseType="Siterra.Documents.BusinessLogic.Entities.Tags.Tag">
+        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.Document)" />
+      </EntityType>
+      <EntityType Name="Category" BaseType="Siterra.Documents.BusinessLogic.Entities.Tags.Tag">
+        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.Document)" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Siterra.Documents.BusinessLogic.Entities.Revision" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="Revision">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Number" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DocumentId" Type="Edm.Int32" />
+        <Property Name="ModificationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="ModifiedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Remarks" Type="Edm.String" />
+        <Property Name="FileId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DocumentOwnerContact" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DocumentDescription" Type="Edm.String" />
+        <Property Name="DocumentStatusDate" Type="Edm.DateTimeOffset" Nullable="false" />
+        <Property Name="DocumentFolder" Type="Edm.String" />
+        <Property Name="DocumentKeywords" Type="Edm.String" />
+        <Property Name="DocumentStatus" Type="Edm.String" />
+        <Property Name="DocumentType" Type="Edm.String" />
+        <Property Name="DocumentName" Type="Edm.String" />
+        <Property Name="DocumentNumber" Type="Edm.String" />
+        <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="IsDeleted" Type="Edm.Int32" Nullable="false" />
+        <Property Name="IsReviewed" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ReviewDescription" Type="Edm.String" />
+        <Property Name="ReviewedBy" Type="Edm.Int32" />
+        <Property Name="IsRejected" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="RejectedReason" Type="Edm.String" />
+        <Property Name="RejectedDescription" Type="Edm.String" />
+        <Property Name="RejectedBy" Type="Edm.Int32" />
+        <Property Name="IsApproved" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ApprovedBy" Type="Edm.Int32" />
+        <Property Name="ReviewedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="RejectedDate" Type="Edm.DateTimeOffset" />
+        <Property Name="ApprovedDate" Type="Edm.DateTimeOffset" />
+        <NavigationProperty Name="Document" Type="Siterra.Documents.BusinessLogic.Entities.Document.Document">
+          <ReferentialConstraint Property="DocumentId" ReferencedProperty="Id" />
+        </NavigationProperty>
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Action Name="Upload" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Siterra.Documents.App.DTO.DocumentDto" />
+        <ReturnType Type="Siterra.Documents.App.DTO.DocumentDto" Nullable="false" />
+      </Action>
+      <EntityContainer Name="Container">
+        <EntitySet Name="Documents" EntityType="Siterra.Documents.App.DTO.DocumentDto">
+          <NavigationPropertyBinding Path="Revisions" Target="Revisions" />
+        </EntitySet>
+        <EntitySet Name="Libraries" EntityType="Siterra.Documents.App.DTO.LibraryDto" />
+        <EntitySet Name="Tasks" EntityType="Siterra.Documents.App.DTO.DocumentDto">
+          <NavigationPropertyBinding Path="Revisions" Target="Revisions" />
+        </EntitySet>
+        <EntitySet Name="Revisions" EntityType="Siterra.Documents.App.DTO.RevisionDto" />
+        <EntitySet Name="Categories" EntityType="Siterra.Documents.App.DTO.CategoryDto" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

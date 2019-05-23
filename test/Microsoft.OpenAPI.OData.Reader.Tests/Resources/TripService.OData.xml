@@ -141,6 +141,12 @@
         <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
         <Parameter Name="tripId" Type="Edm.Int32" Nullable="false" />
       </Action>
+      <Action Name="GetPeersForTrip" IsBound="true">
+        <Parameter Name="personInstance" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
+        <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
+        <Parameter Name="tripId" Type="Edm.Int32" Nullable="false" />
+        <ReturnType Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" />
+      </Action>
       <EntityContainer Name="Container">
         <EntitySet Name="People" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
           <NavigationPropertyBinding Path="Friends" Target="People" />
