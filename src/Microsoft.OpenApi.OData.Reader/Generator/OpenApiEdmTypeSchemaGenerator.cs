@@ -428,7 +428,13 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(typeReference != null);
 
             OpenApiSchema schema = new OpenApiSchema();
-            if (typeReference.IsNullable)
+
+            // AnyOf will only be valid openApi for version 3
+            // otherwise the reference should be set directly
+            // as per OASIS documentation for openApi version 2
+            // 
+            if (typeReference.IsNullable && 
+                (context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_0))
             {
                 schema.Nullable = true;
                 schema.Reference = null;

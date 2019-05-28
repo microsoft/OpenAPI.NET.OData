@@ -58,6 +58,12 @@ namespace Microsoft.OpenApi.OData
         public bool PrefixEntityTypeNameBeforeKey { get; set; } = false;
 
         /// <summary>
+        /// Gets/sets a value indicating whether the version of openApi to serialize to is v2.
+        /// Currently only impacts nullable references for EdmTypeSchemaGenerator
+        /// </summary>
+        public OpenApiSpecVersion OpenApiSpecVersion { get; set; } = OpenApiSpecVersion.OpenApi3_0;
+
+        /// <summary>
         /// Gets/sets a value indicating to set the OperationId on Open API operation.
         /// </summary>
         public bool EnableOperationId { get; set; } = true;
@@ -92,6 +98,7 @@ namespace Microsoft.OpenApi.OData
             newSettings.EnableNavigationPropertyPath = this.EnableNavigationPropertyPath;
             newSettings.TagDepth = this.TagDepth;
             newSettings.PrefixEntityTypeNameBeforeKey = this.PrefixEntityTypeNameBeforeKey;
+            newSettings.OpenApiSpecVersion = this.OpenApiSpecVersion;
             newSettings.EnableOperationId = this.EnableOperationId;
             newSettings.VerifyEdmModel = this.VerifyEdmModel;
             newSettings.IEEE754Compatible = this.IEEE754Compatible;

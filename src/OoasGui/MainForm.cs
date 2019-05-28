@@ -64,13 +64,13 @@ namespace OoasGui
 
         private void v2RadioBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Version = OpenApiSpecVersion.OpenApi2_0;
+            Settings.OpenApiSpecVersion = Version = OpenApiSpecVersion.OpenApi2_0;
             Convert();
         }
 
         private void v3RadioBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Version = OpenApiSpecVersion.OpenApi3_0;
+            Settings.OpenApiSpecVersion = Version = OpenApiSpecVersion.OpenApi3_0;
             Convert();
         }
 
