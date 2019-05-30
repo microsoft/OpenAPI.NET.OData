@@ -26,13 +26,13 @@ namespace OoasUtil
         /// </summary>
         public Uri Input { get; }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="UrlOpenApiGenerator"/> class.
-		/// </summary>
-		/// <param name="input">The input.</param>
-		/// <param name="output">The output.</param>
-		/// <param name="target">The output target.</param>
-		public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format, OpenApiSpecVersion version)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UrlOpenApiGenerator"/> class.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="output">The output.</param>
+        /// <param name="target">The output target.</param>
+        public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format, OpenApiSpecVersion version)
             : base(output, format, version)
         {
             Input = input;
