@@ -31,16 +31,16 @@ namespace OoasUtil
             OpenApiGenerator generator;
             if (processer.IsLocalFile)
             {
-                generator = new FileOpenApiGenerator(processer.Input, processer.Output, processer.Format.Value);
+                generator = new FileOpenApiGenerator(processer.Input, processer.Output, processer.Format.Value, processer.Version.Value);
             }
             else
             {
-                generator = new UrlOpenApiGenerator(new Uri(processer.Input), processer.Output, processer.Format.Value);
+                generator = new UrlOpenApiGenerator(new Uri(processer.Input), processer.Output, processer.Format.Value, processer.Version.Value);
             }
 
             if (generator.Generate())
             {
-                Console.WriteLine("Successed!");
+                Console.WriteLine("Succeeded!");
                 return 1;
             }
             else
