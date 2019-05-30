@@ -138,14 +138,17 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateResponseForEdmFunctionReturnCorrectResponses(bool isFunctionImport)
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        [InlineData(true, true)]
+        public void CreateResponseForEdmFunctionReturnCorrectResponses(bool isFunctionImport, bool isOpenApiVersion2)
         {
             // Arrange
             string operationName = "GetPersonWithMostFriends";
             IEdmModel model = EdmModelHelper.TripServiceModel;
             ODataContext context = new ODataContext(model);
+
+            context.Settings.OpenApiSpecVersion = isOpenApiVersion2 ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
 
             // Act
             OpenApiResponses responses;
@@ -172,12 +175,26 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
 
-            Assert.NotNull(mediaType.Schema);
+            // For either version, nullable should be set
+            // and the serializer will ignore for v2
             Assert.True(mediaType.Schema.Nullable);
-            Assert.Null(mediaType.Schema.Reference);
-            Assert.NotNull(mediaType.Schema.AnyOf);
-            var anyOf = Assert.Single(mediaType.Schema.AnyOf);
-            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOf.Reference.Id);
+
+            // openApi version 2 should have not use nullable
+            if (isOpenApiVersion2)
+            {
+                Assert.NotNull(mediaType.Schema);
+                Assert.Null(mediaType.Schema.AnyOf);
+                Assert.NotNull(mediaType.Schema.Reference);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaType.Schema.Reference.Id);
+            }
+            else
+            {
+                Assert.NotNull(mediaType.Schema);
+                Assert.Null(mediaType.Schema.Reference);
+                Assert.NotNull(mediaType.Schema.AnyOf);
+                var anyOf = Assert.Single(mediaType.Schema.AnyOf);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOf.Reference.Id);
+            }            
         }
 
         [Theory]
