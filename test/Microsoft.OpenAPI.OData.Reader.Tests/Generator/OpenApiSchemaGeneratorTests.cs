@@ -388,15 +388,15 @@ namespace Microsoft.OpenApi.OData.Tests
 
         #region EdmPropertySchema
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void CreatePropertySchemaForNonNullableEnumPropertyReturnSchema(bool isOpenApiSpecV2)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void CreatePropertySchemaForNonNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             ODataContext context = new ODataContext(model);
 
-            context.Settings.OpenApiSpecVersion = isOpenApiSpecV2 ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            context.Settings.OpenApiSpecVersion = specVersion;
 
             IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(e => e.Name == "Color");
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
@@ -405,14 +405,14 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = schema.SerializeAsJson(specVersion);
 
             // Assert
 
-            if (isOpenApiSpecV2)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(@"{
-  ""$ref"": ""#/components/schemas/DefaultNs.Color""
+  ""$ref"": ""#/definitions/DefaultNs.Color""
 }".ChangeLineBreaks(), json);
             }
             else
@@ -429,15 +429,15 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void CreatePropertySchemaForNullableEnumPropertyReturnSchema(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        public void CreatePropertySchemaForNullableEnumPropertyReturnSchema(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             ODataContext context = new ODataContext(model);
 
-            context.Settings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            context.Settings.OpenApiSpecVersion = specVersion;
 
             IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(e => e.Name == "Color");
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
@@ -446,14 +446,14 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act
             var schema = context.CreatePropertySchema(property);
             Assert.NotNull(schema);
-            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string json = schema.SerializeAsJson(specVersion);
             _output.WriteLine(json);
             
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(@"{
-  ""$ref"": ""#/components/schemas/DefaultNs.Color""
+  ""$ref"": ""#/definitions/DefaultNs.Color""
 }".ChangeLineBreaks(), json);
             }
             else

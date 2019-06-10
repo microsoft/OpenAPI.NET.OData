@@ -32,21 +32,21 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void EmptyEdmModelToOpenApiJsonWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void EmptyEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion;
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
             _output.WriteLine(json);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("Empty.OpenApi.V2.json").ChangeLineBreaks(), json);
             }
@@ -57,21 +57,21 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void EmptyEdmModelToOpenApiYamlWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void EmptyEdmModelToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.EmptyModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion;
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
             _output.WriteLine(yaml);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("Empty.OpenApi.V2.yaml").ChangeLineBreaks(), yaml);
             }
@@ -82,21 +82,21 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void BasicEdmModelToOpenApiJsonWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void BasicEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion;
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
             _output.WriteLine(json);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("Basic.OpenApi.V2.json").ChangeLineBreaks(), json);
             }
@@ -107,21 +107,21 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void BasicEdmModelToOpenApiYamlWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void BasicEdmModelToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion;
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
             _output.WriteLine(yaml);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("Basic.OpenApi.V2.yaml").ChangeLineBreaks(), yaml);
             }
@@ -132,21 +132,21 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void MultipleSchemasEdmModelToOpenApiJsonWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void MultipleSchemasEdmModelToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion;
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
             _output.WriteLine(json);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("Multiple.Schema.OpenApi.V2.json").ChangeLineBreaks(), json);
             }
@@ -157,21 +157,21 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void MultipleSchemasEdmModelToOpenApiYamlWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void MultipleSchemasEdmModelToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            openApiConvertSettings.OpenApiSpecVersion = specVersion;
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
             _output.WriteLine(yaml);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("Multiple.Schema.OpenApi.V2.yaml").ChangeLineBreaks(), yaml);
             }
@@ -182,9 +182,9 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void TripServiceMetadataToOpenApiJsonWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void TripServiceMetadataToOpenApiJsonWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -194,14 +194,14 @@ namespace Microsoft.OpenApi.OData.Tests
                 Version = new Version(1, 0, 1),
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
-                OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0
+                OpenApiSpecVersion = specVersion
             };
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
             _output.WriteLine(json);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("TripService.OpenApi.V2.json").ChangeLineBreaks(), json);
             }
@@ -212,9 +212,9 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
-        public void TripServiceMetadataToOpenApiYamlWorks(bool isOpenApiV2Spec)
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        public void TripServiceMetadataToOpenApiYamlWorks(OpenApiSpecVersion specVersion)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -225,7 +225,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 Version = new Version(1, 0, 1),
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
-                OpenApiSpecVersion = isOpenApiV2Spec ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0
+                OpenApiSpecVersion = specVersion
             };
 
             // Act
@@ -233,7 +233,7 @@ namespace Microsoft.OpenApi.OData.Tests
             _output.WriteLine(yaml);
 
             // Assert
-            if (isOpenApiV2Spec)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.Equal(Resources.GetString("TripService.OpenApi.V2.yaml").ChangeLineBreaks(), yaml);
             }

@@ -138,17 +138,18 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Theory]
-        [InlineData(true, false)]
-        [InlineData(false, false)]
-        [InlineData(true, true)]
-        public void CreateResponseForEdmFunctionReturnCorrectResponses(bool isFunctionImport, bool isOpenApiVersion2)
+        [InlineData(true, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(true, OpenApiSpecVersion.OpenApi2_0)]
+        [InlineData(false, OpenApiSpecVersion.OpenApi2_0)]
+        public void CreateResponseForEdmFunctionReturnCorrectResponses(bool isFunctionImport, OpenApiSpecVersion specVersion)
         {
             // Arrange
             string operationName = "GetPersonWithMostFriends";
             IEdmModel model = EdmModelHelper.TripServiceModel;
             ODataContext context = new ODataContext(model);
 
-            context.Settings.OpenApiSpecVersion = isOpenApiVersion2 ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            context.Settings.OpenApiSpecVersion = specVersion;
 
             // Act
             OpenApiResponses responses;
@@ -180,7 +181,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.True(mediaType.Schema.Nullable);
 
             // openApi version 2 should have not use nullable
-            if (isOpenApiVersion2)
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.NotNull(mediaType.Schema);
                 Assert.Null(mediaType.Schema.AnyOf);
