@@ -32,8 +32,8 @@ namespace OoasUtil
         /// <param name="input">The input.</param>
         /// <param name="output">The output.</param>
         /// <param name="target">The output target.</param>
-        public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format)
-            : base(output, format)
+        public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format, OpenApiSpecVersion version)
+            : base(output, format, version)
         {
             Input = input;
         }

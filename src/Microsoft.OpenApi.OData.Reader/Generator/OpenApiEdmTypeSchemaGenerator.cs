@@ -407,17 +407,31 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new OpenApiSchema();
             schema.Nullable = typeReference.IsNullable;
             schema.Reference = null;
-            schema.AnyOf = new List<OpenApiSchema>
+
+            if (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
-                new OpenApiSchema
+                schema.AnyOf = new List<OpenApiSchema>
                 {
-                    Reference = new OpenApiReference
+                    new OpenApiSchema
                     {
-                        Type = ReferenceType.Schema,
-                        Id = typeReference.Definition.FullTypeName()
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = typeReference.Definition.FullTypeName()
+                        }
                     }
-                }
-            };
+                };
+            }
+            else
+            {
+                schema.Type = null;
+                schema.AnyOf = null;
+                schema.Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = typeReference.Definition.FullTypeName()
+                };
+            }
 
             return schema;
         }
@@ -428,9 +442,14 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(typeReference != null);
 
             OpenApiSchema schema = new OpenApiSchema();
-            if (typeReference.IsNullable)
+            schema.Nullable = typeReference.IsNullable;
+
+            // AnyOf will only be valid openApi for version 3
+            // otherwise the reference should be set directly
+            // as per OASIS documentation for openApi version 2
+            if (typeReference.IsNullable && 
+                (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0))
             {
-                schema.Nullable = true;
                 schema.Reference = null;
                 schema.AnyOf = new List<OpenApiSchema>
                 {
@@ -466,17 +485,32 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new OpenApiSchema();
             schema.Nullable = reference.IsNullable;
             schema.Reference = null;
-            schema.AnyOf = new List<OpenApiSchema>
+
+            if (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
-                new OpenApiSchema
+                schema.AnyOf = new List<OpenApiSchema>
                 {
-                    Reference = new OpenApiReference
+                    new OpenApiSchema
                     {
-                        Type = ReferenceType.Schema,
-                        Id = reference.Definition.FullTypeName()
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = reference.Definition.FullTypeName()
+                        }
                     }
-                }
-            };
+                };
+            }
+            else
+            {
+                schema.Type = null;
+                schema.AnyOf = null;
+                schema.Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = reference.Definition.FullTypeName()
+                };
+            }
+            
 
             return schema;
         }

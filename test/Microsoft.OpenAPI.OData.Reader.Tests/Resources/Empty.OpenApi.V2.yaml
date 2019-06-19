@@ -1,0 +1,81 @@
+﻿swagger: '2.0'
+info:
+  title: 'OData Service for namespace '
+  description: This OData service is located at http://localhost
+  version: 1.0.1
+host: localhost
+schemes:
+  - http
+paths: { }
+definitions:
+  odata.error:
+    required:
+      - error
+    type: object
+    properties:
+      error:
+        $ref: '#/definitions/odata.error.main'
+  odata.error.main:
+    required:
+      - code
+      - message
+    type: object
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      target:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/odata.error.detail'
+      innererror:
+        description: The structure of this object is service-specific
+        type: object
+  odata.error.detail:
+    required:
+      - code
+      - message
+    type: object
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+      target:
+        type: string
+parameters:
+  top:
+    in: query
+    name: $top
+    description: Show only the first n items
+    type: integer
+    minimum: 0
+  skip:
+    in: query
+    name: $skip
+    description: Skip the first n items
+    type: integer
+    minimum: 0
+  count:
+    in: query
+    name: $count
+    description: Include count of items
+    type: boolean
+  filter:
+    in: query
+    name: $filter
+    description: Filter items by property values
+    type: string
+  search:
+    in: query
+    name: $search
+    description: Search items by search phrases
+    type: string
+responses:
+  error:
+    description: error
+    schema:
+      $ref: '#/definitions/odata.error'

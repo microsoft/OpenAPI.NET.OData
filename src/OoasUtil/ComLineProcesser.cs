@@ -46,6 +46,11 @@ namespace OoasUtil
         public OpenApiFormat? Format { get; private set; }
 
         /// <summary>
+        /// Output OpenApi Specification Version.
+        /// </summary>
+        public OpenApiSpecVersion? Version { get; private set; }
+
+        /// <summary>
         /// Output file.
         /// </summary>
         public string Output { get; private set; }
@@ -86,7 +91,7 @@ namespace OoasUtil
 
                         case "--input":
                         case "-i":
-                            if (!ProcessInput(_args[i+1]))
+                            if (!ProcessInput(_args[i + 1]))
                             {
                                 return false;
                             }
@@ -107,6 +112,15 @@ namespace OoasUtil
                             {
                                 return false;
                             }
+                            break;
+
+                        case "--specversion":
+                        case "-s":
+                            if (!int.TryParse(_args[i + 1], out int version) || !ProcessTarget(version))
+                            {
+                                return false;
+                            }
+                            ++i;
                             break;
 
                         case "--output":
@@ -134,6 +148,11 @@ namespace OoasUtil
             if (Format == null)
             {
                 Format = OpenApiFormat.Json;
+            }
+
+            if (Version == null)
+            {
+                Version = OpenApiSpecVersion.OpenApi3_0;
             }
 
             _continue = ValidateArguments();
@@ -179,6 +198,25 @@ namespace OoasUtil
             return true;
         }
 
+        private bool ProcessTarget(int version)
+        {
+            if (Version != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--specversion|-s] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+            else if (version > 3 || version < 2)
+            {
+                Console.WriteLine("[Error:] Only OpenApi specification version 2 or 3 are supported.\n");
+                PrintUsage();
+                return false;
+            }
+
+            Version = version == 2 ? OpenApiSpecVersion.OpenApi2_0 : OpenApiSpecVersion.OpenApi3_0;
+            return true;
+        }
+
         private bool ValidateArguments()
         {
             if (String.IsNullOrEmpty(Input))
@@ -216,14 +254,15 @@ namespace OoasUtil
             sb.Append("\nOptions:\n");
             sb.Append("  --help|-h\t\t\tDisplay help.\n");
             sb.Append("  --version|-v\t\t\tDisplay version.\n");
-            sb.Append("  --input|-i CsdlFileOrUrl\t\tSet the CSDL file name or the OData Service Url.\n");
-            sb.Append("  --output|-o OutputFile\t\tSet the output file name.\n");
+            sb.Append("  --input|-i CsdlFileOrUrl\tSet the CSDL file name or the OData Service Url.\n");
+            sb.Append("  --output|-o OutputFile\tSet the output file name.\n");
             sb.Append("  --json|-j\t\t\tSet the output format as JSON.\n");
             sb.Append("  --yaml|-y\t\t\tSet the output format as YAML.\n");
+            sb.Append("  --specversion|-s IntVersion\tSet the OpenApi Specification version of the output. Only 2 or 3 are supported.\n");
 
             sb.Append("\nExamples:\n");
             sb.Append("    OoasUtil.exe -y -i http://services.odata.org/TrippinRESTierService -o trip.yaml\n");
-            sb.Append("    OoasUtil.exe -j -i c:\\csdl.xml -o trip.json\n");
+            sb.Append("    OoasUtil.exe -j -s 2 -i c:\\csdl.xml -o trip.json\n");
 
             Console.WriteLine(sb.ToString());
         } 

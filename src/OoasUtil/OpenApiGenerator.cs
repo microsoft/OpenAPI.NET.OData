@@ -25,6 +25,11 @@ namespace OoasUtil
         public OpenApiFormat Format { get; }
 
         /// <summary>
+        /// Output specification version.
+        /// </summary>
+        public OpenApiSpecVersion Version { get; }
+
+        /// <summary>
         /// Output file.
         /// </summary>
         public string Output { get; }
@@ -35,10 +40,11 @@ namespace OoasUtil
         /// <param name="input">The input.</param>
         /// <param name="output">The output.</param>
         /// <param name="target">The output target.</param>
-        public OpenApiGenerator(string output, OpenApiFormat format)
+        public OpenApiGenerator(string output, OpenApiFormat format, OpenApiSpecVersion version)
         {
             Output = output;
             Format = format;
+            Version = version;
         }
 
         /// <summary>
@@ -52,10 +58,12 @@ namespace OoasUtil
 
                 OpenApiConvertSettings settings = GetSettings();
 
+                settings.OpenApiSpecVersion = Version;
+
                 using (FileStream fs = File.Create(Output))
                 {
                     OpenApiDocument document = edmModel.ConvertToOpenApi(settings);
-                    document.Serialize(fs, OpenApiSpecVersion.OpenApi3_0, Format);
+                    document.Serialize(fs, settings.OpenApiSpecVersion, Format);
                     fs.Flush();
                 }
             }
