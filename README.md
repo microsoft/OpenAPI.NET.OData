@@ -14,9 +14,9 @@ The **Microsoft.OpenAPI.OData.Reader** library helps represent an OData service 
 
 The conversion is based on the mapping doc from [OASIS OData OpenAPI v1.0](https://www.oasis-open.org/committees/document.php?document_id=61852&wg_abbrev=odata) and uses the following :
 
-1. Capabilities annotation
-2. Authorization annotation
-3. HttpRequest annotation
+1. [Capabilities vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Capabilities.V1.xml)
+2. [Authorization vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Authorization.V1.xml)
+3. [Core vocabulary annotation](https://github.com/oasis-tcs/odata-vocabularies/blob/master/vocabularies/Org.OData.Core.V1.xml)
 4. Navigation property path
 5. Edm operation and operation import path
 
