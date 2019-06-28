@@ -225,68 +225,6 @@ namespace Microsoft.OpenApi.OData.Edm
             return null;
         }
 
-
-
-        /// <summary>
-        ///  Get the collection of <typeparamref name="T"/> from the record using the given property name.
-        /// </summary>
-        /// <typeparam name="T">The element type.</typeparam>
-        /// <param name="record">The record expression.</param>
-        /// <param name="propertyName">The property name.</param>
-        /// <param name="elementAction">The element action.</param>
-        /// <returns>The collection or null.</returns>
-        public static IList<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName, Action<T, IEdmRecordExpression> elementAction)
-            where T: class, new()
-        {
-            Utils.CheckArgumentNull(record, nameof(record));
-            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
-
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-            if (property != null)
-            {
-                IEdmCollectionExpression collection = property.Value as IEdmCollectionExpression;
-                if (collection != null && collection.Elements != null)
-                {
-                    IList<T> items = new List<T>();
-                    foreach (IEdmRecordExpression item in collection.Elements.OfType<IEdmRecordExpression>())
-                    {
-                        T a = new T();
-                        elementAction(a, item);
-                        items.Add(a);
-                    }
-
-                    return items;
-                }
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Get the collection of <typeparamref name="T"/> from the record using the given property name.
-        /// </summary>
-        /// <param name="record">The record expression.</param>
-        /// <param name="propertyName">The property name.</param>
-        /// <param name="elementFunc">The element func.</param>
-        /// <returns>The collection of string or null.</returns>
-        public static IEnumerable<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName, Func<IEdmExpression, T> elementFunc)
-        {
-            Utils.CheckArgumentNull(record, nameof(record));
-            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
-
-            IEdmPropertyConstructor property = record.Properties.FirstOrDefault(e => e.Name == propertyName);
-            if (property != null)
-            {
-                IEdmCollectionExpression collection = property.Value as IEdmCollectionExpression;
-                if (collection != null && collection.Elements != null)
-                {
-                    return collection.Elements.Select(e => elementFunc(e));
-                }
-            }
-
-            return null;
-        }
-
         /// <summary>
         /// Get the collection of string from the record using the given property name.
         /// </summary>
