@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class SingletonPathItemHandlerTest
     {
-        private SingletonPathItemHandler _pathItemHandler = new SingletonPathItemHandler();
+        private SingletonPathItemHandler _pathItemHandler = new MySingletonPathItemHandler();
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -53,7 +53,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             // Assert
             var exception = Assert.Throws<InvalidOperationException>(test);
-            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, "SingletonPathItemHandler", path.Kind), exception.Message);
+            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, _pathItemHandler.GetType().Name, path.Kind), exception.Message);
         }
 
         [Fact]
@@ -80,57 +80,42 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData("None")]
-        [InlineData("Single")]
-        [InlineData("Recursive")]
-        public void CreateSingletonPathItemWorksForNavigationRestrictionsCapablities(string navigationType)
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch })]
+        [InlineData(false, new OperationType[] { OperationType.Patch })]
+        public void CreateSingletonPathItemWorksForReadRestrictionsCapablities(bool readable, OperationType[] expected)
         {
             // Arrange
-            string annotation = String.Format(@"
-<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
   <Record>
-    <PropertyValue Property=""Navigability"">
-       <EnumMember>Org.OData.Capabilities.V1.NavigationType/{0}</EnumMember>
-    </PropertyValue>
-  </Record>
-</Annotation>", navigationType);
-            IEdmModel model = GetEdmModel(annotation);
-            ODataContext context = new ODataContext(model);
-            IEdmSingleton singleton = model.EntityContainer.FindSingleton("Me");
-            Assert.NotNull(singleton); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(singleton));
-
-            // Act
-            var pathItem = _pathItemHandler.CreatePathItem(context, path);
-
-            // Assert
-            Assert.NotNull(pathItem);
-
-            Assert.NotNull(pathItem.Operations);
-            Assert.NotEmpty(pathItem.Operations);
-            if (navigationType == "None")
-            {
-                var operation = Assert.Single(pathItem.Operations);
-                Assert.Equal(OperationType.Patch, operation.Key);
-            }
-            else
-            {
-                Assert.Equal(2, pathItem.Operations.Count);
-                Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch },
-                    pathItem.Operations.Select(o => o.Key));
-            }
-        }
-
-        [Fact]
-        public void CreateSingletonPathItemWorksForUpdateRestrictionsCapablities()
-        {
-            // Arrange
-            string annotation = @"
-<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
-  <Record>
-    <PropertyValue Property=""Updatable"" Bool=""false"" />
+    <PropertyValue Property=""Readable"" Bool=""{readable}"" />
   </Record>
 </Annotation>";
+
+            // Assert
+            VerifyPathItemOperations(annotation, expected);
+        }
+
+        [Theory]
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch })]
+        [InlineData(false, new OperationType[] { OperationType.Get })]
+        public void CreateSingletonPathItemWorksForUpdateRestrictionsCapablities(bool updatable, OperationType[] expected)
+        {
+            // Arrange
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+    <PropertyValue Property=""Updatable"" Bool=""{updatable}"" />
+  </Record>
+</Annotation>";
+
+            // Assert
+            VerifyPathItemOperations(annotation, expected);
+        }
+
+        private void VerifyPathItemOperations(string annotation, OperationType[] expected)
+        {
+            // Arrange
             IEdmModel model = GetEdmModel(annotation);
             ODataContext context = new ODataContext(model);
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("Me");
@@ -145,8 +130,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
-            var operation = Assert.Single(pathItem.Operations);
-            Assert.Equal(OperationType.Get, operation.Key);
+            Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
         }
 
         private IEdmModel GetEdmModel(string annotation)
@@ -177,6 +161,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out model, out errors);
             Assert.True(result);
             return model;
+        }
+    }
+
+    internal class MySingletonPathItemHandler : SingletonPathItemHandler
+    {
+        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        {
+            item.AddOperation(operationType, new OpenApiOperation());
         }
     }
 }

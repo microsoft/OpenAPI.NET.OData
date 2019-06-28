@@ -355,7 +355,7 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal(expected, actual);
         }
 
-        private string GetCsdl(IEdmModel model)
+        public static string GetCsdl(IEdmModel model)
         {
             string edmx = string.Empty;
 

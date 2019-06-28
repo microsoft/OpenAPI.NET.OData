@@ -30,8 +30,6 @@ namespace Microsoft.OpenApi.OData.Operation
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
 
             Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
-
-            Request = context.FindRequest(Singleton, OperationType.ToString());
         }
 
         /// <inheritdoc/>

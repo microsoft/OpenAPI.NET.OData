@@ -6,7 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -26,13 +26,13 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            NavigationRestrictions navigation = Context.Model.GetNavigationRestrictions(EntitySet);
-            if (navigation == null || navigation.IsNavigable)
+            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet);
+            if (read == null || read.IsReadable)
             {
                 AddOperation(item, OperationType.Get);
             }
 
-            InsertRestrictions insert = Context.Model.GetInsertRestrictions(EntitySet);
+            InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet);
             if (insert == null || insert.IsInsertable)
             {
                 AddOperation(item, OperationType.Post);

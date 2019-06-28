@@ -31,8 +31,6 @@ namespace Microsoft.OpenApi.OData.Operation
 
             ODataOperationImportSegment operationImportSegment = path.LastSegment as ODataOperationImportSegment;
             EdmOperationImport = operationImportSegment.OperationImport;
-
-            Request = Context.FindRequest(EdmOperationImport, OperationType.ToString());
         }
 
         /// <inheritdoc/>

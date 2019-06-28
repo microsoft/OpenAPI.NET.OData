@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             // Edm OperationImport
             { ODataPathKind.OperationImport, new OperationImportPathItemHandler() },
 
-            // Edm OperationImport
+            // Unknown
             { ODataPathKind.Unknown, null },
         };
 

@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Annotations;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -69,12 +69,6 @@ namespace Microsoft.OpenApi.OData.Operation
         protected ODataPath Path { get; private set; }
 
         /// <summary>
-        /// Gets/sets the <see cref="HttpRequest"/>.
-        /// That will be set in the initialize method.
-        /// </summary>
-        protected HttpRequest Request { get; set; }
-
-        /// <summary>
         /// Initialize the handler.
         /// It should be call ahead of in derived class.
         /// </summary>
@@ -88,33 +82,21 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetBasicInfo(OpenApiOperation operation)
-        {
-            if (Request != null && Request.Description != null)
-            {
-                operation.Summary = Request.Description;
-            }
-        }
+        { }
 
         /// <summary>
         /// Set the security information for <see cref="OpenApiOperation"/>.
         /// </summary>
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetSecurity(OpenApiOperation operation)
-        {
-            if (Request != null)
-            {
-                operation.Security = Context.CreateSecurityRequirements(Request.SecuritySchemes).ToList();
-            }
-        }
+        { }
 
         /// <summary>
         /// Set the responses information for <see cref="OpenApiOperation"/>.
         /// </summary>
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetResponses(OpenApiOperation operation)
-        {
-            AppendHttpResponses(operation);
-        }
+        { }
 
         /// <summary>
         /// Set the request body information for <see cref="OpenApiOperation"/>.
@@ -168,91 +150,26 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="request">The <see cref="HttpRequest"/>.</param>
         protected virtual void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (Request == null)
-            {
-                return;
-            }
-
-            if (operation.Parameters == null)
-            {
-                operation.Parameters = new List<OpenApiParameter>();
-            }
-
-            if (Request.CustomQueryOptions != null)
-            {
-                AppendCustomParameters(operation.Parameters, Request.CustomQueryOptions, ParameterLocation.Query);
-            }
-
-            if (Request.CustomHeaders != null)
-            {
-                AppendCustomParameters(operation.Parameters, Request.CustomHeaders, ParameterLocation.Header);
-            }
         }
 
         /// <summary>
-        /// Set the <see cref="HttpRequest"/> annotation for the response.
+        /// Set the addition annotation for the response.
         /// </summary>
         /// <param name="operation">The operation.</param>
         /// <param name="request">The <see cref="HttpRequest"/>.</param>
         protected virtual void AppendHttpResponses(OpenApiOperation operation)
         {
-            if (Request == null || Request.HttpResponses == null || !Request.HttpResponses.Any())
-            {
-                return;
-            }
-
-            foreach(var httpResponse in Request.HttpResponses)
-            {
-                if (operation.Responses.TryGetValue(httpResponse.ResponseCode, out OpenApiResponse response))
-                {
-                    if (httpResponse.Description != null)
-                    {
-                        response.Description = httpResponse.Description;
-                    }
-
-                    if (httpResponse.Examples != null)
-                    {
-                        int index = 1;
-                        foreach (var example in httpResponse.Examples)
-                        {
-                            OpenApiExample ex = new OpenApiExample
-                            {
-                                Description = example.Description
-                            };
-
-                            if (example is ExternalExample)
-                            {
-                                var externalExample = (ExternalExample)example;
-                                ex.Value = new OpenApiString(externalExample.ExternalValue ?? "N/A");
-                            }
-                            else
-                            {
-                                var inlineExample = (InlineExample)example;
-                                ex.Value = new OpenApiString(inlineExample.InlineValue ?? "N/A");
-                            }
-
-                            if (ex.Description != null)
-                            {
-                                if (response.Content.TryGetValue(ex.Description, out OpenApiMediaType mediaType))
-                                {
-                                    mediaType.Examples.Add("example-" + index++, ex);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         /// <summary>
         /// Sets the custom parameters.
         /// </summary>
         /// <param name="parameters">The parameters.</param>
-        /// <param name="headers">The custom parameters.</param>
+        /// <param name="customParameters">The custom parameters.</param>
         /// <param name="location">The parameter location.</param>
-        private static void AppendCustomParameters(IList<OpenApiParameter> parameters, IList<CustomParameter> headers, ParameterLocation location)
+        protected static void AppendCustomParameters(IList<OpenApiParameter> parameters, IList<CustomParameter> customParameters, ParameterLocation location)
         {
-            foreach (var param in headers)
+            foreach (var param in customParameters)
             {
                 OpenApiParameter parameter = new OpenApiParameter
                 {
@@ -268,7 +185,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 if (param.DocumentationURL != null)
                 {
-                    parameter.Example = new OpenApiString(param.DocumentationURL?? "N/A");
+                    parameter.Example = new OpenApiString(param.DocumentationURL ?? "N/A");
                 }
 
                 if (param.ExampleValues != null)
@@ -282,16 +199,8 @@ namespace Microsoft.OpenApi.OData.Operation
                             Description = example.Description
                         };
 
-                        if (example is ExternalExample)
-                        {
-                            var externalExample = (ExternalExample)example;
-                            ex.Value = new OpenApiString(externalExample.ExternalValue ?? "N/A");
-                        }
-                        else
-                        {
-                            var inlineExample = (InlineExample)example;
-                            ex.Value = new OpenApiString(inlineExample.InlineValue ?? "N/A");
-                        }
+                        // maybe call convert to Uri literal
+                        ex.Value = new OpenApiString(example.Value.ToString());
 
                         parameter.Examples.Add("example-" + index++, ex);
                     }

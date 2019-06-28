@@ -132,7 +132,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.VipCustomer.MyAction", operation.OperationId);
+                Assert.Equal("Customers.NS.VipCustomer.MyAction", operation.OperationId);
             }
             else
             {

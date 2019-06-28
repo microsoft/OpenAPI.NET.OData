@@ -30,8 +30,6 @@ namespace Microsoft.OpenApi.OData.Operation
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
 
             EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
-
-            Request = Context.FindRequest(EntitySet, OperationType.ToString());
         }
 
         /// <inheritdoc/>

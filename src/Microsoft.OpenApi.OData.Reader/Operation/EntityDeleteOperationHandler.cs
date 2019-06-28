@@ -3,10 +3,13 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -63,6 +66,38 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             base.SetResponses(operation);
+        }
+
+        protected override void SetSecurity(OpenApiOperation operation)
+        {
+            DeleteRestrictionsType delete = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+            if (delete == null || delete.Permission == null)
+            {
+                return;
+            }
+
+            // the Permission should be collection, however current ODL supports the single permission.
+            // Will update after ODL change.
+            operation.Security = Context.CreateSecurityRequirements(new[] { delete.Permission.Scheme }).ToList();
+        }
+
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            DeleteRestrictionsType delete = Context.Model.GetRecord< DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+            if (delete == null)
+            {
+                return;
+            }
+
+            if (delete.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation.Parameters, delete.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (delete.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation.Parameters, delete.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
     }
 }

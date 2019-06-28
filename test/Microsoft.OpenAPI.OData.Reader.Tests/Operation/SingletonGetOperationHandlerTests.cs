@@ -68,7 +68,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [InlineData(false, false)]
         [InlineData(true, true)]
         [InlineData(true, false)]
-        public void CreateSingletonSetGetOperationReturnsParameterForExpandRestrictions(bool hasRestriction, bool expandable)
+        public void CreateSingletonGetOperationReturnsParameterForExpandRestrictions(bool hasRestriction, bool expandable)
         {
             // Arrange
             string annotation = String.Format(@"

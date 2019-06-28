@@ -9,9 +9,10 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -178,8 +179,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            TopSupported top = context.Model.GetTopSupported(target);
-            if (top == null || top.IsSupported)
+            bool? top = context.Model.GetTopSupported(target);
+            if (top == null || top.Value)
             {
                 return new OpenApiParameter
                 {
@@ -201,8 +202,8 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            SkipSupported skip = context.Model.GetSkipSupported(target);
-            if (skip == null || skip.IsSupported)
+            bool? skip = context.Model.GetSkipSupported(target);
+            if (skip == null || skip.Value)
             {
                 return new OpenApiParameter
                 {
@@ -224,7 +225,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            SearchRestrictions search = context.Model.GetSearchRestrictions(target);
+            SearchRestrictionsType search = context.Model.GetRecord<SearchRestrictionsType>(target, CapabilitiesConstants.SearchRestrictions);
             if (search == null || search.IsSearchable)
             {
                 return new OpenApiParameter
@@ -247,7 +248,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            CountRestrictions count = context.Model.GetCountRestrictions(target);
+            CountRestrictionsType count = context.Model.GetRecord<CountRestrictionsType>(target, CapabilitiesConstants.CountRestrictions);
             if (count == null || count.IsCountable)
             {
                 return new OpenApiParameter
@@ -270,7 +271,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
 
-            FilterRestrictions filter = context.Model.GetFilterRestrictions(target);
+            FilterRestrictionsType filter = context.Model.GetRecord<FilterRestrictionsType>(target, CapabilitiesConstants.FilterRestrictions);
             if (filter == null || filter.IsFilterable)
             {
                 return new OpenApiParameter
@@ -318,7 +319,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
-            SortRestrictions sort = context.Model.GetSortRestrictions(target);
+            SortRestrictionsType sort = context.Model.GetRecord<SortRestrictionsType>(target, CapabilitiesConstants.SortRestrictions);
             if (sort != null && !sort.IsSortable)
             {
                 return null;
@@ -407,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
-            NavigationRestrictions navigation = context.Model.GetNavigationRestrictions(target);
+            NavigationRestrictionsType navigation = context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
             if (navigation != null && !navigation.IsNavigable)
             {
                 return null;
@@ -486,7 +487,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(target, nameof(target));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
 
-            ExpandRestrictions expand = context.Model.GetExpandRestrictions(target);
+            ExpandRestrictionsType expand = context.Model.GetRecord<ExpandRestrictionsType>(target, CapabilitiesConstants.ExpandRestrictions);
             if (expand != null && !expand.IsExpandable)
             {
                 return null;

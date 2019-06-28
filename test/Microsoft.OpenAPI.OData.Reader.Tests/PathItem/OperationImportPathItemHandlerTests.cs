@@ -5,7 +5,9 @@
 
 using System;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -16,7 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class OperationImportPathItemHandlerTest
     {
-        private OperationImportPathItemHandler _pathItemHandler = new OperationImportPathItemHandler();
+        private OperationImportPathItemHandler _pathItemHandler = new MyOperationImportPathItemHandler();
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -50,7 +52,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             // Assert
             var exception = Assert.Throws<InvalidOperationException>(test);
-            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, "OperationImportPathItemHandler", path.Kind), exception.Message);
+            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, _pathItemHandler.GetType().Name, path.Kind), exception.Message);
         }
 
         [Theory]
@@ -65,8 +67,6 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             IEdmOperationImport edmOperationImport = model.EntityContainer
                 .OperationImports().FirstOrDefault(o => o.Name == operationImport);
             Assert.NotNull(edmOperationImport); // guard
-            string expectSummary = "Invoke " +
-                (edmOperationImport.IsActionImport() ? "actionImport " : "functionImport ") + operationImport;
             ODataPath path = new ODataPath(new ODataOperationImportSegment(edmOperationImport));
 
             // Act
@@ -78,8 +78,91 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             var operationKeyValue = Assert.Single(pathItem.Operations);
             Assert.Equal(operationType, operationKeyValue.Key);
             Assert.NotNull(operationKeyValue.Value);
+        }
 
-            Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
+        [Theory]
+        [InlineData(true, "GetNearestCustomers", OperationType.Get)]
+        [InlineData(false, "GetNearestCustomers", null)]
+        [InlineData(true, "ResetDataSource", OperationType.Post)]
+        [InlineData(false, "ResetDataSource", OperationType.Post)]
+        public void CreatePathItemForOperationImportWithReadRestrictionsReturnsCorrectPathItem(bool readable, string operationImport,
+            OperationType? operationType)
+        {
+            // Arrange
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+    <PropertyValue Property=""Readable"" Bool=""{readable}"" />
+  </Record>
+</Annotation>";
+
+            IEdmModel model = GetEdmModel(annotation);
+            ODataContext context = new ODataContext(model);
+            IEdmOperationImport edmOperationImport = model.EntityContainer
+                .OperationImports().FirstOrDefault(o => o.Name == operationImport);
+            Assert.NotNull(edmOperationImport); // guard
+            ODataPath path = new ODataPath(new ODataOperationImportSegment(edmOperationImport));
+
+            // Act
+            OpenApiPathItem pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            if (operationType == null)
+            {
+                Assert.Empty(pathItem.Operations);
+            }
+            else
+            {
+                var operationKeyValue = Assert.Single(pathItem.Operations);
+                Assert.Equal(operationType, operationKeyValue.Key);
+                Assert.NotNull(operationKeyValue.Value);
+            }
+        }
+
+        public static IEdmModel GetEdmModel(string annotation)
+        {
+            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Customer"">
+        <Key>
+          <PropertyRef Name=""ID"" />
+        </Key>
+        <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+      </EntityType>
+      <Action Name=""ResetDataSource"" />
+      <Function Name=""GetNearestCustomers"" >
+        <Parameter Name=""name"" Type=""Edm.String"" Nullable=""false"" />
+        <ReturnType Type=""NS.Customer"" />
+      </Function>
+       <EntityContainer Name =""Default"">
+         <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
+         <FunctionImport Name=""GetNearestCustomers"" Function=""NS.GetNearestCustomer"" EntitySet =""Customers"" >
+           {0}
+         </FunctionImport>
+         <ActionImport Name=""ResetDataSource"" Action=""NS.ResetDataSource"" >
+          {0}
+         </ActionImport>
+       </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+            string modelText = string.Format(template, annotation);
+
+            IEdmModel model;
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out model, out _);
+            Assert.True(result);
+            return model;
+        }
+    }
+
+    internal class MyOperationImportPathItemHandler : OperationImportPathItemHandler
+    {
+        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        {
+            item.AddOperation(operationType, new OpenApiOperation());
         }
     }
 }

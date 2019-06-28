@@ -4,8 +4,8 @@
 // ------------------------------------------------------------
 
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -20,19 +20,22 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
-            IndexableByKey index = Context.Model.GetIndexableByKey(EntitySet);
-            if (index == null || index.IsSupported)
+            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet);
+            if (read == null ||
+               (read.ReadByKeyRestrictions == null && read.IsReadable) ||
+               (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.IsReadable))
             {
+                // If we don't have Read by key read restriction, we should check the set read restrction.
                 AddOperation(item, OperationType.Get);
             }
 
-            UpdateRestrictions update = Context.Model.GetUpdateRestrictions(EntitySet);
+            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet);
             if (update == null || update.IsUpdatable)
             {
                 AddOperation(item, OperationType.Patch);
             }
 
-            DeleteRestrictions delete = Context.Model.GetDeleteRestrictions(EntitySet);
+            DeleteRestrictionsType delete = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet);
             if (delete == null || delete.IsDeletable)
             {
                 AddOperation(item, OperationType.Delete);

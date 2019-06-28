@@ -5,7 +5,9 @@
 
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -53,6 +55,163 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             else
             {
                 Assert.Null(patch.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void CreateSingletonPatchOperationReturnsParameterForUpdateRestrictions(bool hasRestriction)
+        {
+            // Arrange
+            string annotation = @"<Annotations Target=""NS.Default/Me"">
+                <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"" >
+                  <Record>
+                    <PropertyValue Property=""Updatable"" Bool=""true"" />
+                    <PropertyValue Property=""NonUpdatableNavigationProperties"" >
+                      <Collection>
+                        <NavigationPropertyPath>abc</NavigationPropertyPath>
+                        <NavigationPropertyPath>RelatedEvents</NavigationPropertyPath>
+                      </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property=""MaxLevels"" Int=""8"" />
+                    <PropertyValue Property=""Permission"">
+                      <Record Type=""Org.OData.Capabilities.V1.PermissionType"">
+                        <PropertyValue Property=""Scheme"">
+                          <Record Type=""Org.OData.Authorization.V1.SecurityScheme"">
+                            <PropertyValue Property=""Authorization"" String=""authorizationName"" />
+                            <PropertyValue Property=""RequiredScopes"">
+                              <Collection>
+                                <String>RequiredScopes1</String>
+                                <String>RequiredScopes2</String>
+                              </Collection>
+                            </PropertyValue>
+                          </Record>
+                        </PropertyValue>
+                        <PropertyValue Property=""Scopes"">
+                          <Collection>
+                            <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
+                              <PropertyValue Property=""Scope"" String=""scopeName1"" />
+                              <PropertyValue Property=""RestrictedProperties"" String=""p1,p2"" />
+                            </Record>
+                            <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
+                              <PropertyValue Property=""Scope"" String=""scopeName2"" />
+                              <PropertyValue Property=""RestrictedProperties"" String=""p3,p4"" />
+                            </Record>
+                          </Collection>
+                        </PropertyValue>
+                      </Record>
+                    </PropertyValue>
+                    <PropertyValue Property=""QueryOptions"">
+                      <Record>
+                        <PropertyValue Property=""ExpandSupported"" Bool=""true"" />
+                        <PropertyValue Property=""SelectSupported"" Bool=""true"" />
+                        <PropertyValue Property=""ComputeSupported"" Bool=""true"" />
+                        <PropertyValue Property=""FilterSupported"" Bool=""true"" />
+                        <PropertyValue Property=""SearchSupported"" Bool=""true"" />
+                        <PropertyValue Property=""SortSupported"" Bool=""false"" />
+                        <PropertyValue Property=""SortSupported"" Bool=""false"" />
+                      </Record>
+                    </PropertyValue>
+                    <PropertyValue Property=""CustomHeaders"">
+                      <Collection>
+                        <Record>
+                          <PropertyValue Property=""Name"" String=""HeadName1"" />
+                          <PropertyValue Property=""Description"" String=""Description1"" />
+                          <PropertyValue Property=""ComputeSupported"" String=""http://any1"" />
+                          <PropertyValue Property=""Required"" Bool=""true"" />
+                          <PropertyValue Property=""ExampleValues"">
+                            <Collection>
+                              <Record>
+                                <PropertyValue Property=""Description"" String=""Description11"" />
+                                <PropertyValue Property=""Value"" String=""value1"" />
+                              </Record>
+                            </Collection>
+                          </PropertyValue>
+                        </Record>
+                        <Record>
+                          <PropertyValue Property=""Name"" String=""HeadName2"" />
+                          <PropertyValue Property=""Description"" String=""Description2"" />
+                          <PropertyValue Property=""ComputeSupported"" String=""http://any2"" />
+                          <PropertyValue Property=""Required"" Bool=""false"" />
+                          <PropertyValue Property=""ExampleValues"">
+                            <Collection>
+                              <Record>
+                                <PropertyValue Property=""Description"" String=""Description22"" />
+                                <PropertyValue Property=""Value"" String=""value2"" />
+                              </Record>
+                            </Collection>
+                          </PropertyValue>
+                        </Record>
+                      </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property=""CustomQueryOptions"">
+                      <Collection>
+                        <Record>
+                          <PropertyValue Property=""Name"" String=""QueryName1"" />
+                          <PropertyValue Property=""Description"" String=""Description3"" />
+                          <PropertyValue Property=""ComputeSupported"" String=""http://any3"" />
+                          <PropertyValue Property=""Required"" Bool=""true"" />
+                          <PropertyValue Property=""ExampleValues"">
+                            <Collection>
+                              <Record>
+                                <PropertyValue Property=""Description"" String=""Description33"" />
+                                <PropertyValue Property=""Value"" String=""value3"" />
+                              </Record>
+                            </Collection>
+                          </PropertyValue>
+                        </Record>
+                      </Collection>
+                    </PropertyValue>
+                  </Record>
+                </Annotation>
+              </Annotations>";
+
+            // Act & Assert
+            VerifyOperation(annotation, hasRestriction);
+        }
+
+        private void VerifyOperation(string annotation, bool hasRestriction)
+        {
+            // Arrange
+            IEdmModel model = CapabilitiesModelHelper.GetEdmModelOutline(hasRestriction ? annotation : "");
+            ODataContext context = new ODataContext(model);
+            IEdmSingleton me = model.EntityContainer.FindSingleton("Me");
+            Assert.NotNull(me); // guard
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(me));
+
+            // Act
+            var patch = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(patch);
+
+            Assert.NotNull(patch.Parameters);
+            if (hasRestriction)
+            {
+                // Parameters
+                Assert.Equal(3, patch.Parameters.Count);
+
+                Assert.Equal(ParameterLocation.Header, patch.Parameters[0].In);
+                Assert.Equal("HeadName1", patch.Parameters[0].Name);
+
+                Assert.Equal(ParameterLocation.Header, patch.Parameters[1].In);
+                Assert.Equal("HeadName2", patch.Parameters[1].Name);
+
+                Assert.Equal(ParameterLocation.Query, patch.Parameters[2].In);
+                Assert.Equal("QueryName1", patch.Parameters[2].Name);
+
+                // security
+                Assert.NotNull(patch.Security);
+                var securityRequirements = Assert.Single(patch.Security);
+                var securityRequirement = Assert.Single(securityRequirements);
+                Assert.Equal("authorizationName", securityRequirement.Key.Reference.Id);
+                Assert.Equal(new[] { "scopeName1", "scopeName2" }, securityRequirement.Value);
+            }
+            else
+            {
+                Assert.Empty(patch.Parameters);
+                Assert.Empty(patch.Security);
             }
         }
     }

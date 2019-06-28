@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Authorizations;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Authorization;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -35,7 +35,12 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             IDictionary<string, OpenApiSecurityScheme> securitySchemes = new Dictionary<string, OpenApiSecurityScheme>();
-            var authorizations = context.GetAuthorizations(context.EntityContainer);
+            var authorizations = context.Model.GetAuthorizations(context.EntityContainer);
+            if (authorizations == null)
+            {
+                return securitySchemes;
+            }
+
             foreach (var authorization in authorizations)
             {
                 OpenApiSecurityScheme scheme = new OpenApiSecurityScheme

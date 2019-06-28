@@ -19,7 +19,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class EntitySetPathItemHandlerTests
     {
-        private EntitySetPathItemHandler _pathItemHandler = new EntitySetPathItemHandler();
+        private EntitySetPathItemHandler _pathItemHandler = new MyEntitySetPathItemHandler();
 
         [Fact]
         public void CreatePathItemThrowsForNullContext()
@@ -53,7 +53,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             // Assert
             var exception = Assert.Throws<InvalidOperationException>(test);
-            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, "EntitySetPathItemHandler", path.Kind), exception.Message);
+            Assert.Equal(String.Format(SRResource.InvalidPathKindForPathItemHandler, _pathItemHandler.GetType().Name, path.Kind), exception.Message);
         }
 
         [Fact]
@@ -80,45 +80,20 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData("None")]
-        [InlineData("Single")]
-        [InlineData("Recursive")]
-        public void CreateEntitySetPathItemWorksForNavigationRestrictionsCapablities(string navigationType)
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Post })]
+        [InlineData(false, new OperationType[] { OperationType.Post })]
+        public void CreateEntitySetPathItemWorksForReadRestrictionsCapablities(bool readable, OperationType[] expected)
         {
             // Arrange
-            string annotation = String.Format(@"
-<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+            string annotation = $@"
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
   <Record>
-    <PropertyValue Property=""Navigability"">
-       <EnumMember>Org.OData.Capabilities.V1.NavigationType/{0}</EnumMember>
-    </PropertyValue>
+    <PropertyValue Property=""Readable"" Bool=""{readable}"" />
   </Record>
-</Annotation>", navigationType);
-
-            IEdmModel model = GetEdmModel(annotation);
-            ODataContext context = new ODataContext(model);
-            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
-            Assert.NotNull(entitySet); // guard
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
-
-            // Act
-            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+</Annotation>";
 
             // Assert
-            Assert.NotNull(pathItem);
-
-            Assert.NotNull(pathItem.Operations);
-            Assert.NotEmpty(pathItem.Operations);
-            Assert.Contains(OperationType.Post, pathItem.Operations.Select(e => e.Key));
-
-            if (navigationType == "None")
-            {
-                Assert.DoesNotContain(OperationType.Get, pathItem.Operations.Select(e => e.Key));
-            }
-            else
-            {
-                Assert.Contains(OperationType.Get, pathItem.Operations.Select(e => e.Key));
-            }
+            VerifyPathItemOperations(annotation, expected);
         }
 
         [Theory]
@@ -127,13 +102,40 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         public void CreateEntitySetPathItemWorksForInsertRestrictionsCapablities(bool insertable, OperationType[] expected)
         {
             // Arrange
-            string annotation = String.Format(@"
+            string annotation = $@"
 <Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
   <Record>
-    <PropertyValue Property=""Insertable"" Bool=""{0}"" />
+    <PropertyValue Property=""Insertable"" Bool=""{insertable}"" />
   </Record>
-</Annotation>", insertable);
+</Annotation>";
 
+            // Assert
+            VerifyPathItemOperations(annotation, expected);
+        }
+
+        [Fact]
+        public void CreateEntitySetPathItemWorksForReadAndInsertRestrictionsCapablities()
+        {
+            // Arrange
+            string annotation = @"
+<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+  <Record>
+    <PropertyValue Property=""Insertable"" Bool=""false"" />
+  </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+    <PropertyValue Property=""Readable"" Bool=""false"" />
+  </Record>
+</Annotation>";
+
+            // Assert
+            VerifyPathItemOperations(annotation, new OperationType[] { });
+        }
+
+        private void VerifyPathItemOperations(string annotation, OperationType[] expected)
+        {
+            // Arrange
             IEdmModel model = GetEdmModel(annotation);
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
@@ -147,7 +149,6 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem);
 
             Assert.NotNull(pathItem.Operations);
-            Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
         }
 
@@ -179,6 +180,14 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out model, out errors);
             Assert.True(result);
             return model;
+        }
+    }
+
+    internal class MyEntitySetPathItemHandler : EntitySetPathItemHandler
+    {
+        protected override void AddOperation(OpenApiPathItem item, OperationType operationType)
+        {
+            item.AddOperation(operationType, new OpenApiOperation());
         }
     }
 }

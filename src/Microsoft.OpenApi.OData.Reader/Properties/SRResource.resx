@@ -132,6 +132,9 @@
   <data name="InvalidPathKindForPathItemHandler" xml:space="preserve">
     <value>The '{0}' path item handler can't process path kind '{1}'.</value>
   </data>
+  <data name="NotSupportedEdmExpressionKind" xml:space="preserve">
+    <value>Not supported {0} Edm expression kind.</value>
+  </data>
   <data name="NotSupportedEdmTypeKind" xml:space="preserve">
     <value>Not supported {0} Edm type kind.</value>
   </data>

@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OpenApi.OData.Vocabulary;
 
 namespace Microsoft.OpenApi.OData.Common
 {
@@ -12,6 +13,23 @@ namespace Microsoft.OpenApi.OData.Common
     /// </summary>
     public static class Utils
     {
+        /// <summary>
+        /// Get the term qualified name when using the type of <typeparamref name="T"/>
+        /// </summary>
+        /// <typeparam name="T">The type of the term.</typeparam>
+        /// <returns>The qualified name.</returns>
+        public static string GetTermQualifiedName<T>()
+        {
+            object[] attributes = typeof(T).GetCustomAttributes(typeof(TermAttribute), false);
+            if (attributes == null && attributes.Length == 0)
+            {
+                return null;
+            }
+
+            TermAttribute term = (TermAttribute)attributes[0];
+            return term.QualifiedName;
+        }
+
         /// <summary>
         /// Upper the first character of the string.
         /// </summary>

@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.VipCustomer.MyFunction.1e00", operation.OperationId);
+                Assert.Equal("Customers.NS.VipCustomer.MyFunction.1e00", operation.OperationId);
             }
             else
             {

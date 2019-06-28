@@ -4,10 +4,13 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -91,6 +94,55 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             base.SetResponses(operation);
+        }
+
+        protected override void SetSecurity(OpenApiOperation operation)
+        {
+            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+            if (read == null)
+            {
+                return;
+            }
+
+            ReadRestrictionsBase readBase = read;
+            if (read.ReadByKeyRestrictions != null)
+            {
+                readBase = read.ReadByKeyRestrictions;
+            }
+
+            if (readBase == null && readBase.Permission == null)
+            {
+                return;
+            }
+
+            // the Permission should be collection, however current ODL supports the single permission.
+            // Will update after ODL change.
+            operation.Security = Context.CreateSecurityRequirements(new[] { readBase.Permission.Scheme }).ToList();
+        }
+
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+            if (read == null)
+            {
+                return;
+            }
+
+            ReadRestrictionsBase readBase = read;
+            if (read.ReadByKeyRestrictions != null)
+            {
+                readBase = read.ReadByKeyRestrictions;
+            }
+
+            if (readBase.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation.Parameters, readBase.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (readBase.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation.Parameters, readBase.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
     }
 }
