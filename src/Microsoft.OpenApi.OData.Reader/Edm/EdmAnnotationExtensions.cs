@@ -106,9 +106,9 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        ///  Gets the record value (a complex type) for the given <see cref="IEdmVocabularyAnnotatable"/>.
+        /// Gets the record value (a complex type) for the given <see cref="IEdmVocabularyAnnotatable"/>
+        /// using the default term information assigned to the type.
         /// </summary>
-        /// <typeparam name="T">The CLR mapping type.</typeparam>
         /// <typeparam name="T">The CLR mapping type.</typeparam>
         /// <param name="model">The Edm model.</param>
         /// <returns>Null or the record value (a complex type) for this annotation.</returns>
@@ -200,7 +200,8 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Gets the collection of record value (a complex type) for the given <see cref="IEdmVocabularyAnnotatable"/>.
+        /// Gets the collection of record value (a complex type) for the given <see cref="IEdmVocabularyAnnotatable"/>
+        /// using the default term information assigned to the type.
         /// </summary>
         /// <typeparam name="T">The CLR mapping type.</typeparam>
         /// <param name="model">The Edm model.</param>
@@ -209,9 +210,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public static IEnumerable<T> GetCollection<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
             where T : IRecord, new()
         {
-            Utils.CheckArgumentNull(model, nameof(model));
-            Utils.CheckArgumentNull(target, nameof(target));
-
             string qualifiedName = Utils.GetTermQualifiedName<T>();
             return GetCollection<T>(model, target, qualifiedName);
         }
@@ -292,27 +290,6 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 return null;
             });
-        }
-
-        /// <summary>
-        /// Gets the vocabulary annotation from a target annotatable.
-        /// </summary>
-        /// <param name="model">The model referenced to.</param>
-        /// <param name="target">The target Annotatable to find annotation</param>
-        /// <returns>The annotation or null.</returns>
-        public static IEdmVocabularyAnnotation GetVocabularyAnnotation(this IEdmModel model, IEdmVocabularyAnnotatable target, IEdmTerm term)
-        {
-            Utils.CheckArgumentNull(model, nameof(model));
-            Utils.CheckArgumentNull(target, nameof(target));
-            Utils.CheckArgumentNull(term, nameof(term));
-
-            IEdmVocabularyAnnotation annotation = model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(target, term).FirstOrDefault();
-            if (annotation != null)
-            {
-                return annotation;
-            }
-
-            return null;
         }
 
         private static T GetOrAddCached<T>(this IEdmModel model, IEdmVocabularyAnnotatable target, string qualifiedName, Func<T> createFunc)
@@ -464,49 +441,6 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             return null;
-        }
-
-
-        private static Type GetTypeInfo<T>(string fullTypeName) where T : IRecord
-        {
-            object[] attributes = typeof(T).GetCustomAttributes(typeof(SubTypeAttribute), false);
-
-            SubTypeAttribute subType = attributes.OfType<SubTypeAttribute>().FirstOrDefault(s => s.FullName == fullTypeName);
-            if (subType == null)
-            {
-                return typeof(T);
-            }
-
-            return subType.Type;
-#if false
-            foreach (var item in collection.Elements)
-            {
-                Debug.Assert(item.ExpressionKind == EdmExpressionKind.Record);
-
-                IEdmRecordExpression record = (IEdmRecordExpression)item;
-                if (record.DeclaredType == null)
-                {
-                    T newRecord = new T();
-                    newRecord.Initialize(record);
-                    yield return newRecord;
-                }
-                else
-                {
-                    IEdmComplexType complexType = record.DeclaredType.Definition as IEdmComplexType;
-                    Debug.Assert(complexType != null);
-
-                    string fullTypeName = complexType.FullTypeName();
-
-                    Type subType = GetTypeInfo<T>(fullTypeName);
-
-                    IRecord sub = Activator.CreateInstance(subType) as IRecord;
-                    Debug.Assert(typeof(T).IsAssignableFrom(subType));
-                    sub.Initialize(record);
-                    yield return (T)sub;
-                }
-            }
-            // return Activator.CreateInstance(subType.Type) as T2;
-#endif 
         }
     }
 }

@@ -4,49 +4,27 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData.Vocabulary
 {
     /// <summary>
-    /// 
+    /// Term information attribute
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     internal class TermAttribute : Attribute
     {
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataPath"/> class.
+        /// </summary>
+        /// <param name="qualifiedName">The qualified name of this term.</param>
         public TermAttribute(string qualifiedName)
         {
             QualifiedName = qualifiedName ?? throw new ArgumentNullException(nameof(qualifiedName));
         }
 
+        /// <summary>
+        /// Gets the qualified name of this term.
+        /// </summary>
         public string QualifiedName { get; }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
-    internal class SubTypeAttribute : Attribute
-    {
-        public SubTypeAttribute(params KeyValuePair<string, Type>[] typeInfos)
-        {
-            SubTypes = new Dictionary<string, Type>();
-            foreach (KeyValuePair<string, Type> item in typeInfos)
-            {
-                SubTypes.Add(item);
-            }
-        }
-
-        public SubTypeAttribute(string fullTypeName, Type type)
-        {
-            FullName = fullTypeName ?? throw new ArgumentNullException(nameof(fullTypeName));
-            Type = type ?? throw new ArgumentNullException(nameof(type));
-        }
-
-        public string FullName { get; }
-
-        public Type Type { get; }
-
-        public IDictionary<string, Type> SubTypes { get; }
     }
 }
