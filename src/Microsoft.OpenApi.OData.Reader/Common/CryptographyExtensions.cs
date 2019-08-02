@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Common
         /// Calculates the SHA256 hash for the given string.
         /// </summary>
         /// <returns>A 64 char long hash.</returns>
-        public static string GetHashShah256(this string input)
+        public static string GetHashSHA256(this string input)
         {
             Utils.CheckArgumentNull(input, nameof(input));
 
