@@ -11,14 +11,14 @@ namespace Microsoft.OpenApi.OData.Common
     internal static class CryptographyExtensions
     {
         /// <summary>
-        /// Calculates the MD5 hash for the given string.
+        /// Calculates the SHA256 hash for the given string.
         /// </summary>
-        /// <returns>A 32 char long hash.</returns>
-        public static string GetHashMd5(this string input)
+        /// <returns>A 64 char long hash.</returns>
+        public static string GetHashShah256(this string input)
         {
             Utils.CheckArgumentNull(input, nameof(input));
 
-            var hasher = new MD5CryptoServiceProvider();
+            var hasher = new SHA256CryptoServiceProvider();
             var inputBytes = Encoding.UTF8.GetBytes(input);
             var hashBytes = hasher.ComputeHash(inputBytes);
             var hash = new StringBuilder();
