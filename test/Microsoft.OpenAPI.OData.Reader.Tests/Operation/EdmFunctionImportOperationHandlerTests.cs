@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("OperationImport.MyFunction.a5ea52712c5e17e3bd081e4f", operation.OperationId);
+                Assert.Equal("OperationImport.MyFunction.790300f48b60d73292a9c056", operation.OperationId);
             }
             else
             {

@@ -48,8 +48,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     ODataOperationImportSegment operationImportSegment = Path.LastSegment as ODataOperationImportSegment;
                     string pathItemName = operationImportSegment.GetPathItemName(Context.Settings);
-                    string md5 = pathItemName.GetHashMd5();
-                    operation.OperationId = "OperationImport." + EdmOperationImport.Name + "." + md5.Substring(8);
+                    string hash = pathItemName.GetHashSHA256();
+                    operation.OperationId = "OperationImport." + EdmOperationImport.Name + "." + hash.Substring(8, 24);
                 }
             }
 
