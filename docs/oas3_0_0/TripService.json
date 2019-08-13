@@ -589,7 +589,7 @@
           "Airports"
         ],
         "summary": "Invoke functionImport GetNearestAirport",
-        "operationId": "OperationImport.GetNearestAirport.6896b1324a4eff76ad9867a0",
+        "operationId": "OperationImport.GetNearestAirport.fc9c4516cf76a7e9b89d87b1",
         "parameters": [
           {
             "name": "lat",
@@ -667,7 +667,7 @@
           "People"
         ],
         "summary": "Invoke functionImport GetPersonWithMostFriends",
-        "operationId": "OperationImport.GetPersonWithMostFriends.de8b4a5ab51ba6c8c254fe80",
+        "operationId": "OperationImport.GetPersonWithMostFriends.14b2097dbee53f4fb8fb308d",
         "responses": {
           "200": {
             "description": "Success",
@@ -983,7 +983,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1086,7 +1095,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "Me.GetFavoriteAirline.5766",
+        "operationId": "Me.GetFavoriteAirline.cf64",
         "responses": {
           "200": {
             "description": "Success",
@@ -1116,7 +1125,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "Me.GetFriendsTrips.9e3a",
+        "operationId": "Me.GetFriendsTrips.16f3",
         "parameters": [
           {
             "name": "userName",
@@ -1199,7 +1208,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "Me.UpdatePersonLastName.08a5",
+        "operationId": "Me.UpdatePersonLastName.01a4",
         "parameters": [
           {
             "name": "lastName",
@@ -1331,7 +1340,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  "title": "Collection of Trip",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -1430,7 +1448,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Trips.GetInvolvedPeople.6610",
+        "operationId": "Me.Trips.GetInvolvedPeople.0bed",
         "parameters": [
           {
             "name": "TripId",
@@ -2032,7 +2050,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -2145,7 +2172,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.GetFavoriteAirline.5766",
+        "operationId": "NewComePeople.GetFavoriteAirline.cf64",
         "parameters": [
           {
             "name": "UserName",
@@ -2187,7 +2214,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.GetFriendsTrips.9e3a",
+        "operationId": "NewComePeople.GetFriendsTrips.16f3",
         "parameters": [
           {
             "name": "UserName",
@@ -2292,7 +2319,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.UpdatePersonLastName.08a5",
+        "operationId": "NewComePeople.UpdatePersonLastName.01a4",
         "parameters": [
           {
             "name": "UserName",
@@ -2444,7 +2471,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  "title": "Collection of Trip",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -2553,7 +2589,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Trips.GetInvolvedPeople.6610",
+        "operationId": "NewComePeople.Trips.GetInvolvedPeople.0bed",
         "parameters": [
           {
             "name": "UserName",
@@ -3165,7 +3201,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -3278,7 +3323,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.GetFavoriteAirline.5766",
+        "operationId": "People.GetFavoriteAirline.cf64",
         "parameters": [
           {
             "name": "UserName",
@@ -3320,7 +3365,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.GetFriendsTrips.9e3a",
+        "operationId": "People.GetFriendsTrips.16f3",
         "parameters": [
           {
             "name": "UserName",
@@ -3425,7 +3470,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.UpdatePersonLastName.08a5",
+        "operationId": "People.UpdatePersonLastName.01a4",
         "parameters": [
           {
             "name": "UserName",
@@ -3577,7 +3622,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  "title": "Collection of Trip",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -3686,7 +3740,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Trips.GetInvolvedPeople.6610",
+        "operationId": "People.Trips.GetInvolvedPeople.0bed",
         "parameters": [
           {
             "name": "UserName",

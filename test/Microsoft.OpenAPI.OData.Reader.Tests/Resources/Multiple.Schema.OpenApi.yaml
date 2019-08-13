@@ -588,7 +588,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+                title: Collection of RevisionDto
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1014,7 +1020,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+                title: Collection of DocumentDto
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1827,7 +1839,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+                title: Collection of RevisionDto
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation

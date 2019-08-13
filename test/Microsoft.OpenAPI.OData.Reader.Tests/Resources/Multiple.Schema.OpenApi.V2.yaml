@@ -541,7 +541,13 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+            title: Collection of RevisionDto
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -928,7 +934,13 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+            title: Collection of DocumentDto
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1673,7 +1685,13 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+            title: Collection of RevisionDto
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation

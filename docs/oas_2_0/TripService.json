@@ -534,7 +534,7 @@
           "Airports"
         ],
         "summary": "Invoke functionImport GetNearestAirport",
-        "operationId": "OperationImport.GetNearestAirport.6896b1324a4eff76ad9867a0",
+        "operationId": "OperationImport.GetNearestAirport.fc9c4516cf76a7e9b89d87b1",
         "produces": [
           "application/json"
         ],
@@ -570,7 +570,7 @@
           "People"
         ],
         "summary": "Invoke functionImport GetPersonWithMostFriends",
-        "operationId": "OperationImport.GetPersonWithMostFriends.de8b4a5ab51ba6c8c254fe80",
+        "operationId": "OperationImport.GetPersonWithMostFriends.14b2097dbee53f4fb8fb308d",
         "produces": [
           "application/json"
         ],
@@ -852,7 +852,16 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
+              }
             }
           },
           "default": {
@@ -942,7 +951,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "Me.GetFavoriteAirline.5766",
+        "operationId": "Me.GetFavoriteAirline.cf64",
         "produces": [
           "application/json"
         ],
@@ -964,7 +973,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "Me.GetFriendsTrips.9e3a",
+        "operationId": "Me.GetFriendsTrips.16f3",
         "produces": [
           "application/json"
         ],
@@ -1040,7 +1049,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "Me.UpdatePersonLastName.08a5",
+        "operationId": "Me.UpdatePersonLastName.01a4",
         "produces": [
           "application/json"
         ],
@@ -1158,7 +1167,16 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  }
+                }
+              }
             }
           },
           "default": {
@@ -1244,7 +1262,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Trips.GetInvolvedPeople.6610",
+        "operationId": "Me.Trips.GetInvolvedPeople.0bed",
         "produces": [
           "application/json"
         ],
@@ -1765,7 +1783,16 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
+              }
             }
           },
           "default": {
@@ -1863,7 +1890,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.GetFavoriteAirline.5766",
+        "operationId": "NewComePeople.GetFavoriteAirline.cf64",
         "produces": [
           "application/json"
         ],
@@ -1895,7 +1922,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.GetFriendsTrips.9e3a",
+        "operationId": "NewComePeople.GetFriendsTrips.16f3",
         "produces": [
           "application/json"
         ],
@@ -1987,7 +2014,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.UpdatePersonLastName.08a5",
+        "operationId": "NewComePeople.UpdatePersonLastName.01a4",
         "produces": [
           "application/json"
         ],
@@ -2121,7 +2148,16 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  }
+                }
+              }
             }
           },
           "default": {
@@ -2215,7 +2251,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Trips.GetInvolvedPeople.6610",
+        "operationId": "NewComePeople.Trips.GetInvolvedPeople.0bed",
         "produces": [
           "application/json"
         ],
@@ -2744,7 +2780,16 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
+              }
             }
           },
           "default": {
@@ -2842,7 +2887,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.GetFavoriteAirline.5766",
+        "operationId": "People.GetFavoriteAirline.cf64",
         "produces": [
           "application/json"
         ],
@@ -2874,7 +2919,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.GetFriendsTrips.9e3a",
+        "operationId": "People.GetFriendsTrips.16f3",
         "produces": [
           "application/json"
         ],
@@ -2966,7 +3011,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.UpdatePersonLastName.08a5",
+        "operationId": "People.UpdatePersonLastName.01a4",
         "produces": [
           "application/json"
         ],
@@ -3100,7 +3145,16 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  }
+                }
+              }
             }
           },
           "default": {
@@ -3194,7 +3248,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Trips.GetInvolvedPeople.6610",
+        "operationId": "People.Trips.GetInvolvedPeople.0bed",
         "produces": [
           "application/json"
         ],

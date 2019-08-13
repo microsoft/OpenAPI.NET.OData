@@ -45,33 +45,82 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.Responses = new OpenApiResponses
+            if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
+                operation.Responses = new OpenApiResponses
                 {
-                    Constants.StatusCode200,
-                    new OpenApiResponse
                     {
-                        Description = "Retrieved navigation property",
-                        Content = new Dictionary<string, OpenApiMediaType>
+                        Constants.StatusCode200,
+                        new OpenApiResponse
                         {
+                            Description = "Retrieved navigation property",
+                            Content = new Dictionary<string, OpenApiMediaType>
                             {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
                                 {
-                                    Schema = new OpenApiSchema
+                                    Constants.ApplicationJsonMediaType,
+                                    new OpenApiMediaType
                                     {
-                                        Reference = new OpenApiReference
+                                        Schema = new OpenApiSchema
                                         {
-                                            Type = ReferenceType.Schema,
-                                            Id = NavigationProperty.ToEntityType().FullName()
+                                            Title = "Collection of " + NavigationProperty.ToEntityType().Name,
+                                            Type = "object",
+                                            Properties = new Dictionary<string, OpenApiSchema>
+                                            {
+                                                {
+                                                    "value",
+                                                    new OpenApiSchema
+                                                    {
+                                                        Type = "array",
+                                                        Items = new OpenApiSchema
+                                                        {
+                                                            Reference = new OpenApiReference
+                                                            {
+                                                                Type = ReferenceType.Schema,
+                                                                Id = NavigationProperty.ToEntityType().FullName()
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
-            };
+                };
+            }
+            else
+            {
+                operation.Responses = new OpenApiResponses
+                {
+                    {
+                        Constants.StatusCode200,
+                        new OpenApiResponse
+                        {
+                            Description = "Retrieved navigation property",
+                            Content = new Dictionary<string, OpenApiMediaType>
+                            {
+                                {
+                                    Constants.ApplicationJsonMediaType,
+                                    new OpenApiMediaType
+                                    {
+                                        Schema = new OpenApiSchema
+                                        {
+                                            Reference = new OpenApiReference
+                                            {
+                                                Type = ReferenceType.Schema,
+                                                Id = NavigationProperty.ToEntityType().FullName()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+            }
+
             operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             base.SetResponses(operation);
