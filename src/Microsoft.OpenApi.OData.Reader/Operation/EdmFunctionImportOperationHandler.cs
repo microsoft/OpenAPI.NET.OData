@@ -27,7 +27,10 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmFunctionImport functionImport = EdmOperationImport as IEdmFunctionImport;
             //The parameters array contains a Parameter Object for each parameter of the function overload,
             // and it contains specific Parameter Objects for the allowed system query options.
-            operation.Parameters = Context.CreateParameters(functionImport);
+            foreach (var param in Context.CreateParameters(functionImport))
+            {
+                operation.Parameters.Add(param);
+            }
         }
 
         /// <inheritdoc/>

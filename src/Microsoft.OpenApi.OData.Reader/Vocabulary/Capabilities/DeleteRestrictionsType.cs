@@ -33,9 +33,19 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public int? MaxLevels { get; private set; }
 
         /// <summary>
+        /// Gets the Members of collections can be updated via a PATCH request with a `/$filter(...)/$each` segment.
+        /// </summary>
+        public bool? FilterSegmentSupported { get; private set; }
+
+        /// <summary>
+        /// Gets the Members of collections can be updated via a PATCH request with a type-cast segment and a `/$each` segment.
+        /// </summary>
+        public bool? TypecastSegmentSupported { get; private set; }
+
+        /// <summary>
         /// Gets the required scopes to perform the insert.
         /// </summary>
-        public PermissionType Permission { get; private set; }
+        public IList<PermissionType> Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
@@ -46,6 +56,16 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Gets the Supported or required custom query options.
         /// </summary>
         public IList<CustomParameter> CustomQueryOptions { get; private set; }
+
+        /// <summary>
+        /// Gets A brief description of the request.
+        /// </summary>
+        public string Description { get; private set; }
+
+        /// <summary>
+        /// Gets A lengthy description of the request.
+        /// </summary>
+        public string LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports delete.
@@ -82,14 +102,26 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // MaxLevels
             MaxLevels = (int?)record.GetInteger("MaxLevels");
 
-            // Permission
-            Permission = record.GetRecord<PermissionType>("Permission");
+            // FilterSegmentSupported
+            FilterSegmentSupported = record.GetBoolean("FilterSegmentSupported");
+
+            // TypecastSegmentSupported
+            TypecastSegmentSupported = record.GetBoolean("TypecastSegmentSupported");
+
+            // Permissions
+            Permissions = record.GetCollection<PermissionType>("Permissions");
 
             // CustomHeaders
             CustomHeaders = record.GetCollection<CustomParameter>("CustomHeaders");
 
             // CustomQueryOptions
             CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions");
+
+            // Description
+            Description = record.GetString("Description");
+
+            // LongDescription
+            LongDescription = record.GetString("LongDescription");
         }
     }
 }

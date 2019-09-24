@@ -38,9 +38,14 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public long? MaxLevels { get; private set; }
 
         /// <summary>
+        /// Gets the Entities of a specific derived type can be created by specifying a type-cast segment.
+        /// </summary>
+        public bool? TypecastSegmentSupported { get; private set; }
+
+        /// <summary>
         /// Gets the required scopes to perform the insert.
         /// </summary>
-        public PermissionType Permission { get; private set; }
+        public IList<PermissionType> Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Support for query options with insert requests.
@@ -56,6 +61,16 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Gets the Supported or required custom query options.
         /// </summary>
         public IList<CustomParameter> CustomQueryOptions { get; private set; }
+
+        /// <summary>
+        /// Gets A brief description of the request.
+        /// </summary>
+        public string Description { get; private set; }
+
+        /// <summary>
+        /// Gets A lengthy description of the request.
+        /// </summary>
+        public string LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports insert.
@@ -92,8 +107,11 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // MaxLevels
             MaxLevels = record.GetInteger("MaxLevels");
 
-            // Permission
-            Permission = record.GetRecord<PermissionType>("Permission");
+            // TypecastSegmentSupported
+            TypecastSegmentSupported = record.GetBoolean("TypecastSegmentSupported");
+
+            // Permissions
+            Permissions = record.GetCollection<PermissionType>("Permissions");
 
             // QueryOptions
             QueryOptions = record.GetRecord<ModificationQueryOptionsType>("QueryOptions");
@@ -103,6 +121,12 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // CustomHeaders
             CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions");
+
+            // Description
+            Description = record.GetString("Description");
+
+            // LongDescription
+            LongDescription = record.GetString("LongDescription");
         }
     }
 }

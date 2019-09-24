@@ -60,9 +60,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public abstract ODataSegmentKind Kind { get; }
 
         /// <summary>
-        /// Gets the name of this segment.
+        /// Gets the identifier of this segment.
         /// </summary>
-        public abstract string Name { get; }
+        public abstract string Identifier { get; }
 
         /// <summary>
         /// Gets the path item name for this segment.

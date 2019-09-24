@@ -146,7 +146,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             Assert.NotNull(read.Readable);
             Assert.False(read.Readable.Value);
 
-            Assert.Null(read.Permission);
+            Assert.Null(read.Permissions);
             Assert.Null(read.CustomHeaders);
 
             Assert.NotNull(read.CustomQueryOptions);
@@ -160,7 +160,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             Assert.NotNull(read.ReadByKeyRestrictions.Readable);
             Assert.True(read.ReadByKeyRestrictions.Readable.Value);
 
-            Assert.Null(read.ReadByKeyRestrictions.Permission);
+            Assert.Null(read.ReadByKeyRestrictions.Permissions);
             Assert.Null(read.ReadByKeyRestrictions.CustomQueryOptions);
 
             Assert.NotNull(read.ReadByKeyRestrictions.CustomHeaders);

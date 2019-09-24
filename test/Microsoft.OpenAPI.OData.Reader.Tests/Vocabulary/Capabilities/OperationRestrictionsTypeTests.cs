@@ -15,13 +15,13 @@ using Xunit;
 
 namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
 {
-    public class OperationRestrictionTypeTests
+    public class OperationRestrictionsTypeTests
     {
         [Fact]
         public void TermAttributeAttachedOnOperationRestrictionType()
         {
             // Arrange & Act
-            string qualifiedName = Utils.GetTermQualifiedName<OperationRestrictionType>();
+            string qualifiedName = Utils.GetTermQualifiedName<OperationRestrictionsType>();
 
             // Assert
             Assert.Equal("Org.OData.Capabilities.V1.OperationRestrictions", qualifiedName);
@@ -38,12 +38,12 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
                             new EdmPropertyConstructor("Description", new EdmStringConstant("head desc")),
                             new EdmPropertyConstructor("DocumentationURL", new EdmStringConstant("http://any3")),
                             new EdmPropertyConstructor("Required", new EdmBooleanConstant(true)))))
-                    // Permission
+                    // Permissions
                     // CustomQueryOptions
                     );
 
             // Act
-            OperationRestrictionType operation = new OperationRestrictionType();
+            OperationRestrictionsType operation = new OperationRestrictionsType();
             operation.Initialize(record);
 
             // Assert
@@ -75,7 +75,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             Assert.NotNull(edmOperation);
 
             // Act
-            OperationRestrictionType operation = model.GetRecord<OperationRestrictionType>(edmOperation, "NS.MyOperationRestriction");
+            OperationRestrictionsType operation = model.GetRecord<OperationRestrictionsType>(edmOperation, "NS.MyOperationRestriction");
 
             // Assert
             VerifyOperationRestrictions(operation);
@@ -103,11 +103,12 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             return model;
         }
 
-        private static void VerifyOperationRestrictions(OperationRestrictionType operation)
+        private static void VerifyOperationRestrictions(OperationRestrictionsType operation)
         {
             Assert.NotNull(operation);
 
-            Assert.Null(operation.Permission);
+            Assert.Null(operation.FilterSegmentSupported);
+            Assert.Null(operation.Permissions);
             Assert.Null(operation.CustomQueryOptions);
 
             Assert.NotNull(operation.CustomHeaders);

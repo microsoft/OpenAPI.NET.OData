@@ -73,7 +73,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.SecurityScheme,
-                                    Id = permission.Scheme.Authorization
+                                    Id = permission.SchemeName
                                 }
                             }
                         ] = new List<string>(permission.Scopes?.Select(c => c.Scope) ?? new List<string>())

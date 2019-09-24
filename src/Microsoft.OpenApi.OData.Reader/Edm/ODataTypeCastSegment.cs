@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.TypeCast;
 
         /// <inheritdoc />
-        public override string Name { get => EntityType.FullTypeName(); }
+        public override string Identifier { get => EntityType.FullTypeName(); }
 
         /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings) => EntityType.FullTypeName();

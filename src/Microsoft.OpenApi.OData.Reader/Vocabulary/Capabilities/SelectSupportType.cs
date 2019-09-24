@@ -21,6 +21,11 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool? Supported { get; private set; }
 
         /// <summary>
+        /// Gets the Supports instance annotations in $select list.
+        /// </summary>
+        public bool? InstanceAnnotationsSupported { get; private set; }
+
+        /// <summary>
         /// Gets the $expand within $select is supported.
         /// </summary>
         public bool? Expandable { get; private set; }
@@ -70,6 +75,9 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // Supported
             Supported = record.GetBoolean("Supported");
+
+            // Expandable
+            InstanceAnnotationsSupported = record.GetBoolean("InstanceAnnotationsSupported");
 
             // Expandable
             Expandable = record.GetBoolean("Expandable");

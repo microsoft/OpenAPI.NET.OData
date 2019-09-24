@@ -6,9 +6,9 @@
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Vocabularies;
-using Xunit;
-using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Xunit;
 
 namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
 {

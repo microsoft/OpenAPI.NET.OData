@@ -110,14 +110,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 readBase = read.ReadByKeyRestrictions;
             }
 
-            if (readBase == null && readBase.Permission == null)
+            if (readBase == null && readBase.Permissions == null)
             {
                 return;
             }
 
-            // the Permission should be collection, however current ODL supports the single permission.
-            // Will update after ODL change.
-            operation.Security = Context.CreateSecurityRequirements(new[] { readBase.Permission.Scheme }).ToList();
+            operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -136,12 +134,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (readBase.CustomHeaders != null)
             {
-                AppendCustomParameters(operation.Parameters, readBase.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, readBase.CustomHeaders, ParameterLocation.Header);
             }
 
             if (readBase.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation.Parameters, readBase.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, readBase.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

@@ -10,7 +10,9 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -103,6 +105,136 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Act & Assert
             VerifyParameter(annotation, hasRestriction, navigability == "None" ? false : true, "$select");
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void ReadRestrictionsTermWorksToCreateOperationForSingletonGetOperation(bool enableAnnotation)
+        {
+            string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+    <PropertyValue Property=""Permissions"">
+      <Collection>
+        <Record>
+          <PropertyValue Property=""SchemeName"" String=""Delegated (work or school account)"" />
+          <PropertyValue Property=""Scopes"">
+            <Collection>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""User.ReadBasic.All"" />
+              </Record>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""User.Read.All"" />
+              </Record>
+            </Collection>
+          </PropertyValue>
+        </Record>
+        <Record>
+          <PropertyValue Property=""SchemeName"" String=""Application"" />
+          <PropertyValue Property=""Scopes"">
+            <Collection>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""User.Read.All"" />
+              </Record>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""Directory.Read.All"" />
+              </Record>
+            </Collection>
+          </PropertyValue>
+        </Record>
+      </Collection>
+    </PropertyValue>
+    <PropertyValue Property=""Description"" String=""A brief description of GET '/me' request."" />
+    <PropertyValue Property=""CustomHeaders"">
+      <Collection>
+        <Record>
+          <PropertyValue Property=""Name"" String=""odata-debug"" />
+          <PropertyValue Property=""Description"" String=""Debug support for OData services"" />
+          <PropertyValue Property=""Required"" Bool=""false"" />
+          <PropertyValue Property=""ExampleValues"">
+            <Collection>
+              <Record>
+                <PropertyValue Property=""Value"" String=""html"" />
+                <PropertyValue Property=""Description"" String=""Service responds with self-contained..."" />
+              </Record>
+              <Record>
+                <PropertyValue Property=""Value"" String=""json"" />
+                <PropertyValue Property=""Description"" String=""Service responds with JSON document..."" />
+              </Record>
+            </Collection>
+          </PropertyValue>
+        </Record>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>";
+
+            // Arrange
+            var edmModel = GetEdmModel(enableAnnotation ? annotation : "");
+
+            Assert.NotNull(edmModel);
+            IEdmSingleton me = edmModel.EntityContainer.FindSingleton("Me");
+            Assert.NotNull(me);
+
+            ODataContext context = new ODataContext(edmModel);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(me));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.NotNull(operation.Security);
+
+            if (enableAnnotation)
+            {
+                Assert.Equal(2, operation.Security.Count);
+
+                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                Assert.Contains(@"
+  ""security"": [
+    {
+      ""Delegated (work or school account)"": [
+        ""User.ReadBasic.All"",
+        ""User.Read.All""
+      ]
+    },
+    {
+      ""Application"": [
+        ""User.Read.All"",
+        ""Directory.Read.All""
+      ]
+    }
+  ],".ChangeLineBreaks(), json);
+
+                // with custom header
+                Assert.Contains(@"
+  ""parameters"": [
+    {
+      ""name"": ""odata-debug"",
+      ""in"": ""header"",
+      ""description"": ""Debug support for OData services"",
+      ""schema"": {
+        ""type"": ""string""
+      },
+      ""examples"": {
+        ""example-1"": {
+          ""description"": ""Service responds with self-contained..."",
+          ""value"": ""html""
+        },
+        ""example-2"": {
+          ""description"": ""Service responds with JSON document..."",
+          ""value"": ""json""
+        }
+      }
+    },
+    {".ChangeLineBreaks(), json);
+            }
+            else
+            {
+                Assert.Empty(operation.Security);
+            }
         }
 
         public static IEdmModel GetEdmModel(string annotation)

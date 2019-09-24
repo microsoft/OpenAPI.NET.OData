@@ -20,7 +20,7 @@ namespace Microsoft.OpenApi.OData
     public static class EdmModelOpenApiExtensions
     {
         /// <summary>
-        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/>.
+        /// Convert <see cref="IEdmModel"/> to <see cref="OpenApiDocument"/> using default settings.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <returns>The converted Open API document object, <see cref="OpenApiDocument"/>.</returns>

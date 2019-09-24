@@ -23,6 +23,11 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public bool? Expandable { get; private set; }
 
         /// <summary>
+        /// Gets the $expand is supported for stream properties and media resources.
+        /// </summary>
+        public bool? StreamsExpandable { get; private set; }
+
+        /// <summary>
         /// Gets the properties which cannot be used in $expand expressions.
         /// </summary>
         public IList<string> NonExpandableProperties { get; private set; }
@@ -54,6 +59,9 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // Expandable
             Expandable = record.GetBoolean("Expandable");
+
+            // StreamsExpandable
+            StreamsExpandable = record.GetBoolean("StreamsExpandable");
 
             // NonExpandableProperties
             NonExpandableProperties = record.GetCollectionPropertyPath("NonExpandableProperties");

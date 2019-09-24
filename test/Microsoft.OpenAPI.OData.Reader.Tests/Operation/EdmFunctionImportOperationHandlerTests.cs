@@ -4,7 +4,10 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -83,6 +86,134 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             else
             {
                 Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void OperationRestrictionsTermWorksToCreateOperationForEdmFunctionImport(bool enableAnnotation)
+        {
+            string template = @"<?xml version=""1.0"" encoding=""utf-8""?>
+<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <Function Name=""GetNearestAirport"">
+        <Parameter Name=""lat"" Type=""Edm.Double"" Nullable=""false"" />
+        <Parameter Name=""lon"" Type=""Edm.Double"" Nullable=""false"" />
+        <ReturnType Type=""Edm.String"" />
+      </Function>
+      <EntityContainer Name=""GraphService"">
+        <FunctionImport Name=""GetNearestAirport"" Function=""NS.GetNearestAirport"" >
+         {0}
+        </FunctionImport>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+";
+
+            string annotation = @"<Annotation Term=""Org.OData.Capabilities.V1.OperationRestrictions"">
+  <Record>
+    <PropertyValue Property=""CustomHeaders"">
+      <Collection>
+        <Record>
+          <PropertyValue Property=""Name"" String=""myhead1"" />
+          <PropertyValue Property=""Required"" Bool=""true"" />
+        </Record>
+      </Collection>
+    </PropertyValue>
+    <PropertyValue Property=""Permissions"">
+      <Collection>
+        <Record>
+          <PropertyValue Property=""SchemeName"" String=""Delegated (work or school account)"" />
+          <PropertyValue Property=""Scopes"">
+            <Collection>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""User.ReadBasic.All"" />
+              </Record>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""User.Read.All"" />
+              </Record>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""Directory.Read.All"" />
+              </Record>
+            </Collection>
+          </PropertyValue>
+        </Record>
+        <Record>
+          <PropertyValue Property=""SchemeName"" String=""Application"" />
+          <PropertyValue Property=""Scopes"">
+            <Collection>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""User.Read.All"" />
+              </Record>
+              <Record>
+                <PropertyValue Property=""Scope"" String=""Directory.Read.All"" />
+              </Record>
+            </Collection>
+          </PropertyValue>
+        </Record>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>";
+
+            // Arrange
+            string csdl = string.Format(template, enableAnnotation ? annotation : "");
+
+            var edmModel = CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
+            Assert.NotNull(edmModel);
+            IEdmOperationImport operationImport = edmModel.EntityContainer.FindOperationImports("GetNearestAirport").FirstOrDefault();
+            Assert.NotNull(operationImport);
+
+            ODataContext context = new ODataContext(edmModel);
+
+            ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.NotNull(operation.Security);
+
+            if (enableAnnotation)
+            {
+                Assert.Equal(2, operation.Security.Count);
+
+                string json = operation.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                Assert.Contains(@"
+  ""security"": [
+    {
+      ""Delegated (work or school account)"": [
+        ""User.ReadBasic.All"",
+        ""User.Read.All"",
+        ""Directory.Read.All""
+      ]
+    },
+    {
+      ""Application"": [
+        ""User.Read.All"",
+        ""Directory.Read.All""
+      ]
+    }
+  ],".ChangeLineBreaks(), json);
+
+                Assert.Contains(@"
+    {
+      ""name"": ""myhead1"",
+      ""in"": ""header"",
+      ""required"": true,
+      ""schema"": {
+        ""type"": ""string""
+      }
+    }
+".ChangeLineBreaks(), json);
+            }
+            else
+            {
+                Assert.Empty(operation.Security);
             }
         }
     }

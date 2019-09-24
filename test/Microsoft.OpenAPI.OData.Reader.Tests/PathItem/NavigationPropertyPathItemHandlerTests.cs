@@ -181,15 +181,70 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
         [Theory]
         [MemberData(nameof(CollectionNavigationPropertyData))]
+        [MemberData(nameof(SingleNavigationPropertyData))]
+        public void CreatePathItemForNavigationPropertyAndReadRestrictions(bool hasRestrictions, string navigationPropertyPath)
+        {
+            // Arrange
+            string annotation = String.Format(@"
+<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+  <Record>
+    <PropertyValue Property=""RestrictedProperties"" >
+      <Collection>
+        <Record>
+          <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
+          <PropertyValue Property=""ReadRestrictions"" >
+            <Record>
+              <PropertyValue Property=""Readable"" Bool=""false"" />
+            </Record>
+          </PropertyValue>
+        </Record>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>", navigationPropertyPath);
+
+            IEdmModel model = GetEdmModel(hasRestrictions ? annotation : "");
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+
+            ODataPath path = CreatePath(entitySet, navigationPropertyPath, false);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+
+            if (hasRestrictions)
+            {
+                Assert.DoesNotContain(pathItem.Operations, o => o.Key == OperationType.Get);
+            }
+            else
+            {
+                Assert.Contains(pathItem.Operations, o => o.Key == OperationType.Get);
+            }
+        }
+
+        [Theory]
+        [MemberData(nameof(CollectionNavigationPropertyData))]
         public void CreatePathItemForNavigationPropertyAndInsertRestrictions(bool hasRestrictions, string navigationPropertyPath)
         {
             // Arrange
             string annotation = String.Format(@"
-<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
   <Record>
-    <PropertyValue Property=""NonInsertableNavigationProperties"" >
+    <PropertyValue Property=""RestrictedProperties"" >
       <Collection>
-        <NavigationPropertyPath>{0}</NavigationPropertyPath>
+        <Record>
+          <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
+          <PropertyValue Property=""InsertRestrictions"" >
+            <Record>
+              <PropertyValue Property=""Insertable"" Bool=""false"" />
+            </Record>
+          </PropertyValue>
+        </Record>
       </Collection>
     </PropertyValue>
   </Record>
@@ -233,11 +288,18 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             // Arrange
             string annotation = String.Format(@"
-<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
   <Record>
-    <PropertyValue Property=""NonUpdatableNavigationProperties"" >
+    <PropertyValue Property=""RestrictedProperties"" >
       <Collection>
-        <NavigationPropertyPath>{0}</NavigationPropertyPath>
+        <Record>
+          <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
+          <PropertyValue Property=""UpdateRestrictions"" >
+            <Record>
+              <PropertyValue Property=""Updatable"" Bool=""false"" />
+            </Record>
+          </PropertyValue>
+        </Record>
       </Collection>
     </PropertyValue>
   </Record>

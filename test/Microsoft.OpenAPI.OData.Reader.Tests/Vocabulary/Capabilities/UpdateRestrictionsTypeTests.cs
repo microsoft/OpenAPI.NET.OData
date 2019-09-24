@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Data.Odbc;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
@@ -100,32 +101,24 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
                       </Collection>
                     </PropertyValue>
                     <PropertyValue Property=""MaxLevels"" Int=""8"" />
-                    <PropertyValue Property=""Permission"">
-                      <Record Type=""Org.OData.Capabilities.V1.PermissionType"">
-                        <PropertyValue Property=""Scheme"">
-                          <Record Type=""Org.OData.Authorization.V1.SecurityScheme"">
-                            <PropertyValue Property=""Authorization"" String=""authorizationName"" />
-                            <PropertyValue Property=""RequiredScopes"">
-                              <Collection>
-                                <String>RequiredScopes1</String>
-                                <String>RequiredScopes2</String>
-                              </Collection>
-                            </PropertyValue>
-                          </Record>
-                        </PropertyValue>
-                        <PropertyValue Property=""Scopes"">
-                          <Collection>
-                            <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
-                              <PropertyValue Property=""Scope"" String=""scopeName1"" />
-                              <PropertyValue Property=""RestrictedProperties"" String=""p1,p2"" />
-                            </Record>
-                            <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
-                              <PropertyValue Property=""Scope"" String=""scopeName2"" />
-                              <PropertyValue Property=""RestrictedProperties"" String=""p3,p4"" />
-                            </Record>
-                          </Collection>
-                        </PropertyValue>
-                      </Record>
+                    <PropertyValue Property=""Permissions"">
+                      <Collection>
+                        <Record Type=""Org.OData.Capabilities.V1.PermissionType"">
+                          <PropertyValue Property=""SchemeName"" String=""authorizationName"" />
+                          <PropertyValue Property=""Scopes"">
+                            <Collection>
+                              <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
+                                <PropertyValue Property=""Scope"" String=""scopeName1"" />
+                                <PropertyValue Property=""RestrictedProperties"" String=""p1,p2"" />
+                              </Record>
+                              <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
+                                <PropertyValue Property=""Scope"" String=""scopeName2"" />
+                                <PropertyValue Property=""RestrictedProperties"" String=""p3,p4"" />
+                              </Record>
+                            </Collection>
+                          </PropertyValue>
+                        </Record>
+                      </Collection>
                     </PropertyValue>
                     <PropertyValue Property=""QueryOptions"">
                       <Record>
@@ -234,6 +227,12 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             // MaxLevels
             Assert.NotNull(update.MaxLevels);
             Assert.Equal(8, update.MaxLevels);
+
+            // Permissions
+            Assert.NotNull(update.Permissions);
+            PermissionType permission = Assert.Single(update.Permissions);
+            Assert.Equal("authorizationName", permission.SchemeName);
+            Assert.Equal(2, permission.Scopes.Count);
 
             // QueryOptions
             Assert.NotNull(update.QueryOptions);

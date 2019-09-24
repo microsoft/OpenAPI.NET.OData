@@ -5,9 +5,11 @@
 
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -75,32 +77,24 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                       </Collection>
                     </PropertyValue>
                     <PropertyValue Property=""MaxLevels"" Int=""8"" />
-                    <PropertyValue Property=""Permission"">
-                      <Record Type=""Org.OData.Capabilities.V1.PermissionType"">
-                        <PropertyValue Property=""Scheme"">
-                          <Record Type=""Org.OData.Authorization.V1.SecurityScheme"">
-                            <PropertyValue Property=""Authorization"" String=""authorizationName"" />
-                            <PropertyValue Property=""RequiredScopes"">
-                              <Collection>
-                                <String>RequiredScopes1</String>
-                                <String>RequiredScopes2</String>
-                              </Collection>
-                            </PropertyValue>
-                          </Record>
-                        </PropertyValue>
-                        <PropertyValue Property=""Scopes"">
-                          <Collection>
-                            <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
-                              <PropertyValue Property=""Scope"" String=""scopeName1"" />
-                              <PropertyValue Property=""RestrictedProperties"" String=""p1,p2"" />
-                            </Record>
-                            <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
-                              <PropertyValue Property=""Scope"" String=""scopeName2"" />
-                              <PropertyValue Property=""RestrictedProperties"" String=""p3,p4"" />
-                            </Record>
-                          </Collection>
-                        </PropertyValue>
-                      </Record>
+                    <PropertyValue Property=""Permissions"">
+                      <Collection>
+                        <Record Type=""Org.OData.Capabilities.V1.PermissionType"">
+                          <PropertyValue Property=""SchemeName"" String=""authorizationName"" />
+                          <PropertyValue Property=""Scopes"">
+                            <Collection>
+                              <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
+                                <PropertyValue Property=""Scope"" String=""scopeName1"" />
+                                <PropertyValue Property=""RestrictedProperties"" String=""p1,p2"" />
+                              </Record>
+                              <Record Type=""Org.OData.Capabilities.V1.ScopeType"">
+                                <PropertyValue Property=""Scope"" String=""scopeName2"" />
+                                <PropertyValue Property=""RestrictedProperties"" String=""p3,p4"" />
+                              </Record>
+                            </Collection>
+                          </PropertyValue>
+                        </Record>
+                      </Collection>
                     </PropertyValue>
                     <PropertyValue Property=""QueryOptions"">
                       <Record>
@@ -207,6 +201,65 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 var securityRequirement = Assert.Single(securityRequirements);
                 Assert.Equal("authorizationName", securityRequirement.Key.Reference.Id);
                 Assert.Equal(new[] { "scopeName1", "scopeName2" }, securityRequirement.Value);
+
+                string json = patch.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+                Assert.Contains(@"
+  ""security"": [
+    {
+      ""authorizationName"": [
+        ""scopeName1"",
+        ""scopeName2""
+      ]
+    }
+  ],".ChangeLineBreaks(), json);
+
+                // with custom header
+                Assert.Contains(@"
+  ""parameters"": [
+    {
+      ""name"": ""HeadName1"",
+      ""in"": ""header"",
+      ""description"": ""Description1"",
+      ""required"": true,
+      ""schema"": {
+        ""type"": ""string""
+      },
+      ""examples"": {
+        ""example-1"": {
+          ""description"": ""Description11"",
+          ""value"": ""value1""
+        }
+      }
+    },
+    {
+      ""name"": ""HeadName2"",
+      ""in"": ""header"",
+      ""description"": ""Description2"",
+      ""schema"": {
+        ""type"": ""string""
+      },
+      ""examples"": {
+        ""example-1"": {
+          ""description"": ""Description22"",
+          ""value"": ""value2""
+        }
+      }
+    },
+    {
+      ""name"": ""QueryName1"",
+      ""in"": ""query"",
+      ""description"": ""Description3"",
+      ""required"": true,
+      ""schema"": {
+        ""type"": ""string""
+      },
+      ""examples"": {
+        ""example-1"": {
+          ""description"": ""Description33"",
+          ""value"": ""value3""
+        }
+      }
+    }".ChangeLineBreaks(), json);
             }
             else
             {

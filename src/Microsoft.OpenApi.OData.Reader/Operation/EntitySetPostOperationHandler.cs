@@ -109,14 +109,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetSecurity(OpenApiOperation operation)
         {
             InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
-            if (insert == null || insert.Permission == null)
+            if (insert == null || insert.Permissions == null)
             {
                 return;
             }
 
-            // the Permission should be collection, however current ODL supports the single permission.
-            // Will update after ODL change.
-            operation.Security = Context.CreateSecurityRequirements(new[] { insert.Permission.Scheme }).ToList();
+            operation.Security = Context.CreateSecurityRequirements(insert.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -129,12 +127,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (insert.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation.Parameters, insert.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, insert.CustomQueryOptions, ParameterLocation.Query);
             }
 
             if (insert.CustomHeaders != null)
             {
-                AppendCustomParameters(operation.Parameters, insert.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, insert.CustomHeaders, ParameterLocation.Header);
             }
         }
     }

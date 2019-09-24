@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
@@ -49,22 +50,33 @@ namespace Microsoft.OpenApi.OData.PathItem
                 target = NavigationSource as IEdmSingleton;
             }
 
+            string navigationPropertyPath = String.Join("/",
+                Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));
+
             NavigationRestrictionsType navigation = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
-            if (navigation != null && navigation.Navigability != null && navigation.Navigability.Value == NavigationType.None)
+            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
+
+            // verify using individual first
+            if (restriction != null && restriction.Navigability != null && restriction.Navigability.Value == NavigationType.None)
             {
-                // This check should be done when retrieve the path, but, here is for verification.
                 return;
             }
 
-            string navigationPropertyPath = String.Join("/",
-                Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Name));
+            if (restriction == null || restriction.Navigability == null)
+            {
+                // if the individual has not navigability setting, use the global navigability setting
+                if (navigation != null && navigation.Navigability != null && navigation.Navigability.Value == NavigationType.None)
+                {
+                    // Default navigability for all navigation properties of the annotation target.
+                    // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
+                    return;
+                }
+            }
 
+            // how about delete?
             // contaiment: Get / (Post - Collection | Patch - Single)
             // non-containment: only Get
-            if (navigation == null || !navigation.IsRestrictedProperty(navigationPropertyPath))
-            {
-                AddOperation(item, OperationType.Get);
-            }
+            AddGetOperation(item, restriction);
 
             if (NavigationProperty.ContainsTarget)
             {
@@ -73,16 +85,16 @@ namespace Microsoft.OpenApi.OData.PathItem
                     if (LastSegmentIsKeySegment)
                     {
                         // Need to check this scenario is valid or not?
-                        UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(target, CapabilitiesConstants.UpdateRestrictions);
-                        if (update == null || !update.IsNonUpdatableNavigationProperty(navigationPropertyPath))
+                        UpdateRestrictionsType update = restriction?.UpdateRestrictions;
+                        if (update == null || update.IsUpdatable)
                         {
                             AddOperation(item, OperationType.Patch);
                         }
                     }
                     else
                     {
-                        InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(target, CapabilitiesConstants.InsertRestrictions);
-                        if (insert == null || !insert.IsNonInsertableNavigationProperty(navigationPropertyPath))
+                        InsertRestrictionsType insert = restriction?.InsertRestrictions;
+                        if (insert == null || insert.IsInsertable)
                         {
                             AddOperation(item, OperationType.Post);
                         }
@@ -90,11 +102,57 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
                 else
                 {
-                    UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(target, CapabilitiesConstants.UpdateRestrictions);
-                    if (update == null || !update.IsNonUpdatableNavigationProperty(navigationPropertyPath))
+                    UpdateRestrictionsType update = restriction?.UpdateRestrictions;
+                    if (update == null || update.IsUpdatable)
                     {
                         AddOperation(item, OperationType.Patch);
                     }
+                }
+            }
+        }
+
+        private void AddGetOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
+            ReadRestrictionsType read = restriction?.ReadRestrictions;
+            if (read == null)
+            {
+                AddOperation(item, OperationType.Get);
+                return;
+            }
+
+            if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                if (LastSegmentIsKeySegment)
+                {
+                    if (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.Readable != null)
+                    {
+                        if (read.ReadByKeyRestrictions.Readable.Value)
+                        {
+                            AddOperation(item, OperationType.Get);
+                        }
+                    }
+                    else
+                    {
+                        if (read.IsReadable)
+                        {
+                            AddOperation(item, OperationType.Get);
+                        }
+                    }
+                }
+                else
+                {
+                    if (read.IsReadable)
+                    {
+                        AddOperation(item, OperationType.Get);
+                    }
+                }
+            }
+            else
+            {
+                Debug.Assert(LastSegmentIsKeySegment == false);
+                if (read.IsReadable)
+                {
+                    AddOperation(item, OperationType.Get);
                 }
             }
         }

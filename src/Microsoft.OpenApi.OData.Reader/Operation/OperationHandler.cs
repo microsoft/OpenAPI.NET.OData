@@ -167,7 +167,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="parameters">The parameters.</param>
         /// <param name="customParameters">The custom parameters.</param>
         /// <param name="location">The parameter location.</param>
-        protected static void AppendCustomParameters(IList<OpenApiParameter> parameters, IList<CustomParameter> customParameters, ParameterLocation location)
+        protected static void AppendCustomParameters(OpenApiOperation operation, IList<CustomParameter> customParameters, ParameterLocation location)
         {
             foreach (var param in customParameters)
             {
@@ -206,7 +206,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
 
-                parameters.Add(parameter);
+                operation.Parameters.Add(parameter);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary
     internal class TermAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="ODataPath"/> class.
+        /// Initializes a new instance of <see cref="TermAttribute"/> class.
         /// </summary>
         /// <param name="qualifiedName">The qualified name of this term.</param>
         public TermAttribute(string qualifiedName)

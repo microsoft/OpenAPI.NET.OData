@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Gets the List of required scopes to invoke an action or function
         /// </summary>
-        public PermissionType Permission { get; private set; }
+        public IList<PermissionType> Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
@@ -34,6 +34,16 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Gets the Supported or required custom query options.
         /// </summary>
         public IList<CustomParameter> CustomQueryOptions { get; private set; }
+
+        /// <summary>
+        /// Gets A brief description of the request.
+        /// </summary>
+        public string Description { get; private set; }
+
+        /// <summary>
+        /// Gets A lengthy description of the request.
+        /// </summary>
+        public string LongDescription { get; private set; }
 
         /// <summary>
         /// Test the target supports update.
@@ -52,14 +62,20 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // Readable
             Readable = record.GetBoolean("Readable");
 
-            // Permission
-            Permission = record.GetRecord<PermissionType>("Permission");
+            // Permissions
+            Permissions = record.GetCollection<PermissionType>("Permissions");
 
             // CustomHeaders
             CustomHeaders = record.GetCollection<CustomParameter>("CustomHeaders");
 
             // CustomQueryOptions
             CustomQueryOptions = record.GetCollection<CustomParameter>("CustomQueryOptions");
+
+            // Description
+            Description = record.GetString("Description");
+
+            // LongDescription
+            LongDescription = record.GetString("LongDescription");
         }
     }
 

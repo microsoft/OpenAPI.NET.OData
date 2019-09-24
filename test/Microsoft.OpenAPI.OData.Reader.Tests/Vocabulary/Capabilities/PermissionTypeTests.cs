@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             PermissionType permission = new PermissionType();
 
             // Assert
-            Assert.Null(permission.Scheme);
+            Assert.Null(permission.SchemeName);
             Assert.Null(permission.Scopes);
         }
 
@@ -42,8 +42,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
         {
             // Arrange
             IEdmRecordExpression record = new EdmRecordExpression(
-                new EdmPropertyConstructor("Scheme", new EdmRecordExpression(
-                    new EdmPropertyConstructor("Authorization", new EdmStringConstant("scheme name")))),
+                new EdmPropertyConstructor("SchemeName", new EdmStringConstant("scheme name")),
                 new EdmPropertyConstructor("Scopes", new EdmCollectionExpression(new EdmRecordExpression(
                     new EdmPropertyConstructor("Scope", new EdmStringConstant("scope name"))))));
 
@@ -61,11 +60,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             // Arrange
             string annotation = @"<Annotation Term=""NS.MyTerm"">
                 <Record>
-                  <PropertyValue Property=""Scheme"">
-                    <Record>
-                        <PropertyValue Property=""Authorization"" String=""scheme name"" />
-                    </Record>
-                  </PropertyValue>
+                  <PropertyValue Property=""SchemeName"" String=""scheme name"" />
                   <PropertyValue Property=""Scopes"">
                     <Collection>
                       <Record>
@@ -110,9 +105,8 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
         {
             Assert.NotNull(permission);
 
-            Assert.NotNull(permission.Scheme);
-            Assert.Equal("scheme name", permission.Scheme.Authorization);
-            Assert.Null(permission.Scheme.RequiredScopes);
+            Assert.NotNull(permission.SchemeName);
+            Assert.Equal("scheme name", permission.SchemeName);
 
             Assert.NotNull(permission.Scopes);
             ScopeType scope = Assert.Single(permission.Scopes);

@@ -173,7 +173,7 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
             Assert.False(insert.IsNonInsertableNavigationProperty("MyUnknownNavigationProperty"));
 
             Assert.Null(insert.QueryOptions);
-            Assert.Null(insert.Permission);
+            Assert.Null(insert.Permissions);
             Assert.Null(insert.CustomHeaders);
 
             Assert.NotNull(insert.MaxLevels);

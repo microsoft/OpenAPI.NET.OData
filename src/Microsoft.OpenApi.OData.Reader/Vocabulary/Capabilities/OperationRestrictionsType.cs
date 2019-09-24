@@ -11,16 +11,20 @@ using Microsoft.OpenApi.OData.Edm;
 namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 {
     /// <summary>
-    /// Complex Type: Org.OData.Capabilities.V1.OperationRestrictionType
-    /// Be note: in ODL 7.6, it's named as "OperationRestriction", after that, it will be changed as "OperationRestrictionType"
+    /// Complex Type: Org.OData.Capabilities.V1.OperationRestrictionsType
     /// </summary>
     [Term("Org.OData.Capabilities.V1.OperationRestrictions")]
-    internal class OperationRestrictionType : IRecord
+    internal class OperationRestrictionsType : IRecord
     {
+        /// <summary>
+        /// Gets the Bound action or function can be invoked on a collection-valued binding parameter path with a '/$filter(...)' segment.
+        /// </summary>
+        public bool? FilterSegmentSupported { get; private set; }
+
         /// <summary>
         /// Gets the List of required scopes to invoke an action or function.
         /// </summary>
-        public PermissionType Permission { get; private set; }
+        public IList<PermissionType> Permissions { get; private set; }
 
         /// <summary>
         /// Gets the Supported or required custom headers.
@@ -40,8 +44,11 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         {
             Utils.CheckArgumentNull(record, nameof(record));
 
-            // Permission
-            Permission = record.GetRecord<PermissionType>("Permission");
+            // FilterSegmentSupported
+            FilterSegmentSupported = record.GetBoolean("FilterSegmentSupported");
+
+            // Permissions
+            Permissions = record.GetCollection<PermissionType>("Permissions");
 
             // CustomHeaders
             CustomHeaders = record.GetCollection<CustomParameter>("CustomHeaders");

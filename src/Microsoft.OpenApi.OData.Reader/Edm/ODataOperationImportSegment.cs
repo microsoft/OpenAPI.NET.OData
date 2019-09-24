@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.OperationImport;
 
         /// <inheritdoc />
-        public override string Name { get => OperationImport.Name; }
+        public override string Identifier { get => OperationImport.Name; }
 
         /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings)

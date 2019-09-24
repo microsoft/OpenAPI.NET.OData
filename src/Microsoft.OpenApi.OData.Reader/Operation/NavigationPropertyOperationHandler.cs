@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -34,6 +35,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected string NavigationPropertyPath { get; private set; }
 
         /// <summary>
+        /// Gets the navigation restriction.
+        /// </summary>
+        protected NavigationPropertyRestriction Restriction { get; private set; }
+
+        /// <summary>
         /// Gets a bool value indicating whether the last segment is a key segment.
         /// </summary>
         protected bool LastSegmentIsKeySegment { get; private set; }
@@ -56,10 +62,25 @@ namespace Microsoft.OpenApi.OData.Operation
             NavigationProperty = npSegment.NavigationProperty;
 
             NavigationPropertyPath = string.Join("/",
-                path.Segments.OfType<ODataNavigationPropertySegment>().Select(p => p.NavigationProperty.Name));
+                Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));
 
-            // So far, we haven't defined the HttpRequest for the navigation property path.
-            // Request = Context.FindRequest(NavigationSource, OperationType.ToString());
+            IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
+            IEdmSingleton singleton = NavigationSource as IEdmSingleton;
+
+            NavigationRestrictionsType navigation;
+            if (entitySet != null)
+            {
+                navigation = Context.Model.GetRecord<NavigationRestrictionsType>(entitySet, CapabilitiesConstants.NavigationRestrictions);
+            }
+            else
+            {
+                navigation = Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions);
+            }
+
+            if (navigation != null && navigation.RestrictedProperties != null)
+            {
+                Restriction = navigation.RestrictedProperties.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == NavigationPropertyPath);
+            }
         }
 
         /// <inheritdoc/>

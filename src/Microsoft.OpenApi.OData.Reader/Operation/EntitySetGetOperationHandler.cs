@@ -165,14 +165,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetSecurity(OpenApiOperation operation)
         {
             ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            if (read == null || read.Permission == null)
+            if (read == null || read.Permissions == null)
             {
                 return;
             }
 
-            // the Permission should be collection, however current ODL supports the single permission.
-            // Will update after ODL change.
-            operation.Security = Context.CreateSecurityRequirements(new[] { read.Permission.Scheme }).ToList();
+            operation.Security = Context.CreateSecurityRequirements(read.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -185,12 +183,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (read.CustomHeaders != null)
             {
-                AppendCustomParameters(operation.Parameters, read.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, read.CustomHeaders, ParameterLocation.Header);
             }
 
             if (read.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation.Parameters, read.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, read.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

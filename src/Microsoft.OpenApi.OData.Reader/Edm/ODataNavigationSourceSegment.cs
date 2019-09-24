@@ -31,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public override IEdmEntityType EntityType => NavigationSource.EntityType();
 
         /// <inheritdoc />
-        public override string Name { get => NavigationSource.Name; }
+        public override string Identifier { get => NavigationSource.Name; }
 
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.NavigationSource;

@@ -3,11 +3,11 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Vocabulary.Authorization;
 
 namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 {
@@ -17,14 +17,14 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
     internal class PermissionType : IRecord
     {
         /// <summary>
-        /// Gets the auth flow scheme name.
+        /// Gets the Authorization flow scheme name.
         /// </summary>
-        public SecurityScheme Scheme { get; private set; }
+        public string SchemeName { get; private set; }
 
         /// <summary>
         /// Gets the list of scopes that can provide access to the resource.
         /// </summary>
-        public IEnumerable<ScopeType> Scopes { get; private set; }
+        public IList<ScopeType> Scopes { get; private set; }
 
         /// <summary>
         /// Init the <see cref="PermissionType"/>.
@@ -34,8 +34,8 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         {
             Utils.CheckArgumentNull(record, nameof(record));
 
-            // Scheme
-            Scheme = record.GetRecord<SecurityScheme>("Scheme");
+            // SchemeName
+            SchemeName = record.GetString("SchemeName");
 
             // Scopes
             Scopes = record.GetCollection<ScopeType>("Scopes");

@@ -71,14 +71,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetSecurity(OpenApiOperation operation)
         {
             DeleteRestrictionsType delete = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            if (delete == null || delete.Permission == null)
+            if (delete == null || delete.Permissions == null)
             {
                 return;
             }
 
-            // the Permission should be collection, however current ODL supports the single permission.
-            // Will update after ODL change.
-            operation.Security = Context.CreateSecurityRequirements(new[] { delete.Permission.Scheme }).ToList();
+            operation.Security = Context.CreateSecurityRequirements(delete.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
@@ -91,12 +89,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (delete.CustomHeaders != null)
             {
-                AppendCustomParameters(operation.Parameters, delete.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, delete.CustomHeaders, ParameterLocation.Header);
             }
 
             if (delete.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation.Parameters, delete.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, delete.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

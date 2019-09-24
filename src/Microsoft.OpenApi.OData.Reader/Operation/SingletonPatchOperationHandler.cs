@@ -84,14 +84,12 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetSecurity(OpenApiOperation operation)
         {
             UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null || update.Permission == null)
+            if (update == null || update.Permissions == null)
             {
                 return;
             }
 
-            // the Permission should be collection, however current ODL supports the single permission.
-            // Will update after ODL change.
-            operation.Security = Context.CreateSecurityRequirements(new[] { update.Permission }).ToList();
+            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
         }
 
         /// <inheritdoc/>
@@ -105,12 +103,12 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (update.CustomHeaders != null)
             {
-                AppendCustomParameters(operation.Parameters, update.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, update.CustomHeaders, ParameterLocation.Header);
             }
 
             if (update.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation.Parameters, update.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

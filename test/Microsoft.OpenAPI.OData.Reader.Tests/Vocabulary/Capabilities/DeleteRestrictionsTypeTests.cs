@@ -35,8 +35,9 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
                 new EdmPropertyConstructor("NonDeletableNavigationProperties",
                     new EdmCollectionExpression(new EdmNavigationPropertyPathExpression("abc"), new EdmNavigationPropertyPathExpression("RelatedEvents"))),
                 new EdmPropertyConstructor("MaxLevels", new EdmIntegerConstant(42)),
-                new EdmPropertyConstructor("Permission", new EdmRecordExpression(
-                    new EdmPropertyConstructor("Scheme", new EdmRecordExpression(new EdmPropertyConstructor("Authorization", new EdmStringConstant("schemeName")))))),
+                new EdmPropertyConstructor("Permissions", new EdmCollectionExpression(
+                    new EdmRecordExpression(
+                        new EdmPropertyConstructor("SchemeName", new EdmStringConstant("schemeName"))))),
                 new EdmPropertyConstructor("CustomQueryOptions", new EdmCollectionExpression(
                     new EdmRecordExpression(
                         new EdmPropertyConstructor("Name", new EdmStringConstant("odata-debug")),
@@ -113,14 +114,12 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
                       </Collection>
                     </PropertyValue>
                     <PropertyValue Property=""MaxLevels"" Int=""42"" />
-                    <PropertyValue Property=""Permission"">
-                      <Record>
-                        <PropertyValue Property=""Scheme"" >
-                          <Record>
-                              <PropertyValue Property=""Authorization"" String=""schemeName"" />
-                          </Record>
-                        </PropertyValue>
-                      </Record>
+                    <PropertyValue Property=""Permissions"">
+                      <Collection>
+                        <Record>
+                          <PropertyValue Property=""SchemeName"" String=""schemeName"" />
+                        </Record>
+                      </Collection>
                     </PropertyValue>
                     <PropertyValue Property=""CustomQueryOptions"" >
                       <Collection>
@@ -157,8 +156,8 @@ namespace Microsoft.OpenApi.OData.Reader.Vocabulary.Capabilities.Tests
 
             Assert.True(delete.IsNonDeletableNavigationProperty("RelatedEvents"));
 
-            Assert.NotNull(delete.Permission);
-            Assert.Equal("schemeName", delete.Permission.Scheme.Authorization);
+            Assert.NotNull(delete.Permissions);
+            //Assert.Equal("schemeName", delete.Permissions);
 
             Assert.Null(delete.CustomHeaders);
 

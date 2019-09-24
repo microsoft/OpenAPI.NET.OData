@@ -5,12 +5,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -66,6 +68,38 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = Context.CreateResponses(EdmOperationImport);
 
             base.SetResponses(operation);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetSecurity(OpenApiOperation operation)
+        {
+            OperationRestrictionsType restriction = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperationImport, CapabilitiesConstants.OperationRestrictions);
+            if (restriction == null || restriction.Permissions == null)
+            {
+                return;
+            }
+
+            operation.Security = Context.CreateSecurityRequirements(restriction.Permissions).ToList();
+        }
+
+        /// <inheritdoc/>
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            OperationRestrictionsType restriction = Context.Model.GetRecord<OperationRestrictionsType>(EdmOperationImport, CapabilitiesConstants.OperationRestrictions);
+            if (restriction == null)
+            {
+                return;
+            }
+
+            if (restriction.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation, restriction.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (restriction.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation, restriction.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
 
         /// <inheritdoc/>

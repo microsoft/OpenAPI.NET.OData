@@ -32,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.Key;
 
         /// <inheritdoc />
-        public override string Name
+        public override string Identifier
         {
             get
             {

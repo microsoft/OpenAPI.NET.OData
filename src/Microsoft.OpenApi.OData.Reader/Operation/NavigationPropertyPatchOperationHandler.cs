@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -75,6 +76,35 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             base.SetResponses(operation);
+        }
+
+        protected override void SetSecurity(OpenApiOperation operation)
+        {
+            if (Restriction == null || Restriction.UpdateRestrictions == null)
+            {
+                return;
+            }
+
+
+            operation.Security = Context.CreateSecurityRequirements(Restriction.UpdateRestrictions.Permissions).ToList();
+        }
+
+        protected override void AppendCustomParameters(OpenApiOperation operation)
+        {
+            if (Restriction == null || Restriction.UpdateRestrictions == null)
+            {
+                return;
+            }
+
+            if (Restriction.UpdateRestrictions.CustomHeaders != null)
+            {
+                AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomHeaders, ParameterLocation.Header);
+            }
+
+            if (Restriction.UpdateRestrictions.CustomQueryOptions != null)
+            {
+                AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
+            }
         }
     }
 }
