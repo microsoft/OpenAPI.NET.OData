@@ -109,6 +109,17 @@ namespace Microsoft.OpenApi.OData.Edm
             return Segments.Count(c => keySegmentAsDepth ? true : !(c is ODataKeySegment));
         }
 
+        private bool _adjustKeyParameter = false;
+        public void AdjustKeyParameters()
+        {
+            if (_adjustKeyParameter)
+            {
+                return;
+            }
+
+
+        }
+
         /// <summary>
         /// Gets the default path item name.
         /// </summary>
@@ -133,10 +144,11 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
+            HashSet<string> parameters = new HashSet<string>();
             StringBuilder sb = new StringBuilder();
             foreach (var segment in Segments)
             {
-                string pathItemName = segment.GetPathItemName(settings);
+                string pathItemName = segment.GetPathItemName(settings, parameters);
 
                 if (segment.Kind == ODataSegmentKind.Key &&
                     (settings.EnableKeyAsSegment == null || !settings.EnableKeyAsSegment.Value))

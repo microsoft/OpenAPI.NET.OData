@@ -110,7 +110,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of CategoryDto'
           required: true
           type: integer
           format: int32
@@ -156,7 +156,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of CategoryDto'
           required: true
           type: integer
           format: int32
@@ -183,7 +183,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of CategoryDto'
           required: true
           type: integer
           format: int32
@@ -317,7 +317,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -369,7 +369,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -396,7 +396,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -424,7 +424,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -450,7 +450,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -551,7 +551,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/Documents({Id})/Revisions({Id})':
+  '/Documents({Id})/Revisions({Id1})':
     get:
       tags:
         - Documents.RevisionDto
@@ -562,7 +562,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -570,8 +570,8 @@ paths:
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
         - in: path
-          name: Id
-          description: 'key: Id'
+          name: Id1
+          description: 'key: Id of RevisionDto'
           required: true
           type: integer
           format: int32
@@ -752,7 +752,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           type: integer
           format: int32
@@ -809,7 +809,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           type: integer
           format: int32
@@ -836,7 +836,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           type: integer
           format: int32
@@ -864,7 +864,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           type: integer
           format: int32
@@ -944,7 +944,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/Libraries({Id})/Documents({Id})':
+  '/Libraries({Id})/Documents({Id1})':
     get:
       tags:
         - Libraries.DocumentDto
@@ -955,7 +955,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           type: integer
           format: int32
@@ -963,8 +963,8 @@ paths:
           minimum: -2147483648
           x-ms-docs-key-type: LibraryDto
         - in: path
-          name: Id
-          description: 'key: Id'
+          name: Id1
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1144,7 +1144,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           type: integer
           format: int32
@@ -1203,7 +1203,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           type: integer
           format: int32
@@ -1230,7 +1230,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           type: integer
           format: int32
@@ -1258,7 +1258,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           type: integer
           format: int32
@@ -1461,7 +1461,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1513,7 +1513,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1540,7 +1540,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1568,7 +1568,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1594,7 +1594,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1695,7 +1695,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/Tasks({Id})/Revisions({Id})':
+  '/Tasks({Id})/Revisions({Id1})':
     get:
       tags:
         - Tasks.RevisionDto
@@ -1706,7 +1706,7 @@ paths:
       parameters:
         - in: path
           name: Id
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           type: integer
           format: int32
@@ -1714,8 +1714,8 @@ paths:
           minimum: -2147483648
           x-ms-docs-key-type: DocumentDto
         - in: path
-          name: Id
-          description: 'key: Id'
+          name: Id1
+          description: 'key: Id of RevisionDto'
           required: true
           type: integer
           format: int32

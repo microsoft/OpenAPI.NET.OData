@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -69,6 +70,17 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="settings">The settings.</param>
         /// <returns>The path item name.</returns>
-        public abstract string GetPathItemName(OpenApiConvertSettings settings);
+        public string GetPathItemName(OpenApiConvertSettings settings)
+        {
+            return GetPathItemName(settings, new HashSet<string>());
+        }
+
+        /// <summary>
+        /// Gets the path item name for this segment.
+        /// </summary>
+        /// <param name="settings">The settings.</param>
+        /// <param name="parameters">The existing parameters.</param>
+        /// <returns>The path item name.</returns>
+        public abstract string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters);
     }
 }

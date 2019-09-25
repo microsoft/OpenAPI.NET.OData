@@ -115,7 +115,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 foreach (var p in Context.CreateKeyParameters(keySegment))
                 {
-                    operation.Parameters.Add(p);
+                    AppendParameter(operation, p);
                 }
             }
 
@@ -206,8 +206,32 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
 
-                operation.Parameters.Add(parameter);
+                AppendParameter(operation, parameter);
             }
+        }
+
+        protected static void AppendParameter(OpenApiOperation operation, OpenApiParameter parameter)
+        {
+            HashSet<string> set = new HashSet<string>(operation.Parameters.Select(p => p.Name));
+
+            if (!set.Contains(parameter.Name))
+            {
+                operation.Parameters.Add(parameter);
+                return;
+            }
+
+            int index = 1;
+            string originalName = parameter.Name;
+            string newName;
+            do
+            {
+                newName = originalName + index.ToString();
+                index++;
+            }
+            while (set.Contains(newName));
+
+            parameter.Name = newName;
+            operation.Parameters.Add(parameter);
         }
     }
 }

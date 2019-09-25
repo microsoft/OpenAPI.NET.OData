@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
 
@@ -32,6 +33,6 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Identifier { get => EntityType.FullTypeName(); }
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings) => EntityType.FullTypeName();
+        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => EntityType.FullTypeName();
     }
 }

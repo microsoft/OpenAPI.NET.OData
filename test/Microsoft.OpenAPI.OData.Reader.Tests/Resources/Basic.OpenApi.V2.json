@@ -147,7 +147,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name",
+            "description": "key: Name of City",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "City"
@@ -203,7 +203,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name",
+            "description": "key: Name of City",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "City"
@@ -238,7 +238,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name",
+            "description": "key: Name of City",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "City"
@@ -398,7 +398,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name",
+            "description": "key: Name of CountryOrRegion",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "CountryOrRegion"
@@ -454,7 +454,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name",
+            "description": "key: Name of CountryOrRegion",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "CountryOrRegion"
@@ -489,7 +489,7 @@
           {
             "in": "path",
             "name": "Name",
-            "description": "key: Name",
+            "description": "key: Name of CountryOrRegion",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "CountryOrRegion"
@@ -741,7 +741,7 @@
           {
             "in": "path",
             "name": "UserName",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
@@ -800,7 +800,7 @@
           {
             "in": "path",
             "name": "UserName",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"
@@ -835,7 +835,7 @@
           {
             "in": "path",
             "name": "UserName",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "type": "string",
             "x-ms-docs-key-type": "Person"

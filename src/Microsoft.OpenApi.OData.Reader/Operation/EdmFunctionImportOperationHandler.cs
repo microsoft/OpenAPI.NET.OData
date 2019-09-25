@@ -29,7 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // and it contains specific Parameter Objects for the allowed system query options.
             foreach (var param in Context.CreateParameters(functionImport))
             {
-                operation.Parameters.Add(param);
+                AppendParameter(operation, param);
             }
         }
 

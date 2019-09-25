@@ -69,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 else
                 {
                     ODataOperationSegment operationSegment = Path.LastSegment as ODataOperationSegment;
-                    string pathItemName = operationSegment.GetPathItemName(Context.Settings);
+                    string pathItemName = operationSegment.GetPathItemName(Context.Settings, new HashSet<string>());
                     string hash = pathItemName.GetHashSHA256();
                     operation.OperationId = operationId + "." + hash.Substring(0, 4);
                 }
@@ -111,7 +111,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     foreach (var parameter in parameters)
                     {
-                        operation.Parameters.Add(parameter);
+                        AppendParameter(operation, parameter);
                     }
                 }
             }

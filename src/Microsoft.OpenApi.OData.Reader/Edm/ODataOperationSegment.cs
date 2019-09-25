@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
@@ -37,19 +38,19 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Identifier { get => Operation.Name; }
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings)
+        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
             if (Operation.IsFunction())
             {
-                return FunctionName(Operation as IEdmFunction, settings);
+                return FunctionName(Operation as IEdmFunction, settings, parameters);
             }
 
             return ActionName(Operation as IEdmAction, settings);
         }
 
-        private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings)
+        private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             StringBuilder functionName = new StringBuilder();
             if (settings.EnableUnqualifiedCall)
@@ -67,13 +68,14 @@ namespace Microsoft.OpenApi.OData.Edm
             int skip = function.IsBound ? 1 : 0;
             functionName.Append(String.Join(",", function.Parameters.Skip(skip).Select(p =>
             {
+                string uniqueName = Utils.GetUniqueName(p.Name, parameters);
                 if (p.Type.IsStructured() || p.Type.IsCollection())
                 {
-                    return p.Name + "=@" + p.Name;
+                    return p.Name + "=@" + uniqueName;
                 }
                 else
                 {
-                    return p.Name + "={" + p.Name + "}";
+                    return p.Name + "={" + uniqueName + "}";
                 }
             })));
 

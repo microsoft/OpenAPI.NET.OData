@@ -139,7 +139,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Name = keyName,
                     In = ParameterLocation.Path,
                     Required = true,
-                    Description = "key: " + keyName,
+                    Description = "key: " + keyName + " of " + entityType.Name,
                     Schema = context.CreateEdmTypeSchema(keys.First().Type)
                 };
 
@@ -153,10 +153,10 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     OpenApiParameter parameter = new OpenApiParameter
                     {
-                        Name = keyProperty.Name,
+                        Name = keyProperty.Name, // By design: not prefix with type name if enable type name prefix
                         In = ParameterLocation.Path,
                         Required = true,
-                        Description = "key: " + keyProperty.Name,
+                        Description = "key: " + keyProperty.Name + " of " + entityType.Name,
                         Schema = context.CreateEdmTypeSchema(keyProperty.Type)
                     };
 

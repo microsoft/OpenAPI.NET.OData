@@ -114,7 +114,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of CategoryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -167,7 +167,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of CategoryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -196,7 +196,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of CategoryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -337,7 +337,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -401,7 +401,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -430,7 +430,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -458,7 +458,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -485,7 +485,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -598,7 +598,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/Documents({Id})/Revisions({Id})':
+  '/Documents({Id})/Revisions({Id1})':
     get:
       tags:
         - Documents.RevisionDto
@@ -607,7 +607,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -615,9 +615,9 @@ paths:
             type: integer
             format: int32
           x-ms-docs-key-type: DocumentDto
-        - name: Id
+        - name: Id1
           in: path
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           schema:
             maximum: 2147483647
@@ -812,7 +812,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -881,7 +881,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -910,7 +910,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -938,7 +938,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1030,7 +1030,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/Libraries({Id})/Documents({Id})':
+  '/Libraries({Id})/Documents({Id1})':
     get:
       tags:
         - Libraries.DocumentDto
@@ -1039,7 +1039,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of LibraryDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1047,9 +1047,9 @@ paths:
             type: integer
             format: int32
           x-ms-docs-key-type: LibraryDto
-        - name: Id
+        - name: Id1
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1243,7 +1243,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1314,7 +1314,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1343,7 +1343,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1371,7 +1371,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1588,7 +1588,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1652,7 +1652,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1681,7 +1681,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1709,7 +1709,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1736,7 +1736,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1849,7 +1849,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-  '/Tasks({Id})/Revisions({Id})':
+  '/Tasks({Id})/Revisions({Id1})':
     get:
       tags:
         - Tasks.RevisionDto
@@ -1858,7 +1858,7 @@ paths:
       parameters:
         - name: Id
           in: path
-          description: 'key: Id'
+          description: 'key: Id of DocumentDto'
           required: true
           schema:
             maximum: 2147483647
@@ -1866,9 +1866,9 @@ paths:
             type: integer
             format: int32
           x-ms-docs-key-type: DocumentDto
-        - name: Id
+        - name: Id1
           in: path
-          description: 'key: Id'
+          description: 'key: Id of RevisionDto'
           required: true
           schema:
             maximum: 2147483647

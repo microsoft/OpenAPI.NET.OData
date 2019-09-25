@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
@@ -37,19 +38,19 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Identifier { get => OperationImport.Name; }
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings)
+        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
             if (OperationImport.IsFunctionImport())
             {
-                return FunctionImportName(OperationImport as IEdmFunctionImport, settings);
+                return FunctionImportName(OperationImport as IEdmFunctionImport, settings, parameters);
             }
 
             return OperationImport.Name;
         }
 
-        private string FunctionImportName(IEdmFunctionImport functionImport, OpenApiConvertSettings settings)
+        private string FunctionImportName(IEdmFunctionImport functionImport, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             StringBuilder functionName = new StringBuilder(functionImport.Name);
             functionName.Append("(");
@@ -59,13 +60,14 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmFunction function = functionImport.Function;
             functionName.Append(String.Join(",", function.Parameters.Select(p =>
             {
+                string uniqueName = Utils.GetUniqueName(p.Name, parameters);
                 if (p.Type.IsStructured() || p.Type.IsCollection())
                 {
-                    return p.Name + "=@" + p.Name;
+                    return p.Name + "=@" + uniqueName;
                 }
                 else
                 {
-                    return p.Name + "={" + p.Name + "}";
+                    return p.Name + "={" + uniqueName + "}";
                 }
             })));
 

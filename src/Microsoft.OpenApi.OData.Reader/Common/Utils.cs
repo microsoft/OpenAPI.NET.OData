@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.OpenApi.OData.Vocabulary;
 
 namespace Microsoft.OpenApi.OData.Common
@@ -44,6 +45,32 @@ namespace Microsoft.OpenApi.OData.Common
 
             char first = Char.ToUpper(input[0]);
             return first + input.Substring(1);
+        }
+
+        /// <summary>
+        /// Upper the first character of the string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>The changed string.</returns>
+        public static string GetUniqueName(string input, HashSet<string> set)
+        {
+            if (!set.Contains(input))
+            {
+                set.Add(input);
+                return input;
+            }
+
+            int index = 1;
+            string newInput;
+            do
+            {
+                newInput = input + index.ToString();
+                index++;
+            }
+            while (set.Contains(newInput));
+
+            set.Add(newInput);
+            return newInput;
         }
 
         /// <summary>

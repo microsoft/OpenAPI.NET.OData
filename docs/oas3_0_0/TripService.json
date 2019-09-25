@@ -159,7 +159,7 @@
           {
             "name": "AirlineCode",
             "in": "path",
-            "description": "key: AirlineCode",
+            "description": "key: AirlineCode of Airline",
             "required": true,
             "schema": {
               "type": "string"
@@ -227,7 +227,7 @@
           {
             "name": "AirlineCode",
             "in": "path",
-            "description": "key: AirlineCode",
+            "description": "key: AirlineCode of Airline",
             "required": true,
             "schema": {
               "type": "string"
@@ -266,7 +266,7 @@
           {
             "name": "AirlineCode",
             "in": "path",
-            "description": "key: AirlineCode",
+            "description": "key: AirlineCode of Airline",
             "required": true,
             "schema": {
               "type": "string"
@@ -447,7 +447,7 @@
           {
             "name": "IcaoCode",
             "in": "path",
-            "description": "key: IcaoCode",
+            "description": "key: IcaoCode of Airport",
             "required": true,
             "schema": {
               "type": "string"
@@ -517,7 +517,7 @@
           {
             "name": "IcaoCode",
             "in": "path",
-            "description": "key: IcaoCode",
+            "description": "key: IcaoCode of Airport",
             "required": true,
             "schema": {
               "type": "string"
@@ -556,7 +556,7 @@
           {
             "name": "IcaoCode",
             "in": "path",
-            "description": "key: IcaoCode",
+            "description": "key: IcaoCode of Airport",
             "required": true,
             "schema": {
               "type": "string"
@@ -1015,7 +1015,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -1372,7 +1372,7 @@
           {
             "name": "TripId",
             "in": "path",
-            "description": "key: TripId",
+            "description": "key: TripId of Trip",
             "required": true,
             "schema": {
               "maximum": 2147483647,
@@ -1453,7 +1453,7 @@
           {
             "name": "TripId",
             "in": "path",
-            "description": "key: TripId",
+            "description": "key: TripId of Trip",
             "required": true,
             "schema": {
               "maximum": 2147483647,
@@ -1671,7 +1671,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -1774,7 +1774,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -1813,7 +1813,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -1851,7 +1851,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -1936,7 +1936,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2071,7 +2071,7 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/NewComePeople/{UserName}/Friends/{UserName}": {
+    "/NewComePeople/{UserName}/Friends/{UserName1}": {
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -2082,7 +2082,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2090,9 +2090,9 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "UserName",
+            "name": "UserName1",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2177,7 +2177,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2219,7 +2219,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2272,7 +2272,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2324,7 +2324,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2370,7 +2370,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2503,7 +2503,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2513,7 +2513,7 @@
           {
             "name": "TripId",
             "in": "path",
-            "description": "key: TripId",
+            "description": "key: TripId of Trip",
             "required": true,
             "schema": {
               "maximum": 2147483647,
@@ -2594,7 +2594,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2604,7 +2604,7 @@
           {
             "name": "TripId",
             "in": "path",
-            "description": "key: TripId",
+            "description": "key: TripId of Trip",
             "required": true,
             "schema": {
               "maximum": 2147483647,
@@ -2822,7 +2822,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2925,7 +2925,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -2964,7 +2964,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3002,7 +3002,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3087,7 +3087,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3222,7 +3222,7 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/People/{UserName}/Friends/{UserName}": {
+    "/People/{UserName}/Friends/{UserName1}": {
       "get": {
         "tags": [
           "People.Person"
@@ -3233,7 +3233,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3241,9 +3241,9 @@
             "x-ms-docs-key-type": "Person"
           },
           {
-            "name": "UserName",
+            "name": "UserName1",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3328,7 +3328,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3370,7 +3370,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3423,7 +3423,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3475,7 +3475,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3521,7 +3521,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3654,7 +3654,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3664,7 +3664,7 @@
           {
             "name": "TripId",
             "in": "path",
-            "description": "key: TripId",
+            "description": "key: TripId of Trip",
             "required": true,
             "schema": {
               "maximum": 2147483647,
@@ -3745,7 +3745,7 @@
           {
             "name": "UserName",
             "in": "path",
-            "description": "key: UserName",
+            "description": "key: UserName of Person",
             "required": true,
             "schema": {
               "type": "string"
@@ -3755,7 +3755,7 @@
           {
             "name": "TripId",
             "in": "path",
-            "description": "key: TripId",
+            "description": "key: TripId of Trip",
             "required": true,
             "schema": {
               "maximum": 2147483647,

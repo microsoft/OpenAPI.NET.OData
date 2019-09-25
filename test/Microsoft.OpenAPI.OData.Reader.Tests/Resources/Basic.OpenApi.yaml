@@ -99,7 +99,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: 'key: Name'
+          description: 'key: Name of City'
           required: true
           schema:
             type: string
@@ -144,7 +144,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: 'key: Name'
+          description: 'key: Name of City'
           required: true
           schema:
             type: string
@@ -170,7 +170,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: 'key: Name'
+          description: 'key: Name of City'
           required: true
           schema:
             type: string
@@ -279,7 +279,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: 'key: Name'
+          description: 'key: Name of CountryOrRegion'
           required: true
           schema:
             type: string
@@ -324,7 +324,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: 'key: Name'
+          description: 'key: Name of CountryOrRegion'
           required: true
           schema:
             type: string
@@ -350,7 +350,7 @@ paths:
       parameters:
         - name: Name
           in: path
-          description: 'key: Name'
+          description: 'key: Name of CountryOrRegion'
           required: true
           schema:
             type: string
@@ -528,7 +528,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           schema:
             type: string
@@ -576,7 +576,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           schema:
             type: string
@@ -602,7 +602,7 @@ paths:
       parameters:
         - name: UserName
           in: path
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           schema:
             type: string

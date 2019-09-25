@@ -99,7 +99,7 @@ paths:
       parameters:
         - in: path
           name: AirlineCode
-          description: 'key: AirlineCode'
+          description: 'key: AirlineCode of Airline'
           required: true
           type: string
           x-ms-docs-key-type: Airline
@@ -138,7 +138,7 @@ paths:
       parameters:
         - in: path
           name: AirlineCode
-          description: 'key: AirlineCode'
+          description: 'key: AirlineCode of Airline'
           required: true
           type: string
           x-ms-docs-key-type: Airline
@@ -162,7 +162,7 @@ paths:
       parameters:
         - in: path
           name: AirlineCode
-          description: 'key: AirlineCode'
+          description: 'key: AirlineCode of Airline'
           required: true
           type: string
           x-ms-docs-key-type: Airline
@@ -273,7 +273,7 @@ paths:
       parameters:
         - in: path
           name: IcaoCode
-          description: 'key: IcaoCode'
+          description: 'key: IcaoCode of Airport'
           required: true
           type: string
           x-ms-docs-key-type: Airport
@@ -314,7 +314,7 @@ paths:
       parameters:
         - in: path
           name: IcaoCode
-          description: 'key: IcaoCode'
+          description: 'key: IcaoCode of Airport'
           required: true
           type: string
           x-ms-docs-key-type: Airport
@@ -338,7 +338,7 @@ paths:
       parameters:
         - in: path
           name: IcaoCode
-          description: 'key: IcaoCode'
+          description: 'key: IcaoCode of Airport'
           required: true
           type: string
           x-ms-docs-key-type: Airport
@@ -611,7 +611,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -867,7 +867,7 @@ paths:
       parameters:
         - in: path
           name: TripId
-          description: 'key: TripId'
+          description: 'key: TripId of Trip'
           required: true
           type: integer
           format: int32
@@ -918,7 +918,7 @@ paths:
       parameters:
         - in: path
           name: TripId
-          description: 'key: TripId'
+          description: 'key: TripId of Trip'
           required: true
           type: integer
           format: int32
@@ -1059,7 +1059,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1113,7 +1113,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1137,7 +1137,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1162,7 +1162,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1217,7 +1217,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1301,7 +1301,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/NewComePeople/{UserName}/Friends/{UserName}':
+  '/NewComePeople/{UserName}/Friends/{UserName1}':
     get:
       tags:
         - NewComePeople.Person
@@ -1312,13 +1312,13 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
         - in: path
-          name: UserName
-          description: 'key: UserName'
+          name: UserName1
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1373,7 +1373,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1396,7 +1396,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1427,7 +1427,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1466,7 +1466,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1501,7 +1501,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1529,7 +1529,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1611,13 +1611,13 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
         - in: path
           name: TripId
-          description: 'key: TripId'
+          description: 'key: TripId of Trip'
           required: true
           type: integer
           format: int32
@@ -1668,13 +1668,13 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
         - in: path
           name: TripId
-          description: 'key: TripId'
+          description: 'key: TripId of Trip'
           required: true
           type: integer
           format: int32
@@ -1815,7 +1815,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1869,7 +1869,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1893,7 +1893,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1918,7 +1918,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -1973,7 +1973,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2057,7 +2057,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/People/{UserName}/Friends/{UserName}':
+  '/People/{UserName}/Friends/{UserName1}':
     get:
       tags:
         - People.Person
@@ -2068,13 +2068,13 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
         - in: path
-          name: UserName
-          description: 'key: UserName'
+          name: UserName1
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2129,7 +2129,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2152,7 +2152,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2183,7 +2183,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2222,7 +2222,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2257,7 +2257,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2285,7 +2285,7 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
@@ -2367,13 +2367,13 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
         - in: path
           name: TripId
-          description: 'key: TripId'
+          description: 'key: TripId of Trip'
           required: true
           type: integer
           format: int32
@@ -2424,13 +2424,13 @@ paths:
       parameters:
         - in: path
           name: UserName
-          description: 'key: UserName'
+          description: 'key: UserName of Person'
           required: true
           type: string
           x-ms-docs-key-type: Person
         - in: path
           name: TripId
-          description: 'key: TripId'
+          description: 'key: TripId of Trip'
           required: true
           type: integer
           format: int32

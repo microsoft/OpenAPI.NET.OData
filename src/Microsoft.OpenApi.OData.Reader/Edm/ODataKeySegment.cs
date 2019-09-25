@@ -47,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings)
+        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
@@ -58,11 +58,13 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 if (settings.PrefixEntityTypeNameBeforeKey)
                 {
-                    return "{" + EntityType.Name + "-" + keyName + "}";
+                    string name = Utils.GetUniqueName(EntityType.Name + "-" + keyName, parameters);
+                    return "{" + name + "}";
                 }
                 else
                 {
-                    return "{" + keyName + "}";
+                    string name = Utils.GetUniqueName(keyName, parameters);
+                    return "{" + name + "}";
                 }
             }
             else
@@ -70,7 +72,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 IList<string> keyStrings = new List<string>();
                 foreach (var keyProperty in keys)
                 {
-                    keyStrings.Add(keyProperty.Name + "={" + keyProperty.Name + "}");
+                    string name = Utils.GetUniqueName(keyProperty.Name, parameters);
+                    keyStrings.Add(keyProperty.Name + "={" + name + "}");
                 }
 
                 return String.Join(",", keyStrings);

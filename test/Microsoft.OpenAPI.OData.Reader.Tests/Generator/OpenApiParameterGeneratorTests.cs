@@ -100,7 +100,7 @@ schema:
                 expected = @"{
   ""name"": ""Customer-Id"",
   ""in"": ""path"",
-  ""description"": ""key: Customer-Id"",
+  ""description"": ""key: Customer-Id of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -114,7 +114,7 @@ schema:
                 expected = @"{
   ""name"": ""Id"",
   ""in"": ""path"",
-  ""description"": ""key: Id"",
+  ""description"": ""key: Id of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -158,7 +158,7 @@ schema:
             string expected = @"{
   ""name"": ""firstName"",
   ""in"": ""path"",
-  ""description"": ""key: firstName"",
+  ""description"": ""key: firstName of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
@@ -174,7 +174,7 @@ schema:
             expected = @"{
   ""name"": ""lastName"",
   ""in"": ""path"",
-  ""description"": ""key: lastName"",
+  ""description"": ""key: lastName of Customer"",
   ""required"": true,
   ""schema"": {
     ""type"": ""string"",
