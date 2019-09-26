@@ -19,6 +19,25 @@ namespace Microsoft.OpenApi.OData.Edm
     public static class EdmModelExtensions
     {
         /// <summary>
+        /// Determines whether the specified operation is UrlEscape function or not.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="operation">The specified operation.</param>
+        /// <returns><c>true</c> if the specified operation is UrlEscape function; otherwise, <c>false</c>.</returns>
+        public static bool IsUrlEscapeFunction(this IEdmModel model, IEdmOperation operation)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(operation, nameof(operation));
+
+            if (operation.IsAction())
+            {
+                return false;
+            }
+
+            return model.IsUrlEscapeFunction((IEdmFunction)operation);
+        }
+
+        /// <summary>
         /// Determines whether the specified function is UrlEscape function or not.
         /// </summary>
         /// <param name="model">The Edm model.</param>

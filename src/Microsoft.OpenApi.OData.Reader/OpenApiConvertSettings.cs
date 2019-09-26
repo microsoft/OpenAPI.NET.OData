@@ -69,6 +69,11 @@ namespace Microsoft.OpenApi.OData
         public bool EnableOperationId { get; set; } = true;
 
         /// <summary>
+        /// Gets/sets a value indicating whether to output the binding function as Uri escape function if applied the UriEscapeFunction term.
+        /// </summary>
+        public bool EnableUriEscapeFunctionCall { get; set; } = false;
+
+        /// <summary>
         /// Gets/sets a value indicating whether to verify the edm model before converter.
         /// </summary>
         public bool VerifyEdmModel { get; set; }
@@ -103,6 +108,7 @@ namespace Microsoft.OpenApi.OData
             newSettings.VerifyEdmModel = this.VerifyEdmModel;
             newSettings.IEEE754Compatible = this.IEEE754Compatible;
             newSettings.TopExample = this.TopExample;
+            newSettings.EnableUriEscapeFunctionCall = this.EnableUriEscapeFunctionCall;
 
             return newSettings;
         }

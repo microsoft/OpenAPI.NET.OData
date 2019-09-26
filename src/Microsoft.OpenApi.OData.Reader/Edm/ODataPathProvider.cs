@@ -319,15 +319,18 @@ namespace Microsoft.OpenApi.OData.Edm
         private bool AppendBoundOperationOnNavigationSourcePath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
         {
             bool found = false;
+
             if (_allNavigationSourcePaths.TryGetValue(bindingEntityType, out IList<ODataPath> value))
             {
+                bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
+
                 foreach (var subPath in value)
                 {
                     if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
                             (!isCollection && subPath.Kind != ODataPathKind.EntitySet))
                     {
                         ODataPath newPath = subPath.Clone();
-                        newPath.Push(new ODataOperationSegment(edmOperation));
+                        newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
                         AppendPath(newPath);
                         found = true;
                     }
@@ -340,6 +343,7 @@ namespace Microsoft.OpenApi.OData.Edm
         private bool AppendBoundOperationOnNavigationPropertyPath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
         {
             bool found = false;
+            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
 
             if (_allNavigationPropertyPaths.TryGetValue(bindingEntityType, out IList<ODataPath> value))
             {
@@ -370,7 +374,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
 
                     ODataPath newPath = path.Clone();
-                    newPath.Push(new ODataOperationSegment(edmOperation));
+                    newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
                     AppendPath(newPath);
                     found = true;
                 }
@@ -383,6 +387,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             bool found = false;
 
+            bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
             foreach (var baseType in bindingEntityType.FindAllBaseTypes())
             {
                 if (_allNavigationSources.TryGetValue(baseType, out IList<IEdmNavigationSource> baseNavigationSource))
@@ -394,7 +399,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             if (ns is IEdmEntitySet)
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType),
-                                    new ODataOperationSegment(edmOperation));
+                                    new ODataOperationSegment(edmOperation, isEscapedFunction));
                                 AppendPath(newPath);
                                 found = true;
                             }
@@ -404,7 +409,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             if (ns is IEdmSingleton)
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataTypeCastSegment(bindingEntityType),
-                                    new ODataOperationSegment(edmOperation));
+                                    new ODataOperationSegment(edmOperation, isEscapedFunction));
                                 AppendPath(newPath);
                                 found = true;
                             }
@@ -412,7 +417,7 @@ namespace Microsoft.OpenApi.OData.Edm
                             {
                                 ODataPath newPath = new ODataPath(new ODataNavigationSourceSegment(ns), new ODataKeySegment(ns.EntityType()),
                                     new ODataTypeCastSegment(bindingEntityType),
-                                    new ODataOperationSegment(edmOperation));
+                                    new ODataOperationSegment(edmOperation, isEscapedFunction));
                                 AppendPath(newPath);
                                 found = true;
                             }

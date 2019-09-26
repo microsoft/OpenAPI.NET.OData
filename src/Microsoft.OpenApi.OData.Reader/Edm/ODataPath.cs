@@ -159,6 +159,17 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else // other segments
                 {
+                    if (segment.Kind == ODataSegmentKind.Operation)
+                    {
+                        ODataOperationSegment operation = (ODataOperationSegment)segment;
+                        if (operation.IsEscapedFunction && settings.EnableUriEscapeFunctionCall)
+                        {
+                            sb.Append(":/");
+                            sb.Append(pathItemName);
+                            continue;
+                        }
+                    }
+
                     sb.Append("/");
                     sb.Append(pathItemName);
                 }

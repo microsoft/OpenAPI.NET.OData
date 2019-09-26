@@ -5,6 +5,9 @@
 
 using System;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OData.Edm.Vocabularies.Community.V1;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -63,6 +66,59 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/CountryOrRegion", pathItems.Keys);
             Assert.Contains("/CountryOrRegion/{Name}", pathItems.Keys);
             Assert.Contains("/Me", pathItems.Keys);
+        }
+
+        [Theory]
+        [InlineData(true, true, true, "/Customers({ID}):/{param}:")]
+        [InlineData(true, true, false, "/Customers({ID}):/{param}")]
+
+        [InlineData(true, false, true, "/Customers({ID})/NS.MyFunction(param={param})")]
+        [InlineData(true, false, false, "/Customers({ID})/NS.MyFunction(param={param})")]
+        [InlineData(false, true, true, "/Customers({ID})/NS.MyFunction(param={param})")]
+        [InlineData(false, true, false, "/Customers({ID})/NS.MyFunction(param={param})")]
+        [InlineData(false, false, true, "/Customers({ID})/NS.MyFunction(param={param})")]
+        [InlineData(false, false, false, "/Customers({ID})/NS.MyFunction(param={param})")]
+        public void CreatePathItemsReturnsForEscapeFunctionModel(bool enableEscaped, bool hasEscapedAnnotation, bool isComposable, string expected)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, isComposable);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmEntitySet customers = new EdmEntitySet(container, "Customers", customer);
+            container.AddElement(customers);
+            model.AddElement(container);
+
+            if (hasEscapedAnnotation)
+            {
+                IEdmBooleanConstantExpression booleanConstant = new EdmBooleanConstant(true);
+                IEdmTerm term = CommunityVocabularyModel.UrlEscapeFunctionTerm;
+                EdmVocabularyAnnotation annotation = new EdmVocabularyAnnotation(function, term, booleanConstant);
+                annotation.SetSerializationLocation(model, EdmVocabularyAnnotationSerializationLocation.Inline);
+                model.SetVocabularyAnnotation(annotation);
+            }
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableUriEscapeFunctionCall = enableEscaped
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            // Act
+            var pathItems = context.CreatePathItems();
+
+            // Assert
+            Assert.NotNull(pathItems);
+            Assert.Equal(3, pathItems.Count);
+
+            Assert.Contains("/Customers", pathItems.Keys);
+            Assert.Contains("/Customers({ID})", pathItems.Keys);
+            Assert.Contains(expected, pathItems.Keys);
         }
     }
 }

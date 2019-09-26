@@ -22,14 +22,29 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="operation">The operation.</param>
         public ODataOperationSegment(IEdmOperation operation)
+            : this(operation, false)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        public ODataOperationSegment(IEdmOperation operation, bool isEscapedFunction)
         {
             Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
+            IsEscapedFunction = isEscapedFunction;
         }
 
         /// <summary>
         /// Gets the operation.
         /// </summary>
         public IEdmOperation Operation { get; }
+
+        /// <summary>
+        /// Gets the is escaped function.
+        /// </summary>
+        public bool IsEscapedFunction { get; }
 
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.Operation;
@@ -52,6 +67,22 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
+            if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
+            {
+                // Debug.Assert(function.Parameters.Count == 2); It should be verify at Edm model.
+                // Debug.Assert(function.IsBound == true);
+                string parameterName = function.Parameters.Last().Name;
+                parameterName = Utils.GetUniqueName(parameterName, parameters);
+                if (function.IsComposable)
+                {
+                    return $"{{{parameterName}}}:";
+                }
+                else
+                {
+                    return $"{{{parameterName}}}";
+                }
+            }
+
             StringBuilder functionName = new StringBuilder();
             if (settings.EnableUnqualifiedCall)
             {
