@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!--
+
+  This file defines the common targets before the build.
+  This file might be updated by automation.
+
+-->
+<Project>
   <!-- Ensures that if this file changes it forces a rebuild -->
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -90,10 +95,8 @@ using System.Resources;
       </GenerateAssemblyAttributeTemplateCSharp>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Language)' == 'C#'">
+    <PropertyGroup>
       <GenerateAssemblyAttributeTemplate>$(GenerateAssemblyAttributeTemplateCSharp)</GenerateAssemblyAttributeTemplate>
-      <AssemblyMetadataAttributeFile>$(VersionOutputPath)\AssemblyMetadataAttribute$(DefaultLanguageSourceExtension)</AssemblyMetadataAttributeFile>
-      <DefineAssemblyMetadataAttribute Condition="'$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0'">true</DefineAssemblyMetadataAttribute>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -115,7 +118,6 @@ using System.Resources;
     
     <ItemGroup>
       <Compile Include="$(AssemblyAttributeOutputFile)" />
-      <Compile Include="$(AssemblyMetadataAttributeFile)" Condition="'$(DefineAssemblyMetadataAttribute)' == 'true'" />
     </ItemGroup>
 
   </Target>
@@ -126,7 +128,7 @@ using System.Resources;
   <!-- *** Generate a file with version constants and hook it into the build -->
   <!-- ********************************************************************************************* -->
   <Target Name="GenerateVersionConstantsFile"
-          Inputs="$(MSBuildProjectFile);$(CustomBuildExtensionsPath)\Versioning.props"
+          Inputs="$(MSBuildProjectFile);$(EnlistToolPath)\Versioning.props"
           Outputs="$(IntermediateOutputPath.TrimEnd('\'))\VersionConstants$(DefaultLanguageSourceExtension)"
           Condition="'$(ShouldGenerateVersionConstantsFile)' == 'true'">
 
@@ -140,20 +142,10 @@ internal static class VersionConstants
     internal const string AssemblyVersion = "%VersionFullSemantic%";
 }
       </GenerateVersionConstantsTemplateCSharp>
-      <GenerateVersionConstantsTemplateVB>
-Friend Class VersionConstants
-    Friend Shared ReleaseVersion As String = "%VersionFullSemantic%"
-    Friend Shared AssemblyVersion As String = "%VersionFullSemantic%"
-End Class
-      </GenerateVersionConstantsTemplateVB>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Language)' == 'C#'">
+	</PropertyGroup>
+	
+    <PropertyGroup>
       <GenerateVersionConstantsTemplate>$(GenerateVersionConstantsTemplateCSharp)</GenerateVersionConstantsTemplate>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Language)' == 'VB'">
-      <GenerateVersionConstantsTemplate>$(GenerateVersionConstantsTemplateVB)</GenerateVersionConstantsTemplate>
     </PropertyGroup>
 
     <PropertyGroup>

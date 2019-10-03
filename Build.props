@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-  </PropertyGroup>
+<!--
+
+  This file defines the top level external dependencies used by this repo.
+  This file might be updated by automation.
+
+-->
+<Project>
 
   <PropertyGroup>
-    <!-- Global settings that apply unconditionally. -->
-    <EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd('\'))</EnlistmentRoot>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+	<EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd('\'))</EnlistmentRoot>
   </PropertyGroup>
 
   <Import Project="$(EnlistmentRoot)\tool\Build.props" />
