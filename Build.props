@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Global settings that apply unconditionally. -->
+    <EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd('\'))</EnlistmentRoot>
+  </PropertyGroup>
+
+  <Import Project="$(EnlistmentRoot)\tool\Build.props" />
+
+  <PropertyGroup>
+    <!--OData has some project files with the same name that are targeted for different framework platforms. Isolate their intermediate output folders-->
+    <IntermediateOutputPath Condition="$(TargetFrameworkFolderName) != ''">$(IntermediateOutputPath.TrimEnd('\'))\$(TargetFrameworkFolderName)</IntermediateOutputPath>
+  </PropertyGroup>
+
+</Project>

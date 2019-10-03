@@ -5,14 +5,14 @@
   <PropertyGroup>
     <VersionMajor Condition="'$(VersionMajor)' == ''">1</VersionMajor>
     <VersionMinor Condition="'$(VersionMinor)' == ''">0</VersionMinor>
-    <VersionBuild Condition="'$(VersionBuild)' == ''">0</VersionBuild>
+    <VersionBuild Condition="'$(VersionBuild)' == ''">1</VersionBuild>
     <VersionRelease Condition="'$(VersionRelease)' == ''"></VersionRelease>
   </PropertyGroup>
 
   <!-- For NuGet Package Dependencies -->
   <PropertyGroup>
     <OpenApiCorePackageDependency>[1.1.4, 2.0.0)</OpenApiCorePackageDependency>
-    <ODataEdmPackageDependency>[7.6.0, 8.0.0)</ODataEdmPackageDependency>
+    <ODataEdmPackageDependency>[7.6.1, 8.0.0)</ODataEdmPackageDependency>
   </PropertyGroup>
 
   <!--

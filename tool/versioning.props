@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Set the version number: major, minor, build and release (i.e. alpha, beta or blank for RTM)-->
+  <PropertyGroup>
+    <VersionMajor Condition="'$(VersionMajor)' == ''">1</VersionMajor>
+    <VersionMinor Condition="'$(VersionMinor)' == ''">0</VersionMinor>
+    <VersionBuild Condition="'$(VersionBuild)' == ''">1</VersionBuild>
+    <VersionRelease Condition="'$(VersionRelease)' == ''"></VersionRelease>
+  </PropertyGroup>
+
+  <!-- For NuGet Package Dependencies -->
+  <PropertyGroup>
+    <OpenApiCorePackageDependency>[1.1.4, 2.0.0)</OpenApiCorePackageDependency>
+    <ODataEdmPackageDependency>[7.6.1, 8.0.0)</ODataEdmPackageDependency>
+  </PropertyGroup>
+
+  <!--
+    Revision number is a date code. Note that this only work for 6 years before the year part (year minus 2017)
+    overflows the Int16. The system convert below will throw errors when this happens.
+  -->
+  <PropertyGroup>
+    <VersionStartYear Condition="'$(VersionStartYear)' == ''">2017</VersionStartYear>
+    <VersionDateCode>$([System.Convert]::ToInt16('$([MSBuild]::Add(1, $([MSBuild]::Subtract($([System.DateTime]::Now.Year), $(VersionStartYear)))))$([System.DateTime]::Now.ToString("MMdd"))'))</VersionDateCode>
+    <VersionRevision Condition="'$(VersionRevision)' == '' OR '$(VersionRevision)' == '0'">$([System.Convert]::ToString($(VersionDateCode)))</VersionRevision>
+  </PropertyGroup>
+
+    <!-- Product Version -->
+  <PropertyGroup>
+    <VersionFullSemantic>$(VersionMajor).$(VersionMinor).$(VersionBuild)</VersionFullSemantic>
+    <VersionFull>$(VersionFullSemantic).$(VersionRevision)</VersionFull>
+  </PropertyGroup>
+
+  <!-- For NuGet Packages -->
+  <PropertyGroup>
+    <VersionNuGetSemantic>$(VersionFullSemantic)</VersionNuGetSemantic>
+    <VersionNuGetSemantic Condition="'$(VersionRelease)'!=''">$(VersionFullSemantic)-$(VersionRelease)</VersionNuGetSemantic>
+  </PropertyGroup>
+
+</Project>
