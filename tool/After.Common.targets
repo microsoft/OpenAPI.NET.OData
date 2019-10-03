@@ -12,9 +12,7 @@
 
   <PropertyGroup>
     <BuildDependsOn>
-      GenerateTextStringResources;
       GenerateAssemblyAttributeFile;
-      GenerateVersionConstantsFile;
       ExcludeAssemblyFilesFromSourceAnalysis;
       $(BuildDependsOn);
     </BuildDependsOn>
@@ -22,32 +20,6 @@
 
   <Target Name="AfterBuild" DependsOnTargets="$(AfterBuildDependsOn)"/>
 
-  <!-- ********************************************************************************************* -->
-  <!-- *** Generate resources from .txt format resource files -->
-  <!-- ********************************************************************************************* -->
-  <PropertyGroup>
-    <GenerateTextStringResourcesDependsOn>
-      PrepareForBuild;
-      GenerateStringResources;
-    </GenerateTextStringResourcesDependsOn>
-  </PropertyGroup>
-
-  <Target Name="GenerateTextStringResources"
-          Condition="'@(TextStringResource)' != ''"
-          DependsOnTargets="$(GenerateTextStringResourcesDependsOn)"/>
-
-  <Target Name="GenerateStringResources">
-
-    <ItemGroup>
-      <EmbeddedResource Include="@(TextStringResource)" Condition="'%(TextStringResource.GenerateResource)' == 'true'">
-        <!-- "Resx" indicates it should go through GenerateResource -->
-        <Type>Resx</Type>
-        <WithCulture>false</WithCulture>
-        <ManifestResourceName>%(Filename)</ManifestResourceName>
-      </EmbeddedResource>
-    </ItemGroup>
-
-  </Target>
 
   <!-- ********************************************************************************************* -->
 
@@ -57,8 +29,8 @@
   <!-- ********************************************************************************************* -->
   <Target Name="ExcludeAssemblyFilesFromSourceAnalysis">
     <ItemGroup>
-      <Compile Condition="'%(Filename)%(Extension)'=='AssemblyAttributes.cs'
-      	               or '%(Filename)%(Extension)'=='AssemblyRefs.cs'
+      <Compile Condition="'%(Filename)%(Extension)'=='OpenApiODataAssemblyAttributes.cs'
+                       or '%(Filename)%(Extension)'=='AssemblyRefs.cs'
                        or '%(Filename)%(Extension)'=='.NETFramework,Version=v4.0.AssemblyAttributes.cs'
                        or '%(Filename)%(Extension)'=='PlatformHelper.cs'
                        or '%(Filename)%(Extension)'=='VersionConstants.cs'
@@ -73,8 +45,8 @@
   <!-- *** Generate a file with assembly attributes and hook it into the build -->
   <!-- ********************************************************************************************* -->
   <Target Name="GenerateAssemblyAttributeFile"
-          Inputs="$(MSBuildProjectFile);$(CustomBuildExtensionsPath)\Versioning.props"
-          Outputs="$(IntermediateOutputPath.TrimEnd('\'))\AssemblyAttributes$(DefaultLanguageSourceExtension)"
+          Inputs="$(MSBuildProjectFile);$(EnlistToolPath)\versioning.props"
+          Outputs="$(IntermediateOutputPath.TrimEnd('\'))\OpenApiODataAssemblyAttributes$(DefaultLanguageSourceExtension)"
           Condition="'$(ShouldGenerateAssemblyAttributeFile)' == 'true'">
 
     <PropertyGroup>
@@ -92,6 +64,7 @@ using System.Resources;
 [assembly: AssemblyVersion("%VersionFullSemantic%")]
 [assembly: SatelliteContractVersion("%VersionFull%")]
 [assembly: AssemblyMetadata("Serviceable", "True")]
+
       </GenerateAssemblyAttributeTemplateCSharp>
     </PropertyGroup>
 
@@ -100,7 +73,7 @@ using System.Resources;
     </PropertyGroup>
 
     <PropertyGroup>
-      <AssemblyAttributeOutputFile>$(IntermediateOutputPath.TrimEnd("\\"))\AssemblyAttributes$(DefaultLanguageSourceExtension)</AssemblyAttributeOutputFile>
+      <AssemblyAttributeOutputFile>$(IntermediateOutputPath.TrimEnd("\\"))\OpenApiODataAssemblyAttributes$(DefaultLanguageSourceExtension)</AssemblyAttributeOutputFile>
       <AssemblyNameFull>$(AssemblyName)$(TargetExt)</AssemblyNameFull>
       <AssemblyAttributeFileContentsTransformed>$([System.String]::Copy('$(GenerateAssemblyAttributeTemplate)').Replace("%25AssemblyNameFull%25",$(AssemblyNameFull)).Replace("%25VersionFull%25",$(VersionFull)).Replace("%25VersionFullSemantic%25",$(VersionFullSemantic)))</AssemblyAttributeFileContentsTransformed>
     </PropertyGroup>
@@ -118,54 +91,6 @@ using System.Resources;
     
     <ItemGroup>
       <Compile Include="$(AssemblyAttributeOutputFile)" />
-    </ItemGroup>
-
-  </Target>
-
-  <!-- ********************************************************************************************* -->
-
-  <!-- ********************************************************************************************* -->
-  <!-- *** Generate a file with version constants and hook it into the build -->
-  <!-- ********************************************************************************************* -->
-  <Target Name="GenerateVersionConstantsFile"
-          Inputs="$(MSBuildProjectFile);$(EnlistToolPath)\Versioning.props"
-          Outputs="$(IntermediateOutputPath.TrimEnd('\'))\VersionConstants$(DefaultLanguageSourceExtension)"
-          Condition="'$(ShouldGenerateVersionConstantsFile)' == 'true'">
-
-    <PropertyGroup>
-      <!--Add more templates if we generate VersionConstants files for other project types.-->
-      <GenerateVersionConstantsTemplate>UNDEFINED_GenerateVersionConstantsTemplate</GenerateVersionConstantsTemplate>
-      <GenerateVersionConstantsTemplateCSharp>
-internal static class VersionConstants
-{
-    internal const string ReleaseVersion = "%VersionFullSemantic%";
-    internal const string AssemblyVersion = "%VersionFullSemantic%";
-}
-      </GenerateVersionConstantsTemplateCSharp>
-	</PropertyGroup>
-	
-    <PropertyGroup>
-      <GenerateVersionConstantsTemplate>$(GenerateVersionConstantsTemplateCSharp)</GenerateVersionConstantsTemplate>
-    </PropertyGroup>
-
-    <PropertyGroup>
-      <VersionConstantsOutputFile>$(IntermediateOutputPath.TrimEnd("\\"))\VersionConstants$(DefaultLanguageSourceExtension)</VersionConstantsOutputFile>
-      <VersionConstantsFileContentsTransformed>$([System.String]::Copy('$(GenerateVersionConstantsTemplate)').Replace("%25VersionFull%25",$(VersionFull)).Replace("%25VersionFullSemantic%25",$(VersionFullSemantic)))</VersionConstantsFileContentsTransformed>
-    </PropertyGroup>
-
-    <Message Text="GenerateVersionConstantsFile: Generating $(VersionConstantsOutputFile)" Importance="high" Condition="'$(DebugMessages)' == 'true'"/>
-
-    <MakeDir Directories="$(IntermediateOutputPath)" Condition="!Exists($(IntermediateOutputPath))"/>
-    
-    <WriteLinesToFile
-        File="$(VersionConstantsOutputFile)"
-        Lines="$(VersionConstantsFileContentsTransformed)"
-        Overwrite="true"
-        Encoding="Unicode" 
-        ContinueOnError="false"/>
-    
-    <ItemGroup>
-      <Compile Include="$(VersionConstantsOutputFile)" />
     </ItemGroup>
 
   </Target>

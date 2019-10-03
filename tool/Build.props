@@ -7,15 +7,23 @@
 <Project>
 
   <PropertyGroup Label="Define Basic Properties">
+  
+    <!-- Make sure any change to this file invoke a rebuild -->
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-	<EnlistmentRoot Condition=" '$(EnlistmentRoot)'=='' ">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), build.root))</EnlistmentRoot>
-    <EnlistmentRoot>$(EnlistmentRoot.TrimEnd({'\\'}))</EnlistmentRoot>
-	<EnlistToolPath Condition=" '$(EnlistToolPath)'=='' ">$(EnlistmentRoot)\tool</EnlistToolPath>
+    
+    <!-- Setup the EnlistmentRoot, without the last '\' -->
+    <EnlistmentRoot Condition="'$(EnlistmentRoot)'==''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), build.root))</EnlistmentRoot>
+
+    <EnlistToolPath Condition=" '$(EnlistToolPath)'=='' ">$(EnlistmentRoot)\tool</EnlistToolPath>
+    
   </PropertyGroup>
+
+  <Import Project=".\versioning.props" />
 
   <PropertyGroup>
     <!-- Before/After injection Settings -->
     <CustomBeforeMicrosoftCommonTargets>$(MSBuildThisFileDirectory)Before.Common.targets</CustomBeforeMicrosoftCommonTargets>
+    
     <CustomAfterMicrosoftCommonTargets>$(MSBuildThisFileDirectory)After.Common.targets</CustomAfterMicrosoftCommonTargets>
   </PropertyGroup>
 

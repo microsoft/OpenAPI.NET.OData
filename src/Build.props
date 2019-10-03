@@ -6,11 +6,22 @@
 <Project>
 
   <PropertyGroup>
-    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>    
-    <EnlistmentRoot>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), build.root))\</EnlistmentRoot>
+  
+    <!-- Make sure any change to this file invoke a rebuild -->
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+
+    <!-- Setup the EnlistmentRoot, without the last '\' -->
+    <EnlistmentRoot Condition="'$(EnlistmentRoot)' == ''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), build.root))</EnlistmentRoot>
+
+    <!--Including pdb file to support SourceLink, if enable it, add IncludeSymbolsInPackage in your project and set its value as true-->
+    <AllowedOutputExtensionsInPackageBuildOutputFolder Condition="'$(IncludeSymbolsInPackage)' == 'true'">$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
+    <ShouldGenerateAssemblyAttributeFile Condition="'$(ShouldGenerateAssemblyAttributeFile)' == ''">true</ShouldGenerateAssemblyAttributeFile>
+	
+	<!-- Disable GenerateAssemblyInfo to use the auto-generated AssemblyInfo.cs -->
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <Import Project="..\Build.props" />
-  <Import Project="$(EnlistToolPath)\versioning.props" />
    
 </Project>

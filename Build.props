@@ -7,15 +7,14 @@
 <Project>
 
   <PropertyGroup>
+  
+    <!-- Make sure any change to this file invoke a rebuild -->
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-	<EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd('\'))</EnlistmentRoot>
+    
+    <!-- Setup the EnlistmentRoot -->
+    <EnlistmentRoot Condition="'$(EnlistmentRoot)' == ''">$(MSBuildThisFileDirectory.TrimEnd('\'))</EnlistmentRoot>
   </PropertyGroup>
 
   <Import Project="$(EnlistmentRoot)\tool\Build.props" />
-
-  <PropertyGroup>
-    <!--OData has some project files with the same name that are targeted for different framework platforms. Isolate their intermediate output folders-->
-    <IntermediateOutputPath Condition="$(TargetFrameworkFolderName) != ''">$(IntermediateOutputPath.TrimEnd('\'))\$(TargetFrameworkFolderName)</IntermediateOutputPath>
-  </PropertyGroup>
 
 </Project>

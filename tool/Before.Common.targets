@@ -8,9 +8,13 @@
 
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    
     <VersionRunBeforeTargets>$(VersionRunBeforeTargets);CoreCompile</VersionRunBeforeTargets>
+    
     <VersionOutputPath>$(EnlistmentRoot)\src\AssemblyInfo</VersionOutputPath>
+    
     <AssemblyInfoCommonFile Condition="'$(AssemblyInfoCommonFile)'==''">AssemblyInfoCommon$(DefaultLanguageSourceExtension)</AssemblyInfoCommonFile>
+    
   </PropertyGroup>
 
   <ItemGroup>

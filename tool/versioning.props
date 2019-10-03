@@ -1,7 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<!--
 
-  <!-- Set the version number: major, minor, build and release (i.e. alpha, beta or blank for RTM)-->
+  This file defines the version information.
+  
+-->
+<Project>
+
+  <!-- Set the version number:
+     major,
+ 	 minor,
+	 build,
+	 release (i.e. alpha, beta or blank for RTM)
+  -->
   <PropertyGroup>
     <VersionMajor Condition="'$(VersionMajor)' == ''">1</VersionMajor>
     <VersionMinor Condition="'$(VersionMinor)' == ''">0</VersionMinor>
@@ -20,8 +29,11 @@
     overflows the Int16. The system convert below will throw errors when this happens.
   -->
   <PropertyGroup>
-    <VersionStartYear Condition="'$(VersionStartYear)' == ''">2017</VersionStartYear>
+    <VersionStartYear Condition="'$(VersionStartYear)' == ''">2019</VersionStartYear>
+	
+	<!--  { Now.Year - 2019 + 1}{MM}{DD} -->
     <VersionDateCode>$([System.Convert]::ToInt16('$([MSBuild]::Add(1, $([MSBuild]::Subtract($([System.DateTime]::Now.Year), $(VersionStartYear)))))$([System.DateTime]::Now.ToString("MMdd"))'))</VersionDateCode>
+	
     <VersionRevision Condition="'$(VersionRevision)' == '' OR '$(VersionRevision)' == '0'">$([System.Convert]::ToString($(VersionDateCode)))</VersionRevision>
   </PropertyGroup>
 
