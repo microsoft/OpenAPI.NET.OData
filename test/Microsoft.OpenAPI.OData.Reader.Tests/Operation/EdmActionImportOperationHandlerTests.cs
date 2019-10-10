@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("OperationImport.MyAction", operation.OperationId);
+                Assert.Equal("ActionImport.MyAction", operation.OperationId);
             }
             else
             {

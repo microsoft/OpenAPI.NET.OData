@@ -357,7 +357,7 @@ paths:
       tags:
         - Airports
       summary: Invoke functionImport GetNearestAirport
-      operationId: OperationImport-GetNearestAirport
+      operationId: FunctionImport.GetNearestAirport
       produces:
         - application/json
       parameters:
@@ -382,7 +382,7 @@ paths:
       tags:
         - People
       summary: Invoke functionImport GetPersonWithMostFriends
-      operationId: OperationImport-GetPersonWithMostFriends
+      operationId: FunctionImport.GetPersonWithMostFriends
       produces:
         - application/json
       responses:
@@ -2452,7 +2452,7 @@ paths:
       tags:
         - ResetDataSource
       summary: Invoke actionImport ResetDataSource
-      operationId: OperationImport.ResetDataSource
+      operationId: ActionImport.ResetDataSource
       responses:
         '204':
           description: Success

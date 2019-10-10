@@ -589,7 +589,7 @@
           "Airports"
         ],
         "summary": "Invoke functionImport GetNearestAirport",
-        "operationId": "OperationImport-GetNearestAirport",
+        "operationId": "FunctionImport.GetNearestAirport",
         "parameters": [
           {
             "name": "lat",
@@ -667,7 +667,7 @@
           "People"
         ],
         "summary": "Invoke functionImport GetPersonWithMostFriends",
-        "operationId": "OperationImport-GetPersonWithMostFriends",
+        "operationId": "FunctionImport.GetPersonWithMostFriends",
         "responses": {
           "200": {
             "description": "Success",
@@ -3798,7 +3798,7 @@
           "ResetDataSource"
         ],
         "summary": "Invoke actionImport ResetDataSource",
-        "operationId": "OperationImport.ResetDataSource",
+        "operationId": "ActionImport.ResetDataSource",
         "responses": {
           "204": {
             "description": "Success"

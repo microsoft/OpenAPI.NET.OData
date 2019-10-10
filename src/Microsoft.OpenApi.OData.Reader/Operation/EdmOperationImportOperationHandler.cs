@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 if (EdmOperationImport.IsActionImport())
                 {
-                    operation.OperationId = "OperationImport." + EdmOperationImport.Name;
+                    operation.OperationId = "ActionImport." + EdmOperationImport.Name;
                 }
                 else
                 {
@@ -53,11 +53,11 @@ namespace Microsoft.OpenApi.OData.Operation
                     if (Context.Model.IsOperationImportOverload(EdmOperationImport))
                     {
                         string hash = pathItemName.GetHashSHA256();
-                        operation.OperationId = "OperationImport-" + EdmOperationImport.Name + "-" + hash.Substring(0, 4);
+                        operation.OperationId = "FunctionImport." + EdmOperationImport.Name + "-" + hash.Substring(0, 4);
                     }
                     else
                     {
-                        operation.OperationId = "OperationImport-" + EdmOperationImport.Name;
+                        operation.OperationId = "FunctionImport." + EdmOperationImport.Name;
                     }
                 }
             }

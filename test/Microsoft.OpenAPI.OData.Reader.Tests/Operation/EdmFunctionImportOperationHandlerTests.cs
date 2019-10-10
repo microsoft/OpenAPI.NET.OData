@@ -82,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("OperationImport-MyFunction", operation.OperationId);
+                Assert.Equal("FunctionImport.MyFunction", operation.OperationId);
             }
             else
             {
@@ -133,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("OperationImport-MyFunction-3e3f", operation.OperationId);
+                Assert.Equal("FunctionImport.MyFunction-3e3f", operation.OperationId);
             }
             else
             {
