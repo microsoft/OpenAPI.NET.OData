@@ -178,7 +178,13 @@ namespace Microsoft.OpenApi.OData.Edm
                 ).Count() > 1;
         }
 
-        public static bool IsOperationOverload(this IEdmModel model, IEdmOperationImport operationImport)
+        /// <summary>
+        /// Check whether the operaiton import is overload in the model.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="operation">The test operations.</param>
+        /// <returns>True/false.</returns>
+        public static bool IsOperationImportOverload(this IEdmModel model, IEdmOperationImport operationImport)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(operationImport, nameof(operationImport));

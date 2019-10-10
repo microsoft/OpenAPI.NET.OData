@@ -51,8 +51,8 @@ $SNx64 = $PROGRAMFILESX86 + "\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
 $FXCOP = $FXCOPDIR + "\FxCopCmd.exe"
 $BUILDLOG = $LOGDIR + "\msbuild.log"
 $TESTLOG = $LOGDIR + "\mstest.log"
-$TESTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\Test\net46"
-$PRODUCTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\net46"
+$TESTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\Test\net461"
+$PRODUCTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\net461"
 $NUGETEXE = $PROGRAMFILESX86 + "\Microsoft Visual Studio\2017\Enterprise\MSBuild\ReadyRoll\OctoPack\build\NuGet.exe"
 $NUGETPACK = $ENLISTMENT_ROOT + "\packages"
 

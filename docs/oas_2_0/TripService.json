@@ -534,7 +534,7 @@
           "Airports"
         ],
         "summary": "Invoke functionImport GetNearestAirport",
-        "operationId": "OperationImport.GetNearestAirport.fc9c4516cf76a7e9b89d87b1",
+        "operationId": "OperationImport-GetNearestAirport",
         "produces": [
           "application/json"
         ],
@@ -570,7 +570,7 @@
           "People"
         ],
         "summary": "Invoke functionImport GetPersonWithMostFriends",
-        "operationId": "OperationImport.GetPersonWithMostFriends.14b2097dbee53f4fb8fb308d",
+        "operationId": "OperationImport-GetPersonWithMostFriends",
         "produces": [
           "application/json"
         ],
@@ -951,7 +951,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "Me.GetFavoriteAirline.cf64",
+        "operationId": "Me.GetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -973,7 +973,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "Me.GetFriendsTrips.16f3",
+        "operationId": "Me.GetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -1049,7 +1049,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "Me.UpdatePersonLastName.01a4",
+        "operationId": "Me.UpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -1262,7 +1262,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Trips.GetInvolvedPeople.0bed",
+        "operationId": "Me.Trips.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -1890,7 +1890,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.GetFavoriteAirline.cf64",
+        "operationId": "NewComePeople.GetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -1922,7 +1922,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.GetFriendsTrips.16f3",
+        "operationId": "NewComePeople.GetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -2014,7 +2014,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.UpdatePersonLastName.01a4",
+        "operationId": "NewComePeople.UpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -2251,7 +2251,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Trips.GetInvolvedPeople.0bed",
+        "operationId": "NewComePeople.Trips.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -2887,7 +2887,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.GetFavoriteAirline.cf64",
+        "operationId": "People.GetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -2919,7 +2919,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.GetFriendsTrips.16f3",
+        "operationId": "People.GetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -3011,7 +3011,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.UpdatePersonLastName.01a4",
+        "operationId": "People.UpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -3248,7 +3248,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Trips.GetInvolvedPeople.0bed",
+        "operationId": "People.Trips.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],

@@ -70,8 +70,16 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     ODataOperationSegment operationSegment = Path.LastSegment as ODataOperationSegment;
                     string pathItemName = operationSegment.GetPathItemName(Context.Settings, new HashSet<string>());
-                    string hash = pathItemName.GetHashSHA256();
-                    operation.OperationId = operationId + "." + hash.Substring(0, 4);
+
+                    if (Context.Model.IsOperationOverload(operationSegment.Operation))
+                    {
+                        string hash = pathItemName.GetHashSHA256();
+                        operation.OperationId = operationId + "-" + hash.Substring(0, 4);
+                    }
+                    else
+                    {
+                        operation.OperationId = operationId;
+                    }
                 }
             }
 

@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.MyFunction.373f", operation.OperationId);
+                Assert.Equal("Customers.MyFunction", operation.OperationId);
             }
             else
             {
@@ -135,7 +135,58 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.NS.VipCustomer.MyFunction.373f", operation.OperationId);
+                Assert.Equal("Customers.NS.VipCustomer.MyFunction", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForOverloadEdmFunctionReturnsCorrectOperationId(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+
+            function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false), true, null, false);
+            function.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            function.AddParameter("param2", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function);
+
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmEntitySet customers = new EdmEntitySet(container, "Customers", customer);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableOperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataKeySegment(customer),
+                new ODataOperationSegment(function));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Customers.MyFunction-28ae", operation.OperationId);
             }
             else
             {

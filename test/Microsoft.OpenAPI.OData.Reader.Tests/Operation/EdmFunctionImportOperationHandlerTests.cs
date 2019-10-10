@@ -63,6 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             model.AddElement(function);
             EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
             EdmFunctionImport functionImport = new EdmFunctionImport(container, "MyFunction", function);
+            container.AddElement(functionImport);
             model.AddElement(container);
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
@@ -81,7 +82,58 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("OperationImport.MyFunction.790300f48b60d73292a9c056", operation.OperationId);
+                Assert.Equal("OperationImport-MyFunction", operation.OperationId);
+            }
+            else
+            {
+                Assert.Null(operation.OperationId);
+            }
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationIdWithSHA5ForOverloadEdmFunctionImport(bool enableOperationId)
+        {
+            // Arrange
+            EdmModel model = new EdmModel();
+            EdmEntityType customer = new EdmEntityType("NS", "Customer");
+            customer.AddKeys(customer.AddStructuralProperty("ID", EdmPrimitiveTypeKind.Int32));
+            model.AddElement(customer);
+            EdmFunction function1 = new EdmFunction("NS", "MyFunction1", EdmCoreModel.Instance.GetString(false), false, null, false);
+            function1.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function1.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function1);
+
+            EdmFunction function2 = new EdmFunction("NS", "MyFunction1", EdmCoreModel.Instance.GetString(false), false, null, false);
+            function2.AddParameter("entity", new EdmEntityTypeReference(customer, false));
+            function2.AddParameter("param", EdmCoreModel.Instance.GetString(false));
+            function2.AddParameter("otherParam", EdmCoreModel.Instance.GetString(false));
+            model.AddElement(function2);
+            EdmEntityContainer container = new EdmEntityContainer("NS", "Default");
+            EdmFunctionImport functionImport1 = new EdmFunctionImport(container, "MyFunction", function1);
+            EdmFunctionImport functionImport2 = new EdmFunctionImport(container, "MyFunction", function2);
+            container.AddElement(functionImport1);
+            container.AddElement(functionImport2);
+            model.AddElement(container);
+
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableOperationId = enableOperationId
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            ODataPath path = new ODataPath(new ODataOperationImportSegment(functionImport1));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+
+            if (enableOperationId)
+            {
+                Assert.Equal("OperationImport-MyFunction-3e3f", operation.OperationId);
             }
             else
             {
