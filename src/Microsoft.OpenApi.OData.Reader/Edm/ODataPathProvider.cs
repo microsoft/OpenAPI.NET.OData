@@ -294,24 +294,43 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     continue;
                 }
-                IEdmEntityType bindingEntityType = bindingType.AsEntity().EntityDefinition();
+                var firstEntityType = bindingType.AsEntity().EntityDefinition();
+                var allEntitiesForOperation= new List<IEdmEntityType>(){ firstEntityType };
 
-                // 1. Search for corresponding navigation source path
-                if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType))
-                {
-                    continue;
-                }
+                System.Func<IEdmNavigationSource, bool> filter = (z) =>
+                    z.EntityType() != firstEntityType &&
+                    z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+                //Search all EntitySets
+                allEntitiesForOperation.AddRange(
+                    _model.EntityContainer.EntitySets()
+                            .Where(filter).Select(x => x.EntityType())
+                );
+                //Search all singletons
+                allEntitiesForOperation.AddRange(
+                    _model.EntityContainer.Singletons()
+                            .Where(filter).Select(x => x.EntityType())
+                );
 
-                // 2. Search for generated navigation property
-                if (AppendBoundOperationOnNavigationPropertyPath(edmOperation, isCollection, bindingEntityType))
+                foreach (var bindingEntityType in allEntitiesForOperation)
                 {
-                    continue;
-                }
 
-                // 3. Search for derived
-                if (AppendBoundOperationOnDerived(edmOperation, isCollection, bindingEntityType))
-                {
-                    continue;
+                    // 1. Search for corresponding navigation source path
+                    if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType))
+                    {
+                        continue;
+                    }
+
+                    // 2. Search for generated navigation property
+                    if (AppendBoundOperationOnNavigationPropertyPath(edmOperation, isCollection, bindingEntityType))
+                    {
+                        continue;
+                    }
+
+                    // 3. Search for derived
+                    if (AppendBoundOperationOnDerived(edmOperation, isCollection, bindingEntityType))
+                    {
+                        continue;
+                    }
                 }
             }
         }

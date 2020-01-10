@@ -52,6 +52,42 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
         }
 
+        [Fact]
+        public void CreateOperationForEdmActionReturnsCorrectOperationHierarhicalClass()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.ContractServiceModel;
+            ODataContext context = new ODataContext(model);
+            const string entitySetName = "Accounts";
+            const string actionName = "AttachmentsAdd";
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet(entitySetName);
+            Assert.NotNull(entitySet);
+
+            IEdmAction action = model.SchemaElements.OfType<IEdmAction>().First(f => f.Name == actionName);
+            Assert.NotNull(action);
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataOperationSegment(action));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal($"Invoke action {actionName}", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal($"{entitySetName}.Actions", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Equal(new string[] { "id" }, operation.Parameters.Select(p => p.Name));
+
+            Assert.NotNull(operation.RequestBody);
+            Assert.Equal("Action parameters", operation.RequestBody.Description);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]

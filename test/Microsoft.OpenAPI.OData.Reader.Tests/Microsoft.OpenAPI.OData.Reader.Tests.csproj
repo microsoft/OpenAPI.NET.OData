@@ -57,6 +57,7 @@
     <EmbeddedResource Include="Resources\TripService.OpenApi.V2.yaml" />
     <EmbeddedResource Include="Resources\YamlWriterTest.yaml.txt" />
     <EmbeddedResource Include="Resources\JsonWriterTest.json.txt" />
+    <EmbeddedResource Include="Resources\Contract.OData.xml" />
   </ItemGroup>
 
   <ItemGroup>
