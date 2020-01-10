@@ -33,6 +33,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public static IEdmModel CompositeKeyModel { get; }
 
         public static IEdmModel TripServiceModel { get; }
+        public static IEdmModel ContractServiceModel { get; }
 
         public static IEdmModel GraphBetaModel { get; }
 
@@ -42,6 +43,7 @@ namespace Microsoft.OpenApi.OData.Tests
             BasicEdmModel = CreateEdmModel();
             CompositeKeyModel = CreateCompositeKeyModel();
             TripServiceModel = LoadEdmModel("TripService.OData.xml");
+            ContractServiceModel = LoadEdmModel("Contract.OData.xml");
             GraphBetaModel = LoadEdmModel("Graph.Beta.OData.xml");
             MultipleSchemasEdmModel = LoadEdmModel("Multiple.Schema.OData.xml");
         }
