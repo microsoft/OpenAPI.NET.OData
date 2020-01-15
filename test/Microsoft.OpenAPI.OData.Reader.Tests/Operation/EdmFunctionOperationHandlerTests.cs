@@ -51,6 +51,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(2, operation.Responses.Count);
             Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
         }
+
         [Fact]
         public void CreateOperationForEdmFunctionReturnsCorrectOperationHierarhicalClass()
         {

@@ -294,26 +294,30 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     continue;
                 }
+
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
                 var allEntitiesForOperation= new List<IEdmEntityType>(){ firstEntityType };
 
                 System.Func<IEdmNavigationSource, bool> filter = (z) =>
                     z.EntityType() != firstEntityType &&
                     z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+
                 //Search all EntitySets
                 allEntitiesForOperation.AddRange(
                     _model.EntityContainer.EntitySets()
                             .Where(filter).Select(x => x.EntityType())
                 );
+
                 //Search all singletons
                 allEntitiesForOperation.AddRange(
                     _model.EntityContainer.Singletons()
                             .Where(filter).Select(x => x.EntityType())
                 );
 
+                allEntitiesForOperation = allEntitiesForOperation.Distinct().ToList();
+
                 foreach (var bindingEntityType in allEntitiesForOperation)
                 {
-
                     // 1. Search for corresponding navigation source path
                     if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType))
                     {

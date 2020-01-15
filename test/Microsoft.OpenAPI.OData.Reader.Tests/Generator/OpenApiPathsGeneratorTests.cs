@@ -89,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/Accounts", paths.Keys);
             Assert.Contains("/Accounts/{id}", paths.Keys);
             Assert.Contains("/Accounts/{id}/Attachments()", paths.Keys);
-            Assert.Contains("/Accounts/{id}/AttachmentsAdd", paths.Keys);            
+            Assert.Contains("/Accounts/{id}/AttachmentsAdd", paths.Keys);
         }
     }
 }
