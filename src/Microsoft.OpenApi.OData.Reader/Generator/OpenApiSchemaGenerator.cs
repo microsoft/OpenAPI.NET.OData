@@ -172,6 +172,7 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (var property in structuredType.DeclaredNavigationProperties())
             {
                 OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type);
+                propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
                 properties.Add(property.Name, propertySchema);
             }
 
