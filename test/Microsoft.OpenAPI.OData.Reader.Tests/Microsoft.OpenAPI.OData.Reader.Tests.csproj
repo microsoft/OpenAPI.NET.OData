@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Microsoft.OpenApi.OData.Reader.Tests</AssemblyName>
     <RootNamespace>Microsoft.OpenApi.OData.Reader.Tests</RootNamespace>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\tool\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
