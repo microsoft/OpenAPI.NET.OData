@@ -1,5 +1,5 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="WebStack.versions.settings.targets" />
+  <Import Project="versioning.props" />
   <PropertyGroup>
     <VersionNugetNightlyBuild>$([System.DateTime]::Now.ToString("yyyyMMddHHmm"))</VersionNugetNightlyBuild>
   </PropertyGroup>

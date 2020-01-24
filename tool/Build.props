@@ -14,7 +14,7 @@
     <!-- Setup the EnlistmentRoot, without the last '\' -->
     <EnlistmentRoot Condition="'$(EnlistmentRoot)'==''">$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), build.root))</EnlistmentRoot>
 
-    <EnlistToolPath Condition=" '$(EnlistToolPath)'=='' ">$(EnlistmentRoot)\tool</EnlistToolPath>
+    <EnlistToolPath Condition="'$(EnlistToolPath)'==''">$(EnlistmentRoot)\tool</EnlistToolPath>
     
   </PropertyGroup>
 

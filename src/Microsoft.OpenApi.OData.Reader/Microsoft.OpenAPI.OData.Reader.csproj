@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
-    <TargetFrameworks>net461; netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net472; netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">latest</LangVersion>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">latest</LangVersion>
