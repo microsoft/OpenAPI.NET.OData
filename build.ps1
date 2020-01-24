@@ -131,20 +131,17 @@ Function GetDlls
 
 Function SkipStrongName
 {
-    $SnLog = $LOGDIR + "\SkipStrongName.log"
-    Out-File $SnLog
-
     Write-Host 'Skip strong name validations for Microsoft.OpenApi.OData assemblies...'
 
     $dlls = GetDlls
     ForEach ($dll in $dlls)
     {
-        & $SN /Vr $dll | Out-File $SnLog -Append
+        & $SN /Vr $dll
     }
 
     ForEach ($dll in $dlls)
     {
-        & $SNx64 /Vr $dll | Out-File $SnLog -Append
+        & $SNx64 /Vr $dll
     }
 
     Write-Host "SkipStrongName Done" -ForegroundColor $Success
