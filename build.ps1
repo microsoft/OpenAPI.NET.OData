@@ -1,3 +1,8 @@
+# reference to System.*
+$SysDirectory = [System.IO.Directory]
+$SysPath = [System.IO.Path]
+$SysFile = [System.IO.File]
+
 # Default to Debug
 $Configuration = 'Debug'
 
@@ -30,41 +35,82 @@ else
     exit
 }
 
-$Build = 'build'
-if ($args -contains 'rebuild')
-{
-    $Build = 'rebuild'
-}
-
 $PROGRAMFILESX86 = [Environment]::GetFolderPath("ProgramFilesX86")
 $env:ENLISTMENT_ROOT = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $ENLISTMENT_ROOT = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$LOGDIR = $ENLISTMENT_ROOT + "\bin"
 
-# Default to use Visual Studio 2017
-$VS15MSBUILD=$PROGRAMFILESX86 + "\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin\MSBuild.exe"
-$VSTEST = $PROGRAMFILESX86 + "\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe"
-$SN = $PROGRAMFILESX86 + "\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\sn.exe"
-$SNx64 = $PROGRAMFILESX86 + "\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\x64\sn.exe"
+
+
+# Figure out the directory and path for SN.exe
+$SN = $null
+$SNx64 = $null
+$SNVersions = @()
+ForEach ($directory in $SysDirectory::EnumerateDirectories($PROGRAMFILESX86 + "\Microsoft SDKs\Windows", "*A"))
+{
+    # remove the first char 'v'
+    $directoryName = $SysPath::GetFileName($directory).substring(1)
+
+    # remove the last char 'A'
+    $directoryName = $directoryName.substring(0, $directoryName.LastIndexOf('A'))
+
+    # parse to double "10.0"
+    $versionNo = [System.Double]::Parse($directoryName)
+
+    $fileobject = $null
+    $fileobject = New-Object System.Object
+    $fileobject | Add-Member -type NoteProperty -Name version -Value $versionNo
+    $fileobject | Add-Member -type NoteProperty -Name directory -Value $directory
+
+    $SNVersions += $fileobject
+}
+
+# using the latest version
+$SNVersions = $SNVersions | Sort-Object -Property version -Descending
+
+ForEach ($ver in $SNVersions)
+{
+    # only care about the folder has "bin" subfolder
+    $snBinDirectory = $ver.directory + "\bin"
+    if(!$SysDirectory::Exists($snBinDirectory))
+    {
+        continue
+    }
+
+    if($SysFile::Exists($snBinDirectory + "\sn.exe") -and $SysFile::Exists($snBinDirectory + "\x64\sn.exe"))
+    {
+        $SN = $snBinDirectory + "\sn.exe"
+        $SNx64 = $snBinDirectory + "\x64\sn.exe"
+        break
+    }
+    else
+    {
+        ForEach ($netFxDirectory in $SysDirectory::EnumerateDirectories($snBinDirectory, "NETFX * Tools") | Sort -Descending)
+        {
+            # currently, sorting descending for the NETFX version looks good.
+            if($SysFile::Exists($netFxDirectory + "\sn.exe") -and $SysFile::Exists($netFxDirectory + "\x64\sn.exe"))
+            {
+                $SN = $netFxDirectory + "\sn.exe"
+                $SNx64 = $netFxDirectory + "\x64\sn.exe"
+                break
+            }
+        }
+    }
+    
+    if ($SN -ne $null -and $SNx64 -ne $null)
+    {
+        break
+    }
+}
 
 # Other variables
-$FXCOP = $FXCOPDIR + "\FxCopCmd.exe"
-$BUILDLOG = $LOGDIR + "\msbuild.log"
-$TESTLOG = $LOGDIR + "\mstest.log"
-$TESTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\Test\net461"
-$PRODUCTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\net461"
-$NUGETEXE = $PROGRAMFILESX86 + "\Microsoft Visual Studio\2017\Enterprise\MSBuild\ReadyRoll\OctoPack\build\NuGet.exe"
-$NUGETPACK = $ENLISTMENT_ROOT + "\packages"
+$ProductProj = $ENLISTMENT_ROOT + "\src\Microsoft.OpenAPI.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj"
+$TESTProj = $ENLISTMENT_ROOT + "\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj"
+
+$TESTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\Test\net472"
+$PRODUCTDIR = $ENLISTMENT_ROOT + "\bin\$Configuration\net472"
 
 $ProductDlls = "Microsoft.OpenApi.OData.Reader.dll"
-
 $XUnitTestDlls = "Microsoft.OpenApi.OData.Reader.Tests.dll"
-
-$AllTestSuite = @()
-ForEach($dll in $XUnitTestDlls)
-{
-    $AllTestSuite += $TESTDIR + "\" + $dll
-}
 
 Function GetDlls
 {
@@ -137,180 +183,40 @@ Function CleanBeforeScorch
     Write-Host "Clean Done" -ForegroundColor $Success
 }
 
-# Incremental build and rebuild
-Function RunBuild ($sln)
-{
-    Write-Host "*** Building $sln ***"
-    $slnpath = $ENLISTMENT_ROOT + "\$sln"
-    $Conf = "/p:Configuration=" + "$Configuration"
-
-    # Default to VS2017
-    $MSBUILD = $VS15MSBUILD
-   
-    & $MSBUILD $slnpath /t:$Build /m /nr:false /fl "/p:Platform=Any CPU" $Conf /p:Desktop=true `
-        /flp:LogFile=$LOGDIR/msbuild.log /flp:Verbosity=Normal 1>$null 2>$null
-		
-    if($LASTEXITCODE -eq 0)
-    {
-        Write-Host "Build $sln SUCCESS" -ForegroundColor $Success
-    }
-    else
-    {
-        Write-Host "Build $sln FAILED" -ForegroundColor $Err
-        Write-Host "For more information, please open the following test result files:"
-        Write-Host "$LOGDIR\msbuild.log"
-        Cleanup
-        exit
-    }
-}
-
-Function NugetRestoreSolution
-{
-    Write-Host '**********Pull NuGet Packages*********'
-    & $NUGETEXE "restore" ($ENLISTMENT_ROOT + "\Microsoft.OpenApi.OData.sln")
-}
-
 Function BuildProcess
 {
     Write-Host '**********Start To Build The Project*********'
     
     $script:BUILD_START_TIME = Get-Date
-    if (Test-Path $BUILDLOG)
-    {
-        rm $BUILDLOG
-    }
-
-    RunBuild ('Microsoft.OpenApi.OData.sln')
-
+	
+	Write-Host "Build Product ..."
+	
+	& dotnet.exe build $ProductProj -c $Configuration
+	
+	Write-Host "Build Test ..."
+	
+	& dotnet.exe build $TESTProj -c $Configuration
+	
     Write-Host "Build Done" -ForegroundColor $Success
     $script:BUILD_END_TIME = Get-Date
-}
-
-Function TestSummary
-{
-    Write-Host 'Collecting test results ...'
-    
-    $file = Get-Content -Path $TESTLOG
-    $pass = 0
-    $skipped = 0
-    $fail = 0
-    $trxfile = New-Object -TypeName System.Collections.ArrayList
-    $failedtest1 = New-Object -TypeName System.Collections.ArrayList
-    $failedtest2 = New-Object -TypeName System.Collections.ArrayList
-    $part = 1
-    foreach ($line in $file)
-    {
-        # Consolidate logic for retrieving number of passed and skipped tests. Failed tests is separate due to the way
-        # VSTest and DotNet (for .NET Core tests) report results differently.
-        if ($line -match "^Total tests: .*") 
-        {
-            # The line is in this format:
-            # Total tests: 5735. Passed: 5735. Failed: 0. Skipped: 0.
-            # We want to extract the total passed and total skipped.
-            
-            # Extract total passed by taking the substring between "Passed: " and "."
-            # The regex first extracts the string after the hardcoded "Passed: " (i.e. "#. Failed: #. Skipped: #.")
-            # Then we tokenize by "." and retrieve the first token which is the number for passed.
-            $pattern = "Passed: (.*)"
-            $extractedNumber = [regex]::match($line, $pattern).Groups[1].Value.Split(".")[0]
-            $pass += $extractedNumber
-            
-            # Extract total failed by taking the substring between "Failed: " and "."
-            # The regex first extracts the string after the hardcoded "Failed: " (i.e. "#.")
-            # Then we tokenize by "." and retrieve the first token which is the number for skipped.
-            $pattern = "Failed: (.*)"
-            $extractedNumber = [regex]::match($line, $pattern).Groups[1].Value.Split(".")[0]
-            $fail += $extractedNumber
-			
-			# Extract total skipped by taking the substring between "Skipped: " and "."
-            # The regex first extracts the string after the hardcoded "Skipped: " (i.e. "#.")
-            # Then we tokenize by "." and retrieve the first token which is the number for skipped.
-            $pattern = "Skipped: (.*)"
-            $extractedNumber = [regex]::match($line, $pattern).Groups[1].Value.Split(".")[0]
-            $skipped += $extractedNumber
-        }        
-    }
-
-    Write-Host "Test summary:" -ForegroundColor $Success
-    Write-Host "Passed :`t$pass"  -ForegroundColor $Success
-
-    if ($skipped -ne 0)
-    {
-        Write-Host "Skipped:`t$skipped"  -ForegroundColor $Warning
-    }
-
-    $color = $Success
-    if ($fail -ne 0)
-    {
-        $color = $Err
-    }
-    Write-Host "Failed :`t$fail"  -ForegroundColor $color
-    Write-Host "----------------------"  -ForegroundColor $Success
-    Write-Host "Total :`t$($pass + $fail)"  -ForegroundColor $Success
-    if ($fail -ne 0)
-    {
-		Write-Host "Find failed test information at:" $TESTLOG -ForegroundColor $Err
-    }
-    else
-    {
-        Write-Host "Congratulation! All of the tests passed!" -ForegroundColor $Success
-    }
-}
-
-Function RunTest($title, $testdir)
-{
-    Write-Host "**********Running $title***********"
-	
-    & $VSTEST $testdir  >> $TESTLOG
-
-    if($LASTEXITCODE -ne 0)
-    {
-        Write-Host "Run $title FAILED" -ForegroundColor $Err
-    }
 }
 
 Function TestProcess
 {
     Write-Host '**********Start To Run The Test*********'
-    if (Test-Path $TESTLOG)
-    {
-        rm $TESTLOG
-    }
+
     $script:TEST_START_TIME = Get-Date
-    cd $TESTDIR
-    if ($TestType -eq 'All')
-    {
-        RunTest -title 'All Tests' -testdir $AllTestSuite
-    }
-    else
-    {
-        Write-Host 'Error : TestType' -ForegroundColor $Err
-        Cleanup
-        exit
-    }
+	
+    & dotnet test $TESTProj -c $Configuration  
 
     Write-Host "Test Done" -ForegroundColor $Success
     $script:TEST_END_TIME = Get-Date
-	TestSummary
-    cd $ENLISTMENT_ROOT
-}
-
-Function FxCopProcess
-{
-	# TODO:
 }
 
 # Main Process
-
-if (! (Test-Path $LOGDIR))
-{
-    mkdir $LOGDIR 1>$null
-}
-
 if ($TestType -eq 'EnableSkipStrongName')
 {
     CleanBeforeScorch
-    NugetRestoreSolution
     BuildProcess
     SkipStrongName
     Exit
@@ -318,18 +224,15 @@ if ($TestType -eq 'EnableSkipStrongName')
 elseif ($TestType -eq 'DisableSkipStrongName')
 {
     CleanBeforeScorch
-    NugetRestoreSolution
     BuildProcess
     DisableSkipStrongName
     Exit
 }
 
 CleanBeforeScorch
-NugetRestoreSolution
 BuildProcess
 SkipStrongName
 TestProcess
-FxCopProcess
 Cleanup
 
 $buildTime = New-TimeSpan $script:BUILD_START_TIME -end $script:BUILD_END_TIME
