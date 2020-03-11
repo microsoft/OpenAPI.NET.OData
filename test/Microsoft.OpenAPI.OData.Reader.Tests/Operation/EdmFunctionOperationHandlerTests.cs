@@ -52,6 +52,42 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
         }
 
+        [Fact]
+        public void CreateOperationForEdmFunctionReturnsCorrectOperationHierarhicalClass()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.ContractServiceModel;
+            ODataContext context = new ODataContext(model);
+            const string entitySetName = "Accounts";
+            const string functionName = "Attachments";
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet(entitySetName);
+            Assert.NotNull(entitySet);
+
+            IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == functionName);
+            Assert.NotNull(function);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataOperationSegment(function));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            Assert.NotNull(operation);
+            Assert.Equal($"Invoke function {functionName}", operation.Summary);
+            Assert.NotNull(operation.Tags);
+            var tag = Assert.Single(operation.Tags);
+            Assert.Equal($"{entitySetName}.Functions", tag.Name);
+
+            Assert.NotNull(operation.Parameters);
+            Assert.Equal(1, operation.Parameters.Count);
+            Assert.Equal(new string[] { "id" }, operation.Parameters.Select(p => p.Name));
+
+            Assert.Null(operation.RequestBody);
+
+            Assert.Equal(2, operation.Responses.Count);
+            Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        }
+
         [Theory]
         [InlineData(true)]
         [InlineData(false)]

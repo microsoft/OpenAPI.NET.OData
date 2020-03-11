@@ -2050,7 +2050,7 @@
                 <Property Name="businessPhones" Type="Collection(Edm.String)" Nullable="false" Unicode="false" />
                 <Property Name="city" Type="Edm.String" Unicode="false" />
                 <Property Name="companyName" Type="Edm.String" Unicode="false" />
-                <Property Name="country" Type="Edm.String" Unicode="false" />
+                <Property Name="countryOrRegion" Type="Edm.String" Unicode="false" />
                 <Property Name="department" Type="Edm.String" Unicode="false" />
                 <Property Name="deviceKeys" Type="Collection(microsoft.graph.deviceKey)" Nullable="false" />
                 <Property Name="displayName" Type="Edm.String" Unicode="false" />
@@ -2724,7 +2724,7 @@
                 <Property Name="assignedPlans" Type="Collection(microsoft.graph.assignedPlan)" Nullable="false" />
                 <Property Name="businessPhones" Type="Collection(Edm.String)" Nullable="false" Unicode="false" />
                 <Property Name="city" Type="Edm.String" Unicode="false" />
-                <Property Name="country" Type="Edm.String" Unicode="false" />
+                <Property Name="countryOrRegion" Type="Edm.String" Unicode="false" />
                 <Property Name="countryLetterCode" Type="Edm.String" Unicode="false" />
                 <Property Name="displayName" Type="Edm.String" Unicode="false" />
                 <Property Name="isMultipleDataLocationsForServicesEnabled" Type="Edm.Boolean" />
@@ -2918,7 +2918,7 @@
                 <Property Name="businessPhones" Type="Collection(Edm.String)" Nullable="false" Unicode="false" />
                 <Property Name="city" Type="Edm.String" Unicode="false" />
                 <Property Name="companyName" Type="Edm.String" Unicode="false" />
-                <Property Name="country" Type="Edm.String" Unicode="false" />
+                <Property Name="countryOrRegion" Type="Edm.String" Unicode="false" />
                 <Property Name="department" Type="Edm.String" Unicode="false" />
                 <Property Name="displayName" Type="Edm.String" Unicode="false" />
                 <Property Name="givenName" Type="Edm.String" Unicode="false" />
@@ -20381,22 +20381,22 @@
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block auto fill." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlocked">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from using the Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from using the Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeCookiePolicy">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates which cookies to block in the Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates which cookies to block in the Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockDeveloperTools">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block developer tools in the Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block developer tools in the Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockSendingDoNotTrackHeader">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from sending the do not track header." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockExtensions">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block extensions in the Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block extensions in the Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockInPrivateBrowsing">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block InPrivate browsing on corporate networks, in the Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to block InPrivate browsing on corporate networks, in the Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockJavaScript">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from using JavaScript." />
@@ -20414,7 +20414,7 @@
                 <Annotation Term="Org.OData.Core.V1.Description" String="Clear browsing data on exiting Microsoft Edge." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeAllowStartPagesModification">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Allow users to change Start pages on Edge. Use the EdgeHomepageUrls to specify the Start pages that the user would see by default when they open Edge." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Allow users to change Start pages on Microsoft Edge. Use the EdgeHomepageUrls to specify the Start pages that the user would see by default when they open Microsoft Edge." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeDisableFirstRunPage">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Block the Microsoft web page that opens on the first use of Microsoft Edge. This policy allows enterprises, like those enrolled in zero emissions configurations, to block this page." />
@@ -20633,7 +20633,7 @@
                 <Annotation Term="Org.OData.Core.V1.Description" String="Enabling this policy hides the user tile from appearing in the start menu." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/startMenuLayoutEdgeAssetsXml">
-                <Annotation Term="Org.OData.Core.V1.Description" String="This policy setting allows you to import Edge assets to be used with startMenuLayoutXml policy. Start layout can contain secondary tile from Edge app which looks for Edge local asset file. Edge local asset would not exist and cause Edge secondary tile to appear empty in this case. This policy only gets applied when startMenuLayoutXml policy is modified. The value should be a UTF-8 Base64 encoded byte array." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="This policy setting allows you to import Microsoft Edge assets to be used with startMenuLayoutXml policy. Start layout can contain secondary tile from Microsoft Edge app which looks for Microsoft Edge local asset file. Microsoft Edge local asset would not exist and cause Microsoft Edge secondary tile to appear empty in this case. This policy only gets applied when startMenuLayoutXml policy is modified. The value should be a UTF-8 Base64 encoded byte array." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/startMenuLayoutXml">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Allows admins to override the default Start menu layout and prevents the user from changing it. The layout is modified by specifying an XML file based on a layout modification schema. XML needs to be in a UTF8 encoded byte array format." />
@@ -20792,7 +20792,7 @@
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from using the search suggestions in the address bar." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockSendingIntranetTrafficToInternetExplorer">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from sending Intranet traffic to Internet Explorer from Edge." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Block the user from sending Intranet traffic to Internet Explorer from Microsoft Edge." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeRequireSmartScreen">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to Require the user to use the smart screen filter." />
@@ -20801,16 +20801,16 @@
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates the enterprise mode site list location. Could be a local file, local network or http location." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeFirstRunUrl">
-                <Annotation Term="Org.OData.Core.V1.Description" String="The first run URL for when Edge browser is opened for the first time." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="The first run URL for when Microsoft Edge browser is opened for the first time." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeSearchEngine">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Allows IT admins to set a default search engine for MDM-Controlled devices. Users can override this and change their default search engine provided the AllowSearchEngineCustomization policy is not set." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeHomepageUrls">
-                <Annotation Term="Org.OData.Core.V1.Description" String="The list of URLs for homepages shodwn on MDM-enrolled devices on Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="The list of URLs for homepages shodwn on MDM-enrolled devices on Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/edgeBlockAccessToAboutFlags">
-                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to prevent access to about flags on Edge browser." />
+                <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not to prevent access to about flags on Microsoft Edge browser." />
             </Annotations>
             <Annotations Target="microsoft.graph.windows10GeneralConfiguration/smartScreenBlockPromptOverride">
                 <Annotation Term="Org.OData.Core.V1.Description" String="Indicates whether or not users can override SmartScreen Filter warnings about potentially malicious websites." />

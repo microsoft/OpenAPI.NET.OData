@@ -66,5 +66,30 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/CountryOrRegion/{Name}", paths.Keys);
             Assert.Contains("/Me", paths.Keys);
         }
+
+        [Fact]
+        public void CreatePathsReturnsForContractModelWithHierarhicalClass()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.ContractServiceModel;
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableKeyAsSegment = true,
+                EnableUnqualifiedCall = true
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            // Act
+            var paths = context.CreatePaths();
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(4, paths.Count);
+
+            Assert.Contains("/Accounts", paths.Keys);
+            Assert.Contains("/Accounts/{id}", paths.Keys);
+            Assert.Contains("/Accounts/{id}/Attachments()", paths.Keys);
+            Assert.Contains("/Accounts/{id}/AttachmentsAdd", paths.Keys);
+        }
     }
 }

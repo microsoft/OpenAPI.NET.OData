@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="Microsoft.OData.Service.Sample.Contract" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="BaseEntityApiModel" Abstract="true">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int64" Nullable="false" />
+        <Property Name="name" Type="Edm.String" />
+        <Property Name="description" Type="Edm.String" />
+      </EntityType>
+      <ComplexType Name="AttachmentApiModel" BaseType="System.Object">
+        <Property Name="id" Type="Edm.Int64" />
+        <Property Name="name" Type="Edm.String" />
+        <Property Name="objId" Type="Edm.Int64" />
+        <Property Name="mime" Type="Edm.String" />
+        <Property Name="extension" Type="Edm.String" />
+        <Property Name="size" Type="Edm.Int64" />
+        <Property Name="type" Type="Edm.String" />
+        <Property Name="date" Type="Edm.DateTimeOffset" />
+        <Property Name="comment" Type="Edm.String" />				
+        </ComplexType>
+      <EntityType Name="AccountApiModel" BaseType="Microsoft.OData.Service.Sample.Contract.BaseEntityApiModel">
+        <Property Name="priority" Type="Edm.Int32" />
+        <Property Name="numberFilial" Type="Edm.String" />
+        <Property Name="numberCustomer" Type="Edm.String" />
+        <Property Name="calculateVar" Type="Edm.Boolean" />
+        <Property Name="lastCloseDate" Type="Edm.DateTimeOffset" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Function Name="Attachments" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Microsoft.OData.Service.Sample.Contract.BaseEntityApiModel" />
+        <ReturnType Type="Collection(Microsoft.OData.Service.Sample.Contract.AttachmentApiModel)" />
+      </Function>
+      <Action Name="AttachmentsAdd" IsBound="true">
+        <Parameter Name="bindingParameter" Type="Microsoft.OData.Service.Sample.Contract.BaseEntityApiModel"/>
+        <Parameter Name="comment" Type="Edm.String"/>
+        <Parameter Name="file" Type="Edm.String"/>
+      </Action>
+      <EntityContainer Name="Container">
+        <EntitySet Name="Accounts" EntityType="Microsoft.OData.Service.Sample.Contract.AccountApiModel">
+        </EntitySet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
