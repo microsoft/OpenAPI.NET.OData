@@ -11,6 +11,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -51,6 +52,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(get.Responses);
             Assert.Equal(2, get.Responses.Count);
+
+            Assert.NotNull(get.Extensions);
+            Assert.True(get.Extensions.ContainsKey(Constants.xMsPageable));
 
             if (enableOperationId)
             {
