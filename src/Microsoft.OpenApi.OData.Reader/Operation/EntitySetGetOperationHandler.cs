@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -159,6 +160,13 @@ namespace Microsoft.OpenApi.OData.Operation
                                                             Id = EntitySet.EntityType().FullName()
                                                         }
                                                     }
+                                                }
+                                            },
+                                            {
+                                                "'@odata.nextLink'", 
+                                                new OpenApiSchema
+                                                {
+                                                    Type = "string"
                                                 }
                                             }
                                         }
