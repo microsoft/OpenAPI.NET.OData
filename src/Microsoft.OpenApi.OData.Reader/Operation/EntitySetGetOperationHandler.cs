@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -39,6 +39,19 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             base.SetBasicInfo(operation);
+        }
+
+        protected override void SetExtensions(OpenApiOperation operation)
+        {    
+            OpenApiObject extension = new OpenApiObject
+            {
+                { "nextLinkName", new OpenApiString("'@odata.nextLink'")},
+                { "operationName", new OpenApiString("listMore")}               
+            };
+            
+            operation.Extensions.Add(Constants.xMsPageable, extension);
+            
+            base.SetExtensions(operation);
         }
 
         /// <inheritdoc/>
