@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -45,6 +46,22 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetBasicInfo(operation);
         }
 
+        protected override void SetExtensions(OpenApiOperation operation)
+        {
+            if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                OpenApiObject extension = new OpenApiObject
+                {
+                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
+                    { "operationName", new OpenApiString("listMore")}
+                };
+
+                operation.Extensions.Add(Constants.xMsPageable, extension);
+
+                base.SetExtensions(operation);
+            }                
+        }
+
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
@@ -82,6 +99,13 @@ namespace Microsoft.OpenApi.OData.Operation
                                                                 Id = NavigationProperty.ToEntityType().FullName()
                                                             }
                                                         }
+                                                    }
+                                                },
+                                                {
+                                                    "@odata.nextLink",
+                                                    new OpenApiSchema
+                                                    {
+                                                        Type = "string"
                                                     }
                                                 }
                                             }
