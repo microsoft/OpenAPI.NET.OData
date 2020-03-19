@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {    
             OpenApiObject extension = new OpenApiObject
             {
-                { "nextLinkName", new OpenApiString("'@odata.nextLink'")},
+                { "nextLinkName", new OpenApiString("@odata.nextLink")},
                 { "operationName", new OpenApiString("listMore")}               
             };
             
@@ -163,7 +163,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                                 }
                                             },
                                             {
-                                                "'@odata.nextLink'", 
+                                                "@odata.nextLink",
                                                 new OpenApiSchema
                                                 {
                                                     Type = "string"
