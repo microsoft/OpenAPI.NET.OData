@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -91,7 +91,7 @@ namespace Microsoft.OpenApi.OData
         public int TopExample { get; set; } = 50;
 
         /// <summary>
-        /// Gets/sets a value indicating whether or not to allow paging of entities collection.
+        /// Gets/sets a value indicating whether or not to allow paging a collection of entities.
         /// </summary>
         public bool EnablePagination { get; set; }
 
