@@ -44,15 +44,17 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetExtensions(OpenApiOperation operation)
         {    
-            OpenApiObject extension = new OpenApiObject
+            if (Context.Settings.EnablePagination)
             {
-                { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                { "operationName", new OpenApiString("listMore")}               
-            };
-            
-            operation.Extensions.Add(Constants.xMsPageable, extension);
-            
-            base.SetExtensions(operation);
+                OpenApiObject extension = new OpenApiObject
+                {
+                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
+                    { "operationName", new OpenApiString("listMore")}
+                };
+                operation.Extensions.Add(Constants.xMsPageable, extension);
+
+                base.SetExtensions(operation);
+            }
         }
 
         /// <inheritdoc/>
@@ -128,6 +130,35 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
+            var properties = new Dictionary<string, OpenApiSchema> 
+            { 
+                {
+                    "value",
+                    new OpenApiSchema
+                    {
+                        Type = "array",
+                        Items = new OpenApiSchema
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = EntitySet.EntityType().FullName()
+                            }
+                        }
+                    }
+                }
+            };
+
+            if (Context.Settings.EnablePagination) 
+            {
+                properties.Add(
+                    "@odata.nextLink",
+                    new OpenApiSchema
+                    {
+                        Type = "string"
+                    });
+            }
+
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -145,31 +176,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                     {
                                         Title = "Collection of " + EntitySet.EntityType().Name,
                                         Type = "object",
-                                        Properties = new Dictionary<string, OpenApiSchema>
-                                        {
-                                            {
-                                                "value",
-                                                new OpenApiSchema
-                                                {
-                                                    Type = "array",
-                                                    Items = new OpenApiSchema
-                                                    {
-                                                        Reference = new OpenApiReference
-                                                        {
-                                                            Type = ReferenceType.Schema,
-                                                            Id = EntitySet.EntityType().FullName()
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "@odata.nextLink",
-                                                new OpenApiSchema
-                                                {
-                                                    Type = "string"
-                                                }
-                                            }
-                                        }
+                                        Properties = properties
                                     }
                                 }
                             }

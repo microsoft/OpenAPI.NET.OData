@@ -47,18 +47,21 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetExtensions(OpenApiOperation operation)
         {
-            if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            if (Context.Settings.EnablePagination)
             {
-                OpenApiObject extension = new OpenApiObject
+                if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
-                    { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                    { "operationName", new OpenApiString("listMore")}
-                };
+                    OpenApiObject extension = new OpenApiObject
+                    {
+                        { "nextLinkName", new OpenApiString("@odata.nextLink")},
+                        { "operationName", new OpenApiString("listMore")}
+                    };
 
-                operation.Extensions.Add(Constants.xMsPageable, extension);
+                    operation.Extensions.Add(Constants.xMsPageable, extension);
 
-                base.SetExtensions(operation);
-            }                
+                    base.SetExtensions(operation);
+                }
+            }                           
         }
 
         /// <inheritdoc/>
@@ -66,6 +69,35 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
+                var properties = new Dictionary<string, OpenApiSchema>
+                {
+                    {
+                        "value",
+                        new OpenApiSchema
+                        {
+                            Type = "array",
+                            Items = new OpenApiSchema
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = NavigationProperty.ToEntityType().FullName()
+                                }
+                            }
+                        }
+                    }
+                };
+
+                if (Context.Settings.EnablePagination)
+                {
+                    properties.Add(
+                        "@odata.nextLink",
+                        new OpenApiSchema
+                        {
+                            Type = "string"
+                        });
+                }
+
                 operation.Responses = new OpenApiResponses
                 {
                     {
@@ -83,31 +115,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                         {
                                             Title = "Collection of " + NavigationProperty.ToEntityType().Name,
                                             Type = "object",
-                                            Properties = new Dictionary<string, OpenApiSchema>
-                                            {
-                                                {
-                                                    "value",
-                                                    new OpenApiSchema
-                                                    {
-                                                        Type = "array",
-                                                        Items = new OpenApiSchema
-                                                        {
-                                                            Reference = new OpenApiReference
-                                                            {
-                                                                Type = ReferenceType.Schema,
-                                                                Id = NavigationProperty.ToEntityType().FullName()
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    "@odata.nextLink",
-                                                    new OpenApiSchema
-                                                    {
-                                                        Type = "string"
-                                                    }
-                                                }
-                                            }
+                                            Properties = properties
                                         }
                                     }
                                 }
