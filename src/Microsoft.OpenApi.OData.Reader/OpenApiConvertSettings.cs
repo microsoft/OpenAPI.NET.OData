@@ -1,4 +1,4 @@
-// ------------------------------------------------------------
+﻿// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -95,6 +95,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnablePagination { get; set; }
 
+        /// <summary>
+        /// Gets/sets a value that specifies the name of the operation for retrieving the next page in a collection of entities.
+        /// </summary>
+        public string PageableOperationName { get; set; } = "listMore";
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings();
@@ -115,6 +120,7 @@ namespace Microsoft.OpenApi.OData
             newSettings.TopExample = this.TopExample;
             newSettings.EnableUriEscapeFunctionCall = this.EnableUriEscapeFunctionCall;
             newSettings.EnablePagination = this.EnablePagination;
+            newSettings.PageableOperationName = this.PageableOperationName;
 
             return newSettings;
         }
