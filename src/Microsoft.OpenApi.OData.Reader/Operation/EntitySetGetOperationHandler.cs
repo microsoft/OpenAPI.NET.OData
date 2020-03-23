@@ -49,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 OpenApiObject extension = new OpenApiObject
                 {
                     { "nextLinkName", new OpenApiString("@odata.nextLink")},
-                    { "operationName", new OpenApiString("listMore")}
+                    { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
                 };
                 operation.Extensions.Add(Constants.xMsPageable, extension);
 
