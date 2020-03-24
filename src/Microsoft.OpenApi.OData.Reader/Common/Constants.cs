@@ -59,5 +59,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// extension for group type
         /// </summary>
         public static string xMsDosGroupPath = "x-ms-docs-grouped-path";
+
+        /// <summary>
+        /// extension for paging
+        /// </summary>
+        public static string xMsPageable = "x-ms-pageable";
     }
 }

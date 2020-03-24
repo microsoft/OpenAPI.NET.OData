@@ -6,9 +6,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -45,11 +45,59 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetBasicInfo(operation);
         }
 
+        protected override void SetExtensions(OpenApiOperation operation)
+        {
+            if (Context.Settings.EnablePagination)
+            {
+                if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    OpenApiObject extension = new OpenApiObject
+                    {
+                        { "nextLinkName", new OpenApiString("@odata.nextLink")},
+                        { "operationName", new OpenApiString(Context.Settings.PageableOperationName)}
+                    };
+
+                    operation.Extensions.Add(Constants.xMsPageable, extension);
+
+                    base.SetExtensions(operation);
+                }
+            }                           
+        }
+
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
+                var properties = new Dictionary<string, OpenApiSchema>
+                {
+                    {
+                        "value",
+                        new OpenApiSchema
+                        {
+                            Type = "array",
+                            Items = new OpenApiSchema
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = NavigationProperty.ToEntityType().FullName()
+                                }
+                            }
+                        }
+                    }
+                };
+
+                if (Context.Settings.EnablePagination)
+                {
+                    properties.Add(
+                        "@odata.nextLink",
+                        new OpenApiSchema
+                        {
+                            Type = "string"
+                        });
+                }
+
                 operation.Responses = new OpenApiResponses
                 {
                     {
@@ -67,24 +115,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                         {
                                             Title = "Collection of " + NavigationProperty.ToEntityType().Name,
                                             Type = "object",
-                                            Properties = new Dictionary<string, OpenApiSchema>
-                                            {
-                                                {
-                                                    "value",
-                                                    new OpenApiSchema
-                                                    {
-                                                        Type = "array",
-                                                        Items = new OpenApiSchema
-                                                        {
-                                                            Reference = new OpenApiReference
-                                                            {
-                                                                Type = ReferenceType.Schema,
-                                                                Id = NavigationProperty.ToEntityType().FullName()
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
+                                            Properties = properties
                                         }
                                     }
                                 }

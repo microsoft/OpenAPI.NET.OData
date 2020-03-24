@@ -90,6 +90,16 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public int TopExample { get; set; } = 50;
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to allow paging a collection of entities.
+        /// </summary>
+        public bool EnablePagination { get; set; }
+
+        /// <summary>
+        /// Gets/sets a value that specifies the name of the operation for retrieving the next page in a collection of entities.
+        /// </summary>
+        public string PageableOperationName { get; set; } = "listMore";
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings();
@@ -109,6 +119,8 @@ namespace Microsoft.OpenApi.OData
             newSettings.IEEE754Compatible = this.IEEE754Compatible;
             newSettings.TopExample = this.TopExample;
             newSettings.EnableUriEscapeFunctionCall = this.EnableUriEscapeFunctionCall;
+            newSettings.EnablePagination = this.EnablePagination;
+            newSettings.PageableOperationName = this.PageableOperationName;
 
             return newSettings;
         }
