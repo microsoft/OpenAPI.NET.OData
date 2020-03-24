@@ -14,6 +14,7 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Exceptions;
 using System.Linq;
+using Microsoft.OpenApi.Interfaces;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -207,17 +208,35 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample)
+        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample, 
+            IEnumerable<IEdmEntityType> derivedTypes = null)
         {
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
 
+            if (context.Settings.EnableDiscriminatorValue && derivedTypes == null)
+            {
+                derivedTypes = context.Model.FindDirectlyDerivedTypes(structuredType).OfType<IEdmEntityType>();
+            }
+
             if (processBase && structuredType.BaseType != null)
             {
+                // The x-ms-discriminator-value extension is added to structured types which are derived types.
+                Dictionary<string, IOpenApiExtension> extension = null;
+                if (context.Settings.EnableDiscriminatorValue && !derivedTypes.Any())
+                {
+                    extension = new Dictionary<string, IOpenApiExtension>
+                    {
+                        { Constants.xMsDiscriminatorValue, new OpenApiString("#" + structuredType.FullTypeName()) }
+                    };
+                }
+
                 // A structured type with a base type is represented as a Schema Object
                 // that contains the keyword allOf whose value is an array with two items:
                 return new OpenApiSchema
                 {
+                    Extensions = extension,
+
                     AllOf = new List<OpenApiSchema>
                     {
                         // 1. a JSON Reference to the Schema Object of the base type
@@ -231,7 +250,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         },
 
                         // 2. a Schema Object describing the derived type
-                        context.CreateStructuredTypeSchema(structuredType, false, false)
+                        context.CreateStructuredTypeSchema(structuredType, false, false, derivedTypes)
                     },
 
                     AnyOf = null,
@@ -242,12 +261,24 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
+                // The discriminator object is added to structured types which have derived types.
+                OpenApiDiscriminator discriminator = null;
+                if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
+                {
+                    discriminator = new OpenApiDiscriminator
+                    {
+                        PropertyName = "@odata.type"
+                    };
+                }
+
                 // A structured type without a base type is represented as a Schema Object of type object
                 OpenApiSchema schema = new OpenApiSchema
                 {
                     Title = (structuredType as IEdmSchemaElement)?.Name,
 
                     Type = "object",
+
+                    Discriminator = discriminator,
 
                     // Each structural property and navigation property is represented
                     // as a name/value pair of the standard OpenAPI properties object.
