@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -100,6 +100,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public string PageableOperationName { get; set; } = "listMore";
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to allow discriminator value support.
+        /// </summary>
+        public bool EnableDiscriminatorValue { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings();
@@ -121,6 +126,7 @@ namespace Microsoft.OpenApi.OData
             newSettings.EnableUriEscapeFunctionCall = this.EnableUriEscapeFunctionCall;
             newSettings.EnablePagination = this.EnablePagination;
             newSettings.PageableOperationName = this.PageableOperationName;
+            newSettings.EnableDiscriminatorValue = this.EnableDiscriminatorValue;
 
             return newSettings;
         }
