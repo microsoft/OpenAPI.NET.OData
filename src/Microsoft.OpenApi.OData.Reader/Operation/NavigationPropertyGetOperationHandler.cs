@@ -67,6 +67,35 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
+            IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindDirectlyDerivedTypes(NavigationProperty.ToEntityType()).OfType<IEdmEntityType>();
+
+            var schema = new OpenApiSchema();
+
+            if (derivedTypes.Any())
+            {
+                schema.OneOf = new List<OpenApiSchema>();
+                foreach (var type in derivedTypes)
+                {
+                    var derivedSchema = new OpenApiSchema
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = type.FullName()
+                        }
+                    };
+                    schema.OneOf.Add(derivedSchema);
+                };
+            }
+            else
+            {
+                schema.Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = NavigationProperty.ToEntityType().FullName()
+                };
+            }
+
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 var properties = new Dictionary<string, OpenApiSchema>
@@ -76,14 +105,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         new OpenApiSchema
                         {
                             Type = "array",
-                            Items = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = NavigationProperty.ToEntityType().FullName()
-                                }
-                            }
+                            Items = schema
                         }
                     }
                 };
@@ -139,14 +161,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                     Constants.ApplicationJsonMediaType,
                                     new OpenApiMediaType
                                     {
-                                        Schema = new OpenApiSchema
-                                        {
-                                            Reference = new OpenApiReference
-                                            {
-                                                Type = ReferenceType.Schema,
-                                                Id = NavigationProperty.ToEntityType().FullName()
-                                            }
-                                        }
+                                        Schema = schema
                                     }
                                 }
                             }
