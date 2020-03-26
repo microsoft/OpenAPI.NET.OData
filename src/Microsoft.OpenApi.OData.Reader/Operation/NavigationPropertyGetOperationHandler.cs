@@ -67,32 +67,54 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindDirectlyDerivedTypes(NavigationProperty.ToEntityType()).OfType<IEdmEntityType>();
+            OpenApiSchema schema = null;
 
-            var schema = new OpenApiSchema();
-
-            if (derivedTypes.Any())
+            // Adds the derived types references together with their base type reference in a OneOf property.
+            if (Context.Settings.ShowDerivedTypesReferences)
             {
-                schema.OneOf = new List<OpenApiSchema>();
-                foreach (var type in derivedTypes)
+                IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindDirectlyDerivedTypes(NavigationProperty.ToEntityType()).OfType<IEdmEntityType>();
+
+                if (derivedTypes.Any())
                 {
-                    var derivedSchema = new OpenApiSchema
+                    schema = new OpenApiSchema
+                    {
+                        OneOf = new List<OpenApiSchema>()
+                    };
+
+                    OpenApiSchema baseTypeSchema = new OpenApiSchema
                     {
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Schema,
-                            Id = type.FullName()
+                            Id = NavigationProperty.ToEntityType().FullName()
                         }
                     };
-                    schema.OneOf.Add(derivedSchema);
-                };
+                    schema.OneOf.Add(baseTypeSchema);
+
+                    foreach (IEdmEntityType derivedType in derivedTypes)
+                    {
+                        OpenApiSchema derivedTypeSchema = new OpenApiSchema
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = derivedType.FullName()
+                            }
+                        };
+                        schema.OneOf.Add(derivedTypeSchema);
+                    };
+                }
             }
-            else
+
+            if (schema == null)
             {
-                schema.Reference = new OpenApiReference
+                schema = new OpenApiSchema
                 {
-                    Type = ReferenceType.Schema,
-                    Id = NavigationProperty.ToEntityType().FullName()
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = NavigationProperty.ToEntityType().FullName()
+                    }
                 };
             }
 
