@@ -41,35 +41,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindAllDerivedTypes(NavigationProperty.ToEntityType()).OfType<IEdmEntityType>();
-
-            var schema = new OpenApiSchema();
-
-            if (derivedTypes.Any())
-            {
-                schema.OneOf = new List<OpenApiSchema>();
-                foreach (var type in derivedTypes)
-                {
-                    var derivedSchema = new OpenApiSchema
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = type.FullName()
-                        }
-                    };
-                    schema.OneOf.Add(derivedSchema);
-                };
-            }
-            else
-            {
-                schema.Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = NavigationProperty.ToEntityType().FullName()
-                };
-            }
-
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -79,7 +50,14 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = schema
+                            Schema = new OpenApiSchema
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = NavigationProperty.ToEntityType().FullName()
+                                }
+                            }
                         }
                     }
                 }
