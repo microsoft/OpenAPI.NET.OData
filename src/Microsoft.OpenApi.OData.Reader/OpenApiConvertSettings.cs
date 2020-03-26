@@ -105,28 +105,35 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableDiscriminatorValue { get; set; } = false;
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to show the derived types of a $ref in a response payload.
+        /// </summary>
+        public bool ShowDerivedTypesReferences { get; set; } = true;
+
         internal OpenApiConvertSettings Clone()
         {
-            var newSettings = new OpenApiConvertSettings();
-
-            newSettings.ServiceRoot = this.ServiceRoot;
-            newSettings.Version = this.Version;
-            newSettings.EnableKeyAsSegment = this.EnableKeyAsSegment;
-            newSettings.EnableUnqualifiedCall = this.EnableUnqualifiedCall;
-            newSettings.EnableOperationPath = this.EnableOperationPath;
-            newSettings.EnableOperationImportPath = this.EnableOperationImportPath;
-            newSettings.EnableNavigationPropertyPath = this.EnableNavigationPropertyPath;
-            newSettings.TagDepth = this.TagDepth;
-            newSettings.PrefixEntityTypeNameBeforeKey = this.PrefixEntityTypeNameBeforeKey;
-            newSettings.OpenApiSpecVersion = this.OpenApiSpecVersion;
-            newSettings.EnableOperationId = this.EnableOperationId;
-            newSettings.VerifyEdmModel = this.VerifyEdmModel;
-            newSettings.IEEE754Compatible = this.IEEE754Compatible;
-            newSettings.TopExample = this.TopExample;
-            newSettings.EnableUriEscapeFunctionCall = this.EnableUriEscapeFunctionCall;
-            newSettings.EnablePagination = this.EnablePagination;
-            newSettings.PageableOperationName = this.PageableOperationName;
-            newSettings.EnableDiscriminatorValue = this.EnableDiscriminatorValue;
+            var newSettings = new OpenApiConvertSettings
+            {
+                ServiceRoot = this.ServiceRoot,
+                Version = this.Version,
+                EnableKeyAsSegment = this.EnableKeyAsSegment,
+                EnableUnqualifiedCall = this.EnableUnqualifiedCall,
+                EnableOperationPath = this.EnableOperationPath,
+                EnableOperationImportPath = this.EnableOperationImportPath,
+                EnableNavigationPropertyPath = this.EnableNavigationPropertyPath,
+                TagDepth = this.TagDepth,
+                PrefixEntityTypeNameBeforeKey = this.PrefixEntityTypeNameBeforeKey,
+                OpenApiSpecVersion = this.OpenApiSpecVersion,
+                EnableOperationId = this.EnableOperationId,
+                VerifyEdmModel = this.VerifyEdmModel,
+                IEEE754Compatible = this.IEEE754Compatible,
+                TopExample = this.TopExample,
+                EnableUriEscapeFunctionCall = this.EnableUriEscapeFunctionCall,
+                EnablePagination = this.EnablePagination,
+                PageableOperationName = this.PageableOperationName,
+                EnableDiscriminatorValue = this.EnableDiscriminatorValue,
+                ShowDerivedTypesReferences = this.ShowDerivedTypesReferences
+            };
 
             return newSettings;
         }
