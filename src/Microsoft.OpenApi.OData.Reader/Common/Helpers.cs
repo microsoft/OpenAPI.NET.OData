@@ -6,7 +6,7 @@ using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Common
 {
-    public static class Helpers
+    internal static class Helpers
     {
         /// <summary>
         /// Adds the derived types references together with their base type reference in the OneOf property of an OpenAPI schema.
