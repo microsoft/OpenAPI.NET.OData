@@ -21,7 +21,7 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class SingletonPatchOperationHandler : SingletonOperationHandler
     {
-        /// <inheritdoc/>
+       /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
 
         /// <inheritdoc/>
@@ -43,6 +43,25 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.ShowDerivedTypesReferencesForRequestBody)
+            {
+                schema = Helpers.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = Singleton.EntityType().FullName()
+                    }
+                };
+            }
+
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -52,14 +71,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = Singleton.EntityType().FullName()
-                                }
-                            }
+                            Schema = schema
                         }
                     }
                 }

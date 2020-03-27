@@ -43,6 +43,25 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.ShowDerivedTypesReferencesForRequestBody)
+            {
+                schema = Helpers.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet.EntityType().FullName()
+                    }
+                };
+            }
+
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -52,14 +71,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = EntitySet.EntityType().FullName()
-                                }
-                            }
+                            Schema = schema
                         }
                     }
                 }
@@ -108,6 +120,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
             }
-        }
+        }        
     }
 }

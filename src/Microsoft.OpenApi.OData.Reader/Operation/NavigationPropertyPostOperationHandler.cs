@@ -41,26 +41,38 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+            
+            if (Context.Settings.ShowDerivedTypesReferencesForRequestBody)
+            {
+                schema = Helpers.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = NavigationProperty.ToEntityType().FullName()
+                    }
+                };
+            }
+
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
                 Description = "New navigation property",
                 Content = new Dictionary<string, OpenApiMediaType>
+                {
                     {
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                            {
-                                Schema = new OpenApiSchema
-                                {
-                                    Reference = new OpenApiReference
-                                    {
-                                        Type = ReferenceType.Schema,
-                                        Id = NavigationProperty.ToEntityType().FullName()
-                                    }
-                                }
-                            }
+                            Schema = schema
                         }
                     }
+                }
             };
 
             base.SetRequestBody(operation);
@@ -71,41 +83,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = null;
 
-            // Adds the derived types references together with their base type reference in a OneOf property.
-            if (Context.Settings.ShowDerivedTypesReferences)
+            if (Context.Settings.ShowDerivedTypesReferencesForResponses)
             {
-                IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindDirectlyDerivedTypes(NavigationProperty.ToEntityType()).OfType<IEdmEntityType>();
-
-                if (derivedTypes.Any())
-                {
-                    schema = new OpenApiSchema
-                    {
-                        OneOf = new List<OpenApiSchema>()
-                    };
-
-                    OpenApiSchema baseTypeSchema = new OpenApiSchema
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = NavigationProperty.ToEntityType().FullName()
-                        }
-                    };
-                    schema.OneOf.Add(baseTypeSchema);
-
-                    foreach (IEdmEntityType derivedType in derivedTypes)
-                    {
-                        OpenApiSchema derivedTypeSchema = new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = derivedType.FullName()
-                            }
-                        };
-                        schema.OneOf.Add(derivedTypeSchema);
-                    };
-                }
+                schema = Helpers.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context);
             }
 
             if (schema == null)
