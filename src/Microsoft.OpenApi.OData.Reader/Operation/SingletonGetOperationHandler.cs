@@ -21,7 +21,7 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal class SingletonGetOperationHandler : SingletonOperationHandler
     {
-        /// <inheritdoc/>
+       /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
         /// <inheritdoc/>
@@ -65,41 +65,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = null;
 
-            // Adds the derived types references together with their base type reference in a OneOf property.
-            if (Context.Settings.ShowDerivedTypesReferences)
+            if (Context.Settings.ShowDerivedTypesReferencesForResponses)
             {
-                IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindDirectlyDerivedTypes(Singleton.EntityType()).OfType<IEdmEntityType>();
-
-                if (derivedTypes.Any())
-                {
-                    schema = new OpenApiSchema
-                    {
-                        OneOf = new List<OpenApiSchema>()
-                    };
-
-                    OpenApiSchema baseTypeSchema = new OpenApiSchema
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = Singleton.EntityType().FullName()
-                        }
-                    };
-                    schema.OneOf.Add(baseTypeSchema);
-
-                    foreach (IEdmEntityType derivedType in derivedTypes)
-                    {
-                        OpenApiSchema derivedTypeSchema = new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = derivedType.FullName()
-                            }
-                        };
-                        schema.OneOf.Add(derivedTypeSchema);
-                    };
-                }
+                schema = Helpers.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context);
             }
 
             if (schema == null)
