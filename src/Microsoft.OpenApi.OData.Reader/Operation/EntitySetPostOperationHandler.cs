@@ -43,6 +43,25 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.ShowDerivedTypesReferencesForRequestBody)
+            {
+                schema = Helpers.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet.EntityType().FullName()
+                    }
+                };
+            }
+
             // The requestBody field contains a Request Body Object for the request body
             // that references the schema of the entity set’s entity type in the global schemas.
             operation.RequestBody = new OpenApiRequestBody
@@ -54,14 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = EntitySet.EntityType().FullName()
-                                }
-                            }
+                            Schema = schema
                         }
                     }
                 }
@@ -75,41 +87,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = null;
 
-            // Adds the derived types references together with their base type reference in a OneOf property.
-            if (Context.Settings.ShowDerivedTypesReferences)
+            if (Context.Settings.ShowDerivedTypesReferencesForResponses)
             {
-                IEnumerable<IEdmEntityType> derivedTypes = Context.Model.FindDirectlyDerivedTypes(EntitySet.EntityType()).OfType<IEdmEntityType>();
-
-                if (derivedTypes.Any())
-                {
-                    schema = new OpenApiSchema
-                    {
-                        OneOf = new List<OpenApiSchema>()
-                    };
-
-                    OpenApiSchema baseTypeSchema = new OpenApiSchema
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.Schema,
-                            Id = EntitySet.EntityType().FullName()
-                        }
-                    };
-                    schema.OneOf.Add(baseTypeSchema);
-
-                    foreach (IEdmEntityType derivedType in derivedTypes)
-                    {
-                        OpenApiSchema derivedTypeSchema = new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = derivedType.FullName()
-                            }
-                        };
-                        schema.OneOf.Add(derivedTypeSchema);
-                    };
-                }
+                schema = Helpers.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context);
             }
 
             if (schema == null)
