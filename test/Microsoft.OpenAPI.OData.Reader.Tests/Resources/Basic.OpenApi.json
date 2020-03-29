@@ -110,8 +110,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -393,8 +392,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -776,8 +774,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [

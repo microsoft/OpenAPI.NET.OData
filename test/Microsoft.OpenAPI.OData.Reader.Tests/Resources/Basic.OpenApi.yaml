@@ -70,7 +70,6 @@ paths:
                       $ref: '#/components/schemas/DefaultNs.City'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - City.City
@@ -255,7 +254,6 @@ paths:
                       $ref: '#/components/schemas/DefaultNs.CountryOrRegion'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - CountryOrRegion.CountryOrRegion
@@ -511,7 +509,6 @@ paths:
                       $ref: '#/components/schemas/DefaultNs.Person'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - People.Person

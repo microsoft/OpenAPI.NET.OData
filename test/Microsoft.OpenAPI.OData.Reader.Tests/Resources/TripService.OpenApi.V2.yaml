@@ -63,7 +63,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Airlines.Airline
@@ -237,7 +236,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Airports.Airport
@@ -510,7 +508,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   /Me/Friends:
     get:
       tags:
@@ -599,7 +596,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}':
     get:
       tags:
@@ -654,7 +650,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
@@ -855,7 +850,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}':
     get:
       tags:
@@ -906,7 +900,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -1023,7 +1016,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - NewComePeople.Person
@@ -1205,7 +1197,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends':
     get:
       tags:
@@ -1300,7 +1291,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}':
     get:
       tags:
@@ -1361,7 +1351,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -1599,7 +1588,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -1656,7 +1644,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -1779,7 +1766,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - People.Person
@@ -1961,7 +1947,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends':
     get:
       tags:
@@ -2056,7 +2041,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}':
     get:
       tags:
@@ -2117,7 +2101,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -2355,7 +2338,6 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -2412,7 +2394,6 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:

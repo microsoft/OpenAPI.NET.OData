@@ -59,7 +59,6 @@ paths:
                   $ref: '#/definitions/DefaultNs.City'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - City.City
@@ -223,7 +222,6 @@ paths:
                   $ref: '#/definitions/DefaultNs.CountryOrRegion'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - CountryOrRegion.CountryOrRegion
@@ -452,7 +450,6 @@ paths:
                   $ref: '#/definitions/DefaultNs.Person'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - People.Person

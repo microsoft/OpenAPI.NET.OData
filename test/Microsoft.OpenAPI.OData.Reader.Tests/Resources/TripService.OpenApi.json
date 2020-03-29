@@ -113,8 +113,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -406,8 +405,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -878,8 +876,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Friends": {
@@ -1017,8 +1014,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Friends/{UserName}": {
@@ -1104,8 +1100,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -1434,8 +1429,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Trips/{TripId}": {
@@ -1517,8 +1511,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -1704,8 +1697,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -2007,8 +1999,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Friends": {
@@ -2156,8 +2147,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}": {
@@ -2253,8 +2243,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -2649,8 +2638,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}": {
@@ -2742,8 +2730,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -2939,8 +2926,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -3242,8 +3228,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Friends": {
@@ -3391,8 +3376,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Friends/{UserName1}": {
@@ -3488,8 +3472,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -3884,8 +3867,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Trips/{TripId}": {
@@ -3977,8 +3959,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
