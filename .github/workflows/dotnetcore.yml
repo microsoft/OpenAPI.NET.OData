@@ -1,4 +1,4 @@
-name: .NET Core
+name: OpenAPI.NET.OData Rolling
 
 on:
   push:
