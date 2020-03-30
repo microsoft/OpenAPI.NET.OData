@@ -56,7 +56,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(get.Responses);
             Assert.Equal(2, get.Responses.Count);
 
-            Assert.NotNull(get.Extensions);
+            //Assert.NotNull(get.Extensions);
+            //Assert.True(get.Extensions.ContainsKey(Constants.xMsPageable));
 
             if (enablePagination)
             {
@@ -317,7 +318,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         ""Directory.Read.All""
       ]
     }
-  ],".ChangeLineBreaks(), json);
+  ]".ChangeLineBreaks(), json);
             }
             else
             {

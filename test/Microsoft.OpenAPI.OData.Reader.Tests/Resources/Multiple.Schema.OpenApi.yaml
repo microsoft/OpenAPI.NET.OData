@@ -21,7 +21,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -43,7 +44,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -59,7 +61,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -82,7 +85,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Categories.CategoryDto
@@ -125,7 +127,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -141,7 +144,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -230,7 +234,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -260,7 +265,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -281,7 +287,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -305,7 +312,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Documents.DocumentDto
@@ -348,7 +354,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -369,7 +376,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -501,7 +509,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -545,7 +554,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -573,7 +583,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -597,7 +608,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   '/Documents({Id})/Revisions({Id1})':
     get:
       tags:
@@ -628,7 +638,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -656,7 +667,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -674,7 +686,6 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   /Libraries:
     get:
       tags:
@@ -690,7 +701,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -730,7 +742,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -756,7 +769,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -780,7 +794,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Libraries.LibraryDto
@@ -823,7 +836,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -849,7 +863,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -954,7 +969,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -984,7 +1000,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1005,7 +1022,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1029,7 +1047,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   '/Libraries({Id})/Documents({Id1})':
     get:
       tags:
@@ -1060,7 +1077,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1081,7 +1099,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1099,7 +1118,6 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   /Revisions:
     get:
       tags:
@@ -1115,7 +1133,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1159,7 +1178,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1187,7 +1207,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1211,7 +1232,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Revisions.RevisionDto
@@ -1254,7 +1274,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1282,7 +1303,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1382,7 +1404,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1443,7 +1466,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1465,7 +1489,6 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   /Tasks:
     get:
       tags:
@@ -1481,7 +1504,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1511,7 +1535,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1532,7 +1557,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1556,7 +1582,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Tasks.DocumentDto
@@ -1599,7 +1624,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1620,7 +1646,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1752,7 +1779,8 @@ paths:
         - name: $orderby
           in: query
           description: Order items by property values
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1796,7 +1824,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1824,7 +1853,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1848,7 +1878,6 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
   '/Tasks({Id})/Revisions({Id1})':
     get:
       tags:
@@ -1879,7 +1908,8 @@ paths:
         - name: $select
           in: query
           description: Select properties to be returned
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1907,7 +1937,8 @@ paths:
         - name: $expand
           in: query
           description: Expand related entities
-          style: simple
+          style: form
+          explode: false
           schema:
             uniqueItems: true
             type: array
@@ -1925,7 +1956,6 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/components/responses/error'
-      x-ms-docs-operation-type: operation
 components:
   schemas:
     Siterra.Documents.App.DTO.DocumentDto:

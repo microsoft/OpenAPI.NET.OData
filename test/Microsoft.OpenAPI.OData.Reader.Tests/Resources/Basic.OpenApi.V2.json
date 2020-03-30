@@ -93,8 +93,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -344,8 +343,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -687,8 +685,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [

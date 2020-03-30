@@ -177,7 +177,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         ""Directory.Read.All""
       ]
     }
-  ],".ChangeLineBreaks(), json);
+  ]".ChangeLineBreaks(), json);
 
                 // with custom header
                 Assert.Contains(@"
