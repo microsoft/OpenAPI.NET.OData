@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Xunit;
@@ -469,6 +470,44 @@ namespace Microsoft.OpenApi.OData.Tests
 }".ChangeLineBreaks(), json);
             }
         }
+        #endregion
+
+        #region BaseTypeToDerivedTypesSchema
+
+        [Fact]
+        public void GetDerivedTypesReferenceSchemaReturnsDerivedTypesReferencesInSchemaIfExist()
+        {
+            // Arrange
+            IEdmModel edmModel = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new ODataContext(edmModel);
+            IEdmEntityType entityType = edmModel.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "directoryObject");
+            OpenApiSchema schema = null;
+
+            // Act
+            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, context.Model);
+            int derivedTypesCount = context.Model.FindDirectlyDerivedTypes(entityType).OfType<IEdmEntityType>().Count() + 1; // + 1 the base type
+
+            // Assert
+            Assert.NotNull(schema.OneOf);
+            Assert.Equal(derivedTypesCount, schema.OneOf.Count);
+        }
+
+        [Fact]
+        public void GetDerivedTypesReferenceSchemaReturnsNullSchemaIfNotExist()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new ODataContext(model);
+            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "administrativeUnit");
+            OpenApiSchema schema = null;
+
+            // Act
+            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, context.Model);
+
+            // Assert
+            Assert.Null(schema);
+        }
+
         #endregion
 
         [Fact]
