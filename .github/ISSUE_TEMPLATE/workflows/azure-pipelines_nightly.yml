@@ -122,9 +122,6 @@ steps:
     BinSkim: true
     CredScan: true
     PoliCheck: true
-    
-variables:
-  BuildConfiguration: 'release'
 
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning'
