@@ -23,16 +23,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private EntitySetGetOperationHandler _operationHandler = new EntitySetGetOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateEntitySetGetOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, true)]
+        [InlineData(false, true)]
+        [InlineData(false, false)]
+        [InlineData(true, false)]
+        public void CreateEntitySetGetOperationReturnsCorrectOperation(bool enableOperationId, bool enablePagination)
         {
             // Arrange
             IEdmModel model = GetEdmModel("");
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                EnablePagination = enablePagination
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
@@ -54,8 +57,16 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(2, get.Responses.Count);
 
             Assert.NotNull(get.Extensions);
-            Assert.True(get.Extensions.ContainsKey(Constants.xMsPageable));
 
+            if (enablePagination)
+            {
+                Assert.True(get.Extensions.ContainsKey(Constants.xMsPageable));
+            }
+            else
+            {
+                Assert.False(get.Extensions.ContainsKey(Constants.xMsPageable));
+            }
+            
             if (enableOperationId)
             {
                 Assert.Equal("Customers.Customer.ListCustomer", get.OperationId);
