@@ -47,7 +47,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.ShowDerivedTypesReferencesForRequestBody)
             {
-                schema = Helpers.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context);
+                schema = Helpers.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
             }
 
             if (schema == null)
