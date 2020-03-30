@@ -38,7 +38,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -65,7 +66,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -86,7 +88,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -122,8 +125,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -185,7 +187,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -206,7 +209,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -345,7 +349,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -380,7 +385,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -406,7 +412,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -443,8 +450,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -506,7 +512,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -532,7 +539,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -733,7 +741,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -782,7 +791,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -815,7 +825,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -852,8 +863,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Documents({Id})/Revisions({Id1})": {
@@ -894,7 +904,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -927,7 +938,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -955,8 +967,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Libraries": {
@@ -986,7 +997,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1031,7 +1043,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1062,7 +1075,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1099,8 +1113,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -1162,7 +1175,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1193,7 +1207,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1354,7 +1369,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1389,7 +1405,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1415,7 +1432,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1452,8 +1470,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Libraries({Id})/Documents({Id1})": {
@@ -1494,7 +1511,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1520,7 +1538,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1548,8 +1567,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Revisions": {
@@ -1579,7 +1597,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1628,7 +1647,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1661,7 +1681,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1698,8 +1719,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -1761,7 +1781,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1794,7 +1815,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1940,7 +1962,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2006,7 +2029,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2038,8 +2062,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Tasks": {
@@ -2069,7 +2092,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2104,7 +2128,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2130,7 +2155,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2167,8 +2193,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -2230,7 +2255,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2256,7 +2282,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2457,7 +2484,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2506,7 +2534,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2539,7 +2568,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2576,8 +2606,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Tasks({Id})/Revisions({Id1})": {
@@ -2618,7 +2647,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2651,7 +2681,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2679,8 +2710,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     }
   },

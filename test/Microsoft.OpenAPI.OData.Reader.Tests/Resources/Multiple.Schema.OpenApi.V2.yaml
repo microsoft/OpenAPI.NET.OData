@@ -74,7 +74,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Categories.CategoryDto
@@ -281,7 +280,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Documents.DocumentDto
@@ -550,7 +548,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/Documents({Id})/Revisions({Id1})':
     get:
       tags:
@@ -619,7 +616,6 @@ paths:
             $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   /Libraries:
     get:
       tags:
@@ -716,7 +712,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Libraries.LibraryDto
@@ -943,7 +938,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/Libraries({Id})/Documents({Id1})':
     get:
       tags:
@@ -1005,7 +999,6 @@ paths:
             $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   /Revisions:
     get:
       tags:
@@ -1108,7 +1101,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Revisions.RevisionDto
@@ -1343,7 +1335,6 @@ paths:
             $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   /Tasks:
     get:
       tags:
@@ -1425,7 +1416,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
     post:
       tags:
         - Tasks.DocumentDto
@@ -1694,7 +1684,6 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/Tasks({Id})/Revisions({Id1})':
     get:
       tags:
@@ -1763,7 +1752,6 @@ paths:
             $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
 definitions:
   Siterra.Documents.App.DTO.DocumentDto:
     title: DocumentDto

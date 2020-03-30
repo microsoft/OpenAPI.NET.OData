@@ -368,7 +368,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Enum = orderByItems
                     }
                 },
-                Style = ParameterStyle.Simple
+                Style = ParameterStyle.Form
             };
         }
 
@@ -446,7 +446,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Enum = selectItems
                     }
                 },
-                Style = ParameterStyle.Simple
+                Style = ParameterStyle.Form
             };
         }
 
@@ -523,7 +523,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Enum = expandItems
                     }
                 },
-                Style = ParameterStyle.Simple
+                Style = ParameterStyle.Form
             };
         }
 

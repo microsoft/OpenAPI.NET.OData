@@ -38,7 +38,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -57,7 +58,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -74,7 +76,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -110,8 +113,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -170,7 +172,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -187,7 +190,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -320,7 +324,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -343,7 +348,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -362,7 +368,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -398,8 +405,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -458,7 +464,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -477,7 +484,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -703,7 +711,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -732,7 +741,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -805,7 +815,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -834,7 +845,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -864,8 +876,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Friends": {
@@ -895,7 +906,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -932,7 +944,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -961,7 +974,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1000,8 +1014,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Friends/{UserName}": {
@@ -1026,7 +1039,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1055,7 +1069,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1085,8 +1100,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -1320,7 +1334,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1351,7 +1366,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1375,7 +1391,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1412,8 +1429,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Trips/{TripId}": {
@@ -1441,7 +1457,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1465,7 +1482,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1493,8 +1511,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -1572,7 +1589,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1609,7 +1627,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1638,7 +1657,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1677,8 +1697,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -1737,7 +1756,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1766,7 +1786,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1917,7 +1938,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1946,7 +1968,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -1976,8 +1999,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Friends": {
@@ -2017,7 +2039,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2054,7 +2077,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2083,7 +2107,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2122,8 +2147,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}": {
@@ -2158,7 +2182,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2187,7 +2212,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2217,8 +2243,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -2518,7 +2543,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2549,7 +2575,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2573,7 +2600,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2610,8 +2638,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}": {
@@ -2649,7 +2676,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2673,7 +2701,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2701,8 +2730,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -2790,7 +2818,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2827,7 +2856,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2856,7 +2886,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2895,8 +2926,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -2955,7 +2985,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -2984,7 +3015,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3135,7 +3167,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3164,7 +3197,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3194,8 +3228,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Friends": {
@@ -3235,7 +3268,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3272,7 +3306,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3301,7 +3336,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3340,8 +3376,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Friends/{UserName1}": {
@@ -3376,7 +3411,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3405,7 +3441,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3435,8 +3472,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -3736,7 +3772,8 @@
             "name": "$orderby",
             "in": "query",
             "description": "Order items by property values",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3767,7 +3804,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3791,7 +3829,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3828,8 +3867,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Trips/{TripId}": {
@@ -3867,7 +3905,8 @@
             "name": "$select",
             "in": "query",
             "description": "Select properties to be returned",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3891,7 +3930,8 @@
             "name": "$expand",
             "in": "query",
             "description": "Expand related entities",
-            "style": "simple",
+            "style": "form",
+            "explode": false,
             "schema": {
               "uniqueItems": true,
               "type": "array",
@@ -3919,8 +3959,7 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {

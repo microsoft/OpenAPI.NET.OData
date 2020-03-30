@@ -108,8 +108,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -402,8 +401,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -771,8 +769,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Documents({Id})/Revisions({Id1})": {
@@ -861,8 +858,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Libraries": {
@@ -992,8 +988,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -1308,8 +1303,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Libraries({Id})/Documents({Id1})": {
@@ -1391,8 +1385,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Revisions": {
@@ -1528,8 +1521,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -1835,8 +1827,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Tasks": {
@@ -1951,8 +1942,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       },
       "post": {
         "tags": [
@@ -2320,8 +2310,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     },
     "/Tasks({Id})/Revisions({Id1})": {
@@ -2410,8 +2399,7 @@
           "default": {
             "$ref": "#/responses/error"
           }
-        },
-        "x-ms-docs-operation-type": "operation"
+        }
       }
     }
   },

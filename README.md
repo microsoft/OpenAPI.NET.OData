@@ -4,6 +4,12 @@ VSTS Build  | Status
 Rolling | <img src="https://identitydivision.visualstudio.com/_apis/public/build/definitions/2cfe7ec3-b94f-4ab9-85ab-2ebff928f3fd/410/badge"/>
 Nightly | <img src="https://identitydivision.visualstudio.com/_apis/public/build/definitions/2cfe7ec3-b94f-4ab9-85ab-2ebff928f3fd/427/badge"/>
 
+
+AzurePipeline|Status
+--------|--------------
+ Rolling |<img src="https://identitydivision.visualstudio.com/OData/_apis/build/status/OpenApi/OpenAPI.OData-Master-Rolling?branchName=master" />
+  Nightly |<img src="https://identitydivision.visualstudio.com/OData/_apis/build/status/OpenApi/OpenAPI.OData-Master-Nightly?branchName=master" />
+
 # Convert OData to OpenAPI.NET [Preview]
 
 [**Disclaimer:This library is in a preview state. Feedback and contribution is welcome!**]
