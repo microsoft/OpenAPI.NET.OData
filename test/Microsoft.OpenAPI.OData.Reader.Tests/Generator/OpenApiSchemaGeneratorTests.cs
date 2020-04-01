@@ -479,13 +479,12 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel edmModel = EdmModelHelper.GraphBetaModel;
-            ODataContext context = new ODataContext(edmModel);
             IEdmEntityType entityType = edmModel.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "directoryObject");
             OpenApiSchema schema = null;
 
             // Act
-            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, context.Model);
-            int derivedTypesCount = context.Model.FindDirectlyDerivedTypes(entityType).OfType<IEdmEntityType>().Count() + 1; // + 1 the base type
+            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, edmModel);
+            int derivedTypesCount = edmModel.FindDirectlyDerivedTypes(entityType).OfType<IEdmEntityType>().Count() + 1; // + 1 the base type
 
             // Assert
             Assert.NotNull(schema.OneOf);
@@ -496,13 +495,12 @@ namespace Microsoft.OpenApi.OData.Tests
         public void GetDerivedTypesReferenceSchemaReturnsNullSchemaIfNotExist()
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.GraphBetaModel;
-            ODataContext context = new ODataContext(model);
-            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "administrativeUnit");
+            IEdmModel edmModel = EdmModelHelper.GraphBetaModel;
+            IEdmEntityType entityType = edmModel.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "administrativeUnit");
             OpenApiSchema schema = null;
 
             // Act
-            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, context.Model);
+            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, edmModel);
 
             // Assert
             Assert.Null(schema);
