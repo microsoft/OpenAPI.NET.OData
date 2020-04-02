@@ -106,14 +106,14 @@ namespace Microsoft.OpenApi.OData
         public bool EnableDiscriminatorValue { get; set; } = false;
 
         /// <summary>
-        /// Gets/sets a value indicating whether or not to show the derived types of a reference in the responses payload.
+        /// Gets/sets a value indicating whether or not to show the derived types of a base type reference in the responses payload.
         /// </summary>
-        public bool ShowDerivedTypesReferencesForResponses { get; set; } = false;
+        public bool EnableDerivedTypesReferencesForResponses { get; set; } = false;
 
         /// <summary>
-        /// Gets/sets a value indicating whether or not to show the derived types of a reference in the requestBody payload.
+        /// Gets/sets a value indicating whether or not to show the derived types of a base type reference in the requestBody payload.
         /// </summary>
-        public bool ShowDerivedTypesReferencesForRequestBody { get; set; } = false;
+        public bool EnableDerivedTypesReferencesForRequestBody { get; set; } = false;
 
         internal OpenApiConvertSettings Clone()
         {
@@ -137,8 +137,8 @@ namespace Microsoft.OpenApi.OData
                 EnablePagination = this.EnablePagination,
                 PageableOperationName = this.PageableOperationName,
                 EnableDiscriminatorValue = this.EnableDiscriminatorValue,
-                ShowDerivedTypesReferencesForResponses = this.ShowDerivedTypesReferencesForResponses,
-                ShowDerivedTypesReferencesForRequestBody = this.ShowDerivedTypesReferencesForRequestBody
+                EnableDerivedTypesReferencesForResponses = this.EnableDerivedTypesReferencesForResponses,
+                EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody
             };
 
             return newSettings;
