@@ -65,9 +65,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = null;
 
-            if (Context.Settings.ShowDerivedTypesReferencesForResponses)
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
-                schema = Helpers.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
             }
 
             if (schema == null)

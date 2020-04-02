@@ -483,7 +483,7 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiSchema schema = null;
 
             // Act
-            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, edmModel);
+            schema = Common.EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, edmModel);
             int derivedTypesCount = edmModel.FindDirectlyDerivedTypes(entityType).OfType<IEdmEntityType>().Count() + 1; // + 1 the base type
 
             // Assert
@@ -500,7 +500,7 @@ namespace Microsoft.OpenApi.OData.Tests
             OpenApiSchema schema = null;
 
             // Act
-            schema = Helpers.GetDerivedTypesReferenceSchema(entityType, edmModel);
+            schema = Common.EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, edmModel);
 
             // Assert
             Assert.Null(schema);
