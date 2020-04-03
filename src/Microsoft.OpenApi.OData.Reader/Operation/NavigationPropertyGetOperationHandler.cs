@@ -61,12 +61,31 @@ namespace Microsoft.OpenApi.OData.Operation
 
                     base.SetExtensions(operation);
                 }
-            }                           
+            }
         }
 
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = NavigationProperty.ToEntityType().FullName()
+                    }
+                };
+            }
+
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 var properties = new Dictionary<string, OpenApiSchema>
@@ -76,14 +95,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         new OpenApiSchema
                         {
                             Type = "array",
-                            Items = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = NavigationProperty.ToEntityType().FullName()
-                                }
-                            }
+                            Items = schema
                         }
                     }
                 };
@@ -139,14 +151,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                     Constants.ApplicationJsonMediaType,
                                     new OpenApiMediaType
                                     {
-                                        Schema = new OpenApiSchema
-                                        {
-                                            Reference = new OpenApiReference
-                                            {
-                                                Type = ReferenceType.Schema,
-                                                Id = NavigationProperty.ToEntityType().FullName()
-                                            }
-                                        }
+                                        Schema = schema
                                     }
                                 }
                             }

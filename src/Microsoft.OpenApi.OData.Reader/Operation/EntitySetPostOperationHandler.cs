@@ -43,6 +43,25 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet.EntityType().FullName()
+                    }
+                };
+            }
+
             // The requestBody field contains a Request Body Object for the request body
             // that references the schema of the entity set’s entity type in the global schemas.
             operation.RequestBody = new OpenApiRequestBody
@@ -54,14 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = new OpenApiSchema
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.Schema,
-                                    Id = EntitySet.EntityType().FullName()
-                                }
-                            }
+                            Schema = schema
                         }
                     }
                 }
@@ -73,6 +85,25 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet.EntityType().FullName()
+                    }
+                };
+            }
+
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -86,14 +117,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                 Constants.ApplicationJsonMediaType,
                                 new OpenApiMediaType
                                 {
-                                    Schema = new OpenApiSchema
-                                    {
-                                        Reference = new OpenApiReference
-                                        {
-                                            Type = ReferenceType.Schema,
-                                            Id = EntitySet.EntityType().FullName()
-                                        }
-                                    }
+                                    Schema = schema
                                 }
                             }
                         }

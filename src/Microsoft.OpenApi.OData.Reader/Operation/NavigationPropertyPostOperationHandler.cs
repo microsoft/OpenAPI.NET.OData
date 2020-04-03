@@ -41,26 +41,38 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = NavigationProperty.ToEntityType().FullName()
+                    }
+                };
+            }
+
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
                 Description = "New navigation property",
                 Content = new Dictionary<string, OpenApiMediaType>
+                {
                     {
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                            {
-                                Schema = new OpenApiSchema
-                                {
-                                    Reference = new OpenApiReference
-                                    {
-                                        Type = ReferenceType.Schema,
-                                        Id = NavigationProperty.ToEntityType().FullName()
-                                    }
-                                }
-                            }
+                            Schema = schema
                         }
                     }
+                }
             };
 
             base.SetRequestBody(operation);
@@ -69,6 +81,25 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = NavigationProperty.ToEntityType().FullName()
+                    }
+                };
+            }
+
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -82,14 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                 Constants.ApplicationJsonMediaType,
                                 new OpenApiMediaType
                                 {
-                                    Schema = new OpenApiSchema
-                                    {
-                                        Reference = new OpenApiReference
-                                        {
-                                            Type = ReferenceType.Schema,
-                                            Id = NavigationProperty.ToEntityType().FullName()
-                                        }
-                                    }
+                                    Schema = schema
                                 }
                             }
                         }

@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         protected override void SetExtensions(OpenApiOperation operation)
-        {    
+        {
             if (Context.Settings.EnablePagination)
             {
                 OpenApiObject extension = new OpenApiObject
@@ -130,26 +130,38 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            var properties = new Dictionary<string, OpenApiSchema> 
-            { 
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet.EntityType().FullName()
+                    }
+                };
+            }
+
+            var properties = new Dictionary<string, OpenApiSchema>
+            {
                 {
                     "value",
                     new OpenApiSchema
                     {
                         Type = "array",
-                        Items = new OpenApiSchema
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = EntitySet.EntityType().FullName()
-                            }
-                        }
+                        Items = schema
                     }
                 }
             };
 
-            if (Context.Settings.EnablePagination) 
+            if (Context.Settings.EnablePagination)
             {
                 properties.Add(
                     "@odata.nextLink",
