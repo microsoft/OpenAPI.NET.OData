@@ -1149,6 +1149,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: NewComePeople.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
+            BestFriend:
+              operationId: NewComePeople.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
+            Trips:
+              operationId: NewComePeople.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
         default:
           $ref: '#/components/responses/error'
     post:
@@ -2003,6 +2016,19 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: People.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
+            BestFriend:
+              operationId: People.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
+            Trips:
+              operationId: People.Person.GetPerson
+              parameters:
+                UserName: $request.path.UserName
         default:
           $ref: '#/components/responses/error'
     post:

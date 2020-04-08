@@ -1692,6 +1692,26 @@
                   }
                 }
               }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "NewComePeople.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "NewComePeople.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "NewComePeople.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              }
             }
           },
           "default": {
@@ -2919,6 +2939,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "People.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "People.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "People.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
