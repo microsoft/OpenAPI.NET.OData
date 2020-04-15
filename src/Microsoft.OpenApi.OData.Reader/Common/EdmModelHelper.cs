@@ -18,10 +18,8 @@ namespace Microsoft.OpenApi.OData.Common
         /// <returns>The OpenAPI schema with the list of derived types references and their base type references set in the OneOf property.</returns>
         internal static OpenApiSchema GetDerivedTypesReferenceSchema(IEdmEntityType entityType, IEdmModel edmModel)
         {
-            if (entityType == null || edmModel == null)
-            {
-                return null;
-            }
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(edmModel, nameof(edmModel));
 
             IEnumerable<IEdmEntityType> derivedTypes = edmModel.FindDirectlyDerivedTypes(entityType).OfType<IEdmEntityType>();
 

@@ -767,6 +767,26 @@
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                 }
               }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Me.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Me.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Me.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              }
             }
           },
           "default": {
@@ -1007,6 +1027,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -1424,6 +1464,14 @@
                   }
                 }
               }
+            },
+            "links": {
+              "PlanItems": {
+                "operationId": "Trips.Trip.GetTrip",
+                "parameters": {
+                  "TripId": "$request.path.TripId"
+                }
+              }
             }
           },
           "default": {
@@ -1690,6 +1738,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "NewComePeople.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "NewComePeople.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "NewComePeople.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -2140,6 +2208,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -2633,6 +2721,14 @@
                   }
                 }
               }
+            },
+            "links": {
+              "PlanItems": {
+                "operationId": "Trips.Trip.GetTrip",
+                "parameters": {
+                  "TripId": "$request.path.TripId"
+                }
+              }
             }
           },
           "default": {
@@ -2919,6 +3015,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "People.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "People.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "People.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -3369,6 +3485,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -3860,6 +3996,14 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "PlanItems": {
+                "operationId": "Trips.Trip.GetTrip",
+                "parameters": {
+                  "TripId": "$request.path.TripId"
                 }
               }
             }

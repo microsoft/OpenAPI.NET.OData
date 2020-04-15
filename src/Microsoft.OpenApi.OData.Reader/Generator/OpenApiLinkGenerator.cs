@@ -21,22 +21,25 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the collection of <see cref="OpenApiLink"/> object.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <param name="entitySet">The Entity Set.</param>
+        /// <param name="entityType">The Entity type.</param>
+        /// <param name ="sourceElementName">The name of the source of the <see cref="IEdmEntityType".</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
-        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntitySet entitySet)
+        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntityType entityType, string sourceElementName)
         {
             Utils.CheckArgumentNull(context, nameof(context));
-            Utils.CheckArgumentNull(entitySet, nameof(entitySet));
+            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNullOrEmpty(sourceElementName, nameof(sourceElementName));
 
             IDictionary<string, OpenApiLink> links = new Dictionary<string, OpenApiLink>();
-            IEdmEntityType entityType = entitySet.EntityType();
-            foreach (var np in entityType.DeclaredNavigationProperties())
+            foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
             {
-                OpenApiLink link = new OpenApiLink();
-                string typeName = entitySet.EntityType().Name;
-                link.OperationId = entitySet.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
-                link.Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>();
-                foreach (var key in entityType.Key())
+                OpenApiLink link = new OpenApiLink
+                {
+                    OperationId = sourceElementName + "." + entityType.Name + ".Get" + Utils.UpperFirstChar(entityType.Name),
+                    Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>()
+                };
+
+                foreach (IEdmStructuralProperty key in entityType.Key())
                 {
                     link.Parameters[key.Name] = new RuntimeExpressionAnyWrapper
                     {
