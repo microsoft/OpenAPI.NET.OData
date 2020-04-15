@@ -611,6 +611,11 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          links:
+            Document:
+              operationId: Revisions.RevisionDto.GetRevisionDto
+              parameters:
+                Id: $request.path.Id
         default:
           $ref: '#/components/responses/error'
   '/Documents({Id})/Revisions({Id1})':
@@ -1055,6 +1060,11 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          links:
+            Revisions:
+              operationId: Documents.DocumentDto.GetDocumentDto
+              parameters:
+                Id: $request.path.Id
         default:
           $ref: '#/components/responses/error'
   '/Libraries({Id})/Documents({Id1})':
@@ -1896,6 +1906,11 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          links:
+            Document:
+              operationId: Revisions.RevisionDto.GetRevisionDto
+              parameters:
+                Id: $request.path.Id
         default:
           $ref: '#/components/responses/error'
   '/Tasks({Id})/Revisions({Id1})':

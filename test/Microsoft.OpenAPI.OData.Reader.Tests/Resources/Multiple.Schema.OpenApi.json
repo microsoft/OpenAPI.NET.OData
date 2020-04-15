@@ -866,6 +866,14 @@
                   }
                 }
               }
+            },
+            "links": {
+              "Document": {
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              }
             }
           },
           "default": {
@@ -1479,6 +1487,14 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Revisions": {
+                "operationId": "Documents.DocumentDto.GetDocumentDto",
+                "parameters": {
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2631,6 +2647,14 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Document": {
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "parameters": {
+                  "Id": "$request.path.Id"
                 }
               }
             }

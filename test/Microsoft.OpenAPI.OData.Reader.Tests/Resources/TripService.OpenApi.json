@@ -767,6 +767,26 @@
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                 }
               }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Me.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Me.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Me.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              }
             }
           },
           "default": {
@@ -1007,6 +1027,26 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -1422,6 +1462,14 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "PlanItems": {
+                "operationId": "Trips.Trip.GetTrip",
+                "parameters": {
+                  "TripId": "$request.path.TripId"
                 }
               }
             }
@@ -2162,6 +2210,26 @@
                   }
                 }
               }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              }
             }
           },
           "default": {
@@ -2651,6 +2719,14 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "PlanItems": {
+                "operationId": "Trips.Trip.GetTrip",
+                "parameters": {
+                  "TripId": "$request.path.TripId"
                 }
               }
             }
@@ -3411,6 +3487,26 @@
                   }
                 }
               }
+            },
+            "links": {
+              "Friends": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "BestFriend": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              },
+              "Trips": {
+                "operationId": "Friends.Person.GetPerson",
+                "parameters": {
+                  "UserName": "$request.path.UserName"
+                }
+              }
             }
           },
           "default": {
@@ -3900,6 +3996,14 @@
                       }
                     }
                   }
+                }
+              }
+            },
+            "links": {
+              "PlanItems": {
+                "operationId": "Trips.Trip.GetTrip",
+                "parameters": {
+                  "TripId": "$request.path.TripId"
                 }
               }
             }
