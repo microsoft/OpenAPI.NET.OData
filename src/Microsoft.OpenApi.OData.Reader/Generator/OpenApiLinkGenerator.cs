@@ -22,20 +22,20 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="entityType">The Entity type.</param>
-        /// <param name ="edmTypeName">The name of the EDM type.</param>
+        /// <param name ="sourceElementName">The name of the source of the <see cref="IEdmEntityType".</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
-        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntityType entityType, string edmTypeName)
+        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntityType entityType, string sourceElementName)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
-            Utils.CheckArgumentNullOrEmpty(edmTypeName, nameof(edmTypeName));
+            Utils.CheckArgumentNullOrEmpty(sourceElementName, nameof(sourceElementName));
 
             IDictionary<string, OpenApiLink> links = new Dictionary<string, OpenApiLink>();
             foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
             {
                 OpenApiLink link = new OpenApiLink
                 {
-                    OperationId = edmTypeName + "." + entityType.Name + ".Get" + Utils.UpperFirstChar(entityType.Name),
+                    OperationId = sourceElementName + "." + entityType.Name + ".Get" + Utils.UpperFirstChar(entityType.Name),
                     Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>()
                 };
 
