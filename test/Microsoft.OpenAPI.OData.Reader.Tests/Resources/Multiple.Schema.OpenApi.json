@@ -448,9 +448,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Documents.DocumentDto.GetDocumentDto",
+                "operationId": "Documents.GetRevisions",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -574,9 +574,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Documents.DocumentDto.GetDocumentDto",
+                "operationId": "Documents.GetRevisions",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -869,9 +869,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "operationId": "DocumentDto.Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -976,6 +976,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Siterra.Documents.App.DTO.RevisionDto"
+                }
+              }
+            },
+            "links": {
+              "Document": {
+                "operationId": "DocumentDto.Revisions.GetDocument",
+                "parameters": {
+                  "Id": "$response.body#/Id",
+                  "Id1": "$request.path.Id1"
                 }
               }
             }
@@ -1127,9 +1136,9 @@
             },
             "links": {
               "Documents": {
-                "operationId": "Libraries.LibraryDto.GetLibraryDto",
+                "operationId": "Libraries.GetDocuments",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -1258,9 +1267,9 @@
             },
             "links": {
               "Documents": {
-                "operationId": "Libraries.LibraryDto.GetLibraryDto",
+                "operationId": "Libraries.GetDocuments",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -1492,9 +1501,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Documents.DocumentDto.GetDocumentDto",
+                "operationId": "LibraryDto.Documents.GetRevisions",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -1592,6 +1601,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentDto"
+                }
+              }
+            },
+            "links": {
+              "Revisions": {
+                "operationId": "LibraryDto.Documents.GetRevisions",
+                "parameters": {
+                  "Id": "$response.body#/Id",
+                  "Id1": "$request.path.Id1"
                 }
               }
             }
@@ -1749,9 +1767,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "operationId": "Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -1882,9 +1900,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "operationId": "Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -2097,6 +2115,38 @@
                   "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
                 }
               }
+            },
+            "links": {
+              "Library": {
+                "operationId": "RevisionDto.Document.GetLibrary",
+                "parameters": {
+                  "Id": "$response.body#/Id"
+                }
+              },
+              "LastRevisionFile": {
+                "operationId": "RevisionDto.Document.GetLastRevisionFile",
+                "parameters": {
+                  "Id": "$response.body#/Id"
+                }
+              },
+              "SourceDocument": {
+                "operationId": "RevisionDto.Document.GetSourceDocument",
+                "parameters": {
+                  "Id": "$response.body#/Id"
+                }
+              },
+              "SourceDocumentChildren": {
+                "operationId": "RevisionDto.Document.GetSourceDocumentChildren",
+                "parameters": {
+                  "Id": "$response.body#/Id"
+                }
+              },
+              "Revisions": {
+                "operationId": "RevisionDto.Document.GetRevisions",
+                "parameters": {
+                  "Id": "$response.body#/Id"
+                }
+              }
             }
           },
           "default": {
@@ -2231,9 +2281,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Tasks.DocumentDto.GetDocumentDto",
+                "operationId": "Tasks.GetRevisions",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -2357,9 +2407,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Tasks.DocumentDto.GetDocumentDto",
+                "operationId": "Tasks.GetRevisions",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -2652,9 +2702,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "operationId": "DocumentDto.Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$request.path.Id"
+                  "Id": "$response.body#/Id"
                 }
               }
             }
@@ -2759,6 +2809,15 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Siterra.Documents.App.DTO.RevisionDto"
+                }
+              }
+            },
+            "links": {
+              "Document": {
+                "operationId": "DocumentDto.Revisions.GetDocument",
+                "parameters": {
+                  "Id": "$response.body#/Id",
+                  "Id1": "$request.path.Id1"
                 }
               }
             }

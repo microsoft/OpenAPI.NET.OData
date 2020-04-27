@@ -507,17 +507,17 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: Me.Person.GetPerson
+              operationId: Me.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: Me.Person.GetPerson
+              operationId: Me.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: Me.Person.GetPerson
+              operationId: Me.GetTrips
               parameters:
-                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -593,6 +593,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: Person.BestFriend.GetFriends
+              parameters:
+                UserName: $response.body#/UserName
+            BestFriend:
+              operationId: Person.BestFriend.GetBestFriend
+              parameters:
+                UserName: $response.body#/UserName
+            Trips:
+              operationId: Person.BestFriend.GetTrips
+              parameters:
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   /Me/Friends:
@@ -695,17 +708,17 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetTrips
               parameters:
-                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/Me/Friends/{UserName}':
@@ -769,6 +782,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: Person.Friends.GetFriends
+              parameters:
+                UserName: $response.body#/UserName
+            BestFriend:
+              operationId: Person.Friends.GetBestFriend
+              parameters:
+                UserName: $response.body#/UserName
+            Trips:
+              operationId: Person.Friends.GetTrips
+              parameters:
+                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
@@ -987,9 +1014,9 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
           links:
             PlanItems:
-              operationId: Trips.Trip.GetTrip
+              operationId: Person.Trips.GetPlanItems
               parameters:
-                TripId: $request.path.TripId
+                PlanItemId: $response.body#/PlanItemId
         default:
           $ref: '#/components/responses/error'
   '/Me/Trips/{TripId}':
@@ -1049,6 +1076,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          links:
+            PlanItems:
+              operationId: Person.Trips.GetPlanItems
+              parameters:
+                TripId: $request.path.TripId
+                PlanItemId: $response.body#/PlanItemId
         default:
           $ref: '#/components/responses/error'
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
@@ -1182,17 +1215,17 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: NewComePeople.Person.GetPerson
+              operationId: NewComePeople.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: NewComePeople.Person.GetPerson
+              operationId: NewComePeople.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: NewComePeople.Person.GetPerson
+              operationId: NewComePeople.GetTrips
               parameters:
-                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
     post:
@@ -1280,17 +1313,18 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: NewComePeople.Person.GetPerson
+              operationId: NewComePeople.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: NewComePeople.Person.GetPerson
+              operationId: NewComePeople.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: NewComePeople.Person.GetPerson
+              operationId: NewComePeople.GetTrips
               parameters:
                 UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1405,6 +1439,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: Person.BestFriend.GetFriends
+              parameters:
+                UserName: $response.body#/UserName
+            BestFriend:
+              operationId: Person.BestFriend.GetBestFriend
+              parameters:
+                UserName: $response.body#/UserName
+            Trips:
+              operationId: Person.BestFriend.GetTrips
+              parameters:
+                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends':
@@ -1514,17 +1562,18 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetTrips
               parameters:
                 UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}':
@@ -1595,6 +1644,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: Person.Friends.GetFriends
+              parameters:
+                UserName: $response.body#/UserName
+                UserName1: $request.path.UserName1
+            BestFriend:
+              operationId: Person.Friends.GetBestFriend
+              parameters:
+                UserName: $response.body#/UserName
+                UserName1: $request.path.UserName1
+            Trips:
+              operationId: Person.Friends.GetTrips
+              parameters:
+                UserName: $request.path.UserName
+                UserName1: $request.path.UserName1
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
@@ -1858,9 +1924,10 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
           links:
             PlanItems:
-              operationId: Trips.Trip.GetTrip
+              operationId: Person.Trips.GetPlanItems
               parameters:
-                TripId: $request.path.TripId
+                UserName: $request.path.UserName
+                PlanItemId: $response.body#/PlanItemId
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Trips/{TripId}':
@@ -1927,6 +1994,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          links:
+            PlanItems:
+              operationId: Person.Trips.GetPlanItems
+              parameters:
+                UserName: $request.path.UserName
+                TripId: $request.path.TripId
+                PlanItemId: $response.body#/PlanItemId
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
@@ -2067,17 +2141,17 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: People.Person.GetPerson
+              operationId: People.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: People.Person.GetPerson
+              operationId: People.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: People.Person.GetPerson
+              operationId: People.GetTrips
               parameters:
-                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
     post:
@@ -2165,17 +2239,18 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: People.Person.GetPerson
+              operationId: People.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: People.Person.GetPerson
+              operationId: People.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: People.Person.GetPerson
+              operationId: People.GetTrips
               parameters:
                 UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2290,6 +2365,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: Person.BestFriend.GetFriends
+              parameters:
+                UserName: $response.body#/UserName
+            BestFriend:
+              operationId: Person.BestFriend.GetBestFriend
+              parameters:
+                UserName: $response.body#/UserName
+            Trips:
+              operationId: Person.BestFriend.GetTrips
+              parameters:
+                UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Friends':
@@ -2399,17 +2488,18 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
           links:
             Friends:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetFriends
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             BestFriend:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetBestFriend
               parameters:
-                UserName: $request.path.UserName
+                UserName: $response.body#/UserName
             Trips:
-              operationId: Friends.Person.GetPerson
+              operationId: Person.Friends.GetTrips
               parameters:
                 UserName: $request.path.UserName
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Friends/{UserName1}':
@@ -2480,6 +2570,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          links:
+            Friends:
+              operationId: Person.Friends.GetFriends
+              parameters:
+                UserName: $response.body#/UserName
+                UserName1: $request.path.UserName1
+            BestFriend:
+              operationId: Person.Friends.GetBestFriend
+              parameters:
+                UserName: $response.body#/UserName
+                UserName1: $request.path.UserName1
+            Trips:
+              operationId: Person.Friends.GetTrips
+              parameters:
+                UserName: $request.path.UserName
+                UserName1: $request.path.UserName1
+                TripId: $response.body#/TripId
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
@@ -2743,9 +2850,10 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
           links:
             PlanItems:
-              operationId: Trips.Trip.GetTrip
+              operationId: Person.Trips.GetPlanItems
               parameters:
-                TripId: $request.path.TripId
+                UserName: $request.path.UserName
+                PlanItemId: $response.body#/PlanItemId
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Trips/{TripId}':
@@ -2812,6 +2920,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          links:
+            PlanItems:
+              operationId: Person.Trips.GetPlanItems
+              parameters:
+                UserName: $request.path.UserName
+                TripId: $request.path.TripId
+                PlanItemId: $response.body#/PlanItemId
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':

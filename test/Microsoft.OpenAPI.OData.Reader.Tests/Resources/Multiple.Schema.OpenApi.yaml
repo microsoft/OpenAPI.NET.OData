@@ -312,9 +312,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           links:
             Revisions:
-              operationId: Documents.DocumentDto.GetDocumentDto
+              operationId: Documents.GetRevisions
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
     post:
@@ -400,9 +400,9 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           links:
             Revisions:
-              operationId: Documents.DocumentDto.GetDocumentDto
+              operationId: Documents.GetRevisions
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -613,9 +613,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
           links:
             Document:
-              operationId: Revisions.RevisionDto.GetRevisionDto
+              operationId: DocumentDto.Revisions.GetDocument
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
   '/Documents({Id})/Revisions({Id1})':
@@ -694,6 +694,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          links:
+            Document:
+              operationId: DocumentDto.Revisions.GetDocument
+              parameters:
+                Id: $response.body#/Id
+                Id1: $request.path.Id1
         default:
           $ref: '#/components/responses/error'
   /Libraries:
@@ -804,9 +810,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
           links:
             Documents:
-              operationId: Libraries.LibraryDto.GetLibraryDto
+              operationId: Libraries.GetDocuments
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
     post:
@@ -897,9 +903,9 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDto'
           links:
             Documents:
-              operationId: Libraries.LibraryDto.GetLibraryDto
+              operationId: Libraries.GetDocuments
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1062,9 +1068,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           links:
             Revisions:
-              operationId: Documents.DocumentDto.GetDocumentDto
+              operationId: LibraryDto.Documents.GetRevisions
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
   '/Libraries({Id})/Documents({Id1})':
@@ -1136,6 +1142,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          links:
+            Revisions:
+              operationId: LibraryDto.Documents.GetRevisions
+              parameters:
+                Id: $response.body#/Id
+                Id1: $request.path.Id1
         default:
           $ref: '#/components/responses/error'
   /Revisions:
@@ -1252,9 +1264,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
           links:
             Document:
-              operationId: Revisions.RevisionDto.GetRevisionDto
+              operationId: Revisions.GetDocument
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
     post:
@@ -1347,9 +1359,9 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
           links:
             Document:
-              operationId: Revisions.RevisionDto.GetRevisionDto
+              operationId: Revisions.GetDocument
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1512,6 +1524,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+          links:
+            Library:
+              operationId: RevisionDto.Document.GetLibrary
+              parameters:
+                Id: $response.body#/Id
+            LastRevisionFile:
+              operationId: RevisionDto.Document.GetLastRevisionFile
+              parameters:
+                Id: $response.body#/Id
+            SourceDocument:
+              operationId: RevisionDto.Document.GetSourceDocument
+              parameters:
+                Id: $response.body#/Id
+            SourceDocumentChildren:
+              operationId: RevisionDto.Document.GetSourceDocumentChildren
+              parameters:
+                Id: $response.body#/Id
+            Revisions:
+              operationId: RevisionDto.Document.GetRevisions
+              parameters:
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
   /Tasks:
@@ -1607,9 +1640,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           links:
             Revisions:
-              operationId: Tasks.DocumentDto.GetDocumentDto
+              operationId: Tasks.GetRevisions
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
     post:
@@ -1695,9 +1728,9 @@ paths:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
           links:
             Revisions:
-              operationId: Tasks.DocumentDto.GetDocumentDto
+              operationId: Tasks.GetRevisions
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1908,9 +1941,9 @@ paths:
                       $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
           links:
             Document:
-              operationId: Revisions.RevisionDto.GetRevisionDto
+              operationId: DocumentDto.Revisions.GetDocument
               parameters:
-                Id: $request.path.Id
+                Id: $response.body#/Id
         default:
           $ref: '#/components/responses/error'
   '/Tasks({Id})/Revisions({Id1})':
@@ -1989,6 +2022,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDto'
+          links:
+            Document:
+              operationId: DocumentDto.Revisions.GetDocument
+              parameters:
+                Id: $response.body#/Id
+                Id1: $request.path.Id1
         default:
           $ref: '#/components/responses/error'
 components:
