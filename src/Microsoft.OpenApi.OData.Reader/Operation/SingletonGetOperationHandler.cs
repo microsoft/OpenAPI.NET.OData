@@ -99,7 +99,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                 }
                             }
                         },
-                        Links = Context.CreateLinks(Singleton.EntityType(), Singleton.Name)
+                        Links = Context.CreateLinks(Singleton.EntityType(), Singleton.Name, Singleton.ContainerElementKind.ToString(), operation.Parameters)
                     }
                 }
             };
