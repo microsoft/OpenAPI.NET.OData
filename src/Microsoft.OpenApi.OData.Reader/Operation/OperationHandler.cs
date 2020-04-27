@@ -40,14 +40,14 @@ namespace Microsoft.OpenApi.OData.Operation
             // Security
             SetSecurity(operation);
 
+            // Parameters
+            SetParameters(operation);
+
             // Responses
             SetResponses(operation);
 
             // RequestBody
             SetRequestBody(operation);
-
-            // Parameters
-            SetParameters(operation);
 
             // Tags
             SetTags(operation);
