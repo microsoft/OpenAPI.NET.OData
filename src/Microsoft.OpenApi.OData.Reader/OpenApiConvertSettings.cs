@@ -115,6 +115,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableDerivedTypesReferencesForRequestBody { get; set; } = false;
 
+        /// <summary>
+        /// Gets/sets a value that specifies a prefix to be prepended to all generated paths.
+        /// </summary>
+        public string PathPrefix { get; set; } = string.Empty;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -138,7 +143,8 @@ namespace Microsoft.OpenApi.OData
                 PageableOperationName = this.PageableOperationName,
                 EnableDiscriminatorValue = this.EnableDiscriminatorValue,
                 EnableDerivedTypesReferencesForResponses = this.EnableDerivedTypesReferencesForResponses,
-                EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody
+                EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
+                PathPrefix = this.PathPrefix
             };
 
             return newSettings;

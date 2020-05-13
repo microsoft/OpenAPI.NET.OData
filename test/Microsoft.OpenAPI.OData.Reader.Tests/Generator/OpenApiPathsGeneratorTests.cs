@@ -68,6 +68,35 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
+        public void CreatePathsReturnsForBasicModelWithPrefix()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            {
+                EnableKeyAsSegment = true,
+                PathPrefix = "some/prefix"
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            // Act
+            var paths = context.CreatePaths();
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(7, paths.Count);
+
+            Assert.Contains("/some/prefix/People", paths.Keys);
+            Assert.Contains("/some/prefix/People/{UserName}", paths.Keys);
+            Assert.Contains("/some/prefix/City", paths.Keys);
+            Assert.Contains("/some/prefix/City/{Name}", paths.Keys);
+            Assert.Contains("/some/prefix/CountryOrRegion", paths.Keys);
+            Assert.Contains("/some/prefix/CountryOrRegion/{Name}", paths.Keys);
+            Assert.Contains("/some/prefix/Me", paths.Keys);
+        }
+
+
+        [Fact]
         public void CreatePathsReturnsForContractModelWithHierarhicalClass()
         {
             // Arrange
