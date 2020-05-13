@@ -146,6 +146,13 @@ namespace Microsoft.OpenApi.OData.Edm
 
             HashSet<string> parameters = new HashSet<string>();
             StringBuilder sb = new StringBuilder();
+
+            if (!string.IsNullOrWhiteSpace(settings.PathPrefix))
+            {
+                sb.Append("/");
+                sb.Append(settings.PathPrefix);
+            }
+
             foreach (var segment in Segments)
             {
                 string pathItemName = segment.GetPathItemName(settings, parameters);
