@@ -68,11 +68,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      & "$(snExe)" /Vr $(ProductBinPath)\$(mainDll)
-      & "$(snExe64)" /Vr $(ProductBinPath)\$(mainDll)
-      & "$(snExe)" /Vr $(testBinPath)\$(testDll)
-      & "$(snExe64)" /Vr $(testBinPath)\$(testDll)
-  enabled: false
+      & "$(snExe)" /Vr $(ProductBinPath)\net472\$(mainDll)
+      & "$(snExe64)" /Vr $(ProductBinPath)\net472\$(mainDll)
+      & "$(snExe)" /Vr $(ProductBinPath)\test\net472\$(testDll)
+      & "$(snExe64)" /Vr $(ProductBinPath)\test\net472\$(testDll)
 
 # Run the Unit test
 - task: DotNetCoreCLI@2
