@@ -548,6 +548,7 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Documents({Id})/Revisions({Id1})':
     get:
       tags:
@@ -616,6 +617,147 @@ paths:
             $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Documents({Id})/Revisions/$ref':
+    get:
+      tags:
+        - Documents.RevisionDto
+      summary: Get ref of Revisions from Documents
+      operationId: Documents.ListRefRevisions
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of RevisionDto
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Documents.RevisionDto
+      summary: Create new navigation property ref to Revisions for Documents
+      operationId: Documents.CreateRefRevisions
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Documents.RevisionDto
+      summary: Delete ref of navigation property Revisions for Documents
+      operationId: Documents.DeleteRefRevisions
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Libraries:
     get:
       tags:
@@ -938,6 +1080,7 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Libraries({Id})/Documents({Id1})':
     get:
       tags:
@@ -999,6 +1142,133 @@ paths:
             $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Libraries({Id})/Documents/$ref':
+    get:
+      tags:
+        - Libraries.DocumentDto
+      summary: Get ref of Documents from Libraries
+      operationId: Libraries.ListRefDocuments
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Name
+              - Name desc
+              - Description
+              - Description desc
+              - Filename
+              - Filename desc
+              - NumberOfRevisions
+              - NumberOfRevisions desc
+              - Suffix
+              - Suffix desc
+              - DomainId
+              - DomainId desc
+              - ModificationDate
+              - ModificationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - Tags
+              - Tags desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of DocumentDto
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Libraries.DocumentDto
+      summary: Create new navigation property ref to Documents for Libraries
+      operationId: Libraries.CreateRefDocuments
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Libraries.DocumentDto
+      summary: Delete ref of navigation property Documents for Libraries
+      operationId: Libraries.DeleteRefDocuments
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Revisions:
     get:
       tags:
@@ -1335,6 +1605,87 @@ paths:
             $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Revisions({Id})/Document/$ref':
+    get:
+      tags:
+        - Revisions.Document
+      summary: Get ref of Document from Revisions
+      operationId: Revisions.GetRefDocument
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Revisions.Document
+      summary: Update the ref of navigation property Document in Revisions
+      operationId: Revisions.UpdateRefDocument
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            type: String
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Revisions.Document
+      summary: Delete ref of navigation property Document for Revisions
+      operationId: Revisions.DeleteRefDocument
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Tasks:
     get:
       tags:
@@ -1684,6 +2035,7 @@ paths:
                   $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Tasks({Id})/Revisions({Id1})':
     get:
       tags:
@@ -1752,6 +2104,147 @@ paths:
             $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Tasks({Id})/Revisions/$ref':
+    get:
+      tags:
+        - Tasks.RevisionDto
+      summary: Get ref of Revisions from Tasks
+      operationId: Tasks.ListRefRevisions
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+              - Number
+              - Number desc
+              - DocumentId
+              - DocumentId desc
+              - DocumentName
+              - DocumentName desc
+              - DocumentDescription
+              - DocumentDescription desc
+              - CreationDate
+              - CreationDate desc
+              - CreatedBy
+              - CreatedBy desc
+              - IsReviewed
+              - IsReviewed desc
+              - ReviewedBy
+              - ReviewedBy desc
+              - ReviewedDate
+              - ReviewedDate desc
+              - IsApproved
+              - IsApproved desc
+              - ApprovedBy
+              - ApprovedBy desc
+              - ApprovedDate
+              - ApprovedDate desc
+              - IsRejected
+              - IsRejected desc
+              - RejectedBy
+              - RejectedBy desc
+              - RejectedDate
+              - RejectedDate desc
+              - DomainId
+              - DomainId desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of RevisionDto
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Tasks.RevisionDto
+      summary: Create new navigation property ref to Revisions for Tasks
+      operationId: Tasks.CreateRefRevisions
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Tasks.RevisionDto
+      summary: Delete ref of navigation property Revisions for Tasks
+      operationId: Tasks.DeleteRefRevisions
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
 definitions:
   Siterra.Documents.App.DTO.DocumentDto:
     title: DocumentDto

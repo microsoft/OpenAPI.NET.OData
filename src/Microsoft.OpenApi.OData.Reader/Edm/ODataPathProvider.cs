@@ -137,6 +137,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     break;
 
                 case ODataPathKind.NavigationProperty:
+                case ODataPathKind.Ref:
                     ODataNavigationPropertySegment navigationPropertySegment = path.Last(p => p is ODataNavigationPropertySegment)
                         as ODataNavigationPropertySegment;
 
@@ -216,12 +217,30 @@ namespace Microsoft.OpenApi.OData.Edm
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
 
+            if (!navigationProperty.ContainsTarget)
+            {
+                // Non-Contained
+                // Single-Valued:  DELETE ~/entityset/{key}/single-valued-Nav/$ref
+                // collection-valued:   DELETE ~/entityset/{key}/collection-valued-Nav/$ref?$id ={ navKey}
+                ODataPath newPath = currentPath.Clone();
+                newPath.Push(ODataRefSegment.Instance); // $ref
+                AppendPath(newPath);
+            }
+
             // append a navigation property key.
             IEdmEntityType navEntityType = navigationProperty.ToEntityType();
             if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 currentPath.Push(new ODataKeySegment(navEntityType));
                 AppendPath(currentPath.Clone());
+
+                if (!navigationProperty.ContainsTarget)
+                {
+                    // TODO: Shall we add "$ref" after {key}, and only support delete?
+                    // ODataPath newPath = currentPath.Clone();
+                    // newPath.Push(ODataRefSegment.Instance); // $ref
+                    // AppendPath(newPath);
+                }
             }
 
             if (shouldExpand)
@@ -372,6 +391,11 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 foreach (var path in value)
                 {
+                    if (path.Kind == ODataPathKind.Ref)
+                    {
+                        continue;
+                    }
+
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
 
                     bool isLastKeySegment = path.LastSegment is ODataKeySegment;

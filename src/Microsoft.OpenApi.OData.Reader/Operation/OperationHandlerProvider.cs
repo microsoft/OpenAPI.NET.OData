@@ -59,12 +59,22 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Post, new EdmActionImportOperationHandler() }
             };
 
-            // navigation property (Get/Patch/Post)
+            // navigation property (Get/Patch/Post/Delete)
             _handlers[ODataPathKind.NavigationProperty] = new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new NavigationPropertyGetOperationHandler() },
                 {OperationType.Patch, new NavigationPropertyPatchOperationHandler() },
-                {OperationType.Post, new NavigationPropertyPostOperationHandler() }
+                {OperationType.Post, new NavigationPropertyPostOperationHandler() },
+                {OperationType.Delete, new NavigationPropertyDeleteOperationHandler() }
+            };
+
+            // navigatoin property ref (Get/Post/Patch/Delete)
+            _handlers[ODataPathKind.Ref] = new Dictionary<OperationType, IOperationHandler>
+            {
+                {OperationType.Get, new RefGetOperationHandler() },
+                {OperationType.Patch, new RefPatchOperationHandler() },
+                {OperationType.Post, new RefPostOperationHandler() },
+                {OperationType.Delete, new RefDeleteOperationHandler() }
             };
         }
 

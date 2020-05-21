@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Assert
             Assert.NotNull(supportedFormats1);
             Assert.NotNull(supportedFormats2);
-            Assert.Same(supportedFormats1, supportedFormats2);
+            Assert.Equal(supportedFormats1, supportedFormats2);
 
             Assert.Equal(2, supportedFormats1.Count());
             Assert.Equal(new[] { "abc", "xyz" }, supportedFormats1);

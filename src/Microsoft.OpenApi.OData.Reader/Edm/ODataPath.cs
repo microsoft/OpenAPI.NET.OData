@@ -109,17 +109,6 @@ namespace Microsoft.OpenApi.OData.Edm
             return Segments.Count(c => keySegmentAsDepth ? true : !(c is ODataKeySegment));
         }
 
-        private bool _adjustKeyParameter = false;
-        public void AdjustKeyParameters()
-        {
-            if (_adjustKeyParameter)
-            {
-                return;
-            }
-
-
-        }
-
         /// <summary>
         /// Gets the default path item name.
         /// </summary>
@@ -236,7 +225,11 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private ODataPathKind CalcPathType()
         {
-            if (Segments.Any(c => c.Kind == ODataSegmentKind.OperationImport))
+            if (Segments.Any(c => c.Kind == ODataSegmentKind.Ref))
+            {
+                return ODataPathKind.Ref;
+            }
+            else if (Segments.Any(c => c.Kind == ODataSegmentKind.OperationImport))
             {
                 return ODataPathKind.OperationImport;
             }

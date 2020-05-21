@@ -58,10 +58,10 @@ namespace Microsoft.OpenApi.OData.Operation
                     };
 
                     operation.Extensions.Add(Constants.xMsPageable, extension);
-
-                    base.SetExtensions(operation);
                 }
             }
+
+            base.SetExtensions(operation);
         }
 
         /// <inheritdoc/>
