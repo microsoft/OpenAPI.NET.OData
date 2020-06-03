@@ -622,7 +622,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '204':
@@ -909,7 +909,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '201':
@@ -917,7 +917,7 @@ paths:
           content:
             application/json:
               schema:
-                type: String
+                type: string
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1326,7 +1326,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '201':
@@ -1334,7 +1334,7 @@ paths:
           content:
             application/json:
               schema:
-                type: String
+                type: string
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1728,7 +1728,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '204':
@@ -2051,7 +2051,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '201':
@@ -2059,7 +2059,7 @@ paths:
           content:
             application/json:
               schema:
-                type: String
+                type: string
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2549,7 +2549,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '201':
@@ -2557,7 +2557,7 @@ paths:
           content:
             application/json:
               schema:
-                type: String
+                type: string
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2958,7 +2958,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '204':
@@ -3281,7 +3281,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '201':
@@ -3289,7 +3289,7 @@ paths:
           content:
             application/json:
               schema:
-                type: String
+                type: string
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -3779,7 +3779,7 @@ paths:
         content:
           application/json:
             schema:
-              type: String
+              type: string
         required: true
       responses:
         '201':
@@ -3787,7 +3787,7 @@ paths:
           content:
             application/json:
               schema:
-                type: String
+                type: string
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation

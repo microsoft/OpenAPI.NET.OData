@@ -935,7 +935,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -1343,7 +1343,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -1355,7 +1355,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "String"
+                  "type": "string"
                 }
               }
             }
@@ -1971,7 +1971,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -1983,7 +1983,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "String"
+                  "type": "string"
                 }
               }
             }
@@ -2549,7 +2549,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -3009,7 +3009,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -3021,7 +3021,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "String"
+                  "type": "string"
                 }
               }
             }
@@ -3755,7 +3755,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -3767,7 +3767,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "String"
+                  "type": "string"
                 }
               }
             }
@@ -4343,7 +4343,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -4803,7 +4803,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -4815,7 +4815,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "String"
+                  "type": "string"
                 }
               }
             }
@@ -5549,7 +5549,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "String"
+                "type": "string"
               }
             }
           },
@@ -5561,7 +5561,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "String"
+                  "type": "string"
                 }
               }
             }
