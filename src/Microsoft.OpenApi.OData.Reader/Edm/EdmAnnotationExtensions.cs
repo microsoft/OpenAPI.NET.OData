@@ -111,6 +111,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <typeparam name="T">The CLR mapping type.</typeparam>
         /// <param name="model">The Edm model.</param>
+        /// <param name="target">The target element.</param>
         /// <returns>Null or the record value (a complex type) for this annotation.</returns>
         public static T GetRecord<T>(this IEdmModel model, IEdmVocabularyAnnotatable target)
             where T : IRecord, new()
@@ -258,7 +259,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Create the corresponding Authorization object.
         /// </summary>
-        /// <param name="record">The input record.</param>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="target">The Edm target.</param>
         /// <returns>The created <see cref="Authorization"/> object.</returns>
         public static IEnumerable<Authorization> GetAuthorizations(this IEdmModel model, IEdmVocabularyAnnotatable target)
         {

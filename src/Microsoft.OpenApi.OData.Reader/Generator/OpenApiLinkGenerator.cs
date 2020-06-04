@@ -22,7 +22,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="entityType">The Entity type.</param>
-        /// <param name ="sourceElementName">The name of the source of the <see cref="IEdmEntityType".</param>
+        /// <param name ="sourceElementName">The name of the source of the <see cref="IEdmEntityType" />.</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
         public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntityType entityType, string sourceElementName)
         {

@@ -93,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <summary>
         /// Initialize the capabilities with the vocabulary annotation.
         /// </summary>
-        /// <param name="annotation">The input vocabulary annotation.</param>
+        /// <param name="record">The input vocabulary record annotation.</param>
         public void Initialize(IEdmRecordExpression record)
         {
             Utils.CheckArgumentNull(record, nameof(record));

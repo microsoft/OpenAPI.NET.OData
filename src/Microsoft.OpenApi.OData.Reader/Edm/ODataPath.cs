@@ -133,6 +133,8 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
+            // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
+            // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             HashSet<string> parameters = new HashSet<string>();
             StringBuilder sb = new StringBuilder();
 
@@ -209,6 +211,32 @@ namespace Microsoft.OpenApi.OData.Edm
             return this;
         }
 
+        internal IDictionary<ODataSegment, IDictionary<string, string>> CalculateParameterMapping(OpenApiConvertSettings settings)
+        {
+            IDictionary<ODataSegment, IDictionary<string, string>> parameterMapping = new Dictionary<ODataSegment, IDictionary<string, string>>();
+
+            // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
+            // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            HashSet<string> parameters = new HashSet<string>();
+
+            foreach (var segment in Segments)
+            {
+                // So far, only care about the key segment and operation segment
+                if (segment.Kind == ODataSegmentKind.Key)
+                {
+                    ODataKeySegment keySegment = (ODataKeySegment)segment;
+                    parameterMapping[keySegment] = keySegment.GetKeyNameMapping(settings, parameters);
+                }
+                else if (segment.Kind == ODataSegmentKind.Operation)
+                {
+                    ODataOperationSegment operationSegment = (ODataOperationSegment)segment;
+                    parameterMapping[operationSegment] = operationSegment.GetNameMapping(settings, parameters);
+                }
+            }
+
+            return parameterMapping;
+        }
+
         /// <summary>
         /// Output the path string.
         /// </summary>
@@ -218,6 +246,11 @@ namespace Microsoft.OpenApi.OData.Edm
             return "/" + String.Join("/", Segments.Select(e => e.Kind));
         }
 
+        /// <summary>
+        /// Compare between two ODataPath using its path item name.
+        /// </summary>
+        /// <param name="other">The compare to ODataPath.</param>
+        /// <returns>true/false</returns>
         public int CompareTo(ODataPath other)
         {
             return GetPathItemName().CompareTo(other.GetPathItemName());

@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create the list of <see cref="OpenApiSecurityRequirement"/> object.
         /// </summary>
         /// <param name="context">The OData to Open API context.</param>
-        /// <param name="securitySchemes">The securitySchemes.</param>
+        /// <param name="permissions">The permissions.</param>
         /// <returns>The created <see cref="OpenApiSecurityRequirement"/> collection.</returns>
         public static IEnumerable<OpenApiSecurityRequirement> CreateSecurityRequirements(this ODataContext context,
             IList<PermissionType> permissions)

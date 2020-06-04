@@ -33,6 +33,11 @@ namespace Microsoft.OpenApi.OData.Operation
         protected IEdmOperation EdmOperation { get; private set; }
 
         /// <summary>
+        /// Gets the OData operation segment.
+        /// </summary>
+        protected ODataOperationSegment OperationSegment { get; private set; }
+
+        /// <summary>
         /// Gets a value indicating whether the path has type cast segment or not.
         /// </summary>
         protected bool HasTypeCast { get; private set; }
@@ -46,8 +51,8 @@ namespace Microsoft.OpenApi.OData.Operation
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
 
-            ODataOperationSegment operationSegment = path.LastSegment as ODataOperationSegment;
-            EdmOperation = operationSegment.Operation;
+            OperationSegment = path.LastSegment as ODataOperationSegment;
+            EdmOperation = OperationSegment.Operation;
 
             HasTypeCast = path.Segments.Any(s => s is ODataTypeCastSegment);
         }
@@ -110,7 +115,8 @@ namespace Microsoft.OpenApi.OData.Operation
             if (EdmOperation.IsFunction())
             {
                 IEdmFunction function = (IEdmFunction)EdmOperation;
-                IList<OpenApiParameter> parameters = Context.CreateParameters(function);
+                IDictionary<string, string> mappings = ParameterMappings[OperationSegment];
+                IList<OpenApiParameter> parameters = Context.CreateParameters(function, mappings);
                 if (operation.Parameters == null)
                 {
                     operation.Parameters = parameters;

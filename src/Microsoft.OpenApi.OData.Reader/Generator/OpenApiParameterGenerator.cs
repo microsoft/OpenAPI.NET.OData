@@ -62,8 +62,10 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="function">The Edm function.</param>
+        /// <param name="parameterNameMapping">The parameter name mapping.</param>
         /// <returns>The created list of <see cref="OpenApiParameter"/>.</returns>
-        public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunction function)
+        public static IList<OpenApiParameter> CreateParameters(this ODataContext context, IEdmFunction function,
+            IDictionary<string, string> parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(function, nameof(function));
@@ -80,7 +82,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     parameters.Add(new OpenApiParameter
                     {
-                        Name = edmParameter.Name,
+                        Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
                         In = ParameterLocation.Query, // as query option
                         Required = true,
                         Schema = new OpenApiSchema
@@ -101,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     // Primitive parameters use the same type mapping as described for primitive properties.
                     parameters.Add(new OpenApiParameter
                     {
-                        Name = edmParameter.Name,
+                        Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
                         In = ParameterLocation.Path,
                         Required = true,
                         Schema = context.CreateEdmTypeSchema(edmParameter.Type)
@@ -115,9 +117,12 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <summary>
         /// Create key parameters for the <see cref="ODataKeySegment"/>.
         /// </summary>
+        /// <param name="context">The OData context.</param>
         /// <param name="keySegment">The key segment.</param>
+        /// <param name="parameterNameMapping">The parameter name mapping.</param>
         /// <returns>The created the list of <see cref="OpenApiParameter"/>.</returns>
-        public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment)
+        public static IList<OpenApiParameter> CreateKeyParameters(this ODataContext context, ODataKeySegment keySegment,
+            IDictionary<string, string> parameterNameMapping = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(keySegment, nameof(keySegment));
@@ -136,7 +141,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 OpenApiParameter parameter = new OpenApiParameter
                 {
-                    Name = keyName,
+                    Name = parameterNameMapping == null ? keyName: parameterNameMapping[keyName],
                     In = ParameterLocation.Path,
                     Required = true,
                     Description = "key: " + keyName + " of " + entityType.Name,
@@ -153,7 +158,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     OpenApiParameter parameter = new OpenApiParameter
                     {
-                        Name = keyProperty.Name, // By design: not prefix with type name if enable type name prefix
+                        Name = parameterNameMapping == null ?
+                            keyProperty.Name:
+                            parameterNameMapping[keyProperty.Name],// By design: not prefix with type name if enable type name prefix
                         In = ParameterLocation.Path,
                         Required = true,
                         Description = "key: " + keyProperty.Name + " of " + entityType.Name,
@@ -312,6 +319,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="target">The Edm annotation target.</param>
+        /// <param name="entityType">The Edm Entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
         public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         {
@@ -396,11 +404,12 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateSelect(navigationProperty, navigationProperty.ToEntityType());
         }
 
-        // <summary>
-        /// Create $select parameter for the <see cref="IEdmNavigationSource"/>.
+        /// <summary>
+        /// Create $select parameter for the <see cref="IEdmVocabularyAnnotatable"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <param name="navigationSource">The Edm navigation source.</param>
+        /// <param name="target">The Edm target.</param>
+        /// <param name="entityType">The Edm entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
         public static OpenApiParameter CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
         {
