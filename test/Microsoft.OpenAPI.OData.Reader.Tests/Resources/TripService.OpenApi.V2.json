@@ -4818,48 +4818,6 @@
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
           }
         }
-      },
-      "example": {
-        "UserName": "string (identifier)",
-        "FirstName": "string",
-        "LastName": "string",
-        "MiddleName": "string",
-        "Gender": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-        },
-        "Age": "int64",
-        "Emails": [
-          "string"
-        ],
-        "AddressInfo": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-          }
-        ],
-        "HomeAddress": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        "FavoriteFeature": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-        },
-        "Features": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          }
-        ],
-        "Friends": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
-        ],
-        "BestFriend": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-        },
-        "Trips": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-          }
-        ]
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline": {
@@ -4872,10 +4830,6 @@
         "Name": {
           "type": "string"
         }
-      },
-      "example": {
-        "AirlineCode": "string (identifier)",
-        "Name": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport": {
@@ -4894,14 +4848,6 @@
         "Location": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
         }
-      },
-      "example": {
-        "Name": "string",
-        "IcaoCode": "string (identifier)",
-        "IataCode": "string",
-        "Location": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
-        }
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location": {
@@ -4913,12 +4859,6 @@
         },
         "City": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
-        }
-      },
-      "example": {
-        "Address": "string",
-        "City": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
         }
       }
     },
@@ -4935,11 +4875,6 @@
         "Region": {
           "type": "string"
         }
-      },
-      "example": {
-        "Name": "string",
-        "CountryRegion": "string",
-        "Region": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
@@ -4956,14 +4891,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "Address": "string",
-        "City": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
-        },
-        "Loc": "Edm.GeographyPoint"
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation": {
       "allOf": [
@@ -4979,14 +4907,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "Address": "string",
-        "City": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
-        },
-        "BuildingInfo": "string"
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip": {
       "title": "Trip",
@@ -5034,23 +4955,6 @@
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
           }
         }
-      },
-      "example": {
-        "TripId": "integer (identifier)",
-        "ShareId": "string",
-        "Name": "string",
-        "Budget": "float",
-        "Description": "string",
-        "Tags": [
-          "string"
-        ],
-        "StartsAt": "string (timestamp)",
-        "EndsAt": "string (timestamp)",
-        "PlanItems": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
-          }
-        ]
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem": {
@@ -5081,13 +4985,6 @@
           "pattern": "^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$",
           "type": "string"
         }
-      },
-      "example": {
-        "PlanItemId": "integer (identifier)",
-        "ConfirmationCode": "string",
-        "StartsAt": "string (timestamp)",
-        "EndsAt": "string (timestamp)",
-        "Duration": "string"
       }
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event": {
@@ -5107,18 +5004,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "PlanItemId": "integer (identifier)",
-        "ConfirmationCode": "string",
-        "StartsAt": "string (timestamp)",
-        "EndsAt": "string (timestamp)",
-        "Duration": "string",
-        "OccursAt": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
-        },
-        "Description": "string"
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation": {
       "allOf": [
@@ -5134,15 +5020,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "PlanItemId": "integer (identifier)",
-        "ConfirmationCode": "string",
-        "StartsAt": "string (timestamp)",
-        "EndsAt": "string (timestamp)",
-        "Duration": "string",
-        "SeatNumber": "string"
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight": {
       "allOf": [
@@ -5167,25 +5045,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "PlanItemId": "integer (identifier)",
-        "ConfirmationCode": "string",
-        "StartsAt": "string (timestamp)",
-        "EndsAt": "string (timestamp)",
-        "Duration": "string",
-        "SeatNumber": "string",
-        "FlightNumber": "string",
-        "Airline": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-        },
-        "From": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
-        },
-        "To": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
-        }
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee": {
       "allOf": [
@@ -5207,55 +5067,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "UserName": "string (identifier)",
-        "FirstName": "string",
-        "LastName": "string",
-        "MiddleName": "string",
-        "Gender": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-        },
-        "Age": "int64",
-        "Emails": [
-          "string"
-        ],
-        "AddressInfo": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-          }
-        ],
-        "HomeAddress": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        "FavoriteFeature": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-        },
-        "Features": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          }
-        ],
-        "Friends": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
-        ],
-        "BestFriend": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-        },
-        "Trips": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-          }
-        ],
-        "Cost": "int64",
-        "Peers": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
-        ]
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "allOf": [
@@ -5280,58 +5092,7 @@
             }
           }
         }
-      ],
-      "example": {
-        "UserName": "string (identifier)",
-        "FirstName": "string",
-        "LastName": "string",
-        "MiddleName": "string",
-        "Gender": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-        },
-        "Age": "int64",
-        "Emails": [
-          "string"
-        ],
-        "AddressInfo": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-          }
-        ],
-        "HomeAddress": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        "FavoriteFeature": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-        },
-        "Features": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-          }
-        ],
-        "Friends": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
-        ],
-        "BestFriend": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-        },
-        "Trips": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-          }
-        ],
-        "Budget": "int64",
-        "BossOffice": {
-          "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-        },
-        "DirectReports": [
-          {
-            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-          }
-        ]
-      }
+      ]
     },
     "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender": {
       "title": "PersonGender",
