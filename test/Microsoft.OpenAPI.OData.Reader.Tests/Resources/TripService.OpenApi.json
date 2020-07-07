@@ -767,26 +767,6 @@
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
                 }
               }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Me.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Me.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Me.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              }
             }
           },
           "default": {
@@ -889,26 +869,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Person.BestFriend.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Person.BestFriend.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Person.BestFriend.GetTrips",
-                "parameters": {
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -1128,26 +1088,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              }
             }
           },
           "default": {
@@ -1233,27 +1173,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Person.Friends.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Person.Friends.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Person.Friends.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -1343,26 +1262,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -1763,14 +1662,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Trips.Trip.GetTrip",
-                "parameters": {
-                  "TripId": "$request.path.TripId"
-                }
-              }
             }
           },
           "default": {
@@ -1852,15 +1743,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                }
-              }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Person.Trips.GetPlanItems",
-                "parameters": {
-                  "TripId": "$request.path.TripId",
-                  "PlanItemId": "$response.body#/PlanItemId"
                 }
               }
             }
@@ -1992,14 +1874,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Trips.Trip.GetTrip",
-                "parameters": {
-                  "TripId": "$request.path.TripId"
                 }
               }
             }
@@ -2209,26 +2083,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "NewComePeople.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "NewComePeople.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "NewComePeople.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              }
             }
           },
           "default": {
@@ -2347,27 +2201,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "NewComePeople.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "NewComePeople.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "NewComePeople.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -2530,27 +2363,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Person.BestFriend.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Person.BestFriend.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Person.BestFriend.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -2814,26 +2626,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              }
             }
           },
           "default": {
@@ -2929,30 +2721,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Person.Friends.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName",
-                  "UserName1": "$request.path.UserName1"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Person.Friends.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName",
-                  "UserName1": "$request.path.UserName1"
-                }
-              },
-              "Trips": {
-                "operationId": "Person.Friends.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "UserName1": "$request.path.UserName1",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -3052,26 +2820,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -3560,14 +3308,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Trips.Trip.GetTrip",
-                "parameters": {
-                  "TripId": "$request.path.TripId"
-                }
-              }
             }
           },
           "default": {
@@ -3659,16 +3399,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                }
-              }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Person.Trips.GetPlanItems",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$request.path.TripId",
-                  "PlanItemId": "$response.body#/PlanItemId"
                 }
               }
             }
@@ -3820,14 +3550,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Trips.Trip.GetTrip",
-                "parameters": {
-                  "TripId": "$request.path.TripId"
                 }
               }
             }
@@ -4059,26 +3781,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "People.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "People.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "People.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              }
             }
           },
           "default": {
@@ -4197,27 +3899,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "People.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "People.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "People.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -4380,27 +4061,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Person.BestFriend.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Person.BestFriend.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Person.BestFriend.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -4664,26 +4324,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              }
             }
           },
           "default": {
@@ -4779,30 +4419,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Person.Friends.GetFriends",
-                "parameters": {
-                  "UserName": "$response.body#/UserName",
-                  "UserName1": "$request.path.UserName1"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Person.Friends.GetBestFriend",
-                "parameters": {
-                  "UserName": "$response.body#/UserName",
-                  "UserName1": "$request.path.UserName1"
-                }
-              },
-              "Trips": {
-                "operationId": "Person.Friends.GetTrips",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "UserName1": "$request.path.UserName1",
-                  "TripId": "$response.body#/TripId"
                 }
               }
             }
@@ -4902,26 +4518,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "Friends": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "BestFriend": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
-                }
-              },
-              "Trips": {
-                "operationId": "Friends.Person.GetPerson",
-                "parameters": {
-                  "UserName": "$request.path.UserName"
                 }
               }
             }
@@ -5410,14 +5006,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Trips.Trip.GetTrip",
-                "parameters": {
-                  "TripId": "$request.path.TripId"
-                }
-              }
             }
           },
           "default": {
@@ -5509,16 +5097,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                }
-              }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Person.Trips.GetPlanItems",
-                "parameters": {
-                  "UserName": "$request.path.UserName",
-                  "TripId": "$request.path.TripId",
-                  "PlanItemId": "$response.body#/PlanItemId"
                 }
               }
             }
@@ -5670,14 +5248,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "PlanItems": {
-                "operationId": "Trips.Trip.GetTrip",
-                "parameters": {
-                  "TripId": "$request.path.TripId"
                 }
               }
             }

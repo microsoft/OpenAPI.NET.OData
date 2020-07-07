@@ -445,14 +445,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Revisions": {
-                "operationId": "Documents.DocumentDto.GetDocumentDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -574,9 +566,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Documents.GetRevisions",
+                "operationId": "Documents.ListRevisions",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -866,14 +858,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -982,9 +966,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "DocumentDto.Revisions.GetDocument",
+                "operationId": "Documents.Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$response.body#/Id",
+                  "Id": "$request.path.Id",
                   "Id1": "$request.path.Id1"
                 }
               }
@@ -1100,14 +1084,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -1353,14 +1329,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Documents": {
-                "operationId": "Libraries.LibraryDto.GetLibraryDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -1487,9 +1455,9 @@
             },
             "links": {
               "Documents": {
-                "operationId": "Libraries.GetDocuments",
+                "operationId": "Libraries.ListDocuments",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -1718,14 +1686,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Revisions": {
-                "operationId": "Documents.DocumentDto.GetDocumentDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -1827,9 +1787,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "LibraryDto.Documents.GetRevisions",
+                "operationId": "Libraries.Documents.ListRevisions",
                 "parameters": {
-                  "Id": "$response.body#/Id",
+                  "Id": "$request.path.Id",
                   "Id1": "$request.path.Id1"
                 }
               }
@@ -1931,14 +1891,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "Revisions": {
-                "operationId": "Documents.DocumentDto.GetDocumentDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2190,14 +2142,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -2328,7 +2272,7 @@
               "Document": {
                 "operationId": "Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2544,33 +2488,33 @@
             },
             "links": {
               "Library": {
-                "operationId": "RevisionDto.Document.GetLibrary",
+                "operationId": "Revisions.Document.GetLibrary",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               },
               "LastRevisionFile": {
-                "operationId": "RevisionDto.Document.GetLastRevisionFile",
+                "operationId": "Revisions.Document.GetLastRevisionFile",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               },
               "SourceDocument": {
-                "operationId": "RevisionDto.Document.GetSourceDocument",
+                "operationId": "Revisions.Document.GetSourceDocument",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               },
               "SourceDocumentChildren": {
-                "operationId": "RevisionDto.Document.GetSourceDocumentChildren",
+                "operationId": "Revisions.Document.ListSourceDocumentChildren",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               },
               "Revisions": {
-                "operationId": "RevisionDto.Document.GetRevisions",
+                "operationId": "Revisions.Document.ListRevisions",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2611,6 +2555,38 @@
               "application/json": {
                 "schema": {
                   "type": "string"
+                }
+              }
+            },
+            "links": {
+              "Library": {
+                "operationId": "Revisions.Document.GetLibrary",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              },
+              "LastRevisionFile": {
+                "operationId": "Revisions.Document.GetLastRevisionFile",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              },
+              "SourceDocument": {
+                "operationId": "Revisions.Document.GetSourceDocument",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              },
+              "SourceDocumentChildren": {
+                "operationId": "Revisions.Document.ListSourceDocumentChildren",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              },
+              "Revisions": {
+                "operationId": "Revisions.Document.ListRevisions",
+                "parameters": {
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2826,14 +2802,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Revisions": {
-                "operationId": "Tasks.DocumentDto.GetDocumentDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -2955,9 +2923,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Tasks.GetRevisions",
+                "operationId": "Tasks.ListRevisions",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -3247,14 +3215,6 @@
                   }
                 }
               }
-            },
-            "links": {
-              "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
-                }
-              }
             }
           },
           "default": {
@@ -3363,9 +3323,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "DocumentDto.Revisions.GetDocument",
+                "operationId": "Tasks.Revisions.GetDocument",
                 "parameters": {
-                  "Id": "$response.body#/Id",
+                  "Id": "$request.path.Id",
                   "Id1": "$request.path.Id1"
                 }
               }
@@ -3481,14 +3441,6 @@
                       }
                     }
                   }
-                }
-              }
-            },
-            "links": {
-              "Document": {
-                "operationId": "Revisions.RevisionDto.GetRevisionDto",
-                "parameters": {
-                  "Id": "$request.path.Id"
                 }
               }
             }

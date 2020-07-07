@@ -140,6 +140,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
             openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            openApiConvertSettings.ShowLinks = true; // test Links
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
@@ -165,6 +166,7 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
             var openApiConvertSettings = new OpenApiConvertSettings();
             openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            openApiConvertSettings.ShowLinks = true;
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
