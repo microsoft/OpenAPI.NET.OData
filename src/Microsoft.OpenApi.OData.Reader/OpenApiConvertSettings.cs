@@ -120,6 +120,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public string PathPrefix { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to show the OpenAPI links in the responses.
+        /// </summary>
+        public bool ShowLinks { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -144,7 +149,8 @@ namespace Microsoft.OpenApi.OData
                 EnableDiscriminatorValue = this.EnableDiscriminatorValue,
                 EnableDerivedTypesReferencesForResponses = this.EnableDerivedTypesReferencesForResponses,
                 EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
-                PathPrefix = this.PathPrefix
+                PathPrefix = this.PathPrefix,
+                ShowLinks = this.ShowLinks
             };
 
             return newSettings;

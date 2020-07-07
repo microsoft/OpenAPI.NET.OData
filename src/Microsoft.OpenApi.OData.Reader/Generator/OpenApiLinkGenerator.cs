@@ -23,51 +23,83 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="entityType">The Entity type.</param>
-        /// <param name ="sourceElementName">The name of the source of the <see cref="IEdmEntityType" />.</param>
+        /// <param name ="entityName">The name of the source of the <see cref="IEdmEntityType"/> object.</param>
+        /// <param name="entityKind">"The kind of the source of the <see cref="IEdmEntityType"/> object.</param>
+        /// <param name="parameters">"The list of parameters of the incoming operation.</param>
+        /// <param name="navPropOperationId">Optional parameter: The operation id of the source of the NavigationProperty object.</param>
+        /// <param name="targetMultiplicity">"Optional parameter: Flag indicating whether the <see cref="IEdmEntityType"/> object is a collection."</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
-        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntityType entityType, string sourceElementName)
+        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context,
+            IEdmEntityType entityType, string entityName, string entityKind,
+            IList<OpenApiParameter> parameters, string navPropOperationId = null,
+            bool targetMultiplicity = false)
         {
-            Utils.CheckArgumentNull(context, nameof(context));
-            Utils.CheckArgumentNull(entityType, nameof(entityType));
-            Utils.CheckArgumentNullOrEmpty(sourceElementName, nameof(sourceElementName));
-
             IDictionary<string, OpenApiLink> links = new Dictionary<string, OpenApiLink>();
-            foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
+
+            if (!targetMultiplicity)
             {
-                OpenApiLink link = new OpenApiLink
-                {
-                    OperationId = sourceElementName + "." + entityType.Name + ".Get" + Utils.UpperFirstChar(entityType.Name),
-                    Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>()
-                };
+                Utils.CheckArgumentNull(context, nameof(context));
+                Utils.CheckArgumentNull(entityType, nameof(entityType));
+                Utils.CheckArgumentNullOrEmpty(entityName, nameof(entityName));
+                Utils.CheckArgumentNullOrEmpty(entityKind, nameof(entityKind));
+                Utils.CheckArgumentNull(parameters, nameof(parameters));
 
-                foreach (IEdmStructuralProperty key in entityType.Key())
+                List<string> pathKeyNames = new List<string>();
+
+                // Fetch defined Id(s) from incoming parameters (if any)
+                foreach (var parameter in parameters)
                 {
-                    link.Parameters[key.Name] = new RuntimeExpressionAnyWrapper
+                    if (!string.IsNullOrEmpty(parameter.Description) &&
+                        parameter.Description.ToLower().Contains("key"))
                     {
-                        link.Parameters[pathKeyName] = new RuntimeExpressionAnyWrapper
-                        {
-                            Any = new OpenApiString("$request.path." + pathKeyName)
-                        };
+                        pathKeyNames.Add(parameter.Name);
                     }
                 }
 
-                // Fetch Id(s) from response body
-                foreach (IEdmStructuralProperty key in navPropEntity.Key())
+                foreach (IEdmNavigationProperty navProp in entityType.NavigationProperties())
                 {
-                    string responseKeyName = key.Name;
+                    string navPropName = navProp.Name;
+                    string operationId;
+                    string operationPrefix;
 
-                    if (context.Settings.PrefixEntityTypeNameBeforeKey)
+                    switch (entityKind)
                     {
-                        responseKeyName = navPropEntity.Name + "-" + responseKeyName;
+                        case "Navigation": // just for contained navigations
+                            operationPrefix = navPropOperationId;
+                            break;
+                        default: // EntitySet, Entity, Singleton
+                            operationPrefix = entityName;
+                            break;
                     }
 
-                    link.Parameters[responseKeyName] = new RuntimeExpressionAnyWrapper
+                    if (navProp.TargetMultiplicity() == EdmMultiplicity.Many)
                     {
-                        Any = new OpenApiString("$response.body#/" + key.Name)
+                        operationId = operationPrefix + ".List" + Utils.UpperFirstChar(navPropName);
+                    }
+                    else
+                    {
+                        operationId = operationPrefix + ".Get" + Utils.UpperFirstChar(navPropName);
+                    }
+
+                    OpenApiLink link = new OpenApiLink
+                    {
+                        OperationId = operationId,
+                        Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>()
                     };
-                }
 
-                links[navProp.Name] = link;
+                    if (pathKeyNames.Any())
+                    {
+                        foreach (var pathKeyName in pathKeyNames)
+                        {
+                            link.Parameters[pathKeyName] = new RuntimeExpressionAnyWrapper
+                            {
+                                Any = new OpenApiString("$request.path." + pathKeyName)
+                            };
+                        }
+                    }
+
+                    links[navProp.Name] = link;
+                }
             }
 
             return links;

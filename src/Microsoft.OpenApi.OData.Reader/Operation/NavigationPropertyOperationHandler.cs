@@ -137,7 +137,7 @@ namespace Microsoft.OpenApi.OData.Operation
             base.SetExtensions(operation);
         }
 
-        protected string GetOperationId(string prefix)
+        protected string GetOperationId(string prefix = null)
         {
             IList<string> items = new List<string>
             {
@@ -152,7 +152,15 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     if (segment == lastpath)
                     {
-                        items.Add(prefix + Utils.UpperFirstChar(npSegment.NavigationProperty.Name));
+                        if (prefix != null)
+                        {
+                            items.Add(prefix + Utils.UpperFirstChar(npSegment.NavigationProperty.Name));
+                        }
+                        else
+                        {
+                            items.Add(Utils.UpperFirstChar(npSegment.NavigationProperty.Name));
+                        }
+
                         break;
                     }
                     else
