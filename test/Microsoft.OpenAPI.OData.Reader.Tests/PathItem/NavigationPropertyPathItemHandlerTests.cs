@@ -57,7 +57,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, true, new OperationType[] { OperationType.Get, OperationType.Patch })]
+        [InlineData(true, true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
         [InlineData(true, false, new OperationType[] { OperationType.Get, OperationType.Post })]
         [InlineData(false, true, new OperationType[] { OperationType.Get })]
         [InlineData(false, false, new OperationType[] { OperationType.Get})]
@@ -95,7 +95,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
-        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch })]
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
         [InlineData(false, new OperationType[] { OperationType.Get })]
         public void CreateSingleNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, OperationType[] expected)
         {
@@ -321,17 +321,49 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
 
-            bool isContainment = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty.ContainsTarget;
+            var navigationProperty = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
+            bool isContainment = navigationProperty.ContainsTarget;
+            bool isCollection = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
 
             OperationType[] expected;
-            if (!isContainment || hasRestrictions)
+            if (isContainment)
             {
-                expected = new[] { OperationType.Get };
+                if (hasRestrictions)
+                {
+                    expected = new[] { OperationType.Get, OperationType.Delete };
+                }
+                else
+                {
+                    expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
+                }
             }
             else
             {
-                expected = new[] { OperationType.Get, OperationType.Patch };
+                expected = new[] { OperationType.Get };
             }
+
+            //if (!isContainment || hasRestrictions)
+            //{
+            //    if (isCollection)
+            //    {
+            //        expected = new[] { OperationType.Get };
+            //    }
+            //    else
+            //    {
+            //        expected = new[] { OperationType.Get, OperationType.Delete };
+            //    }
+            //}
+            //else
+            //{
+            //    if (isCollection)
+            //    {
+            //        expected = new[] { OperationType.Get, OperationType.Patch };
+            //    }
+            //    else
+            //    {
+            //        expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
+            //    }
+            //}
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
         }

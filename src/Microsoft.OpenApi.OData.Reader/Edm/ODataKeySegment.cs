@@ -79,5 +79,36 @@ namespace Microsoft.OpenApi.OData.Edm
                 return String.Join(",", keyStrings);
             }
         }
+
+        internal IDictionary<string, string> GetKeyNameMapping(OpenApiConvertSettings settings, HashSet<string> parameters)
+        {
+            IDictionary<string, string> keyNamesMapping = new Dictionary<string, string>();
+            IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();
+            if (keys.Count() == 1)
+            {
+                string keyName = keys.First().Name;
+
+                if (settings.PrefixEntityTypeNameBeforeKey)
+                {
+                    string name = Utils.GetUniqueName(EntityType.Name + "-" + keyName, parameters);
+                    keyNamesMapping[keyName] = name;
+                }
+                else
+                {
+                    string name = Utils.GetUniqueName(keyName, parameters);
+                    keyNamesMapping[keyName] = name;
+                }
+            }
+            else
+            {
+                foreach (var keyProperty in keys)
+                {
+                    string name = Utils.GetUniqueName(keyProperty.Name, parameters);
+                    keyNamesMapping[keyProperty.Name] = name;
+                }
+            }
+
+            return keyNamesMapping;
+        }
     }
 }

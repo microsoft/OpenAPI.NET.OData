@@ -448,9 +448,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Documents.GetRevisions",
+                "operationId": "Documents.DocumentDto.GetDocumentDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -869,9 +869,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "DocumentDto.Revisions.GetDocument",
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -879,7 +879,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Documents({Id})/Revisions({Id1})": {
@@ -992,7 +993,226 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Documents({Id})/Revisions/$ref": {
+      "get": {
+        "tags": [
+          "Documents.RevisionDto"
+        ],
+        "summary": "Get ref of Revisions from Documents",
+        "operationId": "Documents.ListRefRevisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "Number",
+                  "Number desc",
+                  "DocumentId",
+                  "DocumentId desc",
+                  "DocumentName",
+                  "DocumentName desc",
+                  "DocumentDescription",
+                  "DocumentDescription desc",
+                  "CreationDate",
+                  "CreationDate desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "IsReviewed",
+                  "IsReviewed desc",
+                  "ReviewedBy",
+                  "ReviewedBy desc",
+                  "ReviewedDate",
+                  "ReviewedDate desc",
+                  "IsApproved",
+                  "IsApproved desc",
+                  "ApprovedBy",
+                  "ApprovedBy desc",
+                  "ApprovedDate",
+                  "ApprovedDate desc",
+                  "IsRejected",
+                  "IsRejected desc",
+                  "RejectedBy",
+                  "RejectedBy desc",
+                  "RejectedDate",
+                  "RejectedDate desc",
+                  "DomainId",
+                  "DomainId desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of RevisionDto",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "links": {
+              "Document": {
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Documents.RevisionDto"
+        ],
+        "summary": "Create new navigation property ref to Revisions for Documents",
+        "operationId": "Documents.CreateRefRevisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "String"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "String"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Documents.RevisionDto"
+        ],
+        "summary": "Delete ref of navigation property Revisions for Documents",
+        "operationId": "Documents.DeleteRefRevisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Libraries": {
@@ -1136,9 +1356,9 @@
             },
             "links": {
               "Documents": {
-                "operationId": "Libraries.GetDocuments",
+                "operationId": "Libraries.LibraryDto.GetLibraryDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -1501,9 +1721,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "LibraryDto.Documents.GetRevisions",
+                "operationId": "Documents.DocumentDto.GetDocumentDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -1511,7 +1731,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Libraries({Id})/Documents({Id1})": {
@@ -1617,7 +1838,212 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Libraries({Id})/Documents/$ref": {
+      "get": {
+        "tags": [
+          "Libraries.DocumentDto"
+        ],
+        "summary": "Get ref of Documents from Libraries",
+        "operationId": "Libraries.ListRefDocuments",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "Name",
+                  "Name desc",
+                  "Description",
+                  "Description desc",
+                  "Filename",
+                  "Filename desc",
+                  "NumberOfRevisions",
+                  "NumberOfRevisions desc",
+                  "Suffix",
+                  "Suffix desc",
+                  "DomainId",
+                  "DomainId desc",
+                  "ModificationDate",
+                  "ModificationDate desc",
+                  "ModifiedBy",
+                  "ModifiedBy desc",
+                  "Tags",
+                  "Tags desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of DocumentDto",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "links": {
+              "Revisions": {
+                "operationId": "Documents.DocumentDto.GetDocumentDto",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Libraries.DocumentDto"
+        ],
+        "summary": "Create new navigation property ref to Documents for Libraries",
+        "operationId": "Libraries.CreateRefDocuments",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "String"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "String"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Libraries.DocumentDto"
+        ],
+        "summary": "Delete ref of navigation property Documents for Libraries",
+        "operationId": "Libraries.DeleteRefDocuments",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Revisions": {
@@ -1767,9 +2193,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "Revisions.GetDocument",
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2152,7 +2578,129 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Revisions({Id})/Document/$ref": {
+      "get": {
+        "tags": [
+          "Revisions.Document"
+        ],
+        "summary": "Get ref of Document from Revisions",
+        "operationId": "Revisions.GetRefDocument",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property link",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "tags": [
+          "Revisions.Document"
+        ],
+        "summary": "Update the ref of navigation property Document in Revisions",
+        "operationId": "Revisions.UpdateRefDocument",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "String"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Revisions.Document"
+        ],
+        "summary": "Delete ref of navigation property Document for Revisions",
+        "operationId": "Revisions.DeleteRefDocument",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Tasks": {
@@ -2281,9 +2829,9 @@
             },
             "links": {
               "Revisions": {
-                "operationId": "Tasks.GetRevisions",
+                "operationId": "Tasks.DocumentDto.GetDocumentDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2702,9 +3250,9 @@
             },
             "links": {
               "Document": {
-                "operationId": "DocumentDto.Revisions.GetDocument",
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
                 "parameters": {
-                  "Id": "$response.body#/Id"
+                  "Id": "$request.path.Id"
                 }
               }
             }
@@ -2712,7 +3260,8 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Tasks({Id})/Revisions({Id1})": {
@@ -2825,7 +3374,226 @@
           "default": {
             "$ref": "#/components/responses/error"
           }
-        }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Tasks({Id})/Revisions/$ref": {
+      "get": {
+        "tags": [
+          "Tasks.RevisionDto"
+        ],
+        "summary": "Get ref of Revisions from Tasks",
+        "operationId": "Tasks.ListRefRevisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Id",
+                  "Id desc",
+                  "Number",
+                  "Number desc",
+                  "DocumentId",
+                  "DocumentId desc",
+                  "DocumentName",
+                  "DocumentName desc",
+                  "DocumentDescription",
+                  "DocumentDescription desc",
+                  "CreationDate",
+                  "CreationDate desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "IsReviewed",
+                  "IsReviewed desc",
+                  "ReviewedBy",
+                  "ReviewedBy desc",
+                  "ReviewedDate",
+                  "ReviewedDate desc",
+                  "IsApproved",
+                  "IsApproved desc",
+                  "ApprovedBy",
+                  "ApprovedBy desc",
+                  "ApprovedDate",
+                  "ApprovedDate desc",
+                  "IsRejected",
+                  "IsRejected desc",
+                  "RejectedBy",
+                  "RejectedBy desc",
+                  "RejectedDate",
+                  "RejectedDate desc",
+                  "DomainId",
+                  "DomainId desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of RevisionDto",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "links": {
+              "Document": {
+                "operationId": "Revisions.RevisionDto.GetRevisionDto",
+                "parameters": {
+                  "Id": "$request.path.Id"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Tasks.RevisionDto"
+        ],
+        "summary": "Create new navigation property ref to Revisions for Tasks",
+        "operationId": "Tasks.CreateRefRevisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "String"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "String"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Tasks.RevisionDto"
+        ],
+        "summary": "Delete ref of navigation property Revisions for Tasks",
+        "operationId": "Tasks.DeleteRefRevisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     }
   },

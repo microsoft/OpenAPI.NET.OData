@@ -21,8 +21,8 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
         /// <summary>
         /// Gets the RequiresFilter value.
-        /// <Property Name="AllowedExpressions" Type="Capabilities.FilterExpressionType">
-        /// <TypeDefinition Name="FilterExpressionType" UnderlyingType="Edm.String">
+        /// <Property Name="AllowedExpressions" Type="Capabilities.FilterExpressionType" />
+        /// <TypeDefinition Name="FilterExpressionType" UnderlyingType="Edm.String" />
         /// </summary>
         public string AllowedExpressions { get; private set; }
 

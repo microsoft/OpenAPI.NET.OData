@@ -68,6 +68,19 @@ steps:
     projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj'
     arguments: '--configuration $(BuildConfiguration) --no-incremental'
 
+# because the assemblies are delay-signed, we need to disable
+# strong name validation so that the tests may run,
+# otherwise our assemblies will fail to load
+- task: Powershell@2
+  displayName: 'Skip strong name validation'
+  inputs:
+    targetType: 'inline'
+    script: |
+      & "$(snExe)" /Vr $(ProductBinPath)\net472\$(mainDll)
+      & "$(snExe64)" /Vr $(ProductBinPath)\net472\$(mainDll)
+      & "$(snExe)" /Vr $(ProductBinPath)\test\net472\$(testDll)
+      & "$(snExe64)" /Vr $(ProductBinPath)\test\net472\$(testDll)
+
 # Run the Unit test
 - task: DotNetCoreCLI@2
   displayName: 'Run Microsoft.OpenApi.OData.Reader.Tests.csproj'

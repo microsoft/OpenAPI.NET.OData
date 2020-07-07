@@ -58,10 +58,10 @@ namespace Microsoft.OpenApi.OData.Operation
                     };
 
                     operation.Extensions.Add(Constants.xMsPageable, extension);
-
-                    base.SetExtensions(operation);
                 }
             }
+
+            base.SetExtensions(operation);
         }
 
         /// <inheritdoc/>
@@ -132,8 +132,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                     }
                                 }
                             },
-                            Links = Context.CreateLinks(NavigationProperty.ToEntityType(), NavigationProperty.Name,
-                            NavigationProperty.PropertyKind.ToString(), operation.Parameters, NavigationProperty.DeclaringEntityType().Name)
+                            Links = Context.CreateLinks(NavigationProperty.ToEntityType(), NavigationProperty.Name)
                         }
                     }
                 };

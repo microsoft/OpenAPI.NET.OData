@@ -41,6 +41,11 @@ namespace Microsoft.OpenApi.OData.Edm
         NavigationProperty,
 
         /// <summary>
+        /// Represents an navigation propert $ref path, for example: ~/users/{id}/onedrive/$ref
+        /// </summary>
+        Ref,
+
+        /// <summary>
         /// Represents an un-supported/unknown path.
         /// </summary>
         Unknown

@@ -23,10 +23,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [InlineData(ODataPathKind.NavigationProperty, OperationType.Get, typeof(NavigationPropertyGetOperationHandler))]
         [InlineData(ODataPathKind.NavigationProperty, OperationType.Post, typeof(NavigationPropertyPostOperationHandler))]
         [InlineData(ODataPathKind.NavigationProperty, OperationType.Patch, typeof(NavigationPropertyPatchOperationHandler))]
+        [InlineData(ODataPathKind.NavigationProperty, OperationType.Delete, typeof(NavigationPropertyDeleteOperationHandler))]
         [InlineData(ODataPathKind.Operation, OperationType.Get, typeof(EdmFunctionOperationHandler))]
         [InlineData(ODataPathKind.Operation, OperationType.Post, typeof(EdmActionOperationHandler))]
         [InlineData(ODataPathKind.OperationImport, OperationType.Get, typeof(EdmFunctionImportOperationHandler))]
         [InlineData(ODataPathKind.OperationImport, OperationType.Post, typeof(EdmActionImportOperationHandler))]
+        [InlineData(ODataPathKind.Ref, OperationType.Post, typeof(RefPostOperationHandler))]
+        [InlineData(ODataPathKind.Ref, OperationType.Delete, typeof(RefDeleteOperationHandler))]
+        [InlineData(ODataPathKind.Ref, OperationType.Get, typeof(RefGetOperationHandler))]
+        [InlineData(ODataPathKind.Ref, OperationType.Patch, typeof(RefPatchOperationHandler))]
         public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, OperationType operationType, Type handlerType)
         {
             // Arrange

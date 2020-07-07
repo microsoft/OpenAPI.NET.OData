@@ -21,7 +21,9 @@
   <files>
     <file src="$ProductRoot$\net472\Microsoft.OpenApi.OData.Reader.dll" target="lib\net472" />
     <file src="$ProductRoot$\net472\Microsoft.OpenApi.OData.Reader.pdb" target="lib\net472" />
+    <file src="$ProductRoot$\net472\Microsoft.OpenApi.OData.Reader.xml" target="lib\net472" />
     <file src="$ProductRoot$\netstandard2.0\Microsoft.OpenApi.OData.Reader.dll" target="lib\netstandard2.0" />
     <file src="$ProductRoot$\netstandard2.0\Microsoft.OpenApi.OData.Reader.pdb" target="lib\netstandard2.0" />
+    <file src="$ProductRoot$\netstandard2.0\Microsoft.OpenApi.OData.Reader.xml" target="lib\netstandard2.0" />
   </files>
 </package>

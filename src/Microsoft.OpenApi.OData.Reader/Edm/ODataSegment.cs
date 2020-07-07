@@ -42,7 +42,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Type cast
         /// </summary>
-        TypeCast
+        TypeCast,
+
+        /// <summary>
+        /// $ref
+        /// </summary>
+        Ref
     }
 
     /// <summary>

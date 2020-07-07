@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4481, paths.Count());
+            Assert.Equal(4583, paths.Count());
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
       <PropertyRef Name=""id"" />
     </Key>
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" />
-    <NavigationProperty Name=""SingleCustomers"" Type=""NS.Customer"" />
+    <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" />
   </EntityType>";
 
             string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
@@ -172,10 +172,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(7, paths.Count());
-            Assert.Contains("/Orders({id})/MultipleCustomers", paths.Select(p => p.GetPathItemName()));
-            Assert.Contains("/Orders({id})/MultipleCustomers({ID})", paths.Select(p => p.GetPathItemName()));
-            Assert.Contains("/Orders({id})/SingleCustomers", paths.Select(p => p.GetPathItemName()));
+            Assert.Equal(9, paths.Count());
+
+            var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
+            Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers({ID})", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
         }
 
         private static IEdmModel GetEdmModel(string schemaElement, string containerElement)

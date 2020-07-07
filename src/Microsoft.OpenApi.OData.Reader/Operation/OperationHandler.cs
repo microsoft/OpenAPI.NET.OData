@@ -23,11 +23,15 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public abstract OperationType OperationType { get; }
 
+        protected IDictionary<ODataSegment, IDictionary<string, string>> ParameterMappings;
+
         /// <inheritdoc/>
         public virtual OpenApiOperation CreateOperation(ODataContext context, ODataPath path)
         {
             Context = context ?? throw Error.ArgumentNull(nameof(context));
             Path = path ?? throw Error.ArgumentNull(nameof(path));
+
+            ParameterMappings = path.CalculateParameterMapping(context.Settings);
 
             // Initialize the object ahead.
             Initialize(context, path);
@@ -113,7 +117,8 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
             {
-                foreach (var p in Context.CreateKeyParameters(keySegment))
+                IDictionary<string, string> mapping = ParameterMappings[keySegment];
+                foreach (var p in Context.CreateKeyParameters(keySegment, mapping))
                 {
                     AppendParameter(operation, p);
                 }
@@ -128,12 +133,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetTags(OpenApiOperation operation)
         {
-            /// The OASIS mapping doc says:
-            /// The tags array of the Operation Object includes the entity set or singleton name
-            /// in the first segment of the path template. Additional tag values,
-            /// e.g. for the entity type of a containment navigation property or the target entity set
-            /// of a non-containment navigation property, can be included to make this operation more easily discoverable.
-            /// However, in this SDK, we use the different pattern for the Tags. See each hander.
+            // The OASIS mapping doc says:
+            // The tags array of the Operation Object includes the entity set or singleton name
+            // in the first segment of the path template. Additional tag values,
+            // e.g. for the entity type of a containment navigation property or the target entity set
+            // of a non-containment navigation property, can be included to make this operation more easily discoverable.
+            // However, in this SDK, we use the different pattern for the Tags. See each hander.
         }
 
         /// <summary>
@@ -144,10 +149,9 @@ namespace Microsoft.OpenApi.OData.Operation
         { }
 
         /// <summary>
-        /// Set the <see cref="HttpRequest"/> annotation for the operation.
+        /// Set the customized parameters for the operation.
         /// </summary>
         /// <param name="operation">The operation.</param>
-        /// <param name="request">The <see cref="HttpRequest"/>.</param>
         protected virtual void AppendCustomParameters(OpenApiOperation operation)
         {
         }
@@ -156,7 +160,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Set the addition annotation for the response.
         /// </summary>
         /// <param name="operation">The operation.</param>
-        /// <param name="request">The <see cref="HttpRequest"/>.</param>
         protected virtual void AppendHttpResponses(OpenApiOperation operation)
         {
         }
@@ -164,7 +167,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <summary>
         /// Sets the custom parameters.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="operation">The OpenApi operation.</param>
         /// <param name="customParameters">The custom parameters.</param>
         /// <param name="location">The parameter location.</param>
         protected static void AppendCustomParameters(OpenApiOperation operation, IList<CustomParameter> customParameters, ParameterLocation location)

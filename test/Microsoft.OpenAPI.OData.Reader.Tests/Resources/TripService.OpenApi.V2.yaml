@@ -508,6 +508,59 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/BestFriend/$ref:
+    get:
+      tags:
+        - Me.Person
+      summary: Get ref of BestFriend from Me
+      operationId: Me.GetRefBestFriend
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Me.Person
+      summary: Update the ref of navigation property BestFriend in Me
+      operationId: Me.UpdateRefBestFriend
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            type: String
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete ref of navigation property BestFriend for Me
+      operationId: Me.DeleteRefBestFriend
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/Friends:
     get:
       tags:
@@ -596,6 +649,7 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}':
     get:
       tags:
@@ -650,6 +704,108 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/Friends/$ref:
+    get:
+      tags:
+        - Me.Person
+      summary: Get ref of Friends from Me
+      operationId: Me.ListRefFriends
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Person
+      summary: Create new navigation property ref to Friends for Me
+      operationId: Me.CreateRefFriends
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete ref of navigation property Friends for Me
+      operationId: Me.DeleteRefFriends
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
@@ -850,6 +1006,7 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}':
     get:
       tags:
@@ -900,6 +1057,7 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -928,6 +1086,101 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
+  /Me/Trips/$ref:
+    get:
+      tags:
+        - Me.Trip
+      summary: Get ref of Trips from Me
+      operationId: Me.ListRefTrips
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Trip
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Trip
+      summary: Create new navigation property ref to Trips for Me
+      operationId: Me.CreateRefTrips
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Me.Trip
+      summary: Delete ref of navigation property Trips for Me
+      operationId: Me.DeleteRefTrips
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /NewComePeople:
     get:
       tags:
@@ -1197,6 +1450,78 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/BestFriend/$ref':
+    get:
+      tags:
+        - NewComePeople.Person
+      summary: Get ref of BestFriend from NewComePeople
+      operationId: NewComePeople.GetRefBestFriend
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - NewComePeople.Person
+      summary: Update the ref of navigation property BestFriend in NewComePeople
+      operationId: NewComePeople.UpdateRefBestFriend
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            type: String
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - NewComePeople.Person
+      summary: Delete ref of navigation property BestFriend for NewComePeople
+      operationId: NewComePeople.DeleteRefBestFriend
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends':
     get:
       tags:
@@ -1291,6 +1616,7 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}':
     get:
       tags:
@@ -1351,6 +1677,126 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Friends/$ref':
+    get:
+      tags:
+        - NewComePeople.Person
+      summary: Get ref of Friends from NewComePeople
+      operationId: NewComePeople.ListRefFriends
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.Person
+      summary: Create new navigation property ref to Friends for NewComePeople
+      operationId: NewComePeople.CreateRefFriends
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - NewComePeople.Person
+      summary: Delete ref of navigation property Friends for NewComePeople
+      operationId: NewComePeople.DeleteRefFriends
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -1588,6 +2034,7 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -1644,6 +2091,7 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -1678,6 +2126,119 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
+  '/NewComePeople/{UserName}/Trips/$ref':
+    get:
+      tags:
+        - NewComePeople.Trip
+      summary: Get ref of Trips from NewComePeople
+      operationId: NewComePeople.ListRefTrips
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Trip
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.Trip
+      summary: Create new navigation property ref to Trips for NewComePeople
+      operationId: NewComePeople.CreateRefTrips
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - NewComePeople.Trip
+      summary: Delete ref of navigation property Trips for NewComePeople
+      operationId: NewComePeople.DeleteRefTrips
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /People:
     get:
       tags:
@@ -1947,6 +2508,78 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/BestFriend/$ref':
+    get:
+      tags:
+        - People.Person
+      summary: Get ref of BestFriend from People
+      operationId: People.GetRefBestFriend
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - People.Person
+      summary: Update the ref of navigation property BestFriend in People
+      operationId: People.UpdateRefBestFriend
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            type: String
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.Person
+      summary: Delete ref of navigation property BestFriend for People
+      operationId: People.DeleteRefBestFriend
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends':
     get:
       tags:
@@ -2041,6 +2674,7 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}':
     get:
       tags:
@@ -2101,6 +2735,126 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Friends/$ref':
+    get:
+      tags:
+        - People.Person
+      summary: Get ref of Friends from People
+      operationId: People.ListRefFriends
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Person
+      summary: Create new navigation property ref to Friends for People
+      operationId: People.CreateRefFriends
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.Person
+      summary: Delete ref of navigation property Friends for People
+      operationId: People.DeleteRefFriends
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -2338,6 +3092,7 @@ paths:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -2394,6 +3149,7 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -2428,6 +3184,119 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
+  '/People/{UserName}/Trips/$ref':
+    get:
+      tags:
+        - People.Trip
+      summary: Get ref of Trips from People
+      operationId: People.ListRefTrips
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Trip
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Trip
+      summary: Create new navigation property ref to Trips for People
+      operationId: People.CreateRefTrips
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: String
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: String
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.Trip
+      summary: Delete ref of navigation property Trips for People
+      operationId: People.DeleteRefTrips
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /ResetDataSource:
     post:
       tags:

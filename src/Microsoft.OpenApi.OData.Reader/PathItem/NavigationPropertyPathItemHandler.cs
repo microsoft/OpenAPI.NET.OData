@@ -14,6 +14,7 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Drawing;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -39,6 +40,11 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// Gets a bool value indicating whether the last segment is a key segment.
         /// </summary>
         protected bool LastSegmentIsKeySegment { get; private set; }
+
+        /// <summary>
+        /// Gets a bool value indicating whether the last segment is a $ref segment.
+        /// </summary>
+        protected bool LastSegmentIsRefSegment { get; private set; }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
@@ -73,9 +79,8 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
             }
 
-            // how about delete?
             // contaiment: Get / (Post - Collection | Patch - Single)
-            // non-containment: only Get
+            // non-containment: Get
             AddGetOperation(item, restriction);
 
             if (NavigationProperty.ContainsTarget)
@@ -109,6 +114,8 @@ namespace Microsoft.OpenApi.OData.PathItem
                     }
                 }
             }
+
+            AddDeleteOperation(item, restriction);
         }
 
         private void AddGetOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
@@ -122,6 +129,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
+                // TODO: $ref also supports Get ?
                 if (LastSegmentIsKeySegment)
                 {
                     if (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.Readable != null)
@@ -157,6 +165,27 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
         }
 
+        private void AddDeleteOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
+            Debug.Assert(!LastSegmentIsRefSegment);
+
+            if (!NavigationProperty.ContainsTarget)
+            {
+                return;
+            }
+
+            DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
+            if (delete == null || delete.IsDeletable)
+            {
+                if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
+                {
+                    AddOperation(item, OperationType.Delete);
+                }
+
+                return;
+            }
+        }
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -165,13 +194,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
 
-            LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
-            ODataNavigationPropertySegment npSegment = path.LastSegment as ODataNavigationPropertySegment;
-            if (npSegment == null)
-            {
-                npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
-            }
-            NavigationProperty = npSegment.NavigationProperty;
+            LastSegmentIsKeySegment = path.LastSegment.Kind == ODataSegmentKind.Key;
+            LastSegmentIsRefSegment = path.LastSegment.Kind == ODataSegmentKind.Ref;
+            NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
         }
 
         /// <inheritdoc/>

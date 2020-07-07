@@ -44,6 +44,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected bool LastSegmentIsKeySegment { get; private set; }
 
+        /// <summary>
+        /// Gets a bool value indicating whether the last segment is a $ref segment.
+        /// </summary>
+        protected bool LastSegmentIsRefSegment { get; private set; }
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -53,13 +58,8 @@ namespace Microsoft.OpenApi.OData.Operation
             NavigationSource = navigationSourceSegment.NavigationSource;
 
             LastSegmentIsKeySegment = path.LastSegment is ODataKeySegment;
-
-            ODataNavigationPropertySegment npSegment = path.LastSegment as ODataNavigationPropertySegment;
-            if (npSegment == null)
-            {
-                npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
-            }
-            NavigationProperty = npSegment.NavigationProperty;
+            LastSegmentIsRefSegment = path.LastSegment is ODataRefSegment;
+            NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
 
             NavigationPropertyPath = string.Join("/",
                 Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));

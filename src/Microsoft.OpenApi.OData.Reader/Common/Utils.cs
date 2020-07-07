@@ -48,9 +48,10 @@ namespace Microsoft.OpenApi.OData.Common
         }
 
         /// <summary>
-        /// Upper the first character of the string.
+        /// Get an unique name.
         /// </summary>
         /// <param name="input">The input string.</param>
+        /// <param name="set">The input set.</param>
         /// <returns>The changed string.</returns>
         public static string GetUniqueName(string input, HashSet<string> set)
         {
