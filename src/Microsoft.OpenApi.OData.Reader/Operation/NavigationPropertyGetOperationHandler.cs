@@ -68,7 +68,6 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetResponses(OpenApiOperation operation)
         {
             OpenApiSchema schema = null;
-            IDictionary<string, OpenApiLink> links = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
@@ -89,15 +88,6 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                if (Context.Settings.ShowLinks)
-                {
-                    string operationId = GetOperationId();
-
-                    links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
-                            entityKind: NavigationProperty.PropertyKind.ToString(), parameters: operation.Parameters,
-                            navPropOperationId: operationId, targetMultiplicity: true);
-                }
-
                 var properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
@@ -141,14 +131,14 @@ namespace Microsoft.OpenApi.OData.Operation
                                         }
                                     }
                                 }
-                            },
-                            Links = links
+                            }
                         }
                     }
                 };
             }
             else
             {
+                IDictionary<string, OpenApiLink> links = null;
                 if (Context.Settings.ShowLinks)
                 {
                     string operationId = GetOperationId();
