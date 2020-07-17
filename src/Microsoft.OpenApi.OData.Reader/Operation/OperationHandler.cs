@@ -44,7 +44,10 @@ namespace Microsoft.OpenApi.OData.Operation
             // Security
             SetSecurity(operation);
 
-            // Parameters
+            /* Parameters
+               This needs to be set before Responses, as the Parameters
+               will be used in the Responses when creating Links
+            */
             SetParameters(operation);
 
             // Responses
