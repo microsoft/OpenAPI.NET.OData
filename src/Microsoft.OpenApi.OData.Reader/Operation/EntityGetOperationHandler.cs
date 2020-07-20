@@ -64,10 +64,17 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetResponses(OpenApiOperation operation)
         {
             OpenApiSchema schema = null;
+            IDictionary<string, OpenApiLink> links = null;
 
             if (Context.Settings.EnableDerivedTypesReferencesForResponses)
             {
                 schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+            }
+
+            if (Context.Settings.ShowLinks)
+            {
+                links = Context.CreateLinks(entityType: EntitySet.EntityType(), entityName: EntitySet.Name,
+                        entityKind: EntitySet.ContainerElementKind.ToString(), parameters: operation.Parameters);
             }
 
             if (schema == null)
@@ -99,7 +106,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                 }
                             }
                         },
-                        Links = Context.CreateLinks(EntitySet.EntityType(), EntitySet.Name)
+                        Links = links
                     }
                 }
             };

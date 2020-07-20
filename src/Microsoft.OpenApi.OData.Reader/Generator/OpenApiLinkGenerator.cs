@@ -9,6 +9,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.OData.Edm;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -22,32 +23,78 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="entityType">The Entity type.</param>
-        /// <param name ="sourceElementName">The name of the source of the <see cref="IEdmEntityType" />.</param>
+        /// <param name ="entityName">The name of the source of the <see cref="IEdmEntityType"/> object.</param>
+        /// <param name="entityKind">"The kind of the source of the <see cref="IEdmEntityType"/> object.</param>
+        /// <param name="parameters">"The list of parameters of the incoming operation.</param>
+        /// <param name="navPropOperationId">Optional parameter: The operation id of the source of the NavigationProperty object.</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
-        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context, IEdmEntityType entityType, string sourceElementName)
+        public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context,
+            IEdmEntityType entityType, string entityName, string entityKind,
+            IList<OpenApiParameter> parameters, string navPropOperationId = null)
         {
+            IDictionary<string, OpenApiLink> links = new Dictionary<string, OpenApiLink>();
+
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
-            Utils.CheckArgumentNullOrEmpty(sourceElementName, nameof(sourceElementName));
+            Utils.CheckArgumentNullOrEmpty(entityName, nameof(entityName));
+            Utils.CheckArgumentNullOrEmpty(entityKind, nameof(entityKind));
+            Utils.CheckArgumentNull(parameters, nameof(parameters));
 
-            IDictionary<string, OpenApiLink> links = new Dictionary<string, OpenApiLink>();
-            foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
+            List<string> pathKeyNames = new List<string>();
+
+            // Fetch defined Id(s) from incoming parameters (if any)
+            foreach (var parameter in parameters)
             {
+                if (!string.IsNullOrEmpty(parameter.Description) &&
+                    parameter.Description.ToLower().Contains("key"))
+                {
+                    pathKeyNames.Add(parameter.Name);
+                }
+            }
+
+            foreach (IEdmNavigationProperty navProp in entityType.NavigationProperties())
+            {
+                string navPropName = navProp.Name;
+                string operationId;
+                string operationPrefix;
+
+                switch (entityKind)
+                {
+                    case "Navigation": // just for contained navigations
+                        operationPrefix = navPropOperationId;
+                        break;
+                    default: // EntitySet, Entity, Singleton
+                        operationPrefix = entityName;
+                        break;
+                }
+
+                if (navProp.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    operationId = operationPrefix + ".List" + Utils.UpperFirstChar(navPropName);
+                }
+                else
+                {
+                    operationId = operationPrefix + ".Get" + Utils.UpperFirstChar(navPropName);
+                }
+
                 OpenApiLink link = new OpenApiLink
                 {
-                    OperationId = sourceElementName + "." + entityType.Name + ".Get" + Utils.UpperFirstChar(entityType.Name),
+                    OperationId = operationId,
                     Parameters = new Dictionary<string, RuntimeExpressionAnyWrapper>()
                 };
 
-                foreach (IEdmStructuralProperty key in entityType.Key())
+                if (pathKeyNames.Any())
                 {
-                    link.Parameters[key.Name] = new RuntimeExpressionAnyWrapper
+                    foreach (var pathKeyName in pathKeyNames)
                     {
-                        Any = new OpenApiString("$request.path." + key.Name)
-                    };
+                        link.Parameters[pathKeyName] = new RuntimeExpressionAnyWrapper
+                        {
+                            Any = new OpenApiString("$request.path." + pathKeyName)
+                        };
+                    }
                 }
 
-                links[np.Name] = link;
+                links[navProp.Name] = link;
             }
 
             return links;
