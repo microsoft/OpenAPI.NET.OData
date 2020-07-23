@@ -130,6 +130,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool ShowSchemaExamples { get; set; } = false;
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to show the root path of the described API.
+        /// </summary>
+        public bool ShowRootPath { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -156,7 +161,8 @@ namespace Microsoft.OpenApi.OData
                 EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
                 PathPrefix = this.PathPrefix,
                 ShowLinks = this.ShowLinks,
-                ShowSchemaExamples = this.ShowSchemaExamples
+                ShowSchemaExamples = this.ShowSchemaExamples,
+                ShowRootPath = this.ShowRootPath
             };
 
             return newSettings;
