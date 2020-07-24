@@ -134,10 +134,6 @@ namespace Microsoft.OpenApi.OData.Generator
             if (keys.Count() == 1)
             {
                 string keyName = keys.First().Name;
-                if (context.Settings.PrefixEntityTypeNameBeforeKey)
-                {
-                    keyName = entityType.Name + "-" + keys.First().Name;
-                }
 
                 OpenApiParameter parameter = new OpenApiParameter
                 {
