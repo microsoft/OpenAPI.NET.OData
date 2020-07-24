@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Generator
         public static IDictionary<string, OpenApiParameter> CreateParameters(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
-            
+
             // It allows defining query options and headers that can be reused across operations of the service.
             // The value of parameters is a map of Parameter Objects.
             return new Dictionary<string, OpenApiParameter>
@@ -134,6 +134,13 @@ namespace Microsoft.OpenApi.OData.Generator
             if (keys.Count() == 1)
             {
                 string keyName = keys.First().Name;
+
+                // If dictionary parameterNameMapping is defined, there's no need of setting the
+                // keyName, we will retrieve this from the dictionary key.
+                if (context.Settings.PrefixEntityTypeNameBeforeKey && parameterNameMapping == null)
+                {
+                    keyName = entityType.Name + "-" + keys.First().Name;
+                }
 
                 OpenApiParameter parameter = new OpenApiParameter
                 {
