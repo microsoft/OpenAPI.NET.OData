@@ -61,7 +61,10 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
-            ODataContext context = new ODataContext(model);
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
+            {
+                ShowSchemaExamples = true
+            });
             IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "Address");
             Assert.NotNull(complex); // Guard
 
@@ -112,7 +115,8 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
             ODataContext context = new ODataContext(model, new OpenApiConvertSettings
             {
-                IEEE754Compatible = true
+                IEEE754Compatible = true,
+                ShowSchemaExamples = true
             });
             IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "Tree");
             Assert.NotNull(complex); // Guard
@@ -201,7 +205,10 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
-            ODataContext context = new ODataContext(model);
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
+            {
+                ShowSchemaExamples = true
+            });
             IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "Zoo");
             Assert.NotNull(entity); // Guard
 
@@ -258,7 +265,10 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleInheritanceEdmModel;
-            ODataContext context = new ODataContext(model);
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
+            {
+                ShowSchemaExamples = true
+            });
             IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "Human");
             Assert.NotNull(entity); // Guard
 

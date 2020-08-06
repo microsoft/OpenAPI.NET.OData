@@ -131,14 +131,23 @@ namespace Microsoft.OpenApi.OData.Operation
                                         }
                                     }
                                 }
-                            },
-                            Links = Context.CreateLinks(NavigationProperty.ToEntityType(), NavigationProperty.Name)
+                            }
                         }
                     }
                 };
             }
             else
             {
+                IDictionary<string, OpenApiLink> links = null;
+                if (Context.Settings.ShowLinks)
+                {
+                    string operationId = GetOperationId();
+
+                    links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
+                            entityKind: NavigationProperty.PropertyKind.ToString(), parameters: operation.Parameters,
+                            navPropOperationId: operationId);
+                }
+
                 operation.Responses = new OpenApiResponses
                 {
                     {
@@ -155,7 +164,8 @@ namespace Microsoft.OpenApi.OData.Operation
                                         Schema = schema
                                     }
                                 }
-                            }
+                            },
+                            Links = links
                         }
                     }
                 };

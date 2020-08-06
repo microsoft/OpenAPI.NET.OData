@@ -208,11 +208,17 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample, 
+        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample,
             IEnumerable<IEdmEntityType> derivedTypes = null)
         {
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
+
+            IOpenApiAny example = null;
+            if (context.Settings.ShowSchemaExamples)
+            {
+                example = CreateStructuredTypePropertiesExample(context, structuredType);
+            }
 
             if (context.Settings.EnableDiscriminatorValue && derivedTypes == null)
             {
@@ -256,7 +262,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     AnyOf = null,
                     OneOf = null,
                     Properties = null,
-                    Example = CreateStructuredTypePropertiesExample(context, structuredType)
+                    Example = example
                 };
             }
             else
@@ -305,7 +311,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (processExample)
                 {
-                    schema.Example = CreateStructuredTypePropertiesExample(context, structuredType);
+                    schema.Example = example;
                 }
 
                 return schema;

@@ -30,6 +30,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
         /// </summary>
         /// <param name="operation">The operation.</param>
+        /// <param name="isEscapedFunction">A value indicating this operation is an escaped function.</param>
         public ODataOperationSegment(IEdmOperation operation, bool isEscapedFunction)
         {
             Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
@@ -65,6 +66,31 @@ namespace Microsoft.OpenApi.OData.Edm
             return ActionName(Operation as IEdmAction, settings);
         }
 
+        internal IDictionary<string, string> GetNameMapping(OpenApiConvertSettings settings, HashSet<string> parameters)
+        {
+            IDictionary<string, string> parameterNamesMapping = new Dictionary<string, string>();
+
+            if (Operation.IsFunction())
+            {
+                IEdmFunction function = Operation as IEdmFunction;
+                if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
+                {
+                    string parameterName = function.Parameters.Last().Name;
+                    string uniqueName = Utils.GetUniqueName(parameterName, parameters);
+                    parameterNamesMapping[parameterName] = uniqueName;
+                }
+
+                int skip = function.IsBound ? 1 : 0;
+                foreach (var parameter in function.Parameters.Skip(skip))
+                {
+                    string uniqueName = Utils.GetUniqueName(parameter.Name, parameters);
+                    parameterNamesMapping[parameter.Name] = uniqueName;
+                }
+            }
+
+            return parameterNamesMapping;
+        }
+
         private string FunctionName(IEdmFunction function, OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             if (settings.EnableUriEscapeFunctionCall && IsEscapedFunction)
@@ -72,14 +98,14 @@ namespace Microsoft.OpenApi.OData.Edm
                 // Debug.Assert(function.Parameters.Count == 2); It should be verify at Edm model.
                 // Debug.Assert(function.IsBound == true);
                 string parameterName = function.Parameters.Last().Name;
-                parameterName = Utils.GetUniqueName(parameterName, parameters);
+                string uniqueName = Utils.GetUniqueName(parameterName, parameters);
                 if (function.IsComposable)
                 {
-                    return $"{{{parameterName}}}:";
+                    return $"{{{uniqueName}}}:";
                 }
                 else
                 {
-                    return $"{{{parameterName}}}";
+                    return $"{{{uniqueName}}}";
                 }
             }
 

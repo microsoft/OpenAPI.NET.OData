@@ -88,8 +88,11 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
-            var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            var openApiConvertSettings = new OpenApiConvertSettings
+            {
+                OpenApiSpecVersion = specVersion,
+                ShowSchemaExamples = true // test for schema examples
+            };
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
@@ -113,8 +116,11 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
-            var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            var openApiConvertSettings = new OpenApiConvertSettings
+            {
+                OpenApiSpecVersion = specVersion,
+                ShowSchemaExamples = true
+            };
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);
@@ -138,8 +144,12 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
-            var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            var openApiConvertSettings = new OpenApiConvertSettings
+            {
+                OpenApiSpecVersion = specVersion,
+                ShowLinks = true, // test Links
+                ShowSchemaExamples = true
+            };
 
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, openApiConvertSettings);
@@ -163,8 +173,12 @@ namespace Microsoft.OpenApi.OData.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.MultipleSchemasEdmModel;
-            var openApiConvertSettings = new OpenApiConvertSettings();
-            openApiConvertSettings.OpenApiSpecVersion = specVersion;
+            var openApiConvertSettings = new OpenApiConvertSettings
+            {
+                OpenApiSpecVersion = specVersion,
+                ShowLinks = true, // test Links
+                ShowSchemaExamples = true
+            };
 
             // Act
             string yaml = WriteEdmModelAsOpenApi(model, OpenApiFormat.Yaml, openApiConvertSettings);

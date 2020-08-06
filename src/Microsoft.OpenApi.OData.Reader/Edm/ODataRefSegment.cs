@@ -12,6 +12,9 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public class ODataRefSegment : ODataSegment
     {
+        /// <summary>
+        /// Get the static instance of $ref segment.
+        /// </summary>
         public static ODataRefSegment Instance = new ODataRefSegment();
 
         /// <summary>

@@ -139,7 +139,6 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <typeparam name="T">The element type.</typeparam>
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
-        /// <param name="elementAction">The element action.</param>
         /// <returns>The collection or null.</returns>
         public static T GetRecord<T>(this IEdmRecordExpression record, string propertyName)
             where T : IRecord, new()
@@ -262,7 +261,6 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <typeparam name="T">The element type.</typeparam>
         /// <param name="record">The record expression.</param>
         /// <param name="propertyName">The property name.</param>
-        /// <param name="elementAction">The element action.</param>
         /// <returns>The collection or null.</returns>
         public static IList<T> GetCollection<T>(this IEdmRecordExpression record, string propertyName)
             where T : IRecord, new()

@@ -35,7 +35,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// Create a <see cref="OpenApiRequestBody"/> for a <see cref="IEdmAction"/>.
         /// </summary>
         /// <param name="context">The OData context.</param>
-        /// <param name="actionImport">The Edm action.</param>
+        /// <param name="action">The Edm action.</param>
         /// <returns>The created <see cref="OpenApiRequestBody"/> or null.</returns>
         public static OpenApiRequestBody CreateRequestBody(this ODataContext context, IEdmAction action)
         {
