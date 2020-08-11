@@ -720,41 +720,14 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: object
+            additionalProperties:
+              type: object
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
-        default:
-          $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
-    delete:
-      tags:
-        - Documents.RevisionDto
-      summary: Delete ref of navigation property Revisions for Documents
-      operationId: Documents.DeleteRefRevisions
-      parameters:
-        - in: path
-          name: Id
-          description: 'key: Id of DocumentDto'
-          required: true
-          type: integer
-          format: int32
-          maximum: 2147483647
-          minimum: -2147483648
-          x-ms-docs-key-type: DocumentDto
-        - in: header
-          name: If-Match
-          description: ETag
-          type: string
-        - in: query
-          name: '@id'
-          description: Delete Uri
-          type: string
-      responses:
-        '204':
-          description: Success
+            type: object
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1231,41 +1204,14 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: object
+            additionalProperties:
+              type: object
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
-        default:
-          $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
-    delete:
-      tags:
-        - Libraries.DocumentDto
-      summary: Delete ref of navigation property Documents for Libraries
-      operationId: Libraries.DeleteRefDocuments
-      parameters:
-        - in: path
-          name: Id
-          description: 'key: Id of LibraryDto'
-          required: true
-          type: integer
-          format: int32
-          maximum: 2147483647
-          minimum: -2147483648
-          x-ms-docs-key-type: LibraryDto
-        - in: header
-          name: If-Match
-          description: ETag
-          type: string
-        - in: query
-          name: '@id'
-          description: Delete Uri
-          type: string
-      responses:
-        '204':
-          description: Success
+            type: object
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1632,7 +1578,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-    patch:
+    put:
       tags:
         - Revisions.Document
       summary: Update the ref of navigation property Document in Revisions
@@ -1654,7 +1600,9 @@ paths:
           description: New navigation property ref values
           required: true
           schema:
-            type: String
+            type: object
+            additionalProperties:
+              type: object
       responses:
         '204':
           description: Success
@@ -2207,41 +2155,14 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: object
+            additionalProperties:
+              type: object
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
-        default:
-          $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
-    delete:
-      tags:
-        - Tasks.RevisionDto
-      summary: Delete ref of navigation property Revisions for Tasks
-      operationId: Tasks.DeleteRefRevisions
-      parameters:
-        - in: path
-          name: Id
-          description: 'key: Id of DocumentDto'
-          required: true
-          type: integer
-          format: int32
-          maximum: 2147483647
-          minimum: -2147483648
-          x-ms-docs-key-type: DocumentDto
-        - in: header
-          name: If-Match
-          description: ETag
-          type: string
-        - in: query
-          name: '@id'
-          description: Delete Uri
-          type: string
-      responses:
-        '204':
-          description: Success
+            type: object
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation

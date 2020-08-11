@@ -774,7 +774,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "Me.Person"
         ],
@@ -790,7 +790,10 @@
             "description": "New navigation property ref values",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -1127,7 +1130,10 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -1135,38 +1141,8 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "object"
             }
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "Me.Person"
-        ],
-        "summary": "Delete ref of navigation property Friends for Me",
-        "operationId": "Me.DeleteRefFriends",
-        "parameters": [
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "@id",
-            "description": "Delete Uri",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1677,7 +1653,10 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -1685,38 +1664,8 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "object"
             }
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "Me.Trip"
-        ],
-        "summary": "Delete ref of navigation property Trips for Me",
-        "operationId": "Me.DeleteRefTrips",
-        "parameters": [
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "@id",
-            "description": "Delete Uri",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2134,7 +2083,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "NewComePeople.Person"
         ],
@@ -2158,7 +2107,10 @@
             "description": "New navigation property ref values",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -2535,7 +2487,10 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -2543,46 +2498,8 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "object"
             }
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "NewComePeople.Person"
-        ],
-        "summary": "Delete ref of navigation property Friends for NewComePeople",
-        "operationId": "NewComePeople.DeleteRefFriends",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "UserName",
-            "description": "key: UserName of Person",
-            "required": true,
-            "type": "string",
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "@id",
-            "description": "Delete Uri",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3175,7 +3092,10 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -3183,46 +3103,8 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "object"
             }
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "NewComePeople.Trip"
-        ],
-        "summary": "Delete ref of navigation property Trips for NewComePeople",
-        "operationId": "NewComePeople.DeleteRefTrips",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "UserName",
-            "description": "key: UserName of Person",
-            "required": true,
-            "type": "string",
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "@id",
-            "description": "Delete Uri",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3640,7 +3522,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "People.Person"
         ],
@@ -3664,7 +3546,10 @@
             "description": "New navigation property ref values",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -4041,7 +3926,10 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -4049,46 +3937,8 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "object"
             }
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Delete ref of navigation property Friends for People",
-        "operationId": "People.DeleteRefFriends",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "UserName",
-            "description": "key: UserName of Person",
-            "required": true,
-            "type": "string",
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "@id",
-            "description": "Delete Uri",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -4681,7 +4531,10 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
             }
           }
         ],
@@ -4689,46 +4542,8 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "object"
             }
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "People.Trip"
-        ],
-        "summary": "Delete ref of navigation property Trips for People",
-        "operationId": "People.DeleteRefTrips",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "UserName",
-            "description": "key: UserName of Person",
-            "required": true,
-            "type": "string",
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          },
-          {
-            "in": "query",
-            "name": "@id",
-            "description": "Delete Uri",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"

@@ -4,23 +4,21 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.PathItem.Tests;
 using Microsoft.OpenApi.OData.Tests;
 using System.Linq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
 {
-    public class RefPatchOperationHandlerTests
+    public class RefPutOperationHandlerTests
     {
-        private RefPatchOperationHandler _operationHandler = new RefPatchOperationHandler();
+        private RefPutOperationHandler _operationHandler = new RefPutOperationHandler();
 
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateNavigationRefPatchOperationReturnsCorrectOperation(bool enableOperationId)
+        public void CreateNavigationRefPutOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
