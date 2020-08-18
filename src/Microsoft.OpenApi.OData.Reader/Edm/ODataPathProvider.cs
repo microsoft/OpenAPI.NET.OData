@@ -126,6 +126,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 case ODataPathKind.Entity:
                 case ODataPathKind.EntitySet:
                 case ODataPathKind.Singleton:
+                case ODataPathKind.MediaEntity:
                     ODataNavigationSourceSegment navigationSourceSegment = (ODataNavigationSourceSegment)path.FirstSegment;
                     if (!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
                     {
@@ -180,6 +181,33 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
+            }
+
+            // media entity
+            bool createValuePath = true;
+            foreach (IEdmStructuralProperty sp in entityType.DeclaredStructuralProperties())
+            {
+                if (sp.Type.AsPrimitive().IsStream())
+                {
+                    path.Push(new ODataStreamPropertySegment(sp.Name));
+                    AppendPath(path.Clone());
+                    path.Pop();
+                }
+
+                if (sp.Name.Equals("content", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    createValuePath = false;
+                }
+            }
+
+            /* Create a /$value path only if entity has stream and
+             * does not contain a structural property named Content
+             */
+            if (createValuePath && entityType.HasStream)
+            {
+                path.Push(new ODataStreamContentSegment());
+                AppendPath(path.Clone());
+                path.Pop();
             }
 
             // navigation property
@@ -369,7 +397,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var subPath in value)
                 {
                     if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
-                            (!isCollection && subPath.Kind != ODataPathKind.EntitySet))
+                            (!isCollection && subPath.Kind != ODataPathKind.EntitySet &&
+                                subPath.Kind != ODataPathKind.MediaEntity))
                     {
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));

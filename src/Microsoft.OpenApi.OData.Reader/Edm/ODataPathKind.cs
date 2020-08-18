@@ -36,14 +36,19 @@ namespace Microsoft.OpenApi.OData.Edm
         OperationImport,
 
         /// <summary>
-        /// Represents an navigation propert path, for example: ~/users/{id}/onedrive
+        /// Represents an navigation property path, for example: ~/users/{id}/onedrive
         /// </summary>
         NavigationProperty,
 
         /// <summary>
-        /// Represents an navigation propert $ref path, for example: ~/users/{id}/onedrive/$ref
+        /// Represents an navigation property $ref path, for example: ~/users/{id}/onedrive/$ref
         /// </summary>
         Ref,
+
+        /// <summary>
+        /// Represents a media entity path, for example: ~/me/photo/$value or ~/reports/deviceConfigurationUserActivity/Content
+        /// </summary>
+        MediaEntity,
 
         /// <summary>
         /// Represents an un-supported/unknown path.

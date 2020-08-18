@@ -76,6 +76,13 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Post, new RefPostOperationHandler() },
                 {OperationType.Delete, new RefDeleteOperationHandler() }
             };
+
+            // media entity operation (Get|Put)
+            _handlers[ODataPathKind.MediaEntity] = new Dictionary<OperationType, IOperationHandler>
+            {
+                {OperationType.Get, new MediaEntityGetOperationHandler() },
+                {OperationType.Put, new MediaEntityPutOperationHandler() }
+            };
         }
 
         /// <inheritdoc/>

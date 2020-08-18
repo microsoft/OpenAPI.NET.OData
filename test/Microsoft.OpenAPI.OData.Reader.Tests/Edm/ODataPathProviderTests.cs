@@ -4,13 +4,12 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
-using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -45,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4583, paths.Count());
+            Assert.Equal(4585, paths.Count());
         }
 
         [Fact]
@@ -84,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         public void GetPathsWithBoundFunctionOperationWorks()
         {
             // Arrange
-            string boundFunction = 
+            string boundFunction =
 @"<Function Name=""delta"" IsBound=""true"">
    <Parameter Name=""bindingParameter"" Type=""Collection(NS.Customer)"" />
      <ReturnType Type=""Collection(NS.Customer)"" />
@@ -182,6 +181,44 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
         }
 
+        [Theory]
+        [InlineData(true, "Logo")]
+        [InlineData(false, "Logo")]
+        [InlineData(true, "Content")]
+        [InlineData(false, "Content")]
+        public void GetPathsWithStreamPropertyAndWithEntityHasStreamWorks(bool hasStream, string streamPropName)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel(hasStream, streamPropName);
+            ODataPathProvider provider = new ODataPathProvider();
+
+            // Act
+            var paths = provider.GetPaths(model);
+
+            // Assert
+            Assert.NotNull(paths);
+
+            if (hasStream && !streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase))
+            {
+                Assert.Equal(4, paths.Count());
+                Assert.Equal(new[] { "/Todos", "/Todos({Id})", "/Todos({Id})/$value", "/Todos({Id})/Logo" },
+                    paths.Select(p => p.GetPathItemName()));
+            }
+            else if ((hasStream && streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase)) ||
+                    (!hasStream && streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase)))
+            {
+                Assert.Equal(3, paths.Count());
+                Assert.Equal(new[] { "/Todos", "/Todos({Id})", "/Todos({Id})/Content" },
+                    paths.Select(p => p.GetPathItemName()));
+            }
+            else // !hasStream && !streamPropName.Equals("Content")
+            {
+                Assert.Equal(3, paths.Count());
+                Assert.Equal(new[] { "/Todos", "/Todos({Id})", "/Todos({Id})/Logo" },
+                    paths.Select(p => p.GetPathItemName()));
+            }
+        }
+
         private static IEdmModel GetEdmModel(string schemaElement, string containerElement)
         {
             string template = @"<?xml version=""1.0"" encoding=""utf-16""?>
@@ -198,12 +235,35 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     {1}
   </EntityContainer>
 </Schema>";
-            string schema = String.Format(template, schemaElement, containerElement);
-            IEdmModel parsedModel;
-            IEnumerable<EdmError> errors;
-            bool parsed = SchemaReader.TryParse(new XmlReader[] { XmlReader.Create(new StringReader(schema)) }, out parsedModel, out errors);
+            string schema = string.Format(template, schemaElement, containerElement);
+            bool parsed = SchemaReader.TryParse(new XmlReader[] { XmlReader.Create(new StringReader(schema)) }, out IEdmModel parsedModel, out _);
             Assert.True(parsed);
             return parsedModel;
+        }
+
+        private static IEdmModel GetEdmModel(bool hasStream, string streamPropName)
+        {
+            string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""microsoft.graph"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Todo"" HasStream=""{0}"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""{1}"" Type=""Edm.Stream""/>
+        <Property Name = ""Description"" Type = ""Edm.String"" />
+         </EntityType>
+      <EntityContainer Name =""TodoService"">
+         <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+            string modelText = string.Format(template, hasStream, streamPropName);
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
+            Assert.True(result);
+            return model;
         }
     }
 }

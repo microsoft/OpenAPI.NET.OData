@@ -47,7 +47,17 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// $ref
         /// </summary>
-        Ref
+        Ref,
+
+        /// <summary>
+        /// Stream content -> $value
+        /// </summary>
+        StreamContent,
+
+        /// <summary>
+        /// Stream property
+        /// </summary>
+        StreamProperty
     }
 
     /// <summary>

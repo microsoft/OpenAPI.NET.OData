@@ -258,7 +258,11 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private ODataPathKind CalcPathType()
         {
-            if (Segments.Any(c => c.Kind == ODataSegmentKind.Ref))
+            if (Segments.Any(c => c.Kind == ODataSegmentKind.StreamProperty || c.Kind == ODataSegmentKind.StreamContent))
+            {
+                return ODataPathKind.MediaEntity;
+            }
+            else if (Segments.Any(c => c.Kind == ODataSegmentKind.Ref))
             {
                 return ODataPathKind.Ref;
             }
