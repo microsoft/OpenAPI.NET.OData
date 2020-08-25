@@ -652,61 +652,6 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/Me/Friends/{UserName}':
-    get:
-      tags:
-        - Me.Person
-      summary: Get Friends from Me
-      operationId: Me.GetFriends
-      produces:
-        - application/json
-      parameters:
-        - in: path
-          name: UserName
-          description: 'key: UserName of Person'
-          required: true
-          type: string
-          x-ms-docs-key-type: Person
-        - in: query
-          name: $select
-          description: Select properties to be returned
-          type: array
-          items:
-            enum:
-              - UserName
-              - FirstName
-              - LastName
-              - MiddleName
-              - Gender
-              - Age
-              - Emails
-              - AddressInfo
-              - HomeAddress
-              - FavoriteFeature
-              - Features
-              - Friends
-              - BestFriend
-              - Trips
-            type: string
-        - in: query
-          name: $expand
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-              - Friends
-              - BestFriend
-              - Trips
-            type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   /Me/Friends/$ref:
     get:
       tags:
@@ -991,6 +936,30 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Trip
+      summary: Create new navigation property to Trips for Me
+      operationId: Me.CreateTrips
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+      responses:
+        '201':
+          description: Created navigation property.
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}':
     get:
       tags:
@@ -1042,6 +1011,60 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - Me.Trip
+      summary: Update the navigation property Trips in Me
+      operationId: Me.UpdateTrips
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: body
+          name: body
+          description: New navigation property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Me.Trip
+      summary: Delete navigation property Trips for Me
+      operationId: Me.DeleteTrips
+      parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -1070,15 +1093,24 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
-  /Me/Trips/$ref:
+  '/Me/Trips/{TripId}/PlanItems':
     get:
       tags:
-        - Me.Trip
-      summary: Get ref of Trips from Me
-      operationId: Me.ListRefTrips
+        - Me.Trips.PlanItem
+      summary: Get PlanItems from Me
+      operationId: Me.Trips.ListPlanItems
       produces:
         - application/json
       parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -1090,28 +1122,96 @@ paths:
           type: array
           items:
             enum:
-              - TripId
-              - TripId desc
-              - ShareId
-              - ShareId desc
-              - Name
-              - Name desc
-              - Budget
-              - Budget desc
-              - Description
-              - Description desc
-              - Tags
-              - Tags desc
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
               - StartsAt
               - StartsAt desc
               - EndsAt
               - EndsAt desc
+              - Duration
+              - Duration desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - ConfirmationCode
+              - StartsAt
+              - EndsAt
+              - Duration
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of PlanItem
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Trips/{TripId}/PlanItems/$ref':
+    get:
+      tags:
+        - Me.Trips.PlanItem
+      summary: Get ref of PlanItems from Me
+      operationId: Me.Trips.ListRefPlanItems
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+              - Duration
+              - Duration desc
             type: string
       responses:
         '200':
           description: Retrieved navigation property links
           schema:
-            title: Collection of links of Trip
+            title: Collection of links of PlanItem
             type: object
             properties:
               value:
@@ -1123,14 +1223,23 @@ paths:
       x-ms-docs-operation-type: operation
     post:
       tags:
-        - Me.Trip
-      summary: Create new navigation property ref to Trips for Me
-      operationId: Me.CreateRefTrips
+        - Me.Trips.PlanItem
+      summary: Create new navigation property ref to PlanItems for Me
+      operationId: Me.Trips.CreateRefPlanItems
       consumes:
         - application/json
       produces:
         - application/json
       parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
         - in: body
           name: body
           description: New navigation property ref value
@@ -1585,67 +1694,6 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/NewComePeople/{UserName}/Friends/{UserName1}':
-    get:
-      tags:
-        - NewComePeople.Person
-      summary: Get Friends from NewComePeople
-      operationId: NewComePeople.GetFriends
-      produces:
-        - application/json
-      parameters:
-        - in: path
-          name: UserName
-          description: 'key: UserName of Person'
-          required: true
-          type: string
-          x-ms-docs-key-type: Person
-        - in: path
-          name: UserName1
-          description: 'key: UserName of Person'
-          required: true
-          type: string
-          x-ms-docs-key-type: Person
-        - in: query
-          name: $select
-          description: Select properties to be returned
-          type: array
-          items:
-            enum:
-              - UserName
-              - FirstName
-              - LastName
-              - MiddleName
-              - Gender
-              - Age
-              - Emails
-              - AddressInfo
-              - HomeAddress
-              - FavoriteFeature
-              - Features
-              - Friends
-              - BestFriend
-              - Trips
-            type: string
-        - in: query
-          name: $expand
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-              - Friends
-              - BestFriend
-              - Trips
-            type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/$ref':
     get:
       tags:
@@ -1979,6 +2027,36 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.Trip
+      summary: Create new navigation property to Trips for NewComePeople
+      operationId: NewComePeople.CreateTrips
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+      responses:
+        '201':
+          description: Created navigation property.
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -2036,6 +2114,72 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - NewComePeople.Trip
+      summary: Update the navigation property Trips in NewComePeople
+      operationId: NewComePeople.UpdateTrips
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: body
+          name: body
+          description: New navigation property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - NewComePeople.Trip
+      summary: Delete navigation property Trips for NewComePeople
+      operationId: NewComePeople.DeleteTrips
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -2070,12 +2214,12 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
-  '/NewComePeople/{UserName}/Trips/$ref':
+  '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems':
     get:
       tags:
-        - NewComePeople.Trip
-      summary: Get ref of Trips from NewComePeople
-      operationId: NewComePeople.ListRefTrips
+        - NewComePeople.Trips.PlanItem
+      summary: Get PlanItems from NewComePeople
+      operationId: NewComePeople.Trips.ListPlanItems
       produces:
         - application/json
       parameters:
@@ -2085,6 +2229,15 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -2096,28 +2249,102 @@ paths:
           type: array
           items:
             enum:
-              - TripId
-              - TripId desc
-              - ShareId
-              - ShareId desc
-              - Name
-              - Name desc
-              - Budget
-              - Budget desc
-              - Description
-              - Description desc
-              - Tags
-              - Tags desc
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
               - StartsAt
               - StartsAt desc
               - EndsAt
               - EndsAt desc
+              - Duration
+              - Duration desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - ConfirmationCode
+              - StartsAt
+              - EndsAt
+              - Duration
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of PlanItem
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref':
+    get:
+      tags:
+        - NewComePeople.Trips.PlanItem
+      summary: Get ref of PlanItems from NewComePeople
+      operationId: NewComePeople.Trips.ListRefPlanItems
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+              - Duration
+              - Duration desc
             type: string
       responses:
         '200':
           description: Retrieved navigation property links
           schema:
-            title: Collection of links of Trip
+            title: Collection of links of PlanItem
             type: object
             properties:
               value:
@@ -2129,9 +2356,9 @@ paths:
       x-ms-docs-operation-type: operation
     post:
       tags:
-        - NewComePeople.Trip
-      summary: Create new navigation property ref to Trips for NewComePeople
-      operationId: NewComePeople.CreateRefTrips
+        - NewComePeople.Trips.PlanItem
+      summary: Create new navigation property ref to PlanItems for NewComePeople
+      operationId: NewComePeople.Trips.CreateRefPlanItems
       consumes:
         - application/json
       produces:
@@ -2143,6 +2370,15 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
         - in: body
           name: body
           description: New navigation property ref value
@@ -2597,67 +2833,6 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
-  '/People/{UserName}/Friends/{UserName1}':
-    get:
-      tags:
-        - People.Person
-      summary: Get Friends from People
-      operationId: People.GetFriends
-      produces:
-        - application/json
-      parameters:
-        - in: path
-          name: UserName
-          description: 'key: UserName of Person'
-          required: true
-          type: string
-          x-ms-docs-key-type: Person
-        - in: path
-          name: UserName1
-          description: 'key: UserName of Person'
-          required: true
-          type: string
-          x-ms-docs-key-type: Person
-        - in: query
-          name: $select
-          description: Select properties to be returned
-          type: array
-          items:
-            enum:
-              - UserName
-              - FirstName
-              - LastName
-              - MiddleName
-              - Gender
-              - Age
-              - Emails
-              - AddressInfo
-              - HomeAddress
-              - FavoriteFeature
-              - Features
-              - Friends
-              - BestFriend
-              - Trips
-            type: string
-        - in: query
-          name: $expand
-          description: Expand related entities
-          type: array
-          items:
-            enum:
-              - '*'
-              - Friends
-              - BestFriend
-              - Trips
-            type: string
-      responses:
-        '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-        default:
-          $ref: '#/responses/error'
-      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/$ref':
     get:
       tags:
@@ -2991,6 +3166,36 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Trip
+      summary: Create new navigation property to Trips for People
+      operationId: People.CreateTrips
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+      responses:
+        '201':
+          description: Created navigation property.
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}':
     get:
       tags:
@@ -3048,6 +3253,72 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    patch:
+      tags:
+        - People.Trip
+      summary: Update the navigation property Trips in People
+      operationId: People.UpdateTrips
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: body
+          name: body
+          description: New navigation property values
+          required: true
+          schema:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.Trip
+      summary: Delete navigation property Trips for People
+      operationId: People.DeleteTrips
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     get:
       tags:
@@ -3082,12 +3353,12 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
-  '/People/{UserName}/Trips/$ref':
+  '/People/{UserName}/Trips/{TripId}/PlanItems':
     get:
       tags:
-        - People.Trip
-      summary: Get ref of Trips from People
-      operationId: People.ListRefTrips
+        - People.Trips.PlanItem
+      summary: Get PlanItems from People
+      operationId: People.Trips.ListPlanItems
       produces:
         - application/json
       parameters:
@@ -3097,6 +3368,15 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
         - $ref: '#/parameters/search'
@@ -3108,28 +3388,102 @@ paths:
           type: array
           items:
             enum:
-              - TripId
-              - TripId desc
-              - ShareId
-              - ShareId desc
-              - Name
-              - Name desc
-              - Budget
-              - Budget desc
-              - Description
-              - Description desc
-              - Tags
-              - Tags desc
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
               - StartsAt
               - StartsAt desc
               - EndsAt
               - EndsAt desc
+              - Duration
+              - Duration desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - ConfirmationCode
+              - StartsAt
+              - EndsAt
+              - Duration
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of PlanItem
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Trips/{TripId}/PlanItems/$ref':
+    get:
+      tags:
+        - People.Trips.PlanItem
+      summary: Get ref of PlanItems from People
+      operationId: People.Trips.ListRefPlanItems
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - PlanItemId
+              - PlanItemId desc
+              - ConfirmationCode
+              - ConfirmationCode desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+              - Duration
+              - Duration desc
             type: string
       responses:
         '200':
           description: Retrieved navigation property links
           schema:
-            title: Collection of links of Trip
+            title: Collection of links of PlanItem
             type: object
             properties:
               value:
@@ -3141,9 +3495,9 @@ paths:
       x-ms-docs-operation-type: operation
     post:
       tags:
-        - People.Trip
-      summary: Create new navigation property ref to Trips for People
-      operationId: People.CreateRefTrips
+        - People.Trips.PlanItem
+      summary: Create new navigation property ref to PlanItems for People
+      operationId: People.Trips.CreateRefPlanItems
       consumes:
         - application/json
       produces:
@@ -3155,6 +3509,15 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
         - in: body
           name: body
           description: New navigation property ref value
@@ -3625,6 +3988,8 @@ tags:
     x-ms-docs-toc-type: container
   - name: Me.Trip
     x-ms-docs-toc-type: page
+  - name: Me.Trips.PlanItem
+    x-ms-docs-toc-type: page
   - name: NewComePeople.Person
     x-ms-docs-toc-type: page
   - name: NewComePeople.Functions
@@ -3633,6 +3998,8 @@ tags:
     x-ms-docs-toc-type: container
   - name: NewComePeople.Trip
     x-ms-docs-toc-type: page
+  - name: NewComePeople.Trips.PlanItem
+    x-ms-docs-toc-type: page
   - name: People.Person
     x-ms-docs-toc-type: page
   - name: People.Functions
@@ -3640,6 +4007,8 @@ tags:
   - name: People.Actions
     x-ms-docs-toc-type: container
   - name: People.Trip
+    x-ms-docs-toc-type: page
+  - name: People.Trips.PlanItem
     x-ms-docs-toc-type: page
   - name: ResetDataSource
     x-ms-docs-toc-type: container
