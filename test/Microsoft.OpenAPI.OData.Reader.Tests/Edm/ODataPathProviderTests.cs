@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4585, paths.Count());
+            Assert.Equal(4457, paths.Count());
         }
 
         [Fact]
@@ -149,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetPathsWithNavigationPropertytWorks()
+        public void GetPathsWithNonContainedNavigationPropertytWorks()
         {
             // Arrange
             string entityType =
@@ -171,14 +171,43 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(9, paths.Count());
+            Assert.Equal(8, paths.Count());
+
+            var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
+            Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
+        }
+
+        [Fact]
+        public void GetPathsWithContainedNavigationPropertytWorks()
+        {
+            // Arrange
+            string entityType =
+@"<EntityType Name=""Order"">
+    <Key>
+      <PropertyRef Name=""id"" />
+    </Key>
+    <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"" />
+    <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" ContainsTarget=""true"" />
+  </EntityType>";
+            
+            string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
+            IEdmModel model = GetEdmModel(entityType, entitySet);
+            ODataPathProvider provider = new ODataPathProvider();
+
+            // Act
+            var paths = provider.GetPaths(model);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(7, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
             Assert.Contains("/Orders({id})/MultipleCustomers({ID})", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
-            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
-            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
         }
 
         [Theory]

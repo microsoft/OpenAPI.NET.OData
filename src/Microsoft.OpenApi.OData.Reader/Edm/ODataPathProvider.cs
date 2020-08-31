@@ -254,40 +254,41 @@ namespace Microsoft.OpenApi.OData.Edm
                 newPath.Push(ODataRefSegment.Instance); // $ref
                 AppendPath(newPath);
             }
-
-            // append a navigation property key.
-            IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            else
             {
-                currentPath.Push(new ODataKeySegment(navEntityType));
-                AppendPath(currentPath.Clone());
+                IEdmEntityType navEntityType = navigationProperty.ToEntityType();
 
-                if (!navigationProperty.ContainsTarget)
+                // append a navigation property key.
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
-                    // TODO: Shall we add "$ref" after {key}, and only support delete?
-                    // ODataPath newPath = currentPath.Clone();
-                    // newPath.Push(ODataRefSegment.Instance); // $ref
-                    // AppendPath(newPath);
-                }
-            }
+                    currentPath.Push(new ODataKeySegment(navEntityType));
+                    AppendPath(currentPath.Clone());
 
-            if (shouldExpand)
-            {
-                // expand to sub navigation properties
-                foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
-                {
-                    if (CanFilter(subNavProperty))
+                    if (!navigationProperty.ContainsTarget)
                     {
-                        RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                        // TODO: Shall we add "$ref" after {key}, and only support delete?
+                        // ODataPath newPath = currentPath.Clone();
+                        // newPath.Push(ODataRefSegment.Instance); // $ref
+                        // AppendPath(newPath);
                     }
                 }
-            }
 
-            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-            {
-                currentPath.Pop();
+                if (shouldExpand)
+                {
+                    // expand to sub navigation properties
+                    foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                    {
+                        if (CanFilter(subNavProperty))
+                        {
+                            RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                        }
+                    }
+                }
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    currentPath.Pop();
+                }
             }
-
             currentPath.Pop();
         }
 
