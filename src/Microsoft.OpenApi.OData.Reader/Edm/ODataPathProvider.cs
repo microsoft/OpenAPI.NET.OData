@@ -184,31 +184,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             // media entity
-            bool createValuePath = true;
-            foreach (IEdmStructuralProperty sp in entityType.DeclaredStructuralProperties())
-            {
-                if (sp.Type.AsPrimitive().IsStream())
-                {
-                    path.Push(new ODataStreamPropertySegment(sp.Name));
-                    AppendPath(path.Clone());
-                    path.Pop();
-                }
-
-                if (sp.Name.Equals("content", System.StringComparison.OrdinalIgnoreCase))
-                {
-                    createValuePath = false;
-                }
-            }
-
-            /* Create a /$value path only if entity has stream and
-             * does not contain a structural property named Content
-             */
-            if (createValuePath && entityType.HasStream)
-            {
-                path.Push(new ODataStreamContentSegment());
-                AppendPath(path.Clone());
-                path.Pop();
-            }
+            RetrieveMediaEntityStreamPaths(entityType, path);
 
             // navigation property
             foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
@@ -226,6 +202,43 @@ namespace Microsoft.OpenApi.OData.Edm
 
             path.Pop(); // end of navigation source.
             Debug.Assert(path.Any() == false);
+        }
+
+        /// <summary>
+        /// Retrieves the paths for a media entity stream.
+        /// </summary>
+        /// <param name="entityType">The entity type.</param>
+        /// <param name="currentPath">The current OData path.</param>
+        private void RetrieveMediaEntityStreamPaths(IEdmEntityType entityType, ODataPath currentPath)
+        {
+            Debug.Assert(entityType != null);
+            Debug.Assert(currentPath != null);
+
+            bool createValuePath = true;
+            foreach (IEdmStructuralProperty sp in entityType.DeclaredStructuralProperties())
+            {
+                if (sp.Type.AsPrimitive().IsStream())
+                {
+                    currentPath.Push(new ODataStreamPropertySegment(sp.Name));
+                    AppendPath(currentPath.Clone());
+                    currentPath.Pop();
+                }
+
+                if (sp.Name.Equals("content", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    createValuePath = false;
+                }
+            }
+
+            /* Create a /$value path only if entity has stream and
+             * does not contain a structural property named Content
+             */
+            if (createValuePath && entityType.HasStream)
+            {
+                currentPath.Push(new ODataStreamContentSegment());
+                AppendPath(currentPath.Clone());
+                currentPath.Pop();
+            }
         }
 
         /// <summary>
@@ -284,6 +297,10 @@ namespace Microsoft.OpenApi.OData.Edm
                         }
                     }
                 }
+
+                // Get possible navigation property stream paths
+                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
                 if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
                     currentPath.Pop();

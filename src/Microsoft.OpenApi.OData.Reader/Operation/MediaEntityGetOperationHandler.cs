@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Operation
     /// <summary>
     /// Retrieve a media content for an Entity
     /// </summary>
-    internal class MediaEntityGetOperationHandler : EntitySetOperationHandler
+    internal class MediaEntityGetOperationHandler : MediaEntityOperationalHandler
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
@@ -25,16 +25,31 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            string typeName = EntitySet.EntityType().Name;
-
             // Summary
-            operation.Summary = $"Get media content for {typeName} from {EntitySet.Name}";
+            if (EntitySet != null)
+            {
+                string typeName = EntitySet.EntityType().Name;
+                operation.Summary = $"Get media content for {typeName} from {EntitySet.Name}";
+            }
+            else
+            {
+                operation.Summary = $"Get media content for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}";
+            }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
                 string identifier = Path.LastSegment.Kind == ODataSegmentKind.StreamContent ? "Content" : Path.LastSegment.Identifier;
-                operation.OperationId = EntitySet.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(identifier);
+
+                if (EntitySet != null)
+                {
+                    string typeName = EntitySet.EntityType().Name;
+                    operation.OperationId = $"{EntitySet.Name}.{typeName}.Get{Utils.UpperFirstChar(identifier)}";
+                }
+                else // Singleton
+                {
+                    operation.OperationId = GetOperationId("Get", identifier);
+                }
             }
 
             base.SetBasicInfo(operation);
@@ -43,22 +58,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    Type = "string",
-                    Format = "binary"
-                };
-            }
-
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -72,7 +71,11 @@ namespace Microsoft.OpenApi.OData.Operation
                                 Constants.ApplicationOctetStreamMediaType,
                                 new OpenApiMediaType
                                 {
-                                    Schema = schema
+                                    Schema = new OpenApiSchema
+                                    {
+                                        Type = "string",
+                                        Format = "binary"
+                                    }
                                 }
                             }
                         }
@@ -86,7 +89,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+            ReadRestrictionsType read = EntitySet != null
+                ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions)
+                : Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
             if (read == null)
             {
                 return;

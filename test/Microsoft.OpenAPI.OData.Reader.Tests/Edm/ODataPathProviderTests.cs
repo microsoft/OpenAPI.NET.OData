@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4457, paths.Count());
+            Assert.Equal(4544, paths.Count());
         }
 
         [Fact]
@@ -192,7 +192,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"" />
     <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" ContainsTarget=""true"" />
   </EntityType>";
-            
+
             string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
             IEdmModel model = GetEdmModel(entityType, entitySet);
             ODataPathProvider provider = new ODataPathProvider();
@@ -229,21 +229,21 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             if (hasStream && !streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase))
             {
-                Assert.Equal(4, paths.Count());
-                Assert.Equal(new[] { "/Todos", "/Todos({Id})", "/Todos({Id})/$value", "/Todos({Id})/Logo" },
+                Assert.Equal(7, paths.Count());
+                Assert.Equal(new[] { "/me", "/me/photo", "/me/photo/$value", "/Todos", "/Todos({Id})", "/Todos({Id})/$value", "/Todos({Id})/Logo" },
                     paths.Select(p => p.GetPathItemName()));
             }
             else if ((hasStream && streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase)) ||
                     (!hasStream && streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase)))
             {
-                Assert.Equal(3, paths.Count());
-                Assert.Equal(new[] { "/Todos", "/Todos({Id})", "/Todos({Id})/Content" },
+                Assert.Equal(6, paths.Count());
+                Assert.Equal(new[] { "/me", "/me/photo", "/me/photo/$value", "/Todos", "/Todos({Id})", "/Todos({Id})/Content" },
                     paths.Select(p => p.GetPathItemName()));
             }
             else // !hasStream && !streamPropName.Equals("Content")
             {
-                Assert.Equal(3, paths.Count());
-                Assert.Equal(new[] { "/Todos", "/Todos({Id})", "/Todos({Id})/Logo" },
+                Assert.Equal(6, paths.Count());
+                Assert.Equal(new[] { "/me", "/me/photo", "/me/photo/$value", "/Todos", "/Todos({Id})", "/Todos({Id})/Logo"},
                     paths.Select(p => p.GetPathItemName()));
             }
         }
@@ -282,9 +282,17 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""{1}"" Type=""Edm.Stream""/>
         <Property Name = ""Description"" Type = ""Edm.String"" />
-         </EntityType>
-      <EntityContainer Name =""TodoService"">
-         <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+      </EntityType>
+      <EntityType Name=""user"" OpenType=""true"">
+        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" />
+      </EntityType>
+      <EntityType Name=""profilePhoto"" HasStream=""true"">
+        <Property Name = ""height"" Type = ""Edm.Int32"" />
+        <Property Name = ""width"" Type = ""Edm.Int32"" />
+      </EntityType >
+      <EntityContainer Name =""GraphService"">
+        <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+        <Singleton Name=""me"" Type=""microsoft.graph.user"" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

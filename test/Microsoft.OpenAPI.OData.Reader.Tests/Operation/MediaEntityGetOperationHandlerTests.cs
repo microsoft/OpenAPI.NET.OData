@@ -30,7 +30,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet todos = model.EntityContainer.FindEntitySet("Todos");
+            IEdmSingleton me = model.EntityContainer.FindSingleton("me");
             Assert.NotNull(todos);
+            Assert.NotNull(me);
 
             IEdmEntityType todo = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Todo");
             IEdmStructuralProperty sp = todo.DeclaredStructuralProperties().First(c => c.Name == "Logo");
@@ -38,27 +40,45 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataKeySegment(todos.EntityType()),
                 new ODataStreamPropertySegment(sp.Name));
 
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
+            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "photo");
+            ODataPath path2 = new ODataPath(new ODataNavigationSourceSegment(me),
+                new ODataNavigationPropertySegment(navProperty),
+                new ODataStreamContentSegment());
+
             // Act
             var getOperation = _operationalHandler.CreateOperation(context, path);
+            var getOperation2 = _operationalHandler.CreateOperation(context, path2);
 
             // Assert
             Assert.NotNull(getOperation);
+            Assert.NotNull(getOperation2);
             Assert.Equal("Get media content for Todo from Todos", getOperation.Summary);
+            Assert.Equal("Get media content for the navigation property photo from me", getOperation2.Summary);
             Assert.NotNull(getOperation.Tags);
+            Assert.NotNull(getOperation2.Tags);
+
             var tag = Assert.Single(getOperation.Tags);
+            var tag2 = Assert.Single(getOperation2.Tags);
             Assert.Equal("Todos.Todo", tag.Name);
+            Assert.Equal("me.profilePhoto", tag2.Name);
 
             Assert.NotNull(getOperation.Responses);
+            Assert.NotNull(getOperation2.Responses);
             Assert.Equal(2, getOperation.Responses.Count);
+            Assert.Equal(2, getOperation2.Responses.Count);
             Assert.Equal(new[] { "200", "default" }, getOperation.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { "200", "default" }, getOperation2.Responses.Select(r => r.Key));
 
             if (enableOperationId)
             {
                 Assert.Equal("Todos.Todo.GetLogo", getOperation.OperationId);
+                Assert.Equal("me.photo.GetContent", getOperation2.OperationId);
             }
             else
             {
                 Assert.Null(getOperation.OperationId);
+                Assert.Null(getOperation2.OperationId);
             }
         }
 
@@ -74,9 +94,17 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""Logo"" Type=""Edm.Stream""/>
         <Property Name = ""Description"" Type = ""Edm.String"" />
-         </EntityType>
-      <EntityContainer Name =""TodoService"">
-         <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+      </EntityType>
+      <EntityType Name=""user"" OpenType=""true"">
+        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" />
+      </EntityType>
+      <EntityType Name=""profilePhoto"" HasStream=""true"">
+        <Property Name = ""height"" Type = ""Edm.Int32"" />
+        <Property Name = ""width"" Type = ""Edm.Int32"" />
+      </EntityType >
+      <EntityContainer Name =""GraphService"">
+        <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+        <Singleton Name=""me"" Type=""microsoft.graph.user"" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

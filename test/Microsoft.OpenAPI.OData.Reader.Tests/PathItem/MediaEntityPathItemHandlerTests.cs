@@ -59,8 +59,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             // Arrange
             IEdmModel model = GetEdmModel("");
             ODataContext context = new ODataContext(model);
-            var entitySet = model.EntityContainer.FindEntitySet("Todos");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Todos");
+            IEdmSingleton singleton = model.EntityContainer.FindSingleton("me");
             Assert.NotNull(entitySet); // guard
+            Assert.NotNull(singleton);
             IEdmEntityType entityType = entitySet.EntityType();
 
             IEdmStructuralProperty sp = entityType.DeclaredStructuralProperties().First(c => c.Name == "Logo");
@@ -68,14 +70,30 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 new ODataKeySegment(entityType),
                 new ODataStreamPropertySegment(sp.Name));
 
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
+            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "photo");
+            ODataPath path2 = new ODataPath(new ODataNavigationSourceSegment(singleton),
+                new ODataNavigationPropertySegment(navProperty),
+                new ODataStreamContentSegment());
+
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
+            var pathItem2 = _pathItemHandler.CreatePathItem(context, path2);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem2);
 
             Assert.NotNull(pathItem.Operations);
+            Assert.NotNull(pathItem2.Operations);
             Assert.NotEmpty(pathItem.Operations);
+            Assert.NotEmpty(pathItem2.Operations);
             Assert.Equal(2, pathItem.Operations.Count);
+            Assert.Equal(2, pathItem2.Operations.Count);
             Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put },
                 pathItem.Operations.Select(o => o.Key));
+            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put },
+                pathItem2.Operations.Select(o => o.Key));
         }
 
         [Theory]
@@ -127,9 +145,10 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(entitySet); // guard
             IEdmEntityType entityType = entitySet.EntityType();
 
+            IEdmStructuralProperty sp = entityType.DeclaredStructuralProperties().First(c => c.Name == "Logo");
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
                 new ODataKeySegment(entityType),
-                new ODataStreamContentSegment());
+                new ODataStreamPropertySegment(sp.Name));
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
@@ -148,23 +167,35 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             IEdmModel model = GetEdmModel(annotation);
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Todos");
+            IEdmSingleton singleton = model.EntityContainer.FindSingleton("me");
             Assert.NotNull(entitySet); // guard
+            Assert.NotNull(singleton);
             IEdmEntityType entityType = entitySet.EntityType();
 
-            IEdmStructuralProperty sp = entityType.DeclaredStructuralProperties().First(c => c.Name == "Logo");
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
+            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "photo");
+            ODataPath path2 = new ODataPath(new ODataNavigationSourceSegment(singleton),
+                new ODataNavigationPropertySegment(navProperty),
+                new ODataStreamContentSegment());
+
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
                 new ODataKeySegment(entityType),
-                new ODataStreamPropertySegment(sp.Name));
+                new ODataStreamContentSegment());
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
+            var pathItem2 = _pathItemHandler.CreatePathItem(context, path2);
 
             // Assert
             Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem2);
 
             Assert.NotNull(pathItem.Operations);
+            Assert.NotNull(pathItem2.Operations);
             Assert.NotEmpty(pathItem.Operations);
+            Assert.NotEmpty(pathItem2.Operations);
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
+            Assert.Equal(expected, pathItem2.Operations.Select(e => e.Key));
         }
 
         private IEdmModel GetEdmModel(string annotation)
@@ -180,11 +211,22 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         <Property Name=""Logo"" Type=""Edm.Stream""/>
         <Property Name = ""Description"" Type = ""Edm.String"" />
          </EntityType>
-      <EntityContainer Name =""TodoService"">
-         <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+      <EntityType Name=""user"" OpenType=""true"">
+        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" />
+      </EntityType>
+      <EntityType Name=""profilePhoto"" HasStream=""true"">
+        <Property Name = ""height"" Type = ""Edm.Int32"" />
+        <Property Name = ""width"" Type = ""Edm.Int32"" />
+      </EntityType >
+      <EntityContainer Name =""GraphService"">
+        <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+        <Singleton Name=""me"" Type=""microsoft.graph.user"" />
       </EntityContainer>
-      <Annotations Target=""microsoft.graph.TodoService/Todos"">
-        {0}
+      <Annotations Target=""microsoft.graph.GraphService/Todos"" >
+       {0}
+      </Annotations>
+      <Annotations Target=""microsoft.graph.GraphService/me"" >
+       {0}
       </Annotations>
     </Schema>
   </edmx:DataServices>

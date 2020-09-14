@@ -17,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Operation
     /// <summary>
     /// Update a media content for an Entity
     /// </summary>
-    internal class MediaEntityPutOperationHandler : EntitySetOperationHandler
+    internal class MediaEntityPutOperationHandler : MediaEntityOperationalHandler
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Put;
@@ -25,16 +25,31 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            string typeName = EntitySet.EntityType().Name;
-
             // Summary
-            operation.Summary = $"Update media content for {typeName} in {EntitySet.Name}";
+            if (EntitySet != null)
+            {
+                string typeName = EntitySet.EntityType().Name;
+                operation.Summary = $"Update media content for {typeName} in {EntitySet.Name}";
+            }
+            else
+            {
+                operation.Summary = $"Update media content for the navigation property {NavigationProperty.Name} in {NavigationSource.Name}";
+            }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
                 string identifier = Path.LastSegment.Kind == ODataSegmentKind.StreamContent ? "Content" : Path.LastSegment.Identifier;
-                operation.OperationId = EntitySet.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(identifier);
+
+                if (EntitySet != null)
+                {
+                    string typeName = EntitySet.EntityType().Name;
+                    operation.OperationId = $"{EntitySet.Name}.{typeName}.Update{Utils.UpperFirstChar(identifier)}";
+                }
+                else
+                {
+                    operation.OperationId = GetOperationId("Update", identifier);
+                }
             }
 
             base.SetBasicInfo(operation);
@@ -54,8 +69,11 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 schema = new OpenApiSchema
                 {
-                    Type = "string",
-                    Format = "binary"
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet != null ? EntitySet.EntityType().FullName() : Singleton.EntityType().FullName()
+                    }
                 };
             }
 
@@ -67,6 +85,16 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     {
                         Constants.ApplicationOctetStreamMediaType, new OpenApiMediaType
+                        {
+                            Schema = new OpenApiSchema
+                            {
+                                Type = "string",
+                                Format = "binary"
+                            }
+                        }
+                    },
+                    {
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
                             Schema = schema
                         }
@@ -92,7 +120,9 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
+            UpdateRestrictionsType update = EntitySet != null
+                ? Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions)
+                : Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
             if (update == null || update.Permissions == null)
             {
                 return;
