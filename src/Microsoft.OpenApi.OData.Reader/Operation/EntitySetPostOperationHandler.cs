@@ -43,40 +43,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType().FullName()
-                    }
-                };
-            }
-
             // The requestBody field contains a Request Body Object for the request body
             // that references the schema of the entity set’s entity type in the global schemas.
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
                 Description = "New entity",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = schema
-                        }
-                    }
-                }
+                Content = GetContentDescription()
             };
 
             base.SetRequestBody(operation);
@@ -85,25 +58,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType().FullName()
-                    }
-                };
-            }
-
             operation.Responses = new OpenApiResponses
             {
                 {
@@ -111,16 +65,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     new OpenApiResponse
                     {
                         Description = "Created entity",
-                        Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = schema
-                                }
-                            }
-                        }
+                        Content = GetContentDescription()
                     }
                 }
             };
@@ -158,6 +103,64 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, insert.CustomHeaders, ParameterLocation.Header);
             }
+        }
+
+        /// <summary>
+        /// Get the entity content description.
+        /// </summary>
+        /// <returns>The entity content description.</returns>
+        private IDictionary<string, OpenApiMediaType> GetContentDescription()
+        {
+            OpenApiSchema schema = GetEntitySchema();
+            var content = new Dictionary<string, OpenApiMediaType>();
+
+            if (EntitySet.EntityType().HasStream)
+            {
+                // TODO: Read the AcceptableMediaType annotation from model
+                content.Add(Constants.ApplicationOctetStreamMediaType, new OpenApiMediaType
+                {
+                    Schema = new OpenApiSchema
+                    {
+                        Type = "string",
+                        Format = "binary"
+                    }
+                });                
+            }
+
+            content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType
+            {
+                Schema = schema
+            });
+
+            return content;
+        }
+
+        /// <summary>
+        /// Get the entity schema.
+        /// </summary>
+        /// <returns>The entity schema.</returns>
+        private OpenApiSchema GetEntitySchema()
+        {
+            OpenApiSchema schema = null;
+
+            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = EntitySet.EntityType().FullName()
+                    }
+                };
+            }
+
+            return schema;
         }
     }
 }
