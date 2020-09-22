@@ -9,7 +9,6 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.OpenApi.OData.Operation
@@ -65,20 +64,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     new OpenApiResponse
                     {
                         Description = "Retrieved media content",
-                        Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            {
-                                Constants.ApplicationOctetStreamMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = new OpenApiSchema
-                                    {
-                                        Type = "string",
-                                        Format = "binary"
-                                    }
-                                }
-                            }
-                        }
+                        Content = GetContentDescription()
                     }
                 }
             };

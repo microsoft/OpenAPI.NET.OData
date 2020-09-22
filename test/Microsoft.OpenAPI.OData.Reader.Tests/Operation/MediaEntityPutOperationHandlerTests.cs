@@ -4,7 +4,9 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Linq;
 using Xunit;
 
@@ -17,10 +19,27 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void CreateEntityPutOperationReturnsCorrectOperation(bool enableOperationId)
+        public void CreateMediaEntityPutOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = MediaEntityGetOperationHandlerTests.GetEdmModel();
+            string qualifiedName = CapabilitiesConstants.AcceptableMediaTypes;
+            string annotation = $@"
+            <Annotation Term=""{qualifiedName}"" >
+              <Collection>
+                <String>image/png</String>
+                <String>image/jpeg</String>
+              </Collection>
+            </Annotation>";
+
+            // Assert
+            VerifyMediaEntityPutOperation("", enableOperationId);
+            VerifyMediaEntityPutOperation(annotation, enableOperationId);
+        }
+
+        private void VerifyMediaEntityPutOperation(string annotation, bool enableOperationId)
+        {
+            // Arrange
+            IEdmModel model = MediaEntityGetOperationHandlerTests.GetEdmModel(annotation);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableOperationId = enableOperationId
@@ -44,38 +63,55 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataStreamContentSegment());
 
             // Act
-            var getOperation = _operationalHandler.CreateOperation(context, path);
-            var getOperation2 = _operationalHandler.CreateOperation(context, path2);
+            var putOperation = _operationalHandler.CreateOperation(context, path);
+            var putOperation2 = _operationalHandler.CreateOperation(context, path2);
 
             // Assert
-            Assert.NotNull(getOperation);
-            Assert.NotNull(getOperation2);
-            Assert.Equal("Update media content for Todo in Todos", getOperation.Summary);
-            Assert.Equal("Update media content for the navigation property photo in me", getOperation2.Summary);
-            Assert.NotNull(getOperation.Tags);
-            Assert.NotNull(getOperation2.Tags);
+            Assert.NotNull(putOperation);
+            Assert.NotNull(putOperation2);
+            Assert.Equal("Update media content for Todo in Todos", putOperation.Summary);
+            Assert.Equal("Update media content for the navigation property photo in me", putOperation2.Summary);
+            Assert.NotNull(putOperation.Tags);
+            Assert.NotNull(putOperation2.Tags);
 
-            var tag = Assert.Single(getOperation.Tags);
-            var tag2 = Assert.Single(getOperation2.Tags);
+            var tag = Assert.Single(putOperation.Tags);
+            var tag2 = Assert.Single(putOperation2.Tags);
             Assert.Equal("Todos.Todo", tag.Name);
             Assert.Equal("me.profilePhoto", tag2.Name);
 
-            Assert.NotNull(getOperation.Responses);
-            Assert.NotNull(getOperation2.Responses);
-            Assert.Equal(2, getOperation.Responses.Count);
-            Assert.Equal(2, getOperation2.Responses.Count);
-            Assert.Equal(new[] { "204", "default" }, getOperation.Responses.Select(r => r.Key));
-            Assert.Equal(new[] { "204", "default" }, getOperation2.Responses.Select(r => r.Key));
+            Assert.NotNull(putOperation.Responses);
+            Assert.NotNull(putOperation2.Responses);
+            Assert.Equal(2, putOperation.Responses.Count);
+            Assert.Equal(2, putOperation2.Responses.Count);
+            Assert.Equal(new[] { "204", "default" }, putOperation.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { "204", "default" }, putOperation2.Responses.Select(r => r.Key));
 
-            if (enableOperationId)
+            if (!string.IsNullOrEmpty(annotation))
             {
-                Assert.Equal("Todos.Todo.UpdateLogo", getOperation.OperationId);
-                Assert.Equal("me.photo.UpdateContent", getOperation2.OperationId);
+                Assert.Equal(2, putOperation.RequestBody.Content.Keys.Count);
+                Assert.True(putOperation.RequestBody.Content.ContainsKey("image/png"));
+                Assert.True(putOperation.RequestBody.Content.ContainsKey("image/jpeg"));
+
+                Assert.Equal(1, putOperation2.RequestBody.Content.Keys.Count);
+                Assert.True(putOperation2.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }
             else
             {
-                Assert.Null(getOperation.OperationId);
-                Assert.Null(getOperation2.OperationId);
+                Assert.Equal(1, putOperation.RequestBody.Content.Keys.Count);
+                Assert.Equal(1, putOperation2.RequestBody.Content.Keys.Count);
+                Assert.True(putOperation.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                Assert.True(putOperation2.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+            }
+
+            if (enableOperationId)
+            {
+                Assert.Equal("Todos.Todo.UpdateLogo", putOperation.OperationId);
+                Assert.Equal("me.photo.UpdateContent", putOperation2.OperationId);
+            }
+            else
+            {
+                Assert.Null(putOperation.OperationId);
+                Assert.Null(putOperation2.OperationId);
             }
         }
     }

@@ -116,15 +116,28 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (EntitySet.EntityType().HasStream)
             {
-                // TODO: Read the AcceptableMediaType annotation from model
-                content.Add(Constants.ApplicationOctetStreamMediaType, new OpenApiMediaType
+                IEnumerable<string> mediaTypes = Context.Model.GetCollection(EntitySet.EntityType(),
+                    CapabilitiesConstants.AcceptableMediaTypes);
+
+                if (mediaTypes != null)
                 {
-                    Schema = new OpenApiSchema
+                    foreach (string item in mediaTypes)
                     {
-                        Type = "string",
-                        Format = "binary"
+                        content.Add(item, null);
                     }
-                });                
+                }
+                else
+                {
+                    // Default content type
+                    content.Add(Constants.ApplicationOctetStreamMediaType, new OpenApiMediaType
+                    {
+                        Schema = new OpenApiSchema
+                        {
+                            Type = "string",
+                            Format = "binary"
+                        }
+                    });
+                }
             }
 
             content.Add(Constants.ApplicationJsonMediaType, new OpenApiMediaType

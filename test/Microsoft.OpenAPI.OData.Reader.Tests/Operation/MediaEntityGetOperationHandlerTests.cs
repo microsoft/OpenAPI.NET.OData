@@ -5,7 +5,9 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using System.Linq;
 using System.Xml.Linq;
 using Xunit;
@@ -22,7 +24,24 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void CreateMediaEntityGetOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = GetEdmModel();
+            string qualifiedName = CapabilitiesConstants.AcceptableMediaTypes;
+            string annotation = $@"
+            <Annotation Term=""{qualifiedName}"" >
+              <Collection>
+                <String>image/png</String>
+                <String>image/jpeg</String>
+              </Collection>
+            </Annotation>";
+
+            // Assert
+            VerifyMediaEntityGetOperation("", enableOperationId);
+            VerifyMediaEntityGetOperation(annotation, enableOperationId);
+        }
+
+        private void VerifyMediaEntityGetOperation(string annotation, bool enableOperationId)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel(annotation);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableOperationId = enableOperationId
@@ -70,6 +89,23 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(new[] { "200", "default" }, getOperation.Responses.Select(r => r.Key));
             Assert.Equal(new[] { "200", "default" }, getOperation2.Responses.Select(r => r.Key));
 
+            if (!string.IsNullOrEmpty(annotation))
+            {
+                Assert.Equal(2, getOperation.Responses[Constants.StatusCode200].Content.Keys.Count);
+                Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey("image/png"));
+                Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey("image/jpeg"));
+
+                Assert.Equal(1, getOperation2.Responses[Constants.StatusCode200].Content.Keys.Count);
+                Assert.True(getOperation2.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+            }
+            else
+            {
+                Assert.Equal(1, getOperation.Responses[Constants.StatusCode200].Content.Keys.Count);
+                Assert.Equal(1, getOperation2.Responses[Constants.StatusCode200].Content.Keys.Count);
+                Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                Assert.True(getOperation2.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+            }
+
             if (enableOperationId)
             {
                 Assert.Equal("Todos.Todo.GetLogo", getOperation.OperationId);
@@ -82,9 +118,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
         }
 
-        public static IEdmModel GetEdmModel()
+        public static IEdmModel GetEdmModel(string annotation)
         {
-            const string modelText = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
     <Schema Namespace=""microsoft.graph"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""Todo"" HasStream=""true"">
@@ -106,9 +142,14 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
         <Singleton Name=""me"" Type=""microsoft.graph.user"" />
       </EntityContainer>
+      <Annotations Target=""microsoft.graph.Todo/Logo"">
+        {0}
+      </Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
+            string modelText = string.Format(template, annotation);
+
             bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
             Assert.True(result);
             return model;

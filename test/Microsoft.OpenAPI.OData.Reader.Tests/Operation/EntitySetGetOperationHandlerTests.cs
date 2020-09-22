@@ -326,12 +326,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
         }
 
-        public static IEdmModel GetEdmModel(string annotation, bool hasStream = false)
+        public static IEdmModel GetEdmModel(string annotation)
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
     <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
-      <EntityType Name=""Customer"" HasStream=""{0}"">
+      <EntityType Name=""Customer"">
         <Key>
           <PropertyRef Name=""ID"" />
         </Key>
@@ -341,17 +341,14 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
          <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
       </EntityContainer>
       <Annotations Target=""NS.Default/Customers"">
-        {1}
+        {0}
       </Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
-            string modelText = string.Format(template, hasStream, annotation);
 
-            IEdmModel model;
-            IEnumerable<EdmError> errors;
-
-            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out model, out errors);
+            string modelText = string.Format(template, annotation);
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
             Assert.True(result);
             return model;
         }
