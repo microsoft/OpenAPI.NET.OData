@@ -30,18 +30,31 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected IEdmSingleton Singleton { get; private set; }
 
+        /// <summary>
+        /// Gets/Sets flag indicating whether path is navigation property path
+        /// </summary>
+        protected bool IsNavigationPropertyPath { get; private set; }
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
-            // The first segment will either be an entity set navigation source or a singleton navigation source.
+            // The first segment will either be an EntitySet navigation source or a Singleton navigation source
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
 
             if (EntitySet == null)
             {
-                // Singleton
+                Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
+            }
+
+            // Check whether path is a navigation property path
+            IsNavigationPropertyPath = Path.Segments.Contains(
+                Path.Segments.Where(segment => segment is ODataNavigationPropertySegment).FirstOrDefault());
+
+            if (IsNavigationPropertyPath)
+            {
+                // Initialize navigation property paths from base
                 base.Initialize(context, path);
-                Singleton = NavigationSource as IEdmSingleton;
             }
         }
 
@@ -78,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <summary>
-        /// Retrieves the operation Id for a navigation property stream path.
+        /// Retrieves the operation Id for a media entity stream path.
         /// </summary>
         /// <param name="prefix">The http method identifier name.</param>
         /// <param name="identifier">The stream segment identifier name.</param>
@@ -90,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             IList<string> items = new List<string>
             {
-                NavigationSource.Name
+                EntitySet?.Name ?? Singleton.Name
             };
 
             ODataSegment lastSegment = Path.Segments.Last(c => c is ODataStreamContentSegment || c is ODataStreamPropertySegment);
@@ -98,7 +111,19 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 if (segment == lastSegment)
                 {
-                    items.Add(prefix + Utils.UpperFirstChar(identifier));
+                    if (!IsNavigationPropertyPath)
+                    {
+                        string typeName = EntitySet?.EntityType().Name ?? Singleton.EntityType().Name;
+                        items.Add(typeName);
+                        items.Add(prefix + Utils.UpperFirstChar(identifier));
+                    }
+                    else
+                    {
+                        // Remove the last navigation property segment for navigation property paths,
+                        // as this will be included within the prefixed name of the operation id
+                        items.Remove(NavigationProperty.Name);
+                        items.Add(prefix + Utils.UpperFirstChar(NavigationProperty.Name) + Utils.UpperFirstChar(identifier));
+                    }
                     break;
                 }
                 else

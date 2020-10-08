@@ -25,30 +25,21 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
-            if (EntitySet != null)
+            if (IsNavigationPropertyPath)
             {
-                string typeName = EntitySet.EntityType().Name;
-                operation.Summary = $"Update media content for {typeName} in {EntitySet.Name}";
+                operation.Summary = $"Update media content for the navigation property {NavigationProperty.Name} in {NavigationSource.Name}";
             }
             else
             {
-                operation.Summary = $"Update media content for the navigation property {NavigationProperty.Name} in {NavigationSource.Name}";
+                string typeName = EntitySet.EntityType().Name;
+                operation.Summary = $"Update media content for {typeName} in {EntitySet.Name}";
             }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
                 string identifier = Path.LastSegment.Kind == ODataSegmentKind.StreamContent ? "Content" : Path.LastSegment.Identifier;
-
-                if (EntitySet != null)
-                {
-                    string typeName = EntitySet.EntityType().Name;
-                    operation.OperationId = $"{EntitySet.Name}.{typeName}.Update{Utils.UpperFirstChar(identifier)}";
-                }
-                else
-                {
-                    operation.OperationId = GetOperationId("Update", identifier);
-                }
+                operation.OperationId = GetOperationId("Update", identifier);
             }
 
             base.SetBasicInfo(operation);

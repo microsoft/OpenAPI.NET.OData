@@ -109,7 +109,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             if (enableOperationId)
             {
                 Assert.Equal("Todos.Todo.GetLogo", getOperation.OperationId);
-                Assert.Equal("me.photo.GetContent", getOperation2.OperationId);
+                Assert.Equal("me.GetPhotoContent", getOperation2.OperationId);
             }
             else
             {
