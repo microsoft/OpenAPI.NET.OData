@@ -61,12 +61,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
-            if (EntitySet == null)
+            if (IsNavigationPropertyPath)
             {
-                // Singleton
                 base.SetTags(operation);
             }
-            else // Entityset
+            else
             {
                 string tagIdentifier = EntitySet.Name + "." + EntitySet.EntityType().Name;
 
