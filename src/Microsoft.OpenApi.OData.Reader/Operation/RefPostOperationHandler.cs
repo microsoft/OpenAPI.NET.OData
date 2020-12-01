@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = new OpenApiSchema
             {
-                Type = "String"
+                Type = "string"
             };
 
             operation.RequestBody = new OpenApiRequestBody
@@ -66,7 +66,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = new OpenApiSchema
             {
-                Type = "String" // What to return?
+                Type = "string" // What to return?
             };
 
             operation.Responses = new OpenApiResponses

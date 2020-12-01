@@ -998,7 +998,7 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           }
         ],
@@ -1006,7 +1006,7 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           },
           "default": {
@@ -1707,7 +1707,7 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           }
         ],
@@ -1715,7 +1715,7 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           },
           "default": {
@@ -2272,7 +2272,7 @@
             "description": "New navigation property ref values",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           }
         ],
@@ -3031,7 +3031,7 @@
             "description": "New navigation property ref value",
             "required": true,
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           }
         ],
@@ -3039,7 +3039,7 @@
           "201": {
             "description": "Created navigation property link.",
             "schema": {
-              "type": "String"
+              "type": "string"
             }
           },
           "default": {

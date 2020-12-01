@@ -538,7 +538,7 @@ paths:
           description: New navigation property ref values
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '204':
           description: Success
@@ -777,12 +777,12 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
+            type: string
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1152,12 +1152,12 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
+            type: string
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1493,7 +1493,7 @@ paths:
           description: New navigation property ref values
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '204':
           description: Success
@@ -1762,12 +1762,12 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
+            type: string
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2204,12 +2204,12 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
+            type: string
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2551,7 +2551,7 @@ paths:
           description: New navigation property ref values
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '204':
           description: Success
@@ -2820,12 +2820,12 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
+            type: string
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3262,12 +3262,12 @@ paths:
           description: New navigation property ref value
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '201':
           description: Created navigation property link.
           schema:
-            type: String
+            type: string
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
