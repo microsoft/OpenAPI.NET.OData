@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.PathItem.Tests
@@ -57,6 +58,31 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             // Arrange
             IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: "");
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            Assert.Equal(3, pathItem.Operations.Count);
+            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete },
+                pathItem.Operations.Select(o => o.Key));
+        }
+
+        [Fact]
+        public void CreateEntityPathItemReturnsCorrectPathItemWithReferences()
+        {
+            // Test that references don't disturb the paths.
+
+            // Arrange
+            IEdmModel model = EdmModelHelper.InheritanceEdmModelAcrossReferences;
             ODataContext context = new ODataContext(model);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             Assert.NotNull(entitySet); // guard

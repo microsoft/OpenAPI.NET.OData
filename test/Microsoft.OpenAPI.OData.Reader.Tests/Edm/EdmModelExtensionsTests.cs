@@ -3,8 +3,12 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
+using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -54,6 +58,24 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(baseTypes);
             Assert.Equal(2, baseTypes.Count());
             Assert.Equal(new[] { subEntityType, baseEntityType }, baseTypes);
+        }
+
+
+        [Fact]
+        public void GetAllElementsReturnsElementsFromAllModels()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.InheritanceEdmModelAcrossReferences;
+
+            // Act
+            var elements = model.GetAllElements();
+
+            // Assert
+            Assert.Collection(elements, 
+                e => Assert.Equal("Customer", e.Name),
+                e => Assert.Equal("Default", e.Name),
+            e => Assert.Equal("CustomerBase", e.Name));
+
         }
     }
 }

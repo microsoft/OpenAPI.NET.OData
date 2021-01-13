@@ -335,6 +335,52 @@ namespace Microsoft.OpenApi.OData.Tests
 }"
 .ChangeLineBreaks(), json);
         }
+
+        [Fact]
+        public void CreateEntityTypeWithCrossReferenceBaseSchemaReturnCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.InheritanceEdmModelAcrossReferences;
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings
+            {
+                ShowSchemaExamples = true
+            });
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "Customer");
+            Assert.NotNull(entity); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(entity);
+
+            // Assert
+            Assert.NotNull(schema);
+            Assert.True(String.IsNullOrEmpty(schema.Type));
+
+            Assert.NotNull(schema.AllOf);
+            Assert.Null(schema.AnyOf);
+            Assert.Null(schema.OneOf);
+            Assert.Null(schema.Properties);
+
+            Assert.Equal(2, schema.AllOf.Count);
+            var baseSchema = schema.AllOf.First();
+            Assert.NotNull(baseSchema.Reference);
+            Assert.Equal(ReferenceType.Schema, baseSchema.Reference.Type);
+            Assert.Equal("SubNS.CustomerBase", baseSchema.Reference.Id);
+
+            var declaredSchema = schema.AllOf.Last();
+            Assert.Equal("object", declaredSchema.Type);
+            Assert.Null(declaredSchema.AllOf);
+            Assert.Null(declaredSchema.AnyOf);
+            Assert.Null(declaredSchema.OneOf);
+
+            Assert.NotNull(declaredSchema.Properties);
+            Assert.Equal(1, declaredSchema.Properties.Count);
+            var property = Assert.Single(declaredSchema.Properties);
+            Assert.Equal("Extra", property.Key);
+            Assert.Equal("integer", property.Value.Type);
+            Assert.Null(property.Value.OneOf);
+
+            Assert.Equal("Customer", declaredSchema.Title);
+        }
         #endregion
 
         #region EnumTypeSchema
@@ -362,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEnumTypeSchemaReturnCorrectSchema()
         {
             // Arrange
-            IEdmModel model = EdmModelHelper.BasicEdmModel;
+            IEdmModel model = Tests.EdmModelHelper.BasicEdmModel;
             ODataContext context = new ODataContext(model);
             IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(t => t.Name == "Color");
             Assert.NotNull(enumType); // Guard
@@ -488,7 +534,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void GetDerivedTypesReferenceSchemaReturnsDerivedTypesReferencesInSchemaIfExist()
         {
             // Arrange
-            IEdmModel edmModel = EdmModelHelper.GraphBetaModel;
+            IEdmModel edmModel = OData.Tests.EdmModelHelper.GraphBetaModel;
             IEdmEntityType entityType = edmModel.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "directoryObject");
             OpenApiSchema schema = null;
 
