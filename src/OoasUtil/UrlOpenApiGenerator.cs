@@ -31,9 +31,10 @@ namespace OoasUtil
         /// </summary>
         /// <param name="input">The input.</param>
         /// <param name="output">The output.</param>
-        /// <param name="target">The output target.</param>
-        public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format, OpenApiSpecVersion version)
-            : base(output, format, version)
+        /// <param name="format">The format.</param>
+        /// <param name="settings">Conversion settings.</param>
+        public UrlOpenApiGenerator(Uri input, string output, OpenApiFormat format, OpenApiConvertSettings settings)
+            : base(output, format, settings)
         {
             Input = input;
         }
@@ -58,12 +59,10 @@ namespace OoasUtil
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }
 
-        protected override OpenApiConvertSettings GetSettings()
+        protected override void ModifySettings()
         {
-            return new OpenApiConvertSettings
-            {
-                ServiceRoot = Input
-            };
+            base.ModifySettings();
+            Settings.ServiceRoot = Input;
         }
     }
 }

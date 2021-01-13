@@ -294,7 +294,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         private void RetrieveBoundOperationPaths()
         {
-            foreach (var edmOperation in _model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
+            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(e => e.IsBound))
             {
                 if (!CanFilter(edmOperation))
                 {

@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -30,7 +31,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 return;
             }
 
-            foreach (var element in model.SchemaElements)
+            foreach (var element in model.GetAllElements())
             {
                 switch (element.SchemaElementKind)
                 {
