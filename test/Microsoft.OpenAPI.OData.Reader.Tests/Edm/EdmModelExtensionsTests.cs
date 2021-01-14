@@ -60,7 +60,6 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.Equal(new[] { subEntityType, baseEntityType }, baseTypes);
         }
 
-
         [Fact]
         public void GetAllElementsReturnsElementsFromAllModels()
         {
@@ -74,8 +73,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.Collection(elements, 
                 e => Assert.Equal("Customer", e.Name),
                 e => Assert.Equal("Default", e.Name),
-            e => Assert.Equal("CustomerBase", e.Name));
-
+                e => Assert.Equal("CustomerBase", e.Name));
         }
     }
 }

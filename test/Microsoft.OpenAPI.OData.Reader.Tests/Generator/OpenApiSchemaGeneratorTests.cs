@@ -408,7 +408,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void CreateEnumTypeSchemaReturnCorrectSchema()
         {
             // Arrange
-            IEdmModel model = Tests.EdmModelHelper.BasicEdmModel;
+            IEdmModel model = EdmModelHelper.BasicEdmModel;
             ODataContext context = new ODataContext(model);
             IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(t => t.Name == "Color");
             Assert.NotNull(enumType); // Guard
@@ -534,7 +534,7 @@ namespace Microsoft.OpenApi.OData.Tests
         public void GetDerivedTypesReferenceSchemaReturnsDerivedTypesReferencesInSchemaIfExist()
         {
             // Arrange
-            IEdmModel edmModel = OData.Tests.EdmModelHelper.GraphBetaModel;
+            IEdmModel edmModel = EdmModelHelper.GraphBetaModel;
             IEdmEntityType entityType = edmModel.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "directoryObject");
             OpenApiSchema schema = null;
 
