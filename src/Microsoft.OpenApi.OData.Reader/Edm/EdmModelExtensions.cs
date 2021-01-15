@@ -162,7 +162,7 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Check whether the operaiton is overload in the model.
+        /// Check whether the operation is overload in the model.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="operation">The test operations.</param>
@@ -172,7 +172,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(operation, nameof(operation));
 
-            return model.SchemaElements.OfType<IEdmOperation>()
+            return model.GetAllElements().OfType<IEdmOperation>()
                 .Where(o => o.IsBound == operation.IsBound && o.FullName() == operation.FullName() &&
                 o.Parameters.First().Type.Definition == operation.Parameters.First().Type.Definition
                 ).Count() > 1;
@@ -197,5 +197,28 @@ namespace Microsoft.OpenApi.OData.Edm
             return model.EntityContainer.OperationImports()
                 .Where(o => o.Operation.IsBound == operationImport.Operation.IsBound && o.Name == operationImport.Name).Count() > 1;
         }
+
+        /// <summary>
+        /// Get all of the elements in the model and its referenced models.
+        /// </summary>
+        /// <returns>All the elements.</returns>
+        public static IEnumerable<IEdmSchemaElement> GetAllElements(this IEdmModel model)
+        {
+            foreach (var element in model.SchemaElements.Where(el =>
+                !ODataConstants.StandardNamespaces.Any(std => el.Namespace.StartsWith(std))))
+            {
+                yield return element;
+            }
+
+            foreach (var refModel in model.ReferencedModels)
+            {
+                foreach (var element in refModel.SchemaElements.Where(el =>
+                    !ODataConstants.StandardNamespaces.Any(std => el.Namespace.StartsWith(std))))
+                {
+                    yield return element;
+                }
+            }
+        }
+
     }
 }

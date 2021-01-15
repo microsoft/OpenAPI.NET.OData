@@ -25,26 +25,26 @@ namespace OoasUtil
         public OpenApiFormat Format { get; }
 
         /// <summary>
-        /// Output specification version.
-        /// </summary>
-        public OpenApiSpecVersion Version { get; }
-
-        /// <summary>
         /// Output file.
         /// </summary>
         public string Output { get; }
 
         /// <summary>
+        /// Settings to use for conversion.
+        /// </summary>
+        public OpenApiConvertSettings Settings { get; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="OpenApiGenerator"/> class.
         /// </summary>
-        /// <param name="input">The input.</param>
         /// <param name="output">The output.</param>
-        /// <param name="target">The output target.</param>
-        public OpenApiGenerator(string output, OpenApiFormat format, OpenApiSpecVersion version)
+        /// <param name="format">The output format.</param>
+        /// <param name="settings">Conversion settings.</param>
+        public OpenApiGenerator(string output, OpenApiFormat format, OpenApiConvertSettings settings)
         {
             Output = output;
             Format = format;
-            Version = version;
+            Settings = settings;
         }
 
         /// <summary>
@@ -56,14 +56,12 @@ namespace OoasUtil
             {
                 IEdmModel edmModel = GetEdmModel();
 
-                OpenApiConvertSettings settings = GetSettings();
-
-                settings.OpenApiSpecVersion = Version;
+                this.ModifySettings();
 
                 using (FileStream fs = File.Create(Output))
                 {
-                    OpenApiDocument document = edmModel.ConvertToOpenApi(settings);
-                    document.Serialize(fs, settings.OpenApiSpecVersion, Format);
+                    OpenApiDocument document = edmModel.ConvertToOpenApi(Settings);
+                    document.Serialize(fs, Settings.OpenApiSpecVersion, Format);
                     fs.Flush();
                 }
             }
@@ -76,9 +74,8 @@ namespace OoasUtil
             return true;
         }
 
-        protected virtual OpenApiConvertSettings GetSettings()
+        protected virtual void ModifySettings()
         {
-            return new OpenApiConvertSettings();
         }
 
         protected abstract IEdmModel GetEdmModel();

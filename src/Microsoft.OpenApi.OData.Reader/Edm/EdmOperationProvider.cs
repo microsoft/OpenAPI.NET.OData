@@ -71,7 +71,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             IDictionary<string, IList<IEdmOperation>> edmOperationDict = new Dictionary<string, IList<IEdmOperation>>();
 
-            foreach (var edmOperation in Model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
+            foreach (var edmOperation in Model.GetAllElements().OfType<IEdmOperation>().Where(e => e.IsBound))
             {
                 IEdmOperationParameter bindingParameter = edmOperation.Parameters.First();
 

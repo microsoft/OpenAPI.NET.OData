@@ -46,6 +46,11 @@ namespace OoasUtil
         public OpenApiFormat? Format { get; private set; }
 
         /// <summary>
+        /// Whether KeyAsSegment is used.
+        /// </summary>
+        public bool? KeyAsSegment { get; private set; }
+
+        /// <summary>
         /// Output OpenApi Specification Version.
         /// </summary>
         public OpenApiSpecVersion? Version { get; private set; }
@@ -59,6 +64,31 @@ namespace OoasUtil
         /// Is input Url
         /// </summary>
         public bool IsLocalFile { get; private set; }
+
+        /// <summary>
+        /// Set the output to produce all derived types in responses.
+        /// </summary>
+        public bool? DerivedTypesReferencesForResponses { get; private set; }
+
+        /// <summary>
+        /// Set the output to expect all derived types in request bodies.
+        /// </summary>
+        public bool? DerivedTypesReferencesForRequestBody { get; private set; }
+
+        /// <summary>
+        /// Set the output to expose pagination for collections.
+        /// </summary>
+        public bool? EnablePagination { get; private set; }
+
+        /// <summary>
+        /// tSet the output to use unqualified calls for bound operations.
+        /// </summary>
+        public bool? EnableUnqualifiedCall { get; private set; }
+
+        /// <summary>
+        /// tDisable examples in the schema.
+        /// </summary>
+        public bool? DisableSchemaExamples { get; private set; }
 
         /// <summary>
         /// Process the arguments.
@@ -98,6 +128,14 @@ namespace OoasUtil
                             i++;
                             break;
 
+                        case "--keyassegment":
+                        case "-k":
+                            if (!ProcessKeyAsSegment(true))
+                            {
+                                return false;
+                            }
+                            break;
+
                         case "--yaml":
                         case "-y":
                             if (!ProcessTarget(OpenApiFormat.Yaml))
@@ -132,6 +170,46 @@ namespace OoasUtil
                             i++;
                             break;
 
+                        case "--derivedtypesreferencesforresponses":
+                        case "-drs":
+                            if (!ProcessDerivedTypesReferencesForResponses(true))
+                            {
+                                return false;
+                            }
+                            break;
+
+                        case "--derivedtypesreferencesforrequestbody":
+                        case "-drq":
+                            if (!ProcessDerivedTypesReferencesForRequestBody(true))
+                            {
+                                return false;
+                            }
+                            break;
+
+                        case "--enablepagination":
+                        case "-p":
+                            if (!ProcessEnablePagination(true))
+                            {
+                                return false;
+                            }
+                            break;
+
+                        case "--enableunqualifiedcall":
+                        case "-u":
+                            if (!ProcessEnableUnqualifiedCall(true))
+                            {
+                                return false;
+                            }
+                            break;
+
+                        case "--disableschemaexamples":
+                        case "-x":
+                            if (!ProcessDisableSchemaExamples(true))
+                            {
+                                return false;
+                            }
+                            break;
+
                         default:
                             PrintUsage();
                             return false;
@@ -153,6 +231,36 @@ namespace OoasUtil
             if (Version == null)
             {
                 Version = OpenApiSpecVersion.OpenApi3_0;
+            }
+
+            if (KeyAsSegment == null)
+            {
+                KeyAsSegment = false;
+            }
+
+            if (DerivedTypesReferencesForResponses == null)
+            {
+                DerivedTypesReferencesForResponses = false;
+            }
+
+            if (DerivedTypesReferencesForRequestBody == null)
+            {
+                DerivedTypesReferencesForRequestBody = false;
+            }
+
+            if (EnablePagination == null)
+            {
+                EnablePagination = false;
+            }
+
+            if (EnableUnqualifiedCall == null)
+            {
+                EnableUnqualifiedCall = false;
+            }
+
+            if (DisableSchemaExamples == null)
+            {
+                DisableSchemaExamples = false;
             }
 
             _continue = ValidateArguments();
@@ -195,6 +303,84 @@ namespace OoasUtil
             }
 
             Format = format;
+            return true;
+        }
+
+        private bool ProcessKeyAsSegment(bool keyAsSegment)
+        {
+            if (KeyAsSegment != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--keyassegment|-k] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            KeyAsSegment = keyAsSegment;
+            return true;
+        }
+
+        private bool ProcessDerivedTypesReferencesForResponses(bool derivedTypesReferencesForResponses)
+        {
+            if (DerivedTypesReferencesForResponses != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--derivedtypesreferencesforresponses|-drs] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            DerivedTypesReferencesForResponses = derivedTypesReferencesForResponses;
+            return true;
+        }
+
+        private bool ProcessDerivedTypesReferencesForRequestBody(bool derivedTypesReferencesForRequestBody)
+        {
+            if (DerivedTypesReferencesForRequestBody != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--derivedtypesreferencesforrequestbody|-drq] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            DerivedTypesReferencesForRequestBody = derivedTypesReferencesForRequestBody;
+            return true;
+        }
+
+        private bool ProcessEnablePagination(bool enablePagination)
+        {
+            if (EnablePagination != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--enablepagination|-p] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            EnablePagination = enablePagination;
+            return true;
+        }
+
+        private bool ProcessEnableUnqualifiedCall(bool enableUnqualifiedCall)
+        {
+            if (EnableUnqualifiedCall != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--enableunqualifiedcall|-u] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            EnableUnqualifiedCall = enableUnqualifiedCall;
+            return true;
+        }
+
+        private bool ProcessDisableSchemaExamples(bool disableSchemaExamples)
+        {
+            if (DisableSchemaExamples != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--disableschemaexamples|-x] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            DisableSchemaExamples = disableSchemaExamples;
             return true;
         }
 
@@ -256,6 +442,12 @@ namespace OoasUtil
             sb.Append("  --version|-v\t\t\tDisplay version.\n");
             sb.Append("  --input|-i CsdlFileOrUrl\tSet the CSDL file name or the OData Service Url.\n");
             sb.Append("  --output|-o OutputFile\tSet the output file name.\n");
+            sb.Append("  --keyassegment|-k\t\t\tSet the output to use key-as-segment style URLs.\n");
+            sb.Append("  --derivedtypesreferencesforresponses|-drs\t\t\tSet the output to produce all derived types in responses.\n");
+            sb.Append("  --derivedtypesreferencesforrequestbody|-drq\t\t\tSet the output to expect all derived types in request bodies.\n");
+            sb.Append("  --enablepagination|-p\t\t\tSet the output to expose pagination for collections.\n");
+            sb.Append("  --enableunqualifiedcall|-u\t\t\tSet the output to use unqualified calls for bound operations.\n");
+            sb.Append("  --disableschemaexamples|-x\t\t\tDisable examples in the schema.\n");
             sb.Append("  --json|-j\t\t\tSet the output format as JSON.\n");
             sb.Append("  --yaml|-y\t\t\tSet the output format as YAML.\n");
             sb.Append("  --specversion|-s IntVersion\tSet the OpenApi Specification version of the output. Only 2 or 3 are supported.\n");
