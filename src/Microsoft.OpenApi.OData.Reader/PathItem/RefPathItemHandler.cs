@@ -90,15 +90,15 @@ namespace Microsoft.OpenApi.OData.PathItem
                 UpdateRestrictionsType update = restriction?.UpdateRestrictions;
                 if (update == null || update.IsUpdatable)
                 {
-                    AddOperation(item, OperationType.Patch);
+                    AddOperation(item, OperationType.Put);
                 }
-            }
 
-            // delete the link
-            DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
-            if (delete == null || delete.IsDeletable)
-            {
-                AddOperation(item, OperationType.Delete);
+                // delete the link
+                DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
+                if (delete == null || delete.IsDeletable)
+                {
+                    AddOperation(item, OperationType.Delete);
+                }
             }
         }
 

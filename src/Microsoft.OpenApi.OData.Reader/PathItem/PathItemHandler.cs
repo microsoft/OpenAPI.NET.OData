@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// Add one operation into path item.
         /// </summary>
         /// <param name="item">The path item.</param>
-        /// <param name="operationType">The operatin type.</param>
+        /// <param name="operationType">The operation type.</param>
         protected virtual void AddOperation(OpenApiPathItem item, OperationType operationType)
         {
             IOperationHandlerProvider provider = Context.OperationHanderProvider;

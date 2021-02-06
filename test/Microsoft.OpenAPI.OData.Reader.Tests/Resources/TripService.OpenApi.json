@@ -904,7 +904,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "Me.Person"
         ],
@@ -915,7 +915,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -1097,93 +1100,6 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/Me/Friends/{UserName}": {
-      "get": {
-        "tags": [
-          "Me.Person"
-        ],
-        "summary": "Get Friends from Me",
-        "operationId": "Me.GetFriends",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      }
-    },
     "/Me/Friends/$ref": {
       "get": {
         "tags": [
@@ -1283,7 +1199,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -1295,44 +1214,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "Me.Person"
-        ],
-        "summary": "Delete ref of navigation property Friends for Me",
-        "operationId": "Me.DeleteRefFriends",
-        "parameters": [
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1669,6 +1554,40 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.Trip"
+        ],
+        "summary": "Create new navigation property to Trips for Me",
+        "operationId": "Me.CreateTrips",
+        "requestBody": {
+          "description": "New navigation property",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Trips/{TripId}": {
@@ -1752,6 +1671,87 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "tags": [
+          "Me.Trip"
+        ],
+        "summary": "Update the navigation property Trips in Me",
+        "operationId": "Me.UpdateTrips",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "Me.Trip"
+        ],
+        "summary": "Delete navigation property Trips for Me",
+        "operationId": "Me.DeleteTrips",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -1802,14 +1802,27 @@
         "x-ms-docs-operation-type": "function"
       }
     },
-    "/Me/Trips/$ref": {
+    "/Me/Trips/{TripId}/PlanItems": {
       "get": {
         "tags": [
-          "Me.Trip"
+          "Me.Trips.PlanItem"
         ],
-        "summary": "Get ref of Trips from Me",
-        "operationId": "Me.ListRefTrips",
+        "summary": "Get PlanItems from Me",
+        "operationId": "Me.Trips.ListPlanItems",
         "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
           {
             "$ref": "#/components/parameters/top"
           },
@@ -1836,22 +1849,144 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
+                  "PlanItemId",
+                  "PlanItemId desc",
+                  "ConfirmationCode",
+                  "ConfirmationCode desc",
                   "StartsAt",
                   "StartsAt desc",
                   "EndsAt",
-                  "EndsAt desc"
+                  "EndsAt desc",
+                  "Duration",
+                  "Duration desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PlanItemId",
+                  "ConfirmationCode",
+                  "StartsAt",
+                  "EndsAt",
+                  "Duration"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of PlanItem",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Trips/{TripId}/PlanItems/$ref": {
+      "get": {
+        "tags": [
+          "Me.Trips.PlanItem"
+        ],
+        "summary": "Get ref of PlanItems from Me",
+        "operationId": "Me.Trips.ListRefPlanItems",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PlanItemId",
+                  "PlanItemId desc",
+                  "ConfirmationCode",
+                  "ConfirmationCode desc",
+                  "StartsAt",
+                  "StartsAt desc",
+                  "EndsAt",
+                  "EndsAt desc",
+                  "Duration",
+                  "Duration desc"
                 ],
                 "type": "string"
               }
@@ -1864,7 +1999,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of links of Trip",
+                  "title": "Collection of links of PlanItem",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -1886,16 +2021,34 @@
       },
       "post": {
         "tags": [
-          "Me.Trip"
+          "Me.Trips.PlanItem"
         ],
-        "summary": "Create new navigation property ref to Trips for Me",
-        "operationId": "Me.CreateRefTrips",
+        "summary": "Create new navigation property ref to PlanItems for Me",
+        "operationId": "Me.Trips.CreateRefPlanItems",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
         "requestBody": {
           "description": "New navigation property ref value",
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -1907,44 +2060,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "Me.Trip"
-        ],
-        "summary": "Delete ref of navigation property Trips for Me",
-        "operationId": "Me.DeleteRefTrips",
-        "parameters": [
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2410,7 +2529,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "NewComePeople.Person"
         ],
@@ -2433,7 +2552,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -2635,103 +2757,6 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/NewComePeople/{UserName}/Friends/{UserName1}": {
-      "get": {
-        "tags": [
-          "NewComePeople.Person"
-        ],
-        "summary": "Get Friends from NewComePeople",
-        "operationId": "NewComePeople.GetFriends",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "UserName1",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      }
-    },
     "/NewComePeople/{UserName}/Friends/$ref": {
       "get": {
         "tags": [
@@ -2853,7 +2878,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -2865,54 +2893,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "NewComePeople.Person"
-        ],
-        "summary": "Delete ref of navigation property Friends for NewComePeople",
-        "operationId": "NewComePeople.DeleteRefFriends",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3315,6 +3299,52 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "NewComePeople.Trip"
+        ],
+        "summary": "Create new navigation property to Trips for NewComePeople",
+        "operationId": "NewComePeople.CreateTrips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}": {
@@ -3408,6 +3438,107 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "tags": [
+          "NewComePeople.Trip"
+        ],
+        "summary": "Update the navigation property Trips in NewComePeople",
+        "operationId": "NewComePeople.UpdateTrips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "NewComePeople.Trip"
+        ],
+        "summary": "Delete navigation property Trips for NewComePeople",
+        "operationId": "NewComePeople.DeleteTrips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -3468,13 +3599,13 @@
         "x-ms-docs-operation-type": "function"
       }
     },
-    "/NewComePeople/{UserName}/Trips/$ref": {
+    "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems": {
       "get": {
         "tags": [
-          "NewComePeople.Trip"
+          "NewComePeople.Trips.PlanItem"
         ],
-        "summary": "Get ref of Trips from NewComePeople",
-        "operationId": "NewComePeople.ListRefTrips",
+        "summary": "Get PlanItems from NewComePeople",
+        "operationId": "NewComePeople.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "UserName",
@@ -3485,6 +3616,19 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -3512,22 +3656,154 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
+                  "PlanItemId",
+                  "PlanItemId desc",
+                  "ConfirmationCode",
+                  "ConfirmationCode desc",
                   "StartsAt",
                   "StartsAt desc",
                   "EndsAt",
-                  "EndsAt desc"
+                  "EndsAt desc",
+                  "Duration",
+                  "Duration desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PlanItemId",
+                  "ConfirmationCode",
+                  "StartsAt",
+                  "EndsAt",
+                  "Duration"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of PlanItem",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref": {
+      "get": {
+        "tags": [
+          "NewComePeople.Trips.PlanItem"
+        ],
+        "summary": "Get ref of PlanItems from NewComePeople",
+        "operationId": "NewComePeople.Trips.ListRefPlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PlanItemId",
+                  "PlanItemId desc",
+                  "ConfirmationCode",
+                  "ConfirmationCode desc",
+                  "StartsAt",
+                  "StartsAt desc",
+                  "EndsAt",
+                  "EndsAt desc",
+                  "Duration",
+                  "Duration desc"
                 ],
                 "type": "string"
               }
@@ -3540,7 +3816,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of links of Trip",
+                  "title": "Collection of links of PlanItem",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -3562,10 +3838,10 @@
       },
       "post": {
         "tags": [
-          "NewComePeople.Trip"
+          "NewComePeople.Trips.PlanItem"
         ],
-        "summary": "Create new navigation property ref to Trips for NewComePeople",
-        "operationId": "NewComePeople.CreateRefTrips",
+        "summary": "Create new navigation property ref to PlanItems for NewComePeople",
+        "operationId": "NewComePeople.Trips.CreateRefPlanItems",
         "parameters": [
           {
             "name": "UserName",
@@ -3576,6 +3852,19 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
           }
         ],
         "requestBody": {
@@ -3583,7 +3872,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -3595,54 +3887,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "NewComePeople.Trip"
-        ],
-        "summary": "Delete ref of navigation property Trips for NewComePeople",
-        "operationId": "NewComePeople.DeleteRefTrips",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4108,7 +4356,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "People.Person"
         ],
@@ -4131,7 +4379,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -4333,103 +4584,6 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
-    "/People/{UserName}/Friends/{UserName1}": {
-      "get": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Get Friends from People",
-        "operationId": "People.GetFriends",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "UserName1",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "$select",
-            "in": "query",
-            "description": "Select properties to be returned",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "UserName",
-                  "FirstName",
-                  "LastName",
-                  "MiddleName",
-                  "Gender",
-                  "Age",
-                  "Emails",
-                  "AddressInfo",
-                  "HomeAddress",
-                  "FavoriteFeature",
-                  "Features",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "$expand",
-            "in": "query",
-            "description": "Expand related entities",
-            "style": "form",
-            "explode": false,
-            "schema": {
-              "uniqueItems": true,
-              "type": "array",
-              "items": {
-                "enum": [
-                  "*",
-                  "Friends",
-                  "BestFriend",
-                  "Trips"
-                ],
-                "type": "string"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                }
-              }
-            }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      }
-    },
     "/People/{UserName}/Friends/$ref": {
       "get": {
         "tags": [
@@ -4551,7 +4705,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -4563,54 +4720,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "People.Person"
-        ],
-        "summary": "Delete ref of navigation property Friends for People",
-        "operationId": "People.DeleteRefFriends",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5013,6 +5126,52 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.Trip"
+        ],
+        "summary": "Create new navigation property to Trips for People",
+        "operationId": "People.CreateTrips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/Trips/{TripId}": {
@@ -5106,6 +5265,107 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      },
+      "patch": {
+        "tags": [
+          "People.Trip"
+        ],
+        "summary": "Update the navigation property Trips in People",
+        "operationId": "People.UpdateTrips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "delete": {
+        "tags": [
+          "People.Trip"
+        ],
+        "summary": "Delete navigation property Trips for People",
+        "operationId": "People.DeleteTrips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
@@ -5166,13 +5426,13 @@
         "x-ms-docs-operation-type": "function"
       }
     },
-    "/People/{UserName}/Trips/$ref": {
+    "/People/{UserName}/Trips/{TripId}/PlanItems": {
       "get": {
         "tags": [
-          "People.Trip"
+          "People.Trips.PlanItem"
         ],
-        "summary": "Get ref of Trips from People",
-        "operationId": "People.ListRefTrips",
+        "summary": "Get PlanItems from People",
+        "operationId": "People.Trips.ListPlanItems",
         "parameters": [
           {
             "name": "UserName",
@@ -5183,6 +5443,19 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
           },
           {
             "$ref": "#/components/parameters/top"
@@ -5210,22 +5483,154 @@
               "type": "array",
               "items": {
                 "enum": [
-                  "TripId",
-                  "TripId desc",
-                  "ShareId",
-                  "ShareId desc",
-                  "Name",
-                  "Name desc",
-                  "Budget",
-                  "Budget desc",
-                  "Description",
-                  "Description desc",
-                  "Tags",
-                  "Tags desc",
+                  "PlanItemId",
+                  "PlanItemId desc",
+                  "ConfirmationCode",
+                  "ConfirmationCode desc",
                   "StartsAt",
                   "StartsAt desc",
                   "EndsAt",
-                  "EndsAt desc"
+                  "EndsAt desc",
+                  "Duration",
+                  "Duration desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PlanItemId",
+                  "ConfirmationCode",
+                  "StartsAt",
+                  "EndsAt",
+                  "Duration"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of PlanItem",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Trips/{TripId}/PlanItems/$ref": {
+      "get": {
+        "tags": [
+          "People.Trips.PlanItem"
+        ],
+        "summary": "Get ref of PlanItems from People",
+        "operationId": "People.Trips.ListRefPlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "PlanItemId",
+                  "PlanItemId desc",
+                  "ConfirmationCode",
+                  "ConfirmationCode desc",
+                  "StartsAt",
+                  "StartsAt desc",
+                  "EndsAt",
+                  "EndsAt desc",
+                  "Duration",
+                  "Duration desc"
                 ],
                 "type": "string"
               }
@@ -5238,7 +5643,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of links of Trip",
+                  "title": "Collection of links of PlanItem",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -5260,10 +5665,10 @@
       },
       "post": {
         "tags": [
-          "People.Trip"
+          "People.Trips.PlanItem"
         ],
-        "summary": "Create new navigation property ref to Trips for People",
-        "operationId": "People.CreateRefTrips",
+        "summary": "Create new navigation property ref to PlanItems for People",
+        "operationId": "People.Trips.CreateRefPlanItems",
         "parameters": [
           {
             "name": "UserName",
@@ -5274,6 +5679,19 @@
               "type": "string"
             },
             "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
           }
         ],
         "requestBody": {
@@ -5281,7 +5699,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
               }
             }
           },
@@ -5293,54 +5714,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "object"
                 }
               }
             }
-          },
-          "default": {
-            "$ref": "#/components/responses/error"
-          }
-        },
-        "x-ms-docs-operation-type": "operation"
-      },
-      "delete": {
-        "tags": [
-          "People.Trip"
-        ],
-        "summary": "Delete ref of navigation property Trips for People",
-        "operationId": "People.DeleteRefTrips",
-        "parameters": [
-          {
-            "name": "UserName",
-            "in": "path",
-            "description": "key: UserName of Person",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "x-ms-docs-key-type": "Person"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "description": "ETag",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "@id",
-            "in": "query",
-            "description": "Delete Uri",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6373,6 +6750,10 @@
       "x-ms-docs-toc-type": "page"
     },
     {
+      "name": "Me.Trips.PlanItem",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
       "name": "NewComePeople.Person",
       "x-ms-docs-toc-type": "page"
     },
@@ -6389,6 +6770,10 @@
       "x-ms-docs-toc-type": "page"
     },
     {
+      "name": "NewComePeople.Trips.PlanItem",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
       "name": "People.Person",
       "x-ms-docs-toc-type": "page"
     },
@@ -6402,6 +6787,10 @@
     },
     {
       "name": "People.Trip",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "People.Trips.PlanItem",
       "x-ms-docs-toc-type": "page"
     },
     {

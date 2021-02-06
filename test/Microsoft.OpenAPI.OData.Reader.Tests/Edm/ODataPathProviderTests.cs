@@ -4,13 +4,12 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
-using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
@@ -45,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4583, paths.Count());
+            Assert.Equal(4544, paths.Count());
         }
 
         [Fact]
@@ -84,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         public void GetPathsWithBoundFunctionOperationWorks()
         {
             // Arrange
-            string boundFunction = 
+            string boundFunction =
 @"<Function Name=""delta"" IsBound=""true"">
    <Parameter Name=""bindingParameter"" Type=""Collection(NS.Customer)"" />
      <ReturnType Type=""Collection(NS.Customer)"" />
@@ -150,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetPathsWithNavigationPropertytWorks()
+        public void GetPathsWithNonContainedNavigationPropertytWorks()
         {
             // Arrange
             string entityType =
@@ -172,14 +171,81 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(9, paths.Count());
+            Assert.Equal(8, paths.Count());
+
+            var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
+            Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
+        }
+
+        [Fact]
+        public void GetPathsWithContainedNavigationPropertytWorks()
+        {
+            // Arrange
+            string entityType =
+@"<EntityType Name=""Order"">
+    <Key>
+      <PropertyRef Name=""id"" />
+    </Key>
+    <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"" />
+    <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" ContainsTarget=""true"" />
+  </EntityType>";
+
+            string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
+            IEdmModel model = GetEdmModel(entityType, entitySet);
+            ODataPathProvider provider = new ODataPathProvider();
+
+            // Act
+            var paths = provider.GetPaths(model);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(7, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
             Assert.Contains("/Orders({id})/MultipleCustomers({ID})", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
-            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
-            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
+        }
+
+        [Theory]
+        [InlineData(true, "Logo")]
+        [InlineData(false, "Logo")]
+        [InlineData(true, "Content")]
+        [InlineData(false, "Content")]
+        public void GetPathsWithStreamPropertyAndWithEntityHasStreamWorks(bool hasStream, string streamPropName)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel(hasStream, streamPropName);
+            ODataPathProvider provider = new ODataPathProvider();
+
+            // Act
+            var paths = provider.GetPaths(model);
+
+            // Assert
+            Assert.NotNull(paths);
+
+            if (hasStream && !streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase))
+            {
+                Assert.Equal(7, paths.Count());
+                Assert.Equal(new[] { "/me", "/me/photo", "/me/photo/$value", "/Todos", "/Todos({Id})", "/Todos({Id})/$value", "/Todos({Id})/Logo" },
+                    paths.Select(p => p.GetPathItemName()));
+            }
+            else if ((hasStream && streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase)) ||
+                    (!hasStream && streamPropName.Equals("Content", StringComparison.OrdinalIgnoreCase)))
+            {
+                Assert.Equal(6, paths.Count());
+                Assert.Equal(new[] { "/me", "/me/photo", "/me/photo/$value", "/Todos", "/Todos({Id})", "/Todos({Id})/Content" },
+                    paths.Select(p => p.GetPathItemName()));
+            }
+            else // !hasStream && !streamPropName.Equals("Content")
+            {
+                Assert.Equal(6, paths.Count());
+                Assert.Equal(new[] { "/me", "/me/photo", "/me/photo/$value", "/Todos", "/Todos({Id})", "/Todos({Id})/Logo"},
+                    paths.Select(p => p.GetPathItemName()));
+            }
         }
 
         private static IEdmModel GetEdmModel(string schemaElement, string containerElement)
@@ -198,12 +264,43 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     {1}
   </EntityContainer>
 </Schema>";
-            string schema = String.Format(template, schemaElement, containerElement);
-            IEdmModel parsedModel;
-            IEnumerable<EdmError> errors;
-            bool parsed = SchemaReader.TryParse(new XmlReader[] { XmlReader.Create(new StringReader(schema)) }, out parsedModel, out errors);
+            string schema = string.Format(template, schemaElement, containerElement);
+            bool parsed = SchemaReader.TryParse(new XmlReader[] { XmlReader.Create(new StringReader(schema)) }, out IEdmModel parsedModel, out _);
             Assert.True(parsed);
             return parsedModel;
+        }
+
+        private static IEdmModel GetEdmModel(bool hasStream, string streamPropName)
+        {
+            string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""microsoft.graph"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Todo"" HasStream=""{0}"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""{1}"" Type=""Edm.Stream""/>
+        <Property Name = ""Description"" Type = ""Edm.String"" />
+      </EntityType>
+      <EntityType Name=""user"" OpenType=""true"">
+        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" />
+      </EntityType>
+      <EntityType Name=""profilePhoto"" HasStream=""true"">
+        <Property Name = ""height"" Type = ""Edm.Int32"" />
+        <Property Name = ""width"" Type = ""Edm.Int32"" />
+      </EntityType >
+      <EntityContainer Name =""GraphService"">
+        <EntitySet Name=""Todos"" EntityType=""microsoft.graph.Todo"" />
+        <Singleton Name=""me"" Type=""microsoft.graph.user"" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+            string modelText = string.Format(template, hasStream, streamPropName);
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
+            Assert.True(result);
+            return model;
         }
     }
 }

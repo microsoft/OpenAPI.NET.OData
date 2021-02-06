@@ -19,6 +19,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [InlineData(ODataPathKind.Operation, typeof(OperationPathItemHandler))]
         [InlineData(ODataPathKind.OperationImport, typeof(OperationImportPathItemHandler))]
         [InlineData(ODataPathKind.Ref, typeof(RefPathItemHandler))]
+        [InlineData(ODataPathKind.MediaEntity, typeof(MediaEntityPathItemHandler))]
         public void GetHandlerReturnsCorrectHandlerType(ODataPathKind pathKind, Type handlerType)
         {
             // Arrange

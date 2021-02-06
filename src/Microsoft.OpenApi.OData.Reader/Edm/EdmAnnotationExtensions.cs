@@ -196,7 +196,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
                 }
 
-                return value.ToList();
+                return value?.ToList();
             });
         }
 
