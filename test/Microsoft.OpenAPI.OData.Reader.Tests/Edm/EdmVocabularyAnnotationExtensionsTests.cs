@@ -98,19 +98,24 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Assert
             Assert.NotNull(count1);
             Assert.NotNull(count2);
-            Assert.Same(count1, count2);
 
-            // Countable
-            Assert.NotNull(count1.Countable);
-            Assert.True(count1.Countable.Value);
+            System.Action<CountRestrictionsType> verifyCount = count =>
+            {
+                // Countable
+                Assert.NotNull(count.Countable);
+                Assert.True(count.Countable.Value);
 
-            // NonCountableProperties
-            Assert.NotNull(count1.NonCountableProperties);
-            Assert.Equal(new[] { "Emails", "mij" }, count1.NonCountableProperties);
+                // NonCountableProperties
+                Assert.NotNull(count.NonCountableProperties);
+                Assert.Equal(new[] { "Emails", "mij" }, count.NonCountableProperties);
 
-            // NonCountableNavigationProperties
-            Assert.NotNull(count1.NonCountableNavigationProperties);
-            Assert.Equal(new[] { "RelatedEvents", "abc" }, count1.NonCountableNavigationProperties);
+                // NonCountableNavigationProperties
+                Assert.NotNull(count.NonCountableNavigationProperties);
+                Assert.Equal(new[] { "RelatedEvents", "abc" }, count.NonCountableNavigationProperties);
+            };
+
+            verifyCount(count1);
+            verifyCount(count2);
         }
 
         [Fact]
