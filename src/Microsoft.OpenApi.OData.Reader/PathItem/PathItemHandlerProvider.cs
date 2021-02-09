@@ -36,6 +36,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             // Edm Ref
             { ODataPathKind.Ref, new RefPathItemHandler() },
 
+            // Media Entity
+            {ODataPathKind.MediaEntity, new MediaEntityPathItemHandler() },
+
             // Unknown
             { ODataPathKind.Unknown, null },
         };

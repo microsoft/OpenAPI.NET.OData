@@ -31,7 +31,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [InlineData(ODataPathKind.Ref, OperationType.Post, typeof(RefPostOperationHandler))]
         [InlineData(ODataPathKind.Ref, OperationType.Delete, typeof(RefDeleteOperationHandler))]
         [InlineData(ODataPathKind.Ref, OperationType.Get, typeof(RefGetOperationHandler))]
-        [InlineData(ODataPathKind.Ref, OperationType.Patch, typeof(RefPatchOperationHandler))]
+        [InlineData(ODataPathKind.Ref, OperationType.Put, typeof(RefPutOperationHandler))]
+        [InlineData(ODataPathKind.MediaEntity, OperationType.Get, typeof(MediaEntityGetOperationHandler))]
+        [InlineData(ODataPathKind.MediaEntity, OperationType.Put, typeof(MediaEntityPutOperationHandler))]
         public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, OperationType operationType, Type handlerType)
         {
             // Arrange

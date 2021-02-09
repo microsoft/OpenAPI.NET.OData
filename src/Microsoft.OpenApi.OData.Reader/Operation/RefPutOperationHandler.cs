@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Operation
     /// <summary>
     /// Update a navigation property ref for a navigation source.
     /// </summary>
-    internal class RefPatchOperationHandler : NavigationPropertyOperationHandler
+    internal class RefPutOperationHandler : NavigationPropertyOperationHandler
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
@@ -40,8 +40,9 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             OpenApiSchema schema = new OpenApiSchema
             {
-                Type = "String"
-            };
+                Type = "object",
+                AdditionalProperties = new OpenApiSchema { Type = "object" }
+           };
 
             operation.RequestBody = new OpenApiRequestBody
             {

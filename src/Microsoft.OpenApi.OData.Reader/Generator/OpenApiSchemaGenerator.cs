@@ -38,7 +38,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             // Each entity type, complex type, enumeration type, and type definition directly
             // or indirectly used in the paths field is represented as a name / value pair of the schemas map.
-            foreach (var element in context.Model.SchemaElements.Where(c => !c.Namespace.StartsWith("Org.OData.")))
+            // Ideally this would be driven off the types used in the paths, but in practice, it is simply
+            // all of the types present in the model.
+            IEnumerable<IEdmSchemaElement> elements = context.Model.GetAllElements();
+
+            foreach (var element in elements)
             {
                 switch (element.SchemaElementKind)
                 {
@@ -208,11 +212,17 @@ namespace Microsoft.OpenApi.OData.Generator
             }
         }
 
-        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample, 
+        private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample,
             IEnumerable<IEdmEntityType> derivedTypes = null)
         {
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
+
+            IOpenApiAny example = null;
+            if (context.Settings.ShowSchemaExamples)
+            {
+                example = CreateStructuredTypePropertiesExample(context, structuredType);
+            }
 
             if (context.Settings.EnableDiscriminatorValue && derivedTypes == null)
             {
@@ -256,7 +266,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     AnyOf = null,
                     OneOf = null,
                     Properties = null,
-                    Example = CreateStructuredTypePropertiesExample(context, structuredType)
+                    Example = example
                 };
             }
             else
@@ -305,7 +315,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (processExample)
                 {
-                    schema.Example = CreateStructuredTypePropertiesExample(context, structuredType);
+                    schema.Example = example;
                 }
 
                 return schema;

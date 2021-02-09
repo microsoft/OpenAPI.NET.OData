@@ -4,6 +4,9 @@
 // ------------------------------------------------------------
 
 using System;
+using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Extensions;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -118,12 +121,55 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a value that specifies a prefix to be prepended to all generated paths.
         /// </summary>
-        public string PathPrefix { get; set; } = string.Empty;
+        public string PathPrefix
+        {
+            get
+            {
+                if (RoutePathPrefixProvider != null)
+                {
+                    return RoutePathPrefixProvider.PathPrefix;
+                }
+
+                return null;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw Error.ArgumentNullOrEmpty("value");
+                }
+
+                RoutePathPrefixProvider = new ODataRoutePathPrefixProvider
+                {
+                    PathPrefix = value
+                };
+            }
+        }
+
+        /// <summary>
+        /// Gets/sets a route path prefix provider.
+        /// </summary>
+        public IODataRoutePathPrefixProvider RoutePathPrefixProvider { get; set; }
 
         /// <summary>
         /// Gets/Sets a value indicating whether or not to show the OpenAPI links in the responses.
         /// </summary>
         public bool ShowLinks { get; set; } = false;
+
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to show schema examples.
+        /// </summary>
+        public bool ShowSchemaExamples { get; set; } = false;
+
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to show the root path of the described API.
+        /// </summary>
+        public bool ShowRootPath { get; set; } = false;
+
+        /// <summary>
+        /// Gets/sets a the path provider.
+        /// </summary>
+        public IODataPathProvider PathProvider { get; set; }
 
         internal OpenApiConvertSettings Clone()
         {
@@ -149,8 +195,11 @@ namespace Microsoft.OpenApi.OData
                 EnableDiscriminatorValue = this.EnableDiscriminatorValue,
                 EnableDerivedTypesReferencesForResponses = this.EnableDerivedTypesReferencesForResponses,
                 EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
-                PathPrefix = this.PathPrefix,
-                ShowLinks = this.ShowLinks
+                RoutePathPrefixProvider = this.RoutePathPrefixProvider,
+                ShowLinks = this.ShowLinks,
+                ShowSchemaExamples = this.ShowSchemaExamples,
+                ShowRootPath = this.ShowRootPath,
+                PathProvider = this.PathProvider
             };
 
             return newSettings;

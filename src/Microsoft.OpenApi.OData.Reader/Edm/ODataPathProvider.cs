@@ -126,6 +126,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 case ODataPathKind.Entity:
                 case ODataPathKind.EntitySet:
                 case ODataPathKind.Singleton:
+                case ODataPathKind.MediaEntity:
                     ODataNavigationSourceSegment navigationSourceSegment = (ODataNavigationSourceSegment)path.FirstSegment;
                     if (!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
                     {
@@ -182,6 +183,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 AppendPath(path.Clone());
             }
 
+            // media entity
+            RetrieveMediaEntityStreamPaths(entityType, path);
+
             // navigation property
             foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
             {
@@ -198,6 +202,43 @@ namespace Microsoft.OpenApi.OData.Edm
 
             path.Pop(); // end of navigation source.
             Debug.Assert(path.Any() == false);
+        }
+
+        /// <summary>
+        /// Retrieves the paths for a media entity stream.
+        /// </summary>
+        /// <param name="entityType">The entity type.</param>
+        /// <param name="currentPath">The current OData path.</param>
+        private void RetrieveMediaEntityStreamPaths(IEdmEntityType entityType, ODataPath currentPath)
+        {
+            Debug.Assert(entityType != null);
+            Debug.Assert(currentPath != null);
+
+            bool createValuePath = true;
+            foreach (IEdmStructuralProperty sp in entityType.DeclaredStructuralProperties())
+            {
+                if (sp.Type.AsPrimitive().IsStream())
+                {
+                    currentPath.Push(new ODataStreamPropertySegment(sp.Name));
+                    AppendPath(currentPath.Clone());
+                    currentPath.Pop();
+                }
+
+                if (sp.Name.Equals("content", System.StringComparison.OrdinalIgnoreCase))
+                {
+                    createValuePath = false;
+                }
+            }
+
+            /* Create a /$value path only if entity has stream and
+             * does not contain a structural property named Content
+             */
+            if (createValuePath && entityType.HasStream)
+            {
+                currentPath.Push(new ODataStreamContentSegment());
+                AppendPath(currentPath.Clone());
+                currentPath.Pop();
+            }
         }
 
         /// <summary>
@@ -226,40 +267,45 @@ namespace Microsoft.OpenApi.OData.Edm
                 newPath.Push(ODataRefSegment.Instance); // $ref
                 AppendPath(newPath);
             }
-
-            // append a navigation property key.
-            IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            else
             {
-                currentPath.Push(new ODataKeySegment(navEntityType));
-                AppendPath(currentPath.Clone());
+                IEdmEntityType navEntityType = navigationProperty.ToEntityType();
 
-                if (!navigationProperty.ContainsTarget)
+                // append a navigation property key.
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
-                    // TODO: Shall we add "$ref" after {key}, and only support delete?
-                    // ODataPath newPath = currentPath.Clone();
-                    // newPath.Push(ODataRefSegment.Instance); // $ref
-                    // AppendPath(newPath);
-                }
-            }
+                    currentPath.Push(new ODataKeySegment(navEntityType));
+                    AppendPath(currentPath.Clone());
 
-            if (shouldExpand)
-            {
-                // expand to sub navigation properties
-                foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
-                {
-                    if (CanFilter(subNavProperty))
+                    if (!navigationProperty.ContainsTarget)
                     {
-                        RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                        // TODO: Shall we add "$ref" after {key}, and only support delete?
+                        // ODataPath newPath = currentPath.Clone();
+                        // newPath.Push(ODataRefSegment.Instance); // $ref
+                        // AppendPath(newPath);
                     }
                 }
-            }
 
-            if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-            {
-                currentPath.Pop();
-            }
+                if (shouldExpand)
+                {
+                    // expand to sub navigation properties
+                    foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                    {
+                        if (CanFilter(subNavProperty))
+                        {
+                            RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                        }
+                    }
+                }
 
+                // Get possible navigation property stream paths
+                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    currentPath.Pop();
+                }
+            }
             currentPath.Pop();
         }
 
@@ -294,7 +340,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         private void RetrieveBoundOperationPaths()
         {
-            foreach (var edmOperation in _model.SchemaElements.OfType<IEdmOperation>().Where(e => e.IsBound))
+            foreach (var edmOperation in _model.GetAllElements().OfType<IEdmOperation>().Where(e => e.IsBound))
             {
                 if (!CanFilter(edmOperation))
                 {
@@ -369,7 +415,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var subPath in value)
                 {
                     if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
-                            (!isCollection && subPath.Kind != ODataPathKind.EntitySet))
+                            (!isCollection && subPath.Kind != ODataPathKind.EntitySet &&
+                                subPath.Kind != ODataPathKind.MediaEntity))
                     {
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));

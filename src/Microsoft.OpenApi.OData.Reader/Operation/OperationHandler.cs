@@ -128,6 +128,15 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             AppendCustomParameters(operation);
+
+            // Add the route prefix parameter v1{data}
+            if (Context.Settings.RoutePathPrefixProvider != null && Context.Settings.RoutePathPrefixProvider.Parameters != null)
+            {
+                foreach (var parameter in Context.Settings.RoutePathPrefixProvider.Parameters)
+                {
+                    operation.Parameters.Add(parameter);
+                }
+            }
         }
 
         /// <summary>
