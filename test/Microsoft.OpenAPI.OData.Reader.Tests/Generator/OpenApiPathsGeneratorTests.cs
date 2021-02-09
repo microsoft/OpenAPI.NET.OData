@@ -95,7 +95,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/some/prefix/Me", paths.Keys);
         }
 
-
         [Fact]
         public void CreatePathsReturnsForContractModelWithHierarhicalClass()
         {
