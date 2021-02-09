@@ -24,7 +24,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Generate the list of <see cref="ODataPath"/> based on the given <see cref="IEdmModel"/>.
         /// </summary>
         /// <param name="model">The Edm model.</param>
+        /// <param name="settings">The conversion settings.</param>
         /// <returns>The collection of built <see cref="ODataPath"/>.</returns>
-        IEnumerable<ODataPath> GetPaths(IEdmModel model);
+        IEnumerable<ODataPath> GetPaths(IEdmModel model, OpenApiConvertSettings settings);
     }
 }

@@ -162,6 +162,13 @@ namespace Microsoft.OpenApi.OData
         public bool ShowSchemaExamples { get; set; } = false;
 
         /// <summary>
+        /// Gets/Sets a value indicating whether or not to require the
+        /// Validation.DerivedTypeConstraint to be applied to NavigationSources
+        /// to bind operations of derived types to them.
+        /// </summary>
+        public bool RequireDerivedTypesConstraintForBoundOperations { get; set; } = false;
+
+        /// <summary>
         /// Gets/sets a value indicating whether or not to show the root path of the described API.
         /// </summary>
         public bool ShowRootPath { get; set; } = false;
@@ -197,6 +204,7 @@ namespace Microsoft.OpenApi.OData
                 EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
                 RoutePathPrefixProvider = this.RoutePathPrefixProvider,
                 ShowLinks = this.ShowLinks,
+                RequireDerivedTypesConstraintForBoundOperations = this.RequireDerivedTypesConstraintForBoundOperations,
                 ShowSchemaExamples = this.ShowSchemaExamples,
                 ShowRootPath = this.ShowRootPath,
                 PathProvider = this.PathProvider
