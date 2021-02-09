@@ -157,7 +157,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>All acceptable OData path.</returns>
         private IEnumerable<ODataPath> LoadAllODataPaths()
         {
-            IEnumerable<ODataPath> allPaths = _pathProvider.GetPaths(Model);
+            IEnumerable<ODataPath> allPaths = _pathProvider.GetPaths(Model, Settings);
             foreach (var path in allPaths)
             {
                 if ((path.Kind == ODataPathKind.Operation && !Settings.EnableOperationPath) ||

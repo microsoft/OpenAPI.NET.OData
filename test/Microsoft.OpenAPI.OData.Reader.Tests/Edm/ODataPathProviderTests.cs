@@ -24,9 +24,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Arrange
             IEdmModel model = new EdmModel();
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -38,14 +39,154 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
+            var settings = new OpenApiConvertSettings();
             ODataPathProvider provider = new ODataPathProvider();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(4932, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForGraphBetaModelWithDerivedTypesConstraintReturnsAllPaths()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings
+            {
+                RequireDerivedTypesConstraintForBoundOperations = true
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
             Assert.Equal(4583, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForInheritanceModelWithoutDerivedTypesConstraintReturnsMore()
+        {
+            // Arrange
+            IEdmModel model = GetInheritanceModel(string.Empty);
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(3, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForInheritanceModelWithDerivedTypesConstraintNoAnnotationReturnsFewer()
+        {
+            // Arrange
+            IEdmModel model = GetInheritanceModel(string.Empty);
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings
+            {
+                RequireDerivedTypesConstraintForBoundOperations = true
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(2, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForInheritanceModelWithDerivedTypesConstraintWithAnnotationReturnsMore()
+        {
+            // Arrange
+            IEdmModel model = GetInheritanceModel(@"
+<Annotation Term=""Org.OData.Validation.V1.DerivedTypeConstraint"">
+<Collection>
+  <String>NS.Customer</String>
+  <String>NS.NiceCustomer</String>
+</Collection>
+</Annotation>");
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings
+            {
+                RequireDerivedTypesConstraintForBoundOperations = true
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(3, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForNavPropModelWithoutDerivedTypesConstraintReturnsMore()
+        {
+            // Arrange
+            IEdmModel model = GetNavPropModel(string.Empty);
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(5, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForNavPropModelWithDerivedTypesConstraintNoAnnotationReturnsFewer()
+        {
+            // Arrange
+            IEdmModel model = GetNavPropModel(string.Empty);
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings
+            {
+                RequireDerivedTypesConstraintForBoundOperations = true
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(4, paths.Count());
+        }
+
+        [Fact]
+        public void GetPathsForNavPropModelWithDerivedTypesConstraintWithAnnotationReturnsMore()
+        {
+            // Arrange
+            IEdmModel model = GetNavPropModel(@"
+<Annotation Term=""Org.OData.Validation.V1.DerivedTypeConstraint"">
+<Collection>
+  <String>NS.Customer</String>
+  <String>NS.NiceCustomer</String>
+</Collection>
+</Annotation>");
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings
+            {
+                RequireDerivedTypesConstraintForBoundOperations = true
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(5, paths.Count());
         }
 
         [Fact]
@@ -54,9 +195,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Arrange
             IEdmModel model = GetEdmModel("", "");
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -70,9 +212,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Arrange
             IEdmModel model = GetEdmModel("", @"<Singleton Name=""Me"" Type=""NS.Customer"" />");
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -91,9 +234,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 </Function>";
             IEdmModel model = GetEdmModel(boundFunction, "");
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -112,9 +256,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 </Action>";
             IEdmModel model = GetEdmModel(boundAction, "");
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -138,9 +283,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmModel model = GetEdmModel(boundAction, unbounds);
 
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -166,9 +312,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmModel model = GetEdmModel(entityType, entitySet);
 
             ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
 
             // Act
-            var paths = provider.GetPaths(model);
+            var paths = provider.GetPaths(model, settings);
 
             // Assert
             Assert.NotNull(paths);
@@ -184,7 +331,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
         private static IEdmModel GetEdmModel(string schemaElement, string containerElement)
         {
-            string template = @"<?xml version=""1.0"" encoding=""utf-16""?>
+            string template = $@"<?xml version=""1.0"" encoding=""utf-16""?>
 <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
   <EntityType Name=""Customer"">
     <Key>
@@ -192,17 +339,77 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     </Key>
     <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
   </EntityType>
-  {0}
+  {schemaElement}
   <EntityContainer Name =""Default"">
     <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
-    {1}
+    {containerElement}
   </EntityContainer>
 </Schema>";
-            string schema = String.Format(template, schemaElement, containerElement);
-            IEdmModel parsedModel;
+            return GetEdmModel(template);
+        }
+
+        private static IEdmModel GetInheritanceModel(string annotation)
+        {
+            string template = $@"<?xml version=""1.0"" encoding=""utf-16""?>
+<Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+  <EntityType Name=""Customer"">
+    <Key>
+      <PropertyRef Name=""ID"" />
+    </Key>
+    <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+  </EntityType>
+  <EntityType Name=""NiceCustomer"" BaseType=""NS.Customer"">
+    <Property Name=""Other"" Type=""Edm.Int32"" Nullable=""true"" />
+  </EntityType>
+  <Action Name=""Ack"" IsBound=""true"" >
+    <Parameter Name = ""bindingParameter"" Type=""NS.NiceCustomer"" />
+  </Action>
+  <EntityContainer Name =""Default"">
+    <EntitySet Name=""Customers"" EntityType=""NS.Customer"">
+      {annotation}
+    </EntitySet>
+  </EntityContainer>
+</Schema>";
+            return GetEdmModel(template);
+        }
+
+        private static IEdmModel GetNavPropModel(string annotation)
+        {
+            string template = $@"<?xml version=""1.0"" encoding=""utf-16""?>
+<Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+  <EntityType Name=""Root"">
+    <Key>
+      <PropertyRef Name=""ID"" />
+    </Key>
+    <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+    <NavigationProperty Name=""Customers"" Type=""Collection(NS.Customer)"">
+      {annotation}
+    </NavigationProperty>
+  </EntityType>
+  <EntityType Name=""Customer"">
+    <Key>
+      <PropertyRef Name=""ID"" />
+    </Key>
+    <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+  </EntityType>
+  <EntityType Name=""NiceCustomer"" BaseType=""NS.Customer"">
+    <Property Name=""Other"" Type=""Edm.Int32"" Nullable=""true"" />
+  </EntityType>
+  <Action Name=""Ack"" IsBound=""true"" >
+    <Parameter Name = ""bindingParameter"" Type=""NS.NiceCustomer"" />
+  </Action>
+  <EntityContainer Name =""Default"">
+    <Singleton Name=""Root"" Type=""NS.Root"" />
+  </EntityContainer>
+</Schema>";
+            return GetEdmModel(template);
+        }
+
+        private static IEdmModel GetEdmModel(string schema)
+        {
             IEnumerable<EdmError> errors;
-            bool parsed = SchemaReader.TryParse(new XmlReader[] { XmlReader.Create(new StringReader(schema)) }, out parsedModel, out errors);
-            Assert.True(parsed);
+            bool parsed = SchemaReader.TryParse(new XmlReader[] { XmlReader.Create(new StringReader(schema)) }, out IEdmModel parsedModel, out errors);
+            Assert.True(parsed, $"Parse failure. {string.Join(Environment.NewLine, errors.Select(e => e.ToString()))}");
             return parsedModel;
         }
     }

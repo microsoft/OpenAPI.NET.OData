@@ -130,6 +130,13 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool ShowSchemaExamples { get; set; } = false;
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to require the
+        /// Validation.DerivedTypeConstraint to be applied to NavigationSources
+        /// to bind operations of derived types to them.
+        /// </summary>
+        public bool RequireDerivedTypesConstraintForBoundOperations { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -156,7 +163,8 @@ namespace Microsoft.OpenApi.OData
                 EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
                 PathPrefix = this.PathPrefix,
                 ShowLinks = this.ShowLinks,
-                ShowSchemaExamples = this.ShowSchemaExamples
+                ShowSchemaExamples = this.ShowSchemaExamples,
+                RequireDerivedTypesConstraintForBoundOperations = this.RequireDerivedTypesConstraintForBoundOperations
             };
 
             return newSettings;

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.OpenApi.OData.Reader", "src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj", "{FF3ACD93-19E0-486C-9C0F-FA1C2E7FC8C2}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OoasUtil", "src\OoasUtil\OoasUtil.csproj", "{2D06C660-B550-432C-8062-D4070F7C371F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OoasGui", "src\OoasGui\OoasGui.csproj", "{79B190E8-EDB0-4C03-8FD8-EB48E4807CFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{99C5C9A7-63FD-4E78-96E8-69C402868C3E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
