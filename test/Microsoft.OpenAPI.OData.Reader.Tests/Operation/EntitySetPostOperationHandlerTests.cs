@@ -4,10 +4,14 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Xml.Linq;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Operation.Tests
@@ -17,12 +21,30 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private EntitySetPostOperationHandler _operationHandler = new EntitySetPostOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateEntitySetPostOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, true)]
+        [InlineData(false, true)]
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        public void CreateEntitySetPostOperationReturnsCorrectOperation(bool enableOperationId, bool hasStream)
         {
             // Arrange
-            IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
+            string qualifiedName = CapabilitiesConstants.AcceptableMediaTypes;
+            string annotation = $@"
+            <Annotation Term=""{qualifiedName}"" >
+              <Collection>
+                <String>application/todo</String>
+              </Collection>
+            </Annotation>";
+
+            // Assert
+            VerifyEntitySetPostOperation("", enableOperationId, hasStream);
+            VerifyEntitySetPostOperation(annotation, enableOperationId, hasStream);
+        }
+
+        private void VerifyEntitySetPostOperation(string annotation, bool enableOperationId, bool hasStream)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel(annotation, hasStream);
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
@@ -46,6 +68,47 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(post.Responses);
             Assert.Equal(2, post.Responses.Count);
+
+            if (hasStream)
+            {
+                Assert.NotNull(post.RequestBody);
+
+                if (!string.IsNullOrEmpty(annotation))
+                {
+                    // RequestBody
+                    Assert.Equal(2, post.RequestBody.Content.Keys.Count);
+                    Assert.True(post.RequestBody.Content.ContainsKey("application/todo"));
+                    Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationJsonMediaType));
+
+                    // Response
+                    Assert.Equal(2, post.Responses[Constants.StatusCode201].Content.Keys.Count);
+                    Assert.True(post.Responses[Constants.StatusCode201].Content.ContainsKey("application/todo"));
+                    Assert.True(post.Responses[Constants.StatusCode201].Content.ContainsKey(Constants.ApplicationJsonMediaType));
+                }
+                else
+                {
+                    // RequestBody
+                    Assert.Equal(2, post.RequestBody.Content.Keys.Count);
+                    Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                    Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationJsonMediaType));
+
+                    // Response
+                    Assert.Equal(2, post.Responses[Constants.StatusCode201].Content.Keys.Count);
+                    Assert.True(post.Responses[Constants.StatusCode201].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                    Assert.True(post.Responses[Constants.StatusCode201].Content.ContainsKey(Constants.ApplicationJsonMediaType));
+                }
+            }
+            else
+            {
+                // RequestBody
+                Assert.NotNull(post.RequestBody);
+                Assert.Equal(1, post.RequestBody.Content.Keys.Count);
+                Assert.True(post.RequestBody.Content.ContainsKey(Constants.ApplicationJsonMediaType));
+
+                // Response
+                Assert.Equal(1, post.Responses[Constants.StatusCode201].Content.Keys.Count);
+                Assert.True(post.Responses[Constants.StatusCode201].Content.ContainsKey(Constants.ApplicationJsonMediaType));
+            }
 
             if (enableOperationId)
             {
@@ -163,6 +226,33 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 Assert.Empty(post.Security);
             }
+        }
+
+        private static IEdmModel GetEdmModel(string annotation, bool hasStream = false)
+        {
+            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Customer"" HasStream=""{0}"">
+        <Key>
+          <PropertyRef Name=""ID"" />
+        </Key>
+        <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+      </EntityType>
+      <EntityContainer Name =""Default"">
+         <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
+      </EntityContainer>
+      <Annotations Target=""NS.Customer"">
+       {1}
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+
+            string modelText = string.Format(template, hasStream, annotation);
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
+            Assert.True(result);
+            return model;
         }
     }
 }

@@ -49,7 +49,8 @@ namespace Microsoft.OpenApi.OData.Edm
             OperationHanderProvider = new OperationHandlerProvider();
             PathItemHanderProvider = new PathItemHandlerProvider();
 
-            _pathProvider = new ODataPathProvider();
+            // If no path provider, use the default path provider.
+            _pathProvider = settings.PathProvider ?? new ODataPathProvider();
 
             if (settings.EnableKeyAsSegment != null)
             {

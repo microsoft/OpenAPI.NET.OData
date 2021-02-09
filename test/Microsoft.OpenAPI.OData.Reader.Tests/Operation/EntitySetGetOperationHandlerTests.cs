@@ -346,12 +346,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
+
             string modelText = string.Format(template, annotation);
-
-            IEdmModel model;
-            IEnumerable<EdmError> errors;
-
-            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out model, out errors);
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
             Assert.True(result);
             return model;
         }
