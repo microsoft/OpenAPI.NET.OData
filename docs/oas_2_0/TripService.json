@@ -1108,6 +1108,7 @@
           {
             "in": "path",
             "name": "userName",
+            "description": "Usage: userName={userName}",
             "required": true,
             "type": "string"
           }
@@ -1184,6 +1185,7 @@
           {
             "in": "path",
             "name": "lastName",
+            "description": "Usage: lastName={lastName}",
             "required": true,
             "type": "string"
           }
@@ -2235,6 +2237,7 @@
           {
             "in": "path",
             "name": "userName",
+            "description": "Usage: userName={userName}",
             "required": true,
             "type": "string"
           }
@@ -2327,6 +2330,7 @@
           {
             "in": "path",
             "name": "lastName",
+            "description": "Usage: lastName={lastName}",
             "required": true,
             "type": "string"
           }
@@ -3402,6 +3406,7 @@
           {
             "in": "path",
             "name": "userName",
+            "description": "Usage: userName={userName}",
             "required": true,
             "type": "string"
           }
@@ -3494,6 +3499,7 @@
           {
             "in": "path",
             "name": "lastName",
+            "description": "Usage: lastName={lastName}",
             "required": true,
             "type": "string"
           }

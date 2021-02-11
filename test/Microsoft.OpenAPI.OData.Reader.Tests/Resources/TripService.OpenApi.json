@@ -1267,6 +1267,7 @@
           {
             "name": "userName",
             "in": "path",
+            "description": "Usage: userName={userName}",
             "required": true,
             "schema": {
               "type": "string"
@@ -1405,6 +1406,7 @@
           {
             "name": "lastName",
             "in": "path",
+            "description": "Usage: lastName={lastName}",
             "required": true,
             "schema": {
               "type": "string"
@@ -2968,6 +2970,7 @@
           {
             "name": "userName",
             "in": "path",
+            "description": "Usage: userName={userName}",
             "required": true,
             "schema": {
               "type": "string"
@@ -3140,6 +3143,7 @@
           {
             "name": "lastName",
             "in": "path",
+            "description": "Usage: lastName={lastName}",
             "required": true,
             "schema": {
               "type": "string"
@@ -4795,6 +4799,7 @@
           {
             "name": "userName",
             "in": "path",
+            "description": "Usage: userName={userName}",
             "required": true,
             "schema": {
               "type": "string"
@@ -4967,6 +4972,7 @@
           {
             "name": "lastName",
             "in": "path",
+            "description": "Usage: lastName={lastName}",
             "required": true,
             "schema": {
               "type": "string"

@@ -849,6 +849,7 @@ paths:
       parameters:
         - name: userName
           in: path
+          description: 'Usage: userName={userName}'
           required: true
           schema:
             type: string
@@ -937,6 +938,7 @@ paths:
       parameters:
         - name: lastName
           in: path
+          description: 'Usage: lastName={lastName}'
           required: true
           schema:
             type: string
@@ -2015,6 +2017,7 @@ paths:
           x-ms-docs-key-type: Person
         - name: userName
           in: path
+          description: 'Usage: userName={userName}'
           required: true
           schema:
             type: string
@@ -2126,6 +2129,7 @@ paths:
           x-ms-docs-key-type: Person
         - name: lastName
           in: path
+          description: 'Usage: lastName={lastName}'
           required: true
           schema:
             type: string
@@ -3268,6 +3272,7 @@ paths:
           x-ms-docs-key-type: Person
         - name: userName
           in: path
+          description: 'Usage: userName={userName}'
           required: true
           schema:
             type: string
@@ -3379,6 +3384,7 @@ paths:
           x-ms-docs-key-type: Person
         - name: lastName
           in: path
+          description: 'Usage: lastName={lastName}'
           required: true
           schema:
             type: string

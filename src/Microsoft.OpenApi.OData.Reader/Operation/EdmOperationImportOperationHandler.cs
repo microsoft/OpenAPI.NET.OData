@@ -26,13 +26,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected IEdmOperationImport EdmOperationImport { get; private set; }
 
+        /// <summary>
+        /// Gets the <see cref="IEdmOperationImport"/>.
+        /// </summary>
+        protected ODataOperationImportSegment OperationImportSegment { get; private set; }
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            ODataOperationImportSegment operationImportSegment = path.LastSegment as ODataOperationImportSegment;
-            EdmOperationImport = operationImportSegment.OperationImport;
+            OperationImportSegment = path.LastSegment as ODataOperationImportSegment;
+            EdmOperationImport = OperationImportSegment.OperationImport;
         }
 
         /// <inheritdoc/>
