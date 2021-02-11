@@ -74,21 +74,28 @@ namespace OoasUtil
         /// Set the output to expect all derived types in request bodies.
         /// </summary>
         public bool? DerivedTypesReferencesForRequestBody { get; private set; }
-
+        
         /// <summary>
         /// Set the output to expose pagination for collections.
         /// </summary>
         public bool? EnablePagination { get; private set; }
 
         /// <summary>
-        /// tSet the output to use unqualified calls for bound operations.
+        /// Set the output to use unqualified calls for bound operations.
         /// </summary>
         public bool? EnableUnqualifiedCall { get; private set; }
 
         /// <summary>
-        /// tDisable examples in the schema.
+        /// Disable examples in the schema.
         /// </summary>
         public bool? DisableSchemaExamples { get; private set; }
+
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to require the
+        /// Validation.DerivedTypeConstraint to be applied to NavigationSources
+        /// to bind operations of derived types to them.
+        /// </summary>
+        public bool? RequireDerivedTypesConstraint { get; private set; }
 
         /// <summary>
         /// Process the arguments.
@@ -186,6 +193,14 @@ namespace OoasUtil
                             }
                             break;
 
+                        case "--requireDerivedTypesConstraint":
+                        case "-rdt":
+                            if (!ProcessRequireDerivedTypesConstraint(true))
+                            {
+                                return false;
+                            }
+                            break;
+
                         case "--enablepagination":
                         case "-p":
                             if (!ProcessEnablePagination(true))
@@ -246,6 +261,11 @@ namespace OoasUtil
             if (DerivedTypesReferencesForRequestBody == null)
             {
                 DerivedTypesReferencesForRequestBody = false;
+            }
+
+            if (RequireDerivedTypesConstraint == null)
+            {
+                RequireDerivedTypesConstraint = false;
             }
 
             if (EnablePagination == null)
@@ -342,6 +362,19 @@ namespace OoasUtil
             }
 
             DerivedTypesReferencesForRequestBody = derivedTypesReferencesForRequestBody;
+            return true;
+        }
+
+        private bool ProcessRequireDerivedTypesConstraint(bool requireDerivedTypesConstraint)
+        {
+            if (RequireDerivedTypesConstraint != null)
+            {
+                Console.WriteLine("[Error:] Multiple [--requireDerivedTypesConstraint|-rdt] are not allowed.\n");
+                PrintUsage();
+                return false;
+            }
+
+            RequireDerivedTypesConstraint = requireDerivedTypesConstraint;
             return true;
         }
 
@@ -445,6 +478,7 @@ namespace OoasUtil
             sb.Append("  --keyassegment|-k\t\t\tSet the output to use key-as-segment style URLs.\n");
             sb.Append("  --derivedtypesreferencesforresponses|-drs\t\t\tSet the output to produce all derived types in responses.\n");
             sb.Append("  --derivedtypesreferencesforrequestbody|-drq\t\t\tSet the output to expect all derived types in request bodies.\n");
+            sb.Append("  --requireDerivedTypesConstraint|-rdt\t\t\tSet the output to require derived type constraint to bind Operations.\n");
             sb.Append("  --enablepagination|-p\t\t\tSet the output to expose pagination for collections.\n");
             sb.Append("  --enableunqualifiedcall|-u\t\t\tSet the output to use unqualified calls for bound operations.\n");
             sb.Append("  --disableschemaexamples|-x\t\t\tDisable examples in the schema.\n");
