@@ -37,7 +37,13 @@ namespace Microsoft.OpenApi.OData.PathItem
             { ODataPathKind.Ref, new RefPathItemHandler() },
 
             // Media Entity
-            {ODataPathKind.MediaEntity, new MediaEntityPathItemHandler() },
+            { ODataPathKind.MediaEntity, new MediaEntityPathItemHandler() },
+
+            // $Metadata
+            { ODataPathKind.Metadata, new MetadataPathItemHandler() },
+
+            // $count
+            { ODataPathKind.DollarCount, new DollarCountPathItemHandler() },
 
             // Unknown
             { ODataPathKind.Unknown, null },

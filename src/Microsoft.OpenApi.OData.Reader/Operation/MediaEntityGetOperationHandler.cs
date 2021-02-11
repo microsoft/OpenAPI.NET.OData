@@ -63,6 +63,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             base.SetResponses(operation);
         }
+
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
