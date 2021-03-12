@@ -13,8 +13,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 {
     public class OpenApiPathsGeneratorTest
     {
-        private OpenApiConvertSettings _settings = new OpenApiConvertSettings();
-
         [Fact]
         public void CreatePathsThrowArgumentNullContext()
         {
