@@ -330,8 +330,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            // check whether the navigation type used to define a navigation source.
-            // if so, not expand it.
+            // Expand containment navigation property.
+            return true;
             return !_allNavigationSources.ContainsKey(navEntityType);
         }
 
