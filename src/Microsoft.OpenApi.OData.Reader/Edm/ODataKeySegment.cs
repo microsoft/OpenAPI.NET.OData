@@ -25,6 +25,22 @@ namespace Microsoft.OpenApi.OData.Edm
             EntityType = entityType ?? throw Error.ArgumentNull(nameof(entityType));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="ODataKeySegment"/> class.
+        /// </summary>
+        /// <param name="entityType">The entity type contains the keys.</param>
+        /// <param name="keyMappings">The key/template mappings.</param>
+        public ODataKeySegment(IEdmEntityType entityType, IDictionary<string, string> keyMappings)
+        {
+            EntityType = entityType ?? throw Error.ArgumentNull(nameof(entityType));
+            KeyMappings = keyMappings ?? throw Error.ArgumentNull(nameof(keyMappings));
+        }
+
+        /// <summary>
+        /// Gets the key/template mappings.
+        /// </summary>
+        public IDictionary<string, string> KeyMappings { get; }
+
         /// <inheritdoc />
         public override IEdmEntityType EntityType { get; }
 
@@ -50,6 +66,26 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
+
+            // Use the output key/template mapping
+            if (KeyMappings != null)
+            {
+                if (KeyMappings.Count == 1)
+                {
+                    var key = KeyMappings.First();
+                    return $"{{{key.Value}}}";
+                }
+                else
+                {
+                    IList<string> keyStrings = new List<string>();
+                    foreach (var key in KeyMappings)
+                    {
+                        keyStrings.Add(key.Key + "={" + key.Value + "}");
+                    }
+
+                    return String.Join(",", keyStrings);
+                }
+            }
 
             IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();
             if (keys.Count() == 1)
@@ -82,7 +118,18 @@ namespace Microsoft.OpenApi.OData.Edm
 
         internal IDictionary<string, string> GetKeyNameMapping(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
+            // Use the output key/template mapping
             IDictionary<string, string> keyNamesMapping = new Dictionary<string, string>();
+            if (KeyMappings != null)
+            {
+                foreach (var keyName in KeyMappings)
+                {
+                    keyNamesMapping[keyName.Key] = keyName.Value;
+                }
+
+                return keyNamesMapping;
+            }
+
             IList<IEdmStructuralProperty> keys = EntityType.Key().ToList();
             if (keys.Count() == 1)
             {

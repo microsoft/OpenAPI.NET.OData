@@ -83,6 +83,18 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Get, new MediaEntityGetOperationHandler() },
                 {OperationType.Put, new MediaEntityPutOperationHandler() }
             };
+
+            // $metadata operation (Get)
+            _handlers[ODataPathKind.Metadata] = new Dictionary<OperationType, IOperationHandler>
+            {
+                {OperationType.Get, new MetadataGetOperationHandler() }
+            };
+
+            // $count operation (Get)
+            _handlers[ODataPathKind.DollarCount] = new Dictionary<OperationType, IOperationHandler>
+            {
+                {OperationType.Get, new DollarCountGetOperationHandler() }
+            };
         }
 
         /// <inheritdoc/>

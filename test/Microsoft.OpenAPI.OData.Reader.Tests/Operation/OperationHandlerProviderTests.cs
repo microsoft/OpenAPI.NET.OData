@@ -34,6 +34,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         [InlineData(ODataPathKind.Ref, OperationType.Put, typeof(RefPutOperationHandler))]
         [InlineData(ODataPathKind.MediaEntity, OperationType.Get, typeof(MediaEntityGetOperationHandler))]
         [InlineData(ODataPathKind.MediaEntity, OperationType.Put, typeof(MediaEntityPutOperationHandler))]
+        [InlineData(ODataPathKind.Metadata, OperationType.Get, typeof(MetadataGetOperationHandler))]
+        [InlineData(ODataPathKind.DollarCount, OperationType.Get, typeof(DollarCountGetOperationHandler))]
         public void GetHandlerReturnsCorrectOperationHandlerType(ODataPathKind pathKind, OperationType operationType, Type handlerType)
         {
             // Arrange

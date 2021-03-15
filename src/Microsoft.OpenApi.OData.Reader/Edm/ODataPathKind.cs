@@ -51,6 +51,16 @@ namespace Microsoft.OpenApi.OData.Edm
         MediaEntity,
 
         /// <summary>
+        /// Represents a $metadata path
+        /// </summary>
+        Metadata,
+
+        /// <summary>
+        /// Represents a $count path, for example: ~/customers/$count
+        /// </summary>
+        DollarCount,
+
+        /// <summary>
         /// Represents an un-supported/unknown path.
         /// </summary>
         Unknown

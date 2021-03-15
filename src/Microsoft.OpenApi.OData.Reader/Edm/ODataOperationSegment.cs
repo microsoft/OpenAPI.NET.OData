@@ -38,6 +38,22 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Initializes a new instance of <see cref="ODataOperationSegment"/> class.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="parameterMappings">The parameter mapping.</param>
+        public ODataOperationSegment(IEdmOperation operation, IDictionary<string, string> parameterMappings)
+        {
+            Operation = operation ?? throw Error.ArgumentNull(nameof(operation));
+            ParameterMappings = parameterMappings ?? throw Error.ArgumentNull(nameof(parameterMappings));
+        }
+
+        /// <summary>
+        /// Gets the parameter mappings.
+        /// </summary>
+        public IDictionary<string, string> ParameterMappings { get; }
+
+        /// <summary>
         /// Gets the operation.
         /// </summary>
         public IEdmOperation Operation { get; }

@@ -37,6 +37,7 @@ namespace OoasUtil
                 EnableKeyAsSegment = processer.KeyAsSegment,
                 EnableDerivedTypesReferencesForResponses = processer.DerivedTypesReferencesForResponses.Value,
                 EnableDerivedTypesReferencesForRequestBody = processer.DerivedTypesReferencesForRequestBody.Value,
+                RequireDerivedTypesConstraintForBoundOperations = processer.RequireDerivedTypesConstraint.Value,
                 EnablePagination = processer.EnablePagination.Value,
                 EnableUnqualifiedCall = processer.EnableUnqualifiedCall.Value,
                 ShowSchemaExamples = !processer.DisableSchemaExamples.Value,

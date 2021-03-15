@@ -115,17 +115,29 @@ namespace Microsoft.OpenApi.OData.Operation
             if (EdmOperation.IsFunction())
             {
                 IEdmFunction function = (IEdmFunction)EdmOperation;
-                IDictionary<string, string> mappings = ParameterMappings[OperationSegment];
-                IList<OpenApiParameter> parameters = Context.CreateParameters(function, mappings);
-                if (operation.Parameters == null)
+
+                if (OperationSegment.ParameterMappings != null)
                 {
-                    operation.Parameters = parameters;
-                }
-                else
-                {
+                    IList<OpenApiParameter> parameters = Context.CreateParameters(function, OperationSegment.ParameterMappings);
                     foreach (var parameter in parameters)
                     {
                         AppendParameter(operation, parameter);
+                    }
+                }
+                else
+                {
+                    IDictionary<string, string> mappings = ParameterMappings[OperationSegment];
+                    IList<OpenApiParameter> parameters = Context.CreateParameters(function, mappings);
+                    if (operation.Parameters == null)
+                    {
+                        operation.Parameters = parameters;
+                    }
+                    else
+                    {
+                        foreach (var parameter in parameters)
+                        {
+                            AppendParameter(operation, parameter);
+                        }
                     }
                 }
             }

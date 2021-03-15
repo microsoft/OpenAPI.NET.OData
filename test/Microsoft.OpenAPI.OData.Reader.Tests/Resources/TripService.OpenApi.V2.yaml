@@ -762,6 +762,7 @@ paths:
       parameters:
         - in: path
           name: userName
+          description: 'Usage: userName={userName}'
           required: true
           type: string
       responses:
@@ -849,6 +850,7 @@ paths:
       parameters:
         - in: path
           name: lastName
+          description: 'Usage: lastName={lastName}'
           required: true
           type: string
       responses:
@@ -1829,6 +1831,7 @@ paths:
           x-ms-docs-key-type: Person
         - in: path
           name: userName
+          description: 'Usage: userName={userName}'
           required: true
           type: string
       responses:
@@ -1934,6 +1937,7 @@ paths:
           x-ms-docs-key-type: Person
         - in: path
           name: lastName
+          description: 'Usage: lastName={lastName}'
           required: true
           type: string
       responses:
@@ -2968,6 +2972,7 @@ paths:
           x-ms-docs-key-type: Person
         - in: path
           name: userName
+          description: 'Usage: userName={userName}'
           required: true
           type: string
       responses:
@@ -3073,6 +3078,7 @@ paths:
           x-ms-docs-key-type: Person
         - in: path
           name: lastName
+          description: 'Usage: lastName={lastName}'
           required: true
           type: string
       responses:

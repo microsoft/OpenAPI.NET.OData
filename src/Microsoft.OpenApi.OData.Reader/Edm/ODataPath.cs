@@ -46,6 +46,17 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Gets/Sets the support HttpMethods
+        /// </summary>
+        public ISet<string> HttpMethods { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// Gets/Sets the path template for this path.
+        /// If it is set, it will be used to generate the path item.
+        /// </summary>
+        public string PathTemplate { get; set; }
+
+        /// <summary>
         /// Gets the segments.
         /// </summary>
         public IList<ODataSegment> Segments { get; private set; }
@@ -176,6 +187,17 @@ namespace Microsoft.OpenApi.OData.Edm
             return sb.ToString();
         }
 
+        internal bool SupportHttpMethod(string method)
+        {
+            // If the Httpmethods is empty, let it go
+            if (HttpMethods.Count == 0)
+            {
+                return true;
+            }
+
+            return HttpMethods.Contains(method);
+        }
+
         /// <summary>
         /// Push a segment to the last.
         /// </summary>
@@ -243,6 +265,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <returns>The string.</returns>
         public override string ToString()
         {
+            if (PathTemplate != null)
+            {
+                return PathTemplate;
+            }
+
             return "/" + String.Join("/", Segments.Select(e => e.Kind));
         }
 
@@ -258,6 +285,16 @@ namespace Microsoft.OpenApi.OData.Edm
 
         private ODataPathKind CalcPathType()
         {
+            if (Segments.Count == 1 && Segments.First().Kind == ODataSegmentKind.Metadata)
+            {
+                return ODataPathKind.Metadata;
+            }
+
+            if (Segments.Last().Kind == ODataSegmentKind.DollarCount)
+            {
+                return ODataPathKind.DollarCount;
+            }
+
             if (Segments.Any(c => c.Kind == ODataSegmentKind.StreamProperty || c.Kind == ODataSegmentKind.StreamContent))
             {
                 return ODataPathKind.MediaEntity;

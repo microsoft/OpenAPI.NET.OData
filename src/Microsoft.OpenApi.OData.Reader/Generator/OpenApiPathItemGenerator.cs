@@ -42,7 +42,14 @@ namespace Microsoft.OpenApi.OData.Generator
                     continue;
                 }
 
-                pathItems.Add(path.GetPathItemName(settings), handler.CreatePathItem(context, path));
+                if (path.PathTemplate != null)
+                {
+                    pathItems.Add(path.PathTemplate, handler.CreatePathItem(context, path));
+                }
+                else
+                {
+                    pathItems.Add(path.GetPathItemName(settings), handler.CreatePathItem(context, path));
+                }
             }
 
             if (settings.ShowRootPath)
