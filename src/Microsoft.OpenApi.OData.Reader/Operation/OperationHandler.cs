@@ -186,22 +186,36 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             foreach (var param in customParameters)
             {
+                string documentationUrl = null;
+                string paramDescription;
+
+                if (param.DocumentationURL != null)
+                {
+                    documentationUrl = $" Documentation URL: {param.DocumentationURL}";
+                }
+
+                // DocumentationURL value is to be appended to
+                // the parameter Description property
+                if (param.Description == null)
+                {
+                    paramDescription = documentationUrl?.Remove(0, 1);
+                }
+                else
+                {
+                    paramDescription = param.Description + documentationUrl;
+                }
+
                 OpenApiParameter parameter = new OpenApiParameter
                 {
                     In = location,
                     Name = param.Name,
-                    Description = param.Description,
+                    Description = paramDescription,
                     Schema = new OpenApiSchema
                     {
                         Type = "string"
                     },
                     Required = param.Required ?? false
                 };
-
-                if (param.DocumentationURL != null)
-                {
-                    parameter.Example = new OpenApiString(param.DocumentationURL ?? "N/A");
-                }
 
                 if (param.ExampleValues != null)
                 {
