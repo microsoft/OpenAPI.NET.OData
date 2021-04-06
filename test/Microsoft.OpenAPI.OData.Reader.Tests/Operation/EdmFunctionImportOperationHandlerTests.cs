@@ -173,7 +173,31 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           <PropertyValue Property=""Name"" String=""myhead1"" />
           <PropertyValue Property=""Required"" Bool=""true"" />
         </Record>
-      </Collection>
+        <Record>
+          <PropertyValue Property=""Name"" String=""myhead2"" />
+          <PropertyValue Property = ""Description"" String = ""Indicates the requested consistency level."" />
+          <PropertyValue Property = ""Required"" Bool = ""false"" />
+        </Record>
+        <Record>
+          <PropertyValue Property=""Name"" String=""myhead3"" />
+          <PropertyValue Property = ""DocumentationURL"" String = ""https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"" />
+          <PropertyValue Property = ""Required"" Bool = ""false"" />
+        </Record>
+        <Record>
+          <PropertyValue Property=""Name"" String=""myhead4"" />
+          <PropertyValue Property = ""Description"" String = ""Indicates the requested consistency level."" />
+          <PropertyValue Property = ""DocumentationURL"" String = ""https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"" />
+          <PropertyValue Property = ""Required"" Bool = ""false"" />
+          <PropertyValue Property = ""ExampleValues"" >
+            <Collection>
+              <Record>
+                 <PropertyValue Property = ""Value"" String = ""eventual"" />
+                 <PropertyValue Property = ""Description"" String = ""$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'."" />
+                 </Record>
+            </Collection>
+          </PropertyValue>
+        </Record>
+       </Collection>
     </PropertyValue>
     <PropertyValue Property=""Permissions"">
       <Collection>
@@ -262,6 +286,47 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       }
     }
 ".ChangeLineBreaks(), json);
+
+                Assert.Contains(@"
+    {
+      ""name"": ""myhead2"",
+      ""in"": ""header"",
+      ""description"": ""Indicates the requested consistency level."",
+      ""schema"": {
+        ""type"": ""string""
+      }
+    }
+".ChangeLineBreaks(), json);
+
+                Assert.Contains(@"
+    {
+      ""name"": ""myhead3"",
+      ""in"": ""header"",
+      ""description"": ""Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"",
+      ""schema"": {
+        ""type"": ""string""
+      }
+    }
+".ChangeLineBreaks(), json);
+
+                Assert.Contains(@"
+    {
+      ""name"": ""myhead4"",
+      ""in"": ""header"",
+      ""description"": ""Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"",
+      ""schema"": {
+        ""type"": ""string""
+      },
+      ""examples"": {
+        ""example-1"": {
+          ""description"": ""$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'."",
+          ""value"": ""eventual""
+        }
+      }
+    }
+".ChangeLineBreaks(), json);
+
+
             }
             else
             {
