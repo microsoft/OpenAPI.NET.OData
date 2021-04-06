@@ -175,24 +175,24 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         </Record>
         <Record>
           <PropertyValue Property=""Name"" String=""myhead2"" />
-          <PropertyValue Property = ""Description"" String = ""Indicates the requested consistency level."" />
+          <PropertyValue Property = ""Description"" String = ""This is the description for myhead2."" />
           <PropertyValue Property = ""Required"" Bool = ""false"" />
         </Record>
         <Record>
           <PropertyValue Property=""Name"" String=""myhead3"" />
-          <PropertyValue Property = ""DocumentationURL"" String = ""https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"" />
+          <PropertyValue Property = ""DocumentationURL"" String = ""https://foo.bar.com/myhead3"" />
           <PropertyValue Property = ""Required"" Bool = ""false"" />
         </Record>
         <Record>
           <PropertyValue Property=""Name"" String=""myhead4"" />
-          <PropertyValue Property = ""Description"" String = ""Indicates the requested consistency level."" />
-          <PropertyValue Property = ""DocumentationURL"" String = ""https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"" />
+          <PropertyValue Property = ""Description"" String = ""This is the description for myhead4."" />
+          <PropertyValue Property = ""DocumentationURL"" String = ""https://foo.bar.com/myhead4"" />
           <PropertyValue Property = ""Required"" Bool = ""false"" />
           <PropertyValue Property = ""ExampleValues"" >
             <Collection>
               <Record>
-                 <PropertyValue Property = ""Value"" String = ""eventual"" />
-                 <PropertyValue Property = ""Description"" String = ""$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'."" />
+                 <PropertyValue Property = ""Value"" String = ""sample"" />
+                 <PropertyValue Property = ""Description"" String = ""The sample description."" />
                  </Record>
             </Collection>
           </PropertyValue>
@@ -287,45 +287,47 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     }
 ".ChangeLineBreaks(), json);
 
+                // Assert with no DocumentationURL value
                 Assert.Contains(@"
     {
       ""name"": ""myhead2"",
       ""in"": ""header"",
-      ""description"": ""Indicates the requested consistency level."",
+      ""description"": ""This is the description for myhead2."",
       ""schema"": {
         ""type"": ""string""
       }
     }
 ".ChangeLineBreaks(), json);
 
+                // Assert with no Description value
                 Assert.Contains(@"
     {
       ""name"": ""myhead3"",
       ""in"": ""header"",
-      ""description"": ""Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"",
+      ""description"": ""Documentation URL: https://foo.bar.com/myhead3"",
       ""schema"": {
         ""type"": ""string""
       }
     }
 ".ChangeLineBreaks(), json);
 
+                // Assert with both DocumentationURL and Description values
                 Assert.Contains(@"
     {
       ""name"": ""myhead4"",
       ""in"": ""header"",
-      ""description"": ""Indicates the requested consistency level. Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-graph-advanced-queries-for-directory-objects-are-now-generally-available/"",
+      ""description"": ""This is the description for myhead4. Documentation URL: https://foo.bar.com/myhead4"",
       ""schema"": {
         ""type"": ""string""
       },
       ""examples"": {
         ""example-1"": {
-          ""description"": ""$search and $count queries require the client to set the ConsistencyLevel HTTP header to 'eventual'."",
-          ""value"": ""eventual""
+          ""description"": ""The sample description."",
+          ""value"": ""sample""
         }
       }
     }
 ".ChangeLineBreaks(), json);
-
 
             }
             else
