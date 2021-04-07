@@ -3250,7 +3250,7 @@
                 <Property Name="specialFolder" Type="microsoft.graph.specialFolder" />
                 <Property Name="video" Type="microsoft.graph.video" />
                 <Property Name="webDavUrl" Type="Edm.String" Unicode="false" />
-                <NavigationProperty Name="workbook" Type="microsoft.graph.workbook" ContainsTarget="true" />
+                <NavigationProperty Name="workbook" Type="microsoft.graph.workbook" />
                 <NavigationProperty Name="activities" Type="Collection(microsoft.graph.itemActivity)" ContainsTarget="true" />
                 <NavigationProperty Name="children" Type="Collection(microsoft.graph.driveItem)" ContainsTarget="true" />
                 <NavigationProperty Name="listItem" Type="microsoft.graph.listItem" ContainsTarget="true" />
