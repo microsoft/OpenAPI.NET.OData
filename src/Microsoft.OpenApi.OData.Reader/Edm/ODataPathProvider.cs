@@ -289,6 +289,9 @@ namespace Microsoft.OpenApi.OData.Edm
                     }
                 }
 
+                // Get possible navigation property stream paths
+                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
                 if (shouldExpand)
                 {
                     // expand to sub navigation properties
@@ -300,9 +303,6 @@ namespace Microsoft.OpenApi.OData.Edm
                         }
                     }
                 }
-
-                // Get possible navigation property stream paths
-                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
 
                 if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                 {
@@ -333,9 +333,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            // check whether the navigation type used to define a navigation source.
-            // if so, not expand it.
-            return !_allNavigationSources.ContainsKey(navEntityType);
+            // Expand containment navigation property.
+            return true;
         }
 
         /// <summary>
