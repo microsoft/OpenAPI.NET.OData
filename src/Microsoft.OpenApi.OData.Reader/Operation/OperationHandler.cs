@@ -196,14 +196,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 // DocumentationURL value is to be appended to
                 // the parameter Description property
-                if (param.Description == null)
-                {
-                    paramDescription = documentationUrl?.Remove(0, 1);
-                }
-                else
-                {
-                    paramDescription = param.Description + documentationUrl;
-                }
+               string paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
 
                 OpenApiParameter parameter = new OpenApiParameter
                 {
