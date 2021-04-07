@@ -187,8 +187,6 @@ namespace Microsoft.OpenApi.OData.Operation
             foreach (var param in customParameters)
             {
                 string documentationUrl = null;
-                string paramDescription;
-
                 if (param.DocumentationURL != null)
                 {
                     documentationUrl = $" Documentation URL: {param.DocumentationURL}";
@@ -196,7 +194,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 // DocumentationURL value is to be appended to
                 // the parameter Description property
-               string paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
+                string paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
 
                 OpenApiParameter parameter = new OpenApiParameter
                 {
