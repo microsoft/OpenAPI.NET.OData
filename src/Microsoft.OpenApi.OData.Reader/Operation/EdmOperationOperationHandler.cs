@@ -66,7 +66,13 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string operationId = String.Join(".", Path.Segments.Where(s => !(s is ODataKeySegment)).Select(s => s.Identifier));
+                // When the key segment is available, its EntityType name will be used
+                // in the operationId to avoid potential duplicates in entity vs entityset functions/actions
+                string operationId = string.Join(".",
+                    Path.Segments.Take(1).Select(s => s.Identifier)
+                    .Union(Path.Segments.Where(s => s is ODataKeySegment).Select(s => s.EntityType.Name))
+                    .Union(Path.Segments.Where(s => s is not ODataKeySegment).Select(s => s.Identifier).Skip(1))); // 1st segment qualifies too, skip it
+
                 if (EdmOperation.IsAction())
                 {
                     operation.OperationId = operationId;
