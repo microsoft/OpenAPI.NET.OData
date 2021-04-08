@@ -1564,7 +1564,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Trip.Trips.GetInvolvedPeople",
+        "operationId": "Me.Trips.Trip.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -3161,7 +3161,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Person.Trip.Trips.GetInvolvedPeople",
+        "operationId": "NewComePeople.Person.Trips.Trip.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -4790,7 +4790,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Person.Trip.Trips.GetInvolvedPeople",
+        "operationId": "People.Person.Trips.Trip.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],

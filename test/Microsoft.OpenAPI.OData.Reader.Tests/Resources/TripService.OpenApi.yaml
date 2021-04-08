@@ -1184,7 +1184,7 @@ paths:
       tags:
         - Me.Functions
       summary: Invoke function GetInvolvedPeople
-      operationId: Me.Trip.Trips.GetInvolvedPeople
+      operationId: Me.Trips.Trip.GetInvolvedPeople
       parameters:
         - name: TripId
           in: path
@@ -2411,7 +2411,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function GetInvolvedPeople
-      operationId: NewComePeople.Person.Trip.Trips.GetInvolvedPeople
+      operationId: NewComePeople.Person.Trips.Trip.GetInvolvedPeople
       parameters:
         - name: UserName
           in: path
@@ -3666,7 +3666,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function GetInvolvedPeople
-      operationId: People.Person.Trip.Trips.GetInvolvedPeople
+      operationId: People.Person.Trips.Trip.GetInvolvedPeople
       parameters:
         - name: UserName
           in: path
