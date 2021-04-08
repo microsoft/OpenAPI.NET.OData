@@ -1762,7 +1762,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Trips.GetInvolvedPeople",
+        "operationId": "Me.Trip.Trips.GetInvolvedPeople",
         "parameters": [
           {
             "name": "TripId",
@@ -2913,7 +2913,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.GetFavoriteAirline",
+        "operationId": "NewComePeople.Person.GetFavoriteAirline",
         "parameters": [
           {
             "name": "UserName",
@@ -2955,7 +2955,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.GetFriendsTrips",
+        "operationId": "NewComePeople.Person.GetFriendsTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -3009,7 +3009,7 @@
           "NewComePeople.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
-        "operationId": "NewComePeople.GetPeersForTrip",
+        "operationId": "NewComePeople.Person.GetPeersForTrip",
         "parameters": [
           {
             "name": "UserName",
@@ -3076,7 +3076,7 @@
           "NewComePeople.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "NewComePeople.ShareTrip",
+        "operationId": "NewComePeople.Person.ShareTrip",
         "parameters": [
           {
             "name": "UserName",
@@ -3128,7 +3128,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.UpdatePersonLastName",
+        "operationId": "NewComePeople.Person.UpdatePersonLastName",
         "parameters": [
           {
             "name": "UserName",
@@ -3551,7 +3551,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Trips.GetInvolvedPeople",
+        "operationId": "NewComePeople.Person.Trip.Trips.GetInvolvedPeople",
         "parameters": [
           {
             "name": "UserName",
@@ -4742,7 +4742,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.GetFavoriteAirline",
+        "operationId": "People.Person.GetFavoriteAirline",
         "parameters": [
           {
             "name": "UserName",
@@ -4784,7 +4784,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.GetFriendsTrips",
+        "operationId": "People.Person.GetFriendsTrips",
         "parameters": [
           {
             "name": "UserName",
@@ -4838,7 +4838,7 @@
           "People.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
-        "operationId": "People.GetPeersForTrip",
+        "operationId": "People.Person.GetPeersForTrip",
         "parameters": [
           {
             "name": "UserName",
@@ -4905,7 +4905,7 @@
           "People.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "People.ShareTrip",
+        "operationId": "People.Person.ShareTrip",
         "parameters": [
           {
             "name": "UserName",
@@ -4957,7 +4957,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.UpdatePersonLastName",
+        "operationId": "People.Person.UpdatePersonLastName",
         "parameters": [
           {
             "name": "UserName",
@@ -5380,7 +5380,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Trips.GetInvolvedPeople",
+        "operationId": "People.Person.Trip.Trips.GetInvolvedPeople",
         "parameters": [
           {
             "name": "UserName",
