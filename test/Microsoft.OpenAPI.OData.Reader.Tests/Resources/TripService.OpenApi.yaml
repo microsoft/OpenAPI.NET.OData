@@ -1184,7 +1184,7 @@ paths:
       tags:
         - Me.Functions
       summary: Invoke function GetInvolvedPeople
-      operationId: Me.Trips.GetInvolvedPeople
+      operationId: Me.Trips.Trip.GetInvolvedPeople
       parameters:
         - name: TripId
           in: path
@@ -1980,7 +1980,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function GetFavoriteAirline
-      operationId: NewComePeople.GetFavoriteAirline
+      operationId: NewComePeople.Person.GetFavoriteAirline
       parameters:
         - name: UserName
           in: path
@@ -2006,7 +2006,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function GetFriendsTrips
-      operationId: NewComePeople.GetFriendsTrips
+      operationId: NewComePeople.Person.GetFriendsTrips
       parameters:
         - name: UserName
           in: path
@@ -2040,7 +2040,7 @@ paths:
       tags:
         - NewComePeople.Actions
       summary: Invoke action GetPeersForTrip
-      operationId: NewComePeople.GetPeersForTrip
+      operationId: NewComePeople.Person.GetPeersForTrip
       parameters:
         - name: UserName
           in: path
@@ -2083,7 +2083,7 @@ paths:
       tags:
         - NewComePeople.Actions
       summary: Invoke action ShareTrip
-      operationId: NewComePeople.ShareTrip
+      operationId: NewComePeople.Person.ShareTrip
       parameters:
         - name: UserName
           in: path
@@ -2118,7 +2118,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function UpdatePersonLastName
-      operationId: NewComePeople.UpdatePersonLastName
+      operationId: NewComePeople.Person.UpdatePersonLastName
       parameters:
         - name: UserName
           in: path
@@ -2411,7 +2411,7 @@ paths:
       tags:
         - NewComePeople.Functions
       summary: Invoke function GetInvolvedPeople
-      operationId: NewComePeople.Trips.GetInvolvedPeople
+      operationId: NewComePeople.Person.Trips.Trip.GetInvolvedPeople
       parameters:
         - name: UserName
           in: path
@@ -3235,7 +3235,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function GetFavoriteAirline
-      operationId: People.GetFavoriteAirline
+      operationId: People.Person.GetFavoriteAirline
       parameters:
         - name: UserName
           in: path
@@ -3261,7 +3261,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function GetFriendsTrips
-      operationId: People.GetFriendsTrips
+      operationId: People.Person.GetFriendsTrips
       parameters:
         - name: UserName
           in: path
@@ -3295,7 +3295,7 @@ paths:
       tags:
         - People.Actions
       summary: Invoke action GetPeersForTrip
-      operationId: People.GetPeersForTrip
+      operationId: People.Person.GetPeersForTrip
       parameters:
         - name: UserName
           in: path
@@ -3338,7 +3338,7 @@ paths:
       tags:
         - People.Actions
       summary: Invoke action ShareTrip
-      operationId: People.ShareTrip
+      operationId: People.Person.ShareTrip
       parameters:
         - name: UserName
           in: path
@@ -3373,7 +3373,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function UpdatePersonLastName
-      operationId: People.UpdatePersonLastName
+      operationId: People.Person.UpdatePersonLastName
       parameters:
         - name: UserName
           in: path
@@ -3666,7 +3666,7 @@ paths:
       tags:
         - People.Functions
       summary: Invoke function GetInvolvedPeople
-      operationId: People.Trips.GetInvolvedPeople
+      operationId: People.Person.Trips.Trip.GetInvolvedPeople
       parameters:
         - name: UserName
           in: path
