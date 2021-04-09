@@ -3,10 +3,8 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -66,7 +64,26 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string operationId = String.Join(".", Path.Segments.Where(s => !(s is ODataKeySegment)).Select(s => s.Identifier));
+                // When the key segment is available,
+                // its EntityType name will be used
+                // in the operationId to avoid potential
+                // duplicates in entity vs entityset functions/actions
+
+                List<string> identifiers = new();
+                foreach (ODataSegment segment in Path.Segments)
+                {
+                    if (segment is not ODataKeySegment)
+                    {
+                        identifiers.Add(segment.Identifier);
+                    }
+                    else
+                    {
+                        identifiers.Add(segment.EntityType.Name);
+                    }
+                }
+
+                string operationId = string.Join(".", identifiers);
+
                 if (EdmOperation.IsAction())
                 {
                     operation.OperationId = operationId;
