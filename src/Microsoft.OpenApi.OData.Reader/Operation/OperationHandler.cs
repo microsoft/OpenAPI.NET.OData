@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -196,7 +196,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 // the parameter Description property
                 string paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
 
-                OpenApiParameter parameter = new OpenApiParameter
+                OpenApiParameter parameter = new()
                 {
                     In = location,
                     Name = param.Name,
