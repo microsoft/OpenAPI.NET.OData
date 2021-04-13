@@ -55,6 +55,11 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem item)
         {
+            if (!Context.Settings.ShowMsDosGroupPath)
+            {
+                return;
+            }
+
             ODataNavigationSourceSegment navigationSourceSegment = Path.FirstSegment as ODataNavigationSourceSegment;
             IEdmNavigationSource currentNavSource = navigationSourceSegment.NavigationSource;
 
