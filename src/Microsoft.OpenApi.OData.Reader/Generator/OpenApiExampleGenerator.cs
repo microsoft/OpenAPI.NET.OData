@@ -175,8 +175,11 @@ namespace Microsoft.OpenApi.OData.Generator
                     array.Add(GetTypeNameForExample(elementType));
                     return array;
 
-                case EdmTypeKind.Untyped:
                 case EdmTypeKind.TypeDefinition:
+                    var typedef = edmTypeReference.AsTypeDefinition().TypeDefinition();
+                    return GetTypeNameForExample(new EdmPrimitiveTypeReference(typedef.UnderlyingType, edmTypeReference.IsNullable));
+
+                case EdmTypeKind.Untyped:
                 case EdmTypeKind.EntityReference:
                 default:
                     throw new OpenApiException("Not support for the type kind " + edmTypeReference.TypeKind());
