@@ -18,6 +18,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
 using System.Net;
 using System.Xml;
+using System.Threading.Tasks;
 
 namespace OoasGui
 {
@@ -50,28 +51,28 @@ namespace OoasGui
             oasRichTextBox.WordWrap = false;
         }
 
-        private void jsonRadioBtn_CheckedChanged(object sender, EventArgs e)
+        private async void jsonRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             Format = OpenApiFormat.Json;
-            Convert();
+            await Convert();
         }
 
-        private void yamlRadioBtn_CheckedChanged(object sender, EventArgs e)
+        private async void yamlRadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             Format = OpenApiFormat.Yaml;
-            Convert();
+            await Convert();
         }
 
-        private void v2RadioBtn_CheckedChanged(object sender, EventArgs e)
+        private async void v2RadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             Settings.OpenApiSpecVersion = Version = OpenApiSpecVersion.OpenApi2_0;
-            Convert();
+            await Convert();
         }
 
-        private void v3RadioBtn_CheckedChanged(object sender, EventArgs e)
+        private async void v3RadioBtn_CheckedChanged(object sender, EventArgs e)
         {
             Settings.OpenApiSpecVersion = Version = OpenApiSpecVersion.OpenApi3_0;
-            Convert();
+            await Convert();
         }
 
         private void fromFileRadioBtn_CheckedChanged(object sender, EventArgs e)
@@ -91,7 +92,7 @@ namespace OoasGui
             loadBtn.Enabled = true;
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private async void btnBrowse_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSDL files (*.xml)|*.xml|All files (*.*)|*.*";
@@ -106,7 +107,7 @@ namespace OoasGui
                     fileTextBox.Text = openFileDialog.FileName;
                     csdlRichTextBox.Text = text;
                     Settings.ServiceRoot = new Uri(openFileDialog.FileName);
-                    Convert();
+                    await Convert();
                 }
                 catch (Exception ex)
                 {
@@ -119,7 +120,7 @@ namespace OoasGui
             }
         }
 
-        private void loadBtn_Click(object sender, EventArgs e)
+        private async void loadBtn_Click(object sender, EventArgs e)
         {
             string url = urlTextBox.Text;
 
@@ -147,7 +148,7 @@ namespace OoasGui
                 LoadEdm(url, csdl);
                 csdlRichTextBox.Text = FormatXml(csdl);
                 Settings.ServiceRoot = requestUri;
-                Convert();
+                await Convert();
             }
             catch(Exception ex)
             {
@@ -163,6 +164,7 @@ namespace OoasGui
         {
             IEdmModel model;
             IEnumerable<EdmError> errors;
+
             if (!CsdlReader.TryParse(XElement.Parse(text).CreateReader(), out model, out errors))
             {
                 StringBuilder sb = new StringBuilder();
@@ -178,19 +180,24 @@ namespace OoasGui
             EdmModel = model;
         }
 
-        private void Convert()
+        private async Task Convert()
         {
             if (EdmModel == null)
             {
                 return;
             }
 
-            OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
-            MemoryStream stream = new MemoryStream();
-            document.Serialize(stream, Version, Format);
-            stream.Flush();
-            stream.Position = 0;
-            string openApi = new StreamReader(stream).ReadToEnd();
+            string openApi = null;
+            await Task.Run(() =>
+            {
+                OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
+                MemoryStream stream = new MemoryStream();
+                document.Serialize(stream, Version, Format);
+                stream.Flush();
+                stream.Position = 0;
+                openApi = new StreamReader(stream).ReadToEnd();
+            });
+
             oasRichTextBox.Text = openApi;
         }
 
@@ -211,7 +218,7 @@ namespace OoasGui
             return sw.ToString();
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private async void saveBtn_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (Format == OpenApiFormat.Json)
@@ -220,7 +227,7 @@ namespace OoasGui
             }
             else
             {
-                saveFileDialog.Filter = "YAML files (*.ymal)|*.json|All files (*.*)|*.*";
+                saveFileDialog.Filter = "YAML files (*.yaml)|*.yaml|All files (*.*)|*.*";
             }
 
             saveFileDialog.FilterIndex = 2;
@@ -231,31 +238,34 @@ namespace OoasGui
                 string output = saveFileDialog.FileName;
                 using (FileStream fs = File.Create(output))
                 {
-                    OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
-                    document.Serialize(fs, Version, Format);
-                    fs.Flush();
+                    await Task.Run(() =>
+                    {
+                        OpenApiDocument document = EdmModel.ConvertToOpenApi(Settings);
+                        document.Serialize(fs, Version, Format);
+                        fs.Flush();
+                    });
                 }
             }
 
             MessageBox.Show("Saved successful!");
         }
 
-        private void operationIdcheckBox_CheckedChanged(object sender, EventArgs e)
+        private async void operationIdcheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Settings.EnableOperationId = !Settings.EnableOperationId;
-            Convert();
+            await Convert ();
         }
 
-        private void VerifyEdmModelcheckBox_CheckedChanged(object sender, EventArgs e)
+        private async void VerifyEdmModelcheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Settings.VerifyEdmModel = !Settings.VerifyEdmModel;
-            Convert();
+            await Convert();
         }
 
-        private void NavPathcheckBox_CheckedChanged(object sender, EventArgs e)
+        private async void NavPathcheckBox_CheckedChanged(object sender, EventArgs e)
         {
             Settings.EnableNavigationPropertyPath = !Settings.EnableNavigationPropertyPath;
-            Convert();
+            await Convert();
         }
     }
 }
