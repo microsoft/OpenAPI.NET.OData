@@ -61,6 +61,9 @@ namespace Microsoft.OpenApi.OData.Operation
             // Summary
             operation.Summary = "Invoke " + (EdmOperation.IsAction() ? "action " : "function ") + EdmOperation.Name;
 
+            // Description
+            operation.Description = Context.Model.GetDescriptionAnnotation(EdmOperation);
+
             // OperationId
             if (Context.Settings.EnableOperationId)
             {

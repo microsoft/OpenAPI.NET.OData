@@ -74,6 +74,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal($"Invoke function {functionName}", operation.Summary);
+            Assert.Equal("Collection of contract attachments.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal($"{entitySetName}.Functions", tag.Name);

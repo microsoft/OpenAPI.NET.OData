@@ -34,6 +34,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Invoke functionImport GetPersonWithMostFriends", operation.Summary);
+            Assert.Equal("The person with most friends.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People", tag.Name);
