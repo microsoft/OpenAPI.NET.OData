@@ -59,6 +59,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(post);
             Assert.Equal("Add new entity to " + entitySet.Name, post.Summary);
+            Assert.Equal("Collection of business customers.", post.Description);
             Assert.NotNull(post.Tags);
             var tag = Assert.Single(post.Tags);
             Assert.Equal("Customers.Customer", tag.Name);
@@ -240,7 +241,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""Default"">
-         <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
+        <EntitySet Name=""Customers"" EntityType=""NS.Customer"">
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""Collection of business customers."" />
+        </EntitySet>
       </EntityContainer>
       <Annotations Target=""NS.Customer"">
        {1}
