@@ -29,13 +29,11 @@ namespace Microsoft.OpenApi.OData.Operation
             if (IsNavigationPropertyPath)
             {
                 operation.Summary = $"Get media content for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}";
-               // description = Context.Model.GetDescriptionAnnotation(NavigationProperty);
             }
             else
             {
                 IEdmEntityType entityType = EntitySet.EntityType();
                 operation.Summary = $"Get media content for {entityType.Name} from {EntitySet.Name}";
-               // description = Context.Model.GetDescriptionAnnotation(entityType);
             }
 
             // Description

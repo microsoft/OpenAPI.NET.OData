@@ -32,8 +32,8 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                IEdmEntityType entityType = EntitySet.EntityType();
-                operation.Summary = $"Update media content for {entityType.Name} in {EntitySet.Name}";
+                string typeName = EntitySet.EntityType().Name;
+                operation.Summary = $"Update media content for {typeName} in {EntitySet.Name}";
             }
 
             // Description
