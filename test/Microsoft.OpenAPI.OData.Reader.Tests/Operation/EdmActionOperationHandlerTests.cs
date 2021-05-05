@@ -37,6 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Invoke action ShareTrip", operation.Summary);
+            Assert.Equal("Details of the shared trip.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People.Actions", tag.Name);

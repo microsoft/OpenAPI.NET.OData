@@ -151,28 +151,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 Format = "binary"
             };
 
-            IEdmVocabularyAnnotatable annotatableElement = null;
-            IEdmEntityType entityType = EntitySet != null ? EntitySet.EntityType() : Singleton.EntityType();
-            ODataSegment lastSegmentStreamProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
-
-            if (lastSegmentStreamProp != null)
-            {
-                // Get the annotatable stream property
-                // The stream property can either be a structural type or navigation type property
-                IEdmProperty property = GetStructuralProperty(entityType, lastSegmentStreamProp.Identifier);
-                if (property == null)
-                {
-                    property = GetNavigationProperty(entityType, lastSegmentStreamProp.Identifier);
-                }
-
-                annotatableElement = property;
-            }
-            else
-            {
-                annotatableElement = entityType;
-            }
-
             // Fetch the respective AcceptableMediaTypes
+            IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
             IEnumerable<string> mediaTypes = null;
             if (annotatableElement != null)
             {
@@ -197,6 +177,39 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             return content;
+        }
+
+        /// <summary>
+        /// Determines the annotatable element from the segments of a path.
+        /// </summary>
+        /// <returns>The annotable element.</returns>
+        protected IEdmVocabularyAnnotatable GetAnnotatableElement()
+        {
+            IEdmEntityType entityType = EntitySet != null ? EntitySet.EntityType() : Singleton.EntityType();
+            ODataSegment lastSegmentProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
+
+            if (lastSegmentProp == null)
+            {
+                int pathCount = Path.Segments.Count;
+
+                // Retrieve the segment before the stream content segment
+                lastSegmentProp = Path.Segments.ElementAtOrDefault(pathCount - 2);
+
+                if (lastSegmentProp == null)
+                {
+                    return null;
+                }
+            }
+
+            // Get the annotatable stream property
+            // The stream property can either be a structural type or navigation type property
+            IEdmProperty property = GetStructuralProperty(entityType, lastSegmentProp.Identifier);
+            if (property == null)
+            {
+                property = GetNavigationProperty(entityType, lastSegmentProp.Identifier);
+            }
+
+            return property;
         }
 
         private IEdmStructuralProperty GetStructuralProperty(IEdmEntityType entityType, string identifier)

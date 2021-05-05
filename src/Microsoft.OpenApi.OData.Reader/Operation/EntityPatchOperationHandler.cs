@@ -30,14 +30,17 @@ namespace Microsoft.OpenApi.OData.Operation
             // Summary
             operation.Summary = "Update entity in " + EntitySet.Name;
 
+            IEdmEntityType entityType = EntitySet.EntityType();
+
+            // Description
+            operation.Description = Context.Model.GetDescriptionAnnotation(entityType);
+
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = EntitySet.EntityType().Name;
+                string typeName = entityType.Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
             }
-
-            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>

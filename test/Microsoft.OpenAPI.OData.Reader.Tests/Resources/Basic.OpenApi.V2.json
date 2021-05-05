@@ -599,6 +599,7 @@
           "People.Person"
         ],
         "summary": "Get entities from People",
+        "description": "People's description.",
         "operationId": "People.Person.ListPerson",
         "produces": [
           "application/json"
@@ -692,6 +693,7 @@
           "People.Person"
         ],
         "summary": "Add new entity to People",
+        "description": "People's description.",
         "operationId": "People.Person.CreatePerson",
         "consumes": [
           "application/json"

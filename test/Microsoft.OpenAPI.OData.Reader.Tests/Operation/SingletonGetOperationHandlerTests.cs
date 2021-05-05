@@ -42,6 +42,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(get);
             Assert.Equal("Get Me", get.Summary);
+            Assert.Equal("My signed-in instance.", get.Description);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
             Assert.Equal("Me.Customer", tag.Name);
@@ -249,7 +250,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""Default"">
-         <Singleton Name=""Me"" Type=""NS.Customer"" />
+        <Singleton Name=""Me"" Type=""NS.Customer"">
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""My signed-in instance."" />
+        </Singleton>
       </EntityContainer>
       <Annotations Target=""NS.Default/Me"">
         {0}
