@@ -18,8 +18,12 @@
         <Property Name="FavoriteFeature" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature" Nullable="false" />
         <Property Name="Features" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature)" Nullable="false" />
         <NavigationProperty Name="Friends" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" />
-        <NavigationProperty Name="BestFriend" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
-        <NavigationProperty Name="Trips" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" ContainsTarget="true"/>
+        <NavigationProperty Name="BestFriend" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
+          <Annotation Term="Org.OData.Core.V1.Description" String="The best friend." />
+        </NavigationProperty>
+        <NavigationProperty Name="Trips" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" ContainsTarget="true">
+          <Annotation Term="Org.OData.Core.V1.Description" String="Collection of trips." />
+        </NavigationProperty>
       </EntityType>
       <EntityType Name="Airline">
         <Key>
@@ -137,6 +141,7 @@
         <ReturnType Type="Edm.Boolean" Nullable="false" />
       </Function>
       <Action Name="ShareTrip" IsBound="true">
+        <Annotation Term="Org.OData.Core.V1.Description" String="Details of the shared trip." />
         <Parameter Name="personInstance" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
         <Parameter Name="tripId" Type="Edm.Int32" Nullable="false" />
@@ -164,9 +169,13 @@
         <EntitySet Name="Airports" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
         <EntitySet Name="NewComePeople" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <Singleton Name="Me" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
-        <FunctionImport Name="GetPersonWithMostFriends" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPersonWithMostFriends" EntitySet="People" />
+        <FunctionImport Name="GetPersonWithMostFriends" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPersonWithMostFriends" EntitySet="People">
+          <Annotation Term="Org.OData.Core.V1.Description" String="The person with most friends." />
+        </FunctionImport>
         <FunctionImport Name="GetNearestAirport" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetNearestAirport" EntitySet="Airports" />
-        <ActionImport Name="ResetDataSource" Action="Microsoft.OData.Service.Sample.TrippinInMemory.Models.ResetDataSource" />
+        <ActionImport Name="ResetDataSource" Action="Microsoft.OData.Service.Sample.TrippinInMemory.Models.ResetDataSource">
+          <Annotation Term="Org.OData.Core.V1.Description" String="Resets the data source to default values." />
+        </ActionImport>
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

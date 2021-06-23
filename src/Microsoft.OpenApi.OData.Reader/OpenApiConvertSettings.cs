@@ -174,6 +174,11 @@ namespace Microsoft.OpenApi.OData
         public bool ShowRootPath { get; set; } = false;
 
         /// <summary>
+        /// Gets/sets a value indicating whether or not to show the group path extension.
+        /// </summary>
+        public bool ShowMsDosGroupPath { get; set; } = true;
+
+        /// <summary>
         /// Gets/sets a the path provider.
         /// </summary>
         public IODataPathProvider PathProvider { get; set; }

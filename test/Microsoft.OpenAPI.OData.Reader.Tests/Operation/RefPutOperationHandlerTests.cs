@@ -43,6 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Update the ref of navigation property BestFriend in People", operation.Summary);
+            Assert.Equal("The best friend.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People.Person", tag.Name);

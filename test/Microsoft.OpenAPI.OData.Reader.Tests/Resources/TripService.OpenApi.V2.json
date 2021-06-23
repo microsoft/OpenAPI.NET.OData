@@ -571,6 +571,7 @@
           "People"
         ],
         "summary": "Invoke functionImport GetPersonWithMostFriends",
+        "description": "The person with most friends.",
         "operationId": "FunctionImport.GetPersonWithMostFriends",
         "produces": [
           "application/json"
@@ -691,6 +692,7 @@
           "Me.Person"
         ],
         "summary": "Get BestFriend from Me",
+        "description": "The best friend.",
         "operationId": "Me.GetBestFriend",
         "produces": [
           "application/json"
@@ -757,6 +759,7 @@
           "Me.Person"
         ],
         "summary": "Get ref of BestFriend from Me",
+        "description": "The best friend.",
         "operationId": "Me.GetRefBestFriend",
         "produces": [
           "application/json"
@@ -779,6 +782,7 @@
           "Me.Person"
         ],
         "summary": "Update the ref of navigation property BestFriend in Me",
+        "description": "The best friend.",
         "operationId": "Me.UpdateRefBestFriend",
         "consumes": [
           "application/json"
@@ -812,6 +816,7 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property BestFriend for Me",
+        "description": "The best friend.",
         "operationId": "Me.DeleteRefBestFriend",
         "parameters": [
           {
@@ -1195,6 +1200,7 @@
           "Me.Actions"
         ],
         "summary": "Invoke action ShareTrip",
+        "description": "Details of the shared trip.",
         "operationId": "Me.ShareTrip",
         "consumes": [
           "application/json"
@@ -1272,6 +1278,7 @@
           "Me.Trip"
         ],
         "summary": "Get Trips from Me",
+        "description": "Collection of trips.",
         "operationId": "Me.ListTrips",
         "produces": [
           "application/json"
@@ -1380,6 +1387,7 @@
           "Me.Trip"
         ],
         "summary": "Create new navigation property to Trips for Me",
+        "description": "Collection of trips.",
         "operationId": "Me.CreateTrips",
         "consumes": [
           "application/json"
@@ -1418,6 +1426,7 @@
           "Me.Trip"
         ],
         "summary": "Get Trips from Me",
+        "description": "Collection of trips.",
         "operationId": "Me.GetTrips",
         "produces": [
           "application/json"
@@ -1486,6 +1495,7 @@
           "Me.Trip"
         ],
         "summary": "Update the navigation property Trips in Me",
+        "description": "Collection of trips.",
         "operationId": "Me.UpdateTrips",
         "consumes": [
           "application/json"
@@ -1527,6 +1537,7 @@
           "Me.Trip"
         ],
         "summary": "Delete navigation property Trips for Me",
+        "description": "Collection of trips.",
         "operationId": "Me.DeleteTrips",
         "parameters": [
           {
@@ -1564,7 +1575,7 @@
           "Me.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "Me.Trips.GetInvolvedPeople",
+        "operationId": "Me.Trips.Trip.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -2148,6 +2159,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get BestFriend from NewComePeople",
+        "description": "The best friend.",
         "operationId": "NewComePeople.GetBestFriend",
         "produces": [
           "application/json"
@@ -2222,6 +2234,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Get ref of BestFriend from NewComePeople",
+        "description": "The best friend.",
         "operationId": "NewComePeople.GetRefBestFriend",
         "produces": [
           "application/json"
@@ -2254,6 +2267,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update the ref of navigation property BestFriend in NewComePeople",
+        "description": "The best friend.",
         "operationId": "NewComePeople.UpdateRefBestFriend",
         "consumes": [
           "application/json"
@@ -2295,6 +2309,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete ref of navigation property BestFriend for NewComePeople",
+        "description": "The best friend.",
         "operationId": "NewComePeople.DeleteRefBestFriend",
         "parameters": [
           {
@@ -2598,7 +2613,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "NewComePeople.GetFavoriteAirline",
+        "operationId": "NewComePeople.Person.GetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -2632,7 +2647,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "NewComePeople.GetFriendsTrips",
+        "operationId": "NewComePeople.Person.GetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -2676,7 +2691,7 @@
           "NewComePeople.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
-        "operationId": "NewComePeople.GetPeersForTrip",
+        "operationId": "NewComePeople.Person.GetPeersForTrip",
         "consumes": [
           "application/json"
         ],
@@ -2736,7 +2751,8 @@
           "NewComePeople.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "NewComePeople.ShareTrip",
+        "description": "Details of the shared trip.",
+        "operationId": "NewComePeople.Person.ShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -2787,7 +2803,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "NewComePeople.UpdatePersonLastName",
+        "operationId": "NewComePeople.Person.UpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -2829,6 +2845,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Get Trips from NewComePeople",
+        "description": "Collection of trips.",
         "operationId": "NewComePeople.ListTrips",
         "produces": [
           "application/json"
@@ -2945,6 +2962,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Create new navigation property to Trips for NewComePeople",
+        "description": "Collection of trips.",
         "operationId": "NewComePeople.CreateTrips",
         "consumes": [
           "application/json"
@@ -2991,6 +3009,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Get Trips from NewComePeople",
+        "description": "Collection of trips.",
         "operationId": "NewComePeople.GetTrips",
         "produces": [
           "application/json"
@@ -3067,6 +3086,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Update the navigation property Trips in NewComePeople",
+        "description": "Collection of trips.",
         "operationId": "NewComePeople.UpdateTrips",
         "consumes": [
           "application/json"
@@ -3116,6 +3136,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Delete navigation property Trips for NewComePeople",
+        "description": "Collection of trips.",
         "operationId": "NewComePeople.DeleteTrips",
         "parameters": [
           {
@@ -3161,7 +3182,7 @@
           "NewComePeople.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "NewComePeople.Trips.GetInvolvedPeople",
+        "operationId": "NewComePeople.Person.Trips.Trip.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -3777,6 +3798,7 @@
           "People.Person"
         ],
         "summary": "Get BestFriend from People",
+        "description": "The best friend.",
         "operationId": "People.GetBestFriend",
         "produces": [
           "application/json"
@@ -3851,6 +3873,7 @@
           "People.Person"
         ],
         "summary": "Get ref of BestFriend from People",
+        "description": "The best friend.",
         "operationId": "People.GetRefBestFriend",
         "produces": [
           "application/json"
@@ -3883,6 +3906,7 @@
           "People.Person"
         ],
         "summary": "Update the ref of navigation property BestFriend in People",
+        "description": "The best friend.",
         "operationId": "People.UpdateRefBestFriend",
         "consumes": [
           "application/json"
@@ -3924,6 +3948,7 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property BestFriend for People",
+        "description": "The best friend.",
         "operationId": "People.DeleteRefBestFriend",
         "parameters": [
           {
@@ -4227,7 +4252,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFavoriteAirline",
-        "operationId": "People.GetFavoriteAirline",
+        "operationId": "People.Person.GetFavoriteAirline",
         "produces": [
           "application/json"
         ],
@@ -4261,7 +4286,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetFriendsTrips",
-        "operationId": "People.GetFriendsTrips",
+        "operationId": "People.Person.GetFriendsTrips",
         "produces": [
           "application/json"
         ],
@@ -4305,7 +4330,7 @@
           "People.Actions"
         ],
         "summary": "Invoke action GetPeersForTrip",
-        "operationId": "People.GetPeersForTrip",
+        "operationId": "People.Person.GetPeersForTrip",
         "consumes": [
           "application/json"
         ],
@@ -4365,7 +4390,8 @@
           "People.Actions"
         ],
         "summary": "Invoke action ShareTrip",
-        "operationId": "People.ShareTrip",
+        "description": "Details of the shared trip.",
+        "operationId": "People.Person.ShareTrip",
         "consumes": [
           "application/json"
         ],
@@ -4416,7 +4442,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function UpdatePersonLastName",
-        "operationId": "People.UpdatePersonLastName",
+        "operationId": "People.Person.UpdatePersonLastName",
         "produces": [
           "application/json"
         ],
@@ -4458,6 +4484,7 @@
           "People.Trip"
         ],
         "summary": "Get Trips from People",
+        "description": "Collection of trips.",
         "operationId": "People.ListTrips",
         "produces": [
           "application/json"
@@ -4574,6 +4601,7 @@
           "People.Trip"
         ],
         "summary": "Create new navigation property to Trips for People",
+        "description": "Collection of trips.",
         "operationId": "People.CreateTrips",
         "consumes": [
           "application/json"
@@ -4620,6 +4648,7 @@
           "People.Trip"
         ],
         "summary": "Get Trips from People",
+        "description": "Collection of trips.",
         "operationId": "People.GetTrips",
         "produces": [
           "application/json"
@@ -4696,6 +4725,7 @@
           "People.Trip"
         ],
         "summary": "Update the navigation property Trips in People",
+        "description": "Collection of trips.",
         "operationId": "People.UpdateTrips",
         "consumes": [
           "application/json"
@@ -4745,6 +4775,7 @@
           "People.Trip"
         ],
         "summary": "Delete navigation property Trips for People",
+        "description": "Collection of trips.",
         "operationId": "People.DeleteTrips",
         "parameters": [
           {
@@ -4790,7 +4821,7 @@
           "People.Functions"
         ],
         "summary": "Invoke function GetInvolvedPeople",
-        "operationId": "People.Trips.GetInvolvedPeople",
+        "operationId": "People.Person.Trips.Trip.GetInvolvedPeople",
         "produces": [
           "application/json"
         ],
@@ -5104,6 +5135,7 @@
           "ResetDataSource"
         ],
         "summary": "Invoke actionImport ResetDataSource",
+        "description": "Resets the data source to default values.",
         "operationId": "ActionImport.ResetDataSource",
         "responses": {
           "204": {
@@ -5174,6 +5206,7 @@
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
         },
         "Trips": {
+          "description": "Collection of trips.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"

@@ -594,7 +594,7 @@
           "Documents.Actions"
         ],
         "summary": "Invoke action Upload",
-        "operationId": "Documents.Upload",
+        "operationId": "Documents.DocumentDto.Upload",
         "produces": [
           "application/json"
         ],
@@ -2381,7 +2381,7 @@
           "Tasks.Actions"
         ],
         "summary": "Invoke action Upload",
-        "operationId": "Tasks.Upload",
+        "operationId": "Tasks.DocumentDto.Upload",
         "produces": [
           "application/json"
         ],

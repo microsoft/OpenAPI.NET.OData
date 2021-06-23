@@ -74,6 +74,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal($"Invoke function {functionName}", operation.Summary);
+            Assert.Equal("Collection of contract attachments.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal($"{entitySetName}.Functions", tag.Name);
@@ -116,19 +117,25 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataKeySegment(customer),
                 new ODataOperationSegment(function));
 
+            ODataPath path2 = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataOperationSegment(function));
+
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            var operation2 = _operationHandler.CreateOperation(context, path2);
 
             // Assert
             Assert.NotNull(operation);
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.MyFunction", operation.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction", operation.OperationId);
+                Assert.Equal("Customers.MyFunction", operation2.OperationId);
             }
             else
             {
                 Assert.Null(operation.OperationId);
+                Assert.Null(operation2.OperationId);
             }
         }
 
@@ -171,7 +178,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.NS.VipCustomer.MyFunction", operation.OperationId);
+                Assert.Equal("Customers.Customer.NS.VipCustomer.MyFunction", operation.OperationId);
             }
             else
             {
@@ -222,7 +229,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.MyFunction-28ae", operation.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction-28ae", operation.OperationId);
             }
             else
             {

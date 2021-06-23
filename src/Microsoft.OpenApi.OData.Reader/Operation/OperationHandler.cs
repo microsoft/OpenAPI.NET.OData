@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -186,22 +186,27 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             foreach (var param in customParameters)
             {
-                OpenApiParameter parameter = new OpenApiParameter
+                string documentationUrl = null;
+                if (param.DocumentationURL != null)
+                {
+                    documentationUrl = $" Documentation URL: {param.DocumentationURL}";
+                }
+
+                // DocumentationURL value is to be appended to
+                // the parameter Description property
+                string paramDescription = (param.Description == null) ? documentationUrl?.Remove(0, 1) : param.Description + documentationUrl;
+
+                OpenApiParameter parameter = new()
                 {
                     In = location,
                     Name = param.Name,
-                    Description = param.Description,
+                    Description = paramDescription,
                     Schema = new OpenApiSchema
                     {
                         Type = "string"
                     },
                     Required = param.Required ?? false
                 };
-
-                if (param.DocumentationURL != null)
-                {
-                    parameter.Example = new OpenApiString(param.DocumentationURL ?? "N/A");
-                }
 
                 if (param.ExampleValues != null)
                 {

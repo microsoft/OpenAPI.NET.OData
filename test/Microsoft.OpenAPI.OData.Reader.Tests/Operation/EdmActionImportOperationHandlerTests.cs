@@ -35,6 +35,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Invoke actionImport ResetDataSource", operation.Summary);
+            Assert.Equal("Resets the data source to default values.", operation.Description);
             Assert.NotNull(operation.Tags);
 
             Assert.NotNull(operation.Parameters);

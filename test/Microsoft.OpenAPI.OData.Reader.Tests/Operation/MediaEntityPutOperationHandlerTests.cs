@@ -29,7 +29,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 <String>image/png</String>
                 <String>image/jpeg</String>
               </Collection>
-            </Annotation>";
+            </Annotation>
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />";
 
             // Assert
             VerifyMediaEntityPutOperation("", enableOperationId);
@@ -71,6 +72,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(putOperation2);
             Assert.Equal("Update media content for Todo in Todos", putOperation.Summary);
             Assert.Equal("Update media content for the navigation property photo in me", putOperation2.Summary);
+            Assert.Equal("The user's profile photo.", putOperation2.Description);
             Assert.NotNull(putOperation.Tags);
             Assert.NotNull(putOperation2.Tags);
 
@@ -91,6 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal(2, putOperation.RequestBody.Content.Keys.Count);
                 Assert.True(putOperation.RequestBody.Content.ContainsKey("image/png"));
                 Assert.True(putOperation.RequestBody.Content.ContainsKey("image/jpeg"));
+                Assert.Equal("The logo image.", putOperation.Description);
 
                 Assert.Equal(1, putOperation2.RequestBody.Content.Keys.Count);
                 Assert.True(putOperation2.RequestBody.Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));

@@ -31,7 +31,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 <String>image/png</String>
                 <String>image/jpeg</String>
               </Collection>
-            </Annotation>";
+            </Annotation>
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />";
 
             // Assert
             VerifyMediaEntityGetOperation("", enableOperationId);
@@ -74,6 +75,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(getOperation2);
             Assert.Equal("Get media content for Todo from Todos", getOperation.Summary);
             Assert.Equal("Get media content for the navigation property photo from me", getOperation2.Summary);
+            Assert.Equal("The user's profile photo.", getOperation2.Description);
             Assert.NotNull(getOperation.Tags);
             Assert.NotNull(getOperation2.Tags);
 
@@ -94,6 +96,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 Assert.Equal(2, getOperation.Responses[Constants.StatusCode200].Content.Keys.Count);
                 Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey("image/png"));
                 Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey("image/jpeg"));
+                Assert.Equal("The logo image.", getOperation.Description);
 
                 Assert.Equal(1, getOperation2.Responses[Constants.StatusCode200].Content.Keys.Count);
                 Assert.True(getOperation2.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
@@ -132,7 +135,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Property Name = ""Description"" Type = ""Edm.String"" />
       </EntityType>
       <EntityType Name=""user"" OpenType=""true"">
-        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" />
+        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" >
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The user's profile photo."" />
+        </NavigationProperty>
       </EntityType>
       <EntityType Name=""profilePhoto"" HasStream=""true"">
         <Property Name = ""height"" Type = ""Edm.Int32"" />

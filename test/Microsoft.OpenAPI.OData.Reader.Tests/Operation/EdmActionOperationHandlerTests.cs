@@ -37,6 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Invoke action ShareTrip", operation.Summary);
+            Assert.Equal("Details of the shared trip.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People.Actions", tag.Name);
@@ -116,19 +117,25 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
                 new ODataKeySegment(customer),
                 new ODataOperationSegment(action));
 
+            ODataPath path2 = new ODataPath(new ODataNavigationSourceSegment(customers),
+                new ODataOperationSegment(action));
+
             // Act
             var operation = _operationHandler.CreateOperation(context, path);
+            var operation2 = _operationHandler.CreateOperation(context, path2);
 
             // Assert
             Assert.NotNull(operation);
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.MyAction", operation.OperationId);
+                Assert.Equal("Customers.Customer.MyAction", operation.OperationId);
+                Assert.Equal("Customers.MyAction", operation2.OperationId);
             }
             else
             {
                 Assert.Null(operation.OperationId);
+                Assert.Null(operation2.OperationId);
             }
         }
 
@@ -171,7 +178,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.NS.VipCustomer.MyAction", operation.OperationId);
+                Assert.Equal("Customers.Customer.NS.VipCustomer.MyAction", operation.OperationId);
             }
             else
             {

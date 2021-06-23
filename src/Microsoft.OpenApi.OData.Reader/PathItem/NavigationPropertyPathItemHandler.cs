@@ -202,6 +202,11 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem item)
         {
+            if (!Context.Settings.ShowMsDosGroupPath)
+            {
+                return;
+            }
+
             IList<ODataPath> samePaths = new List<ODataPath>();
             foreach (var path in Context.AllPaths.Where(p => p.Kind == ODataPathKind.NavigationProperty && p != Path))
             {

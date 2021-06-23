@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -31,8 +32,15 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                string typeName = EntitySet.EntityType().Name;
-                operation.Summary = $"Get media content for {typeName} from {EntitySet.Name}";
+                IEdmEntityType entityType = EntitySet.EntityType();
+                operation.Summary = $"Get media content for {entityType.Name} from {EntitySet.Name}";
+            }
+
+            // Description
+            IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
+            if (annotatableElement != null)
+            {
+                operation.Description = Context.Model.GetDescriptionAnnotation(annotatableElement);
             }
 
             // OperationId
@@ -41,8 +49,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string identifier = Path.LastSegment.Kind == ODataSegmentKind.StreamContent ? "Content" : Path.LastSegment.Identifier;
                 operation.OperationId = GetOperationId("Get", identifier);
             }
-
-            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
