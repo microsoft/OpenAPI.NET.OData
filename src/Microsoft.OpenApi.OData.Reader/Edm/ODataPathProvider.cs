@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -254,6 +255,13 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
+            // Check whether the navigation property should be part of the path
+            var restriction = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            if (restriction != null && restriction.IsNavigable == false)
+            {
+                return;
+            }
+
             // test the expandable for the navigation property.
             bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
 
@@ -323,6 +331,13 @@ namespace Microsoft.OpenApi.OData.Edm
                 return false;
             }
 
+            // Don't expand if navigability value is Single
+            var restriction = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            if (restriction != null && restriction.Navigability != null && restriction.Navigability.Value == NavigationType.Single)
+            {
+                return false;
+            }
+
             // check the type is visited before, if visited, not expand it.
             IEdmEntityType navEntityType = navigationProperty.ToEntityType();
             foreach (ODataSegment segment in currentPath)
@@ -333,7 +348,6 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            // Expand containment navigation property.
             return true;
         }
 
