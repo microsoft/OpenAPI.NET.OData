@@ -175,7 +175,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
             // DeleteRestrictions
             DeleteRestrictions = record.GetRecord<DeleteRestrictionsType>("DeleteRestrictions");
 
-            // IndexableByKey
+            // OptimisticConcurrencyControl
             OptimisticConcurrencyControl = record.GetBoolean("OptimisticConcurrencyControl");
 
             // ReadRestrictions
