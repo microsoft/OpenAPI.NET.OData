@@ -255,9 +255,11 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
+            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
+
             // Check whether the navigation property should be part of the path
-            var restriction = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
-            if (restriction != null && restriction.IsNavigable == false)
+            if (navigation != null && navigation.IsNavigable == false)
             {
                 return;
             }
@@ -269,52 +271,55 @@ namespace Microsoft.OpenApi.OData.Edm
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
 
-            if (!navigationProperty.ContainsTarget)
+            if (restriction == null || restriction.IndexableByKey == true)
             {
-                // Non-Contained
-                // Single-Valued:  DELETE ~/entityset/{key}/single-valued-Nav/$ref
-                // collection-valued:   DELETE ~/entityset/{key}/collection-valued-Nav/$ref?$id ={ navKey}
-                ODataPath newPath = currentPath.Clone();
-                newPath.Push(ODataRefSegment.Instance); // $ref
-                AppendPath(newPath);
-            }
-            else
-            {
-                IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-
-                // append a navigation property key.
-                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                if (!navigationProperty.ContainsTarget)
                 {
-                    currentPath.Push(new ODataKeySegment(navEntityType));
-                    AppendPath(currentPath.Clone());
-
-                    if (!navigationProperty.ContainsTarget)
-                    {
-                        // TODO: Shall we add "$ref" after {key}, and only support delete?
-                        // ODataPath newPath = currentPath.Clone();
-                        // newPath.Push(ODataRefSegment.Instance); // $ref
-                        // AppendPath(newPath);
-                    }
+                    // Non-Contained
+                    // Single-Valued:  DELETE ~/entityset/{key}/single-valued-Nav/$ref
+                    // collection-valued:   DELETE ~/entityset/{key}/collection-valued-Nav/$ref?$id ={ navKey}
+                    ODataPath newPath = currentPath.Clone();
+                    newPath.Push(ODataRefSegment.Instance); // $ref
+                    AppendPath(newPath);
                 }
-
-                // Get possible navigation property stream paths
-                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
-
-                if (shouldExpand)
+                else
                 {
-                    // expand to sub navigation properties
-                    foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                    IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+
+                    // append a navigation property key.
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                     {
-                        if (CanFilter(subNavProperty))
+                        currentPath.Push(new ODataKeySegment(navEntityType));
+                        AppendPath(currentPath.Clone());
+
+                        if (!navigationProperty.ContainsTarget)
                         {
-                            RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                            // TODO: Shall we add "$ref" after {key}, and only support delete?
+                            // ODataPath newPath = currentPath.Clone();
+                            // newPath.Push(ODataRefSegment.Instance); // $ref
+                            // AppendPath(newPath);
                         }
                     }
-                }
 
-                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                {
-                    currentPath.Pop();
+                    // Get possible navigation property stream paths
+                    RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
+                    if (shouldExpand)
+                    {
+                        // expand to sub navigation properties
+                        foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                        {
+                            if (CanFilter(subNavProperty))
+                            {
+                                RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                            }
+                        }
+                    }
+
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+                        currentPath.Pop();
+                    }
                 }
             }
             currentPath.Pop();
@@ -327,13 +332,6 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // not expand for the non-containment.
             if (!navigationProperty.ContainsTarget)
-            {
-                return false;
-            }
-
-            // Don't expand if navigability value is Single
-            var restriction = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
-            if (restriction != null && restriction.Navigability != null && restriction.Navigability.Value == NavigationType.Single)
             {
                 return false;
             }
