@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(22897, paths.Count());
+            Assert.Equal(17313, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(19258, paths.Count());
+            Assert.Equal(13642, paths.Count());
         }
 
         [Fact]
@@ -305,7 +305,88 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetPathsWithNonContainedNavigationPropertytWorks()
+        public void GetPathsWithFalseNavigabilityInNavigationRestrictionsAnnotationWorks()
+        {
+            // Arrange
+            string entityType =
+@"<EntityType Name=""Order"">
+    <Key>
+      <PropertyRef Name=""id"" />
+    </Key>
+    <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" />
+    <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" >
+        <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+            <Record>
+                <PropertyValue Property = ""Navigability"">
+                    <EnumMember>Org.OData.Capabilities.V1.NavigationType/None</EnumMember>
+                </PropertyValue>
+            </Record>
+        </Annotation>
+     </NavigationProperty>
+  </EntityType>";
+
+            string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
+            IEdmModel model = GetEdmModel(entityType, entitySet);
+
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(6, paths.Count());
+
+            var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
+            Assert.DoesNotContain("/Orders({id})/SingleCustomer", pathItems);
+            Assert.DoesNotContain("/Orders({id})/SingleCustomer/$ref", pathItems);
+        }
+
+        [Fact]
+        public void GetPathsWithFalseIndexabilityByKeyInNavigationRestrictionsAnnotationWorks()
+        {
+            // Arrange
+            string entityType =
+@"<EntityType Name=""Order"">
+    <Key>
+      <PropertyRef Name=""id"" />
+    </Key>
+    <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"" >
+        <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+            <Record>
+                <PropertyValue Property=""RestrictedProperties"" >
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property=""IndexableByKey"" Bool=""false"" />
+                        </Record>
+                    </Collection>
+                </PropertyValue>
+            </Record>
+        </Annotation>
+    </NavigationProperty>
+    <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"" />
+  </EntityType>";
+
+            string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
+            IEdmModel model = GetEdmModel(entityType, entitySet);
+
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(7, paths.Count());
+
+            var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
+            Assert.DoesNotContain("/Orders({id})/MultipleCustomers({ID})", pathItems);
+        }
+
+        [Fact]
+        public void GetPathsWithNonContainedNavigationPropertyWorks()
         {
             // Arrange
             string entityType =
@@ -338,7 +419,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetPathsWithContainedNavigationPropertytWorks()
+        public void GetPathsWithContainedNavigationPropertyWorks()
         {
             // Arrange
             string entityType =
