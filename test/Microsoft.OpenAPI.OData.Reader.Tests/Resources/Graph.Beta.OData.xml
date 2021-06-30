@@ -2133,6 +2133,7 @@
                 <NavigationProperty Name="managedAppRegistrations" Type="Collection(microsoft.graph.managedAppRegistration)" />
                 <NavigationProperty Name="devices" Type="Collection(microsoft.graph.device)" ContainsTarget="true" />
                 <NavigationProperty Name="joinedTeams" Type="Collection(microsoft.graph.group)" ContainsTarget="true" />
+                <NavigationProperty Name="joinedGroups" Type="Collection(graph.group)" ContainsTarget="true" />
                 <NavigationProperty Name="deviceManagementTroubleshootingEvents" Type="Collection(microsoft.graph.deviceManagementTroubleshootingEvent)" ContainsTarget="true" />
             </EntityType>
             <ComplexType Name="assignedLicense">
@@ -3250,7 +3251,7 @@
                 <Property Name="specialFolder" Type="microsoft.graph.specialFolder" />
                 <Property Name="video" Type="microsoft.graph.video" />
                 <Property Name="webDavUrl" Type="Edm.String" Unicode="false" />
-                <NavigationProperty Name="workbook" Type="microsoft.graph.workbook" />
+                <NavigationProperty Name="workbook" Type="microsoft.graph.workbook" ContainsTarget="true" />
                 <NavigationProperty Name="activities" Type="Collection(microsoft.graph.itemActivity)" ContainsTarget="true" />
                 <NavigationProperty Name="children" Type="Collection(microsoft.graph.driveItem)" ContainsTarget="true" />
                 <NavigationProperty Name="listItem" Type="microsoft.graph.listItem" ContainsTarget="true" />
@@ -13622,6 +13623,15 @@
                     <NavigationPropertyBinding Path="microsoft.graph.educationUser/classes" Target="classes" />
                 </Singleton>
             </EntityContainer>
+            <Annotations Target="microsoft.graph.driveItem/workbook">
+              <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+                <Record>
+                  <PropertyValue Property="Navigability">
+                    <EnumMember>Org.OData.Capabilities.V1.NavigationType/None</EnumMember>
+                  </PropertyValue>
+                </Record>
+              </Annotation>
+            </Annotations>
             <Annotations Target="microsoft.graph.directoryObject">
                 <Annotation Term="Org.OData.Capabilities.V1.ExpandRestrictions">
                     <Record>
@@ -13712,6 +13722,17 @@
                         <PropertyValue Property="Deletable" Bool="false" />
                     </Record>
                 </Annotation>
+                <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+                <Record>
+                    <PropertyValue Property="RestrictedProperties">
+                        <Collection>
+                            <Record>
+                              <PropertyValue Property="IndexableByKey" Bool="false" />
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
             </Annotations>
             <Annotations Target="microsoft.graph.user/mailFolders">
                 <Annotation Term="Org.OData.Capabilities.V1.ChangeTracking">
