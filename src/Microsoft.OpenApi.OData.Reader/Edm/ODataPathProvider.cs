@@ -255,11 +255,9 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
-            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
-            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
-
             // Check whether the navigation property should be part of the path
-            if (navigation != null && navigation.IsNavigable == false)
+            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            if (navigation != null && !navigation.IsNavigable)
             {
                 return;
             }
@@ -271,6 +269,8 @@ namespace Microsoft.OpenApi.OData.Edm
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
 
+            // Check whether a collection-valued navigation property should be indexed by key value(s).
+            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
             if (restriction == null || restriction.IndexableByKey == true)
             {
                 if (!navigationProperty.ContainsTarget)
