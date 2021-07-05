@@ -189,7 +189,7 @@ schema:
         }
 
         [Fact]
-        public void CreateOrderBySelectExpandParametersWorks()
+        public void CreateOrderByAndSelectAndExpandParametersWorks()
         {
             // Arrange
             IEdmModel model = GetEdmModel();
