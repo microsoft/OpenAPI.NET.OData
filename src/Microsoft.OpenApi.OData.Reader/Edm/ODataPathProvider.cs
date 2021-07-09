@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -254,6 +255,13 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
+            // Check whether the navigation property should be part of the path
+            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            if (navigation != null && !navigation.IsNavigable)
+            {
+                return;
+            }
+
             // test the expandable for the navigation property.
             bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
 
@@ -261,52 +269,57 @@ namespace Microsoft.OpenApi.OData.Edm
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
 
-            if (!navigationProperty.ContainsTarget)
+            // Check whether a collection-valued navigation property should be indexed by key value(s).
+            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
+            if (restriction == null || restriction.IndexableByKey == true)
             {
-                // Non-Contained
-                // Single-Valued:  DELETE ~/entityset/{key}/single-valued-Nav/$ref
-                // collection-valued:   DELETE ~/entityset/{key}/collection-valued-Nav/$ref?$id ={ navKey}
-                ODataPath newPath = currentPath.Clone();
-                newPath.Push(ODataRefSegment.Instance); // $ref
-                AppendPath(newPath);
-            }
-            else
-            {
-                IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-
-                // append a navigation property key.
-                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                if (!navigationProperty.ContainsTarget)
                 {
-                    currentPath.Push(new ODataKeySegment(navEntityType));
-                    AppendPath(currentPath.Clone());
-
-                    if (!navigationProperty.ContainsTarget)
-                    {
-                        // TODO: Shall we add "$ref" after {key}, and only support delete?
-                        // ODataPath newPath = currentPath.Clone();
-                        // newPath.Push(ODataRefSegment.Instance); // $ref
-                        // AppendPath(newPath);
-                    }
+                    // Non-Contained
+                    // Single-Valued:  DELETE ~/entityset/{key}/single-valued-Nav/$ref
+                    // collection-valued:   DELETE ~/entityset/{key}/collection-valued-Nav/$ref?$id ={ navKey}
+                    ODataPath newPath = currentPath.Clone();
+                    newPath.Push(ODataRefSegment.Instance); // $ref
+                    AppendPath(newPath);
                 }
-
-                if (shouldExpand)
+                else
                 {
-                    // expand to sub navigation properties
-                    foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                    IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+
+                    // append a navigation property key.
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                     {
-                        if (CanFilter(subNavProperty))
+                        currentPath.Push(new ODataKeySegment(navEntityType));
+                        AppendPath(currentPath.Clone());
+
+                        if (!navigationProperty.ContainsTarget)
                         {
-                            RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                            // TODO: Shall we add "$ref" after {key}, and only support delete?
+                            // ODataPath newPath = currentPath.Clone();
+                            // newPath.Push(ODataRefSegment.Instance); // $ref
+                            // AppendPath(newPath);
                         }
                     }
-                }
 
-                // Get possible navigation property stream paths
-                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+                    // Get possible navigation property stream paths
+                    RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
 
-                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                {
-                    currentPath.Pop();
+                    if (shouldExpand)
+                    {
+                        // expand to sub navigation properties
+                        foreach (IEdmNavigationProperty subNavProperty in navEntityType.DeclaredNavigationProperties())
+                        {
+                            if (CanFilter(subNavProperty))
+                            {
+                                RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                            }
+                        }
+                    }
+
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+                        currentPath.Pop();
+                    }
                 }
             }
             currentPath.Pop();
@@ -333,9 +346,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            // check whether the navigation type used to define a navigation source.
-            // if so, not expand it.
-            return !_allNavigationSources.ContainsKey(navEntityType);
+            return true;
         }
 
         /// <summary>
