@@ -5,8 +5,11 @@
 
 using System;
 using System.Linq;
+using System.Xml.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Tests;
 using Xunit;
@@ -183,6 +186,212 @@ schema:
   ""x-ms-docs-key-type"": ""Customer""
 }";
             Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
+
+        [Fact]
+        public void CreateOrderByAndSelectAndExpandParametersWorks()
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel();
+            ODataContext context = new ODataContext(model, new OpenApiConvertSettings());
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            IEdmSingleton singleton = model.EntityContainer.FindSingleton("Catalog");
+            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Customer");
+            IEdmNavigationProperty navigationProperty = entityType.DeclaredNavigationProperties().First(c => c.Name == "Addresses");
+
+            // Act & Assert
+            // OrderBy
+            string orderByItemsText = @"""enum"": [
+        ""ID"",
+        ""ID desc""
+      ],";
+            VerifyCreateOrderByParameter(entitySet, context, orderByItemsText);
+            VerifyCreateOrderByParameter(singleton, context);
+            VerifyCreateOrderByParameter(navigationProperty, context);
+
+            // Select
+            string selectItemsText = @"""enum"": [
+        ""ID"",
+        ""Addresses""
+      ],";
+            VerifyCreateSelectParameter(entitySet, context, selectItemsText);
+            VerifyCreateSelectParameter(singleton, context);
+            VerifyCreateSelectParameter(navigationProperty, context);
+
+            // Expand
+            string expandItemsText = @"""enum"": [
+        ""*"",
+        ""Addresses""
+      ],";
+            VerifyCreateExpandParameter(entitySet, context, expandItemsText);
+
+            string expandItemsDefaultText = @"""enum"": [
+        ""*""
+      ],";
+            VerifyCreateExpandParameter(singleton, context, expandItemsDefaultText);
+            VerifyCreateExpandParameter(navigationProperty, context, expandItemsDefaultText);
+        }
+
+        private void VerifyCreateOrderByParameter(IEdmElement edmElement, ODataContext context, string orderByItemsText = null)
+        {
+            // Arrange & Act
+            OpenApiParameter parameter;
+            switch (edmElement)
+            {
+                case IEdmEntitySet entitySet:
+                    parameter = context.CreateOrderBy(entitySet);
+                    break;
+                case IEdmSingleton singleton:
+                    parameter = context.CreateOrderBy(singleton);
+                    break;
+                case IEdmNavigationProperty navigationProperty:
+                    parameter = context.CreateOrderBy(navigationProperty);
+                    break;
+                default:
+                    return;
+            }
+
+            string itemsText = orderByItemsText == null
+                ? @"""type"": ""string"""
+                : $@"{orderByItemsText}
+      ""type"": ""string""";
+
+            // Assert
+            Assert.NotNull(parameter);
+
+            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            string expected = $@"{{
+  ""name"": ""$orderby"",
+  ""in"": ""query"",
+  ""description"": ""Order items by property values"",
+  ""style"": ""form"",
+  ""explode"": false,
+  ""schema"": {{
+    ""uniqueItems"": true,
+    ""type"": ""array"",
+    ""items"": {{
+      {itemsText}
+    }}
+  }}
+}}";
+
+            Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
+
+        private void VerifyCreateSelectParameter(IEdmElement edmElement, ODataContext context, string selectItemsText = null)
+        {
+            // Arrange & Act
+            OpenApiParameter parameter;
+            switch (edmElement)
+            {
+                case IEdmEntitySet entitySet:
+                    parameter = context.CreateSelect(entitySet);
+                    break;
+                case IEdmSingleton singleton:
+                    parameter = context.CreateSelect(singleton);
+                    break;
+                case IEdmNavigationProperty navigationProperty:
+                    parameter = context.CreateSelect(navigationProperty);
+                    break;
+                default:
+                    return;
+            }
+
+            string itemsText = selectItemsText == null
+                ? @"""type"": ""string"""
+                : $@"{selectItemsText}
+      ""type"": ""string""";
+
+            // Assert
+            Assert.NotNull(parameter);
+
+            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            string expected = $@"{{
+  ""name"": ""$select"",
+  ""in"": ""query"",
+  ""description"": ""Select properties to be returned"",
+  ""style"": ""form"",
+  ""explode"": false,
+  ""schema"": {{
+    ""uniqueItems"": true,
+    ""type"": ""array"",
+    ""items"": {{
+      {itemsText}
+    }}
+  }}
+}}";
+
+            Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
+
+        private void VerifyCreateExpandParameter(IEdmElement edmElement, ODataContext context, string expandItemsText)
+        {
+            // Arrange & Act
+            OpenApiParameter parameter;
+            switch (edmElement)
+            {
+                case IEdmEntitySet entitySet:
+                    parameter = context.CreateExpand(entitySet);
+                    break;
+                case IEdmSingleton singleton:
+                    parameter = context.CreateExpand(singleton);
+                    break;
+                case IEdmNavigationProperty navigationProperty:
+                    parameter = context.CreateExpand(navigationProperty);
+                    break;
+                default:
+                    return;
+            }
+
+            // Assert
+            Assert.NotNull(parameter);
+
+            string json = parameter.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            string expected = $@"{{
+  ""name"": ""$expand"",
+  ""in"": ""query"",
+  ""description"": ""Expand related entities"",
+  ""style"": ""form"",
+  ""explode"": false,
+  ""schema"": {{
+    ""uniqueItems"": true,
+    ""type"": ""array"",
+    ""items"": {{
+      {expandItemsText}
+      ""type"": ""string""
+    }}
+  }}
+}}";
+
+            Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
+
+        public static IEdmModel GetEdmModel()
+        {
+            const string modelText = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+  <edmx:DataServices>
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <EntityType Name=""Customer"">
+        <Key>
+          <PropertyRef Name=""ID"" />
+        </Key>
+        <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+        <NavigationProperty Name=""Addresses"" Type=""Collection(NS.Address)"" />
+      </EntityType>
+      <EntityContainer Name =""Default"">
+        <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
+        <Singleton Name=""Catalog"" Type=""NS.Catalog"" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>";
+
+            bool result = CsdlReader.TryParse(XElement.Parse(modelText).CreateReader(), out IEdmModel model, out _);
+            Assert.True(result);
+            return model;
         }
     }
 }
