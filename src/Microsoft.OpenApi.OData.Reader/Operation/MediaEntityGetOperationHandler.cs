@@ -26,15 +26,9 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
-            if (IsNavigationPropertyPath)
-            {
-                operation.Summary = $"Get media content for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}";
-            }
-            else
-            {
-                IEdmEntityType entityType = EntitySet.EntityType();
-                operation.Summary = $"Get media content for {entityType.Name} from {EntitySet.Name}";
-            }
+            operation.Summary = IsNavigationPropertyPath
+                ? $"Get media content for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}"
+                : $"Get media content for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
 
             // Description
             IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
@@ -73,9 +67,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            ReadRestrictionsType read = EntitySet != null
-                ? Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions)
-                : Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
+            IEdmVocabularyAnnotatable annotatableNavigationSource = (IEdmVocabularyAnnotatable)NavigationSourceSegment.NavigationSource;
+            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.ReadRestrictions);
             if (read == null)
             {
                 return;
