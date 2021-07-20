@@ -271,8 +271,21 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
             NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
+
             if (restriction == null || restriction.IndexableByKey == true)
             {
+                IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    // Append a navigation property key.
+                    currentPath.Push(new ODataKeySegment(navEntityType));
+                    AppendPath(currentPath.Clone());
+                }
+
+                // Get possible stream paths for the navigation entity type
+                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
                 if (!navigationProperty.ContainsTarget)
                 {
                     // Non-Contained
@@ -284,26 +297,6 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-
-                    // append a navigation property key.
-                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                    {
-                        currentPath.Push(new ODataKeySegment(navEntityType));
-                        AppendPath(currentPath.Clone());
-
-                        if (!navigationProperty.ContainsTarget)
-                        {
-                            // TODO: Shall we add "$ref" after {key}, and only support delete?
-                            // ODataPath newPath = currentPath.Clone();
-                            // newPath.Push(ODataRefSegment.Instance); // $ref
-                            // AppendPath(newPath);
-                        }
-                    }
-
-                    // Get possible navigation property stream paths
-                    RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
-
                     if (shouldExpand)
                     {
                         // expand to sub navigation properties
@@ -315,11 +308,11 @@ namespace Microsoft.OpenApi.OData.Edm
                             }
                         }
                     }
+                }
 
-                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                    {
-                        currentPath.Pop();
-                    }
+                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                {
+                    currentPath.Pop();
                 }
             }
             currentPath.Pop();
