@@ -68,39 +68,62 @@ namespace Microsoft.OpenApi.OData.PathItem
             // So far, we only consider the non-containment
             Debug.Assert(!NavigationProperty.ContainsTarget);
 
-            // It seems OData supports to "GetRef, DeleteRef",
-            // Here at this time,let's only consider the "delete"
+            // Create the ref
+            if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+            {
+                ODataSegment penultimateSegment = Path.Segments.Reverse().Skip(1).First();
+                if (penultimateSegment is ODataKeySegment)
+                {
+                    // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
+                    AddDeleteOperation(item, restriction);
+                }
+                else
+                {
+                    AddReadOperation(item, restriction);
+                    AddInsertOperation(item, restriction);
+                }
+            }
+            else
+            {
+                AddReadOperation(item, restriction);
+                AddUpdateOperation(item, restriction);
+                AddDeleteOperation(item, restriction);
+            }
+        }
+
+        private void AddDeleteOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
+            DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
+            if (delete == null || delete.IsDeletable)
+            {
+                AddOperation(item, OperationType.Delete);
+            }
+        }
+
+        private void AddReadOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
             ReadRestrictionsType read = restriction?.ReadRestrictions;
             if (read == null || read.IsReadable)
             {
                 AddOperation(item, OperationType.Get);
             }
+        }
 
-            // Create the ref
-            if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+        private void AddInsertOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
+            InsertRestrictionsType insert = restriction?.InsertRestrictions;
+            if (insert == null || insert.IsInsertable)
             {
-                InsertRestrictionsType insert = restriction?.InsertRestrictions;
-                if (insert == null || insert.IsInsertable)
-                {
-                    AddOperation(item, OperationType.Post);
-                }
-
-                // TODO: Add delete operation
+                AddOperation(item, OperationType.Post);
             }
-            else
-            {
-                UpdateRestrictionsType update = restriction?.UpdateRestrictions;
-                if (update == null || update.IsUpdatable)
-                {
-                    AddOperation(item, OperationType.Put);
-                }
+        }
 
-                // delete the link
-                DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
-                if (delete == null || delete.IsDeletable)
-                {
-                    AddOperation(item, OperationType.Delete);
-                }
+        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
+            UpdateRestrictionsType update = restriction?.UpdateRestrictions;
+            if (update == null || update.IsUpdatable)
+            {
+                AddOperation(item, OperationType.Put);
             }
         }
 
