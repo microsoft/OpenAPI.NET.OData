@@ -274,17 +274,14 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (restriction == null || restriction.IndexableByKey == true)
             {
-                IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+              //  IEdmEntityType navEntityType = navigationProperty.ToEntityType();
 
-                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                {
-                    // Append a navigation property key.
-                    currentPath.Push(new ODataKeySegment(navEntityType));
-                    AppendPath(currentPath.Clone());
-                }
-
-                // Get possible stream paths for the navigation entity type
-                RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+                //if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                //{
+                //    // Append a navigation property key.
+                //    currentPath.Push(new ODataKeySegment(navEntityType));
+                //    AppendPath(currentPath.Clone());
+                //}
 
                 if (!navigationProperty.ContainsTarget)
                 {
@@ -294,9 +291,34 @@ namespace Microsoft.OpenApi.OData.Edm
                     ODataPath newPath = currentPath.Clone();
                     newPath.Push(ODataRefSegment.Instance); // $ref
                     AppendPath(newPath);
+
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+
+                    }
                 }
                 else
                 {
+                    IEdmEntityType navEntityType = navigationProperty.ToEntityType();
+
+                    // append a navigation property key.
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+                        currentPath.Push(new ODataKeySegment(navEntityType));
+                        AppendPath(currentPath.Clone());
+
+                        if (!navigationProperty.ContainsTarget)
+                        {
+                            // TODO: Shall we add "$ref" after {key}, and only support delete?
+                            // ODataPath newPath = currentPath.Clone();
+                            // newPath.Push(ODataRefSegment.Instance); // $ref
+                            // AppendPath(newPath);
+                        }
+                    }
+
+                    // Get possible stream paths for the navigation entity type
+                    RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
                     if (shouldExpand)
                     {
                         // expand to sub navigation properties
@@ -308,11 +330,11 @@ namespace Microsoft.OpenApi.OData.Edm
                             }
                         }
                     }
-                }
 
-                if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
-                {
-                    currentPath.Pop();
+                    if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
+                    {
+                        currentPath.Pop();
+                    }
                 }
             }
             currentPath.Pop();

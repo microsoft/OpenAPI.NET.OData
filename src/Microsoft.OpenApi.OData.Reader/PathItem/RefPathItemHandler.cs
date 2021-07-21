@@ -84,6 +84,8 @@ namespace Microsoft.OpenApi.OData.PathItem
                 {
                     AddOperation(item, OperationType.Post);
                 }
+
+                // TODO: Add delete operation
             }
             else
             {
