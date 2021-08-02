@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17313, paths.Count());
+            Assert.Equal(17401, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(13642, paths.Count());
+            Assert.Equal(13730, paths.Count());
         }
 
         [Fact]
@@ -409,13 +409,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(8, paths.Count());
+            Assert.Equal(9, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
             Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers({ID})/$ref", pathItems);
         }
 
         [Fact]

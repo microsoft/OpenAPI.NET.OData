@@ -57,6 +57,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
+        [InlineData(true, new OperationType[] { OperationType.Delete})]
         [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Post})]
         [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
         public void CreateNavigationPropertyRefPathItemReturnsCorrectPathItem(bool collectionNav, OperationType[] expected)
@@ -73,10 +74,23 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 (collectionNav ? c.TargetMultiplicity() == EdmMultiplicity.Many : c.TargetMultiplicity() != EdmMultiplicity.Many));
             Assert.NotNull(property);
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
+            ODataPath path;
+            if (collectionNav && expected.Contains(OperationType.Delete))
+            {
+                // DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
+                path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
+                new ODataKeySegment(entityType),
+                new ODataNavigationPropertySegment(property),
+                new ODataKeySegment(property.ToEntityType()),
+                ODataRefSegment.Instance);
+            }
+            else
+            {
+                path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
                 new ODataKeySegment(entityType),
                 new ODataNavigationPropertySegment(property),
                 ODataRefSegment.Instance);
+            }
 
             // Act
             var pathItem = _pathItemHandler.CreatePathItem(context, path);
