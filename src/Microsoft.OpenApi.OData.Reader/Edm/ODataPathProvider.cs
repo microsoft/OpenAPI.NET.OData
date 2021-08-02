@@ -285,9 +285,8 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                     {
-                        CreateEntityPath(navEntityType, currentPath);
-
                         // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
+                        currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
                     }
 
@@ -299,7 +298,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     // append a navigation property key.
                     if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
                     {
-                        CreateEntityPath(navEntityType, currentPath);
+                        currentPath.Push(new ODataKeySegment(navEntityType));
+                        AppendPath(currentPath.Clone());
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -359,17 +359,6 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPath newPath = currentPath.Clone();
             newPath.Push(ODataRefSegment.Instance); // $ref
             AppendPath(newPath);
-        }
-
-        /// <summary>
-        /// Create entity paths.
-        /// </summary>
-        /// <param name="entityType">The entity type.</param>
-        /// <param name="currentPath">The current OData path.</param>
-        private void CreateEntityPath(IEdmEntityType entityType, ODataPath currentPath)
-        {
-            currentPath.Push(new ODataKeySegment(entityType));
-            AppendPath(currentPath.Clone());
         }
 
         /// <summary>
