@@ -336,7 +336,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(6, paths.Count());
+            Assert.Equal(7, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.DoesNotContain("/Orders({id})/SingleCustomer", pathItems);

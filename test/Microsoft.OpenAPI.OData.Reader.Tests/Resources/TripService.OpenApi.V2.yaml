@@ -657,6 +657,33 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/Me/Friends/{UserName}/$ref':
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete ref of navigation property Friends for Me
+      operationId: Me.DeleteRefFriends
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/Friends/$ref:
     get:
       tags:
@@ -1177,6 +1204,45 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Trips/{TripId}/PlanItems/{PlanItemId}/$ref':
+    delete:
+      tags:
+        - Me.Trips.PlanItem
+      summary: Delete ref of navigation property PlanItems for Me
+      operationId: Me.Trips.DeleteRefPlanItems
+      parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: path
+          name: PlanItemId
+          description: 'key: PlanItemId of PlanItem'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: PlanItem
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1708,6 +1774,39 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Friends/{UserName1}/$ref':
+    delete:
+      tags:
+        - NewComePeople.Person
+      summary: Delete ref of navigation property Friends for NewComePeople
+      operationId: NewComePeople.DeleteRefFriends
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2319,6 +2418,51 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/{PlanItemId}/$ref':
+    delete:
+      tags:
+        - NewComePeople.Trips.PlanItem
+      summary: Delete ref of navigation property PlanItems for NewComePeople
+      operationId: NewComePeople.Trips.DeleteRefPlanItems
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: path
+          name: PlanItemId
+          description: 'key: PlanItemId of PlanItem'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: PlanItem
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref':
     get:
       tags:
@@ -2859,6 +3003,39 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Friends/{UserName1}/$ref':
+    delete:
+      tags:
+        - People.Person
+      summary: Delete ref of navigation property Friends for People
+      operationId: People.DeleteRefFriends
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3467,6 +3644,51 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Trips/{TripId}/PlanItems/{PlanItemId}/$ref':
+    delete:
+      tags:
+        - People.Trips.PlanItem
+      summary: Delete ref of navigation property PlanItems for People
+      operationId: People.Trips.DeleteRefPlanItems
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+        - in: path
+          name: PlanItemId
+          description: 'key: PlanItemId of PlanItem'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: PlanItem
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation

@@ -773,6 +773,60 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Documents({Id})/Revisions({Id1})/$ref": {
+      "delete": {
+        "tags": [
+          "Documents.RevisionDto"
+        ],
+        "summary": "Delete ref of navigation property Revisions for Documents",
+        "operationId": "Documents.DeleteRefRevisions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "in": "path",
+            "name": "Id1",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "ETag",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "@id",
+            "description": "Delete Uri",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/Documents({Id})/Revisions/$ref": {
       "get": {
         "tags": [
@@ -1367,6 +1421,60 @@
                 }
               }
             }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Libraries({Id})/Documents({Id1})/$ref": {
+      "delete": {
+        "tags": [
+          "Libraries.DocumentDto"
+        ],
+        "summary": "Delete ref of navigation property Documents for Libraries",
+        "operationId": "Libraries.DeleteRefDocuments",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "in": "path",
+            "name": "Id1",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "ETag",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "@id",
+            "description": "Delete Uri",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2552,6 +2660,60 @@
                 }
               }
             }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Tasks({Id})/Revisions({Id1})/$ref": {
+      "delete": {
+        "tags": [
+          "Tasks.RevisionDto"
+        ],
+        "summary": "Delete ref of navigation property Revisions for Tasks",
+        "operationId": "Tasks.DeleteRefRevisions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "in": "path",
+            "name": "Id1",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2147483647,
+            "minimum": -2147483648,
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "ETag",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "@id",
+            "description": "Delete Uri",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
