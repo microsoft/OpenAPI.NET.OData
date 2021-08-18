@@ -21,14 +21,9 @@ namespace Microsoft.OpenApi.OData.Operation
     internal abstract class MediaEntityOperationalHandler : NavigationPropertyOperationHandler
     {
         /// <summary>
-        /// Gets/sets the <see cref="IEdmEntitySet"/>.
+        /// Gets/Sets the NavigationSource segment
         /// </summary>
-        protected IEdmEntitySet EntitySet { get; private set; }
-
-        /// <summary>
-        /// Gets the <see cref="IEdmSingleton"/>.
-        /// </summary>
-        protected IEdmSingleton Singleton { get; private set; }
+        protected ODataNavigationSourceSegment NavigationSourceSegment { get; private set; }
 
         /// <summary>
         /// Gets/Sets flag indicating whether path is navigation property path
@@ -39,13 +34,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             // The first segment will either be an EntitySet navigation source or a Singleton navigation source
-            ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-            EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
-
-            if (EntitySet == null)
-            {
-                Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
-            }
+            NavigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
 
             // Check whether path is a navigation property path
             IsNavigationPropertyPath = Path.Segments.Contains(
@@ -67,9 +56,9 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
-                string tagIdentifier = EntitySet.Name + "." + EntitySet.EntityType().Name;
+                string tagIdentifier = NavigationSourceSegment.Identifier + "." + NavigationSourceSegment.EntityType.Name;
 
-                OpenApiTag tag = new OpenApiTag
+                OpenApiTag tag = new()
                 {
                     Name = tagIdentifier
                 };
@@ -102,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             IList<string> items = new List<string>
             {
-                EntitySet?.Name ?? Singleton.Name
+                NavigationSourceSegment.Identifier
             };
 
             ODataSegment lastSegment = Path.Segments.Last(c => c is ODataStreamContentSegment || c is ODataStreamPropertySegment);
@@ -112,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {
                     if (!IsNavigationPropertyPath)
                     {
-                        string typeName = EntitySet?.EntityType().Name ?? Singleton.EntityType().Name;
+                        string typeName = NavigationSourceSegment.EntityType.Name;
                         items.Add(typeName);
                         items.Add(prefix + Utils.UpperFirstChar(identifier));
                     }
@@ -185,7 +174,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The annotable element.</returns>
         protected IEdmVocabularyAnnotatable GetAnnotatableElement()
         {
-            IEdmEntityType entityType = EntitySet != null ? EntitySet.EntityType() : Singleton.EntityType();
+            IEdmEntityType entityType = NavigationSourceSegment.EntityType;
             ODataSegment lastSegmentProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
 
             if (lastSegmentProp == null)
@@ -214,7 +203,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         private IEdmStructuralProperty GetStructuralProperty(IEdmEntityType entityType, string identifier)
         {
-            return entityType.DeclaredStructuralProperties().FirstOrDefault(x => x.Name.Equals(identifier));
+            return entityType.StructuralProperties().FirstOrDefault(x => x.Name.Equals(identifier));
         }
 
         private IEdmNavigationProperty GetNavigationProperty(IEdmEntityType entityType, string identifier)

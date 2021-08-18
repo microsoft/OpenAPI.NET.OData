@@ -219,7 +219,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(currentPath != null);
 
             bool createValuePath = true;
-            foreach (IEdmStructuralProperty sp in entityType.DeclaredStructuralProperties())
+            foreach (IEdmStructuralProperty sp in entityType.StructuralProperties())
             {
                 if (sp.Type.AsPrimitive().IsStream())
                 {
@@ -228,7 +228,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     currentPath.Pop();
                 }
 
-                if (sp.Name.Equals("content", System.StringComparison.OrdinalIgnoreCase))
+                if (sp.Name.Equals("content", StringComparison.OrdinalIgnoreCase))
                 {
                     createValuePath = false;
                 }
