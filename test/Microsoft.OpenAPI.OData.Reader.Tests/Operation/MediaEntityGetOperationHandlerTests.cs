@@ -55,13 +55,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(me);
 
             IEdmEntityType todo = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Todo");
-            IEdmStructuralProperty sp = todo.DeclaredStructuralProperties().First(c => c.Name == "Logo");
+            IEdmStructuralProperty sp = todo.StructuralProperties().First(c => c.Name == "Logo");
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(todos),
                 new ODataKeySegment(todos.EntityType()),
                 new ODataStreamPropertySegment(sp.Name));
 
             IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
-            IEdmNavigationProperty navProperty = user.DeclaredNavigationProperties().First(c => c.Name == "photo");
+            IEdmNavigationProperty navProperty = user.NavigationProperties().First(c => c.Name == "photo");
             ODataPath path2 = new ODataPath(new ODataNavigationSourceSegment(me),
                 new ODataNavigationPropertySegment(navProperty),
                 new ODataStreamContentSegment());
