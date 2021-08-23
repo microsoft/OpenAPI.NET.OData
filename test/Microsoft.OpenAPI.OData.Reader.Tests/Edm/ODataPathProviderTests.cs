@@ -478,14 +478,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             {
                 if (hasStream)
                 {
-                    Assert.Equal(12, paths.Count());
+                    Assert.Equal(13, paths.Count());
                     Assert.Contains(TodosValuePath, paths.Select(p => p.GetPathItemName()));
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 }
                 else
                 {
-                    Assert.Equal(11, paths.Count());
+                    Assert.Equal(12, paths.Count());
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
@@ -493,7 +493,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             }
             else if (streamPropName.Equals("content"))
             {
-                Assert.Equal(11, paths.Count());
+                Assert.Equal(12, paths.Count());
                 Assert.Contains(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
@@ -609,6 +609,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
       </EntityType>
       <EntityType Name=""catalog"" BaseType=""microsoft.graph.document"">
         <NavigationProperty Name=""reports"" Type = ""Collection(microsoft.graph.report)"" />
+      </EntityType>
+      <EntityType Name=""report"">
+        <Key>
+          <PropertyRef Name=""id"" />
+        </Key>
+        <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""GraphService"">
         <EntitySet Name=""todos"" EntityType=""microsoft.graph.todo"" />
