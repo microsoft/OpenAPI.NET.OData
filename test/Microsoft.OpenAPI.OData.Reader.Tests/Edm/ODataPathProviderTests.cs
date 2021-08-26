@@ -1,7 +1,7 @@
-﻿// ------------------------------------------------------------
+﻿// --------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
-// ------------------------------------------------------------
+// --------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17313, paths.Count());
+            Assert.Equal(17401, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(13642, paths.Count());
+            Assert.Equal(13730, paths.Count());
         }
 
         [Fact]
@@ -336,7 +336,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(6, paths.Count());
+            Assert.Equal(7, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.DoesNotContain("/Orders({id})/SingleCustomer", pathItems);
@@ -409,13 +409,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(8, paths.Count());
+            Assert.Equal(9, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
             Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers({ID})/$ref", pathItems);
         }
 
         [Fact]
@@ -477,14 +478,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             {
                 if (hasStream)
                 {
-                    Assert.Equal(12, paths.Count());
+                    Assert.Equal(13, paths.Count());
                     Assert.Contains(TodosValuePath, paths.Select(p => p.GetPathItemName()));
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 }
                 else
                 {
-                    Assert.Equal(11, paths.Count());
+                    Assert.Equal(12, paths.Count());
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
@@ -492,7 +493,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             }
             else if (streamPropName.Equals("content"))
             {
-                Assert.Equal(11, paths.Count());
+                Assert.Equal(12, paths.Count());
                 Assert.Contains(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
@@ -608,6 +609,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
       </EntityType>
       <EntityType Name=""catalog"" BaseType=""microsoft.graph.document"">
         <NavigationProperty Name=""reports"" Type = ""Collection(microsoft.graph.report)"" />
+      </EntityType>
+      <EntityType Name=""report"">
+        <Key>
+          <PropertyRef Name=""id"" />
+        </Key>
+        <Property Name=""id"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""GraphService"">
         <EntitySet Name=""todos"" EntityType=""microsoft.graph.todo"" />
