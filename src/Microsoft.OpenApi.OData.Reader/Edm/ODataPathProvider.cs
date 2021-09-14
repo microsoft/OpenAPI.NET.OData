@@ -478,6 +478,11 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     ODataNavigationPropertySegment npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment) as ODataNavigationPropertySegment;
 
+                    if (!npSegment.NavigationProperty.ContainsTarget)
+                    {
+                        continue;
+                    }
+
                     bool isLastKeySegment = path.LastSegment is ODataKeySegment;
 
                     if (isCollection)
@@ -601,6 +606,11 @@ namespace Microsoft.OpenApi.OData.Edm
                         var npSegment = path.Segments.Last(s => s is ODataNavigationPropertySegment)
                                             as ODataNavigationPropertySegment;
                         if (npSegment == null)
+                        {
+                            continue;
+                        }
+
+                        if (!npSegment.NavigationProperty.ContainsTarget)
                         {
                             continue;
                         }

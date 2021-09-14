@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17401, paths.Count());
+            Assert.Equal(13727, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(13730, paths.Count());
+            Assert.Equal(13712, paths.Count());
         }
 
         [Fact]
@@ -274,6 +274,35 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(3, paths.Count());
             Assert.Contains("/Customers({ID})/NS.renew", paths.Select(p => p.GetPathItemName()));
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void GetPathsWithBoundActionOperationForContainmentNavigationPropertyWorks(bool containsTarget)
+        {
+            // Arrange
+            string navProp = $@"<NavigationProperty Name=""Referral"" Type=""NS.NiceCustomer"" ContainsTarget=""{containsTarget}""/>";
+            IEdmModel model = GetNavPropModel(string.Empty, navProp);
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+
+            if (containsTarget)
+            {
+                Assert.Equal(5, paths.Count());
+                Assert.Contains("/Root/Referral/NS.Ack", paths.Select(p => p.GetPathItemName()));
+            }
+            else
+            {
+                Assert.Equal(6, paths.Count());
+                Assert.DoesNotContain("/Root/Referral/NS.Ack", paths.Select(p => p.GetPathItemName()));
+            }
         }
 
         [Fact]
@@ -544,7 +573,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             return GetEdmModel(template);
         }
 
-        private static IEdmModel GetNavPropModel(string annotation)
+        private static IEdmModel GetNavPropModel(string annotation, string propertySchema = null)
         {
             string template = $@"<?xml version=""1.0"" encoding=""utf-16""?>
 <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
@@ -556,6 +585,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
     <NavigationProperty Name=""Customers"" Type=""Collection(NS.Customer)"" ContainsTarget=""true"">
       {annotation}
     </NavigationProperty>
+    {propertySchema}
   </EntityType>
   <EntityType Name=""Customer"">
     <Key>
