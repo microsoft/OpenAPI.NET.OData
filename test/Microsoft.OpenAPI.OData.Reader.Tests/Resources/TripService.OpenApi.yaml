@@ -894,11 +894,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                  nullable: true
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -929,11 +933,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
@@ -1243,11 +1251,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
+                title: Collection of Trip
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -2152,11 +2164,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                  nullable: true
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -2195,11 +2211,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
@@ -2567,11 +2587,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
+                title: Collection of Trip
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -3504,11 +3528,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
-                  nullable: true
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -3547,11 +3575,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
+                title: Collection of Person
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
@@ -3919,11 +3951,15 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                    - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
-                  nullable: true
+                title: Collection of Trip
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      anyOf:
+                        - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+                      nullable: true
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function

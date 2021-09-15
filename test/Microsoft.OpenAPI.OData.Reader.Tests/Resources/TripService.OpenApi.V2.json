@@ -1169,9 +1169,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  }
+                }
               }
             }
           },
@@ -1221,9 +1227,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
               }
             }
           },
@@ -1636,9 +1648,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
               }
             }
           },
@@ -2814,9 +2832,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  }
+                }
               }
             }
           },
@@ -2874,9 +2898,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
               }
             }
           },
@@ -3353,9 +3383,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
               }
             }
           },
@@ -4563,9 +4599,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                  }
+                }
               }
             }
           },
@@ -4623,9 +4665,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
               }
             }
           },
@@ -5102,9 +5150,15 @@
           "200": {
             "description": "Success",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                }
               }
             }
           },
