@@ -175,16 +175,18 @@ namespace Microsoft.OpenApi.OData.Operation
                 OpenApiSchema schema;
                 if (EdmOperation.ReturnType.TypeKind() == EdmTypeKind.Collection)
                 {
+                    // Get the entity type of the previous segment
+                    IEdmEntityType entityType = Path.Segments.Reverse().Skip(1).Take(1).FirstOrDefault().EntityType;
                     schema = new OpenApiSchema
                     {
-                        Title = $"Collection of {EdmOperation.Name}",
+                        Title = $"Collection of {entityType.Name}",
                         Type = "object",
                         Properties = new Dictionary<string, OpenApiSchema>
                         {
                             {
                                 "value", Context.CreateEdmTypeSchema(EdmOperation.ReturnType)
                             }
-                        },
+                        }
                     };
                 }
                 else
