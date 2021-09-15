@@ -172,6 +172,26 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
+                OpenApiSchema schema;
+                if (EdmOperation.ReturnType.TypeKind() == EdmTypeKind.Collection)
+                {
+                    schema = new OpenApiSchema
+                    {
+                        Title = $"Collection of {EdmOperation.Name}",
+                        Type = "object",
+                        Properties = new Dictionary<string, OpenApiSchema>
+                        {
+                            {
+                                "value", Context.CreateEdmTypeSchema(EdmOperation.ReturnType)
+                            }
+                        },
+                    };
+                }
+                else
+                {
+                    schema = Context.CreateEdmTypeSchema(EdmOperation.ReturnType);
+                }
+
                 // function should have a return type.
                 OpenApiResponse response = new OpenApiResponse
                 {
@@ -182,7 +202,7 @@ namespace Microsoft.OpenApi.OData.Operation
                             Constants.ApplicationJsonMediaType,
                             new OpenApiMediaType
                             {
-                                Schema = Context.CreateEdmTypeSchema(EdmOperation.ReturnType)
+                                Schema = schema
                             }
                         }
                     }
