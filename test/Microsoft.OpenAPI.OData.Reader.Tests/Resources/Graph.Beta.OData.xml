@@ -9356,6 +9356,16 @@
                 <Property Name="failureCategory" Type="microsoft.graph.deviceEnrollmentFailureReason" Nullable="false" />
                 <Property Name="failureReason" Type="Edm.String" Unicode="false" />
             </EntityType>
+            <Function Name="getRoleScopeTagsByIds" IsBound="true">
+              <Parameter Name="bindingParameter" Type="graph.deviceManagement" />
+              <Parameter Name="ids" Type="Collection(Edm.String)" Unicode="false" />
+              <ReturnType Type="Collection(graph.roleScopeTag)" />
+            </Function>
+            <Function Name="getRoleScopeTagsByResource" IsBound="true">
+              <Parameter Name="bindingParameter" Type="graph.deviceManagement" />
+              <Parameter Name="resource" Type="Edm.String" Unicode="false" />
+              <ReturnType Type="Collection(graph.roleScopeTag)" />
+            </Function>
             <Function Name="delta" IsBound="true">
                 <Parameter Name="bindingParameter" Type="Collection(microsoft.graph.user)" />
                 <ReturnType Type="Collection(microsoft.graph.user)" />

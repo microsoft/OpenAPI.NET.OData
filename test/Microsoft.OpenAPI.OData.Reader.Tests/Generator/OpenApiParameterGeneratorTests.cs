@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
@@ -367,6 +368,65 @@ schema:
 }}";
 
             Assert.Equal(expected.ChangeLineBreaks(), json);
+        }
+
+        [Fact]
+        public void CreateParametersWorks()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new ODataContext(model);
+            IEdmSingleton deviceMgmt = model.EntityContainer.FindSingleton("deviceManagement");
+            Assert.NotNull(deviceMgmt);
+
+            IEdmFunction function1 = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "getRoleScopeTagsByIds");
+            Assert.NotNull(function1);
+
+            IEdmFunction function2 = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "getRoleScopeTagsByResource");
+            Assert.NotNull(function2);
+
+            // Act
+            IList<OpenApiParameter> parameters1 = context.CreateParameters(function1);
+            IList<OpenApiParameter> parameters2 = context.CreateParameters(function2);
+
+            // Assert
+            Assert.NotNull(parameters1);
+            OpenApiParameter parameter1 = Assert.Single(parameters1);
+
+            Assert.NotNull(parameters2);
+            OpenApiParameter parameter2 = Assert.Single(parameters2);
+
+            string json1 = parameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string expectedPayload1 = $@"{{
+  ""name"": ""ids"",
+  ""in"": ""query"",
+  ""description"": ""The URL-encoded JSON object"",
+  ""required"": true,
+  ""content"": {{
+    ""application/json"": {{
+      ""schema"": {{
+        ""type"": ""array"",
+        ""items"": {{
+          ""type"": ""string""
+        }}
+      }}
+    }}
+  }}
+}}";
+
+            string json2 = parameter2.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string expectedPayload2 = $@"{{
+  ""name"": ""resource"",
+  ""in"": ""path"",
+  ""required"": true,
+  ""schema"": {{
+    ""type"": ""string"",
+    ""nullable"": true
+  }}
+}}";
+
+            Assert.Equal(expectedPayload1.ChangeLineBreaks(), json1);
+            Assert.Equal(expectedPayload2.ChangeLineBreaks(), json2);
         }
 
         public static IEdmModel GetEdmModel()
