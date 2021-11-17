@@ -166,56 +166,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            if (EdmOperation.IsAction() && EdmOperation.ReturnType == null)
-            {
-                operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
-            }
-            else
-            {
-                OpenApiSchema schema;
-                if (EdmOperation.ReturnType.TypeKind() == EdmTypeKind.Collection)
-                {
-                    // Get the entity type of the previous segment
-                    IEdmEntityType entityType = Path.Segments.Reverse().Skip(1).Take(1).FirstOrDefault().EntityType;
-                    schema = new OpenApiSchema
-                    {
-                        Title = $"Collection of {entityType.Name}",
-                        Type = "object",
-                        Properties = new Dictionary<string, OpenApiSchema>
-                        {
-                            {
-                                "value", Context.CreateEdmTypeSchema(EdmOperation.ReturnType)
-                            }
-                        }
-                    };
-                }
-                else
-                {
-                    schema = Context.CreateEdmTypeSchema(EdmOperation.ReturnType);
-                }
-
-                // function should have a return type.
-                OpenApiResponse response = new OpenApiResponse
-                {
-                    Description = "Success",
-                    Content = new Dictionary<string, OpenApiMediaType>
-                    {
-                        {
-                            Constants.ApplicationJsonMediaType,
-                            new OpenApiMediaType
-                            {
-                                Schema = schema
-                            }
-                        }
-                    }
-                };
-
-                operation.Responses.Add(Constants.StatusCode200, response);
-            }
-
-            // both action & function has the default response.
-            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
-
+            operation.Responses = Context.CreateResponses(EdmOperation, Path);
             base.SetResponses(operation);
         }
 

@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -72,13 +73,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="operationImport">The Edm operation import.</param>
+        /// <param name="path">The OData path.</param>
         /// <returns>The created <see cref="OpenApiResponses"/>.</returns>
-        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperationImport operationImport)
+        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperationImport operationImport, ODataPath path)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(operationImport, nameof(operationImport));
+            Utils.CheckArgumentNull(path, nameof(path));
 
-            return context.CreateResponses(operationImport.Operation);
+            return context.CreateResponses(operationImport.Operation, path);
         }
 
         /// <summary>
@@ -86,13 +89,15 @@ namespace Microsoft.OpenApi.OData.Generator
         /// </summary>
         /// <param name="context">The OData context.</param>
         /// <param name="operation">The Edm operation.</param>
+        /// <param name="path">The OData path.</param>
         /// <returns>The created <see cref="OpenApiResponses"/>.</returns>
-        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperation operation)
+        public static OpenApiResponses CreateResponses(this ODataContext context, IEdmOperation operation, ODataPath path)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(operation, nameof(operation));
+            Utils.CheckArgumentNull(path, nameof(path));
 
-            OpenApiResponses responses = new OpenApiResponses();
+            OpenApiResponses responses = new();
 
             if (operation.IsAction() && operation.ReturnType == null)
             {
@@ -100,7 +105,47 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
-                OpenApiResponse response = new OpenApiResponse
+                OpenApiSchema schema;
+                if (operation.ReturnType.TypeKind() == EdmTypeKind.Collection)
+                {
+                    // Get the entity type of the previous segment
+                    IEdmEntityType entityType = path.Segments.Reverse().Skip(1)?.Take(1)?.FirstOrDefault()?.EntityType;
+                    schema = new OpenApiSchema
+                    {
+                        Title = entityType == null ? null : $"Collection of {entityType.Name}",
+                        Type = "object",
+                        Properties = new Dictionary<string, OpenApiSchema>
+                        {
+                            {
+                                "value", context.CreateEdmTypeSchema(operation.ReturnType)
+                            }
+                        }
+                    };
+                }
+                else
+                {
+                    // A property or operation response that is of a primitive type is represented as an object with a single name/value pair,
+                    // whose name is value and whose value is a primitive value.
+                    if (operation.ReturnType.IsPrimitive())
+                    {
+                        schema = new OpenApiSchema
+                        {
+                            Type = "object",
+                            Properties = new Dictionary<string, OpenApiSchema>
+                            {
+                                {
+                                    "value", context.CreateEdmTypeSchema(operation.ReturnType)
+                                }
+                            }
+                        };
+                    }
+                    else
+                    {
+                        schema = context.CreateEdmTypeSchema(operation.ReturnType);
+                    }
+                }
+
+                OpenApiResponse response = new()
                 {
                     Description = "Success",
                     Content = new Dictionary<string, OpenApiMediaType>
@@ -109,7 +154,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Constants.ApplicationJsonMediaType,
                             new OpenApiMediaType
                             {
-                                Schema = context.CreateEdmTypeSchema(operation.ReturnType)
+                                Schema = schema
                             }
                         }
                     }
@@ -117,7 +162,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 responses.Add(Constants.StatusCode200, response);
             }
 
-            // both action & function has the default response.
+            // Both action & function have the default response.
             responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return responses;
