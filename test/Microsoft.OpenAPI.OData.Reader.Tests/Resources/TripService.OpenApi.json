@@ -1483,8 +1483,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "boolean",
-                  "default": false
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
                 }
               }
             }
@@ -3366,8 +3371,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "boolean",
-                  "default": false
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
                 }
               }
             }
@@ -5351,8 +5361,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "boolean",
-                  "default": false
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
                 }
               }
             }
