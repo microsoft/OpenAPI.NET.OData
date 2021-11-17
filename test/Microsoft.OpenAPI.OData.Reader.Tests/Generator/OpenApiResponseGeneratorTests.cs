@@ -104,7 +104,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operationImport: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operationImport: null, path: null));
         }
 
         [Fact]
@@ -114,7 +114,19 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateResponses(operationImport: null));
+            Assert.Throws<ArgumentNullException>("operationImport", () => context.CreateResponses(operationImport: null, path: null));
+        }
+
+        [Fact]
+        public void CreateResponseForoperationImportThrowArgumentNullPath()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmCoreModel.Instance);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false));
+            EdmFunctionImport functionImport = new EdmFunctionImport(new EdmEntityContainer("NS", "Default"), "MyFunctionImport", function);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("path", () => context.CreateResponses(operationImport: functionImport, path: null));
         }
 
         [Fact]
@@ -124,7 +136,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = null;
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operation: null));
+            Assert.Throws<ArgumentNullException>("context", () => context.CreateResponses(operation: null, path: null));
         }
 
         [Fact]
@@ -134,7 +146,19 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             ODataContext context = new ODataContext(EdmCoreModel.Instance);
 
             // Act & Assert
-            Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null));
+            Assert.Throws<ArgumentNullException>("operation", () => context.CreateResponses(operation: null, path: null));
+        }
+
+        [Fact]
+        public void CreateResponseForOperationThrowArgumentNullPath()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(EdmCoreModel.Instance);
+            EdmFunction function = new EdmFunction("NS", "MyFunction", EdmCoreModel.Instance.GetString(false));
+            EdmFunctionImport functionImport = new EdmFunctionImport(new EdmEntityContainer("NS", "Default"), "MyFunctionImport", function);
+
+            // Act & Assert
+            Assert.Throws<ArgumentNullException>("path", () => context.CreateResponses(operation: function, path: null));
         }
 
         [Theory]
@@ -157,13 +181,15 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             {
                 IEdmOperationImport operationImport = model.EntityContainer.OperationImports().First(o => o.Name == operationName);
                 Assert.NotNull(operationImport); // guard
-                responses = context.CreateResponses(operationImport);
+                ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
+                responses = context.CreateResponses(operationImport, path);
             }
             else
             {
                 IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName);
                 Assert.NotNull(operation); // guard
-                responses = context.CreateResponses(operation);
+                ODataPath path = new ODataPath(new ODataOperationSegment(operation));
+                responses = context.CreateResponses(operation, path);
             }
 
             // Assert
@@ -195,7 +221,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 Assert.NotNull(mediaType.Schema.AnyOf);
                 var anyOf = Assert.Single(mediaType.Schema.AnyOf);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOf.Reference.Id);
-            }            
+            }
         }
 
         [Theory]
@@ -214,13 +240,15 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             {
                 IEdmOperationImport operationImport = model.EntityContainer.OperationImports().First(o => o.Name == actionName);
                 Assert.NotNull(operationImport); // guard
-                responses = context.CreateResponses(operationImport);
+                ODataPath path = new ODataPath(new ODataOperationImportSegment(operationImport));
+                responses = context.CreateResponses(operationImport, path);
             }
             else
             {
                 IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == actionName);
                 Assert.NotNull(operation); // guard
-                responses = context.CreateResponses(operation);
+                ODataPath path = new ODataPath(new ODataOperationSegment(operation));
+                responses = context.CreateResponses(operation, path);
             }
 
             // Assert
