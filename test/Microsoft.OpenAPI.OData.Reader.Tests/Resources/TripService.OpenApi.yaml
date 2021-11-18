@@ -992,8 +992,11 @@ paths:
           content:
             application/json:
               schema:
-                type: boolean
-                default: false
+                type: object
+                properties:
+                  value:
+                    type: boolean
+                    default: false
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -2285,8 +2288,11 @@ paths:
           content:
             application/json:
               schema:
-                type: boolean
-                default: false
+                type: object
+                properties:
+                  value:
+                    type: boolean
+                    default: false
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function
@@ -3649,8 +3655,11 @@ paths:
           content:
             application/json:
               schema:
-                type: boolean
-                default: false
+                type: object
+                properties:
+                  value:
+                    type: boolean
+                    default: false
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: function

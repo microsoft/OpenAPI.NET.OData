@@ -1313,8 +1313,13 @@
           "200": {
             "description": "Success",
             "schema": {
-              "default": false,
-              "type": "boolean"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "default": false,
+                  "type": "boolean"
+                }
+              }
             }
           },
           "default": {
@@ -3000,8 +3005,13 @@
           "200": {
             "description": "Success",
             "schema": {
-              "default": false,
-              "type": "boolean"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "default": false,
+                  "type": "boolean"
+                }
+              }
             }
           },
           "default": {
@@ -4767,8 +4777,13 @@
           "200": {
             "description": "Success",
             "schema": {
-              "default": false,
-              "type": "boolean"
+              "type": "object",
+              "properties": {
+                "value": {
+                  "default": false,
+                  "type": "boolean"
+                }
+              }
             }
           },
           "default": {

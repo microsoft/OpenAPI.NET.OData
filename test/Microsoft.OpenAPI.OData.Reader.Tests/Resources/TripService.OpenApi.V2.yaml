@@ -898,8 +898,11 @@ paths:
         '200':
           description: Success
           schema:
-            default: false
-            type: boolean
+            type: object
+            properties:
+              value:
+                default: false
+                type: boolean
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
@@ -2079,8 +2082,11 @@ paths:
         '200':
           description: Success
           schema:
-            default: false
-            type: boolean
+            type: object
+            properties:
+              value:
+                default: false
+                type: boolean
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
@@ -3320,8 +3326,11 @@ paths:
         '200':
           description: Success
           schema:
-            default: false
-            type: boolean
+            type: object
+            properties:
+              value:
+                default: false
+                type: boolean
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
