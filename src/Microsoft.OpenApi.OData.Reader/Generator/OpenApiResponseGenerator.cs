@@ -106,7 +106,7 @@ namespace Microsoft.OpenApi.OData.Generator
             else
             {
                 OpenApiSchema schema;
-                if (operation.ReturnType.TypeKind() == EdmTypeKind.Collection)
+                if (operation.ReturnType.IsCollection())
                 {
                     // Get the entity type of the previous segment
                     IEdmEntityType entityType = path.Segments.Reverse().Skip(1)?.Take(1)?.FirstOrDefault()?.EntityType;
@@ -122,27 +122,24 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     };
                 }
-                else
+                else if (operation.ReturnType.IsPrimitive())
                 {
                     // A property or operation response that is of a primitive type is represented as an object with a single name/value pair,
                     // whose name is value and whose value is a primitive value.
-                    if (operation.ReturnType.IsPrimitive())
+                    schema = new OpenApiSchema
                     {
-                        schema = new OpenApiSchema
+                        Type = "object",
+                        Properties = new Dictionary<string, OpenApiSchema>
                         {
-                            Type = "object",
-                            Properties = new Dictionary<string, OpenApiSchema>
                             {
-                                {
-                                    "value", context.CreateEdmTypeSchema(operation.ReturnType)
-                                }
+                                "value", context.CreateEdmTypeSchema(operation.ReturnType)
                             }
-                        };
-                    }
-                    else
-                    {
-                        schema = context.CreateEdmTypeSchema(operation.ReturnType);
-                    }
+                        }
+                    };
+                }
+                else
+                {
+                    schema = context.CreateEdmTypeSchema(operation.ReturnType);
                 }
 
                 OpenApiResponse response = new()
