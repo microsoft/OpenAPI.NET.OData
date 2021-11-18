@@ -94,13 +94,28 @@ namespace Microsoft.OpenApi.OData.Generator
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
                         In = ParameterLocation.Query, // as query option
                         Required = true,
-                        Schema = new OpenApiSchema
-                        {
-                            Type = "string",
 
-                            // These Parameter Objects optionally can contain the field description,
-                            // whose value is the value of the unqualified annotation Core.Description of the parameter.
-                            Description = context.Model.GetDescriptionAnnotation(edmParameter)
+                        // Create schema in the Content property to indicate that the parameters are serialized as JSON
+                        Content = new Dictionary<string, OpenApiMediaType>
+                        {
+                            {
+                                Constants.ApplicationJsonMediaType,
+                                new OpenApiMediaType
+                                {
+                                    Schema = new OpenApiSchema
+                                    {
+                                        Type = "array",
+                                        Items = new OpenApiSchema
+                                        {
+                                            Type = "string"
+                                        },
+
+                                        // These Parameter Objects optionally can contain the field description,
+                                        // whose value is the value of the unqualified annotation Core.Description of the parameter.
+                                        Description = context.Model.GetDescriptionAnnotation(edmParameter)
+                                    }
+                                }
+                            }
                         },
 
                         // The parameter description describes the format this URL-encoded JSON object or array, and/or reference to [OData-URL].
