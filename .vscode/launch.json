@@ -2,6 +2,16 @@
    "version": "0.2.0",
    "configurations": [
         {
+            "name": "Launch Update Docs",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/tool/UpdateDocs/bin/Debug/net6.0/UpdateDocs.dll",
+            "cwd": "${workspaceFolder}/tool/UpdateDocs/bin/Debug/net6.0",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
