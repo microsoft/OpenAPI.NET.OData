@@ -74,7 +74,7 @@ namespace UpdateDocs
                 output = oas20 + "/" + fileName + ".json";
                 File.WriteAllText(output, document.SerializeAsJson(OpenApiSpecVersion.OpenApi2_0));
 
-                Console.WriteLine("Output [ " + fileName + " ] Succeessful!");
+                Console.WriteLine("Output [ " + fileName + " ] Successful!");
             }
 
             Console.WriteLine("\n==> All Done!");
