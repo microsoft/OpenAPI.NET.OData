@@ -19,6 +19,7 @@ using Microsoft.OpenApi.OData;
 using System.Net;
 using System.Xml;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace OoasGui
 {
@@ -120,6 +121,8 @@ namespace OoasGui
             }
         }
 
+        private static HttpClient client = new();
+
         private async void loadBtn_Click(object sender, EventArgs e)
         {
             string url = urlTextBox.Text;
@@ -136,15 +139,10 @@ namespace OoasGui
                     requestUri = new Uri(url + "/$metadata");
                 }
 
-                WebRequest request = WebRequest.Create(requestUri);
+                HttpResponseMessage response = await client.GetAsync(requestUri);
 
-                WebResponse response = request.GetResponse();
+                string csdl = await response.Content.ReadAsStringAsync();
 
-                Stream receivedStream = response.GetResponseStream();
-
-                StreamReader reader = new StreamReader(receivedStream, Encoding.UTF8);
-
-                string csdl = reader.ReadToEnd();
                 LoadEdm(url, csdl);
                 csdlRichTextBox.Text = FormatXml(csdl);
                 Settings.ServiceRoot = requestUri;
