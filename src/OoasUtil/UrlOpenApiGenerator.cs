@@ -5,14 +5,13 @@
 //---------------------------------------------------------------------
 
 using System;
-using System.Net;
-using System.IO;
-using System.Text;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.OData;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace OoasUtil
 {
@@ -44,20 +43,17 @@ namespace OoasUtil
         /// </summary>
         protected override IEdmModel GetEdmModel()
         {
-            Uri requestUri = new Uri(Input.OriginalString + "/$metadata");
+            Uri requestUri = new (Input.OriginalString + "/$metadata");
 
-            WebRequest request = WebRequest.Create(requestUri);
-
-            WebResponse response = request.GetResponse();
-
-            Stream receivedStream = response.GetResponseStream();
-
-            StreamReader reader = new StreamReader(receivedStream, Encoding.UTF8);
-
-            string csdl = reader.ReadToEnd();
+            string csdl = GetModelDocumentAsync(requestUri).GetAwaiter().GetResult();
 
             return CsdlReader.Parse(XElement.Parse(csdl).CreateReader());
         }
+        private async Task<string> GetModelDocumentAsync(Uri requestUri) {
+            HttpResponseMessage response = await client.GetAsync(requestUri);
+            return await response.Content.ReadAsStringAsync();
+        }
+        private static readonly HttpClient client = new ();
 
         protected override void ModifySettings()
         {

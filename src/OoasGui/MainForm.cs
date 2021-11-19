@@ -16,7 +16,6 @@ using System.Text;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData;
-using System.Net;
 using System.Xml;
 using System.Threading.Tasks;
 using System.Net.Http;
