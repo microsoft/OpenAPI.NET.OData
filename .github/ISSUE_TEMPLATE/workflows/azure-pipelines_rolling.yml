@@ -28,9 +28,9 @@ variables:
 steps:
 
 - task: UseDotNet@2
-  displayName: 'Use .NET 5'
+  displayName: 'Use .NET 6'
   inputs:
-    version: 5.x
+    version: 6.x
 
 - task: PoliCheck@1
   displayName: 'Run PoliCheck ".\src"'
