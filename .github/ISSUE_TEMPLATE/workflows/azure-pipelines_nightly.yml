@@ -29,6 +29,11 @@ variables:
 
 steps:
 
+- task: UseDotNet@2
+  displayName: 'Use .NET 5'
+  inputs:
+    version: 5.x
+
 - task: PoliCheck@1
   displayName: 'Run PoliCheck "OpenApi.OData-master\src"'
   inputs:
