@@ -293,6 +293,27 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/City/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.City",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/CountryOrRegion": {
       "get": {
         "tags": [
@@ -573,6 +594,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/CountryOrRegion/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.CountryOrRegion",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Me": {
@@ -961,6 +1003,27 @@
         },
         "x-ms-docs-operation-type": "operation"
       }
+    },
+    "/People/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.People",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1135,6 +1198,10 @@
             "type": "string"
           }
         }
+      },
+      "ODataCountResponse": {
+        "type": "integer",
+        "format": "int32"
       }
     },
     "responses": {
