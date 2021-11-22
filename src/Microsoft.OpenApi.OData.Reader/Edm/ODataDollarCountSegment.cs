@@ -12,6 +12,10 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public class ODataDollarCountSegment : ODataSegment
     {
+        /// <summary>
+        /// Get the static instance of $count segment.
+        /// </summary>
+        internal static ODataDollarCountSegment Instance = new();
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.DollarCount;
 
