@@ -67,6 +67,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 schemas[schema.Key] = schema.Value;
             }
 
+            schemas[Constants.DollarCountSchemaName] = new OpenApiSchema {
+                Type = "integer",
+                Format = "int32"
+            };
+
             return schemas;
         }
 

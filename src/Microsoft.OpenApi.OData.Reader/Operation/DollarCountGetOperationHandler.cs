@@ -54,10 +54,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                Type = "integer",
-                Format = "int32"
+            OpenApiSchema schema = new()
+			{
+                Reference = new() {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.DollarCountSchemaName
+                }
             };
 
             operation.Responses = new OpenApiResponses
