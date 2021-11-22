@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(13727, paths.Count());
+            Assert.Equal(17194, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(13712, paths.Count());
+            Assert.Equal(17179, paths.Count());
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(4, paths.Count());
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(2, paths.Count());
+            Assert.Equal(3, paths.Count());
         }
 
         [Fact]
@@ -126,7 +126,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var paths = provider.GetPaths(model, settings);
 
             // Assert
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(4, paths.Count());
         }
 
 #if DEBUG
@@ -151,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
+            Assert.Equal(5, paths.Count());
         }
 
         [Fact]
@@ -170,7 +170,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(4, paths.Count());
         }
 
         [Fact]
@@ -195,7 +195,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
+            Assert.Equal(5, paths.Count());
         }
 
         [Fact]
@@ -211,8 +211,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(2, paths.Count());
-            Assert.Equal(new[] { "/Customers", "/Customers({ID})" }, paths.Select(p => p.GetPathItemName()));
+            Assert.Equal(3, paths.Count());
+            Assert.Equal(new[] { "/Customers", "/Customers({ID})", "/Customers/$count" }, paths.Select(p => p.GetPathItemName()));
         }
 
         [Fact]
@@ -228,7 +228,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(4, paths.Count());
             Assert.Contains("/Me", paths.Select(p => p.GetPathItemName()));
         }
 
@@ -250,7 +250,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(4, paths.Count());
             Assert.Contains("/Customers/NS.delta()", paths.Select(p => p.GetPathItemName()));
         }
 
@@ -272,7 +272,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(4, paths.Count());
             Assert.Contains("/Customers({ID})/NS.renew", paths.Select(p => p.GetPathItemName()));
         }
 
@@ -301,7 +301,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
+            Assert.Equal(5, paths.Count());
 
             if (containsTarget)
             {
@@ -338,7 +338,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
+            Assert.Equal(5, paths.Count());
 
             if (containsTarget)
             {
@@ -373,7 +373,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
+            Assert.Equal(5, paths.Count());
             Assert.Contains("/GetNearestCustomers()", paths.Select(p => p.GetPathItemName()));
             Assert.Contains("/ResetDataSource", paths.Select(p => p.GetPathItemName()));
         }
@@ -410,7 +410,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(7, paths.Count());
+            Assert.Equal(10, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.DoesNotContain("/Orders({id})/SingleCustomer", pathItems);
@@ -453,7 +453,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(7, paths.Count());
+            Assert.Equal(9, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.DoesNotContain("/Orders({id})/MultipleCustomers({ID})", pathItems);
@@ -483,7 +483,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(9, paths.Count());
+            Assert.Equal(12, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
@@ -516,7 +516,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(7, paths.Count());
+            Assert.Equal(10, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
@@ -552,14 +552,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             {
                 if (hasStream)
                 {
-                    Assert.Equal(13, paths.Count());
+                    Assert.Equal(15, paths.Count());
                     Assert.Contains(TodosValuePath, paths.Select(p => p.GetPathItemName()));
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 }
                 else
                 {
-                    Assert.Equal(12, paths.Count());
+                    Assert.Equal(14, paths.Count());
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
@@ -567,7 +567,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             }
             else if (streamPropName.Equals("content"))
             {
-                Assert.Equal(12, paths.Count());
+                Assert.Equal(14, paths.Count());
                 Assert.Contains(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));

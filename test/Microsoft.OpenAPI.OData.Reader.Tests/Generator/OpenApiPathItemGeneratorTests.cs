@@ -57,13 +57,16 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(pathItems);
-            Assert.Equal(7, pathItems.Count);
+            Assert.Equal(10, pathItems.Count);
 
             Assert.Contains("/People", pathItems.Keys);
+            Assert.Contains("/People/$count", pathItems.Keys);
             Assert.Contains("/People/{UserName}", pathItems.Keys);
             Assert.Contains("/City", pathItems.Keys);
+            Assert.Contains("/City/$count", pathItems.Keys);
             Assert.Contains("/City/{Name}", pathItems.Keys);
             Assert.Contains("/CountryOrRegion", pathItems.Keys);
+            Assert.Contains("/CountryOrRegion/$count", pathItems.Keys);
             Assert.Contains("/CountryOrRegion/{Name}", pathItems.Keys);
             Assert.Contains("/Me", pathItems.Keys);
         }
@@ -114,9 +117,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(pathItems);
-            Assert.Equal(3, pathItems.Count);
+            Assert.Equal(4, pathItems.Count);
 
             Assert.Contains("/Customers", pathItems.Keys);
+            Assert.Contains("/Customers/$count", pathItems.Keys);
             Assert.Contains("/Customers({ID})", pathItems.Keys);
             Assert.Contains(expected, pathItems.Keys);
         }
