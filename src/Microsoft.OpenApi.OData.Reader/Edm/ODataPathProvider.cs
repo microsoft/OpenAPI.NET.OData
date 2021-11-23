@@ -387,7 +387,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
             if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
-            if(!convertSettings.IncludeDollarCountPathSegments) return;
+            if(!convertSettings.EnableDollarCountPath) return;
             var countPath = currentPath.Clone();
             countPath.Push(ODataDollarCountSegment.Instance);
             AppendPath(countPath);

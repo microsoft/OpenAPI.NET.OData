@@ -186,7 +186,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/sets a value indicating whether or not add OData $count segments in the description for collections.
         /// </summary>
-        public bool IncludeDollarCountPathSegments { get; set; } = true;
+        public bool EnableDollarCountPath { get; set; } = true;
 
         internal OpenApiConvertSettings Clone()
         {
@@ -218,7 +218,7 @@ namespace Microsoft.OpenApi.OData
                 ShowSchemaExamples = this.ShowSchemaExamples,
                 ShowRootPath = this.ShowRootPath,
                 PathProvider = this.PathProvider,
-                IncludeDollarCountPathSegments = this.IncludeDollarCountPathSegments,
+                EnableDollarCountPath = this.EnableDollarCountPath,
             };
 
             return newSettings;

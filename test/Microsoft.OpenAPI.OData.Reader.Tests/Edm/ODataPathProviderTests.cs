@@ -93,7 +93,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmModel model = GetInheritanceModel(string.Empty);
             ODataPathProvider provider = new ODataPathProvider();
             var settings = new OpenApiConvertSettings {
-              IncludeDollarCountPathSegments = false,
+              EnableDollarCountPath = false,
             };
 
             // Act
