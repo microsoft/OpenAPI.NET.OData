@@ -87,6 +87,24 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
+        public void GetPathsDoesntReturnPathsForCountWhenDisabled()
+        {
+            // Arrange
+            IEdmModel model = GetInheritanceModel(string.Empty);
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings {
+              IncludeDollarCountPathSegments = false,
+            };
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(3, paths.Count());
+        }
+
+        [Fact]
         public void GetPathsForInheritanceModelWithDerivedTypesConstraintNoAnnotationReturnsFewer()
         {
             // Arrange

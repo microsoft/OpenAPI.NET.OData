@@ -57,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Edm
            {
                if (CanFilter(entitySet))
                {
-                   RetrieveNavigationSourcePaths(entitySet);
+                   RetrieveNavigationSourcePaths(entitySet, settings);
                }
            }
 
@@ -66,7 +66,7 @@ namespace Microsoft.OpenApi.OData.Edm
            {
                if (CanFilter(singleton))
                {
-                   RetrieveNavigationSourcePaths(singleton);
+                   RetrieveNavigationSourcePaths(singleton, settings);
                }
            }
 
@@ -169,7 +169,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Retrieve the paths for <see cref="IEdmNavigationSource"/>.
         /// </summary>
         /// <param name="navigationSource">The navigation source.</param>
-        private void RetrieveNavigationSourcePaths(IEdmNavigationSource navigationSource)
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        private void RetrieveNavigationSourcePaths(IEdmNavigationSource navigationSource, OpenApiConvertSettings convertSettings)
         {
             Debug.Assert(navigationSource != null);
 
@@ -183,7 +184,7 @@ namespace Microsoft.OpenApi.OData.Edm
             // for entity set, create a path with key and a $count path
             if (entitySet != null)
             {
-                CreateCountPath(path);
+                CreateCountPath(path, convertSettings);
 
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
@@ -197,7 +198,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 if (CanFilter(np))
                 {
-                    RetrieveNavigationPropertyPaths(np, path);
+                    RetrieveNavigationPropertyPaths(np, path, convertSettings);
                 }
             }
 
@@ -252,7 +253,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="navigationProperty">The navigation property.</param>
         /// <param name="currentPath">The current OData path.</param>
-        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, ODataPath currentPath, OpenApiConvertSettings convertSettings)
         {
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
@@ -282,7 +284,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 if (targetsMany)
                 {
                     // ~/entityset/{key}/collection-valued-Nav/$count
-                    CreateCountPath(currentPath);
+                    CreateCountPath(currentPath, convertSettings);
                 }
 
                 if (!navigationProperty.ContainsTarget)
@@ -321,7 +323,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             if (CanFilter(subNavProperty))
                             {
-                                RetrieveNavigationPropertyPaths(subNavProperty, currentPath);
+                                RetrieveNavigationPropertyPaths(subNavProperty, currentPath, convertSettings);
                             }
                         }
                     }
@@ -373,8 +375,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Create $count paths.
         /// </summary>
         /// <param name="currentPath">The current OData path.</param>
-        private void CreateCountPath(ODataPath currentPath) {
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        private void CreateCountPath(ODataPath currentPath, OpenApiConvertSettings convertSettings) {
             if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
+            if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
+            if(!convertSettings.IncludeDollarCountPathSegments) return;
             var countPath = currentPath.Clone();
             countPath.Push(ODataDollarCountSegment.Instance);
             AppendPath(countPath);

@@ -183,6 +183,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public IODataPathProvider PathProvider { get; set; }
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not add OData $count segments in the description for collections.
+        /// </summary>
+        public bool IncludeDollarCountPathSegments { get; set; } = true;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -212,7 +217,8 @@ namespace Microsoft.OpenApi.OData
                 RequireDerivedTypesConstraintForBoundOperations = this.RequireDerivedTypesConstraintForBoundOperations,
                 ShowSchemaExamples = this.ShowSchemaExamples,
                 ShowRootPath = this.ShowRootPath,
-                PathProvider = this.PathProvider
+                PathProvider = this.PathProvider,
+                IncludeDollarCountPathSegments = this.IncludeDollarCountPathSegments,
             };
 
             return newSettings;
