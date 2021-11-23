@@ -1,4 +1,4 @@
-﻿{
+{
   "swagger": "2.0",
   "info": {
     "title": "OData Service for namespace ",
@@ -67,6 +67,10 @@
           "type": "string"
         }
       }
+    },
+    "ODataCountResponse": {
+      "format": "int32",
+      "type": "integer"
     }
   },
   "parameters": {

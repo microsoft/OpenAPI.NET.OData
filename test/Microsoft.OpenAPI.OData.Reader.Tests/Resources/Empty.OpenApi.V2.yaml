@@ -1,4 +1,4 @@
-﻿swagger: '2.0'
+swagger: '2.0'
 info:
   title: 'OData Service for namespace '
   description: This OData service is located at http://localhost
@@ -46,6 +46,9 @@ definitions:
         type: string
       target:
         type: string
+  ODataCountResponse:
+    format: int32
+    type: integer
 parameters:
   top:
     in: query

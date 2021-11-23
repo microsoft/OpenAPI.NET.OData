@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.1",
   "info": {
     "title": "OData Service for namespace ",
@@ -69,6 +69,10 @@
             "type": "string"
           }
         }
+      },
+      "ODataCountResponse": {
+        "type": "integer",
+        "format": "int32"
       }
     },
     "responses": {

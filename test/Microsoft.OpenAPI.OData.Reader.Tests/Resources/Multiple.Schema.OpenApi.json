@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.1",
   "info": {
     "title": "OData Service for namespace Default",
@@ -320,6 +320,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Categories/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Categories",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Documents": {
@@ -929,6 +950,42 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Documents({Id})/Revisions/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Revisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Documents({Id})/Revisions/$ref": {
       "get": {
         "tags": [
@@ -1093,6 +1150,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Documents/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Documents",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Libraries": {
@@ -1661,6 +1739,42 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Libraries({Id})/Documents/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Documents",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Libraries({Id})/Documents/$ref": {
       "get": {
         "tags": [
@@ -1811,6 +1925,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Libraries/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Libraries",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Revisions": {
@@ -2497,6 +2632,27 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Revisions/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Revisions",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Tasks": {
       "get": {
         "tags": [
@@ -3104,6 +3260,42 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Tasks({Id})/Revisions/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Revisions",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Tasks({Id})/Revisions/$ref": {
       "get": {
         "tags": [
@@ -3268,6 +3460,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Tasks/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Tasks",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     }
   },
@@ -5226,6 +5439,10 @@
             "type": "string"
           }
         }
+      },
+      "ODataCountResponse": {
+        "type": "integer",
+        "format": "int32"
       }
     },
     "responses": {

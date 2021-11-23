@@ -1,4 +1,4 @@
-﻿openapi: 3.0.1
+openapi: 3.0.1
 info:
   title: 'OData Service for namespace '
   description: This OData service is located at http://localhost
@@ -46,6 +46,9 @@ components:
           type: string
         target:
           type: string
+    ODataCountResponse:
+      type: integer
+      format: int32
   responses:
     error:
       description: error
