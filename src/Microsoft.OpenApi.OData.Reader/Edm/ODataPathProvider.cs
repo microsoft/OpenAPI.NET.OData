@@ -377,12 +377,14 @@ namespace Microsoft.OpenApi.OData.Edm
             newPath.Push(ODataRefSegment.Instance); // $ref
             AppendPath(newPath);
         }
+
         /// <summary>
         /// Create $count paths.
         /// </summary>
         /// <param name="currentPath">The current OData path.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
-        private void CreateCountPath(ODataPath currentPath, OpenApiConvertSettings convertSettings) {
+        private void CreateCountPath(ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        {
             if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
             if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
             if(!convertSettings.IncludeDollarCountPathSegments) return;
