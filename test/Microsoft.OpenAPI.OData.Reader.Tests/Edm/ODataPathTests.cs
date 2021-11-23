@@ -249,10 +249,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "/Customers/FirstName={FirstName},LastName={LastName}")]
-        [InlineData(true, false, "/Customers/FirstName={FirstName},LastName={LastName}")]
-        [InlineData(false, true, "/Customers(FirstName={FirstName},LastName={LastName})")]
-        [InlineData(false, false, "/Customers(FirstName={FirstName},LastName={LastName})")]
+        [InlineData(true, true, "/Customers/FirstName='{FirstName}',LastName='{LastName}'")]
+        [InlineData(true, false, "/Customers/FirstName='{FirstName}',LastName='{LastName}'")]
+        [InlineData(false, true, "/Customers(FirstName='{FirstName}',LastName='{LastName}')")]
+        [InlineData(false, false, "/Customers(FirstName='{FirstName}',LastName='{LastName}')")]
         public void GetPathItemNameReturnsCorrectStringWithMultipleKeySegment(bool keyAsSegment, bool prefix, string expected)
         {
             // Arrange

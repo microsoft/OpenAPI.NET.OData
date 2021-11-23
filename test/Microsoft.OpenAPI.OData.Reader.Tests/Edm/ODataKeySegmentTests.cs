@@ -83,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             };
 
             // Assert
-            Assert.Equal("firstName={firstName},lastName={lastName}", segment.GetPathItemName(settings));
+            Assert.Equal("firstName='{firstName}',lastName='{lastName}'", segment.GetPathItemName(settings));
         }
     }
 }

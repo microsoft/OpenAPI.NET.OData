@@ -77,13 +77,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    IList<string> keyStrings = new List<string>();
-                    foreach (var key in KeyMappings)
-                    {
-                        keyStrings.Add(key.Key + "={" + key.Value + "}");
-                    }
-
-                    return String.Join(",", keyStrings);
+                    return string.Join(",", KeyMappings.Select(x => x.Key + "='{" + x.Value + "}'"));
                 }
             }
 
@@ -109,7 +103,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var keyProperty in keys)
                 {
                     string name = Utils.GetUniqueName(keyProperty.Name, parameters);
-                    keyStrings.Add(keyProperty.Name + "={" + name + "}");
+                    keyStrings.Add(keyProperty.Name + "='{" + name + "}'");
                 }
 
                 return String.Join(",", keyStrings);

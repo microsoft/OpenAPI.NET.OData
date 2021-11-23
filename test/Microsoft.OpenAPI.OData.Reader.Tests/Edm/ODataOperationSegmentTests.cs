@@ -74,10 +74,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "MyFunction(param={param})")]
-        [InlineData(true, false, "MyFunction(entity=@entity,param={param})")]
-        [InlineData(false, true, "NS.MyFunction(param={param})")]
-        [InlineData(false, false, "NS.MyFunction(entity=@entity,param={param})")]
+        [InlineData(true, true, "MyFunction(param='{param}')")]
+        [InlineData(true, false, "MyFunction(entity=@entity,param='{param}')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, "NS.MyFunction(entity=@entity,param='{param}')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected)
         {
             // Arrange & Act
@@ -98,9 +98,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
         [Theory]
         [InlineData(true, true, "{param}")]
-        [InlineData(true, false, "NS.MyFunction(param={param})")]
-        [InlineData(false, true, "NS.MyFunction(param={param})")]
-        [InlineData(false, false, "NS.MyFunction(param={param})")]
+        [InlineData(true, false, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, "NS.MyFunction(param='{param}')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteralForEscapedFunction(bool isEscapedFunction, bool enableEscapeFunctionCall, string expected)
         {
             // Arrange & Act
@@ -121,9 +121,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
         [Theory]
         [InlineData(true, true, "{param}:")]
-        [InlineData(true, false, "NS.MyFunction(param={param})")]
-        [InlineData(false, true, "NS.MyFunction(param={param})")]
-        [InlineData(false, false, "NS.MyFunction(param={param})")]
+        [InlineData(true, false, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, "NS.MyFunction(param='{param}')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteralForEscapedComposableFunction(bool isEscapedFunction, bool enableEscapeFunctionCall, string expected)
         {
             // Arrange & Act

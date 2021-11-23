@@ -148,7 +148,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    return p.Name + "={" + uniqueName + "}";
+                    return p.Name + "='{" + uniqueName + "}'";
                 }
             })));
 

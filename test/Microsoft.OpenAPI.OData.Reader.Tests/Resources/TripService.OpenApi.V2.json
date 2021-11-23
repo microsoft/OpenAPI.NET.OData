@@ -1,4 +1,4 @@
-{
+﻿{
   "swagger": "2.0",
   "info": {
     "title": "OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models",
@@ -1206,7 +1206,7 @@
         "x-ms-docs-operation-type": "function"
       }
     },
-    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
       "get": {
         "tags": [
           "Me.Functions"
@@ -1220,7 +1220,7 @@
           {
             "in": "path",
             "name": "userName",
-            "description": "Usage: userName={userName}",
+            "description": "Usage: userName='{userName}'",
             "required": true,
             "type": "string"
           }
@@ -1350,7 +1350,7 @@
         "x-ms-docs-operation-type": "action"
       }
     },
-    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
       "get": {
         "tags": [
           "Me.Functions"
@@ -1364,7 +1364,7 @@
           {
             "in": "path",
             "name": "lastName",
-            "description": "Usage: lastName={lastName}",
+            "description": "Usage: lastName='{lastName}'",
             "required": true,
             "type": "string"
           }
@@ -2949,7 +2949,7 @@
         "x-ms-docs-operation-type": "function"
       }
     },
-    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
       "get": {
         "tags": [
           "NewComePeople.Functions"
@@ -2971,7 +2971,7 @@
           {
             "in": "path",
             "name": "userName",
-            "description": "Usage: userName={userName}",
+            "description": "Usage: userName='{userName}'",
             "required": true,
             "type": "string"
           }
@@ -3117,7 +3117,7 @@
         "x-ms-docs-operation-type": "action"
       }
     },
-    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+    "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
       "get": {
         "tags": [
           "NewComePeople.Functions"
@@ -3139,7 +3139,7 @@
           {
             "in": "path",
             "name": "lastName",
-            "description": "Usage: lastName={lastName}",
+            "description": "Usage: lastName='{lastName}'",
             "required": true,
             "type": "string"
           }
@@ -4842,7 +4842,7 @@
         "x-ms-docs-operation-type": "function"
       }
     },
-    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName={userName})": {
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
       "get": {
         "tags": [
           "People.Functions"
@@ -4864,7 +4864,7 @@
           {
             "in": "path",
             "name": "userName",
-            "description": "Usage: userName={userName}",
+            "description": "Usage: userName='{userName}'",
             "required": true,
             "type": "string"
           }
@@ -5010,7 +5010,7 @@
         "x-ms-docs-operation-type": "action"
       }
     },
-    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})": {
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
       "get": {
         "tags": [
           "People.Functions"
@@ -5032,7 +5032,7 @@
           {
             "in": "path",
             "name": "lastName",
-            "description": "Usage: lastName={lastName}",
+            "description": "Usage: lastName='{lastName}'",
             "required": true,
             "type": "string"
           }
