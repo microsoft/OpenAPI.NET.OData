@@ -180,11 +180,14 @@ namespace Microsoft.OpenApi.OData.Edm
 
             IEdmEntitySet entitySet = navigationSource as IEdmEntitySet;
             IEdmEntityType entityType = navigationSource.EntityType();
+            CountRestrictionsType count = null;
 
             // for entity set, create a path with key and a $count path
             if (entitySet != null)
             {
-                CreateCountPath(path, convertSettings);
+                count = _model.GetRecord<CountRestrictionsType>(entitySet, CapabilitiesConstants.CountRestrictions);
+                if(count?.Countable ?? true)
+                    CreateCountPath(path, convertSettings);
 
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
@@ -198,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 if (CanFilter(np))
                 {
-                    RetrieveNavigationPropertyPaths(np, path, convertSettings);
+                    RetrieveNavigationPropertyPaths(np, count, path, convertSettings);
                 }
             }
 
@@ -252,9 +255,10 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Retrieve the path for <see cref="IEdmNavigationProperty"/>.
         /// </summary>
         /// <param name="navigationProperty">The navigation property.</param>
+        /// <param name="count">The count restrictions.</param>
         /// <param name="currentPath">The current OData path.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
-        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, CountRestrictionsType count, ODataPath currentPath, OpenApiConvertSettings convertSettings)
         {
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
@@ -280,8 +284,10 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 IEdmEntityType navEntityType = navigationProperty.ToEntityType();
                 var targetsMany = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
+                var propertyPath = navigationProperty.GetPartnerPath()?.Path;
 
-                if (targetsMany)
+                if (targetsMany && (string.IsNullOrEmpty(propertyPath) ||
+                    (count?.IsNonCountableNavigationProperty(propertyPath) ?? true)))
                 {
                     // ~/entityset/{key}/collection-valued-Nav/$count
                     CreateCountPath(currentPath, convertSettings);
@@ -323,7 +329,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             if (CanFilter(subNavProperty))
                             {
-                                RetrieveNavigationPropertyPaths(subNavProperty, currentPath, convertSettings);
+                                RetrieveNavigationPropertyPaths(subNavProperty, count, currentPath, convertSettings);
                             }
                         }
                     }
