@@ -183,7 +183,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                // Need to verify that TopSupported or others should be applyed to navigaiton source.
+                // Need to verify that TopSupported or others should be applied to navigation source.
                 // So, how about for the navigation property.
                 OpenApiParameter parameter = Context.CreateTop(NavigationProperty);
                 if (parameter != null)
