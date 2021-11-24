@@ -61,7 +61,8 @@ Microsoft.OpenApi.OData.Edm.ODataPathKind.Operation = 3 -> Microsoft.OpenApi.ODa
 Microsoft.OpenApi.OData.Edm.ODataPathKind.OperationImport = 4 -> Microsoft.OpenApi.OData.Edm.ODataPathKind
 Microsoft.OpenApi.OData.Edm.ODataPathKind.Ref = 6 -> Microsoft.OpenApi.OData.Edm.ODataPathKind
 Microsoft.OpenApi.OData.Edm.ODataPathKind.Singleton = 2 -> Microsoft.OpenApi.OData.Edm.ODataPathKind
-Microsoft.OpenApi.OData.Edm.ODataPathKind.Unknown = 10 -> Microsoft.OpenApi.OData.Edm.ODataPathKind
+Microsoft.OpenApi.OData.Edm.ODataPathKind.TypeCast = 10 -> Microsoft.OpenApi.OData.Edm.ODataPathKind
+Microsoft.OpenApi.OData.Edm.ODataPathKind.Unknown = 11 -> Microsoft.OpenApi.OData.Edm.ODataPathKind
 Microsoft.OpenApi.OData.Edm.ODataPathProvider
 Microsoft.OpenApi.OData.Edm.ODataPathProvider.ODataPathProvider() -> void
 Microsoft.OpenApi.OData.Edm.ODataRefSegment
@@ -134,6 +135,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDollarCountPath.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDollarCountPath.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddSingleQuotesForStringParameters.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddSingleQuotesForStringParameters.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataTypeCast.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataTypeCast.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireDerivedTypesConstraintForBoundOperations.get -> bool

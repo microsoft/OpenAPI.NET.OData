@@ -45,6 +45,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             // $count
             { ODataPathKind.DollarCount, new DollarCountPathItemHandler() },
 
+            // ~/groups/{id}/members/microsoft.graph.user
+            { ODataPathKind.TypeCast, new ODataTypeCastPathItemHandler() },
+
             // Unknown
             { ODataPathKind.Unknown, null },
         };

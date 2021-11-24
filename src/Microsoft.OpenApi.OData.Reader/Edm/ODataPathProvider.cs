@@ -127,6 +127,7 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPathKind kind = path.Kind;
             switch(kind)
             {
+                case ODataPathKind.TypeCast:
                 case ODataPathKind.DollarCount:
                 case ODataPathKind.Entity:
                 case ODataPathKind.EntitySet:
@@ -285,12 +286,25 @@ namespace Microsoft.OpenApi.OData.Edm
                 IEdmEntityType navEntityType = navigationProperty.ToEntityType();
                 var targetsMany = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
                 var propertyPath = navigationProperty.GetPartnerPath()?.Path;
+                var propertyPathIsEmpty = string.IsNullOrEmpty(propertyPath);
 
-                if (targetsMany && (string.IsNullOrEmpty(propertyPath) ||
-                    (count?.IsNonCountableNavigationProperty(propertyPath) ?? true)))
+                if (targetsMany) 
                 {
-                    // ~/entityset/{key}/collection-valued-Nav/$count
-                    CreateCountPath(currentPath, convertSettings);
+                    if(propertyPathIsEmpty ||
+                        (count?.IsNonCountableNavigationProperty(propertyPath) ?? true))
+                    {
+                        // ~/entityset/{key}/collection-valued-Nav/$count
+                        CreateCountPath(currentPath, convertSettings);
+                    }
+
+                    //TODO read the cast restrictions annotation
+                    var derivedTypes = _model
+                                        .FindAllDerivedTypes(navigationProperty.DeclaringType)
+                                        .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                        .OfType<IEdmEntityType>()
+                                        .ToArray();
+                    if(derivedTypes.Any())
+                        CreateTypeCastPaths(currentPath, convertSettings, derivedTypes);
                 }
 
                 if (!navigationProperty.ContainsTarget)
@@ -391,6 +405,26 @@ namespace Microsoft.OpenApi.OData.Edm
             var countPath = currentPath.Clone();
             countPath.Push(ODataDollarCountSegment.Instance);
             AppendPath(countPath);
+        }
+
+        /// <summary>
+        /// Create OData type cast paths.
+        /// </summary>
+        /// <param name="currentPath">The current OData path.</param>
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        /// <param name="targetTypes">The target types to generate a path for.</param>
+        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, params IEdmEntityType[] targetTypes)
+        {
+            if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
+            if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
+            if(!convertSettings.EnableODataTypeCast || targetTypes == null || !targetTypes.Any()) return;
+            
+            foreach(var targetType in targetTypes) 
+            {
+                var castPath = currentPath.Clone();
+                castPath.Push(new ODataTypeCastSegment(targetType));
+                AppendPath(castPath);
+            }
         }
 
         /// <summary>

@@ -89,6 +89,12 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {OperationType.Get, new DollarCountGetOperationHandler() }
             }},
+
+            // .../namespace.typename (cast, get)
+            {ODataPathKind.TypeCast, new Dictionary<OperationType, IOperationHandler>
+            {
+                {OperationType.Get, new ODataTypeCastGetOperationHandler() },
+            }},
         };
 
         /// <inheritdoc/>

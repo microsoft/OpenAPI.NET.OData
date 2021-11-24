@@ -289,13 +289,15 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 return ODataPathKind.Metadata;
             }
-
-            if (Segments.Last().Kind == ODataSegmentKind.DollarCount)
+            else if (Segments.Last().Kind == ODataSegmentKind.DollarCount)
             {
                 return ODataPathKind.DollarCount;
             }
-
-            if (Segments.Any(c => c.Kind == ODataSegmentKind.StreamProperty || c.Kind == ODataSegmentKind.StreamContent))
+            else if (Segments.Last().Kind == ODataSegmentKind.TypeCast)
+            {
+                return ODataPathKind.TypeCast;
+            }
+            else if (Segments.Any(c => c.Kind == ODataSegmentKind.StreamProperty || c.Kind == ODataSegmentKind.StreamContent))
             {
                 return ODataPathKind.MediaEntity;
             }
@@ -315,22 +317,17 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 return ODataPathKind.NavigationProperty;
             }
-
-            if (Segments.Count == 1)
+            else if (Segments.Count == 1 && Segments[0] is ODataNavigationSourceSegment segment)
             {
-                ODataNavigationSourceSegment segment = Segments[0] as ODataNavigationSourceSegment;
-                if (segment != null)
+                if (segment.NavigationSource is IEdmSingleton)
                 {
-                    if (segment.NavigationSource is IEdmSingleton)
-                    {
-                        return ODataPathKind.Singleton;
-                    }
-                    else
-                    {
-                        return ODataPathKind.EntitySet;
-                    }
+                    return ODataPathKind.Singleton;
                 }
-            }
+                else
+                {
+                    return ODataPathKind.EntitySet;
+                }
+			}
             else if (Segments.Count == 2 && Segments.Last().Kind == ODataSegmentKind.Key)
             {
                 return ODataPathKind.Entity;
