@@ -103,7 +103,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var keyProperty in keys)
                 {
                     string name = Utils.GetUniqueName(keyProperty.Name, parameters);
-                    keyStrings.Add(keyProperty.Name + "='{" + name + "}'");
+                    var quote = keyProperty.Type.Definition.ShouldPathParameterBeQuoted() ? "'" : string.Empty;
+                    keyStrings.Add($"{keyProperty.Name}={quote}{{{name}}}{quote}");
                 }
 
                 return String.Join(",", keyStrings);

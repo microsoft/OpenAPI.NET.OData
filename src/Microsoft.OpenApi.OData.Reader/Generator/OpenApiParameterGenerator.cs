@@ -136,7 +136,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (parameterNameMapping != null)
                 {
-                    parameter.Description = $"Usage: {edmParameter.Name}='{{{parameterNameMapping[edmParameter.Name]}}}'";
+                    var quote = edmParameter.Type.Definition.ShouldPathParameterBeQuoted() ? "'" : string.Empty;
+                    parameter.Description = $"Usage: {edmParameter.Name}={quote}{{{parameterNameMapping[edmParameter.Name]}}}{quote}";
                 }
 
                 parameters.Add(parameter);
@@ -203,7 +204,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     if (keySegment.KeyMappings != null)
                     {
-                        parameter.Description += $", {keyProperty.Name}='{{{parameter.Name}}}'";
+                        var quote = keyProperty.Type.Definition.ShouldPathParameterBeQuoted() ? "'" : string.Empty;
+                        parameter.Description += $", {keyProperty.Name}={quote}{{{parameter.Name}}}{quote}";
                     }
 
                     parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
