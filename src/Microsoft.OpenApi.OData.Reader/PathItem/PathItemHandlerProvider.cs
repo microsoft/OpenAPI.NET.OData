@@ -13,7 +13,7 @@ namespace Microsoft.OpenApi.OData.PathItem
     /// </summary>
     internal class PathItemHandlerProvider : IPathItemHandlerProvider
     {
-        private IDictionary<ODataPathKind, IPathItemHandler> _handlers = new Dictionary<ODataPathKind, IPathItemHandler>
+        private readonly IDictionary<ODataPathKind, IPathItemHandler> _handlers = new Dictionary<ODataPathKind, IPathItemHandler>
         {
             // EntitySet
             { ODataPathKind.EntitySet, new EntitySetPathItemHandler() },

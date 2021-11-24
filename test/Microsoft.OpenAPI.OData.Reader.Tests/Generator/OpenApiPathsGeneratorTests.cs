@@ -56,13 +56,16 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(7, paths.Count);
+            Assert.Equal(10, paths.Count);
 
             Assert.Contains("/People", paths.Keys);
+            Assert.Contains("/People/$count", paths.Keys);
             Assert.Contains("/People/{UserName}", paths.Keys);
             Assert.Contains("/City", paths.Keys);
+            Assert.Contains("/City/$count", paths.Keys);
             Assert.Contains("/City/{Name}", paths.Keys);
             Assert.Contains("/CountryOrRegion", paths.Keys);
+            Assert.Contains("/CountryOrRegion/$count", paths.Keys);
             Assert.Contains("/CountryOrRegion/{Name}", paths.Keys);
             Assert.Contains("/Me", paths.Keys);
         }
@@ -84,13 +87,16 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(7, paths.Count);
+            Assert.Equal(10, paths.Count);
 
             Assert.Contains("/some/prefix/People", paths.Keys);
+            Assert.Contains("/some/prefix/People/$count", paths.Keys);
             Assert.Contains("/some/prefix/People/{UserName}", paths.Keys);
             Assert.Contains("/some/prefix/City", paths.Keys);
+            Assert.Contains("/some/prefix/City/$count", paths.Keys);
             Assert.Contains("/some/prefix/City/{Name}", paths.Keys);
             Assert.Contains("/some/prefix/CountryOrRegion", paths.Keys);
+            Assert.Contains("/some/prefix/CountryOrRegion/$count", paths.Keys);
             Assert.Contains("/some/prefix/CountryOrRegion/{Name}", paths.Keys);
             Assert.Contains("/some/prefix/Me", paths.Keys);
         }
@@ -112,9 +118,10 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count);
+            Assert.Equal(5, paths.Count);
 
             Assert.Contains("/Accounts", paths.Keys);
+            Assert.Contains("/Accounts/$count", paths.Keys);
             Assert.Contains("/Accounts/{id}", paths.Keys);
             Assert.Contains("/Accounts/{id}/Attachments()", paths.Keys);
             Assert.Contains("/Accounts/{id}/AttachmentsAdd", paths.Keys);

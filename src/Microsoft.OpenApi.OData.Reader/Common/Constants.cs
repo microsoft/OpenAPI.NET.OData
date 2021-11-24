@@ -79,5 +79,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// extension for discriminator value support
         /// </summary>
         public static string xMsDiscriminatorValue = "x-ms-discriminator-value";
+
+        /// <summary>
+        /// Name used for the OpenAPI referenced schema for OData Count operations responses.
+        /// </summary>
+        public static string DollarCountSchemaName = "ODataCountResponse";
     }
 }

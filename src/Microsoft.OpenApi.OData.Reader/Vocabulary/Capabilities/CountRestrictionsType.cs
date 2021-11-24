@@ -36,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Test the target supports count.
         /// </summary>
         /// <returns>True/false.</returns>
-        public bool IsCountable => Countable == null || Countable.Value;
+        public bool IsCountable => !Countable.HasValue || Countable.Value;
 
         /// <summary>
         /// Test the input property path which do not allow /$count segments.
@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonCountableProperty(string propertyPath)
         {
-            return NonCountableProperties != null ? NonCountableProperties.Any(a => a == propertyPath) : false;
+            return NonCountableProperties != null && NonCountableProperties.Any(a => a == propertyPath);
         }
 
         /// <summary>
@@ -55,9 +55,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// <returns>True/False.</returns>
         public bool IsNonCountableNavigationProperty(string navigationPropertyPath)
         {
-            return NonCountableNavigationProperties != null ?
-                NonCountableNavigationProperties.Any(a => a == navigationPropertyPath) :
-                false;
+            return NonCountableNavigationProperties != null && NonCountableNavigationProperties.Any(a => a == navigationPropertyPath);
         }
 
         /// <summary>

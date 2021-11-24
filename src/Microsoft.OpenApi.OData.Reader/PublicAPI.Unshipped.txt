@@ -128,6 +128,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.PathPrefix.get -> string
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PathPrefix.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PathProvider.get -> Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PathProvider.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDollarCountPath.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDollarCountPath.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireDerivedTypesConstraintForBoundOperations.get -> bool

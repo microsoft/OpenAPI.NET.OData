@@ -146,8 +146,8 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // From Open API spec, parameter name is case sensitive, so don't use the IgnoreCase HashSet.
             // HashSet<string> parameters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-            HashSet<string> parameters = new HashSet<string>();
-            StringBuilder sb = new StringBuilder();
+            HashSet<string> parameters = new();
+            StringBuilder sb = new();
 
             if (!string.IsNullOrWhiteSpace(settings.PathPrefix))
             {

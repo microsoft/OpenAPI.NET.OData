@@ -14,7 +14,6 @@ using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using System.Drawing;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -46,8 +45,8 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
 
-        /// <inheritdoc/>
-        protected override void SetOperations(OpenApiPathItem item)
+		/// <inheritdoc/>
+		protected override void SetOperations(OpenApiPathItem item)
         {
             IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
             IEdmVocabularyAnnotatable target = entitySet;
@@ -79,7 +78,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
             }
 
-            // contaiment: Get / (Post - Collection | Patch - Single)
+            // containment: Get / (Post - Collection | Patch - Single)
             // non-containment: Get
             AddGetOperation(item, restriction);
 
@@ -216,18 +215,17 @@ namespace Microsoft.OpenApi.OData.PathItem
                     continue;
                 }
 
-                ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
-                if (NavigationSource != navigationSourceSegment.NavigationSource)
+                if (path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment &&
+                    NavigationSource != navigationSourceSegment.NavigationSource)
                 {
                     continue;
                 }
 
-                ODataNavigationPropertySegment npSegment = path.LastSegment as ODataNavigationPropertySegment;
-                if (npSegment == null)
-                {
-                    npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
-                }
-                if (NavigationProperty != npSegment.NavigationProperty)
+				if (path.LastSegment is not ODataNavigationPropertySegment npSegment)
+				{
+					npSegment = path.Segments[path.Count - 2] as ODataNavigationPropertySegment;
+				}
+				if (NavigationProperty != npSegment.NavigationProperty)
                 {
                     continue;
                 }
@@ -237,7 +235,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             if (samePaths.Any())
             {
-                OpenApiArray array = new OpenApiArray();
+                OpenApiArray array = new();
                 OpenApiConvertSettings settings = Context.Settings.Clone();
                 settings.EnableKeyAsSegment = Context.KeyAsSegment;
                 foreach (var p in samePaths)

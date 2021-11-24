@@ -1,4 +1,4 @@
-﻿swagger: '2.0'
+swagger: '2.0'
 info:
   title: OData Service for namespace Default
   description: This OData service is located at http://localhost
@@ -199,6 +199,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Categories/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Categories
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /Documents:
     get:
       tags:
@@ -588,6 +601,29 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/Documents({Id})/Revisions/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Revisions
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/Documents({Id})/Revisions/$ref':
     get:
       tags:
@@ -701,6 +737,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Documents/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Documents
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /Libraries:
     get:
       tags:
@@ -1063,6 +1112,29 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/Libraries({Id})/Documents/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Documents
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/Libraries({Id})/Documents/$ref':
     get:
       tags:
@@ -1162,6 +1234,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Libraries/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Libraries
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /Revisions:
     get:
       tags:
@@ -1581,6 +1666,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Revisions/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Revisions
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /Tasks:
     get:
       tags:
@@ -1970,6 +2068,29 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/Tasks({Id})/Revisions/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Revisions
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/Tasks({Id})/Revisions/$ref':
     get:
       tags:
@@ -2083,6 +2204,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Tasks/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Tasks
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
 definitions:
   Siterra.Documents.App.DTO.DocumentDto:
     title: DocumentDto
@@ -3439,6 +3573,9 @@ definitions:
         type: string
       target:
         type: string
+  ODataCountResponse:
+    format: int32
+    type: integer
 parameters:
   top:
     in: query

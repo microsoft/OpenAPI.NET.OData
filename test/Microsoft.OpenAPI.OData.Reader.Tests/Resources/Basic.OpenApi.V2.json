@@ -260,6 +260,26 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/City/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.City",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "schema": {
+              "$ref": "#/definitions/ODataCountResponse"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
+    },
     "/CountryOrRegion": {
       "get": {
         "tags": [
@@ -508,6 +528,26 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/CountryOrRegion/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.CountryOrRegion",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "schema": {
+              "$ref": "#/definitions/ODataCountResponse"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
       }
     },
     "/Me": {
@@ -856,6 +896,26 @@
         },
         "x-ms-docs-operation-type": "operation"
       }
+    },
+    "/People/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.People",
+        "produces": [
+          "text/plain"
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "schema": {
+              "$ref": "#/definitions/ODataCountResponse"
+            }
+          },
+          "default": {
+            "$ref": "#/responses/error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1029,6 +1089,10 @@
           "type": "string"
         }
       }
+    },
+    "ODataCountResponse": {
+      "format": "int32",
+      "type": "integer"
     }
   },
   "parameters": {

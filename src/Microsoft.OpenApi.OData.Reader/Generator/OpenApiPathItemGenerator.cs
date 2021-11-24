@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (settings.ShowRootPath)
             {
-                OpenApiPathItem rootPath = new OpenApiPathItem()
+                OpenApiPathItem rootPath = new()
                 {
                     Operations = new Dictionary<OperationType, OpenApiOperation> {
                         {

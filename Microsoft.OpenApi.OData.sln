@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tool", "tool", "{DE8F8E75-A119-4CF3-AFDD-4132B55DAE76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateDocs", "tool\UpdateDocs\UpdateDocs.csproj", "{AAC31ECB-05F9-444A-9B86-42ECD50AA468}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,11 +42,18 @@ Global
 		{79B190E8-EDB0-4C03-8FD8-EB48E4807CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79B190E8-EDB0-4C03-8FD8-EB48E4807CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79B190E8-EDB0-4C03-8FD8-EB48E4807CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC31ECB-05F9-444A-9B86-42ECD50AA468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC31ECB-05F9-444A-9B86-42ECD50AA468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC31ECB-05F9-444A-9B86-42ECD50AA468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC31ECB-05F9-444A-9B86-42ECD50AA468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9AE22713-F94E-45CA-81F4-0806CA195B69}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AAC31ECB-05F9-444A-9B86-42ECD50AA468} = {DE8F8E75-A119-4CF3-AFDD-4132B55DAE76}
 	EndGlobalSection
 EndGlobal

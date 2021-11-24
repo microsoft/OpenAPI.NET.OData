@@ -1,4 +1,4 @@
-﻿swagger: '2.0'
+swagger: '2.0'
 info:
   title: OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models
   description: This OData service is located at http://services.odata.org/TrippinRESTierService
@@ -175,6 +175,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Airlines/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Airlines
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /Airports:
     get:
       tags:
@@ -350,6 +363,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Airports/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Airports
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/GetNearestAirport(lat={lat},lon={lon})':
     get:
       tags:
@@ -684,6 +710,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Me/Friends/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Friends
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /Me/Friends/$ref:
     get:
       tags:
@@ -1261,6 +1300,29 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/Me/Trips/{TripId}/PlanItems/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.PlanItems
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/Me/Trips/{TripId}/PlanItems/$ref':
     get:
       tags:
@@ -1350,6 +1412,19 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  /Me/Trips/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Trips
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /NewComePeople:
     get:
       tags:
@@ -1825,6 +1900,26 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Friends/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Friends
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/NewComePeople/{UserName}/Friends/$ref':
     get:
       tags:
@@ -2493,6 +2588,35 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.PlanItems
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref':
     get:
       tags:
@@ -2594,6 +2718,39 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Trips/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Trips
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  /NewComePeople/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.NewComePeople
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /People:
     get:
       tags:
@@ -3069,6 +3226,26 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/People/{UserName}/Friends/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Friends
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/People/{UserName}/Friends/$ref':
     get:
       tags:
@@ -3737,6 +3914,35 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/People/{UserName}/Trips/{TripId}/PlanItems/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.PlanItems
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: TripId
+          description: 'key: TripId of Trip'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: Trip
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   '/People/{UserName}/Trips/{TripId}/PlanItems/$ref':
     get:
       tags:
@@ -3838,6 +4044,39 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+  '/People/{UserName}/Trips/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Trips
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  /People/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.People
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
   /ResetDataSource:
     post:
       tags:
@@ -4244,6 +4483,9 @@ definitions:
         type: string
       target:
         type: string
+  ODataCountResponse:
+    format: int32
+    type: integer
 parameters:
   top:
     in: query

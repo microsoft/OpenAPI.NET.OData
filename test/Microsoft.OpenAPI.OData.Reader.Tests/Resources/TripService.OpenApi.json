@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.1",
   "info": {
     "title": "OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models",
@@ -297,6 +297,27 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Airlines/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Airlines",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Airports": {
       "get": {
         "tags": [
@@ -589,6 +610,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Airports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Airports",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/GetNearestAirport(lat={lat},lon={lon})": {
@@ -1149,6 +1191,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Friends/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Friends",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Me/Friends/$ref": {
@@ -2074,6 +2137,42 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Me/Trips/{TripId}/PlanItems/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.PlanItems",
+        "parameters": [
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Me/Trips/{TripId}/PlanItems/$ref": {
       "get": {
         "tags": [
@@ -2214,6 +2313,27 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Trips/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Trips",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/NewComePeople": {
@@ -2959,6 +3079,39 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Friends",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/NewComePeople/{UserName}/Friends/$ref": {
@@ -4044,6 +4197,52 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.PlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref": {
       "get": {
         "tags": [
@@ -4204,6 +4403,60 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/Trips/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Trips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/NewComePeople/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.NewComePeople",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/People": {
@@ -4949,6 +5202,39 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Friends/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Friends",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/People/{UserName}/Friends/$ref": {
@@ -6034,6 +6320,52 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/People/{UserName}/Trips/{TripId}/PlanItems/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.PlanItems",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "TripId",
+            "in": "path",
+            "description": "key: TripId of Trip",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "Trip"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/People/{UserName}/Trips/{TripId}/PlanItems/$ref": {
       "get": {
         "tags": [
@@ -6194,6 +6526,60 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Trips/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Trips",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.People",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/ResetDataSource": {
@@ -6964,6 +7350,10 @@
             "type": "string"
           }
         }
+      },
+      "ODataCountResponse": {
+        "type": "integer",
+        "format": "int32"
       }
     },
     "responses": {

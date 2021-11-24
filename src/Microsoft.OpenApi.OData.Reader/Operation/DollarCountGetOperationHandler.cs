@@ -25,7 +25,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// this segment could be "entity set", "Collection property", "Composable function whose return is collection",etc.
         /// </summary>
         internal ODataSegment LastSecondSegment { get; set; }
-
+        private const int SecondLastSegmentIndex = 2;
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -33,7 +33,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // get the last second segment
             int count = path.Segments.Count;
-            LastSecondSegment = path.Segments.ElementAt(count - 1);
+            if(count >= SecondLastSegmentIndex)
+                LastSecondSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
         }
 
         /// <inheritdoc/>
@@ -54,10 +55,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                Type = "integer",
-                Format = "int32"
+            OpenApiSchema schema = new()
+			{
+                Reference = new() {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.DollarCountSchemaName
+                }
             };
 
             operation.Responses = new OpenApiResponses
