@@ -101,33 +101,29 @@ namespace Microsoft.OpenApi.OData.Operation
                 NavigationSource.Name
             };
 
-            foreach (var segment in Path.Segments.Skip(1))
+            foreach (var segment in Path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
             {
-                ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
-                if (npSegment != null)
+                if (segment.NavigationProperty == NavigationProperty)
                 {
-                    if (npSegment.NavigationProperty == NavigationProperty)
+                    items.Add(NavigationProperty.ToEntityType().Name);
+                    break;
+                }
+                else
+                {
+                    if (items.Count >= Context.Settings.TagDepth - 1)
                     {
-                        items.Add(NavigationProperty.ToEntityType().Name);
+                        items.Add(segment.NavigationProperty.ToEntityType().Name);
                         break;
                     }
                     else
                     {
-                        if (items.Count >= Context.Settings.TagDepth - 1)
-                        {
-                            items.Add(npSegment.NavigationProperty.ToEntityType().Name);
-                            break;
-                        }
-                        else
-                        {
-                            items.Add(npSegment.NavigationProperty.Name);
-                        }
+                        items.Add(segment.NavigationProperty.Name);
                     }
                 }
             }
 
             string name = string.Join(".", items);
-            OpenApiTag tag = new OpenApiTag
+            OpenApiTag tag = new()
             {
                 Name = name
             };
@@ -155,28 +151,24 @@ namespace Microsoft.OpenApi.OData.Operation
             };
 
             var lastpath = Path.Segments.Last(c => c is ODataNavigationPropertySegment);
-            foreach (var segment in Path.Segments.Skip(1))
+            foreach (var segment in Path.Segments.Skip(1).OfType<ODataNavigationPropertySegment>())
             {
-                ODataNavigationPropertySegment npSegment = segment as ODataNavigationPropertySegment;
-                if (npSegment != null)
+                if (segment == lastpath)
                 {
-                    if (segment == lastpath)
+                    if (prefix != null)
                     {
-                        if (prefix != null)
-                        {
-                            items.Add(prefix + Utils.UpperFirstChar(npSegment.NavigationProperty.Name));
-                        }
-                        else
-                        {
-                            items.Add(Utils.UpperFirstChar(npSegment.NavigationProperty.Name));
-                        }
-
-                        break;
+                        items.Add(prefix + Utils.UpperFirstChar(segment.NavigationProperty.Name));
                     }
                     else
                     {
-                        items.Add(npSegment.NavigationProperty.Name);
+                        items.Add(Utils.UpperFirstChar(segment.NavigationProperty.Name));
                     }
+
+                    break;
+                }
+                else
+                {
+                    items.Add(segment.NavigationProperty.Name);
                 }
             }
 
