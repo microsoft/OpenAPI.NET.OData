@@ -3,6 +3,8 @@ abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Identifier.get -> string
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
+Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
+static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement element) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.GetPaths(Microsoft.OData.Edm.IEdmModel model, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataPath>
