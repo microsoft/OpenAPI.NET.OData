@@ -22,5 +22,3 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
 		AddOperation(item, OperationType.Get);
 	}
 }
-
-//TODO unit test for the ODataTypeCastPathItemHandler
