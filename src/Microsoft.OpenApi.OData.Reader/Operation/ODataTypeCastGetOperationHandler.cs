@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -31,6 +32,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	internal ODataSegment LastSecondSegment { get; set; }
 
 	private NavigationPropertyRestriction restriction;
+	private IEdmEntitySet entitySet;
 	private IEdmNavigationProperty navigationProperty;
 	private IEdmEntityType parentEntityType;
 	private IEdmEntityType targetEntityType;
@@ -67,9 +69,17 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				}
 			}
 		}
+		else if(LastSecondSegment is ODataNavigationSourceSegment sourceSegment && sourceSegment.NavigationSource is IEdmEntitySet eSet)
+		{
+			entitySet = eSet;
+			NavigationRestrictionsType navigation = Context.Model.GetRecord<NavigationRestrictionsType>(eSet, CapabilitiesConstants.NavigationRestrictions);
+			if (navigation?.RestrictedProperties != null)
+			{
+				restriction = navigation.RestrictedProperties.FirstOrDefault(r => r.NavigationProperty == null);
+			}
+		}
 		//TODO previous segment is a key
 		//TODO previous segment is a single nav property
-		//TODO previous segment is an entity set
 		if(path.Last() is ODataTypeCastSegment oDataTypeCastSegment)
 		{
 			targetEntityType = oDataTypeCastSegment.EntityType;
@@ -197,55 +207,16 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		if(navigationProperty != null) {
 			if (navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
 			{
-				// Need to verify that TopSupported or others should be applied to navigation source.
-				// So, how about for the navigation property.
-				OpenApiParameter parameter = Context.CreateTop(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateSkip(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateSearch(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateFilter(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateCount(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateOrderBy(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateSelect(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
-
-				parameter = Context.CreateExpand(navigationProperty);
-				if (parameter != null)
-				{
-					operation.Parameters.Add(parameter);
-				}
+				CreateParametersForAnnotableOfMany(operation, navigationProperty)
+				.Union(
+					new OpenApiParameter[] {
+						Context.CreateOrderBy(navigationProperty),
+						Context.CreateSelect(navigationProperty),
+						Context.CreateExpand(navigationProperty),
+					})
+				.Where(x => x != null)
+				.ToList()
+				.ForEach(p => operation.Parameters.Add(p));
 			}
 			else
 			{
@@ -262,6 +233,31 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				}
 			}
 		}
+		else if(entitySet != null)
+		{
+			CreateParametersForAnnotableOfMany(operation, entitySet)
+			.Union(
+				new OpenApiParameter[] {
+					Context.CreateOrderBy(entitySet),
+					Context.CreateSelect(entitySet),
+					Context.CreateExpand(entitySet),
+				})
+			.Where(x => x != null)
+			.ToList()
+			.ForEach(p => operation.Parameters.Add(p));
+		}
+	}
+	private IEnumerable<OpenApiParameter> CreateParametersForAnnotableOfMany(OpenApiOperation operation, IEdmVocabularyAnnotatable annotable) 
+	{
+		// Need to verify that TopSupported or others should be applied to navigation source.
+		// So, how about for the navigation property.
+		return new OpenApiParameter[] {
+			Context.CreateTop(annotable),
+			Context.CreateSkip(annotable),
+			Context.CreateSearch(annotable),
+			Context.CreateFilter(annotable),
+			Context.CreateCount(annotable),
+		};
 	}
 
 	protected override void SetSecurity(OpenApiOperation operation)

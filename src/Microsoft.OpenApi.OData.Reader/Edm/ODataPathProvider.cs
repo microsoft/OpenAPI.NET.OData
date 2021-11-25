@@ -190,6 +190,15 @@ namespace Microsoft.OpenApi.OData.Edm
                 if(count?.Countable ?? true)
                     CreateCountPath(path, convertSettings);
 
+                //TODO read the cast restrictions annotation
+                var derivedTypes = _model
+                                    .FindAllDerivedTypes(entitySet.EntityType())
+                                    .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                    .OfType<IEdmEntityType>()
+                                    .ToArray();
+                if(derivedTypes.Any())
+                    CreateTypeCastPaths(path, convertSettings, derivedTypes);
+
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
             }

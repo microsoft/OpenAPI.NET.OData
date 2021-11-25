@@ -19,8 +19,8 @@ public class ODataTypeCastGetOperationHandlerTests
   [Theory]
   [InlineData(true)]
   [InlineData(false)]
-  public void CreateODataTypeCastGetOperationReturnsCorrectOperation(bool enableOperationId)
-  {
+  public void CreateODataTypeCastGetOperationReturnsCorrectOperationForCollectionNavigationProperty(bool enableOperationId)
+  {// ../People/{id}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
     // Arrange
     IEdmModel model = EdmModelHelper.TripServiceModel;
     OpenApiConvertSettings settings = new()
@@ -66,7 +66,53 @@ public class ODataTypeCastGetOperationHandlerTests
       Assert.Null(operation.OperationId);
     }
   }
-  //TODO test on entity set
+  [Theory]
+  [InlineData(true)]
+  [InlineData(false)]
+  public void CreateODataTypeCastGetOperationReturnsCorrectOperationForEntitySet(bool enableOperationId)
+  {// .../People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
+    // Arrange
+    IEdmModel model = EdmModelHelper.TripServiceModel;
+    OpenApiConvertSettings settings = new()
+    {
+        EnableOperationId = enableOperationId
+    };
+    ODataContext context = new(model, settings);
+    IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+    Assert.NotNull(people);
+
+    IEdmEntityType person = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Person");
+    IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
+    ODataPath path = new(new ODataNavigationSourceSegment(people),
+                                  new ODataTypeCastSegment(employee));
+
+    // Act
+    var operation = _operationHandler.CreateOperation(context, path);
+
+    // Assert
+    Assert.NotNull(operation);
+    Assert.Equal("Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection", operation.Summary);
+    Assert.NotNull(operation.Tags);
+    var tag = Assert.Single(operation.Tags);
+    Assert.Equal("Person.Employee", tag.Name);
+
+    Assert.NotNull(operation.Parameters);
+    Assert.Equal(8, operation.Parameters.Count);
+
+    Assert.Null(operation.RequestBody);
+
+    Assert.Equal(2, operation.Responses.Count);
+    Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+
+    if (enableOperationId)
+    {
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+    }
+    else
+    {
+      Assert.Null(operation.OperationId);
+    }
+  }
   //TODO test on cast cast key
   //TODO test on cast on single nav property
 }
