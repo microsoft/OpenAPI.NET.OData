@@ -238,5 +238,57 @@ public class ODataTypeCastGetOperationHandlerTests
     }
     Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
   }
-  //TODO test on cast singleton
+  [Theory]
+  [InlineData(true, true)]
+  [InlineData(true, false)]
+  [InlineData(false, true)]
+  [InlineData(false, false)]
+  public void CreateODataTypeCastGetOperationReturnsCorrectOperationForSingleton(bool enableOperationId, bool enablePagination)
+  {// .../Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
+    // Arrange
+    IEdmModel model = EdmModelHelper.TripServiceModel;
+    OpenApiConvertSettings settings = new()
+    {
+        EnableOperationId = enableOperationId,
+        EnablePagination = enablePagination,
+    };
+    ODataContext context = new(model, settings);
+    IEdmSingleton me = model.EntityContainer.FindSingleton("Me");
+    Assert.NotNull(me);
+
+    IEdmEntityType employee = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "Employee");
+    ODataPath path = new(new ODataNavigationSourceSegment(me),
+                                  new ODataTypeCastSegment(employee));
+
+    // Act
+    var operation = _operationHandler.CreateOperation(context, path);
+
+    // Assert
+    Assert.NotNull(operation);
+    Assert.Equal("Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.Summary);
+    Assert.NotNull(operation.Tags);
+    var tag = Assert.Single(operation.Tags);
+    Assert.Equal("Person.Employee", tag.Name);
+    Assert.Empty(tag.Extensions);
+
+    Assert.NotNull(operation.Parameters);
+    Assert.Equal(2, operation.Parameters.Count); //select, expand
+
+    Assert.Null(operation.RequestBody);
+    if(enablePagination)
+      Assert.Empty(operation.Extensions);
+
+    Assert.Equal(2, operation.Responses.Count);
+    Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+
+    if (enableOperationId)
+    {
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+    }
+    else
+    {
+      Assert.Null(operation.OperationId);
+    }
+    Assert.False(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+  }
 }
