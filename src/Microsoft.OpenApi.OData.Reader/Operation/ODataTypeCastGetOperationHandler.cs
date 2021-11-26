@@ -34,8 +34,10 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	private bool isKeySegment;
 	private bool IsSingleElement 
 	{
-		get => isKeySegment &&  //TODO add is singleton when implemented
-				(navigationProperty == null || navigationProperty.TargetMultiplicity() != EdmMultiplicity.Many);
+		get => isKeySegment ||  //TODO add is singleton when implemented
+					(navigationProperty != null &&
+					!navigationProperty.Type.IsCollection() &&
+					entitySet == null);
 	}
 	private NavigationPropertyRestriction restriction;
 	private IEdmEntitySet entitySet;
@@ -75,7 +77,6 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				SetEntitySetAndRestrictionFromSourceSegment(sourceSegment1);
 			}
 		}
-		//TODO previous segment is a single nav property
 		//TODO singleton
 		if(path.Last() is ODataTypeCastSegment oDataTypeCastSegment)
 		{
