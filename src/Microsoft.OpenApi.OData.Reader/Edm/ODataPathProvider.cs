@@ -427,14 +427,20 @@ namespace Microsoft.OpenApi.OData.Edm
 
             var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
             
-            if(!annotedTypeNames.Any()) return; // we don't want to generate any downcast path item if there is no type cast annotation.
+            if(!annotedTypeNames.Any() && convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments) return; // we don't want to generate any downcast path item if there is no type cast annotation.
 
             var annotedTypeNamesSet = new HashSet<string>(annotedTypeNames, StringComparer.OrdinalIgnoreCase);
-            
-            var targetTypes = _model
+
+			bool filter(IEdmStructuredType x) =>
+				convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && annotedTypeNames.Contains(x.FullTypeName()) ||
+				!convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && (
+					!annotedTypeNames.Any() ||
+					annotedTypeNames.Contains(x.FullTypeName())
+				);
+
+			var targetTypes = _model
                                 .FindAllDerivedTypes(structuredType)
-                                .Where(x => x.TypeKind == EdmTypeKind.Entity)
-                                .Where(x => annotedTypeNames.Contains(x.FullTypeName()))
+                                .Where(x => x.TypeKind == EdmTypeKind.Entity && filter(x))
                                 .OfType<IEdmEntityType>()
                                 .ToArray();
 

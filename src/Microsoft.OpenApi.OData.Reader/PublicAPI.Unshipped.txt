@@ -137,6 +137,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.AddSingleQuotesForStringParameter
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AddSingleQuotesForStringParameters.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataTypeCast.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableODataTypeCast.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireDerivedTypesConstraintForBoundOperations.get -> bool
