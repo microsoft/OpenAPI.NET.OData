@@ -17,9 +17,22 @@
         <Property Name="HomeAddress" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location" />
         <Property Name="FavoriteFeature" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature" Nullable="false" />
         <Property Name="Features" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature)" Nullable="false" />
-        <NavigationProperty Name="Friends" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" />
+        <NavigationProperty Name="Friends" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)">
+          <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
+            <Collection>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee</String>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
+            </Collection>
+          </Annotation>
+        </NavigationProperty>
         <NavigationProperty Name="BestFriend" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
           <Annotation Term="Org.OData.Core.V1.Description" String="The best friend." />
+          <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
+            <Collection>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee</String>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
+            </Collection>
+          </Annotation>
         </NavigationProperty>
         <NavigationProperty Name="Trips" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" ContainsTarget="true">
           <Annotation Term="Org.OData.Core.V1.Description" String="Collection of trips." />
@@ -140,6 +153,11 @@
         <Parameter Name="lastName" Type="Edm.String" Nullable="false" Unicode="false" />
         <ReturnType Type="Edm.Boolean" Nullable="false" />
       </Function>
+      <Action Name="Hire" IsBound="true">
+        <Annotation Term="Org.OData.Core.V1.Description" String="Hires someone for the company." />
+        <Parameter Name="personInstance" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager" />
+        <Parameter Name="hire" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
+      </Action>
       <Action Name="ShareTrip" IsBound="true">
         <Annotation Term="Org.OData.Core.V1.Description" String="Details of the shared trip." />
         <Parameter Name="personInstance" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
@@ -158,6 +176,12 @@
           <NavigationPropertyBinding Path="BestFriend" Target="People" />
           <NavigationPropertyBinding Path="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers" Target="People" />
           <NavigationPropertyBinding Path="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports" Target="People" />
+          <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
+            <Collection>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee</String>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
+            </Collection>
+          </Annotation>
         </EntitySet>
         <EntitySet Name="Airlines" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline">
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
@@ -168,7 +192,14 @@
         </EntitySet>
         <EntitySet Name="Airports" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
         <EntitySet Name="NewComePeople" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
-        <Singleton Name="Me" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
+        <Singleton Name="Me" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
+          <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
+            <Collection>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee</String>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
+            </Collection>
+          </Annotation>
+        </Singleton>
         <FunctionImport Name="GetPersonWithMostFriends" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPersonWithMostFriends" EntitySet="People">
           <Annotation Term="Org.OData.Core.V1.Description" String="The person with most friends." />
         </FunctionImport>
