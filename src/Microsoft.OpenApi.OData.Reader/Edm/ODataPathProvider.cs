@@ -183,14 +183,6 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType entityType = navigationSource.EntityType();
             CountRestrictionsType count = null;
 
-            //TODO read the cast restrictions annotation
-            var derivedTypes = convertSettings.EnableODataTypeCast ? _model
-                                    .FindAllDerivedTypes(entityType)
-                                    .Where(x => x.TypeKind == EdmTypeKind.Entity)
-                                    .OfType<IEdmEntityType>()
-                                    .ToArray() :
-                                    new IEdmEntityType[]{};
-
             // for entity set, create a path with key and a $count path
             if (entitySet != null)
             {
@@ -198,18 +190,16 @@ namespace Microsoft.OpenApi.OData.Edm
                 if(count?.Countable ?? true) // ~/entitySet/$count
                     CreateCountPath(path, convertSettings);
 
-                if(derivedTypes.Any()) // ~/entitySet/subType
-                    CreateTypeCastPaths(path, convertSettings, derivedTypes);
+                CreateTypeCastPaths(path, convertSettings, entityType, entitySet); // ~/entitySet/subType
 
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
 
-                if(derivedTypes.Any()) // ~/entitySet/{id}/subType
-                    CreateTypeCastPaths(path, convertSettings, derivedTypes);
+                CreateTypeCastPaths(path, convertSettings, entityType, entitySet); // ~/entitySet/{id}/subType
             }
-            else if (navigationSource is IEdmSingleton singleton && derivedTypes.Any())
+            else if (navigationSource is IEdmSingleton singleton)
             { // ~/singleton/subType
-                CreateTypeCastPaths(path, convertSettings, derivedTypes);
+                CreateTypeCastPaths(path, convertSettings, entityType, singleton);
             }
 
             // media entity
@@ -315,17 +305,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         CreateCountPath(currentPath, convertSettings);
                     }
 
-                    if (convertSettings.EnableODataTypeCast)
-                    {
-                        //TODO read the cast restrictions annotation
-                        var derivedTypes = _model
-                                            .FindAllDerivedTypes(navigationProperty.DeclaringType)
-                                            .Where(x => x.TypeKind == EdmTypeKind.Entity)
-                                            .OfType<IEdmEntityType>()
-                                            .ToArray();
-                        if(derivedTypes.Any()) // ~/entityset/{key}/collection-valued-Nav/subtype
-                            CreateTypeCastPaths(currentPath, convertSettings, derivedTypes);
-                    }
+                    CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty); // ~/entityset/{key}/collection-valued-Nav/subtype
                 }
 
                 if (!navigationProperty.ContainsTarget)
@@ -353,17 +333,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         AppendPath(currentPath.Clone());
 
-                        if (convertSettings.EnableODataTypeCast)
-                        {
-                            //TODO read the cast restrictions annotation
-                            var derivedTypes = _model
-                                                .FindAllDerivedTypes(navigationProperty.DeclaringType)
-                                                .Where(x => x.TypeKind == EdmTypeKind.Entity)
-                                                .OfType<IEdmEntityType>()
-                                                .ToArray();
-                            if(derivedTypes.Any()) // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
-                                CreateTypeCastPaths(currentPath, convertSettings, derivedTypes);
-                        }
+                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -445,13 +415,23 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="currentPath">The current OData path.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
-        /// <param name="targetTypes">The target types to generate a path for.</param>
-        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, params IEdmEntityType[] targetTypes)
+        /// <param name="structuredType">The type that is being inherited from to which this method will add downcast path segments.</param>
+        /// <param name="annotatable">The annotable navigation source to read cast annotations from.</param>
+        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotatable)
         {
             if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
             if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
-            if(!convertSettings.EnableODataTypeCast || targetTypes == null || !targetTypes.Any()) return;
-            
+            if(structuredType == null) throw new ArgumentNullException(nameof(structuredType));
+            if(annotatable == null) throw new ArgumentNullException(nameof(annotatable));
+            if(!convertSettings.EnableODataTypeCast) return;
+
+            //TODO read the cast restrictions annotation
+            var targetTypes = _model
+                                .FindAllDerivedTypes(structuredType)
+                                .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                .OfType<IEdmEntityType>()
+                                .ToArray();
+
             foreach(var targetType in targetTypes) 
             {
                 var castPath = currentPath.Clone();
