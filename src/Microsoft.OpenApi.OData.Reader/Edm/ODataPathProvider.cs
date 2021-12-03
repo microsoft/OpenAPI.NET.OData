@@ -416,19 +416,25 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="currentPath">The current OData path.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
         /// <param name="structuredType">The type that is being inherited from to which this method will add downcast path segments.</param>
-        /// <param name="annotatable">The annotable navigation source to read cast annotations from.</param>
-        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotatable)
+        /// <param name="annotable">The annotable navigation source to read cast annotations from.</param>
+        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable)
         {
             if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
             if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
             if(structuredType == null) throw new ArgumentNullException(nameof(structuredType));
-            if(annotatable == null) throw new ArgumentNullException(nameof(annotatable));
+            if(annotable == null) throw new ArgumentNullException(nameof(annotable));
             if(!convertSettings.EnableODataTypeCast) return;
 
-            //TODO read the cast restrictions annotation
+            var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
+            
+            if(!annotedTypeNames.Any()) return; // we don't want to generate any downcast path item if there is no type cast annotation.
+
+            var annotedTypeNamesSet = new HashSet<string>(annotedTypeNames, StringComparer.OrdinalIgnoreCase);
+            
             var targetTypes = _model
                                 .FindAllDerivedTypes(structuredType)
                                 .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                .Where(x => annotedTypeNames.Contains(x.FullTypeName()))
                                 .OfType<IEdmEntityType>()
                                 .ToArray();
 
@@ -658,9 +664,11 @@ namespace Microsoft.OpenApi.OData.Edm
             OpenApiConvertSettings convertSettings)
         {
             return convertSettings.RequireDerivedTypesConstraintForBoundOperations &&
-                   !(_model.GetCollection(annotatable, "Org.OData.Validation.V1.DerivedTypeConstraint") ?? Enumerable.Empty<string>())
+                   !GetDerivedTypeConstaintTypeNames(annotatable)
                        .Any(c => c.Equals(baseType.FullName(), StringComparison.OrdinalIgnoreCase));
         }
+        private IEnumerable<string> GetDerivedTypeConstaintTypeNames(IEdmVocabularyAnnotatable annotatable) =>
+            _model.GetCollection(annotatable, "Org.OData.Validation.V1.DerivedTypeConstraint") ?? Enumerable.Empty<string>();
 
         private bool AppendBoundOperationOnDerivedNavigationPropertyPath(
             IEdmOperation edmOperation,
