@@ -183,24 +183,33 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType entityType = navigationSource.EntityType();
             CountRestrictionsType count = null;
 
+            //TODO read the cast restrictions annotation
+            var derivedTypes = convertSettings.EnableODataTypeCast ? _model
+                                    .FindAllDerivedTypes(entityType)
+                                    .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                    .OfType<IEdmEntityType>()
+                                    .ToArray() :
+                                    new IEdmEntityType[]{};
+
             // for entity set, create a path with key and a $count path
             if (entitySet != null)
             {
                 count = _model.GetRecord<CountRestrictionsType>(entitySet, CapabilitiesConstants.CountRestrictions);
-                if(count?.Countable ?? true)
+                if(count?.Countable ?? true) // ~/entitySet/$count
                     CreateCountPath(path, convertSettings);
 
-                //TODO read the cast restrictions annotation
-                var derivedTypes = _model
-                                    .FindAllDerivedTypes(entitySet.EntityType())
-                                    .Where(x => x.TypeKind == EdmTypeKind.Entity)
-                                    .OfType<IEdmEntityType>()
-                                    .ToArray();
-                if(derivedTypes.Any())
+                if(derivedTypes.Any()) // ~/entitySet/subType
                     CreateTypeCastPaths(path, convertSettings, derivedTypes);
 
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
+
+                if(derivedTypes.Any()) // ~/entitySet/{id}/subType
+                    CreateTypeCastPaths(path, convertSettings, derivedTypes);
+            }
+            else if (navigationSource is IEdmSingleton singleton && derivedTypes.Any())
+            { // ~/singleton/subType
+                CreateTypeCastPaths(path, convertSettings, derivedTypes);
             }
 
             // media entity
@@ -306,14 +315,17 @@ namespace Microsoft.OpenApi.OData.Edm
                         CreateCountPath(currentPath, convertSettings);
                     }
 
-                    //TODO read the cast restrictions annotation
-                    var derivedTypes = _model
-                                        .FindAllDerivedTypes(navigationProperty.DeclaringType)
-                                        .Where(x => x.TypeKind == EdmTypeKind.Entity)
-                                        .OfType<IEdmEntityType>()
-                                        .ToArray();
-                    if(derivedTypes.Any())
-                        CreateTypeCastPaths(currentPath, convertSettings, derivedTypes);
+                    if (convertSettings.EnableODataTypeCast)
+                    {
+                        //TODO read the cast restrictions annotation
+                        var derivedTypes = _model
+                                            .FindAllDerivedTypes(navigationProperty.DeclaringType)
+                                            .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                            .OfType<IEdmEntityType>()
+                                            .ToArray();
+                        if(derivedTypes.Any()) // ~/entityset/{key}/collection-valued-Nav/subtype
+                            CreateTypeCastPaths(currentPath, convertSettings, derivedTypes);
+                    }
                 }
 
                 if (!navigationProperty.ContainsTarget)
@@ -340,6 +352,18 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         AppendPath(currentPath.Clone());
+
+                        if (convertSettings.EnableODataTypeCast)
+                        {
+                            //TODO read the cast restrictions annotation
+                            var derivedTypes = _model
+                                                .FindAllDerivedTypes(navigationProperty.DeclaringType)
+                                                .Where(x => x.TypeKind == EdmTypeKind.Entity)
+                                                .OfType<IEdmEntityType>()
+                                                .ToArray();
+                            if(derivedTypes.Any()) // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
+                                CreateTypeCastPaths(currentPath, convertSettings, derivedTypes);
+                        }
                     }
 
                     // Get possible stream paths for the navigation entity type
