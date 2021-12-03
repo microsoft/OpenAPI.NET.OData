@@ -304,9 +304,10 @@ namespace Microsoft.OpenApi.OData.Edm
                         // ~/entityset/{key}/collection-valued-Nav/$count
                         CreateCountPath(currentPath, convertSettings);
                     }
-
-                    CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty); // ~/entityset/{key}/collection-valued-Nav/subtype
                 }
+                // ~/entityset/{key}/collection-valued-Nav/subtype
+                // ~/entityset/{key}/single-valued-Nav/subtype
+                CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty);
 
                 if (!navigationProperty.ContainsTarget)
                 {
@@ -320,6 +321,8 @@ namespace Microsoft.OpenApi.OData.Edm
                         // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
+                        
+                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
