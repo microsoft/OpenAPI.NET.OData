@@ -108,7 +108,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUriEscapeFunctionCall = enableEscaped
+                EnableUriEscapeFunctionCall = enableEscaped,
+                AddSingleQuotesForStringParameters = true,
             };
             ODataContext context = new ODataContext(model, settings);
 

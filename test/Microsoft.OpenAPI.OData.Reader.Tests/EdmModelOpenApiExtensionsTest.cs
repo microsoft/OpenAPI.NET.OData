@@ -208,7 +208,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 Version = new Version(1, 0, 1),
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
-                OpenApiSpecVersion = specVersion
+                OpenApiSpecVersion = specVersion,
+                AddSingleQuotesForStringParameters = true,
             };
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
@@ -239,7 +240,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 Version = new Version(1, 0, 1),
                 ServiceRoot = new Uri("http://services.odata.org/TrippinRESTierService"),
                 IEEE754Compatible = true,
-                OpenApiSpecVersion = specVersion
+                OpenApiSpecVersion = specVersion,
+                AddSingleQuotesForStringParameters = true,
             };
 
             // Act

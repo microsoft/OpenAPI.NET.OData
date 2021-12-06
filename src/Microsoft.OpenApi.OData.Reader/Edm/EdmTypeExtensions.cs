@@ -16,9 +16,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Determines wether a path parameter should be wrapped in quotes based on the type of the parameter.
         /// </summary>
         /// <param name="edmType">The type of the parameter.</param>
-        public static bool ShouldPathParameterBeQuoted(this IEdmType edmType)
+        /// <param name="settings">The conversion settings.</param>
+        /// <returns>True if the parameter should be wrapped in quotes, false otherwise.</returns>
+        public static bool ShouldPathParameterBeQuoted(this IEdmType edmType, OpenApiConvertSettings settings)
         {
-            if (edmType == null)
+            if (edmType == null || settings == null || !settings.AddSingleQuotesForStringParameters)
             {
                 return false;
             }

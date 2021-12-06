@@ -188,6 +188,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableDollarCountPath { get; set; } = true;
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not single quotes surrounding string parameters in url templates should be added.
+        /// </summary>
+        public bool AddSingleQuotesForStringParameters { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -219,6 +224,7 @@ namespace Microsoft.OpenApi.OData
                 ShowRootPath = this.ShowRootPath,
                 PathProvider = this.PathProvider,
                 EnableDollarCountPath = this.EnableDollarCountPath,
+                AddSingleQuotesForStringParameters = this.AddSingleQuotesForStringParameters,
             };
 
             return newSettings;

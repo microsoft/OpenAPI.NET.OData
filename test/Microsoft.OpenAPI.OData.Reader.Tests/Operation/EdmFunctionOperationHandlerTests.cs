@@ -213,7 +213,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                AddSingleQuotesForStringParameters = true,
             };
             ODataContext context = new ODataContext(model, settings);
 

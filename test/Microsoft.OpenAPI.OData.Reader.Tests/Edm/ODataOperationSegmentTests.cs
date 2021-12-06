@@ -112,7 +112,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataOperationSegment(boundFunction, isEscapedFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUriEscapeFunctionCall = enableEscapeFunctionCall
+                EnableUriEscapeFunctionCall = enableEscapeFunctionCall,
+                AddSingleQuotesForStringParameters = true,
             };
 
             // Assert
@@ -135,7 +136,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataOperationSegment(boundFunction, isEscapedFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUriEscapeFunctionCall = enableEscapeFunctionCall
+                EnableUriEscapeFunctionCall = enableEscapeFunctionCall,
+                AddSingleQuotesForStringParameters = true
             };
 
             // Assert

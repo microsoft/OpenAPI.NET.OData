@@ -81,7 +81,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.Equal("MyFunction(firstName='{firstName}',lastName='{lastName}')",
-                segment.GetPathItemName(new OpenApiConvertSettings()));
+                segment.GetPathItemName(new OpenApiConvertSettings() {
+                    AddSingleQuotesForStringParameters = true
+                }));
         }
     }
 }

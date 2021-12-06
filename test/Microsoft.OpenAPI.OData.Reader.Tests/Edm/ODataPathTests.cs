@@ -262,7 +262,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = keyAsSegment,
-                PrefixEntityTypeNameBeforeKey = prefix
+                PrefixEntityTypeNameBeforeKey = prefix,
+                AddSingleQuotesForStringParameters = true,
             };
 
             // Act
