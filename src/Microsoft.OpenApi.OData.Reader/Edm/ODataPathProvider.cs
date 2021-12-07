@@ -190,16 +190,16 @@ namespace Microsoft.OpenApi.OData.Edm
                 if(count?.Countable ?? true) // ~/entitySet/$count
                     CreateCountPath(path, convertSettings);
 
-                CreateTypeCastPaths(path, convertSettings, entityType, entitySet); // ~/entitySet/subType
+                CreateTypeCastPaths(path, convertSettings, entityType, entitySet, true); // ~/entitySet/subType
 
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
 
-                CreateTypeCastPaths(path, convertSettings, entityType, entitySet); // ~/entitySet/{id}/subType
+                CreateTypeCastPaths(path, convertSettings, entityType, entitySet, false); // ~/entitySet/{id}/subType
             }
             else if (navigationSource is IEdmSingleton singleton)
             { // ~/singleton/subType
-                CreateTypeCastPaths(path, convertSettings, entityType, singleton);
+                CreateTypeCastPaths(path, convertSettings, entityType, singleton, false);
             }
 
             // media entity
@@ -307,7 +307,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 // ~/entityset/{key}/collection-valued-Nav/subtype
                 // ~/entityset/{key}/single-valued-Nav/subtype
-                CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty);
+                CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
                 if (!navigationProperty.ContainsTarget)
                 {
@@ -322,7 +322,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
                         
-                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
+                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -336,7 +336,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         AppendPath(currentPath.Clone());
 
-                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
+                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -420,7 +420,8 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="convertSettings">The settings for the current conversion.</param>
         /// <param name="structuredType">The type that is being inherited from to which this method will add downcast path segments.</param>
         /// <param name="annotable">The annotable navigation source to read cast annotations from.</param>
-        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable)
+        /// <param name="targetsMany">Whether the annotable navigation source targets many entities.</param>
+        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable, bool targetsMany)
         {
             if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
             if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
@@ -452,6 +453,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 var castPath = currentPath.Clone();
                 castPath.Push(new ODataTypeCastSegment(targetType));
                 AppendPath(castPath);
+                if(targetsMany)
+                    CreateCountPath(castPath, convertSettings);
             }
         }
 

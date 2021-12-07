@@ -2948,6 +2948,27 @@
         }
       }
     },
+    "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -3288,6 +3309,27 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
                 }
               }
             }
@@ -8114,6 +8156,39 @@
         }
       }
     },
+    "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -8510,6 +8585,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
                 }
               }
             }
@@ -12965,6 +13073,39 @@
         }
       }
     },
+    "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -13381,6 +13522,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
                 }
               }
             }
@@ -15968,6 +16142,27 @@
         }
       }
     },
+    "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -16318,6 +16513,27 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
                 }
               }
             }

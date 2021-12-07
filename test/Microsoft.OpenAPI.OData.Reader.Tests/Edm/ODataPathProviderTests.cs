@@ -98,8 +98,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         [Theory]
         [InlineData(false, false, true, 3)]
         [InlineData(false, false, false, 4)]
-        [InlineData(true, false, true, 6)]
-        [InlineData(true, false, false, 6)]
+        [InlineData(true, false, true, 7)]
+        [InlineData(true, false, false, 7)]
         [InlineData(false, true, false, 5)]
         [InlineData(false, true, true, 4)]
         [InlineData(true, true, true, 5)]
@@ -121,12 +121,17 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Assert
             Assert.NotNull(paths);
             Assert.Equal(expectedCount, paths.Count());
+            var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
+            if(addAnnotation && !getNavPropModel)
+              Assert.Single(dollarCountPathsWithCastSegment);
+            else
+              Assert.Empty(dollarCountPathsWithCastSegment);
         }
         [Theory]
         [InlineData(false, false, true, 4)]
-        [InlineData(false, false, false, 6)]
-        [InlineData(true, false, true, 6)]
-        [InlineData(true, false, false, 6)]
+        [InlineData(false, false, false, 7)]
+        [InlineData(true, false, true, 7)]
+        [InlineData(true, false, false, 7)]
         [InlineData(false, true, false, 5)]
         [InlineData(false, true, true, 5)]
         [InlineData(true, true, true, 5)]
@@ -148,6 +153,11 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             // Assert
             Assert.NotNull(paths);
             Assert.Equal(expectedCount, paths.Count());
+            var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
+            if((addAnnotation || !requireConstraint) && !getNavPropModel)
+              Assert.Single(dollarCountPathsWithCastSegment);
+            else
+              Assert.Empty(dollarCountPathsWithCastSegment);
         }
 #if DEBUG
         // Super useful for debugging tests.
