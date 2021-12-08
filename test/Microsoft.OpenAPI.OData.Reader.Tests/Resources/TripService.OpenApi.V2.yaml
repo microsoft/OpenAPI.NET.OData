@@ -826,6 +826,221 @@ paths:
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers:
+    get:
+      tags:
+        - Me.BestFriend.Person
+      summary: Get Peers from Me
+      operationId: Me.BestFriend.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+      - /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers
+  '/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/$ref':
+    delete:
+      tags:
+        - Me.BestFriend.Person
+      summary: Delete ref of navigation property Peers for Me
+      operationId: Me.BestFriend.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref:
+    get:
+      tags:
+        - Me.BestFriend.Person
+      summary: Get ref of Peers from Me
+      operationId: Me.BestFriend.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.BestFriend.Person
+      summary: Create new navigation property ref to Peers for Me
+      operationId: Me.BestFriend.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
     get:
       tags:
@@ -874,6 +1089,221 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports:
+    get:
+      tags:
+        - Me.BestFriend.Person
+      summary: Get DirectReports from Me
+      operationId: Me.BestFriend.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+      - /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports
+  '/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/$ref':
+    delete:
+      tags:
+        - Me.BestFriend.Person
+      summary: Delete ref of navigation property DirectReports for Me
+      operationId: Me.BestFriend.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref:
+    get:
+      tags:
+        - Me.BestFriend.Person
+      summary: Get ref of DirectReports from Me
+      operationId: Me.BestFriend.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.BestFriend.Person
+      summary: Create new navigation property ref to DirectReports for Me
+      operationId: Me.BestFriend.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
@@ -1443,6 +1873,252 @@ paths:
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
+    get:
+      tags:
+        - Me.Friends.Person
+      summary: Get Peers from Me
+      operationId: Me.Friends.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers
+      - /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref':
+    delete:
+      tags:
+        - Me.Friends.Person
+      summary: Delete ref of navigation property Peers for Me
+      operationId: Me.Friends.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
+    get:
+      tags:
+        - Me.Friends.Person
+      summary: Get ref of Peers from Me
+      operationId: Me.Friends.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Friends.Person
+      summary: Create new navigation property ref to Peers for Me
+      operationId: Me.Friends.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
     get:
       tags:
@@ -1497,6 +2173,252 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
+    get:
+      tags:
+        - Me.Friends.Person
+      summary: Get DirectReports from Me
+      operationId: Me.Friends.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports
+      - /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref':
+    delete:
+      tags:
+        - Me.Friends.Person
+      summary: Delete ref of navigation property DirectReports for Me
+      operationId: Me.Friends.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
+    get:
+      tags:
+        - Me.Friends.Person
+      summary: Get ref of DirectReports from Me
+      operationId: Me.Friends.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Friends.Person
+      summary: Create new navigation property ref to DirectReports for Me
+      operationId: Me.Friends.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -2530,6 +3452,221 @@ paths:
       - '/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers:
+    get:
+      tags:
+        - Me.Person
+      summary: Get Peers from Me
+      operationId: Me.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers
+      - '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/$ref':
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete ref of navigation property Peers for Me
+      operationId: Me.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref:
+    get:
+      tags:
+        - Me.Person
+      summary: Get ref of Peers from Me
+      operationId: Me.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Person
+      summary: Create new navigation property ref to Peers for Me
+      operationId: Me.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
@@ -2688,6 +3825,221 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports:
+    get:
+      tags:
+        - Me.Person
+      summary: Get DirectReports from Me
+      operationId: Me.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports
+      - '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+  '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/$ref':
+    delete:
+      tags:
+        - Me.Person
+      summary: Delete ref of navigation property DirectReports for Me
+      operationId: Me.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref:
+    get:
+      tags:
+        - Me.Person
+      summary: Get ref of DirectReports from Me
+      operationId: Me.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - Me.Person
+      summary: Create new navigation property ref to DirectReports for Me
+      operationId: Me.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     get:
       tags:
@@ -4057,6 +5409,251 @@ paths:
       - '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
+    get:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Get Peers from NewComePeople
+      operationId: NewComePeople.BestFriend.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref':
+    delete:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Delete ref of navigation property Peers for NewComePeople
+      operationId: NewComePeople.BestFriend.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
+    get:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Get ref of Peers from NewComePeople
+      operationId: NewComePeople.BestFriend.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Create new navigation property ref to Peers for NewComePeople
+      operationId: NewComePeople.BestFriend.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
     get:
       tags:
@@ -4111,6 +5708,251 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
+    get:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Get DirectReports from NewComePeople
+      operationId: NewComePeople.BestFriend.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref':
+    delete:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Delete ref of navigation property DirectReports for NewComePeople
+      operationId: NewComePeople.BestFriend.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
+    get:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Get ref of DirectReports from NewComePeople
+      operationId: NewComePeople.BestFriend.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.BestFriend.Person
+      summary: Create new navigation property ref to DirectReports for NewComePeople
+      operationId: NewComePeople.BestFriend.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -4739,6 +6581,281 @@ paths:
       - '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
+    get:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Get Peers from NewComePeople
+      operationId: NewComePeople.Friends.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/$ref':
+    delete:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Delete ref of navigation property Peers for NewComePeople
+      operationId: NewComePeople.Friends.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName2
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
+    get:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Get ref of Peers from NewComePeople
+      operationId: NewComePeople.Friends.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Create new navigation property ref to Peers for NewComePeople
+      operationId: NewComePeople.Friends.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
     get:
       tags:
@@ -4799,6 +6916,281 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
+    get:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Get DirectReports from NewComePeople
+      operationId: NewComePeople.Friends.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/$ref':
+    delete:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Delete ref of navigation property DirectReports for NewComePeople
+      operationId: NewComePeople.Friends.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName2
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
+    get:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Get ref of DirectReports from NewComePeople
+      operationId: NewComePeople.Friends.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - NewComePeople.Friends.Person
+      summary: Create new navigation property ref to DirectReports for NewComePeople
+      operationId: NewComePeople.Friends.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -7135,6 +9527,252 @@ paths:
       - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
+    get:
+      tags:
+        - People.BestFriend.Person
+      summary: Get Peers from People
+      operationId: People.BestFriend.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref':
+    delete:
+      tags:
+        - People.BestFriend.Person
+      summary: Delete ref of navigation property Peers for People
+      operationId: People.BestFriend.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
+    get:
+      tags:
+        - People.BestFriend.Person
+      summary: Get ref of Peers from People
+      operationId: People.BestFriend.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.BestFriend.Person
+      summary: Create new navigation property ref to Peers for People
+      operationId: People.BestFriend.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
     get:
       tags:
@@ -7189,6 +9827,252 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
+    get:
+      tags:
+        - People.BestFriend.Person
+      summary: Get DirectReports from People
+      operationId: People.BestFriend.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref':
+    delete:
+      tags:
+        - People.BestFriend.Person
+      summary: Delete ref of navigation property DirectReports for People
+      operationId: People.BestFriend.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
+    get:
+      tags:
+        - People.BestFriend.Person
+      summary: Get ref of DirectReports from People
+      operationId: People.BestFriend.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.BestFriend.Person
+      summary: Create new navigation property ref to DirectReports for People
+      operationId: People.BestFriend.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -7857,6 +10741,282 @@ paths:
       - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
+    get:
+      tags:
+        - People.Friends.Person
+      summary: Get Peers from People
+      operationId: People.Friends.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/$ref':
+    delete:
+      tags:
+        - People.Friends.Person
+      summary: Delete ref of navigation property Peers for People
+      operationId: People.Friends.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName2
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
+    get:
+      tags:
+        - People.Friends.Person
+      summary: Get ref of Peers from People
+      operationId: People.Friends.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Friends.Person
+      summary: Create new navigation property ref to Peers for People
+      operationId: People.Friends.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
     get:
       tags:
@@ -7917,6 +11077,282 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
+    get:
+      tags:
+        - People.Friends.Person
+      summary: Get DirectReports from People
+      operationId: People.Friends.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+      - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/$ref':
+    delete:
+      tags:
+        - People.Friends.Person
+      summary: Delete ref of navigation property DirectReports for People
+      operationId: People.Friends.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName2
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
+    get:
+      tags:
+        - People.Friends.Person
+      summary: Get ref of DirectReports from People
+      operationId: People.Friends.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Friends.Person
+      summary: Create new navigation property ref to DirectReports for People
+      operationId: People.Friends.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -9164,6 +12600,252 @@ paths:
       - '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
       - '/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})'
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
+    get:
+      tags:
+        - People.Person
+      summary: Get Peers from People
+      operationId: People.ListPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+      - '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref':
+    delete:
+      tags:
+        - People.Person
+      summary: Delete ref of navigation property Peers for People
+      operationId: People.DeleteRefPeers
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Peers
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
+    get:
+      tags:
+        - People.Person
+      summary: Get ref of Peers from People
+      operationId: People.ListRefPeers
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Person
+      summary: Create new navigation property ref to Peers for People
+      operationId: People.CreateRefPeers
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -9353,6 +13035,252 @@ paths:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/responses/error'
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
+    get:
+      tags:
+        - People.Person
+      summary: Get DirectReports from People
+      operationId: People.ListDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            title: Collection of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-ms-docs-grouped-path:
+      - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+      - '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref':
+    delete:
+      tags:
+        - People.Person
+      summary: Delete ref of navigation property DirectReports for People
+      operationId: People.DeleteRefDirectReports
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: path
+          name: UserName1
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: query
+          name: '@id'
+          description: Delete Uri
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DirectReports
+      produces:
+        - text/plain
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: The count of the resource
+          schema:
+            $ref: '#/definitions/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+  '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
+    get:
+      tags:
+        - People.Person
+      summary: Get ref of DirectReports from People
+      operationId: People.ListRefDirectReports
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property links
+          schema:
+            title: Collection of links of Person
+            type: object
+            properties:
+              value:
+                type: array
+                items:
+                  type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    post:
+      tags:
+        - People.Person
+      summary: Create new navigation property ref to DirectReports for People
+      operationId: People.CreateRefDirectReports
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref value
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+      responses:
+        '201':
+          description: Created navigation property link.
+          schema:
+            type: object
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     get:
       tags:
@@ -11233,7 +15161,11 @@ tags:
     x-ms-docs-toc-type: container
   - name: Me.Actions
     x-ms-docs-toc-type: container
+  - name: Me.BestFriend.Person
+    x-ms-docs-toc-type: page
   - name: Person.Manager
+  - name: Me.Friends.Person
+    x-ms-docs-toc-type: page
   - name: Me.Trip
     x-ms-docs-toc-type: page
   - name: Me.Trips.PlanItem
@@ -11244,6 +15176,10 @@ tags:
     x-ms-docs-toc-type: container
   - name: NewComePeople.Actions
     x-ms-docs-toc-type: container
+  - name: NewComePeople.BestFriend.Person
+    x-ms-docs-toc-type: page
+  - name: NewComePeople.Friends.Person
+    x-ms-docs-toc-type: page
   - name: NewComePeople.Trip
     x-ms-docs-toc-type: page
   - name: NewComePeople.Trips.PlanItem
@@ -11254,6 +15190,10 @@ tags:
     x-ms-docs-toc-type: container
   - name: People.Actions
     x-ms-docs-toc-type: container
+  - name: People.BestFriend.Person
+    x-ms-docs-toc-type: page
+  - name: People.Friends.Person
+    x-ms-docs-toc-type: page
   - name: People.Trip
     x-ms-docs-toc-type: page
   - name: People.Trips.PlanItem

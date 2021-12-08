@@ -1358,6 +1358,342 @@
         "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Get Peers from Me",
+        "operationId": "Me.BestFriend.ListPeers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers",
+        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/$ref": {
+      "delete": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for Me",
+        "operationId": "Me.BestFriend.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Get ref of Peers from Me",
+        "operationId": "Me.BestFriend.ListRefPeers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for Me",
+        "operationId": "Me.BestFriend.CreateRefPeers",
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "get": {
         "tags": [
@@ -1432,6 +1768,342 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Get DirectReports from Me",
+        "operationId": "Me.BestFriend.ListDirectReports",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports",
+        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/$ref": {
+      "delete": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for Me",
+        "operationId": "Me.BestFriend.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Get ref of DirectReports from Me",
+        "operationId": "Me.BestFriend.ListRefDirectReports",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.BestFriend.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for Me",
+        "operationId": "Me.BestFriend.CreateRefDirectReports",
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -2309,6 +2981,396 @@
         "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Get Peers from Me",
+        "operationId": "Me.Friends.ListPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers",
+        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for Me",
+        "operationId": "Me.Friends.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Get ref of Peers from Me",
+        "operationId": "Me.Friends.ListRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for Me",
+        "operationId": "Me.Friends.CreateRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "get": {
         "tags": [
@@ -2393,6 +3455,396 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Get DirectReports from Me",
+        "operationId": "Me.Friends.ListDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports",
+        "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for Me",
+        "operationId": "Me.Friends.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Get ref of DirectReports from Me",
+        "operationId": "Me.Friends.ListRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.Friends.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for Me",
+        "operationId": "Me.Friends.CreateRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -3964,6 +5416,342 @@
         "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get Peers from Me",
+        "operationId": "Me.ListPeers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers",
+        "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/$ref": {
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for Me",
+        "operationId": "Me.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get ref of Peers from Me",
+        "operationId": "Me.ListRefPeers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for Me",
+        "operationId": "Me.CreateRefPeers",
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -4209,6 +5997,342 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get DirectReports from Me",
+        "operationId": "Me.ListDirectReports",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports",
+        "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/$ref": {
+      "delete": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for Me",
+        "operationId": "Me.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Get ref of DirectReports from Me",
+        "operationId": "Me.ListRefDirectReports",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "Me.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for Me",
+        "operationId": "Me.CreateRefDirectReports",
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -6346,6 +8470,395 @@
         "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Get Peers from NewComePeople",
+        "operationId": "NewComePeople.BestFriend.ListPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for NewComePeople",
+        "operationId": "NewComePeople.BestFriend.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Get ref of Peers from NewComePeople",
+        "operationId": "NewComePeople.BestFriend.ListRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for NewComePeople",
+        "operationId": "NewComePeople.BestFriend.CreateRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "get": {
         "tags": [
@@ -6430,6 +8943,395 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Get DirectReports from NewComePeople",
+        "operationId": "NewComePeople.BestFriend.ListDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for NewComePeople",
+        "operationId": "NewComePeople.BestFriend.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Get ref of DirectReports from NewComePeople",
+        "operationId": "NewComePeople.BestFriend.ListRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "NewComePeople.BestFriend.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for NewComePeople",
+        "operationId": "NewComePeople.BestFriend.CreateRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -7423,6 +10325,445 @@
         "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Get Peers from NewComePeople",
+        "operationId": "NewComePeople.Friends.ListPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/$ref": {
+      "delete": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for NewComePeople",
+        "operationId": "NewComePeople.Friends.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName2",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Get ref of Peers from NewComePeople",
+        "operationId": "NewComePeople.Friends.ListRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for NewComePeople",
+        "operationId": "NewComePeople.Friends.CreateRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "get": {
         "tags": [
@@ -7517,6 +10858,445 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Get DirectReports from NewComePeople",
+        "operationId": "NewComePeople.Friends.ListDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/$ref": {
+      "delete": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for NewComePeople",
+        "operationId": "NewComePeople.Friends.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName2",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Get ref of DirectReports from NewComePeople",
+        "operationId": "NewComePeople.Friends.ListRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "NewComePeople.Friends.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for NewComePeople",
+        "operationId": "NewComePeople.Friends.CreateRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -11203,6 +14983,396 @@
         "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Get Peers from People",
+        "operationId": "People.BestFriend.ListPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers",
+        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for People",
+        "operationId": "People.BestFriend.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Get ref of Peers from People",
+        "operationId": "People.BestFriend.ListRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for People",
+        "operationId": "People.BestFriend.CreateRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "get": {
         "tags": [
@@ -11287,6 +15457,396 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Get DirectReports from People",
+        "operationId": "People.BestFriend.ListDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports",
+        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for People",
+        "operationId": "People.BestFriend.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Get ref of DirectReports from People",
+        "operationId": "People.BestFriend.ListRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.BestFriend.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for People",
+        "operationId": "People.BestFriend.CreateRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -12320,6 +16880,446 @@
         "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Get Peers from People",
+        "operationId": "People.Friends.ListPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers",
+        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/$ref": {
+      "delete": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for People",
+        "operationId": "People.Friends.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName2",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Get ref of Peers from People",
+        "operationId": "People.Friends.ListRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for People",
+        "operationId": "People.Friends.CreateRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager": {
       "get": {
         "tags": [
@@ -12414,6 +17414,446 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Get DirectReports from People",
+        "operationId": "People.Friends.ListDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports",
+        "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/$ref": {
+      "delete": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for People",
+        "operationId": "People.Friends.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName2",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Get ref of DirectReports from People",
+        "operationId": "People.Friends.ListRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.Friends.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for People",
+        "operationId": "People.Friends.CreateRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -14331,6 +19771,396 @@
         "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName={lastName})"
       ]
     },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get Peers from People",
+        "operationId": "People.ListPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers",
+        "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers"
+      ]
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property Peers for People",
+        "operationId": "People.DeleteRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Peers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get ref of Peers from People",
+        "operationId": "People.ListRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Create new navigation property ref to Peers for People",
+        "operationId": "People.CreateRefPeers",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
       "get": {
         "tags": [
@@ -14626,6 +20456,396 @@
             "$ref": "#/components/responses/error"
           }
         }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get DirectReports from People",
+        "operationId": "People.ListDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "x-ms-docs-grouped-path": [
+        "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports",
+        "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports"
+      ]
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "delete": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Delete ref of navigation property DirectReports for People",
+        "operationId": "People.DeleteRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "UserName1",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "@id",
+            "in": "query",
+            "description": "Delete Uri",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The count of the resource",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ODataCountResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "get": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Get ref of DirectReports from People",
+        "operationId": "People.ListRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieved navigation property links",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Collection of links of Person",
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
+      },
+      "post": {
+        "tags": [
+          "People.Person"
+        ],
+        "summary": "Create new navigation property ref to DirectReports for People",
+        "operationId": "People.CreateRefDirectReports",
+        "parameters": [
+          {
+            "name": "UserName",
+            "in": "path",
+            "description": "key: UserName of Person",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-ms-docs-key-type": "Person"
+          }
+        ],
+        "requestBody": {
+          "description": "New navigation property ref value",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created navigation property link.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        },
+        "x-ms-docs-operation-type": "operation"
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
@@ -17858,7 +24078,15 @@
       "x-ms-docs-toc-type": "container"
     },
     {
+      "name": "Me.BestFriend.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
       "name": "Person.Manager"
+    },
+    {
+      "name": "Me.Friends.Person",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "Me.Trip",
@@ -17881,6 +24109,14 @@
       "x-ms-docs-toc-type": "container"
     },
     {
+      "name": "NewComePeople.BestFriend.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "NewComePeople.Friends.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
       "name": "NewComePeople.Trip",
       "x-ms-docs-toc-type": "page"
     },
@@ -17899,6 +24135,14 @@
     {
       "name": "People.Actions",
       "x-ms-docs-toc-type": "container"
+    },
+    {
+      "name": "People.BestFriend.Person",
+      "x-ms-docs-toc-type": "page"
+    },
+    {
+      "name": "People.Friends.Person",
+      "x-ms-docs-toc-type": "page"
     },
     {
       "name": "People.Trip",

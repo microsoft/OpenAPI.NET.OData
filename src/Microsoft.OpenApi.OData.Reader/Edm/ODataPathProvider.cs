@@ -453,8 +453,17 @@ namespace Microsoft.OpenApi.OData.Edm
                 var castPath = currentPath.Clone();
                 castPath.Push(new ODataTypeCastSegment(targetType));
                 AppendPath(castPath);
-                if(targetsMany)
+                if(targetsMany) 
+                {
                     CreateCountPath(castPath, convertSettings);
+                }
+                else
+                {
+                    foreach(var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                    {
+                        RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
+                    }
+                }
             }
         }
 
