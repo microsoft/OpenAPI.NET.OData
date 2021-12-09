@@ -507,10 +507,7 @@ namespace Microsoft.OpenApi.OData.Edm
                     .ToList();
                 
                 foreach (var bindingEntityType in allEntitiesForOperation)
-                {// Note: one of those is adding operations from parent types on type cast when we don't want that.
-                //hire is bound to manager -> ok
-                //GetFavoriteAirline on person -> also added on manager/employee nok
-                //TODO: this method should not be adding methods from the parent type when a type cast segment is already present.
+                {
                     // 1. Search for corresponding navigation source path
                     if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType))
                     {
@@ -553,6 +550,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 foreach (var subPath in value)
                 {
+                    var lastPathSegment = subPath.LastOrDefault();
                     var secondLastPathSegment = subPath.Count > 1 ? subPath.ElementAt(subPath.Count - 2) : null;
                     if (subPath.Kind == ODataPathKind.TypeCast &&
                         !isCollection &&
@@ -563,8 +561,11 @@ namespace Microsoft.OpenApi.OData.Edm
                     {// we don't want to add operations bound to single elements on type cast segments under collections, only under the key segment, singletons and nav props bound to singles.
                         continue;
                     }
-                    else if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
-                            (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind)))
+                    else if ((lastPathSegment is not ODataTypeCastSegment castSegment ||
+                                castSegment.EntityType == bindingEntityType ||
+                                bindingEntityType.InheritsFrom(castSegment.EntityType)) && // we don't want to add operations from the parent types under type cast segments because they already are present without the cast
+                        ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
+                            (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
