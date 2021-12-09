@@ -55,12 +55,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
                 else
                 {
-                    ODataOperationImportSegment operationImportSegment = Path.LastSegment as ODataOperationImportSegment;
-                    string pathItemName = operationImportSegment.GetPathItemName(Context.Settings, new HashSet<string>());
                     if (Context.Model.IsOperationImportOverload(EdmOperationImport))
                     {
-                        string hash = pathItemName.GetHashSHA256();
-                        operation.OperationId = "FunctionImport." + EdmOperationImport.Name + "-" + hash.Substring(0, 4);
+                        operation.OperationId = "FunctionImport." + EdmOperationImport.Name + "-" + Path.LastSegment.GetPathHash(Context.Settings);
                     }
                     else
                     {

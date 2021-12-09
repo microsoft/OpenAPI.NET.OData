@@ -268,7 +268,7 @@
     "/Airlines/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Airlines",
+        "operationId": "Get.Count.Airlines-27a7",
         "produces": [
           "text/plain"
         ],
@@ -550,7 +550,7 @@
     "/Airports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Airports",
+        "operationId": "Get.Count.Airports-60cc",
         "produces": [
           "text/plain"
         ],
@@ -883,7 +883,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-dcf6",
         "produces": [
           "application/json"
         ],
@@ -1112,7 +1112,7 @@
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-e850",
         "produces": [
           "text/plain"
         ],
@@ -1257,7 +1257,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-09a9",
         "produces": [
           "application/json"
         ],
@@ -1486,7 +1486,7 @@
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-f41f",
         "produces": [
           "text/plain"
         ],
@@ -1794,7 +1794,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-3dc7",
         "produces": [
           "application/json"
         ],
@@ -2047,7 +2047,7 @@
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-e3cf",
         "produces": [
           "text/plain"
         ],
@@ -2218,7 +2218,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-ddec",
         "produces": [
           "application/json"
         ],
@@ -2471,7 +2471,7 @@
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-c1d4",
         "produces": [
           "text/plain"
         ],
@@ -2639,7 +2639,7 @@
     "/Me/Friends/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Friends",
+        "operationId": "Get.Count.Friends-182b",
         "produces": [
           "text/plain"
         ],
@@ -2784,7 +2784,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5",
         "produces": [
           "application/json"
         ],
@@ -2846,7 +2846,7 @@
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b",
         "produces": [
           "text/plain"
         ],
@@ -2869,7 +2869,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae",
         "produces": [
           "application/json"
         ],
@@ -2931,7 +2931,7 @@
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376",
         "produces": [
           "text/plain"
         ],
@@ -2954,7 +2954,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-bd18",
         "produces": [
           "application/json"
         ],
@@ -3183,7 +3183,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-9fc2",
         "produces": [
           "text/plain"
         ],
@@ -3452,7 +3452,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-16dc",
         "produces": [
           "application/json"
         ],
@@ -3681,7 +3681,7 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-8b92",
         "produces": [
           "text/plain"
         ],
@@ -4451,7 +4451,7 @@
     "/Me/Trips/{TripId}/PlanItems/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.PlanItems",
+        "operationId": "Get.Count.PlanItems-c250",
         "produces": [
           "text/plain"
         ],
@@ -4616,7 +4616,7 @@
     "/Me/Trips/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Trips",
+        "operationId": "Get.Count.Trips-7b69",
         "produces": [
           "text/plain"
         ],
@@ -5126,7 +5126,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7b75",
         "produces": [
           "application/json"
         ],
@@ -5378,7 +5378,7 @@
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-1269",
         "produces": [
           "text/plain"
         ],
@@ -5549,7 +5549,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-61ce",
         "produces": [
           "application/json"
         ],
@@ -5801,7 +5801,7 @@
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-c923",
         "produces": [
           "text/plain"
         ],
@@ -6151,7 +6151,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969",
         "produces": [
           "application/json"
         ],
@@ -6427,7 +6427,7 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-128d",
         "produces": [
           "text/plain"
         ],
@@ -6622,7 +6622,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f",
         "produces": [
           "application/json"
         ],
@@ -6898,7 +6898,7 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-08c7",
         "produces": [
           "text/plain"
         ],
@@ -7090,7 +7090,7 @@
     "/NewComePeople/{UserName}/Friends/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Friends",
+        "operationId": "Get.Count.Friends-2ec1",
         "produces": [
           "text/plain"
         ],
@@ -7261,7 +7261,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969",
         "produces": [
           "application/json"
         ],
@@ -7331,7 +7331,7 @@
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-4069",
         "produces": [
           "text/plain"
         ],
@@ -7364,7 +7364,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f",
         "produces": [
           "application/json"
         ],
@@ -7434,7 +7434,7 @@
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d1d3",
         "produces": [
           "text/plain"
         ],
@@ -8330,7 +8330,7 @@
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.PlanItems",
+        "operationId": "Get.Count.PlanItems-841f",
         "produces": [
           "text/plain"
         ],
@@ -8519,7 +8519,7 @@
     "/NewComePeople/{UserName}/Trips/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Trips",
+        "operationId": "Get.Count.Trips-d155",
         "produces": [
           "text/plain"
         ],
@@ -8549,7 +8549,7 @@
     "/NewComePeople/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.NewComePeople",
+        "operationId": "Get.Count.NewComePeople-55d5",
         "produces": [
           "text/plain"
         ],
@@ -9059,7 +9059,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7188",
         "produces": [
           "application/json"
         ],
@@ -9312,7 +9312,7 @@
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-5860",
         "produces": [
           "text/plain"
         ],
@@ -9483,7 +9483,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-5f08",
         "produces": [
           "application/json"
         ],
@@ -9736,7 +9736,7 @@
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-cddc",
         "produces": [
           "text/plain"
         ],
@@ -10086,7 +10086,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf",
         "produces": [
           "application/json"
         ],
@@ -10363,7 +10363,7 @@
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-ff21",
         "produces": [
           "text/plain"
         ],
@@ -10558,7 +10558,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb",
         "produces": [
           "application/json"
         ],
@@ -10835,7 +10835,7 @@
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-3b03",
         "produces": [
           "text/plain"
         ],
@@ -11027,7 +11027,7 @@
     "/People/{UserName}/Friends/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Friends",
+        "operationId": "Get.Count.Friends-92b9",
         "produces": [
           "text/plain"
         ],
@@ -11198,7 +11198,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf",
         "produces": [
           "application/json"
         ],
@@ -11268,7 +11268,7 @@
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-a96c",
         "produces": [
           "text/plain"
         ],
@@ -11301,7 +11301,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb",
         "produces": [
           "application/json"
         ],
@@ -11371,7 +11371,7 @@
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-26b3",
         "produces": [
           "text/plain"
         ],
@@ -11404,7 +11404,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-317b",
         "produces": [
           "application/json"
         ],
@@ -11657,7 +11657,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Peers",
+        "operationId": "Get.Count.Peers-44d2",
         "produces": [
           "text/plain"
         ],
@@ -11978,7 +11978,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d051",
         "produces": [
           "application/json"
         ],
@@ -12231,7 +12231,7 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.DirectReports",
+        "operationId": "Get.Count.DirectReports-0ec4",
         "produces": [
           "text/plain"
         ],
@@ -13115,7 +13115,7 @@
     "/People/{UserName}/Trips/{TripId}/PlanItems/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.PlanItems",
+        "operationId": "Get.Count.PlanItems-9a27",
         "produces": [
           "text/plain"
         ],
@@ -13304,7 +13304,7 @@
     "/People/{UserName}/Trips/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Trips",
+        "operationId": "Get.Count.Trips-e877",
         "produces": [
           "text/plain"
         ],
@@ -13334,7 +13334,7 @@
     "/People/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.People",
+        "operationId": "Get.Count.People-dd8d",
         "produces": [
           "text/plain"
         ],
@@ -13357,7 +13357,7 @@
           "Person.Employee"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a",
         "produces": [
           "application/json"
         ],
@@ -13419,7 +13419,7 @@
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29",
         "produces": [
           "text/plain"
         ],
@@ -13442,7 +13442,7 @@
           "Person.Manager"
         ],
         "summary": "Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
-        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14",
         "produces": [
           "application/json"
         ],
@@ -13504,7 +13504,7 @@
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager",
+        "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48",
         "produces": [
           "text/plain"
         ],

@@ -1,4 +1,4 @@
-﻿{
+{
   "swagger": "2.0",
   "info": {
     "title": "OData Service for namespace DefaultNs",
@@ -263,7 +263,7 @@
     "/City/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.City",
+        "operationId": "Get.Count.City-8728",
         "produces": [
           "text/plain"
         ],
@@ -533,7 +533,7 @@
     "/CountryOrRegion/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.CountryOrRegion",
+        "operationId": "Get.Count.CountryOrRegion-daf5",
         "produces": [
           "text/plain"
         ],
@@ -900,7 +900,7 @@
     "/People/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.People",
+        "operationId": "Get.Count.People-dd8d",
         "produces": [
           "text/plain"
         ],

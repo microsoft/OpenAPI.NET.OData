@@ -335,5 +335,13 @@ namespace Microsoft.OpenApi.OData.Edm
 
             return ODataPathKind.Unknown;
         }
+
+        /// <summary>
+        /// Profides a suffix for the operation id based on the operation path.
+        /// </summary>
+        /// <param name="settings">The settings.</param>
+        ///<returns>The suffix.</returns>
+        public string GetPathHash(OpenApiConvertSettings settings) =>
+            LastSegment.GetPathHash(settings, this);
     }
 }

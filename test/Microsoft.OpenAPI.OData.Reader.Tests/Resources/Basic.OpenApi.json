@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.1",
   "info": {
     "title": "OData Service for namespace DefaultNs",
@@ -296,7 +296,7 @@
     "/City/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.City",
+        "operationId": "Get.Count.City-8728",
         "responses": {
           "200": {
             "description": "The count of the resource",
@@ -599,7 +599,7 @@
     "/CountryOrRegion/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.CountryOrRegion",
+        "operationId": "Get.Count.CountryOrRegion-daf5",
         "responses": {
           "200": {
             "description": "The count of the resource",
@@ -1007,7 +1007,7 @@
     "/People/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.People",
+        "operationId": "Get.Count.People-dd8d",
         "responses": {
           "200": {
             "description": "The count of the resource",

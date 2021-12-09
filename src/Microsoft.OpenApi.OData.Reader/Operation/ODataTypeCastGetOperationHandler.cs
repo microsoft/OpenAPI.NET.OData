@@ -151,7 +151,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		// OperationId
 		if (Context.Settings.EnableOperationId)
 		{
-			operation.OperationId = $"Get.{parentEntityType.ShortQualifiedName()}.As.{targetEntityType.ShortQualifiedName()}";
+			var operationItem = IsSingleElement ? ".Item" : ".Items";
+			operation.OperationId = $"Get.{parentEntityType.ShortQualifiedName()}{operationItem}.As.{targetEntityType.ShortQualifiedName()}-{Path.GetPathHash(Context.Settings)}";
 		}
 
 		base.SetBasicInfo(operation);

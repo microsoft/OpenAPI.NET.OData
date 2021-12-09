@@ -36,6 +36,7 @@ Microsoft.OpenApi.OData.Edm.ODataOperationSegment.Operation.get -> Microsoft.ODa
 Microsoft.OpenApi.OData.Edm.ODataOperationSegment.ParameterMappings.get -> System.Collections.Generic.IDictionary<string, string>
 Microsoft.OpenApi.OData.Edm.ODataPath
 Microsoft.OpenApi.OData.Edm.ODataPath.Clone() -> Microsoft.OpenApi.OData.Edm.ODataPath
+Microsoft.OpenApi.OData.Edm.ODataPath.GetPathHash(Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> string
 Microsoft.OpenApi.OData.Edm.ODataPath.CompareTo(Microsoft.OpenApi.OData.Edm.ODataPath other) -> int
 Microsoft.OpenApi.OData.Edm.ODataPath.Count.get -> int
 Microsoft.OpenApi.OData.Edm.ODataPath.FirstSegment.get -> Microsoft.OpenApi.OData.Edm.ODataSegment
@@ -68,6 +69,7 @@ Microsoft.OpenApi.OData.Edm.ODataPathProvider.ODataPathProvider() -> void
 Microsoft.OpenApi.OData.Edm.ODataRefSegment
 Microsoft.OpenApi.OData.Edm.ODataSegment
 Microsoft.OpenApi.OData.Edm.ODataSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> string
+Microsoft.OpenApi.OData.Edm.ODataSegment.GetPathHash(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, Microsoft.OpenApi.OData.Edm.ODataPath path) -> string
 Microsoft.OpenApi.OData.Edm.ODataSegment.ODataSegment() -> void
 Microsoft.OpenApi.OData.Edm.ODataSegmentKind
 Microsoft.OpenApi.OData.Edm.ODataSegmentKind.DollarCount = 10 -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind

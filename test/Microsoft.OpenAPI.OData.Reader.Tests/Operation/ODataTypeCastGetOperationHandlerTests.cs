@@ -65,7 +65,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
     if (enableOperationId)
     {
-      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf", operation.OperationId);
     }
     else
     {
@@ -123,7 +123,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
     if (enableOperationId)
     {
-      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf", operation.OperationId);
     }
     else
     {
@@ -176,7 +176,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
     if (enableOperationId)
     {
-      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a", operation.OperationId);
     }
     else
     {
@@ -231,7 +231,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
     if (enableOperationId)
     {
-      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-317b", operation.OperationId);
     }
     else
     {
@@ -288,7 +288,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
     if (enableOperationId)
     {
-      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-7188", operation.OperationId);
     }
     else
     {
@@ -341,7 +341,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
     if (enableOperationId)
     {
-      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee", operation.OperationId);
+      Assert.Equal("Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-bd18", operation.OperationId);
     }
     else
     {
