@@ -337,7 +337,7 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Profides a suffix for the operation id based on the operation path.
+        /// Provides a suffix for the operation id based on the operation path.
         /// </summary>
         /// <param name="settings">The settings.</param>
         ///<returns>The suffix.</returns>
