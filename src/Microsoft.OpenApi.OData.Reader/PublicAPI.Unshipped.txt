@@ -117,6 +117,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUnqualifiedCall.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUnqualifiedCall.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUriEscapeFunctionCall.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUriEscapeFunctionCall.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandNavigationPropertyAttributeName.get -> string
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandNavigationPropertyAttributeName.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IEEE754Compatible.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IEEE754Compatible.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.OpenApiConvertSettings() -> void

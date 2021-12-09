@@ -188,6 +188,12 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableDollarCountPath { get; set; } = true;
 
+        /// <summary>
+        /// Gets/sets a value that specifies the custom attribute name used in the metadata to specify whether a Navigation Property
+        /// should be expanded or not.
+        /// </summary>
+        public string ExpandNavigationPropertyAttributeName { get; set; } = "Explode";
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -219,6 +225,7 @@ namespace Microsoft.OpenApi.OData
                 ShowRootPath = this.ShowRootPath,
                 PathProvider = this.PathProvider,
                 EnableDollarCountPath = this.EnableDollarCountPath,
+                ExpandNavigationPropertyAttributeName = this.ExpandNavigationPropertyAttributeName
             };
 
             return newSettings;
