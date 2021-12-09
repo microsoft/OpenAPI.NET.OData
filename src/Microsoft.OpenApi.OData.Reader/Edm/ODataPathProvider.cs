@@ -423,7 +423,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="targetsMany">Whether the annotable navigation source targets many entities.</param>
         private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable, bool targetsMany)
         {
-            if(currentPath == null) throw new ArgumentNullException(nameof(currentPath));
+            if(currentPath == null) throw Error.ArgumentNull(nameof(currentPath));
             if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
             if(structuredType == null) throw new ArgumentNullException(nameof(structuredType));
             if(annotable == null) throw new ArgumentNullException(nameof(annotable));
