@@ -327,7 +327,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     return ODataPathKind.EntitySet;
                 }
-			}
+            }
             else if (Segments.Count == 2 && Segments.Last().Kind == ODataSegmentKind.Key)
             {
                 return ODataPathKind.Entity;

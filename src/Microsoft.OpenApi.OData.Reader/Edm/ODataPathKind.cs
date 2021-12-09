@@ -63,7 +63,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Represents a type cast path, for example: ~/groups/{id}/members/microsoft.graph.user
         /// </summary>
-		TypeCast,
+        TypeCast,
 
         /// <summary>
         /// Represents an un-supported/unknown path.

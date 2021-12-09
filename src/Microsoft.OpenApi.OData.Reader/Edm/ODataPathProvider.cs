@@ -435,14 +435,14 @@ namespace Microsoft.OpenApi.OData.Edm
 
             var annotedTypeNamesSet = new HashSet<string>(annotedTypeNames, StringComparer.OrdinalIgnoreCase);
 
-			bool filter(IEdmStructuredType x) =>
-				convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && annotedTypeNames.Contains(x.FullTypeName()) ||
-				!convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && (
-					!annotedTypeNames.Any() ||
-					annotedTypeNames.Contains(x.FullTypeName())
-				);
+            bool filter(IEdmStructuredType x) =>
+                convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && annotedTypeNames.Contains(x.FullTypeName()) ||
+                !convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && (
+                    !annotedTypeNames.Any() ||
+                    annotedTypeNames.Contains(x.FullTypeName())
+                );
 
-			var targetTypes = _model
+            var targetTypes = _model
                                 .FindAllDerivedTypes(structuredType)
                                 .Where(x => x.TypeKind == EdmTypeKind.Entity && filter(x))
                                 .OfType<IEdmEntityType>()
@@ -494,9 +494,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
 
-				bool filter(IEdmNavigationSource z) =>
-					z.EntityType() != firstEntityType &&
-					z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+                bool filter(IEdmNavigationSource z) =>
+                    z.EntityType() != firstEntityType &&
+                    z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
 
                 var allEntitiesForOperation = new IEdmEntityType[] { firstEntityType }
                     .Union(_model.EntityContainer.EntitySets()
