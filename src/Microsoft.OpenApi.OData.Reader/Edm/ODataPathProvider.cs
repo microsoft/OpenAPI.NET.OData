@@ -493,28 +493,24 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
-                var allEntitiesForOperation= new List<IEdmEntityType>(){ firstEntityType };
 
-                System.Func<IEdmNavigationSource, bool> filter = (z) =>
-                    z.EntityType() != firstEntityType &&
-                    z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
+				bool filter(IEdmNavigationSource z) =>
+					z.EntityType() != firstEntityType &&
+					z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
 
-                //Search all EntitySets
-                allEntitiesForOperation.AddRange(
-                    _model.EntityContainer.EntitySets()
-                            .Where(filter).Select(x => x.EntityType())
-                );
-
-                //Search all singletons
-                allEntitiesForOperation.AddRange(
-                    _model.EntityContainer.Singletons()
-                            .Where(filter).Select(x => x.EntityType())
-                );
-
-                allEntitiesForOperation = allEntitiesForOperation.Distinct().ToList();
-
+                var allEntitiesForOperation = new IEdmEntityType[] { firstEntityType }
+                    .Union(_model.EntityContainer.EntitySets()
+                            .Where(filter).Select(x => x.EntityType())) //Search all EntitySets
+                    .Union(_model.EntityContainer.Singletons()
+                            .Where(filter).Select(x => x.EntityType())) //Search all singletons
+                    .Distinct()
+                    .ToList();
+                
                 foreach (var bindingEntityType in allEntitiesForOperation)
-                {
+                {// Note: one of those is adding operations from parent types on type cast when we don't want that.
+                //hire is bound to manager -> ok
+                //GetFavoriteAirline on person -> also added on manager/employee nok
+                //TODO: this method should not be adding methods from the parent type when a type cast segment is already present.
                     // 1. Search for corresponding navigation source path
                     if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType))
                     {
@@ -542,7 +538,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
         }
-        private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperations = new HashSet<ODataPathKind>() {
+        private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperationsWhenSingle = new() {
             ODataPathKind.EntitySet,
             ODataPathKind.MediaEntity,
             ODataPathKind.DollarCount
@@ -557,8 +553,18 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 foreach (var subPath in value)
                 {
-                    if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
-                            (!isCollection && !_oDataPathKindsToSkipForOperations.Contains(subPath.Kind)))
+                    var secondLastPathSegment = subPath.Count > 1 ? subPath.ElementAt(subPath.Count - 2) : null;
+                    if (subPath.Kind == ODataPathKind.TypeCast &&
+                        !isCollection &&
+                        secondLastPathSegment != null &&
+                        secondLastPathSegment is not ODataKeySegment &&
+                        (secondLastPathSegment is not ODataNavigationSourceSegment navSource || navSource.NavigationSource is not IEdmSingleton) &&
+                        (secondLastPathSegment is not ODataNavigationPropertySegment navProp || navProp.NavigationProperty.Type.IsCollection()))
+                    {// we don't want to add operations bound to single elements on type cast segments under collections, only under the key segment, singletons and nav props bound to singles.
+                        continue;
+                    }
+                    else if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
+                            (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind)))
                     {
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
