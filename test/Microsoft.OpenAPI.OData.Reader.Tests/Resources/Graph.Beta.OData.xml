@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns:sdk="https://graphsdk.microsoft.com">
     <edmx:DataServices>
         <Schema Namespace="microsoft.graph" xmlns="http://docs.oasis-open.org/odata/ns/edm">
             <EnumType Name="status">
@@ -2502,7 +2502,7 @@
                 <NavigationProperty Name="items" Type="Collection(microsoft.graph.driveItem)" ContainsTarget="true" />
                 <NavigationProperty Name="list" Type="microsoft.graph.list" ContainsTarget="true" />
                 <NavigationProperty Name="root" Type="microsoft.graph.driveItem" ContainsTarget="true" />
-                <NavigationProperty Name="special" Type="Collection(microsoft.graph.driveItem)" ContainsTarget="true" />
+                <NavigationProperty Name="special" Type="Collection(microsoft.graph.driveItem)" ContainsTarget="true" sdk:Explode="false"/>
             </EntityType>
             <EntityType Name="officeGraphInsights" BaseType="microsoft.graph.entity">
                 <NavigationProperty Name="trending" Type="Collection(microsoft.graph.trending)" ContainsTarget="true" />

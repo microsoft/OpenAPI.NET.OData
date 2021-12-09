@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------
+// --------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // --------------------------------------------------------------
@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17178, paths.Count());
+            Assert.Equal(15862, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17163, paths.Count());
+            Assert.Equal(15847, paths.Count());
         }
 
         [Fact]
