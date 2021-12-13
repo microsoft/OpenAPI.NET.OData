@@ -7,8 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.OpenApiExtensions;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -121,5 +121,9 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="parameters">The existing parameters.</param>
         /// <returns>The path item name.</returns>
         public abstract string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters);
+        /// <summary>
+        /// Provides any deprecation information for the segment.
+        /// </summary>
+        public OpenApiDeprecationExtension Depreciation { get; set; }
     }
 }

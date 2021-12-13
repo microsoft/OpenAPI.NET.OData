@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -47,6 +48,22 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.EnableOperationId)
             {
                 operation.OperationId = $"Get.Count.{LastSecondSegment.Identifier}-{Path.GetPathHash(Context.Settings)}";
+            }
+            
+            var annotable = LastSecondSegment switch
+			{
+				ODataNavigationPropertySegment navigationPropertySegment => navigationPropertySegment.NavigationProperty as IEdmVocabularyAnnotatable,
+				_ => throw new System.NotImplementedException(), //TODO other segment types
+			};
+
+            //TODO go up the tree and lookup the type?
+            var deprecationInfo = Context.GetDeprecationInformation(annotable);
+
+            if(deprecationInfo != null)
+            {
+                operation.Deprecated = true;
+                var deprecationDetails = deprecationInfo.GetOpenApiExtension();
+                operation.Extensions.Add(deprecationDetails.Name, deprecationDetails);
             }
 
             base.SetBasicInfo(operation);

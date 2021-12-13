@@ -6,12 +6,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Operation;
 using Microsoft.OpenApi.OData.PathItem;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -170,6 +172,10 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 yield return path;
             }
+        }
+        internal DeprecatedRevisionsType GetDeprecationInformation(IEdmVocabularyAnnotatable annotable)
+        {
+            return Model?.GetRecord<DeprecatedRevisionsType>(annotable, "Org.OData.Core.V1.Revisions");
         }
     }
 }
