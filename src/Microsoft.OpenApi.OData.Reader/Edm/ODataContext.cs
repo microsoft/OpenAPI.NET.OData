@@ -173,9 +173,12 @@ namespace Microsoft.OpenApi.OData.Edm
                 yield return path;
             }
         }
-        internal DeprecatedRevisionsType GetDeprecationInformation(IEdmVocabularyAnnotatable annotable)
+        internal IEnumerable<DeprecatedRevisionsType> GetDeprecationInformations(IEdmVocabularyAnnotatable annotable)
         {
-            return annotable == null ? null : Model?.GetRecord<DeprecatedRevisionsType>(annotable, "Org.OData.Core.V1.Revisions");
+            return annotable == null ?
+                Enumerable.Empty<DeprecatedRevisionsType>() :
+                    (Model?.GetCollection<DeprecatedRevisionsType>(annotable, "Org.OData.Core.V1.Revisions") ?? 
+                    Enumerable.Empty<DeprecatedRevisionsType>());
         }
     }
 }
