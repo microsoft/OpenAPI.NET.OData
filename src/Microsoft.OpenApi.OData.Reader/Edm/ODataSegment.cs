@@ -124,6 +124,6 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Provides any deprecation information for the segment.
         /// </summary>
-        public OpenApiDeprecationExtension Depreciation { get; set; }
+        public OpenApiDeprecationExtension Deprecation { get; set; }
     }
 }

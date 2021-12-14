@@ -175,7 +175,7 @@ namespace Microsoft.OpenApi.OData.Edm
         }
         internal DeprecatedRevisionsType GetDeprecationInformation(IEdmVocabularyAnnotatable annotable)
         {
-            return Model?.GetRecord<DeprecatedRevisionsType>(annotable, "Org.OData.Core.V1.Revisions");
+            return annotable == null ? null : Model?.GetRecord<DeprecatedRevisionsType>(annotable, "Org.OData.Core.V1.Revisions");
         }
     }
 }
