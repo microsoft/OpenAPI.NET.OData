@@ -27,7 +27,7 @@ internal class RevisionsType : IRecord
 	/// Init the <see cref="RevisionsType"/>.
 	/// </summary>
 	/// <param name="record">The input record.</param>
-	public void Initialize(IEdmRecordExpression record)
+	public virtual void Initialize(IEdmRecordExpression record)
 	{
 		Utils.CheckArgumentNull(record, nameof(record));
 		Kind = record.GetEnum<RevisionKind>(nameof(Kind));

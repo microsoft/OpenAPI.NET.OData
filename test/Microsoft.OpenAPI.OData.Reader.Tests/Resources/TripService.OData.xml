@@ -33,6 +33,19 @@
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
             </Collection>
           </Annotation>
+          <Annotation Term="Org.OData.Core.V1.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Date="2021-08-24" Property="Date" />
+                <PropertyValue Property="Description" String="The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API." />
+                <PropertyValue Property="Kind">
+                  <EnumMember>Org.OData.Core.V1.RevisionKind/Deprecated</EnumMember>
+                </PropertyValue>
+                <PropertyValue Date="2023-03-15" Property="RemovalDate" />
+                <PropertyValue Property="Version" String="2021-05/bestfriend" />
+              </Record>
+            </Collection>
+          </Annotation>
         </NavigationProperty>
         <NavigationProperty Name="Trips" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" ContainsTarget="true">
           <Annotation Term="Org.OData.Core.V1.Description" String="Collection of trips." />
@@ -142,6 +155,19 @@
         <Parameter Name="person" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
         <ReturnType Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" />
+        <Annotation Term="Org.OData.Core.V1.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Date="2021-08-24" Property="Date" />
+              <PropertyValue Property="Description" String="The GetFriendsTrips API is deprecated and will stop returning data on March 2023. Please use the new trips API on friends." />
+              <PropertyValue Property="Kind">
+                <EnumMember>Org.OData.Core.V1.RevisionKind/Deprecated</EnumMember>
+              </PropertyValue>
+              <PropertyValue Date="2023-03-15" Property="RemovalDate" />
+              <PropertyValue Property="Version" String="2021-05/trips" />
+            </Record>
+          </Collection>
+        </Annotation>
       </Function>
       <Function Name="GetInvolvedPeople" IsBound="true">
         <Parameter Name="trip" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip" />
@@ -182,6 +208,19 @@
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
             </Collection>
           </Annotation>
+          <Annotation Term="Org.OData.Core.V1.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Date="2021-08-24" Property="Date" />
+                <PropertyValue Property="Description" String="The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API." />
+                <PropertyValue Property="Kind">
+                  <EnumMember>Org.OData.Core.V1.RevisionKind/Deprecated</EnumMember>
+                </PropertyValue>
+                <PropertyValue Date="2023-03-15" Property="RemovalDate" />
+                <PropertyValue Property="Version" String="2021-05/people" />
+              </Record>
+            </Collection>
+          </Annotation>
         </EntitySet>
         <EntitySet Name="Airlines" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline">
           <Annotation Term="Org.OData.Core.V1.OptimisticConcurrency">
@@ -197,6 +236,19 @@
             <Collection>
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee</String>
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
+            </Collection>
+          </Annotation>
+          <Annotation Term="Org.OData.Core.V1.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Date="2021-08-24" Property="Date" />
+                <PropertyValue Property="Description" String="The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API." />
+                <PropertyValue Property="Kind">
+                  <EnumMember>Org.OData.Core.V1.RevisionKind/Deprecated</EnumMember>
+                </PropertyValue>
+                <PropertyValue Date="2023-03-15" Property="RemovalDate" />
+                <PropertyValue Property="Version" String="2021-05/me" />
+              </Record>
             </Collection>
           </Annotation>
         </Singleton>

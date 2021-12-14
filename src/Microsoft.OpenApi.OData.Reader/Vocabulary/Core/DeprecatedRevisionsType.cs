@@ -23,7 +23,7 @@ internal class DeprecatedRevisionsType : RevisionsType
 	/// Init the <see cref="DeprecatedRevisionsType"/>.
 	/// </summary>
 	/// <param name="record">The input record.</param>
-	public new void Initialize(IEdmRecordExpression record)
+	public override void Initialize(IEdmRecordExpression record)
 	{
 		base.Initialize(record);
 		if (Kind != RevisionKind.Deprecated)
