@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -37,7 +38,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Identifier { get => NavigationProperty.Name; }
 
-        /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => NavigationProperty.Name;
+		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+		{
+			return new IEdmVocabularyAnnotatable[] { NavigationProperty, EntityType };
+		}
+
+		/// <inheritdoc />
+		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => NavigationProperty.Name;
     }
 }

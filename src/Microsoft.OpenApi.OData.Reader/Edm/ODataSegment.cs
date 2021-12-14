@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.OpenApiExtensions;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -125,5 +126,9 @@ namespace Microsoft.OpenApi.OData.Edm
         /// Provides any deprecation information for the segment.
         /// </summary>
         public OpenApiDeprecationExtension Deprecation { get; set; }
+        /// <summary>
+        /// Returns the list of <see cref="IEdmVocabularyAnnotatable"/> this segment refers to.
+        /// </summary>
+        public abstract IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables();
     }
 }

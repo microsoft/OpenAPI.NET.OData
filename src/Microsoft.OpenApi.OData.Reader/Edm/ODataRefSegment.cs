@@ -4,6 +4,8 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -30,7 +32,12 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Identifier => "$ref";
 
-        /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => "$ref";
+		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+		{
+			return Enumerable.Empty<IEdmVocabularyAnnotatable>();
+		}
+
+		/// <inheritdoc />
+		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => "$ref";
     }
 }
