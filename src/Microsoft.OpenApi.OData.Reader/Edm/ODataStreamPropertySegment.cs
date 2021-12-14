@@ -30,6 +30,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Identifier { get => _streamPropertyName; }
 
+        /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
 			return Enumerable.Empty<IEdmVocabularyAnnotatable>();

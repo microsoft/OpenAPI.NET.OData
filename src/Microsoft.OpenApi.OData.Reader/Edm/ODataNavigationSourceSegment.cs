@@ -39,6 +39,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.NavigationSource;
 
+        /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
 			return new IEdmVocabularyAnnotatable[] { NavigationSource as IEdmVocabularyAnnotatable, EntityType }.Union(EntityType.FindAllBaseTypes());

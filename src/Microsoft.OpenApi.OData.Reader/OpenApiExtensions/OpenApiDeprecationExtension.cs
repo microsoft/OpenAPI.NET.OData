@@ -31,6 +31,7 @@ public class OpenApiDeprecationExtension : IOpenApiExtension
     /// The description of the revision.
     /// </summary>
     public string Description { get; set; }
+	/// <inheritdoc />
     public void Write(IOpenApiWriter writer, OpenApiSpecVersion specVersion)
     {
         if(writer == null)

@@ -20,6 +20,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Identifier => "$value";
 
+        /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
 			return Enumerable.Empty<IEdmVocabularyAnnotatable>();

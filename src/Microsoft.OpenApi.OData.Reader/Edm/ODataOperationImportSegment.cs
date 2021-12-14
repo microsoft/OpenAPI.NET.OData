@@ -54,6 +54,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Identifier { get => OperationImport.Name; }
 
+        /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
 			return new IEdmVocabularyAnnotatable[] { OperationImport };

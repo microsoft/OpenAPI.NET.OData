@@ -34,6 +34,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
         public override string Identifier { get => EntityType.FullTypeName(); }
 
+        /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
 			return Enumerable.Empty<IEdmVocabularyAnnotatable>();
