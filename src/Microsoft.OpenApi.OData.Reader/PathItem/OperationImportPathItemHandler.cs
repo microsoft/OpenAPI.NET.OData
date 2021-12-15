@@ -58,5 +58,11 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataOperationImportSegment operationImportSegment = path.FirstSegment as ODataOperationImportSegment;
             EdmOperationImport = operationImportSegment.OperationImport;
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = $"Provides operations to call the {EdmOperationImport.Name} method.";
+        }
     }
 }

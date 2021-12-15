@@ -21,5 +21,11 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             AddOperation(item, OperationType.Get);
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = "Provides operations to obtain the service metadata.";
+        }
     }
 }
