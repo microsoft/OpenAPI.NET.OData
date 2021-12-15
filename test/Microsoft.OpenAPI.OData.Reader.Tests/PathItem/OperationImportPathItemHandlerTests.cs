@@ -78,6 +78,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             var operationKeyValue = Assert.Single(pathItem.Operations);
             Assert.Equal(operationType, operationKeyValue.Key);
             Assert.NotNull(operationKeyValue.Value);
+            Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]
