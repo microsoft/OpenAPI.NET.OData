@@ -1196,14 +1196,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1596,14 +1589,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1920,14 +1906,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2194,14 +2173,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2658,14 +2630,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3426,14 +3391,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3970,14 +3928,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4408,14 +4359,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4786,14 +4730,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5808,14 +5745,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6271,14 +6201,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6648,14 +6571,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6952,14 +6868,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -7475,14 +7384,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8620,14 +8522,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9060,14 +8955,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10149,14 +10037,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10613,14 +10494,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10991,14 +10865,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -11295,14 +11162,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -11819,14 +11679,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -12725,14 +12578,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -13367,14 +13213,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -13893,14 +13732,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -14333,14 +14165,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15761,6 +15586,106 @@
           "text/plain": {
             "schema": {
               "$ref": "#/components/schemas/ODataCountResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse"
+            }
+          }
+        }
+      },
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"
             }
           }
         }

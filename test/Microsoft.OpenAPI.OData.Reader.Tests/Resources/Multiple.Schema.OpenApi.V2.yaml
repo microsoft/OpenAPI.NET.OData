@@ -458,8 +458,6 @@ paths:
         - Documents.RevisionDto
       summary: Get Revisions from Documents
       operationId: Documents.ListRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -552,9 +550,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+          $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -983,8 +979,6 @@ paths:
         - Libraries.DocumentDto
       summary: Get Documents from Libraries
       operationId: Libraries.ListDocuments
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -1056,9 +1050,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1913,8 +1905,6 @@ paths:
         - Tasks.RevisionDto
       summary: Get Revisions from Tasks
       operationId: Tasks.ListRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -2007,9 +1997,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+          $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3658,6 +3646,38 @@ responses:
     description: The count of the resource
     schema:
       $ref: '#/definitions/ODataCountResponse'
+  Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+  Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
+  Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+  Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse'
 tags:
   - name: Categories.CategoryDto
     x-ms-docs-toc-type: page

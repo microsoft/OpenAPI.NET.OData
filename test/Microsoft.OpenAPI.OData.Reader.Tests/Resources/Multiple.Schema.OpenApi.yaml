@@ -611,11 +611,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1164,11 +1160,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2245,11 +2237,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+          $ref: '#/components/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -4029,6 +4017,54 @@ components:
         text/plain:
           schema:
             $ref: '#/components/schemas/ODataCountResponse'
+    Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+    Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
+    Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+    Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse'
+    Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse'
   parameters:
     top:
       name: $top

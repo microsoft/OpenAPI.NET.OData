@@ -780,6 +780,18 @@ responses:
     description: The count of the resource
     schema:
       $ref: '#/definitions/ODataCountResponse'
+  DefaultNs.PersonCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.PersonCollectionResponse'
+  DefaultNs.CityCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.CityCollectionResponse'
+  DefaultNs.CountryOrRegionCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.CountryOrRegionCollectionResponse'
 tags:
   - name: City.City
     x-ms-docs-toc-type: page

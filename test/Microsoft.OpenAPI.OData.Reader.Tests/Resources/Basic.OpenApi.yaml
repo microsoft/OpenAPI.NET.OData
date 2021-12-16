@@ -825,6 +825,24 @@ components:
         text/plain:
           schema:
             $ref: '#/components/schemas/ODataCountResponse'
+    DefaultNs.PersonCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultNs.PersonCollectionResponse'
+    DefaultNs.CityCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultNs.CityCollectionResponse'
+    DefaultNs.CountryOrRegionCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultNs.CountryOrRegionCollectionResponse'
   parameters:
     top:
       name: $top

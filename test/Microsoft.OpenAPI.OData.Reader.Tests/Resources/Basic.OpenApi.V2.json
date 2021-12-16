@@ -1169,6 +1169,24 @@
       "schema": {
         "$ref": "#/definitions/ODataCountResponse"
       }
+    },
+    "DefaultNs.PersonCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/DefaultNs.PersonCollectionResponse"
+      }
+    },
+    "DefaultNs.CityCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/DefaultNs.CityCollectionResponse"
+      }
+    },
+    "DefaultNs.CountryOrRegionCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/DefaultNs.CountryOrRegionCollectionResponse"
+      }
     }
   },
   "tags": [

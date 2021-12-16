@@ -651,8 +651,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get Peers from Me
       operationId: Me.BestFriend.ListPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -722,9 +720,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -908,8 +904,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get DirectReports from Me
       operationId: Me.BestFriend.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -979,9 +973,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1117,8 +1109,6 @@ paths:
         - Me.Person
       summary: Get Friends from Me
       operationId: Me.ListFriends
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1188,9 +1178,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1283,8 +1271,6 @@ paths:
         - Me.Friends.Person
       summary: Get Peers from Me
       operationId: Me.Friends.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1360,9 +1346,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1577,8 +1561,6 @@ paths:
         - Me.Friends.Person
       summary: Get DirectReports from Me
       operationId: Me.Friends.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1654,9 +1636,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2075,8 +2055,6 @@ paths:
         - Me.Person
       summary: Get Peers from Me
       operationId: Me.ListPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2146,9 +2124,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2418,8 +2394,6 @@ paths:
         - Me.Person
       summary: Get DirectReports from Me
       operationId: Me.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2489,9 +2463,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2712,8 +2684,6 @@ paths:
       summary: Get Trips from Me
       description: Collection of trips.
       operationId: Me.ListTrips
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2770,9 +2740,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2950,8 +2918,6 @@ paths:
         - Me.Trips.PlanItem
       summary: Get PlanItems from Me
       operationId: Me.Trips.ListPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: TripId
@@ -3006,9 +2972,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3584,8 +3548,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get Peers from NewComePeople
       operationId: NewComePeople.BestFriend.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -3661,9 +3623,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3877,8 +3837,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get DirectReports from NewComePeople
       operationId: NewComePeople.BestFriend.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -3954,9 +3912,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4116,8 +4072,6 @@ paths:
         - NewComePeople.Person
       summary: Get Friends from NewComePeople
       operationId: NewComePeople.ListFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4193,9 +4147,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4300,8 +4252,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get Peers from NewComePeople
       operationId: NewComePeople.Friends.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4383,9 +4333,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4629,8 +4577,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get DirectReports from NewComePeople
       operationId: NewComePeople.Friends.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4712,9 +4658,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5361,8 +5305,6 @@ paths:
       summary: Get Trips from NewComePeople
       description: Collection of trips.
       operationId: NewComePeople.ListTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5425,9 +5367,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5635,8 +5575,6 @@ paths:
         - NewComePeople.Trips.PlanItem
       summary: Get PlanItems from NewComePeople
       operationId: NewComePeople.Trips.ListPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5697,9 +5635,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6316,8 +6252,6 @@ paths:
         - People.BestFriend.Person
       summary: Get Peers from People
       operationId: People.BestFriend.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6393,9 +6327,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6610,8 +6542,6 @@ paths:
         - People.BestFriend.Person
       summary: Get DirectReports from People
       operationId: People.BestFriend.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6687,9 +6617,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6850,8 +6778,6 @@ paths:
         - People.Person
       summary: Get Friends from People
       operationId: People.ListFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6927,9 +6853,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7034,8 +6958,6 @@ paths:
         - People.Friends.Person
       summary: Get Peers from People
       operationId: People.Friends.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7117,9 +7039,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7364,8 +7284,6 @@ paths:
         - People.Friends.Person
       summary: Get DirectReports from People
       operationId: People.Friends.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7447,9 +7365,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7943,8 +7859,6 @@ paths:
         - People.Person
       summary: Get Peers from People
       operationId: People.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8020,9 +7934,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8342,8 +8254,6 @@ paths:
         - People.Person
       summary: Get DirectReports from People
       operationId: People.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8419,9 +8329,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8685,8 +8593,6 @@ paths:
       summary: Get Trips from People
       description: Collection of trips.
       operationId: People.ListTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8749,9 +8655,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8959,8 +8863,6 @@ paths:
         - People.Trips.PlanItem
       summary: Get PlanItems from People
       operationId: People.Trips.ListPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9021,9 +8923,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -9872,6 +9772,46 @@ responses:
     description: The count of the resource
     schema:
       $ref: '#/definitions/ODataCountResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse'
 tags:
   - name: Airlines.Airline
     x-ms-docs-toc-type: page
