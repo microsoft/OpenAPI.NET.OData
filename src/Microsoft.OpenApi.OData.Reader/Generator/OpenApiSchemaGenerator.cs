@@ -83,7 +83,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return schemas;
         }
-        internal static IEnumerable<IEdmStructuredType> GetAllCollectionEntityTypes(ODataContext context)
+        internal static IEnumerable<IEdmStructuredType> GetAllCollectionEntityTypes(this ODataContext context)
         {
             var elementsTypesInModel = context.EntityContainer
                                             .AllElements()

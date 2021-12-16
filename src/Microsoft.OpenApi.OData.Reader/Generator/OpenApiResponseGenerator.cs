@@ -70,6 +70,13 @@ namespace Microsoft.OpenApi.OData.Generator
             if(context.Settings.EnableDollarCountPath)
                 responses[Constants.DollarCountSchemaName] = CreateCountResponse();
 
+            responses = responses.Concat(context.GetAllCollectionEntityTypes()
+                                        .Select(x => new KeyValuePair<string, OpenApiResponse>(
+                                                            $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
+                                                            CreateCollectionResponse(x)))
+                                        .Where(x => !responses.ContainsKey(x.Key)))
+                            .ToDictionary(x => x.Key, x => x.Value);
+
             return responses;
         }
 
@@ -168,6 +175,32 @@ namespace Microsoft.OpenApi.OData.Generator
             responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return responses;
+        }
+
+        private static OpenApiResponse CreateCollectionResponse(IEdmStructuredType structuredType)
+        {
+            var entityType = structuredType as IEdmEntityType;
+            return new OpenApiResponse
+            {
+                Description = "Retrieved collection",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        Constants.ApplicationJsonMediaType,
+                        new OpenApiMediaType
+                        {
+                            Schema = new OpenApiSchema
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = $"{entityType?.FullName() ?? structuredType.FullTypeName()}{Constants.CollectionSchemaSuffix}"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
         }
 
         private static OpenApiResponse CreateCountResponse()

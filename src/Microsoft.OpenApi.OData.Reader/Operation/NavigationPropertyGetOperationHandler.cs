@@ -75,23 +75,10 @@ namespace Microsoft.OpenApi.OData.Operation
                         Constants.StatusCode200,
                         new OpenApiResponse
                         {
-                            Description = "Retrieved navigation property",
-                            Content = new Dictionary<string, OpenApiMediaType>
+                            Reference = new OpenApiReference()
                             {
-                                {
-                                    Constants.ApplicationJsonMediaType,
-                                    new OpenApiMediaType
-                                    {
-                                        Schema = new OpenApiSchema
-                                        {
-                                            Reference = new OpenApiReference
-                                            {
-                                                Type = ReferenceType.Schema,
-                                                Id = $"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}"
-                                            }
-                                        }
-                                    }
-                                }
+                                Type = ReferenceType.Response,
+                                Id = $"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}"
                             }
                         }
                     }
