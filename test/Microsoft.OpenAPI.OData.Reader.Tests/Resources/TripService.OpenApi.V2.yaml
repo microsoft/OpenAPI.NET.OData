@@ -724,13 +724,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -987,13 +981,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1202,13 +1190,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1380,13 +1362,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1680,13 +1656,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2178,13 +2148,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2527,13 +2491,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2814,13 +2772,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3056,13 +3008,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3717,13 +3663,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4016,13 +3956,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4261,13 +4195,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4457,13 +4385,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4792,13 +4714,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5511,13 +5427,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5789,13 +5699,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6491,13 +6395,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6791,13 +6689,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7037,13 +6929,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7233,13 +7119,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7569,13 +7449,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8148,13 +8022,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8553,13 +8421,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8889,13 +8751,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -9167,13 +9023,7 @@ paths:
         '200':
           description: Retrieved navigation property
           schema:
-            title: Collection of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -9905,6 +9755,86 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+    title: Collection of Person
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+    title: Collection of Airline
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+    title: Collection of Airport
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+    title: Collection of Trip
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+    title: Collection of PlanItem
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+    title: Collection of Employee
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+    title: Collection of Manager
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+    title: Collection of Event
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+    title: Collection of PublicTransportation
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+    title: Collection of Flight
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
 parameters:
   top:
     in: query

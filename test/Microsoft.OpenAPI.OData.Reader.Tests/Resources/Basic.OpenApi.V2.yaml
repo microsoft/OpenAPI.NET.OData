@@ -719,6 +719,30 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
+  DefaultNs.PersonCollectionResponse:
+    title: Collection of Person
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.Person'
+  DefaultNs.CityCollectionResponse:
+    title: Collection of City
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.City'
+  DefaultNs.CountryOrRegionCollectionResponse:
+    title: Collection of CountryOrRegion
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.CountryOrRegion'
 parameters:
   top:
     in: query

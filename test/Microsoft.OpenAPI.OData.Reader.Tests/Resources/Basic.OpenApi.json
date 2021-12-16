@@ -1191,6 +1191,42 @@
       "ODataCountResponse": {
         "type": "integer",
         "format": "int32"
+      },
+      "DefaultNs.PersonCollectionResponse": {
+        "title": "Collection of Person",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.Person"
+            }
+          }
+        }
+      },
+      "DefaultNs.CityCollectionResponse": {
+        "title": "Collection of City",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.City"
+            }
+          }
+        }
+      },
+      "DefaultNs.CountryOrRegionCollectionResponse": {
+        "title": "Collection of CountryOrRegion",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
+            }
+          }
+        }
       }
     },
     "responses": {

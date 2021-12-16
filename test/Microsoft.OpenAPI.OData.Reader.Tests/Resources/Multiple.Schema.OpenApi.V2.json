@@ -774,16 +774,7 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "title": "Collection of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
-                  }
-                }
-              }
+              "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse"
             }
           },
           "default": {
@@ -1478,16 +1469,7 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "title": "Collection of DocumentDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
-                  }
-                }
-              }
+              "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse"
             }
           },
           "default": {
@@ -2785,16 +2767,7 @@
           "200": {
             "description": "Retrieved navigation property",
             "schema": {
-              "title": "Collection of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
-                  }
-                }
-              }
+              "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse"
             }
           },
           "default": {
@@ -4823,6 +4796,102 @@
     "ODataCountResponse": {
       "format": "int32",
       "type": "integer"
+    },
+    "Siterra.Documents.App.DTO.DocumentDtoCollectionResponse": {
+      "title": "Collection of DocumentDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.App.DTO.LibraryDtoCollectionResponse": {
+      "title": "Collection of LibraryDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.LibraryDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.App.DTO.RevisionDtoCollectionResponse": {
+      "title": "Collection of RevisionDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.App.DTO.CategoryDtoCollectionResponse": {
+      "title": "Collection of CategoryDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.CategoryDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse": {
+      "title": "Collection of Document",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse": {
+      "title": "Collection of Revision",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse": {
+      "title": "Collection of Library",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse": {
+      "title": "Collection of LibraryType",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+          }
+        }
+      }
     }
   },
   "parameters": {
