@@ -62,10 +62,15 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            return new Dictionary<string, OpenApiResponse>
+            var responses =  new Dictionary<string, OpenApiResponse>
             {
                 { "error", CreateErrorResponse() }
             };
+
+            if(context.Settings.EnableDollarCountPath)
+                responses[Constants.DollarCountSchemaName] = CreateCountResponse();
+
+            return responses;
         }
 
         /// <summary>
@@ -163,6 +168,31 @@ namespace Microsoft.OpenApi.OData.Generator
             responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return responses;
+        }
+
+        private static OpenApiResponse CreateCountResponse()
+        {
+            OpenApiSchema schema = new()
+            {
+                Reference = new() {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.DollarCountSchemaName
+                }
+            };
+            return new OpenApiResponse
+            {
+                Description = "The count of the resource",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        "text/plain",
+                        new OpenApiMediaType
+                        {
+                            Schema = schema
+                        }
+                    }
+                }
+            };
         }
 
         private static OpenApiResponse CreateErrorResponse()
