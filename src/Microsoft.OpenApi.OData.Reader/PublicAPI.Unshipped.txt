@@ -3,6 +3,8 @@ abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Identifier.get -> string
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
+Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
+static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement element) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.GetPaths(Microsoft.OData.Edm.IEdmModel model, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataPath>
@@ -130,6 +132,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.PathProvider.get -> Microsoft.Ope
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PathProvider.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDollarCountPath.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDollarCountPath.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.AddSingleQuotesForStringParameters.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.AddSingleQuotesForStringParameters.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.PrefixEntityTypeNameBeforeKey.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireDerivedTypesConstraintForBoundOperations.get -> bool

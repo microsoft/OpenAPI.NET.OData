@@ -297,7 +297,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 {
                     // Non-Contained
                     // Single-Valued: ~/entityset/{key}/single-valued-Nav/$ref
-                    // Collection-valued: ~/entityset/{key}/collection-valued-Nav/$ref?$id ={navKey}
+                    // Collection-valued: ~/entityset/{key}/collection-valued-Nav/$ref?$id='{navKey}'
                     CreateRefPath(currentPath);
 
                     if (targetsMany)

@@ -120,7 +120,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                AddSingleQuotesForStringParameters = true,
             };
             ODataContext context = new ODataContext(model, settings);
 
@@ -134,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("FunctionImport.MyFunction-3e3f", operation.OperationId);
+                Assert.Equal("FunctionImport.MyFunction-cc1c", operation.OperationId);
             }
             else
             {

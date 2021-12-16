@@ -98,9 +98,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
         [Theory]
         [InlineData(true, true, "{param}")]
-        [InlineData(true, false, "NS.MyFunction(param={param})")]
-        [InlineData(false, true, "NS.MyFunction(param={param})")]
-        [InlineData(false, false, "NS.MyFunction(param={param})")]
+        [InlineData(true, false, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, "NS.MyFunction(param='{param}')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteralForEscapedFunction(bool isEscapedFunction, bool enableEscapeFunctionCall, string expected)
         {
             // Arrange & Act
@@ -112,7 +112,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataOperationSegment(boundFunction, isEscapedFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUriEscapeFunctionCall = enableEscapeFunctionCall
+                EnableUriEscapeFunctionCall = enableEscapeFunctionCall,
+                AddSingleQuotesForStringParameters = true,
             };
 
             // Assert
@@ -121,9 +122,9 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
         [Theory]
         [InlineData(true, true, "{param}:")]
-        [InlineData(true, false, "NS.MyFunction(param={param})")]
-        [InlineData(false, true, "NS.MyFunction(param={param})")]
-        [InlineData(false, false, "NS.MyFunction(param={param})")]
+        [InlineData(true, false, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, "NS.MyFunction(param='{param}')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteralForEscapedComposableFunction(bool isEscapedFunction, bool enableEscapeFunctionCall, string expected)
         {
             // Arrange & Act
@@ -135,7 +136,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataOperationSegment(boundFunction, isEscapedFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUriEscapeFunctionCall = enableEscapeFunctionCall
+                EnableUriEscapeFunctionCall = enableEscapeFunctionCall,
+                AddSingleQuotesForStringParameters = true
             };
 
             // Assert

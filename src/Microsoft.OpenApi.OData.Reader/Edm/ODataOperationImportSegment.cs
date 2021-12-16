@@ -83,7 +83,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    return p.Name + "={" + uniqueName + "}";
+                    var quote = p.Type.Definition.ShouldPathParameterBeQuoted(settings) ? "'" : string.Empty;
+                    return $"{p.Name}={quote}{{{uniqueName}}}{quote}";
                 }
             })));
 

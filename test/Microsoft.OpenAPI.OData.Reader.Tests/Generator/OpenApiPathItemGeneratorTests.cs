@@ -75,12 +75,12 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         [InlineData(true, true, true, "/Customers({ID}):/{param}:")]
         [InlineData(true, true, false, "/Customers({ID}):/{param}")]
 
-        [InlineData(true, false, true, "/Customers({ID})/NS.MyFunction(param={param})")]
-        [InlineData(true, false, false, "/Customers({ID})/NS.MyFunction(param={param})")]
-        [InlineData(false, true, true, "/Customers({ID})/NS.MyFunction(param={param})")]
-        [InlineData(false, true, false, "/Customers({ID})/NS.MyFunction(param={param})")]
-        [InlineData(false, false, true, "/Customers({ID})/NS.MyFunction(param={param})")]
-        [InlineData(false, false, false, "/Customers({ID})/NS.MyFunction(param={param})")]
+        [InlineData(true, false, true, "/Customers({ID})/NS.MyFunction(param='{param}')")]
+        [InlineData(true, false, false, "/Customers({ID})/NS.MyFunction(param='{param}')")]
+        [InlineData(false, true, true, "/Customers({ID})/NS.MyFunction(param='{param}')")]
+        [InlineData(false, true, false, "/Customers({ID})/NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, true, "/Customers({ID})/NS.MyFunction(param='{param}')")]
+        [InlineData(false, false, false, "/Customers({ID})/NS.MyFunction(param='{param}')")]
         public void CreatePathItemsReturnsForEscapeFunctionModel(bool enableEscaped, bool hasEscapedAnnotation, bool isComposable, string expected)
         {
             // Arrange
@@ -108,7 +108,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableUriEscapeFunctionCall = enableEscaped
+                EnableUriEscapeFunctionCall = enableEscaped,
+                AddSingleQuotesForStringParameters = true,
             };
             ODataContext context = new ODataContext(model, settings);
 

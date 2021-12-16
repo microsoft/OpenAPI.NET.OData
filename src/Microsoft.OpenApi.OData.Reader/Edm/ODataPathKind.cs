@@ -26,7 +26,7 @@ namespace Microsoft.OpenApi.OData.Edm
         Singleton,
 
         /// <summary>
-        /// Represents an operation (function or action) path, for example: ~/users/NS.findRooms(roomId={roomId})
+        /// Represents an operation (function or action) path, for example: ~/users/NS.findRooms(roomId='{roomId}')
         /// </summary>
         Operation,
 
