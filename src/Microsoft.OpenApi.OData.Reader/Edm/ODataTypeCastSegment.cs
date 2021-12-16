@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
@@ -37,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
-			return Enumerable.Empty<IEdmVocabularyAnnotatable>();
+			return new IEdmVocabularyAnnotatable[] { EntityType };
 		}
 
 		/// <inheritdoc />

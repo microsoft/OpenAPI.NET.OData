@@ -56,7 +56,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
-            Assert.Single(operation.Extensions);
+            Assert.Equal(2, operation.Extensions.Count); //deprecated, pagination
 
         Assert.Equal(2, operation.Responses.Count);
         Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
@@ -114,7 +114,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
-            Assert.Empty(operation.Extensions);
+            Assert.Single(operation.Extensions); //deprecated
 
         Assert.Equal(2, operation.Responses.Count);
         Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
@@ -167,7 +167,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
-            Assert.Single(operation.Extensions);
+            Assert.Equal(2, operation.Extensions.Count);
 
         Assert.Equal(2, operation.Responses.Count);
         Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
@@ -222,7 +222,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
-            Assert.Empty(operation.Extensions);
+            Assert.Single(operation.Extensions); // deprecated
 
         Assert.Equal(2, operation.Responses.Count);
         Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
@@ -279,7 +279,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
-            Assert.Empty(operation.Extensions);
+            Assert.Single(operation.Extensions); //deprecated
 
         Assert.Equal(2, operation.Responses.Count);
         Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
@@ -332,7 +332,7 @@ public class ODataTypeCastGetOperationHandlerTests
 
         Assert.Null(operation.RequestBody);
         if(enablePagination)
-            Assert.Empty(operation.Extensions);
+            Assert.Single(operation.Extensions); //deprecated
 
         Assert.Equal(2, operation.Responses.Count);
         Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
