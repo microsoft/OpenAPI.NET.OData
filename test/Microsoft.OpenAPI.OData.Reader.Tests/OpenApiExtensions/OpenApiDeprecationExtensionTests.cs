@@ -1,6 +1,10 @@
+// ------------------------------------------------------------
+//  Copyright (c) Microsoft Corporation.  All rights reserved.
+//  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
+// ------------------------------------------------------------
+
 using System;
 using System.IO;
-using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Writers;
 using Xunit;
 
@@ -17,11 +21,11 @@ public class OpenApiDeprecationExtensionTests
         // Act
         string name = extension.Name;
         string expectedName = "x-ms-deprecation";
-        Assert.Equal(expectedName, name);
 
         // Assert
         Assert.Equal(expectedName, name);
     }
+
     [Fact]
     public void WritesNothingWhenNoValues()
     {
@@ -41,6 +45,7 @@ public class OpenApiDeprecationExtensionTests
         Assert.Null(extension.Description);
         Assert.Empty(result);
     }
+
     [Fact]
     public void WritesAllValues()
     {

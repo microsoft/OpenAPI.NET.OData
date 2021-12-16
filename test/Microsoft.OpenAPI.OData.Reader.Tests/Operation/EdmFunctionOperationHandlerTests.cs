@@ -42,6 +42,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           var extension = operation.Extensions["x-ms-deprecation"];
           Assert.NotNull(extension);
         }
+
         [Fact]
         public void DoesntSetDeprecationInformation()
         {

@@ -122,6 +122,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="parameters">The existing parameters.</param>
         /// <returns>The path item name.</returns>
         public abstract string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters);
+
         /// <summary>
         /// Provides any deprecation information for the segment.
         /// </summary>
