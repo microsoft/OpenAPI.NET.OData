@@ -202,7 +202,7 @@ paths:
   /Categories/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Categories
+      operationId: Get.Count.Categories-2f72
       produces:
         - text/plain
       responses:
@@ -604,7 +604,7 @@ paths:
   '/Documents({Id})/Revisions/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions
+      operationId: Get.Count.Revisions-f834
       produces:
         - text/plain
       parameters:
@@ -740,7 +740,7 @@ paths:
   /Documents/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Documents
+      operationId: Get.Count.Documents-f555
       produces:
         - text/plain
       responses:
@@ -1115,7 +1115,7 @@ paths:
   '/Libraries({Id})/Documents/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Documents
+      operationId: Get.Count.Documents-34c7
       produces:
         - text/plain
       parameters:
@@ -1237,7 +1237,7 @@ paths:
   /Libraries/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Libraries
+      operationId: Get.Count.Libraries-e13e
       produces:
         - text/plain
       responses:
@@ -1669,7 +1669,7 @@ paths:
   /Revisions/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions
+      operationId: Get.Count.Revisions-c6a5
       produces:
         - text/plain
       responses:
@@ -2071,7 +2071,7 @@ paths:
   '/Tasks({Id})/Revisions/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions
+      operationId: Get.Count.Revisions-9297
       produces:
         - text/plain
       parameters:
@@ -2207,7 +2207,7 @@ paths:
   /Tasks/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Tasks
+      operationId: Get.Count.Tasks-2961
       produces:
         - text/plain
       responses:

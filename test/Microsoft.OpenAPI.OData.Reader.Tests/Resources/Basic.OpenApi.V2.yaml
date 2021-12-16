@@ -1,4 +1,4 @@
-﻿swagger: '2.0'
+swagger: '2.0'
 info:
   title: OData Service for namespace DefaultNs
   description: This OData service is located at http://localhost
@@ -173,7 +173,7 @@ paths:
   /City/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.City
+      operationId: Get.Count.City-8728
       produces:
         - text/plain
       responses:
@@ -349,7 +349,7 @@ paths:
   /CountryOrRegion/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.CountryOrRegion
+      operationId: Get.Count.CountryOrRegion-daf5
       produces:
         - text/plain
       responses:
@@ -595,7 +595,7 @@ paths:
   /People/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.People
+      operationId: Get.Count.People-dd8d
       produces:
         - text/plain
       responses:

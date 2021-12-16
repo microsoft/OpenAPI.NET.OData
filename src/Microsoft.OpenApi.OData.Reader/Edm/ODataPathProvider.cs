@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -127,6 +128,7 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPathKind kind = path.Kind;
             switch(kind)
             {
+                case ODataPathKind.TypeCast:
                 case ODataPathKind.DollarCount:
                 case ODataPathKind.Entity:
                 case ODataPathKind.EntitySet:
@@ -186,11 +188,19 @@ namespace Microsoft.OpenApi.OData.Edm
             if (entitySet != null)
             {
                 count = _model.GetRecord<CountRestrictionsType>(entitySet, CapabilitiesConstants.CountRestrictions);
-                if(count?.Countable ?? true)
+                if(count?.Countable ?? true) // ~/entitySet/$count
                     CreateCountPath(path, convertSettings);
+
+                CreateTypeCastPaths(path, convertSettings, entityType, entitySet, true); // ~/entitySet/subType
 
                 path.Push(new ODataKeySegment(entityType));
                 AppendPath(path.Clone());
+
+                CreateTypeCastPaths(path, convertSettings, entityType, entitySet, false); // ~/entitySet/{id}/subType
+            }
+            else if (navigationSource is IEdmSingleton singleton)
+            { // ~/singleton/subType
+                CreateTypeCastPaths(path, convertSettings, entityType, singleton, false);
             }
 
             // media entity
@@ -285,13 +295,20 @@ namespace Microsoft.OpenApi.OData.Edm
                 IEdmEntityType navEntityType = navigationProperty.ToEntityType();
                 var targetsMany = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
                 var propertyPath = navigationProperty.GetPartnerPath()?.Path;
+                var propertyPathIsEmpty = string.IsNullOrEmpty(propertyPath);
 
-                if (targetsMany && (string.IsNullOrEmpty(propertyPath) ||
-                    (count?.IsNonCountableNavigationProperty(propertyPath) ?? true)))
+                if (targetsMany) 
                 {
-                    // ~/entityset/{key}/collection-valued-Nav/$count
-                    CreateCountPath(currentPath, convertSettings);
+                    if(propertyPathIsEmpty ||
+                        (count?.IsNonCountableNavigationProperty(propertyPath) ?? true))
+                    {
+                        // ~/entityset/{key}/collection-valued-Nav/$count
+                        CreateCountPath(currentPath, convertSettings);
+                    }
                 }
+                // ~/entityset/{key}/collection-valued-Nav/subtype
+                // ~/entityset/{key}/single-valued-Nav/subtype
+                CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
                 if (!navigationProperty.ContainsTarget)
                 {
@@ -305,6 +322,8 @@ namespace Microsoft.OpenApi.OData.Edm
                         // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
+                        
+                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -317,6 +336,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         AppendPath(currentPath.Clone());
+
+                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -394,6 +415,60 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Create OData type cast paths.
+        /// </summary>
+        /// <param name="currentPath">The current OData path.</param>
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        /// <param name="structuredType">The type that is being inherited from to which this method will add downcast path segments.</param>
+        /// <param name="annotable">The annotable navigation source to read cast annotations from.</param>
+        /// <param name="targetsMany">Whether the annotable navigation source targets many entities.</param>
+        private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable, bool targetsMany)
+        {
+            if(currentPath == null) throw Error.ArgumentNull(nameof(currentPath));
+            if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
+            if(structuredType == null) throw new ArgumentNullException(nameof(structuredType));
+            if(annotable == null) throw new ArgumentNullException(nameof(annotable));
+            if(!convertSettings.EnableODataTypeCast) return;
+
+            var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
+            
+            if(!annotedTypeNames.Any() && convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments) return; // we don't want to generate any downcast path item if there is no type cast annotation.
+
+            var annotedTypeNamesSet = new HashSet<string>(annotedTypeNames, StringComparer.OrdinalIgnoreCase);
+
+            bool filter(IEdmStructuredType x) =>
+                convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && annotedTypeNames.Contains(x.FullTypeName()) ||
+                !convertSettings.RequireDerivedTypesConstraintForODataTypeCastSegments && (
+                    !annotedTypeNames.Any() ||
+                    annotedTypeNames.Contains(x.FullTypeName())
+                );
+
+            var targetTypes = _model
+                                .FindAllDerivedTypes(structuredType)
+                                .Where(x => x.TypeKind == EdmTypeKind.Entity && filter(x))
+                                .OfType<IEdmEntityType>()
+                                .ToArray();
+
+            foreach(var targetType in targetTypes) 
+            {
+                var castPath = currentPath.Clone();
+                castPath.Push(new ODataTypeCastSegment(targetType));
+                AppendPath(castPath);
+                if(targetsMany) 
+                {
+                    CreateCountPath(castPath, convertSettings);
+                }
+                else
+                {
+                    foreach(var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                    {
+                        RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Retrieve all bounding <see cref="IEdmOperation"/>.
         /// </summary>
         private void RetrieveBoundOperationPaths(OpenApiConvertSettings convertSettings)
@@ -419,26 +494,19 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
 
                 var firstEntityType = bindingType.AsEntity().EntityDefinition();
-                var allEntitiesForOperation= new List<IEdmEntityType>(){ firstEntityType };
 
-                System.Func<IEdmNavigationSource, bool> filter = (z) =>
+                bool filter(IEdmNavigationSource z) =>
                     z.EntityType() != firstEntityType &&
                     z.EntityType().FindAllBaseTypes().Contains(firstEntityType);
 
-                //Search all EntitySets
-                allEntitiesForOperation.AddRange(
-                    _model.EntityContainer.EntitySets()
-                            .Where(filter).Select(x => x.EntityType())
-                );
-
-                //Search all singletons
-                allEntitiesForOperation.AddRange(
-                    _model.EntityContainer.Singletons()
-                            .Where(filter).Select(x => x.EntityType())
-                );
-
-                allEntitiesForOperation = allEntitiesForOperation.Distinct().ToList();
-
+                var allEntitiesForOperation = new IEdmEntityType[] { firstEntityType }
+                    .Union(_model.EntityContainer.EntitySets()
+                            .Where(filter).Select(x => x.EntityType())) //Search all EntitySets
+                    .Union(_model.EntityContainer.Singletons()
+                            .Where(filter).Select(x => x.EntityType())) //Search all singletons
+                    .Distinct()
+                    .ToList();
+                
                 foreach (var bindingEntityType in allEntitiesForOperation)
                 {
                     // 1. Search for corresponding navigation source path
@@ -468,7 +536,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
         }
-        private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperations = new HashSet<ODataPathKind>() {
+        private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperationsWhenSingle = new() {
             ODataPathKind.EntitySet,
             ODataPathKind.MediaEntity,
             ODataPathKind.DollarCount
@@ -483,8 +551,22 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 foreach (var subPath in value)
                 {
-                    if ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
-                            (!isCollection && !_oDataPathKindsToSkipForOperations.Contains(subPath.Kind)))
+                    var lastPathSegment = subPath.LastOrDefault();
+                    var secondLastPathSegment = subPath.Count > 1 ? subPath.ElementAt(subPath.Count - 2) : null;
+                    if (subPath.Kind == ODataPathKind.TypeCast &&
+                        !isCollection &&
+                        secondLastPathSegment != null &&
+                        secondLastPathSegment is not ODataKeySegment &&
+                        (secondLastPathSegment is not ODataNavigationSourceSegment navSource || navSource.NavigationSource is not IEdmSingleton) &&
+                        (secondLastPathSegment is not ODataNavigationPropertySegment navProp || navProp.NavigationProperty.Type.IsCollection()))
+                    {// we don't want to add operations bound to single elements on type cast segments under collections, only under the key segment, singletons and nav props bound to singles.
+                        continue;
+                    }
+                    else if ((lastPathSegment is not ODataTypeCastSegment castSegment ||
+                                castSegment.EntityType == bindingEntityType ||
+                                bindingEntityType.InheritsFrom(castSegment.EntityType)) && // we don't want to add operations from the parent types under type cast segments because they already are present without the cast
+                        ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
+                            (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
@@ -611,9 +693,11 @@ namespace Microsoft.OpenApi.OData.Edm
             OpenApiConvertSettings convertSettings)
         {
             return convertSettings.RequireDerivedTypesConstraintForBoundOperations &&
-                   !(_model.GetCollection(annotatable, "Org.OData.Validation.V1.DerivedTypeConstraint") ?? Enumerable.Empty<string>())
+                   !GetDerivedTypeConstaintTypeNames(annotatable)
                        .Any(c => c.Equals(baseType.FullName(), StringComparison.OrdinalIgnoreCase));
         }
+        private IEnumerable<string> GetDerivedTypeConstaintTypeNames(IEdmVocabularyAnnotatable annotatable) =>
+            _model.GetCollection(annotatable, "Org.OData.Validation.V1.DerivedTypeConstraint") ?? Enumerable.Empty<string>();
 
         private bool AppendBoundOperationOnDerivedNavigationPropertyPath(
             IEdmOperation edmOperation,

@@ -14,7 +14,7 @@ namespace Microsoft.OpenApi.OData.Edm
     {
         private readonly string _streamPropertyName;
         /// <summary>
-        /// Initializes a new instance of <see cref="ODataTypeCastSegment"/> class.
+        /// Initializes a new instance of <see cref="ODataStreamPropertySegment"/> class.
         /// </summary>
         /// <param name="streamPropertyName">The name of the stream property.</param>
         public ODataStreamPropertySegment(string streamPropertyName)

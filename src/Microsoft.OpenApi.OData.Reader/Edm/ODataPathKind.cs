@@ -61,8 +61,13 @@ namespace Microsoft.OpenApi.OData.Edm
         DollarCount,
 
         /// <summary>
+        /// Represents a type cast path, for example: ~/groups/{id}/members/microsoft.graph.user
+        /// </summary>
+        TypeCast,
+
+        /// <summary>
         /// Represents an un-supported/unknown path.
         /// </summary>
-        Unknown
-    }
+        Unknown,
+	}
 }

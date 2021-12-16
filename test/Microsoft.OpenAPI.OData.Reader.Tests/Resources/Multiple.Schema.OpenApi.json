@@ -325,7 +325,7 @@
     "/Categories/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Categories",
+        "operationId": "Get.Count.Categories-2f72",
         "responses": {
           "200": {
             "description": "The count of the resource",
@@ -953,7 +953,7 @@
     "/Documents({Id})/Revisions/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Revisions",
+        "operationId": "Get.Count.Revisions-f834",
         "parameters": [
           {
             "name": "Id",
@@ -1155,7 +1155,7 @@
     "/Documents/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Documents",
+        "operationId": "Get.Count.Documents-f555",
         "responses": {
           "200": {
             "description": "The count of the resource",
@@ -1742,7 +1742,7 @@
     "/Libraries({Id})/Documents/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Documents",
+        "operationId": "Get.Count.Documents-34c7",
         "parameters": [
           {
             "name": "Id",
@@ -1930,7 +1930,7 @@
     "/Libraries/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Libraries",
+        "operationId": "Get.Count.Libraries-e13e",
         "responses": {
           "200": {
             "description": "The count of the resource",
@@ -2635,7 +2635,7 @@
     "/Revisions/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Revisions",
+        "operationId": "Get.Count.Revisions-c6a5",
         "responses": {
           "200": {
             "description": "The count of the resource",
@@ -3263,7 +3263,7 @@
     "/Tasks({Id})/Revisions/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Revisions",
+        "operationId": "Get.Count.Revisions-9297",
         "parameters": [
           {
             "name": "Id",
@@ -3465,7 +3465,7 @@
     "/Tasks/$count": {
       "get": {
         "summary": "Get the number of the resource",
-        "operationId": "Get.Count.Tasks",
+        "operationId": "Get.Count.Tasks-2961",
         "responses": {
           "200": {
             "description": "The count of the resource",

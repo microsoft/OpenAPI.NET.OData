@@ -71,22 +71,6 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetPathsForInheritanceModelWithoutDerivedTypesConstraintReturnsMore()
-        {
-            // Arrange
-            IEdmModel model = GetInheritanceModel(string.Empty);
-            ODataPathProvider provider = new ODataPathProvider();
-            var settings = new OpenApiConvertSettings();
-
-            // Act
-            var paths = provider.GetPaths(model, settings);
-
-            // Assert
-            Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
-        }
-
-        [Fact]
         public void GetPathsDoesntReturnPathsForCountWhenDisabled()
         {
             // Arrange
@@ -103,16 +87,32 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(3, paths.Count());
         }
+        private const string derivedTypeAnnotation = @"
+<Annotation Term=""Org.OData.Validation.V1.DerivedTypeConstraint"">
+<Collection>
+  <String>NS.Customer</String>
+  <String>NS.NiceCustomer</String>
+</Collection>
+</Annotation>";
 
-        [Fact]
-        public void GetPathsForInheritanceModelWithDerivedTypesConstraintNoAnnotationReturnsFewer()
+        [Theory]
+        [InlineData(false, false, true, 3)]
+        [InlineData(false, false, false, 4)]
+        [InlineData(true, false, true, 7)]
+        [InlineData(true, false, false, 7)]
+        [InlineData(false, true, false, 5)]
+        [InlineData(false, true, true, 4)]
+        [InlineData(true, true, true, 5)]
+        [InlineData(true, true, false, 5)]
+        public void GetOperationPathsForModelWithDerivedTypesConstraint(bool addAnnotation, bool getNavPropModel, bool requireConstraint, int expectedCount)
         {
             // Arrange
-            IEdmModel model = GetInheritanceModel(string.Empty);
-            ODataPathProvider provider = new ODataPathProvider();
+            var annotation = addAnnotation ? derivedTypeAnnotation : string.Empty;
+            IEdmModel model = getNavPropModel ? GetNavPropModel(annotation) : GetInheritanceModel(annotation);
+            ODataPathProvider provider = new();
             var settings = new OpenApiConvertSettings
             {
-                RequireDerivedTypesConstraintForBoundOperations = true
+                RequireDerivedTypesConstraintForBoundOperations = requireConstraint
             };
 
             // Act
@@ -120,33 +120,45 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(3, paths.Count());
+            Assert.Equal(expectedCount, paths.Count());
+            var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
+            if(addAnnotation && !getNavPropModel)
+              Assert.Single(dollarCountPathsWithCastSegment);
+            else
+              Assert.Empty(dollarCountPathsWithCastSegment);
         }
-
-        [Fact]
-        public void GetPathsForInheritanceModelWithDerivedTypesConstraintWithAnnotationReturnsMore()
+        [Theory]
+        [InlineData(false, false, true, 4)]
+        [InlineData(false, false, false, 7)]
+        [InlineData(true, false, true, 7)]
+        [InlineData(true, false, false, 7)]
+        [InlineData(false, true, false, 5)]
+        [InlineData(false, true, true, 5)]
+        [InlineData(true, true, true, 5)]
+        [InlineData(true, true, false, 5)]
+        public void GetTypeCastPathsForModelWithDerivedTypesConstraint(bool addAnnotation, bool getNavPropModel, bool requireConstraint, int expectedCount)
         {
             // Arrange
-            IEdmModel model = GetInheritanceModel(@"
-<Annotation Term=""Org.OData.Validation.V1.DerivedTypeConstraint"">
-<Collection>
-  <String>NS.Customer</String>
-  <String>NS.NiceCustomer</String>
-</Collection>
-</Annotation>");
-            ODataPathProvider provider = new ODataPathProvider();
+            var annotation = addAnnotation ? derivedTypeAnnotation : string.Empty;
+            IEdmModel model = getNavPropModel ? GetNavPropModel(annotation) : GetInheritanceModel(annotation);
+            ODataPathProvider provider = new();
             var settings = new OpenApiConvertSettings
             {
-                RequireDerivedTypesConstraintForBoundOperations = true
+                RequireDerivedTypesConstraintForODataTypeCastSegments = requireConstraint
             };
 
             // Act
             var paths = provider.GetPaths(model, settings);
 
             // Assert
-            Assert.Equal(4, paths.Count());
+            Assert.NotNull(paths);
+            Assert.Equal(expectedCount, paths.Count());
+            var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
+            if((addAnnotation || !requireConstraint) && !getNavPropModel)
+              Assert.Single(dollarCountPathsWithCastSegment);
+            else
+              Assert.Empty(dollarCountPathsWithCastSegment);
         }
-
 #if DEBUG
         // Super useful for debugging tests.
         private string ListToString(IEnumerable<ODataPath> paths)
@@ -155,66 +167,6 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
                 paths.Select(p => string.Join("/", p.Segments.Select(s => s.Identifier))));
         }
 #endif
-
-        [Fact]
-        public void GetPathsForNavPropModelWithoutDerivedTypesConstraintReturnsMore()
-        {
-            // Arrange
-            IEdmModel model = GetNavPropModel(string.Empty);
-            ODataPathProvider provider = new ODataPathProvider();
-            var settings = new OpenApiConvertSettings();
-
-            // Act
-            var paths = provider.GetPaths(model, settings);
-
-            // Assert
-            Assert.NotNull(paths);
-            Assert.Equal(5, paths.Count());
-        }
-
-        [Fact]
-        public void GetPathsForNavPropModelWithDerivedTypesConstraintNoAnnotationReturnsFewer()
-        {
-            // Arrange
-            IEdmModel model = GetNavPropModel(string.Empty);
-            ODataPathProvider provider = new ODataPathProvider();
-            var settings = new OpenApiConvertSettings
-            {
-                RequireDerivedTypesConstraintForBoundOperations = true
-            };
-
-            // Act
-            var paths = provider.GetPaths(model, settings);
-
-            // Assert
-            Assert.NotNull(paths);
-            Assert.Equal(4, paths.Count());
-        }
-
-        [Fact]
-        public void GetPathsForNavPropModelWithDerivedTypesConstraintWithAnnotationReturnsMore()
-        {
-            // Arrange
-            IEdmModel model = GetNavPropModel(@"
-<Annotation Term=""Org.OData.Validation.V1.DerivedTypeConstraint"">
-<Collection>
-  <String>NS.Customer</String>
-  <String>NS.NiceCustomer</String>
-</Collection>
-</Annotation>");
-            ODataPathProvider provider = new ODataPathProvider();
-            var settings = new OpenApiConvertSettings
-            {
-                RequireDerivedTypesConstraintForBoundOperations = true
-            };
-
-            // Act
-            var paths = provider.GetPaths(model, settings);
-
-            // Assert
-            Assert.NotNull(paths);
-            Assert.Equal(5, paths.Count());
-        }
 
         [Fact]
         public void GetPathsForSingleEntitySetWorks()

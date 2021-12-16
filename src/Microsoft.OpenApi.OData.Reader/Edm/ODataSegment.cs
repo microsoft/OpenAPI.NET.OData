@@ -5,8 +5,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -99,6 +101,17 @@ namespace Microsoft.OpenApi.OData.Edm
         public string GetPathItemName(OpenApiConvertSettings settings)
         {
             return GetPathItemName(settings, new HashSet<string>());
+        }
+        /// <summary>
+        /// Profides a suffix for the operation id based on the operation path.
+        /// </summary>
+        /// <param name="path">Path to use to deduplicate.</param>
+        /// <param name="settings">The settings.</param>
+        ///<returns>The suffix.</returns>
+        public string GetPathHash(OpenApiConvertSettings settings, ODataPath path = default)
+        {
+            var suffix = string.Join("/", path?.Segments.Select(x => x.Identifier).Distinct() ?? Enumerable.Empty<string>());
+            return (GetPathItemName(settings) + suffix).GetHashSHA256().Substring(0, 4);
         }
 
         /// <summary>

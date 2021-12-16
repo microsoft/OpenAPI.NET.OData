@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                operation.OperationId = $"Get.Count.{LastSecondSegment.Identifier}";
+                operation.OperationId = $"Get.Count.{LastSecondSegment.Identifier}-{Path.GetPathHash(Context.Settings)}";
             }
 
             base.SetBasicInfo(operation);

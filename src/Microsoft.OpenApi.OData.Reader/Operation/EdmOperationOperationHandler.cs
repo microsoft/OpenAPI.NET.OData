@@ -93,13 +93,10 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
                 else
                 {
-                    ODataOperationSegment operationSegment = Path.LastSegment as ODataOperationSegment;
-                    string pathItemName = operationSegment.GetPathItemName(Context.Settings, new HashSet<string>());
-
-                    if (Context.Model.IsOperationOverload(operationSegment.Operation))
+                    if (Path.LastSegment is ODataOperationSegment operationSegment &&
+                        Context.Model.IsOperationOverload(operationSegment.Operation))
                     {
-                        string hash = pathItemName.GetHashSHA256();
-                        operation.OperationId = operationId + "-" + hash.Substring(0, 4);
+                        operation.OperationId = operationId + "-" + Path.LastSegment.GetPathHash(Context.Settings);
                     }
                     else
                     {
