@@ -66,5 +66,11 @@ namespace Microsoft.OpenApi.OData.PathItem
                 Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
             }
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = $"Provides operations to manage the media for the {(EntitySet?.EntityType() ?? Singleton?.EntityType()).Name} entity.";
+        }
     }
 }

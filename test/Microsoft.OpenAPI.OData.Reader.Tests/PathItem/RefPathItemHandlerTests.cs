@@ -101,6 +101,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+            Assert.NotEmpty(pathItem.Description);
         }
 
         public static IEdmModel GetEdmModel(string annotation)

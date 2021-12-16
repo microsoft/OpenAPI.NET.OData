@@ -49,5 +49,11 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = $"Provides operations to manage the {Singleton.EntityType().Name} singleton.";
+        }
     }
 }

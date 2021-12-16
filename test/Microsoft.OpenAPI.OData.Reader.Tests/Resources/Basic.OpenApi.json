@@ -12,6 +12,7 @@
   ],
   "paths": {
     "/City": {
+      "description": "Provides operations to manage the collection of City entities.",
       "get": {
         "tags": [
           "City.City"
@@ -148,6 +149,7 @@
       }
     },
     "/City({Name})": {
+      "description": "Provides operations to manage the collection of City entities.",
       "get": {
         "tags": [
           "City.City"
@@ -294,6 +296,7 @@
       }
     },
     "/City/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.City-8728",
@@ -315,6 +318,7 @@
       }
     },
     "/CountryOrRegion": {
+      "description": "Provides operations to manage the collection of CountryOrRegion entities.",
       "get": {
         "tags": [
           "CountryOrRegion.CountryOrRegion"
@@ -451,6 +455,7 @@
       }
     },
     "/CountryOrRegion({Name})": {
+      "description": "Provides operations to manage the collection of CountryOrRegion entities.",
       "get": {
         "tags": [
           "CountryOrRegion.CountryOrRegion"
@@ -597,6 +602,7 @@
       }
     },
     "/CountryOrRegion/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.CountryOrRegion-daf5",
@@ -618,6 +624,7 @@
       }
     },
     "/Me": {
+      "description": "Provides operations to manage the Person singleton.",
       "get": {
         "tags": [
           "Me.Person"
@@ -709,6 +716,7 @@
       }
     },
     "/People": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -856,6 +864,7 @@
       }
     },
     "/People({UserName})": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -1005,6 +1014,7 @@
       }
     },
     "/People/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.People-dd8d",

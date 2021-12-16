@@ -94,6 +94,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 pathItem.Operations.Select(o => o.Key));
             Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Put },
                 pathItem2.Operations.Select(o => o.Key));
+            Assert.NotEmpty(pathItem.Description);
         }
 
         [Theory]

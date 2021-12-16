@@ -98,6 +98,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CategoryDto entities.
   '/Categories({Id})':
     get:
       tags:
@@ -199,6 +200,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CategoryDto entities.
   /Categories/$count:
     get:
       summary: Get the number of the resource
@@ -212,6 +214,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Documents:
     get:
       tags:
@@ -317,6 +320,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})':
     get:
       tags:
@@ -424,6 +428,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})/Default.Upload':
     post:
       tags:
@@ -450,6 +455,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: action
+    x-description: Provides operations to call the Upload method.
   '/Documents({Id})/Revisions':
     get:
       tags:
@@ -562,6 +568,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.
   '/Documents({Id})/Revisions({Id1})/$ref':
     delete:
       tags:
@@ -601,6 +608,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})/Revisions/$count':
     get:
       summary: Get the number of the resource
@@ -624,6 +632,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Documents({Id})/Revisions/$ref':
     get:
       tags:
@@ -737,6 +746,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   /Documents/$count:
     get:
       summary: Get the number of the resource
@@ -750,6 +760,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Libraries:
     get:
       tags:
@@ -870,6 +881,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   '/Libraries({Id})':
     get:
       tags:
@@ -982,6 +994,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   '/Libraries({Id})/Documents':
     get:
       tags:
@@ -1073,6 +1086,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Documents property of the Siterra.Documents.App.DTO.LibraryDto entity.
   '/Libraries({Id})/Documents({Id1})/$ref':
     delete:
       tags:
@@ -1112,6 +1126,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   '/Libraries({Id})/Documents/$count':
     get:
       summary: Get the number of the resource
@@ -1135,6 +1150,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Libraries({Id})/Documents/$ref':
     get:
       tags:
@@ -1234,6 +1250,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   /Libraries/$count:
     get:
       summary: Get the number of the resource
@@ -1247,6 +1264,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Revisions:
     get:
       tags:
@@ -1373,6 +1391,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of RevisionDto entities.
   '/Revisions({Id})':
     get:
       tags:
@@ -1487,6 +1506,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of RevisionDto entities.
   '/Revisions({Id})/Document':
     get:
       tags:
@@ -1584,6 +1604,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Document property of the Siterra.Documents.App.DTO.RevisionDto entity.
   '/Revisions({Id})/Document/$ref':
     get:
       tags:
@@ -1666,6 +1687,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of RevisionDto entities.
   /Revisions/$count:
     get:
       summary: Get the number of the resource
@@ -1679,6 +1701,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Tasks:
     get:
       tags:
@@ -1784,6 +1807,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})':
     get:
       tags:
@@ -1891,6 +1915,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})/Default.Upload':
     post:
       tags:
@@ -1917,6 +1942,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: action
+    x-description: Provides operations to call the Upload method.
   '/Tasks({Id})/Revisions':
     get:
       tags:
@@ -2029,6 +2055,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.
   '/Tasks({Id})/Revisions({Id1})/$ref':
     delete:
       tags:
@@ -2068,6 +2095,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})/Revisions/$count':
     get:
       summary: Get the number of the resource
@@ -2091,6 +2119,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Tasks({Id})/Revisions/$ref':
     get:
       tags:
@@ -2204,6 +2233,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   /Tasks/$count:
     get:
       summary: Get the number of the resource
@@ -2217,6 +2247,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
 definitions:
   Siterra.Documents.App.DTO.DocumentDto:
     title: DocumentDto

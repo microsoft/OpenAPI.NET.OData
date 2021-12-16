@@ -48,5 +48,11 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             EntitySet = navigationSourceSegment.NavigationSource as IEdmEntitySet;
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = $"Provides operations to manage the collection of {EntitySet.EntityType().Name} entities.";
+        }
     }
 }

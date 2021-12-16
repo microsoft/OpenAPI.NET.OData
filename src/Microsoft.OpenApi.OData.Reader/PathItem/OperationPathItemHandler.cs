@@ -94,5 +94,11 @@ namespace Microsoft.OpenApi.OData.PathItem
                 item.Extensions.Add(Constants.xMsDosGroupPath, array);
             }
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = $"Provides operations to call the {EdmOperation.Name} method.";
+        }
     }
 }
