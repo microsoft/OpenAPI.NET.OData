@@ -145,7 +145,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of CategoryDto entities."
     },
     "/Categories({Id})": {
       "get": {
@@ -287,7 +288,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of CategoryDto entities."
     },
     "/Categories/$count": {
       "get": {
@@ -307,7 +309,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Documents": {
       "get": {
@@ -458,7 +461,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Documents({Id})": {
       "get": {
@@ -606,7 +610,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Documents({Id})/Default.Upload": {
       "post": {
@@ -643,7 +648,8 @@
           }
         },
         "x-ms-docs-operation-type": "action"
-      }
+      },
+      "x-description": "Provides operations to call the Upload method."
     },
     "/Documents({Id})/Revisions": {
       "get": {
@@ -791,7 +797,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity."
     },
     "/Documents({Id})/Revisions({Id1})/$ref": {
       "delete": {
@@ -845,7 +852,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Documents({Id})/Revisions/$count": {
       "get": {
@@ -878,7 +886,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Documents({Id})/Revisions/$ref": {
       "get": {
@@ -1034,7 +1043,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Documents/$count": {
       "get": {
@@ -1054,7 +1064,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Libraries": {
       "get": {
@@ -1220,7 +1231,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of LibraryDto entities."
     },
     "/Libraries({Id})": {
       "get": {
@@ -1373,7 +1385,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of LibraryDto entities."
     },
     "/Libraries({Id})/Documents": {
       "get": {
@@ -1500,7 +1513,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the Documents property of the Siterra.Documents.App.DTO.LibraryDto entity."
     },
     "/Libraries({Id})/Documents({Id1})/$ref": {
       "delete": {
@@ -1554,7 +1568,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of LibraryDto entities."
     },
     "/Libraries({Id})/Documents/$count": {
       "get": {
@@ -1587,7 +1602,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Libraries({Id})/Documents/$ref": {
       "get": {
@@ -1729,7 +1745,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of LibraryDto entities."
     },
     "/Libraries/$count": {
       "get": {
@@ -1749,7 +1766,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Revisions": {
       "get": {
@@ -1921,7 +1939,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of RevisionDto entities."
     },
     "/Revisions({Id})": {
       "get": {
@@ -2076,7 +2095,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of RevisionDto entities."
     },
     "/Revisions({Id})/Document": {
       "get": {
@@ -2192,7 +2212,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the Document property of the Siterra.Documents.App.DTO.RevisionDto entity."
     },
     "/Revisions({Id})/Document/$ref": {
       "get": {
@@ -2308,7 +2329,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of RevisionDto entities."
     },
     "/Revisions/$count": {
       "get": {
@@ -2328,7 +2350,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Tasks": {
       "get": {
@@ -2479,7 +2502,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Tasks({Id})": {
       "get": {
@@ -2627,7 +2651,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Tasks({Id})/Default.Upload": {
       "post": {
@@ -2664,7 +2689,8 @@
           }
         },
         "x-ms-docs-operation-type": "action"
-      }
+      },
+      "x-description": "Provides operations to call the Upload method."
     },
     "/Tasks({Id})/Revisions": {
       "get": {
@@ -2812,7 +2838,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity."
     },
     "/Tasks({Id})/Revisions({Id1})/$ref": {
       "delete": {
@@ -2866,7 +2893,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Tasks({Id})/Revisions/$count": {
       "get": {
@@ -2899,7 +2927,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Tasks({Id})/Revisions/$ref": {
       "get": {
@@ -3055,7 +3084,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of DocumentDto entities."
     },
     "/Tasks/$count": {
       "get": {
@@ -3075,7 +3105,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     }
   },
   "definitions": {

@@ -83,6 +83,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of City entities.
   '/City({Name})':
     get:
       tags:
@@ -170,6 +171,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of City entities.
   /City/$count:
     get:
       summary: Get the number of the resource
@@ -183,6 +185,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /CountryOrRegion:
     get:
       tags:
@@ -259,6 +262,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CountryOrRegion entities.
   '/CountryOrRegion({Name})':
     get:
       tags:
@@ -346,6 +350,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CountryOrRegion entities.
   /CountryOrRegion/$count:
     get:
       summary: Get the number of the resource
@@ -359,6 +364,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Me:
     get:
       tags:
@@ -415,6 +421,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Person singleton.
   /People:
     get:
       tags:
@@ -502,6 +509,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
   '/People({UserName})':
     get:
       tags:
@@ -592,6 +600,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
   /People/$count:
     get:
       summary: Get the number of the resource
@@ -605,6 +614,7 @@ paths:
             $ref: '#/definitions/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
 definitions:
   DefaultNs.Color:
     title: Color

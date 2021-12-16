@@ -130,7 +130,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of City entities."
     },
     "/City({Name})": {
       "get": {
@@ -258,7 +259,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of City entities."
     },
     "/City/$count": {
       "get": {
@@ -278,7 +280,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/CountryOrRegion": {
       "get": {
@@ -400,7 +403,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of CountryOrRegion entities."
     },
     "/CountryOrRegion({Name})": {
       "get": {
@@ -528,7 +532,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of CountryOrRegion entities."
     },
     "/CountryOrRegion/$count": {
       "get": {
@@ -548,7 +553,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     },
     "/Me": {
       "get": {
@@ -631,7 +637,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the Person singleton."
     },
     "/People": {
       "get": {
@@ -764,7 +771,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of Person entities."
     },
     "/People({UserName})": {
       "get": {
@@ -895,7 +903,8 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
-      }
+      },
+      "x-description": "Provides operations to manage the collection of Person entities."
     },
     "/People/$count": {
       "get": {
@@ -915,7 +924,8 @@
             "$ref": "#/responses/error"
           }
         }
-      }
+      },
+      "x-description": "Provides operations to count the resources in the collection."
     }
   },
   "definitions": {

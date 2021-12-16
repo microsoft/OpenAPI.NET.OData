@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.1",
   "info": {
     "title": "OData Service for namespace Microsoft.OData.Service.Sample.TrippinInMemory.Models",
@@ -12,6 +12,7 @@
   ],
   "paths": {
     "/Airlines": {
+      "description": "Provides operations to manage the collection of Airline entities.",
       "get": {
         "tags": [
           "Airlines.Airline"
@@ -151,6 +152,7 @@
       }
     },
     "/Airlines/{AirlineCode}": {
+      "description": "Provides operations to manage the collection of Airline entities.",
       "get": {
         "tags": [
           "Airlines.Airline"
@@ -298,6 +300,7 @@
       }
     },
     "/Airlines/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Airlines-27a7",
@@ -319,6 +322,7 @@
       }
     },
     "/Airports": {
+      "description": "Provides operations to manage the collection of Airport entities.",
       "get": {
         "tags": [
           "Airports.Airport"
@@ -464,6 +468,7 @@
       }
     },
     "/Airports/{IcaoCode}": {
+      "description": "Provides operations to manage the collection of Airport entities.",
       "get": {
         "tags": [
           "Airports.Airport"
@@ -613,6 +618,7 @@
       }
     },
     "/Airports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Airports-60cc",
@@ -634,6 +640,7 @@
       }
     },
     "/GetNearestAirport(lat={lat},lon={lon})": {
+      "description": "Provides operations to call the GetNearestAirport method.",
       "get": {
         "tags": [
           "Airports"
@@ -712,6 +719,7 @@
       }
     },
     "/GetPersonWithMostFriends()": {
+      "description": "Provides operations to call the GetPersonWithMostFriends method.",
       "get": {
         "tags": [
           "People"
@@ -743,6 +751,7 @@
       }
     },
     "/Me": {
+      "description": "Provides operations to manage the Person singleton.",
       "get": {
         "tags": [
           "Me.Person"
@@ -847,6 +856,7 @@
       }
     },
     "/Me/BestFriend": {
+      "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "Me.Person"
@@ -925,6 +935,7 @@
       }
     },
     "/Me/BestFriend/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Person"
@@ -1085,6 +1096,7 @@
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "Me.BestFriend.Person"
@@ -1228,6 +1240,7 @@
       ]
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.BestFriend.Person"
@@ -1274,6 +1287,7 @@
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-e850",
@@ -1295,6 +1309,7 @@
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.BestFriend.Person"
@@ -1497,6 +1512,7 @@
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "Me.BestFriend.Person"
@@ -1640,6 +1656,7 @@
       ]
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.BestFriend.Person"
@@ -1686,6 +1703,7 @@
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-f41f",
@@ -1707,6 +1725,7 @@
       }
     },
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.BestFriend.Person"
@@ -1833,6 +1852,7 @@
       }
     },
     "/Me/Friends": {
+      "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "Me.Person"
@@ -1972,6 +1992,7 @@
       }
     },
     "/Me/Friends/{UserName}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.Person"
@@ -2104,6 +2125,7 @@
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "Me.Friends.Person"
@@ -2257,6 +2279,7 @@
       ]
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.Friends.Person"
@@ -2313,6 +2336,7 @@
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-e3cf",
@@ -2346,6 +2370,7 @@
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Friends.Person"
@@ -2580,6 +2605,7 @@
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "Me.Friends.Person"
@@ -2733,6 +2759,7 @@
       ]
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.Friends.Person"
@@ -2789,6 +2816,7 @@
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-c1d4",
@@ -2822,6 +2850,7 @@
       }
     },
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Friends.Person"
@@ -2970,6 +2999,7 @@
       }
     },
     "/Me/Friends/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Friends-182b",
@@ -2991,6 +3021,7 @@
       }
     },
     "/Me/Friends/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Person"
@@ -3193,6 +3224,7 @@
       }
     },
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b",
@@ -3290,6 +3322,7 @@
       }
     },
     "/Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376",
@@ -3387,6 +3420,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "Me.Person"
@@ -3530,6 +3564,7 @@
       ]
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.Person"
@@ -3576,6 +3611,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-9fc2",
@@ -3597,6 +3633,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Person"
@@ -3723,6 +3760,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+      "description": "Provides operations to call the GetFavoriteAirline method.",
       "get": {
         "tags": [
           "Me.Functions"
@@ -3753,6 +3791,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
+      "description": "Provides operations to call the GetFriendsTrips method.",
       "get": {
         "tags": [
           "Me.Functions"
@@ -3803,6 +3842,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
+      "description": "Provides operations to call the GetPeersForTrip method.",
       "post": {
         "tags": [
           "Me.Actions"
@@ -3940,6 +3980,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "Me.Person"
@@ -4083,6 +4124,7 @@
       ]
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.Person"
@@ -4129,6 +4171,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-8b92",
@@ -4150,6 +4193,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Person"
@@ -4276,6 +4320,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
+      "description": "Provides operations to call the Hire method.",
       "post": {
         "tags": [
           "Me.Actions"
@@ -4316,6 +4361,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+      "description": "Provides operations to call the ShareTrip method.",
       "post": {
         "tags": [
           "Me.Actions"
@@ -4357,6 +4403,7 @@
       }
     },
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
+      "description": "Provides operations to call the UpdatePersonLastName method.",
       "get": {
         "tags": [
           "Me.Functions"
@@ -4399,6 +4446,7 @@
       }
     },
     "/Me/Trips": {
+      "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "Me.Trip"
@@ -4561,6 +4609,7 @@
       }
     },
     "/Me/Trips/{TripId}": {
+      "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "Me.Trip"
@@ -4728,6 +4777,7 @@
       }
     },
     "/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
+      "description": "Provides operations to call the GetInvolvedPeople method.",
       "get": {
         "tags": [
           "Me.Functions"
@@ -4782,6 +4832,7 @@
       }
     },
     "/Me/Trips/{TripId}/PlanItems": {
+      "description": "Provides operations to manage the PlanItems property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip entity.",
       "get": {
         "tags": [
           "Me.Trips.PlanItem"
@@ -4910,6 +4961,7 @@
       }
     },
     "/Me/Trips/{TripId}/PlanItems/{PlanItemId}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "Me.Trips.PlanItem"
@@ -4972,6 +5024,7 @@
       }
     },
     "/Me/Trips/{TripId}/PlanItems/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.PlanItems-c250",
@@ -5008,6 +5061,7 @@
       }
     },
     "/Me/Trips/{TripId}/PlanItems/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "Me.Trips.PlanItem"
@@ -5150,6 +5204,7 @@
       }
     },
     "/Me/Trips/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Trips-7b69",
@@ -5171,6 +5226,7 @@
       }
     },
     "/NewComePeople": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -5343,6 +5399,7 @@
       }
     },
     "/NewComePeople/{UserName}": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -5505,6 +5562,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend": {
+      "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -5593,6 +5651,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -5797,6 +5856,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "NewComePeople.BestFriend.Person"
@@ -5949,6 +6009,7 @@
       ]
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "NewComePeople.BestFriend.Person"
@@ -6005,6 +6066,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-1269",
@@ -6038,6 +6100,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.BestFriend.Person"
@@ -6272,6 +6335,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "NewComePeople.BestFriend.Person"
@@ -6424,6 +6488,7 @@
       ]
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "NewComePeople.BestFriend.Person"
@@ -6480,6 +6545,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-c923",
@@ -6513,6 +6579,7 @@
       }
     },
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.BestFriend.Person"
@@ -6661,6 +6728,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends": {
+      "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -6810,6 +6878,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "NewComePeople.Person"
@@ -6962,6 +7031,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "NewComePeople.Friends.Person"
@@ -7124,6 +7194,7 @@
       ]
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "NewComePeople.Friends.Person"
@@ -7190,6 +7261,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-128d",
@@ -7233,6 +7305,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Friends.Person"
@@ -7497,6 +7570,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "NewComePeople.Friends.Person"
@@ -7659,6 +7733,7 @@
       ]
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "NewComePeople.Friends.Person"
@@ -7725,6 +7800,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-08c7",
@@ -7768,6 +7844,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Friends.Person"
@@ -7936,6 +8013,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Friends-2ec1",
@@ -7969,6 +8047,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Person"
@@ -8203,6 +8282,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-4069",
@@ -8322,6 +8402,7 @@
       }
     },
     "/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d1d3",
@@ -8355,6 +8436,7 @@
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+      "description": "Provides operations to call the GetFavoriteAirline method.",
       "get": {
         "tags": [
           "NewComePeople.Functions"
@@ -8397,6 +8479,7 @@
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
+      "description": "Provides operations to call the GetFriendsTrips method.",
       "get": {
         "tags": [
           "NewComePeople.Functions"
@@ -8457,6 +8540,7 @@
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
+      "description": "Provides operations to call the GetPeersForTrip method.",
       "post": {
         "tags": [
           "NewComePeople.Actions"
@@ -8530,6 +8614,7 @@
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
+      "description": "Provides operations to call the Hire method.",
       "post": {
         "tags": [
           "NewComePeople.Actions"
@@ -8582,6 +8667,7 @@
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+      "description": "Provides operations to call the ShareTrip method.",
       "post": {
         "tags": [
           "NewComePeople.Actions"
@@ -8635,6 +8721,7 @@
       }
     },
     "/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
+      "description": "Provides operations to call the UpdatePersonLastName method.",
       "get": {
         "tags": [
           "NewComePeople.Functions"
@@ -8687,6 +8774,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips": {
+      "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "NewComePeople.Trip"
@@ -8871,6 +8959,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}": {
+      "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "NewComePeople.Trip"
@@ -9068,6 +9157,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
+      "description": "Provides operations to call the GetInvolvedPeople method.",
       "get": {
         "tags": [
           "NewComePeople.Functions"
@@ -9132,6 +9222,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems": {
+      "description": "Provides operations to manage the PlanItems property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip entity.",
       "get": {
         "tags": [
           "NewComePeople.Trips.PlanItem"
@@ -9270,6 +9361,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/{PlanItemId}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "NewComePeople.Trips.PlanItem"
@@ -9342,6 +9434,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.PlanItems-841f",
@@ -9388,6 +9481,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "NewComePeople.Trips.PlanItem"
@@ -9550,6 +9644,7 @@
       }
     },
     "/NewComePeople/{UserName}/Trips/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Trips-d155",
@@ -9583,6 +9678,7 @@
       }
     },
     "/NewComePeople/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.NewComePeople-55d5",
@@ -9604,6 +9700,7 @@
       }
     },
     "/People": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -9776,6 +9873,7 @@
       }
     },
     "/People/{UserName}": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -9938,6 +10036,7 @@
       }
     },
     "/People/{UserName}/BestFriend": {
+      "description": "Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "People.Person"
@@ -10026,6 +10125,7 @@
       }
     },
     "/People/{UserName}/BestFriend/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -10230,6 +10330,7 @@
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "People.BestFriend.Person"
@@ -10383,6 +10484,7 @@
       ]
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.BestFriend.Person"
@@ -10439,6 +10541,7 @@
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-5860",
@@ -10472,6 +10575,7 @@
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.BestFriend.Person"
@@ -10706,6 +10810,7 @@
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "People.BestFriend.Person"
@@ -10859,6 +10964,7 @@
       ]
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.BestFriend.Person"
@@ -10915,6 +11021,7 @@
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-cddc",
@@ -10948,6 +11055,7 @@
       }
     },
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.BestFriend.Person"
@@ -11096,6 +11204,7 @@
       }
     },
     "/People/{UserName}/Friends": {
+      "description": "Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "People.Person"
@@ -11245,6 +11354,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.Person"
@@ -11397,6 +11507,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "People.Friends.Person"
@@ -11560,6 +11671,7 @@
       ]
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.Friends.Person"
@@ -11626,6 +11738,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-ff21",
@@ -11669,6 +11782,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Friends.Person"
@@ -11933,6 +12047,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "People.Friends.Person"
@@ -12096,6 +12211,7 @@
       ]
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.Friends.Person"
@@ -12162,6 +12278,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-3b03",
@@ -12205,6 +12322,7 @@
       }
     },
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Friends.Person"
@@ -12373,6 +12491,7 @@
       }
     },
     "/People/{UserName}/Friends/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Friends-92b9",
@@ -12406,6 +12525,7 @@
       }
     },
     "/People/{UserName}/Friends/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -12640,6 +12760,7 @@
       }
     },
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-a96c",
@@ -12759,6 +12880,7 @@
       }
     },
     "/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-26b3",
@@ -12878,6 +13000,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers": {
+      "description": "Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.",
       "get": {
         "tags": [
           "People.Person"
@@ -13031,6 +13154,7 @@
       ]
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.Person"
@@ -13087,6 +13211,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Peers-44d2",
@@ -13120,6 +13245,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -13268,6 +13394,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()": {
+      "description": "Provides operations to call the GetFavoriteAirline method.",
       "get": {
         "tags": [
           "People.Functions"
@@ -13310,6 +13437,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName='{userName}')": {
+      "description": "Provides operations to call the GetFriendsTrips method.",
       "get": {
         "tags": [
           "People.Functions"
@@ -13370,6 +13498,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip": {
+      "description": "Provides operations to call the GetPeersForTrip method.",
       "post": {
         "tags": [
           "People.Actions"
@@ -13529,6 +13658,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports": {
+      "description": "Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.",
       "get": {
         "tags": [
           "People.Person"
@@ -13682,6 +13812,7 @@
       ]
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.Person"
@@ -13738,6 +13869,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.DirectReports-0ec4",
@@ -13771,6 +13903,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Person"
@@ -13919,6 +14052,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire": {
+      "description": "Provides operations to call the Hire method.",
       "post": {
         "tags": [
           "People.Actions"
@@ -13971,6 +14105,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip": {
+      "description": "Provides operations to call the ShareTrip method.",
       "post": {
         "tags": [
           "People.Actions"
@@ -14024,6 +14159,7 @@
       }
     },
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName='{lastName}')": {
+      "description": "Provides operations to call the UpdatePersonLastName method.",
       "get": {
         "tags": [
           "People.Functions"
@@ -14076,6 +14212,7 @@
       }
     },
     "/People/{UserName}/Trips": {
+      "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "People.Trip"
@@ -14260,6 +14397,7 @@
       }
     },
     "/People/{UserName}/Trips/{TripId}": {
+      "description": "Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.",
       "get": {
         "tags": [
           "People.Trip"
@@ -14457,6 +14595,7 @@
       }
     },
     "/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()": {
+      "description": "Provides operations to call the GetInvolvedPeople method.",
       "get": {
         "tags": [
           "People.Functions"
@@ -14521,6 +14660,7 @@
       }
     },
     "/People/{UserName}/Trips/{TripId}/PlanItems": {
+      "description": "Provides operations to manage the PlanItems property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip entity.",
       "get": {
         "tags": [
           "People.Trips.PlanItem"
@@ -14659,6 +14799,7 @@
       }
     },
     "/People/{UserName}/Trips/{TripId}/PlanItems/{PlanItemId}/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "delete": {
         "tags": [
           "People.Trips.PlanItem"
@@ -14731,6 +14872,7 @@
       }
     },
     "/People/{UserName}/Trips/{TripId}/PlanItems/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.PlanItems-9a27",
@@ -14777,6 +14919,7 @@
       }
     },
     "/People/{UserName}/Trips/{TripId}/PlanItems/$ref": {
+      "description": "Provides operations to manage the collection of Person entities.",
       "get": {
         "tags": [
           "People.Trips.PlanItem"
@@ -14939,6 +15082,7 @@
       }
     },
     "/People/{UserName}/Trips/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Trips-e877",
@@ -14972,6 +15116,7 @@
       }
     },
     "/People/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.People-dd8d",
@@ -15069,6 +15214,7 @@
       }
     },
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29",
@@ -15166,6 +15312,7 @@
       }
     },
     "/People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48",
@@ -15187,6 +15334,7 @@
       }
     },
     "/ResetDataSource": {
+      "description": "Provides operations to call the ResetDataSource method.",
       "post": {
         "tags": [
           "ResetDataSource"

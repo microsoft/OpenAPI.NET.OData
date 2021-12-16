@@ -12,6 +12,7 @@
   ],
   "paths": {
     "/Categories": {
+      "description": "Provides operations to manage the collection of CategoryDto entities.",
       "get": {
         "tags": [
           "Categories.CategoryDto"
@@ -163,6 +164,7 @@
       }
     },
     "/Categories({Id})": {
+      "description": "Provides operations to manage the collection of CategoryDto entities.",
       "get": {
         "tags": [
           "Categories.CategoryDto"
@@ -323,6 +325,7 @@
       }
     },
     "/Categories/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Categories-2f72",
@@ -344,6 +347,7 @@
       }
     },
     "/Documents": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "get": {
         "tags": [
           "Documents.DocumentDto"
@@ -509,6 +513,7 @@
       }
     },
     "/Documents({Id})": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "get": {
         "tags": [
           "Documents.DocumentDto"
@@ -683,6 +688,7 @@
       }
     },
     "/Documents({Id})/Default.Upload": {
+      "description": "Provides operations to call the Upload method.",
       "post": {
         "tags": [
           "Documents.Actions"
@@ -723,6 +729,7 @@
       }
     },
     "/Documents({Id})/Revisions": {
+      "description": "Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.",
       "get": {
         "tags": [
           "Documents.RevisionDto"
@@ -889,6 +896,7 @@
       }
     },
     "/Documents({Id})/Revisions({Id1})/$ref": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "delete": {
         "tags": [
           "Documents.RevisionDto"
@@ -951,6 +959,7 @@
       }
     },
     "/Documents({Id})/Revisions/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-f834",
@@ -987,6 +996,7 @@
       }
     },
     "/Documents({Id})/Revisions/$ref": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "get": {
         "tags": [
           "Documents.RevisionDto"
@@ -1153,6 +1163,7 @@
       }
     },
     "/Documents/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Documents-f555",
@@ -1174,6 +1185,7 @@
       }
     },
     "/Libraries": {
+      "description": "Provides operations to manage the collection of LibraryDto entities.",
       "get": {
         "tags": [
           "Libraries.LibraryDto"
@@ -1354,6 +1366,7 @@
       }
     },
     "/Libraries({Id})": {
+      "description": "Provides operations to manage the collection of LibraryDto entities.",
       "get": {
         "tags": [
           "Libraries.LibraryDto"
@@ -1533,6 +1546,7 @@
       }
     },
     "/Libraries({Id})/Documents": {
+      "description": "Provides operations to manage the Documents property of the Siterra.Documents.App.DTO.LibraryDto entity.",
       "get": {
         "tags": [
           "Libraries.DocumentDto"
@@ -1678,6 +1692,7 @@
       }
     },
     "/Libraries({Id})/Documents({Id1})/$ref": {
+      "description": "Provides operations to manage the collection of LibraryDto entities.",
       "delete": {
         "tags": [
           "Libraries.DocumentDto"
@@ -1740,6 +1755,7 @@
       }
     },
     "/Libraries({Id})/Documents/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Documents-34c7",
@@ -1776,6 +1792,7 @@
       }
     },
     "/Libraries({Id})/Documents/$ref": {
+      "description": "Provides operations to manage the collection of LibraryDto entities.",
       "get": {
         "tags": [
           "Libraries.DocumentDto"
@@ -1928,6 +1945,7 @@
       }
     },
     "/Libraries/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Libraries-e13e",
@@ -1949,6 +1967,7 @@
       }
     },
     "/Revisions": {
+      "description": "Provides operations to manage the collection of RevisionDto entities.",
       "get": {
         "tags": [
           "Revisions.RevisionDto"
@@ -2135,6 +2154,7 @@
       }
     },
     "/Revisions({Id})": {
+      "description": "Provides operations to manage the collection of RevisionDto entities.",
       "get": {
         "tags": [
           "Revisions.RevisionDto"
@@ -2316,6 +2336,7 @@
       }
     },
     "/Revisions({Id})/Document": {
+      "description": "Provides operations to manage the Document property of the Siterra.Documents.App.DTO.RevisionDto entity.",
       "get": {
         "tags": [
           "Revisions.Document"
@@ -2477,6 +2498,7 @@
       }
     },
     "/Revisions({Id})/Document/$ref": {
+      "description": "Provides operations to manage the collection of RevisionDto entities.",
       "get": {
         "tags": [
           "Revisions.Document"
@@ -2633,6 +2655,7 @@
       }
     },
     "/Revisions/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-c6a5",
@@ -2654,6 +2677,7 @@
       }
     },
     "/Tasks": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "get": {
         "tags": [
           "Tasks.DocumentDto"
@@ -2819,6 +2843,7 @@
       }
     },
     "/Tasks({Id})": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "get": {
         "tags": [
           "Tasks.DocumentDto"
@@ -2993,6 +3018,7 @@
       }
     },
     "/Tasks({Id})/Default.Upload": {
+      "description": "Provides operations to call the Upload method.",
       "post": {
         "tags": [
           "Tasks.Actions"
@@ -3033,6 +3059,7 @@
       }
     },
     "/Tasks({Id})/Revisions": {
+      "description": "Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.",
       "get": {
         "tags": [
           "Tasks.RevisionDto"
@@ -3199,6 +3226,7 @@
       }
     },
     "/Tasks({Id})/Revisions({Id1})/$ref": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "delete": {
         "tags": [
           "Tasks.RevisionDto"
@@ -3261,6 +3289,7 @@
       }
     },
     "/Tasks({Id})/Revisions/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-9297",
@@ -3297,6 +3326,7 @@
       }
     },
     "/Tasks({Id})/Revisions/$ref": {
+      "description": "Provides operations to manage the collection of DocumentDto entities.",
       "get": {
         "tags": [
           "Tasks.RevisionDto"
@@ -3463,6 +3493,7 @@
       }
     },
     "/Tasks/$count": {
+      "description": "Provides operations to count the resources in the collection.",
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Tasks-2961",
