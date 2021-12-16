@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -13,12 +14,28 @@ namespace Microsoft.OpenApi.OData.PathItem;
 /// </summary>
 internal class ODataTypeCastPathItemHandler : PathItemHandler
 {
-	/// <inheritdoc/>
-	protected override ODataPathKind HandleKind => ODataPathKind.TypeCast;
+    /// <inheritdoc/>
+    protected override ODataPathKind HandleKind => ODataPathKind.TypeCast;
 
-	/// <inheritdoc/>
-	protected override void SetOperations(OpenApiPathItem item)
-	{
-		AddOperation(item, OperationType.Get);
-	}
+    /// <inheritdoc/>
+    protected override void SetOperations(OpenApiPathItem item)
+    {
+        AddOperation(item, OperationType.Get);
+    }
+    /// <inheritdoc/>
+    protected override void Initialize(ODataContext context, ODataPath path)
+    {
+        base.Initialize(context, path);
+        if(path.LastSegment is ODataTypeCastSegment castSegment)
+        {
+            EntityType = castSegment.EntityType;
+        }
+    }
+    private IEdmEntityType EntityType { get; set; }
+    /// <inheritdoc/>
+    protected override void SetBasicInfo(OpenApiPathItem pathItem)
+    {
+        base.SetBasicInfo(pathItem);
+        pathItem.Description = $"Casts the previous resource to {EntityType.Name}.";
+    }
 }
