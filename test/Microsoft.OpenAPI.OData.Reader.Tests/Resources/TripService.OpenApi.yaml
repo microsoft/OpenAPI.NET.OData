@@ -203,11 +203,7 @@ paths:
       operationId: Get.Count.Airlines-27a7
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Airports:
@@ -415,11 +411,7 @@ paths:
       operationId: Get.Count.Airports-60cc
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/GetNearestAirport(lat={lat},lon={lon})':
@@ -877,11 +869,7 @@ paths:
       operationId: Get.Count.Peers-e850
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref:
@@ -1169,11 +1157,7 @@ paths:
       operationId: Get.Count.DirectReports-f41f
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref:
@@ -1623,11 +1607,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -1959,11 +1939,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -2074,11 +2050,7 @@ paths:
       operationId: Get.Count.Friends-182b
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/Friends/$ref:
@@ -2230,11 +2202,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
@@ -2300,11 +2268,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
@@ -2506,11 +2470,7 @@ paths:
       operationId: Get.Count.Peers-9fc2
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref:
@@ -2889,11 +2849,7 @@ paths:
       operationId: Get.Count.DirectReports-8b92
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref:
@@ -3484,11 +3440,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/Me/Trips/{TripId}/PlanItems/$ref':
@@ -3593,11 +3545,7 @@ paths:
       operationId: Get.Count.Trips-7b69
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /NewComePeople:
@@ -4211,11 +4159,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -4546,11 +4490,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -5056,11 +4996,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -5433,11 +5369,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -5570,11 +5502,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/$ref':
@@ -5756,11 +5684,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
@@ -5841,11 +5765,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
@@ -6551,11 +6471,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref':
@@ -6682,11 +6598,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /NewComePeople/$count:
@@ -6696,11 +6608,7 @@ paths:
       operationId: Get.Count.NewComePeople-55d5
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /People:
@@ -7315,11 +7223,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -7651,11 +7555,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -8162,11 +8062,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -8540,11 +8436,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -8677,11 +8569,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Friends/$ref':
@@ -8863,11 +8751,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
@@ -8948,11 +8832,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
@@ -9183,11 +9063,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -9633,11 +9509,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -10330,11 +10202,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/People/{UserName}/Trips/{TripId}/PlanItems/$ref':
@@ -10461,11 +10329,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /People/$count:
@@ -10475,11 +10339,7 @@ paths:
       operationId: Get.Count.People-dd8d
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
@@ -10545,11 +10405,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
@@ -10615,11 +10471,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /ResetDataSource:
@@ -11107,6 +10959,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/odata.error'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
   parameters:
     top:
       name: $top

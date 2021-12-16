@@ -176,13 +176,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.City-8728
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -355,13 +351,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.CountryOrRegion-daf5
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -605,13 +597,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.People-dd8d
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -764,6 +752,10 @@ responses:
     description: error
     schema:
       $ref: '#/definitions/odata.error'
+  ODataCountResponse:
+    description: The count of the resource
+    schema:
+      $ref: '#/definitions/ODataCountResponse'
 tags:
   - name: City.City
     x-ms-docs-toc-type: page

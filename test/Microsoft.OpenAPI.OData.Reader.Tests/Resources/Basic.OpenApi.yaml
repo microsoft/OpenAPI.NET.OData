@@ -199,11 +199,7 @@ paths:
       operationId: Get.Count.City-8728
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /CountryOrRegion:
@@ -399,11 +395,7 @@ paths:
       operationId: Get.Count.CountryOrRegion-daf5
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Me:
@@ -676,11 +668,7 @@ paths:
       operationId: Get.Count.People-dd8d
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
 components:
@@ -807,6 +795,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/odata.error'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
   parameters:
     top:
       name: $top

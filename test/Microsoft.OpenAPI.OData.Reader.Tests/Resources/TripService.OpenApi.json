@@ -306,14 +306,7 @@
         "operationId": "Get.Count.Airlines-27a7",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -624,14 +617,7 @@
         "operationId": "Get.Count.Airports-60cc",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1293,14 +1279,7 @@
         "operationId": "Get.Count.Peers-e850",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1709,14 +1688,7 @@
         "operationId": "Get.Count.DirectReports-f41f",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2354,14 +2326,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2834,14 +2799,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3005,14 +2963,7 @@
         "operationId": "Get.Count.Friends-182b",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3230,14 +3181,7 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3328,14 +3272,7 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3617,14 +3554,7 @@
         "operationId": "Get.Count.Peers-9fc2",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4177,14 +4107,7 @@
         "operationId": "Get.Count.DirectReports-8b92",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5045,14 +4968,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5210,14 +5126,7 @@
         "operationId": "Get.Count.Trips-7b69",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6084,14 +5993,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6563,14 +6465,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -7289,14 +7184,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -7828,14 +7716,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8031,14 +7912,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8300,14 +8174,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8420,14 +8287,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9465,14 +9325,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9662,14 +9515,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9684,14 +9530,7 @@
         "operationId": "Get.Count.NewComePeople-55d5",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10559,14 +10398,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -11039,14 +10871,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -11766,14 +11591,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -12306,14 +12124,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -12509,14 +12320,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -12778,14 +12582,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -12898,14 +12695,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -13229,14 +13019,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -13887,14 +13670,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -14903,14 +14679,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15100,14 +14869,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15122,14 +14884,7 @@
         "operationId": "Get.Count.People-dd8d",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15220,14 +14975,7 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15318,14 +15066,7 @@
         "operationId": "Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -16115,6 +15856,16 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/odata.error"
+            }
+          }
+        }
+      },
+      "ODataCountResponse": {
+        "description": "The count of the resource",
+        "content": {
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/ODataCountResponse"
             }
           }
         }

@@ -228,11 +228,7 @@ paths:
       operationId: Get.Count.Categories-2f72
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Documents:
@@ -691,11 +687,7 @@ paths:
           x-ms-docs-key-type: DocumentDto
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/Documents({Id})/Revisions/$ref':
@@ -824,11 +816,7 @@ paths:
       operationId: Get.Count.Documents-f555
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Libraries:
@@ -1258,11 +1246,7 @@ paths:
           x-ms-docs-key-type: LibraryDto
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/Libraries({Id})/Documents/$ref':
@@ -1377,11 +1361,7 @@ paths:
       operationId: Get.Count.Libraries-e13e
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Revisions:
@@ -1894,11 +1874,7 @@ paths:
       operationId: Get.Count.Revisions-c6a5
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Tasks:
@@ -2357,11 +2333,7 @@ paths:
           x-ms-docs-key-type: DocumentDto
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/Tasks({Id})/Revisions/$ref':
@@ -2490,11 +2462,7 @@ paths:
       operationId: Get.Count.Tasks-2961
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
 components:
@@ -4009,6 +3977,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/odata.error'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
   parameters:
     top:
       name: $top

@@ -331,14 +331,7 @@
         "operationId": "Get.Count.Categories-2f72",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -980,14 +973,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1169,14 +1155,7 @@
         "operationId": "Get.Count.Documents-f555",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1776,14 +1755,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1951,14 +1923,7 @@
         "operationId": "Get.Count.Libraries-e13e",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -2661,14 +2626,7 @@
         "operationId": "Get.Count.Revisions-c6a5",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3310,14 +3268,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3499,14 +3450,7 @@
         "operationId": "Get.Count.Tasks-2961",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5483,6 +5427,16 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/odata.error"
+            }
+          }
+        }
+      },
+      "ODataCountResponse": {
+        "description": "The count of the resource",
+        "content": {
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/ODataCountResponse"
             }
           }
         }

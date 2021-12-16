@@ -181,13 +181,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airlines-27a7
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -372,13 +368,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airports-60cc
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -778,13 +770,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-e850
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -1045,13 +1033,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-f41f
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -1448,8 +1432,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-e3cf
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -1459,9 +1441,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -1752,8 +1732,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-c1d4
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -1763,9 +1741,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -1869,13 +1845,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-182b
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -2015,13 +1987,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -2077,13 +2045,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -2260,13 +2224,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-9fc2
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -2613,13 +2573,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-8b92
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -3155,8 +3111,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.PlanItems-c250
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: TripId
@@ -3169,9 +3123,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -3269,13 +3221,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-7b69
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -3820,8 +3768,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-1269
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -3831,9 +3777,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -4123,8 +4067,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-c923
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -4134,9 +4076,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -4574,8 +4514,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-128d
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -4591,9 +4529,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -4913,8 +4849,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-08c7
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -4930,9 +4864,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5048,8 +4980,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-2ec1
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5059,9 +4989,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5219,8 +5147,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-4069
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5230,9 +5156,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5294,8 +5218,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d1d3
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5305,9 +5227,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5930,8 +5850,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.PlanItems-841f
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5950,9 +5868,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6062,8 +5978,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-d155
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -6073,9 +5987,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6083,13 +5995,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.NewComePeople-55d5
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6635,8 +6543,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-5860
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -6646,9 +6552,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6939,8 +6843,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-cddc
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -6950,9 +6852,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -7391,8 +7291,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-ff21
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -7408,9 +7306,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -7731,8 +7627,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-3b03
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -7748,9 +7642,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -7866,8 +7758,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-92b9
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -7877,9 +7767,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -8037,8 +7925,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-a96c
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8048,9 +7934,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -8112,8 +7996,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-26b3
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8123,9 +8005,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -8320,8 +8200,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-44d2
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8331,9 +8209,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -8729,8 +8605,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-0ec4
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8740,9 +8614,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -9356,8 +9228,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.PlanItems-9a27
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -9376,9 +9246,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -9488,8 +9356,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-e877
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -9499,9 +9365,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -9509,13 +9373,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.People-dd8d
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -9571,13 +9431,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -9633,13 +9489,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -10086,6 +9938,10 @@ responses:
     description: error
     schema:
       $ref: '#/definitions/odata.error'
+  ODataCountResponse:
+    description: The count of the resource
+    schema:
+      $ref: '#/definitions/ODataCountResponse'
 tags:
   - name: Airlines.Airline
     x-ms-docs-toc-type: page
