@@ -52,6 +52,28 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
+        public void CreatesCollectionResponses()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            OpenApiConvertSettings settings = new()
+            {
+                    EnableOperationId = true,
+                    EnablePagination = true,
+            };
+            ODataContext context = new(model, settings);
+
+            // Act & Assert
+            var responses = context.CreateResponses();
+
+            var flightCollectionResponse = responses["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
+            var stringCollectionResponse = responses["StringCollectionResponse"];
+
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse", flightCollectionResponse.Content["application/json"].Schema.Reference.Id);
+            Assert.Equal("StringCollectionResponse", stringCollectionResponse.Content["application/json"].Schema.Reference.Id);
+        }
+
+        [Fact]
         public void CreateResponsesReturnsCreatedResponses()
         {
             // Arrange
