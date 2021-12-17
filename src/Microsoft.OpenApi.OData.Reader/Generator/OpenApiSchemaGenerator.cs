@@ -73,21 +73,28 @@ namespace Microsoft.OpenApi.OData.Generator
                     Format = "int32"
                 };
 
-            schemas = schemas.Concat(GetAllCollectionEntityTypes(context)
+            schemas = schemas.Concat(context.GetAllCollectionEntityTypes()
                                         .Select(x => new KeyValuePair<string, OpenApiSchema>(
                                                             $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
                                                             CreateCollectionSchema(context, x)))
                                         .Where(x => !schemas.ContainsKey(x.Key)))
                             .ToDictionary(x => x.Key, x => x.Value);
-                                        
+            
+            if(context.HasAnyNonContainedCollections())                                        
+                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
 
             return schemas;
         }
+        internal static bool HasAnyNonContainedCollections(this ODataContext context)
+        {
+            return context.Model
+                    .SchemaElements
+                    .OfType<IEdmStructuredType>()
+                    .SelectMany(x => x.NavigationProperties())
+                    .Any(x => x.TargetMultiplicity() == EdmMultiplicity.Many && !x.ContainsTarget);
+        }
         internal static IEnumerable<IEdmStructuredType> GetAllCollectionEntityTypes(this ODataContext context)
         {
-            var elementsTypesInModel = context.EntityContainer
-                                            .AllElements()
-                                            .ToArray();
             var collectionEntityTypes = new HashSet<IEdmStructuredType>(context.EntityContainer
                                                 .EntitySets()
                                                 .Select(x => x.EntityType())
@@ -126,6 +133,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 };
             }
+            return CreateCollectionSchema(context, schema, entityType?.Name ?? structuredType.FullTypeName());
+        }
+        private static OpenApiSchema CreateCollectionSchema(ODataContext context, OpenApiSchema schema, string typeName)
+        {
             var properties = new Dictionary<string, OpenApiSchema>
             {
                 {
@@ -149,7 +160,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return new OpenApiSchema
             {
-                Title = $"Collection of {entityType?.Name ?? structuredType.FullTypeName()}",
+                Title = $"Collection of {typeName}",
                 Type = "object",
                 Properties = properties
             };

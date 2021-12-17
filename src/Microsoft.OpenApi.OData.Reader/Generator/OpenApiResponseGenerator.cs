@@ -77,6 +77,9 @@ namespace Microsoft.OpenApi.OData.Generator
                                         .Where(x => !responses.ContainsKey(x.Key)))
                             .ToDictionary(x => x.Key, x => x.Value);
 
+            if(context.HasAnyNonContainedCollections())                                        
+                responses[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionResponse("String");
+
             return responses;
         }
 
@@ -180,6 +183,10 @@ namespace Microsoft.OpenApi.OData.Generator
         private static OpenApiResponse CreateCollectionResponse(IEdmStructuredType structuredType)
         {
             var entityType = structuredType as IEdmEntityType;
+            return CreateCollectionResponse(entityType?.FullName() ?? structuredType.FullTypeName());
+        }
+        private static OpenApiResponse CreateCollectionResponse(string typeName)
+        {
             return new OpenApiResponse
             {
                 Description = "Retrieved collection",
@@ -194,7 +201,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
-                                    Id = $"{entityType?.FullName() ?? structuredType.FullTypeName()}{Constants.CollectionSchemaSuffix}"
+                                    Id = $"{typeName}{Constants.CollectionSchemaSuffix}"
                                 }
                             }
                         }
