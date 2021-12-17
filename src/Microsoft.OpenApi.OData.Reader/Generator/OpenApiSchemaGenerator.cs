@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Generator
             var elementsTypesInModel = context.EntityContainer
                                             .AllElements()
                                             .ToArray();
-            var collectionEntityTypes = context.EntityContainer
+            var collectionEntityTypes = new HashSet<IEdmStructuredType>(context.EntityContainer
                                                 .EntitySets()
                                                 .Select(x => x.EntityType())
                                                 .Union(context.Model
@@ -105,8 +105,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                                                 .OfType<IEdmAction>()
                                                                 .Where(x => x.ReturnType.IsCollection())
                                                                 .Select(x => x.ReturnType.AsEntity().EntityDefinition()))
-                                                .Distinct()
-                                                .ToList();//hashset would be better but net472 doesn't have it
+                                                .Distinct());
             var derivedCollectionTypes = collectionEntityTypes.SelectMany(x => context.Model.FindAllDerivedTypes(x).OfType<IEdmStructuredType>())
                                                                 .Where(x => !collectionEntityTypes.Contains(x))
                                                                 .Distinct()
