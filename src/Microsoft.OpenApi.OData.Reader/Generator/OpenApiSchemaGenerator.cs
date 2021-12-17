@@ -95,9 +95,11 @@ namespace Microsoft.OpenApi.OData.Generator
         }
         internal static IEnumerable<IEdmStructuredType> GetAllCollectionEntityTypes(this ODataContext context)
         {
-            var collectionEntityTypes = new HashSet<IEdmStructuredType>(context.EntityContainer
-                                                .EntitySets()
-                                                .Select(x => x.EntityType())
+            var collectionEntityTypes = new HashSet<IEdmStructuredType>(
+                                                (context.EntityContainer?
+                                                    .EntitySets()
+                                                    .Select(x => x.EntityType()) ??
+                                                Enumerable.Empty<IEdmStructuredType>())
                                                 .Union(context.Model
                                                                 .SchemaElements
                                                         	    .OfType<IEdmStructuredType>()
