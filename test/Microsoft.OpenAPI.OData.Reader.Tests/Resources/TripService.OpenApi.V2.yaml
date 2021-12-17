@@ -1869,11 +1869,43 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -1908,9 +1940,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count:
@@ -1927,11 +1957,43 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -1966,9 +2028,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count:
@@ -4923,10 +4983,8 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
       parameters:
         - in: path
           name: UserName
@@ -4934,6 +4992,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -4968,9 +5060,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count':
@@ -4994,10 +5084,8 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
       parameters:
         - in: path
           name: UserName
@@ -5005,6 +5093,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -5039,9 +5161,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count':
@@ -7621,10 +7741,8 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
       parameters:
         - in: path
           name: UserName
@@ -7632,6 +7750,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -7666,9 +7818,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count':
@@ -7692,10 +7842,8 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
       parameters:
         - in: path
           name: UserName
@@ -7703,6 +7851,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -7737,9 +7919,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count':
@@ -9093,11 +9273,43 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -9132,9 +9344,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count:
@@ -9151,11 +9361,43 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -9190,9 +9432,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count:
