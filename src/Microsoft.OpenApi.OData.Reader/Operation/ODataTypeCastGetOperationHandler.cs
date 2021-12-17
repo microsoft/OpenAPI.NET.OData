@@ -50,6 +50,14 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	/// <inheritdoc/>
 	protected override void Initialize(ODataContext context, ODataPath path)
 	{
+		// reseting the fields as we're reusing the handler
+		singleton = null;
+		isKeySegment = false;
+		restriction = null;
+		entitySet = null;
+		navigationProperty = null;
+		parentEntityType = null;
+		targetEntityType = null;
 		base.Initialize(context, path);
 
 		// get the last second segment
@@ -99,8 +107,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		if(path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment)
 		{
 			NavigationRestrictionsType navigation = navigationSourceSegment.NavigationSource switch {
-				IEdmEntitySet entitySet => Context.Model.GetRecord<NavigationRestrictionsType>(entitySet, CapabilitiesConstants.NavigationRestrictions),
-				IEdmSingleton singleton => Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions),
+				IEdmEntitySet eSet => Context.Model.GetRecord<NavigationRestrictionsType>(eSet, CapabilitiesConstants.NavigationRestrictions),
+				IEdmSingleton single => Context.Model.GetRecord<NavigationRestrictionsType>(single, CapabilitiesConstants.NavigationRestrictions),
 				_ => null
 			};
 
@@ -172,68 +180,17 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	}
 	private void SetCollectionResponse(OpenApiOperation operation)
 	{
-		OpenApiSchema schema = null;
-		if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-		{
-			schema = EdmModelHelper.GetDerivedTypesReferenceSchema(parentEntityType, Context.Model);
-		}
-
-		if (schema == null)
-		{
-			schema = new OpenApiSchema
-			{
-				Reference = new OpenApiReference
-				{
-					Type = ReferenceType.Schema,
-					Id = $"{parentEntityType.FullName()}.To.{targetEntityType.FullName()}"
-				}
-			};
-		}
-
-		var properties = new Dictionary<string, OpenApiSchema>
-		{
-			{
-				"value",
-				new OpenApiSchema
-				{
-					Type = "array",
-					Items = schema
-				}
-			}
-		};
-
-		if (Context.Settings.EnablePagination)
-		{
-			properties.Add(
-				"@odata.nextLink",
-				new OpenApiSchema
-				{
-					Type = "string"
-				});
-		}
-
 		operation.Responses = new OpenApiResponses
 		{
 			{
 				Constants.StatusCode200,
 				new OpenApiResponse
 				{
-					Description = "Retrieved entities",
-					Content = new Dictionary<string, OpenApiMediaType>
+					Reference = new OpenApiReference()
 					{
-						{
-							Constants.ApplicationJsonMediaType,
-							new OpenApiMediaType
-							{
-								Schema = new OpenApiSchema
-								{
-									Title = $"Collection of items of type {targetEntityType.ShortQualifiedName()} in the {parentEntityType.ShortQualifiedName()} collection",
-									Type = "object",
-									Properties = properties
-								}
-							}
-						}
-					}
+						Type = ReferenceType.Response,
+						Id = $"{targetEntityType.FullName()}{Constants.CollectionSchemaSuffix}"
+					},
 				}
 			}
 		};

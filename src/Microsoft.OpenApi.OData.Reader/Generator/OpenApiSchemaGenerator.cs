@@ -97,15 +97,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                                                 .SelectMany(x => x.NavigationProperties())
                                                                 .Where(x => x.TargetMultiplicity() == EdmMultiplicity.Many)
                                                                 .Select(x => x.Type.ToStructuredType()))
-                                                .Union(elementsTypesInModel
-                                                                .OfType<IEdmFunction>()
-                                                                .Where(x => x.ReturnType.IsCollection())
-                                                                .Select(x => x.ReturnType.AsEntity().EntityDefinition()))
-                                                .Union(elementsTypesInModel
-                                                                .OfType<IEdmAction>()
-                                                                .Where(x => x.ReturnType.IsCollection())
-                                                                .Select(x => x.ReturnType.AsEntity().EntityDefinition()))
-                                                .Distinct());
+                                                .Distinct()); // we could include actions and functions but actions are not pageable by nature (OData.NextLink) and functions might have specific annotations (deltalink)
             var derivedCollectionTypes = collectionEntityTypes.SelectMany(x => context.Model.FindAllDerivedTypes(x).OfType<IEdmStructuredType>())
                                                                 .Where(x => !collectionEntityTypes.Contains(x))
                                                                 .Distinct()
