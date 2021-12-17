@@ -85,6 +85,16 @@
             }
           }
         }
+      },
+      "ODataCountResponse": {
+        "description": "The count of the resource",
+        "content": {
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/ODataCountResponse"
+            }
+          }
+        }
       }
     },
     "parameters": {
