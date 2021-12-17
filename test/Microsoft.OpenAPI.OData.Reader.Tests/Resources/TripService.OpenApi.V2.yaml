@@ -752,8 +752,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get ref of Peers from Me
       operationId: Me.BestFriend.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -791,15 +789,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1005,8 +995,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get ref of DirectReports from Me
       operationId: Me.BestFriend.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1044,15 +1032,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1391,8 +1371,6 @@ paths:
         - Me.Friends.Person
       summary: Get ref of Peers from Me
       operationId: Me.Friends.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1436,15 +1414,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1681,8 +1651,6 @@ paths:
         - Me.Friends.Person
       summary: Get ref of DirectReports from Me
       operationId: Me.Friends.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1726,15 +1694,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1787,8 +1747,6 @@ paths:
         - Me.Person
       summary: Get ref of Friends from Me
       operationId: Me.ListRefFriends
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1826,15 +1784,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2216,8 +2166,6 @@ paths:
         - Me.Person
       summary: Get ref of Peers from Me
       operationId: Me.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2255,15 +2203,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2555,8 +2495,6 @@ paths:
         - Me.Person
       summary: Get ref of DirectReports from Me
       operationId: Me.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2594,15 +2532,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3083,8 +3013,6 @@ paths:
         - Me.Trips.PlanItem
       summary: Get ref of PlanItems from Me
       operationId: Me.Trips.ListRefPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: TripId
@@ -3119,15 +3047,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3717,8 +3637,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get ref of Peers from NewComePeople
       operationId: NewComePeople.BestFriend.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -3762,15 +3680,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4006,8 +3916,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get ref of DirectReports from NewComePeople
       operationId: NewComePeople.BestFriend.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4051,15 +3959,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4439,8 +4339,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get ref of Peers from NewComePeople
       operationId: NewComePeople.Friends.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4490,15 +4388,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4764,8 +4654,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get ref of DirectReports from NewComePeople
       operationId: NewComePeople.Friends.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4815,15 +4703,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4889,8 +4769,6 @@ paths:
         - NewComePeople.Person
       summary: Get ref of Friends from NewComePeople
       operationId: NewComePeople.ListRefFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4934,15 +4812,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5808,8 +5678,6 @@ paths:
         - NewComePeople.Trips.PlanItem
       summary: Get ref of PlanItems from NewComePeople
       operationId: NewComePeople.Trips.ListRefPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5850,15 +5718,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6472,8 +6332,6 @@ paths:
         - People.BestFriend.Person
       summary: Get ref of Peers from People
       operationId: People.BestFriend.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6517,15 +6375,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6762,8 +6612,6 @@ paths:
         - People.BestFriend.Person
       summary: Get ref of DirectReports from People
       operationId: People.BestFriend.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6807,15 +6655,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7196,8 +7036,6 @@ paths:
         - People.Friends.Person
       summary: Get ref of Peers from People
       operationId: People.Friends.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7247,15 +7085,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7522,8 +7352,6 @@ paths:
         - People.Friends.Person
       summary: Get ref of DirectReports from People
       operationId: People.Friends.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7573,15 +7401,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -7647,8 +7467,6 @@ paths:
         - People.Person
       summary: Get ref of Friends from People
       operationId: People.ListRefFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7692,15 +7510,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8139,8 +7949,6 @@ paths:
         - People.Person
       summary: Get ref of Peers from People
       operationId: People.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8184,15 +7992,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -8534,8 +8334,6 @@ paths:
         - People.Person
       summary: Get ref of DirectReports from People
       operationId: People.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8579,15 +8377,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -9146,8 +8936,6 @@ paths:
         - People.Trips.PlanItem
       summary: Get ref of PlanItems from People
       operationId: People.Trips.ListRefPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9188,15 +8976,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -9935,6 +9715,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
+  StringCollectionResponse:
+    title: Collection of string
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          type: string
 parameters:
   top:
     in: query
@@ -10012,6 +9800,10 @@ responses:
     description: Retrieved collection
     schema:
       $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse'
+  StringCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/StringCollectionResponse'
 tags:
   - name: Airlines.Airline
     x-ms-docs-toc-type: page

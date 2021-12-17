@@ -1087,9 +1087,6 @@
         ],
         "summary": "Get ref of Peers from Me",
         "operationId": "Me.BestFriend.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -1142,19 +1139,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1444,9 +1429,6 @@
         ],
         "summary": "Get ref of DirectReports from Me",
         "operationId": "Me.BestFriend.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -1499,19 +1481,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1985,9 +1955,6 @@
         ],
         "summary": "Get ref of Peers from Me",
         "operationId": "Me.Friends.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -2048,19 +2015,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2392,9 +2347,6 @@
         ],
         "summary": "Get ref of DirectReports from Me",
         "operationId": "Me.Friends.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -2455,19 +2407,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2546,9 +2486,6 @@
         ],
         "summary": "Get ref of Friends from Me",
         "operationId": "Me.ListRefFriends",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -2601,19 +2538,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3147,9 +3072,6 @@
         ],
         "summary": "Get ref of Peers from Me",
         "operationId": "Me.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -3202,19 +3124,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3631,9 +3541,6 @@
         ],
         "summary": "Get ref of DirectReports from Me",
         "operationId": "Me.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -3686,19 +3593,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -4388,9 +4283,6 @@
         ],
         "summary": "Get ref of PlanItems from Me",
         "operationId": "Me.Trips.ListRefPlanItems",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -4442,19 +4334,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of PlanItem",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -5279,9 +5159,6 @@
         ],
         "summary": "Get ref of Peers from NewComePeople",
         "operationId": "NewComePeople.BestFriend.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -5342,19 +5219,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -5685,9 +5550,6 @@
         ],
         "summary": "Get ref of DirectReports from NewComePeople",
         "operationId": "NewComePeople.BestFriend.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -5748,19 +5610,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -6289,9 +6139,6 @@
         ],
         "summary": "Get ref of Peers from NewComePeople",
         "operationId": "NewComePeople.Friends.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -6360,19 +6207,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -6743,9 +6578,6 @@
         ],
         "summary": "Get ref of DirectReports from NewComePeople",
         "operationId": "NewComePeople.Friends.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -6814,19 +6646,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -6923,9 +6743,6 @@
         ],
         "summary": "Get ref of Friends from NewComePeople",
         "operationId": "NewComePeople.ListRefFriends",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -6986,19 +6803,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -8225,9 +8030,6 @@
         ],
         "summary": "Get ref of PlanItems from NewComePeople",
         "operationId": "NewComePeople.Trips.ListRefPlanItems",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -8287,19 +8089,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of PlanItem",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -9158,9 +8948,6 @@
         ],
         "summary": "Get ref of Peers from People",
         "operationId": "People.BestFriend.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -9221,19 +9008,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -9565,9 +9340,6 @@
         ],
         "summary": "Get ref of DirectReports from People",
         "operationId": "People.BestFriend.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -9628,19 +9400,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -10170,9 +9930,6 @@
         ],
         "summary": "Get ref of Peers from People",
         "operationId": "People.Friends.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -10241,19 +9998,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -10625,9 +10370,6 @@
         ],
         "summary": "Get ref of DirectReports from People",
         "operationId": "People.Friends.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -10696,19 +10438,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -10805,9 +10535,6 @@
         ],
         "summary": "Get ref of Friends from People",
         "operationId": "People.ListRefFriends",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -10868,19 +10595,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -11492,9 +11207,6 @@
         ],
         "summary": "Get ref of Peers from People",
         "operationId": "People.ListRefPeers",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -11555,19 +11267,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -12052,9 +11752,6 @@
         ],
         "summary": "Get ref of DirectReports from People",
         "operationId": "People.ListRefDirectReports",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -12115,19 +11812,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -12921,9 +12606,6 @@
         ],
         "summary": "Get ref of PlanItems from People",
         "operationId": "People.Trips.ListRefPlanItems",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -12983,19 +12665,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of PlanItem",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -14095,6 +13765,18 @@
           }
         }
       }
+    },
+    "StringCollectionResponse": {
+      "title": "Collection of string",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "parameters": {
@@ -14202,6 +13884,12 @@
       "description": "Retrieved collection",
       "schema": {
         "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"
+      }
+    },
+    "StringCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/StringCollectionResponse"
       }
     }
   },

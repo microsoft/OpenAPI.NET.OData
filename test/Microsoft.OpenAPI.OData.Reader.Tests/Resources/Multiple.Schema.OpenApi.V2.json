@@ -839,9 +839,6 @@
         ],
         "summary": "Get ref of Revisions from Documents",
         "operationId": "Documents.ListRefRevisions",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -917,19 +914,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1513,9 +1498,6 @@
         ],
         "summary": "Get ref of Documents from Libraries",
         "operationId": "Libraries.ListRefDocuments",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1577,19 +1559,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of DocumentDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2775,9 +2745,6 @@
         ],
         "summary": "Get ref of Revisions from Tasks",
         "operationId": "Tasks.ListRefRevisions",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -2853,19 +2820,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -4799,6 +4754,18 @@
           }
         }
       }
+    },
+    "StringCollectionResponse": {
+      "title": "Collection of string",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "parameters": {
@@ -4894,6 +4861,12 @@
       "description": "Retrieved collection",
       "schema": {
         "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse"
+      }
+    },
+    "StringCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/StringCollectionResponse"
       }
     }
   },

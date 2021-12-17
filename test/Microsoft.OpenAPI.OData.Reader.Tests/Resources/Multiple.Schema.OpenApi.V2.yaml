@@ -601,8 +601,6 @@ paths:
         - Documents.RevisionDto
       summary: Get ref of Revisions from Documents
       operationId: Documents.ListRefRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -661,15 +659,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1091,8 +1081,6 @@ paths:
         - Libraries.DocumentDto
       summary: Get ref of Documents from Libraries
       operationId: Libraries.ListRefDocuments
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -1137,15 +1125,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2018,8 +1998,6 @@ paths:
         - Tasks.RevisionDto
       summary: Get ref of Revisions from Tasks
       operationId: Tasks.ListRefRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -2078,15 +2056,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -3559,6 +3529,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+  StringCollectionResponse:
+    title: Collection of string
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          type: string
 parameters:
   top:
     in: query
@@ -3628,6 +3606,10 @@ responses:
     description: Retrieved collection
     schema:
       $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse'
+  StringCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/StringCollectionResponse'
 tags:
   - name: Categories.CategoryDto
     x-ms-docs-toc-type: page

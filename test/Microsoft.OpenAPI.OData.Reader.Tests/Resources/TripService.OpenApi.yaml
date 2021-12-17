@@ -890,17 +890,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1168,17 +1158,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1605,17 +1585,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1927,17 +1897,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2031,17 +1991,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2509,17 +2459,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2878,17 +2818,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -3447,17 +3377,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -4155,17 +4075,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -4476,17 +4386,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -4969,17 +4869,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -5332,17 +5222,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -5458,17 +5338,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -6473,17 +6343,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -7207,17 +7067,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -7529,17 +7379,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -8023,17 +7863,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -8387,17 +8217,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -8513,17 +8333,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -9065,17 +8875,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -9501,17 +9301,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -10172,17 +9962,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -11014,6 +10794,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
+    StringCollectionResponse:
+      title: Collection of string
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
   responses:
     error:
       description: error
@@ -11087,6 +10875,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse'
+    StringCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StringCollectionResponse'
   parameters:
     top:
       name: $top

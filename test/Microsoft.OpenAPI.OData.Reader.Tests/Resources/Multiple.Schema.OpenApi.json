@@ -1023,23 +1023,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of links of RevisionDto",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1759,23 +1743,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of links of DocumentDto",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -3238,23 +3206,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of links of RevisionDto",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5386,6 +5338,18 @@
             }
           }
         }
+      },
+      "StringCollectionResponse": {
+        "title": "Collection of string",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       }
     },
     "responses": {
@@ -5485,6 +5449,16 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse"
+            }
+          }
+        }
+      },
+      "StringCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StringCollectionResponse"
             }
           }
         }
