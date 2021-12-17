@@ -13,8 +13,6 @@ paths:
         - Categories.CategoryDto
       summary: Get entities from Categories
       operationId: Categories.CategoryDto.ListCategoryDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -63,15 +61,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of CategoryDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -217,8 +207,6 @@ paths:
         - Documents.DocumentDto
       summary: Get entities from Documents
       operationId: Documents.DocumentDto.ListDocumentDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -281,15 +269,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -745,8 +725,6 @@ paths:
         - Libraries.LibraryDto
       summary: Get entities from Libraries
       operationId: Libraries.LibraryDto.ListLibraryDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -824,15 +802,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of LibraryDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -1231,8 +1201,6 @@ paths:
         - Revisions.RevisionDto
       summary: Get entities from Revisions
       operationId: Revisions.RevisionDto.ListRevisionDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1316,15 +1284,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -1664,8 +1624,6 @@ paths:
         - Tasks.DocumentDto
       summary: Get entities from Tasks
       operationId: Tasks.DocumentDto.ListDocumentDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1728,15 +1686,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:

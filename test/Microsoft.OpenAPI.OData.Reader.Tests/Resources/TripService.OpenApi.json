@@ -93,23 +93,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Airline",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -402,23 +386,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Airport",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5105,23 +5073,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9397,23 +9349,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"

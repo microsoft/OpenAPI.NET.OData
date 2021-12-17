@@ -90,23 +90,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of City",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.City"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/DefaultNs.CityCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -389,23 +373,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of CountryOrRegion",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/DefaultNs.CountryOrRegionCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -790,23 +758,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.Person"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/DefaultNs.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"

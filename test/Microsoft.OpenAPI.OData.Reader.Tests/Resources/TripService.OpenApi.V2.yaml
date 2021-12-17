@@ -14,8 +14,6 @@ paths:
         - Airlines.Airline
       summary: Get entities from Airlines
       operationId: Airlines.Airline.ListAirline
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -52,15 +50,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Airline
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -193,8 +183,6 @@ paths:
         - Airports.Airport
       summary: Get entities from Airports
       operationId: Airports.Airport.ListAirport
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -237,15 +225,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Airport
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -3143,8 +3123,6 @@ paths:
         - NewComePeople.Person
       summary: Get entities from NewComePeople
       operationId: NewComePeople.Person.ListPerson
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3214,15 +3192,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -5847,8 +5817,6 @@ paths:
         - People.Person
       summary: Get entities from People
       operationId: People.Person.ListPerson
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -5918,15 +5886,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:

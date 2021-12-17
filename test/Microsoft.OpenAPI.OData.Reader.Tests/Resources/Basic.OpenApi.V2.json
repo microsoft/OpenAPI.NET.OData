@@ -17,9 +17,6 @@
         ],
         "summary": "Get entities from City",
         "operationId": "City.City.ListCity",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -76,19 +73,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of City",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DefaultNs.City"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/DefaultNs.CityCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -284,9 +269,6 @@
         ],
         "summary": "Get entities from CountryOrRegion",
         "operationId": "CountryOrRegion.CountryOrRegion.ListCountryOrRegion",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -343,19 +325,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of CountryOrRegion",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DefaultNs.CountryOrRegion"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/DefaultNs.CountryOrRegionCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -636,9 +606,6 @@
         "summary": "Get entities from People",
         "description": "People's description.",
         "operationId": "People.Person.ListPerson",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -704,19 +671,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DefaultNs.Person"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/DefaultNs.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
