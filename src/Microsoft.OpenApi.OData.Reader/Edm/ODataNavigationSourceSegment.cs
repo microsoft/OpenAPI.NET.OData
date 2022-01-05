@@ -4,7 +4,9 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -38,6 +40,12 @@ namespace Microsoft.OpenApi.OData.Edm
         public override ODataSegmentKind Kind => ODataSegmentKind.NavigationSource;
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => NavigationSource.Name;
+		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+		{
+			return new IEdmVocabularyAnnotatable[] { NavigationSource as IEdmVocabularyAnnotatable, EntityType }.Union(EntityType.FindAllBaseTypes());
+		}
+
+		/// <inheritdoc />
+		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => NavigationSource.Name;
     }
 }

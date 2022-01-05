@@ -40,6 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Description / Summary / OperationId
             SetBasicInfo(operation);
+            SetDeprecation(operation);
 
             // Security
             SetSecurity(operation);
@@ -63,6 +64,26 @@ namespace Microsoft.OpenApi.OData.Operation
             SetExtensions(operation);
 
             return operation;
+        }
+
+        private void SetDeprecation(OpenApiOperation operation)
+        {
+            if(operation != null && Context.Settings.EnableDeprecationInformation)
+            {
+                var deprecationInfo = Path.SelectMany(x => x.GetAnnotables())
+                                    .SelectMany(x => Context.GetDeprecationInformations(x))
+                                    .Where(x => x != null)
+                                    .OrderByDescending(x => x.Date)
+                                    .ThenByDescending(x => x.RemovalDate)
+                                    .FirstOrDefault();
+
+                if(deprecationInfo != null)
+                {
+                    operation.Deprecated = true;
+                    var deprecationDetails = deprecationInfo.GetOpenApiExtension();
+                    operation.Extensions.Add(deprecationDetails.Name, deprecationDetails);
+                }
+            }
         }
 
         /// <summary>

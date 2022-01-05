@@ -1,6 +1,7 @@
 ﻿abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Identifier.get -> string
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
@@ -165,44 +166,57 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.VerifyEdmModel.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.VerifyEdmModel.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.Version.get -> System.Version
 Microsoft.OpenApi.OData.OpenApiConvertSettings.Version.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDeprecationInformation.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableDeprecationInformation.set -> void
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataKeySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataKeySegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataMetadataSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataNavigationPropertySegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
 override Microsoft.OpenApi.OData.Edm.ODataNavigationPropertySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataNavigationPropertySegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataNavigationPropertySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataNavigationPropertySegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataNavigationSourceSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataOperationImportSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataOperationSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataOperationSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataOperationSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataOperationSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataPath.ToString() -> string
 override Microsoft.OpenApi.OData.Edm.ODataRefSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataRefSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataRefSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataRefSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataStreamContentSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataStreamPropertySegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
+override Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 static Microsoft.OpenApi.OData.Common.Utils.GetTermQualifiedName<T>() -> string
 static Microsoft.OpenApi.OData.Common.Utils.GetUniqueName(string input, System.Collections.Generic.HashSet<string> set) -> string
 static Microsoft.OpenApi.OData.Common.Utils.UpperFirstChar(string input) -> string
@@ -222,3 +236,17 @@ virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.CanFilter(Microsoft.OData.
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.GetPaths(Microsoft.OData.Edm.IEdmModel model, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> System.Collections.Generic.IEnumerable<Microsoft.OpenApi.OData.Edm.ODataPath>
 virtual Microsoft.OpenApi.OData.Edm.ODataPathProvider.Initialize(Microsoft.OData.Edm.IEdmModel model) -> void
 virtual Microsoft.OpenApi.OData.Edm.ODataSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
+Microsoft.OpenApi.OData.Edm.ODataSegment.Deprecation.get -> Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension
+Microsoft.OpenApi.OData.Edm.ODataSegment.Deprecation.set -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.OpenApiDeprecationExtension() -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Name.get -> string
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Version.get -> string
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Version.set -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Description.get -> string
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Description.set -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.get -> System.DateTime?
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.RemovalDate.set -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.get -> System.DateTime?
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.set -> void
+Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void

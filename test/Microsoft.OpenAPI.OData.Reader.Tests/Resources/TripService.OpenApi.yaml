@@ -543,6 +543,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     patch:
       tags:
@@ -561,6 +567,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/BestFriend:
     description: Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -620,6 +632,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/BestFriend/$ref:
     description: Provides operations to manage the collection of Person entities.
@@ -638,6 +656,12 @@ paths:
                 type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     put:
       tags:
@@ -659,6 +683,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     delete:
       tags:
@@ -677,8 +707,15 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -734,6 +771,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers:
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -835,6 +878,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
@@ -869,6 +918,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count:
     description: Provides operations to count the resources in the collection.
@@ -884,6 +939,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref:
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -945,6 +1006,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -969,8 +1036,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -1026,6 +1100,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports:
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -1127,6 +1207,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
@@ -1161,6 +1247,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count:
     description: Provides operations to count the resources in the collection.
@@ -1176,6 +1268,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref:
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -1237,6 +1335,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -1261,6 +1365,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Friends:
     description: Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -1363,6 +1473,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/$ref':
     description: Provides operations to manage the collection of Person entities.
@@ -1394,8 +1510,15 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -1458,6 +1581,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -1566,6 +1695,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers
@@ -1607,6 +1742,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
     description: Provides operations to count the resources in the collection.
@@ -1630,6 +1771,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -1698,6 +1845,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -1730,8 +1883,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -1794,6 +1954,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -1902,6 +2068,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports
@@ -1943,6 +2115,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
     description: Provides operations to count the resources in the collection.
@@ -1966,6 +2144,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -2034,6 +2218,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -2066,6 +2256,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Friends/$count:
     description: Provides operations to count the resources in the collection.
@@ -2081,6 +2277,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Friends/$ref:
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -2142,6 +2344,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -2166,8 +2374,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -2223,6 +2438,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count:
     description: Provides operations to count the resources in the collection.
     get:
@@ -2237,7 +2458,14 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -2293,6 +2521,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count:
     description: Provides operations to count the resources in the collection.
     get:
@@ -2307,7 +2541,14 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -2363,6 +2604,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers:
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -2464,6 +2711,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers
@@ -2498,6 +2751,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count:
     description: Provides operations to count the resources in the collection.
@@ -2513,6 +2772,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref:
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -2574,6 +2839,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -2598,6 +2869,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline():
     description: Provides operations to call the GetFavoriteAirline method.
@@ -2617,6 +2894,12 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: function
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName=''{userName}'')':
     description: Provides operations to call the GetFriendsTrips method.
@@ -2649,6 +2932,12 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: function
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip:
     description: Provides operations to call the GetPeersForTrip method.
@@ -2689,8 +2978,15 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: action
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -2746,6 +3042,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports:
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -2847,6 +3149,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - /Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports
@@ -2881,6 +3189,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count:
     description: Provides operations to count the resources in the collection.
@@ -2896,6 +3210,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref:
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -2957,6 +3277,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -2981,6 +3307,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire:
     description: Provides operations to call the Hire method.
@@ -3007,6 +3339,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: action
   /Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip:
     description: Provides operations to call the ShareTrip method.
@@ -3036,6 +3374,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: action
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName=''{lastName}'')':
     description: Provides operations to call the UpdatePersonLastName method.
@@ -3064,6 +3408,12 @@ paths:
                     default: false
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: function
   /Me/Trips:
     description: Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -3154,6 +3504,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -3177,6 +3533,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}':
     description: Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -3239,6 +3601,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     patch:
       tags:
@@ -3269,6 +3637,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     delete:
       tags:
@@ -3297,6 +3671,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     description: Provides operations to call the GetInvolvedPeople method.
@@ -3333,6 +3713,12 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: function
   '/Me/Trips/{TripId}/PlanItems':
     description: Provides operations to manage the PlanItems property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip entity.
@@ -3421,6 +3807,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}/PlanItems/{PlanItemId}/$ref':
     description: Provides operations to manage the collection of Person entities.
@@ -3465,6 +3857,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   '/Me/Trips/{TripId}/PlanItems/$count':
     description: Provides operations to count the resources in the collection.
@@ -3491,6 +3889,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   '/Me/Trips/{TripId}/PlanItems/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -3550,6 +3954,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -3585,6 +3995,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
       x-ms-docs-operation-type: operation
   /Me/Trips/$count:
     description: Provides operations to count the resources in the collection.
@@ -3600,6 +4016,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/me
+        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /NewComePeople:
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -3903,6 +4325,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/$ref':
     description: Provides operations to manage the collection of Person entities.
@@ -3929,6 +4357,12 @@ paths:
                 type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
     put:
       tags:
@@ -3958,6 +4392,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
     delete:
       tags:
@@ -3983,8 +4423,15 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -4047,6 +4494,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -4155,6 +4608,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
@@ -4195,6 +4654,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
     description: Provides operations to count the resources in the collection.
@@ -4218,6 +4683,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -4286,6 +4757,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -4318,8 +4795,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -4382,6 +4866,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -4490,6 +4980,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
@@ -4530,6 +5026,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
     description: Provides operations to count the resources in the collection.
@@ -4553,6 +5055,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -4621,6 +5129,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -4653,6 +5167,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/bestfriend
+        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends':
     description: Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -4802,6 +5322,7 @@ paths:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -5179,6 +5700,7 @@ paths:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -5679,6 +6201,7 @@ paths:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -5764,6 +6287,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -5913,6 +6437,12 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/trips
+        description: The GetFriendsTrips API is deprecated and will stop returning data on March 2023. Please use the new trips API on friends.
       x-ms-docs-operation-type: function
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip':
     description: Provides operations to call the GetPeersForTrip method.
@@ -6804,6 +7334,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       tags:
         - People.Person
@@ -6825,6 +7361,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}':
     description: Provides operations to manage the collection of Person entities.
@@ -6890,6 +7432,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     patch:
       tags:
@@ -6916,6 +7464,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     delete:
       tags:
@@ -6940,6 +7494,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend':
     description: Provides operations to manage the BestFriend property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -7006,6 +7566,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/$ref':
     description: Provides operations to manage the collection of Person entities.
@@ -7032,6 +7598,12 @@ paths:
                 type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     put:
       tags:
@@ -7061,6 +7633,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     delete:
       tags:
@@ -7086,8 +7664,15 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -7150,6 +7735,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -7258,6 +7849,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
@@ -7299,6 +7896,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
     description: Provides operations to count the resources in the collection.
@@ -7322,6 +7925,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -7390,6 +7999,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -7422,8 +8037,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -7486,6 +8108,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -7594,6 +8222,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
@@ -7635,6 +8269,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
     description: Provides operations to count the resources in the collection.
@@ -7658,6 +8298,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -7726,6 +8372,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -7758,6 +8410,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends':
     description: Provides operations to manage the Friends property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -7867,6 +8525,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/$ref':
     description: Provides operations to manage the collection of Person entities.
@@ -7905,8 +8569,15 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -7976,6 +8647,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -8091,6 +8768,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
@@ -8139,6 +8822,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
     description: Provides operations to count the resources in the collection.
@@ -8169,6 +8858,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -8244,6 +8939,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -8283,8 +8984,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -8354,6 +9062,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -8469,6 +9183,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
@@ -8517,6 +9237,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
     description: Provides operations to count the resources in the collection.
@@ -8547,6 +9273,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -8622,6 +9354,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -8661,6 +9399,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/$count':
     description: Provides operations to count the resources in the collection.
@@ -8684,6 +9428,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -8752,6 +9502,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -8784,8 +9540,15 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -8848,6 +9611,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count':
     description: Provides operations to count the resources in the collection.
     get:
@@ -8870,7 +9639,14 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -8933,6 +9709,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count':
     description: Provides operations to count the resources in the collection.
     get:
@@ -8955,7 +9737,14 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee':
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -9018,6 +9807,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers':
     description: Provides operations to manage the Peers property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee entity.
     get:
@@ -9126,6 +9921,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers'
@@ -9167,6 +9968,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$count':
     description: Provides operations to count the resources in the collection.
@@ -9190,6 +9997,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -9258,6 +10071,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -9290,6 +10109,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
     description: Provides operations to call the GetFavoriteAirline method.
@@ -9317,6 +10142,12 @@ paths:
                 nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: function
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFriendsTrips(userName=''{userName}'')':
     description: Provides operations to call the GetFriendsTrips method.
@@ -9356,6 +10187,12 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: function
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPeersForTrip':
     description: Provides operations to call the GetPeersForTrip method.
@@ -9404,8 +10241,15 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: action
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -9468,6 +10312,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports':
     description: Provides operations to manage the DirectReports property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager entity.
     get:
@@ -9576,6 +10426,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     x-ms-docs-grouped-path:
       - '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports'
@@ -9617,6 +10473,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$count':
     description: Provides operations to count the resources in the collection.
@@ -9640,6 +10502,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -9708,6 +10576,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -9740,6 +10614,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Hire':
     description: Provides operations to call the Hire method.
@@ -9774,6 +10654,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: action
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ShareTrip':
     description: Provides operations to call the ShareTrip method.
@@ -9811,6 +10697,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: action
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.UpdatePersonLastName(lastName=''{lastName}'')':
     description: Provides operations to call the UpdatePersonLastName method.
@@ -9846,6 +10738,12 @@ paths:
                     default: false
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: function
   '/People/{UserName}/Trips':
     description: Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -9943,6 +10841,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -9974,6 +10878,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}':
     description: Provides operations to manage the Trips property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person entity.
@@ -10043,6 +10953,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     patch:
       tags:
@@ -10080,6 +10996,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     delete:
       tags:
@@ -10115,6 +11037,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetInvolvedPeople()':
     description: Provides operations to call the GetInvolvedPeople method.
@@ -10158,6 +11086,12 @@ paths:
                       nullable: true
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: function
   '/People/{UserName}/Trips/{TripId}/PlanItems':
     description: Provides operations to manage the PlanItems property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip entity.
@@ -10253,6 +11187,12 @@ paths:
                       $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}/PlanItems/{PlanItemId}/$ref':
     description: Provides operations to manage the collection of Person entities.
@@ -10304,6 +11244,12 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/{TripId}/PlanItems/$count':
     description: Provides operations to count the resources in the collection.
@@ -10337,6 +11283,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/Trips/{TripId}/PlanItems/$ref':
     description: Provides operations to manage the collection of Person entities.
     get:
@@ -10403,6 +11355,12 @@ paths:
                       type: string
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
     post:
       tags:
@@ -10445,6 +11403,12 @@ paths:
                 type: object
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
       x-ms-docs-operation-type: operation
   '/People/{UserName}/Trips/$count':
     description: Provides operations to count the resources in the collection.
@@ -10468,6 +11432,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   /People/$count:
     description: Provides operations to count the resources in the collection.
     get:
@@ -10482,7 +11452,14 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee:
+    description: Casts the previous resource to Employee.
     get:
       tags:
         - Person.Employee
@@ -10538,6 +11515,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count:
     description: Provides operations to count the resources in the collection.
     get:
@@ -10552,7 +11535,14 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager:
+    description: Casts the previous resource to Manager.
     get:
       tags:
         - Person.Manager
@@ -10608,6 +11598,12 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   /People/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count:
     description: Provides operations to count the resources in the collection.
     get:
@@ -10622,6 +11618,12 @@ paths:
                 $ref: '#/components/schemas/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
+      deprecated: true
+      x-ms-deprecation:
+        removalDate: '2023-03-15T00:00:00.0000000'
+        date: '2021-08-24T00:00:00.0000000'
+        version: 2021-05/people
+        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   /ResetDataSource:
     description: Provides operations to call the ResetDataSource method.
     post:
