@@ -69,7 +69,7 @@ public class ODataTypeCastGetOperationHandlerTests
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.True(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.True(operation.Responses.ContainsKey("200"));
     }
     [Theory]
     [InlineData(true, true)]
@@ -180,7 +180,7 @@ public class ODataTypeCastGetOperationHandlerTests
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.True(operation.Responses["200"].Content["application/json"].Schema.Properties.ContainsKey("value"));
+        Assert.True(operation.Responses.ContainsKey("200"));
     }
     [Theory]
     [InlineData(true, true)]

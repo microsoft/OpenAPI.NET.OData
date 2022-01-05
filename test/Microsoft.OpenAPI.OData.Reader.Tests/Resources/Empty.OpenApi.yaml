@@ -56,6 +56,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/odata.error'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
   parameters:
     top:
       name: $top

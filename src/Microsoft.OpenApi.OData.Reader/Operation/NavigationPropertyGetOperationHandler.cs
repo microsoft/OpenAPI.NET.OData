@@ -67,70 +67,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = NavigationProperty.ToEntityType().FullName()
-                    }
-                };
-            }
-
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                var properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "value",
-                        new OpenApiSchema
-                        {
-                            Type = "array",
-                            Items = schema
-                        }
-                    }
-                };
-
-                if (Context.Settings.EnablePagination)
-                {
-                    properties.Add(
-                        "@odata.nextLink",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        });
-                }
-
                 operation.Responses = new OpenApiResponses
                 {
                     {
                         Constants.StatusCode200,
                         new OpenApiResponse
                         {
-                            Description = "Retrieved navigation property",
-                            Content = new Dictionary<string, OpenApiMediaType>
+                            Reference = new OpenApiReference()
                             {
-                                {
-                                    Constants.ApplicationJsonMediaType,
-                                    new OpenApiMediaType
-                                    {
-                                        Schema = new OpenApiSchema
-                                        {
-                                            Title = "Collection of " + NavigationProperty.ToEntityType().Name,
-                                            Type = "object",
-                                            Properties = properties
-                                        }
-                                    }
-                                }
+                                Type = ReferenceType.Response,
+                                Id = $"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}"
                             }
                         }
                     }
@@ -138,6 +86,25 @@ namespace Microsoft.OpenApi.OData.Operation
             }
             else
             {
+                OpenApiSchema schema = null;
+                var entityType = NavigationProperty.ToEntityType();
+
+                if (Context.Settings.EnableDerivedTypesReferencesForResponses)
+                {
+                    schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, Context.Model);
+                }
+
+                if (schema == null)
+                {
+                    schema = new OpenApiSchema
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = entityType.FullName()
+                        }
+                    };
+                }
                 IDictionary<string, OpenApiLink> links = null;
                 if (Context.Settings.ShowLinks)
                 {

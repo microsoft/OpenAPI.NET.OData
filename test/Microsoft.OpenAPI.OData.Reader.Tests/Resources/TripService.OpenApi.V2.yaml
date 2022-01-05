@@ -14,8 +14,6 @@ paths:
         - Airlines.Airline
       summary: Get entities from Airlines
       operationId: Airlines.Airline.ListAirline
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -52,15 +50,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Airline
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -181,13 +171,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airlines-27a7
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -197,8 +183,6 @@ paths:
         - Airports.Airport
       summary: Get entities from Airports
       operationId: Airports.Airport.ListAirport
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -241,15 +225,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Airport
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -372,13 +348,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Airports-60cc
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -702,8 +674,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get Peers from Me
       operationId: Me.BestFriend.ListPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -773,15 +743,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -833,13 +795,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-e850
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -855,8 +813,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get ref of Peers from Me
       operationId: Me.BestFriend.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -894,15 +850,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1006,8 +954,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get DirectReports from Me
       operationId: Me.BestFriend.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1077,15 +1023,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1137,13 +1075,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-f41f
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1159,8 +1093,6 @@ paths:
         - Me.BestFriend.Person
       summary: Get ref of DirectReports from Me
       operationId: Me.BestFriend.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1198,15 +1130,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1255,8 +1179,6 @@ paths:
         - Me.Person
       summary: Get Friends from Me
       operationId: Me.ListFriends
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1326,15 +1248,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1446,8 +1360,6 @@ paths:
         - Me.Friends.Person
       summary: Get Peers from Me
       operationId: Me.Friends.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1523,15 +1435,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1589,8 +1493,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-e3cf
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -1600,9 +1502,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1618,8 +1518,6 @@ paths:
         - Me.Friends.Person
       summary: Get ref of Peers from Me
       operationId: Me.Friends.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1663,15 +1561,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1787,8 +1677,6 @@ paths:
         - Me.Friends.Person
       summary: Get DirectReports from Me
       operationId: Me.Friends.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -1864,15 +1752,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1930,8 +1810,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-c1d4
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -1941,9 +1819,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -1959,8 +1835,6 @@ paths:
         - Me.Friends.Person
       summary: Get ref of DirectReports from Me
       operationId: Me.Friends.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -2004,15 +1878,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2065,13 +1931,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-182b
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2087,8 +1949,6 @@ paths:
         - Me.Person
       summary: Get ref of Friends from Me
       operationId: Me.ListRefFriends
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2126,15 +1986,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2181,11 +2033,43 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2220,9 +2104,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2236,13 +2118,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2256,11 +2134,43 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -2295,9 +2205,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2311,13 +2219,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2388,8 +2292,6 @@ paths:
         - Me.Person
       summary: Get Peers from Me
       operationId: Me.ListPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2459,15 +2361,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2519,13 +2413,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-9fc2
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2541,8 +2431,6 @@ paths:
         - Me.Person
       summary: Get ref of Peers from Me
       operationId: Me.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2580,15 +2468,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2796,8 +2676,6 @@ paths:
         - Me.Person
       summary: Get DirectReports from Me
       operationId: Me.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2867,15 +2745,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2927,13 +2797,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-8b92
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2949,8 +2815,6 @@ paths:
         - Me.Person
       summary: Get ref of DirectReports from Me
       operationId: Me.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -2988,15 +2852,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3148,8 +3004,6 @@ paths:
       summary: Get Trips from Me
       description: Collection of trips.
       operationId: Me.ListTrips
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3206,15 +3060,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3428,8 +3274,6 @@ paths:
         - Me.Trips.PlanItem
       summary: Get PlanItems from Me
       operationId: Me.Trips.ListPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: TripId
@@ -3484,15 +3328,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3553,8 +3389,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.PlanItems-c250
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: TripId
@@ -3567,9 +3401,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3585,8 +3417,6 @@ paths:
         - Me.Trips.PlanItem
       summary: Get ref of PlanItems from Me
       operationId: Me.Trips.ListRefPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: TripId
@@ -3621,15 +3451,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3685,13 +3507,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-7b69
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3707,8 +3525,6 @@ paths:
         - NewComePeople.Person
       summary: Get entities from NewComePeople
       operationId: NewComePeople.Person.ListPerson
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -3778,15 +3594,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -4143,8 +3951,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get Peers from NewComePeople
       operationId: NewComePeople.BestFriend.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4220,15 +4026,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4285,8 +4083,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-1269
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -4296,9 +4092,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4314,8 +4108,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get ref of Peers from NewComePeople
       operationId: NewComePeople.BestFriend.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4359,15 +4151,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4483,8 +4267,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get DirectReports from NewComePeople
       operationId: NewComePeople.BestFriend.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4560,15 +4342,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4625,8 +4399,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-c923
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -4636,9 +4408,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4654,8 +4424,6 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Get ref of DirectReports from NewComePeople
       operationId: NewComePeople.BestFriend.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4699,15 +4467,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4762,8 +4522,6 @@ paths:
         - NewComePeople.Person
       summary: Get Friends from NewComePeople
       operationId: NewComePeople.ListFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -4839,15 +4597,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -4953,8 +4703,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get Peers from NewComePeople
       operationId: NewComePeople.Friends.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5036,15 +4784,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5095,8 +4835,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-128d
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5112,9 +4850,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5124,8 +4860,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get ref of Peers from NewComePeople
       operationId: NewComePeople.Friends.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5175,15 +4909,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5293,8 +5019,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get DirectReports from NewComePeople
       operationId: NewComePeople.Friends.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5376,15 +5100,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5435,8 +5151,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-08c7
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5452,9 +5166,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5464,8 +5176,6 @@ paths:
         - NewComePeople.Friends.Person
       summary: Get ref of DirectReports from NewComePeople
       operationId: NewComePeople.Friends.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5515,15 +5225,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5570,8 +5272,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-2ec1
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5581,9 +5281,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5593,8 +5291,6 @@ paths:
         - NewComePeople.Person
       summary: Get ref of Friends from NewComePeople
       operationId: NewComePeople.ListRefFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -5638,15 +5334,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -5687,10 +5375,8 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
       parameters:
         - in: path
           name: UserName
@@ -5698,6 +5384,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -5732,9 +5452,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
     x-description: Casts the previous resource to Employee.
@@ -5742,8 +5460,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-4069
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5753,9 +5469,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -5763,10 +5477,8 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
       parameters:
         - in: path
           name: UserName
@@ -5774,6 +5486,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -5808,9 +5554,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
     x-description: Casts the previous resource to Manager.
@@ -5818,8 +5562,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-d1d3
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -5829,9 +5571,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6055,8 +5795,6 @@ paths:
       summary: Get Trips from NewComePeople
       description: Collection of trips.
       operationId: NewComePeople.ListTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6119,15 +5857,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6335,8 +6065,6 @@ paths:
         - NewComePeople.Trips.PlanItem
       summary: Get PlanItems from NewComePeople
       operationId: NewComePeople.Trips.ListPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6397,15 +6125,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6460,8 +6180,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.PlanItems-841f
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -6480,9 +6198,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6492,8 +6208,6 @@ paths:
         - NewComePeople.Trips.PlanItem
       summary: Get ref of PlanItems from NewComePeople
       operationId: NewComePeople.Trips.ListRefPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -6534,15 +6248,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -6592,8 +6298,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-d155
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -6603,9 +6307,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6613,13 +6315,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.NewComePeople-55d5
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
     x-description: Provides operations to count the resources in the collection.
@@ -6629,8 +6327,6 @@ paths:
         - People.Person
       summary: Get entities from People
       operationId: People.Person.ListPerson
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -6700,15 +6396,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7095,8 +6783,6 @@ paths:
         - People.BestFriend.Person
       summary: Get Peers from People
       operationId: People.BestFriend.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7172,15 +6858,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7238,8 +6916,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-5860
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -7249,9 +6925,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7267,8 +6941,6 @@ paths:
         - People.BestFriend.Person
       summary: Get ref of Peers from People
       operationId: People.BestFriend.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7312,15 +6984,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7436,8 +7100,6 @@ paths:
         - People.BestFriend.Person
       summary: Get DirectReports from People
       operationId: People.BestFriend.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7513,15 +7175,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7579,8 +7233,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-cddc
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -7590,9 +7242,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7608,8 +7258,6 @@ paths:
         - People.BestFriend.Person
       summary: Get ref of DirectReports from People
       operationId: People.BestFriend.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7653,15 +7301,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7716,8 +7356,6 @@ paths:
         - People.Person
       summary: Get Friends from People
       operationId: People.ListFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -7793,15 +7431,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7925,8 +7555,6 @@ paths:
         - People.Friends.Person
       summary: Get Peers from People
       operationId: People.Friends.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8008,15 +7636,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8080,8 +7700,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-ff21
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8097,9 +7715,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8115,8 +7731,6 @@ paths:
         - People.Friends.Person
       summary: Get ref of Peers from People
       operationId: People.Friends.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8166,15 +7780,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8302,8 +7908,6 @@ paths:
         - People.Friends.Person
       summary: Get DirectReports from People
       operationId: People.Friends.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8385,15 +7989,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8457,8 +8053,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-3b03
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8474,9 +8068,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8492,8 +8084,6 @@ paths:
         - People.Friends.Person
       summary: Get ref of DirectReports from People
       operationId: People.Friends.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8543,15 +8133,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8610,8 +8192,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Friends-92b9
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8621,9 +8201,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8639,8 +8217,6 @@ paths:
         - People.Person
       summary: Get ref of Friends from People
       operationId: People.ListRefFriends
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -8684,15 +8260,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8745,10 +8313,8 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
       parameters:
         - in: path
           name: UserName
@@ -8756,6 +8322,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -8790,9 +8390,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8806,8 +8404,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-a96c
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8817,9 +8413,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8833,10 +8427,8 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
       parameters:
         - in: path
           name: UserName
@@ -8844,6 +8436,40 @@ paths:
           required: true
           type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -8878,9 +8504,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8894,8 +8518,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-26b3
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -8905,9 +8527,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8984,8 +8604,6 @@ paths:
         - People.Person
       summary: Get Peers from People
       operationId: People.ListPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9061,15 +8679,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9127,8 +8737,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Peers-44d2
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -9138,9 +8746,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9156,8 +8762,6 @@ paths:
         - People.Person
       summary: Get ref of Peers from People
       operationId: People.ListRefPeers
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9201,15 +8805,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9448,8 +9044,6 @@ paths:
         - People.Person
       summary: Get DirectReports from People
       operationId: People.ListDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9525,15 +9119,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9591,8 +9177,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.DirectReports-0ec4
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -9602,9 +9186,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9620,8 +9202,6 @@ paths:
         - People.Person
       summary: Get ref of DirectReports from People
       operationId: People.ListRefDirectReports
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9665,15 +9245,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9849,8 +9421,6 @@ paths:
       summary: Get Trips from People
       description: Collection of trips.
       operationId: People.ListTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -9913,15 +9483,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10165,8 +9727,6 @@ paths:
         - People.Trips.PlanItem
       summary: Get PlanItems from People
       operationId: People.Trips.ListPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -10227,15 +9787,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10302,8 +9854,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.PlanItems-9a27
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -10322,9 +9872,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10340,8 +9888,6 @@ paths:
         - People.Trips.PlanItem
       summary: Get ref of PlanItems from People
       operationId: People.Trips.ListRefPlanItems
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -10382,15 +9928,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of PlanItem
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10452,8 +9990,6 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Trips-e877
-      produces:
-        - text/plain
       parameters:
         - in: path
           name: UserName
@@ -10463,9 +9999,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10479,13 +10013,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.People-dd8d
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10499,11 +10029,43 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -10538,9 +10100,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10554,13 +10114,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10574,11 +10130,43 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
-      produces:
-        - application/json
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
       parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
         - in: query
           name: $select
           description: Select properties to be returned
@@ -10613,9 +10201,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Result entities
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10629,13 +10215,9 @@ paths:
     get:
       summary: Get the number of the resource
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
-      produces:
-        - text/plain
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -11055,6 +10637,94 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+    title: Collection of Person
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+    title: Collection of Airline
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+    title: Collection of Airport
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+    title: Collection of Trip
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+    title: Collection of PlanItem
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+    title: Collection of Employee
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+    title: Collection of Manager
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+    title: Collection of Event
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+    title: Collection of PublicTransportation
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+    title: Collection of Flight
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
+  StringCollectionResponse:
+    title: Collection of string
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          type: string
 parameters:
   top:
     in: query
@@ -11088,6 +10758,54 @@ responses:
     description: error
     schema:
       $ref: '#/definitions/odata.error'
+  ODataCountResponse:
+    description: The count of the resource
+    schema:
+      $ref: '#/definitions/ODataCountResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse'
+  StringCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/StringCollectionResponse'
 tags:
   - name: Airlines.Airline
     x-ms-docs-toc-type: page

@@ -17,9 +17,6 @@
         ],
         "summary": "Get entities from Categories",
         "operationId": "Categories.CategoryDto.ListCategoryDto",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -91,19 +88,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of CategoryDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.CategoryDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -295,15 +280,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Categories-2f72",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -319,9 +298,6 @@
         ],
         "summary": "Get entities from Documents",
         "operationId": "Documents.DocumentDto.ListDocumentDto",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -407,19 +383,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of DocumentDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -658,9 +622,6 @@
         ],
         "summary": "Get Revisions from Documents",
         "operationId": "Documents.ListRevisions",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -778,19 +739,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "schema": {
-              "title": "Collection of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -859,9 +808,6 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-f834",
-        "produces": [
-          "text/plain"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -877,10 +823,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -896,9 +839,6 @@
         ],
         "summary": "Get ref of Revisions from Documents",
         "operationId": "Documents.ListRefRevisions",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -974,19 +914,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1050,15 +978,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Documents-f555",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1074,9 +996,6 @@
         ],
         "summary": "Get entities from Libraries",
         "operationId": "Libraries.LibraryDto.ListLibraryDto",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -1177,19 +1096,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of LibraryDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.LibraryDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1395,9 +1302,6 @@
         ],
         "summary": "Get Documents from Libraries",
         "operationId": "Libraries.ListDocuments",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1494,19 +1398,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "schema": {
-              "title": "Collection of DocumentDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1575,9 +1467,6 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Documents-34c7",
-        "produces": [
-          "text/plain"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1593,10 +1482,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1612,9 +1498,6 @@
         ],
         "summary": "Get ref of Documents from Libraries",
         "operationId": "Libraries.ListRefDocuments",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -1676,19 +1559,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of DocumentDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1752,15 +1623,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Libraries-e13e",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1776,9 +1641,6 @@
         ],
         "summary": "Get entities from Revisions",
         "operationId": "Revisions.RevisionDto.ListRevisionDto",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -1885,19 +1747,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2336,15 +2186,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-c6a5",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2360,9 +2204,6 @@
         ],
         "summary": "Get entities from Tasks",
         "operationId": "Tasks.DocumentDto.ListDocumentDto",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -2448,19 +2289,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of DocumentDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2699,9 +2528,6 @@
         ],
         "summary": "Get Revisions from Tasks",
         "operationId": "Tasks.ListRevisions",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -2819,19 +2645,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property",
-            "schema": {
-              "title": "Collection of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2900,9 +2714,6 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Revisions-9297",
-        "produces": [
-          "text/plain"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -2918,10 +2729,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2937,9 +2745,6 @@
         ],
         "summary": "Get ref of Revisions from Tasks",
         "operationId": "Tasks.ListRefRevisions",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "in": "path",
@@ -3015,19 +2820,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved navigation property links",
-            "schema": {
-              "title": "Collection of links of RevisionDto",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/StringCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3091,15 +2884,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.Tasks-2961",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -4871,6 +4658,114 @@
     "ODataCountResponse": {
       "format": "int32",
       "type": "integer"
+    },
+    "Siterra.Documents.App.DTO.DocumentDtoCollectionResponse": {
+      "title": "Collection of DocumentDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.App.DTO.LibraryDtoCollectionResponse": {
+      "title": "Collection of LibraryDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.LibraryDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.App.DTO.RevisionDtoCollectionResponse": {
+      "title": "Collection of RevisionDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.App.DTO.CategoryDtoCollectionResponse": {
+      "title": "Collection of CategoryDto",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.App.DTO.CategoryDto"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse": {
+      "title": "Collection of Document",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse": {
+      "title": "Collection of Revision",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse": {
+      "title": "Collection of Library",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library"
+          }
+        }
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse": {
+      "title": "Collection of LibraryType",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+          }
+        }
+      }
+    },
+    "StringCollectionResponse": {
+      "title": "Collection of string",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     }
   },
   "parameters": {
@@ -4912,6 +4807,66 @@
       "description": "error",
       "schema": {
         "$ref": "#/definitions/odata.error"
+      }
+    },
+    "ODataCountResponse": {
+      "description": "The count of the resource",
+      "schema": {
+        "$ref": "#/definitions/ODataCountResponse"
+      }
+    },
+    "Siterra.Documents.App.DTO.DocumentDtoCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse"
+      }
+    },
+    "Siterra.Documents.App.DTO.LibraryDtoCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse"
+      }
+    },
+    "Siterra.Documents.App.DTO.RevisionDtoCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse"
+      }
+    },
+    "Siterra.Documents.App.DTO.CategoryDtoCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse"
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse"
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse"
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse"
+      }
+    },
+    "Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse"
+      }
+    },
+    "StringCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/StringCollectionResponse"
       }
     }
   },

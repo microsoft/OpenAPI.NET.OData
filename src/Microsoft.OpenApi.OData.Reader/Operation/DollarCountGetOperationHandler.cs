@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -55,30 +54,15 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new()
-			{
-                Reference = new() {
-                    Type = ReferenceType.Schema,
-                    Id = Constants.DollarCountSchemaName
-                }
-            };
-
             operation.Responses = new OpenApiResponses
             {
                 {
                     Constants.StatusCode200,
                     new OpenApiResponse
                     {
-                        Description = "The count of the resource",
-                        Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            {
-                                "text/plain",
-                                new OpenApiMediaType
-                                {
-                                    Schema = schema
-                                }
-                            }
+                        Reference = new OpenApiReference() {
+                            Type = ReferenceType.Response,
+                            Id = Constants.DollarCountSchemaName
                         }
                     }
                 }

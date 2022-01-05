@@ -17,9 +17,6 @@
         ],
         "summary": "Get entities from City",
         "operationId": "City.City.ListCity",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -76,19 +73,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of City",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DefaultNs.City"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/DefaultNs.CityCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -266,15 +251,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.City-8728",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -290,9 +269,6 @@
         ],
         "summary": "Get entities from CountryOrRegion",
         "operationId": "CountryOrRegion.CountryOrRegion.ListCountryOrRegion",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -349,19 +325,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of CountryOrRegion",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DefaultNs.CountryOrRegion"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/DefaultNs.CountryOrRegionCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -539,15 +503,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.CountryOrRegion-daf5",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -648,9 +606,6 @@
         "summary": "Get entities from People",
         "description": "People's description.",
         "operationId": "People.Person.ListPerson",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "$ref": "#/parameters/top"
@@ -716,19 +671,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "schema": {
-              "title": "Collection of Person",
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/definitions/DefaultNs.Person"
-                  }
-                }
-              }
-            }
+            "$ref": "#/responses/DefaultNs.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -910,15 +853,9 @@
       "get": {
         "summary": "Get the number of the resource",
         "operationId": "Get.Count.People-dd8d",
-        "produces": [
-          "text/plain"
-        ],
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "schema": {
-              "$ref": "#/definitions/ODataCountResponse"
-            }
+            "$ref": "#/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -1103,6 +1040,42 @@
     "ODataCountResponse": {
       "format": "int32",
       "type": "integer"
+    },
+    "DefaultNs.PersonCollectionResponse": {
+      "title": "Collection of Person",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DefaultNs.Person"
+          }
+        }
+      }
+    },
+    "DefaultNs.CityCollectionResponse": {
+      "title": "Collection of City",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DefaultNs.City"
+          }
+        }
+      }
+    },
+    "DefaultNs.CountryOrRegionCollectionResponse": {
+      "title": "Collection of CountryOrRegion",
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DefaultNs.CountryOrRegion"
+          }
+        }
+      }
     }
   },
   "parameters": {
@@ -1144,6 +1117,30 @@
       "description": "error",
       "schema": {
         "$ref": "#/definitions/odata.error"
+      }
+    },
+    "ODataCountResponse": {
+      "description": "The count of the resource",
+      "schema": {
+        "$ref": "#/definitions/ODataCountResponse"
+      }
+    },
+    "DefaultNs.PersonCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/DefaultNs.PersonCollectionResponse"
+      }
+    },
+    "DefaultNs.CityCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/DefaultNs.CityCollectionResponse"
+      }
+    },
+    "DefaultNs.CountryOrRegionCollectionResponse": {
+      "description": "Retrieved collection",
+      "schema": {
+        "$ref": "#/definitions/DefaultNs.CountryOrRegionCollectionResponse"
       }
     }
   },

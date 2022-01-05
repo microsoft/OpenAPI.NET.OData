@@ -73,7 +73,99 @@ namespace Microsoft.OpenApi.OData.Generator
                     Format = "int32"
                 };
 
+            schemas = schemas.Concat(context.GetAllCollectionEntityTypes()
+                                        .Select(x => new KeyValuePair<string, OpenApiSchema>(
+                                                            $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
+                                                            CreateCollectionSchema(context, x)))
+                                        .Where(x => !schemas.ContainsKey(x.Key)))
+                            .ToDictionary(x => x.Key, x => x.Value);
+            
+            if(context.HasAnyNonContainedCollections())                                        
+                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
+
             return schemas;
+        }
+        internal static bool HasAnyNonContainedCollections(this ODataContext context)
+        {
+            return context.Model
+                    .SchemaElements
+                    .OfType<IEdmStructuredType>()
+                    .SelectMany(x => x.NavigationProperties())
+                    .Any(x => x.TargetMultiplicity() == EdmMultiplicity.Many && !x.ContainsTarget);
+        }
+        internal static IEnumerable<IEdmStructuredType> GetAllCollectionEntityTypes(this ODataContext context)
+        {
+            var collectionEntityTypes = new HashSet<IEdmStructuredType>(
+                                                (context.EntityContainer?
+                                                    .EntitySets()
+                                                    .Select(x => x.EntityType()) ??
+                                                Enumerable.Empty<IEdmStructuredType>())
+                                                .Union(context.Model
+                                                                .SchemaElements
+                                                        	    .OfType<IEdmStructuredType>()
+                                                                .SelectMany(x => x.NavigationProperties())
+                                                                .Where(x => x.TargetMultiplicity() == EdmMultiplicity.Many)
+                                                                .Select(x => x.Type.ToStructuredType()))
+                                                .Distinct()); // we could include actions and functions but actions are not pageable by nature (OData.NextLink) and functions might have specific annotations (deltalink)
+            var derivedCollectionTypes = collectionEntityTypes.SelectMany(x => context.Model.FindAllDerivedTypes(x).OfType<IEdmStructuredType>())
+                                                                .Where(x => !collectionEntityTypes.Contains(x))
+                                                                .Distinct()
+                                                                .ToArray();
+            return collectionEntityTypes.Union(derivedCollectionTypes);
+        }
+
+        private static OpenApiSchema CreateCollectionSchema(ODataContext context, IEdmStructuredType structuredType)
+        {
+            OpenApiSchema schema = null;
+            var entityType = structuredType as IEdmEntityType;
+
+            if (context.Settings.EnableDerivedTypesReferencesForResponses && entityType != null)
+            {
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(entityType, context.Model);
+            }
+
+            if (schema == null)
+            {
+                schema = new OpenApiSchema
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.Schema,
+                        Id = entityType?.FullName() ?? structuredType.FullTypeName()
+                    }
+                };
+            }
+            return CreateCollectionSchema(context, schema, entityType?.Name ?? structuredType.FullTypeName());
+        }
+        private static OpenApiSchema CreateCollectionSchema(ODataContext context, OpenApiSchema schema, string typeName)
+        {
+            var properties = new Dictionary<string, OpenApiSchema>
+            {
+                {
+                    "value",
+                    new OpenApiSchema
+                    {
+                        Type = "array",
+                        Items = schema
+                    }
+                }
+            };
+            if (context.Settings.EnablePagination)
+            {
+                properties.Add(
+                    "@odata.nextLink",
+                    new OpenApiSchema
+                    {
+                        Type = "string"
+                    });
+            }
+
+            return new OpenApiSchema
+            {
+                Title = $"Collection of {typeName}",
+                Type = "object",
+                Properties = properties
+            };
         }
 
         /// <summary>

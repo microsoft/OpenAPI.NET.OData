@@ -61,17 +61,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved entities
-          content:
-            application/json:
-              schema:
-                title: Collection of Airline
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse'
         default:
           $ref: '#/components/responses/error'
     post:
@@ -203,11 +193,7 @@ paths:
       operationId: Get.Count.Airlines-27a7
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /Airports:
@@ -271,17 +257,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved entities
-          content:
-            application/json:
-              schema:
-                title: Collection of Airport
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse'
         default:
           $ref: '#/components/responses/error'
     post:
@@ -415,11 +391,7 @@ paths:
       operationId: Get.Count.Airports-60cc
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/GetNearestAirport(lat={lat},lon={lon})':
@@ -865,17 +837,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -932,11 +894,7 @@ paths:
       operationId: Get.Count.Peers-e850
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -993,17 +951,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1194,17 +1142,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1261,11 +1199,7 @@ paths:
       operationId: Get.Count.DirectReports-f41f
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1322,17 +1256,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1460,17 +1384,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1682,17 +1596,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1764,11 +1668,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -1832,17 +1732,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2055,17 +1945,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2137,11 +2017,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2205,17 +2081,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2270,11 +2136,7 @@ paths:
       operationId: Get.Count.Friends-182b
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2331,17 +2193,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2386,9 +2238,47 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-f4a5
       parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -2431,11 +2321,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2451,11 +2337,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-884b
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2469,9 +2351,47 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-98ae
       parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -2514,11 +2434,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2534,11 +2450,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-9376
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2698,17 +2610,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2765,11 +2667,7 @@ paths:
       operationId: Get.Count.Peers-9fc2
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2826,17 +2724,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3136,17 +3024,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3203,11 +3081,7 @@ paths:
       operationId: Get.Count.DirectReports-8b92
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3264,17 +3138,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3491,17 +3355,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Trip
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3794,17 +3648,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3882,11 +3726,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3941,17 +3781,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4009,11 +3839,7 @@ paths:
       operationId: Get.Count.Trips-7b69
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4110,17 +3936,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved entities
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
     post:
@@ -4595,17 +4411,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4676,11 +4482,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4744,17 +4546,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4967,17 +4759,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -5048,11 +4830,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -5116,17 +4894,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -5269,17 +5037,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -5494,17 +5252,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -5577,11 +5325,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/$ref':
@@ -5646,17 +5390,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -5872,17 +5606,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -5955,11 +5679,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/$ref':
@@ -6024,17 +5744,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -6092,11 +5802,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/$ref':
@@ -6154,17 +5860,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -6205,8 +5901,8 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-2969
       parameters:
         - name: UserName
           in: path
@@ -6215,6 +5911,44 @@ paths:
           schema:
             type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -6257,11 +5991,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/$count':
@@ -6279,11 +6009,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager':
@@ -6291,8 +6017,8 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-708f
       parameters:
         - name: UserName
           in: path
@@ -6301,6 +6027,44 @@ paths:
           schema:
             type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -6343,11 +6107,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/$count':
@@ -6365,11 +6125,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetFavoriteAirline()':
@@ -6681,17 +6437,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Trip
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -6991,17 +6737,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -7081,11 +6817,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   '/NewComePeople/{UserName}/Trips/{TripId}/PlanItems/$ref':
@@ -7141,17 +6873,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -7212,11 +6934,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /NewComePeople/$count:
@@ -7226,11 +6944,7 @@ paths:
       operationId: Get.Count.NewComePeople-55d5
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
   /People:
@@ -7321,17 +7035,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved entities
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7836,17 +7540,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7918,11 +7612,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7986,17 +7676,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8209,17 +7889,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8291,11 +7961,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8359,17 +8025,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8512,17 +8168,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8755,17 +8401,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8851,11 +8487,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -8926,17 +8558,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9170,17 +8792,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9266,11 +8878,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9341,17 +8949,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9421,11 +9019,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9489,17 +9083,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9552,8 +9136,8 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-11bf
       parameters:
         - name: UserName
           in: path
@@ -9562,6 +9146,44 @@ paths:
           schema:
             type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -9604,11 +9226,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9632,11 +9250,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9650,8 +9264,8 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-1cfb
       parameters:
         - name: UserName
           in: path
@@ -9660,6 +9274,44 @@ paths:
           schema:
             type: string
           x-ms-docs-key-type: Person
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -9702,11 +9354,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9730,11 +9378,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9908,17 +9552,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9990,11 +9624,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10058,17 +9688,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10413,17 +10033,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10495,11 +10105,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10563,17 +10169,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of Person
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10828,17 +10424,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of Trip
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11174,17 +10760,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          content:
-            application/json:
-              schema:
-                title: Collection of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11276,11 +10852,7 @@ paths:
           x-ms-docs-key-type: Trip
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11342,17 +10914,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          content:
-            application/json:
-              schema:
-                title: Collection of links of PlanItem
-                type: object
-                properties:
-                  value:
-                    type: array
-                    items:
-                      type: string
+          $ref: '#/components/responses/StringCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11425,11 +10987,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11445,11 +11003,7 @@ paths:
       operationId: Get.Count.People-dd8d
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11463,9 +11017,47 @@ paths:
     get:
       tags:
         - Person.Employee
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-013a
       parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -11508,11 +11100,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11528,11 +11116,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee-ef29
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11546,9 +11130,47 @@ paths:
     get:
       tags:
         - Person.Manager
-      summary: Get the item of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person as Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager
-      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Item.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
+      summary: Get the items of type Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager in the Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person collection
+      operationId: Get.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person.Items.As.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-3e14
       parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          in: query
+          description: Order items by property values
+          style: form
+          explode: false
+          schema:
+            uniqueItems: true
+            type: array
+            items:
+              enum:
+                - UserName
+                - UserName desc
+                - FirstName
+                - FirstName desc
+                - LastName
+                - LastName desc
+                - MiddleName
+                - MiddleName desc
+                - Gender
+                - Gender desc
+                - Age
+                - Age desc
+                - Emails
+                - Emails desc
+                - AddressInfo
+                - AddressInfo desc
+                - HomeAddress
+                - HomeAddress desc
+                - FavoriteFeature
+                - FavoriteFeature desc
+                - Features
+                - Features desc
+              type: string
         - name: $select
           in: query
           description: Select properties to be returned
@@ -11591,11 +11213,7 @@ paths:
               type: string
       responses:
         '200':
-          description: Result entities
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+          $ref: '#/components/responses/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -11611,11 +11229,7 @@ paths:
       operationId: Get.Count.Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager-2d48
       responses:
         '200':
-          description: The count of the resource
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ODataCountResponse'
+          $ref: '#/components/responses/ODataCountResponse'
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -12102,6 +11716,94 @@ components:
     ODataCountResponse:
       type: integer
       format: int32
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+      title: Collection of Person
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+      title: Collection of Airline
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+      title: Collection of Airport
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+      title: Collection of Trip
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+      title: Collection of PlanItem
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+      title: Collection of Employee
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+      title: Collection of Manager
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+      title: Collection of Event
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Event'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+      title: Collection of PublicTransportation
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportation'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+      title: Collection of Flight
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight'
+    StringCollectionResponse:
+      title: Collection of string
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            type: string
   responses:
     error:
       description: error
@@ -12109,6 +11811,78 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/odata.error'
+    ODataCountResponse:
+      description: The count of the resource
+      content:
+        text/plain:
+          schema:
+            $ref: '#/components/schemas/ODataCountResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirlineCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.TripCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItemCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EmployeeCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ManagerCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PublicTransportationCollectionResponse'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse'
+    StringCollectionResponse:
+      description: Retrieved collection
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StringCollectionResponse'
   parameters:
     top:
       name: $top

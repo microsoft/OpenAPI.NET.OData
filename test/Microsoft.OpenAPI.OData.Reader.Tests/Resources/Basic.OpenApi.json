@@ -90,23 +90,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of City",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.City"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/DefaultNs.CityCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -302,14 +286,7 @@
         "operationId": "Get.Count.City-8728",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -396,23 +373,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of CountryOrRegion",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/DefaultNs.CountryOrRegionCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -608,14 +569,7 @@
         "operationId": "Get.Count.CountryOrRegion-daf5",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -804,23 +758,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Retrieved entities",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/DefaultNs.Person"
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/DefaultNs.PersonCollectionResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1020,14 +958,7 @@
         "operationId": "Get.Count.People-dd8d",
         "responses": {
           "200": {
-            "description": "The count of the resource",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ODataCountResponse"
-                }
-              }
-            }
+            "$ref": "#/components/responses/ODataCountResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -1212,6 +1143,42 @@
       "ODataCountResponse": {
         "type": "integer",
         "format": "int32"
+      },
+      "DefaultNs.PersonCollectionResponse": {
+        "title": "Collection of Person",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.Person"
+            }
+          }
+        }
+      },
+      "DefaultNs.CityCollectionResponse": {
+        "title": "Collection of City",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.City"
+            }
+          }
+        }
+      },
+      "DefaultNs.CountryOrRegionCollectionResponse": {
+        "title": "Collection of CountryOrRegion",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefaultNs.CountryOrRegion"
+            }
+          }
+        }
       }
     },
     "responses": {
@@ -1221,6 +1188,46 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/odata.error"
+            }
+          }
+        }
+      },
+      "ODataCountResponse": {
+        "description": "The count of the resource",
+        "content": {
+          "text/plain": {
+            "schema": {
+              "$ref": "#/components/schemas/ODataCountResponse"
+            }
+          }
+        }
+      },
+      "DefaultNs.PersonCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DefaultNs.PersonCollectionResponse"
+            }
+          }
+        }
+      },
+      "DefaultNs.CityCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DefaultNs.CityCollectionResponse"
+            }
+          }
+        }
+      },
+      "DefaultNs.CountryOrRegionCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DefaultNs.CountryOrRegionCollectionResponse"
             }
           }
         }
