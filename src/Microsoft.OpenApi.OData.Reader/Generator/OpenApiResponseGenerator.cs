@@ -68,7 +68,9 @@ namespace Microsoft.OpenApi.OData.Generator
             };
 
             if(context.Settings.EnableDollarCountPath)
+            {
                 responses[Constants.DollarCountSchemaName] = CreateCountResponse();
+            }
 
             responses = responses.Concat(context.GetAllCollectionEntityTypes()
                                         .Select(x => new KeyValuePair<string, OpenApiResponse>(
