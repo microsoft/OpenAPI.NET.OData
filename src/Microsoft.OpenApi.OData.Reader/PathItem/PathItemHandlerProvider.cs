@@ -48,6 +48,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             // ~/groups/{id}/members/microsoft.graph.user
             { ODataPathKind.TypeCast, new ODataTypeCastPathItemHandler() },
 
+            // ~/users/{id}/mailboxSettings
+            { ODataPathKind.ComplexProperty, new ComplexPropertyItemHandler() },
+
             // Unknown
             { ODataPathKind.Unknown, null },
         };

@@ -128,6 +128,7 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPathKind kind = path.Kind;
             switch(kind)
             {
+                case ODataPathKind.ComplexProperty:
                 case ODataPathKind.TypeCast:
                 case ODataPathKind.DollarCount:
                 case ODataPathKind.Entity:
@@ -206,6 +207,9 @@ namespace Microsoft.OpenApi.OData.Edm
             // media entity
             RetrieveMediaEntityStreamPaths(entityType, path);
 
+            // properties of type complex
+            RetrieveComplexPropertyPaths(entityType, path, convertSettings);
+
             // navigation property
             foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
             {
@@ -222,6 +226,28 @@ namespace Microsoft.OpenApi.OData.Edm
 
             path.Pop(); // end of navigation source.
             Debug.Assert(path.Any() == false);
+        }
+        private void RetrieveComplexPropertyPaths(IEdmEntityType entityType, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        {
+            Debug.Assert(entityType != null);
+            Debug.Assert(currentPath != null);
+            Debug.Assert(convertSettings != null);
+
+            if (!convertSettings.EnableNavigationPropertyPath) return;
+
+            foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
+                                                    .Where(x => x.Type.IsComplex()))
+            {
+                //TODO collections (path, key path, count)
+                //TODO properties from parent types
+                //TODO downcast if supported
+                if (!sp.Type.IsCollection())
+                {
+                    currentPath.Push(new ODataComplexPropertySegment(sp));
+                    AppendPath(currentPath.Clone());
+                    currentPath.Pop();
+                }
+            }
         }
 
         /// <summary>
@@ -328,6 +354,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     // Get possible stream paths for the navigation entity type
                     RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
+                    // Get the paths for the navigation property entity type properties of type complex
+                    RetrieveComplexPropertyPaths(navEntityType, currentPath, convertSettings);
                 }
                 else
                 {
@@ -342,6 +371,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     // Get possible stream paths for the navigation entity type
                     RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
+                    // Get the paths for the navigation property entity type properties of type complex
+                    RetrieveComplexPropertyPaths(navEntityType, currentPath, convertSettings);
 
                     if (shouldExpand)
                     {

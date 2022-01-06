@@ -95,6 +95,15 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {OperationType.Get, new ODataTypeCastGetOperationHandler() },
             }},
+
+            // .../entity/propertyOfComplexType
+            {ODataPathKind.ComplexProperty, new Dictionary<OperationType, IOperationHandler>
+            {
+                {OperationType.Get, new ComplexPropertyGetOperationHandler() },
+                //TODO patch handler
+                //TODO post handler
+                //TODO delete handler
+            }},
         };
 
         /// <inheritdoc/>

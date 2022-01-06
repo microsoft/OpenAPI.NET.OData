@@ -72,6 +72,11 @@ namespace Microsoft.OpenApi.OData.Edm
         /// $count
         /// </summary>
         DollarCount,
+
+        /// <summary>
+        /// Path Segment for a property of type complex
+        /// </summary>
+        ComplexProperty,
     }
 
     /// <summary>
