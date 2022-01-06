@@ -14336,6 +14336,9 @@
           "properties": {
             "Loc": {
               "$ref": "#/definitions/Edm.GeographyPoint"
+            },
+            "EmergencyAuthority": {
+              "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
             }
           }
         }

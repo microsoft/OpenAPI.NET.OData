@@ -16003,6 +16003,15 @@
             "properties": {
               "Loc": {
                 "$ref": "#/components/schemas/Edm.GeographyPoint"
+              },
+              "EmergencyAuthority": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  }
+                ],
+                "description": "The person to contact in case of a crisis at this location.",
+                "nullable": true
               }
             }
           }
@@ -16953,6 +16962,9 @@
       },
       "Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation": {
         "value": {
+          "EmergencyAuthority": {
+            "@odata.type": "Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+          },
           "Loc": "GeographyPoint"
         }
       },

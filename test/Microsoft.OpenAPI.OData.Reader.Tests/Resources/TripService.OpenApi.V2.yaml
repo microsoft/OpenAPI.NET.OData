@@ -10331,6 +10331,8 @@ definitions:
         properties:
           Loc:
             $ref: '#/definitions/Edm.GeographyPoint'
+          EmergencyAuthority:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
     allOf:
       - $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
