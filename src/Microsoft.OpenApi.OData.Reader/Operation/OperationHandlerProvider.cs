@@ -101,7 +101,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {OperationType.Get, new ComplexPropertyGetOperationHandler() },
                 {OperationType.Patch, new ComplexPropertyPatchOperationHandler() },
-                //TODO delete handler
+                {OperationType.Delete, new ComplexPropertyDeleteOperationHandler() },
             }},
         };
 

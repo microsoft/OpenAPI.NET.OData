@@ -12,7 +12,11 @@ internal class ComplexPropertyItemHandler : PathItemHandler
     /// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
 	{
-		AddOperation(item, OperationType.Get); //TODO post delete
+		AddOperation(item, OperationType.Get); //TODO post
 		AddOperation(item, OperationType.Patch);
+		if(Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsNullable)
+		{
+			AddOperation(item, OperationType.Delete);
+		}
 	}
 }
