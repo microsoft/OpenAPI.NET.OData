@@ -81,7 +81,18 @@ namespace Microsoft.OpenApi.OData.Generator
                             .ToDictionary(x => x.Key, x => x.Value);
             
             if(context.HasAnyNonContainedCollections())                                        
+            {
                 schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
+                schemas[Constants.ReferenceUpdateSchemaName] = new()
+                {
+                    Type = "object",
+                    Properties = new Dictionary<string, OpenApiSchema>
+                    {
+                        {"@odata.id", new OpenApiSchema { Type = "string", Nullable = false }},
+                        {"@odata.type", new OpenApiSchema { Type = "string", Nullable = true }},
+                    }
+                };
+            }
 
             return schemas;
         }
