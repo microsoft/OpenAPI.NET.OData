@@ -571,7 +571,8 @@ namespace Microsoft.OpenApi.OData.Edm
         private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperationsWhenSingle = new() {
             ODataPathKind.EntitySet,
             ODataPathKind.MediaEntity,
-            ODataPathKind.DollarCount
+            ODataPathKind.DollarCount,
+            ODataPathKind.ComplexProperty,
         };
         private bool AppendBoundOperationOnNavigationSourcePath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
         {
