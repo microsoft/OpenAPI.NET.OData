@@ -243,15 +243,20 @@ namespace Microsoft.OpenApi.OData.Edm
             if (!convertSettings.EnableNavigationPropertyPath) return;
 
             foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
-                                                    .Where(x => x.Type.IsComplex()))
+                                                    .Where(x => x.Type.IsComplex() ||
+                                                            x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
             {
-                //TODO collections (path, key path, count)
                 //TODO downcast if supported
-                if (!sp.Type.IsCollection())
-                {
-                    currentPath.Push(new ODataComplexPropertySegment(sp));
-                    AppendPath(currentPath.Clone());
+                currentPath.Push(new ODataComplexPropertySegment(sp));
+                AppendPath(currentPath.Clone());
 
+                if (sp.Type.IsCollection())
+                {
+                    
+                    CreateCountPath(currentPath, convertSettings);
+                }
+                else
+                {
                     var complexTypeReference = sp.Type.AsComplex();
 
                     foreach (IEdmNavigationProperty np in complexTypeReference
@@ -264,8 +269,8 @@ namespace Microsoft.OpenApi.OData.Edm
                     {
                         RetrieveNavigationPropertyPaths(np, null, currentPath, convertSettings);//TODO get count restriction
                     }
-                    currentPath.Pop();
                 }
+                currentPath.Pop();
             }
         }
 

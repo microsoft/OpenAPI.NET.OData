@@ -20,7 +20,8 @@ public class ODataComplexPropertySegment : ODataSegment
 
 	public IEdmStructuralProperty Property { get; }
 
-	public IEdmComplexType ComplexType => Property.Type.AsComplex().Definition as IEdmComplexType;
+	public IEdmComplexType ComplexType => 
+		(Property.Type.IsCollection() ? Property.Type.Definition.AsElementType() : Property.Type.AsComplex().Definition) as IEdmComplexType;
 
 	public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 	{

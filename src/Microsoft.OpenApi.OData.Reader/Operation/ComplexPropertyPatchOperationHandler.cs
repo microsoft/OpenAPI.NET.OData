@@ -14,11 +14,21 @@ internal class ComplexPropertyPatchOperationHandler : ComplexPropertyBaseOperati
     /// <inheritdoc/>
     protected override void SetRequestBody(OpenApiOperation operation)
     {
-        OpenApiSchema schema = null;
-
-        if (schema == null)
-        {
-            schema = new OpenApiSchema
+        OpenApiSchema schema =  ComplexPropertySegment.Property.Type.IsCollection() ?
+			new OpenApiSchema
+			{
+				Type = "array",
+				Items = new OpenApiSchema
+				{
+					Reference = new OpenApiReference
+					{
+						Type = ReferenceType.Schema,
+						Id = ComplexPropertySegment.ComplexType.FullName()
+					}
+				}
+			}
+		:
+            new OpenApiSchema
             {
                 Reference = new OpenApiReference
                 {
@@ -26,7 +36,6 @@ internal class ComplexPropertyPatchOperationHandler : ComplexPropertyBaseOperati
                     Id = ComplexPropertySegment.ComplexType.FullName()
                 }
             };
-        }
 
         operation.RequestBody = new OpenApiRequestBody
         {

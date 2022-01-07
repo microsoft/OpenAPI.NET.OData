@@ -13,10 +13,30 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        SetSingleResponse(operation);
+        if(ComplexPropertySegment.Property.Type.IsCollection())
+            SetCollectionResponse(operation);
+        else
+            SetSingleResponse(operation);
         operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
         base.SetResponses(operation);
+    }
+    private void SetCollectionResponse(OpenApiOperation operation)
+    {
+        operation.Responses = new OpenApiResponses
+        {
+            {
+                Constants.StatusCode200,
+                new OpenApiResponse
+                {
+                    Reference = new OpenApiReference()
+                    {
+                        Type = ReferenceType.Response,
+                        Id = $"{ComplexPropertySegment.ComplexType.FullName()}{Constants.CollectionSchemaSuffix}"
+                    },
+                }
+            }
+        };
     }
     private void SetSingleResponse(OpenApiOperation operation)
     {
