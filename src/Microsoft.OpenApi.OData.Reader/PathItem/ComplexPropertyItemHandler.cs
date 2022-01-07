@@ -12,6 +12,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
     /// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
 	{
-		AddOperation(item, OperationType.Get); //TODO post patch delete
+		AddOperation(item, OperationType.Get); //TODO post delete
+		AddOperation(item, OperationType.Patch);
 	}
 }

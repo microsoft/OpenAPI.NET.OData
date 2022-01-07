@@ -100,8 +100,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {ODataPathKind.ComplexProperty, new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new ComplexPropertyGetOperationHandler() },
-                //TODO patch handler
-                //TODO post handler
+                {OperationType.Patch, new ComplexPropertyPatchOperationHandler() },
                 //TODO delete handler
             }},
         };
