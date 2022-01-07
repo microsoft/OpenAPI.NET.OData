@@ -227,6 +227,13 @@ namespace Microsoft.OpenApi.OData.Edm
             path.Pop(); // end of navigation source.
             Debug.Assert(path.Any() == false);
         }
+
+        /// <summary>
+        /// Retrieves the paths for properties of type complex type from entities
+        /// </summary>
+        /// <param name="entityType">The entity type.</param>
+        /// <param name="currentPath">The current path.</param>
+        /// <param name="convertSettings">The settings for the current conversion.</param>
         private void RetrieveComplexPropertyPaths(IEdmEntityType entityType, ODataPath currentPath, OpenApiConvertSettings convertSettings)
         {
             Debug.Assert(entityType != null);
@@ -239,12 +246,24 @@ namespace Microsoft.OpenApi.OData.Edm
                                                     .Where(x => x.Type.IsComplex()))
             {
                 //TODO collections (path, key path, count)
-                //TODO properties from parent types
                 //TODO downcast if supported
                 if (!sp.Type.IsCollection())
                 {
                     currentPath.Push(new ODataComplexPropertySegment(sp));
                     AppendPath(currentPath.Clone());
+
+                    var complexTypeReference = sp.Type.AsComplex();
+
+                    foreach (IEdmNavigationProperty np in complexTypeReference
+                                                        .DeclaredNavigationProperties()
+                                                        .Union(complexTypeReference.ComplexDefinition()
+                                                                                    .FindAllBaseTypes()
+                                                                                    .SelectMany(x => x.DeclaredNavigationProperties()))
+                                                        .Distinct()
+                                                        .Where(CanFilter))
+                    {
+                        RetrieveNavigationPropertyPaths(np, null, currentPath, convertSettings);//TODO get count restriction
+                    }
                     currentPath.Pop();
                 }
             }
