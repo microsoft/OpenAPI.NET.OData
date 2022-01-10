@@ -23,7 +23,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         [Fact]
         public void TypeCastSegmentConstructorThrowsArgumentNull()
         {
-            Assert.Throws<ArgumentNullException>("entityType", () => new ODataTypeCastSegment(null));
+            Assert.Throws<ArgumentNullException>("structuredType", () => new ODataTypeCastSegment(null));
         }
 
         [Fact]
@@ -33,7 +33,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataTypeCastSegment(_person);
 
             // Assert
-            Assert.Same(_person, segment.EntityType);
+            Assert.Throws<NotImplementedException>(() => segment.EntityType);
+            Assert.Same(_person, segment.StructuredType);
         }
 
         [Fact]
