@@ -1084,6 +1084,255 @@
         "x-ms-docs-operation-type": "operation"
       }
     },
+    "/Documents({Id})/Tags": {
+      "get": {
+        "summary": "Get Tags property value",
+        "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Name",
+                  "Name desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Name"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update property Tags value.",
+        "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Tags property value",
+        "operationId": "Tags.DocumentTagRelDto.DeleteDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Documents({Id})/Tags/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Tags-ed53",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
     "/Documents/$count": {
       "description": "Provides operations to count the resources in the collection.",
       "get": {
@@ -1635,6 +1884,320 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Libraries({Id})/Documents({Id1})/Tags": {
+      "get": {
+        "summary": "Get Tags property value",
+        "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "name": "Id1",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Name",
+                  "Name desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Name"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update property Tags value.",
+        "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "name": "Id1",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Tags property value",
+        "operationId": "Tags.DocumentTagRelDto.DeleteDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "name": "Id1",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "name": "Id1",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Libraries({Id})/Documents({Id1})/Tags/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Tags-2853",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of LibraryDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "LibraryDto"
+          },
+          {
+            "name": "Id1",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Libraries({Id})/Documents/$count": {
@@ -2432,10 +2995,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
+                "$ref": "#/components/schemas/ReferenceUpdateSchema"
               }
             }
           },
@@ -2489,6 +3049,549 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Revisions({Id})/Document/DocumentClasses": {
+      "get": {
+        "summary": "Get DocumentClasses property value",
+        "operationId": "DocumentClasses.DocumentClass.ListDocumentClass",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "ClassInstance",
+                  "ClassInstance desc",
+                  "ClassId",
+                  "ClassId desc",
+                  "DocumentId",
+                  "DocumentId desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "CreationDate",
+                  "CreationDate desc",
+                  "ModifiedBy",
+                  "ModifiedBy desc",
+                  "ModificationDate",
+                  "ModificationDate desc",
+                  "IsPrimary",
+                  "IsPrimary desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "ClassInstance",
+                  "ClassId",
+                  "DocumentId",
+                  "CreatedBy",
+                  "CreationDate",
+                  "ModifiedBy",
+                  "ModificationDate",
+                  "IsPrimary",
+                  "Document"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Document"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update property DocumentClasses value.",
+        "operationId": "DocumentClasses.DocumentClass.UpdateDocumentClass",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete DocumentClasses property value",
+        "operationId": "DocumentClasses.DocumentClass.DeleteDocumentClass",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Revisions({Id})/Document/DocumentClasses/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.DocumentClasses-6342",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Revisions({Id})/Document/Tags": {
+      "get": {
+        "summary": "Get Tags property value",
+        "operationId": "Tags.DocumentTagRel.ListDocumentTagRel",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "DocumentId",
+                  "DocumentId desc",
+                  "TagId",
+                  "TagId desc",
+                  "DomainId",
+                  "DomainId desc",
+                  "CreatedBy",
+                  "CreatedBy desc",
+                  "ModifiedBy",
+                  "ModifiedBy desc",
+                  "CreationDate",
+                  "CreationDate desc",
+                  "ModificationDate",
+                  "ModificationDate desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "DocumentId",
+                  "TagId",
+                  "DomainId",
+                  "CreatedBy",
+                  "ModifiedBy",
+                  "CreationDate",
+                  "ModificationDate",
+                  "Document",
+                  "Tag"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*",
+                  "Document",
+                  "Tag"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update property Tags value.",
+        "operationId": "Tags.DocumentTagRel.UpdateDocumentTagRel",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Tags property value",
+        "operationId": "Tags.DocumentTagRel.DeleteDocumentTagRel",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Revisions({Id})/Document/Tags/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Tags-161f",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of RevisionDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "RevisionDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Revisions/$count": {
@@ -3265,6 +4368,255 @@
           }
         },
         "x-ms-docs-operation-type": "operation"
+      }
+    },
+    "/Tasks({Id})/Tags": {
+      "get": {
+        "summary": "Get Tags property value",
+        "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "$ref": "#/components/parameters/top"
+          },
+          {
+            "$ref": "#/components/parameters/skip"
+          },
+          {
+            "$ref": "#/components/parameters/search"
+          },
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Name",
+                  "Name desc"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "Name"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$expand",
+            "in": "query",
+            "description": "Expand related entities",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "*"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update property Tags value.",
+        "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Tags property value",
+        "operationId": "Tags.DocumentTagRelDto.DeleteDocumentTagRelDto",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      },
+      "post": {
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "description": "ETag",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "New property values",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Tasks({Id})/Tags/$count": {
+      "description": "Provides operations to count the resources in the collection.",
+      "get": {
+        "summary": "Get the number of the resource",
+        "operationId": "Get.Count.Tags-3a1b",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "key: Id of DocumentDto",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-ms-docs-key-type": "DocumentDto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/ODataCountResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/error"
+          }
+        }
       }
     },
     "/Tasks/$count": {
@@ -5339,6 +6691,42 @@
           }
         }
       },
+      "Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse": {
+        "title": "Collection of Siterra.Documents.App.DTO.DocumentTagRelDto",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+            }
+          }
+        }
+      },
+      "Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse": {
+        "title": "Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
+            }
+          }
+        }
+      },
+      "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse": {
+        "title": "Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+            }
+          }
+        }
+      },
       "StringCollectionResponse": {
         "title": "Collection of string",
         "type": "object",
@@ -5348,6 +6736,18 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "ReferenceUpdateSchema": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          },
+          "@odata.type": {
+            "type": "string",
+            "nullable": true
           }
         }
       }
@@ -5449,6 +6849,36 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse"
+            }
+          }
+        }
+      },
+      "Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse"
+            }
+          }
+        }
+      },
+      "Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse"
+            }
+          }
+        }
+      },
+      "Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse": {
+        "description": "Retrieved collection",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse"
             }
           }
         }
