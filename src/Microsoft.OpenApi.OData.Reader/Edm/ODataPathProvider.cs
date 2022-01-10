@@ -246,24 +246,26 @@ namespace Microsoft.OpenApi.OData.Edm
                                                     .Where(x => x.Type.IsComplex() ||
                                                             x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
             {
-                //TODO downcast if supported
                 currentPath.Push(new ODataComplexPropertySegment(sp));
                 AppendPath(currentPath.Clone());
 
+
                 if (sp.Type.IsCollection())
                 {
-                    
+                    CreateTypeCastPaths(currentPath, convertSettings, sp.Type.Definition.AsElementType() as IEdmComplexType, sp, true);
                     CreateCountPath(currentPath, convertSettings);
                 }
                 else
                 {
                     var complexTypeReference = sp.Type.AsComplex();
+                    var definition = complexTypeReference.ComplexDefinition();
 
+                    CreateTypeCastPaths(currentPath, convertSettings, definition, sp, false);
                     foreach (IEdmNavigationProperty np in complexTypeReference
                                                         .DeclaredNavigationProperties()
-                                                        .Union(complexTypeReference.ComplexDefinition()
-                                                                                    .FindAllBaseTypes()
-                                                                                    .SelectMany(x => x.DeclaredNavigationProperties()))
+                                                        .Union(definition
+                                                                        .FindAllBaseTypes()
+                                                                        .SelectMany(x => x.DeclaredNavigationProperties()))
                                                         .Distinct()
                                                         .Where(CanFilter))
                     {
@@ -481,9 +483,9 @@ namespace Microsoft.OpenApi.OData.Edm
         private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable, bool targetsMany)
         {
             if(currentPath == null) throw Error.ArgumentNull(nameof(currentPath));
-            if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
-            if(structuredType == null) throw new ArgumentNullException(nameof(structuredType));
-            if(annotable == null) throw new ArgumentNullException(nameof(annotable));
+            if(convertSettings == null) throw Error.ArgumentNull(nameof(convertSettings));
+            if(structuredType == null) throw Error.ArgumentNull(nameof(structuredType));
+            if(annotable == null) throw Error.ArgumentNull(nameof(annotable));
             if(!convertSettings.EnableODataTypeCast) return;
 
             var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
@@ -501,8 +503,8 @@ namespace Microsoft.OpenApi.OData.Edm
 
             var targetTypes = _model
                                 .FindAllDerivedTypes(structuredType)
-                                .Where(x => x.TypeKind == EdmTypeKind.Entity && filter(x))
-                                .OfType<IEdmEntityType>()
+                                .Where(x => (x.TypeKind == EdmTypeKind.Entity || x.TypeKind == EdmTypeKind.Complex) && filter(x))
+                                .OfType<IEdmStructuredType>()
                                 .ToArray();
 
             foreach(var targetType in targetTypes) 
@@ -620,8 +622,8 @@ namespace Microsoft.OpenApi.OData.Edm
                         continue;
                     }
                     else if ((lastPathSegment is not ODataTypeCastSegment castSegment ||
-                                castSegment.EntityType == bindingEntityType ||
-                                bindingEntityType.InheritsFrom(castSegment.EntityType)) && // we don't want to add operations from the parent types under type cast segments because they already are present without the cast
+                                castSegment.StructuredType == bindingEntityType ||
+                                bindingEntityType.InheritsFrom(castSegment.StructuredType)) && // we don't want to add operations from the parent types under type cast segments because they already are present without the cast
                         ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
                             (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {

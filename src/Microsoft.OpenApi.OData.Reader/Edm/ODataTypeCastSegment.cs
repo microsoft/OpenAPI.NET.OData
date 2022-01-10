@@ -18,28 +18,29 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <summary>
         /// Initializes a new instance of <see cref="ODataTypeCastSegment"/> class.
         /// </summary>
-        /// <param name="entityType">The type cast type.</param>
-        public ODataTypeCastSegment(IEdmEntityType entityType)
+        /// <param name="structuredType">The target type cast type.</param>
+        public ODataTypeCastSegment(IEdmStructuredType structuredType)
         {
-            EntityType = entityType ?? throw Error.ArgumentNull(nameof(entityType));
+            StructuredType = structuredType ?? throw Error.ArgumentNull(nameof(structuredType));
         }
-
-        /// <inheritdoc />
-        public override IEdmEntityType EntityType { get; }
-
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.TypeCast;
 
         /// <inheritdoc />
-        public override string Identifier { get => EntityType.FullTypeName(); }
+        public override string Identifier { get => StructuredType.FullTypeName(); }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets the target type cast type.
+        /// </summary>
+		public IEdmStructuredType StructuredType { get; private set; }
+
+		/// <inheritdoc />
 		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
 		{
-			return new IEdmVocabularyAnnotatable[] { EntityType };
+			return new IEdmVocabularyAnnotatable[] { StructuredType as IEdmVocabularyAnnotatable };
 		}
 
 		/// <inheritdoc />
-		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => EntityType.FullTypeName();
+		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => StructuredType.FullTypeName();
     }
 }

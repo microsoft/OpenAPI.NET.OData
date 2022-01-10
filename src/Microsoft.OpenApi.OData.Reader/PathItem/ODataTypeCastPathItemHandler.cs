@@ -28,14 +28,14 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
         base.Initialize(context, path);
         if(path.LastSegment is ODataTypeCastSegment castSegment)
         {
-            EntityType = castSegment.EntityType;
+            StructuredType = castSegment.StructuredType;
         }
     }
-    private IEdmEntityType EntityType { get; set; }
+    private IEdmStructuredType StructuredType { get; set; }
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiPathItem pathItem)
     {
         base.SetBasicInfo(pathItem);
-        pathItem.Description = $"Casts the previous resource to {EntityType.Name}.";
+        pathItem.Description = $"Casts the previous resource to {(StructuredType as IEdmNamedElement).Name}.";
     }
 }

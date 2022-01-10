@@ -13,8 +13,20 @@
         <Property Name="Gender" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender" Nullable="false" />
         <Property Name="Age" Type="Edm.Int64" />
         <Property Name="Emails" Type="Collection(Edm.String)" />
-        <Property Name="AddressInfo" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location)" />
-        <Property Name="HomeAddress" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location" />
+        <Property Name="AddressInfo" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location)">
+          <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
+            <Collection>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation</String>
+            </Collection>
+          </Annotation>
+        </Property>
+        <Property Name="HomeAddress" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location">
+          <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
+            <Collection>
+              <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation</String>
+            </Collection>
+          </Annotation>
+        </Property>
         <Property Name="FavoriteFeature" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature" Nullable="false" />
         <Property Name="Features" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature)" Nullable="false" />
         <NavigationProperty Name="Friends" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)">

@@ -44,8 +44,10 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	private IEdmSingleton singleton;
 	private IEdmEntitySet entitySet;
 	private IEdmNavigationProperty navigationProperty;
-	private IEdmEntityType parentEntityType;
-	private IEdmEntityType targetEntityType;
+	private IEdmStructuredType parentStructuredType;
+	private IEdmSchemaElement ParentSchemaElement => parentStructuredType as IEdmSchemaElement;
+	private IEdmStructuredType targetStructuredType;
+	private IEdmSchemaElement TargetSchemaElement => targetStructuredType as IEdmSchemaElement;
 	private const int SecondLastSegmentIndex = 2;
 	/// <inheritdoc/>
 	protected override void Initialize(ODataContext context, ODataPath path)
@@ -56,8 +58,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		restriction = null;
 		entitySet = null;
 		navigationProperty = null;
-		parentEntityType = null;
-		targetEntityType = null;
+		parentStructuredType = null;
+		targetStructuredType = null;
 		base.Initialize(context, path);
 
 		// get the last second segment
@@ -65,7 +67,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		if(count >= SecondLastSegmentIndex)
 			LastSecondSegment = path.Segments.ElementAt(count - SecondLastSegmentIndex);
 
-		parentEntityType = LastSecondSegment.EntityType;
+		parentStructuredType = LastSecondSegment is ODataComplexPropertySegment complexSegment ? complexSegment.ComplexType : LastSecondSegment.EntityType;
 		if(LastSecondSegment is ODataNavigationPropertySegment navigationPropertySegment)
 		{
 			SetNavigationPropertyAndRestrictionFromNavigationSegment(navigationPropertySegment, path);
@@ -92,7 +94,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		}
 		if(path.Last() is ODataTypeCastSegment oDataTypeCastSegment)
 		{
-			targetEntityType = oDataTypeCastSegment.EntityType;
+			targetStructuredType = oDataTypeCastSegment.StructuredType;
 		}
 		else throw new NotImplementedException($"type cast type {path.Last().GetType().FullName} not implemented");
 	}
@@ -152,15 +154,15 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
 		// Summary
 		if(IsSingleElement)
-			operation.Summary = $"Get the item of type {parentEntityType.ShortQualifiedName()} as {targetEntityType.ShortQualifiedName()}";
+			operation.Summary = $"Get the item of type {ParentSchemaElement.ShortQualifiedName()} as {TargetSchemaElement.ShortQualifiedName()}";
 		else
-			operation.Summary = $"Get the items of type {targetEntityType.ShortQualifiedName()} in the {parentEntityType.ShortQualifiedName()} collection";
+			operation.Summary = $"Get the items of type {TargetSchemaElement.ShortQualifiedName()} in the {ParentSchemaElement.ShortQualifiedName()} collection";
 
 		// OperationId
 		if (Context.Settings.EnableOperationId)
 		{
 			var operationItem = IsSingleElement ? ".Item" : ".Items";
-			operation.OperationId = $"Get.{parentEntityType.ShortQualifiedName()}{operationItem}.As.{targetEntityType.ShortQualifiedName()}-{Path.GetPathHash(Context.Settings)}";
+			operation.OperationId = $"Get.{ParentSchemaElement.ShortQualifiedName()}{operationItem}.As.{TargetSchemaElement.ShortQualifiedName()}-{Path.GetPathHash(Context.Settings)}";
 		}
 
 		base.SetBasicInfo(operation);
@@ -189,7 +191,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 					Reference = new OpenApiReference()
 					{
 						Type = ReferenceType.Response,
-						Id = $"{targetEntityType.FullName()}{Constants.CollectionSchemaSuffix}"
+						Id = $"{TargetSchemaElement.FullName()}{Constants.CollectionSchemaSuffix}"
 					},
 				}
 			}
@@ -201,7 +203,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 
 		if (Context.Settings.EnableDerivedTypesReferencesForResponses)
 		{
-			schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetEntityType, Context.Model);
+			schema = EdmModelHelper.GetDerivedTypesReferenceSchema(targetStructuredType, Context.Model);
 		}
 
 		if (schema == null)
@@ -211,7 +213,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				Reference = new OpenApiReference
 				{
 					Type = ReferenceType.Schema,
-					Id = targetEntityType.FullName()
+					Id = TargetSchemaElement.FullName()
 				}
 			};
 		}
@@ -241,8 +243,8 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 	{
 		IList<string> items = new List<string>
 		{
-			parentEntityType.Name,
-			targetEntityType.Name,
+			ParentSchemaElement.Name,
+			TargetSchemaElement.Name,
 		};
 
 		string name = string.Join(".", items);
