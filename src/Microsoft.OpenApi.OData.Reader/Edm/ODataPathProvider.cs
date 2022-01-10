@@ -253,7 +253,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 if (sp.Type.IsCollection())
                 {
                     CreateTypeCastPaths(currentPath, convertSettings, sp.Type.Definition.AsElementType() as IEdmComplexType, sp, true);
-                    CreateCountPath(currentPath, convertSettings);
+                    var count = _model.GetRecord<CountRestrictionsType>(sp, CapabilitiesConstants.CountRestrictions);
+                    if(count?.IsCountable ?? true)
+                        CreateCountPath(currentPath, convertSettings);
                 }
                 else
                 {
@@ -269,7 +271,8 @@ namespace Microsoft.OpenApi.OData.Edm
                                                         .Distinct()
                                                         .Where(CanFilter))
                     {
-                        RetrieveNavigationPropertyPaths(np, null, currentPath, convertSettings);//TODO get count restriction
+                        var count = _model.GetRecord<CountRestrictionsType>(np, CapabilitiesConstants.CountRestrictions);
+                        RetrieveNavigationPropertyPaths(np, count, currentPath, convertSettings);
                     }
                 }
                 currentPath.Pop();
