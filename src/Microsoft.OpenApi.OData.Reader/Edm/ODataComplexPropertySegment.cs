@@ -6,27 +6,46 @@ using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm;
 
+/// <summary>
+/// Represents a property of complex type segment.
+/// </summary>
 public class ODataComplexPropertySegment : ODataSegment
 {
-	public ODataComplexPropertySegment(IEdmStructuralProperty property)
-	{
-		Property = property ?? throw Error.ArgumentNull(nameof(property));
-	}
-	/// <inheritdoc />
-	public override IEdmEntityType EntityType => null;
-	public override ODataSegmentKind Kind => ODataSegmentKind.ComplexProperty;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ODataComplexPropertySegment"/> class.
+    /// </summary>
+    /// <param name="property">The complex type property.</param>
+    public ODataComplexPropertySegment(IEdmStructuralProperty property)
+    {
+        Property = property ?? throw Error.ArgumentNull(nameof(property));
+    }
 
-	public override string Identifier => Property.Name;
+    /// <inheritdoc />
 
-	public IEdmStructuralProperty Property { get; }
+    public override IEdmEntityType EntityType => null;
+    /// <inheritdoc />
+    public override ODataSegmentKind Kind => ODataSegmentKind.ComplexProperty;
 
-	public IEdmComplexType ComplexType => 
-		(Property.Type.IsCollection() ? Property.Type.Definition.AsElementType() : Property.Type.AsComplex().Definition) as IEdmComplexType;
+    /// <inheritdoc />
+    public override string Identifier => Property.Name;
 
-	public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
-	{
-		return new IEdmVocabularyAnnotatable[] { Property, ComplexType }.Union(ComplexType.FindAllBaseTypes());
-	}
+    /// <summary>
+    /// Gets the complex type property this segment was inserted for.
+    /// </summary>
+    public IEdmStructuralProperty Property { get; }
 
-	public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => Property.Name;
+    /// <summary>
+    /// Gets the type definition of the property this segment was inserted for.
+    /// </summary>
+    public IEdmComplexType ComplexType => 
+        (Property.Type.IsCollection() ? Property.Type.Definition.AsElementType() : Property.Type.AsComplex().Definition) as IEdmComplexType;
+
+    /// <inheritdoc />
+    public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+    {
+        return new IEdmVocabularyAnnotatable[] { Property, ComplexType }.Union(ComplexType.FindAllBaseTypes());
+    }
+
+    /// <inheritdoc />
+    public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => Property.Name;
 }
