@@ -1,4 +1,5 @@
 
+using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 
@@ -12,11 +13,14 @@ internal class ComplexPropertyItemHandler : PathItemHandler
     /// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
 	{
-		AddOperation(item, OperationType.Get); //TODO post
+		AddOperation(item, OperationType.Get);
 		AddOperation(item, OperationType.Patch);
-		if(Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsNullable)
+		if(Path.LastSegment is ODataComplexPropertySegment segment)
 		{
-			AddOperation(item, OperationType.Delete);
+			if(segment.Property.Type.IsNullable)
+				AddOperation(item, OperationType.Delete);
+			if(segment.Property.Type.IsCollection())
+				AddOperation(item, OperationType.Post);
 		}
 	}
 }

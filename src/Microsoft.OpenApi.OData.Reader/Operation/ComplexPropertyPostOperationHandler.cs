@@ -6,37 +6,42 @@ using Microsoft.OpenApi.OData.Generator;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
-internal class ComplexPropertyPatchOperationHandler : ComplexPropertyBaseOperationHandler
+internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperationHandler
 {
     /// <inheritdoc />
-    public override OperationType OperationType => OperationType.Patch;
+    public override OperationType OperationType => OperationType.Post;
 
+    /// <inheritdoc/>
+    protected override void SetParameters(OpenApiOperation operation)
+    {
+        base.SetParameters(operation);
+
+        operation.Parameters.Add(new OpenApiParameter
+        {
+            Name = "If-Match",
+            In = ParameterLocation.Header,
+            Description = "ETag",
+            Schema = new OpenApiSchema
+            {
+                Type = "string"
+            }
+        });
+    }
     /// <inheritdoc/>
     protected override void SetRequestBody(OpenApiOperation operation)
     {
-        OpenApiSchema schema =  ComplexPropertySegment.Property.Type.IsCollection() ?
-            new OpenApiSchema
-            {
-                Type = "array",
-                Items = new OpenApiSchema
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = ComplexPropertySegment.ComplexType.FullName()
-                    }
-                }
-            }
-        :
-            new OpenApiSchema
+        OpenApiSchema schema = new()
+        {
+            Type = "array",
+            Items = new OpenApiSchema
             {
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
                     Id = ComplexPropertySegment.ComplexType.FullName()
                 }
-            };
-
+            }
+        };
         operation.RequestBody = new OpenApiRequestBody
         {
             Required = true,
@@ -54,7 +59,6 @@ internal class ComplexPropertyPatchOperationHandler : ComplexPropertyBaseOperati
 
         base.SetRequestBody(operation);
     }
-
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
