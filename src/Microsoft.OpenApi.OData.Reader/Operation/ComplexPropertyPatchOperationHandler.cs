@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
@@ -10,6 +13,23 @@ internal class ComplexPropertyPatchOperationHandler : ComplexPropertyBaseOperati
 {
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Patch;
+
+    /// <inheritdoc/>
+    protected override void SetBasicInfo(OpenApiOperation operation)
+    {
+        // Summary
+        operation.Summary = $"Update property {ComplexPropertySegment.Property.Name} value.";
+
+        // Description
+        operation.Description = Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
+
+        // OperationId
+        if (Context.Settings.EnableOperationId)
+        {
+            string typeName = ComplexPropertySegment.ComplexType.Name;
+            operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
+        }
+    }
 
     /// <inheritdoc/>
     protected override void SetRequestBody(OpenApiOperation operation)
@@ -65,5 +85,34 @@ internal class ComplexPropertyPatchOperationHandler : ComplexPropertyBaseOperati
         };
 
         base.SetResponses(operation);
+    }
+    protected override void SetSecurity(OpenApiOperation operation)
+    {
+        UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+        if (update == null || update.Permissions == null)
+        {
+            return;
+        }
+
+        operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+    }
+
+    protected override void AppendCustomParameters(OpenApiOperation operation)
+    {
+        UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+        if (update == null)
+        {
+            return;
+        }
+
+        if (update.CustomHeaders != null)
+        {
+            AppendCustomParameters(operation, update.CustomHeaders, ParameterLocation.Header);
+        }
+
+        if (update.CustomQueryOptions != null)
+        {
+            AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
+        }
     }
 }

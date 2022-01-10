@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
@@ -69,5 +72,35 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         };
 
         base.SetResponses(operation);
+    }
+
+    protected override void SetSecurity(OpenApiOperation operation)
+    {
+        InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
+        if (insert == null || insert.Permissions == null)
+        {
+            return;
+        }
+
+        operation.Security = Context.CreateSecurityRequirements(insert.Permissions).ToList();
+    }
+
+    protected override void AppendCustomParameters(OpenApiOperation operation)
+    {
+        InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
+        if (insert == null)
+        {
+            return;
+        }
+
+        if (insert.CustomQueryOptions != null)
+        {
+            AppendCustomParameters(operation, insert.CustomQueryOptions, ParameterLocation.Query);
+        }
+
+        if (insert.CustomHeaders != null)
+        {
+            AppendCustomParameters(operation, insert.CustomHeaders, ParameterLocation.Header);
+        }
     }
 }
