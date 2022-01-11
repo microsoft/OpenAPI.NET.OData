@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
@@ -11,8 +12,33 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <inheritdoc/>
+    protected override void Initialize(ODataContext context, ODataPath path)
+    {
+        base.Initialize(context, path);
+        if(!ComplexPropertySegment.Property.Type.IsCollection())
+        {
+            throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
+        }
+    }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Post;
+
+    /// <inheritdoc/>
+    protected override void SetBasicInfo(OpenApiOperation operation)
+    {
+        // Summary
+        operation.Summary = $"Sets a new value for the collection of {ComplexPropertySegment.ComplexType.Name}.";
+
+        // OperationId
+        if (Context.Settings.EnableOperationId)
+        {
+            string typeName = ComplexPropertySegment.ComplexType.Name;
+            operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + ".Set" + Utils.UpperFirstChar(typeName);
+        }
+
+        base.SetBasicInfo(operation);
+    }
 
     /// <inheritdoc/>
     protected override void SetParameters(OpenApiOperation operation)
