@@ -11,13 +11,12 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 {
     public class ODataTypeCastSegmentTests
     {
-        private IEdmEntityType _person { get; }
+        private readonly EdmEntityType _person;
 
         public ODataTypeCastSegmentTests()
         {
-            var person = new EdmEntityType("NS", "Person");
-            person.AddKeys(person.AddStructuralProperty("Id", EdmCoreModel.Instance.GetString(false)));
-            _person = person;
+            _person = new EdmEntityType("NS", "Person");
+            _person.AddKeys(_person.AddStructuralProperty("Id", EdmCoreModel.Instance.GetString(false)));
         }
 
         [Fact]

@@ -95,7 +95,6 @@ Microsoft.OpenApi.OData.Edm.ODataTypeCastSegment.ODataTypeCastSegment(Microsoft.
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.ODataComplexPropertySegment(Microsoft.OData.Edm.IEdmStructuralProperty property) -> void
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Property.get -> Microsoft.OData.Edm.IEdmStructuralProperty
-override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
 override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
 override Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.Identifier.get -> string
 Microsoft.OpenApi.OData.Edm.ODataComplexPropertySegment.ComplexType.get -> Microsoft.OData.Edm.IEdmComplexType
