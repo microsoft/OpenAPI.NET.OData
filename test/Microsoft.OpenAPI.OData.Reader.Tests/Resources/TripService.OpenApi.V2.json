@@ -964,6 +964,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -1560,6 +1562,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -1988,6 +1992,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -2642,6 +2648,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -3512,6 +3520,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -4305,6 +4315,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -5079,6 +5091,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -6087,6 +6101,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -7604,6 +7620,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -8622,6 +8640,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -10391,6 +10411,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -10887,6 +10909,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -11660,6 +11684,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -12667,6 +12693,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -13555,6 +13583,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -14342,6 +14372,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -15366,6 +15398,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -18060,6 +18094,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -18584,6 +18620,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -19358,6 +19396,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -20366,6 +20406,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -21289,6 +21331,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -22175,6 +22219,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -23319,6 +23365,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -25068,6 +25116,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],
@@ -26250,6 +26300,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "consumes": [
           "application/json"
         ],

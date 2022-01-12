@@ -456,6 +456,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      summary: Sets a new value for the collection of Address.
+      operationId: Addresses.Address.SetAddress
       consumes:
         - application/json
       parameters:
@@ -1005,6 +1007,8 @@ paths:
         default:
           $ref: '#/responses/error'
     post:
+      summary: Sets a new value for the collection of Address.
+      operationId: Addresses.Address.SetAddress
       consumes:
         - application/json
       parameters:

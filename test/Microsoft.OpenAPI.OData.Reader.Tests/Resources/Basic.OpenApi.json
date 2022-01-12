@@ -780,6 +780,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Address.",
+        "operationId": "Addresses.Address.SetAddress",
         "parameters": [
           {
             "name": "If-Match",
@@ -1696,6 +1698,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Address.",
+        "operationId": "Addresses.Address.SetAddress",
         "parameters": [
           {
             "name": "UserName",

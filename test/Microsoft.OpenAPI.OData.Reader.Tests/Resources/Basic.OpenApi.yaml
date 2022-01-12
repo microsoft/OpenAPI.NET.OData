@@ -513,6 +513,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     post:
+      summary: Sets a new value for the collection of Address.
+      operationId: Addresses.Address.SetAddress
       parameters:
         - name: If-Match
           in: header
@@ -1122,6 +1124,8 @@ paths:
         default:
           $ref: '#/components/responses/error'
     post:
+      summary: Sets a new value for the collection of Address.
+      operationId: Addresses.Address.SetAddress
       parameters:
         - name: UserName
           in: path

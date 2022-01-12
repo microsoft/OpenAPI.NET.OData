@@ -1087,6 +1087,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "IcaoCode",
@@ -1780,6 +1782,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "If-Match",
@@ -2234,6 +2238,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "If-Match",
@@ -2953,6 +2959,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -3909,6 +3917,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -4777,6 +4787,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -5646,6 +5658,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -6776,6 +6790,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -8446,6 +8462,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -9567,6 +9585,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -11498,6 +11518,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -12046,6 +12068,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -12914,6 +12938,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -14043,6 +14069,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -15040,6 +15068,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -15950,6 +15980,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -17130,6 +17162,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -20162,6 +20196,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -20738,6 +20774,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -21607,6 +21645,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -22737,6 +22777,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -23769,6 +23811,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -24778,6 +24822,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -26078,6 +26124,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -28040,6 +28088,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",
@@ -29369,6 +29419,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Location.",
+        "operationId": "AddressInfo.Location.SetLocation",
         "parameters": [
           {
             "name": "UserName",

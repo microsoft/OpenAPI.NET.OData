@@ -1124,6 +1124,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of DocumentTagRelDto.",
+        "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
         "consumes": [
           "application/json"
         ],
@@ -1868,6 +1870,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of DocumentTagRelDto.",
+        "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
         "consumes": [
           "application/json"
         ],
@@ -2851,6 +2855,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of DocumentClass.",
+        "operationId": "DocumentClasses.DocumentClass.SetDocumentClass",
         "consumes": [
           "application/json"
         ],
@@ -3095,6 +3101,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of DocumentTagRel.",
+        "operationId": "Tags.DocumentTagRel.SetDocumentTagRel",
         "consumes": [
           "application/json"
         ],
@@ -4015,6 +4023,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of DocumentTagRelDto.",
+        "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
         "consumes": [
           "application/json"
         ],

@@ -697,6 +697,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Address.",
+        "operationId": "Addresses.Address.SetAddress",
         "consumes": [
           "application/json"
         ],
@@ -1525,6 +1527,8 @@
         }
       },
       "post": {
+        "summary": "Sets a new value for the collection of Address.",
+        "operationId": "Addresses.Address.SetAddress",
         "consumes": [
           "application/json"
         ],
