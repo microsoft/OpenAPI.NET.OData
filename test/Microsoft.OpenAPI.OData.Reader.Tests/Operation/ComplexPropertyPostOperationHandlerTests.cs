@@ -13,7 +13,7 @@ public class ComplexPropertyPostOperationHandlerTests
 	public void CreateComplexPropertyPostOperationThrowsForSingle()
 	{
 		// Arrange
-		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
+		var model = EntitySetPostOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		var entity = entitySet.EntityType();
 		var property = entity.FindProperty("BillingAddress");
@@ -30,7 +30,7 @@ public class ComplexPropertyPostOperationHandlerTests
 	public void CreateComplexPropertyPostOperationReturnsCorrectOperationForCollection(bool enableOperationId)
 	{
 		// Arrange
-		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
+		var model = EntitySetPostOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		var entity = entitySet.EntityType();
 		var property = entity.FindProperty("AlternativeAddresses");
