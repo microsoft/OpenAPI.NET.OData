@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -14,6 +15,8 @@ namespace Microsoft.OpenApi.OData.Edm
     /// </summary>
     public class ODataStreamContentSegment : ODataSegment
     {
+        /// <inheritdoc />
+        public override IEdmEntityType EntityType => null;
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.StreamContent;
 

@@ -21,6 +21,9 @@ public class ODataComplexPropertySegment : ODataSegment
     }
 
     /// <inheritdoc />
+    public override IEdmEntityType EntityType => null;
+
+    /// <inheritdoc />
     public override ODataSegmentKind Kind => ODataSegmentKind.ComplexProperty;
 
     /// <inheritdoc />

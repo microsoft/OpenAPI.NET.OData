@@ -49,6 +49,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public IEdmOperationImport OperationImport { get; }
 
         /// <inheritdoc />
+        public override IEdmEntityType EntityType => null;
+
+        /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.OperationImport;
 
         /// <inheritdoc />

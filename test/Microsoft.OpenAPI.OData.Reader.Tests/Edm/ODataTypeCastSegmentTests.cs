@@ -32,7 +32,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataTypeCastSegment(_person);
 
             // Assert
-            Assert.Throws<NotImplementedException>(() => segment.EntityType);
+            Assert.Null(segment.EntityType);
             Assert.Same(_person, segment.StructuredType);
         }
 

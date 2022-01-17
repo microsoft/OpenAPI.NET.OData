@@ -36,7 +36,7 @@ public class ODataComplexPropertySegmentTests
         var segment = new ODataComplexPropertySegment(_addressProperty);
 
         // Assert
-        Assert.Throws<NotImplementedException>(() => segment.EntityType);
+        Assert.Null(segment.EntityType);
         Assert.Same(_addressComplexType, segment.ComplexType);
     }
 
