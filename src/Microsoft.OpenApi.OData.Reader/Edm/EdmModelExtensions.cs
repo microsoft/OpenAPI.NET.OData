@@ -124,43 +124,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 current = current.BaseEntityType();
             }
         }
-
-        /// <summary>
-        /// Checks if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>.
-        /// In other words, if <paramref name="subtype"/> is a subtype of <paramref name="baseType"/> or not.
-        /// </summary>
-        /// <param name="baseType">Type of the base type.</param>
-        /// <param name="subtype">Type of the sub type.</param>
-        /// <returns>true, if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>. Otherwise returns false.</returns>
-        public static bool IsAssignableFrom(this IEdmEntityType baseType, IEdmEntityType subtype)
-        {
-            Utils.CheckArgumentNull(baseType, nameof(baseType));
-            Utils.CheckArgumentNull(subtype, nameof(subtype));
-
-            if (baseType.TypeKind != subtype.TypeKind)
-            {
-                return false;
-            }
-
-            if (subtype.IsEquivalentTo(baseType))
-            {
-                return true;
-            }
-
-            IEdmStructuredType structuredSubType = subtype;
-            while (structuredSubType != null)
-            {
-                if (structuredSubType.IsEquivalentTo(baseType))
-                {
-                    return true;
-                }
-
-                structuredSubType = structuredSubType.BaseType;
-            }
-
-            return false;
-        }
-
+                
         /// <summary>
         /// Check whether the operation is overload in the model.
         /// </summary>
