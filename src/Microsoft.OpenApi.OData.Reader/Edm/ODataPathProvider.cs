@@ -273,6 +273,15 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
+            // Check whether the navigation property has already been navigated in the path
+            foreach (ODataSegment segment in currentPath)
+            {
+                if (navigationProperty.Name.Equals(segment.Identifier))
+                {
+                    return;
+                }
+            }
+
             // Check whether the navigation property should be part of the path
             NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
             if (navigation != null && !navigation.IsNavigable)
@@ -281,7 +290,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             // test the expandable for the navigation property.
-            bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
+            bool shouldExpand = navigationProperty.ContainsTarget;
 
             // append a navigation property.
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
@@ -362,31 +371,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
             currentPath.Pop();
-        }
-
-        private bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
-        {
-            Debug.Assert(navigationProperty != null);
-            Debug.Assert(currentPath != null);
-
-            // not expand for the non-containment.
-            if (!navigationProperty.ContainsTarget)
-            {
-                return false;
-            }
-
-            // check the type is visited before, if visited, not expand it.
-            IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-            foreach (ODataSegment segment in currentPath)
-            {
-                if (navEntityType.IsAssignableFrom(segment.EntityType))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+        }              
 
         /// <summary>
         /// Create $ref paths.
