@@ -289,7 +289,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
 
-            // test the expandable for the navigation property.
+            // Whether to expand the navigation property
             bool shouldExpand = navigationProperty.ContainsTarget;
 
             // append a navigation property.
