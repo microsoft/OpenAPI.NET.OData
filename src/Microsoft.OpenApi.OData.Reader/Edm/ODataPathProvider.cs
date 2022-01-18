@@ -135,14 +135,15 @@ namespace Microsoft.OpenApi.OData.Edm
                 case ODataPathKind.EntitySet:
                 case ODataPathKind.Singleton:
                 case ODataPathKind.MediaEntity:
-                    ODataNavigationSourceSegment navigationSourceSegment = (ODataNavigationSourceSegment)path.FirstSegment;
-                    if (!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
+                    if (path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment)
                     {
-                        nsList = new List<ODataPath>();
-                        _allNavigationSourcePaths[navigationSourceSegment.EntityType] = nsList;
+                        if(!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
+                        {
+                            nsList = new List<ODataPath>();
+                            _allNavigationSourcePaths[navigationSourceSegment.EntityType] = nsList;
+                        }
+                        nsList.Add(path);
                     }
-
-                    nsList.Add(path);
                     break;
 
                 case ODataPathKind.NavigationProperty:
@@ -440,7 +441,8 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType navEntityType = navigationProperty.ToEntityType();
             foreach (ODataSegment segment in currentPath)
             {
-                if (navEntityType.IsAssignableFrom(segment.EntityType))
+                if (segment.EntityType != null && 
+                    navEntityType.IsAssignableFrom(segment.EntityType))
                 {
                     return false;
                 }
