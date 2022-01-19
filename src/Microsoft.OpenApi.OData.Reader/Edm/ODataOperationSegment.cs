@@ -71,6 +71,9 @@ namespace Microsoft.OpenApi.OData.Edm
         public override string Identifier { get => Operation.Name; }
 
         /// <inheritdoc />
+        public override IEdmEntityType EntityType => null;
+
+        /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));

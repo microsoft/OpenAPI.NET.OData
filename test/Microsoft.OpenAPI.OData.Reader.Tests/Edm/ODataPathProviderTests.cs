@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17178, paths.Count());
+            Assert.Equal(50085, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(17163, paths.Count());
+            Assert.Equal(50070, paths.Count());
         }
 
         [Fact]

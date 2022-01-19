@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
@@ -23,6 +24,9 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             _streamPropertyName = streamPropertyName ?? throw Error.ArgumentNull(nameof(streamPropertyName));
         }
+
+        /// <inheritdoc />
+        public override IEdmEntityType EntityType => null;
 
         /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.StreamProperty;

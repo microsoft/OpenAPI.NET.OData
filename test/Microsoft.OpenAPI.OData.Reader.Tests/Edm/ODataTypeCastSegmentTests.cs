@@ -11,19 +11,18 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 {
     public class ODataTypeCastSegmentTests
     {
-        private IEdmEntityType _person { get; }
+        private readonly EdmEntityType _person;
 
         public ODataTypeCastSegmentTests()
         {
-            var person = new EdmEntityType("NS", "Person");
-            person.AddKeys(person.AddStructuralProperty("Id", EdmCoreModel.Instance.GetString(false)));
-            _person = person;
+            _person = new EdmEntityType("NS", "Person");
+            _person.AddKeys(_person.AddStructuralProperty("Id", EdmCoreModel.Instance.GetString(false)));
         }
 
         [Fact]
         public void TypeCastSegmentConstructorThrowsArgumentNull()
         {
-            Assert.Throws<ArgumentNullException>("entityType", () => new ODataTypeCastSegment(null));
+            Assert.Throws<ArgumentNullException>("structuredType", () => new ODataTypeCastSegment(null));
         }
 
         [Fact]
@@ -33,7 +32,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataTypeCastSegment(_person);
 
             // Assert
-            Assert.Same(_person, segment.EntityType);
+            Assert.Null(segment.EntityType);
+            Assert.Same(_person, segment.StructuredType);
         }
 
         [Fact]

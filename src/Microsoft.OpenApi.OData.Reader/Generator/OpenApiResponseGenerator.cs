@@ -77,6 +77,11 @@ namespace Microsoft.OpenApi.OData.Generator
                                                             $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
                                                             CreateCollectionResponse(x)))
                                         .Where(x => !responses.ContainsKey(x.Key)))
+                                .Concat(context.GetAllCollectionComplexTypes()
+                                        .Select(x => new KeyValuePair<string, OpenApiResponse>(
+                                                            $"{x.FullTypeName()}{Constants.CollectionSchemaSuffix}",
+                                                            CreateCollectionResponse(x)))
+                                        .Where(x => !responses.ContainsKey(x.Key)))
                             .ToDictionary(x => x.Key, x => x.Value);
 
             if(context.HasAnyNonContainedCollections())                                        
