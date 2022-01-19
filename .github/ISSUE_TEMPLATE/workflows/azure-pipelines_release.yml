@@ -1,0 +1,264 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+# Trigger is on release branches e.g. release/v1.0.10
+trigger:
+  branches:
+    include:
+      - release/*
+
+# No Pull request (PR) triggers for release
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+  
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  snExe: 'C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\sn.exe'
+  snExe64: 'C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\sn.exe'
+  ProductBinPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
+  mainDll: 'Microsoft.OpenApi.OData.Reader.dll'
+  testDll: 'Microsoft.OpenApi.OData.Reader.Tests.dll'
+  skipComponentGovernanceDetection: true
+
+steps:
+
+- task: UseDotNet@2
+  displayName: 'Use .NET 6'
+  inputs:
+    version: 6.x
+
+- task: PoliCheck@1
+  displayName: 'Run PoliCheck "OpenApi.OData-master\src"'
+  inputs:
+    inputType: CmdLine
+    cmdLineArgs: '/F:$(Build.SourcesDirectory)/src /T:9 /Sev:"1|2" /PE:2 /O:poli_result_src.xml'
+
+- task: PoliCheck@1
+  displayName: 'Run PoliCheck "OpenApi.OData-master\test"'
+  inputs:
+    inputType: CmdLine
+    cmdLineArgs: '/F:$(Build.SourcesDirectory)/test /T:9 /Sev:"1|2" /PE:2 /O:poli_result_test.xml'
+
+- task: PoliCheck@1
+  displayName: 'PoliCheck for OpenApi.OData-master\tool'
+  inputs:
+    inputType: CmdLine
+    cmdLineArgs: '/F:$(Build.SourcesDirectory)/tool /T:9 /Sev:"1|2" /PE:2 /O:poli_result_tool.xml'
+    
+# Install the nuget tooler.
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet >=5.2.0'
+  inputs:
+    versionSpec: '>=5.2.0'
+    checkLatest: true
+
+# Build the Product project
+- task: DotNetCoreCLI@2
+  displayName: 'build Microsoft.OpenAPI.OData.Reader.csproj '
+  inputs:
+    projects: '$(Build.SourcesDirectory)\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-incremental'
+
+# Build the Unit test project
+- task: DotNetCoreCLI@2
+  displayName: 'build Microsoft.OpenAPI.OData.Reader.Tests.csproj'
+  inputs:
+    projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-incremental'
+
+# because the assemblies are delay-signed, we need to disable
+# strong name validation so that the tests may run,
+# otherwise our assemblies will fail to load
+- task: Powershell@2
+  displayName: 'Skip strong name validation'
+  inputs:
+    targetType: 'inline'
+    script: |
+      & "$(snExe)" /Vr $(ProductBinPath)\net472\$(mainDll)
+      & "$(snExe64)" /Vr $(ProductBinPath)\net472\$(mainDll)
+      & "$(snExe)" /Vr $(ProductBinPath)\test\net472\$(testDll)
+      & "$(snExe64)" /Vr $(ProductBinPath)\test\net472\$(testDll)
+
+# Run the Unit test
+- task: DotNetCoreCLI@2
+  displayName: 'Run Microsoft.OpenApi.OData.Reader.Tests.csproj'
+  inputs:
+    command: test
+    projects: '$(Build.SourcesDirectory)\test\Microsoft.OpenAPI.OData.Reader.Tests\Microsoft.OpenApi.OData.Reader.Tests.csproj'
+    arguments: '--configuration $(BuildConfiguration) --no-build'
+
+# CredScan
+- task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+  displayName: 'Run CredScan - Src'
+  inputs:
+    toolMajorVersion: 'V2'
+    scanFolder: '$(Build.SourcesDirectory)\src'
+    debugMode: false
+
+- task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+  displayName: 'Run CredScan - Test'
+  inputs:
+    toolMajorVersion: 'V2'
+    scanFolder: '$(Build.SourcesDirectory)\test'
+    debugMode: false
+  
+# Microsoft.CodeAnalysis.FxCopAnalyzers is added into the project.
+# Typically, .NET Standard (.NET Core) project doesn't need the FxCop.
+
+# Needn't the AntiMalware@3 task?
+- task: AntiMalware@3
+  displayName: 'Run MpCmdRun.exe - ProductBinPath'
+  inputs:
+    FileDirPath: '$(ProductBinPath)'
+  enabled: false
+
+- task: BinSkim@3
+  displayName: 'Run BinSkim - Product Binaries'
+  inputs:
+    InputType: Basic
+    AnalyzeTarget: '$(ProductBinPath)\**\Microsoft.OpenApi.OData.Reader.dll'
+    AnalyzeSymPath: '$(ProductBinPath)'
+    AnalyzeVerbose: true
+    AnalyzeHashes: true
+    AnalyzeEnvironment: true
+
+- task: PublishSecurityAnalysisLogs@2
+  displayName: 'Publish Security Analysis Logs'
+  inputs:
+    ArtifactName: SecurityLogs
+
+- task: PostAnalysis@1
+  displayName: 'Post Analysis'
+  inputs:
+    BinSkim: true
+    CredScan: true
+    PoliCheck: true
+
+- task: EsrpCodeSigning@1
+  displayName: 'ESRP CodeSigning'
+  inputs:
+    ConnectedServiceName: 'ESRP CodeSigning - OData'
+    FolderPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
+    Pattern: Microsoft.OpenApi.OData.Reader.dll
+    signConfigType: inlineSignParams
+    inlineOperation: |
+     [ 
+       {
+         "keyCode": "MSSharedLibSnKey",
+         "operationSetCode": "StrongNameSign",
+         "parameters": null,
+         "toolName": "sn.exe",
+         "toolVersion": "V4.6.1586.0"
+       },
+       {
+         "keyCode": "MSSharedLibSnKey",
+         "operationSetCode": "StrongNameVerify",
+         "parameters": null,
+         "toolName": "sn.exe",
+         "toolVersion": "V4.6.1586.0"
+       }, 
+       {
+         "keyCode": "CP-230012",
+         "operationSetCode": "SigntoolSign",
+         "parameters": [
+         {
+           "parameterName": "OpusName",
+           "parameterValue": "TestSign"
+         },
+         {
+           "parameterName": "OpusInfo",
+           "parameterValue": "http://test"
+         },
+         {
+           "parameterName": "PageHash",
+           "parameterValue": "/NPH"
+         },
+         {
+           "parameterName": "FileDigest",
+           "parameterValue": "/fd sha256"
+         },
+         {
+           "parameterName": "TimeStamp",
+           "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+         }
+         ],
+         "toolName": "signtool.exe",
+         "toolVersion": "6.2.9304.0"
+       },
+       {
+         "keyCode": "CP-230012",
+         "operationSetCode": "SigntoolVerify",
+         "parameters": [
+         {
+           "parameterName": "VerifyAll",
+           "parameterValue": "/all"
+         }
+         ],
+         "toolName": "signtool.exe",
+         "toolVersion": "6.2.9304.0"
+       }
+     ]
+    SessionTimeout: 20
+
+- task: MSBuild@1
+  displayName: 'Get Nuget Package Metadata'
+  inputs:
+    solution: '$(Build.SourcesDirectory)\tool\GetNugetPackageMetadata.proj'
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Nightly.Release.nuspec'
+  inputs:
+    command: custom
+    arguments: 'pack $(Build.SourcesDirectory)\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.Release.nuspec -NonInteractive -OutputDirectory  $(Build.ArtifactStagingDirectory)\Nuget -Properties Configuration=$(BuildConfiguration);ProductRoot=$(ProductBinPath);SourcesRoot=$(Build.SourcesDirectory);VersionFullSemantic=$(VersionFullSemantic);NightlyBuildVersion=$(VersionNugetNightlyBuild);VersionNuGetSemantic=$(VersionNuGetSemantic);OpenApiCorePackageDependency="$(OpenApiCorePackageDependency)";ODataEdmPackageDependency="$(ODataEdmPackageDependency)";  -Verbosity Detailed -Symbols -SymbolPackageFormat snupkg'
+    
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Release.nuspec'
+  inputs:
+    command: custom
+    arguments: 'pack $(Build.SourcesDirectory)\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.Release.nuspec -NonInteractive -OutputDirectory $(Build.ArtifactStagingDirectory)\Nuget -Properties Configuration=$(BuildConfiguration);ProductRoot=$(ProductBinPath);VersionFullSemantic=$(VersionFullSemantic);NightlyBuildVersion=$(VersionNugetNightlyBuild);VersionNuGetSemantic=$(VersionNuGetSemantic);OpenApiCorePackageDependency="$(OpenApiCorePackageDependency)";ODataEdmPackageDependency="$(ODataEdmPackageDependency)";  -Verbosity Detailed -Symbols -SymbolPackageFormat snupkg'
+    
+- task: EsrpCodeSigning@1
+  displayName: 'ESRP CodeSigning Nuget Packages'
+  inputs:
+    ConnectedServiceName: 'ESRP CodeSigning - OData'
+    FolderPath: '$(Build.ArtifactStagingDirectory)\Nuget'
+    Pattern: '*.nupkg'
+    signConfigType: inlineSignParams
+    inlineOperation: |
+     [
+         {
+             "keyCode": "CP-401405",
+             "operationSetCode": "NuGetSign",
+             "parameters": [ ],
+             "toolName": "sign",
+             "toolVersion": "1.0"
+         },
+         {
+             "keyCode": "CP-401405",
+             "operationSetCode": "NuGetVerify",
+             "parameters": [ ],
+             "toolName": "sign",
+             "toolVersion": "1.0"
+         }
+     ]
+    SessionTimeout: 20
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact - Nuget Packages'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\Nuget'
+    ArtifactName: Nuget
+    
+# - task: NuGetCommand@2
+#   displayName: 'NuGet push - Nightly package to MyGet'
+#   inputs:
+#     command: push
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)\Nuget\*Nightly*.nupkg'
+#     nuGetFeedType: external
+#     publishFeedCredentials: 'MyGet.Org - OpenApi-OData-master Nightly Feed'
