@@ -297,6 +297,10 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 return ODataPathKind.TypeCast;
             }
+            else if (Segments.Last().Kind == ODataSegmentKind.ComplexProperty)
+            {
+                return ODataPathKind.ComplexProperty;
+            }
             else if (Segments.Any(c => c.Kind == ODataSegmentKind.StreamProperty || c.Kind == ODataSegmentKind.StreamContent))
             {
                 return ODataPathKind.MediaEntity;

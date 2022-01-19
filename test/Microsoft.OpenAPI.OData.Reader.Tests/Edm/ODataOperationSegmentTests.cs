@@ -31,14 +31,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetEntityTypeThrowsNotImplementedException()
+        public void GetEntityTypeReturnsNull()
         {
             // Arrange & Act
             IEdmOperation operation = new EdmAction("NS", "MyAction", null);
             var segment = new ODataOperationSegment(operation);
 
             // Assert
-            Assert.Throws<NotImplementedException>(() => segment.EntityType);
+            Assert.Null(segment.EntityType);
         }
 
         [Fact]

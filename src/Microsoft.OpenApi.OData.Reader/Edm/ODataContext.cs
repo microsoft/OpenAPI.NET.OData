@@ -165,7 +165,7 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 if ((path.Kind == ODataPathKind.Operation && !Settings.EnableOperationPath) ||
                     (path.Kind == ODataPathKind.OperationImport && !Settings.EnableOperationImportPath) ||
-                    (path.Kind == ODataPathKind.NavigationProperty && !Settings.EnableNavigationPropertyPath))
+                    ((path.Kind == ODataPathKind.NavigationProperty || path.Kind == ODataPathKind.ComplexProperty) && !Settings.EnableNavigationPropertyPath))
                 {
                     continue;
                 }

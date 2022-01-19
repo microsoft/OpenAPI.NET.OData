@@ -78,10 +78,26 @@ namespace Microsoft.OpenApi.OData.Generator
                                                             $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
                                                             CreateCollectionSchema(context, x)))
                                         .Where(x => !schemas.ContainsKey(x.Key)))
+                            .Concat(context.GetAllCollectionComplexTypes()
+                                        .Select(x => new KeyValuePair<string, OpenApiSchema>(
+                                                            $"{x.FullTypeName()}{Constants.CollectionSchemaSuffix}",
+                                                            CreateCollectionSchema(context, x)))
+                                        .Where(x => !schemas.ContainsKey(x.Key)))
                             .ToDictionary(x => x.Key, x => x.Value);
             
             if(context.HasAnyNonContainedCollections())                                        
+            {
                 schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
+                schemas[Constants.ReferenceUpdateSchemaName] = new()
+                {
+                    Type = "object",
+                    Properties = new Dictionary<string, OpenApiSchema>
+                    {
+                        {"@odata.id", new OpenApiSchema { Type = "string", Nullable = false }},
+                        {"@odata.type", new OpenApiSchema { Type = "string", Nullable = true }},
+                    }
+                };
+            }
 
             return schemas;
         }
@@ -92,6 +108,18 @@ namespace Microsoft.OpenApi.OData.Generator
                     .OfType<IEdmStructuredType>()
                     .SelectMany(x => x.NavigationProperties())
                     .Any(x => x.TargetMultiplicity() == EdmMultiplicity.Many && !x.ContainsTarget);
+        }
+        internal static IEnumerable<IEdmComplexType> GetAllCollectionComplexTypes(this ODataContext context)
+        {
+            return context.Model
+                        .SchemaElements
+                        .OfType<IEdmStructuredType>()
+                        .SelectMany(x => x.StructuralProperties())
+                        .Where(x => x.Type.IsCollection())
+                        .Select(x => x.Type.Definition.AsElementType())
+                        .OfType<IEdmComplexType>()
+                        .Distinct()
+                        .ToList();
         }
         internal static IEnumerable<IEdmStructuredType> GetAllCollectionEntityTypes(this ODataContext context)
         {

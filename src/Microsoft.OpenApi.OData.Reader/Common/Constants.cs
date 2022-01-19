@@ -89,5 +89,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// Suffix used for collection response schemas.
         /// </summary>
         public static string CollectionSchemaSuffix = "CollectionResponse";
+
+        /// <summary>
+        /// Name used for reference update.
+        /// </summary>
+        public static string ReferenceUpdateSchemaName = "ReferenceUpdateSchema";
     }
 }

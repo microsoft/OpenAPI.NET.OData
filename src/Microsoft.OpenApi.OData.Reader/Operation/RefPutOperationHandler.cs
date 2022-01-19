@@ -38,12 +38,6 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                Type = "object",
-                AdditionalProperties = new OpenApiSchema { Type = "object" }
-           };
-
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -53,7 +47,13 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = schema
+                            Schema = new()
+                            {
+                                Reference = new OpenApiReference {
+                                    Id = Constants.ReferenceUpdateSchemaName,
+                                    Type = ReferenceType.Schema
+                                },
+                            }
                         }
                     }
                 }

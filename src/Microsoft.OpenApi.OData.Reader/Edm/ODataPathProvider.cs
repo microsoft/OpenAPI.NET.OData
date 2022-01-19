@@ -128,20 +128,22 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPathKind kind = path.Kind;
             switch(kind)
             {
+                case ODataPathKind.ComplexProperty:
                 case ODataPathKind.TypeCast:
                 case ODataPathKind.DollarCount:
                 case ODataPathKind.Entity:
                 case ODataPathKind.EntitySet:
                 case ODataPathKind.Singleton:
                 case ODataPathKind.MediaEntity:
-                    ODataNavigationSourceSegment navigationSourceSegment = (ODataNavigationSourceSegment)path.FirstSegment;
-                    if (!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
+                    if (path.FirstSegment is ODataNavigationSourceSegment navigationSourceSegment)
                     {
-                        nsList = new List<ODataPath>();
-                        _allNavigationSourcePaths[navigationSourceSegment.EntityType] = nsList;
+                        if(!_allNavigationSourcePaths.TryGetValue(navigationSourceSegment.EntityType, out IList<ODataPath> nsList))
+                        {
+                            nsList = new List<ODataPath>();
+                            _allNavigationSourcePaths[navigationSourceSegment.EntityType] = nsList;
+                        }
+                        nsList.Add(path);
                     }
-
-                    nsList.Add(path);
                     break;
 
                 case ODataPathKind.NavigationProperty:
@@ -206,6 +208,9 @@ namespace Microsoft.OpenApi.OData.Edm
             // media entity
             RetrieveMediaEntityStreamPaths(entityType, path);
 
+            // properties of type complex
+            RetrieveComplexPropertyPaths(entityType, path, convertSettings);
+
             // navigation property
             foreach (IEdmNavigationProperty np in entityType.DeclaredNavigationProperties())
             {
@@ -222,6 +227,57 @@ namespace Microsoft.OpenApi.OData.Edm
 
             path.Pop(); // end of navigation source.
             Debug.Assert(path.Any() == false);
+        }
+
+        /// <summary>
+        /// Retrieves the paths for properties of type complex type from entities
+        /// </summary>
+        /// <param name="entityType">The entity type.</param>
+        /// <param name="currentPath">The current path.</param>
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        private void RetrieveComplexPropertyPaths(IEdmEntityType entityType, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        {
+            Debug.Assert(entityType != null);
+            Debug.Assert(currentPath != null);
+            Debug.Assert(convertSettings != null);
+
+            if (!convertSettings.EnableNavigationPropertyPath) return;
+
+            foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
+                                                    .Where(x => x.Type.IsComplex() ||
+                                                            x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
+            {
+                currentPath.Push(new ODataComplexPropertySegment(sp));
+                AppendPath(currentPath.Clone());
+
+
+                if (sp.Type.IsCollection())
+                {
+                    CreateTypeCastPaths(currentPath, convertSettings, sp.Type.Definition.AsElementType() as IEdmComplexType, sp, true);
+                    var count = _model.GetRecord<CountRestrictionsType>(sp, CapabilitiesConstants.CountRestrictions);
+                    if(count?.IsCountable ?? true)
+                        CreateCountPath(currentPath, convertSettings);
+                }
+                else
+                {
+                    var complexTypeReference = sp.Type.AsComplex();
+                    var definition = complexTypeReference.ComplexDefinition();
+
+                    CreateTypeCastPaths(currentPath, convertSettings, definition, sp, false);
+                    foreach (IEdmNavigationProperty np in complexTypeReference
+                                                        .DeclaredNavigationProperties()
+                                                        .Union(definition
+                                                                        .FindAllBaseTypes()
+                                                                        .SelectMany(x => x.DeclaredNavigationProperties()))
+                                                        .Distinct()
+                                                        .Where(CanFilter))
+                    {
+                        var count = _model.GetRecord<CountRestrictionsType>(np, CapabilitiesConstants.CountRestrictions);
+                        RetrieveNavigationPropertyPaths(np, count, currentPath, convertSettings);
+                    }
+                }
+                currentPath.Pop();
+            }
         }
 
         /// <summary>
@@ -337,6 +393,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     // Get possible stream paths for the navigation entity type
                     RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
+                    // Get the paths for the navigation property entity type properties of type complex
+                    RetrieveComplexPropertyPaths(navEntityType, currentPath, convertSettings);
                 }
                 else
                 {
@@ -351,6 +410,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
                     // Get possible stream paths for the navigation entity type
                     RetrieveMediaEntityStreamPaths(navEntityType, currentPath);
+
+                    // Get the paths for the navigation property entity type properties of type complex
+                    RetrieveComplexPropertyPaths(navEntityType, currentPath, convertSettings);
 
                     if (shouldExpand)
                     {
@@ -410,9 +472,9 @@ namespace Microsoft.OpenApi.OData.Edm
         private void CreateTypeCastPaths(ODataPath currentPath, OpenApiConvertSettings convertSettings, IEdmStructuredType structuredType, IEdmVocabularyAnnotatable annotable, bool targetsMany)
         {
             if(currentPath == null) throw Error.ArgumentNull(nameof(currentPath));
-            if(convertSettings == null) throw new ArgumentNullException(nameof(convertSettings));
-            if(structuredType == null) throw new ArgumentNullException(nameof(structuredType));
-            if(annotable == null) throw new ArgumentNullException(nameof(annotable));
+            if(convertSettings == null) throw Error.ArgumentNull(nameof(convertSettings));
+            if(structuredType == null) throw Error.ArgumentNull(nameof(structuredType));
+            if(annotable == null) throw Error.ArgumentNull(nameof(annotable));
             if(!convertSettings.EnableODataTypeCast) return;
 
             var annotedTypeNames = GetDerivedTypeConstaintTypeNames(annotable);
@@ -430,8 +492,8 @@ namespace Microsoft.OpenApi.OData.Edm
 
             var targetTypes = _model
                                 .FindAllDerivedTypes(structuredType)
-                                .Where(x => x.TypeKind == EdmTypeKind.Entity && filter(x))
-                                .OfType<IEdmEntityType>()
+                                .Where(x => (x.TypeKind == EdmTypeKind.Entity || x.TypeKind == EdmTypeKind.Complex) && filter(x))
+                                .OfType<IEdmStructuredType>()
                                 .ToArray();
 
             foreach(var targetType in targetTypes) 
@@ -524,7 +586,8 @@ namespace Microsoft.OpenApi.OData.Edm
         private static readonly HashSet<ODataPathKind> _oDataPathKindsToSkipForOperationsWhenSingle = new() {
             ODataPathKind.EntitySet,
             ODataPathKind.MediaEntity,
-            ODataPathKind.DollarCount
+            ODataPathKind.DollarCount,
+            ODataPathKind.ComplexProperty,
         };
         private bool AppendBoundOperationOnNavigationSourcePath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
         {
@@ -548,8 +611,8 @@ namespace Microsoft.OpenApi.OData.Edm
                         continue;
                     }
                     else if ((lastPathSegment is not ODataTypeCastSegment castSegment ||
-                                castSegment.EntityType == bindingEntityType ||
-                                bindingEntityType.InheritsFrom(castSegment.EntityType)) && // we don't want to add operations from the parent types under type cast segments because they already are present without the cast
+                                castSegment.StructuredType == bindingEntityType ||
+                                bindingEntityType.InheritsFrom(castSegment.StructuredType)) && // we don't want to add operations from the parent types under type cast segments because they already are present without the cast
                         ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
                             (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {

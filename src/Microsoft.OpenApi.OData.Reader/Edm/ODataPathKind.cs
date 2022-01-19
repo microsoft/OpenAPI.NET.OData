@@ -66,6 +66,11 @@ namespace Microsoft.OpenApi.OData.Edm
         TypeCast,
 
         /// <summary>
+        /// Represents a path item for a property of type complex.
+        /// </summary>
+        ComplexProperty,
+
+        /// <summary>
         /// Represents an un-supported/unknown path.
         /// </summary>
         Unknown,
