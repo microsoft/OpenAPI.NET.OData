@@ -324,18 +324,28 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="count">The count restrictions.</param>
         /// <param name="currentPath">The current OData path.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
-        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, CountRestrictionsType count, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        /// <param name="visitedNavigationProperties">A stack that holds the visited navigation properties in the <paramref name="currentPath"/>.</param>
+        private void RetrieveNavigationPropertyPaths(
+            IEdmNavigationProperty navigationProperty,
+            CountRestrictionsType count,
+            ODataPath currentPath,
+            OpenApiConvertSettings convertSettings,
+            Stack<string> visitedNavigationProperties = null)
         {
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
 
-            // Check whether the navigation property has already been navigated in the path
-            foreach (ODataSegment segment in currentPath)
+            if (visitedNavigationProperties == null)
             {
-                if (navigationProperty.Name.Equals(segment.Identifier))
-                {
-                    return;
-                }
+                visitedNavigationProperties = new Stack<string>();
+            }
+                        
+            var navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
+
+            // Check whether the navigation property has already been navigated in the path
+            if (visitedNavigationProperties.Contains(navPropFullyQualifiedName))
+            {
+                return;
             }
 
             // Check whether the navigation property should be part of the path
@@ -351,6 +361,7 @@ namespace Microsoft.OpenApi.OData.Edm
             // append a navigation property.
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
+            visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
             NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
@@ -421,7 +432,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             if (CanFilter(subNavProperty))
                             {
-                                RetrieveNavigationPropertyPaths(subNavProperty, count, currentPath, convertSettings);
+                                RetrieveNavigationPropertyPaths(subNavProperty, count, currentPath, convertSettings, visitedNavigationProperties);
                             }
                         }
                     }
@@ -430,9 +441,10 @@ namespace Microsoft.OpenApi.OData.Edm
                 if (targetsMany)
                 {
                     currentPath.Pop();
-                }
+                }                
             }
             currentPath.Pop();
+            visitedNavigationProperties.Pop();
         }              
 
         /// <summary>
