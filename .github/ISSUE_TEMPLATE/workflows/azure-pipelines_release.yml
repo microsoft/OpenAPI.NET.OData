@@ -211,12 +211,13 @@ steps:
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
-- task: NuGetCommand@2
-  displayName: 'NuGet pack Nightly.Release.nuspec'
+- task: PowerShell@2
+  displayName: 'Validate project version has been incremented'
   inputs:
-    command: custom
-    arguments: 'pack $(Build.SourcesDirectory)\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.Release.nuspec -NonInteractive -OutputDirectory  $(Build.ArtifactStagingDirectory)\Nuget -Properties Configuration=$(BuildConfiguration);ProductRoot=$(ProductBinPath);SourcesRoot=$(Build.SourcesDirectory);VersionFullSemantic=$(VersionFullSemantic);NightlyBuildVersion=$(VersionNugetNightlyBuild);VersionNuGetSemantic=$(VersionNuGetSemantic);OpenApiCorePackageDependency="$(OpenApiCorePackageDependency)";ODataEdmPackageDependency="$(ODataEdmPackageDependency)";  -Verbosity Detailed -Symbols -SymbolPackageFormat snupkg'
-    
+    targetType: 'filePath'
+    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+    arguments: '-projectVersion "$(VersionFullSemantic)"'
+
 - task: NuGetCommand@2
   displayName: 'NuGet pack Release.nuspec'
   inputs:
@@ -256,9 +257,9 @@ steps:
     ArtifactName: Nuget
     
 # - task: NuGetCommand@2
-#   displayName: 'NuGet push - Nightly package to MyGet'
+#   displayName: 'Push nuget package to nuget.org'
 #   inputs:
 #     command: push
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)\Nuget\*Nightly*.nupkg'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)\Nuget\*.nupkg'
 #     nuGetFeedType: external
-#     publishFeedCredentials: 'MyGet.Org - OpenApi-OData-master Nightly Feed'
+#     publishFeedCredentials: 'OpenAPI Nuget Connection'
