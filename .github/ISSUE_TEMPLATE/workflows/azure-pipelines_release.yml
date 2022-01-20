@@ -141,26 +141,26 @@ steps:
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning'
   inputs:
-    ConnectedServiceName: 'ESRP CodeSigning - OData'
+    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
     FolderPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
     Pattern: Microsoft.OpenApi.OData.Reader.dll
     signConfigType: inlineSignParams
     inlineOperation: |
      [ 
-       {
-         "keyCode": "MSSharedLibSnKey",
-         "operationSetCode": "StrongNameSign",
-         "parameters": null,
-         "toolName": "sn.exe",
-         "toolVersion": "V4.6.1586.0"
-       },
-       {
-         "keyCode": "MSSharedLibSnKey",
-         "operationSetCode": "StrongNameVerify",
-         "parameters": null,
-         "toolName": "sn.exe",
-         "toolVersion": "V4.6.1586.0"
-       }, 
+  #  {
+  #    "keyCode": "MSSharedLibSnKey",
+  #    "operationSetCode": "StrongNameSign",
+  #    "parameters": null,
+  #    "toolName": "sn.exe",
+  #    "toolVersion": "V4.6.1586.0"
+  #  },
+  #  {
+  #    "keyCode": "MSSharedLibSnKey",
+  #    "operationSetCode": "StrongNameVerify",
+  #    "parameters": null,
+  #    "toolName": "sn.exe",
+  #    "toolVersion": "V4.6.1586.0"
+  #  },
        {
          "keyCode": "CP-230012",
          "operationSetCode": "SigntoolSign",
@@ -211,12 +211,12 @@ steps:
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
-- task: PowerShell@2
-  displayName: 'Validate project version has been incremented'
-  inputs:
-    targetType: 'filePath'
-    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-    arguments: '-projectVersion "$(VersionFullSemantic)"'
+# - task: PowerShell@2
+#   displayName: 'Validate project version has been incremented'
+#   inputs:
+#     targetType: 'filePath'
+#     filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+#     arguments: '-projectVersion "$(VersionFullSemantic)"'
 
 - task: NuGetCommand@2
   displayName: 'NuGet pack Release.nuspec'
@@ -227,7 +227,7 @@ steps:
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning Nuget Packages'
   inputs:
-    ConnectedServiceName: 'ESRP CodeSigning - OData'
+    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
     FolderPath: '$(Build.ArtifactStagingDirectory)\Nuget'
     Pattern: '*.nupkg'
     signConfigType: inlineSignParams
@@ -255,6 +255,13 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\Nuget'
     ArtifactName: Nuget
+
+- task: PowerShell@2
+  displayName: 'Validate project version has been incremented'
+  inputs:
+    targetType: 'filePath'
+    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+    arguments: '-projectVersion "$(VersionFullSemantic)"'
     
 # - task: NuGetCommand@2
 #   displayName: 'Push nuget package to nuget.org'
