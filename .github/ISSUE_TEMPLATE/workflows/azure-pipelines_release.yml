@@ -146,21 +146,7 @@ steps:
     Pattern: Microsoft.OpenApi.OData.Reader.dll
     signConfigType: inlineSignParams
     inlineOperation: |
-     [ 
-  #  {
-  #    "keyCode": "MSSharedLibSnKey",
-  #    "operationSetCode": "StrongNameSign",
-  #    "parameters": null,
-  #    "toolName": "sn.exe",
-  #    "toolVersion": "V4.6.1586.0"
-  #  },
-  #  {
-  #    "keyCode": "MSSharedLibSnKey",
-  #    "operationSetCode": "StrongNameVerify",
-  #    "parameters": null,
-  #    "toolName": "sn.exe",
-  #    "toolVersion": "V4.6.1586.0"
-  #  },
+     [
        {
          "keyCode": "CP-230012",
          "operationSetCode": "SigntoolSign",
