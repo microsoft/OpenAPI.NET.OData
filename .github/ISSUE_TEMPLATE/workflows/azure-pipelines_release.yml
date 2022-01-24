@@ -147,6 +147,20 @@ steps:
     signConfigType: inlineSignParams
     inlineOperation: |
      [
+        {
+         "keyCode": "MSSharedLibSnKey",
+         "operationSetCode": "StrongNameSign",
+         "parameters": null,
+         "toolName": "sn.exe",
+         "toolVersion": "V4.6.1586.0"
+       },
+       {
+         "keyCode": "MSSharedLibSnKey",
+         "operationSetCode": "StrongNameVerify",
+         "parameters": null,
+         "toolName": "sn.exe",
+         "toolVersion": "V4.6.1586.0"
+       },
        {
          "keyCode": "CP-230012",
          "operationSetCode": "SigntoolSign",
@@ -197,12 +211,12 @@ steps:
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
-# - task: PowerShell@2
-#   displayName: 'Validate project version has been incremented'
-#   inputs:
-#     targetType: 'filePath'
-#     filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-#     arguments: '-projectVersion "$(VersionFullSemantic)"'
+- task: PowerShell@2
+  displayName: 'Validate project version has been incremented'
+  inputs:
+    targetType: 'filePath'
+    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+    arguments: '-projectVersion "$(VersionFullSemantic)"'
 
 - task: NuGetCommand@2
   displayName: 'NuGet pack Release.nuspec'
@@ -241,13 +255,6 @@ steps:
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\Nuget'
     ArtifactName: Nuget
-
-- task: PowerShell@2
-  displayName: 'Validate project version has been incremented'
-  inputs:
-    targetType: 'filePath'
-    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-    arguments: '-projectVersion "$(VersionFullSemantic)"'
     
 # - task: NuGetCommand@2
 #   displayName: 'Push nuget package to nuget.org'
@@ -256,3 +263,11 @@ steps:
 #     packagesToPush: '$(Build.ArtifactStagingDirectory)\Nuget\*.nupkg'
 #     nuGetFeedType: external
 #     publishFeedCredentials: 'OpenAPI Nuget Connection'
+
+- task: GithubRelease@1
+  displayName: 'Create Github Release (v$(VersionFullSemantic))'
+  inputs:
+    githubConnection: '<TODO>'
+    title: 'v$(VersionFullSemantic)'
+    tagSource: userSpecifiedTag
+    tag: 'v$(VersionFullSemantic)'

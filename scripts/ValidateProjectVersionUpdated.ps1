@@ -23,7 +23,7 @@ Param(
 $packageName = "Microsoft.OpenApi.OData"
 
 # Convert the project semantic version into a number e.g. "1.0.9" -> 109
-[int]$currentProjectVersionNumber = $projectVersion -replace "\."
+[int]$currentProjectVersion = $projectVersion -replace "\."
 
 # API is case-sensitive
 $packageName = $packageName.ToLower()
@@ -37,8 +37,8 @@ $currentPublishedVersion = $nugetIndex.items[0].upper
 [int]$currentPublishedVersionNumber = $currentPublishedVersion -replace "\."
 
 # Validate that the version number has been updated.
-if ($currentProjectVersionNumber -le $currentPublishedVersionNumber) {
-    Write-Error "The project version in versioning.props file ($currentProjectVersion) `
+if ($currentProjectVersion -le $currentPublishedVersionNumber) {
+    Write-Error "The project version in versioning.props file ($projectVersion) `
     has not been bumped up. The current published version is $currentPublishedVersion. `
     Please increment the current project version."
 }
