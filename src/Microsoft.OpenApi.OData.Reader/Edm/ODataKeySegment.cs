@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -63,7 +64,13 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
+		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+		{
+			return Enumerable.Empty<IEdmVocabularyAnnotatable>();
+		}
+
+		/// <inheritdoc />
+		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
         {
             Utils.CheckArgumentNull(settings, nameof(settings));
 
@@ -77,13 +84,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    IList<string> keyStrings = new List<string>();
-                    foreach (var key in KeyMappings)
-                    {
-                        keyStrings.Add(key.Key + "={" + key.Value + "}");
-                    }
-
-                    return String.Join(",", keyStrings);
+                    return string.Join(",", KeyMappings.Select(x => x.Key + "='{" + x.Value + "}'"));
                 }
             }
 
@@ -109,7 +110,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var keyProperty in keys)
                 {
                     string name = Utils.GetUniqueName(keyProperty.Name, parameters);
-                    keyStrings.Add(keyProperty.Name + "={" + name + "}");
+                    var quote = keyProperty.Type.Definition.ShouldPathParameterBeQuoted(settings) ? "'" : string.Empty;
+                    keyStrings.Add($"{keyProperty.Name}={quote}{{{name}}}{quote}");
                 }
 
                 return String.Join(",", keyStrings);

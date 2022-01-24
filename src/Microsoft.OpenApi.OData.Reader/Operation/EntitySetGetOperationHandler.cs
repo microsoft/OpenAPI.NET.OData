@@ -130,69 +130,17 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForResponses)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = EntitySet.EntityType().FullName()
-                    }
-                };
-            }
-
-            var properties = new Dictionary<string, OpenApiSchema>
-            {
-                {
-                    "value",
-                    new OpenApiSchema
-                    {
-                        Type = "array",
-                        Items = schema
-                    }
-                }
-            };
-
-            if (Context.Settings.EnablePagination)
-            {
-                properties.Add(
-                    "@odata.nextLink",
-                    new OpenApiSchema
-                    {
-                        Type = "string"
-                    });
-            }
-
             operation.Responses = new OpenApiResponses
             {
                 {
                     Constants.StatusCode200,
                     new OpenApiResponse
                     {
-                        Description = "Retrieved entities",
-                        Content = new Dictionary<string, OpenApiMediaType>
+                        Reference = new OpenApiReference()
                         {
-                            {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = new OpenApiSchema
-                                    {
-                                        Title = "Collection of " + EntitySet.EntityType().Name,
-                                        Type = "object",
-                                        Properties = properties
-                                    }
-                                }
-                            }
-                        }
+                            Type = ReferenceType.Response,
+                            Id = $"{EntitySet.EntityType().FullName()}{Constants.CollectionSchemaSuffix}"
+                        },
                     }
                 }
             };

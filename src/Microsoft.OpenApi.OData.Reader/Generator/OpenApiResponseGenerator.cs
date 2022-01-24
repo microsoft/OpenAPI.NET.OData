@@ -62,10 +62,32 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            return new Dictionary<string, OpenApiResponse>
+            var responses =  new Dictionary<string, OpenApiResponse>
             {
                 { "error", CreateErrorResponse() }
             };
+
+            if(context.Settings.EnableDollarCountPath)
+            {
+                responses[Constants.DollarCountSchemaName] = CreateCountResponse();
+            }
+
+            responses = responses.Concat(context.GetAllCollectionEntityTypes()
+                                        .Select(x => new KeyValuePair<string, OpenApiResponse>(
+                                                            $"{(x is IEdmEntityType eType ? eType.FullName() : x.FullTypeName())}{Constants.CollectionSchemaSuffix}",
+                                                            CreateCollectionResponse(x)))
+                                        .Where(x => !responses.ContainsKey(x.Key)))
+                                .Concat(context.GetAllCollectionComplexTypes()
+                                        .Select(x => new KeyValuePair<string, OpenApiResponse>(
+                                                            $"{x.FullTypeName()}{Constants.CollectionSchemaSuffix}",
+                                                            CreateCollectionResponse(x)))
+                                        .Where(x => !responses.ContainsKey(x.Key)))
+                            .ToDictionary(x => x.Key, x => x.Value);
+
+            if(context.HasAnyNonContainedCollections())                                        
+                responses[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionResponse("String");
+
+            return responses;
         }
 
         /// <summary>
@@ -163,6 +185,61 @@ namespace Microsoft.OpenApi.OData.Generator
             responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
 
             return responses;
+        }
+
+        private static OpenApiResponse CreateCollectionResponse(IEdmStructuredType structuredType)
+        {
+            var entityType = structuredType as IEdmEntityType;
+            return CreateCollectionResponse(entityType?.FullName() ?? structuredType.FullTypeName());
+        }
+        private static OpenApiResponse CreateCollectionResponse(string typeName)
+        {
+            return new OpenApiResponse
+            {
+                Description = "Retrieved collection",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        Constants.ApplicationJsonMediaType,
+                        new OpenApiMediaType
+                        {
+                            Schema = new OpenApiSchema
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.Schema,
+                                    Id = $"{typeName}{Constants.CollectionSchemaSuffix}"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        private static OpenApiResponse CreateCountResponse()
+        {
+            OpenApiSchema schema = new()
+            {
+                Reference = new() {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.DollarCountSchemaName
+                }
+            };
+            return new OpenApiResponse
+            {
+                Description = "The count of the resource",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        "text/plain",
+                        new OpenApiMediaType
+                        {
+                            Schema = schema
+                        }
+                    }
+                }
+            };
         }
 
         private static OpenApiResponse CreateErrorResponse()

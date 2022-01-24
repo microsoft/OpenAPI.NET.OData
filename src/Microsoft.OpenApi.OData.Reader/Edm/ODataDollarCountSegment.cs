@@ -4,26 +4,36 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 
-namespace Microsoft.OpenApi.OData.Edm
+namespace Microsoft.OpenApi.OData.Edm;
+/// <summary>
+/// The $count segment.
+/// </summary>
+public class ODataDollarCountSegment : ODataSegment
 {
     /// <summary>
-    /// The $count segment.
+    /// Get the static instance of $count segment.
     /// </summary>
-    public class ODataDollarCountSegment : ODataSegment
+    internal static ODataDollarCountSegment Instance = new();
+
+    /// <inheritdoc />
+    public override IEdmEntityType EntityType => null;
+
+    /// <inheritdoc />
+    public override ODataSegmentKind Kind => ODataSegmentKind.DollarCount;
+
+    /// <inheritdoc />
+    public override string Identifier => "$count";
+
+    /// <inheritdoc />
+    public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
     {
-        /// <summary>
-        /// Get the static instance of $count segment.
-        /// </summary>
-        internal static ODataDollarCountSegment Instance = new();
-
-        /// <inheritdoc />
-        public override ODataSegmentKind Kind => ODataSegmentKind.DollarCount;
-
-        /// <inheritdoc />
-        public override string Identifier => "$count";
-
-        /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => "$count";
+        return Enumerable.Empty<IEdmVocabularyAnnotatable>();
     }
+
+    /// <inheritdoc />
+    public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => "$count";
 }

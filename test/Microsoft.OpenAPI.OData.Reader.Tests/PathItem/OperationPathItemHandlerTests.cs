@@ -82,6 +82,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(operationKeyValue.Value);
 
             Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
+            Assert.NotEmpty(pathItem.Description);
         }
     }
 }

@@ -137,5 +137,11 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
         }
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiPathItem pathItem)
+        {
+            base.SetBasicInfo(pathItem);
+            pathItem.Description = $"Provides operations to manage the collection of {NavigationSource?.EntityType().Name ?? NavigationProperty?.Type.ShortQualifiedName()} entities.";
+        }
     }
 }

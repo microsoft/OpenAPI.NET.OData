@@ -84,5 +84,15 @@ namespace Microsoft.OpenApi.OData.Common
         /// Name used for the OpenAPI referenced schema for OData Count operations responses.
         /// </summary>
         public static string DollarCountSchemaName = "ODataCountResponse";
+
+        /// <summary>
+        /// Suffix used for collection response schemas.
+        /// </summary>
+        public static string CollectionSchemaSuffix = "CollectionResponse";
+
+        /// <summary>
+        /// Name used for reference update.
+        /// </summary>
+        public static string ReferenceUpdateSchemaName = "ReferenceUpdateSchema";
     }
 }

@@ -70,6 +70,23 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Get the DateTime value from the record using the given property name.
+        /// </summary>
+        /// <param name="record">The record expression.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns>The DateTime value or null.</returns>
+        public static DateTime? GetDateTime(this IEdmRecordExpression record, string propertyName)
+        {
+            Utils.CheckArgumentNull(record, nameof(record));
+            Utils.CheckArgumentNull(propertyName, nameof(propertyName));
+
+            return (record.Properties?.FirstOrDefault(e => e.Name == propertyName) is IEdmPropertyConstructor property &&
+                property.Value is IEdmDateConstantExpression value) ?
+                value.Value :
+                null;
+        }
+
+        /// <summary>
         /// Get the Enum value from the record using the given property name.
         /// </summary>
         /// <typeparam name="T">The output enum type.</typeparam>

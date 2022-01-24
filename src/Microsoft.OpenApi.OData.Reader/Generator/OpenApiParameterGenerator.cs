@@ -136,7 +136,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (parameterNameMapping != null)
                 {
-                    parameter.Description = $"Usage: {edmParameter.Name}={{{parameterNameMapping[edmParameter.Name]}}}";
+                    var quote = edmParameter.Type.Definition.ShouldPathParameterBeQuoted(context.Settings) ? "'" : string.Empty;
+                    parameter.Description = $"Usage: {edmParameter.Name}={quote}{{{parameterNameMapping[edmParameter.Name]}}}{quote}";
                 }
 
                 parameters.Add(parameter);
@@ -203,7 +204,8 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     if (keySegment.KeyMappings != null)
                     {
-                        parameter.Description = parameter.Description + $", {keyProperty.Name}={{{parameter.Name}}}";
+                        var quote = keyProperty.Type.Definition.ShouldPathParameterBeQuoted(context.Settings) ? "'" : string.Empty;
+                        parameter.Description += $", {keyProperty.Name}={quote}{{{parameter.Name}}}{quote}";
                     }
 
                     parameter.Extensions.Add(Constants.xMsKeyType, new OpenApiString(entityType.Name));
@@ -361,10 +363,14 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="entityType">The Edm Entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
         public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
+        {// patchwork to avoid breaking changes
+            return context.CreateOrderBy(target, entityType as IEdmStructuredType);
+        }
+        public static OpenApiParameter CreateOrderBy(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
-            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
             SortRestrictionsType sort = context.Model.GetRecord<SortRestrictionsType>(target, CapabilitiesConstants.SortRestrictions);
             if (sort != null && !sort.IsSortable)
@@ -373,15 +379,15 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             IList<IOpenApiAny> orderByItems = new List<IOpenApiAny>();
-            foreach (var property in entityType.StructuralProperties())
+            foreach (var property in structuredType.StructuralProperties())
             {
                 if (sort != null && sort.IsNonSortableProperty(property.Name))
                 {
                     continue;
                 }
 
-                bool isAscOnly = sort != null ? sort.IsAscendingOnlyProperty(property.Name) : false ;
-                bool isDescOnly = sort != null ? sort.IsDescendingOnlyProperty(property.Name) : false;
+                bool isAscOnly = sort != null && sort.IsAscendingOnlyProperty(property.Name);
+                bool isDescOnly = sort != null && sort.IsDescendingOnlyProperty(property.Name);
                 if (isAscOnly || isDescOnly)
                 {
                     if (isAscOnly)
@@ -452,10 +458,14 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="entityType">The Edm entity type.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
         public static OpenApiParameter CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
+        { // patchwork to avoid breaking changes
+            return context.CreateSelect(target, entityType as IEdmStructuredType);
+        }
+        public static OpenApiParameter CreateSelect(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
-            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
             NavigationRestrictionsType navigation = context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
             if (navigation != null && !navigation.IsNavigable)
@@ -465,12 +475,12 @@ namespace Microsoft.OpenApi.OData.Generator
 
             IList<IOpenApiAny> selectItems = new List<IOpenApiAny>();
 
-            foreach (var property in entityType.StructuralProperties())
+            foreach (var property in structuredType.StructuralProperties())
             {
                 selectItems.Add(new OpenApiString(property.Name));
             }
 
-            foreach (var property in entityType.NavigationProperties())
+            foreach (var property in structuredType.NavigationProperties())
             {
                 if (navigation != null && navigation.IsRestrictedProperty(property.Name))
                 {
@@ -499,7 +509,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 Explode = false
             };
         }
-
         public static OpenApiParameter CreateExpand(this ODataContext context, IEdmEntitySet entitySet)
         {
             Utils.CheckArgumentNull(context, nameof(context));
@@ -532,10 +541,14 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="entityType">The edm entity path.</param>
         /// <returns>The created <see cref="OpenApiParameter"/> or null.</returns>
         public static OpenApiParameter CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmEntityType entityType)
+        { // patchwork to avoid breaking changes
+            return context.CreateExpand(target, entityType as IEdmStructuredType);
+        }
+        public static OpenApiParameter CreateExpand(this ODataContext context, IEdmVocabularyAnnotatable target, IEdmStructuredType structuredType)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(target, nameof(target));
-            Utils.CheckArgumentNull(entityType, nameof(entityType));
+            Utils.CheckArgumentNull(structuredType, nameof(structuredType));
 
             ExpandRestrictionsType expand = context.Model.GetRecord<ExpandRestrictionsType>(target, CapabilitiesConstants.ExpandRestrictions);
             if (expand != null && !expand.IsExpandable)
@@ -548,7 +561,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 new OpenApiString("*")
             };
 
-            foreach (var property in entityType.NavigationProperties())
+            foreach (var property in structuredType.NavigationProperties())
             {
                 if (expand != null && expand.IsNonExpandableProperty(property.Name))
                 {

@@ -52,6 +52,28 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
         }
 
         [Fact]
+        public void CreatesCollectionResponses()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            OpenApiConvertSettings settings = new()
+            {
+                    EnableOperationId = true,
+                    EnablePagination = true,
+            };
+            ODataContext context = new(model, settings);
+
+            // Act & Assert
+            var responses = context.CreateResponses();
+
+            var flightCollectionResponse = responses["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
+            var stringCollectionResponse = responses["StringCollectionResponse"];
+
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse", flightCollectionResponse.Content["application/json"].Schema.Reference.Id);
+            Assert.Equal("StringCollectionResponse", stringCollectionResponse.Content["application/json"].Schema.Reference.Id);
+        }
+
+        [Fact]
         public void CreateResponsesReturnsCreatedResponses()
         {
             // Arrange
@@ -64,11 +86,11 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Assert
             Assert.NotNull(responses);
             Assert.NotEmpty(responses);
-            var response = Assert.Single(responses);
-            Assert.Equal("error", response.Key);
-            Assert.NotNull(response.Value.Content);
-            Assert.Single(response.Value.Content);
-            Assert.Equal("application/json", response.Value.Content.First().Key);
+            var response = responses["error"];
+            Assert.NotNull(response);
+            Assert.NotNull(response.Content);
+            Assert.Single(response.Content);
+            Assert.Equal("application/json", response.Content.First().Key);
         }
 
         [Fact]
@@ -82,7 +104,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             var responses = context.CreateResponses();
 
             // Assert
-            var response = Assert.Single(responses).Value;
+            var response = responses["error"];
+            Assert.NotNull(response);
             string json = response.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal(@"{

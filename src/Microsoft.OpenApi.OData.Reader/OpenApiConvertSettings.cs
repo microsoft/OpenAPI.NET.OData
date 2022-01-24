@@ -189,10 +189,24 @@ namespace Microsoft.OpenApi.OData
         public bool EnableDollarCountPath { get; set; } = true;
 
         /// <summary>
-        /// Gets/sets a value that specifies the custom attribute name used in the metadata to specify whether a Navigation Property
-        /// should be expanded or not.
+        /// Gets/sets a value indicating whether or not single quotes surrounding string parameters in url templates should be added.
         /// </summary>
-        public string ExpandNavigationPropertyAttributeName { get; set; } = "Explode";
+        public bool AddSingleQuotesForStringParameters { get; set; } = false;
+        
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to include the OData type cast segments.
+        /// </summary>
+        public bool EnableODataTypeCast { get; set; } = true;
+
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to require a derived types constraint to include the OData type cast segments.
+        /// </summary>
+        public bool RequireDerivedTypesConstraintForODataTypeCastSegments { get; set; } = true;
+
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to set the deprecated tag for the operation when a revision is present as well as the "x-ms-deprecation" extension with additional information.
+        /// </summary>
+        public bool EnableDeprecationInformation { get; set; } = true;
 
         internal OpenApiConvertSettings Clone()
         {
@@ -225,7 +239,10 @@ namespace Microsoft.OpenApi.OData
                 ShowRootPath = this.ShowRootPath,
                 PathProvider = this.PathProvider,
                 EnableDollarCountPath = this.EnableDollarCountPath,
-                ExpandNavigationPropertyAttributeName = this.ExpandNavigationPropertyAttributeName
+                AddSingleQuotesForStringParameters = this.AddSingleQuotesForStringParameters,
+                EnableODataTypeCast = this.EnableODataTypeCast,
+                RequireDerivedTypesConstraintForODataTypeCastSegments = this.RequireDerivedTypesConstraintForODataTypeCastSegments,
+                EnableDeprecationInformation = this.EnableDeprecationInformation,
             };
 
             return newSettings;

@@ -41,7 +41,9 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             Initialize(context, path);
 
-            OpenApiPathItem item = new OpenApiPathItem();
+            OpenApiPathItem item = new();
+
+            SetBasicInfo(item);
 
             SetOperations(item);
 
@@ -49,6 +51,12 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             return item;
         }
+        /// <summary>
+        /// Set the basic information for <see cref="OpenApiPathItem"/>.
+        /// </summary>
+        /// <param name="pathItem">The <see cref="OpenApiPathItem"/>.</param>
+        protected virtual void SetBasicInfo(OpenApiPathItem pathItem)
+        { }
 
         /// <summary>
         /// Set the operation for the path item.

@@ -16,7 +16,59 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 {
     public class EdmFunctionOperationHandlerTests
     {
-        private EdmFunctionOperationHandler _operationHandler = new EdmFunctionOperationHandler();
+        private EdmFunctionOperationHandler _operationHandler = new();
+        #region OperationHandlerTests
+        [Fact]
+        public void SetsDeprecationInformation()
+        {
+          // Arrange
+          IEdmModel model = EdmModelHelper.TripServiceModel;
+          ODataContext context = new(model);
+          IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+          Assert.NotNull(people);
+
+          IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "GetFriendsTrips");
+          Assert.NotNull(function);
+
+          ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataOperationSegment(function));
+
+          // Act
+          var operation = _operationHandler.CreateOperation(context, path);
+
+          // Assert
+          Assert.NotNull(operation);
+          Assert.True(operation.Deprecated);
+          Assert.NotEmpty(operation.Extensions);
+          var extension = operation.Extensions["x-ms-deprecation"];
+          Assert.NotNull(extension);
+        }
+
+        [Fact]
+        public void DoesntSetDeprecationInformation()
+        {
+          // Arrange
+          IEdmModel model = EdmModelHelper.TripServiceModel;
+          ODataContext context = new(model);
+          IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
+          Assert.NotNull(people);
+
+          IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "GetFavoriteAirline");
+          Assert.NotNull(function);
+
+          ODataPath path = new(new ODataNavigationSourceSegment(people), new ODataKeySegment(people.EntityType()), new ODataOperationSegment(function));
+
+          // Act
+          var operation = _operationHandler.CreateOperation(context, path);
+
+          // Assert
+          Assert.NotNull(operation);
+          Assert.True(operation.Deprecated);
+          Assert.NotEmpty(operation.Extensions);
+          var extension = operation.Extensions["x-ms-deprecation"];
+          Assert.NotNull(extension);
+        }
+
+        #endregion
 
         [Fact]
         public void CreateOperationForEdmFunctionReturnsCorrectOperation()
@@ -213,7 +265,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                AddSingleQuotesForStringParameters = true,
             };
             ODataContext context = new ODataContext(model, settings);
 
@@ -229,7 +282,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             if (enableOperationId)
             {
-                Assert.Equal("Customers.Customer.MyFunction-28ae", operation.OperationId);
+                Assert.Equal("Customers.Customer.MyFunction-df74", operation.OperationId);
             }
             else
             {

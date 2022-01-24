@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -68,6 +69,9 @@ namespace Microsoft.OpenApi.OData.Edm
 
         /// <inheritdoc />
         public override string Identifier { get => Operation.Name; }
+
+        /// <inheritdoc />
+        public override IEdmEntityType EntityType => null;
 
         /// <inheritdoc />
         public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters)
@@ -148,7 +152,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    return p.Name + "={" + uniqueName + "}";
+                    var quote = p.Type.Definition.ShouldPathParameterBeQuoted(settings) ? "'" : string.Empty;
+                    return p.Name + $"={quote}{{{uniqueName}}}{quote}";
                 }
             })));
 
@@ -168,5 +173,11 @@ namespace Microsoft.OpenApi.OData.Edm
                 return action.FullName();
             }
         }
-    }
+
+        /// <inheritdoc />
+		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+		{
+			return new IEdmVocabularyAnnotatable[] { Operation };
+		}
+	}
 }

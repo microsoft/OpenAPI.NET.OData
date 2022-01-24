@@ -71,19 +71,22 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void GetPathItemNameReturnsCorrectKeyLiteralForCompositeKey(bool prefix)
+        [InlineData(true, true, "firstName='{firstName}',lastName='{lastName}'")]
+        [InlineData(false, true, "firstName='{firstName}',lastName='{lastName}'")]
+        [InlineData(true, false, "firstName={firstName},lastName={lastName}")]
+        [InlineData(false, false, "firstName={firstName},lastName={lastName}")]
+        public void GetPathItemNameReturnsCorrectKeyLiteralForCompositeKey(bool prefix, bool addQuotes, string expected)
         {
             // Arrange & Act
             ODataKeySegment segment = new ODataKeySegment(_customer);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                PrefixEntityTypeNameBeforeKey = prefix
+                PrefixEntityTypeNameBeforeKey = prefix,
+                AddSingleQuotesForStringParameters = addQuotes,
             };
 
             // Assert
-            Assert.Equal("firstName={firstName},lastName={lastName}", segment.GetPathItemName(settings));
+            Assert.Equal(expected, segment.GetPathItemName(settings));
         }
     }
 }

@@ -3,6 +3,9 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 
 namespace Microsoft.OpenApi.OData.Edm
@@ -14,7 +17,7 @@ namespace Microsoft.OpenApi.OData.Edm
     {
         private readonly string _streamPropertyName;
         /// <summary>
-        /// Initializes a new instance of <see cref="ODataTypeCastSegment"/> class.
+        /// Initializes a new instance of <see cref="ODataStreamPropertySegment"/> class.
         /// </summary>
         /// <param name="streamPropertyName">The name of the stream property.</param>
         public ODataStreamPropertySegment(string streamPropertyName)
@@ -23,12 +26,21 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <inheritdoc />
+        public override IEdmEntityType EntityType => null;
+
+        /// <inheritdoc />
         public override ODataSegmentKind Kind => ODataSegmentKind.StreamProperty;
 
         /// <inheritdoc />
         public override string Identifier { get => _streamPropertyName; }
 
         /// <inheritdoc />
-        public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => _streamPropertyName;
+		public override IEnumerable<IEdmVocabularyAnnotatable> GetAnnotables()
+		{
+			return Enumerable.Empty<IEdmVocabularyAnnotatable>();
+		}
+
+		/// <inheritdoc />
+		public override string GetPathItemName(OpenApiConvertSettings settings, HashSet<string> parameters) => _streamPropertyName;
     }
 }

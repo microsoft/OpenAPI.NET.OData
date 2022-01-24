@@ -1,4 +1,4 @@
-﻿swagger: '2.0'
+swagger: '2.0'
 info:
   title: OData Service for namespace DefaultNs
   description: This OData service is located at http://localhost
@@ -13,8 +13,6 @@ paths:
         - City.City
       summary: Get entities from City
       operationId: City.City.ListCity
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -48,15 +46,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of City
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/DefaultNs.City'
+          $ref: '#/responses/DefaultNs.CityCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -83,6 +73,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of City entities.
   '/City({Name})':
     get:
       tags:
@@ -170,27 +161,23 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of City entities.
   /City/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.City
-      produces:
-        - text/plain
+      operationId: Get.Count.City-8728
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /CountryOrRegion:
     get:
       tags:
         - CountryOrRegion.CountryOrRegion
       summary: Get entities from CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.ListCountryOrRegion
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -224,15 +211,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of CountryOrRegion
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/DefaultNs.CountryOrRegion'
+          $ref: '#/responses/DefaultNs.CountryOrRegionCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -259,6 +238,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CountryOrRegion entities.
   '/CountryOrRegion({Name})':
     get:
       tags:
@@ -346,19 +326,17 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CountryOrRegion entities.
   /CountryOrRegion/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.CountryOrRegion
-      produces:
-        - text/plain
+      operationId: Get.Count.CountryOrRegion-daf5
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Me:
     get:
       tags:
@@ -415,6 +393,377 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Person singleton.
+  /Me/Addresses:
+    get:
+      summary: Get Addresses property value
+      operationId: Addresses.Address.ListAddress
+      parameters:
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - City
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/DefaultNs.AddressCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property Addresses value.
+      operationId: Addresses.Address.UpdateAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of Address.
+      operationId: Addresses.Address.SetAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  /Me/Addresses/$count:
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Addresses-3180
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
+  /Me/HomeAddress:
+    get:
+      summary: Get HomeAddress property value
+      operationId: HomeAddress.Address.GetAddress
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - City
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property HomeAddress value.
+      operationId: HomeAddress.Address.UpdateAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  /Me/HomeAddress/City:
+    get:
+      tags:
+        - Me.City
+      summary: Get City from Me
+      operationId: Me.GetCity
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            $ref: '#/definitions/DefaultNs.City'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the City property of the DefaultNs.Address entity.
+    x-ms-docs-grouped-path:
+      - /Me/WorkAddress/City
+  /Me/HomeAddress/City/$ref:
+    get:
+      tags:
+        - Me.City
+      summary: Get ref of City from Me
+      operationId: Me.GetRefCity
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    put:
+      tags:
+        - Me.City
+      summary: Update the ref of navigation property City in Me
+      operationId: Me.UpdateRefCity
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            $ref: '#/definitions/ReferenceUpdateSchema'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Me.City
+      summary: Delete ref of navigation property City for Me
+      operationId: Me.DeleteRefCity
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
+  /Me/WorkAddress:
+    get:
+      summary: Get WorkAddress property value
+      operationId: WorkAddress.Address.GetAddress
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - City
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property WorkAddress value.
+      operationId: WorkAddress.Address.UpdateAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  /Me/WorkAddress/City:
+    get:
+      tags:
+        - Me.City
+      summary: Get City from Me
+      operationId: Me.GetCity
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            $ref: '#/definitions/DefaultNs.City'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the City property of the DefaultNs.Address entity.
+    x-ms-docs-grouped-path:
+      - /Me/HomeAddress/City
+  /Me/WorkAddress/City/$ref:
+    get:
+      tags:
+        - Me.City
+      summary: Get ref of City from Me
+      operationId: Me.GetRefCity
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    put:
+      tags:
+        - Me.City
+      summary: Update the ref of navigation property City in Me
+      operationId: Me.UpdateRefCity
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            $ref: '#/definitions/ReferenceUpdateSchema'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - Me.City
+      summary: Delete ref of navigation property City for Me
+      operationId: Me.DeleteRefCity
+      parameters:
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
   /People:
     get:
       tags:
@@ -422,8 +771,6 @@ paths:
       summary: Get entities from People
       description: People's description.
       operationId: People.Person.ListPerson
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -466,15 +813,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/DefaultNs.Person'
+          $ref: '#/responses/DefaultNs.PersonCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -502,6 +841,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
   '/People({UserName})':
     get:
       tags:
@@ -592,19 +932,486 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
+  '/People({UserName})/Addresses':
+    get:
+      summary: Get Addresses property value
+      operationId: Addresses.Address.ListAddress
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Id
+              - Id desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - City
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/DefaultNs.AddressCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property Addresses value.
+      operationId: Addresses.Address.UpdateAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of Address.
+      operationId: Addresses.Address.SetAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/People({UserName})/Addresses/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Addresses-5a5d
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
+  '/People({UserName})/HomeAddress':
+    get:
+      summary: Get HomeAddress property value
+      operationId: HomeAddress.Address.GetAddress
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - City
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property HomeAddress value.
+      operationId: HomeAddress.Address.UpdateAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/People({UserName})/HomeAddress/City':
+    get:
+      tags:
+        - People.City
+      summary: Get City from People
+      operationId: People.GetCity
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            $ref: '#/definitions/DefaultNs.City'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the City property of the DefaultNs.Address entity.
+    x-ms-docs-grouped-path:
+      - '/People({UserName})/WorkAddress/City'
+  '/People({UserName})/HomeAddress/City/$ref':
+    get:
+      tags:
+        - People.City
+      summary: Get ref of City from People
+      operationId: People.GetRefCity
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    put:
+      tags:
+        - People.City
+      summary: Update the ref of navigation property City in People
+      operationId: People.UpdateRefCity
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            $ref: '#/definitions/ReferenceUpdateSchema'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.City
+      summary: Delete ref of navigation property City for People
+      operationId: People.DeleteRefCity
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
+  '/People({UserName})/WorkAddress':
+    get:
+      summary: Get WorkAddress property value
+      operationId: WorkAddress.Address.GetAddress
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Id
+              - City
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - City
+            type: string
+      responses:
+        '200':
+          description: Result entities
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property WorkAddress value.
+      operationId: WorkAddress.Address.UpdateAddress
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            $ref: '#/definitions/DefaultNs.Address'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/People({UserName})/WorkAddress/City':
+    get:
+      tags:
+        - People.City
+      summary: Get City from People
+      operationId: People.GetCity
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          description: Retrieved navigation property
+          schema:
+            $ref: '#/definitions/DefaultNs.City'
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the City property of the DefaultNs.Address entity.
+    x-ms-docs-grouped-path:
+      - '/People({UserName})/HomeAddress/City'
+  '/People({UserName})/WorkAddress/City/$ref':
+    get:
+      tags:
+        - People.City
+      summary: Get ref of City from People
+      operationId: People.GetRefCity
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+      responses:
+        '200':
+          description: Retrieved navigation property link
+          schema:
+            type: string
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    put:
+      tags:
+        - People.City
+      summary: Update the ref of navigation property City in People
+      operationId: People.UpdateRefCity
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: body
+          name: body
+          description: New navigation property ref values
+          required: true
+          schema:
+            $ref: '#/definitions/ReferenceUpdateSchema'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    delete:
+      tags:
+        - People.City
+      summary: Delete ref of navigation property City for People
+      operationId: People.DeleteRefCity
+      parameters:
+        - in: path
+          name: UserName
+          description: 'key: UserName of Person'
+          required: true
+          type: string
+          x-ms-docs-key-type: Person
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+      x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of Person entities.
   /People/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.People
-      produces:
-        - text/plain
+      operationId: Get.Count.People-dd8d
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
 definitions:
   DefaultNs.Color:
     title: Color
@@ -721,6 +1528,38 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
+  DefaultNs.PersonCollectionResponse:
+    title: Collection of Person
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.Person'
+  DefaultNs.CityCollectionResponse:
+    title: Collection of City
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.City'
+  DefaultNs.CountryOrRegionCollectionResponse:
+    title: Collection of CountryOrRegion
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.CountryOrRegion'
+  DefaultNs.AddressCollectionResponse:
+    title: Collection of DefaultNs.Address
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/DefaultNs.Address'
 parameters:
   top:
     in: query
@@ -754,6 +1593,26 @@ responses:
     description: error
     schema:
       $ref: '#/definitions/odata.error'
+  ODataCountResponse:
+    description: The count of the resource
+    schema:
+      $ref: '#/definitions/ODataCountResponse'
+  DefaultNs.PersonCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.PersonCollectionResponse'
+  DefaultNs.CityCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.CityCollectionResponse'
+  DefaultNs.CountryOrRegionCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.CountryOrRegionCollectionResponse'
+  DefaultNs.AddressCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/DefaultNs.AddressCollectionResponse'
 tags:
   - name: City.City
     x-ms-docs-toc-type: page
@@ -761,5 +1620,9 @@ tags:
     x-ms-docs-toc-type: page
   - name: Me.Person
     x-ms-docs-toc-type: page
+  - name: Me.City
+    x-ms-docs-toc-type: page
   - name: People.Person
+    x-ms-docs-toc-type: page
+  - name: People.City
     x-ms-docs-toc-type: page

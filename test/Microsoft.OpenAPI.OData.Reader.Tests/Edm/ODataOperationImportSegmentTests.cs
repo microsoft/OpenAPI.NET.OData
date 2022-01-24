@@ -44,13 +44,13 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Fact]
-        public void GetEntityTypeThrowsNotImplementedException()
+        public void GetEntityTypeReturnsNull()
         {
             // Arrange & Act
             var segment = new ODataOperationImportSegment(_actionImport);
 
             // Assert
-            Assert.Throws<NotImplementedException>(() => segment.EntityType);
+            Assert.Null(segment.EntityType);
         }
 
         [Fact]
@@ -80,8 +80,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var segment = new ODataOperationImportSegment(_functionImport);
 
             // Assert
-            Assert.Equal("MyFunction(firstName={firstName},lastName={lastName})",
-                segment.GetPathItemName(new OpenApiConvertSettings()));
+            Assert.Equal("MyFunction(firstName='{firstName}',lastName='{lastName}')",
+                segment.GetPathItemName(new OpenApiConvertSettings() {
+                    AddSingleQuotesForStringParameters = true
+                }));
         }
     }
 }

@@ -35,6 +35,30 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Throws<ArgumentNullException>("context", () => context.CreateSchemas());
         }
 
+        [Fact]
+        public void CreatesCollectionResponseSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            OpenApiConvertSettings settings = new()
+            {
+                    EnableOperationId = true,
+                    EnablePagination = true,
+            };
+            ODataContext context = new(model, settings);
+
+            // Act & Assert
+            var schemas = context.CreateSchemas();
+
+            var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
+            var stringCollectionResponse = schemas["StringCollectionResponse"];
+
+            Assert.Equal("array", flightCollectionResponse.Properties["value"].Type);
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
+            Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
+            Assert.Equal("string", stringCollectionResponse.Properties["value"].Items.Type);
+        }
+
         #region StructuredTypeSchema
         [Fact]
         public void CreateStructuredTypeSchemaThrowArgumentNullContext()

@@ -126,6 +126,26 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
+        /// Find all base types for a given <see cref="IEdmComplexType"/>
+        /// </summary>
+        /// <param name="complexType">The given complex type.</param>
+        /// <returns>All base types or null.</returns>
+        public static IEnumerable<IEdmComplexType> FindAllBaseTypes(this IEdmComplexType complexType)
+        {
+            if (complexType == null)
+            {
+                yield return null;
+            }
+
+            IEdmComplexType current = complexType.BaseComplexType();
+            while (current != null)
+            {
+                yield return current;
+                current = current.BaseComplexType();
+            }
+        }
+
+        /// <summary>
         /// Checks if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>.
         /// In other words, if <paramref name="subtype"/> is a subtype of <paramref name="baseType"/> or not.
         /// </summary>

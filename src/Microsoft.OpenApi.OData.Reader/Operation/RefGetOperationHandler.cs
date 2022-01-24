@@ -65,64 +65,30 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                // $ref returns string for the Uri?
-                Type = "string"
-            };
-
             if (NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
-                var properties = new Dictionary<string, OpenApiSchema>
-                {
-                    {
-                        "value",
-                        new OpenApiSchema
-                        {
-                            Type = "array",
-                            Items = schema
-                        }
-                    }
-                };
-
-                if (Context.Settings.EnablePagination)
-                {
-                    properties.Add(
-                        "@odata.nextLink",
-                        new OpenApiSchema
-                        {
-                            Type = "string"
-                        });
-                }
-
                 operation.Responses = new OpenApiResponses
                 {
                     {
                         Constants.StatusCode200,
                         new OpenApiResponse
                         {
-                            Description = "Retrieved navigation property links",
-                            Content = new Dictionary<string, OpenApiMediaType>
+                            Reference = new OpenApiReference
                             {
-                                {
-                                    Constants.ApplicationJsonMediaType,
-                                    new OpenApiMediaType
-                                    {
-                                        Schema = new OpenApiSchema
-                                        {
-                                            Title = "Collection of links of " + NavigationProperty.ToEntityType().Name,
-                                            Type = "object",
-                                            Properties = properties
-                                        }
-                                    }
-                                }
-                            }
+                                Type = ReferenceType.Response,
+                                Id = $"String{Constants.CollectionSchemaSuffix}"
+                            },
                         }
                     }
                 };
             }
             else
             {
+                OpenApiSchema schema = new()
+                {
+                    // $ref returns string for the Uri?
+                    Type = "string"
+                };
                 IDictionary<string, OpenApiLink> links = null;
                 if (Context.Settings.ShowLinks)
                 {

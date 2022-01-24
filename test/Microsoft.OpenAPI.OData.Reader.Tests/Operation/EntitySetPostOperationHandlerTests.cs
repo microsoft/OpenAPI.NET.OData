@@ -229,16 +229,22 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             }
         }
 
-        private static IEdmModel GetEdmModel(string annotation, bool hasStream = false)
+        internal static IEdmModel GetEdmModel(string annotation, bool hasStream = false)
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
     <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <ComplexType Name=""Address"">
+        <Property Name=""City"" Type=""Edm.String"" />
+      </ComplexType>
       <EntityType Name=""Customer"" HasStream=""{0}"">
         <Key>
           <PropertyRef Name=""ID"" />
         </Key>
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""BillingAddress"" Type=""NS.Address"" />
+        <Property Name=""MailingAddress"" Type=""NS.Address"" Nullable=""false"" />
+        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""Default"">
         <EntitySet Name=""Customers"" EntityType=""NS.Customer"">

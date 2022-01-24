@@ -13,8 +13,6 @@ paths:
         - Categories.CategoryDto
       summary: Get entities from Categories
       operationId: Categories.CategoryDto.ListCategoryDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -63,15 +61,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of CategoryDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -98,6 +88,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CategoryDto entities.
   '/Categories({Id})':
     get:
       tags:
@@ -199,27 +190,23 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of CategoryDto entities.
   /Categories/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Categories
-      produces:
-        - text/plain
+      operationId: Get.Count.Categories-2f72
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Documents:
     get:
       tags:
         - Documents.DocumentDto
       summary: Get entities from Documents
       operationId: Documents.DocumentDto.ListDocumentDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -282,15 +269,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -317,6 +296,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})':
     get:
       tags:
@@ -424,6 +404,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})/Default.Upload':
     post:
       tags:
@@ -450,14 +431,13 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: action
+    x-description: Provides operations to call the Upload method.
   '/Documents({Id})/Revisions':
     get:
       tags:
         - Documents.RevisionDto
       summary: Get Revisions from Documents
       operationId: Documents.ListRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -550,18 +530,11 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.
   '/Documents({Id})/Revisions({Id1})/$ref':
     delete:
       tags:
@@ -601,12 +574,11 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Documents({Id})/Revisions/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions
-      produces:
-        - text/plain
+      operationId: Get.Count.Revisions-f834
       parameters:
         - in: path
           name: Id
@@ -619,19 +591,16 @@ paths:
           x-ms-docs-key-type: DocumentDto
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Documents({Id})/Revisions/$ref':
     get:
       tags:
         - Documents.RevisionDto
       summary: Get ref of Revisions from Documents
       operationId: Documents.ListRefRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -690,15 +659,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -737,27 +698,174 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
+  '/Documents({Id})/Tags':
+    get:
+      summary: Get Tags property value
+      operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property Tags value.
+      operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      summary: Delete Tags property value
+      operationId: Tags.DocumentTagRelDto.DeleteDocumentTagRelDto
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of DocumentTagRelDto.
+      operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/Documents({Id})/Tags/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Tags-ed53
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Documents/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Documents
-      produces:
-        - text/plain
+      operationId: Get.Count.Documents-f555
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Libraries:
     get:
       tags:
         - Libraries.LibraryDto
       summary: Get entities from Libraries
       operationId: Libraries.LibraryDto.ListLibraryDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -835,15 +943,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of LibraryDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -870,6 +970,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   '/Libraries({Id})':
     get:
       tags:
@@ -982,14 +1083,13 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   '/Libraries({Id})/Documents':
     get:
       tags:
         - Libraries.DocumentDto
       summary: Get Documents from Libraries
       operationId: Libraries.ListDocuments
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -1061,18 +1161,11 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Documents property of the Siterra.Documents.App.DTO.LibraryDto entity.
   '/Libraries({Id})/Documents({Id1})/$ref':
     delete:
       tags:
@@ -1112,12 +1205,207 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
+  '/Libraries({Id})/Documents({Id1})/Tags':
+    get:
+      summary: Get Tags property value
+      operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: path
+          name: Id1
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property Tags value.
+      operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: path
+          name: Id1
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      summary: Delete Tags property value
+      operationId: Tags.DocumentTagRelDto.DeleteDocumentTagRelDto
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: path
+          name: Id1
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of DocumentTagRelDto.
+      operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: path
+          name: Id1
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/Libraries({Id})/Documents({Id1})/Tags/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Tags-2853
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of LibraryDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: LibraryDto
+        - in: path
+          name: Id1
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Libraries({Id})/Documents/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Documents
-      produces:
-        - text/plain
+      operationId: Get.Count.Documents-34c7
       parameters:
         - in: path
           name: Id
@@ -1130,19 +1418,16 @@ paths:
           x-ms-docs-key-type: LibraryDto
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Libraries({Id})/Documents/$ref':
     get:
       tags:
         - Libraries.DocumentDto
       summary: Get ref of Documents from Libraries
       operationId: Libraries.ListRefDocuments
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -1187,15 +1472,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -1234,27 +1511,23 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of LibraryDto entities.
   /Libraries/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Libraries
-      produces:
-        - text/plain
+      operationId: Get.Count.Libraries-e13e
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Revisions:
     get:
       tags:
         - Revisions.RevisionDto
       summary: Get entities from Revisions
       operationId: Revisions.RevisionDto.ListRevisionDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1338,15 +1611,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -1373,6 +1638,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of RevisionDto entities.
   '/Revisions({Id})':
     get:
       tags:
@@ -1487,6 +1753,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of RevisionDto entities.
   '/Revisions({Id})/Document':
     get:
       tags:
@@ -1584,6 +1851,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Document property of the Siterra.Documents.App.DTO.RevisionDto entity.
   '/Revisions({Id})/Document/$ref':
     get:
       tags:
@@ -1632,9 +1900,7 @@ paths:
           description: New navigation property ref values
           required: true
           schema:
-            type: object
-            additionalProperties:
-              type: object
+            $ref: '#/definitions/ReferenceUpdateSchema'
       responses:
         '204':
           description: Success
@@ -1666,27 +1932,370 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of RevisionDto entities.
+  '/Revisions({Id})/Document/DocumentClasses':
+    get:
+      summary: Get DocumentClasses property value
+      operationId: DocumentClasses.DocumentClass.ListDocumentClass
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - ClassInstance
+              - ClassInstance desc
+              - ClassId
+              - ClassId desc
+              - DocumentId
+              - DocumentId desc
+              - CreatedBy
+              - CreatedBy desc
+              - CreationDate
+              - CreationDate desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - ModificationDate
+              - ModificationDate desc
+              - IsPrimary
+              - IsPrimary desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - ClassInstance
+              - ClassId
+              - DocumentId
+              - CreatedBy
+              - CreationDate
+              - ModifiedBy
+              - ModificationDate
+              - IsPrimary
+              - Document
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property DocumentClasses value.
+      operationId: DocumentClasses.DocumentClass.UpdateDocumentClass
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      summary: Delete DocumentClasses property value
+      operationId: DocumentClasses.DocumentClass.DeleteDocumentClass
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of DocumentClass.
+      operationId: DocumentClasses.DocumentClass.SetDocumentClass
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/Revisions({Id})/Document/DocumentClasses/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.DocumentClasses-6342
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
+  '/Revisions({Id})/Document/Tags':
+    get:
+      summary: Get Tags property value
+      operationId: Tags.DocumentTagRel.ListDocumentTagRel
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - DocumentId
+              - DocumentId desc
+              - TagId
+              - TagId desc
+              - DomainId
+              - DomainId desc
+              - CreatedBy
+              - CreatedBy desc
+              - ModifiedBy
+              - ModifiedBy desc
+              - CreationDate
+              - CreationDate desc
+              - ModificationDate
+              - ModificationDate desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - DocumentId
+              - TagId
+              - DomainId
+              - CreatedBy
+              - ModifiedBy
+              - CreationDate
+              - ModificationDate
+              - Document
+              - Tag
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+              - Document
+              - Tag
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property Tags value.
+      operationId: Tags.DocumentTagRel.UpdateDocumentTagRel
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      summary: Delete Tags property value
+      operationId: Tags.DocumentTagRel.DeleteDocumentTagRel
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of DocumentTagRel.
+      operationId: Tags.DocumentTagRel.SetDocumentTagRel
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/Revisions({Id})/Document/Tags/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Tags-161f
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of RevisionDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: RevisionDto
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Revisions/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions
-      produces:
-        - text/plain
+      operationId: Get.Count.Revisions-c6a5
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Tasks:
     get:
       tags:
         - Tasks.DocumentDto
       summary: Get entities from Tasks
       operationId: Tasks.DocumentDto.ListDocumentDto
-      produces:
-        - application/json
       parameters:
         - $ref: '#/parameters/top'
         - $ref: '#/parameters/skip'
@@ -1749,15 +2358,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved entities
-          schema:
-            title: Collection of DocumentDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
     post:
@@ -1784,6 +2385,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})':
     get:
       tags:
@@ -1891,6 +2493,7 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})/Default.Upload':
     post:
       tags:
@@ -1917,14 +2520,13 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: action
+    x-description: Provides operations to call the Upload method.
   '/Tasks({Id})/Revisions':
     get:
       tags:
         - Tasks.RevisionDto
       summary: Get Revisions from Tasks
       operationId: Tasks.ListRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -2017,18 +2619,11 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property
-          schema:
-            title: Collection of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+          $ref: '#/responses/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the Revisions property of the Siterra.Documents.App.DTO.DocumentDto entity.
   '/Tasks({Id})/Revisions({Id1})/$ref':
     delete:
       tags:
@@ -2068,12 +2663,11 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
   '/Tasks({Id})/Revisions/$count':
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Revisions
-      produces:
-        - text/plain
+      operationId: Get.Count.Revisions-9297
       parameters:
         - in: path
           name: Id
@@ -2086,19 +2680,16 @@ paths:
           x-ms-docs-key-type: DocumentDto
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   '/Tasks({Id})/Revisions/$ref':
     get:
       tags:
         - Tasks.RevisionDto
       summary: Get ref of Revisions from Tasks
       operationId: Tasks.ListRefRevisions
-      produces:
-        - application/json
       parameters:
         - in: path
           name: Id
@@ -2157,15 +2748,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Retrieved navigation property links
-          schema:
-            title: Collection of links of RevisionDto
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  type: string
+          $ref: '#/responses/StringCollectionResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -2204,19 +2787,168 @@ paths:
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
+    x-description: Provides operations to manage the collection of DocumentDto entities.
+  '/Tasks({Id})/Tags':
+    get:
+      summary: Get Tags property value
+      operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - Name
+              - Name desc
+            type: string
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - Name
+            type: string
+        - in: query
+          name: $expand
+          description: Expand related entities
+          type: array
+          items:
+            enum:
+              - '*'
+            type: string
+      responses:
+        '200':
+          $ref: '#/responses/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+        default:
+          $ref: '#/responses/error'
+    patch:
+      summary: Update property Tags value.
+      operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    delete:
+      summary: Delete Tags property value
+      operationId: Tags.DocumentTagRelDto.DeleteDocumentTagRelDto
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+    post:
+      summary: Sets a new value for the collection of DocumentTagRelDto.
+      operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+        - in: header
+          name: If-Match
+          description: ETag
+          type: string
+        - in: body
+          name: body
+          description: New property values
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+      responses:
+        '204':
+          description: Success
+        default:
+          $ref: '#/responses/error'
+  '/Tasks({Id})/Tags/$count':
+    get:
+      summary: Get the number of the resource
+      operationId: Get.Count.Tags-3a1b
+      parameters:
+        - in: path
+          name: Id
+          description: 'key: Id of DocumentDto'
+          required: true
+          type: integer
+          format: int32
+          maximum: 2147483647
+          minimum: -2147483648
+          x-ms-docs-key-type: DocumentDto
+      responses:
+        '200':
+          $ref: '#/responses/ODataCountResponse'
+        default:
+          $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
   /Tasks/$count:
     get:
       summary: Get the number of the resource
-      operationId: Get.Count.Tasks
-      produces:
-        - text/plain
+      operationId: Get.Count.Tasks-2961
       responses:
         '200':
-          description: The count of the resource
-          schema:
-            $ref: '#/definitions/ODataCountResponse'
+          $ref: '#/responses/ODataCountResponse'
         default:
           $ref: '#/responses/error'
+    x-description: Provides operations to count the resources in the collection.
 definitions:
   Siterra.Documents.App.DTO.DocumentDto:
     title: DocumentDto
@@ -3576,6 +4308,109 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
+  Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
+    title: Collection of DocumentDto
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDto'
+  Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
+    title: Collection of LibraryDto
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDto'
+  Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
+    title: Collection of RevisionDto
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDto'
+  Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
+    title: Collection of CategoryDto
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDto'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
+    title: Collection of Document
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.Document'
+  Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
+    title: Collection of Revision
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.Revision'
+  Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
+    title: Collection of Library
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.Library'
+  Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
+    title: Collection of LibraryType
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
+  Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse:
+    title: Collection of Siterra.Documents.App.DTO.DocumentTagRelDto
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse:
+    title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse:
+    title: Collection of Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
+  StringCollectionResponse:
+    title: Collection of string
+    type: object
+    properties:
+      value:
+        type: array
+        items:
+          type: string
+  ReferenceUpdateSchema:
+    type: object
+    properties:
+      '@odata.id':
+        type: string
+      '@odata.type':
+        type: string
 parameters:
   top:
     in: query
@@ -3609,6 +4444,58 @@ responses:
     description: error
     schema:
       $ref: '#/definitions/odata.error'
+  ODataCountResponse:
+    description: The count of the resource
+    schema:
+      $ref: '#/definitions/ODataCountResponse'
+  Siterra.Documents.App.DTO.DocumentDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentDtoCollectionResponse'
+  Siterra.Documents.App.DTO.LibraryDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.LibraryDtoCollectionResponse'
+  Siterra.Documents.App.DTO.RevisionDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.RevisionDtoCollectionResponse'
+  Siterra.Documents.App.DTO.CategoryDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.CategoryDtoCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Revision.RevisionCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Library.LibraryTypeCollectionResponse'
+  Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDtoCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClassCollectionResponse'
+  Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRelCollectionResponse'
+  StringCollectionResponse:
+    description: Retrieved collection
+    schema:
+      $ref: '#/definitions/StringCollectionResponse'
 tags:
   - name: Categories.CategoryDto
     x-ms-docs-toc-type: page
