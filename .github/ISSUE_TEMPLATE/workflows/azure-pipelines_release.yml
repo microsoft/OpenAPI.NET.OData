@@ -141,7 +141,7 @@ steps:
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning'
   inputs:
-    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
+    ConnectedServiceName: 'ESRP CodeSigning - OData'
     FolderPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
     Pattern: Microsoft.OpenApi.OData.Reader.dll
     signConfigType: inlineSignParams
@@ -227,7 +227,7 @@ steps:
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning Nuget Packages'
   inputs:
-    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
+    ConnectedServiceName: 'ESRP CodeSigning - OData'
     FolderPath: '$(Build.ArtifactStagingDirectory)\Nuget'
     Pattern: '*.nupkg'
     signConfigType: inlineSignParams
@@ -264,10 +264,10 @@ steps:
 #     nuGetFeedType: external
 #     publishFeedCredentials: 'OpenAPI Nuget Connection'
 
-- task: GithubRelease@1
-  displayName: 'Create Github Release (v$(VersionFullSemantic))'
-  inputs:
-    githubConnection: '<TODO>'
-    title: 'v$(VersionFullSemantic)'
-    tagSource: userSpecifiedTag
-    tag: 'v$(VersionFullSemantic)'
+# - task: GithubRelease@1
+#   displayName: 'Create Github Release (v$(VersionFullSemantic))'
+#   inputs:
+#     githubConnection: '<TODO>'
+#     title: 'v$(VersionFullSemantic)'
+#     tagSource: userSpecifiedTag
+#     tag: 'v$(VersionFullSemantic)'
