@@ -4771,6 +4771,7 @@ components:
           type: string
         target:
           type: string
+          nullable: true
         details:
           type: array
           items:
@@ -4790,6 +4791,7 @@ components:
           type: string
         target:
           type: string
+          nullable: true
     ODataCountResponse:
       type: integer
       format: int32

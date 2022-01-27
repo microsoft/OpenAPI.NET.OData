@@ -38,7 +38,8 @@
             "type": "string"
           },
           "target": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "details": {
             "type": "array",
@@ -66,7 +67,8 @@
             "type": "string"
           },
           "target": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           }
         }
       },
