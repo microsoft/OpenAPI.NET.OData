@@ -55,12 +55,7 @@ internal class ComplexPropertyDeleteOperationHandler : ComplexPropertyBaseOperat
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.Responses = new OpenApiResponses
-        {
-            { Constants.StatusCode204, Constants.StatusCode204.GetResponse() },
-            { Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse() }
-        };
-
+        operation.AddErrorResponses(Context.Settings, true);
         base.SetResponses(operation);
     }
     protected override void SetSecurity(OpenApiOperation operation)

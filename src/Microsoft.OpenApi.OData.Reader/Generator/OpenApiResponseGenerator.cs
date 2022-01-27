@@ -32,6 +32,24 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
 
                 { Constants.StatusCode204, new OpenApiResponse { Description = "Success"} },
+                { Constants.StatusCodeClass4XX, new OpenApiResponse
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Response,
+                            Id = "error"
+                        }
+                    }
+                },
+                { Constants.StatusCodeClass5XX, new OpenApiResponse
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Response,
+                            Id = "error"
+                        }
+                    }
+                }
            };
 
         /// <summary>
@@ -41,8 +59,7 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <returns>The created <see cref="OpenApiResponse"/>.</returns>
         public static OpenApiResponse GetResponse(this string statusCode)
         {
-            OpenApiResponse response;
-            if (_responses.TryGetValue(statusCode, out response))
+            if (_responses.TryGetValue(statusCode, out OpenApiResponse response))
             {
                 return response;
             }

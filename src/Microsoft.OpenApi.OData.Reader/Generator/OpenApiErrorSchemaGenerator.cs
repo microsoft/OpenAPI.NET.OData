@@ -86,13 +86,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = "string" }
+                        "code", new OpenApiSchema { Type = "string", Nullable = false }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string" }
+                        "message", new OpenApiSchema { Type = "string", Nullable = false, }
                     },
                     {
-                        "target", new OpenApiSchema { Type = "string" }
+                        "target", new OpenApiSchema { Type = "string", Nullable = true }
                     },
                     {
                         "details",
@@ -137,13 +137,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
                     {
-                        "code", new OpenApiSchema { Type = "string" }
+                        "code", new OpenApiSchema { Type = "string", Nullable = false, }
                     },
                     {
-                        "message", new OpenApiSchema { Type = "string" }
+                        "message", new OpenApiSchema { Type = "string", Nullable = false, }
                     },
                     {
-                        "target", new OpenApiSchema { Type = "string" }
+                        "target", new OpenApiSchema { Type = "string", Nullable = true, }
                     }
                 }
             };
