@@ -29,6 +29,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 {OperationType.Get, new EntityGetOperationHandler() },
                 {OperationType.Patch, new EntityPatchOperationHandler() },
+                {OperationType.Put, new EntityPutOperationHandler() },
                 {OperationType.Delete, new EntityDeleteOperationHandler() }
             }},
 
