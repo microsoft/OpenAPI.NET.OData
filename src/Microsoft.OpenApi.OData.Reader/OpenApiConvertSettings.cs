@@ -208,6 +208,13 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableDeprecationInformation { get; set; } = true;
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to add a "x-ms-enum" extension to the enum type schema for V2 and V3 descriptions.
+        /// V3.1 will won't add the extension.
+        /// https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-enum
+        /// </summary>
+        public bool AddEnumDescriptionExtension { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -243,6 +250,7 @@ namespace Microsoft.OpenApi.OData
                 EnableODataTypeCast = this.EnableODataTypeCast,
                 RequireDerivedTypesConstraintForODataTypeCastSegments = this.RequireDerivedTypesConstraintForODataTypeCastSegments,
                 EnableDeprecationInformation = this.EnableDeprecationInformation,
+                AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
             };
 
             return newSettings;
