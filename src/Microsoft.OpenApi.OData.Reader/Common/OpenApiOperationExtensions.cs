@@ -20,7 +20,8 @@ public static class OpenApiOperationExtensions
     /// <param name="operation">The operation.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="addNoContent">Whether to add a 204 no content response.</param>
-    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, bool addNoContent = false) {
+    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, bool addNoContent = false)
+    {
         if (operation == null) {
             throw Error.ArgumentNull(nameof(operation));
         }
