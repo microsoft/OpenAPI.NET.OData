@@ -2274,8 +2274,7 @@
           }
         },
         "innererror": {
-          "description": "The structure of this object is service-specific",
-          "type": "object"
+          "$ref": "#/definitions/odata.error.innererror"
         }
       }
     },
@@ -2296,6 +2295,10 @@
           "type": "string"
         }
       }
+    },
+    "odata.error.innererror": {
+      "description": "The structure of this object is service-specific",
+      "type": "object"
     },
     "ODataCountResponse": {
       "format": "int32",

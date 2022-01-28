@@ -33,8 +33,7 @@ components:
           items:
             $ref: '#/components/schemas/odata.error.detail'
         innererror:
-          type: object
-          description: The structure of this object is service-specific
+          $ref: '#/components/schemas/odata.error.innererror'
     odata.error.detail:
       required:
         - code
@@ -48,6 +47,9 @@ components:
         target:
           type: string
           nullable: true
+    odata.error.innererror:
+      type: object
+      description: The structure of this object is service-specific
     ODataCountResponse:
       type: integer
       format: int32

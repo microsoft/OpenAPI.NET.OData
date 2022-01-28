@@ -220,6 +220,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool ErrorResponsesAsDefault { get; set; } = true;
 
+        /// <summary>
+        /// Gets/Sets the name of the complex type to look for in the main namespace to use as the inner error type.
+        /// </summary>
+        public string InnerErrorComplexTypeName { get; set; } = "InnerError";
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -257,6 +262,7 @@ namespace Microsoft.OpenApi.OData
                 EnableDeprecationInformation = this.EnableDeprecationInformation,
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
+                InnerErrorComplexTypeName = this.InnerErrorComplexTypeName
             };
 
             return newSettings;

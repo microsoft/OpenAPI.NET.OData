@@ -28773,8 +28773,7 @@
           }
         },
         "innererror": {
-          "description": "The structure of this object is service-specific",
-          "type": "object"
+          "$ref": "#/definitions/odata.error.innererror"
         }
       }
     },
@@ -28792,6 +28791,20 @@
           "type": "string"
         },
         "target": {
+          "type": "string"
+        }
+      }
+    },
+    "odata.error.innererror": {
+      "title": "InnerError",
+      "type": "object",
+      "properties": {
+        "Date": {
+          "format": "date-time",
+          "pattern": "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$",
+          "type": "string"
+        },
+        "RequestId": {
           "type": "string"
         }
       }

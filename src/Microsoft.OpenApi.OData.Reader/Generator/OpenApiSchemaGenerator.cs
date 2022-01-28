@@ -50,6 +50,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     case EdmSchemaElementKind.TypeDefinition: // Type definition
                         {
                             IEdmType reference = (IEdmType)element;
+                            if(reference is IEdmComplexType &&
+                                reference.FullTypeName().EndsWith(context.Settings.InnerErrorComplexTypeName, StringComparison.Ordinal))
+                                continue;
+                            
                             schemas.Add(reference.FullTypeName(), context.CreateSchemaTypeSchema(reference));
                         }
                         break;
@@ -340,7 +344,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateSchema(typeDefinition.UnderlyingType);
         }
 
-        private static OpenApiSchema CreateSchemaTypeSchema(this ODataContext context, IEdmType edmType)
+        internal static OpenApiSchema CreateSchemaTypeSchema(this ODataContext context, IEdmType edmType)
         {
             Debug.Assert(context != null);
             Debug.Assert(edmType != null);

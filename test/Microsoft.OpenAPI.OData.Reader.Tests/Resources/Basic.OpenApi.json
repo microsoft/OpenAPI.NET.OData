@@ -2522,8 +2522,7 @@
             }
           },
           "innererror": {
-            "type": "object",
-            "description": "The structure of this object is service-specific"
+            "$ref": "#/components/schemas/odata.error.innererror"
           }
         }
       },
@@ -2545,6 +2544,10 @@
             "nullable": true
           }
         }
+      },
+      "odata.error.innererror": {
+        "type": "object",
+        "description": "The structure of this object is service-specific"
       },
       "ODataCountResponse": {
         "type": "integer",

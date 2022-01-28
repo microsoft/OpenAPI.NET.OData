@@ -4,6 +4,8 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
+using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -26,18 +28,20 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             Utils.CheckArgumentNull(context, nameof(context));
 
-            IDictionary<string, OpenApiSchema> schemas = new Dictionary<string, OpenApiSchema>();
+            return new Dictionary<string, OpenApiSchema>()
+            {
+                // odata.error
+                { "odata.error", CreateErrorSchema() },
 
-            // odata.error
-            schemas.Add("odata.error", CreateErrorSchema());
+                // odata.error.main
+                { "odata.error.main", CreateErrorMainSchema() },
 
-            // odata.error.main
-            schemas.Add("odata.error.main", CreateErrorMainSchema());
+                // odata.error.detail
+                { "odata.error.detail", CreateErrorDetailSchema() },
 
-            // odata.error.detail
-            schemas.Add("odata.error.detail", CreateErrorDetailSchema());
-
-            return schemas;
+                // odata.error.innererror
+                { "odata.error.innererror", CreateInnerErrorSchema(context) }
+            };
         }
 
         /// <summary>
@@ -67,6 +71,31 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 }
+            };
+        }
+
+        /// <summary>
+        /// Creates the inner error schema definition. If an "InnerError" complex type is defined in the root namespace, then this type will be used as the inner error type.
+        /// Otherwise, a default inner error type of object will be created.
+        /// </summary>
+        /// <param name="context">The OData to Open API context.</param>
+        /// <returns>The inner error schema definition.</returns>
+        public static OpenApiSchema CreateInnerErrorSchema(ODataContext context)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+
+            var rootNamespace = context.Model.DeclaredNamespaces.OrderBy(n => n.Count(x => x == '.')).FirstOrDefault();
+            if(!string.IsNullOrEmpty(context.Settings.InnerErrorComplexTypeName) &&
+                !string.IsNullOrEmpty(rootNamespace) &&
+                context.Model.FindDeclaredType($"{rootNamespace}.{context.Settings.InnerErrorComplexTypeName}") is IEdmComplexType complexType)
+            {
+                return context.CreateSchemaTypeSchema(complexType);
+            }
+            
+            return new OpenApiSchema
+            {
+                Type = "object",
+                Description = "The structure of this object is service-specific"
             };
         }
 
@@ -113,8 +142,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         "innererror",
                         new OpenApiSchema
                         {
-                            Type = "object",
-                            Description = "The structure of this object is service-specific"
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = "odata.error.innererror"
+                            }
                         }
                     }
                 }
