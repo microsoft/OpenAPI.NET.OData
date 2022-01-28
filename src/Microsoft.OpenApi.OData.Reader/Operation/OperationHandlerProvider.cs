@@ -24,7 +24,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Post, new EntitySetPostOperationHandler() }
             }},
 
-            // entity (Get/Patch/Delete)
+            // entity (Get/Patch/Put/Delete)
             {ODataPathKind.Entity, new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new EntityGetOperationHandler() },
