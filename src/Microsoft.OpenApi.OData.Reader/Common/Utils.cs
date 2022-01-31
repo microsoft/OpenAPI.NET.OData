@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.OpenApi.OData.Vocabulary;
 
 namespace Microsoft.OpenApi.OData.Common
@@ -106,5 +107,13 @@ namespace Microsoft.OpenApi.OData.Common
 
             return value;
         }
+
+        /// <summary>
+        /// Lowers the first character of the string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>The changed string.</returns>
+        internal static string ToFirstCharacterLowerCase(this string input)
+            => string.IsNullOrEmpty(input) ? input : $"{char.ToLowerInvariant(input.FirstOrDefault())}{input.Substring(1)}";
     }
 }

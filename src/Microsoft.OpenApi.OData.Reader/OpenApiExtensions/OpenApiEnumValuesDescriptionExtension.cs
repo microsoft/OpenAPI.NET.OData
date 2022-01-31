@@ -22,14 +22,17 @@ internal class OpenApiEnumValuesDescriptionExtension : IOpenApiExtension
     /// Name of the extension as used in the description.
     /// </summary>
 	public string Name => "x-ms-enum";
+
 	/// <summary>
 	/// The of the enum.
 	/// </summary>
 	public string EnumName { get; set; }
+
 	/// <summary>
 	/// Descriptions for the enum symbols, where the value MUST match the enum symbols in the main description
 	/// </summary>
 	public List<EnumDescription> ValuesDescriptions { get; set; } = new();
+
 	/// <inheritdoc />
 	public void Write(IOpenApiWriter writer, OpenApiSpecVersion specVersion)
 	{

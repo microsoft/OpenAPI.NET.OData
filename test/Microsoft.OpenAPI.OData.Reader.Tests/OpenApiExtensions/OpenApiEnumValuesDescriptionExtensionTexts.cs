@@ -12,7 +12,7 @@ namespace Microsoft.OpenApi.OData.OpenApiExtensions.Tests;
 
 public class OpenApiEnumValuesDescriptionExtensionTexts
 {
-	[Fact]
+    [Fact]
     public void ExtensionNameMatchesExpected()
     {
         // Arrange
@@ -26,7 +26,7 @@ public class OpenApiEnumValuesDescriptionExtensionTexts
         Assert.Equal(expectedName, name);
     }
 
-	[Fact]
+    [Fact]
     public void WritesNothingWhenNoValues()
     {
         // Arrange
@@ -40,23 +40,23 @@ public class OpenApiEnumValuesDescriptionExtensionTexts
 
         // Assert
         Assert.Null(extension.EnumName);
-		Assert.Empty(extension.ValuesDescriptions);
+        Assert.Empty(extension.ValuesDescriptions);
         Assert.Empty(result);
     }
-	[Fact]
-	public void WritesEnumDescription()
-	{
-		// Arrange
+    [Fact]
+    public void WritesEnumDescription()
+    {
+        // Arrange
         OpenApiEnumValuesDescriptionExtension extension = new();
-		extension.EnumName = "TestEnum";
-		extension.ValuesDescriptions = new()
-		{
-			new() {
-				Description = "TestDescription",
-				Value = "TestValue",
-				Name = "TestName"
-			}
-		};
+        extension.EnumName = "TestEnum";
+        extension.ValuesDescriptions = new()
+        {
+            new() {
+                Description = "TestDescription",
+                Value = "TestValue",
+                Name = "TestName"
+            }
+        };
         using TextWriter sWriter = new StringWriter();
         OpenApiJsonWriter writer = new(sWriter);
 
@@ -65,11 +65,11 @@ public class OpenApiEnumValuesDescriptionExtensionTexts
         string result = sWriter.ToString();
 
         // Assert
-		Assert.Contains("values", result);
-		Assert.Contains("modelAsString\": false", result);
-		Assert.Contains("name\": \"TestEnum", result);
-		Assert.Contains("description\": \"TestDescription", result);
-		Assert.Contains("value\": \"TestValue", result);
-		Assert.Contains("name\": \"TestName", result);
-	}
+        Assert.Contains("values", result);
+        Assert.Contains("modelAsString\": false", result);
+        Assert.Contains("name\": \"TestEnum", result);
+        Assert.Contains("description\": \"TestDescription", result);
+        Assert.Contains("value\": \"TestValue", result);
+        Assert.Contains("name\": \"TestName", result);
+    }
 }
