@@ -369,6 +369,71 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
         }
 
+        [Theory]
+        [MemberData(nameof(CollectionNavigationPropertyData))]
+        [MemberData(nameof(SingleNavigationPropertyData))]
+        public void CreatePathItemForNavigationPropertyAndUpdateMethodUpdateRestrictions(bool updateMethod, string navigationPropertyPath)
+        {
+            // Arrange
+            string annotation = String.Format(@"
+<Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+  <Record>
+    <PropertyValue Property=""RestrictedProperties"" >
+      <Collection>
+        <Record>
+          <PropertyValue Property=""NavigationProperty"" NavigationPropertyPath=""{0}"" />
+          <PropertyValue Property=""UpdateRestrictions"" >
+            <Record>
+              <PropertyValue Property=""UpdateMethod"">
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+              </PropertyValue>
+            </Record>
+          </PropertyValue>
+        </Record>
+      </Collection>
+    </PropertyValue>
+  </Record>
+</Annotation>", navigationPropertyPath);
+
+            IEdmModel model = GetEdmModel(updateMethod ? annotation : "");
+            ODataContext context = new ODataContext(model);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+
+            ODataPath path = CreatePath(entitySet, navigationPropertyPath, true);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+
+            var navigationProperty = path.Segments.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
+            bool isContainment = navigationProperty.ContainsTarget;
+            bool isCollection = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
+
+            OperationType[] expected;
+            if (isContainment)
+            {
+                if (updateMethod)
+                {
+                    expected = new[] { OperationType.Get, OperationType.Put, OperationType.Delete };
+                }
+                else
+                {
+                    expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
+                }
+            }
+            else
+            {
+                expected = new[] { OperationType.Get };
+            }
+
+            Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+        }
+
         public static IEdmModel GetEdmModel(string annotation)
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">

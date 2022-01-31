@@ -88,12 +88,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 {
                     if (LastSegmentIsKeySegment)
                     {
-                        // Need to check this scenario is valid or not?
-                        UpdateRestrictionsType update = restriction?.UpdateRestrictions;
-                        if (update == null || update.IsUpdatable)
-                        {
-                            AddOperation(item, OperationType.Patch);
-                        }
+                        AddUpdateOperation(item, restriction);
                     }
                     else
                     {
@@ -106,11 +101,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
                 else
                 {
-                    UpdateRestrictionsType update = restriction?.UpdateRestrictions;
-                    if (update == null || update.IsUpdatable)
-                    {
-                        AddOperation(item, OperationType.Patch);
-                    }
+                    AddUpdateOperation(item, restriction);
                 }
             }
 
@@ -182,6 +173,22 @@ namespace Microsoft.OpenApi.OData.PathItem
                 }
 
                 return;
+            }
+        }
+
+        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        {
+            UpdateRestrictionsType update = restriction?.UpdateRestrictions;
+            if (update == null || update.IsUpdatable)
+            {
+                if (update != null && update.IsUpdateMethodPut)
+                {
+                    AddOperation(item, OperationType.Put);
+                }
+                else
+                {
+                    AddOperation(item, OperationType.Patch);
+                }
             }
         }
 
