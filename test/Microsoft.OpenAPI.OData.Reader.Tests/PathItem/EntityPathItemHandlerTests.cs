@@ -174,6 +174,25 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             VerifyPathItemOperations(annotation, expected);
         }
 
+        [Theory]
+        [InlineData(false, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
+        [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Put, OperationType.Delete })]
+        public void CreateEntityPathItemWorksForUpdateMethodRestrictionsCapabilities(bool updateMethod, OperationType[] expected)
+        {
+            // Arrange
+            string annotation = updateMethod ? $@"
+<Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+  <Record>
+    <PropertyValue Property=""UpdateMethod"">
+      <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+    </PropertyValue>
+  </Record>
+</Annotation>" : "";
+
+            // Assert
+            VerifyPathItemOperations(annotation, expected);
+        }
+
         private void VerifyPathItemOperations(string annotation, OperationType[] expected)
         {
             // Arrange

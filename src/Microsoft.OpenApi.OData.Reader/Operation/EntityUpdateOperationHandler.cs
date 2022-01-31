@@ -15,7 +15,7 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 namespace Microsoft.OpenApi.OData.Operation
 {
     /// <summary>
-    /// Base class for entity set update (patch or put) operation.
+    /// Base class for entity set update (patch or put) operations.
     /// </summary>
     internal abstract class EntityUpdateOperationHandler : EntitySetOperationHandler
     {

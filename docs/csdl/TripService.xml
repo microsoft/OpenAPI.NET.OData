@@ -117,6 +117,10 @@
         <Parameter Name="lon" Type="Edm.Double" Nullable="false" />
         <ReturnType Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
       </Function>
+      <Function Name="GetFavoriteAirline" IsBound="true" EntitySetPath="person">
+        <Parameter Name="person" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
+        <ReturnType Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline" />
+      </Function>
       <Function Name="GetFriendsTrips" IsBound="true">
         <Parameter Name="person" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
