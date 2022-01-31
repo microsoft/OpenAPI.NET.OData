@@ -154,13 +154,6 @@
               <PropertyPath>Name</PropertyPath>
             </Collection>
           </Annotation>
-          <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
-            <Record>
-              <PropertyValue Property="UpdateMethod">
-                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
-              </PropertyValue>
-            </Record>
-          </Annotation>
         </EntitySet>
         <EntitySet Name="Airports" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
         <EntitySet Name="NewComePeople" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
