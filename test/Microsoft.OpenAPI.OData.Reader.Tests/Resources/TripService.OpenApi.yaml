@@ -22279,6 +22279,20 @@ components:
         - Female
         - Unknow
       type: string
+      description: Gender of the person.
+      x-ms-enum:
+        name: PersonGender
+        modelAsString: false
+        values:
+          - value: Male
+            description: The Male gender.
+            name: Male
+          - value: Female
+            description: The Female gender.
+            name: Female
+          - value: Unknow
+            description: Unknown gender or prefers not to say.
+            name: Unknow
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature:
       title: Feature
       enum:

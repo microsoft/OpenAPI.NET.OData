@@ -20199,11 +20199,25 @@ definitions:
               $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender:
     title: PersonGender
+    description: Gender of the person.
     enum:
       - Male
       - Female
       - Unknow
     type: string
+    x-ms-enum:
+      name: PersonGender
+      modelAsString: false
+      values:
+        - value: Male
+          description: The Male gender.
+          name: Male
+        - value: Female
+          description: The Female gender.
+          name: Female
+        - value: Unknow
+          description: Unknown gender or prefers not to say.
+          name: Unknow
   Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature:
     title: Feature
     enum:

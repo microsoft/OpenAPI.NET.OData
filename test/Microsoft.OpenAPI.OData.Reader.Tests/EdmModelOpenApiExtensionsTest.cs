@@ -210,6 +210,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 IEEE754Compatible = true,
                 OpenApiSpecVersion = specVersion,
                 AddSingleQuotesForStringParameters = true,
+                AddEnumDescriptionExtension = true,
             };
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
@@ -242,6 +243,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 IEEE754Compatible = true,
                 OpenApiSpecVersion = specVersion,
                 AddSingleQuotesForStringParameters = true,
+                AddEnumDescriptionExtension = true,
             };
 
             // Act
