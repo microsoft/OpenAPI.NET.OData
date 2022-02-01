@@ -426,6 +426,15 @@ namespace Microsoft.OpenApi.OData.Generator
                     AnyOf = null
                 };
 
+                schema.Properties.Add("@odata.type", new OpenApiSchema
+                {
+                    Type = "string",
+                    Enum = new List<IOpenApiAny>
+                    {
+                        new OpenApiString(structuredType.FullTypeName())
+                    }
+                });
+
                 // It optionally can contain the field description,
                 // whose value is the value of the unqualified annotation Core.Description of the structured type.
                 if (structuredType.TypeKind == EdmTypeKind.Complex)
