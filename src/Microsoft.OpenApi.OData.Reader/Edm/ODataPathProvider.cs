@@ -337,7 +337,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             // test the expandable for the navigation property.
-            bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath, convertSettings);
+            bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
 
             // append a navigation property.
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
@@ -426,7 +426,7 @@ namespace Microsoft.OpenApi.OData.Edm
             currentPath.Pop();
         }
 
-        private bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        private bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
         {
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
