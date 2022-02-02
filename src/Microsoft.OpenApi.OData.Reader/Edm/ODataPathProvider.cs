@@ -366,9 +366,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 // ~/entityset/{key}/single-valued-Nav/subtype
                 CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
-                if (!navigationProperty.ContainsTarget)
+                if (navigation?.Referenceable == true)
                 {
-                    // Non-Contained
+                    // Referenceable navigation properties
                     // Single-Valued: ~/entityset/{key}/single-valued-Nav/$ref
                     // Collection-valued: ~/entityset/{key}/collection-valued-Nav/$ref?$id='{navKey}'
                     CreateRefPath(currentPath);
@@ -378,7 +378,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
-                        
+
                         CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
@@ -448,34 +448,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
             }
 
-            return ShouldExpandNavigationProperty(navigationProperty, convertSettings);
-        }
-
-        /// <summary>
-        /// Evaluates whether to expand a navigation property based off of a custom attribute value
-        /// specified for this navigation property.
-        /// </summary>
-        /// <param name="navigationProperty">The navigation property.</param>
-        /// <param name="convertSettings">The settings for the current conversion. This is used to retrieve the name of the custom attribute.</param>
-        /// <returns>true or false</returns>
-        private bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, OpenApiConvertSettings convertSettings)
-        {
-            Debug.Assert(navigationProperty != null);
-            Debug.Assert(convertSettings != null);
-
-            var customAttribute = _model.DirectValueAnnotationsManager.GetDirectValueAnnotations(navigationProperty)?
-                .Where(x => x.Name.Equals(convertSettings.ExpandNavigationPropertyAttributeName, StringComparison.Ordinal))?
-                .FirstOrDefault()?.Value as EdmStringConstant;
-
-            var customAttributeValue = customAttribute?.Value;
-
-            var expand = true;
-            if (!string.IsNullOrEmpty(customAttributeValue) && bool.TryParse(customAttributeValue, out bool result))
-            {
-                expand = result;
-            }
-
-            return expand;
+            return true;
         }
 
         /// <summary>
