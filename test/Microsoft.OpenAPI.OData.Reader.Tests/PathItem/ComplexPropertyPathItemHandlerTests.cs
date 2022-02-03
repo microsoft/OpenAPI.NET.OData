@@ -41,10 +41,10 @@ public class ComplexPropertyPathItemHandlerTests
 		Assert.True(pathItem.Operations.ContainsKey(OperationType.Delete));
 	}
 
-	[Fact]
-	public void SetsPutUpdateOperationWithUpdateMethodUpdateRestrictions()
+    [Fact]
+    public void SetsPutUpdateOperationWithUpdateMethodUpdateRestrictions()
     {
-		string annotation = $@"
+        string annotation = $@"
 <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
   <Record>
     <PropertyValue Property=""UpdateMethod"">
@@ -52,24 +52,24 @@ public class ComplexPropertyPathItemHandlerTests
     </PropertyValue>
   </Record>
 </Annotation>";
-		string target = $@"""NS.Default/Customers/BillingAddress""";
+        string target = $@"""NS.Customer/BillingAddress""";
 
-		var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation);
-		var context = new ODataContext(model);
-		var entitySet = model.EntityContainer.FindEntitySet("Customers");
-		Assert.NotNull(entitySet); // guard
-		var entityType = entitySet.EntityType();
-		var property = entityType.FindProperty("BillingAddress");
-		Assert.NotNull(property); // guard
-		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
-		Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
-		var pathItem = _pathItemHandler.CreatePathItem(context, path);
-		Assert.NotNull(pathItem);
-		Assert.Equal(3, pathItem.Operations.Count);
-		Assert.True(pathItem.Operations.ContainsKey(OperationType.Get));
-		Assert.True(pathItem.Operations.ContainsKey(OperationType.Patch));
-		Assert.True(pathItem.Operations.ContainsKey(OperationType.Delete));
-	}
+        var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);
+        var context = new ODataContext(model);
+        var entitySet = model.EntityContainer.FindEntitySet("Customers");
+        Assert.NotNull(entitySet); // guard
+        var entityType = entitySet.EntityType();
+        var property = entityType.FindProperty("BillingAddress");
+        Assert.NotNull(property); // guard
+        var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+        Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
+        var pathItem = _pathItemHandler.CreatePathItem(context, path);
+        Assert.NotNull(pathItem);
+        Assert.Equal(3, pathItem.Operations.Count);
+        Assert.True(pathItem.Operations.ContainsKey(OperationType.Get));
+        Assert.True(pathItem.Operations.ContainsKey(OperationType.Put));
+        Assert.True(pathItem.Operations.ContainsKey(OperationType.Delete));
+    }
 
 	[Fact]
 	public void DoesntSetDeleteOnNonNullableProperties()

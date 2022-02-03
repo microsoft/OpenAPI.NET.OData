@@ -153,7 +153,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
         }
 
-        public static IEdmModel GetEdmModel(string annotation)
+        public static IEdmModel GetEdmModel(string annotation, string target = "\"NS.Default/Customers\"")
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
   <edmx:DataServices>
@@ -173,13 +173,13 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
       <EntityContainer Name =""Default"">
          <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
       </EntityContainer>
-      <Annotations Target=""NS.Default/Customers"">
-        {0}
+      <Annotations Target={0}>
+        {1}
       </Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";
-            string modelText = string.Format(template, annotation);
+            string modelText = string.Format(template, target, annotation);
 
             IEdmModel model;
             IEnumerable<EdmError> errors;
