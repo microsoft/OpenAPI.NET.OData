@@ -397,17 +397,25 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
-                var structuredTypeName = (structuredType as IEdmSchemaElement)?.Name;
                 // The discriminator object is added to structured types which have derived types.
                 OpenApiDiscriminator discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
                 {
+                    string v3RefIdentifier = new OpenApiSchema
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = structuredType.FullTypeName()
+                        }
+                    }.Reference.ReferenceV3;
+
                     discriminator = new OpenApiDiscriminator
                     {
                         PropertyName = "@odata.type",
                         Mapping = new Dictionary<string, string>
                         {
-                            {structuredTypeName, "#" + structuredType.FullTypeName()}
+                            {structuredType.FullTypeName(), v3RefIdentifier }
                         }
                     };
                 }
@@ -415,7 +423,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 // A structured type without a base type is represented as a Schema Object of type object
                 OpenApiSchema schema = new OpenApiSchema
                 {
-                    Title = structuredTypeName,
+                    Title = (structuredType as IEdmSchemaElement)?.Name,
 
                     Type = "object",
 
