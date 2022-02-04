@@ -350,7 +350,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 example = CreateStructuredTypePropertiesExample(context, structuredType);
             }
 
-            if ((context.Settings.EnableDiscriminatorValue || context.Settings.EnableV3DiscriminatorValue) && derivedTypes == null)
+            if (context.Settings.EnableDiscriminatorValue && derivedTypes == null)
             {
                 derivedTypes = context.Model.FindDirectlyDerivedTypes(structuredType).OfType<IEdmEntityType>();
             }
@@ -397,20 +397,25 @@ namespace Microsoft.OpenApi.OData.Generator
             }
             else
             {
+                var structuredTypeName = (structuredType as IEdmSchemaElement)?.Name;
                 // The discriminator object is added to structured types which have derived types.
                 OpenApiDiscriminator discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
                 {
                     discriminator = new OpenApiDiscriminator
                     {
-                        PropertyName = "@odata.type"
+                        PropertyName = "@odata.type",
+                        Mapping = new Dictionary<string, string>
+                        {
+                            {structuredTypeName, "#" + structuredType.FullTypeName()}
+                        }
                     };
                 }
 
                 // A structured type without a base type is represented as a Schema Object of type object
                 OpenApiSchema schema = new OpenApiSchema
                 {
-                    Title = (structuredType as IEdmSchemaElement)?.Name,
+                    Title = structuredTypeName,
 
                     Type = "object",
 
@@ -425,21 +430,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     OneOf = null,
                     AnyOf = null
                 };
-
-                // In OpenAPI v3.0.X, discriminators can be represented as an '@odata.type' property
-                // with a native JSON schema with an enum with just a single value
-                if (context.Settings.EnableV3DiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
-                {
-                    schema.Properties.Add("@odata.type", new OpenApiSchema
-                    {
-                        Type = "string",
-                        Enum = new List<IOpenApiAny>
-                        {
-                            new OpenApiString(structuredType.FullTypeName())
-                        }
-                    });
-                }                
-
+              
                 // It optionally can contain the field description,
                 // whose value is the value of the unqualified annotation Core.Description of the structured type.
                 if (structuredType.TypeKind == EdmTypeKind.Complex)
