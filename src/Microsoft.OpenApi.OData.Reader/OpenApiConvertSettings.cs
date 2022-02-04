@@ -109,11 +109,6 @@ namespace Microsoft.OpenApi.OData
         public bool EnableDiscriminatorValue { get; set; } = false;
 
         /// <summary>
-        /// Gets/sets a value indicating whether or not to allow OpenAPI V3.0 discriminator value support.
-        /// </summary>
-        public bool EnableV3DiscriminatorValue { get; set; } = false;
-
-        /// <summary>
         /// Gets/sets a value indicating whether or not to show the derived types of a base type reference in the responses payload.
         /// </summary>
         public bool EnableDerivedTypesReferencesForResponses { get; set; } = false;
@@ -235,7 +230,6 @@ namespace Microsoft.OpenApi.OData
                 EnablePagination = this.EnablePagination,
                 PageableOperationName = this.PageableOperationName,
                 EnableDiscriminatorValue = this.EnableDiscriminatorValue,
-                EnableV3DiscriminatorValue = this.EnableV3DiscriminatorValue,
                 EnableDerivedTypesReferencesForResponses = this.EnableDerivedTypesReferencesForResponses,
                 EnableDerivedTypesReferencesForRequestBody = this.EnableDerivedTypesReferencesForRequestBody,
                 RoutePathPrefixProvider = this.RoutePathPrefixProvider,
