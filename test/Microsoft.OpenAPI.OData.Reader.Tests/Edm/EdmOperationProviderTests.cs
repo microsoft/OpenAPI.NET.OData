@@ -42,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             operations = provider.FindOperations(entitySet.EntityType(), false);
 
             // Assert
-            Assert.Equal(30, operations.Count());
+            Assert.Equal(57, operations.Count());
         }
     }
 }
