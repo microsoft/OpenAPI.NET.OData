@@ -91,7 +91,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
             };
 
-            operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+    		operation.AddErrorResponses(Context.Settings, false);
 
             base.SetResponses(operation);
         }

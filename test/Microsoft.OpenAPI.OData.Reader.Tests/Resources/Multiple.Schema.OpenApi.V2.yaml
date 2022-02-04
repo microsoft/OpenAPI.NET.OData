@@ -4291,8 +4291,7 @@ definitions:
         items:
           $ref: '#/definitions/odata.error.detail'
       innererror:
-        description: The structure of this object is service-specific
-        type: object
+        $ref: '#/definitions/odata.error.innererror'
   odata.error.detail:
     required:
       - code
@@ -4305,6 +4304,9 @@ definitions:
         type: string
       target:
         type: string
+  odata.error.innererror:
+    description: The structure of this object is service-specific
+    type: object
   ODataCountResponse:
     format: int32
     type: integer
