@@ -438,7 +438,6 @@ namespace Microsoft.OpenApi.OData.Generator
                     OneOf = null,
                     AnyOf = null
                 };
-              
                 // It optionally can contain the field description,
                 // whose value is the value of the unqualified annotation Core.Description of the structured type.
                 if (structuredType.TypeKind == EdmTypeKind.Complex)
