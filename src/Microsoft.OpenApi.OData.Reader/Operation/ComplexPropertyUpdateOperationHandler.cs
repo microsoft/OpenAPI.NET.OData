@@ -80,7 +80,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     /// <inheritdoc/>
     protected override void SetResponses(OpenApiOperation operation)
     {
-        operation.AddErrorResponses(Context.Settings, false);
+        operation.AddErrorResponses(Context.Settings, true);
         base.SetResponses(operation);
     }
     protected override void SetSecurity(OpenApiOperation operation)
