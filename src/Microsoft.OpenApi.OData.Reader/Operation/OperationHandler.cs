@@ -49,7 +49,10 @@ namespace Microsoft.OpenApi.OData.Operation
                These need to be set before Responses, as the Parameters
                will be used in the Responses when creating Links.
             */
-            SetParameters(operation);
+            if (!Context.Settings.DeclarePathParametersOnPathItem)
+            {
+                SetParameters(operation);
+            }
 
             // Responses
             SetResponses(operation);
