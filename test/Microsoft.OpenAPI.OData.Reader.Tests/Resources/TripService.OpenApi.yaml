@@ -22435,14 +22435,14 @@ components:
       type: array
       items:
         type: number
-    odata.error:
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror:
       required:
         - error
       type: object
       properties:
         error:
-          $ref: '#/components/schemas/odata.error.main'
-    odata.error.main:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror:
       required:
         - code
         - message
@@ -22458,10 +22458,10 @@ components:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/odata.error.detail'
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails'
         innererror:
-          $ref: '#/components/schemas/odata.error.innererror'
-    odata.error.detail:
+          $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror'
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails:
       required:
         - code
         - message
@@ -22474,7 +22474,7 @@ components:
         target:
           type: string
           nullable: true
-    odata.error.innererror:
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror:
       title: InnerError
       type: object
       properties:
@@ -22599,7 +22599,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/odata.error'
+            $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror'
     ODataCountResponse:
       description: The count of the resource
       content:

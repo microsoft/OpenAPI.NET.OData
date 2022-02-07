@@ -6544,18 +6544,18 @@
           }
         }
       },
-      "odata.error": {
+      "Default.odataerrors.odataerror": {
         "required": [
           "error"
         ],
         "type": "object",
         "properties": {
           "error": {
-            "$ref": "#/components/schemas/odata.error.main"
+            "$ref": "#/components/schemas/Default.odataerrors.mainerror"
           }
         }
       },
-      "odata.error.main": {
+      "Default.odataerrors.mainerror": {
         "required": [
           "code",
           "message"
@@ -6575,15 +6575,15 @@
           "details": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/odata.error.detail"
+              "$ref": "#/components/schemas/Default.odataerrors.errordetails"
             }
           },
           "innererror": {
-            "$ref": "#/components/schemas/odata.error.innererror"
+            "$ref": "#/components/schemas/Default.odataerrors.innererror"
           }
         }
       },
-      "odata.error.detail": {
+      "Default.odataerrors.errordetails": {
         "required": [
           "code",
           "message"
@@ -6602,7 +6602,7 @@
           }
         }
       },
-      "odata.error.innererror": {
+      "Default.odataerrors.innererror": {
         "type": "object",
         "description": "The structure of this object is service-specific"
       },
@@ -6773,7 +6773,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/odata.error"
+              "$ref": "#/components/schemas/Default.odataerrors.odataerror"
             }
           }
         }

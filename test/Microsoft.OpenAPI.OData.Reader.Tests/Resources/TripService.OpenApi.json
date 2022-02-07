@@ -32208,18 +32208,18 @@
           "type": "number"
         }
       },
-      "odata.error": {
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror": {
         "required": [
           "error"
         ],
         "type": "object",
         "properties": {
           "error": {
-            "$ref": "#/components/schemas/odata.error.main"
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror"
           }
         }
       },
-      "odata.error.main": {
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror": {
         "required": [
           "code",
           "message"
@@ -32239,15 +32239,15 @@
           "details": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/odata.error.detail"
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails"
             }
           },
           "innererror": {
-            "$ref": "#/components/schemas/odata.error.innererror"
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror"
           }
         }
       },
-      "odata.error.detail": {
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails": {
         "required": [
           "code",
           "message"
@@ -32266,7 +32266,7 @@
           }
         }
       },
-      "odata.error.innererror": {
+      "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror": {
         "title": "InnerError",
         "type": "object",
         "properties": {
@@ -32449,7 +32449,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/odata.error"
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror"
             }
           }
         }

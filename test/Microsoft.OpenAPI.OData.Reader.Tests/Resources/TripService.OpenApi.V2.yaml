@@ -20352,14 +20352,14 @@ definitions:
     type: array
     items:
       type: number
-  odata.error:
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror:
     required:
       - error
     type: object
     properties:
       error:
-        $ref: '#/definitions/odata.error.main'
-  odata.error.main:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror:
     required:
       - code
       - message
@@ -20374,10 +20374,10 @@ definitions:
       details:
         type: array
         items:
-          $ref: '#/definitions/odata.error.detail'
+          $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails'
       innererror:
-        $ref: '#/definitions/odata.error.innererror'
-  odata.error.detail:
+        $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror'
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails:
     required:
       - code
       - message
@@ -20389,7 +20389,7 @@ definitions:
         type: string
       target:
         type: string
-  odata.error.innererror:
+  Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror:
     title: InnerError
     type: object
     properties:
@@ -20537,7 +20537,7 @@ responses:
   error:
     description: error
     schema:
-      $ref: '#/definitions/odata.error'
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror'
   ODataCountResponse:
     description: The count of the resource
     schema:
