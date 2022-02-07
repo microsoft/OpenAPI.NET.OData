@@ -96,6 +96,65 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Theory]
+        [InlineData(true, true)]
+        [InlineData(true, false)]
+        [InlineData(false, true)]
+        [InlineData(false, false)]
+        public void CreateNavigationPropertyPathItemReturnsCorrectPathItemWithPathParameters(bool keySegment, bool declarePathParametersOnPathItem)
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel("");
+            OpenApiConvertSettings settings = new()
+            {
+                DeclarePathParametersOnPathItem = declarePathParametersOnPathItem,
+            };
+            ODataContext context = new ODataContext(model, settings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            IEdmEntityType entityType = entitySet.EntityType();
+
+            IEdmNavigationProperty property = entityType.DeclaredNavigationProperties()
+                .FirstOrDefault(c => c.ContainsTarget == true && c.TargetMultiplicity() == EdmMultiplicity.Many);
+            Assert.NotNull(property);
+
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet),
+                new ODataKeySegment(entityType),
+                new ODataNavigationPropertySegment(property));
+
+            if (keySegment)
+            {
+                path.Push(new ODataKeySegment(property.ToEntityType()));
+            }
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Description);
+
+            if (declarePathParametersOnPathItem)
+            {
+                Assert.NotEmpty(pathItem.Parameters);
+                if (keySegment)
+                {
+                    Assert.Equal(2, pathItem.Parameters.Count); // Customer ID and ContainedOrderLines Order ID
+                }
+                else
+                {
+                    Assert.Equal(1, pathItem.Parameters.Count); // Customer ID
+                }
+            }
+            else
+            {
+                Assert.Empty(pathItem.Parameters);
+            }
+        }
+
+        [Theory]
         [InlineData(true, new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete })]
         [InlineData(false, new OperationType[] { OperationType.Get })]
         public void CreateSingleNavigationPropertyPathItemReturnsCorrectPathItem(bool containment, OperationType[] expected)

@@ -49,10 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation
                These need to be set before Responses, as the Parameters
                will be used in the Responses when creating Links.
             */
-            if (!Context.Settings.DeclarePathParametersOnPathItem)
-            {
-                SetParameters(operation);
-            }
+            SetParameters(operation);
 
             // Responses
             SetResponses(operation);
@@ -142,12 +139,15 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
-            foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
+            if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
-                IDictionary<string, string> mapping = ParameterMappings[keySegment];
-                foreach (var p in Context.CreateKeyParameters(keySegment, mapping))
+                foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
                 {
-                    AppendParameter(operation, p);
+                    IDictionary<string, string> mapping = ParameterMappings[keySegment];
+                    foreach (var p in Context.CreateKeyParameters(keySegment, mapping))
+                    {
+                        AppendParameter(operation, p);
+                    }
                 }
             }
 
