@@ -69,6 +69,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             Type = "array",
             Items = new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,

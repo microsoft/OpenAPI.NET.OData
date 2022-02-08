@@ -52,6 +52,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 schema = new OpenApiSchema
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
@@ -92,6 +93,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 schema = new OpenApiSchema
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,

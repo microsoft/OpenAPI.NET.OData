@@ -414,6 +414,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiSchema
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Schema,
@@ -455,6 +456,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiSchema
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Schema,
@@ -492,6 +494,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     new OpenApiSchema
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Schema,

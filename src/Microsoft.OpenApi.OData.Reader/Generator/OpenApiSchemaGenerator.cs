@@ -161,6 +161,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 schema = new OpenApiSchema
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
@@ -407,6 +408,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         // 1. a JSON Reference to the Schema Object of the base type
                         new OpenApiSchema
                         {
+                            UnresolvedReference = true,
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,

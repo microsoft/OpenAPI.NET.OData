@@ -37,6 +37,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             OpenApiSchema baseTypeSchema = new()
 			{
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -49,6 +50,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 OpenApiSchema derivedTypeSchema = new()
 				{
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
