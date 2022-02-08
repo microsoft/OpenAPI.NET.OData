@@ -16,7 +16,13 @@
         <Property Name="ModificationDate" Type="Edm.DateTimeOffset" />
         <Property Name="ModifiedBy" Type="Edm.Int32" />
         <Property Name="Tags" Type="Collection(Siterra.Documents.App.DTO.DocumentTagRelDto)" />
-        <NavigationProperty Name="Revisions" Type="Collection(Siterra.Documents.App.DTO.RevisionDto)" />
+        <NavigationProperty Name="Revisions" Type="Collection(Siterra.Documents.App.DTO.RevisionDto)" >
+			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+				<Record>
+					<PropertyValue Property="Referenceable" Bool="true" />
+				</Record>
+			</Annotation>
+		</NavigationProperty>
       </EntityType>
       <EntityType Name="LibraryDto">
         <Key>
@@ -37,7 +43,13 @@
         <Property Name="CreationDate" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="ModifiedBy" Type="Edm.Int32" />
         <Property Name="ModificationDate" Type="Edm.DateTimeOffset" />
-        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.App.DTO.DocumentDto)" />
+        <NavigationProperty Name="Documents" Type="Collection(Siterra.Documents.App.DTO.DocumentDto)" >
+			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+				<Record>
+					<PropertyValue Property="Referenceable" Bool="true" />
+				</Record>
+			</Annotation>
+		</NavigationProperty>
       </EntityType>
       <EntityType Name="RevisionDto">
         <Key>
@@ -62,6 +74,11 @@
         <Property Name="DomainId" Type="Edm.Int32" Nullable="false" />
         <NavigationProperty Name="Document" Type="Siterra.Documents.BusinessLogic.Entities.Document.Document">
           <ReferentialConstraint Property="DocumentId" ReferencedProperty="Id" />
+		  <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+			 <Record>
+			    <PropertyValue Property="Referenceable" Bool="true" />
+			 </Record>
+		  </Annotation>
         </NavigationProperty>
       </EntityType>
       <EntityType Name="CategoryDto">

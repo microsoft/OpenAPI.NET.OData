@@ -57,7 +57,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(pathItems);
-            Assert.Equal(26, pathItems.Count);
+            Assert.Equal(22, pathItems.Count);
 
             Assert.Contains("/People", pathItems.Keys);
             Assert.Contains("/People/$count", pathItems.Keys);
@@ -66,7 +66,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/People/{UserName}/Addresses/$count", pathItems.Keys);
             Assert.Contains("/People/{UserName}/HomeAddress", pathItems.Keys);
             Assert.Contains("/People/{UserName}/HomeAddress/City", pathItems.Keys);
-            Assert.Contains("/People/{UserName}/HomeAddress/City/$ref", pathItems.Keys);
             Assert.Contains("/City", pathItems.Keys);
             Assert.Contains("/City/$count", pathItems.Keys);
             Assert.Contains("/City/{Name}", pathItems.Keys);
@@ -78,10 +77,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Contains("/Me/Addresses/$count", pathItems.Keys);
             Assert.Contains("/Me/HomeAddress", pathItems.Keys);
             Assert.Contains("/Me/HomeAddress/City", pathItems.Keys);
-            Assert.Contains("/Me/HomeAddress/City/$ref", pathItems.Keys);
             Assert.Contains("/Me/WorkAddress", pathItems.Keys);
             Assert.Contains("/Me/WorkAddress/City", pathItems.Keys);
-            Assert.Contains("/Me/WorkAddress/City/$ref", pathItems.Keys);
         }
 
         [Theory]
