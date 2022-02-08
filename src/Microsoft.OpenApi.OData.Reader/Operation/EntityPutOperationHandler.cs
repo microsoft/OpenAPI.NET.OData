@@ -9,12 +9,12 @@ namespace Microsoft.OpenApi.OData.Operation
 {
     /// <summary>
     /// Update an Entity
-    /// The Path Item Object for the entity set contains the keyword patch with an Operation Object as value
+    /// The Path Item Object for the entity set contains the keyword put with an Operation Object as value
     /// that describes the capabilities for updating the entity.
     /// </summary>
-    internal class EntityPatchOperationHandler : EntityUpdateOperationHandler
+    internal class EntityPutOperationHandler : EntityUpdateOperationHandler
     {
         /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Patch;
+        public override OperationType OperationType => OperationType.Put;
     }
 }

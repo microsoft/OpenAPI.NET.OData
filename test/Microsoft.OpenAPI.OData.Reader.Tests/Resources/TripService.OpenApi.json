@@ -207,7 +207,7 @@
         },
         "x-ms-docs-operation-type": "operation"
       },
-      "patch": {
+      "put": {
         "tags": [
           "Airlines.Airline"
         ],
@@ -648,7 +648,7 @@
           }
         }
       },
-      "patch": {
+      "put": {
         "summary": "Update property Location value.",
         "operationId": "Location.AirportLocation.UpdateAirportLocation",
         "parameters": [

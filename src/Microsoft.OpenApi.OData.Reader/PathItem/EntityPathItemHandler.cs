@@ -32,7 +32,14 @@ namespace Microsoft.OpenApi.OData.PathItem
             UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet);
             if (update == null || update.IsUpdatable)
             {
-                AddOperation(item, OperationType.Patch);
+                if (update != null && update.IsUpdateMethodPut)
+                {
+                    AddOperation(item, OperationType.Put);
+                }
+                else
+                {
+                    AddOperation(item, OperationType.Patch);
+                }
             }
 
             DeleteRestrictionsType delete = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet);

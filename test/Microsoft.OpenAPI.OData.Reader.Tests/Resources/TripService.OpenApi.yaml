@@ -136,7 +136,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    patch:
+    put:
       tags:
         - Airlines.Airline
       summary: Update entity in Airlines
@@ -433,7 +433,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
         default:
           $ref: '#/components/responses/error'
-    patch:
+    put:
       summary: Update property Location value.
       operationId: Location.AirportLocation.UpdateAirportLocation
       parameters:
