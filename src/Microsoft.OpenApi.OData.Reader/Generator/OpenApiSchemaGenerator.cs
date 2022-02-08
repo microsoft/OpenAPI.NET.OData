@@ -415,7 +415,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         PropertyName = "@odata.type",
                         Mapping = new Dictionary<string, string>
                         {
-                            {structuredType.FullTypeName(), v3RefIdentifier }
+                            {"#" + structuredType.FullTypeName(), v3RefIdentifier }
                         }
                     };
                 }

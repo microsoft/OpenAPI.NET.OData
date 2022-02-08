@@ -118,7 +118,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""discriminator"": {
         ""propertyName"": ""@odata.type"",
         ""mapping"": {
-          ""microsoft.graph.directoryObject"": ""#/components/schemas/microsoft.graph.directoryObject""
+          ""#microsoft.graph.directoryObject"": ""#/components/schemas/microsoft.graph.directoryObject""
         }
       }
     }
