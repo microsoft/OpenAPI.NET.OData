@@ -430,9 +430,22 @@ namespace Microsoft.OpenApi.OData.Generator
                 OpenApiDiscriminator discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
                 {
+                    string v3RefIdentifier = new OpenApiSchema
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = structuredType.FullTypeName()
+                        }
+                    }.Reference.ReferenceV3;
+
                     discriminator = new OpenApiDiscriminator
                     {
-                        PropertyName = "@odata.type"
+                        PropertyName = "@odata.type",
+                        Mapping = new Dictionary<string, string>
+                        {
+                            {"#" + structuredType.FullTypeName(), v3RefIdentifier }
+                        }
                     };
                 }
 
