@@ -130,7 +130,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             // Add the route prefix parameter v1{data}
-            if (Context.Settings.RoutePathPrefixProvider != null && Context.Settings.RoutePathPrefixProvider.Parameters != null)
+            if (Context.Settings.RoutePathPrefixProvider?.Parameters != null)
             {
                 foreach (var parameter in Context.Settings.RoutePathPrefixProvider.Parameters)
                 {
