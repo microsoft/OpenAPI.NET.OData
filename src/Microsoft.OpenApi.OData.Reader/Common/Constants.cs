@@ -46,6 +46,16 @@ namespace Microsoft.OpenApi.OData.Common
         public static string StatusCodeDefault = "default";
 
         /// <summary>
+        /// Status code class: 4XX
+        /// </summary>
+        public static string StatusCodeClass4XX = "4XX";
+
+        /// <summary>
+        /// Status code class: 5XX
+        /// </summary>
+        public static string StatusCodeClass5XX = "5XX";
+
+        /// <summary>
         /// Edm model error extension key.
         /// </summary>
         public static string xMsEdmModelError = "x-ms-edm-error-";

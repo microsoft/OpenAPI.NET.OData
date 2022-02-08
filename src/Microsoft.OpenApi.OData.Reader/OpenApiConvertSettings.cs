@@ -208,6 +208,23 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool EnableDeprecationInformation { get; set; } = true;
 
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to add a "x-ms-enum" extension to the enum type schema for V2 and V3 descriptions.
+        /// V3.1 will won't add the extension.
+        /// https://github.com/Azure/autorest/blob/main/docs/extensions/readme.md#x-ms-enum
+        /// </summary>
+        public bool AddEnumDescriptionExtension { get; set; } = false;
+
+        /// <summary>
+        /// Gets/sets a value indicating whether the error responses should be described as a default response or as 4XX and 5XX error responses.
+        /// </summary>
+        public bool ErrorResponsesAsDefault { get; set; } = true;
+
+        /// <summary>
+        /// Gets/Sets the name of the complex type to look for in the main namespace to use as the inner error type.
+        /// </summary>
+        public string InnerErrorComplexTypeName { get; set; } = "InnerError";
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -243,6 +260,9 @@ namespace Microsoft.OpenApi.OData
                 EnableODataTypeCast = this.EnableODataTypeCast,
                 RequireDerivedTypesConstraintForODataTypeCastSegments = this.RequireDerivedTypesConstraintForODataTypeCastSegments,
                 EnableDeprecationInformation = this.EnableDeprecationInformation,
+                AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
+                ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
+                InnerErrorComplexTypeName = this.InnerErrorComplexTypeName
             };
 
             return newSettings;

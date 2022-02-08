@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.PathItem;
 
@@ -14,11 +15,26 @@ internal class ComplexPropertyItemHandler : PathItemHandler
     /// <inheritdoc/>
 	protected override ODataPathKind HandleKind => ODataPathKind.ComplexProperty;
 
-    /// <inheritdoc/>
+	/// <summary>
+	/// Gets the complex property
+	/// </summary>
+	protected IEdmStructuralProperty ComplexProperty { get; private set; }
+
+	/// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
 	{
 		AddOperation(item, OperationType.Get);
-		AddOperation(item, OperationType.Patch);
+
+		UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty);
+		if (update != null && update.IsUpdateMethodPut)
+		{
+			AddOperation(item, OperationType.Put);
+		}
+		else
+		{
+			AddOperation(item, OperationType.Patch);
+		}
+
 		if(Path.LastSegment is ODataComplexPropertySegment segment)
 		{
 			if(segment.Property.Type.IsNullable)
@@ -26,5 +42,15 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 			if(segment.Property.Type.IsCollection())
 				AddOperation(item, OperationType.Post);
 		}
+	}
+
+	/// <inheritdoc/>
+	protected override void Initialize(ODataContext context, ODataPath path)
+	{
+		base.Initialize(context, path);
+
+		// The last segment should be the complex property segment.
+		ODataComplexPropertySegment navigationSourceSegment = path.LastSegment as ODataComplexPropertySegment;
+		ComplexProperty = navigationSourceSegment.Property;
 	}
 }

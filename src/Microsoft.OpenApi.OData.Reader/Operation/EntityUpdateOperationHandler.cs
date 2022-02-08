@@ -15,29 +15,27 @@ using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 namespace Microsoft.OpenApi.OData.Operation
 {
     /// <summary>
-    /// Update a Singleton
-    /// The Path Item Object for the entity set contains the keyword patch with an Operation Object as value
-    /// that describes the capabilities for updating the singleton, unless the singleton is read-only.
+    /// Base class for entity set update (patch or put) operations.
     /// </summary>
-    internal class SingletonPatchOperationHandler : SingletonOperationHandler
+    internal abstract class EntityUpdateOperationHandler : EntitySetOperationHandler
     {
-        /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Patch;
-
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary, this summary maybe update in the base function call.
-            operation.Summary = "Update " + Singleton.Name;
+            // Summary
+            operation.Summary = "Update entity in " + EntitySet.Name;
+
+            IEdmEntityType entityType = EntitySet.EntityType();
+
+            // Description
+            operation.Description = Context.Model.GetDescriptionAnnotation(entityType);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = Singleton.EntityType().Name;
-                operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
+                string typeName = entityType.Name;
+                operation.OperationId = EntitySet.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
             }
-
-            base.SetBasicInfo(operation);
         }
 
         /// <inheritdoc/>
@@ -47,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(EntitySet.EntityType(), Context.Model);
             }
 
             if (schema == null)
@@ -57,7 +55,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
-                        Id = Singleton.EntityType().FullName()
+                        Id = EntitySet.EntityType().FullName()
                     }
                 };
             }
@@ -83,14 +81,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true);
+            operation.AddErrorResponses(Context.Settings, true);
             base.SetResponses(operation);
         }
 
-        /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
             if (update == null || update.Permissions == null)
             {
                 return;
@@ -99,10 +96,9 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
         }
 
-        /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
             if (update == null)
             {
                 return;

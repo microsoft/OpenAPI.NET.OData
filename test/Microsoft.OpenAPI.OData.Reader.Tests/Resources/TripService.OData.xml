@@ -2,6 +2,10 @@
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
   <edmx:DataServices>
     <Schema Namespace="Microsoft.OData.Service.Sample.TrippinInMemory.Models" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <ComplexType Name="InnerError">
+        <Property Name="Date" Type="Edm.DateTimeOffset" />
+        <Property Name="RequestId" Type="Edm.String" />
+      </ComplexType>
       <EntityType Name="Person">
         <Key>
           <PropertyRef Name="UserName" />
@@ -36,6 +40,11 @@
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager</String>
             </Collection>
           </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+			 <Record>
+				<PropertyValue Property="Referenceable" Bool="true" />
+			 </Record>
+		  </Annotation>
         </NavigationProperty>
         <NavigationProperty Name="BestFriend" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
           <Annotation Term="Org.OData.Core.V1.Description" String="The best friend." />
@@ -58,6 +67,11 @@
               </Record>
             </Collection>
           </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+			<Record>
+				<PropertyValue Property="Referenceable" Bool="true" />
+			</Record>
+		  </Annotation>
         </NavigationProperty>
         <NavigationProperty Name="Trips" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" ContainsTarget="true">
           <Annotation Term="Org.OData.Core.V1.Description" String="Collection of trips." />
@@ -77,7 +91,15 @@
         <Property Name="Name" Type="Edm.String" />
         <Property Name="IcaoCode" Type="Edm.String" Nullable="false" />
         <Property Name="IataCode" Type="Edm.String" />
-        <Property Name="Location" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation" />
+        <Property Name="Location" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation">
+          <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="UpdateMethod">
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+              </PropertyValue>
+            </Record>
+          </Annotation>
+        </Property>
       </EntityType>
       <ComplexType Name="Location">
         <Property Name="Address" Type="Edm.String" />
@@ -92,6 +114,11 @@
         <Property Name="Loc" Type="Edm.GeographyPoint" />
         <NavigationProperty Name="EmergencyAuthority" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
           <Annotation Term="Org.OData.Core.V1.Description" String="The person to contact in case of a crisis at this location." />
+		  <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+			<Record>
+				<PropertyValue Property="Referenceable" Bool="true" />
+			</Record>
+		  </Annotation>
         </NavigationProperty>
       </ComplexType>
       <ComplexType Name="EventLocation" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location">
@@ -109,7 +136,13 @@
         <Property Name="Tags" Type="Collection(Edm.String)" />
         <Property Name="StartsAt" Type="Edm.DateTimeOffset" Nullable="false" />
         <Property Name="EndsAt" Type="Edm.DateTimeOffset" Nullable="false" />
-        <NavigationProperty Name="PlanItems" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem)" />
+        <NavigationProperty Name="PlanItems" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.PlanItem)" >
+			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+				<Record>
+					<PropertyValue Property="Referenceable" Bool="true" />
+				</Record>
+			</Annotation>
+		</NavigationProperty>
       </EntityType>
       <EntityType Name="PlanItem">
         <Key>
@@ -136,18 +169,37 @@
       </EntityType>
       <EntityType Name="Employee" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
         <Property Name="Cost" Type="Edm.Int64" Nullable="false" />
-        <NavigationProperty Name="Peers" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" />
+        <NavigationProperty Name="Peers" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" >
+			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+				<Record>
+					<PropertyValue Property="Referenceable" Bool="true" />
+				</Record>
+			</Annotation>
+	    </NavigationProperty>
       </EntityType>
       <EntityType Name="Manager" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
         <Property Name="Budget" Type="Edm.Int64" Nullable="false" />
         <Property Name="BossOffice" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location" />
-        <NavigationProperty Name="DirectReports" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" />
+		<NavigationProperty Name="DirectReports" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" >
+			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+				<Record>
+					<PropertyValue Property="Referenceable" Bool="true" />
+				</Record>
+			</Annotation>
+		</NavigationProperty>
       </EntityType>
       <EnumType Name="PersonGender">
-        <Member Name="Male" Value="0" />
-        <Member Name="Female" Value="1" />
-        <Member Name="Unknow" Value="2" />
-      </EnumType>
+        <Annotation Term="Org.OData.Core.V1.Description" String="Gender of the person." />
+        <Member Name="Male" Value="0">
+          <Annotation Term="Org.OData.Core.V1.Description" String="The Male gender." />
+        </Member>
+        <Member Name="Female" Value="1">
+          <Annotation Term="Org.OData.Core.V1.Description" String="The Female gender." />
+        </Member>
+        <Member Name="Unknow" Value="2">
+          <Annotation Term="Org.OData.Core.V1.Description" String="Unknown gender or prefers not to say." />
+      </Member>
+    </EnumType>
       <EnumType Name="Feature">
         <Member Name="Feature1" Value="0" />
         <Member Name="Feature2" Value="1" />
@@ -242,6 +294,13 @@
             <Collection>
               <PropertyPath>Name</PropertyPath>
             </Collection>
+          </Annotation>
+          <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="UpdateMethod">
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+              </PropertyValue>
+            </Record>
           </Annotation>
         </EntitySet>
         <EntitySet Name="Airports" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport">

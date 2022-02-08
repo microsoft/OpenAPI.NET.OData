@@ -4,8 +4,8 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Linq;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Writers;
 
 namespace Microsoft.OpenApi.OData.OpenApiExtensions;
@@ -46,17 +46,15 @@ public class OpenApiDeprecationExtension : IOpenApiExtension
             writer.WriteStartObject();
 
             if(RemovalDate.HasValue)
-                writer.WriteProperty(ToFirstCharacterLowerCase(nameof(RemovalDate)), RemovalDate.Value);
+                writer.WriteProperty(nameof(RemovalDate).ToFirstCharacterLowerCase(), RemovalDate.Value);
             if(Date.HasValue)
-                writer.WriteProperty(ToFirstCharacterLowerCase(nameof(Date)), Date.Value);
+                writer.WriteProperty(nameof(Date).ToFirstCharacterLowerCase(), Date.Value);
             if(!string.IsNullOrEmpty(Version))
-                writer.WriteProperty(ToFirstCharacterLowerCase(nameof(Version)), Version);
+                writer.WriteProperty(nameof(Version).ToFirstCharacterLowerCase(), Version);
             if(!string.IsNullOrEmpty(Description))
-                writer.WriteProperty(ToFirstCharacterLowerCase(nameof(Description)), Description);
+                writer.WriteProperty(nameof(Description).ToFirstCharacterLowerCase(), Description);
 
             writer.WriteEndObject();
         }
-    }
-    private static string ToFirstCharacterLowerCase(string input)
-            => string.IsNullOrEmpty(input) ? input : $"{char.ToLowerInvariant(input.FirstOrDefault())}{input.Substring(1)}";
+    } 
 }

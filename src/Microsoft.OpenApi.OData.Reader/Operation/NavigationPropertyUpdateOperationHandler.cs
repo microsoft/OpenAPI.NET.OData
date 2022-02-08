@@ -8,33 +8,28 @@ using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
-using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
-using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
     /// <summary>
-    /// Update a Singleton
-    /// The Path Item Object for the entity set contains the keyword patch with an Operation Object as value
-    /// that describes the capabilities for updating the singleton, unless the singleton is read-only.
+    /// Update a navigation property for a navigation source.
+    /// The Path Item Object for the entity set contains the keyword patch / put with an Operation Object as value
+    /// that describes the capabilities for updating the navigation property for a navigation source.
     /// </summary>
-    internal class SingletonPatchOperationHandler : SingletonOperationHandler
+    internal abstract class NavigationPropertyUpdateOperationHandler : NavigationPropertyOperationHandler
     {
-        /// <inheritdoc/>
-        public override OperationType OperationType => OperationType.Patch;
-
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary, this summary maybe update in the base function call.
-            operation.Summary = "Update " + Singleton.Name;
+            // Summary
+            operation.Summary = "Update the navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string typeName = Singleton.EntityType().Name;
-                operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
+                string prefix = "Update";
+                operation.OperationId = GetOperationId(prefix);
             }
 
             base.SetBasicInfo(operation);
@@ -47,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
             if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
             {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
+                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
             }
 
             if (schema == null)
@@ -57,7 +52,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
-                        Id = Singleton.EntityType().FullName()
+                        Id = NavigationProperty.ToEntityType().FullName()
                     }
                 };
             }
@@ -65,7 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
-                Description = "New property values",
+                Description = "New navigation property values",
                 Content = new Dictionary<string, OpenApiMediaType>
                 {
                     {
@@ -83,39 +78,35 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true);
+            operation.AddErrorResponses(Context.Settings, true);
             base.SetResponses(operation);
         }
 
-        /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null || update.Permissions == null)
+            if (Restriction == null || Restriction.UpdateRestrictions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(Restriction.UpdateRestrictions.Permissions).ToList();
         }
 
-        /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null)
+            if (Restriction == null || Restriction.UpdateRestrictions == null)
             {
                 return;
             }
 
-            if (update.CustomHeaders != null)
+            if (Restriction.UpdateRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, update.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (update.CustomQueryOptions != null)
+            if (Restriction.UpdateRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

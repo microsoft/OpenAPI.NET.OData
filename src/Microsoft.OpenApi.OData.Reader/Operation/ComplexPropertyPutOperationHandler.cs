@@ -7,8 +7,8 @@ using Microsoft.OpenApi.Models;
 
 namespace Microsoft.OpenApi.OData.Operation;
 
-internal class ComplexPropertyPatchOperationHandler : ComplexPropertyUpdateOperationHandler
+internal class ComplexPropertyPutOperationHandler : ComplexPropertyUpdateOperationHandler
 {
     /// <inheritdoc />
-    public override OperationType OperationType => OperationType.Patch;
+    public override OperationType OperationType => OperationType.Put;
 }

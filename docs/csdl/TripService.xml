@@ -35,7 +35,15 @@
         <Property Name="Name" Type="Edm.String" />
         <Property Name="IcaoCode" Type="Edm.String" Nullable="false" />
         <Property Name="IataCode" Type="Edm.String" />
-        <Property Name="Location" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation" />
+        <Property Name="Location" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation">
+          <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="UpdateMethod">
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+              </PropertyValue>
+            </Record>
+          </Annotation>
+        </Property>
       </EntityType>
       <ComplexType Name="Location">
         <Property Name="Address" Type="Edm.String" />
@@ -153,6 +161,13 @@
             <Collection>
               <PropertyPath>Name</PropertyPath>
             </Collection>
+          </Annotation>
+          <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="UpdateMethod">
+                <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
+              </PropertyValue>
+            </Record>
           </Annotation>
         </EntitySet>
         <EntitySet Name="Airports" EntityType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />

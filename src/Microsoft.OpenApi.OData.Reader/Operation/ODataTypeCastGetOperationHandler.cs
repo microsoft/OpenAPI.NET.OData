@@ -176,7 +176,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		else
 			SetCollectionResponse(operation);
 
-		operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+		operation.AddErrorResponses(Context.Settings, false);
 
 		base.SetResponses(operation);
 	}

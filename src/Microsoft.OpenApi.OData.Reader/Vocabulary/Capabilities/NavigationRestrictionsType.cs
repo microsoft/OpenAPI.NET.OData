@@ -121,7 +121,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         /// Restrictions for retrieving entities.
         /// </summary>
         public ReadRestrictionsType ReadRestrictions { get; set; }
-
+        
         /// <summary>
         /// Init the <see cref="NavigationPropertyRestriction"/>.
         /// </summary>
@@ -200,6 +200,11 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public IList<NavigationPropertyRestriction> RestrictedProperties { get; private set; }
 
         /// <summary>
+        /// Gets the navigation property referenceable value.
+        /// </summary>
+        public bool? Referenceable { get; set; }
+
+        /// <summary>
         /// Gets a value indicating the target is navigable or not.
         /// </summary>
         public bool IsNavigable => Navigability == null || Navigability.Value != NavigationType.None;
@@ -230,6 +235,9 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
 
             // RestrictedProperties
             RestrictedProperties = record.GetCollection<NavigationPropertyRestriction>("RestrictedProperties");
+
+            // Referenceable
+            Referenceable = record.GetBoolean("Referenceable");
         }
     }
 }
