@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
   ""content"": {
     ""application/json"": {
       ""schema"": {
-        ""$ref"": ""#/components/schemas/odataerrors.odataerror""
+        ""$ref"": ""#/components/schemas/ODataErrors.ODataError""
       }
     }
   }

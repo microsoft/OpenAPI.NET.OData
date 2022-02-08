@@ -4267,14 +4267,14 @@ definitions:
       ApprovedDate: string (timestamp)
       Document:
         '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-  Default.odataerrors.odataerror:
+  Default.ODataErrors.ODataError:
     required:
       - error
     type: object
     properties:
       error:
-        $ref: '#/definitions/Default.odataerrors.mainerror'
-  Default.odataerrors.mainerror:
+        $ref: '#/definitions/Default.ODataErrors.MainError'
+  Default.ODataErrors.MainError:
     required:
       - code
       - message
@@ -4289,10 +4289,10 @@ definitions:
       details:
         type: array
         items:
-          $ref: '#/definitions/Default.odataerrors.errordetails'
+          $ref: '#/definitions/Default.ODataErrors.ErrorDetails'
       innererror:
-        $ref: '#/definitions/Default.odataerrors.innererror'
-  Default.odataerrors.errordetails:
+        $ref: '#/definitions/Default.ODataErrors.InnerError'
+  Default.ODataErrors.ErrorDetails:
     required:
       - code
       - message
@@ -4304,7 +4304,7 @@ definitions:
         type: string
       target:
         type: string
-  Default.odataerrors.innererror:
+  Default.ODataErrors.InnerError:
     description: The structure of this object is service-specific
     type: object
   ODataCountResponse:
@@ -4445,7 +4445,7 @@ responses:
   error:
     description: error
     schema:
-      $ref: '#/definitions/Default.odataerrors.odataerror'
+      $ref: '#/definitions/Default.ODataErrors.ODataError'
   ODataCountResponse:
     description: The count of the resource
     schema:

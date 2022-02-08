@@ -28739,18 +28739,18 @@
         "type": "number"
       }
     },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError": {
       "required": [
         "error"
       ],
       "type": "object",
       "properties": {
         "error": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror"
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError"
         }
       }
     },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.mainerror": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError": {
       "required": [
         "code",
         "message"
@@ -28769,15 +28769,15 @@
         "details": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails"
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails"
           }
         },
         "innererror": {
-          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror"
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError"
         }
       }
     },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.errordetails": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails": {
       "required": [
         "code",
         "message"
@@ -28795,7 +28795,7 @@
         }
       }
     },
-    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.innererror": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError": {
       "title": "InnerError",
       "type": "object",
       "properties": {
@@ -29007,7 +29007,7 @@
     "error": {
       "description": "error",
       "schema": {
-        "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.odataerrors.odataerror"
+        "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError"
       }
     },
     "ODataCountResponse": {

@@ -2240,18 +2240,18 @@
         }
       }
     },
-    "DefaultNs.odataerrors.odataerror": {
+    "DefaultNs.ODataErrors.ODataError": {
       "required": [
         "error"
       ],
       "type": "object",
       "properties": {
         "error": {
-          "$ref": "#/definitions/DefaultNs.odataerrors.mainerror"
+          "$ref": "#/definitions/DefaultNs.ODataErrors.MainError"
         }
       }
     },
-    "DefaultNs.odataerrors.mainerror": {
+    "DefaultNs.ODataErrors.MainError": {
       "required": [
         "code",
         "message"
@@ -2270,15 +2270,15 @@
         "details": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DefaultNs.odataerrors.errordetails"
+            "$ref": "#/definitions/DefaultNs.ODataErrors.ErrorDetails"
           }
         },
         "innererror": {
-          "$ref": "#/definitions/DefaultNs.odataerrors.innererror"
+          "$ref": "#/definitions/DefaultNs.ODataErrors.InnerError"
         }
       }
     },
-    "DefaultNs.odataerrors.errordetails": {
+    "DefaultNs.ODataErrors.ErrorDetails": {
       "required": [
         "code",
         "message"
@@ -2296,7 +2296,7 @@
         }
       }
     },
-    "DefaultNs.odataerrors.innererror": {
+    "DefaultNs.ODataErrors.InnerError": {
       "description": "The structure of this object is service-specific",
       "type": "object"
     },
@@ -2391,7 +2391,7 @@
     "error": {
       "description": "error",
       "schema": {
-        "$ref": "#/definitions/DefaultNs.odataerrors.odataerror"
+        "$ref": "#/definitions/DefaultNs.ODataErrors.ODataError"
       }
     },
     "ODataCountResponse": {

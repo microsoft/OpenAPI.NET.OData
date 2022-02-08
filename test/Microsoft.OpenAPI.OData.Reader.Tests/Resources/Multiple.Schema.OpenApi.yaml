@@ -4752,14 +4752,14 @@ components:
         ApprovedDate: string (timestamp)
         Document:
           '@odata.type': Siterra.Documents.BusinessLogic.Entities.Document.Document
-    Default.odataerrors.odataerror:
+    Default.ODataErrors.ODataError:
       required:
         - error
       type: object
       properties:
         error:
-          $ref: '#/components/schemas/Default.odataerrors.mainerror'
-    Default.odataerrors.mainerror:
+          $ref: '#/components/schemas/Default.ODataErrors.MainError'
+    Default.ODataErrors.MainError:
       required:
         - code
         - message
@@ -4775,10 +4775,10 @@ components:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/Default.odataerrors.errordetails'
+            $ref: '#/components/schemas/Default.ODataErrors.ErrorDetails'
         innererror:
-          $ref: '#/components/schemas/Default.odataerrors.innererror'
-    Default.odataerrors.errordetails:
+          $ref: '#/components/schemas/Default.ODataErrors.InnerError'
+    Default.ODataErrors.ErrorDetails:
       required:
         - code
         - message
@@ -4791,7 +4791,7 @@ components:
         target:
           type: string
           nullable: true
-    Default.odataerrors.innererror:
+    Default.ODataErrors.InnerError:
       type: object
       description: The structure of this object is service-specific
     ODataCountResponse:
@@ -4907,7 +4907,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Default.odataerrors.odataerror'
+            $ref: '#/components/schemas/Default.ODataErrors.ODataError'
     ODataCountResponse:
       description: The count of the resource
       content:

@@ -31,12 +31,16 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return new Dictionary<string, OpenApiSchema>()
             {
-                { $"{rootNamespaceName}odataerror", CreateErrorSchema(rootNamespaceName) },
-                { $"{rootNamespaceName}mainerror", CreateErrorMainSchema(rootNamespaceName) },
-                { $"{rootNamespaceName}errordetails", CreateErrorDetailSchema() },
-                { $"{rootNamespaceName}innererror", CreateInnerErrorSchema(context) }
+                { $"{rootNamespaceName}{OdataErrorClassName}", CreateErrorSchema(rootNamespaceName) },
+                { $"{rootNamespaceName}{MainErrorClassName}", CreateErrorMainSchema(rootNamespaceName) },
+                { $"{rootNamespaceName}{ErrorDetailsClassName}", CreateErrorDetailSchema() },
+                { $"{rootNamespaceName}{InnerErrorClassName}", CreateInnerErrorSchema(context) }
             };
         }
+        internal const string OdataErrorClassName = "ODataError";
+        internal const string MainErrorClassName = "MainError";
+        internal const string ErrorDetailsClassName = "ErrorDetails";
+        internal const string InnerErrorClassName = "InnerError";
 
         /// <summary>
         /// Gets the error namespace name based on the root namespace of the model.
@@ -47,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             var rootNamespaceName = context.Model.DeclaredNamespaces.OrderBy(ns => ns.Count(y => y == '.')).FirstOrDefault();
             rootNamespaceName += (string.IsNullOrEmpty(rootNamespaceName) ? string.Empty : ".") +
-                                "odataerrors.";
+                                "ODataErrors.";
             return rootNamespaceName;
         }
 
@@ -74,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
-                                Id = $"{rootNamespaceName}mainerror"
+                                Id = $"{rootNamespaceName}{MainErrorClassName}"
                             }
                         }
                     }
@@ -142,7 +146,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
-                                    Id = $"{rootNamespaceName}errordetails"
+                                    Id = $"{rootNamespaceName}{ErrorDetailsClassName}"
                                 }
                             }
                         }
@@ -154,7 +158,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
-                                Id = $"{rootNamespaceName}innererror"
+                                Id = $"{rootNamespaceName}{InnerErrorClassName}"
                             }
                         }
                     }

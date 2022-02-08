@@ -8,14 +8,14 @@ servers:
 paths: { }
 components:
   schemas:
-    odataerrors.odataerror:
+    ODataErrors.ODataError:
       required:
         - error
       type: object
       properties:
         error:
-          $ref: '#/components/schemas/odataerrors.mainerror'
-    odataerrors.mainerror:
+          $ref: '#/components/schemas/ODataErrors.MainError'
+    ODataErrors.MainError:
       required:
         - code
         - message
@@ -31,10 +31,10 @@ components:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/odataerrors.errordetails'
+            $ref: '#/components/schemas/ODataErrors.ErrorDetails'
         innererror:
-          $ref: '#/components/schemas/odataerrors.innererror'
-    odataerrors.errordetails:
+          $ref: '#/components/schemas/ODataErrors.InnerError'
+    ODataErrors.ErrorDetails:
       required:
         - code
         - message
@@ -47,7 +47,7 @@ components:
         target:
           type: string
           nullable: true
-    odataerrors.innererror:
+    ODataErrors.InnerError:
       type: object
       description: The structure of this object is service-specific
     ODataCountResponse:
@@ -59,7 +59,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/odataerrors.odataerror'
+            $ref: '#/components/schemas/ODataErrors.ODataError'
     ODataCountResponse:
       description: The count of the resource
       content:

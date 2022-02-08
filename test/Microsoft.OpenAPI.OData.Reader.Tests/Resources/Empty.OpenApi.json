@@ -13,18 +13,18 @@
   "paths": { },
   "components": {
     "schemas": {
-      "odataerrors.odataerror": {
+      "ODataErrors.ODataError": {
         "required": [
           "error"
         ],
         "type": "object",
         "properties": {
           "error": {
-            "$ref": "#/components/schemas/odataerrors.mainerror"
+            "$ref": "#/components/schemas/ODataErrors.MainError"
           }
         }
       },
-      "odataerrors.mainerror": {
+      "ODataErrors.MainError": {
         "required": [
           "code",
           "message"
@@ -44,15 +44,15 @@
           "details": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/odataerrors.errordetails"
+              "$ref": "#/components/schemas/ODataErrors.ErrorDetails"
             }
           },
           "innererror": {
-            "$ref": "#/components/schemas/odataerrors.innererror"
+            "$ref": "#/components/schemas/ODataErrors.InnerError"
           }
         }
       },
-      "odataerrors.errordetails": {
+      "ODataErrors.ErrorDetails": {
         "required": [
           "code",
           "message"
@@ -71,7 +71,7 @@
           }
         }
       },
-      "odataerrors.innererror": {
+      "ODataErrors.InnerError": {
         "type": "object",
         "description": "The structure of this object is service-specific"
       },
@@ -86,7 +86,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/odataerrors.odataerror"
+              "$ref": "#/components/schemas/ODataErrors.ODataError"
             }
           }
         }
