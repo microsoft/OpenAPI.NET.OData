@@ -1237,14 +1237,14 @@ definitions:
         '@odata.type': DefaultNs.City
       CountryOrRegion:
         '@odata.type': DefaultNs.CountryOrRegion
-  odata.error:
+  DefaultNs.ODataErrors.ODataError:
     required:
       - error
     type: object
     properties:
       error:
-        $ref: '#/definitions/odata.error.main'
-  odata.error.main:
+        $ref: '#/definitions/DefaultNs.ODataErrors.MainError'
+  DefaultNs.ODataErrors.MainError:
     required:
       - code
       - message
@@ -1259,10 +1259,10 @@ definitions:
       details:
         type: array
         items:
-          $ref: '#/definitions/odata.error.detail'
+          $ref: '#/definitions/DefaultNs.ODataErrors.ErrorDetails'
       innererror:
-        $ref: '#/definitions/odata.error.innererror'
-  odata.error.detail:
+        $ref: '#/definitions/DefaultNs.ODataErrors.InnerError'
+  DefaultNs.ODataErrors.ErrorDetails:
     required:
       - code
       - message
@@ -1274,7 +1274,7 @@ definitions:
         type: string
       target:
         type: string
-  odata.error.innererror:
+  DefaultNs.ODataErrors.InnerError:
     description: The structure of this object is service-specific
     type: object
   ODataCountResponse:
@@ -1344,7 +1344,7 @@ responses:
   error:
     description: error
     schema:
-      $ref: '#/definitions/odata.error'
+      $ref: '#/definitions/DefaultNs.ODataErrors.ODataError'
   ODataCountResponse:
     description: The count of the resource
     schema:

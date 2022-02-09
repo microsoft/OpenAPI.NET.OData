@@ -28739,18 +28739,18 @@
         "type": "number"
       }
     },
-    "odata.error": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError": {
       "required": [
         "error"
       ],
       "type": "object",
       "properties": {
         "error": {
-          "$ref": "#/definitions/odata.error.main"
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError"
         }
       }
     },
-    "odata.error.main": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.MainError": {
       "required": [
         "code",
         "message"
@@ -28769,15 +28769,15 @@
         "details": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/odata.error.detail"
+            "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails"
           }
         },
         "innererror": {
-          "$ref": "#/definitions/odata.error.innererror"
+          "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError"
         }
       }
     },
-    "odata.error.detail": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ErrorDetails": {
       "required": [
         "code",
         "message"
@@ -28795,7 +28795,7 @@
         }
       }
     },
-    "odata.error.innererror": {
+    "Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.InnerError": {
       "title": "InnerError",
       "type": "object",
       "properties": {
@@ -29007,7 +29007,7 @@
     "error": {
       "description": "error",
       "schema": {
-        "$ref": "#/definitions/odata.error"
+        "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.ODataErrors.ODataError"
       }
     },
     "ODataCountResponse": {

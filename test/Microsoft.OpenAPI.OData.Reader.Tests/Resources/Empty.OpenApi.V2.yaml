@@ -8,14 +8,14 @@ schemes:
   - http
 paths: { }
 definitions:
-  odata.error:
+  ODataErrors.ODataError:
     required:
       - error
     type: object
     properties:
       error:
-        $ref: '#/definitions/odata.error.main'
-  odata.error.main:
+        $ref: '#/definitions/ODataErrors.MainError'
+  ODataErrors.MainError:
     required:
       - code
       - message
@@ -30,10 +30,10 @@ definitions:
       details:
         type: array
         items:
-          $ref: '#/definitions/odata.error.detail'
+          $ref: '#/definitions/ODataErrors.ErrorDetails'
       innererror:
-        $ref: '#/definitions/odata.error.innererror'
-  odata.error.detail:
+        $ref: '#/definitions/ODataErrors.InnerError'
+  ODataErrors.ErrorDetails:
     required:
       - code
       - message
@@ -45,7 +45,7 @@ definitions:
         type: string
       target:
         type: string
-  odata.error.innererror:
+  ODataErrors.InnerError:
     description: The structure of this object is service-specific
     type: object
   ODataCountResponse:
@@ -83,7 +83,7 @@ responses:
   error:
     description: error
     schema:
-      $ref: '#/definitions/odata.error'
+      $ref: '#/definitions/ODataErrors.ODataError'
   ODataCountResponse:
     description: The count of the resource
     schema:

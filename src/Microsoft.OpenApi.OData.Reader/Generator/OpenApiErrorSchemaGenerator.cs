@@ -17,6 +17,11 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiErrorSchemaGenerator
     {
+        internal const string ODataErrorClassName = "ODataError";
+        internal const string MainErrorClassName = "MainError";
+        internal const string ErrorDetailsClassName = "ErrorDetails";
+        internal const string InnerErrorClassName = "InnerError";
+
         /// <summary>
         /// Create the dictionary of <see cref="OpenApiSchema"/> object.
         /// The name of each pair is the namespace-qualified name of the type. It uses the namespace instead of the alias.
@@ -27,28 +32,36 @@ namespace Microsoft.OpenApi.OData.Generator
         public static IDictionary<string, OpenApiSchema> CreateODataErrorSchemas(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
+            var rootNamespaceName = context.GetErrorNamespaceName();
 
             return new Dictionary<string, OpenApiSchema>()
             {
-                // odata.error
-                { "odata.error", CreateErrorSchema() },
-
-                // odata.error.main
-                { "odata.error.main", CreateErrorMainSchema() },
-
-                // odata.error.detail
-                { "odata.error.detail", CreateErrorDetailSchema() },
-
-                // odata.error.innererror
-                { "odata.error.innererror", CreateInnerErrorSchema(context) }
+                { $"{rootNamespaceName}{ODataErrorClassName}", CreateErrorSchema(rootNamespaceName) },
+                { $"{rootNamespaceName}{MainErrorClassName}", CreateErrorMainSchema(rootNamespaceName) },
+                { $"{rootNamespaceName}{ErrorDetailsClassName}", CreateErrorDetailSchema() },
+                { $"{rootNamespaceName}{InnerErrorClassName}", CreateInnerErrorSchema(context) }
             };
         }
 
         /// <summary>
-        /// Create <see cref="OpenApiSchema"/> for "odata.error".
+        /// Gets the error namespace name based on the root namespace of the model.
+        /// </summary>
+        /// <param name="context">The OData to Open API context.</param>
+        /// <returns>The error namespace name.</returns>
+        public static string GetErrorNamespaceName(this ODataContext context) {
+            Utils.CheckArgumentNull(context, nameof(context));
+            var rootNamespaceName = context.Model.DeclaredNamespaces.OrderBy(ns => ns.Count(y => y == '.')).FirstOrDefault();
+            rootNamespaceName += (string.IsNullOrEmpty(rootNamespaceName) ? string.Empty : ".") +
+                                "ODataErrors.";
+            return rootNamespaceName;
+        }
+
+        /// <summary>
+        /// Create <see cref="OpenApiSchema"/> for the error.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateErrorSchema()
+        /// <param name="rootNamespaceName">The root namespace name. With a trailing dot.</param>
+        public static OpenApiSchema CreateErrorSchema(string rootNamespaceName)
         {
             return new OpenApiSchema
             {
@@ -66,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
-                                Id = "odata.error.main"
+                                Id = $"{rootNamespaceName}{MainErrorClassName}"
                             }
                         }
                     }
@@ -100,10 +113,11 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
-        /// Create <see cref="OpenApiSchema"/> for "odata.error.main".
+        /// Create <see cref="OpenApiSchema"/> for main property of the error.
         /// </summary>
+        /// <param name="rootNamespaceName">The root namespace name. With a trailing dot.</param>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
-        public static OpenApiSchema CreateErrorMainSchema()
+        public static OpenApiSchema CreateErrorMainSchema(string rootNamespaceName)
         {
             return new OpenApiSchema
             {
@@ -133,7 +147,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
-                                    Id = "odata.error.detail"
+                                    Id = $"{rootNamespaceName}{ErrorDetailsClassName}"
                                 }
                             }
                         }
@@ -145,7 +159,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
-                                Id = "odata.error.innererror"
+                                Id = $"{rootNamespaceName}{InnerErrorClassName}"
                             }
                         }
                     }
@@ -154,7 +168,7 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
-        /// Create <see cref="OpenApiSchema"/> for "odata.error.detail".
+        /// Create <see cref="OpenApiSchema"/> for detail property of the error.
         /// </summary>
         /// <returns>The created <see cref="OpenApiSchema"/>.</returns>
         public static OpenApiSchema CreateErrorDetailSchema()

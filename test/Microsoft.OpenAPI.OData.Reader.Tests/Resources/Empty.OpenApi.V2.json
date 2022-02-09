@@ -11,18 +11,18 @@
   ],
   "paths": { },
   "definitions": {
-    "odata.error": {
+    "ODataErrors.ODataError": {
       "required": [
         "error"
       ],
       "type": "object",
       "properties": {
         "error": {
-          "$ref": "#/definitions/odata.error.main"
+          "$ref": "#/definitions/ODataErrors.MainError"
         }
       }
     },
-    "odata.error.main": {
+    "ODataErrors.MainError": {
       "required": [
         "code",
         "message"
@@ -41,15 +41,15 @@
         "details": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/odata.error.detail"
+            "$ref": "#/definitions/ODataErrors.ErrorDetails"
           }
         },
         "innererror": {
-          "$ref": "#/definitions/odata.error.innererror"
+          "$ref": "#/definitions/ODataErrors.InnerError"
         }
       }
     },
-    "odata.error.detail": {
+    "ODataErrors.ErrorDetails": {
       "required": [
         "code",
         "message"
@@ -67,7 +67,7 @@
         }
       }
     },
-    "odata.error.innererror": {
+    "ODataErrors.InnerError": {
       "description": "The structure of this object is service-specific",
       "type": "object"
     },
@@ -114,7 +114,7 @@
     "error": {
       "description": "error",
       "schema": {
-        "$ref": "#/definitions/odata.error"
+        "$ref": "#/definitions/ODataErrors.ODataError"
       }
     },
     "ODataCountResponse": {

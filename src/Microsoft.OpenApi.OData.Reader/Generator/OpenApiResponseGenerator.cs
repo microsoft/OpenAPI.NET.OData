@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             var responses =  new Dictionary<string, OpenApiResponse>
             {
-                { "error", CreateErrorResponse() }
+                { "error", context.CreateErrorResponse() }
             };
 
             if(context.Settings.EnableDollarCountPath)
@@ -259,8 +259,9 @@ namespace Microsoft.OpenApi.OData.Generator
             };
         }
 
-        private static OpenApiResponse CreateErrorResponse()
+        private static OpenApiResponse CreateErrorResponse(this ODataContext context)
         {
+            var errorNamespaceName = context.GetErrorNamespaceName();
             return new OpenApiResponse
             {
                 Description = "error",
@@ -275,7 +276,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
-                                    Id = "odata.error"
+                                    Id = $"{errorNamespaceName}{OpenApiErrorSchemaGenerator.ODataErrorClassName}"
                                 }
                             }
                         }

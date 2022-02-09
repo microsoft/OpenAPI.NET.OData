@@ -1395,14 +1395,14 @@ components:
           '@odata.type': DefaultNs.City
         CountryOrRegion:
           '@odata.type': DefaultNs.CountryOrRegion
-    odata.error:
+    DefaultNs.ODataErrors.ODataError:
       required:
         - error
       type: object
       properties:
         error:
-          $ref: '#/components/schemas/odata.error.main'
-    odata.error.main:
+          $ref: '#/components/schemas/DefaultNs.ODataErrors.MainError'
+    DefaultNs.ODataErrors.MainError:
       required:
         - code
         - message
@@ -1418,10 +1418,10 @@ components:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/odata.error.detail'
+            $ref: '#/components/schemas/DefaultNs.ODataErrors.ErrorDetails'
         innererror:
-          $ref: '#/components/schemas/odata.error.innererror'
-    odata.error.detail:
+          $ref: '#/components/schemas/DefaultNs.ODataErrors.InnerError'
+    DefaultNs.ODataErrors.ErrorDetails:
       required:
         - code
         - message
@@ -1434,7 +1434,7 @@ components:
         target:
           type: string
           nullable: true
-    odata.error.innererror:
+    DefaultNs.ODataErrors.InnerError:
       type: object
       description: The structure of this object is service-specific
     ODataCountResponse:
@@ -1478,7 +1478,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/odata.error'
+            $ref: '#/components/schemas/DefaultNs.ODataErrors.ODataError'
     ODataCountResponse:
       description: The count of the resource
       content:
