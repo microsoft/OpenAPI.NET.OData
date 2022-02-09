@@ -17,6 +17,11 @@ namespace Microsoft.OpenApi.OData.Generator
     /// </summary>
     internal static class OpenApiErrorSchemaGenerator
     {
+        internal const string ODataErrorClassName = "ODataError";
+        internal const string MainErrorClassName = "MainError";
+        internal const string ErrorDetailsClassName = "ErrorDetails";
+        internal const string InnerErrorClassName = "InnerError";
+
         /// <summary>
         /// Create the dictionary of <see cref="OpenApiSchema"/> object.
         /// The name of each pair is the namespace-qualified name of the type. It uses the namespace instead of the alias.
@@ -31,16 +36,12 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return new Dictionary<string, OpenApiSchema>()
             {
-                { $"{rootNamespaceName}{OdataErrorClassName}", CreateErrorSchema(rootNamespaceName) },
+                { $"{rootNamespaceName}{ODataErrorClassName}", CreateErrorSchema(rootNamespaceName) },
                 { $"{rootNamespaceName}{MainErrorClassName}", CreateErrorMainSchema(rootNamespaceName) },
                 { $"{rootNamespaceName}{ErrorDetailsClassName}", CreateErrorDetailSchema() },
                 { $"{rootNamespaceName}{InnerErrorClassName}", CreateInnerErrorSchema(context) }
             };
         }
-        internal const string OdataErrorClassName = "ODataError";
-        internal const string MainErrorClassName = "MainError";
-        internal const string ErrorDetailsClassName = "ErrorDetails";
-        internal const string InnerErrorClassName = "InnerError";
 
         /// <summary>
         /// Gets the error namespace name based on the root namespace of the model.

@@ -276,7 +276,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
-                                    Id = $"{errorNamespaceName}{OpenApiErrorSchemaGenerator.OdataErrorClassName}"
+                                    Id = $"{errorNamespaceName}{OpenApiErrorSchemaGenerator.ODataErrorClassName}"
                                 }
                             }
                         }
