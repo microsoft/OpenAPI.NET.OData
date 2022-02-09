@@ -21,7 +21,7 @@
   <!-- For NuGet Package Dependencies -->
   <PropertyGroup>
     <OpenApiCorePackageDependency>[1.2.3, 2.0.0)</OpenApiCorePackageDependency>
-    <ODataEdmPackageDependency>[7.9.4, 8.0.0)</ODataEdmPackageDependency>
+    <ODataEdmPackageDependency>[7.10.0, 8.0.0)</ODataEdmPackageDependency>
   </PropertyGroup>
 
   <!--
