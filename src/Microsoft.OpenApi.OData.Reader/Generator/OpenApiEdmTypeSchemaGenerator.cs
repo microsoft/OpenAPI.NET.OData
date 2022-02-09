@@ -283,6 +283,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.Geography"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyPoint:
                     schema.Reference = new OpenApiReference
@@ -290,6 +291,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyPoint"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyLineString:
                     schema.Reference = new OpenApiReference
@@ -297,6 +299,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyLineString"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyPolygon:
                     schema.Reference = new OpenApiReference
@@ -304,6 +307,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyPolygon"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyCollection:
                     schema.Reference = new OpenApiReference
@@ -311,6 +315,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyCollection"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiPolygon:
                     schema.Reference = new OpenApiReference
@@ -318,6 +323,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyMultiPolygon"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiLineString:
                     schema.Reference = new OpenApiReference
@@ -325,6 +331,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyMultiLineString"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeographyMultiPoint:
                     schema.Reference = new OpenApiReference
@@ -332,14 +339,15 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeographyMultiPoint"
                     };
+                    schema.UnresolvedReference = true;
                     break;
-
                 case EdmPrimitiveTypeKind.Geometry: // Geometry
                     schema.Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
                         Id = "Edm.Geometry"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryPoint:
                     schema.Reference = new OpenApiReference
@@ -347,6 +355,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryPoint"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryLineString:
                     schema.Reference = new OpenApiReference
@@ -354,6 +363,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryLineString"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryPolygon:
                     schema.Reference = new OpenApiReference
@@ -361,6 +371,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryPolygon"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryCollection:
                     schema.Reference = new OpenApiReference
@@ -368,6 +379,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryCollection"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiPolygon:
                     schema.Reference = new OpenApiReference
@@ -375,6 +387,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryMultiPolygon"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiLineString:
                     schema.Reference = new OpenApiReference
@@ -382,6 +395,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryMultiLineString"
                     };
+                    schema.UnresolvedReference = true;
                     break;
                 case EdmPrimitiveTypeKind.GeometryMultiPoint:
                     schema.Reference = new OpenApiReference
@@ -389,6 +403,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         Type = ReferenceType.Schema,
                         Id = "Edm.GeometryMultiPoint"
                     };
+                    schema.UnresolvedReference = true;
                     break;
 
                 case EdmPrimitiveTypeKind.None:
@@ -432,6 +447,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = ReferenceType.Schema,
                     Id = typeReference.Definition.FullTypeName()
                 };
+                schema.UnresolvedReference = true;
             }
 
             return schema;
@@ -474,6 +490,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = ReferenceType.Schema,
                     Id = typeReference.Definition.FullTypeName()
                 };
+                schema.UnresolvedReference = true;
             }
 
             return schema;
@@ -512,6 +529,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = ReferenceType.Schema,
                     Id = reference.Definition.FullTypeName()
                 };
+                schema.UnresolvedReference = true;
             }
             
 

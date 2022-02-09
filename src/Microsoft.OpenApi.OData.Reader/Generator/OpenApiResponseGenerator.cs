@@ -23,6 +23,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 { Constants.StatusCodeDefault,
                     new OpenApiResponse
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Response,
@@ -34,6 +35,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 { Constants.StatusCode204, new OpenApiResponse { Description = "Success"} },
                 { Constants.StatusCodeClass4XX, new OpenApiResponse
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Response,
@@ -43,6 +45,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 },
                 { Constants.StatusCodeClass5XX, new OpenApiResponse
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.Response,
@@ -222,6 +225,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         {
                             Schema = new OpenApiSchema
                             {
+                                UnresolvedReference = true,
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
@@ -238,6 +242,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             OpenApiSchema schema = new()
             {
+                UnresolvedReference = true,
                 Reference = new() {
                     Type = ReferenceType.Schema,
                     Id = Constants.DollarCountSchemaName
@@ -272,6 +277,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         {
                             Schema = new OpenApiSchema
                             {
+                                UnresolvedReference = true,
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,

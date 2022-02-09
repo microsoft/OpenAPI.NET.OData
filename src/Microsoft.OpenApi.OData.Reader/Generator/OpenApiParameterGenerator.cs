@@ -232,6 +232,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 return new OpenApiParameter
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "top" }
                 };
             }
@@ -255,6 +256,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 return new OpenApiParameter
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "skip" }
                 };
             }
@@ -278,6 +280,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 return new OpenApiParameter
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "search" }
                 };
             }
@@ -301,6 +304,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 return new OpenApiParameter
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "count" }
                 };
             }
@@ -324,6 +328,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 return new OpenApiParameter
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference { Type = ReferenceType.Parameter, Id = "filter" }
                 };
             }

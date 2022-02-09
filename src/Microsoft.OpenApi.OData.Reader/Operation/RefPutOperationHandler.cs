@@ -49,6 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation
                         {
                             Schema = new()
                             {
+                                UnresolvedReference = true,
                                 Reference = new OpenApiReference {
                                     Id = Constants.ReferenceUpdateSchemaName,
                                     Type = ReferenceType.Schema

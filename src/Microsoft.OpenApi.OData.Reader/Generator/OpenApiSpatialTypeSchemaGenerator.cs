@@ -77,6 +77,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -93,6 +94,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -109,6 +111,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -125,6 +128,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -141,6 +145,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -157,6 +162,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -173,6 +179,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -189,6 +196,7 @@ namespace Microsoft.OpenApi.OData.Generator
         {
             return new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
@@ -208,13 +216,13 @@ namespace Microsoft.OpenApi.OData.Generator
                 Type = "object",
                 AnyOf = new List<OpenApiSchema>
                 {
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPoint" } },
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryLineString" } },
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPolygon" } },
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiPoint" } },
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiLineString" } },
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiPolygon" } },
-                    new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryCollection" } }
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPoint" } },
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryLineString" } },
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPolygon" } },
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiPoint" } },
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiLineString" } },
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryMultiPolygon" } },
+                    new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryCollection" } }
                 }
             };
         }
@@ -240,7 +248,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Default = new OpenApiString("Point")
                         }
                     },
-                    { "coordinates", new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } } }
+                    { "coordinates", new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } } }
                 },
                 Required = new HashSet<string>
                 {
@@ -272,7 +280,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     { "coordinates", new OpenApiSchema
                         {
                             Type = "array",
-                            Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }},
+                            Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }},
                             MinItems = 2
                         }
                     }
@@ -310,7 +318,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Items = new OpenApiSchema
                             {
                                 Type = "array",
-                                Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
+                                Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
                             },
                             MinItems = 4
                         }
@@ -346,7 +354,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     { "coordinates", new OpenApiSchema
                         {
                             Type = "array",
-                            Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }}
+                            Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" }}
                         }
                     }
                 },
@@ -383,7 +391,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Items = new OpenApiSchema
                             {
                                 Type = "array",
-                                Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
+                                Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
                             },
                             MinItems = 2
                         }
@@ -425,7 +433,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                 Items = new OpenApiSchema
                                 {
                                     Type = "array",
-                                    Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
+                                    Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "GeoJSON.position" } }
                                 }
                             },
                             MinItems = 4
@@ -462,7 +470,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     { "coordinates", new OpenApiSchema
                         {
                             Type = "array",
-                            Items = new OpenApiSchema { Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.Geometry" } }
+                            Items = new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.Geometry" } }
                         }
                     }
                 },
