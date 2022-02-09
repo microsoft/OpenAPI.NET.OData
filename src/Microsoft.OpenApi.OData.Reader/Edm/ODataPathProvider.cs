@@ -337,7 +337,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (visitedNavigationProperties == null)
             {
-                visitedNavigationProperties = new Stack<string>();
+                visitedNavigationProperties = new ();
             }
                         
             var navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
