@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -34,16 +33,12 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// </summary>
         protected ODataPath Path { get; private set; }
 
-        protected IDictionary<ODataSegment, IDictionary<string, string>> ParameterMappings;
-
         /// <inheritdoc/>
         public virtual OpenApiPathItem CreatePathItem(ODataContext context, ODataPath path)
         {
             Context = context ?? throw Error.ArgumentNull(nameof(context));
 
             Path = path ?? throw Error.ArgumentNull(nameof(path));
-
-            ParameterMappings = path.CalculateParameterMapping(context.Settings);
 
             Initialize(context, path);
 
