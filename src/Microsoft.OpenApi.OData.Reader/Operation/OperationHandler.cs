@@ -141,26 +141,13 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
-                foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
+                foreach(var parameter in Path.CreatePathParameters(Context))
                 {
-                    IDictionary<string, string> mapping = ParameterMappings[keySegment];
-                    foreach (var p in Context.CreateKeyParameters(keySegment, mapping))
-                    {
-                        AppendParameter(operation, p);
-                    }
+                    operation.Parameters.AppendParameter(parameter);
                 }
             }
 
             AppendCustomParameters(operation);
-
-            // Add the route prefix parameter v1{data}
-            if (Context.Settings.RoutePathPrefixProvider != null && Context.Settings.RoutePathPrefixProvider.Parameters != null)
-            {
-                foreach (var parameter in Context.Settings.RoutePathPrefixProvider.Parameters)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-            }
         }
 
         /// <summary>
@@ -250,32 +237,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
 
-                AppendParameter(operation, parameter);
+                operation.Parameters.AppendParameter(parameter);
             }
-        }
-
-        protected static void AppendParameter(OpenApiOperation operation, OpenApiParameter parameter)
-        {
-            HashSet<string> set = new HashSet<string>(operation.Parameters.Select(p => p.Name));
-
-            if (!set.Contains(parameter.Name))
-            {
-                operation.Parameters.Add(parameter);
-                return;
-            }
-
-            int index = 1;
-            string originalName = parameter.Name;
-            string newName;
-            do
-            {
-                newName = originalName + index.ToString();
-                index++;
-            }
-            while (set.Contains(newName));
-
-            parameter.Name = newName;
-            operation.Parameters.Add(parameter);
         }
     }
 }

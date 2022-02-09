@@ -138,7 +138,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     IList<OpenApiParameter> parameters = Context.CreateParameters(function, OperationSegment.ParameterMappings);
                     foreach (var parameter in parameters)
                     {
-                        AppendParameter(operation, parameter);
+                        operation.Parameters.AppendParameter(parameter);
                     }
                 }
                 else
@@ -153,7 +153,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         foreach (var parameter in parameters)
                         {
-                            AppendParameter(operation, parameter);
+                            operation.Parameters.AppendParameter(parameter);
                         }
                     }
                 }

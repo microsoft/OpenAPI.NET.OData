@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -120,47 +119,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <param name="item">The <see cref="OpenApiPathItem"/>.</param>
         protected virtual void SetParameters(OpenApiPathItem item)
         {
-            foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
+            foreach (var parameter in Path.CreatePathParameters(Context))
             {
-                IDictionary<string, string> mapping = ParameterMappings[keySegment];
-                foreach (var parameter in Context.CreateKeyParameters(keySegment, mapping))
-                {
-                    AppendParameter(item, parameter);
-                }
+                item.Parameters.AppendParameter(parameter);
             }
-
-            // Add the route prefix parameter v1{data}
-            if (Context.Settings.RoutePathPrefixProvider?.Parameters != null)
-            {
-                foreach (var parameter in Context.Settings.RoutePathPrefixProvider.Parameters)
-                {
-                    item.Parameters.Add(parameter);
-                }
-            }
-        }
-
-        protected static void AppendParameter(OpenApiPathItem item, OpenApiParameter parameter)
-        {
-            HashSet<string> set = new HashSet<string>(item.Parameters.Select(p => p.Name));
-
-            if (!set.Contains(parameter.Name))
-            {
-                item.Parameters.Add(parameter);
-                return;
-            }
-
-            int index = 1;
-            string originalName = parameter.Name;
-            string newName;
-            do
-            {
-                newName = originalName + index.ToString();
-                index++;
-            }
-            while (set.Contains(newName));
-
-            parameter.Name = newName;
-            item.Parameters.Add(parameter);
         }
     }
 }
