@@ -2,11 +2,11 @@
 # Licensed under the MIT License.
 name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
 
-# Trigger is on release branches e.g. release/v1.0.10
+# Trigger is on github tags
 trigger:
-  branches:
+  tags:
     include:
-      - release/*
+      - '*'
 
 # No Pull request (PR) triggers for release
 pr: none
@@ -197,12 +197,12 @@ steps:
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
-- task: PowerShell@2
-  displayName: 'Validate project version has been incremented'
-  inputs:
-    targetType: 'filePath'
-    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-    arguments: '-projectVersion "$(VersionFullSemantic)"'
+# - task: PowerShell@2
+#   displayName: 'Validate project version has been incremented'
+#   inputs:
+#     targetType: 'filePath'
+#     filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+#     arguments: '-projectVersion "$(VersionFullSemantic)"'
 
 - task: NuGetCommand@2
   displayName: 'NuGet pack Release.nuspec'
