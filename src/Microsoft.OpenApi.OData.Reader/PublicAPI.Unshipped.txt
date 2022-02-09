@@ -187,6 +187,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.ErrorResponsesAsDefault.set -> vo
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ErrorResponsesAsDefault.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.InnerErrorComplexTypeName.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.InnerErrorComplexTypeName.get -> string
+Microsoft.OpenApi.OData.OpenApiConvertSettings.DeclarePathParametersOnPathItem.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.DeclarePathParametersOnPathItem.set -> void
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.Identifier.get -> string
 override Microsoft.OpenApi.OData.Edm.ODataDollarCountSegment.EntityType.get -> Microsoft.OData.Edm.IEdmEntityType
