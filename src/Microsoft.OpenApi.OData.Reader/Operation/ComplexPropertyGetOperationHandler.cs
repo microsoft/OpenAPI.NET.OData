@@ -131,7 +131,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             SetCollectionResponse(operation);
         else
             SetSingleResponse(operation);
-        operation.Responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+        operation.AddErrorResponses(Context.Settings, false);
 
         base.SetResponses(operation);
     }

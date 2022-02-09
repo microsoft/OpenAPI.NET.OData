@@ -24,11 +24,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Post, new EntitySetPostOperationHandler() }
             }},
 
-            // entity (Get/Patch/Delete)
+            // entity (Get/Patch/Put/Delete)
             {ODataPathKind.Entity, new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new EntityGetOperationHandler() },
                 {OperationType.Patch, new EntityPatchOperationHandler() },
+                {OperationType.Put, new EntityPutOperationHandler() },
                 {OperationType.Delete, new EntityDeleteOperationHandler() }
             }},
 
@@ -53,11 +54,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Post, new EdmActionImportOperationHandler() }
             }},
 
-            // navigation property (Get/Patch/Post/Delete)
+            // navigation property (Get/Patch/Put/Post/Delete)
             {ODataPathKind.NavigationProperty, new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new NavigationPropertyGetOperationHandler() },
                 {OperationType.Patch, new NavigationPropertyPatchOperationHandler() },
+                {OperationType.Put, new NavigationPropertyPutOperationHandler() },
                 {OperationType.Post, new NavigationPropertyPostOperationHandler() },
                 {OperationType.Delete, new NavigationPropertyDeleteOperationHandler() }
             }},
@@ -96,11 +98,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Get, new ODataTypeCastGetOperationHandler() },
             }},
 
-            // .../entity/propertyOfComplexType
+            // .../entity/propertyOfComplexType (Get/Patch/Put/Delete)
             {ODataPathKind.ComplexProperty, new Dictionary<OperationType, IOperationHandler>
             {
                 {OperationType.Get, new ComplexPropertyGetOperationHandler() },
                 {OperationType.Patch, new ComplexPropertyPatchOperationHandler() },
+                {OperationType.Put, new ComplexPropertyPutOperationHandler() },
                 {OperationType.Post, new ComplexPropertyPostOperationHandler() },
                 {OperationType.Delete, new ComplexPropertyDeleteOperationHandler() },
             }},

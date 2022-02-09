@@ -386,9 +386,9 @@ namespace Microsoft.OpenApi.OData.Edm
                 // ~/entityset/{key}/single-valued-Nav/subtype
                 CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
-                if (!navigationProperty.ContainsTarget)
+                if (navigation?.Referenceable == true)
                 {
-                    // Non-Contained
+                    // Referenceable navigation properties
                     // Single-Valued: ~/entityset/{key}/single-valued-Nav/$ref
                     // Collection-valued: ~/entityset/{key}/collection-valued-Nav/$ref?$id='{navKey}'
                     CreateRefPath(currentPath);
@@ -398,7 +398,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         // Collection-valued: DELETE ~/entityset/{key}/collection-valued-Nav/{key}/$ref
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
-                        
+
                         CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 

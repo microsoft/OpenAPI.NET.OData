@@ -15,6 +15,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.Exceptions;
 using System.Linq;
 using Microsoft.OpenApi.Interfaces;
+using Microsoft.OpenApi.OData.OpenApiExtensions;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -49,6 +50,10 @@ namespace Microsoft.OpenApi.OData.Generator
                     case EdmSchemaElementKind.TypeDefinition: // Type definition
                         {
                             IEdmType reference = (IEdmType)element;
+                            if(reference is IEdmComplexType &&
+                                reference.FullTypeName().EndsWith(context.Settings.InnerErrorComplexTypeName, StringComparison.Ordinal))
+                                continue;
+                            
                             schemas.Add(reference.FullTypeName(), context.CreateSchemaTypeSchema(reference));
                         }
                         break;
@@ -130,7 +135,7 @@ namespace Microsoft.OpenApi.OData.Generator
                                                 Enumerable.Empty<IEdmStructuredType>())
                                                 .Union(context.Model
                                                                 .SchemaElements
-                                                        	    .OfType<IEdmStructuredType>()
+                                                                .OfType<IEdmStructuredType>()
                                                                 .SelectMany(x => x.NavigationProperties())
                                                                 .Where(x => x.TargetMultiplicity() == EdmMultiplicity.Many)
                                                                 .Select(x => x.Type.ToStructuredType()))
@@ -209,7 +214,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(enumType, nameof(enumType));
 
-            OpenApiSchema schema = new OpenApiSchema
+            OpenApiSchema schema = new()
             {
                 // An enumeration type is represented as a Schema Object of type string
                 Type = "string",
@@ -221,15 +226,39 @@ namespace Microsoft.OpenApi.OData.Generator
                 // whose value is the value of the unqualified annotation Core.Description of the enumeration type.
                 Description = context.Model.GetDescriptionAnnotation(enumType)
             };
+            var extension = (context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi2_0 ||
+                            context.Settings.OpenApiSpecVersion == OpenApiSpecVersion.OpenApi3_0 ) &&
+                            context.Settings.AddEnumDescriptionExtension ? 
+                                new OpenApiEnumValuesDescriptionExtension {
+                                    EnumName = enumType.Name,
+                                } : 
+                                null;
 
             // Enum value is an array that contains a string with the member name for each enumeration member.
             foreach (IEdmEnumMember member in enumType.Members)
             {
                 schema.Enum.Add(new OpenApiString(member.Name));
+                AddEnumDescription(member, extension, context);
             }
 
+            if(extension?.ValuesDescriptions.Any() ?? false)
+                schema.Extensions.Add(extension.Name, extension);
             schema.Title = enumType.Name;
             return schema;
+        }
+        private static void AddEnumDescription(IEdmEnumMember member, OpenApiEnumValuesDescriptionExtension target, ODataContext context)
+        {
+            if (target == null)
+                return;
+            
+            var enumDescription = context.Model.GetDescriptionAnnotation(member);
+            if(!string.IsNullOrEmpty(enumDescription))
+                target.ValuesDescriptions.Add(new EnumDescription
+                {
+                    Name = member.Name,
+                    Value = member.Name,
+                    Description = enumDescription
+                });
         }
 
         /// <summary>
@@ -315,7 +344,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return context.CreateSchema(typeDefinition.UnderlyingType);
         }
 
-        private static OpenApiSchema CreateSchemaTypeSchema(this ODataContext context, IEdmType edmType)
+        internal static OpenApiSchema CreateSchemaTypeSchema(this ODataContext context, IEdmType edmType)
         {
             Debug.Assert(context != null);
             Debug.Assert(edmType != null);
@@ -401,9 +430,22 @@ namespace Microsoft.OpenApi.OData.Generator
                 OpenApiDiscriminator discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
                 {
+                    string v3RefIdentifier = new OpenApiSchema
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.Schema,
+                            Id = structuredType.FullTypeName()
+                        }
+                    }.Reference.ReferenceV3;
+
                     discriminator = new OpenApiDiscriminator
                     {
-                        PropertyName = "@odata.type"
+                        PropertyName = "@odata.type",
+                        Mapping = new Dictionary<string, string>
+                        {
+                            {"#" + structuredType.FullTypeName(), v3RefIdentifier }
+                        }
                     };
                 }
 

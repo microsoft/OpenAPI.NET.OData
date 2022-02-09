@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------
+// --------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // --------------------------------------------------------------
@@ -48,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(1413958, paths.Count());
+            Assert.Equal(28227, paths.Count());
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(1413937, paths.Count());
+            Assert.Equal(28193, paths.Count());
         }
 
         [Fact]
@@ -271,14 +271,15 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(5, paths.Count());
 
             if (containsTarget)
             {
+                Assert.Equal(5, paths.Count());
                 Assert.Contains("/Customers({ID})/Referral/NS.Ack", paths.Select(p => p.GetPathItemName()));
             }
             else
             {
+                Assert.Equal(4, paths.Count());
                 Assert.DoesNotContain("/Customers({ID})/Referral/NS.Ack", paths.Select(p => p.GetPathItemName()));
             }
         }
@@ -308,14 +309,15 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(5, paths.Count());
 
             if (containsTarget)
             {
+                Assert.Equal(5, paths.Count());
                 Assert.Contains("/Customers({ID})/Referral/NS.Search()", paths.Select(p => p.GetPathItemName()));
             }
             else
             {
+                Assert.Equal(4, paths.Count());
                 Assert.DoesNotContain("/Customers({ID})/Referral/NS.Search()", paths.Select(p => p.GetPathItemName()));
             }
         }
@@ -380,7 +382,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(10, paths.Count());
+            Assert.Equal(9, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.DoesNotContain("/Orders({id})/SingleCustomer", pathItems);
@@ -423,14 +425,60 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(9, paths.Count());
+            Assert.Equal(8, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.DoesNotContain("/Orders({id})/MultipleCustomers({ID})", pathItems);
         }
 
         [Fact]
-        public void GetPathsWithNonContainedNavigationPropertyWorks()
+        public void GetPathsWithReferenceableNavigationPropertyWorks()
+        {
+            // Arrange
+            string entityType =
+@"<EntityType Name=""Order"">
+    <Key>
+      <PropertyRef Name=""id"" />
+    </Key>
+    <NavigationProperty Name=""MultipleCustomers"" Type=""Collection(NS.Customer)"">
+        <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+          <Record>
+            <PropertyValue Property=""Referenceable"" Bool=""true"" />
+          </Record>
+        </Annotation>
+     </NavigationProperty>
+    <NavigationProperty Name=""SingleCustomer"" Type=""NS.Customer"">
+        <Annotation Term=""Org.OData.Capabilities.V1.NavigationRestrictions"">
+          <Record>
+            <PropertyValue Property=""Referenceable"" Bool=""true"" />
+          </Record> 
+        </Annotation>
+     </NavigationProperty>
+  </EntityType>";
+
+            string entitySet = @"<EntitySet Name=""Orders"" EntityType=""NS.Order"" />";
+            IEdmModel model = GetEdmModel(entityType, entitySet);
+
+            ODataPathProvider provider = new ODataPathProvider();
+            var settings = new OpenApiConvertSettings();
+
+            // Act
+            var paths = provider.GetPaths(model, settings);
+
+            // Assert
+            Assert.NotNull(paths);
+            Assert.Equal(12, paths.Count());
+
+            var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
+            Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers({ID})/$ref", pathItems);
+        }
+
+        [Fact]
+        public void GetPathsWithNonReferenceableNavigationPropertyWorks()
         {
             // Arrange
             string entityType =
@@ -453,14 +501,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(12, paths.Count());
+            Assert.Equal(10, paths.Count());
 
             var pathItems = paths.Select(p => p.GetPathItemName()).ToList();
             Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
             Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
-            Assert.Contains("/Orders({id})/SingleCustomer/$ref", pathItems);
-            Assert.Contains("/Orders({id})/MultipleCustomers/$ref", pathItems);
-            Assert.Contains("/Orders({id})/MultipleCustomers({ID})/$ref", pathItems);
+            Assert.Contains("/Orders({id})/SingleCustomer", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers", pathItems);
+            Assert.Contains("/Orders({id})/MultipleCustomers({ID})", pathItems);
         }
 
         [Fact]
@@ -522,14 +570,14 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             {
                 if (hasStream)
                 {
-                    Assert.Equal(15, paths.Count());
+                    Assert.Equal(14, paths.Count());
                     Assert.Contains(TodosValuePath, paths.Select(p => p.GetPathItemName()));
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 }
                 else
                 {
-                    Assert.Equal(14, paths.Count());
+                    Assert.Equal(13, paths.Count());
                     Assert.Contains(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                     Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));
@@ -537,7 +585,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             }
             else if (streamPropName.Equals("content"))
             {
-                Assert.Equal(14, paths.Count());
+                Assert.Equal(13, paths.Count());
                 Assert.Contains(TodosContentPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosLogoPath, paths.Select(p => p.GetPathItemName()));
                 Assert.DoesNotContain(TodosValuePath, paths.Select(p => p.GetPathItemName()));

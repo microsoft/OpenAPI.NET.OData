@@ -81,6 +81,52 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
+        public void CreateStructuredTypeSchemaWithDiscriminatorValueEnabledReturnsCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings
+            {
+                EnableDiscriminatorValue = true,
+            });
+
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "directoryObject");
+            Assert.NotNull(entity); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(entity);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""allOf"": [
+    {
+      ""$ref"": ""#/components/schemas/microsoft.graph.entity""
+    },
+    {
+      ""title"": ""directoryObject"",
+      ""type"": ""object"",
+      ""properties"": {
+        ""deletedDateTime"": {
+          ""pattern"": ""^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$"",
+          ""type"": ""string"",
+          ""format"": ""date-time"",
+          ""nullable"": true
+        }
+      },
+      ""discriminator"": {
+        ""propertyName"": ""@odata.type"",
+        ""mapping"": {
+          ""#microsoft.graph.directoryObject"": ""#/components/schemas/microsoft.graph.directoryObject""
+        }
+      }
+    }
+  ]
+}".ChangeLineBreaks(), json);
+        }
+
+        [Fact]
         public void CreateComplexTypeWithoutBaseSchemaReturnCorrectSchema()
         {
             // Arrange

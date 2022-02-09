@@ -136,7 +136,7 @@ paths:
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
-    patch:
+    put:
       tags:
         - Airlines.Airline
       summary: Update entity in Airlines
@@ -433,7 +433,7 @@ paths:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation'
         default:
           $ref: '#/components/responses/error'
-    patch:
+    put:
       summary: Update property Location value.
       operationId: Location.AirportLocation.UpdateAirportLocation
       parameters:
@@ -22279,6 +22279,20 @@ components:
         - Female
         - Unknow
       type: string
+      description: Gender of the person.
+      x-ms-enum:
+        name: PersonGender
+        modelAsString: false
+        values:
+          - value: Male
+            description: The Male gender.
+            name: Male
+          - value: Female
+            description: The Female gender.
+            name: Female
+          - value: Unknow
+            description: Unknown gender or prefers not to say.
+            name: Unknow
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature:
       title: Feature
       enum:
@@ -22440,13 +22454,13 @@ components:
           type: string
         target:
           type: string
+          nullable: true
         details:
           type: array
           items:
             $ref: '#/components/schemas/odata.error.detail'
         innererror:
-          type: object
-          description: The structure of this object is service-specific
+          $ref: '#/components/schemas/odata.error.innererror'
     odata.error.detail:
       required:
         - code
@@ -22459,6 +22473,19 @@ components:
           type: string
         target:
           type: string
+          nullable: true
+    odata.error.innererror:
+      title: InnerError
+      type: object
+      properties:
+        Date:
+          pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
+          type: string
+          format: date-time
+          nullable: true
+        RequestId:
+          type: string
+          nullable: true
     ODataCountResponse:
       type: integer
       format: int32
@@ -22686,6 +22713,10 @@ components:
       schema:
         type: string
   examples:
+    Microsoft.OData.Service.Sample.TrippinInMemory.Models.InnerError:
+      value:
+        Date: '0001-01-01T00:00:00.0000000+00:00'
+        RequestId: String
     Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person:
       value:
         AddressInfo:
