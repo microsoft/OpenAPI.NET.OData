@@ -60,6 +60,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     Constants.StatusCode200,
                     new OpenApiResponse
                     {
+                        UnresolvedReference = true,
                         Reference = new OpenApiReference() {
                             Type = ReferenceType.Response,
                             Id = Constants.DollarCountSchemaName

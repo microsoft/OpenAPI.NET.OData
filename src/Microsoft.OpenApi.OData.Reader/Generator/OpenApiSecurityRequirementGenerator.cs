@@ -38,6 +38,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         [
                             new OpenApiSecurityScheme
                             {
+                                UnresolvedReference = true,
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.SecurityScheme,
@@ -70,6 +71,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         [
                             new OpenApiSecurityScheme
                             {
+                                UnresolvedReference = true,
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.SecurityScheme,

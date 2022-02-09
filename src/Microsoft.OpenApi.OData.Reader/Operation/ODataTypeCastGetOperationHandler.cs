@@ -188,6 +188,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 				Constants.StatusCode200,
 				new OpenApiResponse
 				{
+					UnresolvedReference = true,
 					Reference = new OpenApiReference()
 					{
 						Type = ReferenceType.Response,
@@ -210,6 +211,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		{
 			schema = new OpenApiSchema
 			{
+				UnresolvedReference = true,
 				Reference = new OpenApiReference
 				{
 					Type = ReferenceType.Schema,

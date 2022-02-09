@@ -143,6 +143,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
                 Constants.StatusCode200,
                 new OpenApiResponse
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference()
                     {
                         Type = ReferenceType.Response,
@@ -160,6 +161,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         {
             schema = new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,

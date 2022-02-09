@@ -42,6 +42,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
                 Type = "array",
                 Items = new OpenApiSchema
                 {
+                    UnresolvedReference = true,
                     Reference = new OpenApiReference
                     {
                         Type = ReferenceType.Schema,
@@ -52,6 +53,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         :
             new OpenApiSchema
             {
+                UnresolvedReference = true,
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,

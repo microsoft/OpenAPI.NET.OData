@@ -76,6 +76,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         "error",
                         new OpenApiSchema
                         {
+                            UnresolvedReference = true,
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
@@ -144,6 +145,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             Type = "array",
                             Items = new OpenApiSchema
                             {
+                                UnresolvedReference = true,
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.Schema,
@@ -156,6 +158,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         "innererror",
                         new OpenApiSchema
                         {
+                            UnresolvedReference = true,
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
