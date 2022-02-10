@@ -22,8 +22,8 @@ Param(
 
 $packageName = "Microsoft.OpenApi.OData"
 
-# Convert the project semantic version into a number e.g. "1.0.9" -> 109
-[int]$currentProjectVersion = $projectVersion -replace "\."
+# Cast the project version string to System.Version
+[version]$currentProjectVersion = $projectVersion
 
 # API is case-sensitive
 $packageName = $packageName.ToLower()
@@ -31,13 +31,10 @@ $url = "https://api.nuget.org/v3/registration5-semver1/$packageName/index.json"
 
 # Call the NuGet API for the package and get the current published version.
 $nugetIndex = Invoke-RestMethod -Uri $url -Method Get
-$currentPublishedVersion = $nugetIndex.items[0].upper
-
-# Convert the published version into a number e.g. "1.0.9" -> 109
-[int]$currentPublishedVersionNumber = $currentPublishedVersion -replace "\."
+[version]$currentPublishedVersion = $nugetIndex.items[0].upper
 
 # Validate that the version number has been updated.
-if ($currentProjectVersion -le $currentPublishedVersionNumber) {
+if ($currentProjectVersion -le $currentPublishedVersion) {
     Write-Error "The project version in versioning.props file ($projectVersion) `
     has not been bumped up. The current published version is $currentPublishedVersion. `
     Please increment the current project version."
