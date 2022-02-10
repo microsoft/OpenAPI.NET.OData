@@ -197,12 +197,12 @@ steps:
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
-# - task: PowerShell@2
-#   displayName: 'Validate project version has been incremented'
-#   inputs:
-#     targetType: 'filePath'
-#     filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-#     arguments: '-projectVersion "$(VersionFullSemantic)"'
+- task: PowerShell@2
+  displayName: 'Validate project version has been incremented'
+  inputs:
+    targetType: 'filePath'
+    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+    arguments: '-projectVersion "$(VersionFullSemantic)"'
 
 - task: NuGetCommand@2
   displayName: 'NuGet pack Release.nuspec'
@@ -242,18 +242,18 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\Nuget'
     ArtifactName: Nuget
     
-# - task: NuGetCommand@2
-#   displayName: 'Push nuget package to nuget.org'
-#   inputs:
-#     command: push
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)\Nuget\*.nupkg'
-#     nuGetFeedType: external
-#     publishFeedCredentials: 'OpenAPI Nuget Connection'
+- task: NuGetCommand@2
+  displayName: 'Push nuget package to nuget.org'
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)\Nuget\*.nupkg'
+    nuGetFeedType: external
+    publishFeedCredentials: 'OpenAPI Nuget Connection'
 
-# - task: GithubRelease@1
-#   displayName: 'Create Github Release (v$(VersionFullSemantic))'
-#   inputs:
-#     githubConnection: '<TODO>'
-#     title: 'v$(VersionFullSemantic)'
-#     tagSource: userSpecifiedTag
-#     tag: 'v$(VersionFullSemantic)'
+- task: GithubRelease@1
+  displayName: 'Create Github Release (v$(VersionFullSemantic))'
+  inputs:
+    githubConnection: 'Github - MaggieKimani1'
+    title: 'v$(VersionFullSemantic)'
+    tagSource: userSpecifiedTag
+    tag: 'v$(VersionFullSemantic)'
