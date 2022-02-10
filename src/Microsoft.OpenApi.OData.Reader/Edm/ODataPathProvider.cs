@@ -324,10 +324,29 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="count">The count restrictions.</param>
         /// <param name="currentPath">The current OData path.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
-        private void RetrieveNavigationPropertyPaths(IEdmNavigationProperty navigationProperty, CountRestrictionsType count, ODataPath currentPath, OpenApiConvertSettings convertSettings)
+        /// <param name="visitedNavigationProperties">A stack that holds the visited navigation properties in the <paramref name="currentPath"/>.</param>
+        private void RetrieveNavigationPropertyPaths(
+            IEdmNavigationProperty navigationProperty,
+            CountRestrictionsType count,
+            ODataPath currentPath,
+            OpenApiConvertSettings convertSettings,
+            Stack<string> visitedNavigationProperties = null)
         {
             Debug.Assert(navigationProperty != null);
             Debug.Assert(currentPath != null);
+
+            if (visitedNavigationProperties == null)
+            {
+                visitedNavigationProperties = new ();
+            }
+                        
+            var navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
+
+            // Check whether the navigation property has already been navigated in the path
+            if (visitedNavigationProperties.Contains(navPropFullyQualifiedName))
+            {
+                return;
+            }
 
             // Check whether the navigation property should be part of the path
             NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
@@ -336,12 +355,13 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
 
-            // test the expandable for the navigation property.
-            bool shouldExpand = ShouldExpandNavigationProperty(navigationProperty, currentPath);
+            // Whether to expand the navigation property
+            bool shouldExpand = navigationProperty.ContainsTarget;
 
             // append a navigation property.
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
+            visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
             NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
@@ -412,7 +432,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             if (CanFilter(subNavProperty))
                             {
-                                RetrieveNavigationPropertyPaths(subNavProperty, count, currentPath, convertSettings);
+                                RetrieveNavigationPropertyPaths(subNavProperty, count, currentPath, convertSettings, visitedNavigationProperties);
                             }
                         }
                     }
@@ -421,35 +441,11 @@ namespace Microsoft.OpenApi.OData.Edm
                 if (targetsMany)
                 {
                     currentPath.Pop();
-                }
+                }                
             }
             currentPath.Pop();
-        }
-
-        private bool ShouldExpandNavigationProperty(IEdmNavigationProperty navigationProperty, ODataPath currentPath)
-        {
-            Debug.Assert(navigationProperty != null);
-            Debug.Assert(currentPath != null);
-
-            // not expand for the non-containment.
-            if (!navigationProperty.ContainsTarget)
-            {
-                return false;
-            }
-
-            // check the type is visited before, if visited, not expand it.
-            IEdmEntityType navEntityType = navigationProperty.ToEntityType();
-            foreach (ODataSegment segment in currentPath)
-            {
-                if (segment.EntityType != null && 
-                    navEntityType.IsAssignableFrom(segment.EntityType))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+            visitedNavigationProperties.Pop();
+        }              
 
         /// <summary>
         /// Create $ref paths.

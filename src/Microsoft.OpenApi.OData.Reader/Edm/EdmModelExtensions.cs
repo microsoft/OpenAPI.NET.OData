@@ -152,6 +152,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="baseType">Type of the base type.</param>
         /// <param name="subtype">Type of the sub type.</param>
         /// <returns>true, if the <paramref name="baseType"/> is assignable to <paramref name="subtype"/>. Otherwise returns false.</returns>
+        [Obsolete]
         public static bool IsAssignableFrom(this IEdmEntityType baseType, IEdmEntityType subtype)
         {
             Utils.CheckArgumentNull(baseType, nameof(baseType));
