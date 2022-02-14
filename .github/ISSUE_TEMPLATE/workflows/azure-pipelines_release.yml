@@ -253,7 +253,7 @@ steps:
 - task: GithubRelease@1
   displayName: 'Create Github Release (v$(VersionFullSemantic))'
   inputs:
-    githubConnection: 'Github - MaggieKimani1'
+    githubConnection: 'github - danielmbaluka'
     title: 'v$(VersionFullSemantic)'
     tagSource: userSpecifiedTag
     tag: 'v$(VersionFullSemantic)'
