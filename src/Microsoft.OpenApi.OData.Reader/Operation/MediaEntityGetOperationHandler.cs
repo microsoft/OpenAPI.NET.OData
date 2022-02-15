@@ -26,13 +26,14 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
+            string placeholderValue = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "media content";
             operation.Summary = IsNavigationPropertyPath
-                ? $"Get media content for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}"
-                : $"Get media content for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
+                ? $"Get {placeholderValue} for the navigation property {NavigationProperty.Name} from {NavigationSource.Name}"
+                : $"Get {placeholderValue} for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
 
             // Description
             IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
-            if (annotatableElement != null)
+            if (LastSegmentIsStreamPropertySegment)
             {
                 operation.Description = Context.Model.GetDescriptionAnnotation(annotatableElement);
             }
@@ -40,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string identifier = Path.LastSegment.Kind == ODataSegmentKind.StreamContent ? "Content" : Path.LastSegment.Identifier;
+                string identifier = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "Content";
                 operation.OperationId = GetOperationId("Get", identifier);
             }
         }

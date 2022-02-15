@@ -30,6 +30,8 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected bool IsNavigationPropertyPath { get; private set; }
 
+        protected bool LastSegmentIsStreamPropertySegment { get; private set; }
+
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
@@ -39,6 +41,8 @@ namespace Microsoft.OpenApi.OData.Operation
             // Check whether path is a navigation property path
             IsNavigationPropertyPath = Path.Segments.Contains(
                 Path.Segments.Where(segment => segment is ODataNavigationPropertySegment).FirstOrDefault());
+
+            LastSegmentIsStreamPropertySegment = Path.LastSegment.Kind == ODataSegmentKind.StreamProperty;
 
             if (IsNavigationPropertyPath)
             {
@@ -169,29 +173,19 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <summary>
-        /// Determines the annotatable element from the segments of a path.
+        /// Gets the annotatable stream property from the path segments.
         /// </summary>
-        /// <returns>The annotable element.</returns>
+        /// <returns>The annotatable stream property.</returns>
         protected IEdmVocabularyAnnotatable GetAnnotatableElement()
         {
-            IEdmEntityType entityType = NavigationSourceSegment.EntityType;
-            ODataSegment lastSegmentProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
+            // Only StreamProperty ODataSegmentKind is annotatable
+            if (!LastSegmentIsStreamPropertySegment) return null;
 
-            if (lastSegmentProp == null)
-            {
-                int pathCount = Path.Segments.Count;
+            // Retrieve the entity type of the segment before the stream property segment
+            var entityType = Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
 
-                // Retrieve the segment before the stream content segment
-                lastSegmentProp = Path.Segments.ElementAtOrDefault(pathCount - 2);
-
-                if (lastSegmentProp == null)
-                {
-                    return null;
-                }
-            }
-
-            // Get the annotatable stream property
             // The stream property can either be a structural type or navigation type property
+            ODataSegment lastSegmentProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
             IEdmProperty property = GetStructuralProperty(entityType, lastSegmentProp.Identifier);
             if (property == null)
             {
