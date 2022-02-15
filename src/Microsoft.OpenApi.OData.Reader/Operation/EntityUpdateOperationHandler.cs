@@ -19,6 +19,18 @@ namespace Microsoft.OpenApi.OData.Operation
     /// </summary>
     internal abstract class EntityUpdateOperationHandler : EntitySetOperationHandler
     {
+        /// <summary>
+        /// Gets/Sets the <see cref="UpdateRestrictionsType"/>
+        /// </summary>
+        private UpdateRestrictionsType UpdateRestrictions { get; set; }
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+
+            UpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
+        }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
@@ -28,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Description = UpdateRestrictions?.Description;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -88,31 +100,29 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null || update.Permissions == null)
+            if (UpdateRestrictions == null || UpdateRestrictions.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(UpdateRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null)
+            if (UpdateRestrictions == null)
             {
                 return;
             }
 
-            if (update.CustomHeaders != null)
+            if (UpdateRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, update.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, UpdateRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (update.CustomQueryOptions != null)
+            if (UpdateRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

@@ -85,15 +85,6 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetBasicInfo(OpenApiOperation operation)
-        {
-            // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(NavigationProperty);
-
-            base.SetBasicInfo(operation);
-        }
-
-        /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
             IList<string> items = new List<string>

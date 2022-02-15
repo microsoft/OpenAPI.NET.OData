@@ -23,6 +23,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
 
+        /// <summary>
+        /// Gets/Sets the <see cref="DeleteRestrictionsType"/>
+        /// </summary>
+        private DeleteRestrictionsType DeleteRestrictions { get; set; }
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+
+            DeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+        }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
@@ -32,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Description = DeleteRestrictions?.Description;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -68,31 +80,29 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            DeleteRestrictionsType delete = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            if (delete == null || delete.Permissions == null)
+            if (DeleteRestrictions == null || DeleteRestrictions.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(delete.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(DeleteRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            DeleteRestrictionsType delete = Context.Model.GetRecord< DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
-            if (delete == null)
+            if (DeleteRestrictions == null)
             {
                 return;
             }
 
-            if (delete.CustomHeaders != null)
+            if (DeleteRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, delete.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, DeleteRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (delete.CustomQueryOptions != null)
+            if (DeleteRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, delete.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, DeleteRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

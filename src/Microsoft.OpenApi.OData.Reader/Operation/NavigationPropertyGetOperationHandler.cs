@@ -42,6 +42,12 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = GetOperationId(prefix);
             }
 
+            // Description
+            ReadRestrictionsType readRestriction = Restriction?.ReadRestrictions;
+            operation.Description = readRestriction != null
+                ? LastSegmentIsKeySegment ? readRestriction.ReadByKeyRestrictions?.Description : readRestriction.Description
+                : Context.Model.GetDescriptionAnnotation(NavigationProperty);
+
             base.SetBasicInfo(operation);
         }
 
