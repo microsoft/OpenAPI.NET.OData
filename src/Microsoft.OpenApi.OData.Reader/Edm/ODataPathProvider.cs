@@ -348,7 +348,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
 
-            // Get the NavigationRestrictions
+            // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined
             IEdmVocabularyAnnotatable annotatableNavigationSource = currentPath.FirstSegment.GetAnnotables().FirstOrDefault();
             NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions) 
                 ?? _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
