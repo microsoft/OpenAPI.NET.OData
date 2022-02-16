@@ -25,6 +25,11 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected IDictionary<ODataSegment, IDictionary<string, string>> ParameterMappings;
 
+        /// <summary>
+        /// The path parameters in the path
+        /// </summary>
+        protected IList<OpenApiParameter> PathParameters;
+
         /// <inheritdoc/>
         public virtual OpenApiOperation CreateOperation(ODataContext context, ODataPath path)
         {
@@ -139,9 +144,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
+            PathParameters = Path.CreatePathParameters(Context);
             if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
-                foreach(var parameter in Path.CreatePathParameters(Context))
+                foreach (var parameter in PathParameters)
                 {
                     operation.Parameters.AppendParameter(parameter);
                 }
