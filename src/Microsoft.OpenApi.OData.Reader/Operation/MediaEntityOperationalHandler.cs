@@ -184,7 +184,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Retrieve the entity type of the segment before the stream property segment
             var entityType = Path.Segments.ElementAtOrDefault(Path.Segments.Count - 2).EntityType;
 
-            // The stream property can either be a structural type or navigation type property
+            // The stream property can either be a structural type or a navigation property type
             ODataSegment lastSegmentProp = Path.Segments.LastOrDefault(c => c is ODataStreamPropertySegment);
             IEdmProperty property = GetStructuralProperty(entityType, lastSegmentProp.Identifier);
             if (property == null)

@@ -45,9 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.Description != null 
-                ? ReadRestrictions.ReadByKeyRestrictions.Description
-                : Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(entityType);
 
             // OperationId
             if (Context.Settings.EnableOperationId)

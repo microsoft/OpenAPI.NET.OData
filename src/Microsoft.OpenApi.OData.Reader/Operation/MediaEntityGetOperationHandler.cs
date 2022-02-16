@@ -32,10 +32,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 : $"Get {placeholderValue} for {NavigationSourceSegment.EntityType.Name} from {NavigationSourceSegment.Identifier}";
 
             // Description
-            IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
             if (LastSegmentIsStreamPropertySegment)
             {
-                operation.Description = Context.Model.GetDescriptionAnnotation(annotatableElement);
+                operation.Description = Context.Model.GetDescriptionAnnotation(GetAnnotatableElement());
             }
 
             // OperationId

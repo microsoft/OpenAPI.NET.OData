@@ -50,12 +50,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = EntitySet.Name + "." + typeName + ".List" + Utils.UpperFirstChar(typeName);
             }
 
-            // Description
-            operation.Description = ReadRestrictions?.Description != null 
-                ? ReadRestrictions.Description
-                : Context.Model.GetDescriptionAnnotation(EntitySet);
-
-            base.SetBasicInfo(operation);
+            // Description            
+            operation.Description = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(EntitySet);
         }
 
         protected override void SetExtensions(OpenApiOperation operation)

@@ -42,6 +42,9 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + ".Set" + Utils.UpperFirstChar(typeName);
         }
 
+        // Description
+        operation.Description = Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
+
         base.SetBasicInfo(operation);
     }
 
