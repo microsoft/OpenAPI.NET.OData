@@ -27,7 +27,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         public void CreateSingletonGetOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
-            IEdmModel model = GetEdmModel("");
+            string annotation = @"
+        <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+          <Record>
+            <PropertyValue Property=""Description"" String=""Get the signed-in user."" />            
+          </Record>
+        </Annotation>";
+            IEdmModel model = GetEdmModel(annotation);
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("Me");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
@@ -42,7 +48,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(get);
             Assert.Equal("Get Me", get.Summary);
-            Assert.Equal("My signed-in instance.", get.Description);
+            Assert.Equal("Get the signed-in user.", get.Description);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
             Assert.Equal("Me.Customer", tag.Name);

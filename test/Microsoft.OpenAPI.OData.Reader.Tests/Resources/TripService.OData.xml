@@ -67,11 +67,23 @@
               </Record>
             </Collection>
           </Annotation>
-		  <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
-			<Record>
-				<PropertyValue Property="Referenceable" Bool="true" />
-			</Record>
-		  </Annotation>
+          <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+          <Record>
+            <PropertyValue Property="Referenceable" Bool="true" />
+            <PropertyValue Property="RestrictedProperties">
+              <Collection>
+                <Record>
+                  <PropertyValue Property="UpdateRestrictions">
+                    <Record>
+                      <PropertyValue Property="LongDescription" String="Update an instance of a best friend." />
+                      <PropertyValue Property="Description" String="Update the best friend." />                      
+                    </Record>
+                  </PropertyValue>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+          </Annotation>
         </NavigationProperty>
         <NavigationProperty Name="Trips" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" ContainsTarget="true">
           <Annotation Term="Org.OData.Core.V1.Description" String="Collection of trips." />
@@ -336,6 +348,48 @@
           <Annotation Term="Org.OData.Core.V1.Description" String="Resets the data source to default values." />
         </ActionImport>
       </EntityContainer>
+      <Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/Trips">
+        <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
+          <Record>
+            <PropertyValue Property="RestrictedProperties">
+              <Collection>
+                <Record>
+                  <PropertyValue Property="ReadRestrictions">
+                    <Record>
+                      <PropertyValue Property="LongDescription" String="Retrieve a list of trips." />
+                      <PropertyValue Property="Description" String="List trips." />
+                      <PropertyValue Property="ReadByKeyRestrictions">
+                        <Record>
+                          <PropertyValue Property="LongDescription" String="Retrieve the properties of a trip." />
+                          <PropertyValue Property="Description" String="Get a trip." />
+                        </Record>
+                      </PropertyValue>
+                    </Record>
+                  </PropertyValue>
+                  <PropertyValue Property="InsertRestrictions">
+                    <Record>
+                      <PropertyValue Property="LongDescription" String="Create a new trip." />
+                      <PropertyValue Property="Description" String="Create a trip." />                      
+                    </Record>
+                  </PropertyValue>
+                  <PropertyValue Property="UpdateRestrictions">
+                    <Record>
+                      <PropertyValue Property="LongDescription" String="Update an instance of a trip." />
+                      <PropertyValue Property="Description" String="Update a trip." />                      
+                    </Record>
+                  </PropertyValue>
+                  <PropertyValue Property="DeleteRestrictions">
+                    <Record>
+                      <PropertyValue Property="LongDescription" String="Delete an instance of a trip." />
+                      <PropertyValue Property="Description" String="Delete a trip." />                      
+                    </Record>
+                  </PropertyValue>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+      </Annotations>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

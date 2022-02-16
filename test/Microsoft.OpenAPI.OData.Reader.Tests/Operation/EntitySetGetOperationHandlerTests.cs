@@ -4,12 +4,10 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
-using Microsoft.OData.Edm.Validation;
 using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -46,6 +44,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(get);
             Assert.Equal("Get entities from " + entitySet.Name, get.Summary);
+            Assert.Equal("List customers.", get.Description);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
             Assert.Equal("Customers.Customer", tag.Name);
@@ -54,10 +53,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(8, get.Parameters.Count);
 
             Assert.NotNull(get.Responses);
-            Assert.Equal(2, get.Responses.Count);
-
-            //Assert.NotNull(get.Extensions);
-            //Assert.True(get.Extensions.ContainsKey(Constants.xMsPageable));
+            Assert.Equal(2, get.Responses.Count);                      
 
             if (enableOperationId)
             {
@@ -351,6 +347,28 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       </EntityContainer>
       <Annotations Target=""NS.Default/Customers"">
         {0}
+      </Annotations>
+      <Annotations Target=""NS.Default/Customers"">
+        <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+          <Record>
+            <PropertyValue Property=""Description"" String=""List customers."" />
+            <PropertyValue Property=""ReadByKeyRestrictions"">
+              <Record>
+                <PropertyValue Property=""Description"" String=""Get a customer."" />
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+          <Record>
+            <PropertyValue Property=""Description"" String=""Update a customer."" />            
+          </Record>
+        </Annotation>
+        <Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
+          <Record>
+            <PropertyValue Property=""Description"" String=""Delete a customer."" />            
+          </Record>
+        </Annotation>
       </Annotations>
     </Schema>
   </edmx:DataServices>

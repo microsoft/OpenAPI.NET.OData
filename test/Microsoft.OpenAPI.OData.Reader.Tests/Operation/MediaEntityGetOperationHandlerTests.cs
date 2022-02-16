@@ -73,9 +73,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(getOperation);
             Assert.NotNull(getOperation2);
-            Assert.Equal("Get media content for Todo from Todos", getOperation.Summary);
+            Assert.Equal("Get Logo for Todo from Todos", getOperation.Summary);
             Assert.Equal("Get media content for the navigation property photo from me", getOperation2.Summary);
-            Assert.Equal("The user's profile photo.", getOperation2.Description);
             Assert.NotNull(getOperation.Tags);
             Assert.NotNull(getOperation2.Tags);
 
@@ -135,7 +134,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Property Name = ""Description"" Type = ""Edm.String"" />
       </EntityType>
       <EntityType Name=""user"" OpenType=""true"">
-        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" ContainsTarget = ""true"" >
+        <NavigationProperty Name = ""photo"" Type = ""microsoft.graph.profilePhoto"" >
             <Annotation Term=""Org.OData.Core.V1.Description"" String=""The user's profile photo."" />
         </NavigationProperty>
       </EntityType>

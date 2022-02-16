@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Description = UpdateRestrictions?.Description;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

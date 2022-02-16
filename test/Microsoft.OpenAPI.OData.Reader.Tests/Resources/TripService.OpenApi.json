@@ -848,7 +848,6 @@
           "Airports.Person"
         ],
         "summary": "Update the ref of navigation property EmergencyAuthority in Airports",
-        "description": "The person to contact in case of a crisis at this location.",
         "operationId": "Airports.UpdateRefEmergencyAuthority",
         "parameters": [
           {
@@ -888,7 +887,6 @@
           "Airports.Person"
         ],
         "summary": "Delete ref of navigation property EmergencyAuthority for Airports",
-        "description": "The person to contact in case of a crisis at this location.",
         "operationId": "Airports.DeleteRefEmergencyAuthority",
         "parameters": [
           {
@@ -2018,7 +2016,7 @@
           "Me.Person"
         ],
         "summary": "Update the ref of navigation property BestFriend in Me",
-        "description": "The best friend.",
+        "description": "Update the best friend.",
         "operationId": "Me.UpdateRefBestFriend",
         "requestBody": {
           "description": "New navigation property ref values",
@@ -2053,7 +2051,6 @@
           "Me.Person"
         ],
         "summary": "Delete ref of navigation property BestFriend for Me",
-        "description": "The best friend.",
         "operationId": "Me.DeleteRefBestFriend",
         "parameters": [
           {
@@ -10237,7 +10234,7 @@
           "Me.Trip"
         ],
         "summary": "Get Trips from Me",
-        "description": "Collection of trips.",
+        "description": "List trips.",
         "operationId": "Me.ListTrips",
         "parameters": [
           {
@@ -10353,7 +10350,7 @@
           "Me.Trip"
         ],
         "summary": "Create new navigation property to Trips for Me",
-        "description": "Collection of trips.",
+        "description": "Create a trip.",
         "operationId": "Me.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
@@ -10398,7 +10395,7 @@
           "Me.Trip"
         ],
         "summary": "Get Trips from Me",
-        "description": "Collection of trips.",
+        "description": "Get a trip.",
         "operationId": "Me.GetTrips",
         "parameters": [
           {
@@ -10487,7 +10484,7 @@
           "Me.Trip"
         ],
         "summary": "Update the navigation property Trips in Me",
-        "description": "Collection of trips.",
+        "description": "Update a trip.",
         "operationId": "Me.UpdateTrips",
         "parameters": [
           {
@@ -10537,7 +10534,7 @@
           "Me.Trip"
         ],
         "summary": "Delete navigation property Trips for Me",
-        "description": "Collection of trips.",
+        "description": "Delete a trip.",
         "operationId": "Me.DeleteTrips",
         "parameters": [
           {
@@ -11794,7 +11791,7 @@
           "NewComePeople.Person"
         ],
         "summary": "Update the ref of navigation property BestFriend in NewComePeople",
-        "description": "The best friend.",
+        "description": "Update the best friend.",
         "operationId": "NewComePeople.UpdateRefBestFriend",
         "parameters": [
           {
@@ -11841,7 +11838,6 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete ref of navigation property BestFriend for NewComePeople",
-        "description": "The best friend.",
         "operationId": "NewComePeople.DeleteRefBestFriend",
         "parameters": [
           {
@@ -18804,7 +18800,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Get Trips from NewComePeople",
-        "description": "Collection of trips.",
+        "description": "List trips.",
         "operationId": "NewComePeople.ListTrips",
         "parameters": [
           {
@@ -18923,7 +18919,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Create new navigation property to Trips for NewComePeople",
-        "description": "Collection of trips.",
+        "description": "Create a trip.",
         "operationId": "NewComePeople.CreateTrips",
         "parameters": [
           {
@@ -18973,7 +18969,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Get Trips from NewComePeople",
-        "description": "Collection of trips.",
+        "description": "Get a trip.",
         "operationId": "NewComePeople.GetTrips",
         "parameters": [
           {
@@ -19065,7 +19061,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Update the navigation property Trips in NewComePeople",
-        "description": "Collection of trips.",
+        "description": "Update a trip.",
         "operationId": "NewComePeople.UpdateTrips",
         "parameters": [
           {
@@ -19118,7 +19114,7 @@
           "NewComePeople.Trip"
         ],
         "summary": "Delete navigation property Trips for NewComePeople",
-        "description": "Collection of trips.",
+        "description": "Delete a trip.",
         "operationId": "NewComePeople.DeleteTrips",
         "parameters": [
           {
@@ -20500,7 +20496,7 @@
           "People.Person"
         ],
         "summary": "Update the ref of navigation property BestFriend in People",
-        "description": "The best friend.",
+        "description": "Update the best friend.",
         "operationId": "People.UpdateRefBestFriend",
         "parameters": [
           {
@@ -20547,7 +20543,6 @@
           "People.Person"
         ],
         "summary": "Delete ref of navigation property BestFriend for People",
-        "description": "The best friend.",
         "operationId": "People.DeleteRefBestFriend",
         "parameters": [
           {
@@ -30219,7 +30214,7 @@
           "People.Trip"
         ],
         "summary": "Get Trips from People",
-        "description": "Collection of trips.",
+        "description": "List trips.",
         "operationId": "People.ListTrips",
         "parameters": [
           {
@@ -30345,7 +30340,7 @@
           "People.Trip"
         ],
         "summary": "Create new navigation property to Trips for People",
-        "description": "Collection of trips.",
+        "description": "Create a trip.",
         "operationId": "People.CreateTrips",
         "parameters": [
           {
@@ -30402,7 +30397,7 @@
           "People.Trip"
         ],
         "summary": "Get Trips from People",
-        "description": "Collection of trips.",
+        "description": "Get a trip.",
         "operationId": "People.GetTrips",
         "parameters": [
           {
@@ -30501,7 +30496,7 @@
           "People.Trip"
         ],
         "summary": "Update the navigation property Trips in People",
-        "description": "Collection of trips.",
+        "description": "Update a trip.",
         "operationId": "People.UpdateTrips",
         "parameters": [
           {
@@ -30561,7 +30556,7 @@
           "People.Trip"
         ],
         "summary": "Delete navigation property Trips for People",
-        "description": "Collection of trips.",
+        "description": "Delete a trip.",
         "operationId": "People.DeleteTrips",
         "parameters": [
           {

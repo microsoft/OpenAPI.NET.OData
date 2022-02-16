@@ -59,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(post);
             Assert.Equal("Add new entity to " + entitySet.Name, post.Summary);
-            Assert.Equal("Collection of business customers.", post.Description);
+            Assert.Equal("Create a new customer.", post.Description);
             Assert.NotNull(post.Tags);
             var tag = Assert.Single(post.Tags);
             Assert.Equal("Customers.Customer", tag.Name);
@@ -252,8 +252,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         </EntitySet>
       </EntityContainer>
       <Annotations Target=""NS.Customer"">
-       {1}
+       {1}        
       </Annotations>
+      <Annotations Target=""NS.Default/Customers"">
+        <Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+          <Record>
+            <PropertyValue Property=""Description"" String=""Create a new customer."" />            
+          </Record>
+        </Annotation>
+      </Annotations>        
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>";

@@ -348,8 +348,12 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
 
+            // Get the NavigationRestrictions
+            IEdmVocabularyAnnotatable annotatableNavigationSource = currentPath.FirstSegment.GetAnnotables().FirstOrDefault();
+            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions) 
+                ?? _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+
             // Check whether the navigation property should be part of the path
-            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
             if (navigation != null && !navigation.IsNavigable)
             {
                 return;
@@ -364,9 +368,9 @@ namespace Microsoft.OpenApi.OData.Edm
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
-            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault();
+            bool? indexableByKey = navigation?.RestrictedProperties?.FirstOrDefault()?.IndexableByKey;
 
-            if (restriction == null || restriction.IndexableByKey == true)
+            if (indexableByKey == null || indexableByKey == true)
             {
                 IEdmEntityType navEntityType = navigationProperty.ToEntityType();
                 var targetsMany = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;

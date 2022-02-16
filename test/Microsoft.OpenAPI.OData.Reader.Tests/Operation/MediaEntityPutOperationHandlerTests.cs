@@ -70,9 +70,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(putOperation);
             Assert.NotNull(putOperation2);
-            Assert.Equal("Update media content for Todo in Todos", putOperation.Summary);
+            Assert.Equal("Update Logo for Todo in Todos", putOperation.Summary);
             Assert.Equal("Update media content for the navigation property photo in me", putOperation2.Summary);
-            Assert.Equal("The user's profile photo.", putOperation2.Description);
             Assert.NotNull(putOperation.Tags);
             Assert.NotNull(putOperation2.Tags);
 

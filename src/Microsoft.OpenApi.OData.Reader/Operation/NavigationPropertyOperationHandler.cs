@@ -82,6 +82,12 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 Restriction = navigation.RestrictedProperties.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == NavigationPropertyPath);
             }
+            else
+            {
+                // Navigation restrictions annotation can be defined in-line
+                Restriction = Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?
+                    .RestrictedProperties?.FirstOrDefault();
+            }
         }
 
         /// <inheritdoc/>

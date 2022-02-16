@@ -32,7 +32,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = GetOperationId(prefix);
             }
 
-            base.SetBasicInfo(operation);
+            // Description
+            operation.Description = Restriction?.InsertRestrictions?.Description;
         }
 
         /// <inheritdoc/>

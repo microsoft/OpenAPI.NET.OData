@@ -1226,7 +1226,6 @@
           "People.Person"
         ],
         "summary": "Add new entity to People",
-        "description": "People's description.",
         "operationId": "People.Person.CreatePerson",
         "requestBody": {
           "description": "New entity",

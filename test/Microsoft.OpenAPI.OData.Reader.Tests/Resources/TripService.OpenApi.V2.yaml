@@ -511,7 +511,6 @@ paths:
       tags:
         - Airports.Person
       summary: Update the ref of navigation property EmergencyAuthority in Airports
-      description: The person to contact in case of a crisis at this location.
       operationId: Airports.UpdateRefEmergencyAuthority
       consumes:
         - application/json
@@ -538,7 +537,6 @@ paths:
       tags:
         - Airports.Person
       summary: Delete ref of navigation property EmergencyAuthority for Airports
-      description: The person to contact in case of a crisis at this location.
       operationId: Airports.DeleteRefEmergencyAuthority
       parameters:
         - in: path
@@ -1223,7 +1221,7 @@ paths:
       tags:
         - Me.Person
       summary: Update the ref of navigation property BestFriend in Me
-      description: The best friend.
+      description: Update the best friend.
       operationId: Me.UpdateRefBestFriend
       consumes:
         - application/json
@@ -1250,7 +1248,6 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property BestFriend for Me
-      description: The best friend.
       operationId: Me.DeleteRefBestFriend
       parameters:
         - in: header
@@ -6530,7 +6527,7 @@ paths:
       tags:
         - Me.Trip
       summary: Get Trips from Me
-      description: Collection of trips.
+      description: List trips.
       operationId: Me.ListTrips
       parameters:
         - $ref: '#/parameters/top'
@@ -6602,7 +6599,7 @@ paths:
       tags:
         - Me.Trip
       summary: Create new navigation property to Trips for Me
-      description: Collection of trips.
+      description: Create a trip.
       operationId: Me.CreateTrips
       consumes:
         - application/json
@@ -6635,7 +6632,7 @@ paths:
       tags:
         - Me.Trip
       summary: Get Trips from Me
-      description: Collection of trips.
+      description: Get a trip.
       operationId: Me.GetTrips
       produces:
         - application/json
@@ -6692,7 +6689,7 @@ paths:
       tags:
         - Me.Trip
       summary: Update the navigation property Trips in Me
-      description: Collection of trips.
+      description: Update a trip.
       operationId: Me.UpdateTrips
       consumes:
         - application/json
@@ -6728,7 +6725,7 @@ paths:
       tags:
         - Me.Trip
       summary: Delete navigation property Trips for Me
-      description: Collection of trips.
+      description: Delete a trip.
       operationId: Me.DeleteTrips
       parameters:
         - in: path
@@ -7526,7 +7523,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Update the ref of navigation property BestFriend in NewComePeople
-      description: The best friend.
+      description: Update the best friend.
       operationId: NewComePeople.UpdateRefBestFriend
       consumes:
         - application/json
@@ -7559,7 +7556,6 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Delete ref of navigation property BestFriend for NewComePeople
-      description: The best friend.
       operationId: NewComePeople.DeleteRefBestFriend
       parameters:
         - in: path
@@ -11890,7 +11886,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Get Trips from NewComePeople
-      description: Collection of trips.
+      description: List trips.
       operationId: NewComePeople.ListTrips
       parameters:
         - in: path
@@ -11962,7 +11958,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Create new navigation property to Trips for NewComePeople
-      description: Collection of trips.
+      description: Create a trip.
       operationId: NewComePeople.CreateTrips
       consumes:
         - application/json
@@ -11995,7 +11991,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Get Trips from NewComePeople
-      description: Collection of trips.
+      description: Get a trip.
       operationId: NewComePeople.GetTrips
       produces:
         - application/json
@@ -12052,7 +12048,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Update the navigation property Trips in NewComePeople
-      description: Collection of trips.
+      description: Update a trip.
       operationId: NewComePeople.UpdateTrips
       consumes:
         - application/json
@@ -12088,7 +12084,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Delete navigation property Trips for NewComePeople
-      description: Collection of trips.
+      description: Delete a trip.
       operationId: NewComePeople.DeleteTrips
       parameters:
         - in: path
@@ -12969,7 +12965,7 @@ paths:
       tags:
         - People.Person
       summary: Update the ref of navigation property BestFriend in People
-      description: The best friend.
+      description: Update the best friend.
       operationId: People.UpdateRefBestFriend
       consumes:
         - application/json
@@ -13002,7 +12998,6 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property BestFriend for People
-      description: The best friend.
       operationId: People.DeleteRefBestFriend
       parameters:
         - in: path
@@ -19159,7 +19154,7 @@ paths:
       tags:
         - People.Trip
       summary: Get Trips from People
-      description: Collection of trips.
+      description: List trips.
       operationId: People.ListTrips
       parameters:
         - in: path
@@ -19237,7 +19232,7 @@ paths:
       tags:
         - People.Trip
       summary: Create new navigation property to Trips for People
-      description: Collection of trips.
+      description: Create a trip.
       operationId: People.CreateTrips
       consumes:
         - application/json
@@ -19276,7 +19271,7 @@ paths:
       tags:
         - People.Trip
       summary: Get Trips from People
-      description: Collection of trips.
+      description: Get a trip.
       operationId: People.GetTrips
       produces:
         - application/json
@@ -19339,7 +19334,7 @@ paths:
       tags:
         - People.Trip
       summary: Update the navigation property Trips in People
-      description: Collection of trips.
+      description: Update a trip.
       operationId: People.UpdateTrips
       consumes:
         - application/json
@@ -19381,7 +19376,7 @@ paths:
       tags:
         - People.Trip
       summary: Delete navigation property Trips for People
-      description: Collection of trips.
+      description: Delete a trip.
       operationId: People.DeleteTrips
       parameters:
         - in: path

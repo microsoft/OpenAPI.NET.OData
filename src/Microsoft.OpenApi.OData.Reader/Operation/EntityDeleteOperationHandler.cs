@@ -44,7 +44,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = DeleteRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(entityType); 
+            operation.Description = DeleteRestrictions?.Description; 
 
             // OperationId
             if (Context.Settings.EnableOperationId)

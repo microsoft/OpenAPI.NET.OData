@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             // Description
-            operation.Description = InsertRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(EntitySet);
+            operation.Description = InsertRestrictions?.Description;
         }
 
         /// <inheritdoc/>

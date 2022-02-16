@@ -22,9 +22,6 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         // Summary
         operation.Summary = $"Update property {ComplexPropertySegment.Property.Name} value.";
 
-        // Description
-        operation.Description = Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
-
         // OperationId
         if (Context.Settings.EnableOperationId)
         {

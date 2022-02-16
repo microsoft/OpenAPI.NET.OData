@@ -33,7 +33,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             // Description
-            operation.Description = Restriction?.UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
+            operation.Description = Restriction?.UpdateRestrictions?.Description;
 
             base.SetBasicInfo(operation);
         }
