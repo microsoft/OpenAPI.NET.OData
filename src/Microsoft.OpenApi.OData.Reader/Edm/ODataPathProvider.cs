@@ -316,7 +316,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 currentPath.Pop();
             }
         }
-
+               
         /// <summary>
         /// Retrieve the path for <see cref="IEdmNavigationProperty"/>.
         /// </summary>
@@ -337,7 +337,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             if (visitedNavigationProperties == null)
             {
-                visitedNavigationProperties = new ();
+                visitedNavigationProperties = new();
             }
                         
             var navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
@@ -348,27 +348,34 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
 
-            // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined
-            IEdmVocabularyAnnotatable annotatableNavigationSource = currentPath.FirstSegment.GetAnnotables().FirstOrDefault();
-            NavigationRestrictionsType navigation = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions) 
-                ?? _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            // Get the navigation source for this navigation property
+            IEdmVocabularyAnnotatable annotatableNavigationSource = (IEdmVocabularyAnnotatable)(currentPath.FirstSegment as ODataNavigationSourceSegment).NavigationSource;
+
+            // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined in the navigation property
+            NavigationRestrictionsType navSourceRestrictionType = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions);
+            NavigationRestrictionsType navPropRestrictionType = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            
+            NavigationPropertyRestriction restriction = navSourceRestrictionType?.RestrictedProperties?
+                .FirstOrDefault(r => r.NavigationProperty == currentPath.NavigationPropertyPath(navigationProperty.Name))
+                ?? navPropRestrictionType?.RestrictedProperties?.FirstOrDefault();
 
             // Check whether the navigation property should be part of the path
-            if (navigation != null && !navigation.IsNavigable)
-            {
-                return;
+            if (EdmModelHelper.NavigationRestrictionsAllowsNavigability(navSourceRestrictionType, restriction) == false ||
+                EdmModelHelper.NavigationRestrictionsAllowsNavigability(navPropRestrictionType, restriction) == false)
+            { 
+                return; 
             }
 
             // Whether to expand the navigation property
             bool shouldExpand = navigationProperty.ContainsTarget;
 
-            // append a navigation property.
+            // Append a navigation property.
             currentPath.Push(new ODataNavigationPropertySegment(navigationProperty));
             AppendPath(currentPath.Clone());
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
-            bool? indexableByKey = navigation?.RestrictedProperties?.FirstOrDefault()?.IndexableByKey;
+            bool? indexableByKey = restriction?.IndexableByKey;
 
             if (indexableByKey == null || indexableByKey == true)
             {
@@ -390,7 +397,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 // ~/entityset/{key}/single-valued-Nav/subtype
                 CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
-                if (navigation?.Referenceable == true)
+                if (navSourceRestrictionType?.Referenceable == true ||
+                    navPropRestrictionType?.Referenceable == true)
                 {
                     // Referenceable navigation properties
                     // Single-Valued: ~/entityset/{key}/single-valued-Nav/$ref
