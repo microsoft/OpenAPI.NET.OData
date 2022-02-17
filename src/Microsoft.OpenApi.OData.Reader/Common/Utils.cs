@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 
 namespace Microsoft.OpenApi.OData.Common
@@ -115,5 +116,19 @@ namespace Microsoft.OpenApi.OData.Common
         /// <returns>The changed string.</returns>
         internal static string ToFirstCharacterLowerCase(this string input)
             => string.IsNullOrEmpty(input) ? input : $"{char.ToLowerInvariant(input.FirstOrDefault())}{input.Substring(1)}";
+
+        /// <summary>
+        /// Gets the navigation path.
+        /// </summary>
+        /// <param name="path">The <see cref="ODataPath"/>.</param>
+        /// <param name="navigationPropertyName">Optional: The navigation property name.</param>
+        internal static string NavigationPropertyPath(this ODataPath path, string navigationPropertyName = null)
+        {
+            string value = string.Join("/",
+                path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment 
+                || s is ODataStreamContentSegment || s is ODataStreamPropertySegment)).Select(e => e.Identifier));
+
+            return navigationPropertyName == null ? value : $"{value}/{navigationPropertyName}";
+        }
     }
 }
