@@ -24,9 +24,6 @@ internal class ComplexPropertyDeleteOperationHandler : ComplexPropertyBaseOperat
         // Summary
         operation.Summary = $"Delete {ComplexPropertySegment.Property.Name} property value";
 
-        // Description
-        operation.Description = Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
-
         // OperationId
         if (Context.Settings.EnableOperationId)
         {
