@@ -316,7 +316,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 currentPath.Pop();
             }
         }
-               
+
         /// <summary>
         /// Retrieve the path for <see cref="IEdmNavigationProperty"/>.
         /// </summary>
@@ -362,8 +362,8 @@ namespace Microsoft.OpenApi.OData.Edm
             // Check whether the navigation property should be part of the path
             if (EdmModelHelper.NavigationRestrictionsAllowsNavigability(navSourceRestrictionType, restriction) == false ||
                 EdmModelHelper.NavigationRestrictionsAllowsNavigability(navPropRestrictionType, restriction) == false)
-            { 
-                return; 
+            {
+                return;
             }
 
             // Whether to expand the navigation property

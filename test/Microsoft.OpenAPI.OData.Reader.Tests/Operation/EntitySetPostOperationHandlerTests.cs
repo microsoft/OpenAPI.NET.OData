@@ -252,7 +252,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         </EntitySet>
       </EntityContainer>
       <Annotations Target=""NS.Customer"">
-       {1}        
+       {1}
       </Annotations>
       <Annotations Target=""NS.Default/Customers"">
         <Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">

@@ -178,7 +178,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <returns>The annotatable stream property.</returns>
         protected IEdmVocabularyAnnotatable GetAnnotatableElement()
         {
-            // Only StreamProperty ODataSegmentKind is annotatable
+            // Only ODataStreamPropertySegment is annotatable
             if (!LastSegmentIsStreamPropertySegment) return null;
 
             // Retrieve the entity type of the segment before the stream property segment
