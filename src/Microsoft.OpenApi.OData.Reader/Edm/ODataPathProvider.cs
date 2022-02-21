@@ -339,8 +339,8 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 visitedNavigationProperties = new();
             }
-                        
-            var navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
+
+            string navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
 
             // Check whether the navigation property has already been navigated in the path
             if (visitedNavigationProperties.Contains(navPropFullyQualifiedName))
@@ -349,7 +349,7 @@ namespace Microsoft.OpenApi.OData.Edm
             }
 
             // Get the navigation source for this navigation property
-            IEdmVocabularyAnnotatable annotatableNavigationSource = (IEdmVocabularyAnnotatable)(currentPath.FirstSegment as ODataNavigationSourceSegment).NavigationSource;
+            IEdmVocabularyAnnotatable annotatableNavigationSource = (currentPath.FirstSegment as ODataNavigationSourceSegment).NavigationSource as IEdmVocabularyAnnotatable;
 
             // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined in the navigation property
             NavigationRestrictionsType navSourceRestrictionType = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions);
@@ -375,9 +375,9 @@ namespace Microsoft.OpenApi.OData.Edm
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
-            bool? indexableByKey = restriction?.IndexableByKey;
+            bool indexableByKey = restriction?.IndexableByKey ?? true;
 
-            if (indexableByKey == null || indexableByKey == true)
+            if (indexableByKey)
             {
                 IEdmEntityType navEntityType = navigationProperty.ToEntityType();
                 var targetsMany = navigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;

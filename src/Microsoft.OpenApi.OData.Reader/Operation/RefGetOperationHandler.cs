@@ -42,7 +42,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Description
             ReadRestrictionsType readRestriction = Restriction?.ReadRestrictions;
-            operation.Description = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.Description : readRestriction?.Description) ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
+            operation.Description = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.Description : readRestriction?.Description)
+                ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
         }
 
         protected override void SetExtensions(OpenApiOperation operation)
