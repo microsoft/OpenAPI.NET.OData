@@ -80,7 +80,7 @@ namespace Microsoft.OpenApi.OData.Common
                 return false;
             }
 
-            if (restrictionProperty == null || restrictionProperty.Navigability == null)
+            if (restrictionProperty?.Navigability == null)
             {
                 // if the individual has no navigability setting, use the global navigability setting
                 if (restrictionType != null && !restrictionType.IsNavigable)
