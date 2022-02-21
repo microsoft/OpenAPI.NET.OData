@@ -133,7 +133,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (ReadRestrictions == null || ReadRestrictions.Permissions == null)
+            if (ReadRestrictions?.Permissions == null)
             {
                 return;
             }
