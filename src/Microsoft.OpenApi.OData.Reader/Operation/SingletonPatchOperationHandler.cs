@@ -104,7 +104,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (UpdateRestrictions == null || UpdateRestrictions.Permissions == null)
+            if (UpdateRestrictions?.Permissions == null)
             {
                 return;
             }
