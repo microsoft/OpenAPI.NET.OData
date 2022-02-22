@@ -25,7 +25,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	{
         bool isReadable = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable ?? false;
 		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isReadable) ||
-			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
+			!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
         {
 			AddOperation(item, OperationType.Get);
 		}		
@@ -33,7 +33,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 		UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
 		bool isUpdatable = update?.Updatable ?? false;
 		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isUpdatable) ||
-			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false) 
+			!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties) 
 		{
 			if (update != null && update.IsUpdateMethodPut)
 			{
@@ -47,7 +47,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 
         bool isInsertable = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
 		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isInsertable) ||
-			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
+			!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
         {
             if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
             {

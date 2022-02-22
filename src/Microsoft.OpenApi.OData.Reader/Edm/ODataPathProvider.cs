@@ -293,7 +293,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(complexProperty != null);
             Debug.Assert(convertSettings != null);
 
-            if (convertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
+            if (!convertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
                 return true;
 
             bool isReadable = _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable ?? false;
