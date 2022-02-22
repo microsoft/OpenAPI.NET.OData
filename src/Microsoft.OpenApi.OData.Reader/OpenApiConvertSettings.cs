@@ -225,6 +225,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public string InnerErrorComplexTypeName { get; set; } = "InnerError";
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to use restrictions annotations to generate paths for complex properties.
+        /// </summary>
+        public bool UseRestrictionAnnotationsToGeneratePathsForComplexProperties { get; set; } = true;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -262,7 +267,8 @@ namespace Microsoft.OpenApi.OData
                 EnableDeprecationInformation = this.EnableDeprecationInformation,
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
-                InnerErrorComplexTypeName = this.InnerErrorComplexTypeName
+                InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
+                UseRestrictionAnnotationsToGeneratePathsForComplexProperties = this.UseRestrictionAnnotationsToGeneratePathsForComplexProperties
             };
 
             return newSettings;

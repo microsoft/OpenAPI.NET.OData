@@ -5,6 +5,8 @@ abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetAnnotables() -> System.Coll
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties.set -> void
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement element) -> bool
@@ -134,8 +136,6 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUnqualifiedCall.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUnqualifiedCall.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUriEscapeFunctionCall.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableUriEscapeFunctionCall.set -> void
-Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandNavigationPropertyAttributeName.get -> string
-Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandNavigationPropertyAttributeName.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IEEE754Compatible.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.IEEE754Compatible.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.OpenApiConvertSettings() -> void

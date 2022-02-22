@@ -41,14 +41,17 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Empty(pathItems);
         }
 
-        [Fact]
-        public void CreatePathItemsReturnsForBasicModel()
+        [Theory]
+        [InlineData(true, 10)]
+        [InlineData(false, 22)]
+        public void CreatePathItemsReturnsForBasicModel(bool useAnnotationToGeneratePath, int pathCount)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.BasicEdmModel;
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableKeyAsSegment = true
+                EnableKeyAsSegment = true,
+                UseRestrictionAnnotationsToGeneratePathsForComplexProperties = useAnnotationToGeneratePath
             };
             ODataContext context = new ODataContext(model, settings);
 
@@ -57,34 +60,49 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Assert
             Assert.NotNull(pathItems);
-            Assert.Equal(22, pathItems.Count);
+            Assert.Equal(pathCount, pathItems.Count);
 
-            Assert.Contains("/People", pathItems.Keys);
-            Assert.Contains("/People/$count", pathItems.Keys);
-            Assert.Contains("/People/{UserName}", pathItems.Keys);
-            Assert.Contains("/People/{UserName}/Addresses", pathItems.Keys);
-            Assert.Contains("/People/{UserName}/Addresses/$count", pathItems.Keys);
-            Assert.Contains("/People/{UserName}/HomeAddress", pathItems.Keys);
-            Assert.Contains("/People/{UserName}/HomeAddress/City", pathItems.Keys);
-            Assert.Contains("/City", pathItems.Keys);
-            Assert.Contains("/City/$count", pathItems.Keys);
-            Assert.Contains("/City/{Name}", pathItems.Keys);
-            Assert.Contains("/CountryOrRegion", pathItems.Keys);
-            Assert.Contains("/CountryOrRegion/$count", pathItems.Keys);
-            Assert.Contains("/CountryOrRegion/{Name}", pathItems.Keys);
-            Assert.Contains("/Me", pathItems.Keys);
-            Assert.Contains("/Me/Addresses", pathItems.Keys);
-            Assert.Contains("/Me/Addresses/$count", pathItems.Keys);
-            Assert.Contains("/Me/HomeAddress", pathItems.Keys);
-            Assert.Contains("/Me/HomeAddress/City", pathItems.Keys);
-            Assert.Contains("/Me/WorkAddress", pathItems.Keys);
-            Assert.Contains("/Me/WorkAddress/City", pathItems.Keys);
+            if (useAnnotationToGeneratePath)
+            {
+                Assert.Contains("/People", pathItems.Keys);
+                Assert.Contains("/People/$count", pathItems.Keys);
+                Assert.Contains("/People/{UserName}", pathItems.Keys);
+                Assert.Contains("/City", pathItems.Keys);
+                Assert.Contains("/City/$count", pathItems.Keys);
+                Assert.Contains("/City/{Name}", pathItems.Keys);
+                Assert.Contains("/CountryOrRegion", pathItems.Keys);
+                Assert.Contains("/CountryOrRegion/$count", pathItems.Keys);
+                Assert.Contains("/CountryOrRegion/{Name}", pathItems.Keys);
+                Assert.Contains("/Me", pathItems.Keys);
+            }
+            else
+            {
+                Assert.Contains("/People", pathItems.Keys);
+                Assert.Contains("/People/$count", pathItems.Keys);
+                Assert.Contains("/People/{UserName}", pathItems.Keys);
+                Assert.Contains("/People/{UserName}/Addresses", pathItems.Keys);
+                Assert.Contains("/People/{UserName}/Addresses/$count", pathItems.Keys);
+                Assert.Contains("/People/{UserName}/HomeAddress", pathItems.Keys);
+                Assert.Contains("/People/{UserName}/HomeAddress/City", pathItems.Keys);
+                Assert.Contains("/City", pathItems.Keys);
+                Assert.Contains("/City/$count", pathItems.Keys);
+                Assert.Contains("/City/{Name}", pathItems.Keys);
+                Assert.Contains("/CountryOrRegion", pathItems.Keys);
+                Assert.Contains("/CountryOrRegion/$count", pathItems.Keys);
+                Assert.Contains("/CountryOrRegion/{Name}", pathItems.Keys);
+                Assert.Contains("/Me", pathItems.Keys);
+                Assert.Contains("/Me/Addresses", pathItems.Keys);
+                Assert.Contains("/Me/Addresses/$count", pathItems.Keys);
+                Assert.Contains("/Me/HomeAddress", pathItems.Keys);
+                Assert.Contains("/Me/HomeAddress/City", pathItems.Keys);
+                Assert.Contains("/Me/WorkAddress", pathItems.Keys);
+                Assert.Contains("/Me/WorkAddress/City", pathItems.Keys);
+            }            
         }
 
         [Theory]
         [InlineData(true, true, true, "/Customers({ID}):/{param}:")]
         [InlineData(true, true, false, "/Customers({ID}):/{param}")]
-
         [InlineData(true, false, true, "/Customers({ID})/NS.MyFunction(param='{param}')")]
         [InlineData(true, false, false, "/Customers({ID})/NS.MyFunction(param='{param}')")]
         [InlineData(false, true, true, "/Customers({ID})/NS.MyFunction(param='{param}')")]

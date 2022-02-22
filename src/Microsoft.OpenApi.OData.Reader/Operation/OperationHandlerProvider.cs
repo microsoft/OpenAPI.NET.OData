@@ -104,9 +104,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 {OperationType.Get, new ComplexPropertyGetOperationHandler() },
                 {OperationType.Patch, new ComplexPropertyPatchOperationHandler() },
                 {OperationType.Put, new ComplexPropertyPutOperationHandler() },
-                {OperationType.Post, new ComplexPropertyPostOperationHandler() },
-                {OperationType.Delete, new ComplexPropertyDeleteOperationHandler() },
-            }},
+                {OperationType.Post, new ComplexPropertyPostOperationHandler() }
+            }}
         };
 
         /// <inheritdoc/>

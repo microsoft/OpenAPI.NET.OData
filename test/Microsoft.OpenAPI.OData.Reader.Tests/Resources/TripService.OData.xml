@@ -23,6 +23,21 @@
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation</String>
             </Collection>
           </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+			<Record>
+				<PropertyValue Property="Readable" Bool="true" />
+			</Record>
+		  </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+			<Record>
+				<PropertyValue Property="Updatable" Bool="true" />
+			</Record>
+		  </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+			<Record>
+				<PropertyValue Property="Insertable" Bool="true" />
+			</Record>
+		  </Annotation>		
         </Property>
         <Property Name="HomeAddress" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location">
           <Annotation Term="Org.OData.Validation.V1.DerivedTypeConstraint">
@@ -30,7 +45,22 @@
               <String>Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation</String>
             </Collection>
           </Annotation>
-        </Property>
+		  <Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+			<Record>
+				<PropertyValue Property="Readable" Bool="true" />
+			</Record>
+		  </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+			<Record>
+				<PropertyValue Property="Updatable" Bool="true" />
+			</Record>
+		  </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+			<Record>
+				<PropertyValue Property="Insertable" Bool="true" />
+			</Record>
+		  </Annotation>
+		</Property>
         <Property Name="FavoriteFeature" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature" Nullable="false" />
         <Property Name="Features" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature)" Nullable="false" />
         <NavigationProperty Name="Friends" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)">
@@ -97,8 +127,14 @@
               <PropertyValue Property="UpdateMethod">
                 <EnumMember>Org.OData.Capabilities.V1.HttpMethod/PUT</EnumMember>
               </PropertyValue>
+			  <PropertyValue Property="Updatable" Bool="true" />
             </Record>
           </Annotation>
+		  <Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+			<Record>
+				<PropertyValue Property="Readable" Bool="true" />
+			</Record>
+		  </Annotation>
         </Property>
       </EntityType>
       <ComplexType Name="Location">
