@@ -240,7 +240,7 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(entityType != null);
             Debug.Assert(currentPath != null);
             Debug.Assert(convertSettings != null);
-                        
+
             if (!convertSettings.EnableNavigationPropertyPath) return;
 
             foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
