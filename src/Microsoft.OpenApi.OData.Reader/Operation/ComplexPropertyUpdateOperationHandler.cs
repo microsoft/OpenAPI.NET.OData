@@ -16,11 +16,26 @@ namespace Microsoft.OpenApi.OData.Operation;
 
 internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyBaseOperationHandler
 {
+    /// <summary>
+    /// Gets/Sets the <see cref="UpdateRestrictionsType"/>
+    /// </summary>
+    private UpdateRestrictionsType UpdateRestrictions { get; set; }
+
+    protected override void Initialize(ODataContext context, ODataPath path)
+    {
+        base.Initialize(context, path);
+
+        UpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
+    }
+
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
         // Summary
         operation.Summary = $"Update property {ComplexPropertySegment.Property.Name} value.";
+
+        // Description
+        operation.Description = UpdateRestrictions?.Description;
 
         // OperationId
         if (Context.Settings.EnableOperationId)
@@ -84,31 +99,29 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     }
     protected override void SetSecurity(OpenApiOperation operation)
     {
-        UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
-        if (update == null || update.Permissions == null)
+        if (UpdateRestrictions?.Permissions == null)
         {
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+        operation.Security = Context.CreateSecurityRequirements(UpdateRestrictions.Permissions).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)
     {
-        UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.UpdateRestrictions);
-        if (update == null)
+        if (UpdateRestrictions == null)
         {
             return;
         }
 
-        if (update.CustomHeaders != null)
+        if (UpdateRestrictions.CustomHeaders != null)
         {
-            AppendCustomParameters(operation, update.CustomHeaders, ParameterLocation.Header);
+            AppendCustomParameters(operation, UpdateRestrictions.CustomHeaders, ParameterLocation.Header);
         }
 
-        if (update.CustomQueryOptions != null)
+        if (UpdateRestrictions.CustomQueryOptions != null)
         {
-            AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
+            AppendCustomParameters(operation, UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
         }
     }
 }
