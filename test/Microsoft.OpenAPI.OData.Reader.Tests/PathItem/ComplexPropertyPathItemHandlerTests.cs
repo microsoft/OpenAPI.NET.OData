@@ -88,6 +88,11 @@ public class ComplexPropertyPathItemHandlerTests
     </PropertyValue>
 	<PropertyValue Property=""Updatable"" Bool=""true"" />
   </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+	<PropertyValue Property=""Readable"" Bool=""false"" />
+  </Record>
 </Annotation>"
 			: "";
         var target = @"""NS.Customer/BillingAddress""";
@@ -136,11 +141,17 @@ public class ComplexPropertyPathItemHandlerTests
 	{
 		var annotation = annotationAvailable
 			? @"
-		<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
-          <Record>
-            <PropertyValue Property=""Insertable"" Bool=""true"" />
-          </Record>
-        </Annotation>"
+<Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+    <Record>
+    <PropertyValue Property=""Insertable"" Bool=""true"" />
+    </Record>
+</Annotation>
+<Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+  <Record>
+	<PropertyValue Property=""Description"" String=""Create groupLifecyclePolicy"" />
+	<!-- No Readable property defined! -->
+  </Record>
+</Annotation>"
 			: "";
 		var target = @"""NS.Customer/AlternativeAddresses""";
 		var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);

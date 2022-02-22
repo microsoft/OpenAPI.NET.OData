@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             Context = context ?? throw Error.ArgumentNull(nameof(context));
 
             Path = path ?? throw Error.ArgumentNull(nameof(path));
-
+            
             Initialize(context, path);
 
             OpenApiPathItem item = new();
