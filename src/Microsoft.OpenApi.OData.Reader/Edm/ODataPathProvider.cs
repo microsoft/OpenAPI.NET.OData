@@ -240,13 +240,15 @@ namespace Microsoft.OpenApi.OData.Edm
             Debug.Assert(entityType != null);
             Debug.Assert(currentPath != null);
             Debug.Assert(convertSettings != null);
-
+                        
             if (!convertSettings.EnableNavigationPropertyPath) return;
 
             foreach (IEdmStructuralProperty sp in entityType.StructuralProperties()
                                                     .Where(x => x.Type.IsComplex() ||
                                                             x.Type.IsCollection() && x.Type.Definition.AsElementType() is IEdmComplexType))
             {
+                if (!ShouldCreateComplexPropertyPaths(sp, convertSettings)) continue;
+
                 currentPath.Push(new ODataComplexPropertySegment(sp));
                 AppendPath(currentPath.Clone());
 
@@ -278,6 +280,32 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 currentPath.Pop();
             }
+        }
+
+        /// <summary>
+        /// Evaluates whether or not to create paths for complex properties.
+        /// </summary>
+        /// <param name="complexProperty">The target complex property.</param>
+        /// <param name="convertSettings">The settings for the current conversion.</param>
+        /// <returns></returns>
+        private bool ShouldCreateComplexPropertyPaths(IEdmStructuralProperty complexProperty, OpenApiConvertSettings convertSettings)
+        {
+            Debug.Assert(complexProperty != null);
+            Debug.Assert(convertSettings != null);
+
+            if (convertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
+                return true;
+
+            ReadRestrictionsType read = _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions);
+            bool isReadable = read?.IsReadable ?? false;
+
+            UpdateRestrictionsType update = _model.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions);
+            bool isUpdatable = update?.IsUpdatable ?? false;
+
+            InsertRestrictionsType insert = _model.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions);
+            bool isInsertable = insert?.IsInsertable ?? false;
+
+            return isReadable || isUpdatable || isInsertable;
         }
 
         /// <summary>

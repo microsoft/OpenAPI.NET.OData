@@ -23,25 +23,39 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	/// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
 	{
-		AddOperation(item, OperationType.Get);
+		ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
+		bool isReadable = read?.IsReadable ?? false;
+		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isReadable) ||
+			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
+        {
+			AddOperation(item, OperationType.Get);
+		}		
 
-		UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty);
-		if (update != null && update.IsUpdateMethodPut)
+		UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
+		bool isUpdatable = update?.IsUpdatable ?? false;
+		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isUpdatable) ||
+			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false) 
 		{
-			AddOperation(item, OperationType.Put);
+			if (update != null && update.IsUpdateMethodPut)
+			{
+				AddOperation(item, OperationType.Put);
+			}
+			else
+            {
+				AddOperation(item, OperationType.Patch);
+			}
 		}
-		else
-		{
-			AddOperation(item, OperationType.Patch);
-		}
-
-		if(Path.LastSegment is ODataComplexPropertySegment segment)
-		{
-			if(segment.Property.Type.IsNullable)
-				AddOperation(item, OperationType.Delete);
-			if(segment.Property.Type.IsCollection())
+		
+		InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
+		bool isInsertable = insert?.IsInsertable ?? false;
+		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isInsertable) ||
+			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
+        {
+            if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
+            {
 				AddOperation(item, OperationType.Post);
-		}
+			}                
+        }			
 	}
 
 	/// <inheritdoc/>
