@@ -37,6 +37,7 @@ public class ComplexPropertyPatchOperationHandlerTests
 		// Assert
 		Assert.NotNull(patch);
 		Assert.Equal("Update property BillingAddress value.", patch.Summary);
+		Assert.Equal("Update the BillingAddress.", patch.Description);
 
 		Assert.NotNull(patch.Parameters);
 		Assert.Equal(1, patch.Parameters.Count); //id
@@ -77,6 +78,7 @@ public class ComplexPropertyPatchOperationHandlerTests
 		// Assert
 		Assert.NotNull(patch);
 		Assert.Equal("Update property AlternativeAddresses value.", patch.Summary);
+		Assert.Null(patch.Description);
 
 		Assert.NotNull(patch.Parameters);
 		Assert.Equal(1, patch.Parameters.Count); //id

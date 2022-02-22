@@ -336,9 +336,22 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
           <PropertyRef Name=""ID"" />
         </Key>
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""BillingAddress"" Type=""NS.Address"" />
+        <Property Name=""BillingAddress"" Type=""NS.Address"">
+            <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
+                <Record>
+                    <PropertyValue Property=""Description"" String=""Get the BillingAddress."" />            
+                </Record>
+            </Annotation>
+            <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
+                <Record>
+                    <PropertyValue Property=""Description"" String=""Update the BillingAddress."" />            
+                </Record>
+            </Annotation>            
+        </Property>
         <Property Name=""MailingAddress"" Type=""NS.Address"" Nullable=""false"" />
-        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"" />
+        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"">
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The AlternativeAddresses."" />            
+        </Property>
       </EntityType>
       <EntityContainer Name =""Default"">
         <EntitySet Name=""Customers"" EntityType=""NS.Customer"">

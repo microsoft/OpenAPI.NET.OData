@@ -244,7 +244,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""BillingAddress"" Type=""NS.Address"" />
         <Property Name=""MailingAddress"" Type=""NS.Address"" Nullable=""false"" />
-        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"" />
+        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"">
+            <Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
+                <Record>
+                    <PropertyValue Property=""Description"" String=""Create a new AlternativeAddress."" />            
+                </Record>
+            </Annotation>
+        </Property>
       </EntityType>
       <EntityContainer Name =""Default"">
         <EntitySet Name=""Customers"" EntityType=""NS.Customer"">
