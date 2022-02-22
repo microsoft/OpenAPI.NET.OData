@@ -45,15 +45,15 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 			}
 		}
 
-        bool isInsertable = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
-		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isInsertable) ||
-			!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
+		if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
         {
-            if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
-            {
+			bool isInsertable = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
+			if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isInsertable) ||
+				!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
+			{
 				AddOperation(item, OperationType.Post);
-			}                
-        }			
+			}
+		}					
 	}
 
 	/// <inheritdoc/>
