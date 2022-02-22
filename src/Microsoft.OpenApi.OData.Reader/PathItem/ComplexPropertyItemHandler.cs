@@ -23,8 +23,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	/// <inheritdoc/>
 	protected override void SetOperations(OpenApiPathItem item)
 	{
-		ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions);
-		bool isReadable = read?.IsReadable ?? false;
+        bool isReadable = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable ?? false;
 		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isReadable) ||
 			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
         {
@@ -32,7 +31,7 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 		}		
 
 		UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
-		bool isUpdatable = update?.IsUpdatable ?? false;
+		bool isUpdatable = update?.Updatable ?? false;
 		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isUpdatable) ||
 			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false) 
 		{
@@ -45,9 +44,8 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 				AddOperation(item, OperationType.Patch);
 			}
 		}
-		
-		InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions);
-		bool isInsertable = insert?.IsInsertable ?? false;
+
+        bool isInsertable = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
 		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isInsertable) ||
 			Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
         {

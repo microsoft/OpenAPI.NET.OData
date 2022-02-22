@@ -287,7 +287,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="complexProperty">The target complex property.</param>
         /// <param name="convertSettings">The settings for the current conversion.</param>
-        /// <returns></returns>
+        /// <returns>true or false.</returns>
         private bool ShouldCreateComplexPropertyPaths(IEdmStructuralProperty complexProperty, OpenApiConvertSettings convertSettings)
         {
             Debug.Assert(complexProperty != null);
@@ -296,14 +296,9 @@ namespace Microsoft.OpenApi.OData.Edm
             if (convertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties == false)
                 return true;
 
-            ReadRestrictionsType read = _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions);
-            bool isReadable = read?.IsReadable ?? false;
-
-            UpdateRestrictionsType update = _model.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions);
-            bool isUpdatable = update?.IsUpdatable ?? false;
-
-            InsertRestrictionsType insert = _model.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions);
-            bool isInsertable = insert?.IsInsertable ?? false;
+            bool isReadable = _model.GetRecord<ReadRestrictionsType>(complexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable ?? false;
+            bool isUpdatable = _model.GetRecord<UpdateRestrictionsType>(complexProperty, CapabilitiesConstants.UpdateRestrictions)?.Updatable ?? false;
+            bool isInsertable = _model.GetRecord<InsertRestrictionsType>(complexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
 
             return isReadable || isUpdatable || isInsertable;
         }
