@@ -552,7 +552,6 @@ paths:
       tags:
         - Airports.Person
       summary: Update the ref of navigation property EmergencyAuthority in Airports
-      description: The person to contact in case of a crisis at this location.
       operationId: Airports.UpdateRefEmergencyAuthority
       parameters:
         - name: IcaoCode
@@ -579,7 +578,6 @@ paths:
       tags:
         - Airports.Person
       summary: Delete ref of navigation property EmergencyAuthority for Airports
-      description: The person to contact in case of a crisis at this location.
       operationId: Airports.DeleteRefEmergencyAuthority
       parameters:
         - name: IcaoCode
@@ -1280,7 +1278,7 @@ paths:
       tags:
         - Me.Person
       summary: Update the ref of navigation property BestFriend in Me
-      description: The best friend.
+      description: Update the best friend.
       operationId: Me.UpdateRefBestFriend
       requestBody:
         description: New navigation property ref values
@@ -1305,7 +1303,6 @@ paths:
       tags:
         - Me.Person
       summary: Delete ref of navigation property BestFriend for Me
-      description: The best friend.
       operationId: Me.DeleteRefBestFriend
       parameters:
         - name: If-Match
@@ -6593,7 +6590,7 @@ paths:
       tags:
         - Me.Trip
       summary: Get Trips from Me
-      description: Collection of trips.
+      description: List trips.
       operationId: Me.ListTrips
       parameters:
         - $ref: '#/components/parameters/top'
@@ -6677,7 +6674,7 @@ paths:
       tags:
         - Me.Trip
       summary: Create new navigation property to Trips for Me
-      description: Collection of trips.
+      description: Create a trip.
       operationId: Me.CreateTrips
       requestBody:
         description: New navigation property
@@ -6708,7 +6705,7 @@ paths:
       tags:
         - Me.Trip
       summary: Get Trips from Me
-      description: Collection of trips.
+      description: Get a trip.
       operationId: Me.GetTrips
       parameters:
         - name: TripId
@@ -6774,7 +6771,7 @@ paths:
       tags:
         - Me.Trip
       summary: Update the navigation property Trips in Me
-      description: Collection of trips.
+      description: Update a trip.
       operationId: Me.UpdateTrips
       parameters:
         - name: TripId
@@ -6810,7 +6807,7 @@ paths:
       tags:
         - Me.Trip
       summary: Delete navigation property Trips for Me
-      description: Collection of trips.
+      description: Delete a trip.
       operationId: Me.DeleteTrips
       parameters:
         - name: TripId
@@ -7665,7 +7662,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Update the ref of navigation property BestFriend in NewComePeople
-      description: The best friend.
+      description: Update the best friend.
       operationId: NewComePeople.UpdateRefBestFriend
       parameters:
         - name: UserName
@@ -7698,7 +7695,6 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Delete ref of navigation property BestFriend for NewComePeople
-      description: The best friend.
       operationId: NewComePeople.DeleteRefBestFriend
       parameters:
         - name: UserName
@@ -12103,7 +12099,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Get Trips from NewComePeople
-      description: Collection of trips.
+      description: List trips.
       operationId: NewComePeople.ListTrips
       parameters:
         - name: UserName
@@ -12188,7 +12184,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Create new navigation property to Trips for NewComePeople
-      description: Collection of trips.
+      description: Create a trip.
       operationId: NewComePeople.CreateTrips
       parameters:
         - name: UserName
@@ -12221,7 +12217,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Get Trips from NewComePeople
-      description: Collection of trips.
+      description: Get a trip.
       operationId: NewComePeople.GetTrips
       parameters:
         - name: UserName
@@ -12288,7 +12284,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Update the navigation property Trips in NewComePeople
-      description: Collection of trips.
+      description: Update a trip.
       operationId: NewComePeople.UpdateTrips
       parameters:
         - name: UserName
@@ -12325,7 +12321,7 @@ paths:
       tags:
         - NewComePeople.Trip
       summary: Delete navigation property Trips for NewComePeople
-      description: Collection of trips.
+      description: Delete a trip.
       operationId: NewComePeople.DeleteTrips
       parameters:
         - name: UserName
@@ -13265,7 +13261,7 @@ paths:
       tags:
         - People.Person
       summary: Update the ref of navigation property BestFriend in People
-      description: The best friend.
+      description: Update the best friend.
       operationId: People.UpdateRefBestFriend
       parameters:
         - name: UserName
@@ -13298,7 +13294,6 @@ paths:
       tags:
         - People.Person
       summary: Delete ref of navigation property BestFriend for People
-      description: The best friend.
       operationId: People.DeleteRefBestFriend
       parameters:
         - name: UserName
@@ -19499,7 +19494,7 @@ paths:
       tags:
         - People.Trip
       summary: Get Trips from People
-      description: Collection of trips.
+      description: List trips.
       operationId: People.ListTrips
       parameters:
         - name: UserName
@@ -19590,7 +19585,7 @@ paths:
       tags:
         - People.Trip
       summary: Create new navigation property to Trips for People
-      description: Collection of trips.
+      description: Create a trip.
       operationId: People.CreateTrips
       parameters:
         - name: UserName
@@ -19629,7 +19624,7 @@ paths:
       tags:
         - People.Trip
       summary: Get Trips from People
-      description: Collection of trips.
+      description: Get a trip.
       operationId: People.GetTrips
       parameters:
         - name: UserName
@@ -19702,7 +19697,7 @@ paths:
       tags:
         - People.Trip
       summary: Update the navigation property Trips in People
-      description: Collection of trips.
+      description: Update a trip.
       operationId: People.UpdateTrips
       parameters:
         - name: UserName
@@ -19745,7 +19740,7 @@ paths:
       tags:
         - People.Trip
       summary: Delete navigation property Trips for People
-      description: Collection of trips.
+      description: Delete a trip.
       operationId: People.DeleteTrips
       parameters:
         - name: UserName

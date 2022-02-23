@@ -30,11 +30,6 @@ namespace Microsoft.OpenApi.OData.Operation
         protected IEdmNavigationSource NavigationSource { get; private set; }
 
         /// <summary>
-        /// Gets the navigation path.
-        /// </summary>
-        protected string NavigationPropertyPath { get; private set; }
-
-        /// <summary>
         /// Gets the navigation restriction.
         /// </summary>
         protected NavigationPropertyRestriction Restriction { get; private set; }
@@ -61,10 +56,6 @@ namespace Microsoft.OpenApi.OData.Operation
             LastSegmentIsRefSegment = path.LastSegment is ODataRefSegment;
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
 
-            NavigationPropertyPath = string.Join("/",
-                Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment
-                                        || s is ODataStreamContentSegment || s is ODataStreamPropertySegment)).Select(e => e.Identifier));
-
             IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
             IEdmSingleton singleton = NavigationSource as IEdmSingleton;
 
@@ -78,19 +69,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 navigation = Context.Model.GetRecord<NavigationRestrictionsType>(singleton, CapabilitiesConstants.NavigationRestrictions);
             }
 
-            if (navigation != null && navigation.RestrictedProperties != null)
-            {
-                Restriction = navigation.RestrictedProperties.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == NavigationPropertyPath);
-            }
-        }
-
-        /// <inheritdoc/>
-        protected override void SetBasicInfo(OpenApiOperation operation)
-        {
-            // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(NavigationProperty);
-
-            base.SetBasicInfo(operation);
+            Restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty != null && r.NavigationProperty == Path.NavigationPropertyPath())
+                    ?? Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions)?.RestrictedProperties?.FirstOrDefault();
         }
 
         /// <inheritdoc/>

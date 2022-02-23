@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Common
 {
@@ -61,6 +62,28 @@ namespace Microsoft.OpenApi.OData.Common
             };
 
             return schema;
+        }            
+
+        /// <summary>
+        /// Verifies whether the provided navigation restrictions allow for navigability of a navigation property. 
+        /// </summary>
+        /// <param name="restrictionType">The <see cref="NavigationRestrictionsType"/>.</param>
+        /// <param name="restrictionProperty">The <see cref="NavigationPropertyRestriction"/>.</param>
+        /// <returns></returns>
+        internal static bool NavigationRestrictionsAllowsNavigability(
+            NavigationRestrictionsType restrictionType,
+            NavigationPropertyRestriction restrictionProperty)
+        {
+            // Verify using individual navigation restriction first
+            if (restrictionProperty?.Navigability != null && restrictionProperty.Navigability.Value == NavigationType.None)
+            {
+                return false;
+            }
+
+            // if the individual has no navigability setting, use the global navigability setting
+            // Default navigability for all navigation properties of the annotation target.
+            // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
+            return restrictionProperty?.Navigability != null || restrictionType == null || restrictionType.IsNavigable;            
         }
     }
 }

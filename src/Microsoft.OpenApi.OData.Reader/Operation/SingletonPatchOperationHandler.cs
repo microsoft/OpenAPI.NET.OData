@@ -24,6 +24,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
 
+        /// <summary>
+        /// Gets/Sets the <see cref="UpdateRestrictionsType"/>
+        /// </summary>
+        private UpdateRestrictionsType UpdateRestrictions { get; set; }
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+
+            UpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+        }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
@@ -37,7 +49,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
             }
 
-            base.SetBasicInfo(operation);
+            // Description
+            operation.Description = UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton);
         }
 
         /// <inheritdoc/>
@@ -91,32 +104,30 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null || update.Permissions == null)
+            if (UpdateRestrictions?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(update.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(UpdateRestrictions.Permissions).ToList();
         }
 
         /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
-            if (update == null)
+            if (UpdateRestrictions == null)
             {
                 return;
             }
 
-            if (update.CustomHeaders != null)
+            if (UpdateRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, update.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, UpdateRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (update.CustomQueryOptions != null)
+            if (UpdateRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, update.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

@@ -33,15 +33,6 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetBasicInfo(OpenApiOperation operation)
-        {
-            // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(EntitySet);
-
-            base.SetBasicInfo(operation);
-        }
-
-        /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
             OpenApiTag tag = new OpenApiTag

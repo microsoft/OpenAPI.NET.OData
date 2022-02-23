@@ -24,6 +24,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
+        /// <summary>
+        /// Gets/Sets the <see cref="ReadRestrictionsType"/>
+        /// </summary>
+        private ReadRestrictionsType ReadRestrictions { get; set; }
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+
+            ReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
+        }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
@@ -37,7 +49,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = Singleton.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
             }
 
-            base.SetBasicInfo(operation);
+            // Description
+            operation.Description = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton);
         }
 
         /// <inheritdoc/>
@@ -120,32 +133,30 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
-            if (read == null || read.Permissions == null)
+            if (ReadRestrictions?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(read.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(ReadRestrictions.Permissions).ToList();
         }
 
         /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(Singleton, CapabilitiesConstants.ReadRestrictions);
-            if (read == null)
+            if (ReadRestrictions == null)
             {
                 return;
             }
 
-            if (read.CustomHeaders != null)
+            if (ReadRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, read.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, ReadRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (read.CustomQueryOptions != null)
+            if (ReadRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, read.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, ReadRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

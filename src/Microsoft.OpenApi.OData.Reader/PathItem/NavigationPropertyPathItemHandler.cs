@@ -53,29 +53,20 @@ namespace Microsoft.OpenApi.OData.PathItem
             if (target == null)
             {
                 target = NavigationSource as IEdmSingleton;
-            }
+            }                       
 
-            string navigationPropertyPath = String.Join("/",
-                Path.Segments.Where(s => !(s is ODataKeySegment || s is ODataNavigationSourceSegment)).Select(e => e.Identifier));
+            NavigationRestrictionsType navSourceRestrictionType = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
+            NavigationRestrictionsType navPropRestrictionType = Context.Model.GetRecord<NavigationRestrictionsType>(NavigationProperty, CapabilitiesConstants.NavigationRestrictions);           
+           
+            NavigationPropertyRestriction restriction = navSourceRestrictionType?.RestrictedProperties?
+                .FirstOrDefault(r => r.NavigationProperty == Path.NavigationPropertyPath())
+                ?? navPropRestrictionType?.RestrictedProperties?.FirstOrDefault();
 
-            NavigationRestrictionsType navigation = Context.Model.GetRecord<NavigationRestrictionsType>(target, CapabilitiesConstants.NavigationRestrictions);
-            NavigationPropertyRestriction restriction = navigation?.RestrictedProperties?.FirstOrDefault(r => r.NavigationProperty == navigationPropertyPath);
-
-            // verify using individual first
-            if (restriction != null && restriction.Navigability != null && restriction.Navigability.Value == NavigationType.None)
+            // Check whether the navigation property should be part of the path
+            if (EdmModelHelper.NavigationRestrictionsAllowsNavigability(navSourceRestrictionType, restriction) == false ||
+                EdmModelHelper.NavigationRestrictionsAllowsNavigability(navPropRestrictionType, restriction) == false)
             {
                 return;
-            }
-
-            if (restriction == null || restriction.Navigability == null)
-            {
-                // if the individual has not navigability setting, use the global navigability setting
-                if (navigation != null && navigation.Navigability != null && navigation.Navigability.Value == NavigationType.None)
-                {
-                    // Default navigability for all navigation properties of the annotation target.
-                    // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
-                    return;
-                }
             }
 
             // containment: Get / (Post - Collection | Patch - Single)

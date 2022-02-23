@@ -24,6 +24,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
 
+        /// <summary>
+        /// Gets/Sets the <see cref="InsertRestrictionsType"/>
+        /// </summary>
+        private InsertRestrictionsType InsertRestrictions { get; set; }
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+
+            InsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
+        }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
@@ -37,7 +49,8 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Create" + Utils.UpperFirstChar(typeName);
             }
 
-            base.SetBasicInfo(operation);
+            // Description
+            operation.Description = InsertRestrictions?.Description;
         }
 
         /// <inheritdoc/>
@@ -77,31 +90,29 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
-            if (insert == null || insert.Permissions == null)
+            if (InsertRestrictions?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(insert.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(InsertRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
-            if (insert == null)
+            if (InsertRestrictions == null)
             {
                 return;
             }
 
-            if (insert.CustomQueryOptions != null)
+            if (InsertRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, insert.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, InsertRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
 
-            if (insert.CustomHeaders != null)
+            if (InsertRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, insert.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, InsertRestrictions.CustomHeaders, ParameterLocation.Header);
             }
         }
 

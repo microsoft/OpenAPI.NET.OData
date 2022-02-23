@@ -24,6 +24,18 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
+        /// <summary>
+        /// Gets/Sets the <see cref="ReadRestrictionsType"/>
+        /// </summary>
+        private ReadRestrictionsType ReadRestrictions { get; set; }
+
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+
+            ReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+        }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
@@ -33,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(entityType);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -120,17 +132,16 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         protected override void SetSecurity(OpenApiOperation operation)
-        {
-            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            if (read == null)
+        {            
+            if (ReadRestrictions == null)
             {
                 return;
             }
 
-            ReadRestrictionsBase readBase = read;
-            if (read.ReadByKeyRestrictions != null)
+            ReadRestrictionsBase readBase = ReadRestrictions;
+            if (ReadRestrictions.ReadByKeyRestrictions != null)
             {
-                readBase = read.ReadByKeyRestrictions;
+                readBase = ReadRestrictions.ReadByKeyRestrictions;
             }
 
             if (readBase == null && readBase.Permissions == null)
@@ -143,16 +154,15 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
-            if (read == null)
+            if (ReadRestrictions == null)
             {
                 return;
             }
 
-            ReadRestrictionsBase readBase = read;
-            if (read.ReadByKeyRestrictions != null)
+            ReadRestrictionsBase readBase = ReadRestrictions;
+            if (ReadRestrictions.ReadByKeyRestrictions != null)
             {
-                readBase = read.ReadByKeyRestrictions;
+                readBase = ReadRestrictions.ReadByKeyRestrictions;
             }
 
             if (readBase.CustomHeaders != null)

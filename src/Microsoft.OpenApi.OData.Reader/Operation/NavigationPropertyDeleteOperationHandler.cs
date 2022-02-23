@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System.Linq;
+using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
@@ -32,6 +33,9 @@ namespace Microsoft.OpenApi.OData.Operation
                 string prefix = "Delete";
                 operation.OperationId = GetOperationId(prefix);
             }
+
+            // Description
+            operation.Description = Restriction?.DeleteRestrictions?.Description;
 
             base.SetBasicInfo(operation);
         }

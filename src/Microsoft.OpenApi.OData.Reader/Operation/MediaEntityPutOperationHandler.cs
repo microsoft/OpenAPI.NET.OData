@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -26,21 +26,37 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary
+            string placeholderValue = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "media content";
             operation.Summary = IsNavigationPropertyPath
-                ? $"Update media content for the navigation property {NavigationProperty.Name} in {NavigationSource.Name}"
-                : $"Update media content for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
+                ? $"Update {placeholderValue} for the navigation property {NavigationProperty.Name} in {NavigationSource.Name}"
+                : $"Update {placeholderValue} for {NavigationSourceSegment.EntityType.Name} in {NavigationSourceSegment.Identifier}";
 
             // Description
-            IEdmVocabularyAnnotatable annotatableElement = GetAnnotatableElement();
-            if (annotatableElement != null)
+            if (LastSegmentIsStreamPropertySegment)
             {
-                operation.Description = Context.Model.GetDescriptionAnnotation(annotatableElement);
+                IEdmVocabularyAnnotatable annotatable = GetAnnotatableElement();
+                string description;
+
+                if (annotatable is IEdmNavigationProperty)
+                {
+                    UpdateRestrictionsType updateRestriction = Context.Model.GetRecord<NavigationRestrictionsType>(annotatable, CapabilitiesConstants.NavigationRestrictions)?
+                        .RestrictedProperties?.FirstOrDefault()?.UpdateRestrictions;
+
+                    description = updateRestriction?.Description ?? Context.Model.GetDescriptionAnnotation(annotatable);
+                }
+                else
+                {
+                    // Structural property
+                    description = Context.Model.GetDescriptionAnnotation(annotatable);
+                }
+
+                operation.Description = description;
             }
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
-                string identifier = Path.LastSegment.Kind == ODataSegmentKind.StreamContent ? "Content" : Path.LastSegment.Identifier;
+                string identifier = LastSegmentIsStreamPropertySegment ? Path.LastSegment.Identifier : "Content";
                 operation.OperationId = GetOperationId("Update", identifier);
             }
         }

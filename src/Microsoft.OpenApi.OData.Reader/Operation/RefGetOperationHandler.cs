@@ -40,7 +40,10 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.OperationId = GetOperationId(prefix);
             }
 
-            base.SetBasicInfo(operation);
+            // Description
+            ReadRestrictionsType readRestriction = Restriction?.ReadRestrictions;
+            operation.Description = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.Description : readRestriction?.Description)
+                ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
         }
 
         protected override void SetExtensions(OpenApiOperation operation)

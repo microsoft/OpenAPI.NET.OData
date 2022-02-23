@@ -25,9 +25,16 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
         {
             throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
         }
+
+        InsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
     }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Post;
+
+    /// <summary>
+    /// Gets/Sets the <see cref="InsertRestrictionsType"/>
+    /// </summary>
+    private InsertRestrictionsType InsertRestrictions { get; set; }
 
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
@@ -41,6 +48,9 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             string typeName = ComplexPropertySegment.ComplexType.Name;
             operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + ".Set" + Utils.UpperFirstChar(typeName);
         }
+
+        // Description
+        operation.Description = InsertRestrictions?.Description;
 
         base.SetBasicInfo(operation);
     }
@@ -103,31 +113,29 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
 
     protected override void SetSecurity(OpenApiOperation operation)
     {
-        InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
-        if (insert == null || insert.Permissions == null)
+        if (InsertRestrictions?.Permissions == null)
         {
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(insert.Permissions).ToList();
+        operation.Security = Context.CreateSecurityRequirements(InsertRestrictions.Permissions).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)
     {
-        InsertRestrictionsType insert = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
-        if (insert == null)
+        if (InsertRestrictions == null)
         {
             return;
         }
 
-        if (insert.CustomQueryOptions != null)
+        if (InsertRestrictions.CustomQueryOptions != null)
         {
-            AppendCustomParameters(operation, insert.CustomQueryOptions, ParameterLocation.Query);
+            AppendCustomParameters(operation, InsertRestrictions.CustomQueryOptions, ParameterLocation.Query);
         }
 
-        if (insert.CustomHeaders != null)
+        if (InsertRestrictions.CustomHeaders != null)
         {
-            AppendCustomParameters(operation, insert.CustomHeaders, ParameterLocation.Header);
+            AppendCustomParameters(operation, InsertRestrictions.CustomHeaders, ParameterLocation.Header);
         }
     }
 }

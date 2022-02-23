@@ -33,15 +33,6 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         /// <inheritdoc/>
-        protected override void SetBasicInfo(OpenApiOperation operation)
-        {
-            // Description
-            operation.Description = Context.Model.GetDescriptionAnnotation(Singleton);
-
-            base.SetBasicInfo(operation);
-        }
-
-        /// <inheritdoc/>
         protected override void SetTags(OpenApiOperation operation)
         {
             // In this SDK, we use "[Singleton Name].[Singleton Entity Type Name]

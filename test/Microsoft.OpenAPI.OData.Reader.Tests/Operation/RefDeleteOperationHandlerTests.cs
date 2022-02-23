@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             // Assert
             Assert.NotNull(operation);
             Assert.Equal("Delete ref of navigation property Trips for People", operation.Summary);
-            Assert.Equal("Collection of trips.", operation.Description);
+            Assert.Equal("Delete a trip.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People.Trip", tag.Name);
