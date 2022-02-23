@@ -384,7 +384,7 @@ namespace Microsoft.OpenApi.OData.Edm
 
             // Check whether the navigation property should be part of the path
             if (!EdmModelHelper.NavigationRestrictionsAllowsNavigability(navSourceRestrictionType, restriction) ||
-                EdmModelHelper.NavigationRestrictionsAllowsNavigability(navPropRestrictionType, restriction) == false)
+                !EdmModelHelper.NavigationRestrictionsAllowsNavigability(navPropRestrictionType, restriction))
             {
                 return;
             }
