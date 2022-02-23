@@ -46,7 +46,7 @@ public class ComplexPropertyPathItemHandlerTests
 		var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);
 		var convertSettings = new OpenApiConvertSettings
 		{
-			UseRestrictionAnnotationsToGeneratePathsForComplexProperties = useAnnotationToGeneratePath
+			UseRestrictionAnnotationsToGenerateComplexPropertyPaths = useAnnotationToGeneratePath
 		};
 		var context = new ODataContext(model, convertSettings);
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
@@ -99,7 +99,7 @@ public class ComplexPropertyPathItemHandlerTests
         var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);
 		var convertSettings = new OpenApiConvertSettings
 		{
-			UseRestrictionAnnotationsToGeneratePathsForComplexProperties = useAnnotationToGeneratePath
+			UseRestrictionAnnotationsToGenerateComplexPropertyPaths = useAnnotationToGeneratePath
 		};
 		var context = new ODataContext(model, convertSettings);
         var entitySet = model.EntityContainer.FindEntitySet("Customers");
@@ -157,7 +157,7 @@ public class ComplexPropertyPathItemHandlerTests
 		var model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: annotation, target: target);
 		var convertSettings = new OpenApiConvertSettings
 		{
-			UseRestrictionAnnotationsToGeneratePathsForComplexProperties = useAnnotationToGeneratePath
+			UseRestrictionAnnotationsToGenerateComplexPropertyPaths = useAnnotationToGeneratePath
 		};
 		var context = new ODataContext(model, convertSettings);
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");

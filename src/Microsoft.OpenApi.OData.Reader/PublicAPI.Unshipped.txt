@@ -5,8 +5,8 @@ abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetAnnotables() -> System.Coll
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
-Microsoft.OpenApi.OData.OpenApiConvertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties.get -> bool
-Microsoft.OpenApi.OData.OpenApiConvertSettings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement element) -> bool

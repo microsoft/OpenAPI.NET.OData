@@ -24,16 +24,16 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	protected override void SetOperations(OpenApiPathItem item)
 	{
         bool isReadable = Context.Model.GetRecord<ReadRestrictionsType>(ComplexProperty, CapabilitiesConstants.ReadRestrictions)?.Readable ?? false;
-		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isReadable) ||
-			!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
+		if ((Context.Settings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths && isReadable) ||
+			!Context.Settings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths)
         {
 			AddOperation(item, OperationType.Get);
 		}		
 
 		UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(ComplexProperty, CapabilitiesConstants.UpdateRestrictions);
 		bool isUpdatable = update?.Updatable ?? false;
-		if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isUpdatable) ||
-			!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties) 
+		if ((Context.Settings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths && isUpdatable) ||
+			!Context.Settings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths) 
 		{
 			if (update != null && update.IsUpdateMethodPut)
 			{
@@ -48,8 +48,8 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 		if (Path.LastSegment is ODataComplexPropertySegment segment && segment.Property.Type.IsCollection())
         {
 			bool isInsertable = Context.Model.GetRecord<InsertRestrictionsType>(ComplexProperty, CapabilitiesConstants.InsertRestrictions)?.Insertable ?? false;
-			if ((Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties && isInsertable) ||
-				!Context.Settings.UseRestrictionAnnotationsToGeneratePathsForComplexProperties)
+			if ((Context.Settings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths && isInsertable) ||
+				!Context.Settings.UseRestrictionAnnotationsToGenerateComplexPropertyPaths)
 			{
 				AddOperation(item, OperationType.Post);
 			}

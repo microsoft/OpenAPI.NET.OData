@@ -228,7 +228,7 @@ namespace Microsoft.OpenApi.OData
         /// <summary>
         /// Gets/Sets a value indicating whether or not to use restrictions annotations to generate paths for complex properties.
         /// </summary>
-        public bool UseRestrictionAnnotationsToGeneratePathsForComplexProperties { get; set; } = true;
+        public bool UseRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;
 
         internal OpenApiConvertSettings Clone()
         {
@@ -268,7 +268,7 @@ namespace Microsoft.OpenApi.OData
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
-                UseRestrictionAnnotationsToGeneratePathsForComplexProperties = this.UseRestrictionAnnotationsToGeneratePathsForComplexProperties
+                UseRestrictionAnnotationsToGenerateComplexPropertyPaths = this.UseRestrictionAnnotationsToGenerateComplexPropertyPaths
             };
 
             return newSettings;
