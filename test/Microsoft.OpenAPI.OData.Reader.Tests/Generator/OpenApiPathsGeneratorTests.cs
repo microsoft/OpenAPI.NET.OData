@@ -50,7 +50,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableKeyAsSegment = true,
-                UseRestrictionAnnotationsToGeneratePathsForComplexProperties = useAnnotationToGeneratePath
+                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = useAnnotationToGeneratePath
             };
             ODataContext context = new ODataContext(model, settings);
 
@@ -110,7 +110,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             {
                 EnableKeyAsSegment = true,
                 PathPrefix = "some/prefix",
-                UseRestrictionAnnotationsToGeneratePathsForComplexProperties = useAnnotationToGeneratePath
+                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = useAnnotationToGeneratePath
             };
             ODataContext context = new ODataContext(model, settings);
 
