@@ -365,18 +365,23 @@ namespace Microsoft.OpenApi.OData.Edm
 
             string navPropFullyQualifiedName = $"{navigationProperty.DeclaringType.FullTypeName()}/{navigationProperty.Name}";
 
-            // Check whether the navigation property has already been navigated in the path
+            // Check whether the navigation property has already been navigated in the path.
             if (visitedNavigationProperties.Contains(navPropFullyQualifiedName))
             {
                 return;
             }
 
-            // Get the navigation source for this navigation property
-            IEdmVocabularyAnnotatable annotatableNavigationSource = (currentPath.FirstSegment as ODataNavigationSourceSegment).NavigationSource as IEdmVocabularyAnnotatable;
+            // Get the annotatable navigation source for this navigation property.
+            IEdmVocabularyAnnotatable annotatableNavigationSource = (currentPath.FirstSegment as ODataNavigationSourceSegment)?.NavigationSource as IEdmVocabularyAnnotatable;                   
+            NavigationRestrictionsType navSourceRestrictionType = null;
+            NavigationRestrictionsType navPropRestrictionType = null;
 
-            // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined in the navigation property
-            NavigationRestrictionsType navSourceRestrictionType = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions);
-            NavigationRestrictionsType navPropRestrictionType = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            // Get the NavigationRestrictions referenced by this navigation property: Can be defined in the navigation source or in-lined in the navigation property.
+            if (annotatableNavigationSource != null)
+            {
+                navSourceRestrictionType = _model.GetRecord<NavigationRestrictionsType>(annotatableNavigationSource, CapabilitiesConstants.NavigationRestrictions);
+                navPropRestrictionType = _model.GetRecord<NavigationRestrictionsType>(navigationProperty, CapabilitiesConstants.NavigationRestrictions);
+            }            
             
             NavigationPropertyRestriction restriction = navSourceRestrictionType?.RestrictedProperties?
                 .FirstOrDefault(r => r.NavigationProperty == currentPath.NavigationPropertyPath(navigationProperty.Name))
@@ -389,7 +394,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 return;
             }
 
-            // Whether to expand the navigation property
+            // Whether to expand the navigation property.
             bool shouldExpand = navigationProperty.ContainsTarget;
 
             // Append a navigation property.
@@ -420,8 +425,8 @@ namespace Microsoft.OpenApi.OData.Edm
                 // ~/entityset/{key}/single-valued-Nav/subtype
                 CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
-                if (navSourceRestrictionType?.Referenceable ?? false ||
-                    navPropRestrictionType?.Referenceable == true)
+                if ((navSourceRestrictionType?.Referenceable ?? false) ||
+                    (navPropRestrictionType?.Referenceable ?? false))
                 {
                     // Referenceable navigation properties
                     // Single-Valued: ~/entityset/{key}/single-valued-Nav/$ref

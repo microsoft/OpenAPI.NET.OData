@@ -75,15 +75,15 @@ namespace Microsoft.OpenApi.OData.Common
             NavigationPropertyRestriction restrictionProperty)
         {
             // Verify using individual navigation restriction first
-            if (restrictionProperty?.Navigability?.Value == NavigationType.None)
+            if (restrictionProperty?.Navigability != null && restrictionProperty.Navigability.Value == NavigationType.None)
             {
                 return false;
             }
 
-            return restrictionProperty?.Navigability != null || restrictionType == null || restrictionType.IsNavigable;
             // if the individual has no navigability setting, use the global navigability setting
             // Default navigability for all navigation properties of the annotation target.
             // Individual navigation properties can override this value via `RestrictedProperties/Navigability`.
+            return restrictionProperty?.Navigability != null || restrictionType == null || restrictionType.IsNavigable;            
         }
     }
 }
