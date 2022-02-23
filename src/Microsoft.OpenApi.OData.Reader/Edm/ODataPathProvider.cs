@@ -420,7 +420,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 // ~/entityset/{key}/single-valued-Nav/subtype
                 CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
 
-                if (navSourceRestrictionType?.Referenceable == true ||
+                if (navSourceRestrictionType?.Referenceable ?? false ||
                     navPropRestrictionType?.Referenceable == true)
                 {
                     // Referenceable navigation properties
