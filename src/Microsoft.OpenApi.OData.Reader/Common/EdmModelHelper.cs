@@ -75,7 +75,7 @@ namespace Microsoft.OpenApi.OData.Common
             NavigationPropertyRestriction restrictionProperty)
         {
             // Verify using individual navigation restriction first
-            if (restrictionProperty != null && restrictionProperty.Navigability != null && restrictionProperty.Navigability.Value == NavigationType.None)
+            if (restrictionProperty?.Navigability?.Value == NavigationType.None)
             {
                 return false;
             }
