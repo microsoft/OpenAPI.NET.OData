@@ -46,7 +46,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Capabilities
         public string LongDescription { get; private set; }
 
         /// <summary>
-        /// Test the target supports update.
+        /// Test the target supports read.
         /// </summary>
         /// <returns>True/false.</returns>
         public bool IsReadable => Readable == null || Readable.Value;

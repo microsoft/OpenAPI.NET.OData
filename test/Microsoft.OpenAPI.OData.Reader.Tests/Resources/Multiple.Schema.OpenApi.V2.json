@@ -1092,37 +1092,6 @@
           }
         }
       },
-      "delete": {
-        "summary": "Delete Tags property value",
-        "operationId": "Tags.DocumentTagRelDto.DeleteDocumentTagRelDto",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "Id",
-            "description": "key: Id of DocumentDto",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "maximum": 2147483647,
-            "minimum": -2147483648,
-            "x-ms-docs-key-type": "DocumentDto"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        }
-      },
       "post": {
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
         "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
@@ -1816,48 +1785,6 @@
                 "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
               }
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Tags property value",
-        "operationId": "Tags.DocumentTagRelDto.DeleteDocumentTagRelDto",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "Id",
-            "description": "key: Id of LibraryDto",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "maximum": 2147483647,
-            "minimum": -2147483648,
-            "x-ms-docs-key-type": "LibraryDto"
-          },
-          {
-            "in": "path",
-            "name": "Id1",
-            "description": "key: Id of DocumentDto",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "maximum": 2147483647,
-            "minimum": -2147483648,
-            "x-ms-docs-key-type": "DocumentDto"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
           }
         ],
         "responses": {
@@ -2823,37 +2750,6 @@
           }
         }
       },
-      "delete": {
-        "summary": "Delete DocumentClasses property value",
-        "operationId": "DocumentClasses.DocumentClass.DeleteDocumentClass",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "Id",
-            "description": "key: Id of RevisionDto",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "maximum": 2147483647,
-            "minimum": -2147483648,
-            "x-ms-docs-key-type": "RevisionDto"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        }
-      },
       "post": {
         "summary": "Sets a new value for the collection of DocumentClass.",
         "operationId": "DocumentClasses.DocumentClass.SetDocumentClass",
@@ -3058,37 +2954,6 @@
                 "$ref": "#/definitions/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
               }
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Tags property value",
-        "operationId": "Tags.DocumentTagRel.DeleteDocumentTagRel",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "Id",
-            "description": "key: Id of RevisionDto",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "maximum": 2147483647,
-            "minimum": -2147483648,
-            "x-ms-docs-key-type": "RevisionDto"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
           }
         ],
         "responses": {
@@ -3980,37 +3845,6 @@
                 "$ref": "#/definitions/Siterra.Documents.App.DTO.DocumentTagRelDto"
               }
             }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Success"
-          },
-          "default": {
-            "$ref": "#/responses/error"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Tags property value",
-        "operationId": "Tags.DocumentTagRelDto.DeleteDocumentTagRelDto",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "Id",
-            "description": "key: Id of DocumentDto",
-            "required": true,
-            "type": "integer",
-            "format": "int32",
-            "maximum": 2147483647,
-            "minimum": -2147483648,
-            "x-ms-docs-key-type": "DocumentDto"
-          },
-          {
-            "in": "header",
-            "name": "If-Match",
-            "description": "ETag",
-            "type": "string"
           }
         ],
         "responses": {

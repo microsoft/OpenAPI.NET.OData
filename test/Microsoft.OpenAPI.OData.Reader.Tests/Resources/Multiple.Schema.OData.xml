@@ -95,6 +95,23 @@
       <ComplexType Name="DocumentTagRelDto">
         <Property Name="Name" Type="Edm.String" />
       </ComplexType>
+		<Annotations Target="Siterra.Documents.App.DTO.DocumentDto/Tags">
+			<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+				<Record>
+					<PropertyValue Property="Readable" Bool="true" />
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+				<Record>
+					<PropertyValue Property="Updatable" Bool="true" />
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+				<Record>
+					<PropertyValue Property="Insertable" Bool="true" />
+				</Record>
+			</Annotation>
+		</Annotations>
     </Schema>
     <Schema Namespace="Siterra.Documents.BusinessLogic.Entities.Document" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <EntityType Name="Document">
@@ -145,8 +162,40 @@
         <Property Name="SectionId" Type="Edm.Int32" />
         <Property Name="VersionCount" Type="Edm.Int32" Nullable="false" />
         <Property Name="LastFileName" Type="Edm.String" />
-        <Property Name="DocumentClasses" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass)" />
-        <Property Name="Tags" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel)" />
+        <Property Name="DocumentClasses" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass)">
+		    <Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+			    <Record>
+				    <PropertyValue Property="Readable" Bool="true" />
+			    </Record>
+		    </Annotation>
+		    <Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+			    <Record>
+				    <PropertyValue Property="Updatable" Bool="true" />
+			    </Record>
+		    </Annotation>
+		    <Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+			    <Record>
+				    <PropertyValue Property="Insertable" Bool="true" />
+			    </Record>
+		    </Annotation>
+	    </Property>
+        <Property Name="Tags" Type="Collection(Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel)">
+			<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+				<Record>
+					<PropertyValue Property="Readable" Bool="true" />
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+				<Record>
+					<PropertyValue Property="Updatable" Bool="true" />
+				</Record>
+			</Annotation>
+			<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+				<Record>
+					<PropertyValue Property="Insertable" Bool="true" />
+				</Record>
+			</Annotation>
+		</Property>
         <NavigationProperty Name="Library" Type="Siterra.Documents.BusinessLogic.Entities.Library.Library">
           <ReferentialConstraint Property="LibraryId" ReferencedProperty="Id" />
         </NavigationProperty>

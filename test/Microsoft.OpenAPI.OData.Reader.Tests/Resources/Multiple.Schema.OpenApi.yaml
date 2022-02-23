@@ -859,30 +859,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete Tags property value
-      operationId: Tags.DocumentTagRelDto.DeleteDocumentTagRelDto
-      parameters:
-        - name: Id
-          in: path
-          description: 'key: Id of DocumentDto'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: DocumentDto
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
@@ -1441,40 +1417,6 @@ paths:
               items:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete Tags property value
-      operationId: Tags.DocumentTagRelDto.DeleteDocumentTagRelDto
-      parameters:
-        - name: Id
-          in: path
-          description: 'key: Id of LibraryDto'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: LibraryDto
-        - name: Id1
-          in: path
-          description: 'key: Id of DocumentDto'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: DocumentDto
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -2284,30 +2226,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete DocumentClasses property value
-      operationId: DocumentClasses.DocumentClass.DeleteDocumentClass
-      parameters:
-        - name: Id
-          in: path
-          description: 'key: Id of RevisionDto'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: RevisionDto
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentClass.
       operationId: DocumentClasses.DocumentClass.SetDocumentClass
@@ -2469,30 +2387,6 @@ paths:
               items:
                 $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete Tags property value
-      operationId: Tags.DocumentTagRel.DeleteDocumentTagRel
-      parameters:
-        - name: Id
-          in: path
-          description: 'key: Id of RevisionDto'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: RevisionDto
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -3195,30 +3089,6 @@ paths:
               items:
                 $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete Tags property value
-      operationId: Tags.DocumentTagRelDto.DeleteDocumentTagRelDto
-      parameters:
-        - name: Id
-          in: path
-          description: 'key: Id of DocumentDto'
-          required: true
-          schema:
-            maximum: 2147483647
-            minimum: -2147483648
-            type: integer
-            format: int32
-          x-ms-docs-key-type: DocumentDto
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success

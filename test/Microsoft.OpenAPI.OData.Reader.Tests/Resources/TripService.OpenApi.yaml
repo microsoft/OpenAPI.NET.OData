@@ -456,27 +456,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete Location property value
-      operationId: Location.AirportLocation.DeleteAirportLocation
-      parameters:
-        - name: IcaoCode
-          in: path
-          description: 'key: IcaoCode of Airport'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Airport
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
   '/Airports/{IcaoCode}/Location/EmergencyAuthority':
     description: Provides operations to manage the EmergencyAuthority property of the Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation entity.
     get:
@@ -706,27 +685,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: IcaoCode
-          in: path
-          description: 'key: IcaoCode of Airport'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Airport
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -877,27 +835,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: IcaoCode
-          in: path
-          description: 'key: IcaoCode of Airport'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Airport
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -1158,26 +1095,6 @@ paths:
               items:
                 $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -1489,26 +1406,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -1643,26 +1540,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -1992,33 +1869,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -2199,33 +2049,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -2667,33 +2490,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -2874,33 +2670,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -3276,33 +3045,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -3483,33 +3225,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -3882,40 +3597,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -4138,40 +3819,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -4678,40 +4325,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -4934,40 +4547,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -5535,26 +5114,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
   /Me/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation:
     description: Casts the previous resource to EventLocation.
     get:
@@ -5873,33 +5432,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -6080,33 +5612,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -6657,33 +6162,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/me
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -6864,33 +6342,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/me
-        description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -8017,27 +7468,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -8390,33 +7820,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/bestfriend
-        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -8597,33 +8000,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/bestfriend
-        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -8995,40 +8371,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/bestfriend
-        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -9251,40 +8593,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/bestfriend
-        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -9790,40 +9098,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/bestfriend
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/bestfriend
-        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -10046,40 +9320,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/bestfriend
-        description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -10489,34 +9729,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -10709,34 +9921,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -11108,41 +10292,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -11377,41 +10526,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -11920,41 +11034,6 @@ paths:
           description: Success
         default:
           $ref: '#/components/responses/error'
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -12189,41 +11268,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -12798,27 +11842,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -14020,33 +13043,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -14423,33 +13419,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -14630,33 +13599,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -15029,40 +13971,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -15285,40 +14193,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -15825,40 +14699,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -16081,40 +14921,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -16548,40 +15354,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -16804,40 +15576,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -17252,47 +15990,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -17557,47 +16254,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -18167,47 +16823,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -18472,47 +17087,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName2
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -19176,33 +17750,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
   '/People/{UserName}/HomeAddress/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation':
     description: Casts the previous resource to EventLocation.
     get:
@@ -19564,40 +18111,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -19820,40 +18333,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
@@ -20492,40 +18971,6 @@ paths:
         date: '2021-08-24T00:00:00.0000000'
         version: 2021-05/people
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete AddressInfo property value
-      operationId: AddressInfo.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
@@ -20748,40 +19193,6 @@ paths:
             schema:
               $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
         required: true
-      responses:
-        '204':
-          description: Success
-        default:
-          $ref: '#/components/responses/error'
-      deprecated: true
-      x-ms-deprecation:
-        removalDate: '2023-03-15T00:00:00.0000000'
-        date: '2021-08-24T00:00:00.0000000'
-        version: 2021-05/people
-        description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
-    delete:
-      summary: Delete HomeAddress property value
-      operationId: HomeAddress.Location.DeleteLocation
-      parameters:
-        - name: UserName
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: UserName1
-          in: path
-          description: 'key: UserName of Person'
-          required: true
-          schema:
-            type: string
-          x-ms-docs-key-type: Person
-        - name: If-Match
-          in: header
-          description: ETag
-          schema:
-            type: string
       responses:
         '204':
           description: Success
