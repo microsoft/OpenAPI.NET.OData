@@ -25,6 +25,11 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected IDictionary<ODataSegment, IDictionary<string, string>> ParameterMappings;
 
+        /// <summary>
+        /// The path parameters in the path
+        /// </summary>
+        protected IList<OpenApiParameter> PathParameters;
+
         /// <inheritdoc/>
         public virtual OpenApiOperation CreateOperation(ODataContext context, ODataPath path)
         {
@@ -139,25 +144,16 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
         protected virtual void SetParameters(OpenApiOperation operation)
         {
-            foreach (ODataKeySegment keySegment in Path.OfType<ODataKeySegment>())
+            PathParameters = Path.CreatePathParameters(Context);
+            if (!Context.Settings.DeclarePathParametersOnPathItem)
             {
-                IDictionary<string, string> mapping = ParameterMappings[keySegment];
-                foreach (var p in Context.CreateKeyParameters(keySegment, mapping))
+                foreach (var parameter in PathParameters)
                 {
-                    AppendParameter(operation, p);
+                    operation.Parameters.AppendParameter(parameter);
                 }
             }
 
             AppendCustomParameters(operation);
-
-            // Add the route prefix parameter v1{data}
-            if (Context.Settings.RoutePathPrefixProvider != null && Context.Settings.RoutePathPrefixProvider.Parameters != null)
-            {
-                foreach (var parameter in Context.Settings.RoutePathPrefixProvider.Parameters)
-                {
-                    operation.Parameters.Add(parameter);
-                }
-            }
         }
 
         /// <summary>
@@ -247,32 +243,8 @@ namespace Microsoft.OpenApi.OData.Operation
                     }
                 }
 
-                AppendParameter(operation, parameter);
+                operation.Parameters.AppendParameter(parameter);
             }
-        }
-
-        protected static void AppendParameter(OpenApiOperation operation, OpenApiParameter parameter)
-        {
-            HashSet<string> set = new HashSet<string>(operation.Parameters.Select(p => p.Name));
-
-            if (!set.Contains(parameter.Name))
-            {
-                operation.Parameters.Add(parameter);
-                return;
-            }
-
-            int index = 1;
-            string originalName = parameter.Name;
-            string newName;
-            do
-            {
-                newName = originalName + index.ToString();
-                index++;
-            }
-            while (set.Contains(newName));
-
-            parameter.Name = newName;
-            operation.Parameters.Add(parameter);
         }
     }
 }

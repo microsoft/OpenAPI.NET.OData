@@ -76,6 +76,45 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 pathItem.Operations.Select(o => o.Key));
         }
 
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEntityPathItemReturnsCorrectPathItemWithPathParameters(bool declarePathParametersOnPathItem)
+        {
+            // Arrange
+            IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: "");
+            OpenApiConvertSettings convertSettings = new OpenApiConvertSettings
+            {
+                DeclarePathParametersOnPathItem = declarePathParametersOnPathItem,
+            };
+            ODataContext context = new ODataContext(model, convertSettings);
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+
+            Assert.NotNull(pathItem.Operations);
+            Assert.NotEmpty(pathItem.Operations);
+            Assert.Equal(3, pathItem.Operations.Count);
+            Assert.Equal(new OperationType[] { OperationType.Get, OperationType.Patch, OperationType.Delete },
+                pathItem.Operations.Select(o => o.Key));
+
+            if (declarePathParametersOnPathItem)
+            {
+                Assert.NotEmpty(pathItem.Parameters);
+                Assert.Equal(1, pathItem.Parameters.Count);
+            }
+            else
+            {
+                Assert.Empty(pathItem.Parameters);
+            }
+        }
+
         [Fact]
         public void CreateEntityPathItemReturnsCorrectPathItemWithReferences()
         {

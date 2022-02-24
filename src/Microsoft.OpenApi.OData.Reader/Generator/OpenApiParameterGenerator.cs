@@ -217,6 +217,56 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         /// <summary>
+        /// Creates the path parameters for the <see cref="ODataPath"/>
+        /// </summary>
+        /// <param name="path">The ODataPath</param>
+        /// <param name="context">The OData context.</param>
+        /// <returns>The created list of <see cref="OpenApiParameter"/></returns>
+        public static List<OpenApiParameter> CreatePathParameters(this ODataPath path, ODataContext context)
+        {
+            List<OpenApiParameter> pathParameters = new();
+            var parameterMappings = path.CalculateParameterMapping(context.Settings);
+
+            foreach (ODataKeySegment keySegment in path.OfType<ODataKeySegment>())
+            {
+                IDictionary<string, string> mapping = parameterMappings[keySegment];
+                pathParameters.AddRange(context.CreateKeyParameters(keySegment, mapping));
+            }
+
+            // Add the route prefix parameter v1{data}
+            if (context.Settings.RoutePathPrefixProvider?.Parameters != null)
+            {
+                pathParameters.AddRange(context.Settings.RoutePathPrefixProvider.Parameters);
+            }
+
+            return pathParameters;
+        }
+
+        /// <summary>
+        /// Adds an OpenApiParameter to an existing list of OpenApiParameters.
+        /// If a parameter with the same name already exists in the list, the new parameter name
+        /// if suffixed with an incrementing number
+        /// </summary>
+        /// <param name="parameters">The list of OpenApiParameters to be appended to</param>
+        /// <param name="parameter">The new OpenApiParameter to be appended</param>
+        public static void AppendParameter(this IList<OpenApiParameter> parameters, OpenApiParameter parameter)
+        {
+            HashSet<string> parametersSet = new(parameters.Select(p => p.Name));
+
+            string parameterName = parameter.Name;
+            int index = 1;
+            while (parametersSet.Contains(parameterName))
+            {
+                parameterName += index.ToString();
+                index++;
+            }
+
+            parameter.Name = parameterName;
+            parametersSet.Add(parameterName);
+            parameters.Add(parameter);
+        }
+
+        /// <summary>
         /// Create the $top parameter.
         /// </summary>
         /// <param name="context">The OData context.</param>

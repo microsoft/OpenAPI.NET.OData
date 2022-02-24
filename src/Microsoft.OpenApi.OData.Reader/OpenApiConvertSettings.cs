@@ -226,6 +226,13 @@ namespace Microsoft.OpenApi.OData
         public string InnerErrorComplexTypeName { get; set; } = "InnerError";
 
         /// <summary>
+        /// Gets/Sets a value indicating whether path parameters should be declared on path item object.
+        /// If true, path parameters will be declared on the path item object, otherwise they 
+        /// will be declared on the operation object.
+        /// </summary>
+        public bool DeclarePathParametersOnPathItem { get; set; } = false;
+
+        /// <summary>
         /// Gets/Sets a value indicating whether or not to use restrictions annotations to generate paths for complex properties.
         /// </summary>
         public bool RequireRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;

@@ -30,7 +30,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 foreach (var param in Context.CreateParameters(functionImport.Function, OperationImportSegment.ParameterMappings))
                 {
-                    AppendParameter(operation, param);
+                    operation.Parameters.AppendParameter(param);
                 }
             }
             else
@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 // and it contains specific Parameter Objects for the allowed system query options.
                 foreach (var param in Context.CreateParameters(functionImport))
                 {
-                    AppendParameter(operation, param);
+                    operation.Parameters.AppendParameter(param);
                 }
             }
         }

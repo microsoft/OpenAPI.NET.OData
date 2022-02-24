@@ -7,6 +7,7 @@ using System;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Operation;
 using Microsoft.OpenApi.OData.Properties;
 
@@ -44,6 +45,11 @@ namespace Microsoft.OpenApi.OData.PathItem
             OpenApiPathItem item = new();
 
             SetBasicInfo(item);
+
+            if (Context.Settings.DeclarePathParametersOnPathItem)
+            {
+                SetParameters(item);
+            }
 
             SetOperations(item);
 
@@ -100,6 +106,18 @@ namespace Microsoft.OpenApi.OData.PathItem
             IOperationHandlerProvider provider = Context.OperationHanderProvider;
             IOperationHandler operationHander = provider.GetHandler(Path.Kind, operationType);
             item.AddOperation(operationType, operationHander.CreateOperation(Context, Path));
+        }
+
+        /// <summary>
+        /// Set the parameters information for <see cref="OpenApiPathItem"/>
+        /// </summary>
+        /// <param name="item">The <see cref="OpenApiPathItem"/>.</param>
+        protected virtual void SetParameters(OpenApiPathItem item)
+        {
+            foreach (var parameter in Path.CreatePathParameters(Context))
+            {
+                item.Parameters.AppendParameter(parameter);
+            }
         }
     }
 }
