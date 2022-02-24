@@ -144,12 +144,26 @@ steps:
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning'
   inputs:
-    ConnectedServiceName: 'ESRP CodeSigning - OData'
+    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
     FolderPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
     Pattern: Microsoft.OpenApi.OData.Reader.dll
     signConfigType: inlineSignParams
     inlineOperation: |
      [ 
+       {
+         "keyCode": "MSSharedLibSnKey",
+         "operationSetCode": "StrongNameSign",
+         "parameters": null,
+         "toolName": "sn.exe",
+         "toolVersion": "V4.6.1586.0"
+       },
+       {
+         "keyCode": "MSSharedLibSnKey",
+         "operationSetCode": "StrongNameVerify",
+         "parameters": null,
+         "toolName": "sn.exe",
+         "toolVersion": "V4.6.1586.0"
+       }, 
        {
          "keyCode": "MSSharedLibSnKey",
          "operationSetCode": "StrongNameSign",
@@ -229,7 +243,7 @@ steps:
 - task: EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning Nuget Packages'
   inputs:
-    ConnectedServiceName: 'ESRP CodeSigning - OData'
+    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
     FolderPath: '$(Build.ArtifactStagingDirectory)\Nuget'
     Pattern: '*.nupkg'
     signConfigType: inlineSignParams
