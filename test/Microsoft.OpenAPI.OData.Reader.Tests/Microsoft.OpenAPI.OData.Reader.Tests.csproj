@@ -72,7 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenApi.OData.Reader.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj" />
   </ItemGroup>
 
 </Project>
