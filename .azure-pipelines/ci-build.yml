@@ -16,6 +16,11 @@ pool:
   - msbuild
   - vstest
 
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  ProductBinPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
+
 steps:
 
 - task: UseDotNet@2
