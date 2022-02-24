@@ -12,7 +12,7 @@
     <Company>Microsoft</Company>
     <Title>Microsoft Open API OData Reader</Title>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
-    <TargetFrameworks>net472; netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">latest</LangVersion>
     <LangVersion Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">latest</LangVersion>
@@ -36,6 +36,7 @@
 - Fixes the response descriptions for functions that return a collection. #122
 - Adds support for discriminator property in inheritance. #118
 - Sets deprecated for operations that are generated from deprecated types/singletons/entitysets/properties in the model. #113
+- Aligns target version to netframework2.0. #139
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
