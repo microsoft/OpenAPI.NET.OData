@@ -162,10 +162,11 @@ steps:
 
 - task: PowerShell@2
   displayName: 'Validate project version has been incremented'
+  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
   inputs:
     targetType: 'filePath'
     filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-    arguments: '-projectVersion "$(VersionFullSemantic)"' #todo if master branch 
+    arguments: '-projectVersion "$(VersionFullSemantic)"'
 
 - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
   displayName: 'ESRP CodeSigning Nuget Packages'
@@ -194,6 +195,7 @@ steps:
     SessionTimeout: 20
 
 - task: PublishBuildArtifacts@1
+  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
   displayName: 'Publish Artifact: Nugets'
   inputs:
     ArtifactName: Nugets
