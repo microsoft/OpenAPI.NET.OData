@@ -232,7 +232,7 @@ stages:
               displayName: 'NuGet push'
               inputs:
                 command: push
-                packagesToPush: '$(Pipeline.Workspace)/Nugets/Microsoft.OpenApi.OData.Reader.*.nupkg'
+                packagesToPush: '$(Pipeline.Workspace)/Nugets/Microsoft.OpenApi.OData.*.nupkg'
                 nuGetFeedType: external
                 publishFeedCredentials: 'OpenAPI Nuget Connection'
       
