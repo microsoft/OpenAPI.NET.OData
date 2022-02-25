@@ -21,186 +21,212 @@ variables:
   buildConfiguration: 'Release'
   ProductBinPath: '$(Build.SourcesDirectory)\bin\$(BuildConfiguration)'
 
-steps:
 
-- task: UseDotNet@2
-  displayName: 'Use .NET 6'
-  inputs:
-    version: 6.x
+stages:
 
-- task: PoliCheck@1
-  displayName: 'Run PoliCheck "/src"'
-  inputs:
-    inputType: CmdLine
-    cmdLineArgs: '/F:$(Build.SourcesDirectory)/src /T:9 /Sev:"1|2" /PE:2 /O:poli_result_src.xml'
+- stage: build
+  jobs:
+    - job: build
+      steps:
 
-- task: PoliCheck@1
-  displayName: 'Run PoliCheck "/test"'
-  inputs:
-    inputType: CmdLine
-    cmdLineArgs: '/F:$(Build.SourcesDirectory)/test /T:9 /Sev:"1|2" /PE:2 /O:poli_result_test.xml'
+      - task: UseDotNet@2
+        displayName: 'Use .NET 6'
+        inputs:
+          version: 6.x
 
-- task: PoliCheck@1
-  displayName: 'PoliCheck for /tool'
-  inputs:
-    inputType: CmdLine
-    cmdLineArgs: '/F:$(Build.SourcesDirectory)/tool /T:9 /Sev:"1|2" /PE:2 /O:poli_result_tool.xml'
-    
-# Install the nuget tool.
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet >=5.2.0'
-  inputs:
-    versionSpec: '>=5.2.0'
-    checkLatest: true
+      - task: PoliCheck@1
+        displayName: 'Run PoliCheck "/src"'
+        inputs:
+          inputType: CmdLine
+          cmdLineArgs: '/F:$(Build.SourcesDirectory)/src /T:9 /Sev:"1|2" /PE:2 /O:poli_result_src.xml'
 
-# Build the Product project
-- task: DotNetCoreCLI@2
-  displayName: 'build'
-  inputs:
-    projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
-    arguments: '--configuration $(BuildConfiguration) --no-incremental'
+      - task: PoliCheck@1
+        displayName: 'Run PoliCheck "/test"'
+        inputs:
+          inputType: CmdLine
+          cmdLineArgs: '/F:$(Build.SourcesDirectory)/test /T:9 /Sev:"1|2" /PE:2 /O:poli_result_test.xml'
 
-# Run the Unit test
-- task: DotNetCoreCLI@2
-  displayName: 'test'
-  inputs:
-    command: test
-    projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
-    arguments: '--configuration $(BuildConfiguration) --no-build'
+      - task: PoliCheck@1
+        displayName: 'PoliCheck for /tool'
+        inputs:
+          inputType: CmdLine
+          cmdLineArgs: '/F:$(Build.SourcesDirectory)/tool /T:9 /Sev:"1|2" /PE:2 /O:poli_result_tool.xml'
+          
+      # Install the nuget tool.
+      - task: NuGetToolInstaller@0
+        displayName: 'Use NuGet >=5.2.0'
+        inputs:
+          versionSpec: '>=5.2.0'
+          checkLatest: true
 
-# CredScan
-- task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
-  displayName: 'Run CredScan - Src'
-  inputs:
-    toolMajorVersion: 'V2'
-    scanFolder: '$(Build.SourcesDirectory)\src'
-    debugMode: false
+      # Build the Product project
+      - task: DotNetCoreCLI@2
+        displayName: 'build'
+        inputs:
+          projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
+          arguments: '--configuration $(BuildConfiguration) --no-incremental'
 
-- task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
-  displayName: 'Run CredScan - Test'
-  inputs:
-    toolMajorVersion: 'V2'
-    scanFolder: '$(Build.SourcesDirectory)\test'
-    debugMode: false
+      # Run the Unit test
+      - task: DotNetCoreCLI@2
+        displayName: 'test'
+        inputs:
+          command: test
+          projects: '$(Build.SourcesDirectory)\Microsoft.OpenApi.OData.sln'
+          arguments: '--configuration $(BuildConfiguration) --no-build'
 
-- task: AntiMalware@3
-  displayName: 'Run MpCmdRun.exe - ProductBinPath'
-  inputs:
-    FileDirPath: '$(ProductBinPath)'
-  enabled: false
+      # CredScan
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+        displayName: 'Run CredScan - Src'
+        inputs:
+          toolMajorVersion: 'V2'
+          scanFolder: '$(Build.SourcesDirectory)\src'
+          debugMode: false
 
-- task: BinSkim@3
-  displayName: 'Run BinSkim - Product Binaries'
-  inputs:
-    InputType: Basic
-    AnalyzeTarget: '$(ProductBinPath)\**\Microsoft.OpenApi.OData.Reader.dll'
-    AnalyzeSymPath: '$(ProductBinPath)'
-    AnalyzeVerbose: true
-    AnalyzeHashes: true
-    AnalyzeEnvironment: true
+      - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+        displayName: 'Run CredScan - Test'
+        inputs:
+          toolMajorVersion: 'V2'
+          scanFolder: '$(Build.SourcesDirectory)\test'
+          debugMode: false
 
-- task: PublishSecurityAnalysisLogs@2
-  displayName: 'Publish Security Analysis Logs'
-  inputs:
-    ArtifactName: SecurityLogs
+      - task: AntiMalware@3
+        displayName: 'Run MpCmdRun.exe - ProductBinPath'
+        inputs:
+          FileDirPath: '$(ProductBinPath)'
+        enabled: false
 
-- task: PostAnalysis@1
-  displayName: 'Post Analysis'
-  inputs:
-    BinSkim: true
-    CredScan: true
-    PoliCheck: true
+      - task: BinSkim@3
+        displayName: 'Run BinSkim - Product Binaries'
+        inputs:
+          InputType: Basic
+          AnalyzeTarget: '$(ProductBinPath)\**\Microsoft.OpenApi.OData.Reader.dll'
+          AnalyzeSymPath: '$(ProductBinPath)'
+          AnalyzeVerbose: true
+          AnalyzeHashes: true
+          AnalyzeEnvironment: true
 
-- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
-  displayName: 'ESRP CodeSigning'
-  inputs:
-    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
-    FolderPath: src
-    signConfigType: inlineSignParams
-    inlineOperation: |
-     [
-         {
-             "keyCode": "CP-230012",
-             "operationSetCode": "SigntoolSign",
-             "parameters": [
-             {
-                 "parameterName": "OpusName",
-                 "parameterValue": "Microsoft"
-             },
-             {
-                 "parameterName": "OpusInfo",
-                 "parameterValue": "http://www.microsoft.com"
-             },
-             {
-                 "parameterName": "FileDigest",
-                 "parameterValue": "/fd \"SHA256\""
-             },
-             {
-                 "parameterName": "PageHash",
-                 "parameterValue": "/NPH"
-             },
-             {
-                 "parameterName": "TimeStamp",
-                 "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
-             }
-             ],
-             "toolName": "sign",
-             "toolVersion": "1.0"
-         },
-         {
-             "keyCode": "CP-230012",
-             "operationSetCode": "SigntoolVerify",
-             "parameters": [ ],
-             "toolName": "sign",
-             "toolVersion": "1.0"
-         }
-     ]
-    SessionTimeout: 20
+      - task: PublishSecurityAnalysisLogs@2
+        displayName: 'Publish Security Analysis Logs'
+        inputs:
+          ArtifactName: SecurityLogs
 
-# Pack
-- task: DotNetCoreCLI@2
-  displayName: 'pack'
-  inputs:
-    command: pack
-    projects: src/Microsoft.OpenApi.OData.Reader/Microsoft.OpenAPI.OData.Reader.csproj
-    arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
+      - task: PostAnalysis@1
+        displayName: 'Post Analysis'
+        inputs:
+          BinSkim: true
+          CredScan: true
+          PoliCheck: true
 
-- task: PowerShell@2
-  displayName: 'Validate project version has been incremented'
+      - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+        displayName: 'ESRP CodeSigning'
+        inputs:
+          ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
+          FolderPath: src
+          signConfigType: inlineSignParams
+          inlineOperation: |
+            [
+                {
+                    "keyCode": "CP-230012",
+                    "operationSetCode": "SigntoolSign",
+                    "parameters": [
+                    {
+                        "parameterName": "OpusName",
+                        "parameterValue": "Microsoft"
+                    },
+                    {
+                        "parameterName": "OpusInfo",
+                        "parameterValue": "http://www.microsoft.com"
+                    },
+                    {
+                        "parameterName": "FileDigest",
+                        "parameterValue": "/fd \"SHA256\""
+                    },
+                    {
+                        "parameterName": "PageHash",
+                        "parameterValue": "/NPH"
+                    },
+                    {
+                        "parameterName": "TimeStamp",
+                        "parameterValue": "/tr \"http://rfc3161.gtm.corp.microsoft.com/TSS/HttpTspServer\" /td sha256"
+                    }
+                    ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                },
+                {
+                    "keyCode": "CP-230012",
+                    "operationSetCode": "SigntoolVerify",
+                    "parameters": [ ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                }
+            ]
+          SessionTimeout: 20
+
+      # Pack
+      - task: DotNetCoreCLI@2
+        displayName: 'pack'
+        inputs:
+          command: pack
+          projects: src/Microsoft.OpenApi.OData.Reader/Microsoft.OpenAPI.OData.Reader.csproj
+          arguments: '-o $(Build.ArtifactStagingDirectory) --configuration $(BuildConfiguration) --no-build --include-symbols --include-source /p:SymbolPackageFormat=snupkg'
+
+      - task: PowerShell@2
+        displayName: 'Validate project version has been incremented'
+        condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
+        inputs:
+          targetType: 'filePath'
+          filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
+          arguments: '-projectVersion "$(VersionFullSemantic)"'
+
+      - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+        displayName: 'ESRP CodeSigning Nuget Packages'
+        inputs:
+          ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
+          FolderPath: '$(Build.ArtifactStagingDirectory)'
+          Pattern: '*.nupkg'
+          signConfigType: inlineSignParams
+          inlineOperation: |
+            [
+                {
+                    "keyCode": "CP-401405",
+                    "operationSetCode": "NuGetSign",
+                    "parameters": [ ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                },
+                {
+                    "keyCode": "CP-401405",
+                    "operationSetCode": "NuGetVerify",
+                    "parameters": [ ],
+                    "toolName": "sign",
+                    "toolVersion": "1.0"
+                }
+            ]
+          SessionTimeout: 20
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Upload Artifact: Nugets'
+        inputs:
+          ArtifactName: Nugets
+
+- stage: deploy
   condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
-  inputs:
-    targetType: 'filePath'
-    filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-    arguments: '-projectVersion "$(VersionFullSemantic)"'
-
-- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
-  displayName: 'ESRP CodeSigning Nuget Packages'
-  inputs:
-    ConnectedServiceName: 'microsoftgraph ESRP CodeSign DLL and NuGet (AKV)'
-    FolderPath: '$(Build.ArtifactStagingDirectory)'
-    Pattern: '*.nupkg'
-    signConfigType: inlineSignParams
-    inlineOperation: |
-     [
-         {
-             "keyCode": "CP-401405",
-             "operationSetCode": "NuGetSign",
-             "parameters": [ ],
-             "toolName": "sign",
-             "toolVersion": "1.0"
-         },
-         {
-             "keyCode": "CP-401405",
-             "operationSetCode": "NuGetVerify",
-             "parameters": [ ],
-             "toolName": "sign",
-             "toolVersion": "1.0"
-         }
-     ]
-    SessionTimeout: 20
-
-- task: PublishBuildArtifacts@1
-  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
-  displayName: 'Publish Artifact: Nugets'
-  inputs:
-    ArtifactName: Nugets
+  dependsOn: build
+  environment: nuget-org
+  jobs:
+    - deploy: deploy
+      steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: Download nupkg from artifacts
+        inputs:
+          artifact: Nugets
+          source: current
+      - task: NuGetCommand@2
+        displayName: 'NuGet push'
+        inputs:
+          command: push
+          packagesToPush: '$(Pipeline.Workspace)/Nugets/*.nupkg'
+          nuGetFeedType: external
+          publishFeedCredentials: 'OpenAPI Nuget Connection'
+      
