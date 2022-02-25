@@ -2,17 +2,48 @@
 
   <PropertyGroup>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
+    <LangVersion>Latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/Microsoft/OpenAPI.NET.OData</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Microsoft</Authors>
+    <Company>Microsoft</Company>
+    <Title>Microsoft Open API OData Reader</Title>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
-    <TargetFrameworks>net472; netstandard2.0</TargetFrameworks>
-    <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
-    <LangVersion Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">latest</LangVersion>
-    <LangVersion Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">latest</LangVersion>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
+    <Version>1.0.10-preview1</Version>
+    <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
+    <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+    <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
+    <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
+    <PackageReleaseNotes>
+- Adds path items for properties of complex type. #176, #15
+- Describes errors on error response codes instead of default. #172, #165
+- Fixes a bug where reference objects are not created correctly. #171
+- Adds support for enum values descriptions. #164
+- Declares path parameters on path item instead of operation. #159
+- Multiple fixes on navigation properties path items expansion. #151, #123
+- Multiple fixes for descriptions. #154
+- Fixes a bug where URL templates would be missing quotes for string parameters. #140
+- Fixes description of operations of primitive types. #126
+- Adds support for OData cast segments in path items generation. #123
+- Fixes the response descriptions for functions that return a collection. #122
+- Adds support for discriminator property in inheritance. #118
+- Sets deprecated for operations that are generated from deprecated types/singletons/entitysets/properties in the model. #113
+- Aligns target version to netframework2.0. #139
+    </PackageReleaseNotes>
+    <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\Debug\</OutputPath>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">..\..\bin\Release\</OutputPath>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <DocumentationFile>..\..\bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <!-- https://github.com/dotnet/sourcelink/blob/main/docs/README.md#embeduntrackedsources -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <Import Project="..\Build.props" />
@@ -31,6 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
     <Compile Update="Properties\SRResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
