@@ -1,7 +1,4 @@
-AzurePipeline|Status
---------|--------------
- Rolling |<img src="https://identitydivision.visualstudio.com/OData/_apis/build/status/OpenApi/OpenAPI.OData-Master-Rolling?branchName=master" />
-  Nightly |<img src="https://identitydivision.visualstudio.com/OData/_apis/build/status/OpenApi/OpenAPI.OData-Master-Nightly?branchName=master" />
+[![Build Status](https://microsoftgraph.visualstudio.com/Graph%20Developer%20Experiences/_apis/build/status/OpenAPI.NET.OData/OpenAPI.NET.OData%20release?branchName=master)](https://microsoftgraph.visualstudio.com/Graph%20Developer%20Experiences/_build/latest?definitionId=160&branchName=master)
 
 # Convert OData to OpenAPI.NET [Preview]
 
