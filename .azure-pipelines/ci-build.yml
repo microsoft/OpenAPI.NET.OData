@@ -212,7 +212,7 @@ stages:
           targetPath: $(Build.ArtifactStagingDirectory)
 
 - stage: deploy
-  #condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
+  condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
   dependsOn: build
   jobs:
     - deployment: deploy
