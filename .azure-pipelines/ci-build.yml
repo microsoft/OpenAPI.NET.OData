@@ -213,9 +213,9 @@ stages:
 - stage: deploy
   condition: and(contains(variables['build.sourceBranch'], 'refs/heads/master'), succeeded())
   dependsOn: build
-  environment: nuget-org
   jobs:
-    - deploy: deploy
+    - deployment: deploy
+      environment: nuget-org
       steps:
       - task: DownloadPipelineArtifact@2
         displayName: Download nupkg from artifacts
