@@ -13,7 +13,7 @@
     <Title>Microsoft Open API OData Reader</Title>
     <RootNamespace>Microsoft.OpenApi.OData</RootNamespace>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <PackageId>Microsoft.OpenApi.OData.Reader</PackageId>
+    <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
     <Version>1.0.10-preview1</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
