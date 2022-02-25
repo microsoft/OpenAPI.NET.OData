@@ -218,9 +218,9 @@ stages:
       environment: nuget-org
       strategy:
         runOnce:
-          pool:
-            vmImage: ubuntu-latest
           deploy:
+            pool:
+              vmImage: ubuntu-latest
             steps:
             - task: DownloadPipelineArtifact@2
               displayName: Download nupkg from artifacts
