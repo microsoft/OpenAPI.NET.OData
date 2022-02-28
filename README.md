@@ -1,4 +1,4 @@
-[![Build Status](https://microsoftgraph.visualstudio.com/Graph%20Developer%20Experiences/_apis/build/status/OpenAPI.NET.OData/OpenAPI.NET.OData%20release?branchName=master)](https://microsoftgraph.visualstudio.com/Graph%20Developer%20Experiences/_build/latest?definitionId=160&branchName=master)
+[![nuget](https://img.shields.io/nuget/v/Microsoft.OpenApi.OData.svg)](https://www.nuget.org/packages/Microsoft.OpenApi.OData/)
 
 # Convert OData to OpenAPI.NET [Preview]
 
