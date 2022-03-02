@@ -50,11 +50,14 @@ namespace Microsoft.OpenApi.OData.Generator
                     case EdmSchemaElementKind.TypeDefinition: // Type definition
                         {
                             IEdmType reference = (IEdmType)element;
+                            var fullTypeName = reference.FullTypeName();
                             if(reference is IEdmComplexType &&
-                                reference.FullTypeName().EndsWith(context.Settings.InnerErrorComplexTypeName, StringComparison.Ordinal))
+                                fullTypeName.Split(new char[] {'.'}, StringSplitOptions.RemoveEmptyEntries)
+                                            .Last()
+                                            .Equals(context.Settings.InnerErrorComplexTypeName, StringComparison.Ordinal))
                                 continue;
                             
-                            schemas.Add(reference.FullTypeName(), context.CreateSchemaTypeSchema(reference));
+                            schemas.Add(fullTypeName, context.CreateSchemaTypeSchema(reference));
                         }
                         break;
                 }
