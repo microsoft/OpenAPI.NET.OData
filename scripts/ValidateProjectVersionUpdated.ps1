@@ -10,7 +10,7 @@
     NuGet. If the version has not been updated, the script will fail and indicate
     that the project version neeeds to be updated.
 #>
-Install-Module SemVerPS -Scope CurrentUser
+Install-Module SemVerPS -Scope CurrentUser -Force
 $packageName = "Microsoft.OpenApi.OData"
 $csprojPath = Join-Path $PSScriptRoot "..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj"
 
