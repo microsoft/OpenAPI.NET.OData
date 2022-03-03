@@ -22,7 +22,7 @@
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
 - Adds path items for properties of complex type. #176, #15
-- Describes errors on error response codes instead of default. #172, #165, #189
+- Describes errors on error response codes instead of default. #172, #165, #193
 - Fixes a bug where reference objects are not created correctly. #171
 - Adds support for enum values descriptions. #164
 - Declares path parameters on path item instead of operation. #159
