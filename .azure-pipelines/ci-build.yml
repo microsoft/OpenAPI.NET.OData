@@ -180,7 +180,6 @@ stages:
         inputs:
           targetType: 'filePath'
           filePath: $(System.DefaultWorkingDirectory)\scripts\ValidateProjectVersionUpdated.ps1
-          arguments: '-projectVersion "$(VersionFullSemantic)"'
 
       - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
         displayName: 'ESRP CodeSigning Nuget Packages'

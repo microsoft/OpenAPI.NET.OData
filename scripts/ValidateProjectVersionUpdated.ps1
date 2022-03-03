@@ -9,32 +9,28 @@
     specified in the project file with the latest package version published on
     NuGet. If the version has not been updated, the script will fail and indicate
     that the project version neeeds to be updated.
-
-.Parameter projectVersion
-    Specifies the current project version. The project version currently is maintained 
-    in the versioning.props file
 #>
-
-Param(
-	[parameter(Mandatory = $true)]
-	[string]$projectVersion
-)
-
+Install-Module SemVerPS -Scope CurrentUser
 $packageName = "Microsoft.OpenApi.OData"
+$csprojPath = Join-Path $PSScriptRoot "..\src\Microsoft.OpenApi.OData.Reader\Microsoft.OpenAPI.OData.Reader.csproj"
+
+[XML]$csprojFile = Get-Content $csprojPath
+$versionNode = Select-Xml $csprojFile -XPath "//Project/PropertyGroup/Version" | Select-Object -ExpandProperty Node
+$projectVersion = $versionNode.InnerText
 
 # Cast the project version string to System.Version
-[version]$currentProjectVersion = $projectVersion
+$currentProjectVersion = ConvertTo-SemVer -Version $projectVersion
 
 # API is case-sensitive
 $packageName = $packageName.ToLower()
-$url = "https://api.nuget.org/v3/registration5-semver1/$packageName/index.json"
+$url = "https://api.nuget.org/v3/registration5-gz-semver2/$packageName/index.json"
 
 # Call the NuGet API for the package and get the current published version.
 $nugetIndex = Invoke-RestMethod -Uri $url -Method Get
 $publishedVersionString = $nugetIndex.items[0].upper
 
 # Cast the published version string to System.Version
-[version]$currentPublishedVersion = $publishedVersionString
+$currentPublishedVersion = ConvertTo-SemVer -Version $publishedVersionString
 
 # Validate that the version number has been updated.
 if ($currentProjectVersion -le $currentPublishedVersion) {
