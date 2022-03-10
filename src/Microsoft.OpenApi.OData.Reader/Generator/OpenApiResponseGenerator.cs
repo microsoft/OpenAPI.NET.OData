@@ -140,7 +140,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(path, nameof(path));
 
             OpenApiResponses responses = new();
-
+            
             if (operation.IsAction() && operation.ReturnType == null)
             {
                 responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());

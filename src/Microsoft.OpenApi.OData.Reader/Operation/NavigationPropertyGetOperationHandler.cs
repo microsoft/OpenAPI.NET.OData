@@ -72,6 +72,16 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
+            IDictionary<string, OpenApiLink> links = null;
+            if (Context.Settings.ShowLinks)
+            {
+                string operationId = GetOperationId();
+
+                links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
+                        entityKind: NavigationProperty.PropertyKind.ToString(), parameters: PathParameters, path: Path,
+                        navPropOperationId: operationId);
+            }
+
             if (!LastSegmentIsKeySegment && NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many)
             {
                 operation.Responses = new OpenApiResponses
@@ -85,7 +95,8 @@ namespace Microsoft.OpenApi.OData.Operation
                             {
                                 Type = ReferenceType.Response,
                                 Id = $"{NavigationProperty.ToEntityType().FullName()}{Constants.CollectionSchemaSuffix}"
-                            }
+                            },
+                            Links = links
                         }
                     }
                 };
@@ -111,16 +122,7 @@ namespace Microsoft.OpenApi.OData.Operation
                             Id = entityType.FullName()
                         }
                     };
-                }
-                IDictionary<string, OpenApiLink> links = null;
-                if (Context.Settings.ShowLinks)
-                {
-                    string operationId = GetOperationId();
-
-                    links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
-                            entityKind: NavigationProperty.PropertyKind.ToString(), parameters: PathParameters,
-                            navPropOperationId: operationId);
-                }
+                }               
 
                 operation.Responses = new OpenApiResponses
                 {
