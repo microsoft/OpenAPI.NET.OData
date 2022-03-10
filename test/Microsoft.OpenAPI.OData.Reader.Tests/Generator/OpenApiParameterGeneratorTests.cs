@@ -375,7 +375,7 @@ schema:
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
-            ODataContext context = new ODataContext(model);
+            ODataContext context = new(model);
             IEdmSingleton deviceMgmt = model.EntityContainer.FindSingleton("deviceManagement");
             Assert.NotNull(deviceMgmt);
 
@@ -385,9 +385,13 @@ schema:
             IEdmFunction function2 = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "getRoleScopeTagsByResource");
             Assert.NotNull(function2);
 
+            IEdmFunction function3 = model.SchemaElements.OfType<IEdmFunction>().First(f => f.Name == "roleScheduleInstances");
+            Assert.NotNull(function3);
+
             // Act
             IList<OpenApiParameter> parameters1 = context.CreateParameters(function1);
             IList<OpenApiParameter> parameters2 = context.CreateParameters(function2);
+            IList<OpenApiParameter> parameters3 = context.CreateParameters(function3);
 
             // Assert
             Assert.NotNull(parameters1);
@@ -395,6 +399,10 @@ schema:
 
             Assert.NotNull(parameters2);
             OpenApiParameter parameter2 = Assert.Single(parameters2);
+
+            Assert.NotNull(parameters3);
+            Assert.Equal(4, parameters3.Count);
+            OpenApiParameter parameter3 = parameters3.First();
 
             string json1 = parameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             string expectedPayload1 = $@"{{
@@ -425,8 +433,19 @@ schema:
   }}
 }}";
 
+            string json3 = parameter3.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+            string expectedPayload3 = $@"{{
+  ""name"": ""directoryScopeId"",
+  ""in"": ""query"",
+  ""schema"": {{
+    ""type"": ""string"",
+    ""nullable"": true
+  }}
+}}";
+
             Assert.Equal(expectedPayload1.ChangeLineBreaks(), json1);
             Assert.Equal(expectedPayload2.ChangeLineBreaks(), json2);
+            Assert.Equal(expectedPayload3.ChangeLineBreaks(), json3);
         }
 
         public static IEdmModel GetEdmModel()
