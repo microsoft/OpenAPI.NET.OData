@@ -11,7 +11,6 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Generator
@@ -128,8 +127,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     parameter = new OpenApiParameter
                     {
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
-                        In = ParameterLocation.Path,
-                        Required = true,
+                        In = edmParameter is IEdmOptionalParameter ? ParameterLocation.Query : ParameterLocation.Path,
+                        Required = edmParameter is not IEdmOptionalParameter,
                         Schema = context.CreateEdmTypeSchema(edmParameter.Type)
                     };
                 }
