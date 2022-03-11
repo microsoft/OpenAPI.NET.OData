@@ -11,7 +11,6 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
-using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Generator
@@ -70,7 +69,7 @@ namespace Microsoft.OpenApi.OData.Generator
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(function, nameof(function));
 
-            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();
+            IList<OpenApiParameter> parameters = new List<OpenApiParameter>();            
             int skip = function.IsBound ? 1 : 0;
             foreach (IEdmOperationParameter edmParameter in function.Parameters.Skip(skip))
             {
@@ -80,7 +79,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     {
                         continue;
                     }
-                }
+                }                
 
                 OpenApiParameter parameter;
                 // Structured or collection-valued parameters are represented as a parameter alias
@@ -125,11 +124,12 @@ namespace Microsoft.OpenApi.OData.Generator
                 else
                 {
                     // Primitive parameters use the same type mapping as described for primitive properties.
+                    bool isOptionalParameter = edmParameter is IEdmOptionalParameter;
                     parameter = new OpenApiParameter
                     {
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
-                        In = ParameterLocation.Path,
-                        Required = true,
+                        In = isOptionalParameter ? ParameterLocation.Query : ParameterLocation.Path,
+                        Required = !isOptionalParameter,
                         Schema = context.CreateEdmTypeSchema(edmParameter.Type)
                     };
                 }
