@@ -407,7 +407,7 @@ schema:
             string json1 = parameter1.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
             string expectedPayload1 = $@"{{
   ""name"": ""ids"",
-  ""in"": ""query"",
+  ""in"": ""path"",
   ""description"": ""The URL-encoded JSON object"",
   ""required"": true,
   ""content"": {{

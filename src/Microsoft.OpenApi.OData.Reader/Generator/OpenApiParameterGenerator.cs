@@ -81,17 +81,14 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }                
 
-                OpenApiParameter parameter;
-                // Structured or collection-valued parameters are represented as a parameter alias
-                // in the path template and the parameters array contains a Parameter Object for
-                // the parameter alias as a query option of type string.
+                OpenApiParameter parameter;                
                 if (edmParameter.Type.IsStructured() ||
                     edmParameter.Type.IsCollection())
                 {
                     parameter = new OpenApiParameter
                     {
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
-                        In = ParameterLocation.Query, // as query option
+                        In = ParameterLocation.Path,
                         Required = true,
 
                         // Create schema in the Content property to indicate that the parameters are serialized as JSON
