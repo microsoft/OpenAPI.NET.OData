@@ -143,18 +143,11 @@ namespace Microsoft.OpenApi.OData.Edm
             // Structured or collection-valued parameters are represented as a parameter alias in the path template
             // and the parameters array contains a Parameter Object for the parameter alias as a query option of type string.
             int skip = function.IsBound ? 1 : 0;
-            functionName.Append(String.Join(",", function.Parameters.Skip(skip).Select(p =>
+            functionName.Append(string.Join(",", function.Parameters.Skip(skip).Select(p =>
             {
                 string uniqueName = Utils.GetUniqueName(p.Name, parameters);
-                if (p.Type.IsStructured() || p.Type.IsCollection())
-                {
-                    return p.Name + "=@" + uniqueName;
-                }
-                else
-                {
-                    var quote = p.Type.Definition.ShouldPathParameterBeQuoted(settings) ? "'" : string.Empty;
-                    return p.Name + $"={quote}{{{uniqueName}}}{quote}";
-                }
+                var quote = p.Type.Definition.ShouldPathParameterBeQuoted(settings) ? "'" : string.Empty;
+                return p.Name + $"={quote}{{{uniqueName}}}{quote}";
             })));
 
             functionName.Append(")");
