@@ -139,9 +139,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 functionName.Append(function.FullName());
             }
             functionName.Append("(");
-
-            // Structured or collection-valued parameters are represented as a parameter alias in the path template
-            // and the parameters array contains a Parameter Object for the parameter alias as a query option of type string.
+            
             int skip = function.IsBound ? 1 : 0;
             functionName.Append(string.Join(",", function.Parameters.Skip(skip).Select(p =>
             {
