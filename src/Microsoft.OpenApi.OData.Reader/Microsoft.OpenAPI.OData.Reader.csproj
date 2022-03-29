@@ -31,7 +31,8 @@
 - Fixes a bug where URL templates would be missing quotes for string parameters. #140
 - Fixes description of operations of primitive types. #126
 - Adds support for OData cast segments in path items generation. #123
-- Fixes structured and collection-valued parameters of functions. #122, #203
+- Fixes the response descriptions for functions that return a collection. #122
+- Fixes structured and collection-valued parameters of functions. #203
 - Adds support for discriminator property in inheritance. #118
 - Sets deprecated for operations that are generated from deprecated types/singletons/entitysets/properties in the model. #113
 - Aligns target version to netframework2.0. #139
