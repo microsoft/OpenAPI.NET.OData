@@ -19,6 +19,21 @@ on:
     branches: [ master ]
   schedule:
     - cron: '32 2 * * 6'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+        - info
+        - warning
+        - debug 
+      tags:
+        description: 'Test scenario tags'
+        required: false 
+        type: boolean
 
 jobs:
   analyze:
