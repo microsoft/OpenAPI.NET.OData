@@ -53,17 +53,11 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             Dictionary<string, OpenApiLink> links = new();
-
-            if (path.GetPathItemName().Equals("/admin/serviceAnnouncement/messages"))
-            {
-
-            }
-
-            var isColNavProp = (path.LastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
-            var isEntity = path.LastSegment is IEdmEntityType;
+            bool lastSegmentIsColNavProp = (path.LastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
+            bool lastSegmentIsEntity = path.LastSegment is IEdmEntityType;
 
             // Valid only for single-valued navigation properties and entities
-            if (!isColNavProp || isEntity)
+            if (!lastSegmentIsColNavProp || lastSegmentIsEntity)
             {
                 foreach (IEdmNavigationProperty navProp in entityType.NavigationProperties())
                 {
@@ -110,7 +104,6 @@ namespace Microsoft.OpenApi.OData.Generator
                     links[navProp.Name] = link;
                 }
             }
-
 
             // Get the Operations and OperationImport paths bound to this (collection of) entity.
             IEnumerable<ODataPath> operationPaths = context.AllPaths.Where(p => (p.Kind.Equals(ODataPathKind.Operation) || p.Kind.Equals(ODataPathKind.OperationImport)) &&
