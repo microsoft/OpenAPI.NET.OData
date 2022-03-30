@@ -87,7 +87,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.ShowLinks)
             {
                 links = Context.CreateLinks(entityType: Singleton.EntityType(), entityName: Singleton.Name,
-                        entityKind: Singleton.ContainerElementKind.ToString(), parameters: PathParameters);
+                        entityKind: Singleton.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
             if (schema == null)
