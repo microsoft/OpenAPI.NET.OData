@@ -557,6 +557,9 @@
                 "parameters": {
                   "Id": "$request.path.Id"
                 }
+              },
+              "Upload": {
+                "operationId": "Documents.DocumentDto.Upload"
               }
             }
           },
@@ -3698,6 +3701,9 @@
                 "parameters": {
                   "Id": "$request.path.Id"
                 }
+              },
+              "Upload": {
+                "operationId": "Tasks.DocumentDto.Upload"
               }
             }
           },

@@ -392,6 +392,8 @@ paths:
               operationId: Documents.ListRevisions
               parameters:
                 Id: $request.path.Id
+            Upload:
+              operationId: Documents.DocumentDto.Upload
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2627,6 +2629,8 @@ paths:
               operationId: Tasks.ListRevisions
               parameters:
                 Id: $request.path.Id
+            Upload:
+              operationId: Tasks.DocumentDto.Upload
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
