@@ -89,7 +89,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (Context.Settings.ShowLinks)
             {
                 links = Context.CreateLinks(entityType: EntitySet.EntityType(), entityName: EntitySet.Name,
-                        entityKind: EntitySet.ContainerElementKind.ToString(), parameters: PathParameters, path: Path);
+                        entityKind: EntitySet.ContainerElementKind.ToString(), path: Path, parameters: PathParameters);
             }
 
             if (schema == null)

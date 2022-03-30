@@ -25,39 +25,40 @@ namespace Microsoft.OpenApi.OData.Generator
         /// <param name="entityType">The Entity type.</param>
         /// <param name ="entityName">The name of the source of the <see cref="IEdmEntityType"/> object.</param>
         /// <param name="entityKind">"The kind of the source of the <see cref="IEdmEntityType"/> object.</param>
-        /// <param name="parameters">"The list of parameters of the incoming operation.</param>
         /// <param name="path">The OData path of the operation the links are to be generated for.</param>
-        /// <param name="navPropOperationId">Optional parameter: The operation id of the source of the NavigationProperty object.</param>
+        /// <param name="parameters">"Optional: The list of parameters of the incoming operation.</param>
+        /// <param name="navPropOperationId">Optional: The operation id of the source of the NavigationProperty object.</param>
         /// <returns>The created dictionary of <see cref="OpenApiLink"/> object.</returns>
         public static IDictionary<string, OpenApiLink> CreateLinks(this ODataContext context,
-            IEdmEntityType entityType, string entityName, string entityKind,
-            IList<OpenApiParameter> parameters, ODataPath path, string navPropOperationId = null)
+            IEdmEntityType entityType, string entityName, string entityKind, ODataPath path,
+            IList<OpenApiParameter> parameters = null, string navPropOperationId = null)
         {
             Utils.CheckArgumentNull(context, nameof(context));
             Utils.CheckArgumentNull(entityType, nameof(entityType));
             Utils.CheckArgumentNullOrEmpty(entityName, nameof(entityName));
-            Utils.CheckArgumentNullOrEmpty(entityKind, nameof(entityKind));            
-            Utils.CheckArgumentNull(parameters, nameof(parameters));
+            Utils.CheckArgumentNullOrEmpty(entityKind, nameof(entityKind));
             Utils.CheckArgumentNull(path, nameof(path));
 
             List<string> pathKeyNames = new();
 
             // Fetch defined Id(s) from incoming parameters (if any)
-            foreach (var parameter in parameters)
+            if (parameters != null)
             {
-                if (!string.IsNullOrEmpty(parameter.Description) &&
-                    parameter.Description.ToLower().Contains("key"))
+                foreach (var parameter in parameters)
                 {
-                    pathKeyNames.Add(parameter.Name);
+                    if (!string.IsNullOrEmpty(parameter.Description) &&
+                        parameter.Description.ToLower().Contains("key"))
+                    {
+                        pathKeyNames.Add(parameter.Name);
+                    }
                 }
             }
 
             Dictionary<string, OpenApiLink> links = new();
             bool lastSegmentIsColNavProp = (path.LastSegment as ODataNavigationPropertySegment)?.NavigationProperty.TargetMultiplicity() == EdmMultiplicity.Many;
-            bool lastSegmentIsEntity = path.LastSegment is IEdmEntityType;
 
-            // Valid only for single-valued navigation properties and entities
-            if (!lastSegmentIsColNavProp || lastSegmentIsEntity)
+            // Valid only for non collection-valued navigation properties
+            if (!lastSegmentIsColNavProp)
             {
                 foreach (IEdmNavigationProperty navProp in entityType.NavigationProperties())
                 {

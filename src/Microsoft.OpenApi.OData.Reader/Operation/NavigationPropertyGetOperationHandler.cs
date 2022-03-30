@@ -78,7 +78,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 string operationId = GetOperationId();
 
                 links = Context.CreateLinks(entityType: NavigationProperty.ToEntityType(), entityName: NavigationProperty.Name,
-                        entityKind: NavigationProperty.PropertyKind.ToString(), parameters: PathParameters, path: Path,
+                        entityKind: NavigationProperty.PropertyKind.ToString(), path: Path, parameters: PathParameters,
                         navPropOperationId: operationId);
             }
 
