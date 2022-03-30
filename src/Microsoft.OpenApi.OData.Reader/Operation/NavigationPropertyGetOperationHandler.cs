@@ -122,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Operation
                             Id = entityType.FullName()
                         }
                     };
-                }               
+                }
 
                 operation.Responses = new OpenApiResponses
                 {
