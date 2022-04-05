@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            var placeHolder = "Add new entity to " + EntitySet.Name;
+            string placeHolder = "Add new entity to " + EntitySet.Name;
             operation.Summary = InsertRestrictions?.Description ?? placeHolder;
             operation.Description = InsertRestrictions?.LongDescription ?? placeHolder;
 

@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            var placeHolder = "Delete entity from " + EntitySet.Name;
+            string placeHolder = "Delete entity from " + EntitySet.Name;
             operation.Summary = DeleteRestrictions?.Description ?? placeHolder;
             operation.Description = DeleteRestrictions?.LongDescription ?? placeHolder;
 

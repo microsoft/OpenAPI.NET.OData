@@ -41,7 +41,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Descriptions
-            var placeHolder = "Get entities from " + EntitySet.Name;
+            string placeHolder = "Get entities from " + EntitySet.Name;
             operation.Summary = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(EntitySet) ?? placeHolder;
             operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(EntitySet) ?? placeHolder;
 

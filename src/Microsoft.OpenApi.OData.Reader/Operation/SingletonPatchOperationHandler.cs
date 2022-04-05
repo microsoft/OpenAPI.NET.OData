@@ -40,7 +40,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Descriptions
-            var placeHolder = "Update " + Singleton.Name;
+            string placeHolder = "Update " + Singleton.Name;
             operation.Summary = UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton) ?? placeHolder;
             operation.Description = UpdateRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(Singleton) ?? placeHolder;
 

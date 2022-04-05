@@ -32,7 +32,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
         // Summary and Description
-        var placeHolder = $"Update property {ComplexPropertySegment.Property.Name} value.";
+        string placeHolder = $"Update property {ComplexPropertySegment.Property.Name} value.";
         operation.Summary = UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
         operation.Description = UpdateRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
 

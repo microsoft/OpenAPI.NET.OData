@@ -44,7 +44,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         }
 
         // Summary and Description
-        var placeHolder = $"Get {ComplexPropertySegment.Property.Name} property value";
+        string placeHolder = $"Get {ComplexPropertySegment.Property.Name} property value";
         operation.Summary = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
         operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
 

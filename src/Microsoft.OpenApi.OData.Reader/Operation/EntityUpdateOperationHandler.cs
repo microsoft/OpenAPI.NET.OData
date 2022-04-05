@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            var placeHolder = "Update entity in " + EntitySet.Name;
+            string placeHolder = "Update entity in " + EntitySet.Name;
             operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
             operation.Description = UpdateRestrictions?.LongDescription ?? placeHolder;
 

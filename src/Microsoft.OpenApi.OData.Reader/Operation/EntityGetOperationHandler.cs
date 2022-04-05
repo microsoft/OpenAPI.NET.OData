@@ -42,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Operation
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            var placeHolder = "Get entity from " + EntitySet.Name + " by key";
+            string placeHolder = "Get entity from " + EntitySet.Name + " by key";
             operation.Summary = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? Context.Model.GetLongDescriptionAnnotation(entityType) ?? placeHolder;
             operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(entityType) ?? placeHolder;
 
