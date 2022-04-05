@@ -43,8 +43,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Description
             string placeHolder = "Get entity from " + EntitySet.Name + " by key";
-            operation.Summary = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? Context.Model.GetLongDescriptionAnnotation(entityType) ?? placeHolder;
-            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(entityType) ?? placeHolder;
+            operation.Summary = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
+            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType) ?? placeHolder;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

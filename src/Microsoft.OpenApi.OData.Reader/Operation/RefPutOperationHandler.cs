@@ -22,8 +22,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Update the ref of navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
+            // Summary and Description
+            string placeHolder = "Update the ref of navigation property " + NavigationProperty.Name + " in " + NavigationSource.Name;
+            operation.Summary = Restriction?.UpdateRestrictions?.Description ?? placeHolder;
+            operation.Description = Restriction?.UpdateRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -31,8 +33,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string prefix = "UpdateRef";
                 operation.OperationId = GetOperationId(prefix);
             }
-
-            operation.Description = Restriction?.UpdateRestrictions?.Description;
         }
 
         /// <inheritdoc/>

@@ -39,7 +39,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Description
             string placeHolder = "Update entity in " + EntitySet.Name;
             operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
-            operation.Description = UpdateRestrictions?.LongDescription ?? placeHolder;
+            operation.Description = UpdateRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
