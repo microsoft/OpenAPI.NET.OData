@@ -48,8 +48,8 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
 
         // Summary and Description
         var placeHolder = $"Sets a new value for the collection of {ComplexPropertySegment.ComplexType.Name}.";
-        operation.Summary = InsertRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
-        operation.Description = InsertRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
+        operation.Summary = placeHolder;
+        operation.Description = InsertRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
 
         base.SetBasicInfo(operation);
     }
