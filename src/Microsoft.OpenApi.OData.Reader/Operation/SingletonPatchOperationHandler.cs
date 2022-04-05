@@ -41,8 +41,8 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary and Descriptions
             string placeHolder = "Update " + Singleton.Name;
-            operation.Summary = UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton) ?? placeHolder;
-            operation.Description = UpdateRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(Singleton) ?? placeHolder;
+            operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
+            operation.Description = UpdateRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

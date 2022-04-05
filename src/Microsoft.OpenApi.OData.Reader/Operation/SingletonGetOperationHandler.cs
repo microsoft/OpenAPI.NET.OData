@@ -42,7 +42,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Summary and Descriptions
             string placeHolder = "Get " + Singleton.Name;
             operation.Summary = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton) ?? placeHolder;
-            operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(Singleton) ?? placeHolder;
+            operation.Description = ReadRestrictions?.LongDescription;
 
             // OperationId, it should be unique among all operations described in the API.
             if (Context.Settings.EnableOperationId)
