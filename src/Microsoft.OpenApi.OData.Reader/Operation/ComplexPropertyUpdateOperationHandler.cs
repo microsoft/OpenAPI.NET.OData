@@ -34,7 +34,7 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
         // Summary and Description
         string placeHolder = $"Update property {ComplexPropertySegment.Property.Name} value.";
         operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
-        operation.Description = UpdateRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(ComplexPropertySegment.Property);
+        operation.Description = UpdateRestrictions?.LongDescription;
 
         // OperationId
         if (Context.Settings.EnableOperationId)
