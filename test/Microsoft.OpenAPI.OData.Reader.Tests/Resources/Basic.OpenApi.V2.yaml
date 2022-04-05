@@ -12,7 +12,6 @@ paths:
       tags:
         - City.City
       summary: Get entities from City
-      description: Get entities from City
       operationId: City.City.ListCity
       parameters:
         - $ref: '#/parameters/top'
@@ -54,7 +53,6 @@ paths:
       tags:
         - City.City
       summary: Add new entity to City
-      description: Add new entity to City
       operationId: City.City.CreateCity
       consumes:
         - application/json
@@ -81,7 +79,6 @@ paths:
       tags:
         - City.City
       summary: Get entity from City by key
-      description: Get entity from City by key
       operationId: City.City.GetCity
       produces:
         - application/json
@@ -120,7 +117,6 @@ paths:
       tags:
         - City.City
       summary: Update entity in City
-      description: Update entity in City
       operationId: City.City.UpdateCity
       consumes:
         - application/json
@@ -147,7 +143,6 @@ paths:
       tags:
         - City.City
       summary: Delete entity from City
-      description: Delete entity from City
       operationId: City.City.DeleteCity
       parameters:
         - in: path
@@ -182,7 +177,6 @@ paths:
       tags:
         - CountryOrRegion.CountryOrRegion
       summary: Get entities from CountryOrRegion
-      description: Get entities from CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.ListCountryOrRegion
       parameters:
         - $ref: '#/parameters/top'
@@ -224,7 +218,6 @@ paths:
       tags:
         - CountryOrRegion.CountryOrRegion
       summary: Add new entity to CountryOrRegion
-      description: Add new entity to CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.CreateCountryOrRegion
       consumes:
         - application/json
@@ -251,7 +244,6 @@ paths:
       tags:
         - CountryOrRegion.CountryOrRegion
       summary: Get entity from CountryOrRegion by key
-      description: Get entity from CountryOrRegion by key
       operationId: CountryOrRegion.CountryOrRegion.GetCountryOrRegion
       produces:
         - application/json
@@ -290,7 +282,6 @@ paths:
       tags:
         - CountryOrRegion.CountryOrRegion
       summary: Update entity in CountryOrRegion
-      description: Update entity in CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion
       consumes:
         - application/json
@@ -317,7 +308,6 @@ paths:
       tags:
         - CountryOrRegion.CountryOrRegion
       summary: Delete entity from CountryOrRegion
-      description: Delete entity from CountryOrRegion
       operationId: CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion
       parameters:
         - in: path
@@ -352,7 +342,6 @@ paths:
       tags:
         - Me.Person
       summary: Get Me
-      description: Get Me
       operationId: Me.Person.GetPerson
       produces:
         - application/json
@@ -388,7 +377,6 @@ paths:
       tags:
         - Me.Person
       summary: Update Me
-      description: Update Me
       operationId: Me.Person.UpdatePerson
       consumes:
         - application/json
@@ -411,7 +399,6 @@ paths:
       tags:
         - People.Person
       summary: People's description.
-      description: People's Long description.
       operationId: People.Person.ListPerson
       parameters:
         - $ref: '#/parameters/top'
@@ -462,7 +449,6 @@ paths:
       tags:
         - People.Person
       summary: Add new entity to People
-      description: Add new entity to People
       operationId: People.Person.CreatePerson
       consumes:
         - application/json
@@ -489,7 +475,6 @@ paths:
       tags:
         - People.Person
       summary: Get entity from People by key
-      description: Get entity from People by key
       operationId: People.Person.GetPerson
       produces:
         - application/json
@@ -531,7 +516,6 @@ paths:
       tags:
         - People.Person
       summary: Update entity in People
-      description: Update entity in People
       operationId: People.Person.UpdatePerson
       consumes:
         - application/json
@@ -558,7 +542,6 @@ paths:
       tags:
         - People.Person
       summary: Delete entity from People
-      description: Delete entity from People
       operationId: People.Person.DeletePerson
       parameters:
         - in: path

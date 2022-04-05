@@ -346,7 +346,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
                 <Record>
                     <PropertyValue Property=""Description"" String=""Update the BillingAddress."" />            
-                    <PropertyValue Property=""LongDescription"" String=""Update the BillingAddress."" />            
+                    <PropertyValue Property=""LongDescription"" String=""Update the BillingAddress value."" />            
                 </Record>
             </Annotation>            
         </Property>

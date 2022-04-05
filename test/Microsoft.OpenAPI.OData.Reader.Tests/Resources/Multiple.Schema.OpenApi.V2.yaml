@@ -12,7 +12,6 @@ paths:
       tags:
         - Categories.CategoryDto
       summary: Get entities from Categories
-      description: Get entities from Categories
       operationId: Categories.CategoryDto.ListCategoryDto
       parameters:
         - $ref: '#/parameters/top'
@@ -69,7 +68,6 @@ paths:
       tags:
         - Categories.CategoryDto
       summary: Add new entity to Categories
-      description: Add new entity to Categories
       operationId: Categories.CategoryDto.CreateCategoryDto
       consumes:
         - application/json
@@ -96,7 +94,6 @@ paths:
       tags:
         - Categories.CategoryDto
       summary: Get entity from Categories by key
-      description: Get entity from Categories by key
       operationId: Categories.CategoryDto.GetCategoryDto
       produces:
         - application/json
@@ -143,7 +140,6 @@ paths:
       tags:
         - Categories.CategoryDto
       summary: Update entity in Categories
-      description: Update entity in Categories
       operationId: Categories.CategoryDto.UpdateCategoryDto
       consumes:
         - application/json
@@ -173,7 +169,6 @@ paths:
       tags:
         - Categories.CategoryDto
       summary: Delete entity from Categories
-      description: Delete entity from Categories
       operationId: Categories.CategoryDto.DeleteCategoryDto
       parameters:
         - in: path
@@ -211,7 +206,6 @@ paths:
       tags:
         - Documents.DocumentDto
       summary: Get entities from Documents
-      description: Get entities from Documents
       operationId: Documents.DocumentDto.ListDocumentDto
       parameters:
         - $ref: '#/parameters/top'
@@ -282,7 +276,6 @@ paths:
       tags:
         - Documents.DocumentDto
       summary: Add new entity to Documents
-      description: Add new entity to Documents
       operationId: Documents.DocumentDto.CreateDocumentDto
       consumes:
         - application/json
@@ -309,7 +302,6 @@ paths:
       tags:
         - Documents.DocumentDto
       summary: Get entity from Documents by key
-      description: Get entity from Documents by key
       operationId: Documents.DocumentDto.GetDocumentDto
       produces:
         - application/json
@@ -362,7 +354,6 @@ paths:
       tags:
         - Documents.DocumentDto
       summary: Update entity in Documents
-      description: Update entity in Documents
       operationId: Documents.DocumentDto.UpdateDocumentDto
       consumes:
         - application/json
@@ -392,7 +383,6 @@ paths:
       tags:
         - Documents.DocumentDto
       summary: Delete entity from Documents
-      description: Delete entity from Documents
       operationId: Documents.DocumentDto.DeleteDocumentDto
       parameters:
         - in: path
@@ -712,7 +702,6 @@ paths:
   '/Documents({Id})/Tags':
     get:
       summary: Get Tags property value
-      description: Get Tags property value
       operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
       parameters:
         - in: path
@@ -761,7 +750,6 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property Tags value.
-      description: Update property Tags value.
       operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
       consumes:
         - application/json
@@ -855,7 +843,6 @@ paths:
       tags:
         - Libraries.LibraryDto
       summary: Get entities from Libraries
-      description: Get entities from Libraries
       operationId: Libraries.LibraryDto.ListLibraryDto
       parameters:
         - $ref: '#/parameters/top'
@@ -941,7 +928,6 @@ paths:
       tags:
         - Libraries.LibraryDto
       summary: Add new entity to Libraries
-      description: Add new entity to Libraries
       operationId: Libraries.LibraryDto.CreateLibraryDto
       consumes:
         - application/json
@@ -968,7 +954,6 @@ paths:
       tags:
         - Libraries.LibraryDto
       summary: Get entity from Libraries by key
-      description: Get entity from Libraries by key
       operationId: Libraries.LibraryDto.GetLibraryDto
       produces:
         - application/json
@@ -1026,7 +1011,6 @@ paths:
       tags:
         - Libraries.LibraryDto
       summary: Update entity in Libraries
-      description: Update entity in Libraries
       operationId: Libraries.LibraryDto.UpdateLibraryDto
       consumes:
         - application/json
@@ -1056,7 +1040,6 @@ paths:
       tags:
         - Libraries.LibraryDto
       summary: Delete entity from Libraries
-      description: Delete entity from Libraries
       operationId: Libraries.LibraryDto.DeleteLibraryDto
       parameters:
         - in: path
@@ -1204,7 +1187,6 @@ paths:
   '/Libraries({Id})/Documents({Id1})/Tags':
     get:
       summary: Get Tags property value
-      description: Get Tags property value
       operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
       parameters:
         - in: path
@@ -1262,7 +1244,6 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property Tags value.
-      description: Update property Tags value.
       operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
       consumes:
         - application/json
@@ -1493,7 +1474,6 @@ paths:
       tags:
         - Revisions.RevisionDto
       summary: Get entities from Revisions
-      description: Get entities from Revisions
       operationId: Revisions.RevisionDto.ListRevisionDto
       parameters:
         - $ref: '#/parameters/top'
@@ -1585,7 +1565,6 @@ paths:
       tags:
         - Revisions.RevisionDto
       summary: Add new entity to Revisions
-      description: Add new entity to Revisions
       operationId: Revisions.RevisionDto.CreateRevisionDto
       consumes:
         - application/json
@@ -1612,7 +1591,6 @@ paths:
       tags:
         - Revisions.RevisionDto
       summary: Get entity from Revisions by key
-      description: Get entity from Revisions by key
       operationId: Revisions.RevisionDto.GetRevisionDto
       produces:
         - application/json
@@ -1672,7 +1650,6 @@ paths:
       tags:
         - Revisions.RevisionDto
       summary: Update entity in Revisions
-      description: Update entity in Revisions
       operationId: Revisions.RevisionDto.UpdateRevisionDto
       consumes:
         - application/json
@@ -1702,7 +1679,6 @@ paths:
       tags:
         - Revisions.RevisionDto
       summary: Delete entity from Revisions
-      description: Delete entity from Revisions
       operationId: Revisions.RevisionDto.DeleteRevisionDto
       parameters:
         - in: path
@@ -1907,7 +1883,6 @@ paths:
   '/Revisions({Id})/Document/DocumentClasses':
     get:
       summary: Get DocumentClasses property value
-      description: Get DocumentClasses property value
       operationId: DocumentClasses.DocumentClass.ListDocumentClass
       parameters:
         - in: path
@@ -1979,7 +1954,6 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property DocumentClasses value.
-      description: Update property DocumentClasses value.
       operationId: DocumentClasses.DocumentClass.UpdateDocumentClass
       consumes:
         - application/json
@@ -2061,7 +2035,6 @@ paths:
   '/Revisions({Id})/Document/Tags':
     get:
       summary: Get Tags property value
-      description: Get Tags property value
       operationId: Tags.DocumentTagRel.ListDocumentTagRel
       parameters:
         - in: path
@@ -2132,7 +2105,6 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property Tags value.
-      description: Update property Tags value.
       operationId: Tags.DocumentTagRel.UpdateDocumentTagRel
       consumes:
         - application/json
@@ -2226,7 +2198,6 @@ paths:
       tags:
         - Tasks.DocumentDto
       summary: Get entities from Tasks
-      description: Get entities from Tasks
       operationId: Tasks.DocumentDto.ListDocumentDto
       parameters:
         - $ref: '#/parameters/top'
@@ -2297,7 +2268,6 @@ paths:
       tags:
         - Tasks.DocumentDto
       summary: Add new entity to Tasks
-      description: Add new entity to Tasks
       operationId: Tasks.DocumentDto.CreateDocumentDto
       consumes:
         - application/json
@@ -2324,7 +2294,6 @@ paths:
       tags:
         - Tasks.DocumentDto
       summary: Get entity from Tasks by key
-      description: Get entity from Tasks by key
       operationId: Tasks.DocumentDto.GetDocumentDto
       produces:
         - application/json
@@ -2377,7 +2346,6 @@ paths:
       tags:
         - Tasks.DocumentDto
       summary: Update entity in Tasks
-      description: Update entity in Tasks
       operationId: Tasks.DocumentDto.UpdateDocumentDto
       consumes:
         - application/json
@@ -2407,7 +2375,6 @@ paths:
       tags:
         - Tasks.DocumentDto
       summary: Delete entity from Tasks
-      description: Delete entity from Tasks
       operationId: Tasks.DocumentDto.DeleteDocumentDto
       parameters:
         - in: path
@@ -2727,7 +2694,6 @@ paths:
   '/Tasks({Id})/Tags':
     get:
       summary: Get Tags property value
-      description: Get Tags property value
       operationId: Tags.DocumentTagRelDto.ListDocumentTagRelDto
       parameters:
         - in: path
@@ -2776,7 +2742,6 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property Tags value.
-      description: Update property Tags value.
       operationId: Tags.DocumentTagRelDto.UpdateDocumentTagRelDto
       consumes:
         - application/json

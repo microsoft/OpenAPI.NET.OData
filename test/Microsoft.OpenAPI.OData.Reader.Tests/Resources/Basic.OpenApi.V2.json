@@ -16,7 +16,6 @@
           "City.City"
         ],
         "summary": "Get entities from City",
-        "description": "Get entities from City",
         "operationId": "City.City.ListCity",
         "parameters": [
           {
@@ -86,7 +85,6 @@
           "City.City"
         ],
         "summary": "Add new entity to City",
-        "description": "Add new entity to City",
         "operationId": "City.City.CreateCity",
         "consumes": [
           "application/json"
@@ -126,7 +124,6 @@
           "City.City"
         ],
         "summary": "Get entity from City by key",
-        "description": "Get entity from City by key",
         "operationId": "City.City.GetCity",
         "produces": [
           "application/json"
@@ -183,7 +180,6 @@
           "City.City"
         ],
         "summary": "Update entity in City",
-        "description": "Update entity in City",
         "operationId": "City.City.UpdateCity",
         "consumes": [
           "application/json"
@@ -222,7 +218,6 @@
           "City.City"
         ],
         "summary": "Delete entity from City",
-        "description": "Delete entity from City",
         "operationId": "City.City.DeleteCity",
         "parameters": [
           {
@@ -273,7 +268,6 @@
           "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Get entities from CountryOrRegion",
-        "description": "Get entities from CountryOrRegion",
         "operationId": "CountryOrRegion.CountryOrRegion.ListCountryOrRegion",
         "parameters": [
           {
@@ -343,7 +337,6 @@
           "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Add new entity to CountryOrRegion",
-        "description": "Add new entity to CountryOrRegion",
         "operationId": "CountryOrRegion.CountryOrRegion.CreateCountryOrRegion",
         "consumes": [
           "application/json"
@@ -383,7 +376,6 @@
           "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Get entity from CountryOrRegion by key",
-        "description": "Get entity from CountryOrRegion by key",
         "operationId": "CountryOrRegion.CountryOrRegion.GetCountryOrRegion",
         "produces": [
           "application/json"
@@ -440,7 +432,6 @@
           "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Update entity in CountryOrRegion",
-        "description": "Update entity in CountryOrRegion",
         "operationId": "CountryOrRegion.CountryOrRegion.UpdateCountryOrRegion",
         "consumes": [
           "application/json"
@@ -479,7 +470,6 @@
           "CountryOrRegion.CountryOrRegion"
         ],
         "summary": "Delete entity from CountryOrRegion",
-        "description": "Delete entity from CountryOrRegion",
         "operationId": "CountryOrRegion.CountryOrRegion.DeleteCountryOrRegion",
         "parameters": [
           {
@@ -530,7 +520,6 @@
           "Me.Person"
         ],
         "summary": "Get Me",
-        "description": "Get Me",
         "operationId": "Me.Person.GetPerson",
         "produces": [
           "application/json"
@@ -582,7 +571,6 @@
           "Me.Person"
         ],
         "summary": "Update Me",
-        "description": "Update Me",
         "operationId": "Me.Person.UpdatePerson",
         "consumes": [
           "application/json"
@@ -616,7 +604,6 @@
           "People.Person"
         ],
         "summary": "People's description.",
-        "description": "People's Long description.",
         "operationId": "People.Person.ListPerson",
         "parameters": [
           {
@@ -695,7 +682,6 @@
           "People.Person"
         ],
         "summary": "Add new entity to People",
-        "description": "Add new entity to People",
         "operationId": "People.Person.CreatePerson",
         "consumes": [
           "application/json"
@@ -735,7 +721,6 @@
           "People.Person"
         ],
         "summary": "Get entity from People by key",
-        "description": "Get entity from People by key",
         "operationId": "People.Person.GetPerson",
         "produces": [
           "application/json"
@@ -795,7 +780,6 @@
           "People.Person"
         ],
         "summary": "Update entity in People",
-        "description": "Update entity in People",
         "operationId": "People.Person.UpdatePerson",
         "consumes": [
           "application/json"
@@ -834,7 +818,6 @@
           "People.Person"
         ],
         "summary": "Delete entity from People",
-        "description": "Delete entity from People",
         "operationId": "People.Person.DeletePerson",
         "parameters": [
           {

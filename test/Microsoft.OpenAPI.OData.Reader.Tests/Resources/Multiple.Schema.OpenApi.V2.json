@@ -16,7 +16,6 @@
           "Categories.CategoryDto"
         ],
         "summary": "Get entities from Categories",
-        "description": "Get entities from Categories",
         "operationId": "Categories.CategoryDto.ListCategoryDto",
         "parameters": [
           {
@@ -101,7 +100,6 @@
           "Categories.CategoryDto"
         ],
         "summary": "Add new entity to Categories",
-        "description": "Add new entity to Categories",
         "operationId": "Categories.CategoryDto.CreateCategoryDto",
         "consumes": [
           "application/json"
@@ -141,7 +139,6 @@
           "Categories.CategoryDto"
         ],
         "summary": "Get entity from Categories by key",
-        "description": "Get entity from Categories by key",
         "operationId": "Categories.CategoryDto.GetCategoryDto",
         "produces": [
           "application/json"
@@ -206,7 +203,6 @@
           "Categories.CategoryDto"
         ],
         "summary": "Update entity in Categories",
-        "description": "Update entity in Categories",
         "operationId": "Categories.CategoryDto.UpdateCategoryDto",
         "consumes": [
           "application/json"
@@ -248,7 +244,6 @@
           "Categories.CategoryDto"
         ],
         "summary": "Delete entity from Categories",
-        "description": "Delete entity from Categories",
         "operationId": "Categories.CategoryDto.DeleteCategoryDto",
         "parameters": [
           {
@@ -302,7 +297,6 @@
           "Documents.DocumentDto"
         ],
         "summary": "Get entities from Documents",
-        "description": "Get entities from Documents",
         "operationId": "Documents.DocumentDto.ListDocumentDto",
         "parameters": [
           {
@@ -401,7 +395,6 @@
           "Documents.DocumentDto"
         ],
         "summary": "Add new entity to Documents",
-        "description": "Add new entity to Documents",
         "operationId": "Documents.DocumentDto.CreateDocumentDto",
         "consumes": [
           "application/json"
@@ -441,7 +434,6 @@
           "Documents.DocumentDto"
         ],
         "summary": "Get entity from Documents by key",
-        "description": "Get entity from Documents by key",
         "operationId": "Documents.DocumentDto.GetDocumentDto",
         "produces": [
           "application/json"
@@ -512,7 +504,6 @@
           "Documents.DocumentDto"
         ],
         "summary": "Update entity in Documents",
-        "description": "Update entity in Documents",
         "operationId": "Documents.DocumentDto.UpdateDocumentDto",
         "consumes": [
           "application/json"
@@ -554,7 +545,6 @@
           "Documents.DocumentDto"
         ],
         "summary": "Delete entity from Documents",
-        "description": "Delete entity from Documents",
         "operationId": "Documents.DocumentDto.DeleteDocumentDto",
         "parameters": [
           {
@@ -987,7 +977,6 @@
     "/Documents({Id})/Tags": {
       "get": {
         "summary": "Get Tags property value",
-        "description": "Get Tags property value",
         "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
         "parameters": [
           {
@@ -1065,7 +1054,6 @@
       },
       "patch": {
         "summary": "Update property Tags value.",
-        "description": "Update property Tags value.",
         "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
         "consumes": [
           "application/json"
@@ -1200,7 +1188,6 @@
           "Libraries.LibraryDto"
         ],
         "summary": "Get entities from Libraries",
-        "description": "Get entities from Libraries",
         "operationId": "Libraries.LibraryDto.ListLibraryDto",
         "parameters": [
           {
@@ -1314,7 +1301,6 @@
           "Libraries.LibraryDto"
         ],
         "summary": "Add new entity to Libraries",
-        "description": "Add new entity to Libraries",
         "operationId": "Libraries.LibraryDto.CreateLibraryDto",
         "consumes": [
           "application/json"
@@ -1354,7 +1340,6 @@
           "Libraries.LibraryDto"
         ],
         "summary": "Get entity from Libraries by key",
-        "description": "Get entity from Libraries by key",
         "operationId": "Libraries.LibraryDto.GetLibraryDto",
         "produces": [
           "application/json"
@@ -1430,7 +1415,6 @@
           "Libraries.LibraryDto"
         ],
         "summary": "Update entity in Libraries",
-        "description": "Update entity in Libraries",
         "operationId": "Libraries.LibraryDto.UpdateLibraryDto",
         "consumes": [
           "application/json"
@@ -1472,7 +1456,6 @@
           "Libraries.LibraryDto"
         ],
         "summary": "Delete entity from Libraries",
-        "description": "Delete entity from Libraries",
         "operationId": "Libraries.LibraryDto.DeleteLibraryDto",
         "parameters": [
           {
@@ -1676,7 +1659,6 @@
     "/Libraries({Id})/Documents({Id1})/Tags": {
       "get": {
         "summary": "Get Tags property value",
-        "description": "Get Tags property value",
         "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
         "parameters": [
           {
@@ -1765,7 +1747,6 @@
       },
       "patch": {
         "summary": "Update property Tags value.",
-        "description": "Update property Tags value.",
         "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
         "consumes": [
           "application/json"
@@ -2089,7 +2070,6 @@
           "Revisions.RevisionDto"
         ],
         "summary": "Get entities from Revisions",
-        "description": "Get entities from Revisions",
         "operationId": "Revisions.RevisionDto.ListRevisionDto",
         "parameters": [
           {
@@ -2209,7 +2189,6 @@
           "Revisions.RevisionDto"
         ],
         "summary": "Add new entity to Revisions",
-        "description": "Add new entity to Revisions",
         "operationId": "Revisions.RevisionDto.CreateRevisionDto",
         "consumes": [
           "application/json"
@@ -2249,7 +2228,6 @@
           "Revisions.RevisionDto"
         ],
         "summary": "Get entity from Revisions by key",
-        "description": "Get entity from Revisions by key",
         "operationId": "Revisions.RevisionDto.GetRevisionDto",
         "produces": [
           "application/json"
@@ -2327,7 +2305,6 @@
           "Revisions.RevisionDto"
         ],
         "summary": "Update entity in Revisions",
-        "description": "Update entity in Revisions",
         "operationId": "Revisions.RevisionDto.UpdateRevisionDto",
         "consumes": [
           "application/json"
@@ -2369,7 +2346,6 @@
           "Revisions.RevisionDto"
         ],
         "summary": "Delete entity from Revisions",
-        "description": "Delete entity from Revisions",
         "operationId": "Revisions.RevisionDto.DeleteRevisionDto",
         "parameters": [
           {
@@ -2636,7 +2612,6 @@
     "/Revisions({Id})/Document/DocumentClasses": {
       "get": {
         "summary": "Get DocumentClasses property value",
-        "description": "Get DocumentClasses property value",
         "operationId": "DocumentClasses.DocumentClass.ListDocumentClass",
         "parameters": [
           {
@@ -2737,7 +2712,6 @@
       },
       "patch": {
         "summary": "Update property DocumentClasses value.",
-        "description": "Update property DocumentClasses value.",
         "operationId": "DocumentClasses.DocumentClass.UpdateDocumentClass",
         "consumes": [
           "application/json"
@@ -2854,7 +2828,6 @@
     "/Revisions({Id})/Document/Tags": {
       "get": {
         "summary": "Get Tags property value",
-        "description": "Get Tags property value",
         "operationId": "Tags.DocumentTagRel.ListDocumentTagRel",
         "parameters": [
           {
@@ -2954,7 +2927,6 @@
       },
       "patch": {
         "summary": "Update property Tags value.",
-        "description": "Update property Tags value.",
         "operationId": "Tags.DocumentTagRel.UpdateDocumentTagRel",
         "consumes": [
           "application/json"
@@ -3089,7 +3061,6 @@
           "Tasks.DocumentDto"
         ],
         "summary": "Get entities from Tasks",
-        "description": "Get entities from Tasks",
         "operationId": "Tasks.DocumentDto.ListDocumentDto",
         "parameters": [
           {
@@ -3188,7 +3159,6 @@
           "Tasks.DocumentDto"
         ],
         "summary": "Add new entity to Tasks",
-        "description": "Add new entity to Tasks",
         "operationId": "Tasks.DocumentDto.CreateDocumentDto",
         "consumes": [
           "application/json"
@@ -3228,7 +3198,6 @@
           "Tasks.DocumentDto"
         ],
         "summary": "Get entity from Tasks by key",
-        "description": "Get entity from Tasks by key",
         "operationId": "Tasks.DocumentDto.GetDocumentDto",
         "produces": [
           "application/json"
@@ -3299,7 +3268,6 @@
           "Tasks.DocumentDto"
         ],
         "summary": "Update entity in Tasks",
-        "description": "Update entity in Tasks",
         "operationId": "Tasks.DocumentDto.UpdateDocumentDto",
         "consumes": [
           "application/json"
@@ -3341,7 +3309,6 @@
           "Tasks.DocumentDto"
         ],
         "summary": "Delete entity from Tasks",
-        "description": "Delete entity from Tasks",
         "operationId": "Tasks.DocumentDto.DeleteDocumentDto",
         "parameters": [
           {
@@ -3774,7 +3741,6 @@
     "/Tasks({Id})/Tags": {
       "get": {
         "summary": "Get Tags property value",
-        "description": "Get Tags property value",
         "operationId": "Tags.DocumentTagRelDto.ListDocumentTagRelDto",
         "parameters": [
           {
@@ -3852,7 +3818,6 @@
       },
       "patch": {
         "summary": "Update property Tags value.",
-        "description": "Update property Tags value.",
         "operationId": "Tags.DocumentTagRelDto.UpdateDocumentTagRelDto",
         "consumes": [
           "application/json"

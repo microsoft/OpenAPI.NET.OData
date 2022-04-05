@@ -18,7 +18,6 @@
           "Airlines.Airline"
         ],
         "summary": "Get entities from Airlines",
-        "description": "Get entities from Airlines",
         "operationId": "Airlines.Airline.ListAirline",
         "parameters": [
           {
@@ -106,7 +105,6 @@
           "Airlines.Airline"
         ],
         "summary": "Add new entity to Airlines",
-        "description": "Add new entity to Airlines",
         "operationId": "Airlines.Airline.CreateAirline",
         "requestBody": {
           "description": "New entity",
@@ -144,7 +142,6 @@
           "Airlines.Airline"
         ],
         "summary": "Get entity from Airlines by key",
-        "description": "Get entity from Airlines by key",
         "operationId": "Airlines.Airline.GetAirline",
         "parameters": [
           {
@@ -215,7 +212,6 @@
           "Airlines.Airline"
         ],
         "summary": "Update entity in Airlines",
-        "description": "Update entity in Airlines",
         "operationId": "Airlines.Airline.UpdateAirline",
         "parameters": [
           {
@@ -255,7 +251,6 @@
           "Airlines.Airline"
         ],
         "summary": "Delete entity from Airlines",
-        "description": "Delete entity from Airlines",
         "operationId": "Airlines.Airline.DeleteAirline",
         "parameters": [
           {
@@ -310,7 +305,6 @@
           "Airports.Airport"
         ],
         "summary": "Get entities from Airports",
-        "description": "Get entities from Airports",
         "operationId": "Airports.Airport.ListAirport",
         "parameters": [
           {
@@ -404,7 +398,6 @@
           "Airports.Airport"
         ],
         "summary": "Add new entity to Airports",
-        "description": "Add new entity to Airports",
         "operationId": "Airports.Airport.CreateAirport",
         "requestBody": {
           "description": "New entity",
@@ -442,7 +435,6 @@
           "Airports.Airport"
         ],
         "summary": "Get entity from Airports by key",
-        "description": "Get entity from Airports by key",
         "operationId": "Airports.Airport.GetAirport",
         "parameters": [
           {
@@ -515,7 +507,6 @@
           "Airports.Airport"
         ],
         "summary": "Update entity in Airports",
-        "description": "Update entity in Airports",
         "operationId": "Airports.Airport.UpdateAirport",
         "parameters": [
           {
@@ -555,7 +546,6 @@
           "Airports.Airport"
         ],
         "summary": "Delete entity from Airports",
-        "description": "Delete entity from Airports",
         "operationId": "Airports.Airport.DeleteAirport",
         "parameters": [
           {
@@ -591,7 +581,6 @@
     "/Airports/{IcaoCode}/Location": {
       "get": {
         "summary": "Get Location property value",
-        "description": "Get Location property value",
         "operationId": "Location.AirportLocation.GetAirportLocation",
         "parameters": [
           {
@@ -661,7 +650,6 @@
       },
       "put": {
         "summary": "Update property Location value.",
-        "description": "Update property Location value.",
         "operationId": "Location.AirportLocation.UpdateAirportLocation",
         "parameters": [
           {
@@ -902,7 +890,6 @@
     "/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -997,7 +984,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -1168,7 +1154,6 @@
     "/Airports/{IcaoCode}/Location/EmergencyAuthority/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -1235,7 +1220,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -1433,7 +1417,6 @@
           "Me.Person"
         ],
         "summary": "Get Me",
-        "description": "Get Me",
         "operationId": "Me.Person.GetPerson",
         "parameters": [
           {
@@ -1516,7 +1499,6 @@
           "Me.Person"
         ],
         "summary": "Update Me",
-        "description": "Update Me",
         "operationId": "Me.Person.UpdatePerson",
         "requestBody": {
           "description": "New property values",
@@ -1550,7 +1532,6 @@
     "/Me/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -1642,7 +1623,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "requestBody": {
           "description": "New property values",
@@ -1910,8 +1890,8 @@
         "tags": [
           "Me.Person"
         ],
-        "summary": "Update the ref of navigation property BestFriend in Me",
-        "description": "Update the best friend.",
+        "summary": "Update the best friend.",
+        "description": "Update an instance of a best friend.",
         "operationId": "Me.UpdateRefBestFriend",
         "requestBody": {
           "description": "New navigation property ref values",
@@ -1978,7 +1958,6 @@
     "/Me/BestFriend/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -2070,7 +2049,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "requestBody": {
           "description": "New property values",
@@ -2218,7 +2196,6 @@
     "/Me/BestFriend/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -2282,7 +2259,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "requestBody": {
           "description": "New property values",
@@ -2613,7 +2589,6 @@
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -2715,7 +2690,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -2921,7 +2895,6 @@
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -2995,7 +2968,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -3497,7 +3469,6 @@
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -3599,7 +3570,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -3805,7 +3775,6 @@
     "/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -3879,7 +3848,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -4293,7 +4261,6 @@
     "/Me/Friends/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -4395,7 +4362,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -4601,7 +4567,6 @@
     "/Me/Friends/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -4675,7 +4640,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -5060,7 +5024,6 @@
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -5172,7 +5135,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -5428,7 +5390,6 @@
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -5512,7 +5473,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -6098,7 +6058,6 @@
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -6210,7 +6169,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -6466,7 +6424,6 @@
     "/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -6550,7 +6507,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -7284,7 +7240,6 @@
     "/Me/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -7348,7 +7303,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "requestBody": {
           "description": "New property values",
@@ -7679,7 +7633,6 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -7781,7 +7734,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -7987,7 +7939,6 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -8061,7 +8012,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -8728,7 +8678,6 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -8830,7 +8779,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -9036,7 +8984,6 @@
     "/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -9110,7 +9057,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -9489,8 +9435,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Get Trips from Me",
-        "description": "List trips.",
+        "summary": "List trips.",
+        "description": "Retrieve a list of trips.",
         "operationId": "Me.ListTrips",
         "parameters": [
           {
@@ -9605,8 +9551,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Create new navigation property to Trips for Me",
-        "description": "Create a trip.",
+        "summary": "Create a trip.",
+        "description": "Create a new trip.",
         "operationId": "Me.CreateTrips",
         "requestBody": {
           "description": "New navigation property",
@@ -9650,8 +9596,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Get Trips from Me",
-        "description": "Get a trip.",
+        "summary": "Get a trip.",
+        "description": "Retrieve the properties of a trip.",
         "operationId": "Me.GetTrips",
         "parameters": [
           {
@@ -9739,8 +9685,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Update the navigation property Trips in Me",
-        "description": "Update a trip.",
+        "summary": "Update a trip.",
+        "description": "Update an instance of a trip.",
         "operationId": "Me.UpdateTrips",
         "parameters": [
           {
@@ -9789,8 +9735,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Delete navigation property Trips for Me",
-        "description": "Delete a trip.",
+        "summary": "Delete a trip.",
+        "description": "Delete an instance of a trip.",
         "operationId": "Me.DeleteTrips",
         "parameters": [
           {
@@ -10292,7 +10238,6 @@
           "NewComePeople.Person"
         ],
         "summary": "Get entities from NewComePeople",
-        "description": "Get entities from NewComePeople",
         "operationId": "NewComePeople.Person.ListPerson",
         "parameters": [
           {
@@ -10413,7 +10358,6 @@
           "NewComePeople.Person"
         ],
         "summary": "Add new entity to NewComePeople",
-        "description": "Add new entity to NewComePeople",
         "operationId": "NewComePeople.Person.CreatePerson",
         "requestBody": {
           "description": "New entity",
@@ -10451,7 +10395,6 @@
           "NewComePeople.Person"
         ],
         "summary": "Get entity from NewComePeople by key",
-        "description": "Get entity from NewComePeople by key",
         "operationId": "NewComePeople.Person.GetPerson",
         "parameters": [
           {
@@ -10537,7 +10480,6 @@
           "NewComePeople.Person"
         ],
         "summary": "Update entity in NewComePeople",
-        "description": "Update entity in NewComePeople",
         "operationId": "NewComePeople.Person.UpdatePerson",
         "parameters": [
           {
@@ -10577,7 +10519,6 @@
           "NewComePeople.Person"
         ],
         "summary": "Delete entity from NewComePeople",
-        "description": "Delete entity from NewComePeople",
         "operationId": "NewComePeople.Person.DeletePerson",
         "parameters": [
           {
@@ -10613,7 +10554,6 @@
     "/NewComePeople/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -10708,7 +10648,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -11021,8 +10960,8 @@
         "tags": [
           "NewComePeople.Person"
         ],
-        "summary": "Update the ref of navigation property BestFriend in NewComePeople",
-        "description": "Update the best friend.",
+        "summary": "Update the best friend.",
+        "description": "Update an instance of a best friend.",
         "operationId": "NewComePeople.UpdateRefBestFriend",
         "parameters": [
           {
@@ -11111,7 +11050,6 @@
     "/NewComePeople/{UserName}/BestFriend/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -11213,7 +11151,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -11419,7 +11356,6 @@
     "/NewComePeople/{UserName}/BestFriend/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -11493,7 +11429,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -11877,7 +11812,6 @@
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -11989,7 +11923,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -12245,7 +12178,6 @@
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -12329,7 +12261,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -12914,7 +12845,6 @@
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -13026,7 +12956,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -13282,7 +13211,6 @@
     "/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -13366,7 +13294,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -13840,7 +13767,6 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -13945,7 +13871,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -14166,7 +14091,6 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -14243,7 +14167,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -14642,7 +14565,6 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -14757,7 +14679,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -15028,7 +14949,6 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -15115,7 +15035,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -15724,7 +15643,6 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -15839,7 +15757,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -16110,7 +16027,6 @@
     "/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -16197,7 +16113,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -16975,7 +16890,6 @@
     "/NewComePeople/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -17042,7 +16956,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -17458,8 +17371,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Get Trips from NewComePeople",
-        "description": "List trips.",
+        "summary": "List trips.",
+        "description": "Retrieve a list of trips.",
         "operationId": "NewComePeople.ListTrips",
         "parameters": [
           {
@@ -17577,8 +17490,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Create new navigation property to Trips for NewComePeople",
-        "description": "Create a trip.",
+        "summary": "Create a trip.",
+        "description": "Create a new trip.",
         "operationId": "NewComePeople.CreateTrips",
         "parameters": [
           {
@@ -17627,8 +17540,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Get Trips from NewComePeople",
-        "description": "Get a trip.",
+        "summary": "Get a trip.",
+        "description": "Retrieve the properties of a trip.",
         "operationId": "NewComePeople.GetTrips",
         "parameters": [
           {
@@ -17719,8 +17632,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Update the navigation property Trips in NewComePeople",
-        "description": "Update a trip.",
+        "summary": "Update a trip.",
+        "description": "Update an instance of a trip.",
         "operationId": "NewComePeople.UpdateTrips",
         "parameters": [
           {
@@ -17772,8 +17685,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Delete navigation property Trips for NewComePeople",
-        "description": "Delete a trip.",
+        "summary": "Delete a trip.",
+        "description": "Delete an instance of a trip.",
         "operationId": "NewComePeople.DeleteTrips",
         "parameters": [
           {
@@ -18316,7 +18229,6 @@
           "People.Person"
         ],
         "summary": "Get entities from People",
-        "description": "Get entities from People",
         "operationId": "People.Person.ListPerson",
         "parameters": [
           {
@@ -18444,7 +18356,6 @@
           "People.Person"
         ],
         "summary": "Add new entity to People",
-        "description": "Add new entity to People",
         "operationId": "People.Person.CreatePerson",
         "requestBody": {
           "description": "New entity",
@@ -18489,7 +18400,6 @@
           "People.Person"
         ],
         "summary": "Get entity from People by key",
-        "description": "Get entity from People by key",
         "operationId": "People.Person.GetPerson",
         "parameters": [
           {
@@ -18582,7 +18492,6 @@
           "People.Person"
         ],
         "summary": "Update entity in People",
-        "description": "Update entity in People",
         "operationId": "People.Person.UpdatePerson",
         "parameters": [
           {
@@ -18629,7 +18538,6 @@
           "People.Person"
         ],
         "summary": "Delete entity from People",
-        "description": "Delete entity from People",
         "operationId": "People.Person.DeletePerson",
         "parameters": [
           {
@@ -18672,7 +18580,6 @@
     "/People/{UserName}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -18774,7 +18681,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -19122,8 +19028,8 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Update the ref of navigation property BestFriend in People",
-        "description": "Update the best friend.",
+        "summary": "Update the best friend.",
+        "description": "Update an instance of a best friend.",
         "operationId": "People.UpdateRefBestFriend",
         "parameters": [
           {
@@ -19212,7 +19118,6 @@
     "/People/{UserName}/BestFriend/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -19314,7 +19219,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -19520,7 +19424,6 @@
     "/People/{UserName}/BestFriend/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -19594,7 +19497,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -19979,7 +19881,6 @@
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -20091,7 +19992,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -20347,7 +20247,6 @@
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -20431,7 +20330,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -21017,7 +20915,6 @@
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -21129,7 +21026,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -21385,7 +21281,6 @@
     "/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -21469,7 +21364,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -21957,7 +21851,6 @@
     "/People/{UserName}/Friends/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -22069,7 +21962,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -22325,7 +22217,6 @@
     "/People/{UserName}/Friends/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -22409,7 +22300,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -22844,7 +22734,6 @@
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -22966,7 +22855,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -23272,7 +23160,6 @@
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -23366,7 +23253,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -24032,7 +23918,6 @@
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -24154,7 +24039,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -24460,7 +24344,6 @@
     "/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -24554,7 +24437,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -25416,7 +25298,6 @@
     "/People/{UserName}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -25490,7 +25371,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -25875,7 +25755,6 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -25987,7 +25866,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -26243,7 +26121,6 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -26327,7 +26204,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -27112,7 +26988,6 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo": {
       "get": {
         "summary": "Get AddressInfo property value",
-        "description": "Get AddressInfo property value",
         "operationId": "AddressInfo.Location.ListLocation",
         "parameters": [
           {
@@ -27224,7 +27099,6 @@
       },
       "patch": {
         "summary": "Update property AddressInfo value.",
-        "description": "Update property AddressInfo value.",
         "operationId": "AddressInfo.Location.UpdateLocation",
         "parameters": [
           {
@@ -27480,7 +27354,6 @@
     "/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress": {
       "get": {
         "summary": "Get HomeAddress property value",
-        "description": "Get HomeAddress property value",
         "operationId": "HomeAddress.Location.GetLocation",
         "parameters": [
           {
@@ -27564,7 +27437,6 @@
       },
       "patch": {
         "summary": "Update property HomeAddress value.",
-        "description": "Update property HomeAddress value.",
         "operationId": "HomeAddress.Location.UpdateLocation",
         "parameters": [
           {
@@ -28031,8 +27903,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Get Trips from People",
-        "description": "List trips.",
+        "summary": "List trips.",
+        "description": "Retrieve a list of trips.",
         "operationId": "People.ListTrips",
         "parameters": [
           {
@@ -28157,8 +28029,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Create new navigation property to Trips for People",
-        "description": "Create a trip.",
+        "summary": "Create a trip.",
+        "description": "Create a new trip.",
         "operationId": "People.CreateTrips",
         "parameters": [
           {
@@ -28214,8 +28086,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Get Trips from People",
-        "description": "Get a trip.",
+        "summary": "Get a trip.",
+        "description": "Retrieve the properties of a trip.",
         "operationId": "People.GetTrips",
         "parameters": [
           {
@@ -28313,8 +28185,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Update the navigation property Trips in People",
-        "description": "Update a trip.",
+        "summary": "Update a trip.",
+        "description": "Update an instance of a trip.",
         "operationId": "People.UpdateTrips",
         "parameters": [
           {
@@ -28373,8 +28245,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Delete navigation property Trips for People",
-        "description": "Delete a trip.",
+        "summary": "Delete a trip.",
+        "description": "Delete an instance of a trip.",
         "operationId": "People.DeleteTrips",
         "parameters": [
           {
