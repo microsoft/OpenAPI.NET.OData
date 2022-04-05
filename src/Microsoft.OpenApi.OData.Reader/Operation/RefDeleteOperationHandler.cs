@@ -22,18 +22,17 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Delete ref of navigation property " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            // Summary and Description
+            string placeHolder = "Delete ref of navigation property " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            operation.Summary = Restriction?.DeleteRestrictions?.Description ?? placeHolder;
+            operation.Description = Restriction?.DeleteRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
                 string prefix = "DeleteRef";
                 operation.OperationId = GetOperationId(prefix);
-            }
-
-            // Description
-            operation.Description = Restriction?.DeleteRestrictions?.Description;
+            }            
         }
 
         /// <inheritdoc/>

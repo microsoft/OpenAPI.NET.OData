@@ -24,18 +24,17 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Delete navigation property " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            // Summary and Description
+            string placeHolder = "Delete navigation property " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            operation.Summary = Restriction?.DeleteRestrictions?.Description ?? placeHolder;
+            operation.Description = Restriction?.DeleteRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
             {
                 string prefix = "Delete";
                 operation.OperationId = GetOperationId(prefix);
-            }
-
-            // Description
-            operation.Description = Restriction?.DeleteRestrictions?.Description;
+            }            
 
             base.SetBasicInfo(operation);
         }

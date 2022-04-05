@@ -42,8 +42,8 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary and Descriptions
             string placeHolder = "Get entities from " + EntitySet.Name;
-            operation.Summary = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(EntitySet) ?? placeHolder;
-            operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(EntitySet) ?? placeHolder;
+            operation.Summary = ReadRestrictions?.Description ?? placeHolder;
+            operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(EntitySet);
 
             // OperationId
             if (Context.Settings.EnableOperationId)

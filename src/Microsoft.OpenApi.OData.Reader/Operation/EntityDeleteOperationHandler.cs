@@ -43,7 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // Description
             string placeHolder = "Delete entity from " + EntitySet.Name;
             operation.Summary = DeleteRestrictions?.Description ?? placeHolder;
-            operation.Description = DeleteRestrictions?.LongDescription ?? placeHolder;
+            operation.Description = DeleteRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
