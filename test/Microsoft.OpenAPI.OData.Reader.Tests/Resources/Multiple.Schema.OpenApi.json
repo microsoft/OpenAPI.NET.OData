@@ -1237,7 +1237,6 @@
       },
       "post": {
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
-        "description": "Sets a new value for the collection of DocumentTagRelDto.",
         "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
         "parameters": [
           {
@@ -2040,7 +2039,6 @@
       },
       "post": {
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
-        "description": "Sets a new value for the collection of DocumentTagRelDto.",
         "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
         "parameters": [
           {
@@ -3164,7 +3162,6 @@
       },
       "post": {
         "summary": "Sets a new value for the collection of DocumentClass.",
-        "description": "Sets a new value for the collection of DocumentClass.",
         "operationId": "DocumentClasses.DocumentClass.SetDocumentClass",
         "parameters": [
           {
@@ -3405,7 +3402,6 @@
       },
       "post": {
         "summary": "Sets a new value for the collection of DocumentTagRel.",
-        "description": "Sets a new value for the collection of DocumentTagRel.",
         "operationId": "Tags.DocumentTagRel.SetDocumentTagRel",
         "parameters": [
           {
@@ -4408,7 +4404,6 @@
       },
       "post": {
         "summary": "Sets a new value for the collection of DocumentTagRelDto.",
-        "description": "Sets a new value for the collection of DocumentTagRelDto.",
         "operationId": "Tags.DocumentTagRelDto.SetDocumentTagRelDto",
         "parameters": [
           {

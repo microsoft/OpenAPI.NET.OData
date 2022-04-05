@@ -790,7 +790,6 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentTagRelDto.
-      description: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
       consumes:
         - application/json
@@ -1301,7 +1300,6 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentTagRelDto.
-      description: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
       consumes:
         - application/json
@@ -2010,7 +2008,6 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentClass.
-      description: Sets a new value for the collection of DocumentClass.
       operationId: DocumentClasses.DocumentClass.SetDocumentClass
       consumes:
         - application/json
@@ -2164,7 +2161,6 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentTagRel.
-      description: Sets a new value for the collection of DocumentTagRel.
       operationId: Tags.DocumentTagRel.SetDocumentTagRel
       consumes:
         - application/json
@@ -2809,7 +2805,6 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of DocumentTagRelDto.
-      description: Sets a new value for the collection of DocumentTagRelDto.
       operationId: Tags.DocumentTagRelDto.SetDocumentTagRelDto
       consumes:
         - application/json

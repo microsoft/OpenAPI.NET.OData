@@ -701,7 +701,6 @@ paths:
           $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: IcaoCode
@@ -1129,7 +1128,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: If-Match
@@ -1432,7 +1430,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: If-Match
@@ -1900,7 +1897,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -2526,7 +2522,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -3086,7 +3081,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -3643,7 +3637,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -4376,7 +4369,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -5490,7 +5482,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -6225,7 +6216,6 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -7541,7 +7531,6 @@ paths:
           $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -7896,7 +7885,6 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -8452,7 +8440,6 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -9184,7 +9171,6 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -9820,7 +9806,6 @@ paths:
           $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -10388,7 +10373,6 @@ paths:
           $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -11135,7 +11119,6 @@ paths:
           $ref: '#/components/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -13156,7 +13139,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -13535,7 +13517,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -14092,7 +14073,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -14825,7 +14805,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -15485,7 +15464,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -16126,7 +16104,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -16964,7 +16941,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -18259,7 +18235,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
@@ -19124,7 +19099,6 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
-      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       parameters:
         - name: UserName
