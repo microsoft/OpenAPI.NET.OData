@@ -51,7 +51,7 @@ public class ComplexPropertyPostOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(post);
-		Assert.Equal("Create a new AlternativeAddress.", post.Summary);
+		Assert.Equal("Create AlternativeAddress.", post.Summary);
 		Assert.Equal("Create a new AlternativeAddress.", post.Description);
 
 		Assert.NotNull(post.Parameters);
