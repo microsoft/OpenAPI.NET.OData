@@ -35,9 +35,6 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
-        // Summary
-        operation.Summary = $"Get {ComplexPropertySegment.Property.Name} property value";
-
         // OperationId
         if (Context.Settings.EnableOperationId)
         {
@@ -46,8 +43,10 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
             operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + listOrGet + Utils.UpperFirstChar(typeName);
         }
 
-        // Description
-        operation.Description = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
+        // Summary and Description
+        var placeHolder = $"Get {ComplexPropertySegment.Property.Name} property value";
+        operation.Summary = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
+        operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
 
         base.SetBasicInfo(operation);
     }

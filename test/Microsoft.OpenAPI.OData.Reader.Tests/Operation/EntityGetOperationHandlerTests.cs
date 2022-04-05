@@ -37,7 +37,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(get);
-            Assert.Equal("Get entity from Customers by key", get.Summary);
+            Assert.Equal("Get a customer.", get.Summary);
             Assert.Equal("Get a customer.", get.Description);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);

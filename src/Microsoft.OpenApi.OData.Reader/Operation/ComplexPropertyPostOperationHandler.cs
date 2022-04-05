@@ -21,7 +21,7 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     protected override void Initialize(ODataContext context, ODataPath path)
     {
         base.Initialize(context, path);
-        if(!ComplexPropertySegment.Property.Type.IsCollection())
+        if (!ComplexPropertySegment.Property.Type.IsCollection())
         {
             throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
         }
@@ -39,9 +39,6 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
-        // Summary
-        operation.Summary = $"Sets a new value for the collection of {ComplexPropertySegment.ComplexType.Name}.";
-
         // OperationId
         if (Context.Settings.EnableOperationId)
         {
@@ -49,8 +46,10 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             operation.OperationId = ComplexPropertySegment.Property.Name + "." + typeName + ".Set" + Utils.UpperFirstChar(typeName);
         }
 
-        // Description
-        operation.Description = InsertRestrictions?.Description;
+        // Summary and Description
+        var placeHolder = $"Sets a new value for the collection of {ComplexPropertySegment.ComplexType.Name}.";
+        operation.Summary = InsertRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
+        operation.Description = InsertRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(ComplexPropertySegment.Property) ?? placeHolder;
 
         base.SetBasicInfo(operation);
     }

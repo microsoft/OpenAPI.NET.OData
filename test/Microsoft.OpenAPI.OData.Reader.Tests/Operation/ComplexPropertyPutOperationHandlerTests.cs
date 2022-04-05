@@ -36,7 +36,8 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(put);
-		Assert.Equal("Update property BillingAddress value.", put.Summary);
+		Assert.Equal("Update the BillingAddress.", put.Summary);
+		Assert.Equal("Update the BillingAddress.", put.Description);
 
 		Assert.NotNull(put.Parameters);
 		Assert.Equal(1, put.Parameters.Count); //id
@@ -76,7 +77,8 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(put);
-		Assert.Equal("Update property AlternativeAddresses value.", put.Summary);
+		Assert.Equal("The AlternativeAddresses.", put.Summary);
+		Assert.Equal("The AlternativeAddresses.", put.Description);
 
 		Assert.NotNull(put.Parameters);
 		Assert.Equal(1, put.Parameters.Count); //id

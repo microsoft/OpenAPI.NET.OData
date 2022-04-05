@@ -39,8 +39,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary, this summary maybe update in the base function call.
-            operation.Summary = "Get " + Singleton.Name;
+            // Summary and Descriptions
+            var placeHolder = "Get " + Singleton.Name;
+            operation.Summary = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton) ?? placeHolder;
+            operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetLongDescriptionAnnotation(Singleton) ?? placeHolder;
 
             // OperationId, it should be unique among all operations described in the API.
             if (Context.Settings.EnableOperationId)
@@ -48,9 +50,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = Singleton.EntityType().Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Get" + Utils.UpperFirstChar(typeName);
             }
-
-            // Description
-            operation.Description = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton);
         }
 
         /// <inheritdoc/>

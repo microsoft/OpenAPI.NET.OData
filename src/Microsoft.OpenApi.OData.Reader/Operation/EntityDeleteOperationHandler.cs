@@ -38,13 +38,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Delete entity from " + EntitySet.Name;
-
             IEdmEntityType entityType = EntitySet.EntityType();
 
-            // Description
-            operation.Description = DeleteRestrictions?.Description; 
+            // Use Short Description as Summary
+            // Use Long Description as Description
+            var placeHolder = "Delete entity from " + EntitySet.Name;
+            operation.Summary = DeleteRestrictions?.Description ?? placeHolder;
+            operation.Description = DeleteRestrictions?.LongDescription ?? placeHolder;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

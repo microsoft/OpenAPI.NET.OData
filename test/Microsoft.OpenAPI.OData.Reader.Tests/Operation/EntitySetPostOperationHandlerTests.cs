@@ -58,7 +58,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(post);
-            Assert.Equal("Add new entity to " + entitySet.Name, post.Summary);
+            Assert.Equal("Create a new customer.", post.Summary);
             Assert.Equal("Create a new customer.", post.Description);
             Assert.NotNull(post.Tags);
             var tag = Assert.Single(post.Tags);
@@ -248,6 +248,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             <Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
                 <Record>
                     <PropertyValue Property=""Description"" String=""Create a new AlternativeAddress."" />            
+                    <PropertyValue Property=""LongDescription"" String=""Create a new AlternativeAddress."" />            
                 </Record>
             </Annotation>
         </Property>
@@ -255,6 +256,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       <EntityContainer Name =""Default"">
         <EntitySet Name=""Customers"" EntityType=""NS.Customer"">
             <Annotation Term=""Org.OData.Core.V1.Description"" String=""Collection of business customers."" />
+            <Annotation Term=""Org.OData.Core.V1.LongDescription"" String=""Collection of business customers."" />
         </EntitySet>
       </EntityContainer>
       <Annotations Target=""NS.Customer"">
@@ -264,6 +266,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Annotation Term=""Org.OData.Capabilities.V1.InsertRestrictions"">
           <Record>
             <PropertyValue Property=""Description"" String=""Create a new customer."" />            
+            <PropertyValue Property=""LongDescription"" String=""Create a new customer."" />            
           </Record>
         </Annotation>
       </Annotations>        

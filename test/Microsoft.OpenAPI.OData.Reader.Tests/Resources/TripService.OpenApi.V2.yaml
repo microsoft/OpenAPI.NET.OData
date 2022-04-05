@@ -13,6 +13,7 @@ paths:
       tags:
         - Airlines.Airline
       summary: Get entities from Airlines
+      description: Get entities from Airlines
       operationId: Airlines.Airline.ListAirline
       parameters:
         - $ref: '#/parameters/top'
@@ -57,6 +58,7 @@ paths:
       tags:
         - Airlines.Airline
       summary: Add new entity to Airlines
+      description: Add new entity to Airlines
       operationId: Airlines.Airline.CreateAirline
       consumes:
         - application/json
@@ -83,6 +85,7 @@ paths:
       tags:
         - Airlines.Airline
       summary: Get entity from Airlines by key
+      description: Get entity from Airlines by key
       operationId: Airlines.Airline.GetAirline
       produces:
         - application/json
@@ -122,6 +125,7 @@ paths:
       tags:
         - Airlines.Airline
       summary: Update entity in Airlines
+      description: Update entity in Airlines
       operationId: Airlines.Airline.UpdateAirline
       consumes:
         - application/json
@@ -148,6 +152,7 @@ paths:
       tags:
         - Airlines.Airline
       summary: Delete entity from Airlines
+      description: Delete entity from Airlines
       operationId: Airlines.Airline.DeleteAirline
       parameters:
         - in: path
@@ -182,6 +187,7 @@ paths:
       tags:
         - Airports.Airport
       summary: Get entities from Airports
+      description: Get entities from Airports
       operationId: Airports.Airport.ListAirport
       parameters:
         - $ref: '#/parameters/top'
@@ -232,6 +238,7 @@ paths:
       tags:
         - Airports.Airport
       summary: Add new entity to Airports
+      description: Add new entity to Airports
       operationId: Airports.Airport.CreateAirport
       consumes:
         - application/json
@@ -258,6 +265,7 @@ paths:
       tags:
         - Airports.Airport
       summary: Get entity from Airports by key
+      description: Get entity from Airports by key
       operationId: Airports.Airport.GetAirport
       produces:
         - application/json
@@ -299,6 +307,7 @@ paths:
       tags:
         - Airports.Airport
       summary: Update entity in Airports
+      description: Update entity in Airports
       operationId: Airports.Airport.UpdateAirport
       consumes:
         - application/json
@@ -325,6 +334,7 @@ paths:
       tags:
         - Airports.Airport
       summary: Delete entity from Airports
+      description: Delete entity from Airports
       operationId: Airports.Airport.DeleteAirport
       parameters:
         - in: path
@@ -347,6 +357,7 @@ paths:
   '/Airports/{IcaoCode}/Location':
     get:
       summary: Get Location property value
+      description: Get Location property value
       operationId: Location.AirportLocation.GetAirportLocation
       produces:
         - application/json
@@ -386,6 +397,7 @@ paths:
           $ref: '#/responses/error'
     put:
       summary: Update property Location value.
+      description: Update property Location value.
       operationId: Location.AirportLocation.UpdateAirportLocation
       consumes:
         - application/json
@@ -540,6 +552,7 @@ paths:
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -588,6 +601,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -613,6 +627,7 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -696,6 +711,7 @@ paths:
   '/Airports/{IcaoCode}/Location/EmergencyAuthority/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -732,6 +748,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -831,6 +848,7 @@ paths:
       tags:
         - Me.Person
       summary: Get Me
+      description: Get Me
       operationId: Me.Person.GetPerson
       produces:
         - application/json
@@ -885,6 +903,7 @@ paths:
       tags:
         - Me.Person
       summary: Update Me
+      description: Update Me
       operationId: Me.Person.UpdatePerson
       consumes:
         - application/json
@@ -911,6 +930,7 @@ paths:
   /Me/AddressInfo:
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - $ref: '#/parameters/top'
@@ -959,6 +979,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -984,6 +1005,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -1194,6 +1216,7 @@ paths:
   /Me/BestFriend/AddressInfo:
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - $ref: '#/parameters/top'
@@ -1242,6 +1265,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -1267,6 +1291,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -1347,6 +1372,7 @@ paths:
   /Me/BestFriend/HomeAddress:
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -1383,6 +1409,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -1603,6 +1630,7 @@ paths:
   '/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -1657,6 +1685,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -1688,6 +1717,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -1795,6 +1825,7 @@ paths:
   '/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -1837,6 +1868,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -2172,6 +2204,7 @@ paths:
   '/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -2226,6 +2259,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -2257,6 +2291,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -2364,6 +2399,7 @@ paths:
   '/Me/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -2406,6 +2442,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -2683,6 +2720,7 @@ paths:
   '/Me/Friends/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -2737,6 +2775,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -2768,6 +2807,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -2875,6 +2915,7 @@ paths:
   '/Me/Friends/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -2917,6 +2958,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -3168,6 +3210,7 @@ paths:
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -3228,6 +3271,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -3265,6 +3309,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -3396,6 +3441,7 @@ paths:
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -3444,6 +3490,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -3828,6 +3875,7 @@ paths:
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -3888,6 +3936,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -3925,6 +3974,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -4056,6 +4106,7 @@ paths:
   '/Me/Friends/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -4104,6 +4155,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -4596,6 +4648,7 @@ paths:
   /Me/HomeAddress:
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -4632,6 +4685,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -4852,6 +4906,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -4906,6 +4961,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -4937,6 +4993,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -5044,6 +5101,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -5086,6 +5144,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -5525,6 +5584,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -5579,6 +5639,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -5610,6 +5671,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -5717,6 +5779,7 @@ paths:
   '/Me/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -5759,6 +5822,7 @@ paths:
         description: The Me API is deprecated and will stop returning data on March 2023. Please use the new me2 API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -6542,6 +6606,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Get entities from NewComePeople
+      description: Get entities from NewComePeople
       operationId: NewComePeople.Person.ListPerson
       parameters:
         - $ref: '#/parameters/top'
@@ -6619,6 +6684,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Add new entity to NewComePeople
+      description: Add new entity to NewComePeople
       operationId: NewComePeople.Person.CreatePerson
       consumes:
         - application/json
@@ -6645,6 +6711,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Get entity from NewComePeople by key
+      description: Get entity from NewComePeople by key
       operationId: NewComePeople.Person.GetPerson
       produces:
         - application/json
@@ -6699,6 +6766,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Update entity in NewComePeople
+      description: Update entity in NewComePeople
       operationId: NewComePeople.Person.UpdatePerson
       consumes:
         - application/json
@@ -6725,6 +6793,7 @@ paths:
       tags:
         - NewComePeople.Person
       summary: Delete entity from NewComePeople
+      description: Delete entity from NewComePeople
       operationId: NewComePeople.Person.DeletePerson
       parameters:
         - in: path
@@ -6747,6 +6816,7 @@ paths:
   '/NewComePeople/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -6795,6 +6865,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -6820,6 +6891,7 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -7058,6 +7130,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -7112,6 +7185,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -7143,6 +7217,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -7250,6 +7325,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -7292,6 +7368,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -7542,6 +7619,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -7602,6 +7680,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -7639,6 +7718,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -7770,6 +7850,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -7818,6 +7899,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -8201,6 +8283,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -8261,6 +8344,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -8298,6 +8382,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -8429,6 +8514,7 @@ paths:
   '/NewComePeople/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -8477,6 +8563,7 @@ paths:
         description: The bestfriend API is deprecated and will stop returning data on March 2023. Please use the new friends API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -8785,6 +8872,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -8839,6 +8927,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -8870,6 +8959,7 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -8977,6 +9067,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -9019,6 +9110,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -9269,6 +9361,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -9329,6 +9422,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -9366,6 +9460,7 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -9497,6 +9592,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -9545,6 +9641,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -9928,6 +10025,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -9988,6 +10086,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -10025,6 +10124,7 @@ paths:
           $ref: '#/responses/error'
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -10156,6 +10256,7 @@ paths:
   '/NewComePeople/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -10204,6 +10305,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -10699,6 +10801,7 @@ paths:
   '/NewComePeople/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -10735,6 +10838,7 @@ paths:
           $ref: '#/responses/error'
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -11526,6 +11630,7 @@ paths:
       tags:
         - People.Person
       summary: Get entities from People
+      description: Get entities from People
       operationId: People.Person.ListPerson
       parameters:
         - $ref: '#/parameters/top'
@@ -11609,6 +11714,7 @@ paths:
       tags:
         - People.Person
       summary: Add new entity to People
+      description: Add new entity to People
       operationId: People.Person.CreatePerson
       consumes:
         - application/json
@@ -11641,6 +11747,7 @@ paths:
       tags:
         - People.Person
       summary: Get entity from People by key
+      description: Get entity from People by key
       operationId: People.Person.GetPerson
       produces:
         - application/json
@@ -11701,6 +11808,7 @@ paths:
       tags:
         - People.Person
       summary: Update entity in People
+      description: Update entity in People
       operationId: People.Person.UpdatePerson
       consumes:
         - application/json
@@ -11733,6 +11841,7 @@ paths:
       tags:
         - People.Person
       summary: Delete entity from People
+      description: Delete entity from People
       operationId: People.Person.DeletePerson
       parameters:
         - in: path
@@ -11761,6 +11870,7 @@ paths:
   '/People/{UserName}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -11815,6 +11925,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -11846,6 +11957,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -12108,6 +12220,7 @@ paths:
   '/People/{UserName}/BestFriend/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -12162,6 +12275,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -12193,6 +12307,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -12300,6 +12415,7 @@ paths:
   '/People/{UserName}/BestFriend/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -12342,6 +12458,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -12593,6 +12710,7 @@ paths:
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -12653,6 +12771,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -12690,6 +12809,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -12821,6 +12941,7 @@ paths:
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -12869,6 +12990,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -13253,6 +13375,7 @@ paths:
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -13313,6 +13436,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -13350,6 +13474,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -13481,6 +13606,7 @@ paths:
   '/People/{UserName}/BestFriend/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -13529,6 +13655,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -13849,6 +13976,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -13909,6 +14037,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -13946,6 +14075,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -14077,6 +14207,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -14125,6 +14256,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -14406,6 +14538,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -14472,6 +14605,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -14515,6 +14649,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -14670,6 +14805,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName2}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -14724,6 +14860,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -15156,6 +15293,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -15222,6 +15360,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -15265,6 +15404,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -15420,6 +15560,7 @@ paths:
   '/People/{UserName}/Friends/{UserName1}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName2}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -15474,6 +15615,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -16041,6 +16183,7 @@ paths:
   '/People/{UserName}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -16083,6 +16226,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -16334,6 +16478,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -16394,6 +16539,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -16431,6 +16577,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -16562,6 +16709,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee/Peers/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -16610,6 +16758,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json
@@ -17117,6 +17266,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/AddressInfo':
     get:
       summary: Get AddressInfo property value
+      description: Get AddressInfo property value
       operationId: AddressInfo.Location.ListLocation
       parameters:
         - in: path
@@ -17177,6 +17327,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property AddressInfo value.
+      description: Update property AddressInfo value.
       operationId: AddressInfo.Location.UpdateLocation
       consumes:
         - application/json
@@ -17214,6 +17365,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     post:
       summary: Sets a new value for the collection of Location.
+      description: Sets a new value for the collection of Location.
       operationId: AddressInfo.Location.SetLocation
       consumes:
         - application/json
@@ -17345,6 +17497,7 @@ paths:
   '/People/{UserName}/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager/DirectReports/{UserName1}/HomeAddress':
     get:
       summary: Get HomeAddress property value
+      description: Get HomeAddress property value
       operationId: HomeAddress.Location.GetLocation
       produces:
         - application/json
@@ -17393,6 +17546,7 @@ paths:
         description: The People API is deprecated and will stop returning data on March 2023. Please use the new newPeople API.
     patch:
       summary: Update property HomeAddress value.
+      description: Update property HomeAddress value.
       operationId: HomeAddress.Location.UpdateLocation
       consumes:
         - application/json

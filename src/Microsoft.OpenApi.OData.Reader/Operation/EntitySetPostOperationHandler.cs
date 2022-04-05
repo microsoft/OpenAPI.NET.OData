@@ -39,8 +39,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Add new entity to " + EntitySet.Name;
+            // Summary and Description
+            var placeHolder = "Add new entity to " + EntitySet.Name;
+            operation.Summary = InsertRestrictions?.Description ?? placeHolder;
+            operation.Description = InsertRestrictions?.LongDescription ?? placeHolder;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -48,9 +50,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".Create" + Utils.UpperFirstChar(typeName);
             }
-
-            // Description
-            operation.Description = InsertRestrictions?.Description;
         }
 
         /// <inheritdoc/>

@@ -34,13 +34,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Update entity in " + EntitySet.Name;
-
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = UpdateRestrictions?.Description;
+            var placeHolder = "Update entity in " + EntitySet.Name;
+            operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
+            operation.Description = UpdateRestrictions?.LongDescription ?? placeHolder;
 
             // OperationId
             if (Context.Settings.EnableOperationId)

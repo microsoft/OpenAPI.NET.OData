@@ -36,7 +36,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(delete);
-            Assert.Equal("Delete entity from Customers", delete.Summary);
+            Assert.Equal("Delete a customer.", delete.Summary);
             Assert.Equal("Delete a customer.", delete.Description);
             Assert.NotNull(delete.Tags);
             var tag = Assert.Single(delete.Tags);

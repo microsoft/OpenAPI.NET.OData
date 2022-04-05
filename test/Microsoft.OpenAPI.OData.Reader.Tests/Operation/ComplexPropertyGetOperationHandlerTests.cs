@@ -36,7 +36,7 @@ public class ComplexPropertyGetOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(get);
-		Assert.Equal("Get BillingAddress property value", get.Summary);
+		Assert.Equal("Get the BillingAddress.", get.Summary);
 		Assert.Equal("Get the BillingAddress.", get.Description);
 
 		Assert.NotNull(get.Parameters);
@@ -77,7 +77,7 @@ public class ComplexPropertyGetOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(get);
-		Assert.Equal("Get AlternativeAddresses property value", get.Summary);
+		Assert.Equal("The AlternativeAddresses.", get.Summary);
 		Assert.Equal("The AlternativeAddresses.", get.Description);
 
 		Assert.NotNull(get.Parameters);
