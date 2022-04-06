@@ -675,7 +675,8 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "People's description.",
+        "summary": "Get entities from People",
+        "description": "People's description.",
         "operationId": "People.Person.ListPerson",
         "parameters": [
           {
