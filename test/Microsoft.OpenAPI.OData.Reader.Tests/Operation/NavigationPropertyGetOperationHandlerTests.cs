@@ -41,8 +41,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation);
-            Assert.Equal("Get Trips from People", operation.Summary);
-            Assert.Equal("List trips.", operation.Description);
+            Assert.Equal("List trips.", operation.Summary);
+            Assert.Equal("Retrieve a list of trips.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People.Trip", tag.Name);

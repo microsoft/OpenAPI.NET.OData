@@ -1670,8 +1670,8 @@
         "tags": [
           "Me.Person"
         ],
-        "summary": "Update the ref of navigation property BestFriend in Me",
-        "description": "Update the best friend.",
+        "summary": "Update the best friend.",
+        "description": "Update an instance of a best friend.",
         "operationId": "Me.UpdateRefBestFriend",
         "consumes": [
           "application/json"
@@ -8539,8 +8539,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Get Trips from Me",
-        "description": "List trips.",
+        "summary": "List trips.",
+        "description": "Retrieve a list of trips.",
         "operationId": "Me.ListTrips",
         "parameters": [
           {
@@ -8640,8 +8640,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Create new navigation property to Trips for Me",
-        "description": "Create a trip.",
+        "summary": "Create a trip.",
+        "description": "Create a new trip.",
         "operationId": "Me.CreateTrips",
         "consumes": [
           "application/json"
@@ -8687,8 +8687,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Get Trips from Me",
-        "description": "Get a trip.",
+        "summary": "Get a trip.",
+        "description": "Retrieve the properties of a trip.",
         "operationId": "Me.GetTrips",
         "produces": [
           "application/json"
@@ -8763,8 +8763,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Update the navigation property Trips in Me",
-        "description": "Update a trip.",
+        "summary": "Update a trip.",
+        "description": "Update an instance of a trip.",
         "operationId": "Me.UpdateTrips",
         "consumes": [
           "application/json"
@@ -8812,8 +8812,8 @@
         "tags": [
           "Me.Trip"
         ],
-        "summary": "Delete navigation property Trips for Me",
-        "description": "Delete a trip.",
+        "summary": "Delete a trip.",
+        "description": "Delete an instance of a trip.",
         "operationId": "Me.DeleteTrips",
         "parameters": [
           {
@@ -9915,8 +9915,8 @@
         "tags": [
           "NewComePeople.Person"
         ],
-        "summary": "Update the ref of navigation property BestFriend in NewComePeople",
-        "description": "Update the best friend.",
+        "summary": "Update the best friend.",
+        "description": "Update an instance of a best friend.",
         "operationId": "NewComePeople.UpdateRefBestFriend",
         "consumes": [
           "application/json"
@@ -15590,8 +15590,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Get Trips from NewComePeople",
-        "description": "List trips.",
+        "summary": "List trips.",
+        "description": "Retrieve a list of trips.",
         "operationId": "NewComePeople.ListTrips",
         "parameters": [
           {
@@ -15692,8 +15692,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Create new navigation property to Trips for NewComePeople",
-        "description": "Create a trip.",
+        "summary": "Create a trip.",
+        "description": "Create a new trip.",
         "operationId": "NewComePeople.CreateTrips",
         "consumes": [
           "application/json"
@@ -15740,8 +15740,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Get Trips from NewComePeople",
-        "description": "Get a trip.",
+        "summary": "Get a trip.",
+        "description": "Retrieve the properties of a trip.",
         "operationId": "NewComePeople.GetTrips",
         "produces": [
           "application/json"
@@ -15817,8 +15817,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Update the navigation property Trips in NewComePeople",
-        "description": "Update a trip.",
+        "summary": "Update a trip.",
+        "description": "Update an instance of a trip.",
         "operationId": "NewComePeople.UpdateTrips",
         "consumes": [
           "application/json"
@@ -15867,8 +15867,8 @@
         "tags": [
           "NewComePeople.Trip"
         ],
-        "summary": "Delete navigation property Trips for NewComePeople",
-        "description": "Delete a trip.",
+        "summary": "Delete a trip.",
+        "description": "Delete an instance of a trip.",
         "operationId": "NewComePeople.DeleteTrips",
         "parameters": [
           {
@@ -17072,8 +17072,8 @@
         "tags": [
           "People.Person"
         ],
-        "summary": "Update the ref of navigation property BestFriend in People",
-        "description": "Update the best friend.",
+        "summary": "Update the best friend.",
+        "description": "Update an instance of a best friend.",
         "operationId": "People.UpdateRefBestFriend",
         "consumes": [
           "application/json"
@@ -24991,8 +24991,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Get Trips from People",
-        "description": "List trips.",
+        "summary": "List trips.",
+        "description": "Retrieve a list of trips.",
         "operationId": "People.ListTrips",
         "parameters": [
           {
@@ -25100,8 +25100,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Create new navigation property to Trips for People",
-        "description": "Create a trip.",
+        "summary": "Create a trip.",
+        "description": "Create a new trip.",
         "operationId": "People.CreateTrips",
         "consumes": [
           "application/json"
@@ -25155,8 +25155,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Get Trips from People",
-        "description": "Get a trip.",
+        "summary": "Get a trip.",
+        "description": "Retrieve the properties of a trip.",
         "operationId": "People.GetTrips",
         "produces": [
           "application/json"
@@ -25239,8 +25239,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Update the navigation property Trips in People",
-        "description": "Update a trip.",
+        "summary": "Update a trip.",
+        "description": "Update an instance of a trip.",
         "operationId": "People.UpdateTrips",
         "consumes": [
           "application/json"
@@ -25296,8 +25296,8 @@
         "tags": [
           "People.Trip"
         ],
-        "summary": "Delete navigation property Trips for People",
-        "description": "Delete a trip.",
+        "summary": "Delete a trip.",
+        "description": "Delete an instance of a trip.",
         "operationId": "People.DeleteTrips",
         "parameters": [
           {

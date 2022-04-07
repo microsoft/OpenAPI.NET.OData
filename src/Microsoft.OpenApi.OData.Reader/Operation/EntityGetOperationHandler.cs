@@ -39,13 +39,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Get entity from " + EntitySet.Name + " by key";
-
             IEdmEntityType entityType = EntitySet.EntityType();
 
             // Description
-            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(entityType);
+            string placeHolder = "Get entity from " + EntitySet.Name + " by key";
+            operation.Summary = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
+            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -132,7 +131,7 @@ namespace Microsoft.OpenApi.OData.Operation
         }
 
         protected override void SetSecurity(OpenApiOperation operation)
-        {            
+        {
             if (ReadRestrictions == null)
             {
                 return;

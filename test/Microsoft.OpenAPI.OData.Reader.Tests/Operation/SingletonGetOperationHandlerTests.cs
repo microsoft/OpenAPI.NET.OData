@@ -30,7 +30,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             string annotation = @"
         <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
           <Record>
-            <PropertyValue Property=""Description"" String=""Get the signed-in user."" />            
+            <PropertyValue Property=""Description"" String=""List users."" />            
+            <PropertyValue Property=""LongDescription"" String=""Retrieve a list of user objects."" />            
           </Record>
         </Annotation>";
             IEdmModel model = GetEdmModel(annotation);
@@ -47,8 +48,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(get);
-            Assert.Equal("Get Me", get.Summary);
-            Assert.Equal("Get the signed-in user.", get.Description);
+            Assert.Equal("List users.", get.Summary);
+            Assert.Equal("Retrieve a list of user objects.", get.Description);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
             Assert.Equal("Me.Customer", tag.Name);

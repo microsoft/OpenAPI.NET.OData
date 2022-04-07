@@ -36,7 +36,8 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(put);
-		Assert.Equal("Update property BillingAddress value.", put.Summary);
+		Assert.Equal("Update the BillingAddress.", put.Summary);
+		Assert.Equal("Update the BillingAddress value.", put.Description);
 
 		Assert.NotNull(put.Parameters);
 		Assert.Equal(1, put.Parameters.Count); //id
@@ -63,7 +64,7 @@ public class ComplexPropertyPutOperationHandlerTests
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
 		var entitySet = model.EntityContainer.FindEntitySet("Customers");
 		var entity = entitySet.EntityType();
-		var property = entity.FindProperty("AlternativeAddresses");
+		var property = entity.FindProperty("BillingAddress");
 		var settings = new OpenApiConvertSettings
 		{
 			EnableOperationId = enableOperationId
@@ -76,7 +77,8 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		// Assert
 		Assert.NotNull(put);
-		Assert.Equal("Update property AlternativeAddresses value.", put.Summary);
+		Assert.Equal("Update the BillingAddress.", put.Summary);
+		Assert.Equal("Update the BillingAddress value.", put.Description);
 
 		Assert.NotNull(put.Parameters);
 		Assert.Equal(1, put.Parameters.Count); //id
@@ -87,7 +89,7 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		if (enableOperationId)
 		{
-			Assert.Equal("AlternativeAddresses.Address.UpdateAddress", put.OperationId);
+			Assert.Equal("BillingAddress.Address.UpdateAddress", put.OperationId);
 		}
 		else
 		{

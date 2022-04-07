@@ -25,8 +25,12 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Get ref of " + NavigationProperty.Name + " from " + NavigationSource.Name;
+            // Summary and Description
+            ReadRestrictionsType readRestriction = Restriction?.ReadRestrictions;
+            string placeHolder = "Get ref of " + NavigationProperty.Name + " from " + NavigationSource.Name;
+            operation.Summary = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.Description : readRestriction?.Description) ?? placeHolder;
+            operation.Description = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.LongDescription : readRestriction?.LongDescription)
+                ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -39,11 +43,6 @@ namespace Microsoft.OpenApi.OData.Operation
 
                 operation.OperationId = GetOperationId(prefix);
             }
-
-            // Description
-            ReadRestrictionsType readRestriction = Restriction?.ReadRestrictions;
-            operation.Description = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.Description : readRestriction?.Description)
-                ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
         }
 
         protected override void SetExtensions(OpenApiOperation operation)

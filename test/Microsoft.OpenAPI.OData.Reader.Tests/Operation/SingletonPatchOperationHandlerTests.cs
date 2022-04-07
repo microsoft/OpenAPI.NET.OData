@@ -28,6 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
           <Record>
             <PropertyValue Property=""Description"" String=""Update the signed-in user."" />            
+            <PropertyValue Property=""LongDescription"" String=""Update the signed-in user."" />            
           </Record>
         </Annotation>";
             IEdmModel model = SingletonGetOperationHandlerTests.GetEdmModel(annotation);
@@ -44,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(patch);
-            Assert.Equal("Update Me", patch.Summary);
+            Assert.Equal("Update the signed-in user.", patch.Summary);
             Assert.Equal("Update the signed-in user.", patch.Description);
             Assert.NotNull(patch.Tags);
             var tag = Assert.Single(patch.Tags);

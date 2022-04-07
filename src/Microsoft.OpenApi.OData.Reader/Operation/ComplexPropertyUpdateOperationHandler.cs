@@ -31,11 +31,10 @@ internal abstract class ComplexPropertyUpdateOperationHandler : ComplexPropertyB
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
     {
-        // Summary
-        operation.Summary = $"Update property {ComplexPropertySegment.Property.Name} value.";
-
-        // Description
-        operation.Description = UpdateRestrictions?.Description;
+        // Summary and Description
+        string placeHolder = $"Update property {ComplexPropertySegment.Property.Name} value.";
+        operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
+        operation.Description = UpdateRestrictions?.LongDescription;
 
         // OperationId
         if (Context.Settings.EnableOperationId)

@@ -42,8 +42,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(operation);
-            Assert.Equal("Create new navigation property ref to Trips for People", operation.Summary);
-            Assert.Equal("Create a trip.", operation.Description);
+            Assert.Equal("Create a trip.", operation.Summary);
+            Assert.Equal("Create a new trip.", operation.Description);
             Assert.NotNull(operation.Tags);
             var tag = Assert.Single(operation.Tags);
             Assert.Equal("People.Trip", tag.Name);

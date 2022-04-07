@@ -43,8 +43,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(get);
-            Assert.Equal("Get entities from " + entitySet.Name, get.Summary);
-            Assert.Equal("List customers.", get.Description);
+            Assert.Equal("List customers.", get.Summary);
+            Assert.Equal("Returns a list of customers.", get.Description);
             Assert.NotNull(get.Tags);
             var tag = Assert.Single(get.Tags);
             Assert.Equal("Customers.Customer", tag.Name);
@@ -340,17 +340,20 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
                 <Record>
                     <PropertyValue Property=""Description"" String=""Get the BillingAddress."" />            
+                    <PropertyValue Property=""LongDescription"" String=""Get the BillingAddress value."" />            
                 </Record>
             </Annotation>
             <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
                 <Record>
                     <PropertyValue Property=""Description"" String=""Update the BillingAddress."" />            
+                    <PropertyValue Property=""LongDescription"" String=""Update the BillingAddress value."" />            
                 </Record>
             </Annotation>            
         </Property>
         <Property Name=""MailingAddress"" Type=""NS.Address"" Nullable=""false"" />
         <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"">
-            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The AlternativeAddresses."" />            
+            <Annotation Term=""Org.OData.Core.V1.Description"" String=""The AlternativeAddresses."" />           
+            <Annotation Term=""Org.OData.Core.V1.LongDescription"" String=""The AlternativeAddresses value."" />           
         </Property>
       </EntityType>
       <EntityContainer Name =""Default"">
@@ -365,21 +368,25 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         <Annotation Term=""Org.OData.Capabilities.V1.ReadRestrictions"">
           <Record>
             <PropertyValue Property=""Description"" String=""List customers."" />
+            <PropertyValue Property=""LongDescription"" String=""Returns a list of customers."" />
             <PropertyValue Property=""ReadByKeyRestrictions"">
               <Record>
-                <PropertyValue Property=""Description"" String=""Get a customer."" />
+                <PropertyValue Property=""Description"" String=""Get customer."" />
+                <PropertyValue Property=""LongDescription"" String=""Returns a single customer."" />
               </Record>
             </PropertyValue>
           </Record>
         </Annotation>
         <Annotation Term=""Org.OData.Capabilities.V1.UpdateRestrictions"">
           <Record>
-            <PropertyValue Property=""Description"" String=""Update a customer."" />            
+            <PropertyValue Property=""Description"" String=""Update customer."" />            
+            <PropertyValue Property=""LongDescription"" String=""Updates a single customer."" />            
           </Record>
         </Annotation>
         <Annotation Term=""Org.OData.Capabilities.V1.DeleteRestrictions"">
           <Record>
-            <PropertyValue Property=""Description"" String=""Delete a customer."" />            
+            <PropertyValue Property=""Description"" String=""Delete customer."" />            
+            <PropertyValue Property=""LongDescription"" String=""Deletes a single customer."" />            
           </Record>
         </Annotation>
       </Annotations>

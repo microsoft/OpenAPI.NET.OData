@@ -40,8 +40,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Get entities from " + EntitySet.Name;
+            // Summary and Descriptions
+            string placeHolder = "Get entities from " + EntitySet.Name;
+            operation.Summary = ReadRestrictions?.Description ?? placeHolder;
+            operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(EntitySet);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -49,9 +51,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = EntitySet.EntityType().Name;
                 operation.OperationId = EntitySet.Name + "." + typeName + ".List" + Utils.UpperFirstChar(typeName);
             }
-
-            // Description            
-            operation.Description = ReadRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(EntitySet);
         }
 
         protected override void SetExtensions(OpenApiOperation operation)

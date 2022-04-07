@@ -39,8 +39,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary, this summary maybe update in the base function call.
-            operation.Summary = "Update " + Singleton.Name;
+            // Summary and Descriptions
+            string placeHolder = "Update " + Singleton.Name;
+            operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
+            operation.Description = UpdateRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -48,9 +50,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string typeName = Singleton.EntityType().Name;
                 operation.OperationId = Singleton.Name + "." + typeName + ".Update" + Utils.UpperFirstChar(typeName);
             }
-
-            // Description
-            operation.Description = UpdateRestrictions?.Description ?? Context.Model.GetDescriptionAnnotation(Singleton);
         }
 
         /// <inheritdoc/>
@@ -97,7 +96,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true);
+            operation.AddErrorResponses(Context.Settings, true);
             base.SetResponses(operation);
         }
 

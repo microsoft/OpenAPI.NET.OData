@@ -25,8 +25,10 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
-            // Summary
-            operation.Summary = "Create new navigation property to " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            // Summary and Description
+            string placeHolder = "Create new navigation property to " + NavigationProperty.Name + " for " + NavigationSource.Name;
+            operation.Summary = Restriction?.InsertRestrictions?.Description ?? placeHolder;
+            operation.Description = Restriction?.InsertRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -34,9 +36,6 @@ namespace Microsoft.OpenApi.OData.Operation
                 string prefix = "Create";
                 operation.OperationId = GetOperationId(prefix);
             }
-
-            // Description
-            operation.Description = Restriction?.InsertRestrictions?.Description;
 
             base.SetBasicInfo(operation);
         }

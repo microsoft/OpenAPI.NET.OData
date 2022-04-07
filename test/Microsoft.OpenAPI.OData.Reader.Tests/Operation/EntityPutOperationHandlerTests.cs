@@ -36,8 +36,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             // Assert
             Assert.NotNull(putOperation);
-            Assert.Equal("Update entity in Customers", putOperation.Summary);
-            Assert.Equal("Update a customer.", putOperation.Description);
+            Assert.Equal("Update customer.", putOperation.Summary);
+            Assert.Equal("Updates a single customer.", putOperation.Description);
             Assert.NotNull(putOperation.Tags);
             var tag = Assert.Single(putOperation.Tags);
             Assert.Equal("Customers.Customer", tag.Name);
