@@ -187,6 +187,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 string mediaType = Constants.ApplicationJsonMediaType;
                 if (operation.ReturnType.AsPrimitive()?.PrimitiveKind() == EdmPrimitiveTypeKind.Stream)
                 {
+                    // Responses of types Edm.Stream should be Octet-Stream
                     mediaType = Constants.ApplicationOctetStreamMediaType;
                 }
 

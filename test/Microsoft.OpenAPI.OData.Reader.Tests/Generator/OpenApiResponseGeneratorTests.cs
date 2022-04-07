@@ -247,6 +247,32 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             }
         }
 
+        [Fact]
+        public void CreateResponseForEdmFunctionOfStreamReturnTypeReturnsCorrectResponse()
+        {
+            // Arrange
+            string operationName = "getMailboxUsageStorage";
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model);
+
+            // Act
+            OpenApiResponses responses;
+            IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == operationName);
+            Assert.NotNull(operation); // guard
+            ODataPath path = new(new ODataOperationSegment(operation));
+            responses = context.CreateResponses(operation, path);
+
+            // Assert
+            Assert.NotNull(responses);
+            Assert.NotEmpty(responses);
+            Assert.Equal(2, responses.Count);
+            Assert.Equal(new string[] { "200", "default" }, responses.Select(r => r.Key));
+
+            OpenApiResponse response = responses["200"];
+            Assert.NotNull(response.Content);
+            OpenApiMediaType mediaType = response.Content["application/octet-stream"];
+        }
+
         [Theory]
         [InlineData("ShareTrip", false, "204")]
         [InlineData("ResetDataSource", true, "204")]
