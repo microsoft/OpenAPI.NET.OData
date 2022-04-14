@@ -102,8 +102,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         [InlineData(true, false, false, 7)]
         [InlineData(false, true, false, 5)]
         [InlineData(false, true, true, 4)]
-        [InlineData(true, true, true, 5)]
-        [InlineData(true, true, false, 5)]
+        [InlineData(true, true, true, 8)]
+        [InlineData(true, true, false, 8)]
         public void GetOperationPathsForModelWithDerivedTypesConstraint(bool addAnnotation, bool getNavPropModel, bool requireConstraint, int expectedCount)
         {
             // Arrange
@@ -122,7 +122,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             Assert.NotNull(paths);
             Assert.Equal(expectedCount, paths.Count());
             var dollarCountPathsWithCastSegment = paths.Where(x => x.Kind == ODataPathKind.DollarCount && x.Any(y => y.Kind == ODataSegmentKind.TypeCast));
-            if(addAnnotation && !getNavPropModel)
+            if(addAnnotation)
               Assert.Single(dollarCountPathsWithCastSegment);
             else
               Assert.Empty(dollarCountPathsWithCastSegment);
