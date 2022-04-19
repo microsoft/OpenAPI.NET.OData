@@ -548,10 +548,16 @@ namespace Microsoft.OpenApi.OData.Edm
                                 .OfType<IEdmStructuredType>()
                                 .ToArray();
 
-            foreach(var targetType in targetTypes) 
+            foreach(var targetType in targetTypes)
             {
                 var castPath = currentPath.Clone();
-                castPath.Push(new ODataTypeCastSegment(targetType));
+                var targetTypeSegment = new ODataTypeCastSegment(targetType);
+                if (castPath.Segments.FirstOrDefault(x => x.Identifier.Equals(targetTypeSegment.Identifier)) != null)
+                {
+                    continue;
+                }
+
+                castPath.Push(targetTypeSegment);
                 AppendPath(castPath);
                 if(targetsMany) 
                 {
