@@ -559,7 +559,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    foreach(var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                    foreach (var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
                     {
                         RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
                     }
