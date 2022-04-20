@@ -552,10 +552,6 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 var castPath = currentPath.Clone();
                 var targetTypeSegment = new ODataTypeCastSegment(targetType);
-                if (castPath.Segments.FirstOrDefault(x => x.Identifier.Equals(targetTypeSegment.Identifier)) != null)
-                {
-                    continue;
-                }
 
                 castPath.Push(targetTypeSegment);
                 AppendPath(castPath);
@@ -565,10 +561,13 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    foreach (var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                    if (convertSettings.ExpandDerivedTypesNavigationProperties)
                     {
-                        RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
-                    }
+                        foreach (var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                        {
+                            RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
+                        }
+                    }                        
                 }
             }
         }
