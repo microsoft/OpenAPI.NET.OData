@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -184,13 +184,20 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema = context.CreateEdmTypeSchema(operation.ReturnType);
                 }
 
+                string mediaType = Constants.ApplicationJsonMediaType;
+                if (operation.ReturnType.AsPrimitive()?.PrimitiveKind() == EdmPrimitiveTypeKind.Stream)
+                {
+                    // Responses of types Edm.Stream should be application/octet-stream
+                    mediaType = Constants.ApplicationOctetStreamMediaType;
+                }
+
                 OpenApiResponse response = new()
                 {
                     Description = "Success",
                     Content = new Dictionary<string, OpenApiMediaType>
                     {
                         {
-                            Constants.ApplicationJsonMediaType,
+                            mediaType,
                             new OpenApiMediaType
                             {
                                 Schema = schema
