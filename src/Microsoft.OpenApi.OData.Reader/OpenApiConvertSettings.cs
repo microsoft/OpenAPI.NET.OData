@@ -204,6 +204,11 @@ namespace Microsoft.OpenApi.OData
         public bool RequireDerivedTypesConstraintForODataTypeCastSegments { get; set; } = true;
 
         /// <summary>
+        /// Gets/Sets a value indicating whether or not to expand derived types to retrieve their declared navigation properties.
+        /// </summary>
+        public bool ExpandDerivedTypesNavigationProperties { get; set; } = true;
+
+        /// <summary>
         /// Gets/sets a value indicating whether or not to set the deprecated tag for the operation when a revision is present as well as the "x-ms-deprecation" extension with additional information.
         /// </summary>
         public bool EnableDeprecationInformation { get; set; } = true;
@@ -275,7 +280,8 @@ namespace Microsoft.OpenApi.OData
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
-                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths
+                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
+                ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties
             };
 
             return newSettings;
