@@ -3,9 +3,15 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -46,6 +52,26 @@ namespace Microsoft.OpenApi.OData.PathItem
             if (delete == null || delete.IsDeletable)
             {
                 AddOperation(item, OperationType.Delete);
+            }
+        }
+
+        protected override void SetExtensions(OpenApiPathItem pathItem)
+        {
+            base.SetExtensions(pathItem);
+
+            // Retrieve custom attributes, if present
+            Dictionary<string, string> atrributesValueMap = 
+                Context.Model.GetCustomXMLAtrributesValueMapping(EntitySet.EntityType(), Context.Settings.CustomXMLAttributesMapping);
+
+            if (atrributesValueMap?.Any() ?? false)
+            {
+                foreach (var item in atrributesValueMap)
+                {
+                    if (!pathItem.Extensions.ContainsKey(item.Key))
+                    {
+                        pathItem.Extensions.Add(item.Key, new OpenApiString(item.Value));
+                    }                    
+                }
             }
         }
     }
