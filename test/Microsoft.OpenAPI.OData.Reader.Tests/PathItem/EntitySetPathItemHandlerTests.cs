@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -153,15 +154,38 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
         }
 
-        public static IEdmModel GetEdmModel(string annotation, string target = "\"NS.Default/Customers\"")
+        [Fact]
+        private void CreateEntitySetPathItemAddsCustomAttributeValuesToPathExtension()
         {
-            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+            // Arrange
+            IEdmModel model = GetEdmModel(annotation: "");
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping.Add("ags:IsHidden", "x-ms-isHidden");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = new(new ODataNavigationSourceSegment(entitySet));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Extensions);
+
+            pathItem.Extensions.TryGetValue("x-ms-isHidden", out var value);
+            string isHiddenValue = (value as OpenApiString)?.Value;
+            Assert.Equal("true", isHiddenValue);
+        }
+
+        public static IEdmModel GetEdmModel(string annotation, string target = "\"NS.Default/Customers\"", string customXMLAttribute = null)
+        {
+            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
   <edmx:DataServices>
-    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
       <ComplexType Name=""Address"">
         <Property Name=""City"" Type=""Edm.String"" />
       </ComplexType>
-      <EntityType Name=""Customer"">
+      <EntityType Name=""Customer"" ags:IsOwner=""true"" ags:IsHidden=""true"">
         <Key>
           <PropertyRef Name=""ID"" />
         </Key>
@@ -171,7 +195,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""Default"">
-         <EntitySet Name=""Customers"" EntityType=""NS.Customer"" />
+         <EntitySet Name=""Customers"" EntityType=""NS.Customer"" ags:IsHidden=""true""/>
       </EntityContainer>
       <Annotations Target={0}>
         {1}
