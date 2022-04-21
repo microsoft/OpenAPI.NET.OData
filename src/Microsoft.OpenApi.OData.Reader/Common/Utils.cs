@@ -6,6 +6,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 
@@ -129,6 +131,40 @@ namespace Microsoft.OpenApi.OData.Common
                 || s is ODataStreamContentSegment || s is ODataStreamPropertySegment)).Select(e => e.Identifier));
 
             return navigationPropertyName == null ? value : $"{value}/{navigationPropertyName}";
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="element"></param>
+        /// <param name="customXMLAttributesMapping"></param>
+        /// <returns></returns>
+        internal static Dictionary<string, string> GetCustomXMLAtrributesValueMapping(this IEdmModel model, IEdmElement element, Dictionary<string, string> customXMLAttributesMapping)
+        {
+            Dictionary<string, string> atrributesValueMap = new();
+
+            if (!customXMLAttributesMapping?.Any() ?? true)
+            {
+                return atrributesValueMap;
+            }
+
+            foreach (var item in customXMLAttributesMapping)
+            {
+                string attributeName = item.Key.Split(':').Last(); // example, ags:IsHidden --> IsHidden
+                string extensionName = item.Value;
+                EdmStringConstant customXMLAttribute = model.DirectValueAnnotationsManager.GetDirectValueAnnotations(element)?
+                                .Where(x => x.Name.Equals(attributeName, StringComparison.OrdinalIgnoreCase))?
+                                .FirstOrDefault()?.Value as EdmStringConstant;
+                string attributeValue = customXMLAttribute?.Value;
+
+                if (!atrributesValueMap.ContainsKey(extensionName) && !string.IsNullOrEmpty(attributeValue))
+                {
+                    atrributesValueMap.Add(extensionName, attributeValue);
+                }             
+            }
+
+            return atrributesValueMap;
         }
     }
 }

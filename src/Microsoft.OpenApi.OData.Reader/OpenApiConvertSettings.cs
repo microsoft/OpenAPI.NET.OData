@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Extensions;
@@ -236,6 +237,11 @@ namespace Microsoft.OpenApi.OData
         /// Gets/Sets a value indicating whether or not to use restrictions annotations to generate paths for complex properties.
         /// </summary>
         public bool RequireRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;
+
+        /// <summary>
+        /// Gets/sets a dictionary containing a mapping of custom atttribute names and extension names.
+        /// </summary>
+        public Dictionary<string, string> CustomXMLAttributesMapping { get; set; } = new();
 
         internal OpenApiConvertSettings Clone()
         {
