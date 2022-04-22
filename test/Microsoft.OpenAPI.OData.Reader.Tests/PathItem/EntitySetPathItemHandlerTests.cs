@@ -181,7 +181,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
   <edmx:DataServices>
-    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <ComplexType Name=""Address"">
         <Property Name=""City"" Type=""Edm.String"" />
       </ComplexType>
@@ -192,7 +192,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
         <Property Name=""BillingAddress"" Type=""NS.Address"" />
         <Property Name=""MailingAddress"" Type=""NS.Address"" Nullable=""false"" />
-        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"" />
+        <Property Name=""AlternativeAddresses"" Type=""Collection(NS.Address)"" Nullable=""false"" ags:IsHidden=""true""/>
       </EntityType>
       <EntityContainer Name =""Default"">
          <EntitySet Name=""Customers"" EntityType=""NS.Customer"" ags:IsHidden=""true""/>

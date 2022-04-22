@@ -521,7 +521,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         {
             const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
   <edmx:DataServices>
-    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
+    <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""Customer"">
         <Key>
           <PropertyRef Name=""ID"" />
