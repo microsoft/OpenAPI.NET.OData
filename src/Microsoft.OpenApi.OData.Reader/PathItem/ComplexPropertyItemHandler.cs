@@ -65,4 +65,10 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 		ODataComplexPropertySegment navigationSourceSegment = path.LastSegment as ODataComplexPropertySegment;
 		ComplexProperty = navigationSourceSegment.Property;
 	}
+
+	/// <inheritdoc/>
+	protected override void SetExtensions(OpenApiPathItem item)
+	{
+		AddCustomAtributesToPathExtension(item, ComplexProperty);
+	}
 }

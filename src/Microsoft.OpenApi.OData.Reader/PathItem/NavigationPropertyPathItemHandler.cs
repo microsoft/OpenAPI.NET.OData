@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
@@ -243,20 +242,9 @@ namespace Microsoft.OpenApi.OData.PathItem
 
                 item.Extensions.Add(Constants.xMsDosGroupPath, array);
 
-                // Retrieve custom attributes, if present
-                Dictionary<string, string> atrributesValueMap =
-                Context.Model.GetCustomXMLAtrributesValueMapping(NavigationProperty, Context.Settings.CustomXMLAttributesMapping);
+                base.SetExtensions(item);
 
-                if (atrributesValueMap?.Any() ?? false)
-                {
-                    foreach (var kvPair in atrributesValueMap)
-                    {
-                        if (!item.Extensions.ContainsKey(kvPair.Key))
-                        {
-                            item.Extensions.Add(kvPair.Key, new OpenApiString(kvPair.Value));
-                        }
-                    }
-                }
+                AddCustomAtributesToPathExtension(item, NavigationProperty);                               
             }
         }
         /// <inheritdoc/>

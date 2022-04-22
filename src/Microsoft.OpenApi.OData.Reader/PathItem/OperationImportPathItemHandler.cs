@@ -64,5 +64,11 @@ namespace Microsoft.OpenApi.OData.PathItem
             base.SetBasicInfo(pathItem);
             pathItem.Description = $"Provides operations to call the {EdmOperationImport.Name} method.";
         }
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiPathItem item)
+        {
+            AddCustomAtributesToPathExtension(item, EdmOperationImport);
+        }
     }
 }

@@ -4,14 +4,9 @@
 // ------------------------------------------------------------
 
 using Microsoft.OData.Edm;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Microsoft.OpenApi.OData.PathItem
 {
@@ -60,24 +55,11 @@ namespace Microsoft.OpenApi.OData.PathItem
             pathItem.Description = $"Provides operations to manage the collection of {EntitySet.EntityType().Name} entities.";
         }
 
+        /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem pathItem)
         {
             base.SetExtensions(pathItem);
-
-            // Retrieve custom attributes, if present
-            Dictionary<string, string> atrributesValueMap = 
-                Context.Model.GetCustomXMLAtrributesValueMapping(EntitySet, Context.Settings.CustomXMLAttributesMapping);
-
-            if (atrributesValueMap?.Any() ?? false)
-            {               
-                foreach (var item in atrributesValueMap)
-                {
-                    if (!pathItem.Extensions.ContainsKey(item.Key))
-                    {
-                        pathItem.Extensions.Add(item.Key, new OpenApiString(item.Value));
-                    }
-                }
-            }
+            AddCustomAtributesToPathExtension(pathItem, EntitySet);            
         }
     }
 }
