@@ -127,6 +127,70 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
+        public void CreateStructuredTypePropertiesSchemaWithCustomAttributeReturnsCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping.Add("IsHidden", "x-ms-isHidden");
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "userSettings");
+            Assert.NotNull(entity); // Guard
+
+            // Act
+            OpenApiSchema schema = context.CreateStructuredTypeSchema(entity);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""allOf"": [
+    {
+      ""$ref"": ""#/components/schemas/microsoft.graph.entity""
+    },
+    {
+      ""title"": ""userSettings"",
+      ""type"": ""object"",
+      ""properties"": {
+        ""contributionToContentDiscoveryAsOrganizationDisabled"": {
+          ""type"": ""boolean"",
+          ""x-ms-isHidden"": ""true""
+        },
+        ""contributionToContentDiscoveryDisabled"": {
+          ""type"": ""boolean"",
+          ""x-ms-isHidden"": ""true""
+        },
+        ""itemInsights"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
+            }
+          ],
+          ""nullable"": true,
+          ""x-ms-isHidden"": ""true""
+        },
+        ""regionalAndLanguageSettings"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
+            }
+          ],
+          ""nullable"": true
+        },
+        ""shiftPreferences"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
+            }
+          ],
+          ""nullable"": true
+        }
+      }
+    }
+  ]
+}".ChangeLineBreaks(), json);
+        }
+
+        [Fact]
         public void CreateComplexTypeWithoutBaseSchemaReturnCorrectSchema()
         {
             // Arrange
