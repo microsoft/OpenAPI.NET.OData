@@ -327,9 +327,10 @@ namespace Microsoft.OpenApi.OData.Generator
             // structure properties
             foreach (var property in structuredType.DeclaredStructuralProperties())
             {
-                // OpenApiSchema propertySchema = property.Type.CreateSchema();
-                // propertySchema.Default = property.DefaultValueString != null ? new OpenApiString(property.DefaultValueString) : null;
-                properties.Add(property.Name, context.CreatePropertySchema(property));
+                OpenApiSchema propertySchema = context.CreatePropertySchema(property);
+                propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
+                propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
+                properties.Add(property.Name, propertySchema);
             }
 
             // navigation properties
@@ -337,6 +338,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
+                propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
                 properties.Add(property.Name, propertySchema);
             }
 
