@@ -32,10 +32,18 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
         }
     }
     private IEdmStructuredType StructuredType { get; set; }
+
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiPathItem pathItem)
     {
         base.SetBasicInfo(pathItem);
         pathItem.Description = $"Casts the previous resource to {(StructuredType as IEdmNamedElement).Name}.";
+    }
+
+    /// <inheritdoc/>
+    protected override void SetExtensions(OpenApiPathItem pathItem)
+    {
+        base.SetExtensions(pathItem);
+        AddCustomAtributesToPathExtension(pathItem, StructuredType);
     }
 }

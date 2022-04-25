@@ -215,7 +215,7 @@
         <NavigationProperty Name="From" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
         <NavigationProperty Name="To" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
       </EntityType>
-      <EntityType Name="Employee" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
+      <EntityType Name="Employee" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" ags:IsHidden="true" ags:WorkloadName="People">
         <Property Name="Cost" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="Peers" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" >
 			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
