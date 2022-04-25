@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -61,7 +62,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         protected override void SetExtensions(OpenApiPathItem pathItem)
         {
             base.SetExtensions(pathItem);
-            AddCustomAtributesToPathExtension(pathItem, Singleton);            
+            pathItem.Extensions.AddCustomAtributesToExtensions(Context, Singleton);            
         }
     }
 }

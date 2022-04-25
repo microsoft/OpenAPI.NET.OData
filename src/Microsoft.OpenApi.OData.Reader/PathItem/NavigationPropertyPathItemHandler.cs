@@ -244,7 +244,7 @@ namespace Microsoft.OpenApi.OData.PathItem
 
                 base.SetExtensions(item);
 
-                AddCustomAtributesToPathExtension(item, NavigationProperty);                               
+                item.Extensions.AddCustomAtributesToExtensions(Context, NavigationProperty);
             }
         }
         /// <inheritdoc/>

@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -69,6 +70,6 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 	/// <inheritdoc/>
 	protected override void SetExtensions(OpenApiPathItem item)
 	{
-		AddCustomAtributesToPathExtension(item, ComplexProperty);
+		item.Extensions.AddCustomAtributesToExtensions(Context, ComplexProperty);
 	}
 }

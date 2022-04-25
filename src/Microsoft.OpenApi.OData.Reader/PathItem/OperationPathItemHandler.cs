@@ -94,7 +94,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                 item.Extensions.Add(Constants.xMsDosGroupPath, array);
             }
 
-            AddCustomAtributesToPathExtension(item, EdmOperation);            
+            item.Extensions.AddCustomAtributesToExtensions(Context, EdmOperation);            
         }
 
         /// <inheritdoc/>

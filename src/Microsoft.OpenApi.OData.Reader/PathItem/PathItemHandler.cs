@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
@@ -121,35 +122,6 @@ namespace Microsoft.OpenApi.OData.PathItem
             foreach (var parameter in Path.CreatePathParameters(Context))
             {
                 item.Parameters.AppendParameter(parameter);
-            }
-        }
-
-        /// <summary>
-        /// Retrieve custom attributes annotated on the provided element and
-        /// appends their values to the custom extension values provided in the
-        /// CustomXMLAttributesMapping dictionary setting.
-        /// </summary>
-        /// <param name="item">The path item.</param>
-        /// <param name="element">The target element.</param>
-        protected virtual void AddCustomAtributesToPathExtension(OpenApiPathItem item, IEdmElement element)
-        {
-            if (item == null || element == null)
-            {
-                return;
-            }
-
-            Dictionary<string, string> atrributesValueMap =
-                Context.Model.GetCustomXMLAtrributesValueMapping(element, Context.Settings.CustomXMLAttributesMapping);
-
-            if (atrributesValueMap?.Any() ?? false)
-            {
-                foreach (var kvPair in atrributesValueMap)
-                {
-                    if (!item.Extensions.ContainsKey(kvPair.Key))
-                    {
-                        item.Extensions.Add(kvPair.Key, new OpenApiString(kvPair.Value));
-                    }
-                }
             }
         }
     }

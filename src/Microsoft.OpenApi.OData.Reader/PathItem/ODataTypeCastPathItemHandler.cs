@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.PathItem;
@@ -44,6 +45,6 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
     protected override void SetExtensions(OpenApiPathItem pathItem)
     {
         base.SetExtensions(pathItem);
-        AddCustomAtributesToPathExtension(pathItem, StructuredType);
+        pathItem.Extensions.AddCustomAtributesToExtensions(Context, StructuredType);
     }
 }

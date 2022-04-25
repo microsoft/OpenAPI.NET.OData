@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -58,6 +59,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataOperationImportSegment operationImportSegment = path.FirstSegment as ODataOperationImportSegment;
             EdmOperationImport = operationImportSegment.OperationImport;
         }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
@@ -68,7 +70,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem item)
         {
-            AddCustomAtributesToPathExtension(item, EdmOperationImport);
+            item.Extensions.AddCustomAtributesToExtensions(Context, EdmOperationImport);
         }
     }
 }
