@@ -151,7 +151,7 @@ namespace Microsoft.OpenApi.OData.Common
 
             foreach (var item in customXMLAttributesMapping)
             {
-                string attributeName = item.Key.Split(':').Last(); // example, ags:IsHidden --> IsHidden
+                string attributeName = item.Key.Split(':').Last(); // example, 'ags:IsHidden' --> 'IsHidden'
                 string extensionName = item.Value;
                 EdmStringConstant customXMLAttribute = model.DirectValueAnnotationsManager.GetDirectValueAnnotations(element)?
                                 .Where(x => x.Name.Equals(attributeName, StringComparison.OrdinalIgnoreCase))?
