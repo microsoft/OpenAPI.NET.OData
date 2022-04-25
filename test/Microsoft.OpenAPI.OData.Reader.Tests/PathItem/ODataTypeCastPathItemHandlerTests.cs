@@ -18,7 +18,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         private readonly ODataTypeCastPathItemHandler _pathItemHandler = new();
 
         [Fact]
-        private void CreateODataTypeCastPathItemAddsCustomAttributeValuesToPathExtension()
+        public void CreateODataTypeCastPathItemAddsCustomAttributeValuesToPathExtensions()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;

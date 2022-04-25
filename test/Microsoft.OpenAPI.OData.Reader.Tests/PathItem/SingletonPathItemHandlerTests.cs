@@ -136,7 +136,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Fact]
-        private void CreateSingletonPathItemAddsCustomAttributeValuesToPathExtension()
+        public void CreateSingletonPathItemAddsCustomAttributeValuesToPathExtensions()
         {
             // Arrange
             IEdmModel model = GetEdmModel(annotation: "");

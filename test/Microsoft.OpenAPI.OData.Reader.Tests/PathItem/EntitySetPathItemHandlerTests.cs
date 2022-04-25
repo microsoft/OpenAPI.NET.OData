@@ -155,7 +155,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Fact]
-        private void CreateEntitySetPathItemAddsCustomAttributeValuesToPathExtension()
+        public void CreateEntitySetPathItemAddsCustomAttributeValuesToPathExtensions()
         {
             // Arrange
             IEdmModel model = GetEdmModel(annotation: "");

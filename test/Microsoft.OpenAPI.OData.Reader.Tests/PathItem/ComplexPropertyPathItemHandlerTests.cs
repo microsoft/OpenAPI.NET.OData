@@ -183,7 +183,7 @@ public class ComplexPropertyPathItemHandlerTests
 		}		
 	}
 	[Fact]
-	private void CreateComplexPropertyPathItemAddsCustomAttributeValuesToPathExtension()
+	public void CreateComplexPropertyPathItemAddsCustomAttributeValuesToPathExtensions()
     {
 		// Arrange
 		var model = EntitySetPathItemHandlerTests.GetEdmModel("");

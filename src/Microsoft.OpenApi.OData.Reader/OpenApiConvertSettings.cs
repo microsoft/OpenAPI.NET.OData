@@ -281,7 +281,8 @@ namespace Microsoft.OpenApi.OData
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
-                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths
+                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
+                CustomXMLAttributesMapping = this.CustomXMLAttributesMapping
             };
 
             return newSettings;

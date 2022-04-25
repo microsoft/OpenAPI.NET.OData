@@ -70,6 +70,7 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiPathItem item)
         {
+            base.SetExtensions(item);
             item.Extensions.AddCustomAtributesToExtensions(Context, EdmOperationImport);
         }
     }

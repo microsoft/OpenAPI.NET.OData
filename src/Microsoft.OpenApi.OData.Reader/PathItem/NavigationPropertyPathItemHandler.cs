@@ -240,12 +240,11 @@ namespace Microsoft.OpenApi.OData.PathItem
                     array.Add(new OpenApiString(p.GetPathItemName(settings)));
                 }
 
-                item.Extensions.Add(Constants.xMsDosGroupPath, array);
-
-                base.SetExtensions(item);
-
-                item.Extensions.AddCustomAtributesToExtensions(Context, NavigationProperty);
+                item.Extensions.Add(Constants.xMsDosGroupPath, array);   
             }
+
+            base.SetExtensions(item);
+            item.Extensions.AddCustomAtributesToExtensions(Context, NavigationProperty);
         }
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)

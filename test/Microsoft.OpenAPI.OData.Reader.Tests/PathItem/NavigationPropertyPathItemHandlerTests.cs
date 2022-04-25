@@ -403,31 +403,8 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 expected = new[] { OperationType.Get };
             }
 
-            //if (!isContainment || hasRestrictions)
-            //{
-            //    if (isCollection)
-            //    {
-            //        expected = new[] { OperationType.Get };
-            //    }
-            //    else
-            //    {
-            //        expected = new[] { OperationType.Get, OperationType.Delete };
-            //    }
-            //}
-            //else
-            //{
-            //    if (isCollection)
-            //    {
-            //        expected = new[] { OperationType.Get, OperationType.Patch };
-            //    }
-            //    else
-            //    {
-            //        expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
-            //    }
-            //}
-
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
-        }       
+        }
 
         [Theory]
         [MemberData(nameof(CollectionNavigationPropertyData))]
@@ -495,7 +472,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Fact]
-        private void CreateNavigationPropertyPathItemAddsCustomAttributeValuesToPathExtension()
+        public void CreateNavigationPropertyPathItemAddsCustomAttributeValuesToPathExtensions()
         {
             // Arrange
             IEdmModel model = GetEdmModel(annotation: "");

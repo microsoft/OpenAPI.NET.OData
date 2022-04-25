@@ -90,7 +90,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [Theory]
         [InlineData("GetFriendsTrips")]
         [InlineData("ShareTrip")]
-        private void CreateOperationPathItemAddsCustomAttributeValuesToPathExtension(string operationName)
+        public void CreateOperationPathItemAddsCustomAttributeValuesToPathExtensions(string operationName)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;

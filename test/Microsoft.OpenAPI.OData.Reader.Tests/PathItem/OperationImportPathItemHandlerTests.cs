@@ -127,7 +127,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         [Theory]
         [InlineData("GetNearestAirport")]
         [InlineData("ResetDataSource")]
-        private void CreateOperationImportPathItemAddsCustomAttributeValuesToPathExtension(string operationImport)
+        public void CreateOperationImportPathItemAddsCustomAttributeValuesToPathExtensions(string operationImport)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
