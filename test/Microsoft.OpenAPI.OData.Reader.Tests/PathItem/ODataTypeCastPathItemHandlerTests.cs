@@ -15,7 +15,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 {
     public class ODataTypeCastPathItemHandlerTests
     {
-        private ODataTypeCastPathItemHandler _pathItemHandler = new();
+        private readonly ODataTypeCastPathItemHandler _pathItemHandler = new();
 
         [Fact]
         private void CreateODataTypeCastPathItemAddsCustomAttributeValuesToPathExtension()
