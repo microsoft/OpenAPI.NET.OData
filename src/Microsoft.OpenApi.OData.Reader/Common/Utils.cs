@@ -125,7 +125,7 @@ namespace Microsoft.OpenApi.OData.Common
         internal static string NavigationPropertyPath(this ODataPath path, string navigationPropertyName = null)
         {
             string value = string.Join("/",
-                path.Segments.Where(s => s is ODataNavigationPropertySegment).Select(e => e.Identifier));
+                path.Segments.OfType<ODataNavigationPropertySegment>().Select(e => e.Identifier));
             return navigationPropertyName == null ? value : $"{value}/{navigationPropertyName}";
         }
     }
