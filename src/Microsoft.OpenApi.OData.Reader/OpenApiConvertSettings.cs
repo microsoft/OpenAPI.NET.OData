@@ -237,6 +237,12 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool RequireRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to use the HTTP status code class of 2XX
+        /// to represent all response codes between 200 - 299.
+        /// </summary>
+        public bool UseHTTPStatusCodeClass2XX { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -275,7 +281,8 @@ namespace Microsoft.OpenApi.OData
                 AddEnumDescriptionExtension = this.AddEnumDescriptionExtension,
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
-                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths
+                RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
+                UseHTTPStatusCodeClass2XX = this.UseHTTPStatusCodeClass2XX
             };
 
             return newSettings;
