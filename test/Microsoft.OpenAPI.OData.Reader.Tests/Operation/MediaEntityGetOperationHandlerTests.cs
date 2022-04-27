@@ -19,9 +19,11 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private readonly MediaEntityGetOperationHandler _operationalHandler = new MediaEntityGetOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateMediaEntityGetOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, true)]
+        [InlineData(false, true)]
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        public void CreateMediaEntityGetOperationReturnsCorrectOperation(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
             string qualifiedName = CapabilitiesConstants.AcceptableMediaTypes;
@@ -35,17 +37,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />";
 
             // Assert
-            VerifyMediaEntityGetOperation("", enableOperationId);
-            VerifyMediaEntityGetOperation(annotation, enableOperationId);
+            VerifyMediaEntityGetOperation("", enableOperationId, useHTTPStatusCodeClass2XX);
+            VerifyMediaEntityGetOperation(annotation, enableOperationId, useHTTPStatusCodeClass2XX);
         }
 
-        private void VerifyMediaEntityGetOperation(string annotation, bool enableOperationId)
+        private void VerifyMediaEntityGetOperation(string annotation, bool enableOperationId, bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
             IEdmModel model = GetEdmModel(annotation);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
             };
 
             ODataContext context = new ODataContext(model, settings);
@@ -87,25 +90,26 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(getOperation2.Responses);
             Assert.Equal(2, getOperation.Responses.Count);
             Assert.Equal(2, getOperation2.Responses.Count);
-            Assert.Equal(new[] { "200", "default" }, getOperation.Responses.Select(r => r.Key));
-            Assert.Equal(new[] { "200", "default" }, getOperation2.Responses.Select(r => r.Key));
+            var statusCode = useHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200;
+            Assert.Equal(new[] { statusCode, "default" }, getOperation.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { statusCode, "default" }, getOperation2.Responses.Select(r => r.Key));
 
             if (!string.IsNullOrEmpty(annotation))
             {
-                Assert.Equal(2, getOperation.Responses[Constants.StatusCode200].Content.Keys.Count);
-                Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey("image/png"));
-                Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey("image/jpeg"));
+                Assert.Equal(2, getOperation.Responses[statusCode].Content.Keys.Count);
+                Assert.True(getOperation.Responses[statusCode].Content.ContainsKey("image/png"));
+                Assert.True(getOperation.Responses[statusCode].Content.ContainsKey("image/jpeg"));
                 Assert.Equal("The logo image.", getOperation.Description);
 
-                Assert.Equal(1, getOperation2.Responses[Constants.StatusCode200].Content.Keys.Count);
-                Assert.True(getOperation2.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                Assert.Equal(1, getOperation2.Responses[statusCode].Content.Keys.Count);
+                Assert.True(getOperation2.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }
             else
             {
-                Assert.Equal(1, getOperation.Responses[Constants.StatusCode200].Content.Keys.Count);
-                Assert.Equal(1, getOperation2.Responses[Constants.StatusCode200].Content.Keys.Count);
-                Assert.True(getOperation.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
-                Assert.True(getOperation2.Responses[Constants.StatusCode200].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                Assert.Equal(1, getOperation.Responses[statusCode].Content.Keys.Count);
+                Assert.Equal(1, getOperation2.Responses[statusCode].Content.Keys.Count);
+                Assert.True(getOperation.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
+                Assert.True(getOperation2.Responses[statusCode].Content.ContainsKey(Constants.ApplicationOctetStreamMediaType));
             }
 
             if (enableOperationId)

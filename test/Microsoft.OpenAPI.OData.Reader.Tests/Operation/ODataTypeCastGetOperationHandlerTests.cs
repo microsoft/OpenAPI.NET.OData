@@ -15,11 +15,12 @@ public class ODataTypeCastGetOperationHandlerTests
     private readonly ODataTypeCastGetOperationHandler _operationHandler = new ();
 
     [Theory]
-    [InlineData(true, true)]
-    [InlineData(true, false)]
-    [InlineData(false, true)]
-    [InlineData(false, false)]
-    public void CreateODataTypeCastGetOperationReturnsCorrectOperationForCollectionNavigationProperty(bool enableOperationId, bool enablePagination)
+    [InlineData(true, true, true)]
+    [InlineData(true, false, true)]
+    [InlineData(false, true, false)]
+    [InlineData(false, false, false)]
+    public void CreateODataTypeCastGetOperationReturnsCorrectOperationForCollectionNavigationProperty(
+        bool enableOperationId, bool enablePagination, bool useHTTPStatusCodeClass2XX)
     {// ../People/{id}/Friends/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Employee
         // Arrange
         IEdmModel model = EdmModelHelper.TripServiceModel;
@@ -27,6 +28,7 @@ public class ODataTypeCastGetOperationHandlerTests
         {
                 EnableOperationId = enableOperationId,
                 EnablePagination = enablePagination,
+                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
         };
         ODataContext context = new(model, settings);
         IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
@@ -59,7 +61,8 @@ public class ODataTypeCastGetOperationHandlerTests
             Assert.Equal(2, operation.Extensions.Count); //deprecated, pagination
 
         Assert.Equal(2, operation.Responses.Count);
-        Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+        var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "200";
+        Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
 
         if (enableOperationId)
         {
@@ -69,7 +72,7 @@ public class ODataTypeCastGetOperationHandlerTests
         {
             Assert.Null(operation.OperationId);
         }
-        Assert.True(operation.Responses.ContainsKey("200"));
+        Assert.True(operation.Responses.ContainsKey(statusCode));
     }
     [Theory]
     [InlineData(true, true)]

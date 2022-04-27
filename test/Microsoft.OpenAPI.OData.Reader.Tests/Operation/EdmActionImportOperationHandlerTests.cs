@@ -18,12 +18,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private EdmActionImportOperationHandler _operationHandler = new EdmActionImportOperationHandler();
 
-        [Fact]
-        public void CreateOperationForEdmActionImportReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmActionImportReturnsCorrectOperation(bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            ODataContext context = new ODataContext(model);
+            var settings = new OpenApiConvertSettings
+            {
+                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
+            };
+            ODataContext context = new ODataContext(model, settings);
 
             var actionImport = model.EntityContainer.FindOperationImports("ResetDataSource").FirstOrDefault();
             Assert.NotNull(actionImport);
@@ -44,7 +50,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Null(operation.RequestBody);
 
             Assert.Equal(2, operation.Responses.Count);
-            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
+            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
+            Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
         }
 
         [Theory]
