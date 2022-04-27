@@ -36,7 +36,8 @@ public static class OpenApiOperationExtensions
 
         if(addNoContent)
 		{
-			operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
+            var statusCode = settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode204;
+            operation.Responses.Add(statusCode, Constants.StatusCode204.GetResponse());
 		}
 
         if(settings.ErrorResponsesAsDefault)

@@ -155,7 +155,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         operation.Responses = new OpenApiResponses
         {
             {
-                Constants.StatusCode200,
+                Context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                 new OpenApiResponse
                 {
                     UnresolvedReference = true,
@@ -187,7 +187,7 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
         operation.Responses = new OpenApiResponses
         {
             {
-                Constants.StatusCode200,
+                Context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                 new OpenApiResponse
                 {
                     Description = "Result entities",

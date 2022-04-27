@@ -73,7 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Constants.StatusCode201,
+                    Context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
                     new OpenApiResponse
                     {
                         Description = "Created entity",
