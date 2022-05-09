@@ -22,7 +22,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
-                ShowLinks = true
+                ShowLinks = true,
+                ExpandDerivedTypesNavigationProperties = false
             };
             ODataContext context = new(model, settings);
             IEdmSingleton admin = model.EntityContainer.FindSingleton("admin");
@@ -70,7 +71,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
-                ShowLinks = true
+                ShowLinks = true,
+                ExpandDerivedTypesNavigationProperties = false
             };
             ODataContext context = new(model, settings);
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("admin");
@@ -137,7 +139,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
-                ShowLinks = true
+                ShowLinks = true,
+                ExpandDerivedTypesNavigationProperties = false
             };
             ODataContext context = new(model, settings);
             IEdmSingleton singleton = model.EntityContainer.FindSingleton("admin");
@@ -176,7 +179,8 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             IEdmModel model = EdmModelHelper.GraphBetaModel;
             OpenApiConvertSettings settings = new()
             {
-                ShowLinks = true
+                ShowLinks = true,
+                ExpandDerivedTypesNavigationProperties = false
             };
             ODataContext context = new(model, settings);
             IEdmEntitySet entityset = model.EntityContainer.FindEntitySet("agreements");
