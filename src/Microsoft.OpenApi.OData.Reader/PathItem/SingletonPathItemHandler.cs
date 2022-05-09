@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -49,11 +50,19 @@ namespace Microsoft.OpenApi.OData.PathItem
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             Singleton = navigationSourceSegment.NavigationSource as IEdmSingleton;
         }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {
             base.SetBasicInfo(pathItem);
             pathItem.Description = $"Provides operations to manage the {Singleton.EntityType().Name} singleton.";
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiPathItem pathItem)
+        {
+            base.SetExtensions(pathItem);
+            pathItem.Extensions.AddCustomAtributesToExtensions(Context, Singleton);            
         }
     }
 }

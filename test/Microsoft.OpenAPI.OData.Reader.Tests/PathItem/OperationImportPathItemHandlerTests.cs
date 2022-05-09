@@ -8,6 +8,8 @@ using System.Linq;
 using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -120,6 +122,32 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 Assert.Equal(operationType, operationKeyValue.Key);
                 Assert.NotNull(operationKeyValue.Value);
             }
+        }
+
+        [Theory]
+        [InlineData("GetNearestAirport")]
+        [InlineData("ResetDataSource")]
+        public void CreateOperationImportPathItemAddsCustomAttributeValuesToPathExtensions(string operationImport)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping.Add("ags:IsHidden", "x-ms-isHidden");
+            IEdmOperationImport edmOperationImport = model.EntityContainer
+                .OperationImports().FirstOrDefault(o => o.Name == operationImport);
+            Assert.NotNull(edmOperationImport); // guard
+            ODataPath path = new(new ODataOperationImportSegment(edmOperationImport));
+
+            // Act
+            OpenApiPathItem pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Extensions);
+
+            pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
+            string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+            Assert.Equal("true", isHiddenValue);
         }
 
         public static IEdmModel GetEdmModel(string annotation)

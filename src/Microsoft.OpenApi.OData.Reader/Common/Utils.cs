@@ -6,6 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 
@@ -127,6 +131,96 @@ namespace Microsoft.OpenApi.OData.Common
             string value = string.Join("/",
                 path.Segments.OfType<ODataNavigationPropertySegment>().Select(e => e.Identifier));
             return navigationPropertyName == null ? value : $"{value}/{navigationPropertyName}";
+        }
+
+        /// <summary>
+        /// Attempts to add the specified key and value to the dictionary.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the keys in the dictionary</typeparam>
+        /// <typeparam name="TValue">The type of the values in the dictionary</typeparam>
+        /// <param name="dictionary">A dictionary with keys of type TKey and values of type TValue.</param>
+        /// <param name="key">The key of the element to add.</param>
+        /// <param name="value">The value of the element to add.</param>
+        /// <returns>true when the key and value are successfully added to the dictionary; 
+        /// false when the dictionary already contains the specified key, 
+        /// in which case nothing gets added.</returns>
+        /// <exception cref="System.ArgumentNullException">dictionary is null.</exception>
+        internal static bool TryAdd<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
+            TKey key, TValue value)
+        {
+            CheckArgumentNull(dictionary, nameof(dictionary));
+
+            if (!dictionary.ContainsKey(key))
+            {
+                dictionary.Add(key, value);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Adds a mapping of custom extension values against custom attribute values for a given element to the provided
+        /// extensions object.
+        /// </summary>
+        /// <param name="extensions">The target extensions object in which the mapped extensions and custom attribute
+        /// values will be added to.</param>
+        /// <param name="context">The OData context.</param>
+        /// <param name="element">The target element.</param>
+        internal static void AddCustomAtributesToExtensions(this IDictionary<string, IOpenApiExtension> extensions, ODataContext context, IEdmElement element)
+        {
+            if (extensions  == null ||
+                context == null ||
+                element == null)
+            {
+                return;
+            }
+
+            Dictionary<string, string> atrributesValueMap = GetCustomXMLAtrributesValueMapping(context.Model, element, context.Settings.CustomXMLAttributesMapping);
+
+            if (atrributesValueMap?.Any() ?? false)
+            {
+                foreach (var item in atrributesValueMap)
+                {
+                    extensions.TryAdd(item.Key, new OpenApiString(item.Value));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Correlates and retrieves custom attribute values for a given element in an Edm model
+        /// from a provided dictionary mapping of attribute names and extension names.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="element">The target element.</param>
+        /// <param name="customXMLAttributesMapping">The dictionary mapping of attribute names and extension names.</param>
+        /// <returns>A dictionary of extension names mapped to the custom attribute values.</returns>
+        private static Dictionary<string, string> GetCustomXMLAtrributesValueMapping(IEdmModel model, IEdmElement element, Dictionary<string, string> customXMLAttributesMapping)
+        {
+            Dictionary<string, string> atrributesValueMap = new();
+
+            if ((!customXMLAttributesMapping?.Any() ?? true) ||
+                model == null ||
+                element == null)
+            {
+                return atrributesValueMap;
+            }
+
+            foreach (var item in customXMLAttributesMapping)
+            {
+                string attributeName = item.Key.Split(':').Last(); // example, 'ags:IsHidden' --> 'IsHidden'
+                string extensionName = item.Value;
+                EdmStringConstant customXMLAttribute = model.DirectValueAnnotationsManager.GetDirectValueAnnotations(element)?
+                                .Where(x => x.Name.Equals(attributeName, StringComparison.OrdinalIgnoreCase))?
+                                .FirstOrDefault()?.Value as EdmStringConstant;
+                string attributeValue = customXMLAttribute?.Value;
+
+                if (!string.IsNullOrEmpty(attributeValue))
+                {
+                    atrributesValueMap.TryAdd(extensionName, attributeValue);
+                }
+            }
+
+            return atrributesValueMap;
         }
     }
 }

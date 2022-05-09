@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -53,6 +54,13 @@ namespace Microsoft.OpenApi.OData.PathItem
         {
             base.SetBasicInfo(pathItem);
             pathItem.Description = $"Provides operations to manage the collection of {EntitySet.EntityType().Name} entities.";
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExtensions(OpenApiPathItem pathItem)
+        {
+            base.SetExtensions(pathItem);
+            pathItem.Extensions.AddCustomAtributesToExtensions(Context, EntitySet);            
         }
     }
 }

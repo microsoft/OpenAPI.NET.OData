@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
@@ -241,8 +240,11 @@ namespace Microsoft.OpenApi.OData.PathItem
                     array.Add(new OpenApiString(p.GetPathItemName(settings)));
                 }
 
-                item.Extensions.Add(Constants.xMsDosGroupPath, array);
+                item.Extensions.Add(Constants.xMsDosGroupPath, array);   
             }
+
+            base.SetExtensions(item);
+            item.Extensions.AddCustomAtributesToExtensions(Context, NavigationProperty);
         }
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)

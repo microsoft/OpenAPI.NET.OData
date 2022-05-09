@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -64,5 +65,11 @@ internal class ComplexPropertyItemHandler : PathItemHandler
 		// The last segment should be the complex property segment.
 		ODataComplexPropertySegment navigationSourceSegment = path.LastSegment as ODataComplexPropertySegment;
 		ComplexProperty = navigationSourceSegment.Property;
+	}
+
+	/// <inheritdoc/>
+	protected override void SetExtensions(OpenApiPathItem item)
+	{
+		item.Extensions.AddCustomAtributesToExtensions(Context, ComplexProperty);
 	}
 }

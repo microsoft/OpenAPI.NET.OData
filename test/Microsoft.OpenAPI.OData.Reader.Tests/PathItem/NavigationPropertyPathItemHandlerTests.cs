@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -402,29 +403,6 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
                 expected = new[] { OperationType.Get };
             }
 
-            //if (!isContainment || hasRestrictions)
-            //{
-            //    if (isCollection)
-            //    {
-            //        expected = new[] { OperationType.Get };
-            //    }
-            //    else
-            //    {
-            //        expected = new[] { OperationType.Get, OperationType.Delete };
-            //    }
-            //}
-            //else
-            //{
-            //    if (isCollection)
-            //    {
-            //        expected = new[] { OperationType.Get, OperationType.Patch };
-            //    }
-            //    else
-            //    {
-            //        expected = new[] { OperationType.Get, OperationType.Patch, OperationType.Delete };
-            //    }
-            //}
-
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
         }
 
@@ -493,9 +471,32 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
         }
 
+        [Fact]
+        public void CreateNavigationPropertyPathItemAddsCustomAttributeValuesToPathExtensions()
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel(annotation: "");
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping.Add("ags:IsHidden", "x-ms-isHidden");
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = CreatePath(entitySet, "MyOrder", false);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Extensions);
+
+            pathItem.Extensions.TryGetValue("x-ms-isHidden", out var value);
+            string isHiddenValue = (value as OpenApiString)?.Value;
+            Assert.Equal("true", isHiddenValue);
+        }
+
         public static IEdmModel GetEdmModel(string annotation)
         {
-            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
   <edmx:DataServices>
     <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""Customer"">
@@ -506,7 +507,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         <NavigationProperty Name=""ContainedOrders"" Type=""Collection(NS.Order)"" ContainsTarget=""true"" />
         <NavigationProperty Name=""Orders"" Type=""Collection(NS.Order)"" />
         <NavigationProperty Name=""ContainedMyOrder"" Type=""NS.Order"" Nullable=""false"" ContainsTarget=""true"" />
-        <NavigationProperty Name=""MyOrder"" Type=""NS.Order"" Nullable=""false"" />
+        <NavigationProperty Name=""MyOrder"" Type=""NS.Order"" Nullable=""false"" ags:IsHidden=""true""/>
       </EntityType>
       <EntityType Name=""Order"">
         <Key>

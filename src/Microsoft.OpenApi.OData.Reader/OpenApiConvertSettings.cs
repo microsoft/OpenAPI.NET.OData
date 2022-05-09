@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Extensions;
@@ -242,6 +243,11 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool RequireRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;
 
+        /// <summary>
+        /// Gets/sets a dictionary containing a mapping of custom atttribute names and extension names.
+        /// </summary>
+        public Dictionary<string, string> CustomXMLAttributesMapping { get; set; } = new();
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -281,7 +287,8 @@ namespace Microsoft.OpenApi.OData
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
-                ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties
+                ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
+                CustomXMLAttributesMapping = this.CustomXMLAttributesMapping
             };
 
             return newSettings;

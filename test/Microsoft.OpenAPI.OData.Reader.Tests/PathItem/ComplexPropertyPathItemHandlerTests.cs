@@ -5,6 +5,8 @@
 
 using System;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Xunit;
@@ -179,5 +181,30 @@ public class ComplexPropertyPathItemHandlerTests
         {
 			Assert.False(pathItem.Operations.ContainsKey(OperationType.Post));
 		}		
+	}
+	[Fact]
+	public void CreateComplexPropertyPathItemAddsCustomAttributeValuesToPathExtensions()
+    {
+		// Arrange
+		var model = EntitySetPathItemHandlerTests.GetEdmModel("");
+		ODataContext context = new(model);
+		context.Settings.CustomXMLAttributesMapping.Add("ags:IsHidden", "x-ms-isHidden");
+		var entitySet = model.EntityContainer.FindEntitySet("Customers");
+		Assert.NotNull(entitySet); // guard
+		var entityType = entitySet.EntityType();
+		var property = entityType.FindProperty("AlternativeAddresses");
+		Assert.NotNull(property); // guard
+		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entityType), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
+        Assert.Equal(ODataPathKind.ComplexProperty, path.Kind); // guard
+
+        // Act
+        var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+		// Assert
+		Assert.NotNull(pathItem.Extensions);
+
+		pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
+		string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+		Assert.Equal("true", isHiddenValue);
 	}
 }
