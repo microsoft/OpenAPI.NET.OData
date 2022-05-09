@@ -133,7 +133,32 @@ namespace Microsoft.OpenApi.OData.Common
                 || s is ODataStreamContentSegment || s is ODataStreamPropertySegment)).Select(e => e.Identifier));
 
             return navigationPropertyName == null ? value : $"{value}/{navigationPropertyName}";
-        }                
+        }
+
+        /// <summary>
+        /// Attempts to add the specified key and value to the dictionary.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the keys in the dictionary</typeparam>
+        /// <typeparam name="TValue">The type of the values in the dictionary</typeparam>
+        /// <param name="dictionary">A dictionary with keys of type TKey and values of type TValue.</param>
+        /// <param name="key">The key of the element to add.</param>
+        /// <param name="value">The value of the element to add.</param>
+        /// <returns>true when the key and value are successfully added to the dictionary; 
+        /// false when the dictionary already contains the specified key, 
+        /// in which case nothing gets added.</returns>
+        /// <exception cref="System.ArgumentNullException">dictionary is null.</exception>
+        internal static bool TryAdd<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
+            TKey key, TValue value)
+        {
+            CheckArgumentNull(dictionary, nameof(dictionary));
+
+            if (!dictionary.ContainsKey(key))
+            {
+                dictionary.Add(key, value);
+                return true;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Adds a mapping of custom extension values against custom attribute values for a given element to the provided
@@ -158,10 +183,7 @@ namespace Microsoft.OpenApi.OData.Common
             {
                 foreach (var item in atrributesValueMap)
                 {
-                    if (!extensions.ContainsKey(item.Key))
-                    {
-                        extensions.Add(item.Key, new OpenApiString(item.Value));
-                    }
+                    extensions.TryAdd(item.Key, new OpenApiString(item.Value));
                 }
             }
         }
@@ -194,9 +216,9 @@ namespace Microsoft.OpenApi.OData.Common
                                 .FirstOrDefault()?.Value as EdmStringConstant;
                 string attributeValue = customXMLAttribute?.Value;
 
-                if (!atrributesValueMap.ContainsKey(extensionName) && !string.IsNullOrEmpty(attributeValue))
+                if (!string.IsNullOrEmpty(attributeValue))
                 {
-                    atrributesValueMap.Add(extensionName, attributeValue);
+                    atrributesValueMap.TryAdd(extensionName, attributeValue);
                 }
             }
 
