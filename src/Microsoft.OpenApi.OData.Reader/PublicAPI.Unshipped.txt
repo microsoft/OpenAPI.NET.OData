@@ -1,10 +1,12 @@
-﻿abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
+abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetPathItemName(Microsoft.OpenApi.OData.OpenApiConvertSettings settings, System.Collections.Generic.HashSet<string> parameters) -> string
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Identifier.get -> string
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.Kind.get -> Microsoft.OpenApi.OData.Edm.ODataSegmentKind
 abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetAnnotables() -> System.Collections.Generic.IEnumerable<Microsoft.OData.Edm.Vocabularies.IEdmVocabularyAnnotatable>
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool

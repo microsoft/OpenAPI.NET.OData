@@ -423,7 +423,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 // ~/entityset/{key}/collection-valued-Nav/subtype
                 // ~/entityset/{key}/single-valued-Nav/subtype
-                CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, targetsMany);
+                CreateTypeCastPaths(currentPath, convertSettings, navEntityType, navigationProperty, targetsMany);
 
                 if ((navSourceRestrictionType?.Referenceable ?? false) ||
                     (navPropRestrictionType?.Referenceable ?? false))
@@ -439,7 +439,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         CreateRefPath(currentPath);
 
-                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
+                        CreateTypeCastPaths(currentPath, convertSettings, navEntityType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -456,7 +456,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         currentPath.Push(new ODataKeySegment(navEntityType));
                         AppendPath(currentPath.Clone());
 
-                        CreateTypeCastPaths(currentPath, convertSettings, navigationProperty.DeclaringType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
+                        CreateTypeCastPaths(currentPath, convertSettings, navEntityType, navigationProperty, false); // ~/entityset/{key}/collection-valued-Nav/{id}/subtype
                     }
 
                     // Get possible stream paths for the navigation entity type
@@ -548,10 +548,12 @@ namespace Microsoft.OpenApi.OData.Edm
                                 .OfType<IEdmStructuredType>()
                                 .ToArray();
 
-            foreach(var targetType in targetTypes) 
+            foreach(var targetType in targetTypes)
             {
                 var castPath = currentPath.Clone();
-                castPath.Push(new ODataTypeCastSegment(targetType));
+                var targetTypeSegment = new ODataTypeCastSegment(targetType);
+
+                castPath.Push(targetTypeSegment);
                 AppendPath(castPath);
                 if(targetsMany) 
                 {
@@ -559,10 +561,13 @@ namespace Microsoft.OpenApi.OData.Edm
                 }
                 else
                 {
-                    foreach(var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                    if (convertSettings.ExpandDerivedTypesNavigationProperties)
                     {
-                        RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
-                    }
+                        foreach (var declaredNavigationProperty in targetType.DeclaredNavigationProperties())
+                        {
+                            RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
+                        }
+                    }                        
                 }
             }
         }
