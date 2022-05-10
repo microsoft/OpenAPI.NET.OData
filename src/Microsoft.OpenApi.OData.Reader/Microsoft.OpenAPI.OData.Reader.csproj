@@ -15,12 +15,17 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.0.10-preview3</Version>
+    <Version>1.0.10</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
+- Adds support for reading custom attributes #192
+- Adds support for OpenApiLinks for actions and functions #74
+- Maps operation summaries to operation descriptions and CSDL description annotations to operation LongDescription #206
+- Fixes the response type of functions returning Edm.Stream to use application/octet-stream #200
+- Fixes the generation of ODataTypeCast paths #199
 - Adds path items for properties of complex type. #176, #15
 - Describes errors on error response codes instead of default. #172, #165, #193
 - Fixes a bug where reference objects are not created correctly. #171
@@ -36,7 +41,7 @@
 - Adds support for discriminator property in inheritance. #118
 - Sets deprecated for operations that are generated from deprecated types/singletons/entitysets/properties in the model. #113
 - Aligns target version to netframework2.0. #139
-    </PackageReleaseNotes>
+	</PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
     <OutputPath Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">..\..\bin\Debug\</OutputPath>
