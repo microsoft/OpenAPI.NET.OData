@@ -72,7 +72,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Responses = new OpenApiResponses
                 {
                     {
-                        Context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponse
                         {
                             UnresolvedReference = true,
@@ -105,7 +105,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Responses = new OpenApiResponses
                 {
                     {
-                        Context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
+                        Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
                         new OpenApiResponse
                         {
                             Description = "Retrieved navigation property link",

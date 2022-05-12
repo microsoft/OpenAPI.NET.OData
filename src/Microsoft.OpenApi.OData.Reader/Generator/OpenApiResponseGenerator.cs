@@ -143,7 +143,7 @@ namespace Microsoft.OpenApi.OData.Generator
             
             if (operation.IsAction() && operation.ReturnType == null)
             {
-                responses.Add(context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode204,
+                responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode204,
                     Constants.StatusCode204.GetResponse());
             }
             else
@@ -206,7 +206,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 };
-                responses.Add(context.Settings.UseHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode200, response);
+                responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200, response);
             }
 
             // Both action & function have the default response.

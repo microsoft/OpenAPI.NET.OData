@@ -30,7 +30,7 @@ public class ComplexPropertyPatchOperationHandlerTests
 		var settings = new OpenApiConvertSettings
 		{
 			EnableOperationId = enableOperationId,
-			UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
+			UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
 		};
 		var context = new ODataContext(model, settings);
 		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));

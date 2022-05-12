@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmModel model = EdmModelHelper.TripServiceModel;
             var settings = new OpenApiConvertSettings
             {
-                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
             };
             ODataContext context = new ODataContext(model, settings);
             var functionImport = model.EntityContainer.FindOperationImports("GetPersonWithMostFriends").FirstOrDefault();

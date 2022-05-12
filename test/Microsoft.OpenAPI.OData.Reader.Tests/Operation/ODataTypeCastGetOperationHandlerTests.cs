@@ -28,7 +28,7 @@ public class ODataTypeCastGetOperationHandlerTests
         {
                 EnableOperationId = enableOperationId,
                 EnablePagination = enablePagination,
-                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
         };
         ODataContext context = new(model, settings);
         IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");

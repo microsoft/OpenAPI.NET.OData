@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
                 EnableOperationId = enableOperationId,
-                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
             };
             ODataContext context = new ODataContext(model, settings);
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");

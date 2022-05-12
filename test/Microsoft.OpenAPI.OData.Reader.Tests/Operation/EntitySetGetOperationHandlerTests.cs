@@ -34,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             {
                 EnableOperationId = enableOperationId,
                 EnablePagination = enablePagination,
-                UseHTTPStatusCodeClass2XX = useHTTPStatusCodeClass2XX
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet));
