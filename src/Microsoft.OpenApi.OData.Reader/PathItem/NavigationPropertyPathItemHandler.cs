@@ -163,11 +163,16 @@ namespace Microsoft.OpenApi.OData.PathItem
 
             DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
             DeleteRestrictionsType deleteEntity = Context.Model.GetRecord<DeleteRestrictionsType>(_entityType);
-            bool isDeletable = (delete?.IsDeletable ?? true) || (deleteEntity?.IsDeletable ?? true);
+            bool isDeletableDefault = delete == null && deleteEntity == null;
 
-            if (isDeletable)
+            if (isDeletableDefault ||
+               (delete?.IsDeletable ?? false) ||
+               (deleteEntity?.IsDeletable ?? false))
             {
-                AddOperation(item, OperationType.Delete);
+                if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
+                {
+                    AddOperation(item, OperationType.Delete);
+                }
                 return;
             }
         }
