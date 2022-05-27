@@ -18,39 +18,23 @@ namespace Microsoft.OpenApi.OData.PathItem
     {
         /// <inheritdoc/>
         protected override ODataPathKind HandleKind => ODataPathKind.Entity;
-        private IEdmEntityType _entityType;
-
-        protected override void Initialize(ODataContext context, ODataPath path)
-        {
-            base.Initialize(context, path);
-            _entityType = EntitySet.EntityType();            
-        }
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
         {
             ReadRestrictionsType read = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet);
-            ReadRestrictionsType readEntity = Context.Model.GetRecord<ReadRestrictionsType>(_entityType);
-
-            bool isReadable = (read == null) || readEntity == null;
-
-            if (isReadable ||
+            if (read == null ||
                (read.ReadByKeyRestrictions == null && read.IsReadable) ||
-               (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.IsReadable) ||
-               readEntity.IsReadable)
+               (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.IsReadable))
             {
                 // If we don't have Read by key read restriction, we should check the set read restrction.
                 AddOperation(item, OperationType.Get);
             }
 
             UpdateRestrictionsType update = Context.Model.GetRecord<UpdateRestrictionsType>(EntitySet);
-            UpdateRestrictionsType updateEntity = Context.Model.GetRecord<UpdateRestrictionsType>(_entityType);
-            bool isUpdatable = (update != null) ? update.IsUpdatable : (updateEntity == null || updateEntity.IsUpdatable);
-            
-            if (isUpdatable)
+            if (update == null || update.IsUpdatable)
             {
-                if ((update?.IsUpdateMethodPut ?? false) ||
-                    (updateEntity?.IsUpdateMethodPut ?? false))
+                if (update != null && update.IsUpdateMethodPut)
                 {
                     AddOperation(item, OperationType.Put);
                 }
@@ -61,10 +45,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             DeleteRestrictionsType delete = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet);
-            DeleteRestrictionsType deleteEntity = Context.Model.GetRecord<DeleteRestrictionsType>(_entityType);
-            bool isDeletable = (delete != null) ? delete.IsDeletable : (deleteEntity == null || deleteEntity.IsDeletable);
-
-            if (isDeletable)
+            if (delete == null || delete.IsDeletable)
             {
                 AddOperation(item, OperationType.Delete);
             }
