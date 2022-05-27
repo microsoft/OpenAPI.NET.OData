@@ -436,21 +436,16 @@ namespace Microsoft.OpenApi.OData.Generator
                 // The discriminator object is added to structured types which have derived types.
                 OpenApiDiscriminator discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
-                {                 
-                    Dictionary<string, string> mapping = new();
-                    foreach (var item in derivedTypes)
-                    {
-                        string v3RefIdentifier = new OpenApiSchema
+                {         
+                    Dictionary<string, string> mapping = derivedTypes
+                        .ToDictionary(x => $"#{x.FullTypeName()}", x => new OpenApiSchema
                         {
                             Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.Schema,
-                                Id = item.FullTypeName()
+                                Id = x.FullTypeName()
                             }
-                        }.Reference.ReferenceV3;
-
-                        mapping.Add("#" + item.FullTypeName(), v3RefIdentifier);
-                    }
+                        }.Reference.ReferenceV3);
 
                     discriminator = new OpenApiDiscriminator
                     {
