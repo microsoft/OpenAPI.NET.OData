@@ -118,7 +118,23 @@ namespace Microsoft.OpenApi.OData.Tests
       ""discriminator"": {
         ""propertyName"": ""@odata.type"",
         ""mapping"": {
-          ""#microsoft.graph.directoryObject"": ""#/components/schemas/microsoft.graph.directoryObject""
+          ""#microsoft.graph.user"": ""#/components/schemas/microsoft.graph.user"",
+          ""#microsoft.graph.group"": ""#/components/schemas/microsoft.graph.group"",
+          ""#microsoft.graph.device"": ""#/components/schemas/microsoft.graph.device"",
+          ""#microsoft.graph.application"": ""#/components/schemas/microsoft.graph.application"",
+          ""#microsoft.graph.servicePrincipal"": ""#/components/schemas/microsoft.graph.servicePrincipal"",
+          ""#microsoft.graph.policyBase"": ""#/components/schemas/microsoft.graph.policyBase"",
+          ""#microsoft.graph.extensionProperty"": ""#/components/schemas/microsoft.graph.extensionProperty"",
+          ""#microsoft.graph.endpoint"": ""#/components/schemas/microsoft.graph.endpoint"",
+          ""#microsoft.graph.resourceSpecificPermissionGrant"": ""#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant"",
+          ""#microsoft.graph.administrativeUnit"": ""#/components/schemas/microsoft.graph.administrativeUnit"",
+          ""#microsoft.graph.contract"": ""#/components/schemas/microsoft.graph.contract"",
+          ""#microsoft.graph.directoryObjectPartnerReference"": ""#/components/schemas/microsoft.graph.directoryObjectPartnerReference"",
+          ""#microsoft.graph.directoryRole"": ""#/components/schemas/microsoft.graph.directoryRole"",
+          ""#microsoft.graph.directoryRoleTemplate"": ""#/components/schemas/microsoft.graph.directoryRoleTemplate"",
+          ""#microsoft.graph.directorySettingTemplate"": ""#/components/schemas/microsoft.graph.directorySettingTemplate"",
+          ""#microsoft.graph.organization"": ""#/components/schemas/microsoft.graph.organization"",
+          ""#microsoft.graph.orgContact"": ""#/components/schemas/microsoft.graph.orgContact""
         }
       }
     }
