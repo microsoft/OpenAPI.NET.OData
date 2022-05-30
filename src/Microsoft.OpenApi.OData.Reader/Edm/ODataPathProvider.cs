@@ -567,7 +567,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         {
                             RetrieveNavigationPropertyPaths(declaredNavigationProperty, null, castPath, convertSettings);
                         }
-                    }                        
+                    }
                 }
             }
         }
@@ -614,7 +614,7 @@ namespace Microsoft.OpenApi.OData.Edm
                 foreach (var bindingEntityType in allEntitiesForOperation)
                 {
                     // 1. Search for corresponding navigation source path
-                    if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType))
+                    if (AppendBoundOperationOnNavigationSourcePath(edmOperation, isCollection, bindingEntityType, convertSettings))
                     {
                         continue;
                     }
@@ -646,7 +646,7 @@ namespace Microsoft.OpenApi.OData.Edm
             ODataPathKind.DollarCount,
             ODataPathKind.ComplexProperty,
         };
-        private bool AppendBoundOperationOnNavigationSourcePath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType)
+        private bool AppendBoundOperationOnNavigationSourcePath(IEdmOperation edmOperation, bool isCollection, IEdmEntityType bindingEntityType, OpenApiConvertSettings convertSettings)
         {
             bool found = false;
 
@@ -673,6 +673,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
                             (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {
+                        if (lastPathSegment is ODataTypeCastSegment && !convertSettings.AppendBoundOperationsOnDerivedTypes) continue;
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
                         AppendPath(newPath);
@@ -740,6 +741,8 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType bindingEntityType,
             OpenApiConvertSettings convertSettings)
         {
+            if (!convertSettings.AppendBoundOperationsOnDerivedTypes) return false;
+
             bool found = false;
 
             bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
@@ -810,6 +813,8 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType bindingEntityType,
             OpenApiConvertSettings convertSettings)
         {
+            if (!convertSettings.AppendBoundOperationsOnDerivedTypes) return false;
+
             bool found = false;
             bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);
 
