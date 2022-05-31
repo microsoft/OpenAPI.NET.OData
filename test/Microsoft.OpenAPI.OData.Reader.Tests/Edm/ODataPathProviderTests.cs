@@ -128,7 +128,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var settings = new OpenApiConvertSettings
             {
                 RequireDerivedTypesConstraintForBoundOperations = requireConstraint,
-                AppendBoundOperationsOnDerivedTypes = appendBoundOperationsOnDerivedTypes
+                AppendBoundOperationsOnDerivedTypeCastSegments = appendBoundOperationsOnDerivedTypes
             };
 
             // Act
@@ -171,7 +171,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var settings = new OpenApiConvertSettings
             {
                 RequireDerivedTypesConstraintForODataTypeCastSegments = requireConstraint,
-                AppendBoundOperationsOnDerivedTypes = appendBoundOperationsOnDerivedTypes
+                AppendBoundOperationsOnDerivedTypeCastSegments = appendBoundOperationsOnDerivedTypes
             };
 
             // Act

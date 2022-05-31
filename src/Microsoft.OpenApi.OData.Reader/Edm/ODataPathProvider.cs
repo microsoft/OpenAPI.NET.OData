@@ -673,7 +673,7 @@ namespace Microsoft.OpenApi.OData.Edm
                         ((isCollection && subPath.Kind == ODataPathKind.EntitySet) ||
                             (!isCollection && !_oDataPathKindsToSkipForOperationsWhenSingle.Contains(subPath.Kind))))
                     {
-                        if (lastPathSegment is ODataTypeCastSegment && !convertSettings.AppendBoundOperationsOnDerivedTypes) continue;
+                        if (lastPathSegment is ODataTypeCastSegment && !convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) continue;
                         ODataPath newPath = subPath.Clone();
                         newPath.Push(new ODataOperationSegment(edmOperation, isEscapedFunction));
                         AppendPath(newPath);
@@ -741,7 +741,7 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType bindingEntityType,
             OpenApiConvertSettings convertSettings)
         {
-            if (!convertSettings.AppendBoundOperationsOnDerivedTypes) return false;
+            if (!convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) return false;
 
             bool found = false;
 
@@ -813,7 +813,7 @@ namespace Microsoft.OpenApi.OData.Edm
             IEdmEntityType bindingEntityType,
             OpenApiConvertSettings convertSettings)
         {
-            if (!convertSettings.AppendBoundOperationsOnDerivedTypes) return false;
+            if (!convertSettings.AppendBoundOperationsOnDerivedTypeCastSegments) return false;
 
             bool found = false;
             bool isEscapedFunction = _model.IsUrlEscapeFunction(edmOperation);

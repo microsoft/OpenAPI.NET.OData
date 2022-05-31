@@ -249,9 +249,9 @@ namespace Microsoft.OpenApi.OData
         public Dictionary<string, string> CustomXMLAttributesMapping { get; set; } = new();
 
         /// <summary>
-        /// Gets/sets a value indicating whether or not to append bound operations on derived types.
+        /// Gets/sets a value indicating whether or not to append bound operations on derived type cast segments.
         /// </summary>
-        public bool AppendBoundOperationsOnDerivedTypes { get; set; } = true;
+        public bool AppendBoundOperationsOnDerivedTypeCastSegments { get; set; } = false;
 
         internal OpenApiConvertSettings Clone()
         {
@@ -294,7 +294,7 @@ namespace Microsoft.OpenApi.OData
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
                 ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
-                AppendBoundOperationsOnDerivedTypes = this.AppendBoundOperationsOnDerivedTypes
+                AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments
             };
 
             return newSettings;

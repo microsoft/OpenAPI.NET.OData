@@ -5,8 +5,8 @@ abstract Microsoft.OpenApi.OData.Edm.ODataSegment.GetAnnotables() -> System.Coll
 Microsoft.OpenApi.OData.Common.Utils
 Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
-Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypes.get -> bool
-Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypes.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get -> System.Collections.Generic.Dictionary<string, string>
