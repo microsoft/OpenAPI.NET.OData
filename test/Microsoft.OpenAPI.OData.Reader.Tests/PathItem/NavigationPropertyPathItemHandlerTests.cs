@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -14,6 +14,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
+using Microsoft.OpenApi.OData.Tests;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.PathItem.Tests
@@ -469,6 +470,43 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             }
 
             Assert.Equal(expected, pathItem.Operations.Select(o => o.Key));
+        }
+
+        [Fact]
+        public void CreatePathItemForNavigationPropertyWithOutOfLineRestrictionAnnotations()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                ExpandDerivedTypesNavigationProperties = false
+            };
+            ODataContext context = new(model, settings);
+            IEdmSingleton ipSingleton = model.EntityContainer.FindSingleton("informationProtection");
+            Assert.NotNull(ipSingleton);
+            IEdmEntityType ipEntity = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "informationProtection");
+            Assert.NotNull(ipEntity);
+            IEdmNavigationProperty bitlockerNavProp = ipEntity.DeclaredNavigationProperties().First(c => c.Name == "bitlocker");
+            Assert.NotNull(bitlockerNavProp);
+            IEdmEntityType bitlockerEntity = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "bitlocker");
+            Assert.NotNull(bitlockerEntity);
+            IEdmNavigationProperty rkNavProp = bitlockerEntity.DeclaredNavigationProperties().First(c => c.Name == "recoveryKeys");
+            Assert.NotNull(rkNavProp);
+
+            ODataPath path = new(new ODataNavigationSourceSegment(ipSingleton),
+                new ODataNavigationPropertySegment(bitlockerNavProp),
+                new ODataNavigationPropertySegment(rkNavProp),
+                new ODataKeySegment(rkNavProp.ToEntityType()));
+            Assert.NotNull(path);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.Single(pathItem.Operations);
+            Assert.Equal(OperationType.Get, pathItem.Operations.FirstOrDefault().Key);
         }
 
         [Fact]
