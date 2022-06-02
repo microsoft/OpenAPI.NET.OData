@@ -51,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(16354, paths.Count());
+            Assert.Equal(13836, paths.Count());
         }
 
         [Fact]
@@ -63,7 +63,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var settings = new OpenApiConvertSettings
             {
                 RequireDerivedTypesConstraintForBoundOperations = true,
-                ExpandDerivedTypesNavigationProperties = false
+                ExpandDerivedTypesNavigationProperties = false,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
 
             // Act
@@ -81,7 +82,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmModel model = GetInheritanceModel(string.Empty);
             ODataPathProvider provider = new ODataPathProvider();
             var settings = new OpenApiConvertSettings {
-              EnableDollarCountPath = false,
+                EnableDollarCountPath = false,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
 
             // Act
@@ -100,15 +102,26 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 </Annotation>";
 
         [Theory]
-        [InlineData(false, false, true, 3)]
-        [InlineData(false, false, false, 4)]
-        [InlineData(true, false, true, 7)]
-        [InlineData(true, false, false, 7)]
-        [InlineData(false, true, false, 5)]
-        [InlineData(false, true, true, 4)]
-        [InlineData(true, true, true, 8)]
-        [InlineData(true, true, false, 8)]
-        public void GetOperationPathsForModelWithDerivedTypesConstraint(bool addAnnotation, bool getNavPropModel, bool requireConstraint, int expectedCount)
+        [InlineData(false, false, true, true, 3)]
+        [InlineData(false, false, false, true, 4)]
+        [InlineData(false, false, false, false, 3)]
+        [InlineData(true, false, true, true, 7)]
+        [InlineData(true, false, true, false, 6)]
+        [InlineData(true, false, false, true, 7)]
+        [InlineData(true, false, false, false, 6)]
+        [InlineData(false, true, false, true, 5)]
+        [InlineData(false, true, false, false, 4)]
+        [InlineData(false, true, true, true, 4)]
+        [InlineData(true, true, true, true, 8)]
+        [InlineData(true, true, true, false, 7)]
+        [InlineData(true, true, false, true, 8)]
+        [InlineData(true, true, false, false, 7)]
+        public void GetOperationPathsForModelWithDerivedTypesConstraint(
+            bool addAnnotation,
+            bool getNavPropModel,
+            bool requireConstraint,
+            bool appendBoundOperationsOnDerivedTypes,
+            int expectedCount)
         {
             // Arrange
             var annotation = addAnnotation ? derivedTypeAnnotation : string.Empty;
@@ -116,7 +129,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataPathProvider provider = new();
             var settings = new OpenApiConvertSettings
             {
-                RequireDerivedTypesConstraintForBoundOperations = requireConstraint
+                RequireDerivedTypesConstraintForBoundOperations = requireConstraint,
+                AppendBoundOperationsOnDerivedTypeCastSegments = appendBoundOperationsOnDerivedTypes
             };
 
             // Act
@@ -130,15 +144,27 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
               Assert.Single(dollarCountPathsWithCastSegment);
         }
         [Theory]
-        [InlineData(false, false, true, 4)]
-        [InlineData(false, false, false, 7)]
-        [InlineData(true, false, true, 7)]
-        [InlineData(true, false, false, 7)]
-        [InlineData(false, true, false, 8)]
-        [InlineData(false, true, true, 5)]
-        [InlineData(true, true, true, 8)]
-        [InlineData(true, true, false, 8)]
-        public void GetTypeCastPathsForModelWithDerivedTypesConstraint(bool addAnnotation, bool getNavPropModel, bool requireConstraint, int expectedCount)
+        [InlineData(false, false, true, true, 4)]
+        [InlineData(false, false, true, false, 3)]
+        [InlineData(false, false, false, true, 7)]
+        [InlineData(false, false, false, false, 6)]
+        [InlineData(true, false, true, true, 7)]
+        [InlineData(true, false, true, false, 6)]
+        [InlineData(true, false, false, true, 7)]
+        [InlineData(false, true, false, true, 8)]
+        [InlineData(false, true, false, false, 7)]
+        [InlineData(false, true, true, true, 5)]
+        [InlineData(false, true, true, false, 4)]
+        [InlineData(true, true, true, true, 8)]
+        [InlineData(true, true, true, false, 7)]
+        [InlineData(true, true, false, true, 8)]
+        [InlineData(true, true, false, false, 7)]
+        public void GetTypeCastPathsForModelWithDerivedTypesConstraint(
+            bool addAnnotation,
+            bool getNavPropModel,
+            bool requireConstraint,
+            bool appendBoundOperationsOnDerivedTypes,
+            int expectedCount)
         {
             // Arrange
             var annotation = addAnnotation ? derivedTypeAnnotation : string.Empty;
@@ -146,7 +172,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             ODataPathProvider provider = new();
             var settings = new OpenApiConvertSettings
             {
-                RequireDerivedTypesConstraintForODataTypeCastSegments = requireConstraint
+                RequireDerivedTypesConstraintForODataTypeCastSegments = requireConstraint,
+                AppendBoundOperationsOnDerivedTypeCastSegments = appendBoundOperationsOnDerivedTypes
             };
 
             // Act
