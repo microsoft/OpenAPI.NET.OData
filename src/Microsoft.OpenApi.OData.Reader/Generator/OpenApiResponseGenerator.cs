@@ -143,8 +143,7 @@ namespace Microsoft.OpenApi.OData.Generator
             
             if (operation.IsAction() && operation.ReturnType == null)
             {
-                responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode204,
-                    Constants.StatusCode204.GetResponse());
+                responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
             }
             else
             {

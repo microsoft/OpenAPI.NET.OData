@@ -20,16 +20,13 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Get;
 
-    /// <summary>
-    /// Gets/Sets the <see cref="ReadRestrictionsType"/>
-    /// </summary>
-    private ReadRestrictionsType ReadRestrictions { get; set; }
+    private ReadRestrictionsType _readRestrictions;
 
     protected override void Initialize(ODataContext context, ODataPath path)
     {
         base.Initialize(context, path);
 
-        ReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
+        _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.ReadRestrictions);
     }
 
     /// <inheritdoc/>
@@ -45,8 +42,8 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
 
         // Summary and Description
         string placeHolder = $"Get {ComplexPropertySegment.Property.Name} property value";
-        operation.Summary = ReadRestrictions?.Description ?? placeHolder;
-        operation.Description = ReadRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
+        operation.Summary = _readRestrictions?.Description ?? placeHolder;
+        operation.Description = _readRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(ComplexPropertySegment.Property);
 
         base.SetBasicInfo(operation);
     }
@@ -207,29 +204,29 @@ internal class ComplexPropertyGetOperationHandler : ComplexPropertyBaseOperation
     }
     protected override void SetSecurity(OpenApiOperation operation)
     {
-        if (ReadRestrictions?.Permissions == null)
+        if (_readRestrictions?.Permissions == null)
         {
             return;
         }
 
-        operation.Security = Context.CreateSecurityRequirements(ReadRestrictions.Permissions).ToList();
+        operation.Security = Context.CreateSecurityRequirements(_readRestrictions.Permissions).ToList();
     }
 
     protected override void AppendCustomParameters(OpenApiOperation operation)
     {        
-        if (ReadRestrictions == null)
+        if (_readRestrictions == null)
         {
             return;
         }
 
-        if (ReadRestrictions.CustomHeaders != null)
+        if (_readRestrictions.CustomHeaders != null)
         {
-            AppendCustomParameters(operation, ReadRestrictions.CustomHeaders, ParameterLocation.Header);
+            AppendCustomParameters(operation, _readRestrictions.CustomHeaders, ParameterLocation.Header);
         }
 
-        if (ReadRestrictions.CustomQueryOptions != null)
+        if (_readRestrictions.CustomQueryOptions != null)
         {
-            AppendCustomParameters(operation, ReadRestrictions.CustomQueryOptions, ParameterLocation.Query);
+            AppendCustomParameters(operation, _readRestrictions.CustomQueryOptions, ParameterLocation.Query);
         }
     }
 }

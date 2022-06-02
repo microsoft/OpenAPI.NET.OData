@@ -24,16 +24,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
 
-        /// <summary>
-        /// Gets/Sets the <see cref="ReadRestrictionsType"/>
-        /// </summary>
-        private ReadRestrictionsType ReadRestrictions { get; set; }
+        private ReadRestrictionsType _readRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            ReadRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
+            _readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EntitySet, CapabilitiesConstants.ReadRestrictions);
         }
 
         /// <inheritdoc/>
@@ -43,8 +40,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Description
             string placeHolder = "Get entity from " + EntitySet.Name + " by key";
-            operation.Summary = ReadRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
-            operation.Description = ReadRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType);
+            operation.Summary = _readRestrictions?.ReadByKeyRestrictions?.Description ?? placeHolder;
+            operation.Description = _readRestrictions?.ReadByKeyRestrictions?.LongDescription ?? Context.Model.GetDescriptionAnnotation(entityType);
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -132,15 +129,15 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (ReadRestrictions == null)
+            if (_readRestrictions == null)
             {
                 return;
             }
 
-            ReadRestrictionsBase readBase = ReadRestrictions;
-            if (ReadRestrictions.ReadByKeyRestrictions != null)
+            ReadRestrictionsBase readBase = _readRestrictions;
+            if (_readRestrictions.ReadByKeyRestrictions != null)
             {
-                readBase = ReadRestrictions.ReadByKeyRestrictions;
+                readBase = _readRestrictions.ReadByKeyRestrictions;
             }
 
             if (readBase == null && readBase.Permissions == null)
@@ -153,15 +150,15 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (ReadRestrictions == null)
+            if (_readRestrictions == null)
             {
                 return;
             }
 
-            ReadRestrictionsBase readBase = ReadRestrictions;
-            if (ReadRestrictions.ReadByKeyRestrictions != null)
+            ReadRestrictionsBase readBase = _readRestrictions;
+            if (_readRestrictions.ReadByKeyRestrictions != null)
             {
-                readBase = ReadRestrictions.ReadByKeyRestrictions;
+                readBase = _readRestrictions.ReadByKeyRestrictions;
             }
 
             if (readBase.CustomHeaders != null)
