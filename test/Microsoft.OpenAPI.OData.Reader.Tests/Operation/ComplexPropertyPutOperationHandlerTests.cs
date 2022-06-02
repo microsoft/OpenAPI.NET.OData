@@ -20,7 +20,7 @@ public class ComplexPropertyPutOperationHandlerTests
 	[InlineData(false, true)]
 	[InlineData(true, false)]
 	[InlineData(false, false)]
-	public void CreateComplexPropertyDeleteOperationReturnsCorrectOperationForSingle(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
+	public void CreateComplexPropertyPutOperationReturnsCorrectOperationForSingle(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
 	{
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
@@ -51,6 +51,15 @@ public class ComplexPropertyPutOperationHandlerTests
 		var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
 		Assert.Equal(new[] { statusCode, "default" }, put.Responses.Select(r => r.Key));
 
+		if (useHTTPStatusCodeClass2XX)
+        {
+			Assert.Single(put.Responses[statusCode].Content);
+		}
+		else
+		{
+			Assert.Empty(put.Responses[statusCode].Content);
+		}
+
 		if (enableOperationId)
 		{
 			Assert.Equal("BillingAddress.Address.UpdateAddress", put.OperationId);
@@ -63,7 +72,7 @@ public class ComplexPropertyPutOperationHandlerTests
 	[Theory]
 	[InlineData(true)]
 	[InlineData(false)]
-	public void CreateComplexPropertyPostOperationReturnsCorrectOperationForCollection(bool enableOperationId)
+	public void CreateComplexPropertyPutOperationReturnsCorrectOperationForCollection(bool enableOperationId)
 	{
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");

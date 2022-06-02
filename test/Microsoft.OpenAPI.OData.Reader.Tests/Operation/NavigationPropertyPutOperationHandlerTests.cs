@@ -60,6 +60,15 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
             Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
 
+            if (useHTTPStatusCodeClass2XX)
+            {
+                Assert.Single(operation.Responses[statusCode].Content);
+            }
+            else
+            {
+                Assert.Empty(operation.Responses[statusCode].Content);
+            }
+
             if (enableOperationId)
             {
                 Assert.Equal("People.UpdateBestFriend", operation.OperationId);

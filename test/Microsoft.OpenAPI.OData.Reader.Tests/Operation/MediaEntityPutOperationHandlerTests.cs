@@ -17,11 +17,9 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private readonly MediaEntityPutOperationHandler _operationalHandler = new MediaEntityPutOperationHandler();
 
         [Theory]
-        [InlineData(true, true)]
-        [InlineData(false, true)]
-        [InlineData(true, false)]
-        [InlineData(false, false)]
-        public void CreateMediaEntityPutOperationReturnsCorrectOperation(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateMediaEntityPutOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
             string qualifiedName = CapabilitiesConstants.AcceptableMediaTypes;
@@ -35,18 +33,17 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             <Annotation Term=""Org.OData.Core.V1.Description"" String=""The logo image."" />";
 
             // Assert
-            VerifyMediaEntityPutOperation("", enableOperationId, useHTTPStatusCodeClass2XX);
-            VerifyMediaEntityPutOperation(annotation, enableOperationId, useHTTPStatusCodeClass2XX);
+            VerifyMediaEntityPutOperation("", enableOperationId);
+            VerifyMediaEntityPutOperation(annotation, enableOperationId);
         }
 
-        private void VerifyMediaEntityPutOperation(string annotation, bool enableOperationId, bool useHTTPStatusCodeClass2XX)
+        private void VerifyMediaEntityPutOperation(string annotation, bool enableOperationId)
         {
             // Arrange
             IEdmModel model = MediaEntityGetOperationHandlerTests.GetEdmModel(annotation);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId,
-                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
+                EnableOperationId = enableOperationId
             };
 
             ODataContext context = new ODataContext(model, settings);
@@ -87,9 +84,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(putOperation2.Responses);
             Assert.Equal(2, putOperation.Responses.Count);
             Assert.Equal(2, putOperation2.Responses.Count);
-            var statusCode = useHTTPStatusCodeClass2XX ? Constants.StatusCodeClass2XX : Constants.StatusCode204;
-            Assert.Equal(new[] { statusCode, "default" }, putOperation.Responses.Select(r => r.Key));
-            Assert.Equal(new[] { statusCode, "default" }, putOperation2.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { "204", "default" }, putOperation.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { "204", "default" }, putOperation2.Responses.Select(r => r.Key));
 
             if (!string.IsNullOrEmpty(annotation))
             {

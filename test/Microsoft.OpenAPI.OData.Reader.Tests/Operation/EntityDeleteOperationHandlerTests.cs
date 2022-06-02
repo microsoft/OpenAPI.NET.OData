@@ -17,19 +17,16 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private EntityDeleteOperationHandler _operationHandler = new EntityDeleteOperationHandler();
 
         [Theory]
-        [InlineData(true, true)]
-        [InlineData(false, true)]
-        [InlineData(true, false)]
-        [InlineData(false, false)]
-        public void CreateEntityDeleteOperationReturnsCorrectOperation(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateEntityDeleteOperationReturnsCorrectOperation(bool enableOperationId)
         {
             // Arrange
             IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId,
-                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
+                EnableOperationId = enableOperationId
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
@@ -52,8 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(delete.Responses);
             Assert.Equal(2, delete.Responses.Count);
-            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
-            Assert.Equal(new[] { statusCode, "default" }, delete.Responses.Select(r => r.Key));
+            Assert.Equal(new[] { "204", "default" }, delete.Responses.Select(r => r.Key));
 
             if (enableOperationId)
             {

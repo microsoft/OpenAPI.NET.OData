@@ -18,18 +18,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private EdmActionOperationHandler _operationHandler = new EdmActionOperationHandler();
 
-        [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateOperationForEdmActionReturnsCorrectOperation(bool useHTTPStatusCodeClass2XX)
+        [Fact]
+        public void CreateOperationForEdmActionReturnsCorrectOperation()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            var settings = new OpenApiConvertSettings
-            {
-                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
-            };
-            ODataContext context = new ODataContext(model,settings);
+            ODataContext context = new ODataContext(model);
             IEdmEntitySet people = model.EntityContainer.FindEntitySet("People");
             Assert.NotNull(people);
 
@@ -56,8 +50,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal("Action parameters", operation.RequestBody.Description);
 
             Assert.Equal(2, operation.Responses.Count);
-            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
-            Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
         }
 
         [Fact]

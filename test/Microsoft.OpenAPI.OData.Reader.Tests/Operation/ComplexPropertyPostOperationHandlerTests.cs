@@ -65,6 +65,15 @@ public class ComplexPropertyPostOperationHandlerTests
 		var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
 		Assert.Equal(new[] { statusCode, "default" }, post.Responses.Select(r => r.Key));
 
+		if (useHTTPStatusCodeClass2XX)
+		{
+			Assert.Single(post.Responses[statusCode].Content);
+		}
+		else
+		{
+			Assert.Empty(post.Responses[statusCode].Content);
+		}
+
 		if (enableOperationId)
 		{
 			Assert.Equal("AlternativeAddresses.Address.SetAddress", post.OperationId);
