@@ -22,6 +22,7 @@
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
 - Adds list of all derived types for discriminator mapping #219
+- Fixes reading restriction annotations for entity types defining navigation properties #220
 - Enables configuring appending bound operations on derived types #221
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
