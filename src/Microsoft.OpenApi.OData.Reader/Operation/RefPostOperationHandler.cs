@@ -32,9 +32,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 string prefix = "CreateRef";
                 operation.OperationId = GetOperationId(prefix);
-            }
-
-            
+            }            
         }
 
         /// <inheritdoc/>

@@ -47,14 +47,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = new()
-                            {
-                                UnresolvedReference = true,
-                                Reference = new OpenApiReference {
-                                    Id = Constants.ReferenceUpdateSchemaName,
-                                    Type = ReferenceType.Schema
-                                },
-                            }
+                            Schema = GetOpenApiSchema()
                         }
                     }
                 }
@@ -66,7 +59,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true);
+    		operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -96,6 +89,19 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
+        }
+
+        private OpenApiSchema GetOpenApiSchema()
+        {
+            return new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Id = Constants.ReferenceUpdateSchemaName,
+                    Type = ReferenceType.Schema
+                },
+            };
         }
     }
 }

@@ -5,6 +5,7 @@
 
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Generator;
+using System.Collections.Generic;
 
 namespace Microsoft.OpenApi.OData.Common;
 
@@ -20,7 +21,8 @@ public static class OpenApiOperationExtensions
     /// <param name="operation">The operation.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="addNoContent">Whether to add a 204 no content response.</param>
-    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, bool addNoContent = false)
+    /// <param name="schema">Optional: The OpenAPI schema of the response.</param>
+    public static void AddErrorResponses(this OpenApiOperation operation, OpenApiConvertSettings settings, bool addNoContent = false, OpenApiSchema schema = null)
     {
         if (operation == null) {
             throw Error.ArgumentNull(nameof(operation));
@@ -34,10 +36,29 @@ public static class OpenApiOperationExtensions
 			operation.Responses = new();
 		}
 
-        if(addNoContent)
+        if (addNoContent)
 		{
-            var statusCode = settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode204;
-            operation.Responses.Add(statusCode, Constants.StatusCode204.GetResponse());
+            if (settings.UseSuccessStatusCodeRange && schema != null)
+            {
+                OpenApiResponse response = new()
+                {
+                    Content = new Dictionary<string, OpenApiMediaType>
+                    {
+                        {
+                            Constants.ApplicationJsonMediaType,
+                            new OpenApiMediaType
+                            {
+                                Schema = schema
+                            }
+                        }
+                    }                       
+                };
+                operation.Responses.Add(Constants.StatusCodeClass2XX, response);
+            }
+            else
+            {
+                operation.Responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
+            }
 		}
 
         if(settings.ErrorResponsesAsDefault)

@@ -23,17 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
-
-        /// <summary>
-        /// Gets/Sets the <see cref="InsertRestrictionsType"/>
-        /// </summary>
-        private InsertRestrictionsType InsertRestrictions { get; set; }
+               
+        private InsertRestrictionsType _insertRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            InsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
+            _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EntitySet, CapabilitiesConstants.InsertRestrictions);
         }
 
         /// <inheritdoc/>
@@ -41,8 +38,8 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary and Description
             string placeHolder = "Add new entity to " + EntitySet.Name;
-            operation.Summary = InsertRestrictions?.Description ?? placeHolder;
-            operation.Description = InsertRestrictions?.LongDescription;
+            operation.Summary = _insertRestrictions?.Description ?? placeHolder;
+            operation.Description = _insertRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -89,29 +86,29 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (InsertRestrictions?.Permissions == null)
+            if (_insertRestrictions?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(InsertRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (InsertRestrictions == null)
+            if (_insertRestrictions == null)
             {
                 return;
             }
 
-            if (InsertRestrictions.CustomQueryOptions != null)
+            if (_insertRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, InsertRestrictions.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, _insertRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
 
-            if (InsertRestrictions.CustomHeaders != null)
+            if (_insertRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, InsertRestrictions.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, _insertRestrictions.CustomHeaders, ParameterLocation.Header);
             }
         }
 

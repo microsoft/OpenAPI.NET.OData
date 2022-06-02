@@ -9,6 +9,7 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGe
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
+static Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions.AddErrorResponses(this Microsoft.OpenApi.Models.OpenApiOperation operation, Microsoft.OpenApi.OData.OpenApiConvertSettings settings, bool addNoContent = false, Microsoft.OpenApi.Models.OpenApiSchema schema = null) -> void
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement element) -> bool
@@ -283,4 +284,3 @@ Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.get -
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Date.set -> void
 Microsoft.OpenApi.OData.OpenApiExtensions.OpenApiDeprecationExtension.Write(Microsoft.OpenApi.Writers.IOpenApiWriter writer, Microsoft.OpenApi.OpenApiSpecVersion specVersion) -> void
 Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions
-static Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions.AddErrorResponses(this Microsoft.OpenApi.Models.OpenApiOperation operation, Microsoft.OpenApi.OData.OpenApiConvertSettings settings, bool addNoContent = false) -> void
