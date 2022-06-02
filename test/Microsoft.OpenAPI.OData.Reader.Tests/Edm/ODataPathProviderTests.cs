@@ -51,7 +51,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
 
             // Assert
             Assert.NotNull(paths);
-            Assert.Equal(14624, paths.Count());
+            Assert.Equal(13125, paths.Count());
         }
 
         [Fact]
@@ -63,7 +63,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             var settings = new OpenApiConvertSettings
             {
                 RequireDerivedTypesConstraintForBoundOperations = true,
-                ExpandDerivedTypesNavigationProperties = false
+                ExpandDerivedTypesNavigationProperties = false,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
 
             // Act
@@ -81,7 +82,8 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmModel model = GetInheritanceModel(string.Empty);
             ODataPathProvider provider = new ODataPathProvider();
             var settings = new OpenApiConvertSettings {
-              EnableDollarCountPath = false,
+                EnableDollarCountPath = false,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
 
             // Act
