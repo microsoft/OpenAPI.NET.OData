@@ -300,7 +300,7 @@ namespace Microsoft.OpenApi.OData
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
                 ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
-                AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments
+                AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange
             };
 
