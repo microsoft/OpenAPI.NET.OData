@@ -6,6 +6,8 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -83,6 +85,48 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
 
             Assert.Equal(expectSummary, operationKeyValue.Value.Summary);
             Assert.NotEmpty(pathItem.Description);
+        }
+
+        [Theory]
+        [InlineData("GetFriendsTrips")]
+        [InlineData("ShareTrip")]
+        public void CreateOperationPathItemAddsCustomAttributeValuesToPathExtensions(string operationName)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping = new()
+            {
+                {
+                    "ags:IsHidden",
+                    "x-ms-isHidden"
+                },
+                {
+                    "WorkloadName",
+                    "x-ms-workloadName"
+                }
+            };
+            IEdmNavigationSource navigationSource = model.EntityContainer.FindEntitySet("People");
+            Assert.NotNull(navigationSource); // guard
+            IEdmOperation edmOperation = model.SchemaElements.OfType<IEdmOperation>()
+                .FirstOrDefault(o => o.Name == operationName);
+            Assert.NotNull(edmOperation); // guard
+            ODataPath path = new(new ODataNavigationSourceSegment(navigationSource), new ODataOperationSegment(edmOperation));
+
+            // Act
+            OpenApiPathItem pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Extensions);
+
+            pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
+            string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+            Assert.Equal("true", isHiddenValue);
+
+            pathItem.Extensions.TryGetValue("x-ms-workloadName", out IOpenApiExtension isOwnerExtension);
+            string isOwnerValue = (isOwnerExtension as OpenApiString)?.Value;
+            Assert.Equal("People", isOwnerValue);
         }
     }
 }

@@ -3,7 +3,6 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.Generic;
@@ -45,8 +44,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
 
-		/// <inheritdoc/>
-		protected override void SetOperations(OpenApiPathItem item)
+        private IEdmEntityType _entityType;
+
+        /// <inheritdoc/>
+        protected override void SetOperations(OpenApiPathItem item)
         {
             IEdmEntitySet entitySet = NavigationSource as IEdmEntitySet;
             IEdmVocabularyAnnotatable target = entitySet;
@@ -79,12 +80,16 @@ namespace Microsoft.OpenApi.OData.PathItem
                 {
                     if (LastSegmentIsKeySegment)
                     {
-                        AddUpdateOperation(item, restriction);
+                        UpdateRestrictionsType updateEntity = Context.Model.GetRecord<UpdateRestrictionsType>(_entityType);
+                        if (updateEntity?.IsUpdatable ?? true)
+                        {
+                            AddUpdateOperation(item, restriction);
+                        }
                     }
                     else
                     {
                         InsertRestrictionsType insert = restriction?.InsertRestrictions;
-                        if (insert == null || insert.IsInsertable)
+                        if (insert?.IsInsertable ?? true)
                         {
                             AddOperation(item, OperationType.Post);
                         }
@@ -122,7 +127,8 @@ namespace Microsoft.OpenApi.OData.PathItem
                     }
                     else
                     {
-                        if (read.IsReadable)
+                        ReadRestrictionsType readEntity = Context.Model.GetRecord<ReadRestrictionsType>(_entityType);
+                        if (readEntity?.IsReadable ?? true)
                         {
                             AddOperation(item, OperationType.Get);
                         }
@@ -156,13 +162,17 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
 
             DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
-            if (delete == null || delete.IsDeletable)
+            DeleteRestrictionsType deleteEntity = Context.Model.GetRecord<DeleteRestrictionsType>(_entityType);
+            bool isDeletableDefault = delete == null && deleteEntity == null;
+
+            if (isDeletableDefault ||
+               (delete?.IsDeletable ?? false) ||
+               (deleteEntity?.IsDeletable ?? false))
             {
                 if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
                 {
                     AddOperation(item, OperationType.Delete);
                 }
-
                 return;
             }
         }
@@ -194,6 +204,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             LastSegmentIsKeySegment = path.LastSegment.Kind == ODataSegmentKind.Key;
             LastSegmentIsRefSegment = path.LastSegment.Kind == ODataSegmentKind.Ref;
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
+            _entityType = NavigationProperty.ToEntityType();
         }
 
         /// <inheritdoc/>
@@ -241,8 +252,11 @@ namespace Microsoft.OpenApi.OData.PathItem
                     array.Add(new OpenApiString(p.GetPathItemName(settings)));
                 }
 
-                item.Extensions.Add(Constants.xMsDosGroupPath, array);
+                item.Extensions.Add(Constants.xMsDosGroupPath, array);   
             }
+
+            base.SetExtensions(item);
+            item.Extensions.AddCustomAtributesToExtensions(Context, NavigationProperty);
         }
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)

@@ -93,7 +93,11 @@ namespace Microsoft.OpenApi.OData.PathItem
 
                 item.Extensions.Add(Constants.xMsDosGroupPath, array);
             }
+
+            base.SetExtensions(item);
+            item.Extensions.AddCustomAtributesToExtensions(Context, EdmOperation);            
         }
+
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiPathItem pathItem)
         {

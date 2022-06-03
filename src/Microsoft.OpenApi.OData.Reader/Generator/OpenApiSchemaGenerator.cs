@@ -327,9 +327,10 @@ namespace Microsoft.OpenApi.OData.Generator
             // structure properties
             foreach (var property in structuredType.DeclaredStructuralProperties())
             {
-                // OpenApiSchema propertySchema = property.Type.CreateSchema();
-                // propertySchema.Default = property.DefaultValueString != null ? new OpenApiString(property.DefaultValueString) : null;
-                properties.Add(property.Name, context.CreatePropertySchema(property));
+                OpenApiSchema propertySchema = context.CreatePropertySchema(property);
+                propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
+                propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
+                properties.Add(property.Name, propertySchema);
             }
 
             // navigation properties
@@ -337,6 +338,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 OpenApiSchema propertySchema = context.CreateEdmTypeSchema(property.Type);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
+                propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
                 properties.Add(property.Name, propertySchema);
             }
 
@@ -434,23 +436,21 @@ namespace Microsoft.OpenApi.OData.Generator
                 // The discriminator object is added to structured types which have derived types.
                 OpenApiDiscriminator discriminator = null;
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
-                {
-                    string v3RefIdentifier = new OpenApiSchema
-                    {
-                        Reference = new OpenApiReference
+                {         
+                    Dictionary<string, string> mapping = derivedTypes
+                        .ToDictionary(x => $"#{x.FullTypeName()}", x => new OpenApiSchema
                         {
-                            Type = ReferenceType.Schema,
-                            Id = structuredType.FullTypeName()
-                        }
-                    }.Reference.ReferenceV3;
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = x.FullTypeName()
+                            }
+                        }.Reference.ReferenceV3);
 
                     discriminator = new OpenApiDiscriminator
                     {
                         PropertyName = "@odata.type",
-                        Mapping = new Dictionary<string, string>
-                        {
-                            {"#" + structuredType.FullTypeName(), v3RefIdentifier }
-                        }
+                        Mapping = mapping
                     };
                 }
 

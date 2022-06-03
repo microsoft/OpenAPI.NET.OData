@@ -211,6 +211,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 OpenApiSpecVersion = specVersion,
                 AddSingleQuotesForStringParameters = true,
                 AddEnumDescriptionExtension = true,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
             // Act
             string json = WriteEdmModelAsOpenApi(model, OpenApiFormat.Json, settings);
@@ -244,6 +245,7 @@ namespace Microsoft.OpenApi.OData.Tests
                 OpenApiSpecVersion = specVersion,
                 AddSingleQuotesForStringParameters = true,
                 AddEnumDescriptionExtension = true,
+                AppendBoundOperationsOnDerivedTypeCastSegments = true
             };
 
             // Act

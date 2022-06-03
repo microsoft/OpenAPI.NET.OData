@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Csdl;
 using Microsoft.OData.Edm.Validation;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -134,9 +135,32 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
         }
 
+        [Fact]
+        public void CreateSingletonPathItemAddsCustomAttributeValuesToPathExtensions()
+        {
+            // Arrange
+            IEdmModel model = GetEdmModel(annotation: "");
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping.Add("IsHidden", "x-ms-isHidden");
+            IEdmSingleton singleton = model.EntityContainer.FindSingleton("Me");
+            Assert.NotNull(singleton); // guard
+            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(singleton));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Extensions);
+
+            pathItem.Extensions.TryGetValue("x-ms-isHidden", out var value);
+            string isHiddenValue = (value as OpenApiString)?.Value;
+            Assert.Equal("true", isHiddenValue);
+        }
+
         private IEdmModel GetEdmModel(string annotation)
         {
-            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"">
+            const string template = @"<edmx:Edmx Version=""4.0"" xmlns:edmx=""http://docs.oasis-open.org/odata/ns/edmx"" xmlns:ags=""http://aggregator.microsoft.com/internal"">
   <edmx:DataServices>
     <Schema Namespace=""NS"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""Customer"">
@@ -146,7 +170,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         <Property Name=""ID"" Type=""Edm.Int32"" Nullable=""false"" />
       </EntityType>
       <EntityContainer Name =""Default"">
-         <Singleton Name=""Me"" Type=""NS.Customer"" />
+         <Singleton Name=""Me"" Type=""NS.Customer"" ags:IsHidden=""true""/>
       </EntityContainer>
       <Annotations Target=""NS.Default/Me"">
         {0}

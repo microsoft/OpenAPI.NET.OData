@@ -6,6 +6,8 @@
 using System;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Properties;
@@ -250,6 +252,41 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.NotEmpty(pathItem.Operations);
             Assert.Equal(expected, pathItem.Operations.Select(e => e.Key));
+        }
+
+        [Fact]
+        public void CreateEntityPathItemAddsCustomAttributeValuesToPathExtensions()
+        {
+            // Arrange
+            IEdmModel model = EntitySetPathItemHandlerTests.GetEdmModel(annotation: "");
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping = new()
+            {
+                {
+                    "ags:IsHidden", "x-ms-isHidden"
+                },
+                {
+                    "isOwner", "x-ms-isOwner"
+                }
+            };
+            IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
+            Assert.NotNull(entitySet); // guard
+            ODataPath path = new(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Extensions);
+
+            pathItem.Extensions.TryGetValue("x-ms-isHidden", out IOpenApiExtension isHiddenExtension);
+            string isHiddenValue = (isHiddenExtension as OpenApiString)?.Value;
+            Assert.Equal("true", isHiddenValue);
+
+            pathItem.Extensions.TryGetValue("x-ms-isOwner", out IOpenApiExtension isOwnerExtension);
+            string isOwnerValue = (isOwnerExtension as OpenApiString)?.Value;
+            Assert.Equal("true", isOwnerValue);
         }
     }
 

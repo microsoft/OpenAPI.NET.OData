@@ -5,6 +5,7 @@
 
 using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 
 namespace Microsoft.OpenApi.OData.PathItem;
@@ -32,10 +33,18 @@ internal class ODataTypeCastPathItemHandler : PathItemHandler
         }
     }
     private IEdmStructuredType StructuredType { get; set; }
+
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiPathItem pathItem)
     {
         base.SetBasicInfo(pathItem);
         pathItem.Description = $"Casts the previous resource to {(StructuredType as IEdmNamedElement).Name}.";
+    }
+
+    /// <inheritdoc/>
+    protected override void SetExtensions(OpenApiPathItem pathItem)
+    {
+        base.SetExtensions(pathItem);
+        pathItem.Extensions.AddCustomAtributesToExtensions(Context, StructuredType);
     }
 }

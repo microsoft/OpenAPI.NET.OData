@@ -15,27 +15,15 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.0.10-preview3</Version>
+    <Version>1.0.11-preview1</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-- Adds path items for properties of complex type. #176, #15
-- Describes errors on error response codes instead of default. #172, #165, #193
-- Fixes a bug where reference objects are not created correctly. #171
-- Adds support for enum values descriptions. #164
-- Declares path parameters on path item instead of operation. #159
-- Multiple fixes on navigation properties path items expansion. #151, #123
-- Multiple fixes for descriptions. #154
-- Fixes a bug where URL templates would be missing quotes for string parameters. #140
-- Fixes description of operations of primitive types. #126
-- Adds support for OData cast segments in path items generation. #123
-- Fixes the response descriptions for functions that return a collection. #122
-- Fixes structured and collection-valued parameters of functions. #203
-- Adds support for discriminator property in inheritance. #118
-- Sets deprecated for operations that are generated from deprecated types/singletons/entitysets/properties in the model. #113
-- Aligns target version to netframework2.0. #139
+- Adds list of all derived types for discriminator mapping #219
+- Fixes reading restriction annotations for entity types defining navigation properties #220
+- Enables configuring appending bound operations on derived types #221
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

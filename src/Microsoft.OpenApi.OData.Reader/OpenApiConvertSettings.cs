@@ -4,6 +4,7 @@
 // ------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Extensions;
@@ -204,6 +205,11 @@ namespace Microsoft.OpenApi.OData
         public bool RequireDerivedTypesConstraintForODataTypeCastSegments { get; set; } = true;
 
         /// <summary>
+        /// Gets/Sets a value indicating whether or not to expand derived types to retrieve their declared navigation properties.
+        /// </summary>
+        public bool ExpandDerivedTypesNavigationProperties { get; set; } = true;
+
+        /// <summary>
         /// Gets/sets a value indicating whether or not to set the deprecated tag for the operation when a revision is present as well as the "x-ms-deprecation" extension with additional information.
         /// </summary>
         public bool EnableDeprecationInformation { get; set; } = true;
@@ -236,6 +242,16 @@ namespace Microsoft.OpenApi.OData
         /// Gets/Sets a value indicating whether or not to use restrictions annotations to generate paths for complex properties.
         /// </summary>
         public bool RequireRestrictionAnnotationsToGenerateComplexPropertyPaths { get; set; } = true;
+
+        /// <summary>
+        /// Gets/sets a dictionary containing a mapping of custom atttribute names and extension names.
+        /// </summary>
+        public Dictionary<string, string> CustomXMLAttributesMapping { get; set; } = new();
+
+        /// <summary>
+        /// Gets/sets a value indicating whether or not to append bound operations on derived type cast segments.
+        /// </summary>
+        public bool AppendBoundOperationsOnDerivedTypeCastSegments { get; set; } = false;
 
         /// <summary>
         /// Gets/Sets a value indicating whether or not to use the HTTP success status code range 2XX
@@ -282,6 +298,9 @@ namespace Microsoft.OpenApi.OData
                 ErrorResponsesAsDefault = this.ErrorResponsesAsDefault,
                 InnerErrorComplexTypeName = this.InnerErrorComplexTypeName,
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
+                ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
+                CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
+                AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange
             };
 

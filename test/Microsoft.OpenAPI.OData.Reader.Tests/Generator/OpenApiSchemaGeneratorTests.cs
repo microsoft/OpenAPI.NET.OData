@@ -118,7 +118,87 @@ namespace Microsoft.OpenApi.OData.Tests
       ""discriminator"": {
         ""propertyName"": ""@odata.type"",
         ""mapping"": {
-          ""#microsoft.graph.directoryObject"": ""#/components/schemas/microsoft.graph.directoryObject""
+          ""#microsoft.graph.user"": ""#/components/schemas/microsoft.graph.user"",
+          ""#microsoft.graph.group"": ""#/components/schemas/microsoft.graph.group"",
+          ""#microsoft.graph.device"": ""#/components/schemas/microsoft.graph.device"",
+          ""#microsoft.graph.application"": ""#/components/schemas/microsoft.graph.application"",
+          ""#microsoft.graph.servicePrincipal"": ""#/components/schemas/microsoft.graph.servicePrincipal"",
+          ""#microsoft.graph.policyBase"": ""#/components/schemas/microsoft.graph.policyBase"",
+          ""#microsoft.graph.extensionProperty"": ""#/components/schemas/microsoft.graph.extensionProperty"",
+          ""#microsoft.graph.endpoint"": ""#/components/schemas/microsoft.graph.endpoint"",
+          ""#microsoft.graph.resourceSpecificPermissionGrant"": ""#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant"",
+          ""#microsoft.graph.administrativeUnit"": ""#/components/schemas/microsoft.graph.administrativeUnit"",
+          ""#microsoft.graph.contract"": ""#/components/schemas/microsoft.graph.contract"",
+          ""#microsoft.graph.directoryObjectPartnerReference"": ""#/components/schemas/microsoft.graph.directoryObjectPartnerReference"",
+          ""#microsoft.graph.directoryRole"": ""#/components/schemas/microsoft.graph.directoryRole"",
+          ""#microsoft.graph.directoryRoleTemplate"": ""#/components/schemas/microsoft.graph.directoryRoleTemplate"",
+          ""#microsoft.graph.directorySettingTemplate"": ""#/components/schemas/microsoft.graph.directorySettingTemplate"",
+          ""#microsoft.graph.organization"": ""#/components/schemas/microsoft.graph.organization"",
+          ""#microsoft.graph.orgContact"": ""#/components/schemas/microsoft.graph.orgContact""
+        }
+      }
+    }
+  ]
+}".ChangeLineBreaks(), json);
+        }
+
+        [Fact]
+        public void CreateStructuredTypePropertiesSchemaWithCustomAttributeReturnsCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model);
+            context.Settings.CustomXMLAttributesMapping.Add("IsHidden", "x-ms-isHidden");
+            IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "userSettings");
+            Assert.NotNull(entity); // Guard
+
+            // Act
+            OpenApiSchema schema = context.CreateStructuredTypeSchema(entity);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""allOf"": [
+    {
+      ""$ref"": ""#/components/schemas/microsoft.graph.entity""
+    },
+    {
+      ""title"": ""userSettings"",
+      ""type"": ""object"",
+      ""properties"": {
+        ""contributionToContentDiscoveryAsOrganizationDisabled"": {
+          ""type"": ""boolean"",
+          ""x-ms-isHidden"": ""true""
+        },
+        ""contributionToContentDiscoveryDisabled"": {
+          ""type"": ""boolean"",
+          ""x-ms-isHidden"": ""true""
+        },
+        ""itemInsights"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
+            }
+          ],
+          ""nullable"": true,
+          ""x-ms-isHidden"": ""true""
+        },
+        ""regionalAndLanguageSettings"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
+            }
+          ],
+          ""nullable"": true
+        },
+        ""shiftPreferences"": {
+          ""anyOf"": [
+            {
+              ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
+            }
+          ],
+          ""nullable"": true
         }
       }
     }

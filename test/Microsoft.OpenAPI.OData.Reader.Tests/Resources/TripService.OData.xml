@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
-  <edmx:DataServices>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns:ags="http://aggregator.microsoft.com/internal">
+<edmx:DataServices>
     <Schema Namespace="Microsoft.OData.Service.Sample.TrippinInMemory.Models" xmlns="http://docs.oasis-open.org/odata/ns/edm">
       <ComplexType Name="InnerError">
         <Property Name="Date" Type="Edm.DateTimeOffset" />
@@ -215,7 +215,7 @@
         <NavigationProperty Name="From" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
         <NavigationProperty Name="To" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport" />
       </EntityType>
-      <EntityType Name="Employee" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person">
+      <EntityType Name="Employee" BaseType="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" ags:IsHidden="true" ags:WorkloadName="People">
         <Property Name="Cost" Type="Edm.Int64" Nullable="false" />
         <NavigationProperty Name="Peers" Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person)" >
 			<Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
@@ -266,7 +266,7 @@
         <Parameter Name="person" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <ReturnType Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline" />
       </Function>
-      <Function Name="GetFriendsTrips" IsBound="true">
+      <Function Name="GetFriendsTrips" IsBound="true" ags:IsHidden="true" ags:WorkloadName="People">
         <Parameter Name="person" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
         <ReturnType Type="Collection(Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip)" />
@@ -299,7 +299,7 @@
         <Parameter Name="personInstance" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Manager" />
         <Parameter Name="hire" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
       </Action>
-      <Action Name="ShareTrip" IsBound="true">
+      <Action Name="ShareTrip" IsBound="true" ags:IsHidden="true" ags:WorkloadName="People">
         <Annotation Term="Org.OData.Core.V1.Description" String="Details of the shared trip." />
         <Parameter Name="personInstance" Type="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person" />
         <Parameter Name="userName" Type="Edm.String" Nullable="false" Unicode="false" />
@@ -379,8 +379,8 @@
         <FunctionImport Name="GetPersonWithMostFriends" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetPersonWithMostFriends" EntitySet="People">
           <Annotation Term="Org.OData.Core.V1.Description" String="The person with most friends." />
         </FunctionImport>
-        <FunctionImport Name="GetNearestAirport" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetNearestAirport" EntitySet="Airports" />
-        <ActionImport Name="ResetDataSource" Action="Microsoft.OData.Service.Sample.TrippinInMemory.Models.ResetDataSource">
+        <FunctionImport Name="GetNearestAirport" Function="Microsoft.OData.Service.Sample.TrippinInMemory.Models.GetNearestAirport" EntitySet="Airports" ags:IsHidden="true"/>
+        <ActionImport Name="ResetDataSource" Action="Microsoft.OData.Service.Sample.TrippinInMemory.Models.ResetDataSource" ags:IsHidden="true">
           <Annotation Term="Org.OData.Core.V1.Description" String="Resets the data source to default values." />
         </ActionImport>
       </EntityContainer>
