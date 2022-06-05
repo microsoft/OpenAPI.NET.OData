@@ -24,6 +24,7 @@
 - Adds list of all derived types for discriminator mapping #219
 - Fixes reading restriction annotations for entity types defining navigation properties #220
 - Enables configuring appending bound operations on derived types #221
+- Add error ranges for OData actions when ErrorResponsesAsDefault is set to false #218
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
