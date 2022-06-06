@@ -9,7 +9,7 @@ using Microsoft.OpenApi.OData.Generator;
 using Xunit;
 
 namespace Microsoft.OpenApi.OData.Tests;
-public class OpenApiErrorSchemaGeneraratorTests
+public class OpenApiErrorSchemaGeneratorTests
 {
     [Fact]
     public void AddsEmptyInnerErrorWhenNoComplexTypeIsProvided()
