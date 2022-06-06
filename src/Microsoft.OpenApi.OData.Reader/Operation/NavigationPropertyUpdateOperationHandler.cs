@@ -39,27 +39,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
-        {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = NavigationProperty.ToEntityType().FullName()
-                    }
-                };
-            }
-
+        {            
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -69,7 +49,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = schema
+                            Schema = GetOpenApiSchema()
                         }
                     }
                 }
@@ -81,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, true);
+            operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
@@ -111,6 +91,24 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
+        }
+
+        private OpenApiSchema GetOpenApiSchema()
+        {           
+            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
+            {
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(NavigationProperty.ToEntityType(), Context.Model);
+            }
+
+            return new OpenApiSchema
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = NavigationProperty.ToEntityType().FullName()
+                }
+            };
         }
     }
 }

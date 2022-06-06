@@ -185,7 +185,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		operation.Responses = new OpenApiResponses
 		{
 			{
-				Constants.StatusCode200,
+				Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
 				new OpenApiResponse
 				{
 					UnresolvedReference = true,
@@ -222,7 +222,7 @@ internal class ODataTypeCastGetOperationHandler : OperationHandler
 		operation.Responses = new OpenApiResponses
 		{
 			{
-				Constants.StatusCode200,
+				Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
 				new OpenApiResponse
 				{
 					Description = "Result entities",

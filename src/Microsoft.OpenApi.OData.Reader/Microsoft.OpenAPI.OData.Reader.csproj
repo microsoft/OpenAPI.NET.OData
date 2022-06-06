@@ -15,16 +15,17 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.0.11-preview1</Version>
+    <Version>1.0.11-preview2</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-- Adds list of all derived types for discriminator mapping #219
 - Fixes reading restriction annotations for entity types defining navigation properties #220
 - Enables configuring appending bound operations on derived types #221
 - Add error ranges for OData actions when ErrorResponsesAsDefault is set to false #218
+- Fixes missing bound operations on some navigation property paths #201
+- Provides support for using success status code range 2XX #153
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

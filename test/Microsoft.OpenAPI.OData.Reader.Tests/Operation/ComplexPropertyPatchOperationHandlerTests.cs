@@ -14,6 +14,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests;
 public class ComplexPropertyPatchOperationHandlerTests
 {
 	private readonly ComplexPropertyPatchOperationHandler _operationHandler = new();
+
 	[Theory]
 	[InlineData(true)]
 	[InlineData(false)]
@@ -56,9 +57,11 @@ public class ComplexPropertyPatchOperationHandlerTests
 		}
 	}
 	[Theory]
-	[InlineData(true)]
-	[InlineData(false)]
-	public void CreateComplexPropertyPostOperationReturnsCorrectOperationForCollection(bool enableOperationId)
+	[InlineData(true, true)]
+	[InlineData(false, true)]
+	[InlineData(true, false)]
+	[InlineData(false, false)]
+	public void CreateComplexPropertyPatchOperationReturnsCorrectOperationForCollection(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
 	{
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
@@ -67,7 +70,8 @@ public class ComplexPropertyPatchOperationHandlerTests
 		var property = entity.FindProperty("BillingAddress");
 		var settings = new OpenApiConvertSettings
 		{
-			EnableOperationId = enableOperationId
+			EnableOperationId = enableOperationId,
+			UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
 		};
 		var context = new ODataContext(model, settings);
 		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
@@ -85,7 +89,17 @@ public class ComplexPropertyPatchOperationHandlerTests
 
 		Assert.NotNull(patch.Responses);
 		Assert.Equal(2, patch.Responses.Count);
-		Assert.Equal(new[] { "204", "default" }, patch.Responses.Select(r => r.Key));
+		var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
+		Assert.Equal(new[] { statusCode, "default" }, patch.Responses.Select(r => r.Key));
+
+		if (useHTTPStatusCodeClass2XX)
+		{
+			Assert.Single(patch.Responses[statusCode].Content);
+		}
+		else
+		{
+			Assert.Empty(patch.Responses[statusCode].Content);
+		}
 
 		if (enableOperationId)
 		{

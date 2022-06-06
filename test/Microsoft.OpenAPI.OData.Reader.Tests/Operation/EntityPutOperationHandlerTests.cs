@@ -17,16 +17,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private EntityPutOperationHandler _operationHandler = new EntityPutOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateEntityPutOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, true)]
+        [InlineData(false, true)]
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        public void CreateEntityPutOperationReturnsCorrectOperation(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
             IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
@@ -49,7 +52,17 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(putOperation.Responses);
             Assert.Equal(2, putOperation.Responses.Count);
-            Assert.Equal(new[] { "204", "default" }, putOperation.Responses.Select(r => r.Key));
+            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
+            Assert.Equal(new[] { statusCode, "default" }, putOperation.Responses.Select(r => r.Key));
+
+            if (useHTTPStatusCodeClass2XX)
+            {
+                Assert.Single(putOperation.Responses[statusCode].Content);
+            }
+            else
+            {
+                Assert.Empty(putOperation.Responses[statusCode].Content);
+            }
 
             if (enableOperationId)
             {

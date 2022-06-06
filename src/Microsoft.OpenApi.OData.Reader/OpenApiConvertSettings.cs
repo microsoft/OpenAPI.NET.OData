@@ -253,6 +253,12 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool AppendBoundOperationsOnDerivedTypeCastSegments { get; set; } = false;
 
+        /// <summary>
+        /// Gets/Sets a value indicating whether or not to use the HTTP success status code range 2XX
+        /// to represent all response codes between 200 - 299.
+        /// </summary>
+        public bool UseSuccessStatusCodeRange { get; set; } = false;
+
         internal OpenApiConvertSettings Clone()
         {
             var newSettings = new OpenApiConvertSettings
@@ -294,7 +300,8 @@ namespace Microsoft.OpenApi.OData
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
                 ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
-                AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments
+                AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,
+                UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange
             };
 
             return newSettings;

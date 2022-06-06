@@ -205,7 +205,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                     }
                 };
-                responses.Add(Constants.StatusCode200, response);
+                responses.Add(context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200, response);
             }
 
             if (context.Settings.ErrorResponsesAsDefault)

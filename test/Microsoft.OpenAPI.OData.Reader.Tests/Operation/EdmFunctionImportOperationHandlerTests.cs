@@ -18,12 +18,18 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
     {
         private EdmFunctionImportOperationHandler _operationHandler = new EdmFunctionImportOperationHandler();
 
-        [Fact]
-        public void CreateOperationForEdmFunctionImportReturnsCorrectOperation()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void CreateOperationForEdmFunctionImportReturnsCorrectOperation(bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
-            ODataContext context = new ODataContext(model);
+            var settings = new OpenApiConvertSettings
+            {
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
+            };
+            ODataContext context = new ODataContext(model, settings);
             var functionImport = model.EntityContainer.FindOperationImports("GetPersonWithMostFriends").FirstOrDefault();
             Assert.NotNull(functionImport);
             ODataPath path = new ODataPath(new ODataOperationImportSegment(functionImport));
@@ -45,7 +51,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Null(operation.RequestBody);
 
             Assert.Equal(2, operation.Responses.Count);
-            Assert.Equal(new string[] { "200", "default" }, operation.Responses.Select(e => e.Key));
+            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "200";
+            Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
         }
 
         [Theory]

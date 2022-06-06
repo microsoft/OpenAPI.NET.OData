@@ -14,10 +14,13 @@ namespace Microsoft.OpenApi.OData.Operation.Tests;
 public class ComplexPropertyPutOperationHandlerTests
 {
 	private readonly ComplexPropertyPutOperationHandler _operationHandler = new();
+
 	[Theory]
-	[InlineData(true)]
-	[InlineData(false)]
-	public void CreateComplexPropertyDeleteOperationReturnsCorrectOperationForSingle(bool enableOperationId)
+	[InlineData(true, true)]
+	[InlineData(false, true)]
+	[InlineData(true, false)]
+	[InlineData(false, false)]
+	public void CreateComplexPropertyPutOperationReturnsCorrectOperationForSingle(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
 	{
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");
@@ -26,7 +29,8 @@ public class ComplexPropertyPutOperationHandlerTests
 		var property = entity.FindProperty("BillingAddress");
 		var settings = new OpenApiConvertSettings
 		{
-			EnableOperationId = enableOperationId
+			EnableOperationId = enableOperationId,
+			UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
 		};
 		var context = new ODataContext(model, settings);
 		var path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()), new ODataComplexPropertySegment(property as IEdmStructuralProperty));
@@ -44,7 +48,17 @@ public class ComplexPropertyPutOperationHandlerTests
 
 		Assert.NotNull(put.Responses);
 		Assert.Equal(2, put.Responses.Count);
-		Assert.Equal(new[] { "204", "default" }, put.Responses.Select(r => r.Key));
+		var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
+		Assert.Equal(new[] { statusCode, "default" }, put.Responses.Select(r => r.Key));
+
+		if (useHTTPStatusCodeClass2XX)
+        {
+			Assert.Single(put.Responses[statusCode].Content);
+		}
+		else
+		{
+			Assert.Empty(put.Responses[statusCode].Content);
+		}
 
 		if (enableOperationId)
 		{
@@ -58,7 +72,7 @@ public class ComplexPropertyPutOperationHandlerTests
 	[Theory]
 	[InlineData(true)]
 	[InlineData(false)]
-	public void CreateComplexPropertyPostOperationReturnsCorrectOperationForCollection(bool enableOperationId)
+	public void CreateComplexPropertyPutOperationReturnsCorrectOperationForCollection(bool enableOperationId)
 	{
 		// Arrange
 		var model = EntitySetGetOperationHandlerTests.GetEdmModel("");

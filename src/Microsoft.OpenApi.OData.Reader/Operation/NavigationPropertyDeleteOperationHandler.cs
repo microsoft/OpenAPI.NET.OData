@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System.Linq;
-using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;

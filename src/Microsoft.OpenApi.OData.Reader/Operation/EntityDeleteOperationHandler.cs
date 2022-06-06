@@ -23,16 +23,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Delete;
 
-        /// <summary>
-        /// Gets/Sets the <see cref="DeleteRestrictionsType"/>
-        /// </summary>
-        private DeleteRestrictionsType DeleteRestrictions { get; set; }
+        private DeleteRestrictionsType _deleteRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            DeleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
+            _deleteRestrictions = Context.Model.GetRecord<DeleteRestrictionsType>(EntitySet, CapabilitiesConstants.DeleteRestrictions);
         }
 
         /// <inheritdoc/>
@@ -42,8 +39,8 @@ namespace Microsoft.OpenApi.OData.Operation
 
             // Description
             string placeHolder = "Delete entity from " + EntitySet.Name;
-            operation.Summary = DeleteRestrictions?.Description ?? placeHolder;
-            operation.Description = DeleteRestrictions?.LongDescription;
+            operation.Summary = _deleteRestrictions?.Description ?? placeHolder;
+            operation.Description = _deleteRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -79,29 +76,29 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (DeleteRestrictions == null || DeleteRestrictions.Permissions == null)
+            if (_deleteRestrictions == null || _deleteRestrictions.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(DeleteRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_deleteRestrictions.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (DeleteRestrictions == null)
+            if (_deleteRestrictions == null)
             {
                 return;
             }
 
-            if (DeleteRestrictions.CustomHeaders != null)
+            if (_deleteRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, DeleteRestrictions.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, _deleteRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (DeleteRestrictions.CustomQueryOptions != null)
+            if (_deleteRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, DeleteRestrictions.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, _deleteRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
     }

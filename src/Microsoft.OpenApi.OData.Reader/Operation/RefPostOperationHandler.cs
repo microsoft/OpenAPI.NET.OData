@@ -32,9 +32,7 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 string prefix = "CreateRef";
                 operation.OperationId = GetOperationId(prefix);
-            }
-
-            
+            }            
         }
 
         /// <inheritdoc/>
@@ -75,7 +73,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Constants.StatusCode201,
+                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
                     new OpenApiResponse
                     {
                         Description = "Created navigation property link.",

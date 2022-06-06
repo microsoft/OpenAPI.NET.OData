@@ -18,16 +18,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         private EntityGetOperationHandler _operationHandler = new EntityGetOperationHandler();
 
         [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void CreateEntityGetOperationReturnsCorrectOperation(bool enableOperationId)
+        [InlineData(true, true)]
+        [InlineData(false, true)]
+        [InlineData(true, false)]
+        [InlineData(false, false)]
+        public void CreateEntityGetOperationReturnsCorrectOperation(bool enableOperationId, bool useHTTPStatusCodeClass2XX)
         {
             // Arrange
             IEdmModel model = EntitySetGetOperationHandlerTests.GetEdmModel("");
             IEdmEntitySet entitySet = model.EntityContainer.FindEntitySet("Customers");
             OpenApiConvertSettings settings = new OpenApiConvertSettings
             {
-                EnableOperationId = enableOperationId
+                EnableOperationId = enableOperationId,
+                UseSuccessStatusCodeRange = useHTTPStatusCodeClass2XX
             };
             ODataContext context = new ODataContext(model, settings);
             ODataPath path = new ODataPath(new ODataNavigationSourceSegment(entitySet), new ODataKeySegment(entitySet.EntityType()));
@@ -49,7 +52,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(get.Responses);
             Assert.Equal(2, get.Responses.Count);
-            Assert.Equal(new[] { "200", "default" }, get.Responses.Select(r => r.Key));
+            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "200";
+            Assert.Equal(new[] { statusCode, "default" }, get.Responses.Select(r => r.Key));
 
             if (enableOperationId)
             {

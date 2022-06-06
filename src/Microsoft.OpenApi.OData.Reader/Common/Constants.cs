@@ -26,6 +26,11 @@ namespace Microsoft.OpenApi.OData.Common
         public static string ApplicationOctetStreamMediaType = "application/octet-stream";
 
         /// <summary>
+        /// Status code class: 2XX
+        /// </summary>
+        public static string StatusCodeClass2XX = "2XX";
+
+        /// <summary>
         /// Status code: 200
         /// </summary>
         public static string StatusCode200 = "200";

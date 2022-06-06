@@ -26,15 +26,12 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
             throw new InvalidOperationException("OData conventions do not support POSTing to a complex property that is not a collection.");
         }
 
-        InsertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
+        _insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(ComplexPropertySegment.Property, CapabilitiesConstants.InsertRestrictions);
     }
     /// <inheritdoc />
     public override OperationType OperationType => OperationType.Post;
 
-    /// <summary>
-    /// Gets/Sets the <see cref="InsertRestrictionsType"/>
-    /// </summary>
-    private InsertRestrictionsType InsertRestrictions { get; set; }
+    private InsertRestrictionsType _insertRestrictions;
 
     /// <inheritdoc/>
     protected override void SetBasicInfo(OpenApiOperation operation)
@@ -48,8 +45,8 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
 
         // Summary and Description
         string placeHolder = $"Sets a new value for the collection of {ComplexPropertySegment.ComplexType.Name}.";
-        operation.Summary = InsertRestrictions?.Description ?? placeHolder;
-        operation.Description = InsertRestrictions?.LongDescription;
+        operation.Summary = _insertRestrictions?.Description ?? placeHolder;
+        operation.Description = _insertRestrictions?.LongDescription;
 
         base.SetBasicInfo(operation);
     }
@@ -72,8 +69,62 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
     }
     /// <inheritdoc/>
     protected override void SetRequestBody(OpenApiOperation operation)
+    {        
+        operation.RequestBody = new OpenApiRequestBody
+        {
+            Required = true,
+            Description = "New property values",
+            Content = new Dictionary<string, OpenApiMediaType>
+            {
+                {
+                    Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                    {
+                        Schema = GetOpenApiSchema()
+                    }
+                }
+            }
+        };
+
+        base.SetRequestBody(operation);
+    }
+    /// <inheritdoc/>
+    protected override void SetResponses(OpenApiOperation operation)
     {
-        OpenApiSchema schema = new()
+        operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
+        base.SetResponses(operation);
+    }
+
+    protected override void SetSecurity(OpenApiOperation operation)
+    {
+        if (_insertRestrictions?.Permissions == null)
+        {
+            return;
+        }
+
+        operation.Security = Context.CreateSecurityRequirements(_insertRestrictions.Permissions).ToList();
+    }
+
+    protected override void AppendCustomParameters(OpenApiOperation operation)
+    {
+        if (_insertRestrictions == null)
+        {
+            return;
+        }
+
+        if (_insertRestrictions.CustomQueryOptions != null)
+        {
+            AppendCustomParameters(operation, _insertRestrictions.CustomQueryOptions, ParameterLocation.Query);
+        }
+
+        if (_insertRestrictions.CustomHeaders != null)
+        {
+            AppendCustomParameters(operation, _insertRestrictions.CustomHeaders, ParameterLocation.Header);
+        }
+    }
+
+    private OpenApiSchema GetOpenApiSchema()
+    {
+        return new()
         {
             Type = "array",
             Items = new OpenApiSchema
@@ -86,55 +137,5 @@ internal class ComplexPropertyPostOperationHandler : ComplexPropertyBaseOperatio
                 }
             }
         };
-        operation.RequestBody = new OpenApiRequestBody
-        {
-            Required = true,
-            Description = "New property values",
-            Content = new Dictionary<string, OpenApiMediaType>
-            {
-                {
-                    Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                    {
-                        Schema = schema
-                    }
-                }
-            }
-        };
-
-        base.SetRequestBody(operation);
-    }
-    /// <inheritdoc/>
-    protected override void SetResponses(OpenApiOperation operation)
-    {
-        operation.AddErrorResponses(Context.Settings, true);
-        base.SetResponses(operation);
-    }
-
-    protected override void SetSecurity(OpenApiOperation operation)
-    {
-        if (InsertRestrictions?.Permissions == null)
-        {
-            return;
-        }
-
-        operation.Security = Context.CreateSecurityRequirements(InsertRestrictions.Permissions).ToList();
-    }
-
-    protected override void AppendCustomParameters(OpenApiOperation operation)
-    {
-        if (InsertRestrictions == null)
-        {
-            return;
-        }
-
-        if (InsertRestrictions.CustomQueryOptions != null)
-        {
-            AppendCustomParameters(operation, InsertRestrictions.CustomQueryOptions, ParameterLocation.Query);
-        }
-
-        if (InsertRestrictions.CustomHeaders != null)
-        {
-            AppendCustomParameters(operation, InsertRestrictions.CustomHeaders, ParameterLocation.Header);
-        }
     }
 }

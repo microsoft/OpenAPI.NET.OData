@@ -24,16 +24,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Patch;
 
-        /// <summary>
-        /// Gets/Sets the <see cref="UpdateRestrictionsType"/>
-        /// </summary>
-        private UpdateRestrictionsType UpdateRestrictions { get; set; }
+        private UpdateRestrictionsType _updateRestrictions;
 
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
 
-            UpdateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
+            _updateRestrictions = Context.Model.GetRecord<UpdateRestrictionsType>(Singleton, CapabilitiesConstants.UpdateRestrictions);
         }
 
         /// <inheritdoc/>
@@ -41,8 +38,8 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             // Summary and Descriptions
             string placeHolder = "Update " + Singleton.Name;
-            operation.Summary = UpdateRestrictions?.Description ?? placeHolder;
-            operation.Description = UpdateRestrictions?.LongDescription;
+            operation.Summary = _updateRestrictions?.Description ?? placeHolder;
+            operation.Description = _updateRestrictions?.LongDescription;
 
             // OperationId
             if (Context.Settings.EnableOperationId)
@@ -54,27 +51,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
-        {
-            OpenApiSchema schema = null;
-
-            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
-            {
-                schema = EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
-            }
-
-            if (schema == null)
-            {
-                schema = new OpenApiSchema
-                {
-                    UnresolvedReference = true,
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.Schema,
-                        Id = Singleton.EntityType().FullName()
-                    }
-                };
-            }
-
+        {          
             operation.RequestBody = new OpenApiRequestBody
             {
                 Required = true,
@@ -84,7 +61,7 @@ namespace Microsoft.OpenApi.OData.Operation
                     {
                         Constants.ApplicationJsonMediaType, new OpenApiMediaType
                         {
-                            Schema = schema
+                            Schema = GetOpenApiSchema()
                         }
                     }
                 }
@@ -96,38 +73,56 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.AddErrorResponses(Context.Settings, true);
+            operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
             base.SetResponses(operation);
         }
 
         /// <inheritdoc/>
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (UpdateRestrictions?.Permissions == null)
+            if (_updateRestrictions?.Permissions == null)
             {
                 return;
             }
 
-            operation.Security = Context.CreateSecurityRequirements(UpdateRestrictions.Permissions).ToList();
+            operation.Security = Context.CreateSecurityRequirements(_updateRestrictions.Permissions).ToList();
         }
 
         /// <inheritdoc/>
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (UpdateRestrictions == null)
+            if (_updateRestrictions == null)
             {
                 return;
             }
 
-            if (UpdateRestrictions.CustomHeaders != null)
+            if (_updateRestrictions.CustomHeaders != null)
             {
-                AppendCustomParameters(operation, UpdateRestrictions.CustomHeaders, ParameterLocation.Header);
+                AppendCustomParameters(operation, _updateRestrictions.CustomHeaders, ParameterLocation.Header);
             }
 
-            if (UpdateRestrictions.CustomQueryOptions != null)
+            if (_updateRestrictions.CustomQueryOptions != null)
             {
-                AppendCustomParameters(operation, UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
+                AppendCustomParameters(operation, _updateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
+        }
+
+        private OpenApiSchema GetOpenApiSchema()
+        {
+            if (Context.Settings.EnableDerivedTypesReferencesForRequestBody)
+            {
+                return EdmModelHelper.GetDerivedTypesReferenceSchema(Singleton.EntityType(), Context.Model);
+            }
+
+            return new OpenApiSchema
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Singleton.EntityType().FullName()
+                }
+            };
         }
     }
 }
