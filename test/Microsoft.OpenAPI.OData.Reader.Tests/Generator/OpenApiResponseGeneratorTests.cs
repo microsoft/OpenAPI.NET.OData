@@ -306,5 +306,39 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal(2, responses.Count);
             Assert.Equal(new string[] { responseCode, "default" }, responses.Select(r => r.Key));
         }
+
+        [Theory]
+        [InlineData("assignLicense", false, "200")]
+        [InlineData("activateService", false, "204")]
+        [InlineData("verifySignature", true, "200")]
+        public void CreateResponseForEdmActionWhenErrorResponsesAsDefaultIsSet(string actionName, bool errorAsDefault, string responseCode)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            var settings = new OpenApiConvertSettings
+            {
+                ErrorResponsesAsDefault = errorAsDefault,
+            };
+            ODataContext context = new ODataContext(model, settings);
+
+            // Act
+            OpenApiResponses responses;
+            IEdmOperation operation = model.SchemaElements.OfType<IEdmOperation>().First(o => o.Name == actionName);
+            Assert.NotNull(operation); // guard
+            ODataPath path = new(new ODataOperationSegment(operation));
+            responses = context.CreateResponses(operation, path);
+
+            // Assert
+            Assert.NotNull(responses);
+            Assert.NotEmpty(responses);
+            if (errorAsDefault)
+            {
+                Assert.Equal(new string[] { responseCode, "default" }, responses.Select(r => r.Key));
+            }
+            else
+            {
+                Assert.Equal(new string[] { responseCode, "4XX", "5XX" }, responses.Select(r => r.Key));
+            }
+        }
     }
 }

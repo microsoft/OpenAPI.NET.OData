@@ -208,8 +208,15 @@ namespace Microsoft.OpenApi.OData.Generator
                 responses.Add(Constants.StatusCode200, response);
             }
 
-            // Both action & function have the default response.
-            responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+            if (context.Settings.ErrorResponsesAsDefault)
+            {
+                responses.Add(Constants.StatusCodeDefault, Constants.StatusCodeDefault.GetResponse());
+            }
+            else
+            {
+                responses.Add(Constants.StatusCodeClass4XX, Constants.StatusCodeClass4XX.GetResponse());
+                responses.Add(Constants.StatusCodeClass5XX, Constants.StatusCodeClass5XX.GetResponse());
+            }
 
             return responses;
         }
