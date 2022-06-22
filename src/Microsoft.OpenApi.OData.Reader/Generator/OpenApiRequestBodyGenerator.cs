@@ -85,5 +85,45 @@ namespace Microsoft.OpenApi.OData.Generator
 
             return requestBody;
         }
+
+        public static IDictionary<string, OpenApiRequestBody> CreateRequestBodies(this ODataContext context)
+        {
+            Utils.CheckArgumentNull(context, nameof(context));
+
+            return new Dictionary<string, OpenApiRequestBody>
+            {
+                {
+                    Constants.ReferenceRequestBodyName,
+                    CreateRefRequestBody() 
+                }
+            };
+        }
+
+        private static OpenApiRequestBody CreateRefRequestBody()
+        {
+            OpenApiSchema schema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.ReferenceRequestBodyName
+                }
+            };
+            return new OpenApiRequestBody
+            {
+                Required = true,
+                Description = "New navigation property ref value",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                        {
+                            Schema = schema
+                        }
+                    }
+                }
+            };
+        }
     }
 }
