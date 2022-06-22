@@ -26,6 +26,7 @@
 - Add error ranges for OData actions when ErrorResponsesAsDefault is set to false #218
 - Fixes missing bound operations on some navigation property paths #201
 - Provides support for using success status code range 2XX #153
+- Fixes request body and response representation for ref POST operations
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
