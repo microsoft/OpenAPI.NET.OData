@@ -150,5 +150,21 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.Equal("param", parameter.Key);
             Assert.Equal("string", parameter.Value.Type);
         }
+
+        [Fact]
+        public void CreateRefRequestBodies()
+        {
+            // Arrange
+            ODataContext context = new ODataContext(_model);
+
+            // Act
+            var requestBodies = context.CreateRequestBodies();
+            requestBodies.TryGetValue(Common.Constants.ReferenceRequestBodyName, out Models.OpenApiRequestBody refBody);
+
+            // Assert
+            Assert.NotNull(refBody);
+            Assert.Equal("New navigation property ref value", refBody.Description);
+            Assert.Equal(Common.Constants.ReferenceRequestBodyName, refBody.Content.First().Value.Schema.Reference.Id);
+        }
     }
 }

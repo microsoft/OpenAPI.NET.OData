@@ -55,10 +55,11 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotEmpty(operation.Parameters);
 
             Assert.NotNull(operation.RequestBody);
-            Assert.Equal("New navigation property ref value", operation.RequestBody.Description);
+            Assert.Equal(Models.ReferenceType.RequestBody, operation.RequestBody.Reference.Type);
+            Assert.Equal(Common.Constants.ReferenceRequestBodyName, operation.RequestBody.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
-            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "201";
+            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
             Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
 
             if (enableOperationId)
