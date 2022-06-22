@@ -51,6 +51,13 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
+  refBody:
+    type: object
+    properties:
+      '@odata.id':
+        type: string
+    additionalProperties:
+      type: object
 parameters:
   top:
     in: query

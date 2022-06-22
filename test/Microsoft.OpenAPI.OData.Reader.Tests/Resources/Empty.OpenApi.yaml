@@ -53,6 +53,13 @@ components:
     ODataCountResponse:
       type: integer
       format: int32
+    refBody:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
   responses:
     error:
       description: error
@@ -100,3 +107,11 @@ components:
       description: Search items by search phrases
       schema:
         type: string
+  requestBodies:
+    refBody:
+      description: New navigation property ref value
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/refBody'
+      required: true

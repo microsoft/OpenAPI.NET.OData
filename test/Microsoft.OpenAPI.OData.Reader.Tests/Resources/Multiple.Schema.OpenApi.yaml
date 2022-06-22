@@ -753,21 +753,10 @@ paths:
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -1596,21 +1585,10 @@ paths:
             format: int32
           x-ms-docs-key-type: LibraryDto
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -2990,21 +2968,10 @@ paths:
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -4775,6 +4742,13 @@ components:
         '@odata.type':
           type: string
           nullable: true
+    refBody:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
   responses:
     error:
       description: error
@@ -5200,6 +5174,14 @@ components:
         ReviewDescription: String
         ReviewedBy: 0
         ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
+  requestBodies:
+    refBody:
+      description: New navigation property ref value
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/refBody'
+      required: true
 tags:
   - name: Categories.CategoryDto
     x-ms-docs-toc-type: page
