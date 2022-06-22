@@ -81,7 +81,7 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Fact]
-        public void CreateStructuredTypeSchemaWithDiscriminatorValueEnabledReturnsCorrectSchema()
+        public void CreateStructuredTypeSchemaForEntityTypeWithDiscriminatorValueEnabledReturnsCorrectSchema()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -139,6 +139,48 @@ namespace Microsoft.OpenApi.OData.Tests
       }
     }
   ]
+}".ChangeLineBreaks(), json);
+        }
+
+        [Fact]
+        public void CreateStructuredTypeSchemaForComplexTypeWithDiscriminatorValueEnabledReturnsCorrectSchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model, new OpenApiConvertSettings
+            {
+                EnableDiscriminatorValue = true,
+            });
+
+            IEdmComplexType complex = model.SchemaElements.OfType<IEdmComplexType>().First(t => t.Name == "userSet");
+            Assert.NotNull(complex); // Guard
+
+            // Act
+            var schema = context.CreateStructuredTypeSchema(complex);
+            string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
+
+            // Assert
+            Assert.NotNull(json);
+            Assert.Equal(@"{
+  ""title"": ""userSet"",
+  ""type"": ""object"",
+  ""properties"": {
+    ""isBackup"": {
+      ""type"": ""boolean"",
+      ""nullable"": true
+    }
+  },
+  ""discriminator"": {
+    ""propertyName"": ""@odata.type"",
+    ""mapping"": {
+      ""#microsoft.graph.connectedOrganizationMembers"": ""#/components/schemas/microsoft.graph.connectedOrganizationMembers"",
+      ""#microsoft.graph.externalSponsors"": ""#/components/schemas/microsoft.graph.externalSponsors"",
+      ""#microsoft.graph.groupMembers"": ""#/components/schemas/microsoft.graph.groupMembers"",
+      ""#microsoft.graph.internalSponsors"": ""#/components/schemas/microsoft.graph.internalSponsors"",
+      ""#microsoft.graph.requestorManager"": ""#/components/schemas/microsoft.graph.requestorManager"",
+      ""#microsoft.graph.singleUser"": ""#/components/schemas/microsoft.graph.singleUser""
+    }
+  }
 }".ChangeLineBreaks(), json);
         }
 
