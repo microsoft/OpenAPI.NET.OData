@@ -3155,29 +3155,11 @@
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.BestFriend.CreateRefPeers",
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -4035,29 +4017,11 @@
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.BestFriend.CreateRefDirectReports",
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -5714,29 +5678,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6748,29 +6694,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -6895,29 +6823,11 @@
         "summary": "Create new navigation property ref to Friends for Me",
         "operationId": "Me.CreateRefFriends",
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8199,29 +8109,11 @@
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.CreateRefPeers",
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9244,29 +9136,11 @@
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.CreateRefDirectReports",
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -10171,29 +10045,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -12502,29 +12358,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -13535,29 +13373,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -15298,29 +15118,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -16376,29 +16178,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -16536,29 +16320,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -18149,29 +17915,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -20571,29 +20319,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -21605,29 +21335,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -23544,29 +23256,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -24728,29 +24422,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -24909,29 +24585,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -26445,29 +26103,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -27678,29 +27318,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -28751,29 +28373,11 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref value",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refBody"
         },
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -30126,6 +29730,17 @@
             "nullable": true
           }
         }
+      },
+      "refBody": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
       }
     },
     "responses": {
@@ -30487,6 +30102,19 @@
             }
           ]
         }
+      }
+    },
+    "requestBodies": {
+      "refBody": {
+        "description": "New navigation property ref value",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/refBody"
+            }
+          }
+        },
+        "required": true
       }
     }
   },

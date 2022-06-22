@@ -2834,32 +2834,17 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.BestFriend.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -3636,32 +3621,17 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.BestFriend.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -5133,12 +5103,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.Friends.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -5151,22 +5116,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -6057,12 +6012,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.Friends.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -6075,22 +6025,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -6209,32 +6149,17 @@
         ],
         "summary": "Create new navigation property ref to Friends for Me",
         "operationId": "Me.CreateRefFriends",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -7397,32 +7322,17 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -8347,32 +8257,17 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -9186,12 +9081,7 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for Me",
         "operationId": "Me.Trips.CreateRefPlanItems",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -9207,22 +9097,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -11288,12 +11168,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for NewComePeople",
         "operationId": "NewComePeople.BestFriend.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -11306,22 +11181,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -12211,12 +12076,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for NewComePeople",
         "operationId": "NewComePeople.BestFriend.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -12229,22 +12089,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -13740,12 +13590,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for NewComePeople",
         "operationId": "NewComePeople.Friends.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -13766,22 +13611,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -14678,12 +14513,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for NewComePeople",
         "operationId": "NewComePeople.Friends.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -14704,22 +14534,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -14835,12 +14655,7 @@
         ],
         "summary": "Create new navigation property ref to Friends for NewComePeople",
         "operationId": "NewComePeople.CreateRefFriends",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -14853,22 +14668,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -16247,12 +16052,7 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for NewComePeople",
         "operationId": "NewComePeople.Trips.CreateRefPlanItems",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -16276,22 +16076,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -18446,12 +18236,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.BestFriend.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -18464,22 +18249,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -19370,12 +19145,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.BestFriend.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -19388,22 +19158,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -21075,12 +20835,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.Friends.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -21101,22 +20856,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -22119,12 +21864,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.Friends.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -22145,22 +21885,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -22297,12 +22027,7 @@
         ],
         "summary": "Create new navigation property ref to Friends for People",
         "operationId": "People.CreateRefFriends",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -22315,22 +22040,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -23669,12 +23384,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.CreateRefPeers",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -23687,22 +23397,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -24767,12 +24467,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.CreateRefDirectReports",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -24785,22 +24480,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -25718,12 +25403,7 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for People",
         "operationId": "People.Trips.CreateRefPlanItems",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -25747,22 +25427,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -26927,6 +26597,17 @@
         "@odata.type": {
           "type": "string"
         }
+      }
+    },
+    "refBody": {
+      "type": "object",
+      "properties": {
+        "@odata.id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "type": "object"
       }
     }
   },

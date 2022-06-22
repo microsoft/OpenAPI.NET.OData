@@ -86,6 +86,11 @@ namespace Microsoft.OpenApi.OData.Generator
             return requestBody;
         }
 
+        /// <summary>
+        /// Create a dictionary of <see cref="OpenApiRequestBody"/> indexed by ref name.
+        /// </summary>
+        /// <param name="context">The OData context.</param>
+        /// <returns>The created dictionary of <see cref="OpenApiRequestBody"/> indexed by ref name</returns>
         public static IDictionary<string, OpenApiRequestBody> CreateRequestBodies(this ODataContext context)
         {
             Utils.CheckArgumentNull(context, nameof(context));
@@ -99,6 +104,10 @@ namespace Microsoft.OpenApi.OData.Generator
             };
         }
 
+        /// <summary>
+        /// Create a <see cref="OpenApiRequestBody"/> to be reused across ref POST and PUT operations
+        /// </summary>
+        /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
         private static OpenApiRequestBody CreateRefRequestBody()
         {
             OpenApiSchema schema = new()

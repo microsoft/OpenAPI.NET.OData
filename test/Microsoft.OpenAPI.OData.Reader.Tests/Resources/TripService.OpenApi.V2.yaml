@@ -1963,24 +1963,14 @@ paths:
         - Me.BestFriend.Person
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.BestFriend.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -2532,24 +2522,14 @@ paths:
         - Me.BestFriend.Person
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.BestFriend.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -3595,10 +3575,7 @@ paths:
         - Me.Friends.Person
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.Friends.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -3608,17 +3585,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4255,10 +4225,7 @@ paths:
         - Me.Friends.Person
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.Friends.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -4268,17 +4235,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -4363,24 +4323,14 @@ paths:
         - Me.Person
       summary: Create new navigation property ref to Friends for Me
       operationId: Me.CreateRefFriends
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -5212,24 +5162,14 @@ paths:
         - Me.Person
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -5885,24 +5825,14 @@ paths:
         - Me.Person
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -6484,10 +6414,7 @@ paths:
         - Me.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for Me
       operationId: Me.Trips.CreateRefPlanItems
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: TripId
@@ -6500,17 +6427,10 @@ paths:
           x-ms-docs-key-type: Trip
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -7969,10 +7889,7 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Create new navigation property ref to Peers for NewComePeople
       operationId: NewComePeople.BestFriend.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -7982,17 +7899,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -8628,10 +8538,7 @@ paths:
         - NewComePeople.BestFriend.Person
       summary: Create new navigation property ref to DirectReports for NewComePeople
       operationId: NewComePeople.BestFriend.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -8641,17 +8548,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -9696,10 +9596,7 @@ paths:
         - NewComePeople.Friends.Person
       summary: Create new navigation property ref to Peers for NewComePeople
       operationId: NewComePeople.Friends.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -9715,17 +9612,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -10355,10 +10245,7 @@ paths:
         - NewComePeople.Friends.Person
       summary: Create new navigation property ref to DirectReports for NewComePeople
       operationId: NewComePeople.Friends.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -10374,17 +10261,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -10464,10 +10344,7 @@ paths:
         - NewComePeople.Person
       summary: Create new navigation property ref to Friends for NewComePeople
       operationId: NewComePeople.CreateRefFriends
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -10477,17 +10354,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -11457,10 +11327,7 @@ paths:
         - NewComePeople.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for NewComePeople
       operationId: NewComePeople.Trips.CreateRefPlanItems
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -11479,17 +11346,10 @@ paths:
           x-ms-docs-key-type: Trip
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: operation
@@ -13020,10 +12880,7 @@ paths:
         - People.BestFriend.Person
       summary: Create new navigation property ref to Peers for People
       operationId: People.BestFriend.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -13033,17 +12890,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -13680,10 +13530,7 @@ paths:
         - People.BestFriend.Person
       summary: Create new navigation property ref to DirectReports for People
       operationId: People.BestFriend.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -13693,17 +13540,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -14899,10 +14739,7 @@ paths:
         - People.Friends.Person
       summary: Create new navigation property ref to Peers for People
       operationId: People.Friends.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -14918,17 +14755,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -15649,10 +15479,7 @@ paths:
         - People.Friends.Person
       summary: Create new navigation property ref to DirectReports for People
       operationId: People.Friends.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -15668,17 +15495,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -15776,10 +15596,7 @@ paths:
         - People.Person
       summary: Create new navigation property ref to Friends for People
       operationId: People.CreateRefFriends
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -15789,17 +15606,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -16761,10 +16571,7 @@ paths:
         - People.Person
       summary: Create new navigation property ref to Peers for People
       operationId: People.CreateRefPeers
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -16774,17 +16581,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -17544,10 +17344,7 @@ paths:
         - People.Person
       summary: Create new navigation property ref to DirectReports for People
       operationId: People.CreateRefDirectReports
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -17557,17 +17354,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -18227,10 +18017,7 @@ paths:
         - People.Trips.PlanItem
       summary: Create new navigation property ref to PlanItems for People
       operationId: People.Trips.CreateRefPlanItems
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -18249,17 +18036,10 @@ paths:
           x-ms-docs-key-type: Trip
         - in: body
           name: body
-          description: New navigation property ref value
-          required: true
-          schema:
-            type: object
-            additionalProperties:
-              type: object
+          schema: { }
       responses:
-        '201':
-          description: Created navigation property link.
-          schema:
-            type: object
+        '204':
+          description: Success
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -19049,6 +18829,13 @@ definitions:
         type: string
       '@odata.type':
         type: string
+  refBody:
+    type: object
+    properties:
+      '@odata.id':
+        type: string
+    additionalProperties:
+      type: object
 parameters:
   top:
     in: query

@@ -111,7 +111,7 @@ namespace Microsoft.OpenApi.OData.Common
         public static string ReferenceUpdateSchemaName = "ReferenceUpdateSchema";
 
         /// <summary>
-        /// Name use for reference request body
+        /// Name used for reference request body
         /// </summary>
         public static string ReferenceRequestBodyName = "refBody";
     }
