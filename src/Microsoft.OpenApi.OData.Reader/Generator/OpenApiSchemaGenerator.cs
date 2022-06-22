@@ -107,6 +107,16 @@ namespace Microsoft.OpenApi.OData.Generator
                 };
             }
 
+            schemas[Constants.ReferenceRequestBodyName] = new()
+            {
+                Type = "object",
+                Properties = new Dictionary<string, OpenApiSchema>
+                {
+                    {"@odata.id", new OpenApiSchema { Type = "string", Nullable = false }}
+                },
+                AdditionalProperties = new OpenApiSchema { Type = "object" }
+            };
+
             return schemas;
         }
         internal static bool HasAnyNonContainedCollections(this ODataContext context)
