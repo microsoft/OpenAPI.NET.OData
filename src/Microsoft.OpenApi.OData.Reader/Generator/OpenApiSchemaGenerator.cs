@@ -384,7 +384,7 @@ namespace Microsoft.OpenApi.OData.Generator
         }
 
         private static OpenApiSchema CreateStructuredTypeSchema(this ODataContext context, IEdmStructuredType structuredType, bool processBase, bool processExample,
-            IEnumerable<IEdmEntityType> derivedTypes = null)
+            IEnumerable<IEdmStructuredType> derivedTypes = null)
         {
             Debug.Assert(context != null);
             Debug.Assert(structuredType != null);
@@ -397,7 +397,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.EnableDiscriminatorValue && derivedTypes == null)
             {
-                derivedTypes = context.Model.FindDirectlyDerivedTypes(structuredType).OfType<IEdmEntityType>();
+                derivedTypes = context.Model.FindDirectlyDerivedTypes(structuredType);
             }
 
             if (processBase && structuredType.BaseType != null)
@@ -445,8 +445,8 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 // The discriminator object is added to structured types which have derived types.
                 OpenApiDiscriminator discriminator = null;
-                if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any() && structuredType.BaseType != null)
-                {         
+                if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any())
+                {
                     Dictionary<string, string> mapping = derivedTypes
                         .ToDictionary(x => $"#{x.FullTypeName()}", x => new OpenApiSchema
                         {
