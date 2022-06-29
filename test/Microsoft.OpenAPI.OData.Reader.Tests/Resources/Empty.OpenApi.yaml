@@ -53,7 +53,7 @@ components:
     ODataCountResponse:
       type: integer
       format: int32
-    refBody:
+    refPostBody:
       type: object
       properties:
         '@odata.id':
@@ -108,10 +108,10 @@ components:
       schema:
         type: string
   requestBodies:
-    refBody:
+    refPostBody:
       description: New navigation property ref value
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/refBody'
+            $ref: '#/components/schemas/refPostBody'
       required: true

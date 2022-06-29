@@ -1196,7 +1196,7 @@
           }
         }
       },
-      "refBody": {
+      "refPostBody": {
         "type": "object",
         "properties": {
           "@odata.id": {
@@ -1359,12 +1359,12 @@
       }
     },
     "requestBodies": {
-      "refBody": {
+      "refPostBody": {
         "description": "New navigation property ref value",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/refBody"
+              "$ref": "#/components/schemas/refPostBody"
             }
           }
         },

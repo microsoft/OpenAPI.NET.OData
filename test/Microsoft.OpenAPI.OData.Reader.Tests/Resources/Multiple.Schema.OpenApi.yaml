@@ -753,7 +753,7 @@ paths:
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -1585,7 +1585,7 @@ paths:
             format: int32
           x-ms-docs-key-type: LibraryDto
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -2968,7 +2968,7 @@ paths:
             format: int32
           x-ms-docs-key-type: DocumentDto
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -4742,7 +4742,7 @@ components:
         '@odata.type':
           type: string
           nullable: true
-    refBody:
+    refPostBody:
       type: object
       properties:
         '@odata.id':
@@ -5175,12 +5175,12 @@ components:
         ReviewedBy: 0
         ReviewedDate: '0001-01-01T00:00:00.0000000+00:00'
   requestBodies:
-    refBody:
+    refPostBody:
       description: New navigation property ref value
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/refBody'
+            $ref: '#/components/schemas/refPostBody'
       required: true
 tags:
   - name: Categories.CategoryDto

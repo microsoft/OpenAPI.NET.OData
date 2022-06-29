@@ -45,7 +45,7 @@ namespace Microsoft.OpenApi.OData.Operation
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.RequestBody,
-                    Id = Constants.ReferenceRequestBodyName
+                    Id = Constants.ReferenceRequestPostBodyName
                 }
             };
 

@@ -2166,7 +2166,7 @@ paths:
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.BestFriend.CreateRefPeers
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -2776,7 +2776,7 @@ paths:
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.BestFriend.CreateRefDirectReports
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -3944,7 +3944,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -4661,7 +4661,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -4754,7 +4754,7 @@ paths:
       summary: Create new navigation property ref to Friends for Me
       operationId: Me.CreateRefFriends
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -5674,7 +5674,7 @@ paths:
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.CreateRefPeers
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -6393,7 +6393,7 @@ paths:
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.CreateRefDirectReports
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -7036,7 +7036,7 @@ paths:
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -8652,7 +8652,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -9368,7 +9368,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -10567,7 +10567,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -11298,7 +11298,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -11396,7 +11396,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -12497,7 +12497,7 @@ paths:
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -14186,7 +14186,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -14903,7 +14903,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -16253,7 +16253,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -17075,7 +17075,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -17191,7 +17191,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -18271,7 +18271,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -19120,7 +19120,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -19864,7 +19864,7 @@ paths:
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
-        $ref: '#/components/requestBodies/refBody'
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
         '204':
           description: Success
@@ -20757,7 +20757,7 @@ components:
         '@odata.type':
           type: string
           nullable: true
-    refBody:
+    refPostBody:
       type: object
       properties:
         '@odata.id':
@@ -20992,12 +20992,12 @@ components:
         DirectReports:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
   requestBodies:
-    refBody:
+    refPostBody:
       description: New navigation property ref value
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/refBody'
+            $ref: '#/components/schemas/refPostBody'
       required: true
 tags:
   - name: Airlines.Airline

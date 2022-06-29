@@ -722,7 +722,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.Address'
-  refBody:
+  refPostBody:
     type: object
     properties:
       '@odata.id':

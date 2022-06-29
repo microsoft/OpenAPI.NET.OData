@@ -98,7 +98,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new Dictionary<string, OpenApiRequestBody>
             {
                 {
-                    Constants.ReferenceRequestBodyName,
+                    Constants.ReferenceRequestPostBodyName,
                     CreateRefRequestBody() 
                 }
             };
@@ -116,7 +116,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
-                    Id = Constants.ReferenceRequestBodyName
+                    Id = Constants.ReferenceRequestPostBodyName
                 }
             };
             return new OpenApiRequestBody

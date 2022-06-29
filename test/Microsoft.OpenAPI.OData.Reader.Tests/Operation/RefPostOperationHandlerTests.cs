@@ -56,7 +56,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
 
             Assert.NotNull(operation.RequestBody);
             Assert.Equal(Models.ReferenceType.RequestBody, operation.RequestBody.Reference.Type);
-            Assert.Equal(Common.Constants.ReferenceRequestBodyName, operation.RequestBody.Reference.Id);
+            Assert.Equal(Common.Constants.ReferenceRequestPostBodyName, operation.RequestBody.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
             var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";

@@ -107,7 +107,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 };
             }
 
-            schemas[Constants.ReferenceRequestBodyName] = new()
+            schemas[Constants.ReferenceRequestPostBodyName] = new()
             {
                 Type = "object",
                 Properties = new Dictionary<string, OpenApiSchema>

@@ -4264,7 +4264,7 @@ definitions:
         type: string
       '@odata.type':
         type: string
-  refBody:
+  refPostBody:
     type: object
     properties:
       '@odata.id':

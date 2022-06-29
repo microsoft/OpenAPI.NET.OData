@@ -793,7 +793,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DefaultNs.Address'
-    refBody:
+    refPostBody:
       type: object
       properties:
         '@odata.id':
@@ -897,12 +897,12 @@ components:
         CountryOrRegion:
           '@odata.type': DefaultNs.CountryOrRegion
   requestBodies:
-    refBody:
+    refPostBody:
       description: New navigation property ref value
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/refBody'
+            $ref: '#/components/schemas/refPostBody'
       required: true
 tags:
   - name: City.City

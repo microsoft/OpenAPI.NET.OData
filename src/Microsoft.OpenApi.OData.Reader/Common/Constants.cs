@@ -113,6 +113,6 @@ namespace Microsoft.OpenApi.OData.Common
         /// <summary>
         /// Name used for reference request body
         /// </summary>
-        public static string ReferenceRequestBodyName = "refBody";
+        public static string ReferenceRequestPostBodyName = "refPostBody";
     }
 }

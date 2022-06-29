@@ -26599,7 +26599,7 @@
         }
       }
     },
-    "refBody": {
+    "refPostBody": {
       "type": "object",
       "properties": {
         "@odata.id": {

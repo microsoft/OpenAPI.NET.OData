@@ -51,7 +51,7 @@ definitions:
   ODataCountResponse:
     format: int32
     type: integer
-  refBody:
+  refPostBody:
     type: object
     properties:
       '@odata.id':
