@@ -562,12 +562,7 @@ paths:
             type: string
           x-ms-docs-key-type: Airport
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -1281,12 +1276,7 @@ paths:
       description: Update an instance of a best friend.
       operationId: Me.UpdateRefBestFriend
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -7585,12 +7575,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -13118,12 +13103,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -20998,6 +20978,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/refPostBody'
+      required: true
+    refPutBody:
+      description: New navigation property ref values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceUpdateSchema'
       required: true
 tags:
   - name: Airlines.Airline

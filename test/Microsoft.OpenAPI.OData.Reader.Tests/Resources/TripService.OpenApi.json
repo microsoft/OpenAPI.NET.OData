@@ -830,15 +830,7 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReferenceUpdateSchema"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refPutBody"
         },
         "responses": {
           "204": {
@@ -1894,15 +1886,7 @@
         "description": "Update an instance of a best friend.",
         "operationId": "Me.UpdateRefBestFriend",
         "requestBody": {
-          "description": "New navigation property ref values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReferenceUpdateSchema"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refPutBody"
         },
         "responses": {
           "204": {
@@ -10832,15 +10816,7 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReferenceUpdateSchema"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refPutBody"
         },
         "responses": {
           "204": {
@@ -18792,15 +18768,7 @@
           }
         ],
         "requestBody": {
-          "description": "New navigation property ref values",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ReferenceUpdateSchema"
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/refPutBody"
         },
         "responses": {
           "204": {
@@ -30111,6 +30079,17 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/refPostBody"
+            }
+          }
+        },
+        "required": true
+      },
+      "refPutBody": {
+        "description": "New navigation property ref values",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReferenceUpdateSchema"
             }
           }
         },

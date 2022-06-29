@@ -98,17 +98,21 @@ namespace Microsoft.OpenApi.OData.Generator
             return new Dictionary<string, OpenApiRequestBody>
             {
                 {
-                    Constants.ReferenceRequestPostBodyName,
-                    CreateRefRequestBody() 
+                    Constants.ReferencePostRequestBodyName,
+                    CreateRefPostRequestBody() 
+                },
+                {
+                    Constants.ReferencePutRequestBodyName,
+                    CreateRefPutRequestBody()
                 }
             };
         }
 
         /// <summary>
-        /// Create a <see cref="OpenApiRequestBody"/> to be reused across ref POST and PUT operations
+        /// Create a <see cref="OpenApiRequestBody"/> to be reused across ref POST operations
         /// </summary>
         /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
-        private static OpenApiRequestBody CreateRefRequestBody()
+        private static OpenApiRequestBody CreateRefPostRequestBody()
         {
             OpenApiSchema schema = new()
             {
@@ -116,13 +120,45 @@ namespace Microsoft.OpenApi.OData.Generator
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
-                    Id = Constants.ReferenceRequestPostBodyName
+                    Id = Constants.ReferencePostRequestBodyName
                 }
             };
             return new OpenApiRequestBody
             {
                 Required = true,
                 Description = "New navigation property ref value",
+                Content = new Dictionary<string, OpenApiMediaType>
+                {
+                    {
+                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
+                        {
+                            Schema = schema
+                        }
+                    }
+                }
+            };
+        }
+
+        /// <summary>
+        /// Create a <see cref="OpenApiRequestBody"/> to be reused across ref PUT operations
+        /// </summary>
+        /// <returns>The created <see cref="OpenApiRequestBody"/></returns>
+        private static OpenApiRequestBody CreateRefPutRequestBody()
+        {
+            OpenApiSchema schema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.ReferenceUpdateSchemaName
+                }
+            };
+
+            return new OpenApiRequestBody
+            {
+                Required = true,
+                Description = "New navigation property ref values",
                 Content = new Dictionary<string, OpenApiMediaType>
                 {
                     {

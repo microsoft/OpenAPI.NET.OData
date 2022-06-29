@@ -1810,8 +1810,7 @@ paths:
         - Revisions.Document
       summary: Update the ref of navigation property Document in Revisions
       operationId: Revisions.UpdateRefDocument
-      consumes:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: Id
@@ -1824,10 +1823,7 @@ paths:
           x-ms-docs-key-type: RevisionDto
         - in: body
           name: body
-          description: New navigation property ref values
-          required: true
-          schema:
-            $ref: '#/definitions/ReferenceUpdateSchema'
+          schema: { }
       responses:
         '204':
           description: Success

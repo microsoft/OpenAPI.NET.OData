@@ -159,12 +159,12 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
 
             // Act
             var requestBodies = context.CreateRequestBodies();
-            requestBodies.TryGetValue(Common.Constants.ReferenceRequestPostBodyName, out Models.OpenApiRequestBody refPostBody);
+            requestBodies.TryGetValue(Common.Constants.ReferencePostRequestBodyName, out Models.OpenApiRequestBody refPostBody);
 
             // Assert
             Assert.NotNull(refPostBody);
             Assert.Equal("New navigation property ref value", refPostBody.Description);
-            Assert.Equal(Common.Constants.ReferenceRequestPostBodyName, refPostBody.Content.First().Value.Schema.Reference.Id);
+            Assert.Equal(Common.Constants.ReferencePostRequestBodyName, refPostBody.Content.First().Value.Schema.Reference.Id);
         }
     }
 }

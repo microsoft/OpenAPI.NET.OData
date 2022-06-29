@@ -169,6 +169,17 @@
           }
         },
         "required": true
+      },
+      "refPutBody": {
+        "description": "New navigation property ref values",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReferenceUpdateSchema"
+            }
+          }
+        },
+        "required": true
       }
     }
   }

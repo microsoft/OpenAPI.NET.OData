@@ -54,8 +54,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.NotNull(operation.Parameters);
             Assert.Equal(1, operation.Parameters.Count);
 
-            Assert.NotNull(operation.RequestBody);
-            Assert.Equal("New navigation property ref values", operation.RequestBody.Description);
+            Assert.Equal(Models.ReferenceType.RequestBody, operation.RequestBody.Reference.Type);
+            Assert.Equal(Common.Constants.ReferencePutRequestBodyName, operation.RequestBody.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
             var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";

@@ -2054,12 +2054,7 @@ paths:
             format: int32
           x-ms-docs-key-type: RevisionDto
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -5181,6 +5176,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/refPostBody'
+      required: true
+    refPutBody:
+      description: New navigation property ref values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceUpdateSchema'
       required: true
 tags:
   - name: Categories.CategoryDto

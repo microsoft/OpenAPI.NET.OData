@@ -40,16 +40,11 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
-                Description = "New navigation property ref values",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = GetOpenApiSchema()
-                        }
-                    }
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {              
+                    Type = ReferenceType.RequestBody,
+                    Id = Constants.ReferencePutRequestBodyName
                 }
             };
 
@@ -59,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
+    		operation.AddErrorResponses(Context.Settings, true, GetRefUpdateSchema());
             base.SetResponses(operation);
         }
 
@@ -91,7 +86,7 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-        private OpenApiSchema GetOpenApiSchema()
+        private OpenApiSchema GetRefUpdateSchema()
         {
             return new()
             {
