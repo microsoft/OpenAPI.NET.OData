@@ -475,11 +475,15 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (schema.Discriminator != null)
                 {
-                    schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
+                    if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
-                        Type = "string"                        
-                    });
-                    schema.Properties[Constants.OdataType].Default = new OpenApiString("#" + structuredType.FullTypeName());
+                        Type = "string",
+                        Default = new OpenApiString("#" + structuredType.FullTypeName()),
+                    }))
+                    {
+                        throw new InvalidOperationException(
+                            $"Property {Constants.OdataType} is already present in schema {structuredType.FullTypeName()}; verify CSDL.");
+                    }
                     schema.Required.Add(Constants.OdataType);
                 }                
 
