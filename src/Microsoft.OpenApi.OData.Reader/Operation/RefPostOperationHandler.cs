@@ -58,7 +58,7 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode204,
+                    Constants.StatusCode204,
                     new OpenApiResponse { Description = "Success" } 
                 }
             };
