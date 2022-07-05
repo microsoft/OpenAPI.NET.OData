@@ -109,5 +109,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// Name used for reference update.
         /// </summary>
         public static string ReferenceUpdateSchemaName = "ReferenceUpdateSchema";
+
+        /// <summary>
+        /// The odata type name.
+        /// </summary>
+        public static string OdataType = "@odata.type";
     }
 }

@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {"@odata.id", new OpenApiSchema { Type = "string", Nullable = false }},
-                        {"@odata.type", new OpenApiSchema { Type = "string", Nullable = true }},
+                        {Constants.OdataType, new OpenApiSchema { Type = "string", Nullable = true }},
                     }
                 };
             }
@@ -435,7 +435,6 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 // The discriminator object is added to structured types which have derived types.
                 OpenApiDiscriminator discriminator = null;
-                string discriminatorPropertyName = "@odata.type";
                 if (context.Settings.EnableDiscriminatorValue && derivedTypes.Any())
                 {
                     Dictionary<string, string> mapping = derivedTypes
@@ -450,7 +449,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     discriminator = new OpenApiDiscriminator
                     {
-                        PropertyName = discriminatorPropertyName,
+                        PropertyName = Constants.OdataType,
                         Mapping = mapping
                     };
                 }
@@ -476,12 +475,12 @@ namespace Microsoft.OpenApi.OData.Generator
 
                 if (schema.Discriminator != null)
                 {
-                    schema.Properties.TryAdd(discriminatorPropertyName, new OpenApiSchema()
+                    schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
                         Type = "string"                        
                     });
-                    schema.Properties[discriminatorPropertyName].Default = new OpenApiString("#" + structuredType.FullTypeName());
-                    schema.Required.Add(discriminatorPropertyName);
+                    schema.Properties[Constants.OdataType].Default = new OpenApiString("#" + structuredType.FullTypeName());
+                    schema.Required.Add(Constants.OdataType);
                 }                
 
                 // It optionally can contain the field description,
@@ -570,7 +569,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Enum:
                     OpenApiObject obj = new OpenApiObject();
-                    obj["@odata.type"] = new OpenApiString(edmTypeReference.FullName());
+                    obj[Constants.OdataType] = new OpenApiString(edmTypeReference.FullName());
                     return obj;
 
                 case EdmTypeKind.Collection:
