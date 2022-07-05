@@ -102,7 +102,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
                         {"@odata.id", new OpenApiSchema { Type = "string", Nullable = false }},
-                        {"@odata.type", new OpenApiSchema { Type = "string", Nullable = true }},
+                        {Constants.OdataType, new OpenApiSchema { Type = "string", Nullable = true }},
                     }
                 };
             }
@@ -459,13 +459,13 @@ namespace Microsoft.OpenApi.OData.Generator
 
                     discriminator = new OpenApiDiscriminator
                     {
-                        PropertyName = "@odata.type",
+                        PropertyName = Constants.OdataType,
                         Mapping = mapping
                     };
                 }
 
                 // A structured type without a base type is represented as a Schema Object of type object
-                OpenApiSchema schema = new OpenApiSchema
+                OpenApiSchema schema = new()
                 {
                     Title = (structuredType as IEdmSchemaElement)?.Name,
 
@@ -482,6 +482,20 @@ namespace Microsoft.OpenApi.OData.Generator
                     OneOf = null,
                     AnyOf = null
                 };
+
+                if (schema.Discriminator != null)
+                {
+                    if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
+                    {
+                        Type = "string",
+                        Default = new OpenApiString("#" + structuredType.FullTypeName()),
+                    }))
+                    {
+                        throw new InvalidOperationException(
+                            $"Property {Constants.OdataType} is already present in schema {structuredType.FullTypeName()}; verify CSDL.");
+                    }
+                    schema.Required.Add(Constants.OdataType);
+                }                
 
                 // It optionally can contain the field description,
                 // whose value is the value of the unqualified annotation Core.Description of the structured type.
@@ -569,7 +583,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmTypeKind.Complex:
                 case EdmTypeKind.Enum:
                     OpenApiObject obj = new OpenApiObject();
-                    obj["@odata.type"] = new OpenApiString(edmTypeReference.FullName());
+                    obj[Constants.OdataType] = new OpenApiString(edmTypeReference.FullName());
                     return obj;
 
                 case EdmTypeKind.Collection:

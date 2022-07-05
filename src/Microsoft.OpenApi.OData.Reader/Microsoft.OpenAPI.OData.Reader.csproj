@@ -15,7 +15,7 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.0.11-preview3</Version>
+    <Version>1.0.11-preview4</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
@@ -28,6 +28,7 @@
 - Provides support for using success status code range 2XX #153
 - Fixes request body and response representation for ref POST and PUT operations #228
 - Adds discriminator object to complex types which have derived types #233
+- Adds @odata.type property and makes this a required property in schemas that have discriminator objects #243
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

@@ -119,5 +119,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// Name used for reference request PUT body
         /// </summary>
         public static string ReferencePutRequestBodyName = "refPutBody";
+        
+        /// <summary>
+        /// The odata type name.
+        /// </summary>
+        public static string OdataType = "@odata.type";
     }
 }

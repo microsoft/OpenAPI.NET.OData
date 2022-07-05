@@ -130,6 +130,9 @@ namespace Microsoft.OpenApi.OData.Tests
     },
     {
       ""title"": ""directoryObject"",
+      ""required"": [
+        ""@odata.type""
+      ],
       ""type"": ""object"",
       ""properties"": {
         ""deletedDateTime"": {
@@ -137,6 +140,10 @@ namespace Microsoft.OpenApi.OData.Tests
           ""type"": ""string"",
           ""format"": ""date-time"",
           ""nullable"": true
+        },
+        ""@odata.type"": {
+          ""type"": ""string"",
+          ""default"": ""#microsoft.graph.directoryObject""
         }
       },
       ""discriminator"": {
@@ -187,11 +194,18 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.NotNull(json);
             Assert.Equal(@"{
   ""title"": ""userSet"",
+  ""required"": [
+    ""@odata.type""
+  ],
   ""type"": ""object"",
   ""properties"": {
     ""isBackup"": {
       ""type"": ""boolean"",
       ""nullable"": true
+    },
+    ""@odata.type"": {
+      ""type"": ""string"",
+      ""default"": ""#microsoft.graph.userSet""
     }
   },
   ""discriminator"": {
