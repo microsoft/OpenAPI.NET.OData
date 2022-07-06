@@ -18813,7 +18813,7 @@ definitions:
         type: string
       '@odata.type':
         type: string
-  refPostBody:
+  ReferencePostSchema:
     type: object
     properties:
       '@odata.id':

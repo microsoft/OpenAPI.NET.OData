@@ -26575,7 +26575,7 @@
         }
       }
     },
-    "refPostBody": {
+    "ReferencePostSchema": {
       "type": "object",
       "properties": {
         "@odata.id": {

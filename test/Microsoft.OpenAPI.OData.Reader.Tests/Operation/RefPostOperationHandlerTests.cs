@@ -59,8 +59,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal(Common.Constants.ReferencePostRequestBodyName, operation.RequestBody.Reference.Id);
 
             Assert.Equal(2, operation.Responses.Count);
-            var statusCode = useHTTPStatusCodeClass2XX ? "2XX" : "204";
-            Assert.Equal(new string[] { statusCode, "default" }, operation.Responses.Select(e => e.Key));
+            Assert.Equal(new string[] { "204", "default" }, operation.Responses.Select(e => e.Key));
 
             if (enableOperationId)
             {

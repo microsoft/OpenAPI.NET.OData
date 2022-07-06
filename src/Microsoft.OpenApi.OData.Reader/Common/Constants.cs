@@ -110,13 +110,19 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         public static string ReferenceUpdateSchemaName = "ReferenceUpdateSchema";
 
+
         /// <summary>
-        /// Name used for reference request POST body
+        /// Name used for reference update.
+        /// </summary>
+        public static string ReferencePostSchemaName = "ReferencePostSchema";
+
+        /// <summary>
+        /// Name used for reference request POST body.
         /// </summary>
         public static string ReferencePostRequestBodyName = "refPostBody";
 
         /// <summary>
-        /// Name used for reference request PUT body
+        /// Name used for reference request PUT body.
         /// </summary>
         public static string ReferencePutRequestBodyName = "refPutBody";
         
@@ -124,5 +130,10 @@ namespace Microsoft.OpenApi.OData.Common
         /// The odata type name.
         /// </summary>
         public static string OdataType = "@odata.type";
+
+        /// <summary>
+        /// The odata id.
+        /// </summary>
+        public static string OdataId = "@odata.id";
     }
 }

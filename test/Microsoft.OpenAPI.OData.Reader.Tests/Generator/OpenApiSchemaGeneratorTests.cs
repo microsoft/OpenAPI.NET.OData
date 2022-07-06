@@ -74,11 +74,11 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act & Assert
             var schemas = context.CreateSchemas();
 
-            schemas.TryGetValue(Constants.ReferencePostRequestBodyName, out OpenApiSchema refRequestBody);
+            schemas.TryGetValue(Constants.ReferencePostSchemaName, out OpenApiSchema refRequestBody);
 
             Assert.NotNull(refRequestBody);
             Assert.Equal("object", refRequestBody.Type);
-            Assert.Equal("@odata.id", refRequestBody.Properties.First().Key);
+            Assert.Equal(Constants.OdataId, refRequestBody.Properties.First().Key);
             Assert.Equal("string", refRequestBody.Properties.First().Value.Type);
             Assert.Equal("object", refRequestBody.AdditionalProperties.Type);
         }

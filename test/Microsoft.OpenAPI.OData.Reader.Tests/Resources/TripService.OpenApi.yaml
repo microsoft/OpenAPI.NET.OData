@@ -20737,7 +20737,7 @@ components:
         '@odata.type':
           type: string
           nullable: true
-    refPostBody:
+    ReferencePostSchema:
       type: object
       properties:
         '@odata.id':
@@ -20977,7 +20977,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/refPostBody'
+            $ref: '#/components/schemas/ReferencePostSchema'
       required: true
     refPutBody:
       description: New navigation property ref values

@@ -6522,7 +6522,7 @@
           }
         }
       },
-      "refPostBody": {
+      "ReferencePostSchema": {
         "type": "object",
         "properties": {
           "@odata.id": {
@@ -7127,7 +7127,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/refPostBody"
+              "$ref": "#/components/schemas/ReferencePostSchema"
             }
           }
         },

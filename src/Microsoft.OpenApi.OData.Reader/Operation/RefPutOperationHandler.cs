@@ -54,7 +54,15 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true, GetRefUpdateSchema());
+            operation.Responses = new OpenApiResponses
+            {
+                {
+                    Constants.StatusCode204,
+                    new OpenApiResponse { Description = "Success" }
+                }
+            };
+
+            operation.AddErrorResponses(Context.Settings, false);
             base.SetResponses(operation);
         }
 
@@ -84,19 +92,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
-        }
-
-        private OpenApiSchema GetRefUpdateSchema()
-        {
-            return new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Id = Constants.ReferenceUpdateSchemaName,
-                    Type = ReferenceType.Schema
-                },
-            };
         }
     }
 }

@@ -1091,7 +1091,18 @@
         }
       }
     },
-    "refPostBody": {
+    "ReferenceUpdateSchema": {
+      "type": "object",
+      "properties": {
+        "@odata.id": {
+          "type": "string"
+        },
+        "@odata.type": {
+          "type": "string"
+        }
+      }
+    },
+    "ReferencePostSchema": {
       "type": "object",
       "properties": {
         "@odata.id": {

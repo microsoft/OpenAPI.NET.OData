@@ -1196,7 +1196,19 @@
           }
         }
       },
-      "refPostBody": {
+      "ReferenceUpdateSchema": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          },
+          "@odata.type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReferencePostSchema": {
         "type": "object",
         "properties": {
           "@odata.id": {
@@ -1364,7 +1376,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/refPostBody"
+              "$ref": "#/components/schemas/ReferencePostSchema"
             }
           }
         },
