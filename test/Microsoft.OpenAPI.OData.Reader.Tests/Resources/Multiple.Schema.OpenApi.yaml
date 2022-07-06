@@ -4729,7 +4729,7 @@ components:
           type: array
           items:
             type: string
-    ReferenceUpdateSchema:
+    ReferenceUpdate:
       type: object
       properties:
         '@odata.id':
@@ -4737,7 +4737,7 @@ components:
         '@odata.type':
           type: string
           nullable: true
-    ReferencePostSchema:
+    ReferenceCreate:
       type: object
       properties:
         '@odata.id':
@@ -5175,14 +5175,14 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ReferencePostSchema'
+            $ref: '#/components/schemas/ReferenceCreate'
       required: true
     refPutBody:
       description: New navigation property ref values
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ReferenceUpdateSchema'
+            $ref: '#/components/schemas/ReferenceUpdate'
       required: true
 tags:
   - name: Categories.CategoryDto

@@ -164,7 +164,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             // Assert
             Assert.NotNull(refPostBody);
             Assert.Equal("New navigation property ref value", refPostBody.Description);
-            Assert.Equal(Common.Constants.ReferencePostSchemaName, refPostBody.Content.First().Value.Schema.Reference.Id);
+            Assert.Equal(Common.Constants.ReferenceCreateSchemaName, refPostBody.Content.First().Value.Schema.Reference.Id);
         }
     }
 }

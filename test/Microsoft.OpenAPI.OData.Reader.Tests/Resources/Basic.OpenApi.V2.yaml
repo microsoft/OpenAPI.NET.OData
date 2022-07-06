@@ -722,14 +722,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/DefaultNs.Address'
-  ReferenceUpdateSchema:
+  ReferenceUpdate:
     type: object
     properties:
       '@odata.id':
         type: string
       '@odata.type':
         type: string
-  ReferencePostSchema:
+  ReferenceCreate:
     type: object
     properties:
       '@odata.id':

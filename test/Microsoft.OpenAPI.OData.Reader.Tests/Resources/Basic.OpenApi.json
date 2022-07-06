@@ -1196,7 +1196,7 @@
           }
         }
       },
-      "ReferenceUpdateSchema": {
+      "ReferenceUpdate": {
         "type": "object",
         "properties": {
           "@odata.id": {
@@ -1208,7 +1208,7 @@
           }
         }
       },
-      "ReferencePostSchema": {
+      "ReferenceCreate": {
         "type": "object",
         "properties": {
           "@odata.id": {
@@ -1376,7 +1376,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ReferencePostSchema"
+              "$ref": "#/components/schemas/ReferenceCreate"
             }
           }
         },
@@ -1387,7 +1387,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ReferenceUpdateSchema"
+              "$ref": "#/components/schemas/ReferenceUpdate"
             }
           }
         },

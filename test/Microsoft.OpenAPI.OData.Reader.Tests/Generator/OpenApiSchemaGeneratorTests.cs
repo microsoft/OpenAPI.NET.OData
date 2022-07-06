@@ -74,7 +74,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Act & Assert
             var schemas = context.CreateSchemas();
 
-            schemas.TryGetValue(Constants.ReferencePostSchemaName, out OpenApiSchema refRequestBody);
+            schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out OpenApiSchema refRequestBody);
 
             Assert.NotNull(refRequestBody);
             Assert.Equal("object", refRequestBody.Type);

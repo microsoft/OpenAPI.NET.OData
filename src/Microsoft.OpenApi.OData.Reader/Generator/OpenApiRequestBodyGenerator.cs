@@ -120,7 +120,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 Reference = new OpenApiReference
                 {
                     Type = ReferenceType.Schema,
-                    Id = Constants.ReferencePostSchemaName
+                    Id = Constants.ReferenceCreateSchemaName
                 }
             };
             return new OpenApiRequestBody

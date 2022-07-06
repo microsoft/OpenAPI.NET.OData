@@ -26564,7 +26564,7 @@
         }
       }
     },
-    "ReferenceUpdateSchema": {
+    "ReferenceUpdate": {
       "type": "object",
       "properties": {
         "@odata.id": {
@@ -26575,7 +26575,7 @@
         }
       }
     },
-    "ReferencePostSchema": {
+    "ReferenceCreate": {
       "type": "object",
       "properties": {
         "@odata.id": {

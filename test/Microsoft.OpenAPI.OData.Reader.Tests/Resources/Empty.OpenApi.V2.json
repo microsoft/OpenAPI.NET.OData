@@ -75,7 +75,7 @@
       "format": "int32",
       "type": "integer"
     },
-    "ReferenceUpdateSchema": {
+    "ReferenceUpdate": {
       "type": "object",
       "properties": {
         "@odata.id": {
@@ -86,7 +86,7 @@
         }
       }
     },
-    "ReferencePostSchema": {
+    "ReferenceCreate": {
       "type": "object",
       "properties": {
         "@odata.id": {
