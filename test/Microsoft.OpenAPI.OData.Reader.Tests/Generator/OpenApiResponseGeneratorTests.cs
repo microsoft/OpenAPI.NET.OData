@@ -225,10 +225,6 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(response.Content);
             OpenApiMediaType mediaType = response.Content["application/json"];
 
-            // For either version, nullable should be set
-            // and the serializer will ignore for v2
-            Assert.True(mediaType.Schema.Nullable);
-
             // openApi version 2 should have not use nullable
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
@@ -236,14 +232,22 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 Assert.Null(mediaType.Schema.AnyOf);
                 Assert.NotNull(mediaType.Schema.Reference);
                 Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", mediaType.Schema.Reference.Id);
+                Assert.True(mediaType.Schema.Nullable);
             }
             else
             {
                 Assert.NotNull(mediaType.Schema);
                 Assert.Null(mediaType.Schema.Reference);
                 Assert.NotNull(mediaType.Schema.AnyOf);
-                var anyOf = Assert.Single(mediaType.Schema.AnyOf);
-                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOf.Reference.Id);
+                Assert.Equal(2, mediaType.Schema.AnyOf.Count);
+                var anyOfRef = mediaType.Schema.AnyOf.FirstOrDefault();
+                Assert.NotNull(anyOfRef);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person", anyOfRef.Reference.Id);
+                var anyOfNull = mediaType.Schema.AnyOf.Skip(1).FirstOrDefault();
+                Assert.NotNull(anyOfNull.Type);
+                Assert.Equal("object", anyOfNull.Type);
+                Assert.True(anyOfNull.Nullable);
+
             }
         }
 

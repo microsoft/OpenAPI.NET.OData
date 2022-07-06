@@ -3171,7 +3171,8 @@ components:
           items:
             anyOf:
               - $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto'
-            nullable: true
+              - type: object
+                nullable: true
         Revisions:
           type: array
           items:
@@ -3362,7 +3363,8 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-          nullable: true
+            - type: object
+              nullable: true
       example:
         Id: integer (identifier)
         Number: integer
@@ -3637,25 +3639,30 @@ components:
           items:
             anyOf:
               - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass'
-            nullable: true
+              - type: object
+                nullable: true
         Tags:
           type: array
           items:
             anyOf:
               - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
-            nullable: true
+              - type: object
+                nullable: true
         Library:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-          nullable: true
+            - type: object
+              nullable: true
         LastRevisionFile:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile'
-          nullable: true
+            - type: object
+              nullable: true
         SourceDocument:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-          nullable: true
+            - type: object
+              nullable: true
         SourceDocumentChildren:
           type: array
           items:
@@ -3765,7 +3772,8 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-          nullable: true
+            - type: object
+              nullable: true
       example:
         ClassInstance: integer
         ClassId: integer
@@ -3817,11 +3825,13 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-          nullable: true
+            - type: object
+              nullable: true
         Tag:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag'
-          nullable: true
+            - type: object
+              nullable: true
       example:
         DocumentId: integer
         TagId: integer
@@ -4021,15 +4031,18 @@ components:
         LibraryParent:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-          nullable: true
+            - type: object
+              nullable: true
         Type:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-          nullable: true
+            - type: object
+              nullable: true
         SourceFolder:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library'
-          nullable: true
+            - type: object
+              nullable: true
         Documents:
           type: array
           items:
@@ -4162,11 +4175,13 @@ components:
         MasterLibraryType:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-          nullable: true
+            - type: object
+              nullable: true
         ParentLibraryTypes:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType'
-          nullable: true
+            - type: object
+              nullable: true
         MasterLibraryTypeChildren:
           type: array
           items:
@@ -4361,7 +4376,8 @@ components:
               items:
                 anyOf:
                   - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel'
-                nullable: true
+                  - type: object
+                    nullable: true
       example:
         Id: integer (identifier)
         DomainId: integer
@@ -4552,7 +4568,8 @@ components:
         Document:
           anyOf:
             - $ref: '#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document'
-          nullable: true
+            - type: object
+              nullable: true
       example:
         Id: integer (identifier)
         Number: integer

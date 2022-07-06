@@ -29,6 +29,7 @@
 - Fixes request body and response representation for ref POST and PUT operations #228
 - Adds discriminator object to complex types which have derived types #233
 - Adds @odata.type property and makes this a required property in schemas that have discriminator objects #243
+- Represent nullable references within anyOf correctly #190
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>

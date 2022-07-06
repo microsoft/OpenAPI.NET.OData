@@ -81,9 +81,12 @@ namespace Microsoft.OpenApi.OData.Tests
     ""anyOf"": [
       {
         ""$ref"": ""#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation""
+      },
+      {
+        ""type"": ""object"",
+        ""nullable"": true
       }
-    ],
-    ""nullable"": true
+    ]
   }
 }".ChangeLineBreaks(), json);
             }           
@@ -185,26 +188,40 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.NotNull(schema);
 
-            // Although the schema will be set
-            // for openApiV2 nullable will not be serialized
-            Assert.Equal(isNullable, schema.Nullable);
-
+            
             if (specVersion == OpenApiSpecVersion.OpenApi2_0)
             {
                 Assert.NotNull(schema.Reference);
                 Assert.Null(schema.AnyOf);
                 Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
                 Assert.Equal(enumType.FullTypeName(), schema.Reference.Id);
+                Assert.Equal(isNullable, schema.Nullable);
             }
             else
             {
                 Assert.Null(schema.Reference);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
-                var anyOf = Assert.Single(schema.AnyOf);
-                Assert.NotNull(anyOf.Reference);
-                Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
-                Assert.Equal(enumType.FullTypeName(), anyOf.Reference.Id);
+                if (isNullable)
+                {
+                    Assert.Equal(2, schema.AnyOf.Count);
+                    var anyOfRef = schema.AnyOf.FirstOrDefault();
+                    Assert.NotNull(anyOfRef.Reference);
+                    Assert.Equal(ReferenceType.Schema, anyOfRef.Reference.Type);
+                    Assert.Equal(enumType.FullTypeName(), anyOfRef.Reference.Id);
+                    var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
+                    Assert.NotNull(anyOfNull.Type);
+                    Assert.Equal("object", anyOfNull.Type);
+                    Assert.True(anyOfNull.Nullable);
+                }
+                else
+                {
+                    Assert.Equal(1, schema.AnyOf.Count);
+                    var anyOf = Assert.Single(schema.AnyOf);
+                    Assert.NotNull(anyOf.Reference);
+                    Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
+                    Assert.Equal(enumType.FullTypeName(), anyOf.Reference.Id);
+                }             
             }
         }
 
@@ -242,7 +259,8 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Reference);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
-                var anyOf = Assert.Single(schema.AnyOf);
+                Assert.Equal(2, schema.AnyOf.Count);
+                var anyOf = schema.AnyOf.FirstOrDefault();
                 Assert.NotNull(anyOf.Reference);
                 Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
                 Assert.Equal(complex.FullTypeName(), anyOf.Reference.Id);
@@ -283,10 +301,14 @@ namespace Microsoft.OpenApi.OData.Tests
                 Assert.Null(schema.Reference);
                 Assert.NotNull(schema.AnyOf);
                 Assert.NotEmpty(schema.AnyOf);
-                var anyOf = Assert.Single(schema.AnyOf);
-                Assert.NotNull(anyOf.Reference);
-                Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
-                Assert.Equal(entity.FullTypeName(), anyOf.Reference.Id);
+                var anyOfRef = schema.AnyOf.FirstOrDefault();
+                Assert.NotNull(anyOfRef.Reference);
+                Assert.Equal(ReferenceType.Schema, anyOfRef.Reference.Type);
+                Assert.Equal(entity.FullTypeName(), anyOfRef.Reference.Id);
+                var anyOfNull = schema.AnyOf.Skip(1).FirstOrDefault();
+                Assert.NotNull(anyOfNull.Type);
+                Assert.Equal("object", anyOfNull.Type);
+                Assert.True(anyOfNull.Nullable);
             }
         }
 

@@ -259,26 +259,35 @@ namespace Microsoft.OpenApi.OData.Tests
           ""anyOf"": [
             {
               ""$ref"": ""#/components/schemas/microsoft.graph.userInsightsSettings""
+            },
+            {
+              ""type"": ""object"",
+              ""nullable"": true
             }
           ],
-          ""nullable"": true,
           ""x-ms-isHidden"": ""true""
         },
         ""regionalAndLanguageSettings"": {
           ""anyOf"": [
             {
               ""$ref"": ""#/components/schemas/microsoft.graph.regionalAndLanguageSettings""
+            },
+            {
+              ""type"": ""object"",
+              ""nullable"": true
             }
-          ],
-          ""nullable"": true
+          ]
         },
         ""shiftPreferences"": {
           ""anyOf"": [
             {
               ""$ref"": ""#/components/schemas/microsoft.graph.shiftPreferences""
+            },
+            {
+              ""type"": ""object"",
+              ""nullable"": true
             }
-          ],
-          ""nullable"": true
+          ]
         }
       }
     }
@@ -749,10 +758,13 @@ namespace Microsoft.OpenApi.OData.Tests
   ""anyOf"": [
     {
       ""$ref"": ""#/components/schemas/DefaultNs.Color""
+    },
+    {
+      ""type"": ""object"",
+      ""nullable"": true
     }
   ],
-  ""default"": ""yellow"",
-  ""nullable"": true
+  ""default"": ""yellow""
 }".ChangeLineBreaks(), json);
             }
         }
