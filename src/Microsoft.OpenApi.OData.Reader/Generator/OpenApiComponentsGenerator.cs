@@ -28,7 +28,8 @@ namespace Microsoft.OpenApi.OData.Generator
             // "components": {
             //   "schemas": …,
             //   "parameters": …,
-            //   "responses": …
+            //   "responses": …,
+            //   "requestBodies": … 
             //  }
             return new OpenApiComponents
             {
@@ -45,13 +46,15 @@ namespace Microsoft.OpenApi.OData.Generator
                 // It allows defining responses that can be reused across operations of the service.
                 Responses = context.CreateResponses(),
 
-                // Make others as null.
-                RequestBodies = null,
+                // The value of requestBodies is a map of RequestBody Objects.
+                // It allows refining request bodies that can be reused across operations of the service.
+                RequestBodies = context.CreateRequestBodies(),
 
                 Examples = context.CreateExamples(),
 
                 SecuritySchemes = context.CreateSecuritySchemes(),
 
+                // Make others as null.
                 Links = null,
 
                 Callbacks = null,

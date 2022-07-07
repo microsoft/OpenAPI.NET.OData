@@ -38,7 +38,7 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
             Assert.NotNull(components.Schemas);
             Assert.NotNull(components.Parameters);
             Assert.NotNull(components.Responses);
-            Assert.Null(components.RequestBodies);
+            Assert.NotNull(components.RequestBodies);
         }
     }
 }

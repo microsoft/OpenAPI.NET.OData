@@ -59,6 +59,30 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("string", stringCollectionResponse.Properties["value"].Items.Type);
         }
 
+        [Fact]
+        public void CreatesRefRequestBodySchema()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.TripServiceModel;
+            OpenApiConvertSettings settings = new()
+            {
+                EnableOperationId = true,
+                EnablePagination = true,
+            };
+            ODataContext context = new(model, settings);
+
+            // Act & Assert
+            var schemas = context.CreateSchemas();
+
+            schemas.TryGetValue(Constants.ReferenceCreateSchemaName, out OpenApiSchema refRequestBody);
+
+            Assert.NotNull(refRequestBody);
+            Assert.Equal("object", refRequestBody.Type);
+            Assert.Equal(Constants.OdataId, refRequestBody.Properties.First().Key);
+            Assert.Equal("string", refRequestBody.Properties.First().Value.Type);
+            Assert.Equal("object", refRequestBody.AdditionalProperties.Type);
+        }
+
         #region StructuredTypeSchema
         [Fact]
         public void CreateStructuredTypeSchemaThrowArgumentNullContext()

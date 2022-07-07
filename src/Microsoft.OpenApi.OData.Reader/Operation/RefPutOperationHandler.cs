@@ -40,16 +40,11 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
-                Description = "New navigation property ref values",
-                Content = new Dictionary<string, OpenApiMediaType>
-                {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = GetOpenApiSchema()
-                        }
-                    }
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {              
+                    Type = ReferenceType.RequestBody,
+                    Id = Constants.ReferencePutRequestBodyName
                 }
             };
 
@@ -59,7 +54,15 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-    		operation.AddErrorResponses(Context.Settings, true, GetOpenApiSchema());
+            operation.Responses = new OpenApiResponses
+            {
+                {
+                    Constants.StatusCode204,
+                    new OpenApiResponse { Description = "Success" }
+                }
+            };
+
+            operation.AddErrorResponses(Context.Settings, false);
             base.SetResponses(operation);
         }
 
@@ -89,19 +92,6 @@ namespace Microsoft.OpenApi.OData.Operation
             {
                 AppendCustomParameters(operation, Restriction.UpdateRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
-        }
-
-        private OpenApiSchema GetOpenApiSchema()
-        {
-            return new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Id = Constants.ReferenceUpdateSchemaName,
-                    Type = ReferenceType.Schema
-                },
-            };
         }
     }
 }

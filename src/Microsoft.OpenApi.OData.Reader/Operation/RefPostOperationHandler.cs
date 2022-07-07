@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Generator;
@@ -38,24 +39,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                Type = "object",
-                AdditionalProperties = new OpenApiSchema { Type = "object" }
-            };
-
             operation.RequestBody = new OpenApiRequestBody
             {
-                Required = true,
-                Description = "New navigation property ref value",
-                Content = new Dictionary<string, OpenApiMediaType>
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
                 {
-                    {
-                        Constants.ApplicationJsonMediaType, new OpenApiMediaType
-                        {
-                            Schema = schema
-                        }
-                    }
+                    Type = ReferenceType.RequestBody,
+                    Id = Constants.ReferencePostRequestBodyName
                 }
             };
 
@@ -65,29 +55,11 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            OpenApiSchema schema = new OpenApiSchema
-            {
-                Type = "object"
-            };
-
             operation.Responses = new OpenApiResponses
             {
                 {
-                    Context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode201,
-                    new OpenApiResponse
-                    {
-                        Description = "Created navigation property link.",
-                        Content = new Dictionary<string, OpenApiMediaType>
-                        {
-                            {
-                                Constants.ApplicationJsonMediaType,
-                                new OpenApiMediaType
-                                {
-                                    Schema = schema
-                                }
-                            }
-                        }
-                    }
+                    Constants.StatusCode204,
+                    new OpenApiResponse { Description = "Success" } 
                 }
             };
 

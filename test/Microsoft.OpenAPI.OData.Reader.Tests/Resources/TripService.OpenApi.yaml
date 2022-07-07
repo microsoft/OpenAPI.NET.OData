@@ -562,12 +562,7 @@ paths:
             type: string
           x-ms-docs-key-type: Airport
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -1281,12 +1276,7 @@ paths:
       description: Update an instance of a best friend.
       operationId: Me.UpdateRefBestFriend
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -2166,21 +2156,10 @@ paths:
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.BestFriend.CreateRefPeers
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -2787,21 +2766,10 @@ paths:
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.BestFriend.CreateRefDirectReports
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -3966,21 +3934,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4694,21 +4651,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -4798,21 +4744,10 @@ paths:
       summary: Create new navigation property ref to Friends for Me
       operationId: Me.CreateRefFriends
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -5729,21 +5664,10 @@ paths:
       summary: Create new navigation property ref to Peers for Me
       operationId: Me.CreateRefPeers
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -6459,21 +6383,10 @@ paths:
       summary: Create new navigation property ref to DirectReports for Me
       operationId: Me.CreateRefDirectReports
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7113,21 +7026,10 @@ paths:
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -7673,12 +7575,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -8740,21 +8637,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -9467,21 +9353,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -10677,21 +10552,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -11419,21 +11283,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -11528,21 +11381,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -12640,21 +12482,10 @@ paths:
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -13272,12 +13103,7 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref values
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReferenceUpdateSchema'
-        required: true
+        $ref: '#/components/requestBodies/refPutBody'
       responses:
         '204':
           description: Success
@@ -14340,21 +14166,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -15068,21 +14883,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -16429,21 +16233,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -17262,21 +17055,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -17389,21 +17171,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -18480,21 +18251,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -19340,21 +19100,10 @@ paths:
             type: string
           x-ms-docs-key-type: Person
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -20095,21 +19844,10 @@ paths:
             format: int32
           x-ms-docs-key-type: Trip
       requestBody:
-        description: New navigation property ref value
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties:
-                type: object
-        required: true
+        $ref: '#/components/requestBodies/refPostBody'
       responses:
-        '201':
-          description: Created navigation property link.
-          content:
-            application/json:
-              schema:
-                type: object
+        '204':
+          description: Success
         default:
           $ref: '#/components/responses/error'
       deprecated: true
@@ -20991,7 +20729,7 @@ components:
           type: array
           items:
             type: string
-    ReferenceUpdateSchema:
+    ReferenceUpdate:
       type: object
       properties:
         '@odata.id':
@@ -20999,6 +20737,13 @@ components:
         '@odata.type':
           type: string
           nullable: true
+    ReferenceCreate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
   responses:
     error:
       description: error
@@ -21226,6 +20971,21 @@ components:
         Budget: 0
         DirectReports:
           - '@odata.type': Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person
+  requestBodies:
+    refPostBody:
+      description: New navigation property ref value
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceCreate'
+      required: true
+    refPutBody:
+      description: New navigation property ref values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceUpdate'
+      required: true
 tags:
   - name: Airlines.Airline
     x-ms-docs-toc-type: page

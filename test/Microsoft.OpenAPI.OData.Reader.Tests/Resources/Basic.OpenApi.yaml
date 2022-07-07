@@ -793,6 +793,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DefaultNs.Address'
+    ReferenceUpdate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+        '@odata.type':
+          type: string
+          nullable: true
+    ReferenceCreate:
+      type: object
+      properties:
+        '@odata.id':
+          type: string
+      additionalProperties:
+        type: object
   responses:
     error:
       description: error
@@ -889,6 +904,21 @@ components:
       value:
         CountryOrRegion:
           '@odata.type': DefaultNs.CountryOrRegion
+  requestBodies:
+    refPostBody:
+      description: New navigation property ref value
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceCreate'
+      required: true
+    refPutBody:
+      description: New navigation property ref values
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReferenceUpdate'
+      required: true
 tags:
   - name: City.City
     x-ms-docs-toc-type: page

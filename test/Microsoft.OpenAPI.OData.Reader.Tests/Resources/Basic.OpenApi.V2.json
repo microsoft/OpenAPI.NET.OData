@@ -1090,6 +1090,28 @@
           }
         }
       }
+    },
+    "ReferenceUpdate": {
+      "type": "object",
+      "properties": {
+        "@odata.id": {
+          "type": "string"
+        },
+        "@odata.type": {
+          "type": "string"
+        }
+      }
+    },
+    "ReferenceCreate": {
+      "type": "object",
+      "properties": {
+        "@odata.id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "type": "object"
+      }
     }
   },
   "parameters": {

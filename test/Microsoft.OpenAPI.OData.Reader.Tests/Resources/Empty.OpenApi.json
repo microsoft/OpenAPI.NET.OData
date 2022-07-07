@@ -78,6 +78,29 @@
       "ODataCountResponse": {
         "type": "integer",
         "format": "int32"
+      },
+      "ReferenceUpdate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          },
+          "@odata.type": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ReferenceCreate": {
+        "type": "object",
+        "properties": {
+          "@odata.id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
       }
     },
     "responses": {
@@ -145,6 +168,30 @@
         "schema": {
           "type": "string"
         }
+      }
+    },
+    "requestBodies": {
+      "refPostBody": {
+        "description": "New navigation property ref value",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReferenceCreate"
+            }
+          }
+        },
+        "required": true
+      },
+      "refPutBody": {
+        "description": "New navigation property ref values",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReferenceUpdate"
+            }
+          }
+        },
+        "required": true
       }
     }
   }

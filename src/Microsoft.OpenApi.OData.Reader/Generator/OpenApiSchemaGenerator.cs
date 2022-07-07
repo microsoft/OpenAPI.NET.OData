@@ -96,16 +96,27 @@ namespace Microsoft.OpenApi.OData.Generator
             if(context.HasAnyNonContainedCollections())                                        
             {
                 schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
-                schemas[Constants.ReferenceUpdateSchemaName] = new()
-                {
-                    Type = "object",
-                    Properties = new Dictionary<string, OpenApiSchema>
+            }
+
+            schemas[Constants.ReferenceUpdateSchemaName] = new()
+            {
+                Type = "object",
+                Properties = new Dictionary<string, OpenApiSchema>
                     {
-                        {"@odata.id", new OpenApiSchema { Type = "string", Nullable = false }},
+                        {Constants.OdataId, new OpenApiSchema { Type = "string", Nullable = false }},
                         {Constants.OdataType, new OpenApiSchema { Type = "string", Nullable = true }},
                     }
-                };
-            }
+            };
+
+            schemas[Constants.ReferenceCreateSchemaName] = new()
+            {
+                Type = "object",
+                Properties = new Dictionary<string, OpenApiSchema>
+                {
+                    {Constants.OdataId, new OpenApiSchema { Type = "string", Nullable = false }}
+                },
+                AdditionalProperties = new OpenApiSchema { Type = "object" }
+            };
 
             return schemas;
         }

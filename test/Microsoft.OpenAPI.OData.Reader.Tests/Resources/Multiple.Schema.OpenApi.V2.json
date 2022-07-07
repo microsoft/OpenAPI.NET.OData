@@ -928,12 +928,7 @@
         ],
         "summary": "Create new navigation property ref to Revisions for Documents",
         "operationId": "Documents.CreateRefRevisions",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -949,22 +944,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2003,12 +1988,7 @@
         ],
         "summary": "Create new navigation property ref to Documents for Libraries",
         "operationId": "Libraries.CreateRefDocuments",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -2024,22 +2004,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -2537,9 +2507,7 @@
         ],
         "summary": "Update the ref of navigation property Document in Revisions",
         "operationId": "Revisions.UpdateRefDocument",
-        "consumes": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -2555,11 +2523,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref values",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ReferenceUpdateSchema"
-            }
+            "schema": { }
           }
         ],
         "responses": {
@@ -3692,12 +3656,7 @@
         ],
         "summary": "Create new navigation property ref to Revisions for Tasks",
         "operationId": "Tasks.CreateRefRevisions",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -3713,22 +3672,12 @@
           {
             "in": "body",
             "name": "body",
-            "description": "New navigation property ref value",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object"
-              }
-            }
+            "schema": { }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created navigation property link.",
-            "schema": {
-              "type": "object"
-            }
+          "204": {
+            "description": "Success"
           },
           "default": {
             "$ref": "#/responses/error"
@@ -5857,7 +5806,7 @@
         }
       }
     },
-    "ReferenceUpdateSchema": {
+    "ReferenceUpdate": {
       "type": "object",
       "properties": {
         "@odata.id": {
@@ -5866,6 +5815,17 @@
         "@odata.type": {
           "type": "string"
         }
+      }
+    },
+    "ReferenceCreate": {
+      "type": "object",
+      "properties": {
+        "@odata.id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {
+        "type": "object"
       }
     }
   },
