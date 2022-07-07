@@ -422,7 +422,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new OpenApiSchema();
             schema.Reference = null;
 
-            if (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
+            if (typeReference.IsNullable && context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
                 schema.AnyOf = new List<OpenApiSchema>
                 {
@@ -434,17 +434,13 @@ namespace Microsoft.OpenApi.OData.Generator
                             Type = ReferenceType.Schema,
                             Id = typeReference.Definition.FullTypeName()
                         }
-                    }
-                };
-
-                if (typeReference.IsNullable)
-                {
-                    schema.AnyOf.Add(new OpenApiSchema
+                    },
+                    new OpenApiSchema
                     {
                         Type = "object",
                         Nullable = true
-                    });
-                }
+                    }
+                };
             }
             else
             {
@@ -518,7 +514,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new OpenApiSchema();
             schema.Reference = null;
 
-            if (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
+            if (reference.IsNullable && context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
                 schema.AnyOf = new List<OpenApiSchema>
                 {
@@ -530,17 +526,13 @@ namespace Microsoft.OpenApi.OData.Generator
                             Type = ReferenceType.Schema,
                             Id = reference.Definition.FullTypeName()
                         }
-                    }
-                };
-
-                if (reference.IsNullable)
-                {
-                    schema.AnyOf.Add(new OpenApiSchema
+                    },
+                    new OpenApiSchema
                     {
                         Type = "object",
                         Nullable = true
-                    });
-                }
+                    }
+                };
             }
             else
             {

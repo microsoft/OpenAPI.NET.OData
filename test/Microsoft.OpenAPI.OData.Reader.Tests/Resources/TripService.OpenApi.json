@@ -28814,11 +28814,7 @@
             "nullable": true
           },
           "Gender": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-              }
-            ]
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
           },
           "Age": {
             "anyOf": [
@@ -28865,20 +28861,12 @@
             ]
           },
           "FavoriteFeature": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-              }
-            ]
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
           },
           "Features": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-                }
-              ]
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
             }
           },
           "Friends": {

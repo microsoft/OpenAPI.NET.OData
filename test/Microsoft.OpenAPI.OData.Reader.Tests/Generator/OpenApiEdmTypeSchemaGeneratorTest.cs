@@ -199,11 +199,12 @@ namespace Microsoft.OpenApi.OData.Tests
             }
             else
             {
-                Assert.Null(schema.Reference);
-                Assert.NotNull(schema.AnyOf);
-                Assert.NotEmpty(schema.AnyOf);
+                
                 if (isNullable)
                 {
+                    Assert.NotNull(schema.AnyOf);
+                    Assert.NotEmpty(schema.AnyOf);
+                    Assert.Null(schema.Reference);
                     Assert.Equal(2, schema.AnyOf.Count);
                     var anyOfRef = schema.AnyOf.FirstOrDefault();
                     Assert.NotNull(anyOfRef.Reference);
@@ -216,11 +217,10 @@ namespace Microsoft.OpenApi.OData.Tests
                 }
                 else
                 {
-                    Assert.Equal(1, schema.AnyOf.Count);
-                    var anyOf = Assert.Single(schema.AnyOf);
-                    Assert.NotNull(anyOf.Reference);
-                    Assert.Equal(ReferenceType.Schema, anyOf.Reference.Type);
-                    Assert.Equal(enumType.FullTypeName(), anyOf.Reference.Id);
+                    Assert.Null(schema.AnyOf);
+                    Assert.NotNull(schema.Reference);
+                    Assert.Equal(ReferenceType.Schema, schema.Reference.Type);
+                    Assert.Equal(enumType.FullTypeName(), schema.Reference.Id);
                 }             
             }
         }

@@ -696,7 +696,7 @@ namespace Microsoft.OpenApi.OData.Tests
 
             IEdmEnumType enumType = model.SchemaElements.OfType<IEdmEnumType>().First(e => e.Name == "Color");
             EdmEntityType entitType = new EdmEntityType("NS", "Entity");
-            IEdmProperty property = new EdmStructuralProperty(entitType, "ColorEnumValue", new EdmEnumTypeReference(enumType, false), "yellow");
+            IEdmProperty property = new EdmStructuralProperty(entitType, "ColorEnumValue", new EdmEnumTypeReference(enumType, false));
 
             // Act
             var schema = context.CreatePropertySchema(property);
@@ -714,12 +714,7 @@ namespace Microsoft.OpenApi.OData.Tests
             else
             {
                 Assert.Equal(@"{
-  ""anyOf"": [
-    {
-      ""$ref"": ""#/components/schemas/DefaultNs.Color""
-    }
-  ],
-  ""default"": ""yellow""
+  ""$ref"": ""#/components/schemas/DefaultNs.Color""
 }".ChangeLineBreaks(), json);
             }
         }
