@@ -4458,9 +4458,12 @@
               "anyOf": [
                 {
                   "$ref": "#/components/schemas/Siterra.Documents.App.DTO.DocumentTagRelDto"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
                 }
-              ],
-              "nullable": true
+              ]
             }
           },
           "Revisions": {
@@ -4705,9 +4708,12 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           }
         },
         "example": {
@@ -5045,9 +5051,12 @@
               "anyOf": [
                 {
                   "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentClass"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
                 }
-              ],
-              "nullable": true
+              ]
             }
           },
           "Tags": {
@@ -5056,34 +5065,46 @@
               "anyOf": [
                 {
                   "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
                 }
-              ],
-              "nullable": true
+              ]
             }
           },
           "Library": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "LastRevisionFile": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.DocumentFile.DocumentFile"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "SourceDocument": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "SourceDocumentChildren": {
             "type": "array",
@@ -5225,9 +5246,12 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           }
         },
         "example": {
@@ -5292,17 +5316,23 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "Tag": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Tags.Tag"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           }
         },
         "example": {
@@ -5546,25 +5576,34 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "Type": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "SourceFolder": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.Library"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "Documents": {
             "type": "array",
@@ -5734,17 +5773,23 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "ParentLibraryTypes": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Library.LibraryType"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           },
           "MasterLibraryTypeChildren": {
             "type": "array",
@@ -5995,9 +6040,12 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.DocumentTagRel"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
                     }
-                  ],
-                  "nullable": true
+                  ]
                 }
               }
             }
@@ -6257,9 +6305,12 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Siterra.Documents.BusinessLogic.Entities.Document.Document"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           }
         },
         "example": {

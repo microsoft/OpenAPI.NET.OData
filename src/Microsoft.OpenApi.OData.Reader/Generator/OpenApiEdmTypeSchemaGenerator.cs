@@ -420,10 +420,9 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(typeReference != null);
 
             OpenApiSchema schema = new OpenApiSchema();
-            schema.Nullable = typeReference.IsNullable;
             schema.Reference = null;
 
-            if (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
+            if (typeReference.IsNullable && context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
                 schema.AnyOf = new List<OpenApiSchema>
                 {
@@ -435,6 +434,11 @@ namespace Microsoft.OpenApi.OData.Generator
                             Type = ReferenceType.Schema,
                             Id = typeReference.Definition.FullTypeName()
                         }
+                    },
+                    new OpenApiSchema
+                    {
+                        Type = "object",
+                        Nullable = true
                     }
                 };
             }
@@ -448,6 +452,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Id = typeReference.Definition.FullTypeName()
                 };
                 schema.UnresolvedReference = true;
+                schema.Nullable = typeReference.IsNullable;
             }
 
             return schema;
@@ -459,7 +464,6 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(typeReference != null);
 
             OpenApiSchema schema = new OpenApiSchema();
-            schema.Nullable = typeReference.IsNullable;
 
             // AnyOf will only be valid openApi for version 3
             // otherwise the reference should be set directly
@@ -478,6 +482,11 @@ namespace Microsoft.OpenApi.OData.Generator
                             Type = ReferenceType.Schema,
                             Id = typeReference.Definition.FullTypeName()
                         }
+                    },
+                    new OpenApiSchema
+                    {
+                        Type = "object",
+                        Nullable = true
                     }
                 };
             }
@@ -490,7 +499,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = ReferenceType.Schema,
                     Id = typeReference.Definition.FullTypeName()
                 };
-                schema.UnresolvedReference = true;
+                schema.UnresolvedReference = true; 
+                schema.Nullable = typeReference.IsNullable;
             }
 
             return schema;
@@ -502,10 +512,9 @@ namespace Microsoft.OpenApi.OData.Generator
             Debug.Assert(reference != null);
 
             OpenApiSchema schema = new OpenApiSchema();
-            schema.Nullable = reference.IsNullable;
             schema.Reference = null;
 
-            if (context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
+            if (reference.IsNullable && context.Settings.OpenApiSpecVersion >= OpenApiSpecVersion.OpenApi3_0)
             {
                 schema.AnyOf = new List<OpenApiSchema>
                 {
@@ -517,6 +526,11 @@ namespace Microsoft.OpenApi.OData.Generator
                             Type = ReferenceType.Schema,
                             Id = reference.Definition.FullTypeName()
                         }
+                    },
+                    new OpenApiSchema
+                    {
+                        Type = "object",
+                        Nullable = true
                     }
                 };
             }
@@ -530,6 +544,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     Id = reference.Definition.FullTypeName()
                 };
                 schema.UnresolvedReference = true;
+                schema.Nullable = reference.IsNullable;
             }
             
 

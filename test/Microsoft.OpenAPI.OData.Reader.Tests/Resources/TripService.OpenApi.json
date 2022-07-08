@@ -1356,9 +1356,12 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
                     }
-                  ],
-                  "nullable": true
+                  ]
                 }
               }
             }
@@ -1388,9 +1391,12 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
                     }
-                  ],
-                  "nullable": true
+                  ]
                 }
               }
             }
@@ -8130,9 +8136,12 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
                     }
-                  ],
-                  "nullable": true
+                  ]
                 }
               }
             }
@@ -8185,9 +8194,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -8254,9 +8266,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -9160,9 +9175,12 @@
                     "anyOf": [
                       {
                         "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      },
+                      {
+                        "type": "object",
+                        "nullable": true
                       }
-                    ],
-                    "nullable": true
+                    ]
                   }
                 }
               }
@@ -9675,9 +9693,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -16791,9 +16812,12 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
                     }
-                  ],
-                  "nullable": true
+                  ]
                 }
               }
             }
@@ -16849,9 +16873,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -16930,9 +16957,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -16979,9 +17009,12 @@
                     "anyOf": [
                       {
                         "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      },
+                      {
+                        "type": "object",
+                        "nullable": true
                       }
-                    ],
-                    "nullable": true
+                    ]
                   }
                 }
               }
@@ -17522,9 +17555,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -26120,9 +26156,12 @@
                   "anyOf": [
                     {
                       "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                    },
+                    {
+                      "type": "object",
+                      "nullable": true
                     }
-                  ],
-                  "nullable": true
+                  ]
                 }
               }
             }
@@ -26185,9 +26224,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -26266,9 +26308,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -27338,9 +27383,12 @@
                     "anyOf": [
                       {
                         "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      },
+                      {
+                        "type": "object",
+                        "nullable": true
                       }
-                    ],
-                    "nullable": true
+                    ]
                   }
                 }
               }
@@ -27937,9 +27985,12 @@
                         "anyOf": [
                           {
                             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                          },
+                          {
+                            "type": "object",
+                            "nullable": true
                           }
-                        ],
-                        "nullable": true
+                        ]
                       }
                     }
                   }
@@ -28763,11 +28814,7 @@
             "nullable": true
           },
           "Gender": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
-              }
-            ]
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
           },
           "Age": {
             "anyOf": [
@@ -28794,34 +28841,32 @@
               "anyOf": [
                 {
                   "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
                 }
-              ],
-              "nullable": true
+              ]
             }
           },
           "HomeAddress": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
-              }
-            ],
-            "nullable": true
-          },
-          "FavoriteFeature": {
-            "anyOf": [
+              },
               {
-                "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
+                "type": "object",
+                "nullable": true
               }
             ]
+          },
+          "FavoriteFeature": {
+            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
           },
           "Features": {
             "type": "array",
             "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
-                }
-              ]
+              "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Feature"
             }
           },
           "Friends": {
@@ -28834,10 +28879,13 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
             ],
-            "description": "The best friend.",
-            "nullable": true
+            "description": "The best friend."
           },
           "Trips": {
             "type": "array",
@@ -28880,9 +28928,12 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.AirportLocation"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           }
         }
       },
@@ -28898,9 +28949,12 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.City"
+              },
+              {
+                "type": "object",
+                "nullable": true
               }
-            ],
-            "nullable": true
+            ]
           }
         }
       },
@@ -28938,10 +28992,13 @@
                 "anyOf": [
                   {
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                  },
+                  {
+                    "type": "object",
+                    "nullable": true
                   }
                 ],
-                "description": "The person to contact in case of a crisis at this location.",
-                "nullable": true
+                "description": "The person to contact in case of a crisis at this location."
               }
             }
           }
@@ -29074,9 +29131,12 @@
                 "anyOf": [
                   {
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.EventLocation"
+                  },
+                  {
+                    "type": "object",
+                    "nullable": true
                   }
-                ],
-                "nullable": true
+                ]
               },
               "Description": {
                 "type": "string",
@@ -29120,25 +29180,34 @@
                 "anyOf": [
                   {
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                  },
+                  {
+                    "type": "object",
+                    "nullable": true
                   }
-                ],
-                "nullable": true
+                ]
               },
               "From": {
                 "anyOf": [
                   {
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+                  },
+                  {
+                    "type": "object",
+                    "nullable": true
                   }
-                ],
-                "nullable": true
+                ]
               },
               "To": {
                 "anyOf": [
                   {
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airport"
+                  },
+                  {
+                    "type": "object",
+                    "nullable": true
                   }
-                ],
-                "nullable": true
+                ]
               }
             }
           }
@@ -29198,9 +29267,12 @@
                 "anyOf": [
                   {
                     "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
+                  },
+                  {
+                    "type": "object",
+                    "nullable": true
                   }
-                ],
-                "nullable": true
+                ]
               },
               "DirectReports": {
                 "type": "array",
