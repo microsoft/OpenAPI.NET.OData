@@ -417,19 +417,19 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
-            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            OpenApiConvertSettings settings = new()
             {
                 EnableOperationId = true,
                 EnablePagination = enablePagination
             };
-            ODataContext context = new ODataContext(model, settings);
+            ODataContext context = new(model, settings);
             IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>()
                 .First(x => x.Name == functionName &&
                     x.FindParameter("bindingParameter").Type.Definition.ToString() == "microsoft.graph.reportRoot");
             IEdmEntityContainer container = model.SchemaElements.OfType<IEdmEntityContainer>().First();
             IEdmSingleton reports = container.FindSingleton("reports");
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(reports),
+            ODataPath path = new(new ODataNavigationSourceSegment(reports),
                 new ODataOperationSegment(function));
 
             // Act

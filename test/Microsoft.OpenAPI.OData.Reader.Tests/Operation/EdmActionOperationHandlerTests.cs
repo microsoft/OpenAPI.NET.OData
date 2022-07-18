@@ -305,12 +305,12 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
-            OpenApiConvertSettings settings = new OpenApiConvertSettings
+            OpenApiConvertSettings settings = new()
             {
                 EnableOperationId = true,
                 EnablePagination = enablePagination
             };
-            ODataContext context = new ODataContext(model, settings);
+            ODataContext context = new(model, settings);
             IEdmAction action = model.SchemaElements.OfType<IEdmAction>()
                 .First(x => x.Name == actionName &&
                     x.FindParameter("bindingParameter").Type.Definition.ToString() == "microsoft.graph.user");
@@ -318,7 +318,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             IEdmEntitySet users = container.FindEntitySet("users");
             IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(x => x.Name == "user");
 
-            ODataPath path = new ODataPath(new ODataNavigationSourceSegment(users),
+            ODataPath path = new(new ODataNavigationSourceSegment(users),
                 new ODataKeySegment(user),
                 new ODataOperationSegment(action));
 
