@@ -15,21 +15,13 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Microsoft.OpenApi.OData</PackageId>
     <SignAssembly>true</SignAssembly>
-    <Version>1.0.11-preview5</Version>
+    <Version>1.1.0-preview1</Version>
     <Description>This package contains the codes you need to convert OData CSDL to Open API Document of Model.</Description>
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageTags>Microsoft OpenApi OData EDM</PackageTags>
     <RepositoryUrl>https://github.com/Microsoft/OpenAPI.NET.OData</RepositoryUrl>
     <PackageReleaseNotes>
-- Fixes reading restriction annotations for entity types defining navigation properties #220
-- Enables configuring appending bound operations on derived types #221
-- Add error ranges for OData actions when ErrorResponsesAsDefault is set to false #218
-- Fixes missing bound operations on some navigation property paths #201
-- Provides support for using success status code range 2XX #153
-- Fixes request body and response representation for ref POST and PUT operations #228
-- Adds discriminator object to complex types which have derived types #233
-- Adds @odata.type property and makes this a required property in schemas that have discriminator objects #243
-- Represent nullable references within anyOf correctly #190
+- Fixes response schemas of actions and functions that return a collection to contain the nextLink property #231
     </PackageReleaseNotes>
     <AssemblyName>Microsoft.OpenApi.OData.Reader</AssemblyName>
     <AssemblyOriginatorKeyFile>..\..\tool\Microsoft.OpenApi.OData.snk</AssemblyOriginatorKeyFile>
