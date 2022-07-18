@@ -114,14 +114,19 @@ namespace Microsoft.OpenApi.OData.Tests
                 EnableDiscriminatorValue = true,
             });
 
+            string derivedType = "user";
             IEdmEntityType entity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == "directoryObject");
-            Assert.NotNull(entity); // Guard
+            IEdmEntityType derivedEntity = model.SchemaElements.OfType<IEdmEntityType>().First(t => t.Name == derivedType);
+            Assert.NotNull(entity);
+            Assert.NotNull(derivedEntity);
 
             // Act
             var schema = context.CreateStructuredTypeSchema(entity);
+            var derivedSchema = context.CreateStructuredTypeSchema(derivedEntity);
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             // Assert
+            Assert.True(derivedSchema.AllOf.FirstOrDefault(x => derivedType.Equals(x.Title))?.Properties.ContainsKey("@odata.type"));
             Assert.NotNull(json);
             Assert.Equal(@"{
   ""allOf"": [
@@ -155,6 +160,18 @@ namespace Microsoft.OpenApi.OData.Tests
           ""#microsoft.graph.application"": ""#/components/schemas/microsoft.graph.application"",
           ""#microsoft.graph.servicePrincipal"": ""#/components/schemas/microsoft.graph.servicePrincipal"",
           ""#microsoft.graph.policyBase"": ""#/components/schemas/microsoft.graph.policyBase"",
+          ""#microsoft.graph.appManagementPolicy"": ""#/components/schemas/microsoft.graph.appManagementPolicy"",
+          ""#microsoft.graph.stsPolicy"": ""#/components/schemas/microsoft.graph.stsPolicy"",
+          ""#microsoft.graph.homeRealmDiscoveryPolicy"": ""#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy"",
+          ""#microsoft.graph.tokenIssuancePolicy"": ""#/components/schemas/microsoft.graph.tokenIssuancePolicy"",
+          ""#microsoft.graph.tokenLifetimePolicy"": ""#/components/schemas/microsoft.graph.tokenLifetimePolicy"",
+          ""#microsoft.graph.claimsMappingPolicy"": ""#/components/schemas/microsoft.graph.claimsMappingPolicy"",
+          ""#microsoft.graph.activityBasedTimeoutPolicy"": ""#/components/schemas/microsoft.graph.activityBasedTimeoutPolicy"",
+          ""#microsoft.graph.authorizationPolicy"": ""#/components/schemas/microsoft.graph.authorizationPolicy"",
+          ""#microsoft.graph.tenantAppManagementPolicy"": ""#/components/schemas/microsoft.graph.tenantAppManagementPolicy"",
+          ""#microsoft.graph.permissionGrantPolicy"": ""#/components/schemas/microsoft.graph.permissionGrantPolicy"",
+          ""#microsoft.graph.servicePrincipalCreationPolicy"": ""#/components/schemas/microsoft.graph.servicePrincipalCreationPolicy"",
+          ""#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"": ""#/components/schemas/microsoft.graph.identitySecurityDefaultsEnforcementPolicy"",
           ""#microsoft.graph.extensionProperty"": ""#/components/schemas/microsoft.graph.extensionProperty"",
           ""#microsoft.graph.endpoint"": ""#/components/schemas/microsoft.graph.endpoint"",
           ""#microsoft.graph.resourceSpecificPermissionGrant"": ""#/components/schemas/microsoft.graph.resourceSpecificPermissionGrant"",
