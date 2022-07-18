@@ -398,7 +398,7 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.EnableDiscriminatorValue && derivedTypes == null)
             {
-                derivedTypes = context.Model.FindDirectlyDerivedTypes(structuredType);
+                derivedTypes = context.Model.FindAllDerivedTypes(structuredType);
             }
 
             if (processBase && structuredType.BaseType != null)
@@ -484,7 +484,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     AnyOf = null
                 };
 
-                if (schema.Discriminator != null)
+                if (context.Settings.EnableDiscriminatorValue)
                 {
                     if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
