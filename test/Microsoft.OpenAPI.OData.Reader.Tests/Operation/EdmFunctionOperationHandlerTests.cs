@@ -112,7 +112,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
 
         [Fact]
-        public void CreateOperationForEdmFunctionReturnsCorrectOperationHierarhicalClass()
+        public void CreateOperationForEdmFunctionReturnsCorrectOperationHierarchicalClass()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.ContractServiceModel;
@@ -406,6 +406,43 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             else
             {
                 Assert.Empty(operation.Security);
+            }
+        }
+
+        [Theory]
+        [InlineData("getUserArchivedPrintJobs", true)] // returns collection
+        [InlineData("getUserArchivedPrintJobs", false)] // returns collection
+        [InlineData("managedDeviceEnrollmentAbandonmentSummary", true)] // does not return collection
+        public void CreateOperationForEdmFunctionWithCollectionReturnTypeContainsXMsPageableExtension(string functionName, bool enablePagination)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                EnableOperationId = true,
+                EnablePagination = enablePagination
+            };
+            ODataContext context = new(model, settings);
+            IEdmFunction function = model.SchemaElements.OfType<IEdmFunction>()
+                .First(x => x.Name == functionName &&
+                    x.FindParameter("bindingParameter").Type.Definition.ToString() == "microsoft.graph.reportRoot");
+            IEdmEntityContainer container = model.SchemaElements.OfType<IEdmEntityContainer>().First();
+            IEdmSingleton reports = container.FindSingleton("reports");
+
+            ODataPath path = new(new ODataNavigationSourceSegment(reports),
+                new ODataOperationSegment(function));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            if (enablePagination && function.ReturnType.IsCollection())
+            {
+                Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
+            }
+            else
+            {
+                Assert.False(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
         }
     }

@@ -54,7 +54,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
         }
 
         [Fact]
-        public void CreateOperationForEdmActionReturnsCorrectOperationHierarhicalClass()
+        public void CreateOperationForEdmActionReturnsCorrectOperationHierarchicalClass()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.ContractServiceModel;
@@ -294,6 +294,45 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             else
             {
                 Assert.Empty(operation.Security);
+            }
+        }
+
+        [Theory]
+        [InlineData("getMailTips", true)] // returns collection
+        [InlineData("getMailTips", false)] // returns collection
+        [InlineData("findMeetingTimes", true)] // does not return collection
+        public void CreateOperationForEdmActionWithCollectionReturnTypeContainsXMsPageableExtension(string actionName, bool enablePagination)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                EnableOperationId = true,
+                EnablePagination = enablePagination
+            };
+            ODataContext context = new(model, settings);
+            IEdmAction action = model.SchemaElements.OfType<IEdmAction>()
+                .First(x => x.Name == actionName &&
+                    x.FindParameter("bindingParameter").Type.Definition.ToString() == "microsoft.graph.user");
+            IEdmEntityContainer container = model.SchemaElements.OfType<IEdmEntityContainer>().First();
+            IEdmEntitySet users = container.FindEntitySet("users");
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(x => x.Name == "user");
+
+            ODataPath path = new(new ODataNavigationSourceSegment(users),
+                new ODataKeySegment(user),
+                new ODataOperationSegment(action));
+
+            // Act
+            var operation = _operationHandler.CreateOperation(context, path);
+
+            // Assert
+            if (enablePagination && action.ReturnType.IsCollection())
+            {
+                Assert.True(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
+            }
+            else
+            {
+                Assert.False(operation.Extensions.ContainsKey(Common.Constants.xMsPageable));
             }
         }
     }
