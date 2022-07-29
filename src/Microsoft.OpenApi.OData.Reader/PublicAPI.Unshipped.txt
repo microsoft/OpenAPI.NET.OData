@@ -13,6 +13,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get ->
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
 static Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions.AddErrorResponses(this Microsoft.OpenApi.Models.OpenApiOperation operation, Microsoft.OpenApi.OData.OpenApiConvertSettings settings, bool addNoContent = false, Microsoft.OpenApi.Models.OpenApiSchema schema = null) -> void

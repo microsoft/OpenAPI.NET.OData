@@ -180,6 +180,11 @@ namespace Microsoft.OpenApi.OData
         public bool ShowMsDosGroupPath { get; set; } = true;
 
         /// <summary>
+        /// Gets/sets links to external documentation for operations
+        /// </summary>
+        public bool ShowExternalDocs { get; set; } = true;
+
+        /// <summary>
         /// Gets/sets a the path provider.
         /// </summary>
         public IODataPathProvider PathProvider { get; set; }
@@ -258,6 +263,7 @@ namespace Microsoft.OpenApi.OData
         /// to represent all response codes between 200 - 299.
         /// </summary>
         public bool UseSuccessStatusCodeRange { get; set; } = false;
+
 
         internal OpenApiConvertSettings Clone()
         {
