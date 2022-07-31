@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
@@ -24,6 +25,19 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets the Edm Function.
         /// </summary>
         public IEdmFunction Function => EdmOperation as IEdmFunction;
+
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiOperation operation)
+        {
+            base.SetBasicInfo(operation);
+
+            // Description
+            var readRestrictions = Context.Model.GetRecord<ReadRestrictionsType>(EdmOperation, CapabilitiesConstants.ReadRestrictions);
+            if (!string.IsNullOrWhiteSpace(readRestrictions?.LongDescription))
+            {
+                operation.Description = readRestrictions.LongDescription;
+            }
+        }
 
         /// <inheritdoc/>
         protected override void SetExtensions(OpenApiOperation operation)
