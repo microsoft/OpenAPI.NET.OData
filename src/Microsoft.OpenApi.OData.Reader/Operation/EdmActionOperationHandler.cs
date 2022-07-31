@@ -7,7 +7,9 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -46,6 +48,23 @@ namespace Microsoft.OpenApi.OData.Operation
                 operation.Extensions.Add(Constants.xMsPageable, extension);              
             }
             base.SetExtensions(operation);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs)
+            {
+                LinksType externalDocs = Context.Model.GetExternalDocs(EdmOperation as IEdmAction, OperationType);
+                if (externalDocs != null)
+                {
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
+            }
         }
     }
 }
