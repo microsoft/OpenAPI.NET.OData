@@ -6,6 +6,7 @@
 using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using System;
 
 namespace Microsoft.OpenApi.OData.Vocabulary.Core
 {
@@ -23,7 +24,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         /// <summary>
         /// The link to the documentation.
         /// </summary>
-        public string Href { get; private set; }
+        public Uri Href { get; private set; }
 
         /// <summary>
         /// Init the <see cref="LinksType"/>.
@@ -33,7 +34,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         {
             Utils.CheckArgumentNull(record, nameof(record));
             Rel = record.GetString("rel");
-            Href = record.GetString("href");
+            Href = new Uri(record.GetString("href"));
         }
     }
 }
