@@ -47,6 +47,9 @@ namespace Microsoft.OpenApi.OData.Operation
             SetBasicInfo(operation);
             SetDeprecation(operation);
 
+            // ExternalDocs
+            SetExternalDocs(operation);
+
             // Security
             SetSecurity(operation);
 
@@ -178,20 +181,25 @@ namespace Microsoft.OpenApi.OData.Operation
         { }
 
         /// <summary>
+        /// Set the ExternalDocs information for <see cref="OpenApiOperation"/>.
+        /// </summary>
+        /// <param name="operation">The <see cref="OpenApiOperation"/>.</param>
+        protected virtual void SetExternalDocs(OpenApiOperation operation)
+        { }
+
+        /// <summary>
         /// Set the customized parameters for the operation.
         /// </summary>
         /// <param name="operation">The operation.</param>
         protected virtual void AppendCustomParameters(OpenApiOperation operation)
-        {
-        }
+        { }
 
         /// <summary>
         /// Set the addition annotation for the response.
         /// </summary>
         /// <param name="operation">The operation.</param>
         protected virtual void AppendHttpResponses(OpenApiOperation operation)
-        {
-        }
+        { }
 
         /// <summary>
         /// Sets the custom parameters.
