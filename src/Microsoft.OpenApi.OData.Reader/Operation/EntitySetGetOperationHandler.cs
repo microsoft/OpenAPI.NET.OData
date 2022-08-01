@@ -187,22 +187,5 @@ namespace Microsoft.OpenApi.OData.Operation
                 AppendCustomParameters(operation, _readRestrictions.CustomQueryOptions, ParameterLocation.Query);
             }
         }
-
-        /// <inheritdoc/>
-        protected override void SetExternalDocs(OpenApiOperation operation)
-        {
-            if (Context.Settings.ShowExternalDocs)
-            {
-                LinksType externalDocs = Context.Model.GetExternalDocs(EntitySet, OperationType);
-                if (externalDocs != null)
-                {
-                    operation.ExternalDocs = new OpenApiExternalDocs()
-                    {
-                        Description = CoreConstants.ExternalDocsDescription,
-                        Url = externalDocs.Href
-                    };
-                }
-            }
-        }
     }
 }
