@@ -11,10 +11,10 @@ using System;
 namespace Microsoft.OpenApi.OData.Vocabulary.Core
 {
     /// <summary>
-    /// Complex Type: Org.OData.Core.V1.Links
+    /// Complex Type: Org.OData.Core.V1.Link
     /// </summary>
     [Term("Org.OData.Core.V1.Links")]
-    internal class LinksType : IRecord
+    internal class Link : IRecord
     {
         /// <summary>
         /// The link relation type.
@@ -27,7 +27,7 @@ namespace Microsoft.OpenApi.OData.Vocabulary.Core
         public Uri Href { get; private set; }
 
         /// <summary>
-        /// Init the <see cref="LinksType"/>.
+        /// Init the <see cref="Link"/>.
         /// </summary>
         /// <param name="record"></param>
         public virtual void Initialize(IEdmRecordExpression record)
