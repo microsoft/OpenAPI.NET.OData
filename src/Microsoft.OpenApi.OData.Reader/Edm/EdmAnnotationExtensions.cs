@@ -9,9 +9,11 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Edm.Vocabularies;
+using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Authorization;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Edm
 {
@@ -254,6 +256,20 @@ namespace Microsoft.OpenApi.OData.Edm
 
                 return value;
             });
+        }
+
+        /// <summary>
+        /// Gets the links record value (a complex type) for the given <see cref="IEdmVocabularyAnnotatable"/>.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="target">The Edm target.</param>
+        /// <param name="operationType"></param>
+        /// <returns>Null or the </returns>
+        public static Link GetExternalDocs(this IEdmModel model, IEdmVocabularyAnnotatable target, OperationType operationType)
+        {
+            IEnumerable<Link> externalDocs = model.GetCollection<Link>(target, CoreConstants.Links);
+
+            return externalDocs?.FirstOrDefault();
         }
 
         /// <summary>
