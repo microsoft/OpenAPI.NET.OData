@@ -473,7 +473,7 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
         }
 
         [Fact]
-        public void CreatePathItemForNavigationPropertyWithOutOfLineRestrictionAnnotations()
+        public void CreatePathItemForNavigationPropertyWithRestrictionAnnotationsDefinedOnTargetEntityType()
         {
             // Arrange
             IEdmModel model = EdmModelHelper.GraphBetaModel;
@@ -507,6 +507,38 @@ namespace Microsoft.OpenApi.OData.PathItem.Tests
             Assert.NotNull(pathItem.Operations);
             Assert.Single(pathItem.Operations);
             Assert.Equal(OperationType.Get, pathItem.Operations.FirstOrDefault().Key);
+        }
+
+        [Fact]
+        public void CreatePathItemForNavigationPropertyWithOutOfLineRestrictionAnnotations()
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            OpenApiConvertSettings settings = new()
+            {
+                ExpandDerivedTypesNavigationProperties = false
+            };
+            ODataContext context = new(model, settings);
+            IEdmEntitySet users = model.EntityContainer.FindEntitySet("users");
+            Assert.NotNull(users);
+            IEdmEntityType user = model.SchemaElements.OfType<IEdmEntityType>().First(c => c.Name == "user");
+            Assert.NotNull(user);
+            IEdmNavigationProperty photo = user.DeclaredNavigationProperties().First(c => c.Name == "photo");
+            Assert.NotNull(photo);
+
+            ODataPath path = new(new ODataNavigationSourceSegment(users),
+                new ODataKeySegment(user),
+                new ODataNavigationPropertySegment(photo));
+            Assert.NotNull(path);
+
+            // Act
+            var pathItem = _pathItemHandler.CreatePathItem(context, path);
+
+            // Assert
+            Assert.NotNull(pathItem);
+            Assert.NotNull(pathItem.Operations);
+            Assert.Equal(2, pathItem.Operations.Count);
+            Assert.Equal(new[] { OperationType.Get, OperationType.Patch }, pathItem.Operations.Select(o => o.Key));
         }
 
         [Fact]
