@@ -9,6 +9,7 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
@@ -21,15 +22,23 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
+        private ReadRestrictionsType _readRestriction;
+
+        /// <inheritdoc/>
+        protected override void Initialize(ODataContext context, ODataPath path)
+        {
+            base.Initialize(context, path);
+            _readRestriction = Restriction?.ReadRestrictions ??
+                Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions);
+        }
 
         /// <inheritdoc/>
         protected override void SetBasicInfo(OpenApiOperation operation)
         {
             // Summary and Description
-            ReadRestrictionsType readRestriction = Restriction?.ReadRestrictions;
             string placeHolder = "Get ref of " + NavigationProperty.Name + " from " + NavigationSource.Name;
-            operation.Summary = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.Description : readRestriction?.Description) ?? placeHolder;
-            operation.Description = (LastSegmentIsKeySegment ? readRestriction?.ReadByKeyRestrictions?.LongDescription : readRestriction?.LongDescription)
+            operation.Summary = (LastSegmentIsKeySegment ? _readRestriction?.ReadByKeyRestrictions?.Description : _readRestriction?.Description) ?? placeHolder;
+            operation.Description = (LastSegmentIsKeySegment ? _readRestriction?.ReadByKeyRestrictions?.LongDescription : _readRestriction?.LongDescription)
                 ?? Context.Model.GetDescriptionAnnotation(NavigationProperty);
 
             // OperationId
@@ -179,23 +188,23 @@ namespace Microsoft.OpenApi.OData.Operation
 
         protected override void SetSecurity(OpenApiOperation operation)
         {
-            if (Restriction == null || Restriction.ReadRestrictions == null)
+            if (_readRestriction == null)
             {
                 return;
             }
 
-            ReadRestrictionsBase readBase = Restriction.ReadRestrictions;
+            ReadRestrictionsBase readBase = _readRestriction;
             operation.Security = Context.CreateSecurityRequirements(readBase.Permissions).ToList();
         }
 
         protected override void AppendCustomParameters(OpenApiOperation operation)
         {
-            if (Restriction == null || Restriction.ReadRestrictions == null)
+            if (_readRestriction == null)
             {
                 return;
             }
 
-            ReadRestrictionsBase readBase = Restriction.ReadRestrictions;
+            ReadRestrictionsBase readBase = _readRestriction;
             if (readBase.CustomHeaders != null)
             {
                 AppendCustomParameters(operation, readBase.CustomHeaders, ParameterLocation.Header);
