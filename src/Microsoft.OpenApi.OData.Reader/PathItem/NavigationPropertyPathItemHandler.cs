@@ -85,7 +85,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                     {
                         UpdateRestrictionsType entityUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(_navPropEntityType);
                         UpdateRestrictionsType navPropUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty);
-                        if ((entityUpdateRestriction?.IsUpdatable ?? true) ||
+                        if ((entityUpdateRestriction?.IsUpdatable ?? true) &&
                             (navPropUpdateRestriction?.IsUpdatable ?? true))
                         {
                             UpdateRestrictionsType updateRestrictionType = entityUpdateRestriction ?? navPropUpdateRestriction;
