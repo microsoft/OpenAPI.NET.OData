@@ -409,14 +409,10 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 indexableByKey = (bool)restriction.IndexableByKey;
             }
-            else
+            else if (_model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(navigationProperty, CapabilitiesConstants.IndexableByKey).FirstOrDefault() is IEdmVocabularyAnnotation indexabilityAnnotation && indexabilityAnnotation.Value is IEdmBooleanValue booleanValue)
             {
                 // Find indexability annotation annotated directly via NavigationPropertyRestriction
-                IEdmVocabularyAnnotation indexabilityAnnotation = _model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(navigationProperty, CapabilitiesConstants.IndexableByKey).FirstOrDefault();
-                if (indexabilityAnnotation != null)
-                {
-                    indexableByKey = ((IEdmBooleanValue)indexabilityAnnotation.Value).Value;
-                }
+                indexableByKey = booleanValue.Value;
             }
 
             if (indexableByKey)
