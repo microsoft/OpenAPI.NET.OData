@@ -27,8 +27,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            _updateRestriction = Restriction?.UpdateRestrictions ??
-                Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions);
+            _updateRestriction = GetRestrictionAnnotation(CapabilitiesConstants.UpdateRestrictions) as UpdateRestrictionsType;
         }
 
         /// <inheritdoc/>

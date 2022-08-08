@@ -28,8 +28,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            _readRestriction = Restriction?.ReadRestrictions ??
-                Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions);
+            _readRestriction = GetRestrictionAnnotation(CapabilitiesConstants.ReadRestrictions) as ReadRestrictionsType;
         }
 
         /// <inheritdoc/>

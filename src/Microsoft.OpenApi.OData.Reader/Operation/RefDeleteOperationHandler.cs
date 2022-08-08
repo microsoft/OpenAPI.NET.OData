@@ -26,8 +26,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            _deleteRestriction = Restriction?.DeleteRestrictions ??
-                Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions);
+            _deleteRestriction = GetRestrictionAnnotation(CapabilitiesConstants.DeleteRestrictions) as DeleteRestrictionsType;
         }
 
         /// <inheritdoc/>

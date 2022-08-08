@@ -24,14 +24,14 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Get;
+
         private ReadRestrictionsType _readRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            _readRestriction = Restriction?.ReadRestrictions ??
-                Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions);
+            _readRestriction = GetRestrictionAnnotation(CapabilitiesConstants.ReadRestrictions) as ReadRestrictionsType;
         }
 
         /// <inheritdoc/>

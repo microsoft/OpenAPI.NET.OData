@@ -23,14 +23,14 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
+
         private InsertRestrictionsType _insertRestriction;
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            _insertRestriction = Restriction?.InsertRestrictions ??
-                Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions);
+            _insertRestriction = GetRestrictionAnnotation(CapabilitiesConstants.InsertRestrictions) as InsertRestrictionsType;
         }
 
         /// <inheritdoc/>

@@ -25,8 +25,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void Initialize(ODataContext context, ODataPath path)
         {
             base.Initialize(context, path);
-            _insertRestriction = Restriction?.InsertRestrictions ??
-                Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions);
+            _insertRestriction = GetRestrictionAnnotation(CapabilitiesConstants.InsertRestrictions) as InsertRestrictionsType;
         }
 
         /// <inheritdoc/>
