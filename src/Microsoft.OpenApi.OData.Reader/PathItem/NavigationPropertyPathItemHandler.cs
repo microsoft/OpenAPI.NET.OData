@@ -88,7 +88,7 @@ namespace Microsoft.OpenApi.OData.PathItem
                         if ((entityUpdateRestriction?.IsUpdatable ?? true) &&
                             (navPropUpdateRestriction?.IsUpdatable ?? true))
                         {
-                            UpdateRestrictionsType updateRestrictionType = entityUpdateRestriction ?? navPropUpdateRestriction;
+                            UpdateRestrictionsType updateRestrictionType = navPropUpdateRestriction ?? entityUpdateRestriction;
                             AddUpdateOperation(item, restriction, updateRestrictionType);
                         }
                     }
