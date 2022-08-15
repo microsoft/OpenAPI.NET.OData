@@ -169,7 +169,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Decimal: // decimal
                     if (context.Settings.IEEE754Compatible)
                     {
-                        schema.AnyOf = new List<OpenApiSchema>
+                        schema.OneOf = new List<OpenApiSchema>
                         {
                             new OpenApiSchema { Type = "number" },
                             new OpenApiSchema { Type = "string" },
@@ -182,7 +182,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Format = "decimal";
                     break;
                 case EdmPrimitiveTypeKind.Double: // double
-                    schema.AnyOf = new List<OpenApiSchema>
+                    schema.OneOf = new List<OpenApiSchema>
                     {
                         new OpenApiSchema { Type = "number" },
                         new OpenApiSchema { Type = "string" },
@@ -199,7 +199,7 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Format = "double";
                     break;
                 case EdmPrimitiveTypeKind.Single: // single
-                    schema.AnyOf = new List<OpenApiSchema>
+                    schema.OneOf = new List<OpenApiSchema>
                     {
                         new OpenApiSchema { Type = "number" },
                         new OpenApiSchema { Type = "string" },
@@ -235,7 +235,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 case EdmPrimitiveTypeKind.Int64:
                     if (context.Settings.IEEE754Compatible)
                     {
-                        schema.AnyOf = new List<OpenApiSchema>
+                        schema.OneOf = new List<OpenApiSchema>
                         {
                             new OpenApiSchema { Type = "integer" },
                             new OpenApiSchema { Type = "string" }

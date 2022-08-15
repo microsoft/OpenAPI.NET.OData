@@ -214,7 +214,7 @@ namespace Microsoft.OpenApi.OData.Generator
             return new OpenApiSchema
             {
                 Type = "object",
-                AnyOf = new List<OpenApiSchema>
+                OneOf = new List<OpenApiSchema>
                 {
                     new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryPoint" } },
                     new OpenApiSchema { UnresolvedReference = true, Reference = new OpenApiReference { Type = ReferenceType.Schema, Id = "Edm.GeometryLineString" } },
