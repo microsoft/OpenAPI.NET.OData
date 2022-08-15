@@ -407,14 +407,14 @@ namespace Microsoft.OpenApi.OData.Tests
             if (IEEE754Compatible)
             {
                 Assert.Null(schema.Type);
-                Assert.NotNull(schema.AnyOf);
-                Assert.Equal(2, schema.AnyOf.Count);
-                Assert.Equal(new[] { "number", "string" }, schema.AnyOf.Select(a => a.Type));
+                Assert.NotNull(schema.OneOf);
+                Assert.Equal(2, schema.OneOf.Count);
+                Assert.Equal(new[] { "number", "string" }, schema.OneOf.Select(a => a.Type));
             }
             else
             {
                 Assert.Equal("number", schema.Type);
-                Assert.Null(schema.AnyOf);
+                Assert.Null(schema.OneOf);
             }
 
             Assert.Equal(isNullable, schema.Nullable);
@@ -445,9 +445,9 @@ namespace Microsoft.OpenApi.OData.Tests
             if (IEEE754Compatible)
             {
                 Assert.Null(schema.Type);
-                Assert.NotNull(schema.AnyOf);
-                Assert.Equal(2, schema.AnyOf.Count);
-                Assert.Equal(new[] { "integer", "string" }, schema.AnyOf.Select(a => a.Type));
+                Assert.NotNull(schema.OneOf);
+                Assert.Equal(2, schema.OneOf.Count);
+                Assert.Equal(new[] { "integer", "string" }, schema.OneOf.Select(a => a.Type));
             }
             else
             {
@@ -513,10 +513,10 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("double", schema.Format);
             Assert.Equal(isNullable, schema.Nullable);
 
-            Assert.Null(schema.OneOf);
+            Assert.Null(schema.AnyOf);
 
-            Assert.NotNull(schema.AnyOf);
-            Assert.Equal(3, schema.AnyOf.Count);
+            Assert.NotNull(schema.OneOf);
+            Assert.Equal(3, schema.OneOf.Count);
         }
 
         [Theory]
@@ -539,10 +539,10 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("float", schema.Format);
             Assert.Equal(isNullable, schema.Nullable);
 
-            Assert.Null(schema.OneOf);
+            Assert.Null(schema.AnyOf);
 
-            Assert.NotNull(schema.AnyOf);
-            Assert.Equal(3, schema.AnyOf.Count);
+            Assert.NotNull(schema.OneOf);
+            Assert.Equal(3, schema.OneOf.Count);
         }
         #endregion
     }

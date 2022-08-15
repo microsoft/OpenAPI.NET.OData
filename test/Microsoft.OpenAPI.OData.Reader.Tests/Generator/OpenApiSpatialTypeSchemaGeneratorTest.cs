@@ -222,7 +222,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // Assert
             Assert.Equal(@"{
   ""type"": ""object"",
-  ""anyOf"": [
+  ""oneOf"": [
     {
       ""$ref"": ""#/components/schemas/Edm.GeometryPoint""
     },

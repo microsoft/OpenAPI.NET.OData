@@ -406,8 +406,8 @@ namespace Microsoft.OpenApi.OData.Tests
             var property = Assert.Single(declaredSchema.Properties);
             Assert.Equal("Price", property.Key);
             Assert.Equal("decimal", property.Value.Format);
-            Assert.NotNull(property.Value.AnyOf);
-            Assert.Equal(new string[] { "number", "string" }, property.Value.AnyOf.Select(e => e.Type));
+            Assert.NotNull(property.Value.OneOf);
+            Assert.Equal(new string[] { "number", "string" }, property.Value.OneOf.Select(e => e.Type));
 
             Assert.Equal("Complex type 'Tree' description.", declaredSchema.Description);
             Assert.Equal("Tree", declaredSchema.Title);
@@ -428,7 +428,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""properties"": {
         ""Price"": {
           ""multipleOf"": 1,
-          ""anyOf"": [
+          ""oneOf"": [
             {
               ""type"": ""number""
             },
@@ -913,7 +913,7 @@ namespace Microsoft.OpenApi.OData.Tests
             string json = schema.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
 
             Assert.Equal(@"{
-  ""anyOf"": [
+  ""oneOf"": [
     {
       ""type"": ""number""
     },
