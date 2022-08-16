@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,6 +26,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// </summary>
         protected ODataNavigationSourceSegment NavigationSourceSegment { get; private set; }
 
+        
         /// <summary>
         /// Gets/Sets flag indicating whether path is navigation property path
         /// </summary>
@@ -203,6 +205,22 @@ namespace Microsoft.OpenApi.OData.Operation
         private IEdmNavigationProperty GetNavigationProperty(IEdmEntityType entityType, string identifier)
         {
             return entityType.DeclaredNavigationProperties().FirstOrDefault(x => x.Name.Equals(identifier));
+        }
+
+        protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs && IsNavigationPropertyPath)
+            {
+                Link externalDocs = Context.Model.GetLinkRecord(NavigationProperty, OperationType, Path);
+                if (externalDocs != null)
+                {
+                    operation.ExternalDocs = new OpenApiExternalDocs()
+                    {
+                        Description = CoreConstants.ExternalDocsDescription,
+                        Url = externalDocs.Href
+                    };
+                }
+            }
         }
     }
 }

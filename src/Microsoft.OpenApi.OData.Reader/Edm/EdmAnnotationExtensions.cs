@@ -270,6 +270,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
+            Utils.CheckArgumentNull(path, nameof(path));
 
             IEnumerable<Link> links = model.GetCollection<Link>(target, CoreConstants.Links);
             if (links != null && links.Any())
