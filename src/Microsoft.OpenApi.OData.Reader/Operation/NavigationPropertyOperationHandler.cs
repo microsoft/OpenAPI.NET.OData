@@ -161,7 +161,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.ShowExternalDocs)
             {
-                Link externalDocs = Context.Model.GetExternalDocs(NavigationProperty, OperationType);
+                Link externalDocs = Context.Model.GetLinkRecord(NavigationProperty, OperationType, Path);
                 if (externalDocs != null)
                 {
                     operation.ExternalDocs = new OpenApiExternalDocs()

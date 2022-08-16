@@ -113,7 +113,7 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.ShowExternalDocs)
             {
-                Link externalDocs = Context.Model.GetExternalDocs(Singleton, OperationType);
+                Link externalDocs = Context.Model.GetLinkRecord(Singleton, OperationType, Path);
                 if (externalDocs != null)
                 {
                     operation.ExternalDocs = new OpenApiExternalDocs()
