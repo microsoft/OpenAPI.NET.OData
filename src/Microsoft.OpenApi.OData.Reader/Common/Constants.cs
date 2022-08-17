@@ -110,7 +110,6 @@ namespace Microsoft.OpenApi.OData.Common
         /// </summary>
         public static string ReferenceUpdateSchemaName = "ReferenceUpdate";
 
-
         /// <summary>
         /// Name used for reference update.
         /// </summary>
