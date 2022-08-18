@@ -921,11 +921,7 @@ namespace Microsoft.OpenApi.OData.Tests
       ""type"": ""string""
     },
     {
-      ""enum"": [
-        ""-INF"",
-        ""INF"",
-        ""NaN""
-      ]
+      ""$ref"": ""#/components/schemas/ReferenceNumeric""
     }
   ],
   ""format"": ""double"",

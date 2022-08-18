@@ -736,6 +736,11 @@ definitions:
         type: string
     additionalProperties:
       type: object
+  ReferenceNumeric:
+    enum:
+      - '-INF'
+      - INF
+      - NaN
 parameters:
   top:
     in: query

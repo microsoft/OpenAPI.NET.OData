@@ -808,6 +808,11 @@ components:
           type: string
       additionalProperties:
         type: object
+    ReferenceNumeric:
+      enum:
+        - '-INF'
+        - INF
+        - NaN
   responses:
     error:
       description: error

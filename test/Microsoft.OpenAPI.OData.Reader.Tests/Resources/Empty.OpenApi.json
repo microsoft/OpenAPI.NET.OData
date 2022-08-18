@@ -101,6 +101,13 @@
         "additionalProperties": {
           "type": "object"
         }
+      },
+      "ReferenceNumeric": {
+        "enum": [
+          "-INF",
+          "INF",
+          "NaN"
+        ]
       }
     },
     "responses": {

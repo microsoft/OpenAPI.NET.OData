@@ -877,25 +877,19 @@ paths:
           in: path
           required: true
           schema:
-            anyOf:
+            oneOf:
               - type: number
               - type: string
-              - enum:
-                  - '-INF'
-                  - INF
-                  - NaN
+              - $ref: '#/components/schemas/ReferenceNumeric'
             format: double
         - name: lon
           in: path
           required: true
           schema:
-            anyOf:
+            oneOf:
               - type: number
               - type: string
-              - enum:
-                  - '-INF'
-                  - INF
-                  - NaN
+              - $ref: '#/components/schemas/ReferenceNumeric'
             format: double
       responses:
         '200':
@@ -20173,7 +20167,7 @@ components:
         Gender:
           $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
         Age:
-          anyOf:
+          oneOf:
             - type: integer
             - type: string
           format: int64
@@ -20307,13 +20301,10 @@ components:
           type: string
           nullable: true
         Budget:
-          anyOf:
+          oneOf:
             - type: number
             - type: string
-            - enum:
-                - '-INF'
-                - INF
-                - NaN
+            - $ref: '#/components/schemas/ReferenceNumeric'
           format: float
         Description:
           type: string
@@ -20413,7 +20404,7 @@ components:
           type: object
           properties:
             Cost:
-              anyOf:
+              oneOf:
                 - type: integer
                 - type: string
               format: int64
@@ -20428,7 +20419,7 @@ components:
           type: object
           properties:
             Budget:
-              anyOf:
+              oneOf:
                 - type: integer
                 - type: string
               format: int64
@@ -20488,7 +20479,7 @@ components:
       $ref: '#/components/schemas/Edm.GeometryCollection'
     Edm.Geometry:
       type: object
-      anyOf:
+      oneOf:
         - $ref: '#/components/schemas/Edm.GeometryPoint'
         - $ref: '#/components/schemas/Edm.GeometryLineString'
         - $ref: '#/components/schemas/Edm.GeometryPolygon'
@@ -20769,6 +20760,11 @@ components:
           type: string
       additionalProperties:
         type: object
+    ReferenceNumeric:
+      enum:
+        - '-INF'
+        - INF
+        - NaN
   responses:
     error:
       description: error

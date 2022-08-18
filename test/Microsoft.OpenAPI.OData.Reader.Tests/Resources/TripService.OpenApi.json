@@ -1305,7 +1305,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "anyOf": [
+              "oneOf": [
                 {
                   "type": "number"
                 },
@@ -1313,11 +1313,7 @@
                   "type": "string"
                 },
                 {
-                  "enum": [
-                    "-INF",
-                    "INF",
-                    "NaN"
-                  ]
+                  "$ref": "#/components/schemas/ReferenceNumeric"
                 }
               ],
               "format": "double"
@@ -1328,7 +1324,7 @@
             "in": "path",
             "required": true,
             "schema": {
-              "anyOf": [
+              "oneOf": [
                 {
                   "type": "number"
                 },
@@ -1336,11 +1332,7 @@
                   "type": "string"
                 },
                 {
-                  "enum": [
-                    "-INF",
-                    "INF",
-                    "NaN"
-                  ]
+                  "$ref": "#/components/schemas/ReferenceNumeric"
                 }
               ],
               "format": "double"
@@ -28817,7 +28809,7 @@
             "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
           },
           "Age": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "integer"
               },
@@ -29041,7 +29033,7 @@
             "nullable": true
           },
           "Budget": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "number"
               },
@@ -29049,11 +29041,7 @@
                 "type": "string"
               },
               {
-                "enum": [
-                  "-INF",
-                  "INF",
-                  "NaN"
-                ]
+                "$ref": "#/components/schemas/ReferenceNumeric"
               }
             ],
             "format": "float"
@@ -29223,7 +29211,7 @@
             "type": "object",
             "properties": {
               "Cost": {
-                "anyOf": [
+                "oneOf": [
                   {
                     "type": "integer"
                   },
@@ -29253,7 +29241,7 @@
             "type": "object",
             "properties": {
               "Budget": {
-                "anyOf": [
+                "oneOf": [
                   {
                     "type": "integer"
                   },
@@ -29351,7 +29339,7 @@
       },
       "Edm.Geometry": {
         "type": "object",
-        "anyOf": [
+        "oneOf": [
           {
             "$ref": "#/components/schemas/Edm.GeometryPoint"
           },
@@ -29781,6 +29769,13 @@
         "additionalProperties": {
           "type": "object"
         }
+      },
+      "ReferenceNumeric": {
+        "enum": [
+          "-INF",
+          "INF",
+          "NaN"
+        ]
       }
     },
     "responses": {
