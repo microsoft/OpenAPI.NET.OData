@@ -118,6 +118,16 @@ namespace Microsoft.OpenApi.OData.Generator
                 AdditionalProperties = new OpenApiSchema { Type = "object" }
             };
 
+            schemas[Constants.ReferenceNumericName] = new()
+            {
+                Enum = new List<IOpenApiAny>
+                {
+                    new OpenApiString("-INF"),
+                    new OpenApiString("INF"),
+                    new OpenApiString("NaN")
+                }
+            };
+
             return schemas;
         }
         internal static bool HasAnyNonContainedCollections(this ODataContext context)

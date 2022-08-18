@@ -188,11 +188,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         new OpenApiSchema { Type = "string" },
                         new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            UnresolvedReference = true,
+                            Reference = new OpenApiReference
                             {
-                                new OpenApiString("-INF"),
-                                new OpenApiString("INF"),
-                                new OpenApiString("NaN")
+                                Type = ReferenceType.Schema,
+                                Id = Constants.ReferenceNumericName
                             }
                         }
                     };
@@ -205,11 +205,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         new OpenApiSchema { Type = "string" },
                         new OpenApiSchema
                         {
-                            Enum = new List<IOpenApiAny>
+                            UnresolvedReference = true,
+                            Reference = new OpenApiReference
                             {
-                                new OpenApiString("-INF"),
-                                new OpenApiString("INF"),
-                                new OpenApiString("NaN")
+                                Type = ReferenceType.Schema,
+                                Id = Constants.ReferenceNumericName
                             }
                         }
                     };

@@ -124,6 +124,11 @@ namespace Microsoft.OpenApi.OData.Common
         /// Name used for reference request PUT body.
         /// </summary>
         public static string ReferencePutRequestBodyName = "refPutBody";
+
+        /// <summary>
+        /// Name used to reference INF, -INF and NaN
+        /// </summary>
+        public static string ReferenceNumericName = "ReferenceNumeric";
         
         /// <summary>
         /// The odata type name.
