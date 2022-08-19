@@ -157,17 +157,13 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
-            if (Context.Settings.ShowExternalDocs)
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(EdmOperationImport, OperationType, Path) is Link externalDocs)
             {
-                Link externalDocs = Context.Model.GetLinkRecord(EdmOperationImport, OperationType, Path);
-                if (externalDocs != null)
+                operation.ExternalDocs = operation.ExternalDocs = new OpenApiExternalDocs()
                 {
-                    operation.ExternalDocs = new OpenApiExternalDocs()
-                    {
-                        Description = CoreConstants.ExternalDocsDescription,
-                        Url = externalDocs.Href
-                    };
-                }
+                    Description = CoreConstants.ExternalDocsDescription,
+                    Url = externalDocs.Href
+                };
             }
         }
     }

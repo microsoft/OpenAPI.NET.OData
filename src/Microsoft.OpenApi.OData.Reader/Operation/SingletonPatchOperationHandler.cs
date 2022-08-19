@@ -11,7 +11,6 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
-using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -105,23 +104,6 @@ namespace Microsoft.OpenApi.OData.Operation
             if (_updateRestrictions.CustomQueryOptions != null)
             {
                 AppendCustomParameters(operation, _updateRestrictions.CustomQueryOptions, ParameterLocation.Query);
-            }
-        }
-
-        /// <inheritdoc/>
-        protected override void SetExternalDocs(OpenApiOperation operation)
-        {
-            if (Context.Settings.ShowExternalDocs)
-            {
-                Link externalDocs = Context.Model.GetLinkRecord(Singleton, OperationType, Path);
-                if (externalDocs != null)
-                {
-                    operation.ExternalDocs = new OpenApiExternalDocs()
-                    {
-                        Description = CoreConstants.ExternalDocsDescription,
-                        Url = externalDocs.Href
-                    };
-                }
             }
         }
 

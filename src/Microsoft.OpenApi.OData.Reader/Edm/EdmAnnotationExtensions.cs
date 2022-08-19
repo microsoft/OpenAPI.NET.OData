@@ -265,7 +265,7 @@ namespace Microsoft.OpenApi.OData.Edm
         /// <param name="target">The Edm target.</param>
         /// <param name="operationType">The Operation type.</param>
         /// <param name="path">The OData path.</param>
-        /// <returns>Null or the </returns>
+        /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
         public static Link GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, OperationType operationType, ODataPath path)
         {
             Utils.CheckArgumentNull(model, nameof(model));

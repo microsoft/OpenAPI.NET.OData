@@ -294,6 +294,7 @@ namespace Microsoft.OpenApi.OData
                 RequireDerivedTypesConstraintForBoundOperations = this.RequireDerivedTypesConstraintForBoundOperations,
                 ShowSchemaExamples = this.ShowSchemaExamples,
                 ShowRootPath = this.ShowRootPath,
+                ShowExternalDocs = this.ShowExternalDocs,
                 PathProvider = this.PathProvider,
                 EnableDollarCountPath = this.EnableDollarCountPath,
                 AddSingleQuotesForStringParameters = this.AddSingleQuotesForStringParameters,
