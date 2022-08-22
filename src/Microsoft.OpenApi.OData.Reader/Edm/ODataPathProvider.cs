@@ -403,16 +403,17 @@ namespace Microsoft.OpenApi.OData.Edm
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
+            // Find indexability annotation annotated directly via NavigationPropertyRestriction.
+            bool? annotatedIndexability = _model.GetBoolean(navigationProperty, CapabilitiesConstants.IndexableByKey);
             bool indexableByKey = true;
 
             if (restriction?.IndexableByKey != null)
             {
                 indexableByKey = (bool)restriction.IndexableByKey;
             }
-            else if (_model.FindVocabularyAnnotations<IEdmVocabularyAnnotation>(navigationProperty, CapabilitiesConstants.IndexableByKey).FirstOrDefault() is IEdmVocabularyAnnotation indexabilityAnnotation && indexabilityAnnotation.Value is IEdmBooleanValue booleanValue)
+            else if (annotatedIndexability != null)
             {
-                // Find indexability annotation annotated directly via NavigationPropertyRestriction
-                indexableByKey = booleanValue.Value;
+                indexableByKey = annotatedIndexability.Value;
             }
 
             if (indexableByKey)
