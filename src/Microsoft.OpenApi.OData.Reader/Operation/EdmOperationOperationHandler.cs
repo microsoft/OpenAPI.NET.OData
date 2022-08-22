@@ -1,11 +1,13 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -157,6 +159,8 @@ namespace Microsoft.OpenApi.OData.Operation
                         }
                     }
                 }
+
+                AppendSystemQueryOptions(function, operation);
             }
         }
 
@@ -196,6 +200,44 @@ namespace Microsoft.OpenApi.OData.Operation
             if (restriction.CustomQueryOptions != null)
             {
                 AppendCustomParameters(operation, restriction.CustomQueryOptions, ParameterLocation.Query);
+            }
+        }
+
+        private void AppendSystemQueryOptions(IEdmFunction function, OpenApiOperation operation)
+        {
+            OpenApiParameter parameter;
+
+            if (function.ReturnType.IsCollection())
+            {
+                parameter = Context.CreateTop(function);
+                if (parameter != null)
+                {
+                    operation.Parameters.AppendParameter(parameter);
+                }
+
+                parameter = Context.CreateSkip(function);
+                if (parameter != null)
+                {
+                    operation.Parameters.AppendParameter(parameter);
+                }
+
+                parameter = Context.CreateSearch(function);
+                if (parameter != null)
+                {
+                    operation.Parameters.AppendParameter(parameter);
+                }
+
+                parameter = Context.CreateFilter(function);
+                if (parameter != null)
+                {
+                    operation.Parameters.AppendParameter(parameter);
+                }
+
+                parameter = Context.CreateCount(function);
+                if (parameter != null)
+                {
+                    operation.Parameters.AppendParameter(parameter);
+                }
             }
         }
     }
