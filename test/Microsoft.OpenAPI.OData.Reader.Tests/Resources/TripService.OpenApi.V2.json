@@ -7386,6 +7386,21 @@
             "description": "Usage: userName='{userName}'",
             "required": true,
             "type": "string"
+          },
+          {
+            "$ref": "#/parameters/top"
+          },
+          {
+            "$ref": "#/parameters/skip"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          },
+          {
+            "$ref": "#/parameters/count"
           }
         ],
         "responses": {
@@ -8757,6 +8772,21 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/parameters/top"
+          },
+          {
+            "$ref": "#/parameters/skip"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          },
+          {
+            "$ref": "#/parameters/count"
           }
         ],
         "responses": {
@@ -15124,6 +15154,21 @@
             "description": "Usage: userName='{userName}'",
             "required": true,
             "type": "string"
+          },
+          {
+            "$ref": "#/parameters/top"
+          },
+          {
+            "$ref": "#/parameters/skip"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          },
+          {
+            "$ref": "#/parameters/count"
           }
         ],
         "responses": {
@@ -15725,6 +15770,21 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/parameters/top"
+          },
+          {
+            "$ref": "#/parameters/skip"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          },
+          {
+            "$ref": "#/parameters/count"
           }
         ],
         "responses": {
@@ -23462,6 +23522,21 @@
             "description": "Usage: userName='{userName}'",
             "required": true,
             "type": "string"
+          },
+          {
+            "$ref": "#/parameters/top"
+          },
+          {
+            "$ref": "#/parameters/skip"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          },
+          {
+            "$ref": "#/parameters/count"
           }
         ],
         "responses": {
@@ -25035,6 +25110,21 @@
             "maximum": 2147483647,
             "minimum": -2147483648,
             "x-ms-docs-key-type": "Trip"
+          },
+          {
+            "$ref": "#/parameters/top"
+          },
+          {
+            "$ref": "#/parameters/skip"
+          },
+          {
+            "$ref": "#/parameters/search"
+          },
+          {
+            "$ref": "#/parameters/filter"
+          },
+          {
+            "$ref": "#/parameters/count"
           }
         ],
         "responses": {
