@@ -43,9 +43,7 @@ namespace Microsoft.OpenApi.OData.Operation
 
         /// <inheritdoc/>
         protected override void Initialize(ODataContext context, ODataPath path)
-        {
-            base.Initialize(context, path);
-
+        { 
             // It's bound operation, the first segment must be the navigaiton source.
             ODataNavigationSourceSegment navigationSourceSegment = path.FirstSegment as ODataNavigationSourceSegment;
             NavigationSource = navigationSourceSegment.NavigationSource;
@@ -54,6 +52,8 @@ namespace Microsoft.OpenApi.OData.Operation
             EdmOperation = OperationSegment.Operation;
 
             HasTypeCast = path.Segments.Any(s => s is ODataTypeCastSegment);
+
+            base.Initialize(context, path);
         }
 
         /// <inheritdoc/>
@@ -200,14 +200,24 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
-
-
         /// <inheritdoc/>
-        protected override void SetExternalDocs(OpenApiOperation operation)
+        protected override void SetCustomLinkRelType()
         {
-            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(EdmOperation, OperationType, Path) is Link externalDocs)
+            if (Context.Settings.CustomHttpMethodLinkRelMapping != null && EdmOperation != null)
             {
-                operation.ExternalDocs = operation.ExternalDocs = new OpenApiExternalDocs()
+                LinkRelKey key = EdmOperation.IsAction() ? LinkRelKey.Action : LinkRelKey.Function;
+                Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue(key, out string linkRelValue);
+                CustomLinkRel =  linkRelValue;
+            }
+        }
+    
+
+    /// <inheritdoc/>
+    protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel) is Link externalDocs)
+            {
+                operation.ExternalDocs = new OpenApiExternalDocs()
                 {
                     Description = CoreConstants.ExternalDocsDescription,
                     Url = externalDocs.Href

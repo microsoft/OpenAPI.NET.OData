@@ -3,6 +3,7 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OpenApi.Any;
@@ -11,6 +12,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -71,12 +73,13 @@ namespace Microsoft.OpenApi.OData.Operation
             // Extensions
             SetExtensions(operation);
 
+
             return operation;
         }
 
         private void SetDeprecation(OpenApiOperation operation)
         {
-            if(operation != null && Context.Settings.EnableDeprecationInformation)
+            if (operation != null && Context.Settings.EnableDeprecationInformation)
             {
                 var deprecationInfo = Path.SelectMany(x => x.GetAnnotables())
                                     .SelectMany(x => Context.GetDeprecationInformations(x))
@@ -85,7 +88,7 @@ namespace Microsoft.OpenApi.OData.Operation
                                     .ThenByDescending(x => x.RemovalDate)
                                     .FirstOrDefault();
 
-                if(deprecationInfo != null)
+                if (deprecationInfo != null)
                 {
                     operation.Deprecated = true;
                     var deprecationDetails = deprecationInfo.GetOpenApiExtension();
@@ -105,13 +108,20 @@ namespace Microsoft.OpenApi.OData.Operation
         protected ODataPath Path { get; private set; }
 
         /// <summary>
+        /// Gets the custom link relation type for path based on operation type
+        /// </summary>
+        protected string CustomLinkRel { get; set; }
+
+        /// <summary>
         /// Initialize the handler.
         /// It should be call ahead of in derived class.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="path">The path.</param>
         protected virtual void Initialize(ODataContext context, ODataPath path)
-        { }
+        {
+            SetCustomLinkRelType();
+        }
 
         /// <summary>
         /// Set the basic information for <see cref="OpenApiOperation"/>.
@@ -252,6 +262,39 @@ namespace Microsoft.OpenApi.OData.Operation
                 }
 
                 operation.Parameters.AppendParameter(parameter);
+            }
+        }
+
+        /// <summary>
+        /// Set link relation type to be used to get external docs link for path operation
+        /// </summary>
+        protected virtual void SetCustomLinkRelType()
+        {
+            if (Context.Settings.CustomHttpMethodLinkRelMapping != null)
+            {
+                LinkRelKey? key = null;
+                if (OperationType == OperationType.Get)
+                {
+                    key = Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List;
+                }
+                else if (OperationType == OperationType.Patch)
+                {
+                    key = LinkRelKey.Update;
+                }
+                else if (OperationType == OperationType.Post)
+                {
+                    key = LinkRelKey.Create;
+                }
+                else if (OperationType == OperationType.Delete)
+                {
+                    key = LinkRelKey.Delete;
+                }
+
+                if (key != null)
+                {
+                    Context.Settings.CustomHttpMethodLinkRelMapping.TryGetValue((LinkRelKey)key, out string linkRelValue);
+                    CustomLinkRel = linkRelValue;
+                }
             }
         }
     }

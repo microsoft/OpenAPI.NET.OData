@@ -263,39 +263,14 @@ namespace Microsoft.OpenApi.OData.Edm
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="target">The Edm target.</param>
-        /// <param name="operationType">The Operation type.</param>
-        /// <param name="path">The OData path.</param>
+        /// <param name="linkRel">The link relation type for path operation.</param>
         /// <returns>Null or the links record value (a complex type) for this annotation.</returns>
-        public static Link GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, OperationType operationType, ODataPath path)
+        public static Link GetLinkRecord(this IEdmModel model, IEdmVocabularyAnnotatable target, string linkRel)
         {
             Utils.CheckArgumentNull(model, nameof(model));
             Utils.CheckArgumentNull(target, nameof(target));
-            Utils.CheckArgumentNull(path, nameof(path));
 
-            IEnumerable<Link> links = model.GetCollection<Link>(target, CoreConstants.Links);
-            if (links != null && links.Any())
-            {
-                string linkRel = string.Empty;
-                if (target is IEdmAction)
-                    linkRel = CoreConstants.LinkRel.Action;
-                else if (target is IEdmFunction)
-                    linkRel = CoreConstants.LinkRel.Function;
-                else if (operationType == OperationType.Delete)
-                    linkRel = CoreConstants.LinkRel.Delete;
-                else if (operationType == OperationType.Post)
-                    linkRel = CoreConstants.LinkRel.Create;
-                else if (operationType == OperationType.Patch)
-                    linkRel = CoreConstants.LinkRel.Update;
-                else if (operationType == OperationType.Get)
-                {
-                    if (path.LastSegment?.Kind ==  ODataSegmentKind.Key)
-                        linkRel = CoreConstants.LinkRel.ReadByKey;
-                    else
-                        linkRel = CoreConstants.LinkRel.List;
-                }
-                return links.FirstOrDefault(x => x.Rel == linkRel);
-            }
-            return null;
+            return model.GetCollection<Link>(target, CoreConstants.Links)?.FirstOrDefault(x => x.Rel == linkRel);
         }
 
         /// <summary>

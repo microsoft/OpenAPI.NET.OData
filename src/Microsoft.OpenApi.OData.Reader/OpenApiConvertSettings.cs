@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Extensions;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -264,6 +265,19 @@ namespace Microsoft.OpenApi.OData
         /// </summary>
         public bool UseSuccessStatusCodeRange { get; set; } = false;
 
+        /// <summary>
+        /// Get/Sets a dictionary containing a mapping of HTTP methods to custom link relation types 
+        /// </summary>
+        public Dictionary<LinkRelKey, string> CustomHttpMethodLinkRelMapping { get; set; } = new()
+        {
+            { LinkRelKey.List, "https://graph.microsoft.com/rels/docs/list" },
+            { LinkRelKey.ReadByKey, "https://graph.microsoft.com/rels/docs/get" },
+            { LinkRelKey.Create, "https://graph.microsoft.com/rels/docs/create" },
+            { LinkRelKey.Update, "https://graph.microsoft.com/rels/docs/update" },
+            { LinkRelKey.Delete, "https://graph.microsoft.com/rels/docs/delete" },
+            { LinkRelKey.Action, "https://graph.microsoft.com/rels/docs/action" },
+            { LinkRelKey.Function, "https://graph.microsoft.com/rels/docs/function" }
+        };
 
         internal OpenApiConvertSettings Clone()
         {
@@ -307,6 +321,7 @@ namespace Microsoft.OpenApi.OData
                 RequireRestrictionAnnotationsToGenerateComplexPropertyPaths = this.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths,
                 ExpandDerivedTypesNavigationProperties = this.ExpandDerivedTypesNavigationProperties,
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
+                CustomHttpMethodLinkRelMapping = this.CustomHttpMethodLinkRelMapping,
                 AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,
                 UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange
             };

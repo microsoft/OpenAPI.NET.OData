@@ -210,7 +210,7 @@ namespace Microsoft.OpenApi.OData.Operation
         protected override void SetExternalDocs(OpenApiOperation operation)
         {
             if (Context.Settings.ShowExternalDocs && IsNavigationPropertyPath &&
-                Context.Model.GetLinkRecord(NavigationProperty, OperationType, Path) is Link externalDocs)
+                Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel) is Link externalDocs)
             {
                 operation.ExternalDocs = new OpenApiExternalDocs()
                 {
