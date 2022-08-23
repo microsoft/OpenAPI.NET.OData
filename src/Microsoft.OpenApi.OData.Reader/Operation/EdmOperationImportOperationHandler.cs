@@ -13,6 +13,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -151,6 +152,19 @@ namespace Microsoft.OpenApi.OData.Operation
         internal static string PathAsString(IEnumerable<string> path)
         {
             return String.Join("/", path);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(EdmOperationImport, CustomLinkRel) is Link externalDocs)
+            {
+                operation.ExternalDocs = new OpenApiExternalDocs()
+                {
+                    Description = CoreConstants.ExternalDocsDescription,
+                    Url = externalDocs.Href
+                };
+            }
         }
     }
 }
