@@ -25,8 +25,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// Gets/Sets the NavigationSource segment
         /// </summary>
         protected ODataNavigationSourceSegment NavigationSourceSegment { get; private set; }
-
-        
+    
         /// <summary>
         /// Gets/Sets flag indicating whether path is navigation property path
         /// </summary>

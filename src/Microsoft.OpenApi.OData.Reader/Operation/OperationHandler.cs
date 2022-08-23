@@ -272,23 +272,14 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (Context.Settings.CustomHttpMethodLinkRelMapping != null)
             {
-                LinkRelKey? key = null;
-                if (OperationType == OperationType.Get)
+                LinkRelKey? key = OperationType switch
                 {
-                    key = Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List;
-                }
-                else if (OperationType == OperationType.Patch)
-                {
-                    key = LinkRelKey.Update;
-                }
-                else if (OperationType == OperationType.Post)
-                {
-                    key = LinkRelKey.Create;
-                }
-                else if (OperationType == OperationType.Delete)
-                {
-                    key = LinkRelKey.Delete;
-                }
+                    OperationType.Get => Path.LastSegment?.Kind ==  ODataSegmentKind.Key ? LinkRelKey.ReadByKey : LinkRelKey.List,
+                    OperationType.Post => LinkRelKey.Create,
+                    OperationType.Patch => LinkRelKey.Update,
+                    OperationType.Delete => LinkRelKey.Delete,
+                    _ => null,
+                };
 
                 if (key != null)
                 {
