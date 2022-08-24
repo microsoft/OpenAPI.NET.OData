@@ -586,7 +586,29 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                         else
                         {
-                            return new OpenApiString(schema.Type ?? schema.Format);
+                            string typeName = schema.Type ?? schema.Format;
+                            if (typeName == null)
+                            {
+                                List<OpenApiSchema> schemaList = new();
+                                if (schema.AnyOf != null)
+                                {
+                                    schemaList = schema.AnyOf.ToList();
+                                }
+
+                                if (schema.OneOf != null)
+                                {
+                                    schemaList = schemaList.Union(schema.OneOf).ToList();
+                                }
+
+                                if (schema.AllOf != null)
+                                {
+                                    schemaList = schemaList.Union(schema.AllOf).ToList();
+                                }
+
+                                typeName = schemaList?.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format;                                
+                            }
+
+                            return new OpenApiString(typeName);
                         }
                     }
 
