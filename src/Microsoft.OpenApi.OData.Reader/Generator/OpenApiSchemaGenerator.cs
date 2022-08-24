@@ -589,23 +589,10 @@ namespace Microsoft.OpenApi.OData.Generator
                             string typeName = schema.Type ?? schema.Format;
                             if (typeName == null)
                             {
-                                List<OpenApiSchema> schemaList = new();
-                                if (schema.AnyOf != null)
-                                {
-                                    schemaList = schema.AnyOf.ToList();
-                                }
-
-                                if (schema.OneOf != null)
-                                {
-                                    schemaList = schemaList.Union(schema.OneOf).ToList();
-                                }
-
-                                if (schema.AllOf != null)
-                                {
-                                    schemaList = schemaList.Union(schema.AllOf).ToList();
-                                }
-
-                                typeName = schemaList?.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format;                                
+                                (schema.AnyOf ?? Enumerable.Empty<OpenApiSchema>())
+                                .Union(schema.AllOf ?? Enumerable.Empty<OpenApiSchema>())
+                                .Union(schema.OneOf ?? Enumerable.Empty<OpenApiSchema>())
+                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format;                                
                             }
 
                             return new OpenApiString(typeName);
