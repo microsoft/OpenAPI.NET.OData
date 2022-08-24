@@ -7,7 +7,9 @@ using Microsoft.OData.Edm;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
+using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
+using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -18,6 +20,19 @@ namespace Microsoft.OpenApi.OData.Operation
     {
         /// <inheritdoc/>
         public override OperationType OperationType => OperationType.Post;
+
+        /// <inheritdoc/>
+        protected override void SetBasicInfo(OpenApiOperation operation)
+        {
+            base.SetBasicInfo(operation);
+
+            // Description
+            var insertRestrictions = Context.Model.GetRecord<InsertRestrictionsType>(EdmOperation, CapabilitiesConstants.InsertRestrictions);
+            if (!string.IsNullOrWhiteSpace(insertRestrictions?.LongDescription))
+            {
+                operation.Description = insertRestrictions.LongDescription;
+            }
+        }
 
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)

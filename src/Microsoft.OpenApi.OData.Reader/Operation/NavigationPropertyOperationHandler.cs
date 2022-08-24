@@ -12,6 +12,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -156,6 +157,19 @@ namespace Microsoft.OpenApi.OData.Operation
             return string.Join(".", items);
         }
 
+        /// <inheritdoc/>
+        protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel) is Link externalDocs)
+            {
+                operation.ExternalDocs = new OpenApiExternalDocs()
+                { 
+                    Description = CoreConstants.ExternalDocsDescription, 
+                    Url = externalDocs.Href 
+                };
+            }
+        }
+            
         /// <summary>
         /// Retrieves the CRUD restrictions annotations for the navigation property
         /// in context, given a capability annotation term.

@@ -177,7 +177,7 @@ namespace Microsoft.OpenApi.OData.Edm
         {
             return annotable == null ?
                 Enumerable.Empty<DeprecatedRevisionsType>() :
-                    (Model?.GetCollection<DeprecatedRevisionsType>(annotable, "Org.OData.Core.V1.Revisions") ?? 
+                    (Model?.GetCollection<DeprecatedRevisionsType>(annotable, CoreConstants.Revisions) ?? 
                     Enumerable.Empty<DeprecatedRevisionsType>());
         }
     }
