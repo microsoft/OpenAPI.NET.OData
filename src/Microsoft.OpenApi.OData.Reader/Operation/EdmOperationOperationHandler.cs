@@ -4,10 +4,8 @@
 // ------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using Microsoft.OData.Edm;
-using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
