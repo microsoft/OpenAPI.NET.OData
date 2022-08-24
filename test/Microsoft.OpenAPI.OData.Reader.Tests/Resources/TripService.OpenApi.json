@@ -1307,7 +1307,8 @@
             "schema": {
               "oneOf": [
                 {
-                  "type": "number"
+                  "type": "number",
+                  "format": "double"
                 },
                 {
                   "type": "string"
@@ -1315,8 +1316,7 @@
                 {
                   "$ref": "#/components/schemas/ReferenceNumeric"
                 }
-              ],
-              "format": "double"
+              ]
             }
           },
           {
@@ -1326,7 +1326,8 @@
             "schema": {
               "oneOf": [
                 {
-                  "type": "number"
+                  "type": "number",
+                  "format": "double"
                 },
                 {
                   "type": "string"
@@ -1334,8 +1335,7 @@
                 {
                   "$ref": "#/components/schemas/ReferenceNumeric"
                 }
-              ],
-              "format": "double"
+              ]
             }
           }
         ],
@@ -28811,13 +28811,13 @@
           "Age": {
             "oneOf": [
               {
-                "type": "integer"
+                "type": "integer",
+                "format": "int64"
               },
               {
                 "type": "string"
               }
             ],
-            "format": "int64",
             "nullable": true
           },
           "Emails": {
@@ -29035,7 +29035,8 @@
           "Budget": {
             "oneOf": [
               {
-                "type": "number"
+                "type": "number",
+                "format": "float"
               },
               {
                 "type": "string"
@@ -29043,8 +29044,7 @@
               {
                 "$ref": "#/components/schemas/ReferenceNumeric"
               }
-            ],
-            "format": "float"
+            ]
           },
           "Description": {
             "type": "string",
@@ -29213,13 +29213,13 @@
               "Cost": {
                 "oneOf": [
                   {
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "int64"
                   },
                   {
                     "type": "string"
                   }
-                ],
-                "format": "int64"
+                ]
               },
               "Peers": {
                 "type": "array",
@@ -29243,13 +29243,13 @@
               "Budget": {
                 "oneOf": [
                   {
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "int64"
                   },
                   {
                     "type": "string"
                   }
-                ],
-                "format": "int64"
+                ]
               },
               "BossOffice": {
                 "anyOf": [
