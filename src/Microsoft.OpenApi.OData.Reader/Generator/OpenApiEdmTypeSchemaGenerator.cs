@@ -147,6 +147,8 @@ namespace Microsoft.OpenApi.OData.Generator
                 OneOf = null,
                 AnyOf = null
             };
+
+            string format;
             switch (primitiveType.PrimitiveKind)
             {
                 case EdmPrimitiveTypeKind.Binary: // binary
@@ -167,24 +169,25 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Pattern = "^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$";
                     break;
                 case EdmPrimitiveTypeKind.Decimal: // decimal
+                    format = "decimal";
                     if (context.Settings.IEEE754Compatible)
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = "number" },
+                            new OpenApiSchema { Type = "number", Format = format },
                             new OpenApiSchema { Type = "string" },
                         };
                     }
                     else
                     {
                         schema.Type = "number";
+                        schema.Format = format;
                     }
-                    schema.Format = "decimal";
                     break;
                 case EdmPrimitiveTypeKind.Double: // double
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = "number" },
+                        new OpenApiSchema { Type = "number", Format = "double" },
                         new OpenApiSchema { Type = "string" },
                         new OpenApiSchema
                         {
@@ -196,12 +199,11 @@ namespace Microsoft.OpenApi.OData.Generator
                             }
                         }
                     };
-                    schema.Format = "double";
                     break;
                 case EdmPrimitiveTypeKind.Single: // single
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = "number" },
+                        new OpenApiSchema { Type = "number", Format = "float"},
                         new OpenApiSchema { Type = "string" },
                         new OpenApiSchema
                         {
@@ -213,7 +215,6 @@ namespace Microsoft.OpenApi.OData.Generator
                             }
                         }
                     };
-                    schema.Format = "float";
                     break;
                 case EdmPrimitiveTypeKind.Guid: // guid
                     schema.Type = "string";
@@ -233,20 +234,20 @@ namespace Microsoft.OpenApi.OData.Generator
                     schema.Maximum = Int32.MaxValue; // 2147483647
                     break;
                 case EdmPrimitiveTypeKind.Int64:
+                    format = "int64";
                     if (context.Settings.IEEE754Compatible)
                     {
                         schema.OneOf = new List<OpenApiSchema>
                         {
-                            new OpenApiSchema { Type = "integer" },
+                            new OpenApiSchema { Type = "integer", Format = format },
                             new OpenApiSchema { Type = "string" }
                         };
                     }
                     else
                     {
                         schema.Type = "integer";
+                        schema.Format = format;
                     }
-
-                    schema.Format = "int64";
                     break;
                 case EdmPrimitiveTypeKind.SByte:
                     schema.Type = "integer";
