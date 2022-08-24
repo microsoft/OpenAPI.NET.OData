@@ -37,10 +37,24 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetRequestBody(OpenApiOperation operation)
         {
-            IEdmAction action = EdmOperation as IEdmAction;
-            if (action != null)
+            if (EdmOperation is IEdmAction action)
             {
-                operation.RequestBody = Context.CreateRequestBody(action);
+                if (Context.Model.OperationTargetsMultiplePaths(action))
+                {
+                    operation.RequestBody = new OpenApiRequestBody
+                    {
+                        UnresolvedReference = true,
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.RequestBody,
+                            Id = $"{action.Name}RequestBody"
+                        }
+                    };
+                }
+                else
+                {
+                    operation.RequestBody = Context.CreateRequestBody(action);
+                }
             }
 
             base.SetRequestBody(operation);

@@ -30,6 +30,7 @@ Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.List = 1 -> Microsoft.OpenApi
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.ReadByKey = 0 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Update = 3 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 static Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions.AddErrorResponses(this Microsoft.OpenApi.Models.OpenApiOperation operation, Microsoft.OpenApi.OData.OpenApiConvertSettings settings, bool addNoContent = false, Microsoft.OpenApi.Models.OpenApiSchema schema = null) -> void
+static Microsoft.OpenApi.OData.Edm.EdmModelExtensions.OperationTargetsMultiplePaths(this Microsoft.OData.Edm.IEdmModel model, Microsoft.OData.Edm.IEdmOperation operation) -> bool
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider
 Microsoft.OpenApi.OData.Edm.IODataPathProvider.CanFilter(Microsoft.OData.Edm.IEdmElement element) -> bool

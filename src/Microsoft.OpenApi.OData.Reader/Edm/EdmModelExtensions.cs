@@ -200,7 +200,28 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Check whether the operaiton import is overload in the model.
+        /// Checks whether operation targets singleton and entityset of the same type.
+        /// </summary>
+        /// <param name="model">The Edm model.</param>
+        /// <param name="operation"></param>
+        /// <returns>The test operations.</returns>
+        public static bool OperationTargetsMultiplePaths(this IEdmModel model, IEdmOperation operation)
+        {
+            Utils.CheckArgumentNull(model, nameof(model));
+            Utils.CheckArgumentNull(operation, nameof(operation));
+
+            if (!operation.Parameters.Any())
+                return false;
+            
+            IEdmTypeReference bindingParameterType = operation.Parameters.First().Type;
+
+            return model.EntityContainer.EntitySets().Select(x => x.EntityType())
+                .Concat(model.EntityContainer.Singletons().Select(x => x.EntityType()))
+                .Where(x => x.FullName == bindingParameterType.FullName).Count() > 1;
+        }
+
+        /// <summary>
+        /// Check whether the operation import is overload in the model.
         /// </summary>
         /// <param name="model">The Edm model.</param>
         /// <param name="operationImport">The test operations.</param>
