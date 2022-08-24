@@ -879,18 +879,18 @@ paths:
           schema:
             oneOf:
               - type: number
+                format: double
               - type: string
               - $ref: '#/components/schemas/ReferenceNumeric'
-            format: double
         - name: lon
           in: path
           required: true
           schema:
             oneOf:
               - type: number
+                format: double
               - type: string
               - $ref: '#/components/schemas/ReferenceNumeric'
-            format: double
       responses:
         '200':
           description: Success
@@ -20169,8 +20169,8 @@ components:
         Age:
           oneOf:
             - type: integer
+              format: int64
             - type: string
-          format: int64
           nullable: true
         Emails:
           type: array
@@ -20303,9 +20303,9 @@ components:
         Budget:
           oneOf:
             - type: number
+              format: float
             - type: string
             - $ref: '#/components/schemas/ReferenceNumeric'
-          format: float
         Description:
           type: string
           nullable: true
@@ -20406,8 +20406,8 @@ components:
             Cost:
               oneOf:
                 - type: integer
+                  format: int64
                 - type: string
-              format: int64
             Peers:
               type: array
               items:
@@ -20421,8 +20421,8 @@ components:
             Budget:
               oneOf:
                 - type: integer
+                  format: int64
                 - type: string
-              format: int64
             BossOffice:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'

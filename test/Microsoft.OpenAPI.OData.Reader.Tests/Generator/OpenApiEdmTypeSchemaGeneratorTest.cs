@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -510,7 +510,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            Assert.Equal("double", schema.Format);
+            Assert.Equal("double", schema.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
             Assert.Equal(isNullable, schema.Nullable);
 
             Assert.Null(schema.AnyOf);
@@ -536,7 +536,7 @@ namespace Microsoft.OpenApi.OData.Tests
             // & Assert
             Assert.Null(schema.Type);
 
-            Assert.Equal("float", schema.Format);
+            Assert.Equal("float", schema.OneOf.FirstOrDefault(x => !string.IsNullOrEmpty(x.Format))?.Format);
             Assert.Equal(isNullable, schema.Nullable);
 
             Assert.Null(schema.AnyOf);
