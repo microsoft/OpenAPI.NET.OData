@@ -204,36 +204,29 @@ namespace Microsoft.OpenApi.OData.Operation
 
         private void AppendSystemQueryOptions(IEdmFunction function, OpenApiOperation operation)
         {
-            OpenApiParameter parameter;
-
             if (function.ReturnType.IsCollection())
             {
-                parameter = Context.CreateTop(function);
-                if (parameter != null)
+                if (Context.CreateTop(function) is OpenApiParameter parameter)
                 {
                     operation.Parameters.AppendParameter(parameter);
                 }
 
-                parameter = Context.CreateSkip(function);
-                if (parameter != null)
+                if (Context.CreateSkip(function) is OpenApiParameter parameter)
                 {
                     operation.Parameters.AppendParameter(parameter);
                 }
 
-                parameter = Context.CreateSearch(function);
-                if (parameter != null)
+                if (Context.CreateSearch(function) is OpenApiParameter parameter)
                 {
                     operation.Parameters.AppendParameter(parameter);
                 }
 
-                parameter = Context.CreateFilter(function);
-                if (parameter != null)
+                if (Context.CreateFilter(function) is OpenApiParameter parameter)
                 {
                     operation.Parameters.AppendParameter(parameter);
                 }
 
-                parameter = Context.CreateCount(function);
-                if (parameter != null)
+                if (Context.CreateCount(function) is OpenApiParameter parameter)
                 {
                     operation.Parameters.AppendParameter(parameter);
                 }
