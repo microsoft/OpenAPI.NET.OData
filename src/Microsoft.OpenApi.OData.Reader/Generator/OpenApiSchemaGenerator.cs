@@ -586,16 +586,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         }
                         else
                         {
-                            string typeName = schema.Type ?? schema.Format;
-                            if (typeName == null)
-                            {
+                            return new OpenApiString(schema.Type ?? schema.Format ??
                                 (schema.AnyOf ?? Enumerable.Empty<OpenApiSchema>())
                                 .Union(schema.AllOf ?? Enumerable.Empty<OpenApiSchema>())
                                 .Union(schema.OneOf ?? Enumerable.Empty<OpenApiSchema>())
-                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format;                                
-                            }
-
-                            return new OpenApiString(typeName);
+                                .FirstOrDefault(static x => !string.IsNullOrEmpty(x.Format))?.Format);
                         }
                     }
 
