@@ -724,7 +724,7 @@
         ],
         "summary": "Update the ref of navigation property EmergencyAuthority in Airports",
         "operationId": "Airports.UpdateRefEmergencyAuthority",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -737,7 +737,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -1665,12 +1665,12 @@
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
         "operationId": "Me.UpdateRefBestFriend",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -2820,12 +2820,12 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.BestFriend.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -3607,12 +3607,12 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.BestFriend.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -5089,7 +5089,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.Friends.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -5102,7 +5102,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -5998,7 +5998,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.Friends.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -6011,7 +6011,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -6135,12 +6135,12 @@
         ],
         "summary": "Create new navigation property ref to Friends for Me",
         "operationId": "Me.CreateRefFriends",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -7308,12 +7308,12 @@
         ],
         "summary": "Create new navigation property ref to Peers for Me",
         "operationId": "Me.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -8243,12 +8243,12 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for Me",
         "operationId": "Me.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -9067,7 +9067,7 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for Me",
         "operationId": "Me.Trips.CreateRefPlanItems",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -9083,7 +9083,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -9784,7 +9784,7 @@
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
         "operationId": "NewComePeople.UpdateRefBestFriend",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -9797,7 +9797,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -11148,7 +11148,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for NewComePeople",
         "operationId": "NewComePeople.BestFriend.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -11161,7 +11161,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -12056,7 +12056,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for NewComePeople",
         "operationId": "NewComePeople.BestFriend.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -12069,7 +12069,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -13570,7 +13570,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for NewComePeople",
         "operationId": "NewComePeople.Friends.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -13591,7 +13591,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -14493,7 +14493,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for NewComePeople",
         "operationId": "NewComePeople.Friends.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -14514,7 +14514,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -14635,7 +14635,7 @@
         ],
         "summary": "Create new navigation property ref to Friends for NewComePeople",
         "operationId": "NewComePeople.CreateRefFriends",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -14648,7 +14648,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -16032,7 +16032,7 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for NewComePeople",
         "operationId": "NewComePeople.Trips.CreateRefPlanItems",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -16056,7 +16056,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -16845,7 +16845,7 @@
         "summary": "Update the best friend.",
         "description": "Update an instance of a best friend.",
         "operationId": "People.UpdateRefBestFriend",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -16858,7 +16858,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -18210,7 +18210,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.BestFriend.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -18223,7 +18223,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -19119,7 +19119,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.BestFriend.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -19132,7 +19132,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -20809,7 +20809,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.Friends.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -20830,7 +20830,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -21838,7 +21838,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.Friends.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -21859,7 +21859,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -22001,7 +22001,7 @@
         ],
         "summary": "Create new navigation property ref to Friends for People",
         "operationId": "People.CreateRefFriends",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -22014,7 +22014,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -23358,7 +23358,7 @@
         ],
         "summary": "Create new navigation property ref to Peers for People",
         "operationId": "People.CreateRefPeers",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -23371,7 +23371,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -24441,7 +24441,7 @@
         ],
         "summary": "Create new navigation property ref to DirectReports for People",
         "operationId": "People.CreateRefDirectReports",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -24454,7 +24454,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -25377,7 +25377,7 @@
         ],
         "summary": "Create new navigation property ref to PlanItems for People",
         "operationId": "People.Trips.CreateRefPlanItems",
-        "consumes": [],
+        "consumes": [ ],
         "parameters": [
           {
             "in": "path",
@@ -25401,7 +25401,7 @@
           {
             "in": "body",
             "name": "body",
-            "schema": {}
+            "schema": { }
           }
         ],
         "responses": {
@@ -25792,7 +25792,7 @@
         "Gender": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
         },
-        "Age": {},
+        "Age": { },
         "Emails": {
           "type": "array",
           "items": {
@@ -25945,7 +25945,7 @@
         "Name": {
           "type": "string"
         },
-        "Budget": {},
+        "Budget": { },
         "Description": {
           "type": "string"
         },
@@ -26072,7 +26072,7 @@
           "title": "Employee",
           "type": "object",
           "properties": {
-            "Cost": {},
+            "Cost": { },
             "Peers": {
               "type": "array",
               "items": {
@@ -26092,7 +26092,7 @@
           "title": "Manager",
           "type": "object",
           "properties": {
-            "Budget": {},
+            "Budget": { },
             "BossOffice": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             },
