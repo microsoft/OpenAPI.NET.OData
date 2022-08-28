@@ -8192,6 +8192,63 @@
           },
           {
             "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "TripId",
+                  "ShareId",
+                  "Name",
+                  "Budget",
+                  "Description",
+                  "Tags",
+                  "StartsAt",
+                  "EndsAt",
+                  "PlanItems"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "TripId",
+                  "TripId desc",
+                  "ShareId",
+                  "ShareId desc",
+                  "Name",
+                  "Name desc",
+                  "Budget",
+                  "Budget desc",
+                  "Description",
+                  "Description desc",
+                  "Tags",
+                  "Tags desc",
+                  "StartsAt",
+                  "StartsAt desc",
+                  "EndsAt",
+                  "EndsAt desc"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -9706,6 +9763,74 @@
           },
           {
             "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -16901,6 +17026,63 @@
           },
           {
             "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "TripId",
+                  "ShareId",
+                  "Name",
+                  "Budget",
+                  "Description",
+                  "Tags",
+                  "StartsAt",
+                  "EndsAt",
+                  "PlanItems"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "TripId",
+                  "TripId desc",
+                  "ShareId",
+                  "ShareId desc",
+                  "Name",
+                  "Name desc",
+                  "Budget",
+                  "Budget desc",
+                  "Description",
+                  "Description desc",
+                  "Tags",
+                  "Tags desc",
+                  "StartsAt",
+                  "StartsAt desc",
+                  "EndsAt",
+                  "EndsAt desc"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -17598,6 +17780,74 @@
           },
           {
             "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -26282,6 +26532,63 @@
           },
           {
             "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "TripId",
+                  "ShareId",
+                  "Name",
+                  "Budget",
+                  "Description",
+                  "Tags",
+                  "StartsAt",
+                  "EndsAt",
+                  "PlanItems"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "TripId",
+                  "TripId desc",
+                  "ShareId",
+                  "ShareId desc",
+                  "Name",
+                  "Name desc",
+                  "Budget",
+                  "Budget desc",
+                  "Description",
+                  "Description desc",
+                  "Tags",
+                  "Tags desc",
+                  "StartsAt",
+                  "StartsAt desc",
+                  "EndsAt",
+                  "EndsAt desc"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
@@ -28058,6 +28365,74 @@
           },
           {
             "$ref": "#/components/parameters/count"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "description": "Select properties to be returned",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "FirstName",
+                  "LastName",
+                  "MiddleName",
+                  "Gender",
+                  "Age",
+                  "Emails",
+                  "AddressInfo",
+                  "HomeAddress",
+                  "FavoriteFeature",
+                  "Features",
+                  "Friends",
+                  "BestFriend",
+                  "Trips"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "description": "Order items by property values",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "enum": [
+                  "UserName",
+                  "UserName desc",
+                  "FirstName",
+                  "FirstName desc",
+                  "LastName",
+                  "LastName desc",
+                  "MiddleName",
+                  "MiddleName desc",
+                  "Gender",
+                  "Gender desc",
+                  "Age",
+                  "Age desc",
+                  "Emails",
+                  "Emails desc",
+                  "AddressInfo",
+                  "AddressInfo desc",
+                  "HomeAddress",
+                  "HomeAddress desc",
+                  "FavoriteFeature",
+                  "FavoriteFeature desc",
+                  "Features",
+                  "Features desc"
+                ],
+                "type": "string"
+              }
+            }
           }
         ],
         "responses": {
