@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -206,29 +207,49 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (function.ReturnType.IsCollection())
             {
-                if (Context.CreateTop(function) is OpenApiParameter parameter)
+                // $top
+                if (Context.CreateTop(function) is OpenApiParameter topParameter)
                 {
-                    operation.Parameters.AppendParameter(parameter);
+                    operation.Parameters.AppendParameter(topParameter);
                 }
 
-                if (Context.CreateSkip(function) is OpenApiParameter parameter)
+                // $skip
+                if (Context.CreateSkip(function) is OpenApiParameter skipParameter)
                 {
-                    operation.Parameters.AppendParameter(parameter);
+                    operation.Parameters.AppendParameter(skipParameter);
                 }
 
-                if (Context.CreateSearch(function) is OpenApiParameter parameter)
+                // $search
+                if (Context.CreateSearch(function) is OpenApiParameter searchParameter)
                 {
-                    operation.Parameters.AppendParameter(parameter);
+                    operation.Parameters.AppendParameter(searchParameter);
                 }
 
-                if (Context.CreateFilter(function) is OpenApiParameter parameter)
+                // $filter
+                if (Context.CreateFilter(function) is OpenApiParameter filterParameter)
                 {
-                    operation.Parameters.AppendParameter(parameter);
+                    operation.Parameters.AppendParameter(filterParameter);
                 }
 
-                if (Context.CreateCount(function) is OpenApiParameter parameter)
+                // $count
+                if (Context.CreateCount(function) is OpenApiParameter countParameter)
                 {
-                    operation.Parameters.AppendParameter(parameter);
+                    operation.Parameters.AppendParameter(countParameter);
+                }
+
+                if (function.ReturnType?.Definition?.AsElementType() is IEdmEntityType entityType)
+                {
+                    // $select
+                    if (Context.CreateSelect(function, entityType) is OpenApiParameter selectParameter)
+                    {
+                        operation.Parameters.AppendParameter(selectParameter);
+                    }
+
+                    // $orderby
+                    if (Context.CreateOrderBy(function, entityType) is OpenApiParameter orderbyParameter)
+                    {
+                        operation.Parameters.AppendParameter(orderbyParameter);
+                    }
                 }
             }
         }
