@@ -139,8 +139,8 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
             Assert.Equal($"{entitySetName}.Functions", tag.Name);
 
             Assert.NotNull(operation.Parameters);
-            Assert.Equal(1, operation.Parameters.Count);
-            Assert.Equal(new string[] { "id" }, operation.Parameters.Select(p => p.Name));
+            Assert.Equal(6, operation.Parameters.Count); // id, top, skip, count, search, filter
+            Assert.Contains("id", operation.Parameters.Select(x => x.Name).FirstOrDefault());
 
             Assert.Null(operation.RequestBody);
 

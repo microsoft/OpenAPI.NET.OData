@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
@@ -158,6 +159,8 @@ namespace Microsoft.OpenApi.OData.Operation
                         }
                     }
                 }
+
+                AppendSystemQueryOptions(function, operation);
             }
         }
 
@@ -200,6 +203,57 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
 
+        private void AppendSystemQueryOptions(IEdmFunction function, OpenApiOperation operation)
+        {
+            if (function.ReturnType.IsCollection())
+            {
+                // $top
+                if (Context.CreateTop(function) is OpenApiParameter topParameter)
+                {
+                    operation.Parameters.AppendParameter(topParameter);
+                }
+
+                // $skip
+                if (Context.CreateSkip(function) is OpenApiParameter skipParameter)
+                {
+                    operation.Parameters.AppendParameter(skipParameter);
+                }
+
+                // $search
+                if (Context.CreateSearch(function) is OpenApiParameter searchParameter)
+                {
+                    operation.Parameters.AppendParameter(searchParameter);
+                }
+
+                // $filter
+                if (Context.CreateFilter(function) is OpenApiParameter filterParameter)
+                {
+                    operation.Parameters.AppendParameter(filterParameter);
+                }
+
+                // $count
+                if (Context.CreateCount(function) is OpenApiParameter countParameter)
+                {
+                    operation.Parameters.AppendParameter(countParameter);
+                }
+
+                if (function.ReturnType?.Definition?.AsElementType() is IEdmEntityType entityType)
+                {
+                    // $select
+                    if (Context.CreateSelect(function, entityType) is OpenApiParameter selectParameter)
+                    {
+                        operation.Parameters.AppendParameter(selectParameter);
+                    }
+
+                    // $orderby
+                    if (Context.CreateOrderBy(function, entityType) is OpenApiParameter orderbyParameter)
+                    {
+                        operation.Parameters.AppendParameter(orderbyParameter);
+                    }
+                }
+            }
+        }
+
         /// <inheritdoc/>
         protected override void SetCustomLinkRelType()
         {
@@ -211,9 +265,8 @@ namespace Microsoft.OpenApi.OData.Operation
             }
         }
     
-
-    /// <inheritdoc/>
-    protected override void SetExternalDocs(OpenApiOperation operation)
+        /// <inheritdoc/>
+        protected override void SetExternalDocs(OpenApiOperation operation)
         {
             if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(EdmOperation, CustomLinkRel) is Link externalDocs)
             {
