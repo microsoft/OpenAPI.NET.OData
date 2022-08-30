@@ -882,6 +882,7 @@ paths:
                 format: double
               - type: string
               - $ref: '#/components/schemas/ReferenceNumeric'
+            format: double
         - name: lon
           in: path
           required: true
@@ -891,6 +892,7 @@ paths:
                 format: double
               - type: string
               - $ref: '#/components/schemas/ReferenceNumeric'
+            format: double
       responses:
         '200':
           description: Success
@@ -20171,6 +20173,7 @@ components:
             - type: integer
               format: int64
             - type: string
+          format: int64
           nullable: true
         Emails:
           type: array
@@ -20306,6 +20309,7 @@ components:
               format: float
             - type: string
             - $ref: '#/components/schemas/ReferenceNumeric'
+          format: float
         Description:
           type: string
           nullable: true
@@ -20408,6 +20412,7 @@ components:
                 - type: integer
                   format: int64
                 - type: string
+              format: int64
             Peers:
               type: array
               items:
@@ -20423,6 +20428,7 @@ components:
                 - type: integer
                   format: int64
                 - type: string
+              format: int64
             BossOffice:
               anyOf:
                 - $ref: '#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'

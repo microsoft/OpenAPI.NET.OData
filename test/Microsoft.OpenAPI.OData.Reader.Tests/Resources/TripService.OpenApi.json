@@ -1316,7 +1316,8 @@
                 {
                   "$ref": "#/components/schemas/ReferenceNumeric"
                 }
-              ]
+              ],
+              "format": "double"
             }
           },
           {
@@ -1335,7 +1336,8 @@
                 {
                   "$ref": "#/components/schemas/ReferenceNumeric"
                 }
-              ]
+              ],
+              "format": "double"
             }
           }
         ],
@@ -28818,6 +28820,7 @@
                 "type": "string"
               }
             ],
+            "format": "int64",
             "nullable": true
           },
           "Emails": {
@@ -29044,7 +29047,8 @@
               {
                 "$ref": "#/components/schemas/ReferenceNumeric"
               }
-            ]
+            ],
+            "format": "float"
           },
           "Description": {
             "type": "string",
@@ -29219,7 +29223,8 @@
                   {
                     "type": "string"
                   }
-                ]
+                ],
+                "format": "int64"
               },
               "Peers": {
                 "type": "array",
@@ -29249,7 +29254,8 @@
                   {
                     "type": "string"
                   }
-                ]
+                ],
+                "format": "int64"
               },
               "BossOffice": {
                 "anyOf": [

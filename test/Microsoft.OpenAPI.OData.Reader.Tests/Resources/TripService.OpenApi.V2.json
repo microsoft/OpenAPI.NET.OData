@@ -1167,12 +1167,14 @@
           {
             "in": "path",
             "name": "lat",
-            "required": true
+            "required": true,
+            "format": "double"
           },
           {
             "in": "path",
             "name": "lon",
-            "required": true
+            "required": true,
+            "format": "double"
           }
         ],
         "responses": {
@@ -25792,7 +25794,9 @@
         "Gender": {
           "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender"
         },
-        "Age": { },
+        "Age": {
+          "format": "int64"
+        },
         "Emails": {
           "type": "array",
           "items": {
@@ -25945,7 +25949,9 @@
         "Name": {
           "type": "string"
         },
-        "Budget": { },
+        "Budget": {
+          "format": "float"
+        },
         "Description": {
           "type": "string"
         },
@@ -26072,7 +26078,9 @@
           "title": "Employee",
           "type": "object",
           "properties": {
-            "Cost": { },
+            "Cost": {
+              "format": "int64"
+            },
             "Peers": {
               "type": "array",
               "items": {
@@ -26092,7 +26100,9 @@
           "title": "Manager",
           "type": "object",
           "properties": {
-            "Budget": { },
+            "Budget": {
+              "format": "int64"
+            },
             "BossOffice": {
               "$ref": "#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location"
             },
