@@ -183,11 +183,13 @@ namespace Microsoft.OpenApi.OData.Generator
                         schema.Type = "number";
                         schema.Format = format;
                     }
+                    schema.Format = format;
                     break;
                 case EdmPrimitiveTypeKind.Double: // double
+                    format = "double";
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = "number", Format = "double" },
+                        new OpenApiSchema { Type = "number", Format = format },
                         new OpenApiSchema { Type = "string" },
                         new OpenApiSchema
                         {
@@ -199,11 +201,13 @@ namespace Microsoft.OpenApi.OData.Generator
                             }
                         }
                     };
+                    schema.Format = format;
                     break;
                 case EdmPrimitiveTypeKind.Single: // single
+                    format = "float";
                     schema.OneOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema { Type = "number", Format = "float"},
+                        new OpenApiSchema { Type = "number", Format = format },
                         new OpenApiSchema { Type = "string" },
                         new OpenApiSchema
                         {
@@ -215,6 +219,7 @@ namespace Microsoft.OpenApi.OData.Generator
                             }
                         }
                     };
+                    schema.Format = format;
                     break;
                 case EdmPrimitiveTypeKind.Guid: // guid
                     schema.Type = "string";
@@ -248,6 +253,7 @@ namespace Microsoft.OpenApi.OData.Generator
                         schema.Type = "integer";
                         schema.Format = format;
                     }
+                    schema.Format = format;
                     break;
                 case EdmPrimitiveTypeKind.SByte:
                     schema.Type = "integer";
