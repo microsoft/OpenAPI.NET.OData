@@ -95,53 +95,61 @@ namespace Microsoft.OpenApi.OData.Generator
             
             if(context.HasAnyNonContainedCollections())                                        
             {
-                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
+                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = Constants.StringType }, Constants.StringType);
             }
 
             schemas[Constants.ReferenceUpdateSchemaName] = new()
             {
-                Type = "object",
+                Type = Constants.ObjectType,
                 Properties = new Dictionary<string, OpenApiSchema>
                     {
-                        {Constants.OdataId, new OpenApiSchema { Type = "string", Nullable = false }},
-                        {Constants.OdataType, new OpenApiSchema { Type = "string", Nullable = true }},
+                        {Constants.OdataId, new OpenApiSchema { Type = Constants.StringType, Nullable = false }},
+                        {Constants.OdataType, new OpenApiSchema { Type = Constants.StringType, Nullable = true }},
                     }
             };
 
             schemas[Constants.ReferenceCreateSchemaName] = new()
             {
-                Type = "object",
+                Type = Constants.ObjectType,
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
-                    {Constants.OdataId, new OpenApiSchema { Type = "string", Nullable = false }}
+                    {Constants.OdataId, new OpenApiSchema { Type = Constants.StringType, Nullable = false }}
                 },
-                AdditionalProperties = new OpenApiSchema { Type = "object" }
+                AdditionalProperties = new OpenApiSchema { Type = Constants.ObjectType }
             };
 
+            // @odata.nextLink
             if (context.Settings.EnablePagination)
             {
                 schemas[Constants.BaseCollectionPaginationResponse] = new()
                 {
                     Title = "Base collection pagination response",
-                    Type = "object",
-                    Properties = new Dictionary<string, OpenApiSchema>
-                    {
-                        { "@odata.nextLink", new OpenApiSchema { Type = "string"} }
-                    }
+                    Type = Constants.ObjectType
                 };
+                schemas[Constants.BaseCollectionPaginationResponse].Properties.Add(ODataConstants.OdataNextLink);
             }
 
+            // @odata.count
             if (context.Settings.EnableCount)
             {
                 schemas[Constants.BaseCollectionCountResponse] = new()
                 {
                     Title = "Base collection count response",
-                    Type = "object",
-                    Properties = new Dictionary<string, OpenApiSchema>
-                    {
-                        { "@odata.count", new OpenApiSchema { Type = "integer", Format = "int64" } }
-                    }
+                    Type = Constants.ObjectType
                 };
+                schemas[Constants.BaseCollectionCountResponse].Properties.Add(ODataConstants.OdataCount);
+            }
+
+            // @odata.nextLink + @odata.count
+            if (context.Settings.EnablePagination && context.Settings.EnableCount)
+            {
+                schemas[Constants.BaseCollectionPaginationCountResponse] = new()
+                {
+                    Title = "Base collection pagination and count responses",
+                    Type = Constants.ObjectType,                   
+                };
+                schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataCount);
+                schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataNextLink);
             }
 
             return schemas;
@@ -227,10 +235,11 @@ namespace Microsoft.OpenApi.OData.Generator
 
             OpenApiSchema baseSchema = new()
             {
-                Type = "object",
+                Type = Constants.ObjectType,
                 Properties = properties
             };
 
+            // @odata.nextLink
             OpenApiSchema paginationSchema = new()
             {
                 UnresolvedReference = true,
@@ -241,6 +250,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
+            // @odata.count
             OpenApiSchema countSchema = new()
             {
                 UnresolvedReference = true,
@@ -251,6 +261,17 @@ namespace Microsoft.OpenApi.OData.Generator
                 }
             };
 
+            // @odata.nextLink + @odata.count
+            OpenApiSchema paginationCountSchema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.BaseCollectionPaginationCountResponse
+                }
+            };
+
             OpenApiSchema colSchema;
             if (context.Settings.EnablePagination && context.Settings.EnableCount)
             {
@@ -258,8 +279,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     AllOf = new List<OpenApiSchema>
                     {
-                        paginationSchema,
-                        countSchema,
+                        paginationCountSchema,
                         baseSchema
                     }
                 };
@@ -292,7 +312,7 @@ namespace Microsoft.OpenApi.OData.Generator
             }
 
             colSchema.Title = $"Collection of {typeName}";
-            colSchema.Type = "object";
+            colSchema.Type = Constants.ObjectType;
             return colSchema;
         }
 
@@ -312,7 +332,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new()
             {
                 // An enumeration type is represented as a Schema Object of type string
-                Type = "string",
+                Type = Constants.StringType,
 
                 // containing the OpenAPI Specification enum keyword.
                 Enum = new List<IOpenApiAny>(),
@@ -550,7 +570,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Title = (structuredType as IEdmSchemaElement)?.Name,
 
-                    Type = "object",
+                    Type = Constants.ObjectType,
 
                     Discriminator = discriminator,
 
@@ -568,7 +588,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
-                        Type = "string",
+                        Type = Constants.StringType,
                         Default = new OpenApiString("#" + structuredType.FullTypeName()),
                     }))
                     {
