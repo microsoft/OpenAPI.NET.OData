@@ -42,8 +42,8 @@ namespace Microsoft.OpenApi.OData.Tests
             IEdmModel model = EdmModelHelper.TripServiceModel;
             OpenApiConvertSettings settings = new()
             {
-                    EnableOperationId = true,
-                    EnablePagination = true,
+                EnableOperationId = true,
+                EnablePagination = true,
             };
             ODataContext context = new(model, settings);
 
@@ -52,14 +52,12 @@ namespace Microsoft.OpenApi.OData.Tests
 
             var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
             var stringCollectionResponse = schemas["StringCollectionResponse"];
-
-            Assert.Equal("array", flightCollectionResponse.Properties["value"].Type);
-            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
-            Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
-            Assert.Equal("string", stringCollectionResponse.Properties["value"].Items.Type);
-            Assert.Equal("string", stringCollectionResponse.Properties["@odata.nextLink"].Type);            
-            Assert.Equal("integer", stringCollectionResponse.Properties["@odata.count"].Type);
-            Assert.Equal("int64", stringCollectionResponse.Properties["@odata.count"].Format);
+            Assert.Equal("array", flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
+            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight",
+                flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Reference.Id);
+            Assert.Equal("array", stringCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
+            Assert.Equal("string", stringCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Type);
+            Assert.Equal("CollectionPaginationResponse", stringCollectionResponse.AllOf?.FirstOrDefault(x => x.Reference != null).Reference.Id);
         }
 
         [Fact]

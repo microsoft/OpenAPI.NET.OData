@@ -118,6 +118,20 @@ namespace Microsoft.OpenApi.OData.Generator
                 AdditionalProperties = new OpenApiSchema { Type = "object" }
             };
 
+            if (context.Settings.EnablePagination)
+            {
+                schemas[Constants.CollectionPaginationResponse] = new()
+                {
+                    Title = "Base collection response",
+                    Type = "object",
+                    Properties = new Dictionary<string, OpenApiSchema>
+                    {
+                        { "@odata.nextLink", new OpenApiSchema { Type = "string"} },
+                        { "@odata.count", new OpenApiSchema { Type = "integer", Format = "int64" } }
+                    }
+                };
+            }
+
             return schemas;
         }
         internal static bool HasAnyNonContainedCollections(this ODataContext context)
@@ -198,18 +212,41 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
-            if (context.Settings.EnablePagination)
-            {
-                properties.Add("@odata.nextLink", new OpenApiSchema { Type = "string" });
-                properties.Add("@odata.count", new OpenApiSchema { Type = "integer", Format = "int64" });
-            }
 
-            return new OpenApiSchema
+            OpenApiSchema baseSchema = new()
             {
-                Title = $"Collection of {typeName}",
                 Type = "object",
                 Properties = properties
             };
+
+            OpenApiSchema colSchema;
+            if (context.Settings.EnablePagination)
+            {
+                colSchema = new OpenApiSchema
+                {
+                    AllOf = new List<OpenApiSchema>
+                    {
+                        new OpenApiSchema
+                        {
+                            UnresolvedReference = true,
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.Schema,
+                                Id = Constants.CollectionPaginationResponse
+                            }
+                        },
+                        baseSchema
+                    }
+                };
+            }
+            else
+            {
+                colSchema = baseSchema;
+            }
+
+            colSchema.Title = $"Collection of {typeName}";
+            colSchema.Type = "object";
+            return colSchema;
         }
 
         /// <summary>
