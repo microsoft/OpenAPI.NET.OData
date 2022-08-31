@@ -200,12 +200,8 @@ namespace Microsoft.OpenApi.OData.Generator
             };
             if (context.Settings.EnablePagination)
             {
-                properties.Add(
-                    "@odata.nextLink",
-                    new OpenApiSchema
-                    {
-                        Type = "string"
-                    });
+                properties.Add("@odata.nextLink", new OpenApiSchema { Type = "string" });
+                properties.Add("@odata.count", new OpenApiSchema { Type = "integer", Format = "int64" });
             }
 
             return new OpenApiSchema

@@ -57,6 +57,9 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
             Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
             Assert.Equal("string", stringCollectionResponse.Properties["value"].Items.Type);
+            Assert.Equal("string", stringCollectionResponse.Properties["@odata.nextLink"].Type);            
+            Assert.Equal("integer", stringCollectionResponse.Properties["@odata.count"].Type);
+            Assert.Equal("int64", stringCollectionResponse.Properties["@odata.count"].Format);
         }
 
         [Fact]
