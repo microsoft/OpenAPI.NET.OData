@@ -120,13 +120,25 @@ namespace Microsoft.OpenApi.OData.Generator
 
             if (context.Settings.EnablePagination)
             {
-                schemas[Constants.CollectionPaginationResponse] = new()
+                schemas[Constants.BaseCollectionPaginationResponse] = new()
                 {
-                    Title = "Base collection response",
+                    Title = "Base collection pagination response",
                     Type = "object",
                     Properties = new Dictionary<string, OpenApiSchema>
                     {
-                        { "@odata.nextLink", new OpenApiSchema { Type = "string"} },
+                        { "@odata.nextLink", new OpenApiSchema { Type = "string"} }
+                    }
+                };
+            }
+
+            if (context.Settings.EnableCount)
+            {
+                schemas[Constants.BaseCollectionCountResponse] = new()
+                {
+                    Title = "Base collection count response",
+                    Type = "object",
+                    Properties = new Dictionary<string, OpenApiSchema>
+                    {
                         { "@odata.count", new OpenApiSchema { Type = "integer", Format = "int64" } }
                     }
                 };
@@ -219,22 +231,57 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = properties
             };
 
+            OpenApiSchema paginationSchema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.BaseCollectionPaginationResponse
+                }
+            };
+
+            OpenApiSchema countSchema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.BaseCollectionCountResponse
+                }
+            };
+
             OpenApiSchema colSchema;
-            if (context.Settings.EnablePagination)
+            if (context.Settings.EnablePagination && context.Settings.EnableCount)
             {
                 colSchema = new OpenApiSchema
                 {
                     AllOf = new List<OpenApiSchema>
                     {
-                        new OpenApiSchema
-                        {
-                            UnresolvedReference = true,
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.Schema,
-                                Id = Constants.CollectionPaginationResponse
-                            }
-                        },
+                        paginationSchema,
+                        countSchema,
+                        baseSchema
+                    }
+                };
+            }
+            else if (context.Settings.EnablePagination)
+            {
+                colSchema = new OpenApiSchema
+                {
+                    AllOf = new List<OpenApiSchema>
+                    {
+                        paginationSchema,
+                        baseSchema
+                    }
+                };
+            }
+            else if (context.Settings.EnableCount)
+            {
+                colSchema = new OpenApiSchema
+                {
+                    AllOf = new List<OpenApiSchema>
+                    {
+                        countSchema,
                         baseSchema
                     }
                 };

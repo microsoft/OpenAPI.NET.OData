@@ -106,9 +106,14 @@ namespace Microsoft.OpenApi.OData.Common
         public static string CollectionSchemaSuffix = "CollectionResponse";
 
         /// <summary>
-        /// Suffix used for collection pagination response schemas.
+        /// Suffix used for the base collection pagination response schema.
         /// </summary>
-        public static string CollectionPaginationResponse = "CollectionPaginationResponse";
+        public static string BaseCollectionPaginationResponse = "BaseCollectionPaginationResponse";
+
+        /// <summary>
+        /// Suffix used for the base collection count response schema.
+        /// </summary>
+        public static string BaseCollectionCountResponse = "BaseCollectionCountResponse";
 
         /// <summary>
         /// Name used for reference update.
