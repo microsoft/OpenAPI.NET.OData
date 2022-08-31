@@ -44,6 +44,7 @@ namespace Microsoft.OpenApi.OData.Tests
             {
                 EnableOperationId = true,
                 EnablePagination = true,
+                EnableCount = true
             };
             ODataContext context = new(model, settings);
 
@@ -55,9 +56,20 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Equal("array", flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
             Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight",
                 flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Reference.Id);
-            Assert.Equal("array", stringCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
-            Assert.Equal("string", stringCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Type);
-            Assert.Equal("CollectionPaginationResponse", stringCollectionResponse.AllOf?.FirstOrDefault(x => x.Reference != null).Reference.Id);
+            
+            Assert.Collection(stringCollectionResponse.AllOf,
+                item =>
+                {
+                    Assert.Equal("BaseCollectionPaginationResponse", item.Reference.Id);
+                },
+                item =>
+                {
+                    Assert.Equal("BaseCollectionCountResponse", item.Reference.Id);
+                },
+                item =>
+                {
+                    Assert.Equal("array", item.Properties["value"].Type);
+                });
         }
 
         [Fact]
