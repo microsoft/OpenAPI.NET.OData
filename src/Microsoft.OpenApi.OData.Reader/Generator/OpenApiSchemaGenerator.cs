@@ -118,38 +118,16 @@ namespace Microsoft.OpenApi.OData.Generator
                 AdditionalProperties = new OpenApiSchema { Type = Constants.ObjectType }
             };
 
-            // @odata.nextLink
-            if (context.Settings.EnablePagination)
-            {
-                schemas[Constants.BaseCollectionPaginationResponse] = new()
-                {
-                    Title = "Base collection pagination response",
-                    Type = Constants.ObjectType
-                };
-                schemas[Constants.BaseCollectionPaginationResponse].Properties.Add(ODataConstants.OdataNextLink);
-            }
-
-            // @odata.count
-            if (context.Settings.EnableCount)
-            {
-                schemas[Constants.BaseCollectionCountResponse] = new()
-                {
-                    Title = "Base collection count response",
-                    Type = Constants.ObjectType
-                };
-                schemas[Constants.BaseCollectionCountResponse].Properties.Add(ODataConstants.OdataCount);
-            }
-
             // @odata.nextLink + @odata.count
-            if (context.Settings.EnablePagination && context.Settings.EnableCount)
+            if (context.Settings.EnablePagination || context.Settings.EnableCount)
             {
                 schemas[Constants.BaseCollectionPaginationCountResponse] = new()
                 {
                     Title = "Base collection pagination and count responses",
                     Type = Constants.ObjectType,                   
                 };
-                schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataCount);
-                schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataNextLink);
+                if (context.Settings.EnableCount) schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataCount);
+     if (context.Settings.EnablePagination) schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataNextLink);
             }
 
             return schemas;
@@ -239,27 +217,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 Properties = properties
             };
 
-            // @odata.nextLink
-            OpenApiSchema paginationSchema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = Constants.BaseCollectionPaginationResponse
-                }
-            };
-
-            // @odata.count
-            OpenApiSchema countSchema = new()
-            {
-                UnresolvedReference = true,
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.Schema,
-                    Id = Constants.BaseCollectionCountResponse
-                }
-            };
 
             // @odata.nextLink + @odata.count
             OpenApiSchema paginationCountSchema = new()
@@ -273,35 +230,13 @@ namespace Microsoft.OpenApi.OData.Generator
             };
 
             OpenApiSchema colSchema;
-            if (context.Settings.EnablePagination && context.Settings.EnableCount)
+            if (context.Settings.EnablePagination || context.Settings.EnableCount)
             {
                 colSchema = new OpenApiSchema
                 {
                     AllOf = new List<OpenApiSchema>
                     {
                         paginationCountSchema,
-                        baseSchema
-                    }
-                };
-            }
-            else if (context.Settings.EnablePagination)
-            {
-                colSchema = new OpenApiSchema
-                {
-                    AllOf = new List<OpenApiSchema>
-                    {
-                        paginationSchema,
-                        baseSchema
-                    }
-                };
-            }
-            else if (context.Settings.EnableCount)
-            {
-                colSchema = new OpenApiSchema
-                {
-                    AllOf = new List<OpenApiSchema>
-                    {
-                        countSchema,
                         baseSchema
                     }
                 };
