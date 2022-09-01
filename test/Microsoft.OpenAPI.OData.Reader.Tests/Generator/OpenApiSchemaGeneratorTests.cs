@@ -36,8 +36,8 @@ namespace Microsoft.OpenApi.OData.Tests
         }
 
         [Theory]
-        [InlineData(true, false, "BaseCollectionPaginationResponse")]
-        [InlineData(false, true, "BaseCollectionCountResponse")]
+        [InlineData(true, false, "BaseCollectionPaginationCountResponse")]
+        [InlineData(false, true, "BaseCollectionPaginationCountResponse")]
         [InlineData(true, true, "BaseCollectionPaginationCountResponse")]
         [InlineData(false, false)]
         public void CreatesCollectionResponseSchema(bool enablePagination, bool enableCount, string referenceId = null)
