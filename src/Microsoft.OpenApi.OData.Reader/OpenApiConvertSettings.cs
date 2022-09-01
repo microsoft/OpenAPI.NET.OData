@@ -101,6 +101,11 @@ namespace Microsoft.OpenApi.OData
         public bool EnablePagination { get; set; }
 
         /// <summary>
+        /// Gets/sets a value indicating whether or not to allow the count of a collection of entities.
+        /// </summary>
+        public bool EnableCount { get; set; }
+
+        /// <summary>
         /// Gets/sets a value that specifies the name of the operation for retrieving the next page in a collection of entities.
         /// </summary>
         public string PageableOperationName { get; set; } = "listMore";
@@ -323,7 +328,8 @@ namespace Microsoft.OpenApi.OData
                 CustomXMLAttributesMapping = this.CustomXMLAttributesMapping,
                 CustomHttpMethodLinkRelMapping = this.CustomHttpMethodLinkRelMapping,
                 AppendBoundOperationsOnDerivedTypeCastSegments = this.AppendBoundOperationsOnDerivedTypeCastSegments,
-                UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange
+                UseSuccessStatusCodeRange = this.UseSuccessStatusCodeRange,
+                EnableCount = this.EnableCount
             };
 
             return newSettings;

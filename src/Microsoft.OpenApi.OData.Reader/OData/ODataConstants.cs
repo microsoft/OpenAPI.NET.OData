@@ -3,11 +3,9 @@
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
 
-using System;
+using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.OData.Common;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.OpenApi.OData
 {
@@ -23,5 +21,15 @@ namespace Microsoft.OpenApi.OData
             "OData.Community.",
         };
 
+        /// <summary>
+        /// @odata.nextLink KeyValue pair
+        /// </summary>
+        public static KeyValuePair<string, OpenApiSchema> OdataNextLink = new("@odata.nextLink", new OpenApiSchema { Type = Constants.StringType, Nullable = true });
+
+        /// <summary>
+        /// @odata.count KeyValue pair
+        /// </summary>
+        public static KeyValuePair<string, OpenApiSchema> OdataCount = new("@odata.count", new OpenApiSchema { Type = "integer", Format = "int64", Nullable = true });
+        
     }
 }

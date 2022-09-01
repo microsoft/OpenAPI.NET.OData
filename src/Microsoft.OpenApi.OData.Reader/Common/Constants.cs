@@ -106,10 +106,14 @@ namespace Microsoft.OpenApi.OData.Common
         public static string CollectionSchemaSuffix = "CollectionResponse";
 
         /// <summary>
+        /// Suffix used for the base collection pagination response schema and count response schemas.
+        /// </summary>
+        public static string BaseCollectionPaginationCountResponse = "BaseCollectionPaginationCountResponse";
+
+        /// <summary>
         /// Name used for reference update.
         /// </summary>
         public static string ReferenceUpdateSchemaName = "ReferenceUpdate";
-
 
         /// <summary>
         /// Name used for reference update.
@@ -135,5 +139,15 @@ namespace Microsoft.OpenApi.OData.Common
         /// The odata id.
         /// </summary>
         public static string OdataId = "@odata.id";
+
+        /// <summary>
+        /// object type
+        /// </summary>
+        public static string ObjectType = "object";
+
+        /// <summary>
+        /// string type
+        /// </summary>
+        public static string StringType = "string";
     }
 }

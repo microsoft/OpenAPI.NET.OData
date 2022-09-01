@@ -9,6 +9,8 @@ Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTyp
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.get -> System.Collections.Generic.Dictionary<Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get -> System.Collections.Generic.Dictionary<string, string>
