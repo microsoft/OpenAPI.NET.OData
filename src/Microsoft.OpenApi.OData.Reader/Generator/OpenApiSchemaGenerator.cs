@@ -95,27 +95,27 @@ namespace Microsoft.OpenApi.OData.Generator
             
             if(context.HasAnyNonContainedCollections())                                        
             {
-                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = "string" }, "string");
+                schemas[$"String{Constants.CollectionSchemaSuffix}"] = CreateCollectionSchema(context, new OpenApiSchema { Type = Constants.StringType }, Constants.StringType);
             }
 
             schemas[Constants.ReferenceUpdateSchemaName] = new()
             {
-                Type = "object",
+                Type = Constants.ObjectType,
                 Properties = new Dictionary<string, OpenApiSchema>
                     {
-                        {Constants.OdataId, new OpenApiSchema { Type = "string", Nullable = false }},
-                        {Constants.OdataType, new OpenApiSchema { Type = "string", Nullable = true }},
+                        {Constants.OdataId, new OpenApiSchema { Type = Constants.StringType, Nullable = false }},
+                        {Constants.OdataType, new OpenApiSchema { Type = Constants.StringType, Nullable = true }},
                     }
             };
 
             schemas[Constants.ReferenceCreateSchemaName] = new()
             {
-                Type = "object",
+                Type = Constants.ObjectType,
                 Properties = new Dictionary<string, OpenApiSchema>
                 {
-                    {Constants.OdataId, new OpenApiSchema { Type = "string", Nullable = false }}
+                    {Constants.OdataId, new OpenApiSchema { Type = Constants.StringType, Nullable = false }}
                 },
-                AdditionalProperties = new OpenApiSchema { Type = "object" }
+                AdditionalProperties = new OpenApiSchema { Type = Constants.ObjectType }
             };
 
             schemas[Constants.ReferenceNumericName] = new()
@@ -127,6 +127,18 @@ namespace Microsoft.OpenApi.OData.Generator
                     new OpenApiString("NaN")
                 }
             };
+
+            // @odata.nextLink + @odata.count
+            if (context.Settings.EnablePagination || context.Settings.EnableCount)
+            {
+                schemas[Constants.BaseCollectionPaginationCountResponse] = new()
+                {
+                    Title = "Base collection pagination and count responses",
+                    Type = Constants.ObjectType,                   
+                };
+                if (context.Settings.EnableCount) schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataCount);
+     if (context.Settings.EnablePagination) schemas[Constants.BaseCollectionPaginationCountResponse].Properties.Add(ODataConstants.OdataNextLink);
+            }
 
             return schemas;
         }
@@ -208,22 +220,45 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }
             };
-            if (context.Settings.EnablePagination)
-            {
-                properties.Add(
-                    "@odata.nextLink",
-                    new OpenApiSchema
-                    {
-                        Type = "string"
-                    });
-            }
 
-            return new OpenApiSchema
+            OpenApiSchema baseSchema = new()
             {
-                Title = $"Collection of {typeName}",
-                Type = "object",
+                Type = Constants.ObjectType,
                 Properties = properties
             };
+
+
+            // @odata.nextLink + @odata.count
+            OpenApiSchema paginationCountSchema = new()
+            {
+                UnresolvedReference = true,
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.Schema,
+                    Id = Constants.BaseCollectionPaginationCountResponse
+                }
+            };
+
+            OpenApiSchema colSchema;
+            if (context.Settings.EnablePagination || context.Settings.EnableCount)
+            {
+                colSchema = new OpenApiSchema
+                {
+                    AllOf = new List<OpenApiSchema>
+                    {
+                        paginationCountSchema,
+                        baseSchema
+                    }
+                };
+            }
+            else
+            {
+                colSchema = baseSchema;
+            }
+
+            colSchema.Title = $"Collection of {typeName}";
+            colSchema.Type = Constants.ObjectType;
+            return colSchema;
         }
 
         /// <summary>
@@ -242,7 +277,7 @@ namespace Microsoft.OpenApi.OData.Generator
             OpenApiSchema schema = new()
             {
                 // An enumeration type is represented as a Schema Object of type string
-                Type = "string",
+                Type = Constants.StringType,
 
                 // containing the OpenAPI Specification enum keyword.
                 Enum = new List<IOpenApiAny>(),
@@ -480,7 +515,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Title = (structuredType as IEdmSchemaElement)?.Name,
 
-                    Type = "object",
+                    Type = Constants.ObjectType,
 
                     Discriminator = discriminator,
 
@@ -498,7 +533,7 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     if (!schema.Properties.TryAdd(Constants.OdataType, new OpenApiSchema()
                     {
-                        Type = "string",
+                        Type = Constants.StringType,
                         Default = new OpenApiString("#" + structuredType.FullTypeName()),
                     }))
                     {

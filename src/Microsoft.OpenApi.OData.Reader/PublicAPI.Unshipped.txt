@@ -7,14 +7,28 @@ Microsoft.OpenApi.OData.Edm.EdmModelExtensions
 Microsoft.OpenApi.OData.Edm.EdmTypeExtensions
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.AppendBoundOperationsOnDerivedTypeCastSegments.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.get -> System.Collections.Generic.Dictionary<Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey, string>
+Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomHttpMethodLinkRelMapping.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.EnableCount.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.ExpandDerivedTypesNavigationProperties.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.get -> System.Collections.Generic.Dictionary<string, string>
 Microsoft.OpenApi.OData.OpenApiConvertSettings.CustomXMLAttributesMapping.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.RequireRestrictionAnnotationsToGenerateComplexPropertyPaths.set -> void
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.get -> bool
+Microsoft.OpenApi.OData.OpenApiConvertSettings.ShowExternalDocs.set -> void
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.get -> bool
 Microsoft.OpenApi.OData.OpenApiConvertSettings.UseSuccessStatusCodeRange.set -> void
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Action = 6 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Create = 2 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Delete = 4 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Function = 5 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.List = 1 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.ReadByKey = 0 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
+Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey.Update = 3 -> Microsoft.OpenApi.OData.Vocabulary.Core.LinkRelKey
 static Microsoft.OpenApi.OData.Common.OpenApiOperationExtensions.AddErrorResponses(this Microsoft.OpenApi.Models.OpenApiOperation operation, Microsoft.OpenApi.OData.OpenApiConvertSettings settings, bool addNoContent = false, Microsoft.OpenApi.Models.OpenApiSchema schema = null) -> void
 static Microsoft.OpenApi.OData.Edm.EdmTypeExtensions.ShouldPathParameterBeQuoted(this Microsoft.OData.Edm.IEdmType edmType, Microsoft.OpenApi.OData.OpenApiConvertSettings settings) -> bool
 Microsoft.OpenApi.OData.Edm.IODataPathProvider

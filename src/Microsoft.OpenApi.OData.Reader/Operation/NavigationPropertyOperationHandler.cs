@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------
+// ------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All rights reserved.
 //  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
 // ------------------------------------------------------------
@@ -10,7 +10,9 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -153,6 +155,41 @@ namespace Microsoft.OpenApi.OData.Operation
             }
 
             return string.Join(".", items);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(NavigationProperty, CustomLinkRel) is Link externalDocs)
+            {
+                operation.ExternalDocs = new OpenApiExternalDocs()
+                { 
+                    Description = CoreConstants.ExternalDocsDescription, 
+                    Url = externalDocs.Href 
+                };
+            }
+        }
+            
+        /// <summary>
+        /// Retrieves the CRUD restrictions annotations for the navigation property
+        /// in context, given a capability annotation term.
+        /// </summary>
+        /// <param name="annotationTerm">The fully qualified restriction annotation term.</param>
+        /// <returns>The restriction annotation, or null if not available.</returns>
+        protected IRecord GetRestrictionAnnotation(string annotationTerm)
+        {
+            return annotationTerm switch
+            {
+                CapabilitiesConstants.ReadRestrictions => Restriction?.ReadRestrictions ??
+                                        Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty, CapabilitiesConstants.ReadRestrictions),
+                CapabilitiesConstants.UpdateRestrictions => Restriction?.UpdateRestrictions ??
+                                        Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty, CapabilitiesConstants.UpdateRestrictions),
+                CapabilitiesConstants.InsertRestrictions => Restriction?.InsertRestrictions ??
+                                        Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty, CapabilitiesConstants.InsertRestrictions),
+                CapabilitiesConstants.DeleteRestrictions => Restriction?.DeleteRestrictions ??
+                                        Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty, CapabilitiesConstants.DeleteRestrictions),
+                _ => null,
+            };
         }
     }
 }

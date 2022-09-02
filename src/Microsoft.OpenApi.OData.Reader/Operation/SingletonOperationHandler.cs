@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -59,6 +60,19 @@ namespace Microsoft.OpenApi.OData.Operation
             operation.Extensions.Add(Constants.xMsDosOperationType, new OpenApiString("operation"));
 
             base.SetExtensions(operation);
+        }
+
+        /// <inheritdoc/>
+        protected override void SetExternalDocs(OpenApiOperation operation)
+        {
+            if (Context.Settings.ShowExternalDocs && Context.Model.GetLinkRecord(Singleton, CustomLinkRel) is Link externalDocs)
+            {
+                operation.ExternalDocs = new OpenApiExternalDocs() 
+                { 
+                    Description = CoreConstants.ExternalDocsDescription, 
+                    Url = externalDocs.Href 
+                };
+            }
         }
     }
 }

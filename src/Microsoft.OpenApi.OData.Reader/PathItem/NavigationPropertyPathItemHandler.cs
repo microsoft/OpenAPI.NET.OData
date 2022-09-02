@@ -44,7 +44,10 @@ namespace Microsoft.OpenApi.OData.PathItem
         /// </summary>
         protected bool LastSegmentIsRefSegment { get; private set; }
 
-        private IEdmEntityType _entityType;
+        /// <summary>
+        /// The entity type targeted by the <see cref="NavigationProperty"/>
+        /// </summary>
+        private IEdmEntityType _navPropEntityType;
 
         /// <inheritdoc/>
         protected override void SetOperations(OpenApiPathItem item)
@@ -80,16 +83,26 @@ namespace Microsoft.OpenApi.OData.PathItem
                 {
                     if (LastSegmentIsKeySegment)
                     {
-                        UpdateRestrictionsType updateEntity = Context.Model.GetRecord<UpdateRestrictionsType>(_entityType);
-                        if (updateEntity?.IsUpdatable ?? true)
+                        UpdateRestrictionsType entityUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(_navPropEntityType);
+                        UpdateRestrictionsType navPropUpdateRestriction = Context.Model.GetRecord<UpdateRestrictionsType>(NavigationProperty);
+                        if ((entityUpdateRestriction?.IsUpdatable ?? true) &&
+                            (navPropUpdateRestriction?.IsUpdatable ?? true))
                         {
-                            AddUpdateOperation(item, restriction);
+                            UpdateRestrictionsType updateRestrictionType = navPropUpdateRestriction ?? entityUpdateRestriction;
+                            AddUpdateOperation(item, restriction, updateRestrictionType);
                         }
                     }
                     else
                     {
-                        InsertRestrictionsType insert = restriction?.InsertRestrictions;
-                        if (insert?.IsInsertable ?? true)
+                        InsertRestrictionsType navPropInsertRestriction = restriction?.InsertRestrictions ??
+                            Context.Model.GetRecord<InsertRestrictionsType>(NavigationProperty);
+                        InsertRestrictionsType entityInsertRestriction = Context.Model.GetRecord<InsertRestrictionsType>(_navPropEntityType);
+
+                        bool isInsertableDefault = navPropInsertRestriction == null && entityInsertRestriction == null;
+
+                        if (isInsertableDefault ||
+                           ((entityInsertRestriction?.IsInsertable ?? true) &&
+                           (navPropInsertRestriction?.IsInsertable ?? true)))
                         {
                             AddOperation(item, OperationType.Post);
                         }
@@ -106,8 +119,12 @@ namespace Microsoft.OpenApi.OData.PathItem
 
         private void AddGetOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
         {
-            ReadRestrictionsType read = restriction?.ReadRestrictions;
-            if (read == null)
+            ReadRestrictionsType navPropReadRestriction = restriction?.ReadRestrictions ??
+                Context.Model.GetRecord<ReadRestrictionsType>(NavigationProperty);
+            ReadRestrictionsType entityReadRestriction = Context.Model.GetRecord<ReadRestrictionsType>(_navPropEntityType);
+            bool isReadableDefault = navPropReadRestriction == null && entityReadRestriction == null;
+
+            if (isReadableDefault)
             {
                 AddOperation(item, OperationType.Get);
                 return;
@@ -118,25 +135,16 @@ namespace Microsoft.OpenApi.OData.PathItem
                 // TODO: $ref also supports Get ?
                 if (LastSegmentIsKeySegment)
                 {
-                    if (read.ReadByKeyRestrictions != null && read.ReadByKeyRestrictions.Readable != null)
+                    if ((navPropReadRestriction?.ReadByKeyRestrictions?.IsReadable ?? true) &&
+                        (entityReadRestriction?.IsReadable ?? true))
                     {
-                        if (read.ReadByKeyRestrictions.Readable.Value)
-                        {
-                            AddOperation(item, OperationType.Get);
-                        }
-                    }
-                    else
-                    {
-                        ReadRestrictionsType readEntity = Context.Model.GetRecord<ReadRestrictionsType>(_entityType);
-                        if (readEntity?.IsReadable ?? true)
-                        {
-                            AddOperation(item, OperationType.Get);
-                        }
+                        AddOperation(item, OperationType.Get);
                     }
                 }
                 else
                 {
-                    if (read.IsReadable)
+                    if ((navPropReadRestriction?.IsReadable ?? true) &&
+                        (entityReadRestriction?.IsReadable ?? true))
                     {
                         AddOperation(item, OperationType.Get);
                     }
@@ -145,7 +153,8 @@ namespace Microsoft.OpenApi.OData.PathItem
             else
             {
                 Debug.Assert(LastSegmentIsKeySegment == false);
-                if (read.IsReadable)
+                if ((navPropReadRestriction?.IsReadable ?? true) &&
+                   (entityReadRestriction?.IsReadable ?? true))
                 {
                     AddOperation(item, OperationType.Get);
                 }
@@ -161,13 +170,14 @@ namespace Microsoft.OpenApi.OData.PathItem
                 return;
             }
 
-            DeleteRestrictionsType delete = restriction?.DeleteRestrictions;
-            DeleteRestrictionsType deleteEntity = Context.Model.GetRecord<DeleteRestrictionsType>(_entityType);
-            bool isDeletableDefault = delete == null && deleteEntity == null;
+            DeleteRestrictionsType navPropDeleteRestriction = restriction?.DeleteRestrictions ??
+                Context.Model.GetRecord<DeleteRestrictionsType>(NavigationProperty);
+            DeleteRestrictionsType entityDeleteRestriction = Context.Model.GetRecord<DeleteRestrictionsType>(_navPropEntityType);
+            bool isDeletableDefault = navPropDeleteRestriction == null && entityDeleteRestriction == null;
 
             if (isDeletableDefault ||
-               (delete?.IsDeletable ?? false) ||
-               (deleteEntity?.IsDeletable ?? false))
+               ((entityDeleteRestriction?.IsDeletable ?? true) &&
+               (navPropDeleteRestriction?.IsDeletable ?? true)))
             {
                 if (NavigationProperty.TargetMultiplicity() != EdmMultiplicity.Many || LastSegmentIsKeySegment)
                 {
@@ -177,9 +187,9 @@ namespace Microsoft.OpenApi.OData.PathItem
             }
         }
 
-        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction)
+        private void AddUpdateOperation(OpenApiPathItem item, NavigationPropertyRestriction restriction, UpdateRestrictionsType updateRestrictionsType = null)
         {
-            UpdateRestrictionsType update = restriction?.UpdateRestrictions;
+            UpdateRestrictionsType update = restriction?.UpdateRestrictions ?? updateRestrictionsType;
             if (update == null || update.IsUpdatable)
             {
                 if (update != null && update.IsUpdateMethodPut)
@@ -204,7 +214,7 @@ namespace Microsoft.OpenApi.OData.PathItem
             LastSegmentIsKeySegment = path.LastSegment.Kind == ODataSegmentKind.Key;
             LastSegmentIsRefSegment = path.LastSegment.Kind == ODataSegmentKind.Ref;
             NavigationProperty = path.OfType<ODataNavigationPropertySegment>().Last().NavigationProperty;
-            _entityType = NavigationProperty.ToEntityType();
+            _navPropEntityType = NavigationProperty.ToEntityType();
         }
 
         /// <inheritdoc/>

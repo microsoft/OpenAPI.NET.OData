@@ -403,7 +403,18 @@ namespace Microsoft.OpenApi.OData.Edm
             visitedNavigationProperties.Push(navPropFullyQualifiedName);
 
             // Check whether a collection-valued navigation property should be indexed by key value(s).
-            bool indexableByKey = restriction?.IndexableByKey ?? true;
+            // Find indexability annotation annotated directly via NavigationPropertyRestriction.
+            bool? annotatedIndexability = _model.GetBoolean(navigationProperty, CapabilitiesConstants.IndexableByKey);
+            bool indexableByKey = true;
+
+            if (restriction?.IndexableByKey != null)
+            {
+                indexableByKey = (bool)restriction.IndexableByKey;
+            }
+            else if (annotatedIndexability != null)
+            {
+                indexableByKey = annotatedIndexability.Value;
+            }
 
             if (indexableByKey)
             {

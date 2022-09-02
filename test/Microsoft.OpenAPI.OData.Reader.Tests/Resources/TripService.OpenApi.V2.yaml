@@ -5207,6 +5207,50 @@ paths:
           description: 'Usage: userName=''{userName}'''
           required: true
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
       responses:
         '200':
           description: Success
@@ -6185,6 +6229,61 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
       responses:
         '200':
           description: Success
@@ -10675,6 +10774,50 @@ paths:
           description: 'Usage: userName=''{userName}'''
           required: true
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
       responses:
         '200':
           description: Success
@@ -11100,6 +11243,61 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
       responses:
         '200':
           description: Success
@@ -16627,6 +16825,50 @@ paths:
           description: 'Usage: userName=''{userName}'''
           required: true
           type: string
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - TripId
+              - ShareId
+              - Name
+              - Budget
+              - Description
+              - Tags
+              - StartsAt
+              - EndsAt
+              - PlanItems
+            type: string
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - TripId
+              - TripId desc
+              - ShareId
+              - ShareId desc
+              - Name
+              - Name desc
+              - Budget
+              - Budget desc
+              - Description
+              - Description desc
+              - Tags
+              - Tags desc
+              - StartsAt
+              - StartsAt desc
+              - EndsAt
+              - EndsAt desc
+            type: string
       responses:
         '200':
           description: Success
@@ -17756,6 +17998,61 @@ paths:
           maximum: 2147483647
           minimum: -2147483648
           x-ms-docs-key-type: Trip
+        - $ref: '#/parameters/top'
+        - $ref: '#/parameters/skip'
+        - $ref: '#/parameters/search'
+        - $ref: '#/parameters/filter'
+        - $ref: '#/parameters/count'
+        - in: query
+          name: $select
+          description: Select properties to be returned
+          type: array
+          items:
+            enum:
+              - UserName
+              - FirstName
+              - LastName
+              - MiddleName
+              - Gender
+              - Age
+              - Emails
+              - AddressInfo
+              - HomeAddress
+              - FavoriteFeature
+              - Features
+              - Friends
+              - BestFriend
+              - Trips
+            type: string
+        - in: query
+          name: $orderby
+          description: Order items by property values
+          type: array
+          items:
+            enum:
+              - UserName
+              - UserName desc
+              - FirstName
+              - FirstName desc
+              - LastName
+              - LastName desc
+              - MiddleName
+              - MiddleName desc
+              - Gender
+              - Gender desc
+              - Age
+              - Age desc
+              - Emails
+              - Emails desc
+              - AddressInfo
+              - AddressInfo desc
+              - HomeAddress
+              - HomeAddress desc
+              - FavoriteFeature
+              - FavoriteFeature desc
+              - Features
+              - Features desc
+            type: string
       responses:
         '200':
           description: Success

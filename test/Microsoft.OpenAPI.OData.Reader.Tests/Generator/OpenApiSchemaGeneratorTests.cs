@@ -35,28 +35,51 @@ namespace Microsoft.OpenApi.OData.Tests
             Assert.Throws<ArgumentNullException>("context", () => context.CreateSchemas());
         }
 
-        [Fact]
-        public void CreatesCollectionResponseSchema()
+        [Theory]
+        [InlineData(true, false, "BaseCollectionPaginationCountResponse")]
+        [InlineData(false, true, "BaseCollectionPaginationCountResponse")]
+        [InlineData(true, true, "BaseCollectionPaginationCountResponse")]
+        [InlineData(false, false)]
+        public void CreatesCollectionResponseSchema(bool enablePagination, bool enableCount, string referenceId = null)
         {
             // Arrange
             IEdmModel model = EdmModelHelper.TripServiceModel;
             OpenApiConvertSettings settings = new()
             {
-                    EnableOperationId = true,
-                    EnablePagination = true,
+                EnableOperationId = true,
+                EnablePagination = enablePagination,
+                EnableCount = enableCount
             };
             ODataContext context = new(model, settings);
 
             // Act & Assert
             var schemas = context.CreateSchemas();
 
-            var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];
             var stringCollectionResponse = schemas["StringCollectionResponse"];
+            var flightCollectionResponse = schemas["Microsoft.OData.Service.Sample.TrippinInMemory.Models.FlightCollectionResponse"];                      
+            
+            if (enablePagination || enableCount)
+            {
+                Assert.Collection(stringCollectionResponse.AllOf,
+                item =>
+                {
+                    Assert.Equal(referenceId, item.Reference.Id);
+                },
+                item =>
+                {
+                    Assert.Equal("array", item.Properties["value"].Type);
+                });
 
-            Assert.Equal("array", flightCollectionResponse.Properties["value"].Type);
-            Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
-            Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
-            Assert.Equal("string", stringCollectionResponse.Properties["value"].Items.Type);
+                Assert.Equal("array", flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Type);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight",
+                    flightCollectionResponse.AllOf?.FirstOrDefault(x => x.Properties.Any())?.Properties["value"].Items.Reference.Id);
+            }
+            else
+            {
+                Assert.Equal("array", stringCollectionResponse.Properties["value"].Type);
+                Assert.Equal("array", flightCollectionResponse.Properties["value"].Type);
+                Assert.Equal("Microsoft.OData.Service.Sample.TrippinInMemory.Models.Flight", flightCollectionResponse.Properties["value"].Items.Reference.Id);
+            }            
         }
 
         [Fact]

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns:ags="http://aggregator.microsoft.com/internal">
 <edmx:DataServices>
     <Schema Namespace="Microsoft.OData.Service.Sample.TrippinInMemory.Models" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -385,46 +385,36 @@
         </ActionImport>
       </EntityContainer>
       <Annotations Target="Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person/Trips">
-        <Annotation Term="Org.OData.Capabilities.V1.NavigationRestrictions">
-          <Record>
-            <PropertyValue Property="RestrictedProperties">
-              <Collection>
-                <Record>
-                  <PropertyValue Property="ReadRestrictions">
-                    <Record>
-                      <PropertyValue Property="LongDescription" String="Retrieve a list of trips." />
-                      <PropertyValue Property="Description" String="List trips." />
-                      <PropertyValue Property="ReadByKeyRestrictions">
-                        <Record>
-                          <PropertyValue Property="LongDescription" String="Retrieve the properties of a trip." />
-                          <PropertyValue Property="Description" String="Get a trip." />
-                        </Record>
-                      </PropertyValue>
-                    </Record>
-                  </PropertyValue>
-                  <PropertyValue Property="InsertRestrictions">
-                    <Record>
-                      <PropertyValue Property="LongDescription" String="Create a new trip." />
-                      <PropertyValue Property="Description" String="Create a trip." />                      
-                    </Record>
-                  </PropertyValue>
-                  <PropertyValue Property="UpdateRestrictions">
-                    <Record>
-                      <PropertyValue Property="LongDescription" String="Update an instance of a trip." />
-                      <PropertyValue Property="Description" String="Update a trip." />                      
-                    </Record>
-                  </PropertyValue>
-                  <PropertyValue Property="DeleteRestrictions">
-                    <Record>
-                      <PropertyValue Property="LongDescription" String="Delete an instance of a trip." />
-                      <PropertyValue Property="Description" String="Delete a trip." />                      
-                    </Record>
-                  </PropertyValue>
-                </Record>
-              </Collection>
-            </PropertyValue>
-          </Record>
-        </Annotation>
+		<Annotation Term="Org.OData.Capabilities.V1.ReadRestrictions">
+		  <Record>
+			<PropertyValue Property="LongDescription" String="Retrieve a list of trips." />
+			<PropertyValue Property="Description" String="List trips." />
+			<PropertyValue Property="ReadByKeyRestrictions">
+			  <Record>
+				<PropertyValue Property="LongDescription" String="Retrieve the properties of a trip." />
+				<PropertyValue Property="Description" String="Get a trip." />
+			  </Record>
+			</PropertyValue>
+		  </Record>
+		</Annotation>
+		<Annotation Term="Org.OData.Capabilities.V1.DeleteRestrictions">
+		  <Record>
+			<PropertyValue Property="LongDescription" String="Delete an instance of a trip." />
+			<PropertyValue Property="Description" String="Delete a trip." />
+		  </Record>
+		</Annotation>
+		<Annotation Term="Org.OData.Capabilities.V1.UpdateRestrictions">
+		  <Record>
+			<PropertyValue Property="LongDescription" String="Update an instance of a trip." />
+			<PropertyValue Property="Description" String="Update a trip." />
+		  </Record>
+		</Annotation>
+		<Annotation Term="Org.OData.Capabilities.V1.InsertRestrictions">
+		  <Record>
+			<PropertyValue Property="LongDescription" String="Create a new trip." />
+			<PropertyValue Property="Description" String="Create a trip." />
+		  </Record>
+		</Annotation>		
       </Annotations>
     </Schema>
   </edmx:DataServices>
