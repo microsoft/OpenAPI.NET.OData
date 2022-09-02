@@ -8257,7 +8257,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of Person",
+                  "title": "Collection of Trip",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -9839,7 +9839,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of Trip",
+                  "title": "Collection of Person",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -17091,7 +17091,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of Person",
+                  "title": "Collection of Trip",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -17856,7 +17856,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of Trip",
+                  "title": "Collection of Person",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -26597,7 +26597,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of Person",
+                  "title": "Collection of Trip",
                   "type": "object",
                   "properties": {
                     "value": {
@@ -28441,7 +28441,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "title": "Collection of Trip",
+                  "title": "Collection of Person",
                   "type": "object",
                   "properties": {
                     "value": {

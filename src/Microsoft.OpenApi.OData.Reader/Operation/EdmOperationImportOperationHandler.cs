@@ -77,7 +77,7 @@ namespace Microsoft.OpenApi.OData.Operation
             // describing the structure of the success response by referencing an appropriate schema
             // in the global schemas. In addition, it contains a default name/value pair for
             // the OData error response referencing the global responses.
-            operation.Responses = Context.CreateResponses(EdmOperationImport, Path);
+            operation.Responses = Context.CreateResponses(EdmOperationImport);
 
             base.SetResponses(operation);
         }

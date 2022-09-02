@@ -167,7 +167,7 @@ namespace Microsoft.OpenApi.OData.Operation
         /// <inheritdoc/>
         protected override void SetResponses(OpenApiOperation operation)
         {
-            operation.Responses = Context.CreateResponses(EdmOperation, Path);
+            operation.Responses = Context.CreateResponses(EdmOperation);
             base.SetResponses(operation);
         }
 
