@@ -436,8 +436,7 @@ namespace Microsoft.OpenApi.OData.Tests
             {
               ""type"": ""string""
             }
-          ],
-          ""format"": ""decimal""
+          ]
         }
       },
       ""description"": ""Complex type 'Tree' description.""
@@ -926,7 +925,6 @@ namespace Microsoft.OpenApi.OData.Tests
       ""$ref"": ""#/components/schemas/ReferenceNumeric""
     }
   ],
-  ""format"": ""double"",
   ""default"": ""3.1415926535897931""
 }".ChangeLineBreaks(), json);
         }

@@ -790,11 +790,9 @@ paths:
         - in: path
           name: lat
           required: true
-          format: double
         - in: path
           name: lon
           required: true
-          format: double
       responses:
         '200':
           description: Success
@@ -18306,6 +18304,9 @@ definitions:
         $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.PersonGender'
       Age:
         format: int64
+        allOf:
+          - format: int64
+            type: integer
       Emails:
         type: array
         items:
@@ -18406,6 +18407,9 @@ definitions:
         type: string
       Budget:
         format: float
+        allOf:
+          - format: float
+            type: number
       Description:
         type: string
       Tags:
@@ -18487,6 +18491,9 @@ definitions:
         properties:
           Cost:
             format: int64
+            allOf:
+              - format: int64
+                type: integer
           Peers:
             type: array
             items:
@@ -18499,6 +18506,9 @@ definitions:
         properties:
           Budget:
             format: int64
+            allOf:
+              - format: int64
+                type: integer
           BossOffice:
             $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Location'
           DirectReports:
@@ -18552,6 +18562,8 @@ definitions:
     $ref: '#/definitions/Edm.GeometryCollection'
   Edm.Geometry:
     type: object
+    allOf:
+      - $ref: '#/definitions/Edm.GeometryPoint'
   Edm.GeometryPoint:
     required:
       - type
