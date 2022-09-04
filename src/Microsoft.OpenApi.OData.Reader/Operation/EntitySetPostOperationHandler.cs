@@ -11,6 +11,7 @@ using Microsoft.OpenApi.OData.Common;
 using Microsoft.OpenApi.OData.Edm;
 using Microsoft.OpenApi.OData.Generator;
 using Microsoft.OpenApi.OData.Vocabulary.Capabilities;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Operation
 {
@@ -124,7 +125,7 @@ namespace Microsoft.OpenApi.OData.Operation
             if (EntitySet.EntityType().HasStream)
             {
                 IEnumerable<string> mediaTypes = Context.Model.GetCollection(EntitySet.EntityType(),
-                    CapabilitiesConstants.AcceptableMediaTypes);
+                    CoreConstants.AcceptableMediaTypes);
 
                 if (mediaTypes != null)
                 {

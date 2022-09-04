@@ -16,6 +16,7 @@ using Microsoft.OpenApi.Exceptions;
 using System.Linq;
 using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.OData.OpenApiExtensions;
+using Microsoft.OpenApi.OData.Vocabulary.Core;
 
 namespace Microsoft.OpenApi.OData.Generator
 {
@@ -362,6 +363,9 @@ namespace Microsoft.OpenApi.OData.Generator
             // The Schema Object for a property optionally can contain the field description,
             // whose value is the value of the unqualified annotation Core.Description of the property.
             schema.Description = context.Model.GetDescriptionAnnotation(property);
+
+            // Set property with Computed Annotation in CSDL to readonly
+            schema.ReadOnly = context.Model.GetBoolean(property, CoreConstants.Computed) ?? false;
 
             return schema;
         }
