@@ -215,9 +215,9 @@ namespace Microsoft.OpenApi.OData.Edm
             
             IEdmTypeReference bindingParameterType = operation.Parameters.First().Type;
 
-            return model.EntityContainer.EntitySets().Select(x => x.EntityType())
-                .Concat(model.EntityContainer.Singletons().Select(x => x.EntityType()))
-                .Where(x => x.FullName == bindingParameterType.FullName).Count() > 1;
+            return model.EntityContainer.EntitySets().Select(static x => x.EntityType())
+                .Concat(model.EntityContainer.Singletons().Select(static x => x.EntityType()))
+                .Where(x => x.FullName().Equals(bindingParameterType.FullName(), StringComparison.OrdinalIgnoreCase)).Count() > 1;
         }
 
         /// <summary>

@@ -110,7 +110,9 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (IEdmOperation operation in context.Model.SchemaElements.OfType<IEdmOperation>()
                 .Where(op => context.Model.OperationTargetsMultiplePaths(op)))
             {
-                responses[$"{operation.Name}Response"] = context.CreateOperationResponse(operation);
+                OpenApiResponse response = context.CreateOperationResponse(operation);
+                if (response != null)
+                    responses[$"{operation.Name}Response"] = response;
             }
 
             return responses;
@@ -147,7 +149,7 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 responses.Add(Constants.StatusCode204, Constants.StatusCode204.GetResponse());
             }
-            else if (context.Model.OperationTargetsMultiplePaths(operation) )
+            else if (context.Model.OperationTargetsMultiplePaths(operation))
             {
                 responses.Add(
                     context.Settings.UseSuccessStatusCodeRange ? Constants.StatusCodeClass2XX : Constants.StatusCode200,
@@ -183,6 +185,9 @@ namespace Microsoft.OpenApi.OData.Generator
 
         public static OpenApiResponse CreateOperationResponse(this ODataContext context, IEdmOperation operation)
         {
+            if (operation.ReturnType == null)
+                return null;
+
             OpenApiSchema schema;
             if (operation.ReturnType.IsCollection())
             {

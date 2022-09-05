@@ -39,21 +39,25 @@ namespace Microsoft.OpenApi.OData.Operation
         {
             if (EdmOperation is IEdmAction action)
             {
-                if (Context.Model.OperationTargetsMultiplePaths(action))
+                OpenApiRequestBody requestBody = Context.CreateRequestBody(action);
+                if (requestBody != null)
                 {
-                    operation.RequestBody = new OpenApiRequestBody
+                    if (Context.Model.OperationTargetsMultiplePaths(action))
                     {
-                        UnresolvedReference = true,
-                        Reference = new OpenApiReference
+                        operation.RequestBody = new OpenApiRequestBody
                         {
-                            Type = ReferenceType.RequestBody,
-                            Id = $"{action.Name}RequestBody"
-                        }
-                    };
-                }
-                else
-                {
-                    operation.RequestBody = Context.CreateRequestBody(action);
+                            UnresolvedReference = true,
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.RequestBody,
+                                Id = $"{action.Name}RequestBody"
+                            }
+                        };
+                    }
+                    else
+                    {
+                        operation.RequestBody = requestBody;
+                    }
                 }
             }
 

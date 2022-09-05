@@ -5178,13 +5178,9 @@ paths:
         - Me.Functions
       summary: Invoke function GetFavoriteAirline
       operationId: Me.GetFavoriteAirline
-      produces:
-        - application/json
       responses:
         '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          $ref: '#/responses/GetFavoriteAirlineResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -5201,8 +5197,6 @@ paths:
         - Me.Functions
       summary: Invoke function GetFriendsTrips
       operationId: Me.GetFriendsTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: userName
@@ -5255,15 +5249,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
-          schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/responses/GetFriendsTripsResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -5280,36 +5266,14 @@ paths:
         - Me.Actions
       summary: Invoke action GetPeersForTrip
       operationId: Me.GetPeersForTrip
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: Action parameters
-          required: true
-          schema:
-            type: object
-            properties:
-              userName:
-                type: string
-              tripId:
-                format: int32
-                maximum: 2147483647
-                minimum: -2147483648
-                type: integer
+          schema: { }
       responses:
         '200':
-          description: Success
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/GetPeersForTripResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -5918,23 +5882,11 @@ paths:
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: Me.ShareTrip
-      consumes:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: body
           name: body
-          description: Action parameters
-          required: true
-          schema:
-            type: object
-            properties:
-              userName:
-                type: string
-              tripId:
-                format: int32
-                maximum: 2147483647
-                minimum: -2147483648
-                type: integer
+          schema: { }
       responses:
         '204':
           description: Success
@@ -5954,8 +5906,6 @@ paths:
         - Me.Functions
       summary: Invoke function UpdatePersonLastName
       operationId: Me.UpdatePersonLastName
-      produces:
-        - application/json
       parameters:
         - in: path
           name: lastName
@@ -5964,13 +5914,7 @@ paths:
           type: string
       responses:
         '200':
-          description: Success
-          schema:
-            type: object
-            properties:
-              value:
-                default: false
-                type: boolean
+          $ref: '#/responses/UpdatePersonLastNameResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10738,8 +10682,6 @@ paths:
         - NewComePeople.Functions
       summary: Invoke function GetFavoriteAirline
       operationId: NewComePeople.Person.GetFavoriteAirline
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -10749,9 +10691,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          $ref: '#/responses/GetFavoriteAirlineResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
@@ -10762,8 +10702,6 @@ paths:
         - NewComePeople.Functions
       summary: Invoke function GetFriendsTrips
       operationId: NewComePeople.Person.GetFriendsTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -10822,15 +10760,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
-          schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/responses/GetFriendsTripsResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -10847,10 +10777,7 @@ paths:
         - NewComePeople.Actions
       summary: Invoke action GetPeersForTrip
       operationId: NewComePeople.Person.GetPeersForTrip
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -10860,29 +10787,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: Action parameters
-          required: true
-          schema:
-            type: object
-            properties:
-              userName:
-                type: string
-              tripId:
-                format: int32
-                maximum: 2147483647
-                minimum: -2147483648
-                type: integer
+          schema: { }
       responses:
         '200':
-          description: Success
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/GetPeersForTripResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: action
@@ -10926,8 +10834,7 @@ paths:
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: NewComePeople.Person.ShareTrip
-      consumes:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -10937,18 +10844,7 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: Action parameters
-          required: true
-          schema:
-            type: object
-            properties:
-              userName:
-                type: string
-              tripId:
-                format: int32
-                maximum: 2147483647
-                minimum: -2147483648
-                type: integer
+          schema: { }
       responses:
         '204':
           description: Success
@@ -10962,8 +10858,6 @@ paths:
         - NewComePeople.Functions
       summary: Invoke function UpdatePersonLastName
       operationId: NewComePeople.Person.UpdatePersonLastName
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -10978,13 +10872,7 @@ paths:
           type: string
       responses:
         '200':
-          description: Success
-          schema:
-            type: object
-            properties:
-              value:
-                default: false
-                type: boolean
+          $ref: '#/responses/UpdatePersonLastNameResponse'
         default:
           $ref: '#/responses/error'
       x-ms-docs-operation-type: function
@@ -16783,8 +16671,6 @@ paths:
         - People.Functions
       summary: Invoke function GetFavoriteAirline
       operationId: People.Person.GetFavoriteAirline
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -16794,9 +16680,7 @@ paths:
           x-ms-docs-key-type: Person
       responses:
         '200':
-          description: Success
-          schema:
-            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+          $ref: '#/responses/GetFavoriteAirlineResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -16813,8 +16697,6 @@ paths:
         - People.Functions
       summary: Invoke function GetFriendsTrips
       operationId: People.Person.GetFriendsTrips
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -16873,15 +16755,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Success
-          schema:
-            title: Collection of Trip
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+          $ref: '#/responses/GetFriendsTripsResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -16898,10 +16772,7 @@ paths:
         - People.Actions
       summary: Invoke action GetPeersForTrip
       operationId: People.Person.GetPeersForTrip
-      consumes:
-        - application/json
-      produces:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -16911,29 +16782,10 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: Action parameters
-          required: true
-          schema:
-            type: object
-            properties:
-              userName:
-                type: string
-              tripId:
-                format: int32
-                maximum: 2147483647
-                minimum: -2147483648
-                type: integer
+          schema: { }
       responses:
         '200':
-          description: Success
-          schema:
-            title: Collection of Person
-            type: object
-            properties:
-              value:
-                type: array
-                items:
-                  $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
+          $ref: '#/responses/GetPeersForTripResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -17639,8 +17491,7 @@ paths:
       summary: Invoke action ShareTrip
       description: Details of the shared trip.
       operationId: People.Person.ShareTrip
-      consumes:
-        - application/json
+      consumes: [ ]
       parameters:
         - in: path
           name: UserName
@@ -17650,18 +17501,7 @@ paths:
           x-ms-docs-key-type: Person
         - in: body
           name: body
-          description: Action parameters
-          required: true
-          schema:
-            type: object
-            properties:
-              userName:
-                type: string
-              tripId:
-                format: int32
-                maximum: 2147483647
-                minimum: -2147483648
-                type: integer
+          schema: { }
       responses:
         '204':
           description: Success
@@ -17681,8 +17521,6 @@ paths:
         - People.Functions
       summary: Invoke function UpdatePersonLastName
       operationId: People.Person.UpdatePersonLastName
-      produces:
-        - application/json
       parameters:
         - in: path
           name: UserName
@@ -17697,13 +17535,7 @@ paths:
           type: string
       responses:
         '200':
-          description: Success
-          schema:
-            type: object
-            properties:
-              value:
-                default: false
-                type: boolean
+          $ref: '#/responses/UpdatePersonLastNameResponse'
         default:
           $ref: '#/responses/error'
       deprecated: true
@@ -19202,6 +19034,38 @@ responses:
     description: Retrieved collection
     schema:
       $ref: '#/definitions/StringCollectionResponse'
+  GetFavoriteAirlineResponse:
+    description: Success
+    schema:
+      $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline'
+  GetFriendsTripsResponse:
+    description: Success
+    schema:
+      title: Collection of Trip
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip'
+  UpdatePersonLastNameResponse:
+    description: Success
+    schema:
+      type: object
+      properties:
+        value:
+          default: false
+          type: boolean
+  GetPeersForTripResponse:
+    description: Success
+    schema:
+      title: Collection of Person
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/definitions/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person'
 tags:
   - name: Airlines.Airline
     x-ms-docs-toc-type: page

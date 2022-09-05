@@ -111,7 +111,9 @@ namespace Microsoft.OpenApi.OData.Generator
             foreach (IEdmAction action in context.Model.SchemaElements.OfType<IEdmAction>()
                 .Where(action => context.Model.OperationTargetsMultiplePaths(action)))
             {
-                requestBodies.Add($"{action.Name}RequestBody", context.CreateRequestBody(action));
+                OpenApiRequestBody requestBody = context.CreateRequestBody(action);
+                if (requestBody != null)
+                    requestBodies.Add($"{action.Name}RequestBody", requestBody);
             }
       
             return requestBodies;

@@ -473,11 +473,7 @@ paths:
           x-ms-docs-key-type: DocumentDto
       responses:
         '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/components/responses/UploadResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
@@ -2683,11 +2679,7 @@ paths:
           x-ms-docs-key-type: DocumentDto
       responses:
         '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
+          $ref: '#/components/responses/UploadResponse'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: action
@@ -4846,6 +4838,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/StringCollectionResponse'
+    UploadResponse:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Siterra.Documents.App.DTO.DocumentDto'
   parameters:
     top:
       name: $top

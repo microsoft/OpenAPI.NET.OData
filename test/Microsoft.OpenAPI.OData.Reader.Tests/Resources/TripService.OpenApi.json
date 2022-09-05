@@ -8129,22 +8129,7 @@
         "operationId": "Me.GetFavoriteAirline",
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-                    },
-                    {
-                      "type": "object",
-                      "nullable": true
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetFavoriteAirlineResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8253,31 +8238,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Trip",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetFriendsTripsResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -8302,54 +8263,11 @@
         "summary": "Invoke action GetPeersForTrip",
         "operationId": "Me.GetPeersForTrip",
         "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/GetPeersForTripRequestBody"
         },
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetPeersForTripResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -9288,26 +9206,7 @@
         "description": "Details of the shared trip.",
         "operationId": "Me.ShareTrip",
         "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/ShareTripRequestBody"
         },
         "responses": {
           "204": {
@@ -9348,20 +9247,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "boolean",
-                      "default": false
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/UpdatePersonLastNameResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -16960,22 +16846,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-                    },
-                    {
-                      "type": "object",
-                      "nullable": true
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetFavoriteAirlineResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -17087,31 +16958,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Trip",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetFriendsTripsResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -17148,54 +16995,11 @@
           }
         ],
         "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/GetPeersForTripRequestBody"
         },
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetPeersForTripResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -17282,26 +17086,7 @@
           }
         ],
         "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/ShareTripRequestBody"
         },
         "responses": {
           "204": {
@@ -17345,20 +17130,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "boolean",
-                      "default": false
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/UpdatePersonLastNameResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -26459,22 +26231,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
-                    },
-                    {
-                      "type": "object",
-                      "nullable": true
-                    }
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetFavoriteAirlineResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -26593,31 +26350,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Trip",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetFriendsTripsResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -26654,54 +26387,11 @@
           }
         ],
         "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/GetPeersForTripRequestBody"
         },
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "title": "Collection of Person",
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "array",
-                      "items": {
-                        "anyOf": [
-                          {
-                            "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
-                          },
-                          {
-                            "type": "object",
-                            "nullable": true
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/GetPeersForTripResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -27818,26 +27508,7 @@
           }
         ],
         "requestBody": {
-          "description": "Action parameters",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "userName": {
-                    "type": "string"
-                  },
-                  "tripId": {
-                    "maximum": 2147483647,
-                    "minimum": -2147483648,
-                    "type": "integer",
-                    "format": "int32"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
+          "$ref": "#/components/requestBodies/ShareTripRequestBody"
         },
         "responses": {
           "204": {
@@ -27888,20 +27559,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "value": {
-                      "type": "boolean",
-                      "default": false
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/responses/UpdatePersonLastNameResponse"
           },
           "default": {
             "$ref": "#/components/responses/error"
@@ -30388,6 +30046,94 @@
             }
           }
         }
+      },
+      "GetFavoriteAirlineResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Airline"
+                },
+                {
+                  "type": "object",
+                  "nullable": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "GetFriendsTripsResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "Collection of Trip",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Trip"
+                      },
+                      {
+                        "type": "object",
+                        "nullable": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdatePersonLastNameResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetPeersForTripResponse": {
+        "description": "Success",
+        "content": {
+          "application/json": {
+            "schema": {
+              "title": "Collection of Person",
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Microsoft.OData.Service.Sample.TrippinInMemory.Models.Person"
+                      },
+                      {
+                        "type": "object",
+                        "nullable": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "parameters": {
@@ -30627,6 +30373,50 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/ReferenceUpdate"
+            }
+          }
+        },
+        "required": true
+      },
+      "ShareTripRequestBody": {
+        "description": "Action parameters",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string"
+                },
+                "tripId": {
+                  "maximum": 2147483647,
+                  "minimum": -2147483648,
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "GetPeersForTripRequestBody": {
+        "description": "Action parameters",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string"
+                },
+                "tripId": {
+                  "maximum": 2147483647,
+                  "minimum": -2147483648,
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
             }
           }
         },
