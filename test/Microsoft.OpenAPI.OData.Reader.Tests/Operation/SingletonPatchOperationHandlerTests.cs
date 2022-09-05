@@ -242,6 +242,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""in"": ""header"",
       ""description"": ""Description1"",
       ""required"": true,
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       },
@@ -256,6 +257,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""name"": ""HeadName2"",
       ""in"": ""header"",
       ""description"": ""Description2"",
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       },
@@ -271,6 +273,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""in"": ""query"",
       ""description"": ""Description3"",
       ""required"": true,
+      ""style"": ""form"",
       ""schema"": {
         ""type"": ""string""
       },

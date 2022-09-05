@@ -137,6 +137,7 @@
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items",
+        "style": "form",
         "schema": {
           "minimum": 0,
           "type": "integer"
@@ -147,6 +148,7 @@
         "name": "$skip",
         "in": "query",
         "description": "Skip the first n items",
+        "style": "form",
         "schema": {
           "minimum": 0,
           "type": "integer"
@@ -156,6 +158,7 @@
         "name": "$count",
         "in": "query",
         "description": "Include count of items",
+        "style": "form",
         "schema": {
           "type": "boolean"
         }
@@ -164,6 +167,7 @@
         "name": "$filter",
         "in": "query",
         "description": "Filter items by property values",
+        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -172,6 +176,7 @@
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases",
+        "style": "form",
         "schema": {
           "type": "string"
         }

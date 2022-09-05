@@ -111,32 +111,37 @@
       "name": "$top",
       "description": "Show only the first n items",
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "collectionFormat": "multi"
     },
     "skip": {
       "in": "query",
       "name": "$skip",
       "description": "Skip the first n items",
       "type": "integer",
-      "minimum": 0
+      "minimum": 0,
+      "collectionFormat": "multi"
     },
     "count": {
       "in": "query",
       "name": "$count",
       "description": "Include count of items",
-      "type": "boolean"
+      "type": "boolean",
+      "collectionFormat": "multi"
     },
     "filter": {
       "in": "query",
       "name": "$filter",
       "description": "Filter items by property values",
-      "type": "string"
+      "type": "string",
+      "collectionFormat": "multi"
     },
     "search": {
       "in": "query",
       "name": "$search",
       "description": "Search items by search phrases",
-      "type": "string"
+      "type": "string",
+      "collectionFormat": "multi"
     }
   },
   "responses": {

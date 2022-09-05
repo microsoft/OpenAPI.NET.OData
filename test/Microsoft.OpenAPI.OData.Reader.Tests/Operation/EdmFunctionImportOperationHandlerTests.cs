@@ -290,6 +290,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""name"": ""myhead1"",
       ""in"": ""header"",
       ""required"": true,
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       }
@@ -302,6 +303,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""name"": ""myhead2"",
       ""in"": ""header"",
       ""description"": ""This is the description for myhead2."",
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       }
@@ -314,6 +316,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""name"": ""myhead3"",
       ""in"": ""header"",
       ""description"": ""Documentation URL: https://foo.bar.com/myhead3"",
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       }
@@ -326,6 +329,7 @@ namespace Microsoft.OpenApi.OData.Operation.Tests
       ""name"": ""myhead4"",
       ""in"": ""header"",
       ""description"": ""This is the description for myhead4. Documentation URL: https://foo.bar.com/myhead4"",
+      ""style"": ""simple"",
       ""schema"": {
         ""type"": ""string""
       },

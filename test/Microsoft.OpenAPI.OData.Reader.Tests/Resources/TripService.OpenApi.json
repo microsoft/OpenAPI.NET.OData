@@ -149,6 +149,7 @@
             "in": "path",
             "description": "key: AirlineCode of Airline",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -219,6 +220,7 @@
             "in": "path",
             "description": "key: AirlineCode of Airline",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -258,6 +260,7 @@
             "in": "path",
             "description": "key: AirlineCode of Airline",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -267,6 +270,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -442,6 +446,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -514,6 +519,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -553,6 +559,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -562,6 +569,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -588,6 +596,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -657,6 +666,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -699,6 +709,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -788,6 +799,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -823,6 +835,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -854,6 +867,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -863,6 +877,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -889,6 +904,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -983,6 +999,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1021,6 +1038,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1030,6 +1048,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1070,6 +1089,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1100,6 +1120,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1127,6 +1148,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1153,6 +1175,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1219,6 +1242,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1260,6 +1284,7 @@
             "in": "path",
             "description": "key: IcaoCode of Airport",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -1304,6 +1329,7 @@
             "name": "lat",
             "in": "path",
             "required": true,
+            "style": "simple",
             "schema": {
               "oneOf": [
                 {
@@ -1323,6 +1349,7 @@
             "name": "lon",
             "in": "path",
             "required": true,
+            "style": "simple",
             "schema": {
               "oneOf": [
                 {
@@ -1652,6 +1679,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1914,6 +1942,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2070,6 +2099,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2528,6 +2558,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2537,6 +2568,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2545,6 +2577,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -2578,6 +2611,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2679,6 +2713,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2724,6 +2759,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2733,6 +2769,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2780,6 +2817,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2817,6 +2855,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2851,6 +2890,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2884,6 +2924,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -2957,6 +2998,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3005,6 +3047,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3390,6 +3433,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3399,6 +3443,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -3407,6 +3452,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -3440,6 +3486,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3541,6 +3588,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3586,6 +3634,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3595,6 +3644,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -3642,6 +3692,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3679,6 +3730,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3713,6 +3765,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3746,6 +3799,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3819,6 +3873,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -3867,6 +3922,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4164,6 +4220,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4173,6 +4230,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -4181,6 +4239,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -4214,6 +4273,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4315,6 +4375,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4360,6 +4421,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4369,6 +4431,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -4416,6 +4479,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4453,6 +4517,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4487,6 +4552,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4520,6 +4586,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4593,6 +4660,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4641,6 +4709,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4678,6 +4747,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4772,6 +4842,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4917,6 +4988,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4927,6 +4999,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4936,6 +5009,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -4944,6 +5018,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -4977,6 +5052,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -4987,6 +5063,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5088,6 +5165,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5098,6 +5176,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5143,6 +5222,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5153,6 +5233,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5162,6 +5243,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -5209,6 +5291,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5219,6 +5302,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5256,6 +5340,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5266,6 +5351,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5300,6 +5386,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5310,6 +5397,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5343,6 +5431,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5353,6 +5442,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5426,6 +5516,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5436,6 +5527,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5484,6 +5576,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5494,6 +5587,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5528,6 +5622,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5565,6 +5660,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5653,6 +5749,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5694,6 +5791,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5788,6 +5886,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5933,6 +6032,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5943,6 +6043,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -5952,6 +6053,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -5960,6 +6062,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -5993,6 +6096,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6003,6 +6107,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6104,6 +6209,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6114,6 +6220,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6159,6 +6266,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6169,6 +6277,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6178,6 +6287,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -6225,6 +6335,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6235,6 +6346,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6272,6 +6384,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6282,6 +6395,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6316,6 +6430,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6326,6 +6441,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6359,6 +6475,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6369,6 +6486,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6442,6 +6560,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6452,6 +6571,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6500,6 +6620,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6510,6 +6631,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6544,6 +6666,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6581,6 +6704,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -6669,6 +6793,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7482,6 +7607,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7491,6 +7617,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -7499,6 +7626,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -7532,6 +7660,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7633,6 +7762,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7678,6 +7808,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7687,6 +7818,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -7734,6 +7866,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7771,6 +7904,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7805,6 +7939,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7838,6 +7973,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7911,6 +8047,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -7959,6 +8096,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8166,6 +8304,7 @@
             "in": "path",
             "description": "Usage: userName='{userName}'",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -8590,6 +8729,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8599,6 +8739,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -8607,6 +8748,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -8640,6 +8782,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8741,6 +8884,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8786,6 +8930,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8795,6 +8940,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -8842,6 +8988,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8879,6 +9026,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8913,6 +9061,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -8946,6 +9095,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -9019,6 +9169,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -9067,6 +9218,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -9333,6 +9485,7 @@
             "in": "path",
             "description": "Usage: lastName='{lastName}'",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -9545,6 +9698,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -9634,6 +9788,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -9684,6 +9839,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -9696,6 +9852,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -9733,6 +9890,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -9881,6 +10039,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -10001,6 +10160,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -10014,6 +10174,7 @@
             "in": "path",
             "description": "key: PlanItemId of PlanItem",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -10026,6 +10187,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -10034,6 +10196,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -10068,6 +10231,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -10108,6 +10272,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -10187,6 +10352,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -10410,6 +10576,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10495,6 +10662,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10534,6 +10702,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10543,6 +10712,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -10569,6 +10739,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10663,6 +10834,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10701,6 +10873,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10710,6 +10883,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -10750,6 +10924,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10780,6 +10955,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10807,6 +10983,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10838,6 +11015,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10934,6 +11112,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -10977,6 +11156,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11015,6 +11195,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11024,6 +11205,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -11057,6 +11239,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11158,6 +11341,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11203,6 +11387,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11212,6 +11397,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -11259,6 +11445,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11296,6 +11483,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11330,6 +11518,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11363,6 +11552,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11436,6 +11626,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11484,6 +11675,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11521,6 +11713,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11615,6 +11808,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11759,6 +11953,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11769,6 +11964,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11778,6 +11974,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -11786,6 +11983,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -11819,6 +12017,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11829,6 +12028,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11930,6 +12130,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11940,6 +12141,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11985,6 +12187,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -11995,6 +12198,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12004,6 +12208,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -12051,6 +12256,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12061,6 +12267,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12098,6 +12305,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12108,6 +12316,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12142,6 +12351,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12152,6 +12362,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12185,6 +12396,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12195,6 +12407,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12268,6 +12481,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12278,6 +12492,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12326,6 +12541,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12336,6 +12552,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12370,6 +12587,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12407,6 +12625,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12495,6 +12714,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12536,6 +12756,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12630,6 +12851,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12774,6 +12996,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12784,6 +13007,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12793,6 +13017,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -12801,6 +13026,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -12834,6 +13060,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12844,6 +13071,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12945,6 +13173,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -12955,6 +13184,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13000,6 +13230,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13010,6 +13241,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13019,6 +13251,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -13066,6 +13299,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13076,6 +13310,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13113,6 +13348,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13123,6 +13359,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13157,6 +13394,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13167,6 +13405,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13200,6 +13439,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13210,6 +13450,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13283,6 +13524,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13293,6 +13535,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13341,6 +13584,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13351,6 +13595,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13385,6 +13630,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13422,6 +13668,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13510,6 +13757,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13551,6 +13799,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13685,6 +13934,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13695,6 +13945,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13704,6 +13955,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -13712,6 +13964,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -13738,6 +13991,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13748,6 +14002,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13842,6 +14097,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13852,6 +14108,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13890,6 +14147,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13900,6 +14158,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13909,6 +14168,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -13949,6 +14209,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13959,6 +14220,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13989,6 +14251,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -13999,6 +14262,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14026,6 +14290,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14036,6 +14301,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14062,6 +14328,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14072,6 +14339,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14138,6 +14406,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14148,6 +14417,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14189,6 +14459,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14199,6 +14470,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14229,6 +14501,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14239,6 +14512,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14326,6 +14600,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14336,6 +14611,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14473,6 +14749,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14483,6 +14760,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14493,6 +14771,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14502,6 +14781,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -14510,6 +14790,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -14536,6 +14817,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14546,6 +14828,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14556,6 +14839,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14650,6 +14934,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14660,6 +14945,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14670,6 +14956,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14708,6 +14995,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14718,6 +15006,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14728,6 +15017,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14737,6 +15027,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -14777,6 +15068,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14787,6 +15079,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14797,6 +15090,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14827,6 +15121,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14837,6 +15132,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14847,6 +15143,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14874,6 +15171,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14884,6 +15182,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14894,6 +15193,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14920,6 +15220,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14930,6 +15231,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -14940,6 +15242,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15006,6 +15309,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15016,6 +15320,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15026,6 +15331,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15067,6 +15373,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15077,6 +15384,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15087,6 +15395,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15114,6 +15423,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15124,6 +15434,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15154,6 +15465,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15164,6 +15476,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15245,6 +15558,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15255,6 +15569,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15289,6 +15604,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15299,6 +15615,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15386,6 +15703,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15396,6 +15714,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15533,6 +15852,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15543,6 +15863,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15553,6 +15874,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15562,6 +15884,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -15570,6 +15893,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -15596,6 +15920,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15606,6 +15931,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15616,6 +15942,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15710,6 +16037,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15720,6 +16048,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15730,6 +16059,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15768,6 +16098,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15778,6 +16109,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15788,6 +16120,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15797,6 +16130,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -15837,6 +16171,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15847,6 +16182,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15857,6 +16193,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15887,6 +16224,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15897,6 +16235,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15907,6 +16246,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15934,6 +16274,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15944,6 +16285,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15954,6 +16296,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15980,6 +16323,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -15990,6 +16334,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16000,6 +16345,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16066,6 +16412,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16076,6 +16423,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16086,6 +16434,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16127,6 +16476,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16137,6 +16487,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16147,6 +16498,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16174,6 +16526,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16184,6 +16537,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16214,6 +16568,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16224,6 +16579,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16305,6 +16661,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16315,6 +16672,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16346,6 +16704,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16376,6 +16735,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16457,6 +16817,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16491,6 +16852,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16621,6 +16983,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16651,6 +17014,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16781,6 +17145,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16807,6 +17172,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16873,6 +17239,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16914,6 +17281,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16944,6 +17312,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -16990,6 +17359,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17000,6 +17370,7 @@
             "in": "path",
             "description": "Usage: userName='{userName}'",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -17133,6 +17504,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17211,6 +17583,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17267,6 +17640,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17320,6 +17694,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17330,6 +17705,7 @@
             "in": "path",
             "description": "Usage: lastName='{lastName}'",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -17374,6 +17750,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17493,6 +17870,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17543,6 +17921,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17553,6 +17932,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -17635,6 +18015,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17645,6 +18026,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -17688,6 +18070,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17698,6 +18081,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -17710,6 +18094,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -17740,6 +18125,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17750,6 +18136,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -17891,6 +18278,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -17901,6 +18289,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -18014,6 +18403,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18024,6 +18414,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -18037,6 +18428,7 @@
             "in": "path",
             "description": "key: PlanItemId of PlanItem",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -18049,6 +18441,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -18057,6 +18450,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -18084,6 +18478,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18094,6 +18489,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -18127,6 +18523,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18137,6 +18534,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -18209,6 +18607,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18219,6 +18618,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -18253,6 +18653,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18469,6 +18870,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18561,6 +18963,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18607,6 +19010,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18616,6 +19020,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -18649,6 +19054,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18750,6 +19156,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18795,6 +19202,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18804,6 +19212,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -18851,6 +19260,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18888,6 +19298,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18922,6 +19333,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -18960,6 +19372,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19056,6 +19469,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19099,6 +19513,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19137,6 +19552,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19146,6 +19562,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -19179,6 +19596,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19280,6 +19698,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19325,6 +19744,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19334,6 +19754,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -19381,6 +19802,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19418,6 +19840,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19452,6 +19875,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19485,6 +19909,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19558,6 +19983,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19606,6 +20032,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19643,6 +20070,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19737,6 +20165,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19882,6 +20311,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19892,6 +20322,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19901,6 +20332,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -19909,6 +20341,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -19942,6 +20375,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -19952,6 +20386,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20053,6 +20488,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20063,6 +20499,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20108,6 +20545,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20118,6 +20556,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20127,6 +20566,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -20174,6 +20614,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20184,6 +20625,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20221,6 +20663,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20231,6 +20674,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20265,6 +20709,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20275,6 +20720,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20308,6 +20754,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20318,6 +20765,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20391,6 +20839,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20401,6 +20850,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20449,6 +20899,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20459,6 +20910,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20493,6 +20945,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20530,6 +20983,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20618,6 +21072,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20659,6 +21114,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20753,6 +21209,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20898,6 +21355,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20908,6 +21366,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20917,6 +21376,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -20925,6 +21385,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -20958,6 +21419,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -20968,6 +21430,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21069,6 +21532,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21079,6 +21543,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21124,6 +21589,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21134,6 +21600,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21143,6 +21610,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -21190,6 +21658,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21200,6 +21669,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21237,6 +21707,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21247,6 +21718,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21281,6 +21753,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21291,6 +21764,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21324,6 +21798,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21334,6 +21809,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21407,6 +21883,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21417,6 +21894,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21465,6 +21943,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21475,6 +21954,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21509,6 +21989,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21546,6 +22027,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21634,6 +22116,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21675,6 +22158,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21816,6 +22300,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21826,6 +22311,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21835,6 +22321,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -21843,6 +22330,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -21876,6 +22364,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21886,6 +22375,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21987,6 +22477,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -21997,6 +22488,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22042,6 +22534,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22052,6 +22545,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22061,6 +22555,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -22108,6 +22603,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22118,6 +22614,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22155,6 +22652,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22165,6 +22663,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22199,6 +22698,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22209,6 +22709,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22242,6 +22743,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22252,6 +22754,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22325,6 +22828,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22335,6 +22839,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22383,6 +22888,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22393,6 +22899,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22430,6 +22937,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22440,6 +22948,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22534,6 +23043,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22544,6 +23054,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22689,6 +23200,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22699,6 +23211,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22709,6 +23222,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22718,6 +23232,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -22726,6 +23241,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -22759,6 +23275,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22769,6 +23286,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22779,6 +23297,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22880,6 +23399,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22890,6 +23410,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22900,6 +23421,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22945,6 +23467,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22955,6 +23478,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22965,6 +23489,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -22974,6 +23499,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -23021,6 +23547,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23031,6 +23558,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23041,6 +23569,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23078,6 +23607,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23088,6 +23618,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23098,6 +23629,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23132,6 +23664,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23142,6 +23675,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23152,6 +23686,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23185,6 +23720,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23195,6 +23731,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23205,6 +23742,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23278,6 +23816,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23288,6 +23827,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23298,6 +23838,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23346,6 +23887,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23356,6 +23898,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23366,6 +23909,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23400,6 +23944,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23410,6 +23955,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23447,6 +23993,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23457,6 +24004,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23545,6 +24093,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23555,6 +24104,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23596,6 +24146,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23606,6 +24157,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23700,6 +24252,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23710,6 +24263,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23855,6 +24409,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23865,6 +24420,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23875,6 +24431,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23884,6 +24441,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -23892,6 +24450,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -23925,6 +24484,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23935,6 +24495,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -23945,6 +24506,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24046,6 +24608,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24056,6 +24619,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24066,6 +24630,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24111,6 +24676,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24121,6 +24687,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24131,6 +24698,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24140,6 +24708,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -24187,6 +24756,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24197,6 +24767,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24207,6 +24778,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24244,6 +24816,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24254,6 +24827,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24264,6 +24838,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24298,6 +24873,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24308,6 +24884,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24318,6 +24895,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24351,6 +24929,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24361,6 +24940,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24371,6 +24951,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24444,6 +25025,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24454,6 +25036,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24464,6 +25047,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24512,6 +25096,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24522,6 +25107,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24532,6 +25118,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24566,6 +25153,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24576,6 +25164,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24613,6 +25202,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24623,6 +25213,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24711,6 +25302,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24721,6 +25313,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24759,6 +25352,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24796,6 +25390,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24884,6 +25479,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -24925,6 +25521,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25062,6 +25659,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25099,6 +25697,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25236,6 +25835,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25269,6 +25869,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25342,6 +25943,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25390,6 +25992,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25427,6 +26030,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25521,6 +26125,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25666,6 +26271,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25676,6 +26282,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25685,6 +26292,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -25693,6 +26301,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -25726,6 +26335,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25736,6 +26346,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25837,6 +26448,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25847,6 +26459,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25892,6 +26505,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25902,6 +26516,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25911,6 +26526,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -25958,6 +26574,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -25968,6 +26585,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26005,6 +26623,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26015,6 +26634,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26049,6 +26669,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26059,6 +26680,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26092,6 +26714,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26102,6 +26725,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26175,6 +26799,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26185,6 +26810,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26233,6 +26859,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26243,6 +26870,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26277,6 +26905,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26314,6 +26943,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26402,6 +27032,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26443,6 +27074,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26496,6 +27128,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26506,6 +27139,7 @@
             "in": "path",
             "description": "Usage: userName='{userName}'",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -26639,6 +27273,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26723,6 +27358,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26817,6 +27453,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26962,6 +27599,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26972,6 +27610,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -26981,6 +27620,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -26989,6 +27629,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -27022,6 +27663,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27032,6 +27674,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27133,6 +27776,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27143,6 +27787,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27188,6 +27833,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27198,6 +27844,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27207,6 +27854,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -27254,6 +27902,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27264,6 +27913,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27301,6 +27951,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27311,6 +27962,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27345,6 +27997,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27355,6 +28008,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27388,6 +28042,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27398,6 +28053,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27471,6 +28127,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27481,6 +28138,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27529,6 +28187,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27539,6 +28198,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27573,6 +28233,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27610,6 +28271,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27698,6 +28360,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27740,6 +28403,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27803,6 +28467,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27863,6 +28528,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -27873,6 +28539,7 @@
             "in": "path",
             "description": "Usage: lastName='{lastName}'",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -27924,6 +28591,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28050,6 +28718,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28107,6 +28776,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28117,6 +28787,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28206,6 +28877,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28216,6 +28888,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28266,6 +28939,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28276,6 +28950,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28288,6 +28963,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -28325,6 +29001,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28335,6 +29012,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28483,6 +29161,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28493,6 +29172,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28613,6 +29293,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28623,6 +29304,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28636,6 +29318,7 @@
             "in": "path",
             "description": "key: PlanItemId of PlanItem",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28648,6 +29331,7 @@
             "name": "If-Match",
             "in": "header",
             "description": "ETag",
+            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -28656,6 +29340,7 @@
             "name": "@id",
             "in": "query",
             "description": "Delete Uri",
+            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -28690,6 +29375,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28700,6 +29386,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28740,6 +29427,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28750,6 +29438,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28829,6 +29518,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -28839,6 +29529,7 @@
             "in": "path",
             "description": "key: TripId of Trip",
             "required": true,
+            "style": "simple",
             "schema": {
               "maximum": 2147483647,
               "minimum": -2147483648,
@@ -28880,6 +29571,7 @@
             "in": "path",
             "description": "key: UserName of Person",
             "required": true,
+            "style": "simple",
             "schema": {
               "type": "string"
             },
@@ -30390,6 +31082,7 @@
         "name": "$top",
         "in": "query",
         "description": "Show only the first n items",
+        "style": "form",
         "schema": {
           "minimum": 0,
           "type": "integer"
@@ -30400,6 +31093,7 @@
         "name": "$skip",
         "in": "query",
         "description": "Skip the first n items",
+        "style": "form",
         "schema": {
           "minimum": 0,
           "type": "integer"
@@ -30409,6 +31103,7 @@
         "name": "$count",
         "in": "query",
         "description": "Include count of items",
+        "style": "form",
         "schema": {
           "type": "boolean"
         }
@@ -30417,6 +31112,7 @@
         "name": "$filter",
         "in": "query",
         "description": "Filter items by property values",
+        "style": "form",
         "schema": {
           "type": "string"
         }
@@ -30425,6 +31121,7 @@
         "name": "$search",
         "in": "query",
         "description": "Search items by search phrases",
+        "style": "form",
         "schema": {
           "type": "string"
         }
