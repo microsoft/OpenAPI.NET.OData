@@ -4,7 +4,6 @@
 // ------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using Microsoft.OData.Edm;
 using Xunit;
 
@@ -74,10 +73,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "MyFunction(param={param})")]
-        [InlineData(true, false, "MyFunction(entity={entity},param={param})")]
-        [InlineData(false, true, "NS.MyFunction(param={param})")]
-        [InlineData(false, false, "NS.MyFunction(entity={entity},param={param})")]
+        [InlineData(true, true, "MyFunction(param={param},param2=@param2)")]
+        [InlineData(true, false, "MyFunction(entity={entity},param={param},param2=@param2)")]
+        [InlineData(false, true, "NS.MyFunction(param={param},param2=@param2)")]
+        [InlineData(false, false, "NS.MyFunction(entity={entity},param={param},param2=@param2)")]
         public void GetPathItemNameReturnsCorrectFunctionLiteral(bool unqualifiedCall, bool isBound, string expected)
         {
             // Arrange & Act
@@ -85,6 +84,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.Boolean, isNullable: false);
             EdmFunction boundFunction = BoundFunction("MyFunction", isBound, entityTypeReference);
             boundFunction.AddParameter("param", parameterType);
+            boundFunction.AddOptionalParameter("param2", parameterType);
 
             var segment = new ODataOperationSegment(boundFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
@@ -97,10 +97,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "{param}")]
-        [InlineData(true, false, "NS.MyFunction(param='{param}')")]
-        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
-        [InlineData(false, false, "NS.MyFunction(param='{param}')")]
+        [InlineData(true, true, "{param2}")]
+        [InlineData(true, false, "NS.MyFunction(param='{param}',param2='@param2')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}',param2='@param2')")]
+        [InlineData(false, false, "NS.MyFunction(param='{param}',param2='@param2')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteralForEscapedFunction(bool isEscapedFunction, bool enableEscapeFunctionCall, string expected)
         {
             // Arrange & Act
@@ -108,6 +108,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.String, isNullable: false);
             EdmFunction boundFunction = BoundFunction("MyFunction", true, entityTypeReference);
             boundFunction.AddParameter("param", parameterType);
+            boundFunction.AddOptionalParameter("param2", parameterType);
 
             var segment = new ODataOperationSegment(boundFunction, isEscapedFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
@@ -121,10 +122,10 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
         }
 
         [Theory]
-        [InlineData(true, true, "{param}:")]
-        [InlineData(true, false, "NS.MyFunction(param='{param}')")]
-        [InlineData(false, true, "NS.MyFunction(param='{param}')")]
-        [InlineData(false, false, "NS.MyFunction(param='{param}')")]
+        [InlineData(true, true, "{param2}:")]
+        [InlineData(true, false, "NS.MyFunction(param='{param}',param2='@param2')")]
+        [InlineData(false, true, "NS.MyFunction(param='{param}',param2='@param2')")]
+        [InlineData(false, false, "NS.MyFunction(param='{param}',param2='@param2')")]
         public void GetPathItemNameReturnsCorrectFunctionLiteralForEscapedComposableFunction(bool isEscapedFunction, bool enableEscapeFunctionCall, string expected)
         {
             // Arrange & Act
@@ -132,6 +133,7 @@ namespace Microsoft.OpenApi.OData.Edm.Tests
             IEdmTypeReference parameterType = EdmCoreModel.Instance.GetPrimitive(EdmPrimitiveTypeKind.String, isNullable: false);
             EdmFunction boundFunction = BoundFunction("MyFunction", true, entityTypeReference, true);
             boundFunction.AddParameter("param", parameterType);
+            boundFunction.AddOptionalParameter("param2", parameterType);
 
             var segment = new ODataOperationSegment(boundFunction, isEscapedFunction);
             OpenApiConvertSettings settings = new OpenApiConvertSettings
