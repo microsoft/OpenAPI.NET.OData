@@ -197,11 +197,11 @@ namespace Microsoft.OpenApi.OData.Generator
                         ? null : $"Collection of {entityType.Name}",
                     Type = "object",
                     Properties = new Dictionary<string, OpenApiSchema>
+                    {
                         {
-                            {
-                                "value", context.CreateEdmTypeSchema(operation.ReturnType)
-                            }
+                            "value", context.CreateEdmTypeSchema(operation.ReturnType)
                         }
+                    }
                 };
             }
             else if (operation.ReturnType.IsPrimitive())
@@ -212,11 +212,11 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Type = "object",
                     Properties = new Dictionary<string, OpenApiSchema>
+                    {
                         {
-                            {
-                                "value", context.CreateEdmTypeSchema(operation.ReturnType)
-                            }
+                            "value", context.CreateEdmTypeSchema(operation.ReturnType)
                         }
+                    }
                 };
             }
             else
@@ -235,15 +235,15 @@ namespace Microsoft.OpenApi.OData.Generator
             {
                 Description = "Success",
                 Content = new Dictionary<string, OpenApiMediaType>
+                {
                     {
+                        mediaType,
+                        new OpenApiMediaType
                         {
-                            mediaType,
-                            new OpenApiMediaType
-                            {
-                                Schema = schema
-                            }
+                            Schema = schema
                         }
                     }
+                }
             };
 
             return response;
