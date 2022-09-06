@@ -200,11 +200,11 @@ namespace Microsoft.OpenApi.OData.Edm
         }
 
         /// <summary>
-        /// Checks whether operation targets singleton and entityset of the same type.
+        /// Checks whether operation targets singletons and/or entitysets of the same type.
         /// </summary>
         /// <param name="model">The Edm model.</param>
-        /// <param name="operation"></param>
-        /// <returns>The test operations.</returns>
+        /// <param name="operation">The test operations.</param>
+        /// <returns>True/false.</returns>
         public static bool OperationTargetsMultiplePaths(this IEdmModel model, IEdmOperation operation)
         {
             Utils.CheckArgumentNull(model, nameof(model));
