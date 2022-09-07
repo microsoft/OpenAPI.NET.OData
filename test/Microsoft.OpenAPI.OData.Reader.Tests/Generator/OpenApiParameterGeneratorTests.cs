@@ -49,83 +49,83 @@ namespace Microsoft.OpenApi.OData.Generator.Tests
                 item => // $top
                 {
                     string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = $@"{{
+                    string expected = @"{
   ""name"": ""$top"",
   ""in"": ""query"",
   ""description"": ""Show only the first n items"",
   ""style"": ""form"",
   ""explode"": false,
-  ""schema"": {{
+  ""schema"": {
     ""minimum"": 0,
     ""type"": ""integer""
-  }},
+  },
   ""example"": 50
-}}";
+}";
 
                     Assert.Equal(expected.ChangeLineBreaks(), json);
                 },
                 item => // $skip
                 {
                     string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = $@"{{
+                    string expected = @"{
   ""name"": ""$skip"",
   ""in"": ""query"",
   ""description"": ""Skip the first n items"",
   ""style"": ""form"",
   ""explode"": false,
-  ""schema"": {{
+  ""schema"": {
     ""minimum"": 0,
     ""type"": ""integer""
-  }}
-}}";
+  }
+}";
 
                     Assert.Equal(expected.ChangeLineBreaks(), json);
                 },
                 item => // $count
                 {
                     string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = $@"{{
+                    string expected = @"{
   ""name"": ""$count"",
   ""in"": ""query"",
   ""description"": ""Include count of items"",
   ""style"": ""form"",
   ""explode"": false,
-  ""schema"": {{
+  ""schema"": {
     ""type"": ""boolean""
-  }}
-}}";
+  }
+}";
 
                     Assert.Equal(expected.ChangeLineBreaks(), json);
                 },
                 item => // $filter
                 {
                     string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = $@"{{
+                    string expected = @"{
   ""name"": ""$filter"",
   ""in"": ""query"",
   ""description"": ""Filter items by property values"",
   ""style"": ""form"",
   ""explode"": false,
-  ""schema"": {{
+  ""schema"": {
     ""type"": ""string""
-  }}
-}}";
+  }
+}";
 
                     Assert.Equal(expected.ChangeLineBreaks(), json);
                 },
                 item => // $search
                 {
                     string json = item.Value.SerializeAsJson(OpenApiSpecVersion.OpenApi3_0);
-                    string expected = $@"{{
+                    string expected = @"{
   ""name"": ""$search"",
   ""in"": ""query"",
   ""description"": ""Search items by search phrases"",
   ""style"": ""form"",
   ""explode"": false,
-  ""schema"": {{
+  ""schema"": {
     ""type"": ""string""
-  }}
-}}";
+  }
+}";
 
                     Assert.Equal(expected.ChangeLineBreaks(), json);
                 });
