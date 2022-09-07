@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using Microsoft.OData.Edm;
@@ -145,7 +146,9 @@ namespace Microsoft.OpenApi.OData.Edm
             {
                 string uniqueName = Utils.GetUniqueName(p.Name, parameters);
                 var quote = p.Type.Definition.ShouldPathParameterBeQuoted(settings) ? "'" : string.Empty;
-                return p.Name + $"={quote}{{{uniqueName}}}{quote}";
+                return p is IEdmOptionalParameter
+                    ? p.Name + $"={quote}@{uniqueName}{quote}"
+                    : p.Name + $"={quote}{{{uniqueName}}}{quote}";
             })));
 
             functionName.Append(")");
