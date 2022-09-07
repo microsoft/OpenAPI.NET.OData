@@ -656,7 +656,9 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = "integer",
                     Minimum = 0,
                 },
-                Example = new OpenApiInteger(topExample)
+                Example = new OpenApiInteger(topExample),
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -672,7 +674,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Type = "integer",
                     Minimum = 0,
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -687,7 +691,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = "boolean"
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -702,7 +708,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = "string"
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -717,7 +725,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = "string"
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
     }
