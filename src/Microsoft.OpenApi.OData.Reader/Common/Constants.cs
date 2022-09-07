@@ -154,5 +154,25 @@ namespace Microsoft.OpenApi.OData.Common
         /// string type
         /// </summary>
         public static string StringType = "string";
+
+        /// <summary>
+        /// integer type
+        /// </summary>
+        public static string IntegerType = "integer";
+
+        /// <summary>
+        /// number type
+        /// </summary>
+        public static string NumberType = "number";
+
+        /// <summary>
+        /// int64 format
+        /// </summary>
+        public static string Int64Format = "int64";
+
+        /// <summary>
+        /// decimal format
+        /// </summary>
+        public static string DecimalFormat = "decimal";
     }
 }
