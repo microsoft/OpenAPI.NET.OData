@@ -790,9 +790,11 @@ paths:
         - in: path
           name: lat
           required: true
+          format: double
         - in: path
           name: lon
           required: true
+          format: double
       responses:
         '200':
           description: Success

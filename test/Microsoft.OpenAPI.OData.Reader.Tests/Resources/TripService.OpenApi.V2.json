@@ -1167,12 +1167,14 @@
           {
             "in": "path",
             "name": "lat",
-            "required": true
+            "required": true,
+            "format": "double"
           },
           {
             "in": "path",
             "name": "lon",
-            "required": true
+            "required": true,
+            "format": "double"
           }
         ],
         "responses": {
