@@ -803,6 +803,46 @@ namespace Microsoft.OpenApi.OData.Tests
 }".ChangeLineBreaks(), json);
             }
         }
+
+        [Theory]
+        [InlineData(OpenApiSpecVersion.OpenApi3_0)]
+        [InlineData(OpenApiSpecVersion.OpenApi2_0)]
+        public void CreatePropertySchemaWithComputedAnnotationReturnsCorrectSchema(OpenApiSpecVersion specVersion)
+        {
+            // Arrange
+            IEdmModel model = EdmModelHelper.GraphBetaModel;
+            ODataContext context = new(model);
+
+            context.Settings.OpenApiSpecVersion = specVersion;
+
+            IEdmEntityType entityType = model.SchemaElements.OfType<IEdmEntityType>().First(e => e.Name == "bookingAppointment");
+            IEdmProperty property = entityType.Properties().FirstOrDefault(x => x.Name == "duration");
+
+            // Act
+            var schema = context.CreatePropertySchema(property);
+            Assert.NotNull(schema);
+            string json = schema.SerializeAsJson(specVersion);
+
+            // Assert
+            if (specVersion == OpenApiSpecVersion.OpenApi2_0)
+            {
+                Assert.Equal(@"{
+  ""format"": ""duration"",
+  ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
+  ""type"": ""string"",
+  ""readOnly"": true
+}".ChangeLineBreaks(), json);    
+            }
+            else
+            {
+                Assert.Equal(@"{
+  ""pattern"": ""^-?P([0-9]+D)?(T([0-9]+H)?([0-9]+M)?([0-9]+([.][0-9]+)?S)?)?$"",
+  ""type"": ""string"",
+  ""format"": ""duration"",
+  ""readOnly"": true
+}".ChangeLineBreaks(), json);
+            }
+        }
         #endregion
 
         #region BaseTypeToDerivedTypesSchema
