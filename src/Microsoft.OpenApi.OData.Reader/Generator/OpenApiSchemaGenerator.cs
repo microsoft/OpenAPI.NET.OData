@@ -390,7 +390,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 OpenApiSchema propertySchema = context.CreatePropertySchema(property);
                 propertySchema.Description = context.Model.GetDescriptionAnnotation(property);
                 propertySchema.Extensions.AddCustomAtributesToExtensions(context, property);
-                propertySchema.ReadOnly = context.Model.GetBoolean(property, CoreConstants.Computed) ?? false;
                 properties.Add(property.Name, propertySchema);
             }
 
