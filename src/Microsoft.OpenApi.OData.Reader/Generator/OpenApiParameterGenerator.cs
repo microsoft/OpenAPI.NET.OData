@@ -81,7 +81,8 @@ namespace Microsoft.OpenApi.OData.Generator
                     }
                 }                
 
-                OpenApiParameter parameter;                
+                OpenApiParameter parameter;
+                bool isOptionalParameter = edmParameter is IEdmOptionalParameter;
                 if (edmParameter.Type.IsStructured() ||
                     edmParameter.Type.IsCollection())
                 {
@@ -121,7 +122,6 @@ namespace Microsoft.OpenApi.OData.Generator
                 else
                 {
                     // Primitive parameters use the same type mapping as described for primitive properties.
-                    bool isOptionalParameter = edmParameter is IEdmOptionalParameter;
                     parameter = new OpenApiParameter
                     {
                         Name = parameterNameMapping == null ? edmParameter.Name : parameterNameMapping[edmParameter.Name],
@@ -134,7 +134,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 if (parameterNameMapping != null)
                 {
                     var quote = edmParameter.Type.Definition.ShouldPathParameterBeQuoted(context.Settings) ? "'" : string.Empty;
-                    parameter.Description = $"Usage: {edmParameter.Name}={quote}{{{parameterNameMapping[edmParameter.Name]}}}{quote}";
+                    parameter.Description = isOptionalParameter
+                        ? $"Usage: {edmParameter.Name}={quote}@{parameterNameMapping[edmParameter.Name]}{quote}"
+                        : $"Usage: {edmParameter.Name}={quote}{{{parameterNameMapping[edmParameter.Name]}}}{quote}";
                 }
 
                 parameters.Add(parameter);
@@ -656,7 +658,9 @@ namespace Microsoft.OpenApi.OData.Generator
                     Type = "integer",
                     Minimum = 0,
                 },
-                Example = new OpenApiInteger(topExample)
+                Example = new OpenApiInteger(topExample),
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -672,7 +676,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 {
                     Type = "integer",
                     Minimum = 0,
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -687,7 +693,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = "boolean"
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -702,7 +710,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = "string"
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
 
@@ -717,7 +727,9 @@ namespace Microsoft.OpenApi.OData.Generator
                 Schema = new OpenApiSchema
                 {
                     Type = "string"
-                }
+                },
+                Style = ParameterStyle.Form,
+                Explode = false
             };
         }
     }
